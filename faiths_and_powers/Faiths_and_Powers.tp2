@@ -1,0 +1,1584 @@
+BACKUP ~faiths_and_powers/backup~
+AUTHOR ~SubtleD and Grammarsalad~
+
+VERSION ~0.60~
+//README ~faiths_and_powers/readme-pnp.html~
+
+
+ALWAYS
+
+    INCLUDE ~faiths_and_powers/lib/alter_effect.tpa~
+
+	INCLUDE ~faiths_and_powers/lib/remove_lines.tpa~
+
+	INCLUDE ~faiths_and_powers/lib/spell_to_innate.tpa~
+
+	INCLUDE ~faiths_and_powers/lib/fl#add_kit_ee.tpa~
+
+	INCLUDE ~faiths_and_powers/lib/spell_clone_effects.tpa~
+	
+	INCLUDE ~faiths_and_powers/lib/fnp_compat.tpa~
+	
+	INCLUDE ~faiths_and_powers/lib/qd_multiclass.tpa~
+
+// joinable NPC issues for tutu/bgt/eet:
+  ACTION_IF GAME_IS ~bgee~ BEGIN
+    OUTER_SPRINT tutu_var ~~
+    OUTER_SPRINT imoen6_var ~imoen6~
+    OUTER_SPRINT jaheir7_var ~jaheir7~
+    OUTER_SPRINT minsc7_var ~minsc7~
+    OUTER_SPRINT quayle_var ~quayle~
+    OUTER_SPRINT viconi6_var ~viconi6~
+    OUTER_SPRINT xan_var ~xan~
+    OUTER_SPRINT xzar_var ~xzar~
+  END ELSE ACTION_IF GAME_IS ~eet~ BEGIN
+    OUTER_SPRINT tutu_var ~~
+    OUTER_SPRINT imoen6_var ~imoen6_~
+    OUTER_SPRINT jaheir7_var ~jaheir7_~
+    OUTER_SPRINT minsc7_var ~minsc7_~
+    OUTER_SPRINT quayle_var ~quayle_~
+    OUTER_SPRINT viconi6_var ~viconi6_~
+    OUTER_SPRINT xan_var ~xan_~
+    OUTER_SPRINT xzar_var ~xzar_~
+  END ELSE ACTION_IF GAME_IS ~bgt~ BEGIN
+    OUTER_SPRINT tutu_var ~~
+    OUTER_SPRINT imoen6_var ~imoen61~
+    OUTER_SPRINT quayle_var ~bgquayle~
+    OUTER_SPRINT viconi6_var ~viconi61~
+    OUTER_SPRINT xan_var ~bgxan~
+    OUTER_SPRINT xzar_var ~bgxzar~
+  END ELSE ACTION_IF GAME_IS ~tutu tutu_totsc~ BEGIN
+    OUTER_SPRINT tutu_var ~_~
+    OUTER_SPRINT imoen6_var ~imoen6~
+    OUTER_SPRINT quayle_var ~quayle~
+    OUTER_SPRINT viconi6_var ~viconi6~
+    OUTER_SPRINT xan_var ~xan~
+    OUTER_SPRINT xzar_var ~xzar~
+  END
+
+END
+
+// ASK_EVERY_COMPONENT
+
+LANGUAGE
+  ~English~
+  ~english~
+  ~faiths_and_powers/language/english/setup.tra~
+//___________________________________________________________________________________
+
+
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+//					CHOOSE WHETHER/HOW TO INSTALL NEW KITS
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+//					EVERYTHING, INCLUDING DEITY SELECTION DIALOGUE
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+BEGIN @101
+DESIGNATED 101
+REQUIRE_PREDICATE (GAME_IS ~bgee bg2ee eet iwdee~) ~Enhanced Edition game required!~
+SUBCOMPONENT @100
+
+//copy marker file__________________________________________________________________
+//
+COPY ~faiths_and_powers/lib/markers/d5_deity.d5~ ~override~
+//__________________________________________________________________________________
+
+//install all the kits:_____________________________________________________________
+//
+// (clerics)
+INCLUDE ~faiths_and_powers/kits/clerics/201_lathander/cleric_lathander.tpa~
+INCLUDE ~faiths_and_powers/kits/clerics/202_torm/cleric_torm.tpa~
+INCLUDE ~faiths_and_powers/kits/clerics/205_tymora/cleric_tymora.tpa~
+INCLUDE ~faiths_and_powers/kits/clerics/208_helm/cleric_helm.tpa~
+INCLUDE ~faiths_and_powers/kits/clerics/209_kelemvor/cleric_kelemvor.tpa~
+INCLUDE ~faiths_and_powers/kits/clerics/210_tempus/cleric_tempus.tpa~
+INCLUDE ~faiths_and_powers/kits/clerics/212_leira/cleric_leira.tpa~
+INCLUDE ~faiths_and_powers/kits/clerics/219_loviatar/cleric_loviatar.tpa~
+INCLUDE ~faiths_and_powers/kits/clerics/224_talos/cleric_talos.tpa~
+//
+// (acolytes)
+INCLUDE ~faiths_and_powers/kits/acolytes/314_ilmater/acolyte_ilmater.tpa~
+INCLUDE ~faiths_and_powers/kits/acolytes/315_deneir/acolyte_deneir.tpa~
+INCLUDE ~faiths_and_powers/kits/acolytes/316_sune/acolyte_sune.tpa~
+INCLUDE ~faiths_and_powers/kits/acolytes/322_tempus/acolyte_tempus.tpa~
+INCLUDE ~faiths_and_powers/kits/acolytes/325_mystra/acolyte_mystra.tpa~
+INCLUDE ~faiths_and_powers/kits/acolytes/329_mask/acolyte_mask.tpa~
+INCLUDE ~faiths_and_powers/kits/acolytes/330_shar/acolyte_shar.tpa~
+INCLUDE ~faiths_and_powers/kits/acolytes/331_moander/acolyte_moander.tpa~
+INCLUDE ~faiths_and_powers/kits/acolytes/332_beshaba/acolyte_beshaba.tpa~
+//
+// (druids)
+INCLUDE ~faiths_and_powers/kits/druids/731_forest_druid/forest_druid.tpa~
+INCLUDE ~faiths_and_powers/kits/druids/732_mountain_druid/mountain_druid.tpa~
+INCLUDE ~faiths_and_powers/kits/druids/733_jungle_druid/jungle_druid.tpa~
+INCLUDE ~faiths_and_powers/kits/druids/734_desert_druid/desert_druid.tpa~
+INCLUDE ~faiths_and_powers/kits/druids/735_arctic_druid/arctic_druid.tpa~
+//
+// (mystics)
+//INCLUDE ~faiths_and_powers/kits/mystics/701_nature_mystic/nature_mystic.tpa~
+INCLUDE ~faiths_and_powers/kits/mystics/703_earth_mystic/earth_mystic.tpa~
+INCLUDE ~faiths_and_powers/kits/mystics/704_water_mystic/water_mystic.tpa~
+INCLUDE ~faiths_and_powers/kits/mystics/705_air_mystic/air_mystic.tpa~
+INCLUDE ~faiths_and_powers/kits/mystics/706_fire_mystic/fire_mystic.tpa~
+INCLUDE ~faiths_and_powers/kits/mystics/707_light_mystic/light_mystic.tpa~
+INCLUDE ~faiths_and_powers/kits/mystics/708_shadow_mystic/shadow_mystic.tpa~
+//INCLUDE ~faiths_and_powers/kits/mystics/711_fate_mystic/fate_mystic.tpa~
+//
+// (occultists)
+INCLUDE ~faiths_and_powers/kits/occultists/762_animist/animist.tpa~
+INCLUDE ~faiths_and_powers/kits/occultists/763_elementalist/elementalist.tpa~
+//
+// (paladins)
+INCLUDE ~faiths_and_powers/kits/champions/801_tyr/champ_tyr.tpa~
+
+ACTION_IF GAME_IS ~iwdee~ THEN BEGIN   //
+  INCLUDE ~faiths_and_powers/kits/champions/802_Kelemvor/iwdee/champ_kele.tpa~
+END
+ACTION_IF NOT GAME_IS ~iwdee~ THEN BEGIN   //
+  INCLUDE ~faiths_and_powers/kits/champions/802_Kelemvor/champ_kele.tpa~
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No feasible way to make them not fall in IWDEE
+  INCLUDE ~faiths_and_powers/kits/champions/803_tempus/champ_temp.tpa~
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No Evil fallable pallys in IWDEE
+  INCLUDE ~faiths_and_powers/kits/champions/804_bane/champ_bane.tpa~
+END
+
+ACTION_IF NOT FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No Evil fallable pallys in IWDEE
+  INCLUDE ~faiths_and_powers/kits/champions/804_bane/iwdee/champ_bane.tpa~
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No Evil fallable pallys in IWDEE
+  INCLUDE ~faiths_and_powers/kits/champions/805_helm/champ_helm.tpa~
+END
+ACTION_IF NOT FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No Evil fallable pallys in IWDEE
+  INCLUDE ~faiths_and_powers/kits/champions/805_helm/iwdee/champ_helm.tpa~
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No Evil nonfallable pallys in IWDEE
+  INCLUDE ~faiths_and_powers/kits/champions/806_talos/champ_talos.tpa~
+END
+ACTION_IF NOT FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No Evil nonfallable pallys in IWDEE
+  INCLUDE ~faiths_and_powers/kits/champions/806_talos/iwdee/champ_talos.tpa~
+END
+
+INCLUDE ~faiths_and_powers/kits/champions/807_Moradin/champ_moradin.tpa~
+INCLUDE ~faiths_and_powers/kits/champions/808_Azuth/champ_azuth.tpa~
+ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No feasible way to make them not fall in IWDEE without fallen.2da
+  INCLUDE ~faiths_and_powers/kits/champions/809_red/champ_red.tpa~
+END
+//
+// (other paladins)
+//
+// (zealot)
+ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No feasible way to make them not fall in IWDEE  w/o fallen.2da
+
+  INCLUDE ~faiths_and_powers/kits/zealots/862_Gruumsh/zealot_Gruumsh.tpa~
+  INCLUDE ~faiths_and_powers/kits/zealots/863_talos/zealot_talos.tpa~
+  INCLUDE ~faiths_and_powers/kits/zealots/864_kossuth/zealot_kossuth.tpa~
+  INCLUDE ~faiths_and_powers/kits/zealots/866_garagos/zealot_garagos.tpa~
+
+END  //End grummsh/talos/kossuth/garagos
+INCLUDE ~faiths_and_powers/kits/zealots/865_ilmater/zealot_ilmater.tpa~
+INCLUDE ~faiths_and_powers/kits/zealots/867_corellon/zealot_corellon.tpa~
+INCLUDE ~faiths_and_powers/kits/zealots/868_sune/zealot_sune.tpa~
+INCLUDE ~faiths_and_powers/kits/zealots/869_mystra/zealot_mystra.tpa~
+INCLUDE ~faiths_and_powers/kits/zealots/870_eilistraee/zealot_eilistraee.tpa~
+//
+// (scouts)
+INCLUDE ~faiths_and_powers/kits/scouts/953_mage_hunter/mage_hunter.tpa~
+INCLUDE ~faiths_and_powers/kits/scouts/954_barbarian_ranger/barbarian_ranger.tpa~
+INCLUDE ~faiths_and_powers/kits/scouts/955_elven_archer/elven_archer.tpa~
+INCLUDE ~faiths_and_powers/kits/scouts/956_halfling_slinger/halfling_slinger.tpa~
+//
+// (rangers)
+INCLUDE ~faiths_and_powers/kits/rangers/932_beast_master/beast_master.tpa~
+INCLUDE ~faiths_and_powers/kits/rangers/901_forest_ranger/forest_ranger.tpa~
+INCLUDE ~faiths_and_powers/kits/rangers/902_mountain_ranger/mountain_ranger.tpa~
+INCLUDE ~faiths_and_powers/kits/rangers/903_jungle_ranger/jungle_ranger.tpa~
+INCLUDE ~faiths_and_powers/kits/rangers/904_desert_ranger/desert_ranger.tpa~
+INCLUDE ~faiths_and_powers/kits/rangers/905_arctic_ranger/arctic_ranger.tpa~
+//
+/*
+// (dervishes)
+INCLUDE ~faiths_and_powers/kits/dervishes/933_earth_dervish/earth_dervish.tpa~
+INCLUDE ~faiths_and_powers/kits/dervishes/934_water_dervish/water_dervish.tpa~
+INCLUDE ~faiths_and_powers/kits/dervishes/935_air_dervish/air_dervish.tpa~
+INCLUDE ~faiths_and_powers/kits/dervishes/936_fire_dervish/fire_dervish.tpa~
+INCLUDE ~faiths_and_powers/kits/dervishes/937_light_dervish/light_dervish.tpa~
+INCLUDE ~faiths_and_powers/kits/dervishes/938_shadow_dervish/shadow_dervish.tpa~
+*/
+//
+// (multiclass)
+INCLUDE ~faiths_and_powers/kits/multiclass/452_fighter_druid/fighter_druid.tpa~
+INCLUDE ~faiths_and_powers/kits/multiclass/453_druid_mage/druid_mage.tpa~
+INCLUDE ~faiths_and_powers/kits/multiclass/454_druid_thief/druid_thief.tpa~
+INCLUDE ~faiths_and_powers/kits/multiclass/455_druid_ranger/druid_ranger.tpa~
+INCLUDE ~faiths_and_powers/kits/multiclass/466_cm_mystra/cm_mystra.tpa~
+INCLUDE ~faiths_and_powers/kits/multiclass/465_cm_azuth/cm_azuth.tpa~
+INCLUDE ~faiths_and_powers/kits/multiclass/471_cf_clangeddin/cf_clangeddin.tpa~
+INCLUDE ~faiths_and_powers/kits/multiclass/491_cr_mielikki/cr_mielikki.tpa~
+INCLUDE ~faiths_and_powers/kits/multiclass/492_cr_shaundakul/cr_shaundakul.tpa~
+//INCLUDE ~faiths_and_powers/kits/multiclass/493_cf_helm/cf_helm.tpa~
+//
+//__________________________________________________________________________________
+
+//vanilla kits_______________________________________________________________________
+//
+INCLUDE ~faiths_and_powers/lib/vanilla_kit_spheres.tpa~
+//___________________________________________________________________________________
+
+//mod kits___________________________________________________________________________
+//
+INCLUDE ~faiths_and_powers/lib/mod_kit_spheres.tpa~
+//___________________________________________________________________________________
+
+//default access_____________________________________________________________________
+//
+INCLUDE ~faiths_and_powers/lib/default_kit_spheres.tpa~
+//___________________________________________________________________________________
+
+//replace kit menus__________________________________________________________________
+// (clerics)
+
+ACTION_FOR_EACH menu_class IN ~C~ /*~D~ ~R~*/ ~P~ ~FC~ ~CM~ ~CT~ ~CR~ BEGIN
+	COPY ~faiths_and_powers/deity/K_X_Y/K_%menu_class%_D.2da~ ~override~
+	COPY ~faiths_and_powers/deity/K_X_Y/K_%menu_class%_E.2da~ ~override~
+	COPY ~faiths_and_powers/deity/K_X_Y/K_%menu_class%_G.2da~ ~override~
+	COPY ~faiths_and_powers/deity/K_X_Y/K_%menu_class%_H.2da~ ~override~
+	COPY ~faiths_and_powers/deity/K_X_Y/K_%menu_class%_HE.2da~ ~override~
+	COPY ~faiths_and_powers/deity/K_X_Y/K_%menu_class%_HL.2da~ ~override~
+	COPY ~faiths_and_powers/deity/K_X_Y/K_%menu_class%_HO.2da~ ~override~
+END
+//__________________________________________________________________________________
+
+//special kit: ur-priest
+INCLUDE ~faiths_and_powers/kits/clerics/200_Ur_Priest/cleric_Ur_Priest.tpa~
+//__________________________________________________________________________________
+
+//Base kits_________________________________________________________________________
+//
+INCLUDE ~faiths_and_powers/kits/acolytes/acolyte.tpa~
+INCLUDE ~faiths_and_powers/kits/champions/champion.tpa~
+INCLUDE ~faiths_and_powers/kits/zealots/zealot.tpa~
+//__________________________________________________________________________________
+
+//no trueclass in kit menus__________________________________________________________
+//
+ACTION_FOR_EACH class IN ~D~ ~R~ BEGIN
+  ACTION_FOR_EACH race IN ~D~ ~E~ ~G~ ~H~ ~HE~ ~HL~ ~HO~ BEGIN
+	ACTION_IF FILE_EXISTS_IN_GAME ~K_%class%_%race%.2da~ BEGIN
+	  COPY_EXISTING ~K_%class%_%race%.2da~ ~override~
+		COUNT_2DA_COLS cols
+		READ_2DA_ENTRIES_NOW rows cols
+		SET rows_removed = 0
+		FOR (row = 1; row < rows; ++row) BEGIN
+		  READ_2DA_ENTRY_FORMER rows row 1 kit
+		  PATCH_IF (%kit% = 0) OR 
+		  			(%kit% = 16) OR 
+		  			(%kit% = 17) BEGIN
+			REMOVE_2DA_ROW (row - rows_removed) cols
+			SET rows_removed += 1
+		  END
+		END
+	  BUT_ONLY
+	END
+  END
+END
+//__________________________________________________________________________________
+
+//halfling rangers__________________________________________________________________
+//
+COPY_EXISTING ~kitlist.2da~ ~override~
+	COUNT_2DA_COLS cols // amount of columns
+	READ_2DA_ENTRIES_NOW rows cols // read all file into memory  
+	FOR (row = 1; row < rows; ++row) BEGIN // iterate over rows
+	  READ_2DA_ENTRY_FORMER rows row 1 ~sling~ // read column value
+	  PATCH_IF ~%sling%~ STRING_EQUAL_CASE ~D5SLING~ BEGIN
+	    SET sling_row = (%row% + 1)
+	  END
+	END
+  BUT_ONLY
+COPY ~faiths_and_powers/kits/K_X_Y/K_R_HL.2da~ ~override~
+	REPLACE_TEXTUALLY ~[ %TAB%]0~ ~%TAB%%sling_row%~
+//__________________________________________________________________________________
+
+//deity selection___________________________________________________________________
+//
+INCLUDE ~faiths_and_powers/lib/deity_selection.tpa~
+//__________________________________________________________________________________
+
+//alter item usability______________________________________________________________
+//
+INCLUDE ~faiths_and_powers/lib/item_usability.tpa~
+//__________________________________________________________________________________
+
+//Add IWD spells if not already in game
+ACTION_IF GAME_IS ~bgee bg2ee eet~ BEGIN
+  ACTION_IF NOT FILE_EXISTS_IN_GAME ~b_IWD.itm~ BEGIN    //If IWD spells not installed...
+  INCLUDE ~faiths_and_powers/lib/Setup_IWD_divine_Spells.tpa~      //install them
+  END
+END
+
+//Sphere System_____________________________________________________________________
+//
+INCLUDE ~faiths_and_powers/lib/sphere_system.tpa~
+//__________________________________________________________________________________
+
+//verbiage__________________________________________________________________________
+//
+//PRINT ~this component installs the deity-by-dialogue system~
+//PRINT ~it will install *all* of the FnP kits~
+//PRINT ~it will also replace the K_C_x.2da files so only the archetype kits are available in the menus~
+//__________________________________________________________________________________
+
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+//					ALL KITS + SPHERE SYSTEM; KITS IN MENUS
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+BEGIN @102 // all the new kits, and kits in menus
+DESIGNATED 102
+SUBCOMPONENT @100
+//Acolyte Lore (added to clabs)
+COPY ~faiths_and_powers/kits/acolytes/B_LOR.spl~ ~override~
+
+//copy marker files_________________________________________________________________
+//
+COPY ~faiths_and_powers/lib/markers/d5_menu.d5~ ~override~
+COPY ~faiths_and_powers/lib/markers/d5_deity.d5~ ~override~
+COPY ~faiths_and_powers/lib/markers/d5_clerics.d5~ ~override~
+COPY ~faiths_and_powers/lib/markers/d5_druids.d5~ ~override~
+COPY ~faiths_and_powers/lib/markers/d5_paladins.d5~ ~override~
+COPY ~faiths_and_powers/lib/markers/d5_rangers.d5~ ~override~
+//__________________________________________________________________________________
+
+//install all the kits:_____________________________________________________________
+//
+// (clerics)
+INCLUDE ~faiths_and_powers/kits/clerics/201_lathander/cleric_lathander.tpa~
+INCLUDE ~faiths_and_powers/kits/clerics/202_torm/cleric_torm.tpa~
+INCLUDE ~faiths_and_powers/kits/clerics/205_tymora/cleric_tymora.tpa~
+INCLUDE ~faiths_and_powers/kits/clerics/208_helm/cleric_helm.tpa~
+INCLUDE ~faiths_and_powers/kits/clerics/209_kelemvor/cleric_kelemvor.tpa~
+INCLUDE ~faiths_and_powers/kits/clerics/210_tempus/cleric_tempus.tpa~
+INCLUDE ~faiths_and_powers/kits/clerics/212_leira/cleric_leira.tpa~
+INCLUDE ~faiths_and_powers/kits/clerics/219_loviatar/cleric_loviatar.tpa~
+INCLUDE ~faiths_and_powers/kits/clerics/224_talos/cleric_talos.tpa~
+//
+// (acolytes)
+INCLUDE ~faiths_and_powers/kits/acolytes/314_ilmater/acolyte_ilmater.tpa~
+INCLUDE ~faiths_and_powers/kits/acolytes/315_deneir/acolyte_deneir.tpa~
+INCLUDE ~faiths_and_powers/kits/acolytes/316_sune/acolyte_sune.tpa~
+INCLUDE ~faiths_and_powers/kits/acolytes/322_tempus/acolyte_tempus.tpa~
+INCLUDE ~faiths_and_powers/kits/acolytes/325_mystra/acolyte_mystra.tpa~
+INCLUDE ~faiths_and_powers/kits/acolytes/329_mask/acolyte_mask.tpa~
+INCLUDE ~faiths_and_powers/kits/acolytes/330_shar/acolyte_shar.tpa~
+INCLUDE ~faiths_and_powers/kits/acolytes/331_moander/acolyte_moander.tpa~
+INCLUDE ~faiths_and_powers/kits/acolytes/332_beshaba/acolyte_beshaba.tpa~
+//
+// (druids)
+INCLUDE ~faiths_and_powers/kits/druids/731_forest_druid/forest_druid.tpa~
+INCLUDE ~faiths_and_powers/kits/druids/732_mountain_druid/mountain_druid.tpa~
+ACTION_IF NOT GAME_IS ~iwdee~ THEN BEGIN   //
+  INCLUDE ~faiths_and_powers/kits/druids/733_jungle_druid/jungle_druid.tpa~
+  INCLUDE ~faiths_and_powers/kits/druids/734_desert_druid/desert_druid.tpa~
+END
+INCLUDE ~faiths_and_powers/kits/druids/735_arctic_druid/arctic_druid.tpa~
+//
+// (mystics)
+//INCLUDE ~faiths_and_powers/kits/mystics/701_nature_mystic/nature_mystic.tpa~
+INCLUDE ~faiths_and_powers/kits/mystics/703_earth_mystic/earth_mystic.tpa~
+INCLUDE ~faiths_and_powers/kits/mystics/704_water_mystic/water_mystic.tpa~
+INCLUDE ~faiths_and_powers/kits/mystics/705_air_mystic/air_mystic.tpa~
+INCLUDE ~faiths_and_powers/kits/mystics/706_fire_mystic/fire_mystic.tpa~
+INCLUDE ~faiths_and_powers/kits/mystics/707_light_mystic/light_mystic.tpa~
+ACTION_IF NOT GAME_IS ~iwdee~ THEN BEGIN   //
+  INCLUDE ~faiths_and_powers/kits/mystics/708_shadow_mystic/shadow_mystic.tpa~
+END
+//INCLUDE ~faiths_and_powers/kits/mystics/711_fate_mystic/fate_mystic.tpa~
+//
+// (occultists)
+INCLUDE ~faiths_and_powers/kits/occultists/762_animist/animist.tpa~
+INCLUDE ~faiths_and_powers/kits/occultists/763_elementalist/elementalist.tpa~
+//
+// (paladins)
+//any race can have their pallys
+COPY_EXISTING ~clsrcreq.2da~ ~override~ //Testing...
+//pally
+    SET_2DA_ENTRY 29 2 8 1
+    SET_2DA_ENTRY 29 3 8 1
+    SET_2DA_ENTRY 29 4 8 1
+    SET_2DA_ENTRY 29 5 8 1
+    SET_2DA_ENTRY 29 6 8 1
+    SET_2DA_ENTRY 29 7 8 1
+//b guard
+    SET_2DA_ENTRY 33 2 8 1
+    SET_2DA_ENTRY 33 3 8 1
+    SET_2DA_ENTRY 33 4 8 1
+    SET_2DA_ENTRY 33 5 8 1
+    SET_2DA_ENTRY 33 6 8 1
+    SET_2DA_ENTRY 33 7 8 1
+BUT_ONLY_IF_IT_CHANGES
+//Dwarves need to be able to take the champion class.  Cha 13 requirement
+COPY_EXISTING ~ABCLASRQ.2da~ ~override~ //
+//Pally
+    SET_2DA_ENTRY 6 6 6 13
+    SET_2DA_ENTRY 30 6 6 13
+    SET_2DA_ENTRY 31 6 6 13
+    SET_2DA_ENTRY 32 6 6 13
+BUT_ONLY_IF_IT_CHANGES
+
+INCLUDE ~faiths_and_powers/kits/champions/801_tyr/champ_tyr.tpa~
+
+//champ of Kele effectively replaces UHunter. In IWDEE, the champ of mykrul is merely added (they're different enough conceptually to be seperate)
+ACTION_IF GAME_IS ~iwdee~ THEN BEGIN   //
+  INCLUDE ~faiths_and_powers/kits/champions/802_Kelemvor/iwdee/champ_kele.tpa~
+ COPY_EXISTING ~clsrcreq.2da~ ~override~ //
+END
+//kelevmore undead hunter for non-iwdee
+ACTION_IF GAME_IS ~bgee bg2ee eet~ THEN BEGIN   //
+  INCLUDE ~faiths_and_powers/kits/champions/802_Kelemvor/champ_kele.tpa~
+END
+//azuth essentially replaces Inquisitor
+INCLUDE ~faiths_and_powers/kits/champions/808_Azuth/champ_azuth.tpa~
+ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No feasible way to make them not fall in IWDEE as yet
+  INCLUDE ~faiths_and_powers/kits/champions/803_tempus/champ_temp.tpa~
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No Evil nonfallable pallys in IWDEE as yet
+  INCLUDE ~faiths_and_powers/kits/champions/804_bane/champ_bane.tpa~
+END
+ACTION_IF NOT FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No Evil nonfallable pallys in IWDEE as yet
+  INCLUDE ~faiths_and_powers/kits/champions/804_bane/iwdee/champ_bane.tpa~
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No Evil nonfallable pallys in IWDEE as yet
+  INCLUDE ~faiths_and_powers/kits/champions/805_helm/champ_helm.tpa~
+END
+ACTION_IF NOT FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No Evil fallable pallys in IWDEE
+  INCLUDE ~faiths_and_powers/kits/champions/805_helm/iwdee/champ_helm.tpa~
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No Evil nonfallable pallys in IWDEE
+  INCLUDE ~faiths_and_powers/kits/champions/806_talos/champ_talos.tpa~
+END
+ACTION_IF NOT FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No Evil nonfallable pallys in IWDEE
+  INCLUDE ~faiths_and_powers/kits/champions/806_talos/iwdee/champ_talos.tpa~
+END
+INCLUDE ~faiths_and_powers/kits/champions/807_Moradin/champ_moradin.tpa~
+ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No feasible way to make them not fall in IWDEE without fallen.2da
+  INCLUDE ~faiths_and_powers/kits/champions/809_red/champ_red.tpa~
+END
+//
+// (other paladins)
+//
+// (zealot)
+//sneaky sneaky
+COPY ~faiths_and_powers/kits/zealots/b_sneak.spl~ ~override~
+COPY ~faiths_and_powers/kits/zealots/b_snk02.spl~ ~override~
+COPY ~faiths_and_powers/kits/zealots/b_snk03.spl~ ~override~
+COPY ~faiths_and_powers/kits/zealots/b_snk04.spl~ ~override~
+COPY ~faiths_and_powers/kits/zealots/b_snk05.spl~ ~override~
+COPY ~faiths_and_powers/kits/zealots/b_snk06.spl~ ~override~
+COPY ~faiths_and_powers/kits/zealots/b_snk07.spl~ ~override~
+COPY ~faiths_and_powers/kits/zealots/b_snk08.spl~ ~override~
+COPY ~faiths_and_powers/kits/zealots/b_snk09.spl~ ~override~
+COPY ~faiths_and_powers/kits/zealots/b_snk10.spl~ ~override~
+COPY ~faiths_and_powers/kits/zealots/b_snk11.spl~ ~override~
+COPY ~faiths_and_powers/kits/zealots/b_snk12.spl~ ~override~
+COPY ~faiths_and_powers/kits/zealots/b_snk13.spl~ ~override~
+
+ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No feasible way to make them not fall in IWDEE w/o fallen.2da
+//grummy
+  INCLUDE ~faiths_and_powers/kits/zealots/862_Gruumsh/zealot_Gruumsh.tpa~
+  INCLUDE ~faiths_and_powers/kits/zealots/862_Gruumsh/component_2/zealot_Gruumsh_2.tpa~
+//talos
+  INCLUDE ~faiths_and_powers/kits/zealots/863_talos/zealot_talos.tpa~
+  INCLUDE ~faiths_and_powers/kits/zealots/863_talos/component_2/zealot_talos_2.tpa~
+//kossuth
+  INCLUDE ~faiths_and_powers/kits/zealots/864_kossuth/zealot_kossuth.tpa~
+  INCLUDE ~faiths_and_powers/kits/zealots/864_kossuth/component_2/zealot_kossuth_2.tpa~
+//garagos
+  INCLUDE ~faiths_and_powers/kits/zealots/866_garagos/zealot_garagos.tpa~
+  INCLUDE ~faiths_and_powers/kits/zealots/866_garagos/component_2/zealot_garagos_2.tpa~
+END  //End grummsh/talos/kossuth/garagos
+//ilmater
+INCLUDE ~faiths_and_powers/kits/zealots/865_ilmater/zealot_ilmater.tpa~
+INCLUDE ~faiths_and_powers/kits/zealots/865_ilmater/component_2/zealot_ilmater_2.tpa~
+//corellon
+INCLUDE ~faiths_and_powers/kits/zealots/867_corellon/zealot_corellon.tpa~
+INCLUDE ~faiths_and_powers/kits/zealots/867_corellon/component_2/zealot_corellon_2.tpa~
+//sune
+INCLUDE ~faiths_and_powers/kits/zealots/868_sune/zealot_sune.tpa~
+INCLUDE ~faiths_and_powers/kits/zealots/868_sune/component_2/zealot_sune_2.tpa~
+//mystra
+INCLUDE ~faiths_and_powers/kits/zealots/869_mystra/zealot_mystra.tpa~
+INCLUDE ~faiths_and_powers/kits/zealots/869_mystra/component_2/zealot_mystra_2.tpa~
+//eilistraee
+INCLUDE ~faiths_and_powers/kits/zealots/870_eilistraee/zealot_eilistraee.tpa~
+INCLUDE ~faiths_and_powers/kits/zealots/870_eilistraee/component_2/zealot_eilistraee_2.tpa~
+//
+// (scouts)
+INCLUDE ~faiths_and_powers/kits/scouts/953_mage_hunter/mage_hunter.tpa~
+INCLUDE ~faiths_and_powers/kits/scouts/954_barbarian_ranger/barbarian_ranger.tpa~
+INCLUDE ~faiths_and_powers/kits/scouts/955_elven_archer/elven_archer.tpa~
+INCLUDE ~faiths_and_powers/kits/scouts/956_halfling_slinger/halfling_slinger.tpa~
+INCLUDE ~faiths_and_powers/kits/rangers/932_beast_master/beast_master.tpa~
+//
+// (rangers)
+INCLUDE ~faiths_and_powers/kits/rangers/901_forest_ranger/forest_ranger.tpa~
+INCLUDE ~faiths_and_powers/kits/rangers/902_mountain_ranger/mountain_ranger.tpa~
+INCLUDE ~faiths_and_powers/kits/rangers/903_jungle_ranger/jungle_ranger.tpa~
+INCLUDE ~faiths_and_powers/kits/rangers/904_desert_ranger/desert_ranger.tpa~
+INCLUDE ~faiths_and_powers/kits/rangers/905_arctic_ranger/arctic_ranger.tpa~
+//
+/*
+// (dervishes)
+INCLUDE ~faiths_and_powers/kits/dervishes/933_earth_dervish/earth_dervish.tpa~
+INCLUDE ~faiths_and_powers/kits/dervishes/934_water_dervish/water_dervish.tpa~
+INCLUDE ~faiths_and_powers/kits/dervishes/935_air_dervish/air_dervish.tpa~
+INCLUDE ~faiths_and_powers/kits/dervishes/936_fire_dervish/fire_dervish.tpa~
+INCLUDE ~faiths_and_powers/kits/dervishes/937_light_dervish/light_dervish.tpa~
+INCLUDE ~faiths_and_powers/kits/dervishes/938_shadow_dervish/shadow_dervish.tpa~
+*/
+//
+// (multiclass)
+INCLUDE ~faiths_and_powers/kits/multiclass/452_fighter_druid/fighter_druid.tpa~
+INCLUDE ~faiths_and_powers/kits/multiclass/453_druid_mage/druid_mage.tpa~
+INCLUDE ~faiths_and_powers/kits/multiclass/454_druid_thief/druid_thief.tpa~
+INCLUDE ~faiths_and_powers/kits/multiclass/455_druid_ranger/druid_ranger.tpa~
+INCLUDE ~faiths_and_powers/kits/multiclass/466_cm_mystra/cm_mystra.tpa~
+INCLUDE ~faiths_and_powers/kits/multiclass/465_cm_azuth/cm_azuth.tpa~
+INCLUDE ~faiths_and_powers/kits/multiclass/471_cf_clangeddin/cf_clangeddin.tpa~
+INCLUDE ~faiths_and_powers/kits/multiclass/491_cr_mielikki/cr_mielikki.tpa~
+INCLUDE ~faiths_and_powers/kits/multiclass/492_cr_shaundakul/cr_shaundakul.tpa~
+//INCLUDE ~faiths_and_powers/kits/multiclass/493_cf_helm/cf_helm.tpa~
+//
+//__________________________________________________________________________________
+
+//vanilla kits______________________________________________________________________
+//
+INCLUDE ~faiths_and_powers/lib/vanilla_kit_spheres.tpa~
+//__________________________________________________________________________________
+
+//mod kits__________________________________________________________________________
+//
+INCLUDE ~faiths_and_powers/lib/mod_kit_spheres.tpa~
+//__________________________________________________________________________________
+
+//default access____________________________________________________________________
+//
+INCLUDE ~faiths_and_powers/lib/default_kit_spheres.tpa~
+//__________________________________________________________________________________
+
+//special kit: ur-priest
+INCLUDE ~faiths_and_powers/kits/clerics/200_Ur_Priest/cleric_Ur_Priest.tpa~
+//__________________________________________________________________________________
+
+//Base kits_________________________________________________________________________
+//
+INCLUDE ~faiths_and_powers/kits/acolytes/acolyte.tpa~
+INCLUDE ~faiths_and_powers/kits/champions/champion.tpa~
+INCLUDE ~faiths_and_powers/kits/zealots/zealot.tpa~
+//__________________________________________________________________________________
+
+//remove unwanted kits from menus_______________________________________________****
+//
+COPY_EXISTING ~kitlist.2da~ ~override~
+	COUNT_2DA_COLS k_cols // amount of columns
+	READ_2DA_ENTRIES_NOW k_rows k_cols // read all file into memory  
+	FOR (k_row = 1; k_row < k_rows; ++k_row) BEGIN // iterate over rows
+	  READ_2DA_ENTRY_FORMER k_rows k_row 1 ~k_kit~ // read column value
+	  PATCH_IF ~%k_kit%~ STRING_EQUAL_CASE ~B_ACOLYTE~ BEGIN
+	    READ_2DA_ENTRY_FORMER k_rows k_row 0 acolyte_num
+	  END
+	  PATCH_IF ~%k_kit%~ STRING_EQUAL_CASE ~B_ZEALOT_1~ BEGIN
+	    READ_2DA_ENTRY_FORMER k_rows k_row 0 zealot_num
+	  END
+	END
+BUT_ONLY
+
+ACTION_FOR_EACH class IN ~C~ ~D~ ~P~ ~R~ ~FC~ ~CM~ ~CT~ ~CR~ BEGIN
+  ACTION_FOR_EACH race IN ~D~ ~E~ ~G~ ~H~ ~HE~ ~HL~ ~HO~ BEGIN
+	ACTION_IF FILE_EXISTS_IN_GAME ~K_%class%_%race%.2da~ BEGIN
+	  COPY_EXISTING ~K_%class%_%race%.2da~ ~override~
+		COUNT_2DA_COLS cols
+		READ_2DA_ENTRIES_NOW rows cols
+		SET rows_removed = 0
+		FOR (row = 1; row < rows; ++row) BEGIN
+		  READ_2DA_ENTRY_FORMER rows row 1 kit
+		  PATCH_IF (%kit% = 0) OR 
+		  			(%kit% = 16) OR 
+		  			(%kit% = 17) OR 
+		  			(%kit% = 19) OR 
+		  			(%kit% = 20) OR 
+		  			(%kit% = 21) OR 
+		  			(%kit% = 4) OR 
+		  			(%kit% = 5) OR 
+		  			(%kit% = 6) OR 
+		  			(%kit% = acolyte_num) OR 
+		  			(%kit% = zealot_num) BEGIN
+			REMOVE_2DA_ROW (row - rows_removed) cols
+			SET rows_removed += 1
+		  END
+		END
+	  BUT_ONLY
+	END
+  END
+END
+//__________________________________________________________________________________
+
+//halfling rangers__________________________________________________________________
+//
+COPY_EXISTING ~kitlist.2da~ ~override~
+	COUNT_2DA_COLS cols // amount of columns
+	READ_2DA_ENTRIES_NOW rows cols // read all file into memory  
+	FOR (row = 1; row < rows; ++row) BEGIN // iterate over rows
+	  READ_2DA_ENTRY_FORMER rows row 1 ~sling~ // read column value
+	  PATCH_IF ~%sling%~ STRING_EQUAL_CASE ~D5SLING~ BEGIN
+	    SET sling_row = (%row% + 1)
+	  END
+	END
+  BUT_ONLY
+COPY ~faiths_and_powers/kits/K_X_Y/K_R_HL.2da~ ~override~
+	REPLACE_TEXTUALLY ~[ %TAB%]0~ ~%TAB%%sling_row%~
+//__________________________________________________________________________________
+
+//deity selection___________________________________________________________________
+//
+INCLUDE ~faiths_and_powers/lib/deity_selection.tpa~
+//__________________________________________________________________________________
+
+//alter item usability______________________________________________________________
+//
+INCLUDE ~faiths_and_powers/lib/item_usability.tpa~
+//__________________________________________________________________________________
+
+//Add IWD spells if not already in game
+ACTION_IF GAME_IS ~bgee bg2ee eet~ BEGIN
+  ACTION_IF NOT FILE_EXISTS_IN_GAME ~b_IWD.itm~ BEGIN    //If IWD spells not installed...
+  INCLUDE ~faiths_and_powers/lib/Setup_IWD_divine_Spells.tpa~      //install them
+  END
+END
+
+//Sphere System_____________________________________________________________________
+//
+INCLUDE ~faiths_and_powers/lib/sphere_system.tpa~
+//__________________________________________________________________________________
+
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+//						CHOOSE COMPONENTS INDIVIDUALLY
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+BEGIN @103 // kits in menus, choose kits individually
+DESIGNATED 103
+SUBCOMPONENT @100
+//Acolyte Lore (added to clabs)
+COPY ~faiths_and_powers/kits/acolytes/B_LOR.spl~ ~override~
+
+//copy marker file__________________________________________________________________
+//
+COPY ~faiths_and_powers/lib/markers/d5_menu.d5~ ~override~
+//__________________________________________________________________________________
+
+//verbiage__________________________________________________________________________
+//
+PRINT ~without the dialogue system, kits are chosen from the menus~
+PRINT ~therefore, we'll let the player to choose which ones to install~
+//__________________________________________________________________________________
+
+
+
+//__________________________________________________________________________________
+BEGIN @105 // no deity selection or new kits
+DESIGNATED 105
+SUBCOMPONENT @100
+
+//copy marker file___________________________________________________________________
+//
+COPY ~faiths_and_powers/lib/markers/d5_nada.d5~ ~override~
+//__________________________________________________________________________________
+
+//vanilla kits_______________________________________________________________________
+//
+INCLUDE ~faiths_and_powers/lib/vanilla_kit_spheres.tpa~
+//___________________________________________________________________________________
+
+//mod kits___________________________________________________________________________
+//
+INCLUDE ~faiths_and_powers/lib/mod_kit_spheres.tpa~
+//___________________________________________________________________________________
+
+//default access_____________________________________________________________________
+//
+INCLUDE ~faiths_and_powers/lib/default_kit_spheres.tpa~
+//___________________________________________________________________________________
+
+//Add IWD spells if not already in game
+ACTION_IF GAME_IS ~bgee bg2ee eet~ BEGIN
+  ACTION_IF NOT FILE_EXISTS_IN_GAME ~b_IWD.itm~ BEGIN    //If IWD spells not installed...
+  INCLUDE ~faiths_and_powers/lib/Setup_IWD_divine_Spells.tpa~      //install them
+  END
+END
+
+//run the sphere system______________________________________________________________
+//
+INCLUDE ~faiths_and_powers/lib/sphere_system.tpa~
+//__________________________________________________________________________________
+
+//verbiage__________________________________________________________________________
+//
+PRINT ~neither the dialogue system nor any new kits will be installed~
+PRINT ~the sphere system will be installed over the vanilla kits and/or previously installed mod kits~
+//__________________________________________________________________________________
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+//					CHOOSE INDIVIDUAL CLERIC KITS
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+BEGIN @200 // install new cleric kits in place of vanilla ones
+DESIGNATED 200
+REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~103~ @8
+
+//copy marker file__________________________________________________________________
+//
+COPY ~faiths_and_powers/lib/markers/d5_clerics.d5~ ~override~
+//__________________________________________________________________________________
+
+//multiclasses_______________________________________________________________________
+//
+ACTION_IF FILE_EXISTS_IN_GAME ~CLSRCREQ.2da~ BEGIN
+ COPY_EXISTING ~clsrcreq.2da~ ~override~
+  COUNT_2DA_ROWS 8 rows
+  FOR (row = 0 ; row < rows ; ++row) BEGIN
+    READ_2DA_ENTRY row 0 8 entry
+    PATCH_IF (("%entry%" STRING_COMPARE_CASE "FIGHTER_CLERIC"      = 0) OR
+              ("%entry%" STRING_COMPARE_CASE "CLERIC_THIEF"        = 0)) BEGIN // cleric/thief, fighter/cleric
+      SET_2DA_ENTRY  row 1 8 1
+      SET_2DA_ENTRY  row 2 8 1
+      SET_2DA_ENTRY  row 3 8 1
+      SET_2DA_ENTRY  row 4 8 1
+      SET_2DA_ENTRY  row 5 8 1
+      SET_2DA_ENTRY  row 6 8 1
+      SET_2DA_ENTRY  row 7 8 1
+    END
+    PATCH_IF (("%entry%" STRING_COMPARE_CASE "CLERIC_MAGE"         = 0) OR
+              ("%entry%" STRING_COMPARE_CASE "FIGHTER_MAGE_CLERIC" = 0)) BEGIN // cleric/mage
+      SET_2DA_ENTRY  row 1 8 1
+      SET_2DA_ENTRY  row 2 8 1
+      SET_2DA_ENTRY  row 3 8 1
+      SET_2DA_ENTRY  row 6 8 1
+    END
+    PATCH_IF (("%entry%" STRING_COMPARE_CASE "CLERIC_RANGER"       = 0)) BEGIN // cleric/ranger
+      SET_2DA_ENTRY  row 1 8 1
+      SET_2DA_ENTRY  row 2 8 1
+      SET_2DA_ENTRY  row 3 8 1
+    END
+    PATCH_IF (("%entry%" STRING_COMPARE_CASE "FIGHTER_MAGE"        = 0) OR
+              ("%entry%" STRING_COMPARE_CASE "FIGHTER_THIEF"       = 0) OR
+              ("%entry%" STRING_COMPARE_CASE "FIGHTER_MAGE_THIEF"  = 0) OR
+              ("%entry%" STRING_COMPARE_CASE "MAGE_THIEF"          = 0)) BEGIN // other human multiclasses
+      SET_2DA_ENTRY  row 1 8 1
+    END
+    PATCH_IF (("%entry%" STRING_COMPARE_CASE "FIGHTER_DRUID"       = 0)) BEGIN // no druid multiclasses
+      SET_2DA_ENTRY  row 1 8 0
+      SET_2DA_ENTRY  row 2 8 0
+      SET_2DA_ENTRY  row 3 8 0
+      SET_2DA_ENTRY  row 4 8 0
+      SET_2DA_ENTRY  row 5 8 0
+      SET_2DA_ENTRY  row 6 8 0
+      SET_2DA_ENTRY  row 7 8 0
+    END
+  END
+  PRETTY_PRINT_2DA
+ BUT_ONLY
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
+INCLUDE ~faiths_and_powers/kits/clerics/205_tymora/cleric_tymora.tpa~
+//___________________________________________________________________________________
+
+// clerics:
+
+//___________________________________________________________________________________
+BEGIN @201  //  cleric of lathander
+DESIGNATED 201
+REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~200~ @8
+
+INCLUDE ~faiths_and_powers/kits/clerics/201_lathander/cleric_lathander.tpa~
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+BEGIN @202  //  cleric of torm
+DESIGNATED 202
+REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~200~ @8
+
+INCLUDE ~faiths_and_powers/kits/clerics/202_torm/cleric_torm.tpa~
+//___________________________________________________________________________________
+
+/*
+//___________________________________________________________________________________
+BEGIN @205  //  cleric of tymora
+DESIGNATED 205
+REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~200~ @8
+
+INCLUDE ~faiths_and_powers/kits/clerics/205_tymora/cleric_tymora.tpa~
+//___________________________________________________________________________________
+*/
+
+//___________________________________________________________________________________
+BEGIN @208  //  cleric of helm
+DESIGNATED 208
+REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~200~ @8
+
+INCLUDE ~faiths_and_powers/kits/clerics/208_helm/cleric_helm.tpa~
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+BEGIN @209  //  cleric of kelemvor
+DESIGNATED 209
+REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~200~ @8
+
+INCLUDE ~faiths_and_powers/kits/clerics/209_kelemvor/cleric_kelemvor.tpa~
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+BEGIN @210  //  cleric of tempus
+DESIGNATED 210
+REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~200~ @8
+
+INCLUDE ~faiths_and_powers/kits/clerics/210_tempus/cleric_tempus.tpa~
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+BEGIN @212  //  cleric of leira
+DESIGNATED 212
+REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~200~ @8
+
+INCLUDE ~faiths_and_powers/kits/clerics/212_leira/cleric_leira.tpa~
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+BEGIN @219  //  cleric of loviatar
+DESIGNATED 219
+REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~200~ @8
+
+INCLUDE ~faiths_and_powers/kits/clerics/219_loviatar/cleric_loviatar.tpa~
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+BEGIN @224  //  cleric of talos
+DESIGNATED 224
+REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~200~ @8
+
+INCLUDE ~faiths_and_powers/kits/clerics/224_talos/cleric_talos.tpa~
+//___________________________________________________________________________________
+
+// acolytes:
+
+//___________________________________________________________________________________
+BEGIN @314  //  acolyte of ilmater
+DESIGNATED 314
+REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~200~ @8
+
+INCLUDE ~faiths_and_powers/kits/acolytes/314_ilmater/acolyte_ilmater.tpa~
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+BEGIN @315  //  acolyte of deneir
+DESIGNATED 315
+REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~200~ @8
+
+INCLUDE ~faiths_and_powers/kits/acolytes/315_deneir/acolyte_deneir.tpa~
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+BEGIN @316  //  acolyte of sune
+DESIGNATED 316
+REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~200~ @8
+
+INCLUDE ~faiths_and_powers/kits/acolytes/316_sune/acolyte_sune.tpa~
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+BEGIN @322  //  acolyte of tempus
+DESIGNATED 322
+REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~200~ @8
+
+INCLUDE ~faiths_and_powers/kits/acolytes/322_tempus/acolyte_tempus.tpa~
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+BEGIN @325  //  acolyte of mystra
+DESIGNATED 325
+REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~200~ @8
+
+INCLUDE ~faiths_and_powers/kits/acolytes/325_mystra/acolyte_mystra.tpa~
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+BEGIN @329  //  acolyte of mask
+DESIGNATED 329
+REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~200~ @8
+
+INCLUDE ~faiths_and_powers/kits/acolytes/329_mask/acolyte_mask.tpa~
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+BEGIN @330  //  acolyte of shar
+DESIGNATED 330
+REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~200~ @8
+
+INCLUDE ~faiths_and_powers/kits/acolytes/330_shar/acolyte_shar.tpa~
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+BEGIN @331  //  acolyte of moander
+DESIGNATED 331
+REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~200~ @8
+
+INCLUDE ~faiths_and_powers/kits/acolytes/331_moander/acolyte_moander.tpa~
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+BEGIN @332  //  acolyte of beshaba
+DESIGNATED 332
+REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~200~ @8
+
+INCLUDE ~faiths_and_powers/kits/acolytes/332_beshaba/acolyte_beshaba.tpa~
+//___________________________________________________________________________________
+
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+//					CHOOSE INDIVIDUAL DRUID KITS
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+BEGIN @700 // install new druid kits along with the vanilla ones
+DESIGNATED 700
+REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~103~ @8
+
+//copy marker file___________________________________________________________________
+//
+COPY ~faiths_and_powers/lib/markers/d5_druids.d5~ ~override~
+//___________________________________________________________________________________
+
+//replace base kits, forest druid = default__________________________________________
+//
+INCLUDE ~faiths_and_powers/kits/druids/731_forest_druid/forest_druid.tpa~
+//___________________________________________________________________________________
+
+//replace base druid clab for fighter/druids_________________________________________
+//
+COPY ~faiths_and_powers/kits/druids/731_forest_druid/d5dfor.2da~ ~override/clabdr01.2da~
+//___________________________________________________________________________________
+
+//change druid class text____________________________________________________________
+//
+ACTION_IF (FILE_EXISTS_IN_GAME ~clastext.2da~) BEGIN
+  COPY_EXISTING ~clastext.2da~ ~override~
+	COUNT_2DA_COLS cols // amount of columns
+	READ_2DA_ENTRIES_NOW rows cols // read all file into memory  
+	FOR (row = 1; row < rows; ++row) BEGIN // iterate over rows
+	  READ_2DA_ENTRY_FORMER rows row 0 ~text~ // read column value
+	  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~DRUID~ BEGIN
+	    SET patch_row = %row%
+	  END
+	END
+	SET_2DA_ENTRY %patch_row% 3 cols RESOLVE_STR_REF (@70001)
+	SET_2DA_ENTRY %patch_row% 5 cols RESOLVE_STR_REF (@70002)
+	SET_2DA_ENTRY %patch_row% 4 cols RESOLVE_STR_REF (@70003)
+  BUT_ONLY
+END
+ACTION_IF (FILE_EXISTS_IN_GAME ~sodcltxt.2da~) BEGIN
+  COPY_EXISTING ~sodcltxt.2da~ ~override~
+	COUNT_2DA_COLS cols // amount of columns
+	READ_2DA_ENTRIES_NOW rows cols // read all file into memory  
+	FOR (row = 1; row < rows; ++row) BEGIN // iterate over rows
+	  READ_2DA_ENTRY_FORMER rows row 0 ~text~ // read column value
+	  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~DRUID~ BEGIN
+	    SET patch_row = %row%
+	  END
+	END
+	SET_2DA_ENTRY %patch_row% 3 cols RESOLVE_STR_REF (@70001)
+	SET_2DA_ENTRY %patch_row% 5 cols RESOLVE_STR_REF (@70002)
+	SET_2DA_ENTRY %patch_row% 4 cols RESOLVE_STR_REF (@70003)
+  BUT_ONLY
+END
+//__________________________________________________________________________________
+
+/*
+//add new mc druid kits_____________________________________________________________
+//
+ACTION_IF FILE_EXISTS_IN_GAME ~d5_clerics.d5~ BEGIN
+	INCLUDE ~faiths_and_powers/kits/multiclass/452_fighter_druid/fighter_druid.tpa~
+	INCLUDE ~faiths_and_powers/kits/multiclass/453_druid_mage/druid_mage.tpa~
+	INCLUDE ~faiths_and_powers/kits/multiclass/454_druid_thief/druid_thief.tpa~
+	INCLUDE ~faiths_and_powers/kits/multiclass/455_druid_ranger/druid_ranger.tpa~
+END
+//__________________________________________________________________________________
+*/
+
+// druid kits:
+
+//___________________________________________________________________________________
+BEGIN @732  //  mountain druid
+DESIGNATED 732
+REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~700~ @8
+
+INCLUDE ~faiths_and_powers/kits/druids/732_mountain_druid/mountain_druid.tpa~
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+BEGIN @733  //  jungle druid
+DESIGNATED 733
+REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~700~ @8
+
+INCLUDE ~faiths_and_powers/kits/druids/733_jungle_druid/jungle_druid.tpa~
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+BEGIN @734  //  desert druid
+DESIGNATED 734
+REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~700~ @8
+
+INCLUDE ~faiths_and_powers/kits/druids/734_desert_druid/desert_druid.tpa~
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+BEGIN @735  //  arctic druid
+DESIGNATED 735
+REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~700~ @8
+
+INCLUDE ~faiths_and_powers/kits/druids/735_arctic_druid/arctic_druid.tpa~
+//___________________________________________________________________________________
+
+// mystics:
+
+//___________________________________________________________________________________
+BEGIN @703  //  earth mystic
+DESIGNATED 703
+REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~700~ @8
+
+INCLUDE ~faiths_and_powers/kits/mystics/703_earth_mystic/earth_mystic.tpa~
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+BEGIN @704  //  water mystic
+DESIGNATED 704
+REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~700~ @8
+
+INCLUDE ~faiths_and_powers/kits/mystics/704_water_mystic/water_mystic.tpa~
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+BEGIN @705  //  air mystic
+DESIGNATED 705
+REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~700~ @8
+
+INCLUDE ~faiths_and_powers/kits/mystics/705_air_mystic/air_mystic.tpa~
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+BEGIN @706  //  fire mystic
+DESIGNATED 706
+REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~700~ @8
+
+INCLUDE ~faiths_and_powers/kits/mystics/706_fire_mystic/fire_mystic.tpa~
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+BEGIN @707  //  light mystic
+DESIGNATED 707
+REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~700~ @8
+
+INCLUDE ~faiths_and_powers/kits/mystics/707_light_mystic/light_mystic.tpa~
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+BEGIN @708  //  shadow mystic
+DESIGNATED 708
+REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~700~ @8
+
+INCLUDE ~faiths_and_powers/kits/mystics/708_shadow_mystic/shadow_mystic.tpa~
+//___________________________________________________________________________________
+
+// occultists:
+
+//___________________________________________________________________________________
+BEGIN @762  //  animist
+DESIGNATED 762
+REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~700~ @8
+
+INCLUDE ~faiths_and_powers/kits/occultists/762_animist/animist.tpa~
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+BEGIN @763  //  elementalist
+DESIGNATED 763
+REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~700~ @8
+
+INCLUDE ~faiths_and_powers/kits/occultists/763_elementalist/elementalist.tpa~
+//___________________________________________________________________________________
+
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+//					CHOOSE INDIVIDUAL PALADIN KITS
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+BEGIN @800 // install new paladin kits
+DESIGNATED 800
+REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~103~ @8
+
+//copy marker file___________________________________________________________________
+//
+COPY ~faiths_and_powers/lib/markers/d5_paladins.d5~ ~override~
+//___________________________________________________________________________________
+
+// (paladins)
+//any race can have their pallys
+COPY_EXISTING ~clsrcreq.2da~ ~override~ //Testing...
+//pally
+    SET_2DA_ENTRY 29 2 8 1
+    SET_2DA_ENTRY 29 3 8 1
+    SET_2DA_ENTRY 29 4 8 1
+    SET_2DA_ENTRY 29 5 8 1
+    SET_2DA_ENTRY 29 6 8 1
+    SET_2DA_ENTRY 29 7 8 1
+//b guard
+    SET_2DA_ENTRY 33 2 8 1
+    SET_2DA_ENTRY 33 3 8 1
+    SET_2DA_ENTRY 33 4 8 1
+    SET_2DA_ENTRY 33 5 8 1
+    SET_2DA_ENTRY 33 6 8 1
+    SET_2DA_ENTRY 33 7 8 1
+BUT_ONLY_IF_IT_CHANGES
+//Dwarves need to be able to take the champion class.  Cha 13 requirement
+COPY_EXISTING ~ABCLASRQ.2da~ ~override~ //
+//Pally
+    SET_2DA_ENTRY 6 6 6 13
+    SET_2DA_ENTRY 30 6 6 13
+    SET_2DA_ENTRY 31 6 6 13
+    SET_2DA_ENTRY 32 6 6 13
+BUT_ONLY_IF_IT_CHANGES
+
+INCLUDE ~faiths_and_powers/kits/champions/801_tyr/champ_tyr.tpa~
+
+//sneaky sneaky
+COPY ~faiths_and_powers/kits/zealots/b_sneak.spl~ ~override~
+COPY ~faiths_and_powers/kits/zealots/b_snk02.spl~ ~override~
+COPY ~faiths_and_powers/kits/zealots/b_snk03.spl~ ~override~
+COPY ~faiths_and_powers/kits/zealots/b_snk04.spl~ ~override~
+COPY ~faiths_and_powers/kits/zealots/b_snk05.spl~ ~override~
+COPY ~faiths_and_powers/kits/zealots/b_snk06.spl~ ~override~
+COPY ~faiths_and_powers/kits/zealots/b_snk07.spl~ ~override~
+COPY ~faiths_and_powers/kits/zealots/b_snk08.spl~ ~override~
+COPY ~faiths_and_powers/kits/zealots/b_snk09.spl~ ~override~
+COPY ~faiths_and_powers/kits/zealots/b_snk10.spl~ ~override~
+COPY ~faiths_and_powers/kits/zealots/b_snk11.spl~ ~override~
+COPY ~faiths_and_powers/kits/zealots/b_snk12.spl~ ~override~
+COPY ~faiths_and_powers/kits/zealots/b_snk13.spl~ ~override~
+//___________________________________________________________________________________
+
+
+//___________________________________________________________________________________
+BEGIN @802  //  champion of kelemvor
+DESIGNATED 802
+REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~800~ @8
+
+//champ of Kele effectively replaces UHunter. In IWDEE, the champ of mykrul is merely added (they're different enough conceptually to be seperate)
+ACTION_IF GAME_IS ~iwdee~ THEN BEGIN   //
+  INCLUDE ~faiths_and_powers/kits/champions/802_Kelemvor/iwdee/champ_kele.tpa~
+ COPY_EXISTING ~clsrcreq.2da~ ~override~ //
+END
+//kelevmore undead hunter for non-iwdee
+ACTION_IF GAME_IS ~bgee bg2ee eet~ THEN BEGIN   //
+  INCLUDE ~faiths_and_powers/kits/champions/802_Kelemvor/champ_kele.tpa~
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+BEGIN @803  //  champion of azuth
+DESIGNATED 803
+REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~800~ @8
+
+//azuth essentially replaces Inquisitor
+INCLUDE ~faiths_and_powers/kits/champions/808_Azuth/champ_azuth.tpa~
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+BEGIN @804  //  champion of tempus
+DESIGNATED 804
+REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~800~ @8
+REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~fallen.2da~ @8  //No feasible way to make them not fall in IWDEE as yet
+
+INCLUDE ~faiths_and_powers/kits/champions/803_tempus/champ_temp.tpa~
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+BEGIN @805  //  champion of bane
+DESIGNATED 805
+REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~800~ @8
+
+ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No Evil nonfallable pallys in IWDEE as yet
+  INCLUDE ~faiths_and_powers/kits/champions/804_bane/champ_bane.tpa~
+END
+ACTION_IF NOT FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No Evil nonfallable pallys in IWDEE as yet
+  INCLUDE ~faiths_and_powers/kits/champions/804_bane/iwdee/champ_bane.tpa~
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+BEGIN @806  //  champion of helm
+DESIGNATED 806
+REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~800~ @8
+
+ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No Evil nonfallable pallys in IWDEE as yet
+  INCLUDE ~faiths_and_powers/kits/champions/805_helm/champ_helm.tpa~
+END
+ACTION_IF NOT FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No Evil fallable pallys in IWDEE
+  INCLUDE ~faiths_and_powers/kits/champions/805_helm/iwdee/champ_helm.tpa~
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+BEGIN @807  //  champion of talos
+DESIGNATED 807
+REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~800~ @8
+
+ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No Evil nonfallable pallys in IWDEE
+  INCLUDE ~faiths_and_powers/kits/champions/806_talos/champ_talos.tpa~
+END
+ACTION_IF NOT FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No Evil nonfallable pallys in IWDEE
+  INCLUDE ~faiths_and_powers/kits/champions/806_talos/iwdee/champ_talos.tpa~
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+BEGIN @808  //  champion of moradin
+DESIGNATED 808
+REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~800~ @8
+
+INCLUDE ~faiths_and_powers/kits/champions/807_Moradin/champ_moradin.tpa~
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+BEGIN @809  //  champion of red knight
+DESIGNATED 809
+REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~800~ @8
+REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~fallen.2da~ @8  //No feasible way to make them not fall in IWDEE as yet
+
+INCLUDE ~faiths_and_powers/kits/champions/809_red/champ_red.tpa~
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+BEGIN @862  //  zealot of gruumsh
+DESIGNATED 862
+REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~800~ @8
+REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~fallen.2da~ @8  //No feasible way to make them not fall in IWDEE as yet
+
+//grummy
+  INCLUDE ~faiths_and_powers/kits/zealots/862_Gruumsh/zealot_Gruumsh.tpa~
+  INCLUDE ~faiths_and_powers/kits/zealots/862_Gruumsh/component_2/zealot_Gruumsh_2.tpa~
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+BEGIN @863  //  zealot of talos
+DESIGNATED 863
+REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~800~ @8
+REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~fallen.2da~ @8  //No feasible way to make them not fall in IWDEE as yet
+
+//talos
+  INCLUDE ~faiths_and_powers/kits/zealots/863_talos/zealot_talos.tpa~
+  INCLUDE ~faiths_and_powers/kits/zealots/863_talos/component_2/zealot_talos_2.tpa~
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+BEGIN @864  //  zealot of kossuth
+DESIGNATED 864
+REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~800~ @8
+REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~fallen.2da~ @8  //No feasible way to make them not fall in IWDEE as yet
+
+//kossuth
+  INCLUDE ~faiths_and_powers/kits/zealots/864_kossuth/zealot_kossuth.tpa~
+  INCLUDE ~faiths_and_powers/kits/zealots/864_kossuth/component_2/zealot_kossuth_2.tpa~
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+BEGIN @865  //  zealot of garagos
+DESIGNATED 865
+REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~800~ @8
+REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~fallen.2da~ @8  //No feasible way to make them not fall in IWDEE as yet
+
+//garagos
+  INCLUDE ~faiths_and_powers/kits/zealots/866_garagos/zealot_garagos.tpa~
+  INCLUDE ~faiths_and_powers/kits/zealots/866_garagos/component_2/zealot_garagos_2.tpa~
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+BEGIN @866  //  zealot of ilmater
+DESIGNATED 866
+REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~800~ @8
+REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~fallen.2da~ @8  //No feasible way to make them not fall in IWDEE as yet
+
+//ilmater
+INCLUDE ~faiths_and_powers/kits/zealots/865_ilmater/zealot_ilmater.tpa~
+INCLUDE ~faiths_and_powers/kits/zealots/865_ilmater/component_2/zealot_ilmater_2.tpa~
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+BEGIN @867  //  zealot of corellon
+DESIGNATED 867
+REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~800~ @8
+REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~fallen.2da~ @8  //No feasible way to make them not fall in IWDEE as yet
+
+//corellon
+INCLUDE ~faiths_and_powers/kits/zealots/867_corellon/zealot_corellon.tpa~
+INCLUDE ~faiths_and_powers/kits/zealots/867_corellon/component_2/zealot_corellon_2.tpa~
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+BEGIN @868  //  zealot of sune
+DESIGNATED 868
+REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~800~ @8
+REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~fallen.2da~ @8  //No feasible way to make them not fall in IWDEE as yet
+
+//sune
+INCLUDE ~faiths_and_powers/kits/zealots/868_sune/zealot_sune.tpa~
+INCLUDE ~faiths_and_powers/kits/zealots/868_sune/component_2/zealot_sune_2.tpa~
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+BEGIN @869  //  zealot of mystra
+DESIGNATED 869
+REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~800~ @8
+REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~fallen.2da~ @8  //No feasible way to make them not fall in IWDEE as yet
+
+//mystra
+INCLUDE ~faiths_and_powers/kits/zealots/869_mystra/zealot_mystra.tpa~
+INCLUDE ~faiths_and_powers/kits/zealots/869_mystra/component_2/zealot_mystra_2.tpa~
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+BEGIN @870  //  zealot of eilistraee
+DESIGNATED 870
+REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~800~ @8
+REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~fallen.2da~ @8  //No feasible way to make them not fall in IWDEE as yet
+
+//eilistraee
+INCLUDE ~faiths_and_powers/kits/zealots/870_eilistraee/zealot_eilistraee.tpa~
+INCLUDE ~faiths_and_powers/kits/zealots/870_eilistraee/component_2/zealot_eilistraee_2.tpa~
+//___________________________________________________________________________________
+
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+//					CHOOSE INDIVIDUAL RANGER KITS
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+BEGIN @900 // install new and revised ranger kits
+DESIGNATED 900
+REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~103~ @8
+
+//copy marker file___________________________________________________________________
+//
+COPY ~faiths_and_powers/lib/markers/d5_rangers.d5~ ~override~
+//___________________________________________________________________________________
+
+//replace base kits, forest ranger = default_________________________________________
+//
+INCLUDE ~faiths_and_powers/kits/rangers/901_forest_ranger/forest_ranger.tpa~
+//___________________________________________________________________________________
+
+// ranger kits:
+
+/*
+//forest ranger = default____________________________________________________________
+//
+BEGIN @901  //  forest ranger
+DESIGNATED 901
+REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~900~ @8
+
+INCLUDE ~faiths_and_powers/kits/rangers/901_forest_ranger/forest_ranger.tpa~
+//___________________________________________________________________________________
+*/
+
+//___________________________________________________________________________________
+BEGIN @902  //  mountain ranger
+DESIGNATED 902
+REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~900~ @8
+
+INCLUDE ~faiths_and_powers/kits/rangers/902_mountain_ranger/mountain_ranger.tpa~
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+BEGIN @903  //  jungle ranger
+DESIGNATED 903
+REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~900~ @8
+
+INCLUDE ~faiths_and_powers/kits/rangers/903_jungle_ranger/jungle_ranger.tpa~
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+BEGIN @904  //  desert ranger
+DESIGNATED 904
+REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~900~ @8
+
+INCLUDE ~faiths_and_powers/kits/rangers/904_desert_ranger/desert_ranger.tpa~
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+BEGIN @905  //  arctic ranger
+DESIGNATED 905
+REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~900~ @8
+
+INCLUDE ~faiths_and_powers/kits/rangers/905_arctic_ranger/arctic_ranger.tpa~
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+BEGIN @932  //  beast master
+DESIGNATED 932
+REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~900~ @8
+
+INCLUDE ~faiths_and_powers/kits/rangers/932_beast_master/beast_master.tpa~
+//___________________________________________________________________________________
+
+// scout kits:
+
+//___________________________________________________________________________________
+BEGIN @954  //  barbarian ranger
+DESIGNATED 954
+REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~900~ @8
+
+INCLUDE ~faiths_and_powers/kits/scouts/954_barbarian_ranger/barbarian_ranger.tpa~
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+BEGIN @953  //  mage hunter
+DESIGNATED 953
+REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~900~ @8
+
+INCLUDE ~faiths_and_powers/kits/scouts/953_mage_hunter/mage_hunter.tpa~
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+BEGIN @955  //  elven archer
+DESIGNATED 955
+REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~900~ @8
+
+INCLUDE ~faiths_and_powers/kits/scouts/955_elven_archer/elven_archer.tpa~
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+BEGIN @956  //  halfling slinger
+DESIGNATED 956
+REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~900~ @8
+
+INCLUDE ~faiths_and_powers/kits/scouts/956_halfling_slinger/halfling_slinger.tpa~
+
+COPY_EXISTING ~kitlist.2da~ ~override~
+	COUNT_2DA_COLS cols // amount of columns
+	READ_2DA_ENTRIES_NOW rows cols // read all file into memory  
+	FOR (row = 1; row < rows; ++row) BEGIN // iterate over rows
+	  READ_2DA_ENTRY_FORMER rows row 1 ~sling~ // read column value
+	  PATCH_IF ~%sling%~ STRING_EQUAL_CASE ~D5SLING~ BEGIN
+	    SET sling_row = (%row% + 1)
+	  END
+	END
+  BUT_ONLY
+COPY ~faiths_and_powers/kits/K_X_Y/K_R_HL.2da~ ~override~
+	REPLACE_TEXTUALLY ~[ %TAB%]0~ ~%TAB%%sling_row%~
+//___________________________________________________________________________________
+
+
+
+// FnP item usability
+
+//___________________________________________________________________________________
+BEGIN @110  //  item usability
+DESIGNATED 110
+INSTALL_BY_DEFAULT
+REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~103~ @8
+
+INCLUDE ~faiths_and_powers/lib/item_usability.tpa~
+//__________________________________________________________________________________
+
+
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+//							SPHERE SYSTEM
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+BEGIN @1000
+DESIGNATED 1000
+REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~103~ @8
+REQUIRE_PREDICATE (GAME_IS ~bgee bg2ee eet iwdee~) ~Enhanced Edition game required!~
+
+
+//vanilla kits___________________________________________________________________________
+//
+INCLUDE ~faiths_and_powers/lib/vanilla_kit_spheres.tpa~
+//___________________________________________________________________________________
+
+//mod kits___________________________________________________________________________
+//
+INCLUDE ~faiths_and_powers/lib/mod_kit_spheres.tpa~
+//___________________________________________________________________________________
+
+//default access_______________________________________________________________________
+//
+INCLUDE ~faiths_and_powers/lib/default_kit_spheres.tpa~
+//___________________________________________________________________________________
+
+//Add IWD spells if not already in game
+ACTION_IF GAME_IS ~bgee bg2ee eet~ BEGIN
+  ACTION_IF NOT FILE_EXISTS_IN_GAME ~b_IWD.itm~ BEGIN    //If IWD spells not installed...
+  INCLUDE ~faiths_and_powers/lib/Setup_IWD_divine_Spells.tpa~      //install them
+  END
+END
+
+//Sphere System_____________________________________________________________________
+//
+INCLUDE ~faiths_and_powers/lib/sphere_system.tpa~
+//___________________________________________________________________________________
+

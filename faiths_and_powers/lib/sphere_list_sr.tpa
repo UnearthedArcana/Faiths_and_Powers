@@ -1,0 +1,282 @@
+// spell spheres
+
+// FIRST ITEM: SPELL IDS NAME
+
+// DIGIT AFTER COMMA: SPELL LEVEL
+
+// ITEM AFTER ARROW: SPHERE
+
+ACTION_DEFINE_ASSOCIATIVE_ARRAY spellsphere BEGIN
+
+//  LIFE
+//CLERIC_CURE_LIGHT_WOUNDS               , 1 => life // universal
+CLERIC_CURE_MODERATE_WOUNDS            , 2 => life   //regenerate moderate wounds
+CLERIC_CURE_MEDIUM_WOUNDS              , 3 => life
+CLERIC_CURE_SERIOUS_WOUNDS             , 4 => life
+//CLERIC_CURE_CRITICAL_WOUNDS            , 5 => life // universal
+CLERIC_MASS_CURE                       , 5 => life
+CLERIC_RAISE_DEAD                      , 5 => life
+CLERIC_HEAL                            , 6 => life
+CLERIC_RESURRECTION                    , 7 => life
+
+//  DEATH
+WIZARD_LARLOCH_MINOR_DRAIN             , 1 => death
+WIZARD_HOLD_UNDEAD                     , 2 => death
+CLERIC_CIRCLE_OF_BONES                 , 3 => death
+CLERIC_ANIMATE_DEAD                    , 4 => death
+CLERIC_UNDEAD_WARD                     , 4 => death
+CLERIC_MASS_CAUSE_LIGHT_WOUNDS         , 5 => death
+CLERIC_SLAY_LIVING                     , 5 => death
+WIZARD_SOUL_EATER                      , 6 => death
+WIZARD_CARRION                          , 6 => death //sr skeleton warrior
+CLERIC_SYMBOL_DEATH                    , 7 => death
+CLERIC_FINGER_OF_DEATH                 , 7 => death
+
+//  BENEDICTION
+CLERIC_BLESS                           , 1 => benediction
+CLERIC_AID                             , 1 => benediction
+CLERIC_CHANT                           , 2 => benediction
+CLERIC_PRAYER                          , 3 => benediction
+//CLERIC_LESSER_RESTORATION              , 3 => benediction // universal
+CLERIC_RECITATION                      , 4 => benediction
+WIZARD_EMOTION_HOPE                    , 4 => benediction
+WIZARD_EMOTION_COURAGE                 , 5 => benediction
+WIZARD_DEATH_SPELL                     , 5 => benediction  //sr banishment
+CLERIC_RIGHTEOUS_WRATH_OF_THE_FAITHFUL , 6 => benediction
+//CLERIC_HOLY_WORD                       , 7 => benediction // universal
+//CLERIC_UNHOLY_WORD                     , 7 => benediction // universal
+CLERIC_IMPERVIOUS_SANCTITY_OF_MIND     , 7 => benediction
+//WIZARD_GATE                            , 7 => benediction // use for HLA instead
+
+//  DESTRUCTION
+//PALADIN_SMITE_EVIL                     , 1 => destruction // use new Smite spell
+CLERIC_CAUSE_LIGHT_WOUNDS              , 1 => destruction
+CLERIC_CAUSE_MODERATE_WOUNDS           , 2 => destruction
+WIZARD_KNOCK                           , 2 => destruction // SR battering ram
+CLERIC_CAUSE_MEDIUM_WOUNDS             , 3 => destruction
+CLERIC_HOLY_SMITE                      , 3 => destruction
+CLERIC_UNHOLY_BLIGHT                   , 3 => destruction
+CLERIC_CAUSE_SERIOUS_WOUNDS            , 4 => destruction
+CLERIC_CAUSE_CRITICAL_WOUNDS           , 5 => destruction
+CLERIC_HARM                            , 6 => destruction
+WIZARD_DISINTEGRATE                    , 6 => destruction
+WIZARD_CACOFIEND                       , 7 => destruction
+CLERIC_DESTRUCTION                     , 7 => destruction
+
+//  PROTECTION
+CLERIC_PROTECT_FROM_EVIL               , 1 => protection
+CLERIC_ARMOR_OF_FAITH                  , 1 => protection
+WIZARD_SHIELD                          , 2 => protection
+CLERIC_NEGATIVE_PLANE_PROTECTION       , 2 => protection
+CLERIC_GLYPH_OF_WARDING                , 3 => protection
+CLERIC_DEATH_WARD                      , 3 => protection
+CLERIC_PROTECTION_FROM_EVIL_10_FOOT    , 4 => protection
+CLERIC_REPULSE_UNDEAD                  , 5 => protection // SR repulsion
+CLERIC_SHIELD_OF_LATHANDER             , 5 => protection
+CLERIC_PHYSICAL_MIRROR                 , 6 => protection
+CLERIC_SHIELD_OF_THE_ARCHONS           , 7 => protection
+CLERIC_GREATER_SHIELD_OF_LATHANDER     , 7 => protection
+
+//  WAR
+CLERIC_REMOVE_FEAR                     , 1 => war
+CLERIC_SPIRITUAL_HAMMER                , 2 => war
+CLERIC_STRENGTH_OF_ONE                 , 3 => war
+CLERIC_HOLY_POWER                      , 3 => war
+CLERIC_DEFENSIVE_HARMONY               , 4 => war
+CLERIC_CHAMPIONS_STRENGTH              , 5 => war
+CLERIC_RIGHTEOUS_MAGIC                 , 5 => war
+CLERIC_BLADE_BARRIER                   , 6 => war
+CLERIC_BOLT_OF_GLORY                   , 6 => war
+CLERIC_SYMBOL_FEAR                     , 7 => war // SR symbol weakness
+
+//  KNOWLEDGE
+WIZARD_INFRAVISION                     , 1 => knowledge // SR true strike
+CLERIC_DETECT_EVIL                     , 1 => knowledge
+CLERIC_KNOW_ALIGNMENT                  , 2 => knowledge // SR know opponent
+CLERIC_FIND_TRAPS                      , 2 => knowledge
+WIZARD_CLAIRVOYANCE                    , 2 => knowledge
+CLERIC_INVISIBILITY_PURGE              , 3 => knowledge
+CLERIC_FAR_SIGHT                       , 3 => knowledge
+WIZARD_DETECT_ILLUSION                 , 4 => knowledge
+WIZARD_ORACLE                          , 5 => knowledge
+CLERIC_TRUE_SIGHT                      , 6 => knowledge
+WIZARD_CONTINGENCY                     , 7 => knowledge
+
+//  DECEPTION
+WIZARD_REFLECTED_IMAGE                 , 1 => deception
+WIZARD_BLUR                            , 2 => deception
+WIZARD_INVISIBILITY                    , 3 => deception
+WIZARD_NON_DETECTION                   , 3 => deception
+WIZARD_MIRROR_IMAGE                    , 4 => deception
+WIZARD_INVISIBILITY_10_FOOT            , 5 => deception
+WIZARD_MISLEAD                         , 6 => deception
+CLERIC_PIXIE_DUST                      , 6 => deception
+WIZARD_SIMULACRUM                      , 7 => deception
+
+//  THOUGHT/CHARM
+CLERIC_COMMAND                         , 1 => thought
+WIZARD_SLEEP                           , 2 => thought
+CLERIC_CHARM_PERSON                    , 2 => thought
+CLERIC_EXALTATION                      , 3 => thought
+CLERIC_RIGID_THINKING                  , 3 => thought
+CLERIC_MENTAL_DOMINATION               , 4 => thought
+CLERIC_BLOOD_RAGE                      , 4 => thought
+CLERIC_CHAOTIC_COMMANDS                , 5 => thought
+CLERIC_GREATER_COMMAND                 , 5 => thought
+CLERIC_CONFUSION                       , 6 => thought
+CLERIC_NATURE_BEAUTY                   , 7 => thought
+
+//  DREAD
+CLERIC_CURSE                           , 1 => dread
+CLERIC_DOOM                            , 1 => dread
+CLERIC_HOLD_PERSON                     , 2 => dread
+CLERIC_CLOAK_OF_FEAR                   , 3 => dread
+WIZARD_GREATER_MALISON                 , 4 => dread
+WIZARD_EMOTION_HOPELESSNESS            , 5 => dread
+WIZARD_EMOTION_FEAR                    , 4 => dread
+CLERIC_SPIRITUAL_WRATH                 , 6 => dread
+CLERIC_SYMBOL_OF_HOPELESSNESS          , 7 => dread
+
+//  VIGOR
+CLERIC_UNFAILING_ENDURANCE             , 1 => vigor
+CLERIC_SLOW_POISON                     , 1 => vigor // universal
+CLERIC_CURE_DISEASE                    , 2 => vigor
+CLERIC_REMOVE_PARALYSIS                , 2 => vigor
+CLERIC_DRAW_UPON_HOLY_MIGHT            , 3 => vigor
+CLERIC_FAVOR_OF_ILMATER                , 3 => vigor
+//CLERIC_NEUTRALIZE_POISON               , 4 => vigor // why does this spell exist??
+//CLERIC_FREE_ACTION                     , 4 => vigor
+CLERIC_ANIMAL_RAGE                     , 5 => vigor
+//WIZARD_TENSERS_TRANSFORMATION          , 6 => vigor
+CLERIC_RESTORATION                     , 7 => vigor
+CLERIC_REGENERATE                      , 7 => vigor
+
+//  AFFLICTION
+CLERIC_CAUSE_DISEASE                   , 1 => affliction
+WIZARD_RAY_OF_ENFEEBLEMENT             , 2 => affliction
+CLERIC_MOLD_TOUCH                      , 3 => affliction
+CLERIC_POISON                          , 4 => affliction
+WIZARD_CONTAGION                       , 4 => affliction
+WIZARD_CHAOS                           , 5 => affliction // SR waves of fatigue
+CLERIC_CLOUD_OF_PESTILENCE             , 5 => affliction
+CLERIC_DOLOROUS_DECAY                  , 6 => affliction
+CLERIC_SYMBOL_OF_PAIN                  , 6 => affliction
+CLERIC_WITHER                          , 7 => affliction
+CLERIC_SYMBOL_STUN                     , 7 => affliction
+
+//  ANIMAL
+CLERIC_HOLD_ANIMAL                     , 1 => animal
+CLERIC_BEAST_CLAW                      , 2 => animal
+CLERIC_SUMMON_INSECTS                  , 3 => animal
+CLERIC_ANIMAL_SUMMONING_1              , 4 => animal
+CLERIC_GIANT_INSECT                    , 4 => animal
+CLERIC_ANIMAL_SUMMONING_2              , 5 => animal
+CLERIC_INSECT_PLAGUE                   , 5 => animal
+CLERIC_ANIMAL_RAGE                     , 5 => animal
+CLERIC_ANIMAL_SUMMONING_3              , 6 => animal
+CLERIC_CONJURE_ANIMALS                 , 7 => animal
+CLERIC_CREEPING_DOOM                   , 7 => animal
+
+//  PLANT
+CLERIC_ENTANGLE                        , 1 => plant
+CLERIC_SHILLELAGH                      , 1 => plant
+//CLERIC_GOOD_BERRIES                  , 1 => plant
+CLERIC_GOODBERRY                       , 2 => plant
+CLERIC_BARKSKIN                        , 2 => plant
+//CLERIC_SPIKE_GROWTH                  , 3 => plant // use new SR version instead ... ??
+CLERIC_THORN_SPRAY                     , 4 => plant
+CLERIC_CALL_WOODLAND_BEINGS            , 5 => plant
+//CLERIC_CONJURE_EARTH_ELEMENTAL         , 6 => plant // SR shambling mound
+CLERIC_STALKER                         , 7 => plant // IWD shambling mound x2
+
+//  EARTH
+CLERIC_MAGIC_STONE                     , 1 => earth
+CLERIC_PROTECTION_FROM_LIGHTNING       , 2 => earth
+CLERIC_STAR_METAL_CUDGEL               , 4 => earth
+CLERIC_SPIKE_STONES                    , 4 => earth
+CLERIC_IRONSKIN                        , 5 => earth
+//CLERIC_CONJURE_EARTH_ELEMENTAL         , 6 => earth // use new SR version instead
+WIZARD_FLESH_TO_STONE                  , 6 => earth
+WIZARD_STONE_TO_FLESH                  , 5 => earth
+CLERIC_EARTHQUAKE                      , 7 => earth
+
+//  AIR
+CLERIC_ZONE_OF_SWEET_AIR               , 1 => air
+WIZARD_BLINDNESS                       , 1 => air // SR obscuring mist
+WIZARD_STINKING_CLOUD                  , 2 => air
+//CLERIC_STORM_SHELL                     , 3 => air // use new SR version instead
+CLERIC_CLOUDBURST                      , 3 => air
+CLERIC_CALL_LIGHTNING                  , 4 => air
+CLERIC_STATIC_CHARGE                   , 5 => air
+CLERIC_WHIRLWIND                       , 5 => air
+CLERIC_ENTROPY_SHIELD                  , 6 => air
+WIZARD_CHAIN_LIGHTNING                 , 6 => air
+WIZARD_DEATH_FOG                       , 7 => air
+CLERIC_AERIAL_SERVANT                  , 7 => air
+
+//  WATER
+WIZARD_SNILLOCS_SNOWBALL_SWARM         , 1 => water
+WIZARD_MELF_ACID_ARROW                 , 2 => water
+WIZARD_ICELANCE                        , 3 => water
+CLERIC_SMASHING_WAVE                   , 4 => water
+WIZARD_VITRIOLIC_SPHERE                , 4 => water
+WIZARD_ICE_STORM                       , 5 => water
+WIZARD_CONE_OF_COLD                    , 5 => water
+CLERIC_MIST_OF_ELDATH                  , 6 => water
+WIZARD_ACID_STORM                      , 7 => water
+
+//  FIRE
+WIZARD_BURNING_HANDS                   , 1 => fire
+//CLERIC_RESIST_FIRE                   , 1 => fire
+//CLERIC_RESIST_FIRE_AND_COLD            , 1 => fire // universal
+CLERIC_FLAME_BLADE                     , 2 => fire
+WIZARD_AGANNAZAR_SCORCHER              , 2 => fire
+CLERIC_PROTECTION_FROM_FIRE            , 3 => fire
+WIZARD_FLAME_ARROW                     , 3 => fire
+CLERIC_PRODUCE_FIRE                    , 4 => fire
+WIZARD_FIRE_SHIELD_RED                 , 5 => fire
+CLERIC_FLAME_STRIKE                    , 5 => fire
+CLERIC_CONJURE_FIRE_ELEMENTAL          , 6 => fire
+CLERIC_FIRE_SEEDS                      , 6 => fire
+CLERIC_FIRE_STORM                      , 7 => fire
+
+//  LIGHT
+CLERIC_SUNSCORCH                       , 1 => light
+WIZARD_GLITTERDUST                     , 2 => light
+CLERIC_ALICORN_LANCE                   , 2 => light 
+CLERIC_MOONBLADE                       , 3 => light
+CLERIC_WALL_OF_MOONLIGHT               , 4 => light
+CLERIC_FALSE_DAWN                      , 5 => light
+CLERIC_SOL_SEARING_ORB                 , 6 => light
+CLERIC_SUNRAY                          , 7 => light
+
+//  SHADOW
+CLERIC_SANCTUARY                       , 1 => shadow
+//WIZARD_BLINDNESS                       , 1 => shadow // SR obscuring mist
+WIZARD_SHADOW_MONSTERS                 , 3 => shadow
+WIZARD_PHANTOM_BLADE                   , 4 => shadow
+WIZARD_SHADOW_DOOR                     , 4 => shadow
+WIZARD_ANIMATE_DEAD                    , 5 => shadow // SR summon shadow
+//SHADOW_STEP                            , 5 => shadow
+WIZARD_SHADES                          , 6 => shadow
+WIZARD_WRAITH_FORM                     , 6 => shadow
+WIZARD_POWER_WORD_BLIND                , 7 => shadow 
+
+//  MAGIC
+CLERIC_SILENCE_15_FOOT                 , 1 => magic
+CLERIC_MISCAST_MAGIC                   , 2 => magic
+//CLERIC_REMOVE_CURSE                    , 2 => magic // SR break enchantment // universal
+CLERIC_DISPEL_MAGIC                    , 3 => magic
+WIZARD_MINOR_SPELL_TURNING             , 4 => magic
+WIZARD_SECRET_WORD                     , 4 => magic
+CLERIC_MAGIC_RESISTANCE                , 5 => magic
+WIZARD_BREACH                          , 5 => magic
+//CLERIC_WONDROUS_RECALL                 , 6 => magic // universal
+WIZARD_GLOBE_OF_INVULNERABILITY        , 6 => magic
+WIZARD_PIERCE_SHIELD                   , 7 => magic
+
+
+END
+
+// This code is copied from Mike1072's armor_list.tpa file. 
+// WeiDU is now on my hate list as well - Yaro, 7/26

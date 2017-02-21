@@ -1,0 +1,573 @@
+
+//___________________________________________________________________________________
+//___________________________________________________________________________________
+//
+//							Deity selection
+//___________________________________________________________________________________
+//___________________________________________________________________________________
+
+
+//___________________________________________________________________________________
+//NOTE TO SELF: 
+//0x00004000 Cleric = Cleric
+//0x04000000 Lathander = Acolyte
+//0x02000000 Helm/Talos EXTRA!! (though, Incarnate)
+
+//change cleric class text___________________________________________________________
+//
+ACTION_IF (FILE_EXISTS_IN_GAME ~clastext.2da~) BEGIN
+  COPY_EXISTING ~clastext.2da~ ~override~
+	COUNT_2DA_COLS cols // amount of columns
+	READ_2DA_ENTRIES_NOW rows cols // read all file into memory  
+	FOR (row = 1; row < rows; ++row) BEGIN // iterate over rows
+	  READ_2DA_ENTRY_FORMER rows row 0 ~text~ // read column value
+	  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~CLERIC~ BEGIN
+	    SET patch_row = %row%
+	  END
+	END
+	SET_2DA_ENTRY %patch_row% 4 cols RESOLVE_STR_REF (@10100)
+  BUT_ONLY
+END
+ACTION_IF (FILE_EXISTS_IN_GAME ~sodcltxt.2da~) BEGIN
+  COPY_EXISTING ~sodcltxt.2da~ ~override~
+	COUNT_2DA_COLS cols // amount of columns
+	READ_2DA_ENTRIES_NOW rows cols // read all file into memory  
+	FOR (row = 1; row < rows; ++row) BEGIN // iterate over rows
+	  READ_2DA_ENTRY_FORMER rows row 0 ~text~ // read column value
+	  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~CLERIC~ BEGIN
+	    SET patch_row = %row%
+	  END
+	END
+	SET_2DA_ENTRY %patch_row% 4 cols RESOLVE_STR_REF (@10100)
+  BUT_ONLY
+END
+//___________________________________________________________________________________
+
+//change mystic class text__________________________________________________________
+//
+ACTION_IF (FILE_EXISTS_IN_GAME ~clastext.2da~) BEGIN
+  COPY_EXISTING ~clastext.2da~ ~override~
+	COUNT_2DA_COLS cols // amount of columns
+	READ_2DA_ENTRIES_NOW rows cols // read all file into memory  
+	FOR (row = 1; row < rows; ++row) BEGIN // iterate over rows
+	  READ_2DA_ENTRY_FORMER rows row 0 ~text~ // read column value
+	  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~DRUID~ BEGIN
+	    SET patch_row = %row%
+	  END
+	END
+	SET_2DA_ENTRY %patch_row% 3 cols RESOLVE_STR_REF (@70001)
+	SET_2DA_ENTRY %patch_row% 5 cols RESOLVE_STR_REF (@70002)
+	SET_2DA_ENTRY %patch_row% 4 cols RESOLVE_STR_REF (@70003)
+  BUT_ONLY
+END
+ACTION_IF (FILE_EXISTS_IN_GAME ~sodcltxt.2da~) BEGIN
+  COPY_EXISTING ~sodcltxt.2da~ ~override~
+	COUNT_2DA_COLS cols // amount of columns
+	READ_2DA_ENTRIES_NOW rows cols // read all file into memory  
+	FOR (row = 1; row < rows; ++row) BEGIN // iterate over rows
+	  READ_2DA_ENTRY_FORMER rows row 0 ~text~ // read column value
+	  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~DRUID~ BEGIN
+	    SET patch_row = %row%
+	  END
+	END
+	SET_2DA_ENTRY %patch_row% 3 cols RESOLVE_STR_REF (@70001)
+	SET_2DA_ENTRY %patch_row% 5 cols RESOLVE_STR_REF (@70002)
+	SET_2DA_ENTRY %patch_row% 4 cols RESOLVE_STR_REF (@70003)
+  BUT_ONLY
+END
+//__________________________________________________________________________________
+
+//change ranger class text__________________________________________________________
+//
+ACTION_IF (FILE_EXISTS_IN_GAME ~clastext.2da~) BEGIN
+  COPY_EXISTING ~clastext.2da~ ~override~
+	COUNT_2DA_COLS cols // amount of columns
+	READ_2DA_ENTRIES_NOW rows cols // read all file into memory  
+	FOR (row = 1; row < rows; ++row) BEGIN // iterate over rows
+	  READ_2DA_ENTRY_FORMER rows row 0 ~text~ // read column value
+	  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~RANGER~ BEGIN
+	    SET patch_row = %row%
+	  END
+	END
+	SET_2DA_ENTRY %patch_row% 3 cols RESOLVE_STR_REF (@90001)
+	SET_2DA_ENTRY %patch_row% 5 cols RESOLVE_STR_REF (@90002)
+	SET_2DA_ENTRY %patch_row% 4 cols RESOLVE_STR_REF (@90003)
+  BUT_ONLY
+END
+ACTION_IF (FILE_EXISTS_IN_GAME ~sodcltxt.2da~) BEGIN
+  COPY_EXISTING ~sodcltxt.2da~ ~override~
+	COUNT_2DA_COLS cols // amount of columns
+	READ_2DA_ENTRIES_NOW rows cols // read all file into memory  
+	FOR (row = 1; row < rows; ++row) BEGIN // iterate over rows
+	  READ_2DA_ENTRY_FORMER rows row 0 ~text~ // read column value
+	  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~RANGER~ BEGIN
+	    SET patch_row = %row%
+	  END
+	END
+	SET_2DA_ENTRY %patch_row% 3 cols RESOLVE_STR_REF (@90001)
+	SET_2DA_ENTRY %patch_row% 5 cols RESOLVE_STR_REF (@90002)
+	SET_2DA_ENTRY %patch_row% 4 cols RESOLVE_STR_REF (@90003)
+  BUT_ONLY
+END
+//__________________________________________________________________________________
+
+
+//COPY CLAB__________________________________________________________________________
+//Just Cleric Clab.  Will add any needed kits
+COPY ~faiths_and_powers/deity/Clab/clabpr01.2da~ ~override~
+COPY ~faiths_and_powers/deity/Clab/clabdr01.2da~ ~override~
+COPY ~faiths_and_powers/deity/Clab/clabrn01.2da~ ~override~
+COPY ~faiths_and_powers/deity/Clab/clabpa01.2da~ ~override~
+COPY ~faiths_and_powers/deity/Clab/clabpa04.2da~ ~override~
+//___________________________________________________________________________________
+
+
+//HLA tables_________________________________________________________________________
+COPY ~faiths_and_powers/spheres/hlas/multiclass/lufc0.2da~ ~override~
+COPY ~faiths_and_powers/spheres/hlas/multiclass/lucm0.2da~ ~override~
+COPY ~faiths_and_powers/spheres/hlas/multiclass/luct0.2da~ ~override~
+//___________________________________________________________________________________
+
+
+//Select Deity_______________________________________________________________________
+//Special thanks to SubtleDoctor for this trick.  Edit: It's since been modified/updated, but it's still appreciated
+
+COPY_EXISTING ~kitlist.2da~ ~override~
+	COUNT_2DA_COLS k_cols // amount of columns
+	READ_2DA_ENTRIES_NOW k_rows k_cols // read all file into memory  
+	FOR (k_row = 1; k_row < k_rows; ++k_row) BEGIN // iterate over rows
+	  READ_2DA_ENTRY_FORMER k_rows k_row 1 ~k_kit~ // read column value
+	  PATCH_IF ~%k_kit%~ STRING_EQUAL_CASE ~B_ACOLYTE~ BEGIN
+	    READ_2DA_ENTRY_FORMER k_rows k_row 9 acolyte_code
+	  END
+	END
+BUT_ONLY
+
+COPY ~faiths_and_powers/deity/dom/b_dom00.spl~ ~override~
+  SAY NAME1 @10107 // Select Deity
+COPY ~faiths_and_powers/deity/dom/d5dom00.spl~ ~override~
+  SAY NAME1 ~ ~ 
+  LPF CLONE_EFFECT INT_VAR multi_match = 1 match_opcode = 177 parameter1 = %acolyte_code% END
+COPY ~faiths_and_powers/deity/dom/d5dom00.eff~ ~override~
+
+COPY ~faiths_and_powers/deity/dom/b_dom01.eff~ ~override~ // (Alignment internals)
+COPY ~faiths_and_powers/deity/dom/b_dom02.eff~ ~override~ // (Alignment internals)
+COPY ~faiths_and_powers/deity/dom/b_dom03.eff~ ~override~ // (Alignment internals)
+COPY ~faiths_and_powers/deity/dom/b_dom04.eff~ ~override~ // (Alignment internals)
+COPY ~faiths_and_powers/deity/dom/b_dom05.eff~ ~override~ // (Alignment internals)
+COPY ~faiths_and_powers/deity/dom/b_dom06.eff~ ~override~ // (Alignment internals)
+COPY ~faiths_and_powers/deity/dom/b_dom07.eff~ ~override~ // (Alignment internals)
+COPY ~faiths_and_powers/deity/dom/b_dom08.eff~ ~override~ // (Alignment internals)
+COPY ~faiths_and_powers/deity/dom/b_dom09.eff~ ~override~ // (Alignment internals)
+//Cre
+COPY ~faiths_and_powers/deity/dom/b_dom00.cre~ ~override~ //
+//___________________________________________________________________________________
+
+/*
+//Patch Alignments____________________________________________________________________
+COPY_EXISTING ~alignmnt.2da~ ~override~
+  SET_2DA_ENTRY  48 4 1 1
+  SET_2DA_ENTRY  48 6 1 1
+  SET_2DA_ENTRY  48 7 1 1
+  SET_2DA_ENTRY  48 8 1 1
+  SET_2DA_ENTRY  48 9 1 1
+  SET_2DA_ENTRY  49 2 1 1
+  SET_2DA_ENTRY  49 3 1 1
+  SET_2DA_ENTRY  49 6 1 1
+  SET_2DA_ENTRY  49 8 1 1
+  SET_2DA_ENTRY  49 9 1 1
+BUT_ONLY_IF_IT_CHANGES
+//___________________________________________________________________________________
+*/
+
+//multiclasses_______________________________________________________________________
+//
+ACTION_IF FILE_EXISTS_IN_GAME ~CLSRCREQ.2da~ BEGIN
+ COPY_EXISTING ~clsrcreq.2da~ ~override~
+  COUNT_2DA_ROWS 8 rows
+  FOR (row = 0 ; row < rows ; ++row) BEGIN
+    READ_2DA_ENTRY row 0 8 entry
+    PATCH_IF (("%entry%" STRING_COMPARE_CASE "FIGHTER_CLERIC"      = 0) OR
+              ("%entry%" STRING_COMPARE_CASE "CLERIC_THIEF"        = 0)) BEGIN // cleric/thief, fighter/cleric
+      SET_2DA_ENTRY  row 1 8 1
+      SET_2DA_ENTRY  row 2 8 1
+      SET_2DA_ENTRY  row 3 8 1
+      SET_2DA_ENTRY  row 4 8 1
+      SET_2DA_ENTRY  row 5 8 1
+      SET_2DA_ENTRY  row 6 8 1
+      SET_2DA_ENTRY  row 7 8 1
+    END
+    PATCH_IF ("%entry%" STRING_COMPARE_CASE "CLERIC_MAGE"         = 0) BEGIN // cleric/mage
+      SET_2DA_ENTRY  row 1 8 1
+      SET_2DA_ENTRY  row 2 8 1
+      SET_2DA_ENTRY  row 3 8 1
+      SET_2DA_ENTRY  row 6 8 1
+    END
+    PATCH_IF ("%entry%" STRING_COMPARE_CASE "CLERIC_RANGER"       = 0) BEGIN // cleric/ranger
+      SET_2DA_ENTRY  row 1 8 1
+      SET_2DA_ENTRY  row 2 8 1
+      SET_2DA_ENTRY  row 3 8 1
+    END
+    PATCH_IF (("%entry%" STRING_COMPARE_CASE "FIGHTER_MAGE"        = 0) OR
+              ("%entry%" STRING_COMPARE_CASE "FIGHTER_THIEF"       = 0) OR
+              ("%entry%" STRING_COMPARE_CASE "FIGHTER_MAGE_THIEF"  = 0) OR
+              ("%entry%" STRING_COMPARE_CASE "MAGE_THIEF"          = 0)) BEGIN // other human multiclasses
+      SET_2DA_ENTRY  row 1 8 1
+    END
+    PATCH_IF (("%entry%" STRING_COMPARE_CASE "FIGHTER_DRUID"       = 0)) BEGIN // no druid multiclasses
+      SET_2DA_ENTRY  row 1 8 0
+      SET_2DA_ENTRY  row 2 8 0
+      SET_2DA_ENTRY  row 3 8 0
+      SET_2DA_ENTRY  row 4 8 0
+      SET_2DA_ENTRY  row 5 8 0
+      SET_2DA_ENTRY  row 6 8 0
+      SET_2DA_ENTRY  row 7 8 0
+    END
+    PATCH_IF ("%entry%" STRING_COMPARE_CASE "FIGHTER_MAGE_CLERIC" = 0) BEGIN // fighter/mage/cleric
+      SET_2DA_ENTRY  row 1 8 0
+      SET_2DA_ENTRY  row 2 8 0
+      SET_2DA_ENTRY  row 3 8 0
+      SET_2DA_ENTRY  row 4 8 0
+      SET_2DA_ENTRY  row 5 8 0
+      SET_2DA_ENTRY  row 6 8 0
+      SET_2DA_ENTRY  row 7 8 0
+    END
+  END
+  PRETTY_PRINT_2DA
+ BUT_ONLY
+END
+//___________________________________________________________________________________
+
+/*
+//multiclass text____________________________________________________________________
+//
+ACTION_IF (FILE_EXISTS_IN_GAME ~clastext.2da~) BEGIN
+  	COPY_EXISTING ~clastext.2da~ ~override~
+		COUNT_2DA_COLS cols // amount of columns
+		READ_2DA_ENTRIES_NOW rows cols // read all file into memory  
+		FOR (row = 1; row < rows; ++row) BEGIN // iterate over rows
+		  READ_2DA_ENTRY_FORMER rows row 0 ~text~ // read column value
+		  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~FIGHTER_CLERIC~ BEGIN
+		    SET patch_row = %row%
+		  END
+		END
+		SET_2DA_ENTRY %patch_row% 3 cols RESOLVE_STR_REF (@10011)
+		SET_2DA_ENTRY %patch_row% 5 cols RESOLVE_STR_REF (@10012)
+		SET_2DA_ENTRY %patch_row% 4 cols RESOLVE_STR_REF (@10013)
+		SET_2DA_ENTRY (%patch_row% + 4) 3 cols RESOLVE_STR_REF (@10021)
+		SET_2DA_ENTRY (%patch_row% + 4) 5 cols RESOLVE_STR_REF (@10022)
+		SET_2DA_ENTRY (%patch_row% + 4) 4 cols RESOLVE_STR_REF (@10023)
+		SET_2DA_ENTRY (%patch_row% + 5) 3 cols RESOLVE_STR_REF (@10031)
+		SET_2DA_ENTRY (%patch_row% + 5) 5 cols RESOLVE_STR_REF (@10032)
+		SET_2DA_ENTRY (%patch_row% + 5) 4 cols RESOLVE_STR_REF (@10033)
+  	BUT_ONLY
+END
+ACTION_IF (FILE_EXISTS_IN_GAME ~sodcltxt.2da~) BEGIN
+  	COPY_EXISTING ~sodcltxt.2da~ ~override~
+		COUNT_2DA_COLS cols // amount of columns
+		READ_2DA_ENTRIES_NOW rows cols // read all file into memory  
+		FOR (row = 1; row < rows; ++row) BEGIN // iterate over rows
+		  READ_2DA_ENTRY_FORMER rows row 0 ~text~ // read column value
+		  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~FIGHTER_CLERIC~ BEGIN
+		    SET patch_row = %row%
+		  END
+		END
+		SET_2DA_ENTRY %patch_row% 3 cols RESOLVE_STR_REF (@10011)
+		SET_2DA_ENTRY %patch_row% 5 cols RESOLVE_STR_REF (@10012)
+		SET_2DA_ENTRY %patch_row% 4 cols RESOLVE_STR_REF (@10013)
+		SET_2DA_ENTRY (%patch_row% + 4) 3 cols RESOLVE_STR_REF (@10021)
+		SET_2DA_ENTRY (%patch_row% + 4) 5 cols RESOLVE_STR_REF (@10022)
+		SET_2DA_ENTRY (%patch_row% + 4) 4 cols RESOLVE_STR_REF (@10023)
+		SET_2DA_ENTRY (%patch_row% + 5) 3 cols RESOLVE_STR_REF (@10031)
+		SET_2DA_ENTRY (%patch_row% + 5) 5 cols RESOLVE_STR_REF (@10032)
+		SET_2DA_ENTRY (%patch_row% + 5) 4 cols RESOLVE_STR_REF (@10033)
+
+  	BUT_ONLY
+END
+//___________________________________________________________________________________
+*/
+
+//more alignments for scouts_________________________________________________________
+//
+// why do dervishes work but not scouts???
+//
+ACTION_PHP_EACH d5_fnp_kits AS ind => kit BEGIN
+  COPY_EXISTING ~kitlist.2da~ ~override~
+	COUNT_2DA_COLS cols // amount of columns
+	READ_2DA_ENTRIES_NOW rows cols // read all file into memory  
+	FOR (row = 2; row < rows; ++row) BEGIN // iterate over rows
+	  READ_2DA_ENTRY_FORMER rows row 5 ~clab~ // read column value
+	  PATCH_IF ~%clab%~ STRING_EQUAL_CASE ~%kit%~ BEGIN
+		SET kit_index = %row%
+		READ_2DA_ENTRY_FORMER rows kit_index 1 kit_name
+	  END
+	END
+  BUT_ONLY
+  ACTION_IF (VARIABLE_IS_SET $d5_fnp_kit_class_access(~SCOUT~ ~%kit%~)) BEGIN
+	OUTER_TEXT_SPRINT access $d5_fnp_kit_class_access(~SCOUT~ ~%kit%~)
+	ACTION_IF (IS_AN_INT access && access == 1) BEGIN
+	  APPEND ~fallen.2da~ ~%kit_name%%TAB%0~
+	  COPY_EXISTING ~alignmnt.2da~ ~override~
+		COUNT_2DA_COLS num_cols
+		READ_2DA_ENTRIES_NOW ~r2en_align~ num_cols
+		FOR (row = 3; row < r2en_align; row += 1) BEGIN
+		  READ_2DA_ENTRY_FORMER ~r2en_align~ row 0 align_name
+		  PATCH_IF (~%align_name%~ STRING_EQUAL_CASE ~%kit_name%~) BEGIN
+			FOR (col = 1; col < num_cols; col += 1) BEGIN
+			  SET_2DA_ENTRY_LATER ~s2el_align~ row col 1 // more alignments
+			END
+		  END
+		END
+		SET_2DA_ENTRIES_NOW ~s2el_align~ num_cols
+	  BUT_ONLY
+	END
+  END
+//  ACTION_IF (VARIABLE_IS_SET $d5_fnp_kit_class_access(~DERVISH~ ~%kit%~)) BEGIN
+//	OUTER_TEXT_SPRINT access $d5_fnp_kit_class_access(~DERVISH~ ~%kit%~)
+//	ACTION_IF (IS_AN_INT access && access == 1) BEGIN
+//	  APPEND ~fallen.2da~ ~%kit_name%%TAB%0~
+//	END
+//  END
+END
+/*
+COPY_EXISTING ~alignmnt.2da~ ~override~
+  COUNT_2DA_COLS num_cols
+  READ_2DA_ENTRIES_NOW ~r2en_align~ num_cols
+  FOR (row = 3; row < r2en_align; row += 1) BEGIN
+	READ_2DA_ENTRY_FORMER ~r2en_align~ row 0 align_name
+	PATCH_IF (~%align_name%~ STRING_EQUAL_CASE ~RANGER~) BEGIN
+	  FOR (col = 1; col < num_cols; col += 1) BEGIN
+		SET_2DA_ENTRY_LATER ~s2el_align~ row col 1 // more alignments
+	  END
+	END
+  END
+  SET_2DA_ENTRIES_NOW ~s2el_align~ num_cols
+BUT_ONLY
+*/
+//___________________________________________________________________________________
+
+
+// insert magic dialogue-building Weidu here...______________________________________
+//
+LAM ~READ_FNP_KIT_INFO~
+
+COPY_EXISTING ~kitlist.2da~ ~override~
+	COUNT_2DA_ROWS ~9~ "rows"
+	FOR ( index = 2 ; index < rows ; index = index + 1 ) BEGIN
+		READ_2DA_ENTRY %index% 5 9 kit_clab
+		READ_2DA_ENTRY %index% 1 9 kit_code
+		READ_2DA_ENTRY %index% 3 9 kit_name
+		READ_2DA_ENTRY %index% 4 9 kit_desc
+		READ_2DA_ENTRY %index% 8 9 class
+		DEFINE_ASSOCIATIVE_ARRAY d5_deity_kits BEGIN "%kit_clab%" , "%kit_code%" , "%kit_name%" , "%kit_desc%" => "%class%" END
+	END
+BUT_ONLY
+OUTER_SET block_num = 1
+ACTION_PHP_EACH d5_deity_kits AS hop => pop BEGIN
+	ACTION_IF (VARIABLE_IS_SET $d5_fnp_kit_race_access(~%hop%~)) BEGIN
+	  OUTER_SET block_num = (%block_num% + 1)
+	  OUTER_TEXT_SPRINT race $d5_fnp_kit_race_access(~%hop%~)
+	  OUTER_INNER_PATCH ~~ BEGIN
+		SNPRINT 3 ~kitrace~ ~%race%~
+	  END
+	  ACTION_PHP_EACH d5_fnp_classes AS class => val BEGIN
+		ACTION_IF (VARIABLE_IS_SET $d5_fnp_kit_class_access(~%class%~ ~%hop%~)) BEGIN
+		  OUTER_TEXT_SPRINT access $d5_fnp_kit_class_access(~%class%~ ~%hop%~)
+		  ACTION_IF (IS_AN_INT access && access == 1) BEGIN
+			ACTION_IF (~%class%~ STRING_EQUAL_CASE ~cleric~) BEGIN
+				OUTER_SET kitclass = 1
+			END
+			ACTION_IF (~%class%~ STRING_EQUAL_CASE ~acolyte~) BEGIN
+				OUTER_SET kitclass = 2
+			END
+			ACTION_IF (~%class%~ STRING_EQUAL_CASE ~fighter_cleric~) BEGIN
+				OUTER_SET kitclass = 4
+			END
+			ACTION_IF (~%class%~ STRING_EQUAL_CASE ~cleric_mage~) BEGIN
+				OUTER_SET kitclass = 5
+			END
+			ACTION_IF (~%class%~ STRING_EQUAL_CASE ~cleric_thief~) BEGIN
+				OUTER_SET kitclass = 6
+			END
+			ACTION_IF (~%class%~ STRING_EQUAL_CASE ~ranger_cleric~) BEGIN
+				OUTER_SET kitclass = 7
+			END
+			ACTION_IF (~%class%~ STRING_EQUAL_CASE ~druid~) BEGIN
+				OUTER_SET kitclass = 10
+			END
+			ACTION_IF (~%class%~ STRING_EQUAL_CASE ~mystic~) BEGIN
+				OUTER_SET kitclass = 11
+			END
+			ACTION_IF (~%class%~ STRING_EQUAL_CASE ~occultist~) BEGIN
+				OUTER_SET kitclass = 12
+			END
+			ACTION_IF (~%class%~ STRING_EQUAL_CASE ~ranger~) BEGIN
+				OUTER_SET kitclass = 13
+			END
+			ACTION_IF (~%class%~ STRING_EQUAL_CASE ~dervish~) BEGIN
+				OUTER_SET kitclass = 14
+			END
+			ACTION_IF (~%class%~ STRING_EQUAL_CASE ~scout~) BEGIN
+				OUTER_SET kitclass = 15
+			END
+			ACTION_IF (~%class%~ STRING_EQUAL_CASE ~champion~) BEGIN
+				OUTER_SET kitclass = 17
+			END
+			ACTION_IF (~%class%~ STRING_EQUAL_CASE ~zealot~) BEGIN
+				OUTER_SET kitclass = 18
+			END
+			ACTION_IF (~%class%~ STRING_EQUAL_CASE ~inquisitor~) BEGIN
+				OUTER_SET kitclass = 19
+			END
+			ACTION_GET_STRREF EVAL %hop_2% ~name_string~
+			ACTION_GET_STRREF EVAL %hop_3% ~desc_string~
+			COPY_EXISTING ~alignmnt.2da~ ~override~
+				COUNT_2DA_COLS num_cols
+				COUNT_2DA_ROWS (num_cols - 1) num_rows
+				READ_2DA_ENTRIES_NOW ~r2en_align~ (num_cols - 1)
+				FOR (row = 2; row < num_rows; row += 1) BEGIN
+					READ_2DA_ENTRY_FORMER ~r2en_align~ row 0 align_code
+					PATCH_IF (~%align_code%~ STRING_EQUAL_CASE ~%hop_1%~) BEGIN
+						READ_2DA_ENTRY (row + 2) 1 1 L_G
+						READ_2DA_ENTRY (row + 2) 2 1 L_N
+						READ_2DA_ENTRY (row + 2) 3 1 L_E
+						READ_2DA_ENTRY (row + 2) 4 1 N_G
+						READ_2DA_ENTRY (row + 2) 5 1 T_N
+						READ_2DA_ENTRY (row + 2) 6 1 N_E
+						READ_2DA_ENTRY (row + 2) 7 1 C_G
+						READ_2DA_ENTRY (row + 2) 8 1 C_N
+						READ_2DA_ENTRY (row + 2) 9 1 C_E
+						PATCH_IF (L_G = 1) BEGIN
+							INNER_ACTION BEGIN
+								APPEND_OUTER ~faiths_and_powers/deity/Dom/%kitrace%/%class%_1.txt~ ~~~~~IF ~Global("B_ALIGN","LOCALS",1)~ THEN REPLY ~Select %name_string%~ GOTO B_dom0%kitclass%_%block_num%  //LG Selection ~~~~~ KEEP_CRLF
+							END
+						END
+						PATCH_IF (L_N = 1) BEGIN
+							INNER_ACTION BEGIN
+								APPEND_OUTER ~faiths_and_powers/deity/Dom/%kitrace%/%class%_1.txt~ ~~~~~IF ~Global("B_ALIGN","LOCALS",2)~ THEN REPLY ~Select %name_string%~ GOTO B_dom0%kitclass%_%block_num%  //LN Selection ~~~~~ KEEP_CRLF
+							END
+						END
+						PATCH_IF (L_E = 1) BEGIN
+							INNER_ACTION BEGIN
+								APPEND_OUTER ~faiths_and_powers/deity/Dom/%kitrace%/%class%_1.txt~ ~~~~~IF ~Global("B_ALIGN","LOCALS",3)~ THEN REPLY ~Select %name_string%~ GOTO B_dom0%kitclass%_%block_num%  //LE Selection ~~~~~ KEEP_CRLF
+							END
+						END
+						PATCH_IF (N_G = 1) BEGIN
+							INNER_ACTION BEGIN
+								APPEND_OUTER ~faiths_and_powers/deity/Dom/%kitrace%/%class%_1.txt~ ~~~~~IF ~Global("B_ALIGN","LOCALS",4)~ THEN REPLY ~Select %name_string%~ GOTO B_dom0%kitclass%_%block_num%  //NG Selection ~~~~~ KEEP_CRLF
+							END
+						END
+						PATCH_IF (T_N = 1) BEGIN
+							INNER_ACTION BEGIN
+								APPEND_OUTER ~faiths_and_powers/deity/Dom/%kitrace%/%class%_1.txt~ ~~~~~IF ~Global("B_ALIGN","LOCALS",5)~ THEN REPLY ~Select %name_string%~ GOTO B_dom0%kitclass%_%block_num%  //TN Selection ~~~~~ KEEP_CRLF
+							END
+						END
+						PATCH_IF (N_E = 1) BEGIN
+							INNER_ACTION BEGIN
+								APPEND_OUTER ~faiths_and_powers/deity/Dom/%kitrace%/%class%_1.txt~ ~~~~~IF ~Global("B_ALIGN","LOCALS",6)~ THEN REPLY ~Select %name_string%~ GOTO B_dom0%kitclass%_%block_num%  //NE Selection ~~~~~ KEEP_CRLF
+							END
+						END
+						PATCH_IF (C_G = 1) BEGIN
+							INNER_ACTION BEGIN
+								APPEND_OUTER ~faiths_and_powers/deity/Dom/%kitrace%/%class%_1.txt~ ~~~~~IF ~Global("B_ALIGN","LOCALS",7)~ THEN REPLY ~Select %name_string%~ GOTO B_dom0%kitclass%_%block_num%  //CG Selection ~~~~~ KEEP_CRLF
+							END
+						END
+						PATCH_IF (C_N = 1) BEGIN
+							INNER_ACTION BEGIN
+								APPEND_OUTER ~faiths_and_powers/deity/Dom/%kitrace%/%class%_1.txt~ ~~~~~IF ~Global("B_ALIGN","LOCALS",8)~ THEN REPLY ~Select %name_string%~ GOTO B_dom0%kitclass%_%block_num%  //CN Selection ~~~~~ KEEP_CRLF
+							END
+						END
+						PATCH_IF (C_E = 1) BEGIN
+							INNER_ACTION BEGIN
+								APPEND_OUTER ~faiths_and_powers/deity/Dom/%kitrace%/%class%_1.txt~ ~~~~~IF ~Global("B_ALIGN","LOCALS",9)~ THEN REPLY ~Select %name_string%~ GOTO B_dom0%kitclass%_%block_num%  //CE Selection ~~~~~ KEEP_CRLF
+							END
+						END
+					END
+				END
+			BUT_ONLY
+			APPEND_OUTER ~faiths_and_powers/deity/Dom/%kitrace%/%class%_2.txt~ ~~~~~IF ~~ THEN BEGIN B_dom0%kitclass%_%block_num% %WNL% SAY ~%desc_string%~ %WNL% IF ~~ THEN REPLY ~Select %name_string%~ DO ~AddKit(%hop_1%)~ EXIT %WNL% IF ~~ THEN REPLY ~Select a different kit~ GOTO B_dom0%kitclass%_A %WNL% END %WNL% ~~~~~ KEEP_CRLF
+		  END
+		END
+	  END		
+	END		
+END
+
+//CLEAR_ARRAYS
+
+ACTION_FOR_EACH race IN ~hum~ ~elf~ ~gno~ ~hal~ ~dwa~ ~orc~ BEGIN
+  COPY ~faiths_and_powers/deity/Dom/b_d_%race%.d~ ~faiths_and_powers/deity/b_d_%race%.d~
+	APPEND_FILE ~faiths_and_powers/deity/Dom/%race%/cleric_1.txt~
+	APPEND_FILE ~faiths_and_powers/deity/Dom/all/cleric_1.txt~
+	APPEND_FILE ~faiths_and_powers/deity/Dom/%race%/cleric_2.txt~
+	APPEND_FILE ~faiths_and_powers/deity/Dom/all/cleric_2.txt~
+	APPEND_FILE ~faiths_and_powers/deity/Dom/%race%/acolyte_1.txt~
+	APPEND_FILE ~faiths_and_powers/deity/Dom/all/acolyte_1.txt~
+	APPEND_FILE ~faiths_and_powers/deity/Dom/%race%/acolyte_2.txt~
+	APPEND_FILE ~faiths_and_powers/deity/Dom/all/acolyte_2.txt~
+	APPEND_FILE ~faiths_and_powers/deity/Dom/%race%/fighter_cleric_1.txt~
+	APPEND_FILE ~faiths_and_powers/deity/Dom/all/fighter_cleric_1.txt~
+	APPEND_FILE ~faiths_and_powers/deity/Dom/%race%/fighter_cleric_2.txt~
+	APPEND_FILE ~faiths_and_powers/deity/Dom/all/fighter_cleric_2.txt~
+	APPEND_FILE ~faiths_and_powers/deity/Dom/%race%/cleric_mage_1.txt~
+	APPEND_FILE ~faiths_and_powers/deity/Dom/all/cleric_mage_1.txt~
+	APPEND_FILE ~faiths_and_powers/deity/Dom/%race%/cleric_mage_2.txt~
+	APPEND_FILE ~faiths_and_powers/deity/Dom/all/cleric_mage_2.txt~
+	APPEND_FILE ~faiths_and_powers/deity/Dom/%race%/cleric_thief_1.txt~
+	APPEND_FILE ~faiths_and_powers/deity/Dom/all/cleric_thief_1.txt~
+	APPEND_FILE ~faiths_and_powers/deity/Dom/%race%/cleric_thief_2.txt~
+	APPEND_FILE ~faiths_and_powers/deity/Dom/all/cleric_thief_2.txt~
+	APPEND_FILE ~faiths_and_powers/deity/Dom/%race%/ranger_cleric_1.txt~
+	APPEND_FILE ~faiths_and_powers/deity/Dom/all/ranger_cleric_1.txt~
+	APPEND_FILE ~faiths_and_powers/deity/Dom/%race%/ranger_cleric_2.txt~
+	APPEND_FILE ~faiths_and_powers/deity/Dom/all/ranger_cleric_2.txt~
+	APPEND_FILE ~faiths_and_powers/deity/Dom/%race%/druid_1.txt~
+	APPEND_FILE ~faiths_and_powers/deity/Dom/all/druid_1.txt~
+	APPEND_FILE ~faiths_and_powers/deity/Dom/%race%/druid_2.txt~
+	APPEND_FILE ~faiths_and_powers/deity/Dom/all/druid_2.txt~
+	APPEND_FILE ~faiths_and_powers/deity/Dom/%race%/mystic_1.txt~
+	APPEND_FILE ~faiths_and_powers/deity/Dom/all/mystic_1.txt~
+	APPEND_FILE ~faiths_and_powers/deity/Dom/%race%/mystic_2.txt~
+	APPEND_FILE ~faiths_and_powers/deity/Dom/all/mystic_2.txt~
+	APPEND_FILE ~faiths_and_powers/deity/Dom/%race%/occultist_1.txt~
+	APPEND_FILE ~faiths_and_powers/deity/Dom/all/occultist_1.txt~
+	APPEND_FILE ~faiths_and_powers/deity/Dom/%race%/occultist_2.txt~
+	APPEND_FILE ~faiths_and_powers/deity/Dom/all/occultist_2.txt~
+	APPEND_FILE ~faiths_and_powers/deity/Dom/%race%/ranger_1.txt~
+	APPEND_FILE ~faiths_and_powers/deity/Dom/all/ranger_1.txt~
+	APPEND_FILE ~faiths_and_powers/deity/Dom/%race%/ranger_2.txt~
+	APPEND_FILE ~faiths_and_powers/deity/Dom/all/ranger_2.txt~
+	APPEND_FILE ~faiths_and_powers/deity/Dom/%race%/dervish_1.txt~
+	APPEND_FILE ~faiths_and_powers/deity/Dom/all/dervish_1.txt~
+	APPEND_FILE ~faiths_and_powers/deity/Dom/%race%/dervish_2.txt~
+	APPEND_FILE ~faiths_and_powers/deity/Dom/all/dervish_2.txt~
+	APPEND_FILE ~faiths_and_powers/deity/Dom/%race%/scout_1.txt~
+	APPEND_FILE ~faiths_and_powers/deity/Dom/all/scout_1.txt~
+	APPEND_FILE ~faiths_and_powers/deity/Dom/%race%/scout_2.txt~
+	APPEND_FILE ~faiths_and_powers/deity/Dom/all/scout_2.txt~
+        APPEND_FILE ~faiths_and_powers/deity/Dom/%race%/CHAMPION_1.txt~
+	APPEND_FILE ~faiths_and_powers/deity/Dom/all/CHAMPION_1.txt~
+        APPEND_FILE ~faiths_and_powers/deity/Dom/%race%/CHAMPION_2.txt~
+	APPEND_FILE ~faiths_and_powers/deity/Dom/all/CHAMPION_2.txt~
+//      APPEND_FILE ~faiths_and_powers/deity/Dom/%race%/INQUISITOR_1.txt~
+//	APPEND_FILE ~faiths_and_powers/deity/Dom/all/INQUISITOR_1.txt~
+//      APPEND_FILE ~faiths_and_powers/deity/Dom/%race%/INQUISITOR_2.txt~
+//	APPEND_FILE ~faiths_and_powers/deity/Dom/all/INQUISITOR_2.txt~
+        APPEND_FILE ~faiths_and_powers/deity/Dom/%race%/ZEALOT_1.txt~
+	APPEND_FILE ~faiths_and_powers/deity/Dom/all/ZEALOT_1.txt~
+        APPEND_FILE ~faiths_and_powers/deity/Dom/%race%/ZEALOT_2.txt~
+	APPEND_FILE ~faiths_and_powers/deity/Dom/all/ZEALOT_2.txt~
+END
+//___________________________________________________________________________________
+
+
+//compile scripts____________________________________________________________________
+//
+  COMPILE ~faiths_and_powers/deity/dom/b_dom00.baf~ ~override~
+  COMPILE ~faiths_and_powers/deity/b_d_hum.d~ ~override~
+  COMPILE ~faiths_and_powers/deity/b_d_elf.d~ ~override~
+  COMPILE ~faiths_and_powers/deity/b_d_dwa.d~ ~override~
+  COMPILE ~faiths_and_powers/deity/b_d_gno.d~ ~override~
+  COMPILE ~faiths_and_powers/deity/b_d_hal.d~ ~override~
+  COMPILE ~faiths_and_powers/deity/b_d_orc.d~ ~override~
+//___________________________________________________________________________________
+

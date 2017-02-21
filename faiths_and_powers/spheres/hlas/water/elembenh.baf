@@ -1,0 +1,127 @@
+IF
+	Detect([PC])
+	Global("Display","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("Display","LOCALS",1)
+		DisplayStringHead(Myself,@61613) // Who calls Ben-Hadar, Prince of Water!
+    SetGlobalTimer("action_interruptible","locals",1)
+    Continue()
+END
+
+IF
+  HotKey(K)
+  Global("scriptoff","locals",0)
+THEN
+  RESPONSE #100
+    SetGlobal("scriptoff","locals",1)
+    DisplayStringHead(Myself,@60001)
+END
+
+IF
+  HotKey(K)
+  Global("scriptoff","locals",1)
+THEN
+  RESPONSE #100
+    SetGlobal("scriptoff","locals",0)
+    DisplayStringHead(Myself,@60002)
+END
+
+IF
+  Global("scriptoff","locals",1)
+THEN
+  RESPONSE #100
+END
+
+IF
+  OR(2)
+    ActionListEmpty()
+    GlobalTimerNotExpired("action_interruptible","locals")
+  !GlobalTimerNotExpired("cast","locals")
+  HaveSpellRES("tg#sumb")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("cast","locals",ONE_ROUND)
+    SpellRES("tg#sumb",NearestEnemyOf(Myself))  // ~Gate Elemental Minion: Water~
+END
+
+IF
+  See(NearestEnemyOf(Myself))
+  OR(2)
+    !Exists(LastAttackerOf(Myself))
+    !See(LastAttackerOf(Myself))
+  OR(4)
+    !Exists(NearestEnemyOf(Myself))
+    !Class(NearestEnemyOf(Myself),LONG_BOW)
+    !Class(NearestEnemyOf(Myself),SORCERER)
+    !See(NearestEnemyOf(Myself))
+  OR(4)
+    !Exists(SecondNearestEnemyOf(Myself))
+    !Class(SecondNearestEnemyOf(Myself),LONG_BOW)
+    !Class(SecondNearestEnemyOf(Myself),SORCERER)
+    !See(SecondNearestEnemyOf(Myself))
+  OR(4)
+    !Exists(NearestEnemyOf(Myself))
+    !Class(NearestEnemyOf(Myself),CLERIC_ALL)
+    !Class(NearestEnemyOf(Myself),DRUID_ALL)
+    !See(NearestEnemyOf(Myself))
+  OR(4)
+    !Exists(SecondNearestEnemyOf(Myself))
+    !Class(SecondNearestEnemyOf(Myself),CLERIC_ALL)
+    !Class(SecondNearestEnemyOf(Myself),DRUID_ALL)
+    !See(SecondNearestEnemyOf(Myself))
+  See(NearestEnemyOf(Myself))
+  False()
+THEN
+  RESPONSE #100
+END
+
+IF
+    ActionListEmpty()
+  OR(2)
+    Allegiance(Myself,GOODCUTOFF)
+    Allegiance(LastSeenBy(Myself),EVILCUTOFF)
+  OR(2)
+    Allegiance(Myself,EVILCUTOFF)
+    Allegiance(LastSeenBy(Myself),GOODCUTOFF)
+THEN
+  RESPONSE #100
+END
+
+IF
+  ActionListEmpty()
+  GlobalTimerExpired("action_interruptible","locals")
+  GlobalTimerNotExpired("cast","locals")
+  CheckStatLT(LastSeenBy(Myself),3,WIZARD_PROTECTION_FROM_MAGIC_WEAPONS)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("action_interruptible","locals",1)
+    AttackOneRound(LastSeenBy(Myself))
+END
+
+IF
+OR(2)
+    ActionListEmpty()
+    GlobalTimerNotExpired("action_interruptible","locals")
+  !GlobalTimerNotExpired("cast","locals")
+  HaveSpellRES("tg#beng") // Muddy Field
+  CheckStatGT(LastSeenBy,5,SAVEVSSPELL)
+  CheckStatLT(LastSeenBy,75,RESISTMAGIC)
+  Range(LastSeenBy,7)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("cast","locals",ONE_ROUND)
+    SpellRES("tg#beng",Myself)
+END
+IF
+  ActionListEmpty()
+  GlobalTimerExpired("action_interruptible","locals")
+  GlobalTimerExpired("cast","locals")
+  CheckStatLT(LastSeenBy(Myself),3,WIZARD_PROTECTION_FROM_MAGIC_WEAPONS)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("action_interruptible","locals",1)
+    AttackOneRound(LastSeenBy(Myself))
+END
+
+

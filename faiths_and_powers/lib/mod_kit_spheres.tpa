@@ -1,0 +1,1132 @@
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+//					SPHERE ASSIGNMENTS FOR MOD KITS
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+
+ACTION_IF FILE_EXISTS_IN_GAME ~a#cyric.2da~ BEGIN
+//DEFINE SPHERE ACCESS______________________________________________________________
+//
+LAF ~DEFINE_FNP_KIT_INFO~
+  INT_VAR
+	c_cleric 		= 1
+	c_acolyte 		= 0
+	c_fighter_cleric = 0
+	c_cleric_mage	= 0
+	c_cleric_thief 	= 1
+	c_ranger_cleric	= 0
+	c_f_m_c			= 0
+  STR_VAR
+    clab_name 		= EVAL ~a#cyric~
+	race 			= ~all~
+	s_Life 			= ~minor~
+	s_Death 		= ~major~
+	s_Benediction 	= ~major~
+	s_Destruction 	= ~major~
+	s_Protection 	= ~minor~
+	s_War 			= ~x~
+	s_Knowledge 	= ~major~
+	s_Deception 	= ~minor~
+	s_Thought 		= ~minor~
+	s_Dread 		= ~major~
+	s_Vigor 		= ~x~
+	s_Affliction 	= ~minor~
+	s_Animal 		= ~x~
+	s_Plant 		= ~x~
+	s_Earth 		= ~x~
+	s_Water 		= ~x~
+	s_Air 			= ~x~
+	s_Fire 			= ~x~
+	s_Light 		= ~x~
+	s_Shadow 		= ~major~
+	s_Magic 		= ~minor~
+END
+//__________________________________________________________________________________
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~a#feyw.2da~ BEGIN
+//DEFINE SPHERE ACCESS______________________________________________________________
+//
+LAF ~DEFINE_FNP_KIT_INFO~
+  INT_VAR
+	c_cleric 		= 1
+	c_acolyte 		= 0
+	c_fighter_cleric = 1
+	c_cleric_mage	= 0
+	c_cleric_thief 	= 0
+	c_ranger_cleric	= 0
+	c_f_m_c			= 0
+  STR_VAR
+    clab_name 		= EVAL ~a#feyw~
+	race 			= ~elf~
+	s_Life 			= ~major~
+	s_Death 		= ~x~
+	s_Benediction 	= ~major~
+	s_Destruction 	= ~minor~
+	s_Protection 	= ~major~
+	s_War 			= ~major~
+	s_Knowledge 	= ~major~
+	s_Deception 	= ~x~
+	s_Thought 		= ~minor~
+	s_Dread 		= ~x~
+	s_Vigor 		= ~minor~
+	s_Affliction 	= ~x~
+	s_Animal 		= ~x~
+	s_Plant 		= ~major~
+	s_Earth 		= ~x~
+	s_Water 		= ~minor~
+	s_Air 			= ~minor~
+	s_Fire 			= ~x~
+	s_Light 		= ~major~
+	s_Shadow 		= ~x~
+	s_Magic 		= ~minor~
+END
+//__________________________________________________________________________________
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~a#koss.2da~ BEGIN
+//DEFINE SPHERE ACCESS______________________________________________________________
+//
+LAF ~DEFINE_FNP_KIT_INFO~
+  INT_VAR
+	c_cleric 		= 0
+	c_acolyte 		= 1
+	c_fighter_cleric = 0
+	c_cleric_mage	= 0
+	c_cleric_thief 	= 0
+	c_ranger_cleric	= 0
+	c_f_m_c			= 0
+  STR_VAR
+    clab_name 		= EVAL ~a#koss~
+	race 			= ~all~
+	s_Life 			= ~major~
+	s_Death 		= ~minor~
+	s_Benediction 	= ~minor~
+	s_Destruction 	= ~major~
+	s_Protection 	= ~major~
+	s_War 			= ~minor~
+	s_Knowledge 	= ~major~
+	s_Deception 	= ~x~
+	s_Thought 		= ~x~
+	s_Dread 		= ~minor~
+	s_Vigor 		= ~minor~
+	s_Affliction 	= ~x~
+	s_Animal 		= ~x~
+	s_Plant 		= ~x~
+	s_Earth 		= ~x~
+	s_Water 		= ~x~
+	s_Air 			= ~x~
+	s_Fire 			= ~focus~
+	s_Light 		= ~major~
+	s_Shadow 		= ~x~
+	s_Magic 		= ~minor~
+END
+//__________________________________________________________________________________
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~a#ogma.2da~ BEGIN
+//DEFINE SPHERE ACCESS______________________________________________________________
+//
+LAF ~DEFINE_FNP_KIT_INFO~
+  INT_VAR
+	c_cleric 		= 0
+	c_acolyte 		= 1
+	c_fighter_cleric = 0
+	c_cleric_mage	= 1
+	c_cleric_thief 	= 0
+	c_ranger_cleric	= 0
+	c_f_m_c			= 0
+  STR_VAR
+    clab_name 		= EVAL ~a#ogma~
+	race 			= ~all~
+	s_Life 			= ~major~
+	s_Death 		= ~minor~
+	s_Benediction 	= ~major~
+	s_Destruction 	= ~minor~
+	s_Protection 	= ~major~
+	s_War 			= ~x~
+	s_Knowledge 	= ~focus~
+	s_Deception 	= ~minor~
+	s_Thought 		= ~major~
+	s_Dread 		= ~minor~
+	s_Vigor 		= ~x~
+	s_Affliction 	= ~x~
+	s_Animal 		= ~x~
+	s_Plant 		= ~x~
+	s_Earth 		= ~x~
+	s_Water 		= ~x~
+	s_Air 			= ~x~
+	s_Fire 			= ~x~
+	s_Light 		= ~minor~
+	s_Shadow 		= ~minor~
+	s_Magic 		= ~major~
+END
+//__________________________________________________________________________________
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~a#ooze.2da~ BEGIN
+//DEFINE SPHERE ACCESS______________________________________________________________
+//
+LAF ~DEFINE_FNP_KIT_INFO~
+  INT_VAR
+	c_cleric 		= 0
+	c_acolyte 		= 0
+	c_fighter_cleric = 0
+	c_cleric_mage	= 0
+	c_cleric_thief 	= 0
+	c_ranger_cleric	= 0
+	c_f_m_c			= 0
+  STR_VAR
+    clab_name 		= EVAL ~a#ooze~
+	race 			= ~all~
+	s_Life 			= ~major~
+	s_Death 		= ~minor~
+	s_Benediction 	= ~x~
+	s_Destruction 	= ~x~
+	s_Protection 	= ~x~
+	s_War 			= ~x~
+	s_Knowledge 	= ~minor~
+	s_Deception 	= ~x~
+	s_Thought 		= ~minor~
+	s_Dread 		= ~minor~
+	s_Vigor 		= ~major~
+	s_Affliction 	= ~major~
+	s_Animal 		= ~x~
+	s_Plant 		= ~major~
+	s_Earth 		= ~major~
+	s_Water 		= ~major~
+	s_Air 			= ~minor~
+	s_Fire 			= ~x~
+	s_Light 		= ~x~
+	s_Shadow 		= ~minor~
+	s_Magic 		= ~x~
+END
+//__________________________________________________________________________________
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~a#red.2da~ BEGIN
+//DEFINE SPHERE ACCESS______________________________________________________________
+//
+LAF ~DEFINE_FNP_KIT_INFO~
+  INT_VAR
+	c_cleric 		= 1
+	c_acolyte 		= 0
+	c_fighter_cleric = 1
+	c_cleric_mage	= 0
+	c_cleric_thief 	= 0
+	c_ranger_cleric	= 0
+	c_f_m_c			= 0
+  STR_VAR
+    clab_name 		= EVAL ~a#red~
+	race 			= ~all~
+	s_Life 			= ~minor~
+	s_Death 		= ~minor~
+	s_Benediction 	= ~major~
+	s_Destruction 	= ~major~
+	s_Protection 	= ~major~
+	s_War 			= ~major~
+	s_Knowledge 	= ~minor~
+	s_Deception 	= ~x~
+	s_Thought 		= ~minor~
+	s_Dread 		= ~major~
+	s_Vigor 		= ~major~
+	s_Affliction 	= ~x~
+	s_Animal 		= ~x~
+	s_Plant 		= ~x~
+	s_Earth 		= ~x~
+	s_Water 		= ~x~
+	s_Air 			= ~x~
+	s_Fire 			= ~minor~
+	s_Light 		= ~minor~
+	s_Shadow 		= ~x~
+	s_Magic 		= ~x~
+END
+//__________________________________________________________________________________
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~a#shar.2da~ BEGIN
+//DEFINE SPHERE ACCESS______________________________________________________________
+//
+LAF ~DEFINE_FNP_KIT_INFO~
+  INT_VAR
+	c_cleric 		= 1
+	c_acolyte 		= 0
+	c_fighter_cleric = 0
+	c_cleric_mage	= 1
+	c_cleric_thief 	= 0
+	c_ranger_cleric	= 0
+	c_f_m_c			= 0
+  STR_VAR
+    clab_name 		= EVAL ~a#shar~
+	race 			= ~all~
+	s_Life 			= ~minor~
+	s_Death 		= ~major~
+	s_Benediction 	= ~major~
+	s_Destruction 	= ~minor~
+	s_Protection 	= ~minor~
+	s_War 			= ~x~
+	s_Knowledge 	= ~minor~
+	s_Deception 	= ~major~
+	s_Thought 		= ~major~
+	s_Dread 		= ~major~
+	s_Vigor 		= ~minor~
+	s_Affliction 	= ~minor~
+	s_Animal 		= ~x~
+	s_Plant 		= ~x~
+	s_Earth 		= ~x~
+	s_Water 		= ~x~
+	s_Air 			= ~x~
+	s_Fire 			= ~x~
+	s_Light 		= ~x~
+	s_Shadow 		= ~major~
+	s_Magic 		= ~major~
+END
+//__________________________________________________________________________________
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~a#temp.2da~ BEGIN
+//DEFINE SPHERE ACCESS______________________________________________________________
+//
+LAF ~DEFINE_FNP_KIT_INFO~
+  INT_VAR
+	c_cleric 		= 1
+	c_acolyte 		= 0
+	c_fighter_cleric = 1
+	c_cleric_mage	= 0
+	c_cleric_thief 	= 0
+	c_ranger_cleric	= 0
+	c_f_m_c			= 0
+  STR_VAR
+    clab_name 		= EVAL ~a#temp~
+	race 			= ~all~
+	s_Life 			= ~major~
+	s_Death 		= ~minor~
+	s_Benediction 	= ~major~
+	s_Destruction 	= ~major~
+	s_Protection 	= ~major~
+	s_War 			= ~focus~
+	s_Knowledge 	= ~minor~
+	s_Deception 	= ~x~
+	s_Thought 		= ~x~
+	s_Dread 		= ~minor~
+	s_Vigor 		= ~major~
+	s_Affliction 	= ~x~
+	s_Animal 		= ~x~
+	s_Plant 		= ~x~
+	s_Earth 		= ~minor~
+	s_Water 		= ~x~
+	s_Air 			= ~x~
+	s_Fire 			= ~minor~
+	s_Light 		= ~x~
+	s_Shadow 		= ~x~
+	s_Magic 		= ~x~
+END
+//__________________________________________________________________________________
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~cdilmatr.2da~ BEGIN
+//DEFINE SPHERE ACCESS______________________________________________________________
+//
+LAF ~DEFINE_FNP_KIT_INFO~
+  INT_VAR
+	c_cleric 		= 1
+	c_acolyte 		= 0
+	c_fighter_cleric = 0
+	c_cleric_mage	= 0
+	c_cleric_thief 	= 0
+	c_ranger_cleric	= 0
+	c_f_m_c			= 0
+  STR_VAR
+    clab_name 		= EVAL ~cdilmatr~
+	race 			= ~all~
+	s_Life 			= ~major~
+	s_Death 		= ~minor~
+	s_Benediction 	= ~major~
+	s_Destruction 	= ~minor~
+	s_Protection 	= ~major~
+	s_War 			= ~x~
+	s_Knowledge 	= ~major~
+	s_Deception 	= ~x~
+	s_Thought 		= ~minor~
+	s_Dread 		= ~major~
+	s_Vigor 		= ~major~
+	s_Affliction 	= ~minor~
+	s_Animal 		= ~x~
+	s_Plant 		= ~x~
+	s_Earth 		= ~x~
+	s_Water 		= ~x~
+	s_Air 			= ~x~
+	s_Fire 			= ~x~
+	s_Light 		= ~minor~
+	s_Shadow 		= ~x~
+	s_Magic 		= ~minor~
+END
+//__________________________________________________________________________________
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~cdselune.2da~ BEGIN
+//DEFINE SPHERE ACCESS______________________________________________________________
+//
+LAF ~DEFINE_FNP_KIT_INFO~
+  INT_VAR
+	c_cleric 		= 1
+	c_acolyte 		= 0
+	c_fighter_cleric = 0
+	c_cleric_mage	= 1
+	c_cleric_thief 	= 0
+	c_ranger_cleric	= 0
+	c_f_m_c			= 0
+  STR_VAR
+    clab_name 		= EVAL ~cdselune~
+	race 			= ~all~
+	s_Life 			= ~major~
+	s_Death 		= ~x~
+	s_Benediction 	= ~major~
+	s_Destruction 	= ~x~
+	s_Protection 	= ~major~
+	s_War 			= ~minor~
+	s_Knowledge 	= ~major~
+	s_Deception 	= ~minor~
+	s_Thought 		= ~major~
+	s_Dread 		= ~x~
+	s_Vigor 		= ~minor~
+	s_Affliction 	= ~minor~
+	s_Animal 		= ~x~
+	s_Plant 		= ~x~
+	s_Earth 		= ~x~
+	s_Water 		= ~x~
+	s_Air 			= ~major~
+	s_Fire 			= ~x~
+	s_Light 		= ~major~
+	s_Shadow 		= ~minor~
+	s_Magic 		= ~minor~
+END
+//__________________________________________________________________________________
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~cdxvim.2da~ BEGIN
+//DEFINE SPHERE ACCESS______________________________________________________________
+//
+LAF ~DEFINE_FNP_KIT_INFO~
+  INT_VAR
+	c_cleric 		= 1
+	c_acolyte 		= 0
+	c_fighter_cleric = 1
+	c_cleric_mage	= 0
+	c_cleric_thief 	= 0
+	c_ranger_cleric	= 0
+	c_f_m_c			= 0
+  STR_VAR
+    clab_name 		= EVAL ~cdxvim~
+	race 			= ~all~
+	s_Life 			= ~minor~
+	s_Death 		= ~major~
+	s_Benediction 	= ~major~
+	s_Destruction 	= ~major~
+	s_Protection 	= ~x~
+	s_War 			= ~major~
+	s_Knowledge 	= ~minor~
+	s_Deception 	= ~x~
+	s_Thought 		= ~minor~
+	s_Dread 		= ~major~
+	s_Vigor 		= ~minor~
+	s_Affliction 	= ~major~
+	s_Animal 		= ~x~
+	s_Plant 		= ~x~
+	s_Earth 		= ~x~
+	s_Water 		= ~x~
+	s_Air 			= ~x~
+	s_Fire 			= ~x~
+	s_Light 		= ~x~
+	s_Shadow 		= ~minor~
+	s_Magic 		= ~minor~
+END
+//__________________________________________________________________________________
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~nmsune.2da~ BEGIN
+//DEFINE SPHERE ACCESS______________________________________________________________
+//
+LAF ~DEFINE_FNP_KIT_INFO~
+  INT_VAR
+	c_cleric 		= 0
+	c_acolyte 		= 1
+	c_fighter_cleric = 0
+	c_cleric_mage	= 0
+	c_cleric_thief 	= 1
+	c_ranger_cleric	= 0
+	c_f_m_c			= 0
+  STR_VAR
+    clab_name 		= EVAL ~nmsune~
+	race 			= ~all~
+	s_Life 			= ~major~
+	s_Death 		= ~x~
+	s_Benediction 	= ~minor~
+	s_Destruction 	= ~minor~
+	s_Protection 	= ~major~
+	s_War 			= ~x~
+	s_Knowledge 	= ~minor~
+	s_Deception 	= ~major~
+	s_Thought 		= ~focus~
+	s_Dread 		= ~major~
+	s_Vigor 		= ~major~
+	s_Affliction 	= ~minor~
+	s_Animal 		= ~x~
+	s_Plant 		= ~x~
+	s_Earth 		= ~x~
+	s_Water 		= ~x~
+	s_Air 			= ~x~
+	s_Fire 			= ~x~
+	s_Light 		= ~major~
+	s_Shadow 		= ~minor~
+	s_Magic 		= ~minor~
+END
+//__________________________________________________________________________________
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~nmrnwlrn.2da~ BEGIN
+//DEFINE SPHERE ACCESS______________________________________________________________
+//
+LAF ~DEFINE_FNP_KIT_INFO~
+  INT_VAR
+	c_cleric 		= 0
+	c_acolyte 		= 0
+	c_fighter_cleric = 0
+	c_cleric_mage	= 0
+	c_cleric_thief 	= 0
+	c_ranger_cleric	= 0
+	c_f_m_c			= 0
+  STR_VAR
+    clab_name 		= EVAL ~nmrnwlrn~
+	race 			= ~all~
+	s_Life 			= ~ranger~
+	s_Death 		= ~x~
+	s_Benediction 	= ~x~
+	s_Destruction 	= ~x~
+	s_Protection 	= ~x~
+	s_War 			= ~x~
+	s_Knowledge 	= ~x~
+	s_Deception 	= ~x~
+	s_Thought 		= ~x~
+	s_Dread 		= ~x~
+	s_Vigor 		= ~ranger~
+	s_Affliction 	= ~x~
+	s_Animal 		= ~ranger~
+	s_Plant 		= ~ranger~
+	s_Earth 		= ~x~
+	s_Water 		= ~x~
+	s_Air 			= ~ranger~
+	s_Fire 			= ~x~
+	s_Light 		= ~ranger~
+	s_Shadow 		= ~x~
+	s_Magic 		= ~x~
+END
+//__________________________________________________________________________________
+END
+
+
+ACTION_IF FILE_EXISTS_IN_GAME ~nmrnbsln.2da~ BEGIN
+//DEFINE SPHERE ACCESS______________________________________________________________
+//
+LAF ~DEFINE_FNP_KIT_INFO~
+  INT_VAR
+	c_cleric 		= 0
+	c_acolyte 		= 0
+	c_fighter_cleric = 0
+	c_cleric_mage	= 0
+	c_cleric_thief 	= 0
+	c_ranger_cleric	= 0
+	c_f_m_c			= 0
+  STR_VAR
+    clab_name 		= EVAL ~nmrnbsln~
+	race 			= ~all~
+	s_Life 			= ~ranger~
+	s_Death 		= ~x~
+	s_Benediction 	= ~x~
+	s_Destruction 	= ~x~
+	s_Protection 	= ~x~
+	s_War 			= ~x~
+	s_Knowledge 	= ~x~
+	s_Deception 	= ~x~
+	s_Thought 		= ~x~
+	s_Dread 		= ~x~
+	s_Vigor 		= ~ranger~
+	s_Affliction 	= ~x~
+	s_Animal 		= ~ranger~
+	s_Plant 		= ~ranger~
+	s_Earth 		= ~x~
+	s_Water 		= ~x~
+	s_Air 			= ~ranger~
+	s_Fire 			= ~x~
+	s_Light 		= ~ranger~
+	s_Shadow 		= ~x~
+	s_Magic 		= ~x~
+END
+//__________________________________________________________________________________
+END
+
+
+ACTION_IF FILE_EXISTS_IN_GAME ~a#feral.2da~ BEGIN
+//DEFINE SPHERE ACCESS______________________________________________________________
+//
+LAF ~DEFINE_FNP_KIT_INFO~
+  INT_VAR
+	c_cleric 		= 0
+	c_acolyte 		= 0
+	c_fighter_cleric = 0
+	c_cleric_mage	= 0
+	c_cleric_thief 	= 0
+	c_ranger_cleric	= 0
+	c_f_m_c			= 0
+  STR_VAR
+    clab_name 		= EVAL ~a#feral~
+	race 			= ~all~
+	s_Life 			= ~ranger~
+	s_Death 		= ~x~
+	s_Benediction 	= ~x~
+	s_Destruction 	= ~x~
+	s_Protection 	= ~x~
+	s_War 			= ~x~
+	s_Knowledge 	= ~x~
+	s_Deception 	= ~x~
+	s_Thought 		= ~x~
+	s_Dread 		= ~x~
+	s_Vigor 		= ~ranger~
+	s_Affliction 	= ~x~
+	s_Animal 		= ~ranger~
+	s_Plant 		= ~ranger~
+	s_Earth 		= ~x~
+	s_Water 		= ~x~
+	s_Air 			= ~ranger~
+	s_Fire 			= ~x~
+	s_Light 		= ~ranger~
+	s_Shadow 		= ~x~
+	s_Magic 		= ~x~
+END
+//__________________________________________________________________________________
+END
+
+
+ACTION_IF FILE_EXISTS_IN_GAME ~nmrnfrrn.2da~ BEGIN
+//DEFINE SPHERE ACCESS______________________________________________________________
+//
+LAF ~DEFINE_FNP_KIT_INFO~
+  INT_VAR
+	c_cleric 		= 0
+	c_acolyte 		= 0
+	c_fighter_cleric = 0
+	c_cleric_mage	= 0
+	c_cleric_thief 	= 0
+	c_ranger_cleric	= 0
+	c_f_m_c			= 0
+  STR_VAR
+    clab_name 		= EVAL ~nmrnfrrn~
+	race 			= ~all~
+	s_Life 			= ~ranger~
+	s_Death 		= ~x~
+	s_Benediction 	= ~x~
+	s_Destruction 	= ~x~
+	s_Protection 	= ~x~
+	s_War 			= ~x~
+	s_Knowledge 	= ~x~
+	s_Deception 	= ~x~
+	s_Thought 		= ~x~
+	s_Dread 		= ~x~
+	s_Vigor 		= ~ranger~
+	s_Affliction 	= ~x~
+	s_Animal 		= ~ranger~
+	s_Plant 		= ~ranger~
+	s_Earth 		= ~x~
+	s_Water 		= ~x~
+	s_Air 			= ~ranger~
+	s_Fire 			= ~x~
+	s_Light 		= ~ranger~
+	s_Shadow 		= ~x~
+	s_Magic 		= ~x~
+END
+//__________________________________________________________________________________
+END
+
+
+ACTION_IF FILE_EXISTS_IN_GAME ~a#justif.2da~ BEGIN
+//DEFINE SPHERE ACCESS______________________________________________________________
+//
+LAF ~DEFINE_FNP_KIT_INFO~
+  INT_VAR
+	c_cleric 		= 0
+	c_acolyte 		= 0
+	c_fighter_cleric = 0
+	c_cleric_mage	= 0
+	c_cleric_thief 	= 0
+	c_ranger_cleric	= 0
+	c_f_m_c			= 0
+  STR_VAR
+    clab_name 		= EVAL ~a#justif~
+	race 			= ~all~
+	s_Life 			= ~ranger~
+	s_Death 		= ~x~
+	s_Benediction 	= ~x~
+	s_Destruction 	= ~x~
+	s_Protection 	= ~x~
+	s_War 			= ~x~
+	s_Knowledge 	= ~x~
+	s_Deception 	= ~x~
+	s_Thought 		= ~x~
+	s_Dread 		= ~x~
+	s_Vigor 		= ~ranger~
+	s_Affliction 	= ~x~
+	s_Animal 		= ~x~
+	s_Plant 		= ~x~
+	s_Earth 		= ~x~
+	s_Water 		= ~x~
+	s_Air 			= ~x~
+	s_Fire 			= ~x~
+	s_Light 		= ~ranger~
+	s_Shadow 		= ~x~
+	s_Magic 		= ~x~
+END
+//__________________________________________________________________________________
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~clabauri.2da~ BEGIN
+//DEFINE SPHERE ACCESS______________________________________________________________
+//
+LAF ~DEFINE_FNP_KIT_INFO~
+  INT_VAR
+	c_cleric 		= 1
+	c_acolyte 		= 0
+	c_fighter_cleric = 0
+	c_cleric_mage	= 1
+	c_cleric_thief 	= 0
+	c_ranger_cleric	= 0
+	c_f_m_c			= 0
+  STR_VAR
+    clab_name 		= EVAL ~clabauri~
+	race 			= ~all~
+	s_Life 			= ~minor~
+	s_Death 		= ~minor~
+	s_Benediction 	= ~major~
+	s_Destruction 	= ~major~
+	s_Protection 	= ~major~
+	s_War 			= ~minor~
+	s_Knowledge 	= ~major~
+	s_Deception 	= ~x~
+	s_Thought 		= ~minor~
+	s_Dread 		= ~major~
+	s_Vigor 		= ~x~
+	s_Affliction 	= ~x~
+	s_Animal 		= ~x~
+	s_Plant 		= ~x~
+	s_Earth 		= ~x~
+	s_Water 		= ~major~
+	s_Air 			= ~x~
+	s_Fire 			= ~x~
+	s_Light 		= ~x~
+	s_Shadow 		= ~minor~
+	s_Magic 		= ~minor~
+END
+//__________________________________________________________________________________
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~clabiceg.2da~ BEGIN
+//DEFINE SPHERE ACCESS______________________________________________________________
+//
+LAF ~DEFINE_FNP_KIT_INFO~
+  INT_VAR
+	c_cleric 		= 1
+	c_acolyte 		= 0
+	c_fighter_cleric = 0
+	c_cleric_mage	= 0
+	c_cleric_thief 	= 0
+	c_ranger_cleric	= 1
+	c_f_m_c			= 0
+  STR_VAR
+    clab_name 		= EVAL ~clabiceg~
+	race 			= ~all~
+	s_Life 			= ~major~
+	s_Death 		= ~x~
+	s_Benediction 	= ~major~
+	s_Destruction 	= ~x~
+	s_Protection 	= ~major~
+	s_War 			= ~minor~
+	s_Knowledge 	= ~minor~
+	s_Deception 	= ~x~
+	s_Thought 		= ~minor~
+	s_Dread 		= ~x~
+	s_Vigor 		= ~major~
+	s_Affliction 	= ~x~
+	s_Animal 		= ~major~
+	s_Plant 		= ~x~
+	s_Earth 		= ~x~
+	s_Water 		= ~focus~
+	s_Air 			= ~minor~
+	s_Fire 			= ~x~
+	s_Light 		= ~minor~
+	s_Shadow 		= ~minor~
+	s_Magic 		= ~x~
+END
+//__________________________________________________________________________________
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~clabeart.2da~ BEGIN
+//DEFINE SPHERE ACCESS______________________________________________________________
+//
+LAF ~DEFINE_FNP_KIT_INFO~
+  INT_VAR
+	c_cleric 		= 0
+	c_acolyte 		= 1
+	c_fighter_cleric = 0
+	c_cleric_mage	= 0
+	c_cleric_thief 	= 1
+	c_ranger_cleric	= 0
+	c_f_m_c			= 0
+  STR_VAR
+    clab_name 		= EVAL ~clabeart~
+	race 			= ~all~
+	s_Life 			= ~major~
+	s_Death 		= ~minor~
+	s_Benediction 	= ~minor~
+	s_Destruction 	= ~major~
+	s_Protection 	= ~minor~
+	s_War 			= ~minor~
+	s_Knowledge 	= ~major~
+	s_Deception 	= ~x~
+	s_Thought 		= ~minor~
+	s_Dread 		= ~major~
+	s_Vigor 		= ~major~
+	s_Affliction 	= ~x~
+	s_Animal 		= ~x~
+	s_Plant 		= ~x~
+	s_Earth 		= ~focus~
+	s_Water 		= ~x~
+	s_Air 			= ~x~
+	s_Fire 			= ~x~
+	s_Light 		= ~x~
+	s_Shadow 		= ~x~
+	s_Magic 		= ~minor~
+END
+//__________________________________________________________________________________
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~clableaf.2da~ BEGIN
+//DEFINE SPHERE ACCESS______________________________________________________________
+//
+LAF ~DEFINE_FNP_KIT_INFO~
+  INT_VAR
+	c_cleric 		= 1
+	c_acolyte 		= 0
+	c_fighter_cleric = 0
+	c_cleric_mage	= 0
+	c_cleric_thief 	= 1
+	c_ranger_cleric	= 0
+	c_f_m_c			= 0
+  STR_VAR
+    clab_name 		= EVAL ~clableaf~
+	race 			= ~halfling~
+	s_Life 			= ~major~
+	s_Death 		= ~x~
+	s_Benediction 	= ~major~
+	s_Destruction 	= ~x~
+	s_Protection 	= ~major~
+	s_War 			= ~x~
+	s_Knowledge 	= ~minor~
+	s_Deception 	= ~x~
+	s_Thought 		= ~minor~
+	s_Dread 		= ~x~
+	s_Vigor 		= ~major~
+	s_Affliction 	= ~x~
+	s_Animal 		= ~x~
+	s_Plant 		= ~major~
+	s_Earth 		= ~minor~
+	s_Water 		= ~minor~
+	s_Air 			= ~minor~
+	s_Fire 			= ~x~
+	s_Light 		= ~major~
+	s_Shadow 		= ~minor~
+	s_Magic 		= ~x~
+END
+//__________________________________________________________________________________
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~clabtree.2da~ BEGIN
+//DEFINE SPHERE ACCESS______________________________________________________________
+//
+LAF ~DEFINE_FNP_KIT_INFO~
+  INT_VAR
+	c_cleric 		= 1
+	c_acolyte 		= 0
+	c_fighter_cleric = 0
+	c_cleric_mage	= 0
+	c_cleric_thief 	= 0
+	c_ranger_cleric	= 0
+	c_f_m_c			= 0
+  STR_VAR
+    clab_name 		= EVAL ~clabtree~
+	race 			= ~gnome~
+	s_Life 			= ~major~
+	s_Death 		= ~x~
+	s_Benediction 	= ~major~
+	s_Destruction 	= ~x~
+	s_Protection 	= ~minor~
+	s_War 			= ~x~
+	s_Knowledge 	= ~minor~
+	s_Deception 	= ~x~
+	s_Thought 		= ~minor~
+	s_Dread 		= ~x~
+	s_Vigor 		= ~major~
+	s_Affliction 	= ~x~
+	s_Animal 		= ~x~
+	s_Plant 		= ~major~
+	s_Earth 		= ~major~
+	s_Water 		= ~minor~
+	s_Air 			= ~minor~
+	s_Fire 			= ~x~
+	s_Light 		= ~major~
+	s_Shadow 		= ~minor~
+	s_Magic 		= ~x~
+END
+//__________________________________________________________________________________
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~clabgruu.2da~ BEGIN
+//DEFINE SPHERE ACCESS______________________________________________________________
+//
+LAF ~DEFINE_FNP_KIT_INFO~
+  INT_VAR
+	c_cleric 		= 1
+	c_acolyte 		= 0
+	c_fighter_cleric = 1
+	c_cleric_mage	= 0
+	c_cleric_thief 	= 0
+	c_ranger_cleric	= 0
+	c_f_m_c			= 0
+  STR_VAR
+    clab_name 		= EVAL ~clabgruu~
+	race 			= ~orc~
+	s_Life 			= ~minor~
+	s_Death 		= ~minor~
+	s_Benediction 	= ~minor~
+	s_Destruction 	= ~major~
+	s_Protection 	= ~minor~
+	s_War 			= ~major~
+	s_Knowledge 	= ~x~
+	s_Deception 	= ~x~
+	s_Thought 		= ~x~
+	s_Dread 		= ~major~
+	s_Vigor 		= ~major~
+	s_Affliction 	= ~major~
+	s_Animal 		= ~minor~
+	s_Plant 		= ~x~
+	s_Earth 		= ~major~
+	s_Water 		= ~x~
+	s_Air 			= ~x~
+	s_Fire 			= ~minor~
+	s_Light 		= ~x~
+	s_Shadow 		= ~x~
+	s_Magic 		= ~x~
+END
+//__________________________________________________________________________________
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~clabluth.2da~ BEGIN
+//DEFINE SPHERE ACCESS______________________________________________________________
+//
+LAF ~DEFINE_FNP_KIT_INFO~
+  INT_VAR
+	c_cleric 		= 1
+	c_acolyte 		= 0
+	c_fighter_cleric = 0
+	c_cleric_mage	= 0
+	c_cleric_thief 	= 0
+	c_ranger_cleric	= 0
+	c_f_m_c			= 0
+  STR_VAR
+    clab_name 		= EVAL ~clabluth~
+	race 			= ~all~
+	s_Life 			= ~major~
+	s_Death 		= ~major~
+	s_Benediction 	= ~minor~
+	s_Destruction 	= ~major~
+	s_Protection 	= ~major~
+	s_War 			= ~minor~
+	s_Knowledge 	= ~major~
+	s_Deception 	= ~x~
+	s_Thought 		= ~minor~
+	s_Dread 		= ~major~
+	s_Vigor 		= ~minor~
+	s_Affliction 	= ~minor~
+	s_Animal 		= ~x~
+	s_Plant 		= ~x~
+	s_Earth 		= ~x~
+	s_Water 		= ~x~
+	s_Air 			= ~x~
+	s_Fire 			= ~x~
+	s_Light 		= ~x~
+	s_Shadow 		= ~x~
+	s_Magic 		= ~minor~
+END
+//__________________________________________________________________________________
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~k9hive.2da~ BEGIN
+//DEFINE SPHERE ACCESS______________________________________________________________
+//
+LAF ~DEFINE_FNP_KIT_INFO~
+  INT_VAR
+	c_cleric 		= 1
+	c_acolyte 		= 0
+	c_fighter_cleric = 0
+	c_cleric_mage	= 0
+	c_cleric_thief 	= 1
+	c_ranger_cleric	= 0
+	c_f_m_c			= 0
+  STR_VAR
+    clab_name 		= EVAL ~k9hive~
+	race 			= ~all~
+	s_Life 			= ~major~
+	s_Death 		= ~x~
+	s_Benediction 	= ~x~
+	s_Destruction 	= ~x~
+	s_Protection 	= ~x~
+	s_War 			= ~x~
+	s_Knowledge 	= ~minor~
+	s_Deception 	= ~x~
+	s_Thought 		= ~minor~
+	s_Dread 		= ~minor~
+	s_Vigor 		= ~major~
+	s_Affliction 	= ~major~
+	s_Animal 		= ~major~
+	s_Plant 		= ~major~
+	s_Earth 		= ~minor~
+	s_Water 		= ~minor~
+	s_Air 			= ~major~
+	s_Fire 			= ~x~
+	s_Light 		= ~x~
+	s_Shadow 		= ~minor~
+	s_Magic 		= ~x~
+END
+//__________________________________________________________________________________
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~k9ilma.2da~ BEGIN
+//DEFINE SPHERE ACCESS______________________________________________________________
+//
+LAF ~DEFINE_FNP_KIT_INFO~
+  INT_VAR
+	c_cleric 		= 0
+	c_acolyte 		= 0
+	c_fighter_cleric = 0
+	c_cleric_mage	= 0
+	c_cleric_thief 	= 0
+	c_ranger_cleric	= 0
+	c_f_m_c			= 0
+  STR_VAR
+    clab_name 		= EVAL ~k9ilma~
+	race 			= ~all~
+	s_Life 			= ~paladin~
+	s_Death 		= ~x~
+	s_Benediction 	= ~paladin~
+	s_Destruction 	= ~paladin~
+	s_Protection 	= ~paladin~
+	s_War 			= ~x~
+	s_Knowledge 	= ~paladin~
+	s_Deception 	= ~x~
+	s_Thought 		= ~x~
+	s_Dread 		= ~x~
+	s_Vigor 		= ~paladin~
+	s_Affliction 	= ~x~
+	s_Animal 		= ~x~
+	s_Plant 		= ~x~
+	s_Earth 		= ~x~
+	s_Water 		= ~x~
+	s_Air 			= ~x~
+	s_Fire 			= ~x~
+	s_Light 		= ~x~
+	s_Shadow 		= ~x~
+	s_Magic 		= ~x~
+END
+//__________________________________________________________________________________
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~k9miel.2da~ BEGIN
+//DEFINE SPHERE ACCESS______________________________________________________________
+//
+LAF ~DEFINE_FNP_KIT_INFO~
+  INT_VAR
+	c_cleric 		= 0
+	c_acolyte 		= 0
+	c_fighter_cleric = 0
+	c_cleric_mage	= 0
+	c_cleric_thief 	= 0
+	c_ranger_cleric	= 0
+	c_f_m_c			= 0
+  STR_VAR
+    clab_name 		= EVAL ~k9miel~
+	race 			= ~all~
+	s_Life 			= ~paladin~
+	s_Death 		= ~x~
+	s_Benediction 	= ~paladin~
+	s_Destruction 	= ~x~
+	s_Protection 	= ~paladin~
+	s_War 			= ~x~
+	s_Knowledge 	= ~paladin~
+	s_Deception 	= ~x~
+	s_Thought 		= ~x~
+	s_Dread 		= ~x~
+	s_Vigor 		= ~x~
+	s_Affliction 	= ~x~
+	s_Animal 		= ~paladin~
+	s_Plant 		= ~paladin~
+	s_Earth 		= ~x~
+	s_Water 		= ~x~
+	s_Air 			= ~x~
+	s_Fire 			= ~x~
+	s_Light 		= ~x~
+	s_Shadow 		= ~x~
+	s_Magic 		= ~x~
+END
+//__________________________________________________________________________________
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~k9myst.2da~ BEGIN
+//DEFINE SPHERE ACCESS______________________________________________________________
+//
+LAF ~DEFINE_FNP_KIT_INFO~
+  INT_VAR
+	c_cleric 		= 0
+	c_acolyte 		= 0
+	c_fighter_cleric = 0
+	c_cleric_mage	= 0
+	c_cleric_thief 	= 0
+	c_ranger_cleric	= 0
+	c_f_m_c			= 0
+  STR_VAR
+    clab_name 		= EVAL ~k9myst~
+	race 			= ~all~
+	s_Life 			= ~paladin~
+	s_Death 		= ~x~
+	s_Benediction 	= ~paladin~
+	s_Destruction 	= ~paladin~
+	s_Protection 	= ~paladin~
+	s_War 			= ~paladin~
+	s_Knowledge 	= ~paladin~
+	s_Deception 	= ~x~
+	s_Thought 		= ~x~
+	s_Dread 		= ~x~
+	s_Vigor 		= ~x~
+	s_Affliction 	= ~x~
+	s_Animal 		= ~x~
+	s_Plant 		= ~x~
+	s_Earth 		= ~x~
+	s_Water 		= ~x~
+	s_Air 			= ~x~
+	s_Fire 			= ~x~
+	s_Light 		= ~x~
+	s_Shadow 		= ~x~
+	s_Magic 		= ~paladin~
+END
+//__________________________________________________________________________________
+END
+

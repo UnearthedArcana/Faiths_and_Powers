@@ -1,0 +1,520 @@
+IF
+  HotKey(K)
+  Global("scriptoff","locals",0)
+THEN
+  RESPONSE #100
+    SetGlobal("scriptoff","locals",1)
+    DisplayStringHead(Myself,@60001)
+END
+
+IF
+  HotKey(K)
+  Global("scriptoff","locals",1)
+THEN
+  RESPONSE #100
+    SetGlobal("scriptoff","locals",0)
+    DisplayStringHead(Myself,@60002)
+END
+
+IF
+  Global("scriptoff","locals",1)
+THEN
+  RESPONSE #100
+END
+
+IF
+  Global("Init","locals",0)
+THEN
+  RESPONSE #100
+    SetGlobal("init","locals",1)
+    SetGlobalTimer("action_interruptible","locals",1)
+    Continue()
+END
+
+IF
+  OR(2)
+    ActionListEmpty()
+    GlobalTimerNotExpired("action_interruptible","locals")
+  !GlobalTimerNotExpired("cast","locals")
+  HaveSpell(CLERIC_HEAL)
+  HPPercentLT(Myself,25)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("cast","locals",ONE_ROUND)
+    Spell(Myself,CLERIC_HEAL)
+END
+
+IF
+  OR(2)
+    ActionListEmpty()
+    GlobalTimerNotExpired("action_interruptible","locals")
+  !GlobalTimerNotExpired("cast","locals")
+  See([ANYONE])
+  HPPercentLT(LastSeenBy,25)
+  OR(2)
+    Allegiance(Myself,GOODCUTOFF)
+    Allegiance(LastSeenBy,EVILCUTOFF)
+  OR(2)
+    Allegiance(Myself,EVILCUTOFF)
+    Allegiance(LastSeenBy,GOODCUTOFF)
+  HaveSpell(CLERIC_HEAL)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("cast","locals",ONE_ROUND)
+    Spell(LastSeenBy,CLERIC_HEAL)
+END
+
+IF
+  OR(2)
+    ActionListEmpty()
+    GlobalTimerNotExpired("action_interruptible","locals")
+  !GlobalTimerNotExpired("cast","locals")
+  !GlobalTimerNotExpired("buff","locals")
+  HaveSpell(CLERIC_IRONSKIN)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("cast","locals",ONE_ROUND)
+    SetGlobalTimer("buff","locals",THREE_ROUNDS)
+    Spell(Myself,CLERIC_IRONSKIN)
+END
+
+IF
+  OR(2)
+    ActionListEmpty()
+    GlobalTimerNotExpired("action_interruptible","locals")
+//  OR(2)
+//    See(NearestEnemyOf(Myself))
+    Global("summon","locals",0)
+  !GlobalTimerNotExpired("cast","locals")
+  HaveSpellRES("tg#spia")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("cast","locals",ONE_ROUND)
+    SetGlobal("summon","locals",1)
+    SpellRES("tg#spia",LastSeenBy(Myself))  // ~Summon Spirit Animal~
+END
+
+IF
+  OR(2)
+    ActionListEmpty()
+    GlobalTimerNotExpired("action_interruptible","locals")
+  !GlobalTimerNotExpired("cast","locals")
+  HaveSpell(CLERIC_NEUTRALIZE_POISON)
+  StateCheck(Myself,STATE_POISONED)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("cast","locals",ONE_ROUND)
+    Spell(Myself,CLERIC_NEUTRALIZE_POISON)
+END
+
+IF
+  OR(2)
+    ActionListEmpty()
+    GlobalTimerNotExpired("action_interruptible","locals")
+  !GlobalTimerNotExpired("cast","locals")
+  Detect(LastSeenBy)
+  OR(2)
+    StateCheck(LastSeenBy,STATE_INVISIBLE)
+    StateCheck(LastSeenBy,STATE_IMPROVEDINVISIBILITY)
+  HaveSpell(CLERIC_TRUE_SIGHT)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("cast","locals",ONE_ROUND)
+    Spell(Myself,CLERIC_TRUE_SIGHT)
+END
+
+IF
+  OR(2)
+    ActionListEmpty()
+    GlobalTimerNotExpired("action_interruptible","locals")
+  !GlobalTimerNotExpired("cast","locals")
+  Detect(NearestEnemyOfType([0.0.0.0.0.ILLUSIONARY]))
+  HaveSpell(CLERIC_TRUE_SIGHT)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("cast","locals",ONE_ROUND)
+    Spell(Myself,CLERIC_TRUE_SIGHT)
+END
+
+IF
+  OR(2)
+    ActionListEmpty()
+    GlobalTimerNotExpired("action_interruptible","locals")
+  !GlobalTimerNotExpired("cast","locals")
+  HaveSpell(CLERIC_ZONE_OF_SWEET_AIR)
+  OR(6)
+    SpellCast([GOODCUTOFF],WIZARD_CLOUDKILL)
+    SpellCast([GOODCUTOFF],WIZARD_STINKING_CLOUD)
+    SpellCast([GOODCUTOFF],WIZARD_INCENDIARY_CLOUD)
+    SpellCast([GOODCUTOFF],CLERIC_STORM_OF_VENGEANCE)
+    SpellCast([GOODCUTOFF],WIZARD_DEATH_FOG)
+    Allegiance(Myself,EVILCUTOFF)
+  OR(6)
+    SpellCast([EVILCUTOFF],WIZARD_CLOUDKILL)
+    SpellCast([EVILCUTOFF],WIZARD_STINKING_CLOUD)
+    SpellCast([EVILCUTOFF],WIZARD_INCENDIARY_CLOUD)
+    SpellCast([EVILCUTOFF],CLERIC_STORM_OF_VENGEANCE)
+    SpellCast([EVILCUTOFF],WIZARD_DEATH_FOG)
+    Allegiance(Myself,GOODCUTOFF)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("cast","locals",ONE_ROUND)
+    Spell(Myself,CLERIC_ZONE_OF_SWEET_AIR)
+END
+
+IF
+  OR(2)
+    ActionListEmpty()
+    GlobalTimerNotExpired("action_interruptible","locals")
+  !GlobalTimerNotExpired("cast","locals")
+  See([ANYONE])
+  StateCheck(LastSeenBy,STATE_POISONED)
+  OR(2)
+    Allegiance(Myself,GOODCUTOFF)
+    Allegiance(LastSeenBy,EVILCUTOFF)
+  OR(2)
+    Allegiance(Myself,EVILCUTOFF)
+    Allegiance(LastSeenBy,GOODCUTOFF)
+  HaveSpell(CLERIC_NEUTRALIZE_POISON)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("cast","locals",ONE_ROUND)
+    Spell(LastSeenBy,CLERIC_NEUTRALIZE_POISON)
+END
+
+IF
+  OR(2)
+    ActionListEmpty()
+    GlobalTimerNotExpired("action_interruptible","locals")
+  !GlobalTimerNotExpired("buff","locals")
+  !GlobalTimerNotExpired("cast","locals")
+  HaveSpell(CLERIC_BARKSKIN)
+  Global("bark","locals",0)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("cast","locals",ONE_ROUND)
+    SetGlobalTimer("buff","locals",THREE_ROUNDS)
+    SetGlobal("bark","locals",1)
+    Spell(Myself,CLERIC_BARKSKIN)
+END
+
+IF
+  OR(2)
+    ActionListEmpty()
+    GlobalTimerNotExpired("action_interruptible","locals")
+  !GlobalTimerNotExpired("buff","locals")
+  !GlobalTimerNotExpired("cast","locals")
+  HaveSpell(CLERIC_BARKSKIN)
+  Global("barkskin","locals",1)
+  See(WorstAC)
+  Allegiance(LastSeenBy,GOODCUTOFF)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("cast","locals",ONE_ROUND)
+    SetGlobalTimer("buff","locals",THREE_ROUNDS)
+    SetGlobal("barkskin","locals",2)
+    Spell(LastSeenBy,CLERIC_BARKSKIN)
+END
+
+IF
+  OR(2)
+    ActionListEmpty()
+    GlobalTimerNotExpired("action_interruptible","locals")
+  !GlobalTimerNotExpired("buff","locals")
+  !GlobalTimerNotExpired("cast","locals")
+  HaveSpell(CLERIC_PROTECTION_FROM_FIRE)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("cast","locals",ONE_ROUND)
+    SetGlobalTimer("buff","locals",THREE_ROUNDS)
+    Spell(Myself,CLERIC_PROTECTION_FROM_FIRE)
+END
+
+IF
+  OR(2)
+    ActionListEmpty()
+    GlobalTimerNotExpired("action_interruptible","locals")
+  !GlobalTimerNotExpired("buff","locals")
+  !GlobalTimerNotExpired("cast","locals")
+  HaveSpell(CLERIC_PROTECTION_FROM_LIGHTNING)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("cast","locals",ONE_ROUND)
+    SetGlobalTimer("buff","locals",THREE_ROUNDS)
+    Spell(Myself,CLERIC_PROTECTION_FROM_LIGHTNING)
+END
+
+IF
+  See(NearestEnemyOf(Myself))
+  OR(2)
+    !Exists(LastAttackerOf(Myself))
+    !See(LastAttackerOf(Myself))
+  OR(4)
+    !Exists(NearestEnemyOf(Myself))
+    !Class(NearestEnemyOf(Myself),LONG_BOW)
+    !Class(NearestEnemyOf(Myself),SORCERER)
+    !See(NearestEnemyOf(Myself))
+  OR(4)
+    !Exists(SecondNearestEnemyOf(Myself))
+    !Class(SecondNearestEnemyOf(Myself),LONG_BOW)
+    !Class(SecondNearestEnemyOf(Myself),SORCERER)
+    !See(SecondNearestEnemyOf(Myself))
+  OR(4)
+    !Exists(NearestEnemyOf(Myself))
+    !Class(NearestEnemyOf(Myself),CLERIC_ALL)
+    !Class(NearestEnemyOf(Myself),DRUID_ALL)
+    !See(NearestEnemyOf(Myself))
+  OR(4)
+    !Exists(SecondNearestEnemyOf(Myself))
+    !Class(SecondNearestEnemyOf(Myself),CLERIC_ALL)
+    !Class(SecondNearestEnemyOf(Myself),DRUID_ALL)
+    !See(SecondNearestEnemyOf(Myself))
+  See(NearestEnemyOf(Myself))
+  False()
+THEN
+  RESPONSE #100
+END
+
+IF
+//  OR(2)
+    ActionListEmpty()
+//    GlobalTimerNotExpired("action_interruptible","locals")
+  OR(2)
+    Allegiance(Myself,GOODCUTOFF)
+    Allegiance(LastSeenBy(Myself),EVILCUTOFF)
+  OR(2)
+    Allegiance(Myself,EVILCUTOFF)
+    Allegiance(LastSeenBy(Myself),GOODCUTOFF)
+THEN
+  RESPONSE #100
+//    NoAction()
+END
+
+IF
+  ActionListEmpty()
+  GlobalTimerExpired("action_interruptible","locals")
+  GlobalTimerNotExpired("cast","locals")
+  CheckStatLT(LastSeenBy(Myself),2,WIZARD_PROTECTION_FROM_MAGIC_WEAPONS)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("action_interruptible","locals",1)
+    AttackOneRound(LastSeenBy(Myself))
+END
+
+IF
+  OR(2)
+    ActionListEmpty()
+    GlobalTimerNotExpired("action_interruptible","locals")
+  !GlobalTimerNotExpired("cast","locals")
+  HaveSpell(CLERIC_INSECT_PLAGUE)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("cast","locals",ONE_ROUND)
+    Spell(LastSeenBy,CLERIC_INSECT_PLAGUE)
+END
+
+IF
+OR(2)
+    ActionListEmpty()
+    GlobalTimerNotExpired("action_interruptible","locals")
+  !GlobalTimerNotExpired("cast","locals")
+  AreaType(OUTDOOR)
+  !GlobalTimerNotExpired("callli","locals")
+  HaveSpell(CLERIC_CALL_LIGHTNING)
+  CheckStatLT(LastSeenBy,75,RESISTMAGIC)
+  CheckStatLT(LastSeenBy,75,RESISTELECTRICITY)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("cast","locals",ONE_ROUND)
+    SetGlobalTimer("calli","locals",TWO_ROUNDS)
+    Spell(LastSeenBy,CLERIC_CALL_LIGHTNING)
+END
+
+IF
+OR(2)
+    ActionListEmpty()
+    GlobalTimerNotExpired("action_interruptible","locals")
+  !GlobalTimerNotExpired("cast","locals")
+  HaveSpell(CLERIC_FIRE_STORM)
+  CheckStatLT(LastSeenBy,75,RESISTMAGIC)
+  CheckStatLT(LastSeenBy,75,RESISTFIRE)
+  OR(2)
+    !Range(Nearest([GOODCUTOFF]),5)
+    Allegiance(Myself,EVILCUTOFF)
+  Range(LastSeenBy,10)
+THEN
+  RESPONSE #100
+    DisplayStringHead(Myself,14261)  // ~Fire Storm~
+    SetGlobalTimer("cast","locals",ONE_ROUND)
+    Spell(Myself,CLERIC_FIRE_STORM)
+END
+
+IF
+OR(2)
+    ActionListEmpty()
+    GlobalTimerNotExpired("action_interruptible","locals")
+  !GlobalTimerNotExpired("cast","locals")
+  !GlobalTimerNotExpired("doom","locals")
+  HaveSpell(CLERIC_DOOM)
+  OR(2)
+    CheckStatLT(LastSeenBy,10,SAVEVSSPELL)
+    CheckStatLT(LastSeenBy,10,SAVEVSDEATH)
+  CheckStatLT(LastSeenBy,75,RESISTMAGIC)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("cast","locals",ONE_ROUND)
+    SetGlobalTimer("doom","locals",ONE_TURN)
+    Spell(LastSeenBy,CLERIC_DOOM)
+END
+
+IF
+OR(2)
+    ActionListEmpty()
+    GlobalTimerNotExpired("action_interruptible","locals")
+  !GlobalTimerNotExpired("cast","locals")
+  HaveSpell(CLERIC_EARTHQUAKE)
+  CheckStatLT(LastSeenBy,75,RESISTMAGIC)
+  OR(2)
+    !Range(Nearest([GOODCUTOFF]),5)
+    Allegiance(Myself,EVILCUTOFF)
+  Range(LastSeenBy,10)
+THEN
+  RESPONSE #100
+    DisplayStringHead(Myself,45054)  // ~Earthquake~
+    SetGlobalTimer("cast","locals",ONE_ROUND)
+    Spell(Myself,CLERIC_EARTHQUAKE)
+END
+
+IF
+OR(2)
+    ActionListEmpty()
+    GlobalTimerNotExpired("action_interruptible","locals")
+  !GlobalTimerNotExpired("cast","locals")
+  HaveSpell(CLERIC_DOLOROUS_DECAY)
+  CheckStatGT(LastSeenBy,3,SAVEVSDEATH)
+  CheckStatLT(LastSeenBy,75,RESISTMAGIC)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("cast","locals",ONE_ROUND)
+    Spell(LastSeenBy,CLERIC_DOLOROUS_DECAY)
+END
+
+IF
+OR(2)
+    ActionListEmpty()
+    GlobalTimerNotExpired("action_interruptible","locals")
+  !GlobalTimerNotExpired("cast","locals")
+  HaveSpell(CLERIC_POISON)
+  CheckStatGT(LastSeenBy,5,SAVEVSDEATH)
+  CheckStatLT(LastSeenBy,75,RESISTMAGIC)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("cast","locals",ONE_ROUND)
+    Spell(LastSeenBy,CLERIC_POISON)
+END
+
+IF
+OR(2)
+    ActionListEmpty()
+    GlobalTimerNotExpired("action_interruptible","locals")
+  !GlobalTimerNotExpired("cast","locals")
+  HaveSpell(CLERIC_CAUSE_CRITICAL_WOUNDS)
+  Range(LastSeenBy,5)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("cast","locals",ONE_ROUND)
+    Spell(Myself,CLERIC_CAUSE_CRITICAL_WOUNDS)
+    AttackOneRound(LastSeenBy)
+END
+
+IF
+OR(2)
+    ActionListEmpty()
+    GlobalTimerNotExpired("action_interruptible","locals")
+  !GlobalTimerNotExpired("cast","locals")
+  HaveSpell(CLERIC_CLOAK_OF_FEAR)
+  CheckStatGT(LastSeenBy,5,SAVEVSSPELL)
+  CheckStatLT(LastSeenBy,75,RESISTMAGIC)
+  Range(LastSeenBy,7)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("cast","locals",ONE_ROUND)
+    Spell(LastSeenBy,CLERIC_CLOAK_OF_FEAR)
+END
+
+IF
+OR(2)
+    ActionListEmpty()
+    GlobalTimerNotExpired("action_interruptible","locals")
+  !GlobalTimerNotExpired("cast","locals")
+  HaveSpell(CLERIC_CAUSE_SERIOUS_WOUNDS)
+  Range(LastSeenBy,5)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("cast","locals",ONE_ROUND)
+    Spell(Myself,CLERIC_CAUSE_SERIOUS_WOUNDS)
+    AttackOneRound(LastSeenBy)
+END
+
+IF
+OR(2)
+    ActionListEmpty()
+    GlobalTimerNotExpired("action_interruptible","locals")
+  !GlobalTimerNotExpired("cast","locals")
+  HaveSpell(CLERIC_HOLD_PERSON)
+  General(LastSeenBy,HUMANOID)
+  CheckStatGT(LastSeenBy,5,SAVEVSSPELL)
+  CheckStatLT(LastSeenBy,75,RESISTMAGIC)
+  Range(LastSeenBy,7)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("cast","locals",ONE_ROUND)
+    Spell(LastSeenBy,CLERIC_HOLD_PERSON)
+END
+
+IF
+OR(2)
+    ActionListEmpty()
+    GlobalTimerNotExpired("action_interruptible","locals")
+  !GlobalTimerNotExpired("cast","locals")
+  HaveSpell(CLERIC_CHARM_PERSON)
+  OR(2)
+    General(LastSeenBy,HUMANOID)
+    General(LastSeenBy,ANIMAL)
+  CheckStatGT(LastSeenBy,5,SAVEVSSPELL)
+  CheckStatLT(LastSeenBy,75,RESISTMAGIC)
+  Range(LastSeenBy,7)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("cast","locals",ONE_ROUND)
+    Spell(LastSeenBy,CLERIC_CHARM_PERSON)
+END
+
+IF
+OR(2)
+    ActionListEmpty()
+    GlobalTimerNotExpired("action_interruptible","locals")
+  !GlobalTimerNotExpired("cast","locals")
+  HaveSpell(CLERIC_HOLD_ANIMAL)
+  General(LastSeenBy,ANIMAL)
+  CheckStatGT(LastSeenBy,5,SAVEVSSPELL)
+  CheckStatLT(LastSeenBy,75,RESISTMAGIC)
+  Range(LastSeenBy,7)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("cast","locals",ONE_ROUND)
+    Spell(LastSeenBy,CLERIC_HOLD_ANIMAL)
+END
+
+IF
+  ActionListEmpty()
+  GlobalTimerExpired("action_interruptible","locals")
+  GlobalTimerExpired("cast","locals")
+  CheckStatLT(LastSeenBy(Myself),2,WIZARD_PROTECTION_FROM_MAGIC_WEAPONS)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("action_interruptible","locals",1)
+    AttackOneRound(LastSeenBy(Myself))
+END
+
+

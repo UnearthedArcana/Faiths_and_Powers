@@ -1,0 +1,131 @@
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+//					SPHERE ASSIGNMENTS FOR OTHER KITS
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+
+//prep vanilla kits for spheres & HLAs______________________________________________
+//
+COPY_EXISTING ~kitlist.2da~ ~override~
+	COUNT_2DA_ROWS ~9~ "rows"
+	FOR ( index = 31 ; index < rows ; index = index + 1 ) BEGIN
+		READ_2DA_ENTRY %index% 5 9 clab
+		READ_2DA_ENTRY %index% 1 9 name
+		READ_2DA_ENTRY %index% 8 9 class
+		DEFINE_ASSOCIATIVE_ARRAY d5_sphere_kits BEGIN "%clab%" , "%name%" => "%class%" END
+	END
+BUT_ONLY
+ACTION_PHP_EACH d5_sphere_kits AS green => eggs BEGIN
+ ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~override/d5_race.2da~ ~%green%~)) BEGIN
+  ACTION_IF (%eggs% = 3) BEGIN //..................................................clerics
+   LAF ~DEFINE_FNP_KIT_INFO~
+    STR_VAR
+    clab_name 		= EVAL ~%green%~
+	s_Life 			= ~major~
+	s_Death 		= ~minor~
+	s_Benediction 	= ~major~
+	s_Destruction 	= ~major~
+	s_Protection 	= ~major~
+	s_War 			= ~minor~
+	s_Knowledge 	= ~major~
+	s_Deception 	= ~x~
+	s_Thought 		= ~minor~
+	s_Dread 		= ~major~
+	s_Vigor 		= ~minor~
+	s_Affliction 	= ~x~
+	s_Animal 		= ~x~
+	s_Plant 		= ~x~
+	s_Earth 		= ~x~
+	s_Water 		= ~x~
+	s_Air 			= ~x~
+	s_Fire 			= ~minor~
+	s_Light 		= ~major~
+	s_Shadow 		= ~x~
+	s_Magic 		= ~minor~
+   END
+  END
+  ACTION_IF (%eggs% = 11) BEGIN //..................................................druids
+   LAF ~DEFINE_FNP_KIT_INFO~
+    STR_VAR
+    clab_name 		= EVAL ~%green%~
+	s_Life 			= ~major~
+	s_Death 		= ~minor~
+	s_Benediction 	= ~x~
+	s_Destruction 	= ~x~
+	s_Protection 	= ~x~
+	s_War 			= ~x~
+	s_Knowledge 	= ~x~
+	s_Deception 	= ~x~
+	s_Thought 		= ~minor~
+	s_Dread 		= ~minor~
+	s_Vigor 		= ~major~
+	s_Affliction 	= ~major~
+	s_Animal 		= ~focus~
+	s_Plant 		= ~major~
+	s_Earth 		= ~minor~
+	s_Water 		= ~minor~
+	s_Air 			= ~minor~
+	s_Fire 			= ~x~
+	s_Light 		= ~x~
+	s_Shadow 		= ~minor~
+	s_Magic 		= ~x~
+   END
+  END
+  ACTION_IF (%eggs% = 6) BEGIN //.................................................paladins
+   LAF ~DEFINE_FNP_KIT_INFO~
+    STR_VAR
+    clab_name 		= EVAL ~%green%~
+	s_Life 			= ~paladin~
+	s_Death 		= ~x~
+	s_Benediction 	= ~paladin~
+	s_Destruction 	= ~paladin~
+	s_Protection 	= ~paladin~
+	s_War 			= ~paladin~
+	s_Knowledge 	= ~paladin~
+	s_Deception 	= ~x~
+	s_Thought 		= ~x~
+	s_Dread 		= ~x~
+	s_Vigor 		= ~x~
+	s_Affliction 	= ~x~
+	s_Animal 		= ~x~
+	s_Plant 		= ~x~
+	s_Earth 		= ~x~
+	s_Water 		= ~x~
+	s_Air 			= ~x~
+	s_Fire 			= ~x~
+	s_Light 		= ~paladin~
+	s_Shadow 		= ~x~
+	s_Magic 		= ~x~
+   END
+  END
+  ACTION_IF (%eggs% = 12) BEGIN //.................................................rangers
+   LAF ~DEFINE_FNP_KIT_INFO~
+    STR_VAR
+    clab_name 		= EVAL ~%green%~
+	s_Life 			= ~ranger~
+	s_Death 		= ~x~
+	s_Benediction 	= ~x~
+	s_Destruction 	= ~x~
+	s_Protection 	= ~x~
+	s_War 			= ~x~
+	s_Knowledge 	= ~x~
+	s_Deception 	= ~x~
+	s_Thought 		= ~x~
+	s_Dread 		= ~x~
+	s_Vigor 		= ~ranger~
+	s_Affliction 	= ~x~
+	s_Animal 		= ~ranger~
+	s_Plant 		= ~ranger~
+	s_Earth 		= ~x~
+	s_Water 		= ~x~
+	s_Air 			= ~ranger~
+	s_Fire 			= ~x~
+	s_Light 		= ~ranger~
+	s_Shadow 		= ~x~
+	s_Magic 		= ~x~
+   END
+  END
+ END
+END
