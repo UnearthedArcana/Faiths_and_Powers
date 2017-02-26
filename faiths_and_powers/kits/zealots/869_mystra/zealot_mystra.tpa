@@ -93,7 +93,7 @@ COPY ~faiths_and_powers/kits/zealots/869_mystra/b_ze09.2da~ ~override~
 //modified frenzy
 
 
-ACTION_IF GAME_IS ~bgee sod~ THEN BEGIN   //copy revised rage to be altered
+ACTION_IF GAME_IS ~bgee~ THEN BEGIN   //copy revised rage to be altered
   COPY ~faiths_and_powers/kits/zealots/862_Gruumsh/bgee/b_frz02.spl~ ~override/b_frz09.spl~  //going to convert Gruumsh's frenzy
     LPF ALTER_EFFECT INT_VAR match_opcode = 321 multi_match = 1 STR_VAR match_resource = ~B_FRZ02~ resource = ~b_frz09~ END //remove previous frenzy
     LPF ALTER_EFFECT INT_VAR match_opcode = 44 parameter1 = 0 parameter2 = 0 END //get rid of all str bon

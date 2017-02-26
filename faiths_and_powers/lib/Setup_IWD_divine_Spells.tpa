@@ -163,7 +163,7 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
       INT_VAR match_opcode = 324            //
       STR_VAR resource = EVAL ~%spell_res%~
   END      //
-ACTION_IF GAME_IS ~bgee~ THEN BEGIN   //  ACTION_IF GAME_IS ~bgee sod~ THEN BEGIN
+ACTION_IF GAME_IS ~bgee~ THEN BEGIN   //  ACTION_IF GAME_IS ~bgee~ THEN BEGIN
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   LPF ALTER_EFFECT
       INT_VAR match_opcode = 139            //
@@ -422,7 +422,7 @@ LAF RES_NUM_OF_SPELL_NAME
   STR_VAR spell_name = ~WIZARD_EMOTION_FEAR~
   RET spell_res
 END
-ACTION_IF GAME_IS ~bgee sod~ BEGIN
+ACTION_IF GAME_IS ~bgee~ BEGIN
  COPY_EXISTING ~%spell_res%.spl~ ~override~
   LPF ALTER_EFFECT
       INT_VAR match_opcode = 139  parameter1 = 25818 END// string
@@ -1408,7 +1408,7 @@ LAF RES_NUM_OF_SPELL_NAME
   STR_VAR spell_name = ~CLERIC_CAUSE_DISEASE~
   RET spell_res
 END
-ACTION_IF GAME_IS ~bgee~ THEN BEGIN   //  ACTION_IF GAME_IS ~bgee sod~ THEN BEGIN
+ACTION_IF GAME_IS ~bgee~ THEN BEGIN   //  ACTION_IF GAME_IS ~bgee~ THEN BEGIN
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   LPF CLONE_EFFECT INT_VAR match_opcode = 142 opcode = 139 parameter1 = 31238 parameter2 = 0 END
 END
@@ -1453,7 +1453,7 @@ COPY ~faiths_and_powers/spheres/iwd_spells/priest_3/#FF_P106.WAV~ ~override~   /
 //Spell itself
 //Need to remove blood rage (prob animal rage, too?)
 //Copied over for protections
-ACTION_IF GAME_IS ~bgee~ THEN BEGIN   // ACTION_IF GAME_IS ~bgee sod~ THEN BEGIN 
+ACTION_IF GAME_IS ~bgee~ THEN BEGIN   // ACTION_IF GAME_IS ~bgee~ THEN BEGIN 
   COPY ~faiths_and_powers/spheres/iwd_spells/priest_3/bgee/b_p321.spl~ ~override~   //
 END
 ACTION_IF GAME_IS ~bg2ee eet~ THEN BEGIN   //
@@ -2216,7 +2216,7 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
 //effs
 //secondary spell
 //Spell itself
-ACTION_IF GAME_IS ~bgee~ THEN BEGIN   //ACTION_IF GAME_IS ~bgee sod~ THEN BEGIN 
+ACTION_IF GAME_IS ~bgee~ THEN BEGIN   //ACTION_IF GAME_IS ~bgee~ THEN BEGIN 
 COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/bgee/b_p422.spl~ ~override~   //
 END
 //
@@ -2250,7 +2250,7 @@ COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/ARE_P25.WAV~ ~override~   //
 //effs
 //secondary spell
 //Spell itself
-ACTION_IF GAME_IS ~bgee~ THEN BEGIN   //  ACTION_IF GAME_IS ~bgee sod~ THEN BEGIN 
+ACTION_IF GAME_IS ~bgee~ THEN BEGIN   //  ACTION_IF GAME_IS ~bgee~ THEN BEGIN 
 ADD_SPELL ~faiths_and_powers/spheres/iwd_spells/priest_4/bgee/b_p423.spl~ 1 4 ~CLERIC_CLOUD_OF_PESTILENCE~ // Spell
         SAY NAME1 @42300000
         SAY NAME2 @42300000
@@ -2423,7 +2423,7 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
   END      //
 END      //
 
-ACTION_IF GAME_IS ~bgee~ THEN BEGIN   //   ACTION_IF GAME_IS ~bgee sod~ THEN BEGIN 
+ACTION_IF GAME_IS ~bgee~ THEN BEGIN   //   ACTION_IF GAME_IS ~bgee~ THEN BEGIN 
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   LPF ALTER_EFFECT
       INT_VAR match_opcode = 149            //
@@ -2595,7 +2595,7 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
       STR_VAR resource = EVAL ~%spell_res%A~
   END      //
 //secondary spells
-ACTION_IF GAME_IS ~bgee~ THEN BEGIN   // ACTION_IF GAME_IS ~bgee sod~ THEN BEGIN 
+ACTION_IF GAME_IS ~bgee~ THEN BEGIN   // ACTION_IF GAME_IS ~bgee~ THEN BEGIN 
 COPY ~faiths_and_powers/spheres/iwd_spells/priest_5/bgee/SPPR518A.spl~ ~override/%spell_res%A.spl~   //
 END
 ACTION_IF GAME_IS ~bg2ee eet~ THEN BEGIN   //
@@ -3038,7 +3038,7 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
       parameter1 = 1280
   END      //
 END
-ACTION_IF GAME_IS ~bgee~ THEN BEGIN   //change stun notification ACTION_IF GAME_IS ~bgee sod~ THEN BEGIN
+ACTION_IF GAME_IS ~bgee~ THEN BEGIN   //change stun notification ACTION_IF GAME_IS ~bgee~ THEN BEGIN
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   LPF ALTER_EFFECT
       INT_VAR match_opcode = 139           //

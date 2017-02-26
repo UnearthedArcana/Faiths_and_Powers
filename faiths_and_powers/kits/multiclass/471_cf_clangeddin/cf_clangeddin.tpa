@@ -75,7 +75,7 @@ SAY @47103
 //____________________________________________________________________________________
 
 //EE KIT EXTRAS_____________________________________________________________________
-ACTION_IF GAME_IS ~bgee bg2ee iwdee~ THEN BEGIN
+ACTION_IF GAME_IS ~bgee bg2ee eet iwdee~ THEN BEGIN
 	LAF fl#add_kit_ee
 		INT_VAR
 			briefdesc = RESOLVE_STR_REF (@47103)
@@ -88,6 +88,7 @@ END
 
 //ALAGHOR ABILITY FILES_______________________________________________________________
 //
+COPY ~faiths_and_powers/kits/multiclass/471_cf_clangeddin/d5cfcla.2da~ ~override~
 COPY ~faiths_and_powers/kits/multiclass/471_cf_clangeddin/d5alag1.spl~ ~override~
 	SAY NAME1 @47113
 	SAY UNIDENTIFIED_DESC @47114

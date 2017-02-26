@@ -107,7 +107,7 @@ COPY_EXISTING ~SPWI418.spl~ ~override/b_kos02.spl~
 BUT_ONLY
 
 
-ACTION_IF GAME_IS ~bgee sod~ THEN BEGIN   //copy revised rage to be altered
+ACTION_IF GAME_IS ~bgee~ THEN BEGIN   //copy revised rage to be altered
   COPY ~faiths_and_powers/kits/zealots/864_kossuth/bgee/b_frz04.spl~ ~override~
         SAY NAME1 @86404
         SAY NAME2 @86404

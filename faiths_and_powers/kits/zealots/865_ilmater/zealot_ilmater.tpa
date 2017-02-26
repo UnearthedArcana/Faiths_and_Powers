@@ -93,7 +93,7 @@ COPY ~faiths_and_powers/kits/zealots/865_ilmater/b_ze05.2da~ ~override~
 //modified frenzy
 
 
-ACTION_IF GAME_IS ~bgee sod~ THEN BEGIN   //copy revised rage to be altered
+ACTION_IF GAME_IS ~bgee~ THEN BEGIN   //copy revised rage to be altered
   COPY ~faiths_and_powers/kits/zealots/865_ilmater/bgee/b_frz05.spl~ ~override~
         SAY NAME1 @86504
         SAY NAME2 @86504

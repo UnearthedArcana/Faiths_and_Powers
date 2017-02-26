@@ -1,7 +1,7 @@
 BACKUP ~faiths_and_powers/backup~
 AUTHOR ~SubtleD and Grammarsalad~
 
-VERSION ~0.60~
+VERSION ~0.61~
 //README ~faiths_and_powers/readme-pnp.html~
 
 
@@ -329,7 +329,8 @@ INCLUDE ~faiths_and_powers/lib/item_usability.tpa~
 //Add IWD spells if not already in game
 ACTION_IF GAME_IS ~bgee bg2ee eet~ BEGIN
   ACTION_IF NOT FILE_EXISTS_IN_GAME ~b_IWD.itm~ BEGIN    //If IWD spells not installed...
-  INCLUDE ~faiths_and_powers/lib/Setup_IWD_divine_Spells.tpa~      //install them
+   COPY ~faiths_and_powers/compatibility/b_IWD.itm~ ~override~   //to detect this component
+   INCLUDE ~faiths_and_powers/lib/Setup_IWD_divine_Spells.tpa~      //install them
   END
 END
 
@@ -671,7 +672,8 @@ INCLUDE ~faiths_and_powers/lib/item_usability.tpa~
 
 //Add IWD spells if not already in game
 ACTION_IF GAME_IS ~bgee bg2ee eet~ BEGIN
-  ACTION_IF NOT FILE_EXISTS_IN_GAME ~b_IWD.itm~ BEGIN    //If IWD spells not installed...
+ ACTION_IF NOT FILE_EXISTS_IN_GAME ~b_IWD.itm~ BEGIN    //If IWD spells not installed...
+  COPY ~faiths_and_powers/compatibility/b_IWD.itm~ ~override~   //to detect this component 
   INCLUDE ~faiths_and_powers/lib/Setup_IWD_divine_Spells.tpa~      //install them
   END
 END
@@ -736,8 +738,9 @@ INCLUDE ~faiths_and_powers/lib/default_kit_spheres.tpa~
 
 //Add IWD spells if not already in game
 ACTION_IF GAME_IS ~bgee bg2ee eet~ BEGIN
-  ACTION_IF NOT FILE_EXISTS_IN_GAME ~b_IWD.itm~ BEGIN    //If IWD spells not installed...
-  INCLUDE ~faiths_and_powers/lib/Setup_IWD_divine_Spells.tpa~      //install them
+ ACTION_IF NOT FILE_EXISTS_IN_GAME ~b_IWD.itm~ BEGIN    //If IWD spells not installed...
+   COPY ~faiths_and_powers/compatibility/b_IWD.itm~ ~override~   //to detect this component
+   INCLUDE ~faiths_and_powers/lib/Setup_IWD_divine_Spells.tpa~      //install them
   END
 END
 
@@ -1572,8 +1575,9 @@ INCLUDE ~faiths_and_powers/lib/default_kit_spheres.tpa~
 
 //Add IWD spells if not already in game
 ACTION_IF GAME_IS ~bgee bg2ee eet~ BEGIN
-  ACTION_IF NOT FILE_EXISTS_IN_GAME ~b_IWD.itm~ BEGIN    //If IWD spells not installed...
-  INCLUDE ~faiths_and_powers/lib/Setup_IWD_divine_Spells.tpa~      //install them
+ ACTION_IF NOT FILE_EXISTS_IN_GAME ~b_IWD.itm~ BEGIN    //If IWD spells not installed...
+     COPY ~faiths_and_powers/compatibility/b_IWD.itm~ ~override~   //to detect this component
+	 INCLUDE ~faiths_and_powers/lib/Setup_IWD_divine_Spells.tpa~      //install them
   END
 END
 

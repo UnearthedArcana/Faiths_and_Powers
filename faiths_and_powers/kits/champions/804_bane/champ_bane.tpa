@@ -105,7 +105,7 @@ COPY ~faiths_and_powers/kits/champions/804_bane/b_ch104a.spl~ ~override~
 COPY ~faiths_and_powers/kits/champions/804_bane/b_ch104b.spl~ ~override~
 
 //protection from fear  (using the tempus spl.  It's basically the same...)
-ACTION_IF GAME_IS ~bgee sod~ THEN BEGIN   //other text
+ACTION_IF GAME_IS ~bgee~ THEN BEGIN   //other text
   COPY ~faiths_and_powers/kits/champions/803_tempus/B_TEM10.spl~ ~override/B_BAN01.spl~
   LPF ALTER_EFFECT INT_VAR match_opcode = 267 STR_VAR resource = EVAL ~20568~ END
   LPF CLONE_EFFECT INT_VAR match_opcode = 267 STR_VAR resource = EVAL ~25818~ END     //text block

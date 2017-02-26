@@ -94,7 +94,7 @@ COPY ~faiths_and_powers/kits/zealots/868_sune/b_ze08.2da~ ~override~
 //sec spell
 COPY ~faiths_and_powers/kits/zealots/868_sune/b_sun01.spl~ ~override~
 
-ACTION_IF GAME_IS ~bgee sod~ THEN BEGIN   //copy revised rage to be altered
+ACTION_IF GAME_IS ~bgee~ THEN BEGIN   //copy revised rage to be altered
   COPY ~faiths_and_powers/kits/zealots/868_sune/bgee/b_frz08.spl~ ~override~
         SAY NAME1 @86804
         SAY NAME2 @86804

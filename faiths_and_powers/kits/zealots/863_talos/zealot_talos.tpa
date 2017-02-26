@@ -100,7 +100,7 @@ COPY ~faiths_and_powers/kits/zealots/863_talos/b_ze03.2da~ ~override~
   COPY ~faiths_and_powers/kits/zealots/863_talos/b_tal11d.spl~ ~override~
   COPY ~faiths_and_powers/kits/zealots/863_talos/b_tal11b.bam~ ~override~
 
-ACTION_IF GAME_IS ~bgee sod~ THEN BEGIN   //copy revised rage to be altered
+ACTION_IF GAME_IS ~bgee~ THEN BEGIN   //copy revised rage to be altered
   COPY ~faiths_and_powers/kits/zealots/863_talos/bgee/b_frz03.spl~ ~override~
         LPF ALTER_EFFECT INT_VAR match_opcode = 146 target = 2 parameter2 = 1 timing = 0  duration = 60 STR_VAR resource = EVAL ~b_tal11~ END //
         SAY NAME1 @86304
