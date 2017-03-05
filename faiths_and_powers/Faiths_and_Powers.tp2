@@ -1,7 +1,7 @@
 BACKUP ~faiths_and_powers/backup~
 AUTHOR ~SubtleD and Grammarsalad~
 
-VERSION ~0.62~
+VERSION ~0.63~
 //README ~faiths_and_powers/readme-pnp.html~
 
 
@@ -104,10 +104,10 @@ INCLUDE ~faiths_and_powers/kits/clerics/208_helm/cleric_helm.tpa~
 INCLUDE ~faiths_and_powers/kits/clerics/209_kelemvor/cleric_kelemvor.tpa~
 INCLUDE ~faiths_and_powers/kits/clerics/210_tempus/cleric_tempus.tpa~
 INCLUDE ~faiths_and_powers/kits/clerics/212_leira/cleric_leira.tpa~
-//INCLUDE ~faiths_and_powers/kits/clerics/213_baravar/cleric_baravar.tpa~
+INCLUDE ~faiths_and_powers/kits/clerics/213_baravar/cleric_baravar.tpa~
 INCLUDE ~faiths_and_powers/kits/clerics/219_loviatar/cleric_loviatar.tpa~
 INCLUDE ~faiths_and_powers/kits/clerics/224_talos/cleric_talos.tpa~
-//INCLUDE ~faiths_and_powers/kits/clerics/225_cyric/cleric_cyric.tpa~
+INCLUDE ~faiths_and_powers/kits/clerics/225_cyric/cleric_cyric.tpa~
 //
 // (acolytes)
 INCLUDE ~faiths_and_powers/kits/acolytes/314_ilmater/acolyte_ilmater.tpa~
@@ -119,6 +119,7 @@ INCLUDE ~faiths_and_powers/kits/acolytes/329_mask/acolyte_mask.tpa~
 INCLUDE ~faiths_and_powers/kits/acolytes/330_shar/acolyte_shar.tpa~
 INCLUDE ~faiths_and_powers/kits/acolytes/331_moander/acolyte_moander.tpa~
 INCLUDE ~faiths_and_powers/kits/acolytes/332_beshaba/acolyte_beshaba.tpa~
+INCLUDE ~faiths_and_powers/kits/acolytes/342_baervan/acolyte_baervan.tpa~
 //
 // (druids)
 INCLUDE ~faiths_and_powers/kits/druids/731_forest_druid/forest_druid.tpa~
@@ -341,6 +342,11 @@ END
 INCLUDE ~faiths_and_powers/lib/sphere_system.tpa~
 //__________________________________________________________________________________
 
+//Handle NPCs_______________________________________________________________________
+//
+INCLUDE ~faiths_and_powers/lib/npc_kits.tpa~
+//__________________________________________________________________________________
+
 //verbiage__________________________________________________________________________
 //
 //PRINT ~this component installs the deity-by-dialogue system~
@@ -383,10 +389,10 @@ INCLUDE ~faiths_and_powers/kits/clerics/208_helm/cleric_helm.tpa~
 INCLUDE ~faiths_and_powers/kits/clerics/209_kelemvor/cleric_kelemvor.tpa~
 INCLUDE ~faiths_and_powers/kits/clerics/210_tempus/cleric_tempus.tpa~
 INCLUDE ~faiths_and_powers/kits/clerics/212_leira/cleric_leira.tpa~
-//INCLUDE ~faiths_and_powers/kits/clerics/213_baravar/cleric_baravar.tpa~
+INCLUDE ~faiths_and_powers/kits/clerics/213_baravar/cleric_baravar.tpa~
 INCLUDE ~faiths_and_powers/kits/clerics/219_loviatar/cleric_loviatar.tpa~
 INCLUDE ~faiths_and_powers/kits/clerics/224_talos/cleric_talos.tpa~
-//INCLUDE ~faiths_and_powers/kits/clerics/225_cyric/cleric_cyric.tpa~
+INCLUDE ~faiths_and_powers/kits/clerics/225_cyric/cleric_cyric.tpa~
 //
 // (acolytes)
 INCLUDE ~faiths_and_powers/kits/acolytes/314_ilmater/acolyte_ilmater.tpa~
@@ -398,6 +404,7 @@ INCLUDE ~faiths_and_powers/kits/acolytes/329_mask/acolyte_mask.tpa~
 INCLUDE ~faiths_and_powers/kits/acolytes/330_shar/acolyte_shar.tpa~
 INCLUDE ~faiths_and_powers/kits/acolytes/331_moander/acolyte_moander.tpa~
 INCLUDE ~faiths_and_powers/kits/acolytes/332_beshaba/acolyte_beshaba.tpa~
+INCLUDE ~faiths_and_powers/kits/acolytes/342_baervan/acolyte_baervan.tpa~
 //
 // (druids)
 INCLUDE ~faiths_and_powers/kits/druids/731_forest_druid/forest_druid.tpa~
@@ -687,6 +694,11 @@ END
 INCLUDE ~faiths_and_powers/lib/sphere_system.tpa~
 //__________________________________________________________________________________
 
+//Handle NPCs_______________________________________________________________________
+//
+INCLUDE ~faiths_and_powers/lib/npc_kits.tpa~
+//__________________________________________________________________________________
+
 
 
 //__________________________________________________________________________________
@@ -907,6 +919,22 @@ REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~200~ @8
 INCLUDE ~faiths_and_powers/kits/clerics/224_talos/cleric_talos.tpa~
 //___________________________________________________________________________________
 
+//___________________________________________________________________________________
+BEGIN @213  //  cleric of baravar
+DESIGNATED 213
+REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~200~ @8
+
+INCLUDE ~faiths_and_powers/kits/clerics/213_baravar/cleric_baravar.tpa~
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+BEGIN @225  //  cleric of cyric
+DESIGNATED 225
+REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~200~ @8
+
+INCLUDE ~faiths_and_powers/kits/clerics/225_cyric/cleric_cyric.tpa~
+//___________________________________________________________________________________
+
 // acolytes:
 
 //___________________________________________________________________________________
@@ -979,6 +1007,14 @@ DESIGNATED 332
 REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~200~ @8
 
 INCLUDE ~faiths_and_powers/kits/acolytes/332_beshaba/acolyte_beshaba.tpa~
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+BEGIN @342  //  acolyte of baervan
+DESIGNATED 342
+REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~200~ @8
+
+INCLUDE ~faiths_and_powers/kits/acolytes/342_baervan/acolyte_baervan.tpa~
 //___________________________________________________________________________________
 
 
@@ -1589,4 +1625,9 @@ END
 //
 INCLUDE ~faiths_and_powers/lib/sphere_system.tpa~
 //___________________________________________________________________________________
+
+//Handle NPCs_______________________________________________________________________
+//
+INCLUDE ~faiths_and_powers/lib/npc_kits.tpa~
+//__________________________________________________________________________________
 

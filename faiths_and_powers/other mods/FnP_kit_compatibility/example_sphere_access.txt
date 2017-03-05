@@ -26,7 +26,7 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	race 			= ~all~  // enter 'all' 'human' 'elf' 'dwarf' 'gnome' 'halfling' or 'orc'
 //
 	s_Life 			= ~x~   // for chosen spheres, enter 'focus' or 'major' or 'minor'
-	s_Death 		= ~x~   // (or 'paladin' or 'ranger' for those classes) instead of 'x'
+	s_Death 		= ~x~   // (or 'paladin' or 'ranger' for those classes)
 	s_Benediction 	= ~x~
 	s_Destruction 	= ~x~
 	s_Protection 	= ~x~
@@ -49,20 +49,6 @@ LAF ~DEFINE_FNP_KIT_INFO~
 END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~d5_spheres.d5~ BEGIN
-  OUTER_SPRINT sphere_access ~- Access to the spheres of:~
-  OUTER_SPRINT focus_access ~- Focus access to the spheres of:~
-  OUTER_SPRINT major_access ~- Major access to the spheres of:~
-  OUTER_SPRINT minor_access ~- Minor access to the spheres of:~
-  OUTER_SPRINT advantages ~Advantages:~
-  OUTER_SPRINT disadvantages ~Disadvantages:~
-  OUTER_SPRINT restrictions ~Restrictions:~
-  OUTER_TEXT_SPRINT focus_sphere_list ~~
-  OUTER_TEXT_SPRINT major_sphere_list ~~
-  OUTER_TEXT_SPRINT minor_sphere_list ~~
-  OUTER_TEXT_SPRINT paladin_sphere_list ~~
-  OUTER_TEXT_SPRINT ranger_sphere_list ~~
-  OUTER_TEXT_SPRINT total_sphere_list ~~
-  LAM ~READ_FNP_KIT_INFO~
   INCLUDE ~%MOD_FOLDER%/lib/add_fnp_spheres.tpa~
 END
 //__________________________________________________________________________________

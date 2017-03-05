@@ -19,8 +19,10 @@
 @209  = ~Add Cleric of Kelemvor~
 @210  = ~Add Cleric of Tempus~
 @212  = ~Add Cleric of Leira~
+@213  = ~Add Cleric of Baravar Cloakshadow~
 @219  = ~Add Cleric of Loviatar~
 @224  = ~Add Cleric of Talos~
+@225  = ~Add Cleric of Cyric~
 //
 // ... Acolyte kits = 301-399
 //
@@ -33,6 +35,7 @@
 @330  = ~Add Acolyte of Shar~
 @331  = ~Add Acolyte of Moander~
 @332  = ~Add Acolyte of Beshaba~
+@342  = ~Add Acolyte of Baervan Wildwanderer~
 //
 // ... Incarnate kits = 401-450
 //
@@ -424,9 +427,9 @@ Restrictions:
 @21211  = ~Leira's Double~
 @21212  = ~Leira's Double~
 
-@21301  = ~cloaked one of baravar~
-@21302  = ~Mistwalker of Leira~
-@21303  = ~CLOAKED ONE OF BARAVAR:
+@21301  = ~cleric of baravar~
+@21302  = ~Hoodwinker of Baravar Cloakshadow~
+@21303  = ~HOODWINKER OF BARAVAR CLOAKSHADOW: 
 
 Advantages:
 - May use the "Baravar's Double" ability once every 5 rounds. Often used in emergencies, this causes an illusionary double of the cleric to spring into existence. If the cleric is being attacked, the double will absorb the first blow that lands, and disappear. At 6th level two doubles are created, and at 12th level one of the two doubles can actually wander away from the cleric to distract enemies. Cloaked Ones may use this ability once per turn.
@@ -434,10 +437,10 @@ Advantages:
 Restrictions:
 - Alignment: may not be Lawful.
 ~
-@21204  = ~CLOAKED ONE OF BARAVAR: ~
+@21304  = ~CLOAKED ONE OF BARAVAR: ~
 
 @21311  = ~Baravar's Double~
-@21312  = ~Baravar's Double: Often used in emergencies, this causes an illusionary double of the cleric to spring into existence. If the cleric is being attacked, the double will absorb the first blow that lands, and disappear. At 6th level two doubles are created, and at 12th level one of the two doubles can actually wander away from the cleric to distract enemies. Cloaked Ones may use this ability once per turn.~
+@21312  = ~Baravar's Double: Often used in emergencies, this causes an illusionary double of the cleric to spring into existence. If the cleric is being attacked, the double will absorb the first blow that lands, and disappear. At 6th level two doubles are created, and at 12th level one of the two doubles can actually wander away from the cleric to distract enemies. Hoodwinkers may use this ability once per turn.~
 //
 // ... cleric of loviatar:
 //
@@ -529,9 +532,9 @@ Upon casting this spell, the cleric releases a powerful stroke of energy that in
 //
 // ... cleric of Cyric:
 //
-@22401 = ~cleric of cyric~
-@22402 = ~the Sworn of Cyric~
-@22403 = ~THE SWORN OF CYRIC: Cyric, the mad god
+@22501 = ~cleric of cyric~
+@22502 = ~the Sworn of Cyric~
+@22503 = ~THE SWORN OF CYRIC: Cyric, the mad god
 
 Advantages:
 - +1 to save vs. Illusion spells
@@ -744,6 +747,21 @@ Restrictions:
 @33206 = ~Misfortune~
 @33207 = ~Misfortune
 This abilty curses the target, causing them a penalty of -10 penalty to THAC0, saves and AC for one round/level if they fail a save vs. spell.
+~
+//
+// ... acolyte of baervan:
+//
+@34201 = ~acolyte of baervan~ 
+@34202 = ~Fastpaws of Baervan~ 
+@34203 = ~FASTPAWS OF BAERVAN: Usually found far abreast from heavily urban areas, followers of Baervan Wildwanderer seek to protect nature from evil creatures. They have a particular affinity for forest plants and creatures, especially raccoons.
+
+Advantages:
+- May summon a spirit animal ally for protection once per day. This being is similar to a bear, and increases in power at 3rd, 5th, 7th, and 10th levels.
+
+Restrictions:
+- Race restricted to gnome.
+- Alignment restricted to good.~
+@34204 = ~PRIEST OF BAERVAN: Usually found far abreast from heavily urban areas, followers of Baervan Wildwanderer seek to protect nature from evil creatures. They have a particular affinity for forest plants and creatures, especially raccoons.
 ~
 //
 // ... multiclass druids

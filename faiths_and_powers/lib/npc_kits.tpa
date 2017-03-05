@@ -1,0 +1,176 @@
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+//							KITS FOR NPCS
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+
+//assign kits to NPCs________________________________________________________________
+//
+COPY_EXISTING ~kitlist.2da~ ~override~
+	COUNT_2DA_ROWS 8 "rows"
+	FOR ( index = 31 ; index < rows ; index = index + 1 ) BEGIN
+		READ_2DA_ENTRY "%index%" 5 8 "clab"
+		PATCH_IF ("%clab%" STRING_EQUAL_CASE "b_ch05" = 1) BEGIN
+			SET b_ch05 = (%index% - 1)
+		END
+		PATCH_IF ("%clab%" STRING_EQUAL_CASE "b_ctem" = 1) BEGIN
+			SET b_ctem = (%index% - 1)
+		END
+		PATCH_IF ("%clab%" STRING_EQUAL_CASE "b_2tem" = 1) BEGIN
+			SET b_2tem = (%index% - 1)
+		END
+		PATCH_IF ("%clab%" STRING_EQUAL_CASE "b_bart" = 1) BEGIN
+			SET b_bart = (%index% - 1)
+		END
+		PATCH_IF ("%clab%" STRING_EQUAL_CASE "b_ctcyr" = 1) BEGIN
+			SET b_ctcyr = (%index% - 1)
+		END
+		PATCH_IF ("%clab%" STRING_EQUAL_CASE "d5cfcla" = 1) BEGIN
+			SET d5cfcla = (%index% - 1)
+		END
+		PATCH_IF ("%clab%" STRING_EQUAL_CASE "d5asha" = 1) BEGIN
+			SET d5asha = (%index% - 1)
+		END
+		PATCH_IF ("%clab%" STRING_EQUAL_CASE "d5baerv" = 1) BEGIN
+			SET d5baerv = (%index% - 1)
+		END
+		PATCH_IF ("%clab%" STRING_EQUAL_CASE "b_cfhe" = 1) BEGIN
+			SET b_cfhe = (%index% - 1)
+		END
+	END
+BUT_ONLY
+
+ACTION_IF VARIABLE_IS_SET %b_ch05% BEGIN
+  ACTION_FOR_EACH char IN ~ajanti~ 
+					~ajanti4~ 
+					~ajanti6~
+					~keldor9.cre~ ~override~
+					~keldor10.cre~ ~override~
+					~keldor12.cre~ ~override~
+					~keldor14.cre~ ~override~  BEGIN
+	ACTION_IF FILE_EXISTS_IN_GAME ~%char%.cre~ BEGIN
+	  COPY_EXISTING ~%char%.cre~ ~override~
+		WRITE_SHORT 0x244 0
+		WRITE_SHORT 0x246 0x4000 + %b_ch05% // changes kit
+	  BUT_ONLY
+	END
+  END
+END 
+
+ACTION_IF VARIABLE_IS_SET %b_ctem% BEGIN
+  ACTION_FOR_EACH char IN ~branwe~ 
+					~branwe5~ 
+					~o#bran~ 
+					~o#bran25~  BEGIN
+	ACTION_IF FILE_EXISTS_IN_GAME ~%char%.cre~ BEGIN
+	  COPY_EXISTING ~%char%.cre~ ~override~
+	    READ_BYTE 0x273 class
+	    PATCH_IF %class% = 3 BEGIN
+		  WRITE_SHORT 0x244 0
+		  WRITE_SHORT 0x246 0x4000 + %b_ctem% // changes kit
+		END
+	    PATCH_IF %class% = 8 BEGIN
+		  WRITE_SHORT 0x244 0
+		  WRITE_SHORT 0x246 0x4000 + %b_2tem% // changes kit
+		END
+	  BUT_ONLY
+	END
+  END
+END
+
+ACTION_IF VARIABLE_IS_SET %b_bart% BEGIN
+  ACTION_FOR_EACH char IN ~glint7~ 
+					~%quayle_var%~ 
+					~quayle4~ 
+					~quayle6~  BEGIN
+	ACTION_IF FILE_EXISTS_IN_GAME ~%char%.cre~ BEGIN
+	  COPY_EXISTING ~%char%.cre~ ~override~
+		WRITE_SHORT 0x244 0
+		WRITE_SHORT 0x246 0x4000 + %b_bart% // changes kit
+	  BUT_ONLY
+	END
+  END
+END
+
+ACTION_IF VARIABLE_IS_SET %b_ctcyr% BEGIN
+  ACTION_FOR_EACH char IN ~bdtiax~ 
+					~tiax~ 
+					~tiax4~ 
+					~tiax6~  BEGIN
+	ACTION_IF FILE_EXISTS_IN_GAME ~%char%.cre~ BEGIN
+	  COPY_EXISTING ~%char%.cre~ ~override~
+		WRITE_SHORT 0x244 0
+		WRITE_SHORT 0x246 0x4000 + %b_ctcyr% // changes kit
+	  BUT_ONLY
+	END
+  END
+END 
+
+ACTION_IF VARIABLE_IS_SET %d5cfcla% BEGIN
+  ACTION_FOR_EACH char IN ~yeslic~ 
+					~yeslic5~  BEGIN
+	ACTION_IF FILE_EXISTS_IN_GAME ~%char%.cre~ BEGIN
+	  COPY_EXISTING ~%char%.cre~ ~override~
+		WRITE_SHORT 0x244 0
+		WRITE_SHORT 0x246 0x4000 + %d5cfcla% // changes kit
+	  BUT_ONLY
+	END
+  END
+END
+
+ACTION_IF VARIABLE_IS_SET %d5asha% BEGIN
+ACTION_FOR_EACH char IN ~viconi~ 
+					~viconi4~ 
+					~viconi6~ 
+					~%viconi6_var%~ 
+					~viconi8~ 
+					~viconi9~ 
+					~viconi11~ 
+					~viconi13~ 
+					~viconi16~  BEGIN
+	ACTION_IF FILE_EXISTS_IN_GAME ~%char%.cre~ BEGIN
+	  COPY_EXISTING ~%char%.cre~ ~override~
+		WRITE_SHORT 0x244 0
+		WRITE_SHORT 0x246 0x4000 + %d5asha% // changes kit
+	  BUT_ONLY
+	END
+  END
+END 
+
+ACTION_IF VARIABLE_IS_SET %d5baerv% BEGIN
+  ACTION_FOR_EACH char IN ~aerie6.cre~ ~override~
+					~aerie7.cre~ ~override~
+					~aerie9.cre~ ~override~
+					~aerie10.cre~ ~override~
+					~aerie11.cre~ ~override~
+					~aerie12.cre~ ~override~  BEGIN
+	ACTION_IF FILE_EXISTS_IN_GAME ~%char%.cre~ BEGIN
+	  COPY_EXISTING ~%char%.cre~ ~override~
+		WRITE_SHORT 0x244 0
+		WRITE_SHORT 0x246 0x4000 + %d5baerv% // changes kit
+	  BUT_ONLY
+	END
+  END
+END
+
+ACTION_IF VARIABLE_IS_SET %b_cfhe% BEGIN
+  ACTION_FOR_EACH char IN ~anomen6.cre~ ~override~
+					~anomen7.cre~ ~override~
+					~anomen8.cre~ ~override~
+					~anomen9.cre~ ~override~
+					~anomen10.cre~ ~override~
+					~anomen12.cre~ ~override~  BEGIN
+	ACTION_IF FILE_EXISTS_IN_GAME ~%char%.cre~ BEGIN
+	  COPY_EXISTING ~%char%.cre~ ~override~
+		WRITE_SHORT 0x244 0
+		WRITE_SHORT 0x246 0x4000 + %b_cfhe% // changes kit
+	  BUT_ONLY
+	END
+  END
+END
+//___________________________________________________________________________________
+
+
