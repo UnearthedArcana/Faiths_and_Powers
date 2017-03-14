@@ -1,8 +1,40 @@
 # Faiths_and_Powers
 Faiths and Powers mod
 Faiths and Powers: Gods of the Realms
+2017-03-13
+Version 0.63b
+- NPC cleric kits
+- Fixed bug re acolyte of mystra
+- Bug fixes re: kit adding code
+- Fixed deity dialog issue with mc clerics
+
+
+2017-02-27
+Version 0.61a
+- Added a valid marker for IWDEE divine spells
+
+If you already have version 0.61 installed, just drop the itm file in the attached zip in your override folder.
 
 Version 0.61
+
+- Removed references to SoD in engine check
+- Added Clangeddin cleric
+- Added a draft of Baravar (but not added in the game via tp2 or otherwise)
+- Removed backup folder
+- Please forgive the formatting of the readme on github. I'll have to learn about .md files, but for now see the attached pdf. It is important to note that the readme is outdated. The goals are the same, but the details (e.g. what spells are in what sphere) have been changed. 
+
+Known Issues:
+- Water and fire elemental scripts need to be looked at
+- Shout spell doesn't seem to work
+- Summoning shadow monsters crashes the game
+- Doomguide cleric Turn level issue
+- b_frz00.spl is referenced in at least three .2da files present in my override folder (B_ZE00.2DA, B_ZEALOT.2DA and clabpa04.2da (original non-special frenzy)
+- At 11th level the Ur-Priest received Shadow Step as a special ability
+- Elemental sphere descriptions are all over the place (only for custom spells)
+- Disrupt Undead says that it's part of the death sphere (but it's part of the life sphere)
+- Many multi class kits missing
+- prayer and rec spells
+Version
 Please note that this readme is outdated. Much of the content has changed in various ways  
 
 Goals:
