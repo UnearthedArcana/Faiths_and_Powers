@@ -1,0 +1,25 @@
+IF
+	Kit(LastSummonerOf(Myself),TRUECLASS)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),AddSuperKit(B_CLERIC_LATHANDER))
+	DestroySelf()
+END
+
+IF
+	Kit(LastSummonerOf(Myself),B_BATTLEPRIEST)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),AddSuperKit(B_CHAMPION_LATHANDER))
+	DestroySelf()
+END
+
+IF
+	Kit(LastSummonerOf(Myself),B_ARCHIVIST)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),AddSuperKit(B_PRIEST_LATHANDER))
+	DestroySelf()
+END
+
+

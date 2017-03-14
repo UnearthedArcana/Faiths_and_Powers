@@ -80,7 +80,7 @@ SAY @21303
 ACTION_IF GAME_IS ~bgee bg2ee eet iwdee~ THEN BEGIN
 	LAF fl#add_kit_ee
 		INT_VAR
-			briefdesc = RESOLVE_STR_REF (@21304)
+			briefdesc = RESOLVE_STR_REF (@21303)
 		STR_VAR
 			kit_name = B_CLERIC_BARAVAR
 			clswpbon = ~0 0 3~
@@ -102,7 +102,7 @@ COPY_EXISTING ~faiths_and_powers/kits/clerics/212_leira/d5_lei1.spl~ ~override/b
   INT_VAR
 	c_cleric 		= 1
   STR_VAR
-    clab_name 		= ~d5clei~
+    clab_name 		= ~b_bara~
 	race 			= ~gnome~
 	s_Life 			= ~major~
 	s_Death 		= ~x~
@@ -202,7 +202,7 @@ SAY @21303
 ACTION_IF GAME_IS ~bgee bg2ee eet iwdee~ THEN BEGIN
 	LAF fl#add_kit_ee
 		INT_VAR
-			briefdesc = RESOLVE_STR_REF (@21304)
+			briefdesc = RESOLVE_STR_REF (@21303)
 		STR_VAR
 			kit_name = B_CT_BARAVAR
 			clswpbon = ~0 0 3~
@@ -231,7 +231,7 @@ END
   INT_VAR
 	c_cleric_thief 	= 1
   STR_VAR
-    clab_name 		= ~d52lei~
+    clab_name 		= ~b_bart~
 	race 			= ~gnome~
 	s_Life 			= ~major~
 	s_Death 		= ~x~

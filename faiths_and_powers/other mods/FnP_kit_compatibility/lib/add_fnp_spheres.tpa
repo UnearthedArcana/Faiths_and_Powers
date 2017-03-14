@@ -1,6 +1,24 @@
 
+
 //ADD FnP SPHERES to KIT_____________________________________________________________
 //
+  OUTER_SPRINT sphere_access @1002
+  OUTER_SPRINT focus_access @1003
+  OUTER_SPRINT major_access @1004
+  OUTER_SPRINT minor_access @1005
+  OUTER_SPRINT advantages @1006
+  OUTER_SPRINT abilities @1007
+  OUTER_SPRINT disadvantages @1008
+  OUTER_SPRINT restrictions @1009
+  OUTER_TEXT_SPRINT focus_sphere_list ~~
+  OUTER_TEXT_SPRINT major_sphere_list ~~
+  OUTER_TEXT_SPRINT minor_sphere_list ~~
+  OUTER_TEXT_SPRINT paladin_sphere_list ~~
+  OUTER_TEXT_SPRINT ranger_sphere_list ~~
+  OUTER_TEXT_SPRINT total_sphere_list ~~
+
+  LAM ~READ_FNP_KIT_INFO~
+
   COPY_EXISTING ~kitlist.2da~ ~override~
 	COUNT_2DA_COLS cols // amount of columns
 	READ_2DA_ENTRIES_NOW rows cols // read all file into memory  
@@ -21,9 +39,11 @@
 	  ACTION_IF (VARIABLE_IS_SET $d5_fnp_kit_sphere_access(~%sphere%~ ~%kit_clab%~)) BEGIN
 		OUTER_TEXT_SPRINT access $d5_fnp_kit_sphere_access(~%sphere%~ ~%kit_clab%~)
 		ACTION_IF (VARIABLE_IS_SET $d5_fnp_sphere_access(~%access%~) && ~%access%~ STRING_EQUAL_CASE ~FOCUS~) BEGIN
+		 ACTION_IF FILE_EXISTS_IN_GAME ~lub_%kit_index%.2da~ BEGIN
 		  COPY_EXISTING ~lub_%kit_index%.2da~ ~override~
 			APPEND_FILE ~faiths_and_powers/spheres/hlas/%sphere%/hlas_%sphere%.txt~
 		  BUT_ONLY
+		 END
 		  COPY_EXISTING ~%kit_clab%.2da~ ~override~ 
 			LPM remove_blank_lines
 			APPEND_FILE ~faiths_and_powers/spheres/clab/%sphere%_focus.txt~
@@ -31,9 +51,11 @@
 		  OUTER_TEXT_SPRINT focus_sphere_list ~%focus_sphere_list% %sphere%~
 		END
 		ACTION_IF (VARIABLE_IS_SET $d5_fnp_sphere_access(~%access%~) && ~%access%~ STRING_EQUAL_CASE ~MAJOR~) BEGIN
+		 ACTION_IF FILE_EXISTS_IN_GAME ~lub_%kit_index%.2da~ BEGIN
 		  COPY_EXISTING ~lub_%kit_index%.2da~ ~override~
 			APPEND_FILE ~faiths_and_powers/spheres/hlas/%sphere%/hlas_%sphere%.txt~
 		  BUT_ONLY
+		 END
 		  COPY_EXISTING ~%kit_clab%.2da~ ~override~ 
 			LPM remove_blank_lines
 			APPEND_FILE ~faiths_and_powers/spheres/clab/%sphere%_major.txt~
