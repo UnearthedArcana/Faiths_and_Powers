@@ -47,17 +47,10 @@ ACTION_IF VARIABLE_IS_SET %b_ch05% BEGIN
   ACTION_FOR_EACH char IN ~ajanti~ 
 					~ajanti4~ 
 					~ajanti6~
-<<<<<<< HEAD
 					~keldor9.cre~
 					~keldor10.cre~
 					~keldor12.cre~
 					~keldor14.cre~   BEGIN
-=======
-					~keldor9.cre~ ~override~
-					~keldor10.cre~ ~override~
-					~keldor12.cre~ ~override~
-					~keldor14.cre~ ~override~  BEGIN
->>>>>>> origin/master
 	ACTION_IF FILE_EXISTS_IN_GAME ~%char%.cre~ BEGIN
 	  COPY_EXISTING ~%char%.cre~ ~override~
 		WRITE_SHORT 0x244 0
@@ -106,12 +99,8 @@ ACTION_IF VARIABLE_IS_SET %b_ctcyr% BEGIN
   ACTION_FOR_EACH char IN ~bdtiax~ 
 					~tiax~ 
 					~tiax4~ 
-<<<<<<< HEAD
 					~tiax6~  
                                         ~tiaxd~ BEGIN
-=======
-					~tiax6~  BEGIN
->>>>>>> origin/master
 	ACTION_IF FILE_EXISTS_IN_GAME ~%char%.cre~ BEGIN
 	  COPY_EXISTING ~%char%.cre~ ~override~
 		WRITE_SHORT 0x244 0
@@ -122,14 +111,9 @@ ACTION_IF VARIABLE_IS_SET %b_ctcyr% BEGIN
 END 
 
 ACTION_IF VARIABLE_IS_SET %d5cfcla% BEGIN
-<<<<<<< HEAD
   ACTION_FOR_EACH char IN ~yeslic~
 					~yeslic5~  
                                         ~yeslid~ BEGIN
-=======
-  ACTION_FOR_EACH char IN ~yeslic~ 
-					~yeslic5~  BEGIN
->>>>>>> origin/master
 	ACTION_IF FILE_EXISTS_IN_GAME ~%char%.cre~ BEGIN
 	  COPY_EXISTING ~%char%.cre~ ~override~
 		WRITE_SHORT 0x244 0
@@ -140,18 +124,11 @@ ACTION_IF VARIABLE_IS_SET %d5cfcla% BEGIN
 END
 
 ACTION_IF VARIABLE_IS_SET %d5asha% BEGIN
-<<<<<<< HEAD
 ACTION_FOR_EACH char IN ~viconi~
 					~viconi4~ 
 					~viconi6~ 
 					~viconi7~
                                         ~%viconi6_var%~
-=======
-ACTION_FOR_EACH char IN ~viconi~ 
-					~viconi4~ 
-					~viconi6~ 
-					~%viconi6_var%~ 
->>>>>>> origin/master
 					~viconi8~ 
 					~viconi9~ 
 					~viconi11~ 
@@ -168,19 +145,11 @@ END
 
 ACTION_IF VARIABLE_IS_SET %d5baerv% BEGIN
   ACTION_FOR_EACH char IN ~aerie6.cre~ ~override~
-<<<<<<< HEAD
 					~aerie7.cre~
 					~aerie9.cre~
 					~aerie10.cre~
 					~aerie11.cre~
 					~aerie12.cre~   BEGIN
-=======
-					~aerie7.cre~ ~override~
-					~aerie9.cre~ ~override~
-					~aerie10.cre~ ~override~
-					~aerie11.cre~ ~override~
-					~aerie12.cre~ ~override~  BEGIN
->>>>>>> origin/master
 	ACTION_IF FILE_EXISTS_IN_GAME ~%char%.cre~ BEGIN
 	  COPY_EXISTING ~%char%.cre~ ~override~
 		WRITE_SHORT 0x244 0
@@ -192,19 +161,11 @@ END
 
 ACTION_IF VARIABLE_IS_SET %b_cfhe% BEGIN
   ACTION_FOR_EACH char IN ~anomen6.cre~ ~override~
-<<<<<<< HEAD
 					~anomen7.cre~
 					~anomen8.cre~
 					~anomen9.cre~
 					~anomen10.cre~
 					~anomen12.cre~   BEGIN
-=======
-					~anomen7.cre~ ~override~
-					~anomen8.cre~ ~override~
-					~anomen9.cre~ ~override~
-					~anomen10.cre~ ~override~
-					~anomen12.cre~ ~override~  BEGIN
->>>>>>> origin/master
 	ACTION_IF FILE_EXISTS_IN_GAME ~%char%.cre~ BEGIN
 	  COPY_EXISTING ~%char%.cre~ ~override~
 		WRITE_SHORT 0x244 0
