@@ -1055,12 +1055,12 @@ ACTION_IF GAME_IS ~bgee bg2ee eet iwdee~ THEN BEGIN    //Not sure why, but I ori
  COPY_EXISTING ~d5ppla6.spl~ ~override~
     LPF CLONE_EFFECT INT_VAR match_opcode=171 STR_VAR match_resource=~SPWI101~ resource = ~b_c601~ END
 
-COPY_EXISTING ~b_c601.spl~ ~override/b_Fo602.spl~ // Assassin Vines-FOCUS
+COPY_EXISTING ~b_c601.spl~ ~override/b_Fo603.spl~ // Assassin Vines-FOCUS
         SAY UNIDENTIFIED_DESC @51406
 	SAY DESC @51406
   WRITE_LONG 0x34 5
 COPY_EXISTING ~d5fpla6.spl~ ~override~
-         LPF CLONE_EFFECT INT_VAR match_opcode=171 STR_VAR match_resource=~SPWI101~ resource = ~b_Fo602~ END
+         LPF CLONE_EFFECT INT_VAR match_opcode=171 STR_VAR match_resource=~SPWI101~ resource = ~b_Fo603~ END
 BUT_ONLY
 END
 

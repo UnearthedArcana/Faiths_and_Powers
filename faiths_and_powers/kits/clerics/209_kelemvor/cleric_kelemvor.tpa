@@ -94,41 +94,23 @@ END
 COPY ~faiths_and_powers/kits/clerics/209_kelemvor/b_ckel.2da~ ~override~
 COPY ~faiths_and_powers/kits/clerics/201_lathander/b_turn.spl~     ~override~  // Turn Undead +4 Levels
 COPY ~faiths_and_powers/kits/acolytes/314_ilmater/b_ilm02.spl~ ~override~  // +4 vs death
-
-COPY_EXISTING ~SPPR409.spl~ ~override/b_kel01.spl~ // dispel magic
+//CHECK COMPATIBILITY WITH IWDEE AND SR
+COPY_EXISTING ~SPPR409.spl~ ~override/b_kel01.spl~ // Works?
   WRITE_LONG 0x34 1 //level
   WRITE_BYTE 0x1c 4//Innate
   WRITE_BYTE 0x74 4//Location
-  WRITE_BYTE 0x9C 4//Location
-  WRITE_BYTE 0xC4 4//Location  +28
-  WRITE_BYTE 0xEC 4//Location  +28
-  WRITE_BYTE 0x114 4//Location  +28
-  WRITE_BYTE 0x13C 4//Location  +28
-  WRITE_BYTE 0x164 4//Location  +28
-  WRITE_BYTE 0x18C 4//Location  +28
-  WRITE_BYTE 0x1B4 4//Location  +28
-  WRITE_BYTE 0x1DC 4//Location  +28
-  WRITE_BYTE 0x204 4//Location  +28
-  WRITE_BYTE 0x22C 4//Location  +28
-  WRITE_BYTE 0x254 4//Location  +28
-  WRITE_BYTE 0x27C 4//Location  +28
-  WRITE_BYTE 0x2A4 4//Location  +28
-  WRITE_BYTE 0x2CC 4//Location  +28
-  WRITE_BYTE 0x2F4 4//Location  +28
-  WRITE_BYTE 0x31C 4//Location  +28
-  WRITE_BYTE 0x344 4//Location  +28
-  WRITE_BYTE 0x36C 4//Location  +28
-  WRITE_BYTE 0x394 4//Location  +28
-  WRITE_BYTE 0x3BC 4//Location  +28
-  WRITE_BYTE 0x3E4 4//Location  +28
-  WRITE_BYTE 0x40C 4//Location  +28
   LPF ALTER_EFFECT
-      INT_VAR match_opcode = 267
+      INT_VAR match_opcode = 206
       timing = 9
       resist_dispel = 0
   END
   LPF ALTER_EFFECT
-      INT_VAR match_opcode = 206
+      INT_VAR match_opcode = 169
+      timing = 9
+      resist_dispel = 0
+  END
+  LPF ALTER_EFFECT
+      INT_VAR match_opcode = 267
       timing = 9
       resist_dispel = 0
   END
@@ -138,16 +120,27 @@ COPY_EXISTING ~SPPR409.spl~ ~override/b_kel01.spl~ // dispel magic
       resist_dispel = 0
   END
   LPF ALTER_EFFECT
-      INT_VAR match_opcode = 169
+      INT_VAR match_opcode = 142
       timing = 9
       resist_dispel = 0
   END
-COPY_EXISTING ~SPPR409.spl~ ~override/b_kel02.spl~ // dispel magic
+  LPF ALTER_EFFECT
+      INT_VAR match_opcode = 328
+      timing = 9
+      resist_dispel = 0
+  END
+  LPF ALTER_EFFECT
+      INT_VAR match_opcode = 282
+      timing = 9
+      resist_dispel = 0
+  END
+//CHECK COMPATIBILITY WITH IWDEE AND SR
+COPY_EXISTING ~SPPR413.spl~ ~override/b_kel02.spl~ // Works?
   WRITE_LONG 0x34 1 //level
   WRITE_BYTE 0x1c 4//Innate
   WRITE_BYTE 0x74 4//Location
   LPF ALTER_EFFECT
-      INT_VAR match_opcode = 206
+      INT_VAR match_opcode = 267
       timing = 9
       resist_dispel = 0
   END
@@ -157,7 +150,17 @@ COPY_EXISTING ~SPPR409.spl~ ~override/b_kel02.spl~ // dispel magic
       resist_dispel = 0
   END
   LPF ALTER_EFFECT
-      INT_VAR match_opcode = 267
+      INT_VAR match_opcode = 101
+      timing = 9
+      resist_dispel = 0
+  END
+  LPF ALTER_EFFECT
+      INT_VAR match_opcode = 142
+      timing = 9
+      resist_dispel = 0
+  END
+  LPF ALTER_EFFECT
+      INT_VAR match_opcode = 282
       timing = 9
       resist_dispel = 0
   END

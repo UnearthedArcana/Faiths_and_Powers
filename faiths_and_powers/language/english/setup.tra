@@ -1,4 +1,4 @@
-@6   = ~+1 caster level (priest spells)~
+@6   = ~...~
 @8   = ~skipping component~
 //
 @100  = ~Select an installation method below:~
@@ -379,7 +379,7 @@ When this spell is employed, the priest creates an invisible sensory organ that 
 Advantages:
 - Doomguides turn undead at 4 levels higher than a cleric of their level.
 - +4 to saves against death
-- At 7th level, the doomguide is protected as if with the death ward spell.
+- At 7th level, the doomguide is protected as if with the Death Ward spell.  
 - At 11th level, the doomguide is protected as if with the Negative Plane Protection spell.
 
 Restrictions:
@@ -738,7 +738,7 @@ Restrictions:
 Advantages:
 -  Doommasters can cast a special version of the doom spell at will.  It can be used once, and only once, on a given opponent.
 -  Doommasters gain a +1 bonus to all saves.
--  At 7th level, the doommaster can cast misfire as a special ability once per day.  The doommaster can use this abilty an additional time per day at levels 10, 13, 16 and 19.
+-  At 7th level, the doommaster can cast misfire as a special ability once per day.  Misfire works as the spell of the same name.  The doommaster can use this abilty an additional time per day at levels 10, 13, 16 and 19.
 -  At 10th level, the doommaster can cast misfortune.  <PRO_HESHE> can use this abilty one additional time at levels 15, and 20.
 
 MISFORTUNE:
@@ -2541,7 +2541,7 @@ Requires: Power Attack, Critical Strike~
 @80008  = ~zealot~
 @80009  = ~Zealot~
 
-@80010  = ~ZEALOT: Zealots are such devotees to a particular god, without actually being an official part of the church heirarchy.  They consider this an advantage, however, as they considering themselves beholden only to their god, and so do not lose sight of the grander scheme.
+@80010  = ~ZEALOT: Zealots are such devotees to a particular god, without actually being an official part of the church heirarchy.  They consider this an advantage, however, as they hold themselves accountable only to their god, and so are less likely to lose sight of the grander scheme.
 Zealots often strike out on their own, infiltrating a rival church, and then unleashing the power of their god where their enemies expect it least.
 
 Advantages:
@@ -2649,7 +2649,7 @@ Restrictions:
 
 @80201  = ~champion of kelemvor~
 @80202  = ~Knight of Eternal Order~
-@80203  = ~KNIGHT OF ETERNAL ORDER: Undead creatures are an anathema to Kelemvor.  Death is a natural part of life, and undead creatures try to escape that cycle.  They are abominations, and must be put to rest.
+@80203  = ~KNIGHT OF ETERNAL ORDER: Undead creatures are anathema to Kelemvor.  Death is a natural part of life, and undead creatures try to escape that cycle.  They are abominations, and must be put to rest.
 
 Thus, Kelemvor created the Knights of Eternal Order.
 
@@ -2743,11 +2743,11 @@ Restrictions:
 
 Advantages:
 - Mastery: Everwatch Knights can attain mastery in any melee weapon.
-- Heightened Awareness: +1 bonus to AC and +2 bonus to save vs breath
+- Heightened Awareness: +1 bonus to AC and +2 bonus to save vs. breath
 - Can cast Everwatch Sword as a special ability once per day.  The Everwatch Knight gains an additional use at levels 4, 8, 12, 16 and 20.
 
 EVERWATCH SWORD: This spell creates a sword in the Champion's hand that cannot be dropped or unequipped. The sword is enchanted as a +4 weapon and provides a +4 THAC0 bonus. It deals 2d4 damage to any target it hits. The spell lasts for 1 round per level.
-The Everwatch Sword is weilded as a longsword.
+The Everwatch Sword is wielded as a longsword.
 
 Disadvantages:
 - Everwatch Knights do not have a special smite ability.
@@ -2782,7 +2782,7 @@ Restrictions:
 @80603  = ~STORMWARD OF TALOS: Stormwards are the elite guard of Talos.  They exist to spread destruction through the world, and thus, the fear of Talos.
 
 Advantages:
-- Storm Smite: The smite of a Stormward inflects double electrical damage rather than magic damage.
+- Storm Smite: The smite of a Stormward inflicts double electrical damage rather than magic damage.
 - Talos' Favor: Stormbringers are 50% resistant to electricity damage.
 
 Restrictions:
@@ -2814,7 +2814,7 @@ Advantages:
 
 MORADIN'S HAMMER: This spell creates a hammer in the Champion's hand that cannot be dropped or unequipped. The hammer is enchanted as a +4 weapon and deals 1d6 points of blunt damage as well as 1d6 magic damage. 
 
-The Moradin's Hammer is weilded as a warhammer.
+The Moradin's Hammer is wielded as a warhammer.
 
 Disadvantages:
 - Hammers of Moradin do not have a special smite ability.
@@ -2832,15 +2832,15 @@ The hammer is enchanted as a +4 weapon and deals 1d6 points of blunt damage as w
 @80803  = ~INQUISITOR OF AZUTH: As the patron of wizards, and conscious of the potential destruction that magic can visit on the world, Azuth ... Controlly control
 
 Advantages:
-- Immune to Hold, and Charm spells
-- Wizard's Bane: The Inquisitor's smite does double damage to wizards, and any wizards hit by the Inquisitor's smite are affected by dispel magic effect of a caster level equal to twice the Inquisitor's class level.
+- Immune to Hold and Charm spells
+- Wizard's Bane: The Inquisitor's smite does double damage to wizards, and any wizards hit by the Inquisitor's smite are affected by an dispel magic effect of a caster level equal to twice the Inquisitor's class level.
 
 Disadvantages:
-- Inquisitor's do not turn undead
+- Inquisitors do not turn undead
 
 Restrictions:
 - Alignment: May not be evil, nor chaotic
-- The Hammer of Moradin must maintain a reputation of 8 or fall.~
+- The Inquisitor of Azuth must maintain a reputation of 8 or fall.~
 
 @80804  = ~Wizard's Bane~
 @80805  = ~Wizard's Bane
@@ -2885,8 +2885,10 @@ Advantages:
 - May use the frenzy ability once per day.  The zealot gains an additional use of this ability at levels 10, 15 and 20.
 FRENZY: The character becomes frenzied for 1 turn. While in this state, the character gains a +2 bonus to <PRO_HISHER> melee attack rolls and saves, as well as to <PRO_HISHER> Armor Class, and becomes immune to charm, confusion, fear, feeblemind, hold, imprisonment, level drain, maze, stun, and sleep. The character also gains an additional attack per round.
 
+Frenzy does not stack with haste or similar effects
+
 Sight of Gruumsh: The Eye of Gruumsh can pierce through illusions with their missing eye while in frenzy.
-At first level, when entering a frenzy, the Eye detects any invisible creature as though they cast detect invisibility.  At 4th level, the eye is infused with the strength and fury of the Orchish race, gaining a +2 to strength while frenzy.  At 8th level, they gain the effects of truesight.
+At first level, when entering a frenzy, the Eye detects any invisible creature as though they cast detect invisibility.  At 4th level, the eye is infused with the strength and fury of the Orchish race, gaining a +2 to strength while frenzied.  At 8th level, they gain the effects of truesight.
 
 Restrictions:
 - Alignment: Neutral Evil, Chaotic Evil, and Chaotic Neutral
@@ -2896,7 +2898,9 @@ Restrictions:
 @86205  = ~Sight of Gruumsh
 
 The character is frenzied for 1 turn.  While in this state, the character gains a +2 bonus to <PRO_HISHER> melee attack rolls and saves vs. spell, as well as to <PRO_HISHER> Armor Class, and becomes immune to charm, confusion, fear, feeblemind, hold, imprisonment, level drain, maze, stun, and sleep. The character also gains an additional attack per round.
-The Eye of Gruumsh can pierce through illusions with their missing eye while in frenzy.  At first level, when entering a frenzy, the Eye detects any invisible creature as though they cast detect invisibility.  At 4th level, the eye is infused with the strength and fury of the Orchish race, gaining a +2 to strength while frenzy.  At 8th level, they gain the effects of truesight.
+The Eye of Gruumsh can pierce through illusions with their missing eye while in frenzy.  At first level, when entering a frenzy, the Eye detects any invisible creature as though they cast detect invisibility.  At 4th level, the eye is infused with the strength and fury of the Orchish race, gaining a +2 to strength while frenzied.  At 8th level, they gain the effects of truesight.
+
+Eye of Gruumsh does not stack with haste or similar effects
 
 After the effect ends, the character becomes winded, suffering a -2 penalty to Armor Class, to-hit rolls, and damage rolls.~
 
@@ -2912,7 +2916,7 @@ Frenzy is further modified depending upon the patron deity of the zealot.
 Frenzy does not stack with haste or similar effects
 
 Eye of the Storm: Initiates channel electrical energy when they frenzy.
-In addition to the normal effects of frenzy, the Initiate channels the raw destructive power of the storm while in frenzy.  At 1st level, they can cast lightning bolt as an innate ability.  At 4th level, <PRO_HESHE> is immune to electricty and gains 50% resistance to fire.  At 8th level, <PRO_HESHE> body crackles with electrical energy.  Any opponent that hits <PRO_HIMHER> in melee suffers 1d8+2 electrical damage.
+In addition to the normal effects of frenzy, the Initiate channels the raw destructive power of the storm while in frenzy.  At 1st level, they can cast lightning bolt as an innate ability.  At 4th level, <PRO_HESHE> is immune to electricty and gains 50% resistance to fire.  At 8th level, <PRO_HISHER> body crackles with electrical energy.  Any opponent that hits <PRO_HIMHER> in melee suffers 1d8+2 electrical damage.
 
 Restrictions:
 - Alignment: Any Evil or Chaotic Neutral~
@@ -2921,7 +2925,9 @@ Restrictions:
 @86305  = ~Eye of the Storm
 
 The character is frenzied for 1 turn.  While in this state, the character gains a +2 bonus to <PRO_HISHER> melee attack rolls and saves vs. spell, as well as to <PRO_HISHER> Armor Class, and becomes immune to charm, confusion, fear, feeblemind, hold, imprisonment, level drain, maze, stun, and sleep. The character also gains an additional attack per round.
-The Initiate channels the raw destructive power of the storm while in frenzy.  At 1st level, they can cast lightning bolt as an innate ability.  At 4th level, <PRO_HESHE> is immune to electricty and gains 50% resistance to fire.  At 8th level, <PRO_HESHE> body crackles with electrical energy.  Any opponent that hits <PRO_HIMHER> in melee suffers 1d8+2 electrical damage.
+The Initiate channels the raw destructive power of the storm while in frenzy.  At 1st level, they can cast lightning bolt as an innate ability.  At 4th level, <PRO_HESHE> is immune to electricty and gains 50% resistance to fire.  At 8th level, <PRO_HISHER> body crackles with electrical energy.  Any opponent that hits <PRO_HIMHER> in melee suffers 1d8+2 electrical damage.
+
+Eye of the Storm does not stack with haste or similar effects
 
 After the effect ends, the character becomes winded, suffering a -2 penalty to Armor Class, to-hit rolls, and damage rolls.~
 
@@ -2934,8 +2940,10 @@ Advantages:
 FRENZY: The character becomes frenzied for 1 turn. While in this state, the character gains a +2 bonus to <PRO_HISHER> melee attack rolls and saves, as well as to <PRO_HISHER> Armor Class, and becomes immune to charm, confusion, fear, feeblemind, hold, imprisonment, level drain, maze, stun, and sleep. The character also gains an additional attack per round.
 Frenzy is further modified depending upon the patron deity of the zealot.
 
-Burning Frenzy: Disciples channel the elemental plane of fire when they frenzy.
-In addition to the normal effects of frenzy, the Disciple channels the raw power of fire while in frenzy.  At 1st level, they become immune to fire damage.  At 4th level, <PRO_HESHE> they get can cast Agannazar's Scorcher as an innate ability once per frenzy.  At 8th level, <PRO_HESHE> is under the effects of fireshield (red) for the duration.
+Frenzy does not stack with haste or similar effects
+
+Burning Frenzy: Disciples channel the Elemental Plane of Fire when they frenzy.
+In addition to the normal effects of frenzy, the Disciple channels the raw power of fire while in frenzy.  At 1st level, they become immune to fire damage.  At 4th level, <PRO_HESHE> can cast Agannazar's Scorcher as an innate ability once per frenzy.  At 8th level, <PRO_HESHE> is under the effects of Fireshield (red) for the duration.
 
 Restrictions:
 - Alignment: Any~
@@ -2944,7 +2952,9 @@ Restrictions:
 @86405  = ~Burning Frenzy
 
 The character is frenzied for 1 turn.  While in this state, the character gains a +2 bonus to <PRO_HISHER> melee attack rolls and saves vs. spell, as well as to <PRO_HISHER> Armor Class, and becomes immune to charm, confusion, fear, feeblemind, hold, imprisonment, level drain, maze, stun, and sleep. The character also gains an additional attack per round.
-In addition to the normal effects of frenzy, the Disciple channels the raw power of fire while in frenzy.  At 1st level, they become immune to fire damage.  At 4th level, <PRO_HESHE> they get can cast Agannazar's Scorcher as an innate ability once per frenzy.  At 8th level, <PRO_HESHE> is under the effects of fireshield (red) for the duration.
+In addition to the normal effects of frenzy, the Disciple channels the raw power of fire while in frenzy.  At 1st level, they become immune to fire damage.  At 4th level, <PRO_HESHE> can cast Agannazar's Scorcher as an innate ability once per frenzy.  At 8th level, <PRO_HESHE> is under the effects of Fireshield (red) for the duration.
+
+Burning Frenzy does not stack with haste or similar effects
 
 After the effect ends, the character becomes winded, suffering a -2 penalty to Armor Class, to-hit rolls, and damage rolls.~
 
@@ -2957,7 +2967,9 @@ Advantages:
 FRENZY: The character becomes frenzied for 1 turn. While in this state, the character gains a +2 bonus to <PRO_HISHER> melee attack rolls and saves, as well as to <PRO_HISHER> Armor Class, and becomes immune to charm, confusion, fear, feeblemind, hold, imprisonment, level drain, maze, stun, and sleep. The character also gains an additional attack per round.
 Frenzy is further modified depending upon the patron deity of the zealot.
 
-Martyr's Acceptance:  Companions take on the spirit of Ilmater, and is able to accept tremendous punishment.
+Frenzy does not stack with haste or similar effects
+
+Martyr's Acceptance:  The Companions takes on the spirit of Ilmater, and is able to accept tremendous punishment.
 At 1st level, <PRO_HESHE> gains 20% damage reduction against all forms of physical damage.  At 4th level, they gain this same resistance against all forms of damage.  At 8th level, this resistance increases to 50%.
 
 Restrictions:
@@ -2970,17 +2982,21 @@ Restrictions:
 The character is frenzied for 1 turn.  While in this state, the character gains a +2 bonus to <PRO_HISHER> melee attack rolls and saves vs. spell, as well as to <PRO_HISHER> Armor Class, and becomes immune to charm, confusion, fear, feeblemind, hold, imprisonment, level drain, maze, stun, and sleep. The character also gains an additional attack per round.
 In addition to the normal effects of frenzy, the Companion channels the spirit of Ilmater, and is able to accept tremendous punishment.  At 1st level, <PRO_HESHE> gains 20% damage reduction against all forms of physical damage.  At 4th level, they gain this same resistance against all forms of damage.  At 8th level, this resistance increases to 50%.
 
+Martyr's Acceptance does not stack with haste or similar effects
+
 After the effect ends, the character becomes winded, suffering a -2 penalty to Armor Class, to-hit rolls, and damage rolls.~
 
 @86601  = ~zealot of garagos~
 @86602  = ~Child of Blood~
-@86603  = ~CHILD OF BLOOD: Zealots of Garagos are fierce warriors, drawn to frenzy of battle.  Too undiciplined even to serve under Tempus, they are prone to rush into battle against any opponent without a second thought or even much of a plan.  Needless to say, they often die young.
+@86603  = ~CHILD OF BLOOD: Zealots of Garagos are fierce warriors, drawn to the frenzy of battle.  Too undiciplined even to serve under Tempus, they are prone to rush into battle against any opponent without a second thought or even much of a plan.  Needless to say, they often die young.
 
 Advantages:
-- May use the Fury ability twice per day at first level.  The children of blood are unique in that they can enter their frenzy much more often than normal.
+- May use the Fury ability twice per day at first level.  The Children of Blood are unique in that they can enter their frenzy much more often than normal.
 At first level, they can use the ability twice per day.  They gain an additional use of this ability at levels 4, 10, 15 and 20.
 FURY: The character becomes frenzied for 1 turn. While in this state, the character gains a +2 bonus to <PRO_HISHER> melee attack rolls and saves, as well as to <PRO_HISHER> Armor Class, and becomes immune to charm, confusion, fear, feeblemind, hold, imprisonment, level drain, maze, stun, and sleep. The character also gains an additional attack per round.
 Frenzy is further modified depending upon the patron deity of the zealot.
+
+Frenzy does not stack with haste or similar effects
 
 Fury:  At 1st level, <PRO_HESHE> gains a +2 bonus to Strength and Constitution while under the effects of Frenzy.  This ability does not increase in potency at level 4, but they gain an additional use at level 4.  The bonus increases to +4 at 8th level.
 
@@ -2992,18 +3008,22 @@ Restrictions:
 The character is frenzied for 1 turn.  While in this state, the character gains a +2 bonus to <PRO_HISHER> melee attack rolls and saves vs. spell, as well as to <PRO_HISHER> Armor Class, and becomes immune to charm, confusion, fear, feeblemind, hold, imprisonment, level drain, maze, stun, and sleep. The character also gains an additional attack per round.
 In addition to the normal effects of frenzy, the Companion channels the spirit of Ilmater, and is able to accept tremendous punishment.  At 1st level, <PRO_HESHE> gains a +2 bonus to Strength and Constitution.  At 8th level, this bonus increases to +4.
 
+Fury does not stack with haste or similar effects
+
 After the effect ends, the character becomes winded, suffering a -2 penalty to Armor Class, to-hit rolls, and damage rolls.~
 
 @86701  = ~zealot of corellon larethian~
 @86702  = ~Vassal of the Reverend One~
-@86703  = ~VASSAL OF THE REVEREND ONE: Zealots of Corelion Larethian are steadfast defenders of elven values.  Often orphaned elves or half-elves, non-evil evles still feel the call to Corellon, often serving him in their own way as zealots.
+@86703  = ~VASSAL OF THE REVEREND ONE: Zealots of Corelion Larethian are steadfast defenders of elven values.  Often orphaned elves or half-elves, non-evil elves still feel the call to Corellon, often serving him in their own way as zealots.
 
 Advantages:
 - May use the frenzy ability once per day.  The zealot gains an additional use of this ability at levels 10, 15 and 20.
 FRENZY: The character becomes frenzied for 1 turn. While in this state, the character gains a +2 bonus to <PRO_HISHER> melee attack rolls and saves, as well as to <PRO_HISHER> Armor Class, and becomes immune to charm, confusion, fear, feeblemind, hold, imprisonment, level drain, maze, stun, and sleep. The character also gains an additional attack per round.
 Frenzy is further modified depending upon the patron deity of the zealot.
 
-Corellon's Arrow:  Vassal's are paragons of elven skill with blade and bow.
+Frenzy does not stack with haste or similar effects
+
+Corellon's Arrow:  Vassals are paragons of elven skill with blade and bow.
 At 1st level, <PRO_HESHE> gains the same bonuses with ranged weapons as with melee weapons (+2 to ranged THAC0).  Additionally, they gain a +2 to damage on both melee and ranged attacks.  At 4th level, They gain a +4 bonus to melee and ranged attacks and damage.  At 8th level, this bonus increase to +6.
 
 Restrictions:
@@ -3015,21 +3035,25 @@ Restrictions:
 @86705  = ~Corellon's Arrow
 
 The character is frenzied for 1 turn.  While in this state, the character gains a +2 bonus to <PRO_HISHER> melee attack rolls and saves vs. spell, as well as to <PRO_HISHER> Armor Class, and becomes immune to charm, confusion, fear, feeblemind, hold, imprisonment, level drain, maze, stun, and sleep. The character also gains an additional attack per round.
-Vassal's are paragons of elven skill with blade and bow.  At 1st level, <PRO_HESHE> gains the same bonuses with ranged weapons as with melee weapons (+2 to ranged THAC0).  Additionally, they gain a +2 to damage on both melee and ranged attacks.  At 4th level, They gain a +4 bonus to melee and ranged attacks and damage.  At 8th level, this bonus increase to +6.
+Vassals are paragons of elven skill with blade and bow.  At 1st level, <PRO_HESHE> gains the same bonuses with ranged weapons as with melee weapons (+2 to ranged THAC0).  Additionally, they gain a +2 to damage on both melee and ranged attacks.  At 4th level, They gain a +4 bonus to melee and ranged attacks and damage.  At 8th level, this bonus increase to +6.
+
+Corellon's Arrow does not stack with haste or similar effects
 
 After the effect ends, the character becomes winded, suffering a -2 penalty to Armor Class, to-hit rolls, and damage rolls.~
 
 @86801  = ~zealot of sune~
 @86802  = ~Cherub of the Ruby Rose~
-@86803  = ~CHERUB OF THE RUBY ROSE: Zealots dedicated to the service of Sune
+@86803  = ~CHERUB OF THE RUBY ROSE: Zealots dedicated to the service of Sune ...
 
 Advantages:
 - May use the frenzy ability once per day.  The zealot gains an additional use of this ability at levels 10, 15 and 20.
 FRENZY: The character becomes frenzied for 1 turn. While in this state, the character gains a +2 bonus to <PRO_HISHER> melee attack rolls and saves, as well as to <PRO_HISHER> Armor Class, and becomes immune to charm, confusion, fear, feeblemind, hold, imprisonment, level drain, maze, stun, and sleep. The character also gains an additional attack per round.
 Frenzy is further modified depending upon the patron deity of the zealot.
 
+Frenzy does not stack with haste or similar effects
+
 Passionate Resonance:  When the Cherub enters frenzy, <PRO_HESHE> radiates the power of Sune, possibly overcomming the will of all enemies within 30'.
-At 1st level, all enemies are affected by Charm Person if they fail a save vs. spell +2.  At 4th level, opponents are instead affected by dire charm.  At 8th level, they are dominated
+At 1st level, all enemies are affected by Charm Person if they fail a save vs. spell +2.  At 4th level, opponents are instead affected by Dire Charm.  At 8th level, they are Dominated if they fail their save.
 
 Restrictions:
 - Alignment: Any Non-Evil
@@ -3039,44 +3063,52 @@ Restrictions:
 @86805  = ~Passionate Resonance
 
 The character is frenzied for 1 turn.  While in this state, the character gains a +2 bonus to <PRO_HISHER> melee attack rolls and saves vs. spell, as well as to <PRO_HISHER> Armor Class, and becomes immune to charm, confusion, fear, feeblemind, hold, imprisonment, level drain, maze, stun, and sleep. The character also gains an additional attack per round.
-When the Cherub enters frenzy, <PRO_HESHE> radiates the power of Sune, possibly overcomming the will of all enemies within 30'.  At 1st level, all enemies are affected by Charm Person if they fail a save vs. spell +2.  At 4th level, opponents are instead affected by dire charm.  At 8th level, they are dominated
+When the Cherub enters frenzy, <PRO_HESHE> radiates the power of Sune, possibly overcomming the will of all enemies within 30'.  At 1st level, all enemies are affected by Charm Person if they fail a save vs. spell +2.  At 4th level, opponents are instead affected by Dire Charm.  At 8th level, they are Dominated if they fail their save.
+
+Passionate Resonance does not stack with haste or similar effects
 
 After the effect ends, the character becomes winded, suffering a -2 penalty to Armor Class, to-hit rolls, and damage rolls.~
 
 @86901  = ~zealot of mystra~
 @86902  = ~Weaverager of Mystra~
-@86903  = ~WEAVERAGER OF MYSTRA:
+@86903  = ~WEAVERAGER OF MYSTRA: ...
 
 Advantages:
 - May use the frenzy ability once per day.  The zealot gains an additional use of this ability at levels 10, 15 and 20.
 FRENZY: The character becomes frenzied for 1 turn. While in this state, the character gains a +2 bonus to <PRO_HISHER> melee attack rolls and saves, as well as to <PRO_HISHER> Armor Class, and becomes immune to charm, confusion, fear, feeblemind, hold, imprisonment, level drain, maze, stun, and sleep. The character also gains an additional attack per round.
 Frenzy is further modified depending upon the patron deity of the zealot.
 
-Weaverage:  Weaverager are protected from magic while in frenzy.
-At 1st level, <PRO_HESHE> gains 20% magic resistance while in frenzy.  At 4th level, they gain magic resistance 30%.  At 8th level, they gain magic resistance 40%.
+Frenzy does not stack with haste or similar effects
+
+Weaverage:  Weaveragers are protected from magic while in frenzy.
+At 1st level, <PRO_HESHE> gains 20% magic resistance while in frenzy.  At 4th level, they gain 30% magic resistance.  At 8th level, they gain 40% magic resistance.
 
 Restrictions:
 - Alignment: Any non-evil
-- The zealot of mystra must maintain a reputation of 8 or fall.~
+- The Zealot of Mystra must maintain a reputation of 8 or fall.~
 
 @86904  = ~Weaverage~
 @86905  = ~Weaverage
 
 The character is frenzied for 1 turn.  While in this state, the character gains a +2 bonus to <PRO_HISHER> melee attack rolls and saves vs. spell, as well as to <PRO_HISHER> Armor Class, and becomes immune to charm, confusion, fear, feeblemind, hold, imprisonment, level drain, maze, stun, and sleep. The character also gains an additional attack per round.
-Zealots of Mystra are protected from magic while in frenzy.  At 1st level, <PRO_HESHE> gains 20% magic resistance while in frenzy.  At 4th level, they gain magic resistance 30%.  At 8th level, they gain magic resistance 40%.
+Zealots of Mystra are protected from magic while in frenzy.  At 1st level, <PRO_HESHE> gains 20% magic resistance while in frenzy.  At 4th level, they gain 30% magic resistance.  At 8th level, they gain 40% magic resistance.
+
+Weaverage does not stack with haste or similar effects
 
 After the effect ends, the character becomes winded, suffering a -2 penalty to Armor Class, to-hit rolls, and damage rolls.~
 
 @87001  = ~zealot of eilistraee~
 @87002  = ~Darksong Knight~
-@87003  = ~DARKSONG KNIGHT:
+@87003  = ~DARKSONG KNIGHT: ...
 
 Advantages:
 - May use the frenzy ability once per day.  The zealot gains an additional use of this ability at levels 10, 15 and 20.
 FRENZY: The character becomes frenzied for 1 turn. While in this state, the character gains a +2 bonus to <PRO_HISHER> melee attack rolls and saves, as well as to <PRO_HISHER> Armor Class, and becomes immune to charm, confusion, fear, feeblemind, hold, imprisonment, level drain, maze, stun, and sleep. The character also gains an additional attack per round.
 Frenzy is further modified depending upon the patron deity of the zealot.
 
-Bladedance:  Darksong Knights are a flury of blades while in frenzy.
+Frenzy does not stack with haste or similar effects
+
+Bladedance:  Darksong Knights are a flurry of blades while in frenzy.
 The Darksong Knight gains an additional attack per melee while in frenzy.
 
 Restrictions:
@@ -3087,6 +3119,8 @@ Restrictions:
 @87005  = ~Bladesong
 
 The character is frenzied for 1 turn.  While in this state, the character gains a +2 bonus to <PRO_HISHER> melee attack rolls and saves vs. spell, as well as to <PRO_HISHER> Armor Class, and becomes immune to charm, confusion, fear, feeblemind, hold, imprisonment, level drain, maze, stun, and sleep. The character also gains two additional attacks per round.
+
+Bladesong does not stack with haste or similar effects
 
 After the effect ends, the character becomes winded, suffering a -2 penalty to Armor Class, to-hit rolls, and damage rolls.~
 
