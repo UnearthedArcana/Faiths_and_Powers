@@ -16,6 +16,7 @@ Version 0.64
 - Acolytes: Added bonus spells (and lore bonuses in a few cases)
 - Changed Beshaba's spheres around. Focus: Dread.
 - Removed override references to COMPILE lines
+
 2017-03-13
 Version 0.63b
 - NPC cleric kits
