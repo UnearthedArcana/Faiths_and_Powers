@@ -1,8 +1,10 @@
 # Faiths_and_Powers
 Faiths and Powers mod
 Faiths and Powers: Gods of the Realms
-Version 0.64
+
 2017-06-03
+Version 0.64
+
 - Fixed cleric of Kelevmor death ward and neg plane protection
 - Fixed doom special ability for for Beshaba Acolytes (and better implemented the ability)
 - Added misfire reference to spell in for Beshaba Acolyte description
