@@ -1,6 +1,21 @@
-# Faiths_and_Powers
+﻿# Faiths_and_Powers
 Faiths and Powers mod
+2017-06-03
+Version 0.63b
 Faiths and Powers: Gods of the Realms
+- Fixed cleric of Kelevmor death ward and neg plane protection
+- Fixed doom special ability for for Beshaba Acolytes (and better
+implemented the ability)
+- Added misfire reference to spell in for Beshaba Acolyte description
+- Fixed icons in misfire spell/special ability for Beshaba Acolytes
+- Plant focus sphere no longer adds summon water elemental rather than
+assassin vines as a level 5 spell...
+- Grammar issues: Champions
+- Grammar issues: Zealots
+- Zealot of Ilmater: Correctly added frenzy in 2da
+- Acolytes: Added bonus spells (and lore bonuses in a few cases)
+- Changed Beshaba's spheres around. Focus: Dread.
+- Removed override references to COMPILE lines
 
 2017-06-03
 Version 0.64
