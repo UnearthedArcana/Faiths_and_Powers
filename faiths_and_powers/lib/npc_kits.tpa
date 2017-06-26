@@ -40,6 +40,9 @@ COPY_EXISTING ~kitlist.2da~ ~override~
 		PATCH_IF ("%clab%" STRING_EQUAL_CASE "b_cfhe" = 1) BEGIN
 			SET b_cfhe = (%index% - 1)
 		END
+		PATCH_IF ("%clab%" STRING_EQUAL_CASE "b_umb" = 1) BEGIN
+			SET b_umb = (%index% - 1)
+		END
 	END
 BUT_ONLY
 
@@ -100,7 +103,7 @@ ACTION_IF VARIABLE_IS_SET %b_ctcyr% BEGIN
 					~tiax~ 
 					~tiax4~ 
 					~tiax6~  
-                                        ~tiaxd~ BEGIN
+                    ~tiaxd~ BEGIN
 	ACTION_IF FILE_EXISTS_IN_GAME ~%char%.cre~ BEGIN
 	  COPY_EXISTING ~%char%.cre~ ~override~
 		WRITE_SHORT 0x244 0
@@ -113,7 +116,7 @@ END
 ACTION_IF VARIABLE_IS_SET %d5cfcla% BEGIN
   ACTION_FOR_EACH char IN ~yeslic~
 					~yeslic5~  
-                                        ~yeslid~ BEGIN
+                    ~yeslid~ BEGIN
 	ACTION_IF FILE_EXISTS_IN_GAME ~%char%.cre~ BEGIN
 	  COPY_EXISTING ~%char%.cre~ ~override~
 		WRITE_SHORT 0x244 0
@@ -128,7 +131,7 @@ ACTION_FOR_EACH char IN ~viconi~
 					~viconi4~ 
 					~viconi6~ 
 					~viconi7~
-                                        ~%viconi6_var%~
+                    ~%viconi6_var%~
 					~viconi8~ 
 					~viconi9~ 
 					~viconi11~ 
@@ -144,7 +147,7 @@ ACTION_FOR_EACH char IN ~viconi~
 END 
 
 ACTION_IF VARIABLE_IS_SET %d5baerv% BEGIN
-  ACTION_FOR_EACH char IN ~aerie6.cre~ ~override~
+  ACTION_FOR_EACH char IN ~aerie6.cre~
 					~aerie7.cre~
 					~aerie9.cre~
 					~aerie10.cre~
@@ -160,7 +163,7 @@ ACTION_IF VARIABLE_IS_SET %d5baerv% BEGIN
 END
 
 ACTION_IF VARIABLE_IS_SET %b_cfhe% BEGIN
-  ACTION_FOR_EACH char IN ~anomen6.cre~ ~override~
+  ACTION_FOR_EACH char IN ~anomen6.cre~
 					~anomen7.cre~
 					~anomen8.cre~
 					~anomen9.cre~
@@ -170,6 +173,17 @@ ACTION_IF VARIABLE_IS_SET %b_cfhe% BEGIN
 	  COPY_EXISTING ~%char%.cre~ ~override~
 		WRITE_SHORT 0x244 0
 		WRITE_SHORT 0x246 0x4000 + %b_cfhe% // changes kit
+	  BUT_ONLY
+	END
+  END
+END
+
+ACTION_IF VARIABLE_IS_SET %b_umb% BEGIN
+  ACTION_FOR_EACH char IN ~tenya.cre~   BEGIN
+	ACTION_IF FILE_EXISTS_IN_GAME ~%char%.cre~ BEGIN
+	  COPY_EXISTING ~%char%.cre~ ~override~
+		WRITE_SHORT 0x244 0
+		WRITE_SHORT 0x246 0x4000 + %b_umb% // changes kit
 	  BUT_ONLY
 	END
   END

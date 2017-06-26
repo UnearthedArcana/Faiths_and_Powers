@@ -2,12 +2,15 @@ BACKUP ~faiths_and_powers/backup~
 AUTHOR ~SubtleD and Grammarsalad~
 
 
-VERSION ~0.65~
+VERSION ~0.66~
 
 //README ~faiths_and_powers/readme-pnp.html~
 
 
 ALWAYS
+
+	INCLUDE ~faiths_and_powers/lib/add_cleric_kits.tpa~
+	INCLUDE ~faiths_and_powers/lib/add_acolyte_kits.tpa~
 
     INCLUDE ~faiths_and_powers/lib/alter_effect.tpa~
 
@@ -99,30 +102,34 @@ COPY ~faiths_and_powers/lib/markers/d5_deity.d5~ ~override~
 //install all the kits:_____________________________________________________________
 //
 // (clerics)
-INCLUDE ~faiths_and_powers/kits/clerics/201_lathander/cleric_lathander.tpa~
-INCLUDE ~faiths_and_powers/kits/clerics/202_torm/cleric_torm.tpa~
-INCLUDE ~faiths_and_powers/kits/clerics/205_tymora/cleric_tymora.tpa~
-INCLUDE ~faiths_and_powers/kits/clerics/208_helm/cleric_helm.tpa~
-INCLUDE ~faiths_and_powers/kits/clerics/209_kelemvor/cleric_kelemvor.tpa~
-INCLUDE ~faiths_and_powers/kits/clerics/210_tempus/cleric_tempus.tpa~
-INCLUDE ~faiths_and_powers/kits/clerics/212_leira/cleric_leira.tpa~
-INCLUDE ~faiths_and_powers/kits/clerics/213_baravar/cleric_baravar.tpa~
-INCLUDE ~faiths_and_powers/kits/clerics/219_loviatar/cleric_loviatar.tpa~
-INCLUDE ~faiths_and_powers/kits/clerics/224_talos/cleric_talos.tpa~
-INCLUDE ~faiths_and_powers/kits/clerics/225_cyric/cleric_cyric.tpa~
-INCLUDE ~faiths_and_powers/kits/clerics/226_umberlee/cleric_umberlee.tpa~
+LAM cleric_lathander
+LAM cleric_torm
+LAM cleric_tymora
+LAM cleric_helm
+ACTION_IF NOT GAME_IS ~iwdee~ BEGIN
+  LAM cleric_kelemvor
+END
+LAM cleric_tempus
+LAM cleric_leira
+LAM cleric_baravar
+LAM cleric_loviatar
+LAM cleric_talos
+ACTION_IF NOT GAME_IS ~iwdee~ BEGIN
+  LAM cleric_cyric
+END
+LAM cleric_umberlee
 //
 // (acolytes)
-INCLUDE ~faiths_and_powers/kits/acolytes/314_ilmater/acolyte_ilmater.tpa~
-INCLUDE ~faiths_and_powers/kits/acolytes/315_deneir/acolyte_deneir.tpa~
-INCLUDE ~faiths_and_powers/kits/acolytes/316_sune/acolyte_sune.tpa~
-INCLUDE ~faiths_and_powers/kits/acolytes/322_tempus/acolyte_tempus.tpa~
-INCLUDE ~faiths_and_powers/kits/acolytes/325_mystra/acolyte_mystra.tpa~
-INCLUDE ~faiths_and_powers/kits/acolytes/329_mask/acolyte_mask.tpa~
-INCLUDE ~faiths_and_powers/kits/acolytes/330_shar/acolyte_shar.tpa~
-INCLUDE ~faiths_and_powers/kits/acolytes/331_moander/acolyte_moander.tpa~
-INCLUDE ~faiths_and_powers/kits/acolytes/332_beshaba/acolyte_beshaba.tpa~
-INCLUDE ~faiths_and_powers/kits/acolytes/342_baervan/acolyte_baervan.tpa~
+LAM acolyte_ilmater
+LAM acolyte_deneir
+LAM acolyte_sune
+LAM acolyte_tempus
+LAM acolyte_mystra
+LAM acolyte_mask
+LAM acolyte_shar
+LAM acolyte_moander
+LAM acolyte_beshaba
+LAM acolyte_baervan
 //
 // (druids)
 INCLUDE ~faiths_and_powers/kits/druids/731_forest_druid/forest_druid.tpa~
@@ -242,6 +249,10 @@ INCLUDE ~faiths_and_powers/kits/multiclass/492_cr_shaundakul/cr_shaundakul.tpa~
 //
 //__________________________________________________________________________________
 
+//special kit: ur-priest
+LAM cleric_ur_priest
+//__________________________________________________________________________________
+
 //vanilla kits_______________________________________________________________________
 //
 INCLUDE ~faiths_and_powers/lib/vanilla_kit_spheres.tpa~
@@ -257,6 +268,18 @@ INCLUDE ~faiths_and_powers/lib/mod_kit_spheres.tpa~
 INCLUDE ~faiths_and_powers/lib/default_kit_spheres.tpa~
 //___________________________________________________________________________________
 
+//Base kits_________________________________________________________________________
+//
+INCLUDE ~faiths_and_powers/kits/acolytes/acolyte.tpa~
+INCLUDE ~faiths_and_powers/kits/champions/champion.tpa~
+INCLUDE ~faiths_and_powers/kits/zealots/zealot.tpa~
+//__________________________________________________________________________________
+
+//deity selection___________________________________________________________________
+//
+INCLUDE ~faiths_and_powers/lib/deity_selection.tpa~
+//__________________________________________________________________________________
+
 //replace kit menus__________________________________________________________________
 // (clerics)
 
@@ -269,17 +292,6 @@ ACTION_FOR_EACH menu_class IN ~C~ /*~D~ ~R~*/ ~P~ ~FC~ ~CM~ ~CT~ ~CR~ BEGIN
 	COPY ~faiths_and_powers/deity/K_X_Y/K_%menu_class%_HL.2da~ ~override~
 	COPY ~faiths_and_powers/deity/K_X_Y/K_%menu_class%_HO.2da~ ~override~
 END
-//__________________________________________________________________________________
-
-//special kit: ur-priest
-INCLUDE ~faiths_and_powers/kits/clerics/200_Ur_Priest/cleric_Ur_Priest.tpa~
-//__________________________________________________________________________________
-
-//Base kits_________________________________________________________________________
-//
-INCLUDE ~faiths_and_powers/kits/acolytes/acolyte.tpa~
-INCLUDE ~faiths_and_powers/kits/champions/champion.tpa~
-INCLUDE ~faiths_and_powers/kits/zealots/zealot.tpa~
 //__________________________________________________________________________________
 
 //no trueclass in kit menus__________________________________________________________
@@ -322,11 +334,6 @@ COPY ~faiths_and_powers/kits/K_X_Y/K_R_HL.2da~ ~override~
 	REPLACE_TEXTUALLY ~[ %TAB%]0~ ~%TAB%%sling_row%~
 //__________________________________________________________________________________
 
-//deity selection___________________________________________________________________
-//
-INCLUDE ~faiths_and_powers/lib/deity_selection.tpa~
-//__________________________________________________________________________________
-
 //alter item usability______________________________________________________________
 //
 INCLUDE ~faiths_and_powers/lib/item_usability.tpa~
@@ -359,6 +366,8 @@ INCLUDE ~faiths_and_powers/lib/npc_kits.tpa~
 
 
 
+
+
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 //
@@ -385,30 +394,34 @@ COPY ~faiths_and_powers/lib/markers/d5_rangers.d5~ ~override~
 //install all the kits:_____________________________________________________________
 //
 // (clerics)
-INCLUDE ~faiths_and_powers/kits/clerics/201_lathander/cleric_lathander.tpa~
-INCLUDE ~faiths_and_powers/kits/clerics/202_torm/cleric_torm.tpa~
-INCLUDE ~faiths_and_powers/kits/clerics/205_tymora/cleric_tymora.tpa~
-INCLUDE ~faiths_and_powers/kits/clerics/208_helm/cleric_helm.tpa~
-INCLUDE ~faiths_and_powers/kits/clerics/209_kelemvor/cleric_kelemvor.tpa~
-INCLUDE ~faiths_and_powers/kits/clerics/210_tempus/cleric_tempus.tpa~
-INCLUDE ~faiths_and_powers/kits/clerics/212_leira/cleric_leira.tpa~
-INCLUDE ~faiths_and_powers/kits/clerics/213_baravar/cleric_baravar.tpa~
-INCLUDE ~faiths_and_powers/kits/clerics/219_loviatar/cleric_loviatar.tpa~
-INCLUDE ~faiths_and_powers/kits/clerics/224_talos/cleric_talos.tpa~
-INCLUDE ~faiths_and_powers/kits/clerics/225_cyric/cleric_cyric.tpa~
-INCLUDE ~faiths_and_powers/kits/clerics/226_umberlee/cleric_umberlee.tpa~
+LAM cleric_lathander
+LAM cleric_torm
+LAM cleric_tymora
+LAM cleric_helm
+ACTION_IF NOT GAME_IS ~iwdee~ BEGIN
+  LAM cleric_kelemvor
+END
+LAM cleric_tempus
+LAM cleric_leira
+LAM cleric_baravar
+LAM cleric_loviatar
+LAM cleric_talos
+ACTION_IF NOT GAME_IS ~iwdee~ BEGIN
+  LAM cleric_cyric
+END
+LAM cleric_umberlee
 //
 // (acolytes)
-INCLUDE ~faiths_and_powers/kits/acolytes/314_ilmater/acolyte_ilmater.tpa~
-INCLUDE ~faiths_and_powers/kits/acolytes/315_deneir/acolyte_deneir.tpa~
-INCLUDE ~faiths_and_powers/kits/acolytes/316_sune/acolyte_sune.tpa~
-INCLUDE ~faiths_and_powers/kits/acolytes/322_tempus/acolyte_tempus.tpa~
-INCLUDE ~faiths_and_powers/kits/acolytes/325_mystra/acolyte_mystra.tpa~
-INCLUDE ~faiths_and_powers/kits/acolytes/329_mask/acolyte_mask.tpa~
-INCLUDE ~faiths_and_powers/kits/acolytes/330_shar/acolyte_shar.tpa~
-INCLUDE ~faiths_and_powers/kits/acolytes/331_moander/acolyte_moander.tpa~
-INCLUDE ~faiths_and_powers/kits/acolytes/332_beshaba/acolyte_beshaba.tpa~
-INCLUDE ~faiths_and_powers/kits/acolytes/342_baervan/acolyte_baervan.tpa~
+LAM acolyte_ilmater
+LAM acolyte_deneir
+LAM acolyte_sune
+LAM acolyte_tempus
+LAM acolyte_mystra
+LAM acolyte_mask
+LAM acolyte_shar
+LAM acolyte_moander
+LAM acolyte_beshaba
+LAM acolyte_baervan
 //
 // (druids)
 INCLUDE ~faiths_and_powers/kits/druids/731_forest_druid/forest_druid.tpa~
@@ -563,16 +576,6 @@ INCLUDE ~faiths_and_powers/kits/rangers/903_jungle_ranger/jungle_ranger.tpa~
 INCLUDE ~faiths_and_powers/kits/rangers/904_desert_ranger/desert_ranger.tpa~
 INCLUDE ~faiths_and_powers/kits/rangers/905_arctic_ranger/arctic_ranger.tpa~
 //
-/*
-// (dervishes)
-INCLUDE ~faiths_and_powers/kits/dervishes/933_earth_dervish/earth_dervish.tpa~
-INCLUDE ~faiths_and_powers/kits/dervishes/934_water_dervish/water_dervish.tpa~
-INCLUDE ~faiths_and_powers/kits/dervishes/935_air_dervish/air_dervish.tpa~
-INCLUDE ~faiths_and_powers/kits/dervishes/936_fire_dervish/fire_dervish.tpa~
-INCLUDE ~faiths_and_powers/kits/dervishes/937_light_dervish/light_dervish.tpa~
-INCLUDE ~faiths_and_powers/kits/dervishes/938_shadow_dervish/shadow_dervish.tpa~
-*/
-//
 // (multiclass)
 INCLUDE ~faiths_and_powers/kits/multiclass/452_fighter_druid/fighter_druid.tpa~
 INCLUDE ~faiths_and_powers/kits/multiclass/453_druid_mage/druid_mage.tpa~
@@ -603,7 +606,7 @@ INCLUDE ~faiths_and_powers/lib/default_kit_spheres.tpa~
 //__________________________________________________________________________________
 
 //special kit: ur-priest
-INCLUDE ~faiths_and_powers/kits/clerics/200_Ur_Priest/cleric_Ur_Priest.tpa~
+LAM cleric_ur_priest
 //__________________________________________________________________________________
 
 //Base kits_________________________________________________________________________
@@ -844,7 +847,7 @@ END
 
 //___________________________________________________________________________________
 //
-INCLUDE ~faiths_and_powers/kits/clerics/205_tymora/cleric_tymora.tpa~
+LAM cleric_tymora
 //___________________________________________________________________________________
 
 // clerics:
@@ -854,7 +857,7 @@ BEGIN @201  //  cleric of lathander
 DESIGNATED 201
 REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~200~ @8
 
-INCLUDE ~faiths_and_powers/kits/clerics/201_lathander/cleric_lathander.tpa~
+LAM cleric_lathander
 //___________________________________________________________________________________
 
 //___________________________________________________________________________________
@@ -862,7 +865,7 @@ BEGIN @202  //  cleric of torm
 DESIGNATED 202
 REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~200~ @8
 
-INCLUDE ~faiths_and_powers/kits/clerics/202_torm/cleric_torm.tpa~
+LAM cleric_torm
 //___________________________________________________________________________________
 
 /*
@@ -871,7 +874,7 @@ BEGIN @205  //  cleric of tymora
 DESIGNATED 205
 REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~200~ @8
 
-INCLUDE ~faiths_and_powers/kits/clerics/205_tymora/cleric_tymora.tpa~
+LAM cleric_tymora
 //___________________________________________________________________________________
 */
 
@@ -880,15 +883,16 @@ BEGIN @208  //  cleric of helm
 DESIGNATED 208
 REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~200~ @8
 
-INCLUDE ~faiths_and_powers/kits/clerics/208_helm/cleric_helm.tpa~
+LAM cleric_helm
 //___________________________________________________________________________________
 
 //___________________________________________________________________________________
 BEGIN @209  //  cleric of kelemvor
 DESIGNATED 209
 REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~200~ @8
+REQUIRE_PREDICATE NOT GAME_IS ~iwdee~ @8
 
-INCLUDE ~faiths_and_powers/kits/clerics/209_kelemvor/cleric_kelemvor.tpa~
+LAM cleric_kelemvor
 //___________________________________________________________________________________
 
 //___________________________________________________________________________________
@@ -896,7 +900,7 @@ BEGIN @210  //  cleric of tempus
 DESIGNATED 210
 REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~200~ @8
 
-INCLUDE ~faiths_and_powers/kits/clerics/210_tempus/cleric_tempus.tpa~
+LAM cleric_tempus
 //___________________________________________________________________________________
 
 //___________________________________________________________________________________
@@ -904,7 +908,7 @@ BEGIN @212  //  cleric of leira
 DESIGNATED 212
 REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~200~ @8
 
-INCLUDE ~faiths_and_powers/kits/clerics/212_leira/cleric_leira.tpa~
+LAM cleric_leira
 //___________________________________________________________________________________
 
 //___________________________________________________________________________________
@@ -912,7 +916,7 @@ BEGIN @219  //  cleric of loviatar
 DESIGNATED 219
 REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~200~ @8
 
-INCLUDE ~faiths_and_powers/kits/clerics/219_loviatar/cleric_loviatar.tpa~
+LAM cleric_loviatar
 //___________________________________________________________________________________
 
 //___________________________________________________________________________________
@@ -920,7 +924,7 @@ BEGIN @224  //  cleric of talos
 DESIGNATED 224
 REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~200~ @8
 
-INCLUDE ~faiths_and_powers/kits/clerics/224_talos/cleric_talos.tpa~
+LAM cleric_talos
 //___________________________________________________________________________________
 
 //___________________________________________________________________________________
@@ -928,15 +932,24 @@ BEGIN @213  //  cleric of baravar
 DESIGNATED 213
 REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~200~ @8
 
-INCLUDE ~faiths_and_powers/kits/clerics/213_baravar/cleric_baravar.tpa~
+LAM cleric_baravar
 //___________________________________________________________________________________
 
 //___________________________________________________________________________________
 BEGIN @225  //  cleric of cyric
 DESIGNATED 225
 REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~200~ @8
+REQUIRE_PREDICATE NOT GAME_IS ~iwdee~ @8
 
-INCLUDE ~faiths_and_powers/kits/clerics/225_cyric/cleric_cyric.tpa~
+LAM cleric_cyric
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+BEGIN @226  //  cleric of umberlee
+DESIGNATED 226
+REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~200~ @8
+
+LAM cleric_umberlee
 //___________________________________________________________________________________
 
 // acolytes:
@@ -946,7 +959,7 @@ BEGIN @314  //  acolyte of ilmater
 DESIGNATED 314
 REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~200~ @8
 
-INCLUDE ~faiths_and_powers/kits/acolytes/314_ilmater/acolyte_ilmater.tpa~
+LAM acolyte_ilmater
 //___________________________________________________________________________________
 
 //___________________________________________________________________________________
@@ -954,7 +967,7 @@ BEGIN @315  //  acolyte of deneir
 DESIGNATED 315
 REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~200~ @8
 
-INCLUDE ~faiths_and_powers/kits/acolytes/315_deneir/acolyte_deneir.tpa~
+LAM acolyte_deneir
 //___________________________________________________________________________________
 
 //___________________________________________________________________________________
@@ -962,7 +975,7 @@ BEGIN @316  //  acolyte of sune
 DESIGNATED 316
 REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~200~ @8
 
-INCLUDE ~faiths_and_powers/kits/acolytes/316_sune/acolyte_sune.tpa~
+LAM acolyte_sune
 //___________________________________________________________________________________
 
 //___________________________________________________________________________________
@@ -970,7 +983,7 @@ BEGIN @322  //  acolyte of tempus
 DESIGNATED 322
 REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~200~ @8
 
-INCLUDE ~faiths_and_powers/kits/acolytes/322_tempus/acolyte_tempus.tpa~
+LAM acolyte_tempus
 //___________________________________________________________________________________
 
 //___________________________________________________________________________________
@@ -978,7 +991,7 @@ BEGIN @325  //  acolyte of mystra
 DESIGNATED 325
 REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~200~ @8
 
-INCLUDE ~faiths_and_powers/kits/acolytes/325_mystra/acolyte_mystra.tpa~
+LAM acolyte_mystra
 //___________________________________________________________________________________
 
 //___________________________________________________________________________________
@@ -986,7 +999,7 @@ BEGIN @329  //  acolyte of mask
 DESIGNATED 329
 REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~200~ @8
 
-INCLUDE ~faiths_and_powers/kits/acolytes/329_mask/acolyte_mask.tpa~
+LAM acolyte_mask
 //___________________________________________________________________________________
 
 //___________________________________________________________________________________
@@ -994,7 +1007,7 @@ BEGIN @330  //  acolyte of shar
 DESIGNATED 330
 REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~200~ @8
 
-INCLUDE ~faiths_and_powers/kits/acolytes/330_shar/acolyte_shar.tpa~
+LAM acolyte_shar
 //___________________________________________________________________________________
 
 //___________________________________________________________________________________
@@ -1002,7 +1015,7 @@ BEGIN @331  //  acolyte of moander
 DESIGNATED 331
 REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~200~ @8
 
-INCLUDE ~faiths_and_powers/kits/acolytes/331_moander/acolyte_moander.tpa~
+LAM acolyte_moander
 //___________________________________________________________________________________
 
 //___________________________________________________________________________________
@@ -1010,7 +1023,7 @@ BEGIN @332  //  acolyte of beshaba
 DESIGNATED 332
 REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~200~ @8
 
-INCLUDE ~faiths_and_powers/kits/acolytes/332_beshaba/acolyte_beshaba.tpa~
+LAM acolyte_beshaba
 //___________________________________________________________________________________
 
 //___________________________________________________________________________________
@@ -1018,7 +1031,7 @@ BEGIN @342  //  acolyte of baervan
 DESIGNATED 342
 REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~200~ @8
 
-INCLUDE ~faiths_and_powers/kits/acolytes/342_baervan/acolyte_baervan.tpa~
+LAM acolyte_baervan
 //___________________________________________________________________________________
 
 

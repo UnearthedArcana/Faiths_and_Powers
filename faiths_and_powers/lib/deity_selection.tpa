@@ -358,216 +358,215 @@ COPY_EXISTING ~kitlist.2da~ ~override~
 		READ_2DA_ENTRY %index% 1 9 kit_code
 		READ_2DA_ENTRY %index% 3 9 kit_name
 		READ_2DA_ENTRY %index% 4 9 kit_desc
+		READ_2DA_ENTRY %index% 0 9 kit_num
 		READ_2DA_ENTRY %index% 8 9 class
-		DEFINE_ASSOCIATIVE_ARRAY d5_deity_kits BEGIN "%kit_clab%" , "%kit_code%" , "%kit_name%" , "%kit_desc%" => "%class%" END
+		DEFINE_ASSOCIATIVE_ARRAY d5_deity_kits BEGIN "%kit_clab%" , "%kit_code%" , "%kit_name%" , "%kit_desc%" , "%kit_num%" => "%class%" END
 	END
 BUT_ONLY
 OUTER_SET block_num = 1
 ACTION_PHP_EACH d5_deity_kits AS hop => pop BEGIN
-	ACTION_IF (VARIABLE_IS_SET $d5_fnp_kit_race_access(~%hop%~)) BEGIN
-	  OUTER_SET block_num = (%block_num% + 1)
-	  OUTER_TEXT_SPRINT race $d5_fnp_kit_race_access(~%hop%~)
-	  OUTER_INNER_PATCH ~~ BEGIN
-		SNPRINT 3 ~kitrace~ ~%race%~
-	  END
-	  ACTION_PHP_EACH d5_fnp_classes AS class => val BEGIN
-		ACTION_IF (VARIABLE_IS_SET $d5_fnp_kit_class_access(~%class%~ ~%hop%~)) BEGIN
-		  OUTER_TEXT_SPRINT access $d5_fnp_kit_class_access(~%class%~ ~%hop%~)
-		  ACTION_IF (IS_AN_INT access && access == 1) BEGIN
-			ACTION_IF (~%class%~ STRING_EQUAL_CASE ~cleric~) BEGIN
-				OUTER_SET kitclass = 1
+  ACTION_PHP_EACH d5_fnp_classes AS class => val BEGIN
+	ACTION_IF (VARIABLE_IS_SET $d5_fnp_kit_class_access(~%class%~ ~%hop%~)) BEGIN
+	  OUTER_TEXT_SPRINT access $d5_fnp_kit_class_access(~%class%~ ~%hop%~)
+	  ACTION_IF (IS_AN_INT access && access == 1) BEGIN
+		ACTION_CLEAR_ARRAY ~d5_kit_races~
+		OUTER_SET block_num = (%block_num% + 1)
+		ACTION_GET_STRREF EVAL %hop_2% ~name_string~
+		ACTION_GET_STRREF EVAL %hop_3% ~desc_string~
+		ACTION_IF (~%class%~ STRING_EQUAL_CASE ~cleric~) BEGIN
+			OUTER_SET kitclass = 1
+		END
+		ACTION_IF (~%class%~ STRING_EQUAL_CASE ~acolyte~) BEGIN
+			OUTER_SET kitclass = 2
+		END
+		ACTION_IF (~%class%~ STRING_EQUAL_CASE ~fighter_cleric~) BEGIN
+			OUTER_SET kitclass = 4
+		END
+		ACTION_IF (~%class%~ STRING_EQUAL_CASE ~cleric_mage~) BEGIN
+			OUTER_SET kitclass = 5
+		END
+		ACTION_IF (~%class%~ STRING_EQUAL_CASE ~cleric_thief~) BEGIN
+			OUTER_SET kitclass = 6
+		END
+		ACTION_IF (~%class%~ STRING_EQUAL_CASE ~ranger_cleric~) BEGIN
+			OUTER_SET kitclass = 7
+		END
+		ACTION_IF (~%class%~ STRING_EQUAL_CASE ~druid~) BEGIN
+			OUTER_SET kitclass = 10
+		END
+		ACTION_IF (~%class%~ STRING_EQUAL_CASE ~mystic~) BEGIN
+			OUTER_SET kitclass = 11
+		END
+		ACTION_IF (~%class%~ STRING_EQUAL_CASE ~occultist~) BEGIN
+			OUTER_SET kitclass = 12
+		END
+		ACTION_IF (~%class%~ STRING_EQUAL_CASE ~ranger~) BEGIN
+			OUTER_SET kitclass = 13
+		END
+		ACTION_IF (~%class%~ STRING_EQUAL_CASE ~dervish~) BEGIN
+			OUTER_SET kitclass = 14
+		END
+		ACTION_IF (~%class%~ STRING_EQUAL_CASE ~scout~) BEGIN
+			OUTER_SET kitclass = 15
+		END
+		ACTION_IF (~%class%~ STRING_EQUAL_CASE ~champion~) BEGIN
+			OUTER_SET kitclass = 17
+		END
+		ACTION_IF (~%class%~ STRING_EQUAL_CASE ~zealot~) BEGIN
+			OUTER_SET kitclass = 18
+		END
+		ACTION_IF (~%class%~ STRING_EQUAL_CASE ~inquisitor~) BEGIN
+			OUTER_SET kitclass = 19
+		END
+		ACTION_IF (%pop% = 3) BEGIN
+		  OUTER_TEXT_SPRINT class_letter ~C~
+		END
+		ACTION_IF (%pop% = 11) BEGIN
+		  OUTER_TEXT_SPRINT class_letter ~D~
+		END
+		ACTION_IF (%pop% = 6) BEGIN
+		  OUTER_TEXT_SPRINT class_letter ~P~
+		END
+		ACTION_IF (%pop% = 12) BEGIN
+		  OUTER_TEXT_SPRINT class_letter ~R~
+		END
+		ACTION_IF (%pop% = 14) BEGIN
+		  OUTER_TEXT_SPRINT class_letter ~CM~
+		END
+		ACTION_IF (%pop% = 18) BEGIN
+		  OUTER_TEXT_SPRINT class_letter ~CR~
+		END
+		ACTION_IF (%pop% = 15) BEGIN
+		  OUTER_TEXT_SPRINT class_letter ~CT~
+		END
+		ACTION_IF (%pop% = 8) BEGIN
+		  OUTER_TEXT_SPRINT class_letter ~FC~
+		END
+		ACTION_IF (%pop% = 16) BEGIN
+		  OUTER_TEXT_SPRINT class_letter ~FD~
+		END
+		ACTION_IF (%pop% = 17) BEGIN
+		  OUTER_TEXT_SPRINT class_letter ~FMC~
+		END
+		ACTION_FOR_EACH race_letter IN ~D~ ~E~ ~G~ ~H~ ~HE~ ~HL~ ~HO~ BEGIN
+		  ACTION_IF FILE_EXISTS_IN_GAME ~K_%class_letter%_%race_letter%.2da~ BEGIN
+			ACTION_IF (FILE_CONTAINS_EVALUATED (~K_%class_letter%_%race_letter%.2da~ ~[ %TAB%]%hop_4%~)) BEGIN
+			  OUTER_TEXT_SPRINT $~d5_kit_races~(~%race_letter%~) ~race~
 			END
-			ACTION_IF (~%class%~ STRING_EQUAL_CASE ~acolyte~) BEGIN
-				OUTER_SET kitclass = 2
-			END
-			ACTION_IF (~%class%~ STRING_EQUAL_CASE ~fighter_cleric~) BEGIN
-				OUTER_SET kitclass = 4
-			END
-			ACTION_IF (~%class%~ STRING_EQUAL_CASE ~cleric_mage~) BEGIN
-				OUTER_SET kitclass = 5
-			END
-			ACTION_IF (~%class%~ STRING_EQUAL_CASE ~cleric_thief~) BEGIN
-				OUTER_SET kitclass = 6
-			END
-			ACTION_IF (~%class%~ STRING_EQUAL_CASE ~ranger_cleric~) BEGIN
-				OUTER_SET kitclass = 7
-			END
-			ACTION_IF (~%class%~ STRING_EQUAL_CASE ~druid~) BEGIN
-				OUTER_SET kitclass = 10
-			END
-			ACTION_IF (~%class%~ STRING_EQUAL_CASE ~mystic~) BEGIN
-				OUTER_SET kitclass = 11
-			END
-			ACTION_IF (~%class%~ STRING_EQUAL_CASE ~occultist~) BEGIN
-				OUTER_SET kitclass = 12
-			END
-			ACTION_IF (~%class%~ STRING_EQUAL_CASE ~ranger~) BEGIN
-				OUTER_SET kitclass = 13
-			END
-			ACTION_IF (~%class%~ STRING_EQUAL_CASE ~dervish~) BEGIN
-				OUTER_SET kitclass = 14
-			END
-			ACTION_IF (~%class%~ STRING_EQUAL_CASE ~scout~) BEGIN
-				OUTER_SET kitclass = 15
-			END
-			ACTION_IF (~%class%~ STRING_EQUAL_CASE ~champion~) BEGIN
-				OUTER_SET kitclass = 17
-			END
-			ACTION_IF (~%class%~ STRING_EQUAL_CASE ~zealot~) BEGIN
-				OUTER_SET kitclass = 18
-			END
-			ACTION_IF (~%class%~ STRING_EQUAL_CASE ~inquisitor~) BEGIN
-				OUTER_SET kitclass = 19
-			END
-			ACTION_GET_STRREF EVAL %hop_2% ~name_string~
-			ACTION_GET_STRREF EVAL %hop_3% ~desc_string~
-			COPY_EXISTING ~alignmnt.2da~ ~override~
-				COUNT_2DA_COLS num_cols
-				COUNT_2DA_ROWS (num_cols - 1) num_rows
-				READ_2DA_ENTRIES_NOW ~r2en_align~ (num_cols - 1)
-				FOR (row = 2; row < num_rows; row += 1) BEGIN
-					READ_2DA_ENTRY_FORMER ~r2en_align~ row 0 align_code
-					PATCH_IF (~%align_code%~ STRING_EQUAL_CASE ~%hop_1%~) BEGIN
-						READ_2DA_ENTRY (row + 2) 1 1 L_G
-						READ_2DA_ENTRY (row + 2) 2 1 L_N
-						READ_2DA_ENTRY (row + 2) 3 1 L_E
-						READ_2DA_ENTRY (row + 2) 4 1 N_G
-						READ_2DA_ENTRY (row + 2) 5 1 T_N
-						READ_2DA_ENTRY (row + 2) 6 1 N_E
-						READ_2DA_ENTRY (row + 2) 7 1 C_G
-						READ_2DA_ENTRY (row + 2) 8 1 C_N
-						READ_2DA_ENTRY (row + 2) 9 1 C_E
-						PATCH_IF (L_G = 1) BEGIN
-							INNER_ACTION BEGIN
-								APPEND_OUTER ~faiths_and_powers/deity/Dom/%kitrace%/%class%_1.txt~ ~~~~~IF ~Global("B_ALIGN","LOCALS",1)~ THEN REPLY ~Select %name_string%~ GOTO B_dom0%kitclass%_%block_num%  //LG Selection ~~~~~ KEEP_CRLF
-							END
-						END
-						PATCH_IF (L_N = 1) BEGIN
-							INNER_ACTION BEGIN
-								APPEND_OUTER ~faiths_and_powers/deity/Dom/%kitrace%/%class%_1.txt~ ~~~~~IF ~Global("B_ALIGN","LOCALS",2)~ THEN REPLY ~Select %name_string%~ GOTO B_dom0%kitclass%_%block_num%  //LN Selection ~~~~~ KEEP_CRLF
-							END
-						END
-						PATCH_IF (L_E = 1) BEGIN
-							INNER_ACTION BEGIN
-								APPEND_OUTER ~faiths_and_powers/deity/Dom/%kitrace%/%class%_1.txt~ ~~~~~IF ~Global("B_ALIGN","LOCALS",3)~ THEN REPLY ~Select %name_string%~ GOTO B_dom0%kitclass%_%block_num%  //LE Selection ~~~~~ KEEP_CRLF
-							END
-						END
-						PATCH_IF (N_G = 1) BEGIN
-							INNER_ACTION BEGIN
-								APPEND_OUTER ~faiths_and_powers/deity/Dom/%kitrace%/%class%_1.txt~ ~~~~~IF ~Global("B_ALIGN","LOCALS",4)~ THEN REPLY ~Select %name_string%~ GOTO B_dom0%kitclass%_%block_num%  //NG Selection ~~~~~ KEEP_CRLF
-							END
-						END
-						PATCH_IF (T_N = 1) BEGIN
-							INNER_ACTION BEGIN
-								APPEND_OUTER ~faiths_and_powers/deity/Dom/%kitrace%/%class%_1.txt~ ~~~~~IF ~Global("B_ALIGN","LOCALS",5)~ THEN REPLY ~Select %name_string%~ GOTO B_dom0%kitclass%_%block_num%  //TN Selection ~~~~~ KEEP_CRLF
-							END
-						END
-						PATCH_IF (N_E = 1) BEGIN
-							INNER_ACTION BEGIN
-								APPEND_OUTER ~faiths_and_powers/deity/Dom/%kitrace%/%class%_1.txt~ ~~~~~IF ~Global("B_ALIGN","LOCALS",6)~ THEN REPLY ~Select %name_string%~ GOTO B_dom0%kitclass%_%block_num%  //NE Selection ~~~~~ KEEP_CRLF
-							END
-						END
-						PATCH_IF (C_G = 1) BEGIN
-							INNER_ACTION BEGIN
-								APPEND_OUTER ~faiths_and_powers/deity/Dom/%kitrace%/%class%_1.txt~ ~~~~~IF ~Global("B_ALIGN","LOCALS",7)~ THEN REPLY ~Select %name_string%~ GOTO B_dom0%kitclass%_%block_num%  //CG Selection ~~~~~ KEEP_CRLF
-							END
-						END
-						PATCH_IF (C_N = 1) BEGIN
-							INNER_ACTION BEGIN
-								APPEND_OUTER ~faiths_and_powers/deity/Dom/%kitrace%/%class%_1.txt~ ~~~~~IF ~Global("B_ALIGN","LOCALS",8)~ THEN REPLY ~Select %name_string%~ GOTO B_dom0%kitclass%_%block_num%  //CN Selection ~~~~~ KEEP_CRLF
-							END
-						END
-						PATCH_IF (C_E = 1) BEGIN
-							INNER_ACTION BEGIN
-								APPEND_OUTER ~faiths_and_powers/deity/Dom/%kitrace%/%class%_1.txt~ ~~~~~IF ~Global("B_ALIGN","LOCALS",9)~ THEN REPLY ~Select %name_string%~ GOTO B_dom0%kitclass%_%block_num%  //CE Selection ~~~~~ KEEP_CRLF
-							END
-						END
-					END
-				END
-			BUT_ONLY
-			APPEND_OUTER ~faiths_and_powers/deity/Dom/%kitrace%/%class%_2.txt~ ~~~~~IF ~~ THEN BEGIN B_dom0%kitclass%_%block_num% %WNL% SAY ~%desc_string%~ %WNL% IF ~~ THEN REPLY ~Select %name_string%~ DO ~AddKit(%hop_1%)~ EXIT %WNL% IF ~~ THEN REPLY ~Select a different kit~ GOTO B_dom0%kitclass%_A %WNL% END %WNL% ~~~~~ KEEP_CRLF
 		  END
 		END
-	  END		
-	END		
+		ACTION_PHP_EACH d5_kit_races AS kitrace => val BEGIN
+		  COPY_EXISTING ~alignmnt.2da~ ~override~
+			COUNT_2DA_COLS num_cols
+			COUNT_2DA_ROWS (num_cols - 1) num_rows
+			READ_2DA_ENTRIES_NOW ~r2en_align~ (num_cols - 1)
+			FOR (row = 2; row < num_rows; row += 1) BEGIN
+			  READ_2DA_ENTRY_FORMER ~r2en_align~ row 0 align_code
+			  PATCH_IF (~%align_code%~ STRING_EQUAL_CASE ~%hop_1%~) BEGIN
+				READ_2DA_ENTRY (row + 2) 1 1 L_G
+				READ_2DA_ENTRY (row + 2) 2 1 L_N
+				READ_2DA_ENTRY (row + 2) 3 1 L_E
+				READ_2DA_ENTRY (row + 2) 4 1 N_G
+				READ_2DA_ENTRY (row + 2) 5 1 T_N
+				READ_2DA_ENTRY (row + 2) 6 1 N_E
+				READ_2DA_ENTRY (row + 2) 7 1 C_G
+				READ_2DA_ENTRY (row + 2) 8 1 C_N
+				READ_2DA_ENTRY (row + 2) 9 1 C_E
+				PATCH_IF (L_G = 1) BEGIN
+				  INNER_ACTION BEGIN
+					APPEND_OUTER ~faiths_and_powers/deity/Dom/%kitrace%/%class%_1.txt~ ~~~~~IF ~Global("B_ALIGN","LOCALS",1)~ THEN REPLY ~Select %name_string%~ GOTO B_dom0%kitclass%_%block_num%  //LG Selection ~~~~~ KEEP_CRLF
+				  END
+				END
+				PATCH_IF (L_N = 1) BEGIN
+				  INNER_ACTION BEGIN
+					APPEND_OUTER ~faiths_and_powers/deity/Dom/%kitrace%/%class%_1.txt~ ~~~~~IF ~Global("B_ALIGN","LOCALS",2)~ THEN REPLY ~Select %name_string%~ GOTO B_dom0%kitclass%_%block_num%  //LN Selection ~~~~~ KEEP_CRLF
+				  END
+				END
+				PATCH_IF (L_E = 1) BEGIN
+				  INNER_ACTION BEGIN
+					APPEND_OUTER ~faiths_and_powers/deity/Dom/%kitrace%/%class%_1.txt~ ~~~~~IF ~Global("B_ALIGN","LOCALS",3)~ THEN REPLY ~Select %name_string%~ GOTO B_dom0%kitclass%_%block_num%  //LE Selection ~~~~~ KEEP_CRLF
+				  END
+				END
+				PATCH_IF (N_G = 1) BEGIN
+				  INNER_ACTION BEGIN
+					APPEND_OUTER ~faiths_and_powers/deity/Dom/%kitrace%/%class%_1.txt~ ~~~~~IF ~Global("B_ALIGN","LOCALS",4)~ THEN REPLY ~Select %name_string%~ GOTO B_dom0%kitclass%_%block_num%  //NG Selection ~~~~~ KEEP_CRLF
+				  END
+				END
+				PATCH_IF (T_N = 1) BEGIN
+				  INNER_ACTION BEGIN
+					APPEND_OUTER ~faiths_and_powers/deity/Dom/%kitrace%/%class%_1.txt~ ~~~~~IF ~Global("B_ALIGN","LOCALS",5)~ THEN REPLY ~Select %name_string%~ GOTO B_dom0%kitclass%_%block_num%  //TN Selection ~~~~~ KEEP_CRLF
+				  END
+				END
+				PATCH_IF (N_E = 1) BEGIN
+				  INNER_ACTION BEGIN
+					APPEND_OUTER ~faiths_and_powers/deity/Dom/%kitrace%/%class%_1.txt~ ~~~~~IF ~Global("B_ALIGN","LOCALS",6)~ THEN REPLY ~Select %name_string%~ GOTO B_dom0%kitclass%_%block_num%  //NE Selection ~~~~~ KEEP_CRLF
+				  END
+				END
+				PATCH_IF (C_G = 1) BEGIN
+				  INNER_ACTION BEGIN
+					APPEND_OUTER ~faiths_and_powers/deity/Dom/%kitrace%/%class%_1.txt~ ~~~~~IF ~Global("B_ALIGN","LOCALS",7)~ THEN REPLY ~Select %name_string%~ GOTO B_dom0%kitclass%_%block_num%  //CG Selection ~~~~~ KEEP_CRLF
+				  END
+				END
+				PATCH_IF (C_N = 1) BEGIN
+				  INNER_ACTION BEGIN
+					APPEND_OUTER ~faiths_and_powers/deity/Dom/%kitrace%/%class%_1.txt~ ~~~~~IF ~Global("B_ALIGN","LOCALS",8)~ THEN REPLY ~Select %name_string%~ GOTO B_dom0%kitclass%_%block_num%  //CN Selection ~~~~~ KEEP_CRLF
+				  END
+				END
+				PATCH_IF (C_E = 1) BEGIN
+				  INNER_ACTION BEGIN
+					APPEND_OUTER ~faiths_and_powers/deity/Dom/%kitrace%/%class%_1.txt~ ~~~~~IF ~Global("B_ALIGN","LOCALS",9)~ THEN REPLY ~Select %name_string%~ GOTO B_dom0%kitclass%_%block_num%  //CE Selection ~~~~~ KEEP_CRLF
+				  END
+				END
+			  END
+			END
+		  BUT_ONLY
+		  APPEND_OUTER ~faiths_and_powers/deity/Dom/%kitrace%/%class%_2.txt~ ~~~~~IF ~~ THEN BEGIN B_dom0%kitclass%_%block_num% %WNL% SAY ~%desc_string%~ %WNL% IF ~~ THEN REPLY ~Select %name_string%~ DO ~AddKit(%hop_1%)~ EXIT %WNL% IF ~~ THEN REPLY ~Select a different kit~ GOTO B_dom0%kitclass%_A %WNL% END %WNL% ~~~~~ KEEP_CRLF
+		END
+	  END
+	END
+  END		
 END
 
-//CLEAR_ARRAYS
-
-ACTION_FOR_EACH race IN ~hum~ ~elf~ ~gno~ ~hal~ ~dwa~ ~orc~ BEGIN
+ACTION_FOR_EACH race IN ~d~ ~e~ ~g~ ~h~ ~he~ ~hl~ ~ho~ BEGIN
   COPY ~faiths_and_powers/deity/Dom/b_d_%race%.d~ ~faiths_and_powers/deity/b_d_%race%.d~
 	APPEND_FILE ~faiths_and_powers/deity/Dom/%race%/cleric_1.txt~
-	APPEND_FILE ~faiths_and_powers/deity/Dom/all/cleric_1.txt~
 	APPEND_FILE ~faiths_and_powers/deity/Dom/%race%/cleric_2.txt~
-	APPEND_FILE ~faiths_and_powers/deity/Dom/all/cleric_2.txt~
 	APPEND_FILE ~faiths_and_powers/deity/Dom/%race%/acolyte_1.txt~
-	APPEND_FILE ~faiths_and_powers/deity/Dom/all/acolyte_1.txt~
 	APPEND_FILE ~faiths_and_powers/deity/Dom/%race%/acolyte_2.txt~
-	APPEND_FILE ~faiths_and_powers/deity/Dom/all/acolyte_2.txt~
 	APPEND_FILE ~faiths_and_powers/deity/Dom/%race%/fighter_cleric_1.txt~
-	APPEND_FILE ~faiths_and_powers/deity/Dom/all/fighter_cleric_1.txt~
 	APPEND_FILE ~faiths_and_powers/deity/Dom/%race%/fighter_cleric_2.txt~
-	APPEND_FILE ~faiths_and_powers/deity/Dom/all/fighter_cleric_2.txt~
 	APPEND_FILE ~faiths_and_powers/deity/Dom/%race%/cleric_mage_1.txt~
-	APPEND_FILE ~faiths_and_powers/deity/Dom/all/cleric_mage_1.txt~
 	APPEND_FILE ~faiths_and_powers/deity/Dom/%race%/cleric_mage_2.txt~
-	APPEND_FILE ~faiths_and_powers/deity/Dom/all/cleric_mage_2.txt~
 	APPEND_FILE ~faiths_and_powers/deity/Dom/%race%/cleric_thief_1.txt~
-	APPEND_FILE ~faiths_and_powers/deity/Dom/all/cleric_thief_1.txt~
 	APPEND_FILE ~faiths_and_powers/deity/Dom/%race%/cleric_thief_2.txt~
-	APPEND_FILE ~faiths_and_powers/deity/Dom/all/cleric_thief_2.txt~
 	APPEND_FILE ~faiths_and_powers/deity/Dom/%race%/ranger_cleric_1.txt~
-	APPEND_FILE ~faiths_and_powers/deity/Dom/all/ranger_cleric_1.txt~
 	APPEND_FILE ~faiths_and_powers/deity/Dom/%race%/ranger_cleric_2.txt~
-	APPEND_FILE ~faiths_and_powers/deity/Dom/all/ranger_cleric_2.txt~
 	APPEND_FILE ~faiths_and_powers/deity/Dom/%race%/druid_1.txt~
-	APPEND_FILE ~faiths_and_powers/deity/Dom/all/druid_1.txt~
 	APPEND_FILE ~faiths_and_powers/deity/Dom/%race%/druid_2.txt~
-	APPEND_FILE ~faiths_and_powers/deity/Dom/all/druid_2.txt~
 	APPEND_FILE ~faiths_and_powers/deity/Dom/%race%/mystic_1.txt~
-	APPEND_FILE ~faiths_and_powers/deity/Dom/all/mystic_1.txt~
 	APPEND_FILE ~faiths_and_powers/deity/Dom/%race%/mystic_2.txt~
-	APPEND_FILE ~faiths_and_powers/deity/Dom/all/mystic_2.txt~
 	APPEND_FILE ~faiths_and_powers/deity/Dom/%race%/occultist_1.txt~
-	APPEND_FILE ~faiths_and_powers/deity/Dom/all/occultist_1.txt~
 	APPEND_FILE ~faiths_and_powers/deity/Dom/%race%/occultist_2.txt~
-	APPEND_FILE ~faiths_and_powers/deity/Dom/all/occultist_2.txt~
 	APPEND_FILE ~faiths_and_powers/deity/Dom/%race%/ranger_1.txt~
-	APPEND_FILE ~faiths_and_powers/deity/Dom/all/ranger_1.txt~
 	APPEND_FILE ~faiths_and_powers/deity/Dom/%race%/ranger_2.txt~
-	APPEND_FILE ~faiths_and_powers/deity/Dom/all/ranger_2.txt~
 	APPEND_FILE ~faiths_and_powers/deity/Dom/%race%/dervish_1.txt~
-	APPEND_FILE ~faiths_and_powers/deity/Dom/all/dervish_1.txt~
 	APPEND_FILE ~faiths_and_powers/deity/Dom/%race%/dervish_2.txt~
-	APPEND_FILE ~faiths_and_powers/deity/Dom/all/dervish_2.txt~
 	APPEND_FILE ~faiths_and_powers/deity/Dom/%race%/scout_1.txt~
-	APPEND_FILE ~faiths_and_powers/deity/Dom/all/scout_1.txt~
 	APPEND_FILE ~faiths_and_powers/deity/Dom/%race%/scout_2.txt~
-	APPEND_FILE ~faiths_and_powers/deity/Dom/all/scout_2.txt~
-        APPEND_FILE ~faiths_and_powers/deity/Dom/%race%/CHAMPION_1.txt~
-	APPEND_FILE ~faiths_and_powers/deity/Dom/all/CHAMPION_1.txt~
-        APPEND_FILE ~faiths_and_powers/deity/Dom/%race%/CHAMPION_2.txt~
-	APPEND_FILE ~faiths_and_powers/deity/Dom/all/CHAMPION_2.txt~
-//      APPEND_FILE ~faiths_and_powers/deity/Dom/%race%/INQUISITOR_1.txt~
-//	APPEND_FILE ~faiths_and_powers/deity/Dom/all/INQUISITOR_1.txt~
-//      APPEND_FILE ~faiths_and_powers/deity/Dom/%race%/INQUISITOR_2.txt~
-//	APPEND_FILE ~faiths_and_powers/deity/Dom/all/INQUISITOR_2.txt~
-        APPEND_FILE ~faiths_and_powers/deity/Dom/%race%/ZEALOT_1.txt~
-	APPEND_FILE ~faiths_and_powers/deity/Dom/all/ZEALOT_1.txt~
-        APPEND_FILE ~faiths_and_powers/deity/Dom/%race%/ZEALOT_2.txt~
-	APPEND_FILE ~faiths_and_powers/deity/Dom/all/ZEALOT_2.txt~
+	APPEND_FILE ~faiths_and_powers/deity/Dom/%race%/CHAMPION_1.txt~
+	APPEND_FILE ~faiths_and_powers/deity/Dom/%race%/CHAMPION_2.txt~
+	APPEND_FILE ~faiths_and_powers/deity/Dom/%race%/ZEALOT_1.txt~
+	APPEND_FILE ~faiths_and_powers/deity/Dom/%race%/ZEALOT_2.txt~
 END
 //___________________________________________________________________________________
 
 
 //compile scripts____________________________________________________________________
 //
-  COMPILE ~faiths_and_powers/deity/dom/b_dom00.baf~
-  COMPILE ~faiths_and_powers/deity/b_d_hum.d~
-  COMPILE ~faiths_and_powers/deity/b_d_elf.d~
-  COMPILE ~faiths_and_powers/deity/b_d_dwa.d~
-  COMPILE ~faiths_and_powers/deity/b_d_gno.d~
-  COMPILE ~faiths_and_powers/deity/b_d_hal.d~
-  COMPILE ~faiths_and_powers/deity/b_d_orc.d~ 
+COMPILE ~faiths_and_powers/deity/dom/b_dom00.baf~
+
+ACTION_FOR_EACH race IN ~d~ ~e~ ~g~ ~h~ ~he~ ~hl~ ~ho~ BEGIN
+  COMPILE ~faiths_and_powers/deity/b_d_%race%.d~
+END
 //___________________________________________________________________________________
 
