@@ -10,7 +10,8 @@ ACTION_DEFINE_ASSOCIATIVE_ARRAY spellsphere BEGIN
 
 //  LIFE
 //CLERIC_CURE_LIGHT_WOUNDS               , 1 => life
-CLERIC_CURE_MODERATE_WOUNDS            , 2 => life // is now SR regen moderate
+//CLERIC_CURE_MODERATE_WOUNDS            , 2 => life // is now SR regen moderate
+sppr215 /*SR cure moderate*/           , 2 => life
 CLERIC_CURE_MEDIUM_WOUNDS              , 3 => life
 CLERIC_CURE_SERIOUS_WOUNDS             , 4 => life
 //CLERIC_CURE_CRITICAL_WOUNDS            , 5 => life // universal
@@ -20,20 +21,20 @@ CLERIC_RESURRECTION                    , 7 => life
 
 //  DEATH
 //CLERIC_CAUSE_LIGHT_WOUNDS              , 1 => death // now is SR faerie fire
+b_c104 /*eyes of the dead*/            , 1 => death
+b_c105 /*disrupt undead*/              , 1 => death
 WIZARD_LARLOCH_MINOR_DRAIN             , 1 => death
+b_c202 /*pacify the dead*/             , 2 => death
 //CLERIC_CAUSE_MODERATE_WOUNDS           , 2 => death
 WIZARD_HOLD_UNDEAD                     , 2 => death
-CLERIC_CAUSE_MEDIUM_WOUNDS             , 3 => death
 //CLERIC_CIRCLE_OF_BONES                 , 3 => death // is now SR regenerate wounds
-CLERIC_CAUSE_SERIOUS_WOUNDS            , 4 => death
 CLERIC_ANIMATE_DEAD                    , 4 => death
 //CLERIC_UNDEAD_WARD                     , 4 => death // is now SR prot. from cold
-CLERIC_CAUSE_CRITICAL_WOUNDS           , 5 => death
-//CLERIC_MASS_CAUSE_LIGHT_WOUNDS         , 5 => death // nos is SR prot. from fire
+//CLERIC_MASS_CAUSE_LIGHT_WOUNDS         , 5 => death // now is SR prot. from fire
 CLERIC_SLAY_LIVING                     , 5 => death
 CLERIC_HARM                            , 6 => death
 WIZARD_SOUL_EATER                      , 6 => death
-WIZARD_CARRION                          , 6 => death//sr skeleton warrior
+WIZARD_CARRION                         , 6 => death //sr skeleton warrior
 CLERIC_SYMBOL_DEATH                    , 7 => death
 CLERIC_FINGER_OF_DEATH                 , 7 => death
 
@@ -56,11 +57,17 @@ CLERIC_RESTORATION                     , 7 => benediction
 //WIZARD_GATE                            , 7 => benediction // use for HLA instead
 
 //  DESTRUCTION
+b_pr101 /*holy smite*/                 , 1 => destruction
 //PALADIN_SMITE_EVIL                     , 1 => destruction // use new Smite spell
 WIZARD_KNOCK                           , 1 => destruction // SR battering ram
+b_pr201 /*shatter*/                    , 2 => destruction
 WIZARD_DEAFNESS                        , 2 => destruction // SR sound burst
+CLERIC_CAUSE_MEDIUM_WOUNDS             , 3 => destruction
 CLERIC_HOLY_SMITE                      , 3 => destruction
 CLERIC_UNHOLY_BLIGHT                   , 3 => destruction
+b_pr401 /*shout*/                      , 4 => destruction
+CLERIC_CAUSE_SERIOUS_WOUNDS            , 4 => destruction
+CLERIC_CAUSE_CRITICAL_WOUNDS           , 5 => destruction
 WIZARD_DISINTEGRATE                    , 6 => destruction
 CLERIC_DESTRUCTION                     , 7 => destruction
 
@@ -85,7 +92,6 @@ CLERIC_SPIRITUAL_HAMMER                , 2 => war
 CLERIC_STRENGTH_OF_ONE                 , 3 => war
 CLERIC_HOLY_POWER                      , 3 => war
 CLERIC_DEFENSIVE_HARMONY               , 4 => war
-CLERIC_STAR_METAL_CUDGEL               , 4 => war
 CLERIC_CHAMPIONS_STRENGTH              , 5 => war
 CLERIC_RIGHTEOUS_MAGIC                 , 5 => war
 CLERIC_BLADE_BARRIER                   , 6 => war
@@ -119,6 +125,7 @@ WIZARD_SIMULACRUM                      , 7 => deception
 CLERIC_COMMAND                         , 1 => thought
 WIZARD_SLEEP                           , 2 => thought
 CLERIC_CHARM_PERSON                    , 2 => thought
+b_c301 /*murderous command*/           , 3 => thought
 CLERIC_EXALTATION                      , 3 => thought
 CLERIC_RIGID_THINKING                  , 3 => thought
 CLERIC_MENTAL_DOMINATION               , 4 => thought
@@ -132,30 +139,37 @@ CLERIC_NATURE_BEAUTY                   , 7 => thought
 //  DREAD
 CLERIC_CURSE                           , 1 => dread
 CLERIC_DOOM                            , 1 => dread
-WIZARD_RAY_OF_ENFEEBLEMENT             , 2 => dread
+b_c201 /*forbiddance*/                 , 2 => dread
+CLERIC_HOLD_PERSON                     , 3 => dread
 CLERIC_CLOAK_OF_FEAR                   , 3 => dread
 WIZARD_GREATER_MALISON                 , 4 => dread
 WIZARD_EMOTION_HOPELESSNESS            , 4 => dread
+b_c501 /*misfire*/                     , 5 => dread
 WIZARD_CHAOS                           , 5 => dread // SR waves of fatigue
 CLERIC_SPIRITUAL_WRATH                 , 6 => dread
 CLERIC_SYMBOL_OF_HOPELESSNESS          , 7 => dread
 
 //  VIGOR
+sppr117 /*SR regenerate 1*/            , 1 => vigor
 CLERIC_UNFAILING_ENDURANCE             , 1 => vigor
 //CLERIC_SLOW_POISON                     , 1 => vigor // universal
 CLERIC_CURE_DISEASE                    , 1 => vigor
+sppr217 /*SR regenerate 2*/            , 2 => vigor
 CLERIC_REMOVE_PARALYSIS                , 2 => vigor
+sppr323 /*SR regenerate 3*/            , 3 => vigor
 CLERIC_DRAW_UPON_HOLY_MIGHT            , 3 => vigor
 CLERIC_FAVOR_OF_ILMATER                , 3 => vigor
+sppr419 /*SR regenerate 4*/            , 4 => vigor
 //CLERIC_NEUTRALIZE_POISON               , 4 => vigor // why does this spell exist??
 CLERIC_FREE_ACTION                     , 4 => vigor
+sppr524 /*SR regenerate 5*/            , 5 => vigor
 CLERIC_ANIMAL_RAGE                     , 5 => vigor
 WIZARD_TENSERS_TRANSFORMATION          , 6 => vigor
 CLERIC_REGENERATE                      , 7 => vigor
 
 //  AFFLICTION
 //CLERIC_CAUSE_DISEASE                   , 1 => affliction // now is SR AS3
-CLERIC_HOLD_PERSON                     , 2 => affliction
+WIZARD_RAY_OF_ENFEEBLEMENT             , 2 => affliction
 CLERIC_MOLD_TOUCH                      , 3 => affliction
 CLERIC_POISON                          , 4 => affliction
 WIZARD_CONTAGION                       , 4 => affliction
@@ -167,15 +181,22 @@ CLERIC_WITHER                          , 7 => affliction
 CLERIC_SYMBOL_STUN                     , 7 => affliction
 
 //  ANIMAL
+b_c102 /*animal eyes*/                 , 1 => animal
+sppr120 /*SR animal summon 1*/         , 1 => animal
 CLERIC_BEAST_CLAW                      , 1 => animal
+sppr220 /*SR animal summon 2*/         , 2 => animal
 CLERIC_HOLD_ANIMAL                     , 2 => animal
+sppr320 /*SR animal summon 3*/         , 3 => animal
+sppr324 /*SR magic fang*/              , 3 => animal
 CLERIC_SUMMON_INSECTS                  , 3 => animal
-CLERIC_ANIMAL_SUMMONING_1              , 4 => animal
+CLERIC_ANIMAL_SUMMONING_1              , 4 => animal // now SR AS4
 CLERIC_GIANT_INSECT                    , 4 => animal
-CLERIC_ANIMAL_SUMMONING_2              , 5 => animal
+sppr525 /*SR animal growth*?           , 5 => animal
+CLERIC_ANIMAL_SUMMONING_2              , 5 => animal // now SR AS5
 CLERIC_INSECT_PLAGUE                   , 5 => animal
-CLERIC_ANIMAL_SUMMONING_3              , 6 => animal
-CLERIC_CONJURE_ANIMALS                 , 7 => animal
+CLERIC_ANIMAL_SUMMONING_3              , 6 => animal // now SR AS6
+sppr716 /*SR animal summon 1*/         , 7 => animal
+//CLERIC_CONJURE_ANIMALS                 , 7 => animal
 CLERIC_CREEPING_DOOM                   , 7 => animal
 
 //  PLANT
@@ -184,19 +205,26 @@ CLERIC_SHILLELAGH                      , 1 => plant
 CLERIC_GOOD_BERRIES                    , 2 => plant
 //CLERIC_GOODBERRY                       , 1 => plant // is now SR cure moderate
 CLERIC_BARKSKIN                        , 2 => plant
-CLERIC_SPIKE_GROWTH                    , 3 => plant
-CLERIC_THORN_SPRAY                     , 4 => plant
+CLERIC_THORN_SPRAY                     , 3 => plant
+//CLERIC_SPIKE_GROWTH                    , 4 => plant // use SR's instead...?
+sppr325 /*SR spike growth*/            , 4 => plant
 CLERIC_CALL_WOODLAND_BEINGS            , 5 => plant
-CLERIC_CONJURE_EARTH_ELEMENTAL         , 6 => plant // SR shambling mound
-CLERIC_STALKER                         , 7 => plant // IWD shambling mound x2
+b_pr601 /*nature's wrath*/             , 6 => plant
+b_c601 /*assassin vines*/              , 6 => plant
+CLERIC_CONJURE_EARTH_ELEMENTAL         , 7 => plant // SR shambling mound
+//CLERIC_STALKER                         , 7 => plant // IWD shambling mound x2
 
 //  EARTH
+sppr115 /*SR strength of stone*/       , 1 => earth
 CLERIC_MAGIC_STONE                     , 2 => earth
-CLERIC_PROTECTION_FROM_LIGHTNING       , 2 => earth
+//CLERIC_PROTECTION_FROM_LIGHTNING       , 2 => earth
+b_pr301 /*stone fist*/                 , 3 => earth
 CLERIC_SPIKE_STONES                    , 4 => earth
-CLERIC_IRONSKIN                        , 4 => earth
+CLERIC_STAR_METAL_CUDGEL               , 4 => war
+CLERIC_IRONSKIN                        , 5 => earth
 WIZARD_FLESH_TO_STONE                  , 5 => earth
 //CLERIC_CONJURE_EARTH_ELEMENTAL         , 6 => earth // use new SR version instead
+sppr622 /*SR earth elemental*/         , 6 => earth
 CLERIC_EARTHQUAKE                      , 7 => earth
 
 //  AIR
@@ -204,42 +232,54 @@ CLERIC_ZONE_OF_SWEET_AIR               , 1 => air
 WIZARD_BLIND_OLD                       , 1 => air // SR obscuring mist
 WIZARD_STINKING_CLOUD                  , 2 => air
 //CLERIC_STORM_SHELL                     , 3 => air // use new SR version instead
+sppr322 /*SR storm shield*/            , 3 => air
 CLERIC_CLOUDBURST                      , 3 => air
+b_c401 /*stormwall*/                   , 4 => air
 CLERIC_CALL_LIGHTNING                  , 4 => air
+sppr522 /*SR pro. lightning*/          , 5 => air
 CLERIC_STATIC_CHARGE                   , 5 => air
 CLERIC_WHIRLWIND                       , 5 => air
+sppr621 /*SR air elemental*/           , 6 => air
 CLERIC_ENTROPY_SHIELD                  , 6 => air
 WIZARD_CHAIN_LIGHTNING                 , 6 => air
-CLERIC_MIST_OF_ELDATH                  , 6 => air
 WIZARD_DEATH_FOG                       , 7 => air
 
 //  WATER
+b_c103 /*frost fingers*/               , 1 => water
 WIZARD_SNILLOCS_SNOWBALL_SWARM         , 1 => water
-WIZARD_MELF_ACID_ARROW                 , 2 => water
+b_c203 /*ice blade*/                   , 2 => water
+//WIZARD_MELF_ACID_ARROW                 , 2 => water
 WIZARD_ICELANCE                        , 3 => water
 CLERIC_SMASHING_WAVE                   , 4 => water
 WIZARD_VITRIOLIC_SPHERE                , 4 => water
+sppr520 /*SR pro. acid*/               , 5 => water
+sppr521 /*SR pro. cold*/               , 5 => water
 WIZARD_ICE_STORM                       , 5 => water
 //WIZARD_CONE_OF_COLD                    , 5 => water
-WIZARD_CONJURE_WATER_ELEMENTAL         , 6 => water
+//WIZARD_CONJURE_WATER_ELEMENTAL         , 6 => water
+CLERIC_MIST_OF_ELDATH                  , 6 => water
 WIZARD_ACID_STORM                      , 7 => water
 
 //  FIRE
 WIZARD_BURNING_HANDS                   , 1 => fire
 CLERIC_FLAME_BLADE                     , 1 => fire
-CLERIC_RESIST_FIRE_AND_COLD            , 2 => fire // is now SR fire trap
+//CLERIC_RESIST_FIRE_AND_COLD            , 2 => fire // is now SR fire trap
 WIZARD_AGANNAZAR_SCORCHER              , 2 => fire
+sppr216 /*SR fire trap*/               , 3 => fire
 CLERIC_PROTECTION_FROM_FIRE            , 3 => fire
 WIZARD_FLAME_ARROW                     , 3 => fire
 WIZARD_FIRE_SHIELD_RED                 , 4 => fire
 CLERIC_PRODUCE_FIRE                    , 4 => fire
+sppr523 /*SR pro. fire*/               , 5 => fire
 CLERIC_FLAME_STRIKE                    , 5 => fire
 CLERIC_CONJURE_FIRE_ELEMENTAL          , 6 => fire
 CLERIC_FIRE_SEEDS                      , 6 => fire
 CLERIC_FIRE_STORM                      , 7 => fire
 
 //  LIGHT
+sppr114 /*SR faerie fire*/             , 1 => light
 //CLERIC_SUNSCORCH                       , 1 => light // is now SR stone strength
+sppr116 /*SR sunscorch*/               , 1 => light
 WIZARD_GLITTERDUST                     , 2 => light
 CLERIC_ALICORN_LANCE                   , 2 => light
 CLERIC_MOONBLADE                       , 3 => light
@@ -255,7 +295,7 @@ WIZARD_SHADOW_MONSTERS                 , 3 => shadow
 WIZARD_PHANTOM_BLADE                   , 4 => shadow
 WIZARD_SHADOW_DOOR                     , 4 => shadow
 WIZARD_SUMMON_SHADOW                   , 5 => shadow
-//SHADOW_STEP                            , 5 => shadow
+spsd02 /*shadowstep*/                  , 5 => shadow
 WIZARD_SHADES                          , 6 => shadow
 WIZARD_WRAITH_FORM                     , 6 => shadow
 WIZARD_POWER_WORD_BLIND                , 7 => shadow 
