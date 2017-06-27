@@ -1,5 +1,19 @@
 ﻿# Faiths_and_Powers
 Faiths and Powers mod
+2017-06-27
+Version 27a
+- Acolyte of Moander immunity to assassin vines
+- Stalker updated to use staff shambler
+Version 27
+2017-06-27
+- HUGE update to the way spells are handled
+Version 26
+2017-06-21
+- Cleric of Umberlee (not added to option 3)
+
+2017-06-04
+- Fixed Elementalist Control Elemental ability
+- Other stuff
 
 2017-06-03
 Version 0.64a
