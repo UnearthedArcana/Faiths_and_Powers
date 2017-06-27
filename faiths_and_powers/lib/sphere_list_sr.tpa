@@ -96,6 +96,17 @@ CLERIC_BLADE_BARRIER                   , 6 => war
 CLERIC_BOLT_OF_GLORY                   , 6 => war
 CLERIC_SYMBOL_FEAR                     , 7 => war // SR symbol weakness
 
+//  EXPLORATION
+WIZARD_PFP_OLD                         , 1 => exploration // exped. retreat... need to add for non-IWDEE
+CLERIC_FIND_TRAPS                      , 1 => exploration
+MAZZY_HASTE                            , 2 => exploration
+CLERIC_FREE_ACTION                     , 3 => exploration
+WIZARD_EYE                             , 4 => exploration
+WIZARD_DIMENSION_DOOR                  , 5 => exploration
+WIZARD_TELEPORT_FIELD                  , 6 => exploration
+WIZARD_IMPROVED_HASTE                  , 6 => exploration
+WIZARD_FREEDOM                         , 7 => exploration
+
 //  KNOWLEDGE
 WIZARD_INFRAVISION                     , 1 => knowledge // SR true strike
 CLERIC_DETECT_EVIL                     , 1 => knowledge
@@ -314,6 +325,22 @@ WIZARD_BREACH                          , 5 => magic
 WIZARD_GLOBE_OF_INVULNERABILITY        , 6 => magic
 WIZARD_PIERCE_SHIELD                   , 7 => magic
 
+//  SPIRIT
+CLERIC_SPIRIT_WARD                     , 1 => spirit
+CLERIC_WRITHING_FOG                    , 2 => spirit
+CLERIC_SPIRITUAL_CLARITY               , 3 => spirit
+CLERIC_SPIRIT_FIRE                     , 4 => spirit
+CLERIC_RECALL_SPIRIT                   , 5 => spirit
+CLERIC_SPIRITUAL_LOCK                  , 6 => spirit
+CLERIC_ETHER_GATE                      , 7 => spirit
+
+//  DAMNATION
+// add summon mephit(s) spell          , 4 => damnation
+WIZARD_BELTYNS_BURNING_BLOOD           , 4 => damnation // need to add for non-IWDEE
+//WIZARD_SHROUD_OF_FLAME               , 5 => damnation // spell has no IDS name?? need to add manually
+WIZARD_CACOFIEND                       , 6 => damnation
+WIZARD_MALAVONS_RAGE                   , 7 => damnation // need to add for non-IWDEE
+WIZARD_SUMMON_FIEND                    , 7 => damnation
 
 END
 
