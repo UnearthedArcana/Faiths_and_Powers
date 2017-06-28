@@ -29,6 +29,7 @@ ACTION_PHP_EACH d5_sphere_kits AS green => eggs BEGIN
 	s_Destruction 	= ~major~
 	s_Protection 	= ~major~
 	s_War 			= ~minor~
+	s_Exploration   = ~x~
 	s_Knowledge 	= ~major~
 	s_Deception 	= ~x~
 	s_Thought 		= ~minor~
@@ -44,6 +45,7 @@ ACTION_PHP_EACH d5_sphere_kits AS green => eggs BEGIN
 	s_Light 		= ~major~
 	s_Shadow 		= ~x~
 	s_Magic 		= ~minor~
+	s_Perdition     = ~x~
    END
   END
   ACTION_IF (%eggs% = 11) BEGIN //..................................................druids
@@ -56,6 +58,7 @@ ACTION_PHP_EACH d5_sphere_kits AS green => eggs BEGIN
 	s_Destruction 	= ~x~
 	s_Protection 	= ~x~
 	s_War 			= ~x~
+	s_Exploration   = ~x~
 	s_Knowledge 	= ~x~
 	s_Deception 	= ~x~
 	s_Thought 		= ~minor~
@@ -71,6 +74,7 @@ ACTION_PHP_EACH d5_sphere_kits AS green => eggs BEGIN
 	s_Light 		= ~x~
 	s_Shadow 		= ~minor~
 	s_Magic 		= ~x~
+	s_Perdition     = ~x~
    END
   END
   ACTION_IF (%eggs% = 6) BEGIN //.................................................paladins
@@ -83,6 +87,7 @@ ACTION_PHP_EACH d5_sphere_kits AS green => eggs BEGIN
 	s_Destruction 	= ~paladin~
 	s_Protection 	= ~paladin~
 	s_War 			= ~paladin~
+	s_Exploration   = ~x~
 	s_Knowledge 	= ~paladin~
 	s_Deception 	= ~x~
 	s_Thought 		= ~x~
@@ -98,6 +103,7 @@ ACTION_PHP_EACH d5_sphere_kits AS green => eggs BEGIN
 	s_Light 		= ~paladin~
 	s_Shadow 		= ~x~
 	s_Magic 		= ~x~
+	s_Perdition     = ~x~
    END
   END
   ACTION_IF (%eggs% = 12) BEGIN //.................................................rangers
@@ -110,6 +116,7 @@ ACTION_PHP_EACH d5_sphere_kits AS green => eggs BEGIN
 	s_Destruction 	= ~x~
 	s_Protection 	= ~x~
 	s_War 			= ~x~
+	s_Exploration   = ~x~
 	s_Knowledge 	= ~x~
 	s_Deception 	= ~x~
 	s_Thought 		= ~x~
@@ -125,6 +132,7 @@ ACTION_PHP_EACH d5_sphere_kits AS green => eggs BEGIN
 	s_Light 		= ~ranger~
 	s_Shadow 		= ~x~
 	s_Magic 		= ~x~
+	s_Perdition     = ~x~
    END
   END
  END

@@ -133,6 +133,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~d5_deity.d5~ BEGIN
 	s_Light 		= ~ranger~
 	s_Shadow 		= ~x~
 	s_Magic 		= ~ranger~
+	s_Perdition     = ~x~
  END
 END
 ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5_deity.d5~ BEGIN
@@ -164,6 +165,7 @@ ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5_deity.d5~ BEGIN
 	s_Light 		= ~ranger~
 	s_Shadow 		= ~x~
 	s_Magic 		= ~ranger~
+	s_Perdition     = ~x~
  END
 END
 
@@ -294,6 +296,7 @@ COPY ~faiths_and_powers/kits/scouts/954_barbarian_ranger/d5_rback.spl~ ~override
 	s_Light 		= ~x~
 	s_Shadow 		= ~x~
 	s_Magic 		= ~x~
+	s_Perdition     = ~x~
  END
 
 //FIX BARB USABILITY__________________________________________________________________
@@ -434,6 +437,7 @@ COPY ~faiths_and_powers/kits/scouts/955_elven_archer/d5_earch.2da~ ~override~
 	s_Light 		= ~ranger~
 	s_Shadow 		= ~x~
 	s_Magic 		= ~ranger~
+	s_Perdition     = ~x~
   END
  END
  ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5_deity.d5~ BEGIN
@@ -465,6 +469,7 @@ COPY ~faiths_and_powers/kits/scouts/955_elven_archer/d5_earch.2da~ ~override~
 	s_Light 		= ~ranger~
 	s_Shadow 		= ~x~
 	s_Magic 		= ~ranger~
+	s_Perdition     = ~x~
   END
  END
 
@@ -678,6 +683,7 @@ END
 	s_Light 		= ~x~
 	s_Shadow 		= ~x~
 	s_Magic 		= ~x~
+	s_Perdition     = ~x~
  END
 
 //Halfling Rangers__________________________________________________________________

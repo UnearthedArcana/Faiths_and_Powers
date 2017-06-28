@@ -169,6 +169,7 @@ END
 	s_Light 		= ~x~
 	s_Shadow 		= ~major~
 	s_Magic 		= ~major~
+	s_Perdition     = ~x~
  END
 
 END
@@ -337,6 +338,7 @@ END
 	s_Light 		= ~major~
 	s_Shadow 		= ~x~
 	s_Magic 		= ~minor~
+	s_Perdition     = ~x~
  END
 
 END 
@@ -471,6 +473,7 @@ COPY_EXISTING ~SPPR102.spl~ ~override/b_tor01.spl~ // dispel magic
 	s_Light 		= ~minor~
 	s_Shadow 		= ~x~
 	s_Magic 		= ~x~
+	s_Perdition     = ~x~
  END
 
 //___________________________________________________________________________________
@@ -594,6 +597,7 @@ END
 	s_Light 		= ~minor~
 	s_Shadow 		= ~x~
 	s_Magic 		= ~x~
+	s_Perdition     = ~x~
  END
 
 END
@@ -730,6 +734,7 @@ COPY ~faiths_and_powers/kits/clerics/205_tymora/d5_tym1b.spl~ ~override~
 	s_Light 		= ~major~
 	s_Shadow 		= ~x~
 	s_Magic 		= ~minor~
+	s_Perdition     = ~x~
 END
 
 //___________________________________________________________________________________
@@ -853,6 +858,7 @@ END
 	s_Light 		= ~major~
 	s_Shadow 		= ~x~
 	s_Magic 		= ~minor~
+	s_Perdition     = ~x~
  END
  
 END
@@ -1018,6 +1024,7 @@ END
 	s_Light 		= ~minor~
 	s_Shadow 		= ~x~
 	s_Magic 		= ~minor~
+	s_Perdition     = ~x~
  END
 
 END
@@ -1215,6 +1222,7 @@ COPY_EXISTING ~SPPR413.spl~ ~override/b_kel02.spl~ // Works?
 	s_Light 		= ~x~
 	s_Shadow 		= ~x~
 	s_Magic 		= ~major~
+	s_Perdition     = ~x~
  END
 
 END
@@ -1368,6 +1376,7 @@ END
 	s_Light 		= ~minor~
 	s_Shadow 		= ~x~
 	s_Magic 		= ~minor~
+	s_Perdition     = ~x~
 END
 
 //FIGHTER/CLERIC______________________________________________________________________
@@ -1492,6 +1501,7 @@ END
 	s_Light 		= ~minor~
 	s_Shadow 		= ~x~
 	s_Magic 		= ~minor~
+	s_Perdition     = ~x~
  END
 
 END
@@ -1622,6 +1632,7 @@ COPY_EXISTING ~faiths_and_powers/kits/clerics/212_leira/d5_lei1.spl~ ~override~
 	s_Light 		= ~major~
 	s_Shadow 		= ~minor~
 	s_Magic 		= ~minor~
+	s_Perdition     = ~x~
 END
 
 //CLERIC/THIEF______________________________________________________________________
@@ -1746,6 +1757,7 @@ END
 	s_Light 		= ~major~
 	s_Shadow 		= ~minor~
 	s_Magic 		= ~minor~
+	s_Perdition     = ~x~
  END
 
 END
@@ -1876,6 +1888,7 @@ COPY_EXISTING ~faiths_and_powers/kits/clerics/212_leira/d5_lei1.spl~ ~override/b
 	s_Light 		= ~major~
 	s_Shadow 		= ~minor~
 	s_Magic 		= ~minor~
+	s_Perdition     = ~x~
  END
 
 //CLERIC/THIEF______________________________________________________________________
@@ -2000,6 +2013,7 @@ END
 	s_Light 		= ~major~
 	s_Shadow 		= ~minor~
 	s_Magic 		= ~minor~
+	s_Perdition     = ~x~
  END
 
 END
@@ -2151,6 +2165,7 @@ COPY ~faiths_and_powers/kits/clerics/219_loviatar/b_lov04.spl~     ~override~  /
 	s_Light 		= ~x~
 	s_Shadow 		= ~minor~
 	s_Magic 		= ~x~
+	s_Perdition     = ~x~
 END
 
 //CLERIC/THIEF________________________________________________________________________
@@ -2275,6 +2290,7 @@ END
 	s_Light 		= ~x~
 	s_Shadow 		= ~minor~
 	s_Magic 		= ~x~
+	s_Perdition     = ~x~
  END
 
 END
@@ -2427,6 +2443,7 @@ END
 	s_Light 		= ~minor~
 	s_Shadow 		= ~x~
 	s_Magic 		= ~minor~
+	s_Perdition     = ~x~
  END
 
 
@@ -2552,6 +2569,7 @@ END
 	s_Light 		= ~minor~
 	s_Shadow 		= ~x~
 	s_Magic 		= ~minor~
+	s_Perdition     = ~x~
  END
 
 END
@@ -2707,6 +2725,7 @@ END
 	s_Light 		= ~x~
 	s_Shadow 		= ~major~
 	s_Magic 		= ~minor~
+	s_Perdition     = ~x~
  END
 
 //_____________________CLERIC/THIEF___________________________________________________
@@ -2831,6 +2850,7 @@ END
 	s_Light 		= ~x~
 	s_Shadow 		= ~major~
 	s_Magic 		= ~minor~
+	s_Perdition     = ~x~
  END
 
 END
@@ -2965,6 +2985,7 @@ ACTION_IF (GAME_IS ~bgee bg2ee eet~) AND (NOT FILE_EXISTS_IN_GAME ~b_IWD.itm~) T
 	s_Light 		= ~x~
 	s_Shadow 		= ~x~
 	s_Magic 		= ~x~
+	s_Perdition     = ~x~
  END
 
 END

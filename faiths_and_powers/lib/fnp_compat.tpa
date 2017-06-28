@@ -22,7 +22,7 @@ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5_fnp_spheres BEGIN
   Light => 0
   Shadow => 0
   Magic => 0
-  Spirit => 0
+  Perdition => 0
   Damnation => 0
 END
 
@@ -111,7 +111,7 @@ DEFINE_ACTION_FUNCTION ~DEFINE_FNP_KIT_INFO~
     s_Light = ~x~
     s_Shadow = ~x~
     s_Magic = ~x~
-	s_Spirit = ~x~
+	s_Perdition = ~x~
 	s_Damnation = ~x~
     2da_folder = EVAL ~%MOD_FOLDER%/lib~
 BEGIN
