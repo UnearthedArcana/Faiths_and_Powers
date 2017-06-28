@@ -29,6 +29,7 @@ CLERIC_CIRCLE_OF_BONES                 , 3 => death
 CLERIC_ANIMATE_DEAD                    , 4 => death
 CLERIC_UNDEAD_WARD                     , 4 => death
 CLERIC_SLAY_LIVING                     , 5 => death
+CLERIC_RECALL_SPIRIT                   , 5 => death // a 'good' spell in Death?
 WIZARD_SOUL_EATER                      , 6 => death
 CLERIC_SYMBOL_DEATH                    , 7 => death
 CLERIC_FINGER_OF_DEATH                 , 7 => death
@@ -102,6 +103,7 @@ WIZARD_DIMENSION_DOOR                  , 5 => exploration
 WIZARD_TELEPORT_FIELD                  , 6 => exploration
 WIZARD_IMPROVED_HASTE                  , 6 => exploration
 WIZARD_FREEDOM                         , 7 => exploration
+CLERIC_ETHER_GATE                      , 7 => exploration
 
 //  KNOWLEDGE
 CLERIC_DETECT_EVIL                     , 1 => knowledge
@@ -131,6 +133,7 @@ WIZARD_SLEEP                           , 2 => thought
 CLERIC_CHARM_PERSON                    , 2 => thought
 b_c301 /*murderous command*/           , 3 => thought
 CLERIC_EXALTATION                      , 3 => thought
+//CLERIC_SPIRITUAL_CLARITY               , 3 => thought (does it duplicate exaltation?)
 CLERIC_RIGID_THINKING                  , 3 => thought
 CLERIC_MENTAL_DOMINATION               , 4 => thought
 CLERIC_BLOOD_RAGE                      , 4 => thought
@@ -296,25 +299,17 @@ WIZARD_GLOBE_OF_INVULNERABILITY        , 6 => magic
 WIZARD_PIERCE_SHIELD                   , 7 => magic
 
 //  PERDITION
-CLERIC_SPIRIT_WARD                     , 1 => perdition // modify to work against all planar creatures?
+CLERIC_SPIRIT_WARD                     , 1 => perdition // modify to work against all planar creatures
 CLERIC_WRITHING_FOG                    , 2 => perdition // move to damnation/planar?
-CLERIC_SPIRITUAL_CLARITY               , 3 => perdition // move to thought? (does it duplicate exaltation?)
-CLERIC_SPIRIT_FIRE                     , 4 => perdition // move to damnation/planar?
-CLERIC_RECALL_SPIRIT                   , 5 => perdition
-CLERIC_SPIRITUAL_LOCK                  , 6 => perdition // move to dread? or modify to work against all planar creatures?
-CLERIC_ETHER_GATE                      , 7 => perdition // move to exploration? or damnation/planar?
+CLERIC_SPIRIT_FIRE                     , 3 => perdition // move to damnation/planar?
+WIZARD_BELTYNS_BURNING_BLOOD           , 4 => perdition // need to add for non-IWDEE
+CLERIC_SPIRITUAL_LOCK                  , 5 => perdition // modify to work against all planar creatures
+WIZARD_CACOFIEND                       , 6 => perdition
+WIZARD_MALAVONS_RAGE                   , 7 => perdition // need to add for non-IWDEE
+WIZARD_SUMMON_FIEND                    , 7 => perdition
 
-//  DAMNATION
-// add ProFiends spell (ProEvil that only works against fiends)
-// move writhing fog here??
-// move spirit fire here?
-// add summon mephit(s) spell          , 4 => damnation
-WIZARD_BELTYNS_BURNING_BLOOD           , 4 => damnation // need to add for non-IWDEE
-//WIZARD_SHROUD_OF_FLAME               , 5 => damnation // spell has no IDS name?? need to add manually
-WIZARD_CACOFIEND                       , 6 => damnation
-WIZARD_MALAVONS_RAGE                   , 7 => damnation // need to add for non-IWDEE
-WIZARD_SUMMON_FIEND                    , 7 => damnation
-// use ethereal retribution (maybe renamed) as the HLA?
+//  DAMNATION/FIENDISH
+// ...nothing yet...
 
 END
 
