@@ -296,21 +296,25 @@ WIZARD_GLOBE_OF_INVULNERABILITY        , 6 => magic
 WIZARD_PIERCE_SHIELD                   , 7 => magic
 
 //  SPIRIT
-CLERIC_SPIRIT_WARD                     , 1 => spirit
-CLERIC_WRITHING_FOG                    , 2 => spirit
-CLERIC_SPIRITUAL_CLARITY               , 3 => spirit
-CLERIC_SPIRIT_FIRE                     , 4 => spirit
+CLERIC_SPIRIT_WARD                     , 1 => spirit // modify to work against all planar creatures?
+CLERIC_WRITHING_FOG                    , 2 => spirit // move to damnation/planar?
+CLERIC_SPIRITUAL_CLARITY               , 3 => spirit // move to thought? (does it duplicate exaltation?)
+CLERIC_SPIRIT_FIRE                     , 4 => spirit // move to damnation/planar?
 CLERIC_RECALL_SPIRIT                   , 5 => spirit
-CLERIC_SPIRITUAL_LOCK                  , 6 => spirit
-CLERIC_ETHER_GATE                      , 7 => spirit
+CLERIC_SPIRITUAL_LOCK                  , 6 => spirit // move to dread? or modify to work against all planar creatures?
+CLERIC_ETHER_GATE                      , 7 => spirit // move to exploration? or damnation/planar?
 
 //  DAMNATION
+// add ProFiends spell (ProEvil that only works against fiends)
+// move writhing fog here??
+// move spirit fire here?
 // add summon mephit(s) spell          , 4 => damnation
 WIZARD_BELTYNS_BURNING_BLOOD           , 4 => damnation // need to add for non-IWDEE
 //WIZARD_SHROUD_OF_FLAME               , 5 => damnation // spell has no IDS name?? need to add manually
 WIZARD_CACOFIEND                       , 6 => damnation
 WIZARD_MALAVONS_RAGE                   , 7 => damnation // need to add for non-IWDEE
 WIZARD_SUMMON_FIEND                    , 7 => damnation
+// use ethereal retribution (maybe renamed) as the HLA?
 
 END
 
