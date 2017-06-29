@@ -32,6 +32,7 @@ CLERIC_ANIMATE_DEAD                    , 4 => death
 //CLERIC_UNDEAD_WARD                     , 4 => death // is now SR prot. from cold
 //CLERIC_MASS_CAUSE_LIGHT_WOUNDS         , 5 => death // now is SR prot. from fire
 CLERIC_SLAY_LIVING                     , 5 => death
+CLERIC_RECALL_SPIRIT                   , 5 => death // a 'good' spell in Death?
 CLERIC_HARM                            , 6 => death
 WIZARD_SOUL_EATER                      , 6 => death
 WIZARD_CARRION                         , 6 => death //sr skeleton warrior
@@ -92,10 +93,23 @@ CLERIC_SPIRITUAL_HAMMER                , 2 => war
 CLERIC_STRENGTH_OF_ONE                 , 3 => war
 CLERIC_HOLY_POWER                      , 3 => war
 CLERIC_DEFENSIVE_HARMONY               , 4 => war
+CLERIC_STAR_METAL_CUDGEL               , 4 => war
 CLERIC_CHAMPIONS_STRENGTH              , 5 => war
 CLERIC_RIGHTEOUS_MAGIC                 , 5 => war
 CLERIC_BLADE_BARRIER                   , 6 => war
 CLERIC_SYMBOL_FEAR                     , 7 => war // SR symbol weakness
+
+//  EXPLORATION
+WIZARD_PFP_OLD                         , 1 => exploration // exped. retreat... need to add for non-IWDEE
+CLERIC_FIND_TRAPS                      , 1 => exploration
+MAZZY_HASTE                            , 2 => exploration
+CLERIC_FREE_ACTION                     , 3 => exploration
+WIZARD_EYE                             , 4 => exploration
+WIZARD_DIMENSION_DOOR                  , 5 => exploration
+WIZARD_TELEPORT_FIELD                  , 6 => exploration
+WIZARD_IMPROVED_HASTE                  , 6 => exploration
+WIZARD_FREEDOM                         , 7 => exploration
+CLERIC_ETHER_GATE                      , 7 => exploration
 
 //  KNOWLEDGE
 WIZARD_INFRAVISION                     , 1 => knowledge // SR true strike
@@ -127,6 +141,7 @@ WIZARD_SLEEP                           , 2 => thought
 CLERIC_CHARM_PERSON                    , 2 => thought
 b_c301 /*murderous command*/           , 3 => thought
 CLERIC_EXALTATION                      , 3 => thought
+//CLERIC_SPIRITUAL_CLARITY               , 3 => thought (does it duplicate exaltation?)
 CLERIC_RIGID_THINKING                  , 3 => thought
 CLERIC_MENTAL_DOMINATION               , 4 => thought
 CLERIC_BLOOD_RAGE                      , 4 => thought
@@ -220,8 +235,7 @@ CLERIC_MAGIC_STONE                     , 2 => earth
 //CLERIC_PROTECTION_FROM_LIGHTNING       , 2 => earth
 b_pr301 /*stone fist*/                 , 3 => earth
 CLERIC_SPIKE_STONES                    , 4 => earth
-CLERIC_STAR_METAL_CUDGEL               , 4 => war
-CLERIC_IRONSKIN                        , 5 => earth
+CLERIC_IRONSKIN                        , 4 => earth
 WIZARD_FLESH_TO_STONE                  , 5 => earth
 //CLERIC_CONJURE_EARTH_ELEMENTAL         , 6 => earth // use new SR version instead
 sppr622 /*SR earth elemental*/         , 6 => earth
@@ -313,6 +327,18 @@ WIZARD_BREACH                          , 5 => magic
 WIZARD_GLOBE_OF_INVULNERABILITY        , 6 => magic
 WIZARD_PIERCE_SHIELD                   , 7 => magic
 
+//  PERDITION
+CLERIC_SPIRIT_WARD                     , 1 => perdition // modify to work against all planar creatures
+CLERIC_WRITHING_FOG                    , 2 => perdition // move to damnation/planar?
+CLERIC_SPIRIT_FIRE                     , 3 => perdition // move to damnation/planar?
+WIZARD_BELTYNS_BURNING_BLOOD           , 4 => perdition // need to add for non-IWDEE
+CLERIC_SPIRITUAL_LOCK                  , 5 => perdition // modify to work against all planar creatures
+WIZARD_CACOFIEND                       , 6 => perdition
+WIZARD_MALAVONS_RAGE                   , 7 => perdition // need to add for non-IWDEE
+WIZARD_SUMMON_FIEND                    , 7 => perdition
+
+//  DAMNATION/FIENDISH
+// ...nothing yet...
 
 END
 

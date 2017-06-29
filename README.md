@@ -1,17 +1,32 @@
 ﻿# Faiths_and_Powers
 Faiths and Powers mod
-2017-06-27
-Version 27a
+
+2017-06-29
+v. 0.69b
+
+- Fixed Elementalist focus
+
+v. 0.69a
+- All of the kits have been moved to /lib/add_%archetype%_kits.tpa files, except for champions 
+- Exploration added to the C/R of Shaundakul 
+- Perdition sphere created
+
+v. 0.68
+- Making the exploration sphere, which pulls in some spells in use elsewhere, like Free Action.  
+- Updated sphere system, incorporating new and engine spells
+- New Spheres: spirit, damnation and exploration
+
+v. 0.67a
 - Acolyte of Moander immunity to assassin vines
 - Stalker updated to use staff shambler
-Version 27
+
+v. 0.67
 2017-06-27
 - HUGE update to the way spells are handled
-Version 26
+
+v. 0.66
 2017-06-21
 - Cleric of Umberlee (not added to option 3)
-
-2017-06-04
 - Fixed Elementalist Control Elemental ability
 - Other stuff
 

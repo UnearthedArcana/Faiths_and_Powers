@@ -294,6 +294,21 @@ COPY ~faiths_and_powers/spheres/d5pxyz.spl~ ~override/d5fwar4.spl~
 COPY ~faiths_and_powers/spheres/d5pxyz.spl~ ~override/d5fwar5.spl~
 COPY ~faiths_and_powers/spheres/d5pxyz.spl~ ~override/d5fwar6.spl~
 COPY ~faiths_and_powers/spheres/d5pxyz.spl~ ~override/d5fwar7.spl~
+//exploration
+COPY ~faiths_and_powers/spheres/d5pxyz.spl~ ~override/d5pexp1.spl~
+COPY ~faiths_and_powers/spheres/d5pxyz.spl~ ~override/d5pexp2.spl~
+COPY ~faiths_and_powers/spheres/d5pxyz.spl~ ~override/d5pexp3.spl~
+COPY ~faiths_and_powers/spheres/d5pxyz.spl~ ~override/d5pexp4.spl~
+COPY ~faiths_and_powers/spheres/d5pxyz.spl~ ~override/d5pexp5.spl~
+COPY ~faiths_and_powers/spheres/d5pxyz.spl~ ~override/d5pexp6.spl~
+COPY ~faiths_and_powers/spheres/d5pxyz.spl~ ~override/d5pexp7.spl~
+COPY ~faiths_and_powers/spheres/d5pxyz.spl~ ~override/d5fexp1.spl~
+COPY ~faiths_and_powers/spheres/d5pxyz.spl~ ~override/d5fexp2.spl~
+COPY ~faiths_and_powers/spheres/d5pxyz.spl~ ~override/d5fexp3.spl~
+COPY ~faiths_and_powers/spheres/d5pxyz.spl~ ~override/d5fexp4.spl~
+COPY ~faiths_and_powers/spheres/d5pxyz.spl~ ~override/d5fexp5.spl~
+COPY ~faiths_and_powers/spheres/d5pxyz.spl~ ~override/d5fexp6.spl~
+COPY ~faiths_and_powers/spheres/d5pxyz.spl~ ~override/d5fexp7.spl~
 //knowledge
 COPY ~faiths_and_powers/spheres/d5pxyz.spl~ ~override/d5pkno1.spl~
 COPY ~faiths_and_powers/spheres/d5pxyz.spl~ ~override/d5pkno2.spl~
@@ -519,6 +534,36 @@ COPY ~faiths_and_powers/spheres/d5pxyz.spl~ ~override/d5fmag4.spl~
 COPY ~faiths_and_powers/spheres/d5pxyz.spl~ ~override/d5fmag5.spl~
 COPY ~faiths_and_powers/spheres/d5pxyz.spl~ ~override/d5fmag6.spl~
 COPY ~faiths_and_powers/spheres/d5pxyz.spl~ ~override/d5fmag7.spl~
+//perdition
+COPY ~faiths_and_powers/spheres/d5pxyz.spl~ ~override/d5pper1.spl~
+COPY ~faiths_and_powers/spheres/d5pxyz.spl~ ~override/d5pper2.spl~
+COPY ~faiths_and_powers/spheres/d5pxyz.spl~ ~override/d5pper3.spl~
+COPY ~faiths_and_powers/spheres/d5pxyz.spl~ ~override/d5pper4.spl~
+COPY ~faiths_and_powers/spheres/d5pxyz.spl~ ~override/d5pper5.spl~
+COPY ~faiths_and_powers/spheres/d5pxyz.spl~ ~override/d5pper6.spl~
+COPY ~faiths_and_powers/spheres/d5pxyz.spl~ ~override/d5pper7.spl~
+COPY ~faiths_and_powers/spheres/d5pxyz.spl~ ~override/d5fper1.spl~
+COPY ~faiths_and_powers/spheres/d5pxyz.spl~ ~override/d5fper2.spl~
+COPY ~faiths_and_powers/spheres/d5pxyz.spl~ ~override/d5fper3.spl~
+COPY ~faiths_and_powers/spheres/d5pxyz.spl~ ~override/d5fper4.spl~
+COPY ~faiths_and_powers/spheres/d5pxyz.spl~ ~override/d5fper5.spl~
+COPY ~faiths_and_powers/spheres/d5pxyz.spl~ ~override/d5fper6.spl~
+COPY ~faiths_and_powers/spheres/d5pxyz.spl~ ~override/d5fper7.spl~
+//damnation
+COPY ~faiths_and_powers/spheres/d5pxyz.spl~ ~override/d5pfie1.spl~
+COPY ~faiths_and_powers/spheres/d5pxyz.spl~ ~override/d5pfie2.spl~
+COPY ~faiths_and_powers/spheres/d5pxyz.spl~ ~override/d5pfie3.spl~
+COPY ~faiths_and_powers/spheres/d5pxyz.spl~ ~override/d5pfie4.spl~
+COPY ~faiths_and_powers/spheres/d5pxyz.spl~ ~override/d5pfie5.spl~
+COPY ~faiths_and_powers/spheres/d5pxyz.spl~ ~override/d5pfie6.spl~
+COPY ~faiths_and_powers/spheres/d5pxyz.spl~ ~override/d5pfie7.spl~
+COPY ~faiths_and_powers/spheres/d5pxyz.spl~ ~override/d5ffie1.spl~
+COPY ~faiths_and_powers/spheres/d5pxyz.spl~ ~override/d5ffie2.spl~
+COPY ~faiths_and_powers/spheres/d5pxyz.spl~ ~override/d5ffie3.spl~
+COPY ~faiths_and_powers/spheres/d5pxyz.spl~ ~override/d5ffie4.spl~
+COPY ~faiths_and_powers/spheres/d5pxyz.spl~ ~override/d5ffie5.spl~
+COPY ~faiths_and_powers/spheres/d5pxyz.spl~ ~override/d5ffie6.spl~
+COPY ~faiths_and_powers/spheres/d5pxyz.spl~ ~override/d5ffie7.spl~
 //__________________________________________________________________________________
 
 
@@ -1139,6 +1184,11 @@ ACTION_PHP_EACH spellsphere AS spl => sph BEGIN
 		OUTER_TEXT_SPRINT sphspell ~pwar~
 		OUTER_TEXT_SPRINT focspell ~fwar~
 	END
+	ACTION_IF (~%sph%~ STRING_EQUAL_CASE ~exploration~) BEGIN
+		OUTER_TEXT_SPRINT sphere ~Exploration~
+		OUTER_TEXT_SPRINT sphspell ~pexp~
+		OUTER_TEXT_SPRINT focspell ~fexp~
+	END
 	ACTION_IF (~%sph%~ STRING_EQUAL_CASE ~knowledge~) BEGIN
 		OUTER_TEXT_SPRINT sphere ~Knowledge~
 		OUTER_TEXT_SPRINT sphspell ~pkno~
@@ -1213,6 +1263,16 @@ ACTION_PHP_EACH spellsphere AS spl => sph BEGIN
 		OUTER_TEXT_SPRINT sphere ~Magic~
 		OUTER_TEXT_SPRINT sphspell ~pmag~
 		OUTER_TEXT_SPRINT focspell ~fmag~
+	END
+	ACTION_IF (~%sph%~ STRING_EQUAL_CASE ~perdition~) BEGIN
+		OUTER_TEXT_SPRINT sphere ~Spirit~
+		OUTER_TEXT_SPRINT sphspell ~pper~
+		OUTER_TEXT_SPRINT focspell ~fper~
+	END
+	ACTION_IF (~%sph%~ STRING_EQUAL_CASE ~damnation~) BEGIN
+		OUTER_TEXT_SPRINT sphere ~Damnation~
+		OUTER_TEXT_SPRINT sphspell ~pfie~
+		OUTER_TEXT_SPRINT focspell ~ffie~
 	END
 //
 	COPY_EXISTING - ~spell.ids~ ~faiths_and_powers/backup~
@@ -1629,6 +1689,20 @@ COPY_EXISTING
 			 ~d5fwar5.spl~ ~override~
 			 ~d5fwar6.spl~ ~override~
 			 ~d5fwar7.spl~ ~override~
+			 ~d5pexp1.spl~ ~override~
+			 ~d5pexp2.spl~ ~override~
+			 ~d5pexp3.spl~ ~override~
+			 ~d5pexp4.spl~ ~override~
+			 ~d5pexp5.spl~ ~override~
+			 ~d5pexp6.spl~ ~override~
+			 ~d5pexp7.spl~ ~override~
+			 ~d5fexp1.spl~ ~override~
+			 ~d5fexp2.spl~ ~override~
+			 ~d5fexp3.spl~ ~override~
+			 ~d5fexp4.spl~ ~override~
+			 ~d5fexp5.spl~ ~override~
+			 ~d5fexp6.spl~ ~override~
+			 ~d5fexp7.spl~ ~override~
 			 ~d5pkno1.spl~ ~override~
 			 ~d5pkno2.spl~ ~override~
 			 ~d5pkno3.spl~ ~override~
@@ -1839,6 +1913,34 @@ COPY_EXISTING
 			 ~d5fmag5.spl~ ~override~
 			 ~d5fmag6.spl~ ~override~
 			 ~d5fmag7.spl~ ~override~
+			 ~d5pper1.spl~ ~override~
+			 ~d5pper2.spl~ ~override~
+			 ~d5pper3.spl~ ~override~
+			 ~d5pper4.spl~ ~override~
+			 ~d5pper5.spl~ ~override~
+			 ~d5pper6.spl~ ~override~
+			 ~d5pper7.spl~ ~override~
+			 ~d5fper1.spl~ ~override~
+			 ~d5fper2.spl~ ~override~
+			 ~d5fper3.spl~ ~override~
+			 ~d5fper4.spl~ ~override~
+			 ~d5fper5.spl~ ~override~
+			 ~d5fper6.spl~ ~override~
+			 ~d5fper7.spl~ ~override~
+			 ~d5pfie1.spl~ ~override~
+			 ~d5pfie2.spl~ ~override~
+			 ~d5pfie3.spl~ ~override~
+			 ~d5pfie4.spl~ ~override~
+			 ~d5pfie5.spl~ ~override~
+			 ~d5pfie6.spl~ ~override~
+			 ~d5pfie7.spl~ ~override~
+			 ~d5ffie1.spl~ ~override~
+			 ~d5ffie2.spl~ ~override~
+			 ~d5ffie3.spl~ ~override~
+			 ~d5ffie4.spl~ ~override~
+			 ~d5ffie5.spl~ ~override~
+			 ~d5ffie6.spl~ ~override~
+			 ~d5ffie7.spl~ ~override~
 	LPF DELETE_EFFECT INT_VAR match_opcode=171 STR_VAR match_resource=~SPWI101~ END
 //__________________________________________________________________________________
 

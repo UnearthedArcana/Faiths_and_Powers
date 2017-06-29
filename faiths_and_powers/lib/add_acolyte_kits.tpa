@@ -120,6 +120,7 @@ COPY ~faiths_and_powers/kits/acolytes/314_ilmater/b_ilm03.spl~ ~override~  // En
 	s_Destruction 	= ~minor~
 	s_Protection 	= ~focus~
 	s_War 			= ~minor~
+	s_Exploration   = ~x~
 	s_Knowledge 	= ~major~
 	s_Deception 	= ~x~
 	s_Thought 		= ~minor~
@@ -135,6 +136,7 @@ COPY ~faiths_and_powers/kits/acolytes/314_ilmater/b_ilm03.spl~ ~override~  // En
 	s_Light 		= ~major~
 	s_Shadow 		= ~x~
 	s_Magic 		= ~minor~
+	s_Perdition     = ~x~
  END
 
 END
@@ -263,6 +265,7 @@ COPY_EXISTING ~SPPR303.spl~ ~override/b_den04.spl~ // dispel magic
 	s_Destruction 	= ~x~
 	s_Protection 	= ~major~
 	s_War 			= ~minor~
+	s_Exploration   = ~x~
 	s_Knowledge 	= ~focus~
 	s_Deception 	= ~minor~
 	s_Thought 		= ~major~
@@ -278,6 +281,7 @@ COPY_EXISTING ~SPPR303.spl~ ~override/b_den04.spl~ // dispel magic
 	s_Light 		= ~major~
 	s_Shadow 		= ~x~
 	s_Magic 		= ~major~
+	s_Perdition     = ~x~
  END
 
 END
@@ -423,6 +427,7 @@ COPY_EXISTING ~SPWI104.spl~ ~override/b_sun01.spl~ // Charm person
 	s_Destruction 	= ~x~
 	s_Protection 	= ~major~
 	s_War 			= ~x~
+	s_Exploration   = ~x~
 	s_Knowledge 	= ~major~
 	s_Deception 	= ~major~
 	s_Thought 		= ~focus~
@@ -438,6 +443,7 @@ COPY_EXISTING ~SPWI104.spl~ ~override/b_sun01.spl~ // Charm person
 	s_Light 		= ~minor~
 	s_Shadow 		= ~minor~
 	s_Magic 		= ~minor~
+	s_Perdition     = ~x~
 END
 
 //CLERIC/THIEF________________________________________________________________________
@@ -547,6 +553,7 @@ END
 	s_Destruction 	= ~x~
 	s_Protection 	= ~major~
 	s_War 			= ~x~
+	s_Exploration   = ~x~
 	s_Knowledge 	= ~major~
 	s_Deception 	= ~major~
 	s_Thought 		= ~focus~
@@ -562,6 +569,7 @@ END
 	s_Light 		= ~minor~
 	s_Shadow 		= ~minor~
 	s_Magic 		= ~minor~
+	s_Perdition     = ~x~
  END
 
 END
@@ -680,6 +688,7 @@ COPY ~faiths_and_powers/kits/acolytes/322_tempus/b_tem02.spl~ ~override~  // WP 
 	s_Destruction 	= ~major~
 	s_Protection 	= ~major~
 	s_War 			= ~focus~
+	s_Exploration   = ~x~
 	s_Knowledge 	= ~x~
 	s_Deception 	= ~x~
 	s_Thought 		= ~minor~
@@ -695,6 +704,7 @@ COPY ~faiths_and_powers/kits/acolytes/322_tempus/b_tem02.spl~ ~override~  // WP 
 	s_Light 		= ~x~
 	s_Shadow 		= ~x~
 	s_Magic 		= ~x~
+	s_Perdition     = ~x~
  END
 
 END
@@ -852,6 +862,7 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	s_Destruction 	= ~major~
 	s_Protection 	= ~major~
 	s_War 			= ~x~
+	s_Exploration   = ~x~
 	s_Knowledge 	= ~major~
 	s_Deception 	= ~minor~
 	s_Thought 		= ~minor~
@@ -867,6 +878,7 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	s_Light 		= ~major~
 	s_Shadow 		= ~minor~
 	s_Magic 		= ~major~
+	s_Perdition     = ~x~
  END
 
 END
@@ -992,6 +1004,7 @@ COPY ~faiths_and_powers/kits/acolytes/329_mask/d5_mask3.cre~ ~override~
 	s_Destruction 	= ~minor~
 	s_Protection 	= ~minor~
 	s_War 			= ~x~
+	s_Exploration   = ~x~
 	s_Knowledge 	= ~major~
 	s_Deception 	= ~major~
 	s_Thought 		= ~major~
@@ -1007,6 +1020,7 @@ COPY ~faiths_and_powers/kits/acolytes/329_mask/d5_mask3.cre~ ~override~
 	s_Light 		= ~x~
 	s_Shadow 		= ~focus~
 	s_Magic 		= ~minor~
+	s_Perdition     = ~x~
  END
 
 //CLERIC/THIEF______________________________________________________________________
@@ -1116,6 +1130,7 @@ END
 	s_Destruction 	= ~minor~
 	s_Protection 	= ~minor~
 	s_War 			= ~x~
+	s_Exploration   = ~x~
 	s_Knowledge 	= ~major~
 	s_Deception 	= ~focus~
 	s_Thought 		= ~major~
@@ -1131,6 +1146,7 @@ END
 	s_Light 		= ~x~
 	s_Shadow 		= ~major~
 	s_Magic 		= ~minor~
+	s_Perdition     = ~x~
  END
 
 END
@@ -1250,6 +1266,7 @@ COPY_EXISTING ~spwi815.spl~ ~override/d5shabl.spl~
 	s_Destruction 	= ~major~
 	s_Protection 	= ~minor~
 	s_War 			= ~x~
+	s_Exploration   = ~x~
 	s_Knowledge 	= ~minor~
 	s_Deception 	= ~major~
 	s_Thought 		= ~major~
@@ -1265,6 +1282,7 @@ COPY_EXISTING ~spwi815.spl~ ~override/d5shabl.spl~
 	s_Light 		= ~x~
 	s_Shadow 		= ~focus~
 	s_Magic 		= ~major~
+	s_Perdition     = ~x~
  END
 
 //____________________________CLERIC/MAGE_____________________________________________
@@ -1374,6 +1392,7 @@ END
 	s_Destruction 	= ~major~
 	s_Protection 	= ~minor~
 	s_War 			= ~x~
+	s_Exploration   = ~x~
 	s_Knowledge 	= ~minor~
 	s_Deception 	= ~major~
 	s_Thought 		= ~major~
@@ -1389,6 +1408,7 @@ END
 	s_Light 		= ~x~
 	s_Shadow 		= ~focus~
 	s_Magic 		= ~major~
+	s_Perdition     = ~x~
  END
 
 END
@@ -1516,6 +1536,7 @@ COPY ~faiths_and_powers/kits/acolytes/331_moander/b_moa3.spl~ ~override~    //Im
 	s_Destruction   = ~major~
 	s_Protection    = ~x~
 	s_War 			= ~minor~
+	s_Exploration   = ~x~
 	s_Knowledge     = ~x~
 	s_Deception     = ~minor~
 	s_Thought 		= ~x~
@@ -1531,6 +1552,7 @@ COPY ~faiths_and_powers/kits/acolytes/331_moander/b_moa3.spl~ ~override~    //Im
 	s_Light 		= ~x~
 	s_Shadow 		= ~major~
 	s_Magic 		= ~minor~
+	s_Perdition     = ~x~
  END
 
 END
@@ -1734,6 +1756,7 @@ COPY ~faiths_and_powers/spheres/spells/dread/b_c501.eff~ ~override/b_bes04.eff~ 
 	s_Destruction           = ~minor~
 	s_Protection            = ~major~
 	s_War 			= ~minor~
+	s_Exploration   = ~x~
 	s_Knowledge             = ~minor~
 	s_Deception             = ~minor~
 	s_Thought 		= ~major~
@@ -1749,6 +1772,7 @@ COPY ~faiths_and_powers/spheres/spells/dread/b_c501.eff~ ~override/b_bes04.eff~ 
 	s_Light 		= ~x~
 	s_Shadow 		= ~x~
 	s_Magic 		= ~minor~
+	s_Perdition     = ~x~
  END
 
 END
@@ -1860,6 +1884,7 @@ COPY_EXISTING ~faiths_and_powers/kits/acolytes/342_baervan/d5baerv.2da~ ~overrid
 	s_Destruction 	= ~x~
 	s_Protection 	= ~major~
 	s_War 			= ~x~
+	s_Exploration   = ~x~
 	s_Knowledge 	= ~minor~
 	s_Deception 	= ~x~
 	s_Thought 		= ~minor~
@@ -1875,6 +1900,7 @@ COPY_EXISTING ~faiths_and_powers/kits/acolytes/342_baervan/d5baerv.2da~ ~overrid
 	s_Light 		= ~minor~
 	s_Shadow 		= ~x~
 	s_Magic 		= ~x~
+	s_Perdition     = ~x~
  END
 
 //CLERIC/MAGE_______________________________________________________________________
@@ -1983,6 +2009,7 @@ END
 	s_Destruction 	= ~x~
 	s_Protection 	= ~major~
 	s_War 			= ~x~
+	s_Exploration   = ~x~
 	s_Knowledge 	= ~minor~
 	s_Deception 	= ~x~
 	s_Thought 		= ~minor~
@@ -1998,6 +2025,7 @@ END
 	s_Light 		= ~minor~
 	s_Shadow 		= ~x~
 	s_Magic 		= ~x~
+	s_Perdition     = ~x~
  END
 
 END
