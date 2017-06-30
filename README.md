@@ -1,7 +1,13 @@
 ﻿# Faiths_and_Powers
 Faiths and Powers mod
+2017-06-30
+
+v. 0.69d
+
+- Acolytes are now selectable 
 
 2017-06-29
+
 v. 0.69c
 
 - Used ALTER_SPELL_HEADER with acolyte of Beshaba
