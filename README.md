@@ -1,5 +1,12 @@
 ﻿# Faiths_and_Powers
 Faiths and Powers mod
+
+2017-07-01
+
+v. 0.69e
+
+- Fixed some weird errors with mc kits.  (Azuth and Mystra can currently select ALL alignments with option 2???)
+
 2017-06-30
 
 v. 0.69d

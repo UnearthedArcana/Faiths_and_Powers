@@ -1903,7 +1903,8 @@ COPY_EXISTING ~faiths_and_powers/kits/acolytes/342_baervan/d5baerv.2da~ ~overrid
 	s_Perdition     = ~x~
  END
 
-//CLERIC/MAGE_______________________________________________________________________
+
+//____________________________CLERIC/MAGE_____________________________________________
 
 ADD_KIT ~D5_CM_BAERVAN~
 
@@ -1919,24 +1920,24 @@ ADD_KIT ~D5_CM_BAERVAN~
 //3              O O B E U K A I D O W A D A W G M L E E N A T B B B A I D S A P R R R R R R R R A A A A A A A A A A A
 //2              R R O A N E X L S R O X S N A E E U A R I C A O O O R N E H P O A A A A A A A A 1 1 1 1 1 1 1 1 1 1 2
 //1              D D W R T D E E W D R E W A K R R B R D N E F W W W T G D I O N 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0
-~D5_CM_BAERVAN   0 0 0 0 0 0 0 0~
-~D5_CM_BAERVAN   0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 1 1 1 0 1 1 1 1 0 0 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
+~D5_CM_BAERVAN      0 0 0 0 1 1 0 1~
+~D5_CM_BAERVAN      0 1 0 0 1 1 0 1 0 0 1 0 0 0 0 1 1 1 1 0 1 1 1 1 0 0 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
 
 //MINIMUM KIT STATS_________________________________________________________________
 //                 STR DEX CON INT WIS CHR
-~D5_CM_BAERVAN      0   0   0   12  12  0~
+~D5_CM_BAERVAN        0   0   0   12  12  0~
 
 //KIT STAT MODIFIERS________________________________________________________________
 //                 STR DEX CON INT WIS CHR
-~D5_CM_BAERVAN      0   0   0   0   0   0~
+~D5_CM_BAERVAN        0   0   0   0   0   0~
 
 //REQUIREMENTS TO DUAL TO THIS KIT_________________________________________________
 //                 STR DEX CON INT WIS CHR
-~D5_CM_BAERVAN      0   0   0   0   15  0~
+~D5_CM_BAERVAN        0   0   0   0   15  0~
 
 //REQUIREMENTS TO DUAL FROM THIS KIT________________________________________________
 //                 STR DEX CON INT WIS CHR
-~D5_CM_BAERVAN      0   0   0   0   15  0~
+~D5_CM_BAERVAN        0   0   0   0   15  0~
 
 //ALIGNMENT RESTRICTIONS____________________________________________________________
 //                 LG LN LE NG TN NE CG CN CE
@@ -1944,13 +1945,13 @@ ADD_KIT ~D5_CM_BAERVAN~
 
 //DUAL CLASS OPTIONS________________________________________________________________
 //                 FT CL MA TH DR RA
-~D5_CM_BAERVAN      0  0  1  1  0  0~
+~D5_CM_BAERVAN     0  0  1  1  0  0~
 
 //KIT ABILITIES 2DA FILE______________________________________________________________
 ~faiths_and_powers/kits/acolytes/342_baervan/d5baer2.2da~
 
 //RACIAL KIT AVAILABILITY_____________________________________________________________
-~K_C_G~
+~K_CM_G~
 
 //UNUSABLE FLAGS AND KIT BASE CLASS_________________________________________________
 //CLASSES: Mage = 1, Fighter = 2, Cleric=3, Thief = 4, Bard = 5
@@ -1969,26 +1970,27 @@ SAY @34201
 SAY @34202
 SAY @34203
 
-//EE KIT EXTRAS______________________________________________________________________
+//EE KIT EXTRAS_____________________________________________________________________
 // 
 ACTION_IF GAME_IS ~bgee bg2ee eet iwdee~ THEN BEGIN
 	LAF fl#add_kit_ee
 		INT_VAR
 			briefdesc = RESOLVE_STR_REF (@34204)
 		STR_VAR
-			kit_name = D5_AC_BAERVAN
+			kit_name = D5_CM_BAERVAN
 			clswpbon = ~0 0 3~
+			hpclass = ~HPPRS~
 	END
 END
 
-COPY_EXISTING ~faiths_and_powers/kits/acolytes/342_baervan/d5baerv.2da~ ~override/d5baer2.2da~
+COPY ~faiths_and_powers/kits/acolytes/342_baervan/d5baer2.2da~ ~override~
 
 //MULTICLASS KIT______________________________________________________________________
 //
 ACTION_IF FILE_EXISTS_IN_GAME ~d5baer2.2da~ BEGIN
   LAF qd_multiclass
 	STR_VAR
-		kit_name = ~D5_AC_BAERVAN~
+		kit_name = ~D5_CM_BAERVAN~
 		kit_clab = ~d5baer2~
 		base_class = ~P~
 		mc_dir = ~faiths_and_powers/lib/qd_mc~
@@ -1999,7 +2001,7 @@ END
 //
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
-	c_cleric_mage 	= 1
+	c_cleric_mage	= 1
   STR_VAR
     clab_name 		= ~d5baer2~
 	race 			= ~gnome~
@@ -2029,6 +2031,4 @@ END
  END
 
 END
-//__________________________________________________________________________________
-
-
+//

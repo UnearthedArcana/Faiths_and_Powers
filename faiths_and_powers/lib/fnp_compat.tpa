@@ -23,7 +23,6 @@ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5_fnp_spheres BEGIN
   Shadow => 0
   Magic => 0
   Perdition => 0
-  Damnation => 0
 END
 
 ACTION_DEFINE_ASSOCIATIVE_ARRAY d5_fnp_classes BEGIN
@@ -112,7 +111,6 @@ DEFINE_ACTION_FUNCTION ~DEFINE_FNP_KIT_INFO~
     s_Shadow = ~x~
     s_Magic = ~x~
 	s_Perdition = ~x~
-	s_Damnation = ~x~
     2da_folder = EVAL ~%MOD_FOLDER%/lib~
 BEGIN
   PRINT ~Defining Faiths and Powers info for kit %clab_name% ...~ 
@@ -160,7 +158,7 @@ BEGIN
   // define the text that will be added to the files
   OUTER_TEXT_SPRINT race_text ~%clab_name% %race%~
   OUTER_TEXT_SPRINT class_text ~%clab_name% %c_cleric% %c_acolyte% %c_fighter_cleric% %c_cleric_mage% %c_cleric_thief% %c_ranger_cleric% %c_f_m_c% %c_druid% %c_mystic% %c_occultist% %c_fighter_druid% %c_champion% %c_inquisitor% %c_zealot% %c_ranger% %c_dervish% %c_scout%~
-  OUTER_TEXT_SPRINT sphere_text ~%clab_name% %s_Life% %s_Death% %s_Benediction% %s_Destruction% %s_Protection% %s_War% %s_Knowledge% %s_Deception% %s_Thought% %s_Dread% %s_Vigor% %s_Affliction% %s_Animal% %s_Plant% %s_Earth% %s_Water% %s_Air% %s_Fire% %s_Light% %s_Shadow% %s_Magic%~
+  OUTER_TEXT_SPRINT sphere_text ~%clab_name% %s_Life% %s_Death% %s_Benediction% %s_Destruction% %s_Protection% %s_War% %s_Exploration% %s_Knowledge% %s_Deception% %s_Thought% %s_Dread% %s_Vigor% %s_Affliction% %s_Animal% %s_Plant% %s_Earth% %s_Water% %s_Air% %s_Fire% %s_Light% %s_Shadow% %s_Magic% %s_Perdition%~
 
   // uppercase text
   ACTION_TO_UPPER race_text
