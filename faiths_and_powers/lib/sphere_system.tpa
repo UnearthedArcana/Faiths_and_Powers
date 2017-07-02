@@ -1154,125 +1154,10 @@ ACTION_PHP_EACH spellsphere AS spl => sph BEGIN
 	OUTER_SET lvl = spl_1
 	OUTER_SET flvl = (%lvl% - 1)
 //
-	ACTION_IF (~%sph%~ STRING_EQUAL_CASE ~life~) BEGIN
-		OUTER_TEXT_SPRINT sphere ~Life~
-		OUTER_TEXT_SPRINT sphspell ~plif~
-		OUTER_TEXT_SPRINT focspell ~flif~
-	END
-	ACTION_IF (~%sph%~ STRING_EQUAL_CASE ~death~) BEGIN
-		OUTER_TEXT_SPRINT sphere ~Death~
-		OUTER_TEXT_SPRINT sphspell ~pdea~
-		OUTER_TEXT_SPRINT focspell ~fdea~
-	END
-	ACTION_IF (~%sph%~ STRING_EQUAL_CASE ~benediction~) BEGIN
-		OUTER_TEXT_SPRINT sphere ~Benediction~
-		OUTER_TEXT_SPRINT sphspell ~pben~
-		OUTER_TEXT_SPRINT focspell ~fben~
-	END
-	ACTION_IF (~%sph%~ STRING_EQUAL_CASE ~destruction~) BEGIN
-		OUTER_TEXT_SPRINT sphere ~Destruction~
-		OUTER_TEXT_SPRINT sphspell ~pdes~
-		OUTER_TEXT_SPRINT focspell ~fdes~
-	END
-	ACTION_IF (~%sph%~ STRING_EQUAL_CASE ~protection~) BEGIN
-		OUTER_TEXT_SPRINT sphere ~Protection~
-		OUTER_TEXT_SPRINT sphspell ~ppro~
-		OUTER_TEXT_SPRINT focspell ~fpro~
-	END
-	ACTION_IF (~%sph%~ STRING_EQUAL_CASE ~war~) BEGIN
-		OUTER_TEXT_SPRINT sphere ~War~
-		OUTER_TEXT_SPRINT sphspell ~pwar~
-		OUTER_TEXT_SPRINT focspell ~fwar~
-	END
-	ACTION_IF (~%sph%~ STRING_EQUAL_CASE ~exploration~) BEGIN
-		OUTER_TEXT_SPRINT sphere ~Exploration~
-		OUTER_TEXT_SPRINT sphspell ~pexp~
-		OUTER_TEXT_SPRINT focspell ~fexp~
-	END
-	ACTION_IF (~%sph%~ STRING_EQUAL_CASE ~knowledge~) BEGIN
-		OUTER_TEXT_SPRINT sphere ~Knowledge~
-		OUTER_TEXT_SPRINT sphspell ~pkno~
-		OUTER_TEXT_SPRINT focspell ~fkno~
-	END
-	ACTION_IF (~%sph%~ STRING_EQUAL_CASE ~deception~) BEGIN
-		OUTER_TEXT_SPRINT sphere ~Deception~
-		OUTER_TEXT_SPRINT sphspell ~pdec~
-		OUTER_TEXT_SPRINT focspell ~fdec~
-	END
-	ACTION_IF (~%sph%~ STRING_EQUAL_CASE ~thought~) BEGIN
-		OUTER_TEXT_SPRINT sphere ~Thought~
-		OUTER_TEXT_SPRINT sphspell ~ptho~
-		OUTER_TEXT_SPRINT focspell ~ftho~
-	END
-	ACTION_IF (~%sph%~ STRING_EQUAL_CASE ~dread~) BEGIN
-		OUTER_TEXT_SPRINT sphere ~Dread~
-		OUTER_TEXT_SPRINT sphspell ~pdre~
-		OUTER_TEXT_SPRINT focspell ~fdre~
-	END
-	ACTION_IF (~%sph%~ STRING_EQUAL_CASE ~vigor~) BEGIN
-		OUTER_TEXT_SPRINT sphere ~Vigor~
-		OUTER_TEXT_SPRINT sphspell ~pvig~
-		OUTER_TEXT_SPRINT focspell ~fvig~
-	END
-	ACTION_IF (~%sph%~ STRING_EQUAL_CASE ~affliction~) BEGIN
-		OUTER_TEXT_SPRINT sphere ~Affliction~
-		OUTER_TEXT_SPRINT sphspell ~paff~
-		OUTER_TEXT_SPRINT focspell ~faff~
-	END
-	ACTION_IF (~%sph%~ STRING_EQUAL_CASE ~animal~) BEGIN
-		OUTER_TEXT_SPRINT sphere ~Animal~
-		OUTER_TEXT_SPRINT sphspell ~pani~
-		OUTER_TEXT_SPRINT focspell ~fani~
-	END
-	ACTION_IF (~%sph%~ STRING_EQUAL_CASE ~plant~) BEGIN
-		OUTER_TEXT_SPRINT sphere ~Plant~
-		OUTER_TEXT_SPRINT sphspell ~ppla~
-		OUTER_TEXT_SPRINT focspell ~fpla~
-	END
-	ACTION_IF (~%sph%~ STRING_EQUAL_CASE ~earth~) BEGIN
-		OUTER_TEXT_SPRINT sphere ~Earth~
-		OUTER_TEXT_SPRINT sphspell ~pear~
-		OUTER_TEXT_SPRINT focspell ~fear~
-	END
-	ACTION_IF (~%sph%~ STRING_EQUAL_CASE ~air~) BEGIN
-		OUTER_TEXT_SPRINT sphere ~Air~
-		OUTER_TEXT_SPRINT sphspell ~pair~
-		OUTER_TEXT_SPRINT focspell ~fair~
-	END
-	ACTION_IF (~%sph%~ STRING_EQUAL_CASE ~water~) BEGIN
-		OUTER_TEXT_SPRINT sphere ~Water~
-		OUTER_TEXT_SPRINT sphspell ~pwat~
-		OUTER_TEXT_SPRINT focspell ~fwat~
-	END
-	ACTION_IF (~%sph%~ STRING_EQUAL_CASE ~fire~) BEGIN
-		OUTER_TEXT_SPRINT sphere ~Fire~
-		OUTER_TEXT_SPRINT sphspell ~pfir~
-		OUTER_TEXT_SPRINT focspell ~ffir~
-	END
-	ACTION_IF (~%sph%~ STRING_EQUAL_CASE ~light~) BEGIN
-		OUTER_TEXT_SPRINT sphere ~Light~
-		OUTER_TEXT_SPRINT sphspell ~plig~
-		OUTER_TEXT_SPRINT focspell ~flig~
-	END
-	ACTION_IF (~%sph%~ STRING_EQUAL_CASE ~shadow~) BEGIN
-		OUTER_TEXT_SPRINT sphere ~Shadow~
-		OUTER_TEXT_SPRINT sphspell ~psha~
-		OUTER_TEXT_SPRINT focspell ~fsha~
-	END
-	ACTION_IF (~%sph%~ STRING_EQUAL_CASE ~magic~) BEGIN
-		OUTER_TEXT_SPRINT sphere ~Magic~
-		OUTER_TEXT_SPRINT sphspell ~pmag~
-		OUTER_TEXT_SPRINT focspell ~fmag~
-	END
-	ACTION_IF (~%sph%~ STRING_EQUAL_CASE ~perdition~) BEGIN
-		OUTER_TEXT_SPRINT sphere ~Spirit~
-		OUTER_TEXT_SPRINT sphspell ~pper~
-		OUTER_TEXT_SPRINT focspell ~fper~
-	END
-	ACTION_IF (~%sph%~ STRING_EQUAL_CASE ~damnation~) BEGIN
-		OUTER_TEXT_SPRINT sphere ~Damnation~
-		OUTER_TEXT_SPRINT sphspell ~pfie~
-		OUTER_TEXT_SPRINT focspell ~ffie~
+	OUTER_INNER_PATCH ~%sph%~ BEGIN
+	  SNPRINT 3 ~shortsphere~ ~%sph%~ 
+	  SPRINT sphspell ~p%shortsphere%~
+	  SPRINT focspell ~f%shortsphere%~
 	END
 //
 	COPY_EXISTING - ~spell.ids~ ~faiths_and_powers/backup~
@@ -2058,7 +1943,13 @@ ACTION_PHP_EACH d5_fnp_kits AS ind => kit BEGIN
 		  BUT_ONLY
 		  COPY_EXISTING ~%kit_clab%.2da~ ~override~ 
 			LPM remove_blank_lines
-			APPEND_FILE ~faiths_and_powers/spheres/clab/%sphere%_focus.txt~
+			APPEND_FILE ~faiths_and_powers/spheres/clab/focus.txt~
+		  BUT_ONLY
+		  OUTER_INNER_PATCH ~%sphere%~ BEGIN
+			SNPRINT 3 ~shortsphere~ ~%sphere%~
+		  END
+		  COPY_EXISTING ~%kit_clab%.2da~ ~override~ 
+			REPLACE_TEXTUALLY ~ZZZ~ ~%shortsphere%~
 		  BUT_ONLY
 		  OUTER_TEXT_SPRINT focus_sphere_list ~%focus_sphere_list% %sphere%~
 		END
@@ -2068,28 +1959,52 @@ ACTION_PHP_EACH d5_fnp_kits AS ind => kit BEGIN
 		  BUT_ONLY
 		  COPY_EXISTING ~%kit_clab%.2da~ ~override~ 
 			LPM remove_blank_lines
-			APPEND_FILE ~faiths_and_powers/spheres/clab/%sphere%_major.txt~
+			APPEND_FILE ~faiths_and_powers/spheres/clab/major.txt~
+		  BUT_ONLY
+		  OUTER_INNER_PATCH ~%sphere%~ BEGIN
+			SNPRINT 3 ~shortsphere~ ~%sphere%~
+		  END
+		  COPY_EXISTING ~%kit_clab%.2da~ ~override~ 
+			REPLACE_TEXTUALLY ~ZZZ~ ~%shortsphere%~
 		  BUT_ONLY
 		  OUTER_TEXT_SPRINT major_sphere_list ~%major_sphere_list% %sphere%,~
 		END
 		ACTION_IF (VARIABLE_IS_SET $d5_fnp_sphere_access(~%access%~) && ~%access%~ STRING_EQUAL_CASE ~MINOR~) BEGIN
 		  COPY_EXISTING ~%kit_clab%.2da~ ~override~ 
 			LPM remove_blank_lines
-			APPEND_FILE ~faiths_and_powers/spheres/clab/%sphere%_minor.txt~
+			APPEND_FILE ~faiths_and_powers/spheres/clab/minor.txt~
+		  BUT_ONLY
+		  OUTER_INNER_PATCH ~%sphere%~ BEGIN
+			SNPRINT 3 ~shortsphere~ ~%sphere%~
+		  END
+		  COPY_EXISTING ~%kit_clab%.2da~ ~override~ 
+			REPLACE_TEXTUALLY ~ZZZ~ ~%shortsphere%~
 		  BUT_ONLY
 		  OUTER_TEXT_SPRINT minor_sphere_list ~%minor_sphere_list% %sphere%,~
 		END
 		ACTION_IF (VARIABLE_IS_SET $d5_fnp_sphere_access(~%access%~) && ~%access%~ STRING_EQUAL_CASE ~PALADIN~) BEGIN
 		  COPY_EXISTING ~%kit_clab%.2da~ ~override~ 
 			LPM remove_blank_lines
-			APPEND_FILE ~faiths_and_powers/spheres/clab/%sphere%_paladin.txt~
+			APPEND_FILE ~faiths_and_powers/spheres/clab/paladin.txt~
+		  BUT_ONLY
+		  OUTER_INNER_PATCH ~%sphere%~ BEGIN
+			SNPRINT 3 ~shortsphere~ ~%sphere%~
+		  END
+		  COPY_EXISTING ~%kit_clab%.2da~ ~override~ 
+			REPLACE_TEXTUALLY ~ZZZ~ ~%shortsphere%~
 		  BUT_ONLY
 		  OUTER_TEXT_SPRINT minor_sphere_list ~%minor_sphere_list% %sphere%,~
 		END
 		ACTION_IF (VARIABLE_IS_SET $d5_fnp_sphere_access(~%access%~) && ~%access%~ STRING_EQUAL_CASE ~RANGER~) BEGIN
 		  COPY_EXISTING ~%kit_clab%.2da~ ~override~ 
 			LPM remove_blank_lines
-			APPEND_FILE ~faiths_and_powers/spheres/clab/%sphere%_ranger.txt~
+			APPEND_FILE ~faiths_and_powers/spheres/clab/ranger.txt~
+		  BUT_ONLY
+		  OUTER_INNER_PATCH ~%sphere%~ BEGIN
+			SNPRINT 3 ~shortsphere~ ~%sphere%~
+		  END
+		  COPY_EXISTING ~%kit_clab%.2da~ ~override~ 
+			REPLACE_TEXTUALLY ~ZZZ~ ~%shortsphere%~
 		  BUT_ONLY
 		  OUTER_TEXT_SPRINT minor_sphere_list ~%minor_sphere_list% %sphere%,~
 		END
