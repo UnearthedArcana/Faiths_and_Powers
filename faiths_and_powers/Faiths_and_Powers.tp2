@@ -2,7 +2,7 @@ BACKUP ~faiths_and_powers/backup~
 AUTHOR ~SubtleD and Grammarsalad~
 
 
-VERSION ~0.69f~
+VERSION ~0.69h~
 
 //README ~faiths_and_powers/readme-pnp.html~
 
@@ -22,6 +22,15 @@ ALWAYS
 	INCLUDE ~faiths_and_powers/lib/fnp_compat.tpa~
 	
 	INCLUDE ~faiths_and_powers/lib/qd_multiclass.tpa~
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~a#ooze.2da~ BEGIN
+	  COPY_EXISTING ~alignmnt.2da~ ~override~
+		REPLACE_TEXTUALLY ~DRUID.+$~ ~DRUID	0	1	0	1	1	1	0	1	0 ~
+		REPLACE_TEXTUALLY ~FIGHTER_DRUID.+$~ ~FIGHTER_DRUID	0	1	0	1	1	1	0	1	0 ~
+		REPLACE_TEXTUALLY ~TOTEMIC_DRUID.+$~ ~TOTEMIC_DRUID	0	1	0	1	1	1	0	1	0 ~
+		REPLACE_TEXTUALLY ~SHAPESHIFTER.+$~ ~SHAPESHIFTER	0	1	0	1	1	1	0	1	0 ~
+		REPLACE_TEXTUALLY ~BEAST_FRIEND.+$~ ~BEAST_FRIEND	0	1	0	1	1	1	0	1	0 ~
+	END
 
 	INCLUDE ~faiths_and_powers/lib/add_cleric_kits.tpa~
 	INCLUDE ~faiths_and_powers/lib/add_acolyte_kits.tpa~
@@ -105,6 +114,100 @@ SUBCOMPONENT @100
 //copy marker file__________________________________________________________________
 //
 COPY ~faiths_and_powers/lib/markers/d5_deity.d5~ ~override~
+//__________________________________________________________________________________
+
+//multiclass text____________________________________________________________________
+//
+ACTION_IF (FILE_EXISTS_IN_GAME ~clastext.2da~) BEGIN
+  	COPY_EXISTING ~clastext.2da~ ~override~
+		COUNT_2DA_COLS cols // amount of columns
+		READ_2DA_ENTRIES_NOW rows cols // read all file into memory  
+		FOR (row = 1; row < rows; ++row) BEGIN // iterate over rows
+		  READ_2DA_ENTRY_FORMER rows row 0 ~text~ // read column value
+		  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~CLERIC~ BEGIN
+		    SET c_row = %row%
+		  END
+		  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~FIGHTER_CLERIC~ BEGIN
+		    SET fc_row = %row%
+		  END
+		  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~CLERIC_MAGE~ BEGIN
+		    SET cm_row = %row%
+		  END
+		  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~CLERIC_THIEF~ BEGIN
+		    SET ct_row = %row%
+		  END
+		  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~CLERIC_RANGER~ BEGIN
+		    SET cr_row = %row%
+		  END
+		  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~FIGHTER_DRUID~ BEGIN
+		    SET fd_row = %row%
+		  END
+		END
+		SET_2DA_ENTRY %c_row% 3 cols RESOLVE_STR_REF (@10001)
+		SET_2DA_ENTRY %c_row% 5 cols RESOLVE_STR_REF (@10002)
+		SET_2DA_ENTRY %c_row% 4 cols RESOLVE_STR_REF (@10005)
+		SET_2DA_ENTRY %fc_row% 3 cols RESOLVE_STR_REF (@10011)
+		SET_2DA_ENTRY %fc_row% 5 cols RESOLVE_STR_REF (@10012)
+		SET_2DA_ENTRY %fc_row% 4 cols RESOLVE_STR_REF (@10015)
+		SET_2DA_ENTRY %cm_row% 3 cols RESOLVE_STR_REF (@10021)
+		SET_2DA_ENTRY %cm_row% 5 cols RESOLVE_STR_REF (@10022)
+		SET_2DA_ENTRY %cm_row% 4 cols RESOLVE_STR_REF (@10025)
+		SET_2DA_ENTRY %ct_row% 3 cols RESOLVE_STR_REF (@10031)
+		SET_2DA_ENTRY %ct_row% 5 cols RESOLVE_STR_REF (@10032)
+		SET_2DA_ENTRY %ct_row% 4 cols RESOLVE_STR_REF (@10035)
+		SET_2DA_ENTRY %cr_row% 3 cols RESOLVE_STR_REF (@10041)
+		SET_2DA_ENTRY %cr_row% 5 cols RESOLVE_STR_REF (@10042)
+		SET_2DA_ENTRY %cr_row% 4 cols RESOLVE_STR_REF (@10045)
+		SET_2DA_ENTRY %fd_row% 3 cols RESOLVE_STR_REF (@10051)
+		SET_2DA_ENTRY %fd_row% 5 cols RESOLVE_STR_REF (@10052)
+		SET_2DA_ENTRY %fd_row% 4 cols RESOLVE_STR_REF (@10055)
+  	BUT_ONLY
+END
+ACTION_IF (FILE_EXISTS_IN_GAME ~sodcltxt.2da~) BEGIN
+  	COPY_EXISTING ~sodcltxt.2da~ ~override~
+		COUNT_2DA_COLS cols // amount of columns
+		READ_2DA_ENTRIES_NOW rows cols // read all file into memory  
+		FOR (row = 1; row < rows; ++row) BEGIN // iterate over rows
+		  READ_2DA_ENTRY_FORMER rows row 0 ~text~ // read column value
+		  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~CLERIC~ BEGIN
+		    SET c_row = %row%
+		  END
+		  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~FIGHTER_CLERIC~ BEGIN
+		    SET fc_row = %row%
+		  END
+		  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~CLERIC_MAGE~ BEGIN
+		    SET cm_row = %row%
+		  END
+		  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~CLERIC_THIEF~ BEGIN
+		    SET ct_row = %row%
+		  END
+		  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~CLERIC_RANGER~ BEGIN
+		    SET cr_row = %row%
+		  END
+		  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~FIGHTER_DRUID~ BEGIN
+		    SET fd_row = %row%
+		  END
+		END
+		SET_2DA_ENTRY %c_row% 3 cols RESOLVE_STR_REF (@10001)
+		SET_2DA_ENTRY %c_row% 5 cols RESOLVE_STR_REF (@10002)
+		SET_2DA_ENTRY %c_row% 4 cols RESOLVE_STR_REF (@10005)
+		SET_2DA_ENTRY %fc_row% 3 cols RESOLVE_STR_REF (@10011)
+		SET_2DA_ENTRY %fc_row% 5 cols RESOLVE_STR_REF (@10012)
+		SET_2DA_ENTRY %fc_row% 4 cols RESOLVE_STR_REF (@10015)
+		SET_2DA_ENTRY %cm_row% 3 cols RESOLVE_STR_REF (@10021)
+		SET_2DA_ENTRY %cm_row% 5 cols RESOLVE_STR_REF (@10022)
+		SET_2DA_ENTRY %cm_row% 4 cols RESOLVE_STR_REF (@10025)
+		SET_2DA_ENTRY %ct_row% 3 cols RESOLVE_STR_REF (@10031)
+		SET_2DA_ENTRY %ct_row% 5 cols RESOLVE_STR_REF (@10032)
+		SET_2DA_ENTRY %ct_row% 4 cols RESOLVE_STR_REF (@10035)
+		SET_2DA_ENTRY %cr_row% 3 cols RESOLVE_STR_REF (@10041)
+		SET_2DA_ENTRY %cr_row% 5 cols RESOLVE_STR_REF (@10042)
+		SET_2DA_ENTRY %cr_row% 4 cols RESOLVE_STR_REF (@10045)
+		SET_2DA_ENTRY %fd_row% 3 cols RESOLVE_STR_REF (@10051)
+		SET_2DA_ENTRY %fd_row% 5 cols RESOLVE_STR_REF (@10052)
+		SET_2DA_ENTRY %fd_row% 4 cols RESOLVE_STR_REF (@10055)
+  	BUT_ONLY
+END
 //__________________________________________________________________________________
 
 //install all the kits:_____________________________________________________________
@@ -321,20 +424,29 @@ COPY_EXISTING ~kitlist.2da~ ~override~
 	COUNT_2DA_COLS cols // amount of columns
 	READ_2DA_ENTRIES_NOW rows cols // read all file into memory  
 	FOR (row = 1; row < rows; ++row) BEGIN // iterate over rows
-	  READ_2DA_ENTRY_FORMER rows row 1 ~acolyte~ // read column value
-	  PATCH_IF ~%acolyte%~ STRING_EQUAL_CASE ~B_ACOLYTE~ BEGIN
-	    SET acolyte_row = (%row% + 1)
+	  READ_2DA_ENTRY_FORMER rows row 1 ~archetype~ // read column value
+	  PATCH_IF ~%archetype%~ STRING_EQUAL_CASE ~B_ACOLYTE~ BEGIN
+	    SET acolyte_row = (%row%)
+	  END
+	  PATCH_IF ~%archetype%~ STRING_EQUAL_CASE ~B_ZEALOT_1~ BEGIN
+	    SET zealot_row = (%row%)
 	  END
 	END
   BUT_ONLY
-  APPEND ~K_C_D.2da~ ~2 %acolyte_row%~
-  APPEND ~K_C_E.2da~ ~2 %acolyte_row%~
-  APPEND ~K_C_G.2da~ ~2 %acolyte_row%~
-  APPEND ~K_C_H.2da~ ~2 %acolyte_row%~
-  APPEND ~K_C_HE.2da~ ~2 %acolyte_row%~
-  APPEND ~K_C_HL.2da~ ~2 %acolyte_row%~
-  APPEND ~K_C_HO.2da~ ~2 %acolyte_row%~
-
+APPEND ~K_C_D.2da~ ~2 %acolyte_row%~ 
+APPEND ~K_C_E.2da~ ~2 %acolyte_row%~
+APPEND ~K_C_G.2da~ ~2 %acolyte_row%~
+APPEND ~K_C_H.2da~ ~2 %acolyte_row%~
+APPEND ~K_C_HE.2da~ ~2 %acolyte_row%~
+APPEND ~K_C_HL.2da~ ~2 %acolyte_row%~
+APPEND ~K_C_HO.2da~ ~2 %acolyte_row%~
+APPEND ~K_P_D.2da~ ~2 %zealot_row%~
+APPEND ~K_P_E.2da~ ~2 %zealot_row%~
+APPEND ~K_P_G.2da~ ~2 %zealot_row%~
+APPEND ~K_P_H.2da~ ~2 %zealot_row%~
+APPEND ~K_P_HE.2da~ ~2 %zealot_row%~
+APPEND ~K_P_HL.2da~ ~2 %zealot_row%~
+APPEND ~K_P_HO.2da~ ~2 %zealot_row%~
 //__________________________________________________________________________________
 
 //halfling rangers__________________________________________________________________
@@ -408,6 +520,100 @@ COPY ~faiths_and_powers/lib/markers/d5_clerics.d5~ ~override~
 COPY ~faiths_and_powers/lib/markers/d5_druids.d5~ ~override~
 COPY ~faiths_and_powers/lib/markers/d5_paladins.d5~ ~override~
 COPY ~faiths_and_powers/lib/markers/d5_rangers.d5~ ~override~
+//__________________________________________________________________________________
+
+//multiclass text____________________________________________________________________
+//
+ACTION_IF (FILE_EXISTS_IN_GAME ~clastext.2da~) BEGIN
+  	COPY_EXISTING ~clastext.2da~ ~override~
+		COUNT_2DA_COLS cols // amount of columns
+		READ_2DA_ENTRIES_NOW rows cols // read all file into memory  
+		FOR (row = 1; row < rows; ++row) BEGIN // iterate over rows
+		  READ_2DA_ENTRY_FORMER rows row 0 ~text~ // read column value
+		  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~CLERIC~ BEGIN
+		    SET c_row = %row%
+		  END
+		  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~FIGHTER_CLERIC~ BEGIN
+		    SET fc_row = %row%
+		  END
+		  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~CLERIC_MAGE~ BEGIN
+		    SET cm_row = %row%
+		  END
+		  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~CLERIC_THIEF~ BEGIN
+		    SET ct_row = %row%
+		  END
+		  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~CLERIC_RANGER~ BEGIN
+		    SET cr_row = %row%
+		  END
+		  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~FIGHTER_DRUID~ BEGIN
+		    SET fd_row = %row%
+		  END
+		END
+		SET_2DA_ENTRY %c_row% 3 cols RESOLVE_STR_REF (@10001)
+		SET_2DA_ENTRY %c_row% 5 cols RESOLVE_STR_REF (@10002)
+		SET_2DA_ENTRY %c_row% 4 cols RESOLVE_STR_REF (@10005)
+		SET_2DA_ENTRY %fc_row% 3 cols RESOLVE_STR_REF (@10011)
+		SET_2DA_ENTRY %fc_row% 5 cols RESOLVE_STR_REF (@10012)
+		SET_2DA_ENTRY %fc_row% 4 cols RESOLVE_STR_REF (@10015)
+		SET_2DA_ENTRY %cm_row% 3 cols RESOLVE_STR_REF (@10021)
+		SET_2DA_ENTRY %cm_row% 5 cols RESOLVE_STR_REF (@10022)
+		SET_2DA_ENTRY %cm_row% 4 cols RESOLVE_STR_REF (@10025)
+		SET_2DA_ENTRY %ct_row% 3 cols RESOLVE_STR_REF (@10031)
+		SET_2DA_ENTRY %ct_row% 5 cols RESOLVE_STR_REF (@10032)
+		SET_2DA_ENTRY %ct_row% 4 cols RESOLVE_STR_REF (@10035)
+		SET_2DA_ENTRY %cr_row% 3 cols RESOLVE_STR_REF (@10041)
+		SET_2DA_ENTRY %cr_row% 5 cols RESOLVE_STR_REF (@10042)
+		SET_2DA_ENTRY %cr_row% 4 cols RESOLVE_STR_REF (@10045)
+		SET_2DA_ENTRY %fd_row% 3 cols RESOLVE_STR_REF (@10051)
+		SET_2DA_ENTRY %fd_row% 5 cols RESOLVE_STR_REF (@10052)
+		SET_2DA_ENTRY %fd_row% 4 cols RESOLVE_STR_REF (@10055)
+  	BUT_ONLY
+END
+ACTION_IF (FILE_EXISTS_IN_GAME ~sodcltxt.2da~) BEGIN
+  	COPY_EXISTING ~sodcltxt.2da~ ~override~
+		COUNT_2DA_COLS cols // amount of columns
+		READ_2DA_ENTRIES_NOW rows cols // read all file into memory  
+		FOR (row = 1; row < rows; ++row) BEGIN // iterate over rows
+		  READ_2DA_ENTRY_FORMER rows row 0 ~text~ // read column value
+		  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~CLERIC~ BEGIN
+		    SET c_row = %row%
+		  END
+		  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~FIGHTER_CLERIC~ BEGIN
+		    SET fc_row = %row%
+		  END
+		  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~CLERIC_MAGE~ BEGIN
+		    SET cm_row = %row%
+		  END
+		  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~CLERIC_THIEF~ BEGIN
+		    SET ct_row = %row%
+		  END
+		  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~CLERIC_RANGER~ BEGIN
+		    SET cr_row = %row%
+		  END
+		  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~FIGHTER_DRUID~ BEGIN
+		    SET fd_row = %row%
+		  END
+		END
+		SET_2DA_ENTRY %c_row% 3 cols RESOLVE_STR_REF (@10001)
+		SET_2DA_ENTRY %c_row% 5 cols RESOLVE_STR_REF (@10002)
+		SET_2DA_ENTRY %c_row% 4 cols RESOLVE_STR_REF (@10005)
+		SET_2DA_ENTRY %fc_row% 3 cols RESOLVE_STR_REF (@10011)
+		SET_2DA_ENTRY %fc_row% 5 cols RESOLVE_STR_REF (@10012)
+		SET_2DA_ENTRY %fc_row% 4 cols RESOLVE_STR_REF (@10015)
+		SET_2DA_ENTRY %cm_row% 3 cols RESOLVE_STR_REF (@10021)
+		SET_2DA_ENTRY %cm_row% 5 cols RESOLVE_STR_REF (@10022)
+		SET_2DA_ENTRY %cm_row% 4 cols RESOLVE_STR_REF (@10025)
+		SET_2DA_ENTRY %ct_row% 3 cols RESOLVE_STR_REF (@10031)
+		SET_2DA_ENTRY %ct_row% 5 cols RESOLVE_STR_REF (@10032)
+		SET_2DA_ENTRY %ct_row% 4 cols RESOLVE_STR_REF (@10035)
+		SET_2DA_ENTRY %cr_row% 3 cols RESOLVE_STR_REF (@10041)
+		SET_2DA_ENTRY %cr_row% 5 cols RESOLVE_STR_REF (@10042)
+		SET_2DA_ENTRY %cr_row% 4 cols RESOLVE_STR_REF (@10045)
+		SET_2DA_ENTRY %fd_row% 3 cols RESOLVE_STR_REF (@10051)
+		SET_2DA_ENTRY %fd_row% 5 cols RESOLVE_STR_REF (@10052)
+		SET_2DA_ENTRY %fd_row% 4 cols RESOLVE_STR_REF (@10055)
+  	BUT_ONLY
+END
 //__________________________________________________________________________________
 
 //install all the kits:_____________________________________________________________

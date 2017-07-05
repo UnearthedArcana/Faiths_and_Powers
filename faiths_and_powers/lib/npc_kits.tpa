@@ -14,6 +14,9 @@ COPY_EXISTING ~kitlist.2da~ ~override~
 	COUNT_2DA_ROWS 8 "rows"
 	FOR ( index = 31 ; index < rows ; index = index + 1 ) BEGIN
 		READ_2DA_ENTRY "%index%" 5 8 "clab"
+		PATCH_IF ("%clab%" STRING_EQUAL_CASE "d5drfi" = 1) BEGIN
+			SET "d5drfi" = ("%index%" - 1)
+		END
 		PATCH_IF ("%clab%" STRING_EQUAL_CASE "b_ch05" = 1) BEGIN
 			SET b_ch05 = (%index% - 1)
 		END
@@ -46,6 +49,27 @@ COPY_EXISTING ~kitlist.2da~ ~override~
 		END
 	END
 BUT_ONLY
+
+ACTION_IF VARIABLE_IS_SET %d5drfi% BEGIN
+  ACTION_FOR_EACH char IN ~%tutu_var%jaheir~ 
+					~%tutu_var%jaheir2~ 
+					~%tutu_var%jaheir4~ 
+					~%tutu_var%jaheir6~ 
+					~jaheir7~ 
+					~jaheir8~ 
+					~jaheir11~ 
+					~jaheir12~ 
+					~jahei12b~ 
+					~jahei14~ BEGIN
+	ACTION_IF FILE_EXISTS_IN_GAME ~%char%.cre~ BEGIN
+	  COPY_EXISTING ~%char%.cre~ ~override~
+		WRITE_BYTE 0x273 8 // sets class
+		WRITE_SHORT 0x244 0
+		WRITE_SHORT 0x246 0x4000 + ~%d5drfi%~ // changes kit
+	  BUT_ONLY
+	END
+  END
+END
 
 ACTION_IF VARIABLE_IS_SET %b_ch05% BEGIN
   ACTION_FOR_EACH char IN ~ajanti~ 

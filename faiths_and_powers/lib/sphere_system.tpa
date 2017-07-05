@@ -1884,6 +1884,9 @@ COPY_EXISTING ~mxsplprs.2da~ ~override/mxspldru.2da~
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 
+COPY ~faiths_and_powers/spheres/d5fnpscl.spl~ ~override~
+COPY ~faiths_and_powers/spheres/d5fnpscl.itm~ ~override~
+
 OUTER_SPRINT sphere_access @1002
 OUTER_SPRINT focus_access @1003
 OUTER_SPRINT major_access @1004
@@ -1918,6 +1921,7 @@ ACTION_PHP_EACH d5_fnp_kits AS ind => kit BEGIN
 	END
   BUT_ONLY
   ACTION_IF IS_AN_INT ~%kit_class%~ BEGIN
+	APPEND ~%kit_clab%.2da~ ~SPHERES     AP_D5FNPSCL ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** ~
 	COPY ~faiths_and_powers/spheres/hlas/luclxyz.2da~ ~override/lub_%kit_index%.2da~
 	ACTION_IF (%kit_class% = 11) BEGIN 	// druid
 	  COPY ~faiths_and_powers/spheres/hlas/ludrxyz.2da~ ~override/lub_%kit_index%.2da~

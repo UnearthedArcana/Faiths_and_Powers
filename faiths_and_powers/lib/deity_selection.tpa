@@ -238,54 +238,6 @@ ACTION_IF FILE_EXISTS_IN_GAME ~CLSRCREQ.2da~ BEGIN
 END
 //___________________________________________________________________________________
 
-/*
-//multiclass text____________________________________________________________________
-//
-ACTION_IF (FILE_EXISTS_IN_GAME ~clastext.2da~) BEGIN
-  	COPY_EXISTING ~clastext.2da~ ~override~
-		COUNT_2DA_COLS cols // amount of columns
-		READ_2DA_ENTRIES_NOW rows cols // read all file into memory  
-		FOR (row = 1; row < rows; ++row) BEGIN // iterate over rows
-		  READ_2DA_ENTRY_FORMER rows row 0 ~text~ // read column value
-		  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~FIGHTER_CLERIC~ BEGIN
-		    SET patch_row = %row%
-		  END
-		END
-		SET_2DA_ENTRY %patch_row% 3 cols RESOLVE_STR_REF (@10011)
-		SET_2DA_ENTRY %patch_row% 5 cols RESOLVE_STR_REF (@10012)
-		SET_2DA_ENTRY %patch_row% 4 cols RESOLVE_STR_REF (@10013)
-		SET_2DA_ENTRY (%patch_row% + 4) 3 cols RESOLVE_STR_REF (@10021)
-		SET_2DA_ENTRY (%patch_row% + 4) 5 cols RESOLVE_STR_REF (@10022)
-		SET_2DA_ENTRY (%patch_row% + 4) 4 cols RESOLVE_STR_REF (@10023)
-		SET_2DA_ENTRY (%patch_row% + 5) 3 cols RESOLVE_STR_REF (@10031)
-		SET_2DA_ENTRY (%patch_row% + 5) 5 cols RESOLVE_STR_REF (@10032)
-		SET_2DA_ENTRY (%patch_row% + 5) 4 cols RESOLVE_STR_REF (@10033)
-  	BUT_ONLY
-END
-ACTION_IF (FILE_EXISTS_IN_GAME ~sodcltxt.2da~) BEGIN
-  	COPY_EXISTING ~sodcltxt.2da~ ~override~
-		COUNT_2DA_COLS cols // amount of columns
-		READ_2DA_ENTRIES_NOW rows cols // read all file into memory  
-		FOR (row = 1; row < rows; ++row) BEGIN // iterate over rows
-		  READ_2DA_ENTRY_FORMER rows row 0 ~text~ // read column value
-		  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~FIGHTER_CLERIC~ BEGIN
-		    SET patch_row = %row%
-		  END
-		END
-		SET_2DA_ENTRY %patch_row% 3 cols RESOLVE_STR_REF (@10011)
-		SET_2DA_ENTRY %patch_row% 5 cols RESOLVE_STR_REF (@10012)
-		SET_2DA_ENTRY %patch_row% 4 cols RESOLVE_STR_REF (@10013)
-		SET_2DA_ENTRY (%patch_row% + 4) 3 cols RESOLVE_STR_REF (@10021)
-		SET_2DA_ENTRY (%patch_row% + 4) 5 cols RESOLVE_STR_REF (@10022)
-		SET_2DA_ENTRY (%patch_row% + 4) 4 cols RESOLVE_STR_REF (@10023)
-		SET_2DA_ENTRY (%patch_row% + 5) 3 cols RESOLVE_STR_REF (@10031)
-		SET_2DA_ENTRY (%patch_row% + 5) 5 cols RESOLVE_STR_REF (@10032)
-		SET_2DA_ENTRY (%patch_row% + 5) 4 cols RESOLVE_STR_REF (@10033)
-
-  	BUT_ONLY
-END
-//___________________________________________________________________________________
-*/
 
 //more alignments for scouts_________________________________________________________
 //

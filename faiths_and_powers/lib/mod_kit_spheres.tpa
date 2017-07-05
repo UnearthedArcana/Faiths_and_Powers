@@ -7,6 +7,10 @@
 
 
 ACTION_IF FILE_EXISTS_IN_GAME ~a#cyric.2da~ BEGIN
+ COPY_EXISTING ~a#cyric.2da~ ~override~
+  REPLACE_TEXTUALLY ~KITBIL1~ ~SPCL423~ // poison weapon as 1/5
+  REPLACE_TEXTUALLY ~KITBIL2~ ~a#cyr07~ // dread blast as 1/10
+
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
 LAF ~DEFINE_FNP_KIT_INFO~
@@ -49,6 +53,10 @@ END
 END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~a#feyw.2da~ BEGIN
+ COPY_EXISTING ~a#feyw.2da~ ~override~
+  REPLACE_TEXTUALLY ~KITBIL1~ ~a#fey09~ // emotion as 1/5
+  REPLACE_TEXTUALLY ~GA_KITBIL2~ ~****   ~ // nothing as 1/10
+
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
 LAF ~DEFINE_FNP_KIT_INFO~
@@ -91,6 +99,10 @@ END
 END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~a#koss.2da~ BEGIN
+ COPY_EXISTING ~a#koss.2da~ ~override~
+  REPLACE_TEXTUALLY ~KITBIL1~ ~a#kos09~
+  REPLACE_TEXTUALLY ~GA_KITBIL2~ ~****   ~
+
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
 LAF ~DEFINE_FNP_KIT_INFO~
@@ -133,6 +145,10 @@ END
 END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~a#ogma.2da~ BEGIN
+ COPY_EXISTING ~a#ogma.2da~ ~override~
+  COUNT_2DA_COLS cols
+  REPLACE_TEXTUALLY ~KITBIL2~ ~a#og07~
+
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
 LAF ~DEFINE_FNP_KIT_INFO~
@@ -175,6 +191,32 @@ END
 END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~a#ooze.2da~ BEGIN
+  ACTION_IF FILE_EXISTS_IN_GAME ~a#ooze4.spl~ BEGIN
+	COPY_EXISTING ~a#ooze4.spl~ ~override~
+	  LPF ALTER_EFFECT INT_VAR resist_dispel = 0 END
+  END
+  COPY_EXISTING ~spwi101.spl~ ~override/d5ooze1.spl~
+	WRITE_SHORT 0x1c 2
+  COPY_EXISTING ~spwi211.spl~ ~override/d5ooze2.spl~
+	WRITE_SHORT 0x1c 2
+	SAY NAME1 @997
+  APPEND ~a#ooze.2da~ ~OOZE        GA_d5ooze1  ****        GA_d5ooze2 ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** ~
+  ACTION_IF (FILE_CONTAINS_EVALUATED (~SPELL.IDS~ ~WIZARD_VITRIOLIC_SPHERE~)) BEGIN
+	LAF RES_NUM_OF_SPELL_NAME STR_VAR spell_name = ~WIZARD_VITRIOLIC_SPHERE~ RET spell_res spell_num END
+	COPY_EXISTING ~%spell_res%.spl~ ~override/d5ooze4.spl~
+	  WRITE_SHORT 0x1c 2
+	APPEND ~a#ooze.2da~ ~OOZE        ****        ****        ****        ****        ****        ****        GA_d5ooze4  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** ~
+  END
+  ACTION_IF FILE_EXISTS_IN_GAME ~dvsrv4here.mrk~ THEN BEGIN
+	COPY_EXISTING ~spwi226.spl~ ~override/d5ooze3.spl~
+	  WRITE_SHORT 0x1c 2
+	  WRITE_LONG 0x34 3
+	  SAY NAME1 @998
+	COPY_EXISTING ~spwi526.spl~ ~override/d5ooze5.spl~
+	  WRITE_SHORT 0x1c 2
+	  SAY NAME1 @999
+	APPEND ~a#ooze.2da~ ~OOZE        ****        ****        ****        ****        GA_d5ooze3  ****        ****        ****        GA_d5ooze5  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** ~
+  END
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
 LAF ~DEFINE_FNP_KIT_INFO~
@@ -217,6 +259,10 @@ END
 END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~a#red.2da~ BEGIN
+ COPY_EXISTING ~a#red.2da~ ~override~
+  REPLACE_TEXTUALLY ~KITBIL1~ ~a#re07 ~
+  REPLACE_TEXTUALLY ~GA_KITBIL2~ ~****      ~
+
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
 LAF ~DEFINE_FNP_KIT_INFO~
@@ -259,6 +305,8 @@ END
 END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~a#shar.2da~ BEGIN
+ COPY_EXISTING ~a#shar.2da~ ~override~
+
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
 LAF ~DEFINE_FNP_KIT_INFO~
@@ -301,6 +349,8 @@ END
 END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~a#temp.2da~ BEGIN
+ COPY_EXISTING ~a#temp.2da~ ~override~
+
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
 LAF ~DEFINE_FNP_KIT_INFO~
@@ -343,6 +393,8 @@ END
 END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~cdilmatr.2da~ BEGIN
+ COPY_EXISTING ~cdilmatr.2da~ ~override~
+
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
 LAF ~DEFINE_FNP_KIT_INFO~
@@ -385,6 +437,8 @@ END
 END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~cdselune.2da~ BEGIN
+ COPY_EXISTING ~cdselune.2da~ ~override~
+
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
 LAF ~DEFINE_FNP_KIT_INFO~
@@ -427,6 +481,8 @@ END
 END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~cdxvim.2da~ BEGIN
+ COPY_EXISTING ~cdxvim.2da~ ~override~
+
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
 LAF ~DEFINE_FNP_KIT_INFO~
@@ -469,6 +525,8 @@ END
 END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~nmsune.2da~ BEGIN
+ COPY_EXISTING ~nmsune.2da~ ~override~
+
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
 LAF ~DEFINE_FNP_KIT_INFO~
@@ -511,6 +569,7 @@ END
 END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~nmrnwlrn.2da~ BEGIN
+
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
 LAF ~DEFINE_FNP_KIT_INFO~
@@ -554,6 +613,7 @@ END
 
 
 ACTION_IF FILE_EXISTS_IN_GAME ~nmrnbsln.2da~ BEGIN
+
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
 LAF ~DEFINE_FNP_KIT_INFO~
@@ -597,6 +657,7 @@ END
 
 
 ACTION_IF FILE_EXISTS_IN_GAME ~a#feral.2da~ BEGIN
+
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
 LAF ~DEFINE_FNP_KIT_INFO~
@@ -640,6 +701,7 @@ END
 
 
 ACTION_IF FILE_EXISTS_IN_GAME ~nmrnfrrn.2da~ BEGIN
+
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
 LAF ~DEFINE_FNP_KIT_INFO~
@@ -683,6 +745,7 @@ END
 
 
 ACTION_IF FILE_EXISTS_IN_GAME ~a#justif.2da~ BEGIN
+
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
 LAF ~DEFINE_FNP_KIT_INFO~
