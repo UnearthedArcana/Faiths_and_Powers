@@ -132,17 +132,20 @@ COPY_EXISTING ~kitlist.2da~ ~override~
 BUT_ONLY
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
-	c_cleric 		= 0
-	c_acolyte 		= 0
-	c_fighter_cleric = 0
-	c_cleric_mage	= 0
-	c_cleric_thief 	= 0
-	c_ranger_cleric	= 0
-	c_f_m_c			= 0
-        c_zealot 		= 1
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name = EVAL ~%clab%~
-	race 			= ~orc~
+	class 			= ~zealot~
 	s_Life 			= ~x~
 	s_Death 		= ~ranger~
 	s_Benediction 	        = ~x~
@@ -274,17 +277,20 @@ COPY_EXISTING ~kitlist.2da~ ~override~
 BUT_ONLY
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
-	c_cleric 		= 0
-	c_acolyte 		= 0
-	c_fighter_cleric = 0
-	c_cleric_mage	= 0
-	c_cleric_thief 	= 0
-	c_ranger_cleric	= 0
-	c_f_m_c			= 0
-        c_zealot 		= 1
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name = EVAL ~%clab%~
-	race 			= ~orc~
+	class 			= ~zealot~
 	s_Life 			= ~x~
 	s_Death 		= ~ranger~
 	s_Benediction 	        = ~x~
@@ -459,17 +465,20 @@ COPY_EXISTING ~kitlist.2da~ ~override~
 BUT_ONLY
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
-	c_cleric 		= 0
-	c_acolyte 		= 0
-	c_fighter_cleric = 0
-	c_cleric_mage	= 0
-	c_cleric_thief 	= 0
-	c_ranger_cleric	= 0
-	c_f_m_c			= 0
-        c_zealot 		= 1
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name = EVAL ~%clab%~
-	race 			= ~all~
+	class 			= ~zealot~
 	s_Life 			= ~x~
 	s_Death 		= ~ranger~
 	s_Benediction 	        = ~x~
@@ -602,17 +611,20 @@ COPY_EXISTING ~kitlist.2da~ ~override~
 BUT_ONLY
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
-	c_cleric 		= 0
-	c_acolyte 		= 0
-	c_fighter_cleric = 0
-	c_cleric_mage	= 0
-	c_cleric_thief 	= 0
-	c_ranger_cleric	= 0
-	c_f_m_c			= 0
-        c_zealot 		= 1
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name = EVAL ~%clab%~
-	race 			= ~all~
+	class 			= ~zealot~
 	s_Life 			= ~x~
 	s_Death 		= ~ranger~
 	s_Benediction 	        = ~x~
@@ -790,17 +802,20 @@ COPY_EXISTING ~kitlist.2da~ ~override~
 BUT_ONLY
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
-	c_cleric 		= 0
-	c_acolyte 		= 0
-	c_fighter_cleric = 0
-	c_cleric_mage	= 0
-	c_cleric_thief 	= 0
-	c_ranger_cleric	= 0
-	c_f_m_c			= 0
-        c_zealot 		= 1
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name = EVAL ~%clab%~
-	race 			= ~all~
+	class 			= ~zealot~
 	s_Life 			= ~x~
 	s_Death 		= ~x~
 	s_Benediction 	        = ~x~
@@ -932,17 +947,20 @@ COPY_EXISTING ~kitlist.2da~ ~override~
 BUT_ONLY
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
-	c_cleric 		= 0
-	c_acolyte 		= 0
-	c_fighter_cleric = 0
-	c_cleric_mage	= 0
-	c_cleric_thief 	= 0
-	c_ranger_cleric	= 0
-	c_f_m_c			= 0
-        c_zealot 		= 1
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name = EVAL ~%clab%~
-	race 			= ~all~
+	class 			= ~zealot~
 	s_Life 			= ~x~
 	s_Death 		= ~x~
 	s_Benediction 	        = ~x~
@@ -1104,17 +1122,20 @@ COPY_EXISTING ~kitlist.2da~ ~override~
 BUT_ONLY
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
-	c_cleric 		= 0
-	c_acolyte 		= 0
-	c_fighter_cleric = 0
-	c_cleric_mage	= 0
-	c_cleric_thief 	= 0
-	c_ranger_cleric	= 0
-	c_f_m_c			= 0
-        c_zealot 		= 1
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name = EVAL ~%clab%~
-	race 			= ~all~
+	class 			= ~zealot~
 	s_Life 			= ~ranger~
 	s_Death 		= ~x~
 	s_Benediction 	        = ~ranger~
@@ -1246,17 +1267,20 @@ COPY_EXISTING ~kitlist.2da~ ~override~
 BUT_ONLY
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
-	c_cleric 		= 0
-	c_acolyte 		= 0
-	c_fighter_cleric = 0
-	c_cleric_mage	= 0
-	c_cleric_thief 	= 0
-	c_ranger_cleric	= 0
-	c_f_m_c			= 0
-        c_zealot 		= 1
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name = EVAL ~%clab%~
-	race 			= ~all~
+	class 			= ~zealot~
 	s_Life 			= ~ranger~
 	s_Death 		= ~x~
 	s_Benediction 	        = ~ranger~
@@ -1420,17 +1444,20 @@ COPY_EXISTING ~kitlist.2da~ ~override~
 BUT_ONLY
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
-	c_cleric 		= 0
-	c_acolyte 		= 0
-	c_fighter_cleric = 0
-	c_cleric_mage	= 0
-	c_cleric_thief 	= 0
-	c_ranger_cleric	= 0
-	c_f_m_c			= 0
-        c_zealot 		= 1
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name = EVAL ~%clab%~
-	race 			= ~all~
+	class 			= ~zealot~
 	s_Life 			= ~ranger~
 	s_Death 		= ~x~
 	s_Benediction 	        = ~ranger~
@@ -1564,17 +1591,20 @@ COPY_EXISTING ~kitlist.2da~ ~override~
 BUT_ONLY
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
-	c_cleric 		= 0
-	c_acolyte 		= 0
-	c_fighter_cleric = 0
-	c_cleric_mage	= 0
-	c_cleric_thief 	= 0
-	c_ranger_cleric	= 0
-	c_f_m_c			= 0
-        c_zealot 		= 1
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name = EVAL ~%clab%~
-	race 			= ~all~
+	class 			= ~zealot~
 	s_Life 			= ~ranger~
 	s_Death 		= ~x~
 	s_Benediction 	        = ~ranger~
@@ -1736,17 +1766,20 @@ COPY_EXISTING ~kitlist.2da~ ~override~
 BUT_ONLY
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
-	c_cleric 		= 0
-	c_acolyte 		= 0
-	c_fighter_cleric = 0
-	c_cleric_mage	= 0
-	c_cleric_thief 	= 0
-	c_ranger_cleric	= 0
-	c_f_m_c			= 0
-        c_zealot 		= 1
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name = EVAL ~%clab%~
-	race 			= ~elf~
+	class 			= ~zealot~
 	s_Life 			= ~ranger~
 	s_Death 		= ~x~
 	s_Benediction 	        = ~ranger~
@@ -1878,17 +1911,20 @@ COPY_EXISTING ~kitlist.2da~ ~override~
 BUT_ONLY
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
-	c_cleric 		= 0
-	c_acolyte 		= 0
-	c_fighter_cleric = 0
-	c_cleric_mage	= 0
-	c_cleric_thief 	= 0
-	c_ranger_cleric	= 0
-	c_f_m_c			= 0
-        c_zealot 		= 1
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name = EVAL ~%clab%~
-	race 			= ~elf~
+	class 			= ~zealot~
 	s_Life 			= ~ranger~
 	s_Death 		= ~x~
 	s_Benediction 	        = ~ranger~
@@ -2052,17 +2088,20 @@ COPY_EXISTING ~kitlist.2da~ ~override~
 BUT_ONLY
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
-	c_cleric 		= 0
-	c_acolyte 		= 0
-	c_fighter_cleric = 0
-	c_cleric_mage	= 0
-	c_cleric_thief 	= 0
-	c_ranger_cleric	= 0
-	c_f_m_c			= 0
-        c_zealot 		= 1
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name = EVAL ~%clab%~
-	race 			= ~all~
+	class 			= ~zealot~
 	s_Life 			= ~ranger~
 	s_Death 		= ~x~
 	s_Benediction 	        = ~ranger~
@@ -2192,17 +2231,20 @@ COPY_EXISTING ~kitlist.2da~ ~override~
 BUT_ONLY
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
-	c_cleric 		= 0
-	c_acolyte 		= 0
-	c_fighter_cleric = 0
-	c_cleric_mage	= 0
-	c_cleric_thief 	= 0
-	c_ranger_cleric	= 0
-	c_f_m_c			= 0
-        c_zealot 		= 1
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name = EVAL ~%clab%~
-	race 			= ~all~
+	class 			= ~zealot~
 	s_Life 			= ~ranger~
 	s_Death 		= ~x~
 	s_Benediction 	        = ~ranger~
@@ -2382,17 +2424,20 @@ COPY_EXISTING ~kitlist.2da~ ~override~
 BUT_ONLY
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
-	c_cleric 		= 0
-	c_acolyte 		= 0
-	c_fighter_cleric = 0
-	c_cleric_mage	= 0
-	c_cleric_thief 	= 0
-	c_ranger_cleric	= 0
-	c_f_m_c			= 0
-        c_zealot 		= 1
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name = EVAL ~%clab%~
-	race 			= ~all~
+	class 			= ~zealot~
 	s_Life 			= ~ranger~
 	s_Death 		= ~x~
 	s_Benediction 	        = ~ranger~
@@ -2522,17 +2567,20 @@ COPY_EXISTING ~kitlist.2da~ ~override~
 BUT_ONLY
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
-	c_cleric 		= 0
-	c_acolyte 		= 0
-	c_fighter_cleric = 0
-	c_cleric_mage	= 0
-	c_cleric_thief 	= 0
-	c_ranger_cleric	= 0
-	c_f_m_c			= 0
-        c_zealot 		= 1
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name = EVAL ~%clab%~
-	race 			= ~all~
+	class 			= ~zealot~
 	s_Life 			= ~ranger~
 	s_Death 		= ~x~
 	s_Benediction 	        = ~ranger~
@@ -2694,17 +2742,20 @@ COPY_EXISTING ~kitlist.2da~ ~override~
 BUT_ONLY
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
-	c_cleric 		= 0
-	c_acolyte 		= 0
-	c_fighter_cleric = 0
-	c_cleric_mage	= 0
-	c_cleric_thief 	= 0
-	c_ranger_cleric	= 0
-	c_f_m_c			= 0
-        c_zealot 		= 1
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name = EVAL ~%clab%~
-	race 			= ~all~
+	class 			= ~zealot~
 	s_Life 			= ~ranger~
 	s_Death 		= ~x~
 	s_Benediction 	        = ~ranger~
@@ -2834,17 +2885,20 @@ COPY_EXISTING ~kitlist.2da~ ~override~
 BUT_ONLY
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
-	c_cleric 		= 0
-	c_acolyte 		= 0
-	c_fighter_cleric = 0
-	c_cleric_mage	= 0
-	c_cleric_thief 	= 0
-	c_ranger_cleric	= 0
-	c_f_m_c			= 0
-        c_zealot 		= 1
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name = EVAL ~%clab%~
-	race 			= ~all~
+	class 			= ~zealot~
 	s_Life 			= ~ranger~
 	s_Death 		= ~x~
 	s_Benediction 	        = ~ranger~

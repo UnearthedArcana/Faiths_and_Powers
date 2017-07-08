@@ -1204,7 +1204,7 @@ ACTION_PHP_EACH spellsphere AS spl => sph BEGIN
 						INNER_PATCH_SAVE new_desc ~%desc%~ BEGIN
 							REPLACE_TEXTUALLY ~^Level:.*$~ ~Level: 1~
 							REPLACE_TEXTUALLY ~[%LNL%%MNL%%WNL%]Sphere:.*$~ ~~
-							REPLACE_TEXTUALLY ~^Range:~ ~Sphere: %sphere%
+							REPLACE_TEXTUALLY ~^Range:~ ~Sphere: %sph%
 Range:~
 						END
 						SAY_EVALUATED 0x50 ~%new_desc%~
@@ -1224,7 +1224,7 @@ Range:~
 						INNER_PATCH_SAVE new_desc ~%desc%~ BEGIN
 							REPLACE_TEXTUALLY ~^Level:.*$~ ~Level: %lvl%~
 							REPLACE_TEXTUALLY ~[%LNL%%MNL%%WNL%]Sphere:.*$~ ~~
-							REPLACE_TEXTUALLY ~^Range:~ ~Sphere: %sphere%
+							REPLACE_TEXTUALLY ~^Range:~ ~Sphere: %sph%
 Range:~
 						END
 						SAY_EVALUATED 0x50 ~%new_desc%~
@@ -1276,7 +1276,7 @@ Range:~
 					INNER_PATCH_SAVE new_desc ~%desc%~ BEGIN
 						REPLACE_TEXTUALLY ~^Level:.*$~ ~Level: %lvl%~
 						REPLACE_TEXTUALLY ~[%LNL%%MNL%%WNL%]Sphere:.*$~ ~~
-						REPLACE_TEXTUALLY ~^Range:~ ~Sphere: %sphere%
+						REPLACE_TEXTUALLY ~^Range:~ ~Sphere: %sph%
 Range:~
 					END
 					SAY_EVALUATED 0x50 ~%new_desc%~
@@ -1319,7 +1319,7 @@ Range:~
 					INNER_PATCH_SAVE new_desc ~%desc%~ BEGIN
 						REPLACE_TEXTUALLY ~^Level:.*$~ ~Level: %lvl%~
 						REPLACE_TEXTUALLY ~[%LNL%%MNL%%WNL%]Sphere:.*$~ ~~
-						REPLACE_TEXTUALLY ~^Range:~ ~Sphere: %sphere%
+						REPLACE_TEXTUALLY ~^Range:~ ~Sphere: %sph%
 Range:~
 					END
 					SAY_EVALUATED 0x50 ~%new_desc%~
@@ -1355,7 +1355,7 @@ Range:~
 					INNER_PATCH_SAVE new_desc ~%desc%~ BEGIN
 						REPLACE_TEXTUALLY ~^Level:.*$~ ~Level: 1~
 						REPLACE_TEXTUALLY ~[%LNL%%MNL%%WNL%]Sphere:.*$~ ~~
-						REPLACE_TEXTUALLY ~^Range:~ ~Sphere: %sphere%
+						REPLACE_TEXTUALLY ~^Range:~ ~Sphere: %sph%
 Range:~
 					END
 					SAY_EVALUATED 0x50 ~%new_desc%~
@@ -1376,7 +1376,7 @@ Range:~
 					INNER_PATCH_SAVE new_desc ~%desc%~ BEGIN
 						REPLACE_TEXTUALLY ~^Level:.*$~ ~Level: %lvl%~
 						REPLACE_TEXTUALLY ~[%LNL%%MNL%%WNL%]Sphere:.*$~ ~~
-						REPLACE_TEXTUALLY ~^Range:~ ~Sphere: %sphere%
+						REPLACE_TEXTUALLY ~^Range:~ ~Sphere: %sph%
 Range:~
 					END
 					SAY_EVALUATED 0x50 ~%new_desc%~
@@ -1393,7 +1393,7 @@ Range:~
 					INNER_PATCH_SAVE new_desc ~%desc%~ BEGIN
 						REPLACE_TEXTUALLY ~^Level:.*$~ ~Level: %lvl%~
 						REPLACE_TEXTUALLY ~[%LNL%%MNL%%WNL%]Sphere:.*$~ ~~
-						REPLACE_TEXTUALLY ~^Range:~ ~Sphere: %sphere%
+						REPLACE_TEXTUALLY ~^Range:~ ~Sphere: %sph%
 Range:~
 					END
 					SAY_EVALUATED 0x50 ~%new_desc%~
@@ -1913,7 +1913,7 @@ ACTION_PHP_EACH d5_fnp_kits AS ind => kit BEGIN
 	  PATCH_IF ~%clab%~ STRING_EQUAL_CASE ~%kit%~ BEGIN
 		SET kit_index = %row%
 		READ_2DA_ENTRY_FORMER rows kit_index 5 kit_clab
-		READ_2DA_ENTRY_FORMER rows kit_index 1 kit_name
+		READ_2DA_ENTRY_FORMER rows kit_index 1 kit_label
 		READ_2DA_ENTRY_FORMER rows kit_index 4 kit_desc
 		READ_2DA_ENTRY_FORMER rows kit_index 9 kit_code
 		READ_2DA_ENTRY_FORMER rows kit_index 8 kit_class
@@ -2024,7 +2024,7 @@ ACTION_PHP_EACH d5_fnp_kits AS ind => kit BEGIN
 //		APPEND_FILE ~faiths_and_powers/spheres/hlas/hla_table_end.txt~
 //	  BUT_ONLY
 	  COPY_EXISTING ~luabbr.2da~ ~override~
-		REPLACE_TEXTUALLY ~^\(%kit_name%[ %TAB%]+\).+$~ ~\1b_%kit_index%~
+		REPLACE_TEXTUALLY ~^\(%kit_label%[ %TAB%]+\).+$~ ~\1b_%kit_index%~
 	  BUT_ONLY
 	END
 	ACTION_IF NOT (~%focus_sphere_list%~ STRING_EQUAL_CASE ~~) BEGIN
@@ -2057,7 +2057,6 @@ ACTION_PHP_EACH d5_fnp_kits AS ind => kit BEGIN
   			(%kit_class% = 14) OR  
   			(%kit_class% = 15) OR  
   			(%kit_class% = 18) BEGIN
-//	ACTION_IF (%kit_class% = 8 || %kit_class% = 14 || %kit_class% = 15 || %kit_class% = 18) BEGIN //.......multiclass
 	  ACTION_IF IS_AN_INT ~%kit_code%~ BEGIN
 		COPY_EXISTING ~%kit_clab%.2da~ ~override~ //copy the clab of the base kit 
 		  COUNT_2DA_COLS cols // amount of columns

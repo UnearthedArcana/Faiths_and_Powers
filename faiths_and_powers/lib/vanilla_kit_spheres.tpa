@@ -9,9 +9,22 @@
 ACTION_IF FILE_EXISTS_IN_GAME ~clabshgs.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
-LAF ~DEFINE_FNP_KIT_INFO~
+ LAF ~DEFINE_FNP_KIT_INFO~
+  INT_VAR
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name 		= ~clabshgs~
+	class 			= ~shaman~
 	s_Life 			= ~minor~
 	s_Death 		= ~x~
 	s_Benediction 	= ~x~
@@ -35,16 +48,29 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	s_Shadow 		= ~major~
 	s_Magic 		= ~x~
 	s_Perdition     = ~x~
-END
+ END
 //__________________________________________________________________________________
 END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~clabsh01.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
-LAF ~DEFINE_FNP_KIT_INFO~
+ LAF ~DEFINE_FNP_KIT_INFO~
+  INT_VAR
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name 		= ~clabsh01~
+	class 			= ~shaman~
 	s_Life 			= ~minor~
 	s_Death 		= ~x~
 	s_Benediction 	= ~x~
@@ -68,7 +94,7 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	s_Shadow 		= ~major~
 	s_Magic 		= ~x~
 	s_Perdition     = ~x~
-END
+ END
 //__________________________________________________________________________________
 END
 
@@ -77,9 +103,22 @@ ACTION_IF FILE_EXISTS_IN_GAME ~d5pr01.2da~ BEGIN
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
-LAF ~DEFINE_FNP_KIT_INFO~
+ LAF ~DEFINE_FNP_KIT_INFO~
+  INT_VAR
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name 		= ~clabpr01~
+	class 			= ~cleric~
 	s_Life 			= ~major~
 	s_Death 		= ~minor~
 	s_Benediction 	= ~major~
@@ -103,7 +142,7 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	s_Shadow 		= ~x~
 	s_Magic 		= ~minor~
 	s_Perdition     = ~x~
-END
+ END
 //__________________________________________________________________________________
 
  END
@@ -112,9 +151,22 @@ END
 ACTION_IF FILE_EXISTS_IN_GAME ~d5pr02.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
-LAF ~DEFINE_FNP_KIT_INFO~
+ LAF ~DEFINE_FNP_KIT_INFO~
+  INT_VAR
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name 		= ~clabpr02~
+	class 			= ~cleric~
 	s_Life 			= ~major~
 	s_Death 		= ~x~
 	s_Benediction 	= ~major~
@@ -138,16 +190,29 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	s_Shadow 		= ~x~
 	s_Magic 		= ~minor~
 	s_Perdition     = ~x~
-END
+ END
 //__________________________________________________________________________________
 END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~d5pr03.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
-LAF ~DEFINE_FNP_KIT_INFO~
+ LAF ~DEFINE_FNP_KIT_INFO~
+  INT_VAR
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name 		= ~clabpr03~
+	class 			= ~cleric~
 	s_Life 			= ~major~
 	s_Death 		= ~minor~
 	s_Benediction 	= ~major~
@@ -171,16 +236,29 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	s_Shadow 		= ~x~
 	s_Magic 		= ~minor~
 	s_Perdition     = ~x~
-END
+ END
 //__________________________________________________________________________________
 END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~d5pr04.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
-LAF ~DEFINE_FNP_KIT_INFO~
+ LAF ~DEFINE_FNP_KIT_INFO~
+  INT_VAR
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name 		= ~clabpr04~
+	class 			= ~cleric~
 	s_Life 			= ~major~
 	s_Death 		= ~x~
 	s_Benediction 	= ~major~
@@ -204,16 +282,29 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	s_Shadow 		= ~x~
 	s_Magic 		= ~minor~
 	s_Perdition     = ~x~
-END
+ END
 //__________________________________________________________________________________
 END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~ohtyr.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
-LAF ~DEFINE_FNP_KIT_INFO~
+ LAF ~DEFINE_FNP_KIT_INFO~
+  INT_VAR
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name 		= ~ohtyr~
+	class 			= ~cleric~
 	s_Life 			= ~major~
 	s_Death 		= ~minor~
 	s_Benediction 	= ~major~
@@ -237,7 +328,7 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	s_Shadow 		= ~x~
 	s_Magic 		= ~minor~
 	s_Perdition     = ~x~
-END
+ END
 //__________________________________________________________________________________
 END
 
@@ -246,9 +337,22 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabdr01.2da~ BEGIN
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
-LAF ~DEFINE_FNP_KIT_INFO~
+ LAF ~DEFINE_FNP_KIT_INFO~
+  INT_VAR
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name 		= ~clabdr01~
+	class 			= ~druid~
 	s_Life 			= ~minor~
 	s_Death 		= ~x~
 	s_Benediction 	= ~x~
@@ -272,18 +376,31 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	s_Shadow 		= ~minor~
 	s_Magic 		= ~x~
 	s_Perdition     = ~x~
-END
+ END
 //__________________________________________________________________________________
 
  END
 END
 
-ACTION_IF FILE_EXISTS_IN_GAME ~d5dr02.2da~ BEGIN
+ACTION_IF FILE_EXISTS_IN_GAME ~clabdr02.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
-LAF ~DEFINE_FNP_KIT_INFO~
+ LAF ~DEFINE_FNP_KIT_INFO~
+  INT_VAR
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name 		= ~clabdr02~
+	class 			= ~druid~
 	s_Life 			= ~minor~
 	s_Death 		= ~x~
 	s_Benediction 	= ~x~
@@ -307,16 +424,29 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	s_Shadow 		= ~minor~
 	s_Magic 		= ~x~
 	s_Perdition     = ~x~
-END
+ END
 //__________________________________________________________________________________
 END
 
-ACTION_IF FILE_EXISTS_IN_GAME ~d5dr03.2da~ BEGIN
+ACTION_IF FILE_EXISTS_IN_GAME ~clabdr03.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
-LAF ~DEFINE_FNP_KIT_INFO~
+ LAF ~DEFINE_FNP_KIT_INFO~
+  INT_VAR
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name 		= ~clabdr03~
+	class 			= ~druid~
 	s_Life 			= ~minor~
 	s_Death 		= ~x~
 	s_Benediction 	= ~x~
@@ -340,16 +470,29 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	s_Shadow 		= ~minor~
 	s_Magic 		= ~x~
 	s_Perdition     = ~x~
-END
+ END
 //__________________________________________________________________________________
 END
 
-ACTION_IF FILE_EXISTS_IN_GAME ~d5dr04.2da~ BEGIN
+ACTION_IF FILE_EXISTS_IN_GAME ~clabdr04.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
-LAF ~DEFINE_FNP_KIT_INFO~
+ LAF ~DEFINE_FNP_KIT_INFO~
+  INT_VAR
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name 		= ~clabdr04~
+	class 			= ~druid~
 	s_Life 			= ~minor~
 	s_Death 		= ~x~
 	s_Benediction 	= ~x~
@@ -373,7 +516,7 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	s_Shadow 		= ~major~
 	s_Magic 		= ~major~
 	s_Perdition     = ~x~
-END
+ END
 //__________________________________________________________________________________
 END
 
@@ -382,9 +525,22 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabpa01.2da~ BEGIN
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
-LAF ~DEFINE_FNP_KIT_INFO~
+ LAF ~DEFINE_FNP_KIT_INFO~
+  INT_VAR
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name 		= ~clabpa01~
+	class 			= ~champion~
 	s_Life 			= ~paladin~
 	s_Death 		= ~x~
 	s_Benediction 	= ~paladin~
@@ -408,7 +564,7 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	s_Shadow 		= ~x~
 	s_Magic 		= ~x~
 	s_Perdition     = ~x~
-END
+ END
 //__________________________________________________________________________________
 
  END
@@ -417,9 +573,22 @@ END
 ACTION_IF FILE_EXISTS_IN_GAME ~clabpa02.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
-LAF ~DEFINE_FNP_KIT_INFO~
+ LAF ~DEFINE_FNP_KIT_INFO~
+  INT_VAR
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name 		= ~clabpa02~
+	class 			= ~champion~
 	s_Life 			= ~paladin~
 	s_Death 		= ~x~
 	s_Benediction 	= ~paladin~
@@ -443,16 +612,29 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	s_Shadow 		= ~x~
 	s_Magic 		= ~x~
 	s_Perdition     = ~x~
-END
+ END
 //__________________________________________________________________________________
 END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~clabpa03.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
-LAF ~DEFINE_FNP_KIT_INFO~
+ LAF ~DEFINE_FNP_KIT_INFO~
+  INT_VAR
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name 		= ~clabpa03~
+	class 			= ~champion~
 	s_Life 			= ~paladin~
 	s_Death 		= ~x~
 	s_Benediction 	= ~paladin~
@@ -476,16 +658,29 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	s_Shadow 		= ~x~
 	s_Magic 		= ~paladin~
 	s_Perdition     = ~x~
-END
+ END
 //__________________________________________________________________________________
 END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~clabpa04.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
-LAF ~DEFINE_FNP_KIT_INFO~
+ LAF ~DEFINE_FNP_KIT_INFO~
+  INT_VAR
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name 		= ~clabpa04~
+	class 			= ~champion~
 	s_Life 			= ~paladin~
 	s_Death 		= ~paladin~
 	s_Benediction 	= ~paladin~
@@ -509,16 +704,29 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	s_Shadow 		= ~x~
 	s_Magic 		= ~x~
 	s_Perdition     = ~x~
-END
+ END
 //__________________________________________________________________________________
 END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~clabpa05.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
-LAF ~DEFINE_FNP_KIT_INFO~
+ LAF ~DEFINE_FNP_KIT_INFO~
+  INT_VAR
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name 		= ~clabpa05~
+	class 			= ~champion~
 	s_Life 			= ~paladin~
 	s_Death 		= ~x~
 	s_Benediction 	= ~paladin~
@@ -542,16 +750,29 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	s_Shadow 		= ~x~
 	s_Magic 		= ~x~
 	s_Perdition     = ~x~
-END
+ END
 //__________________________________________________________________________________
 END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~clabpa06.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
-LAF ~DEFINE_FNP_KIT_INFO~
+ LAF ~DEFINE_FNP_KIT_INFO~
+  INT_VAR
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name 		= ~clabpa06~
+	class 			= ~champion~
 	s_Life 			= ~x~
 	s_Death 		= ~paladin~
 	s_Benediction 	= ~x~
@@ -575,16 +796,29 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	s_Shadow 		= ~paladin~
 	s_Magic 		= ~x~
 	s_Perdition     = ~x~
-END
+ END
 //__________________________________________________________________________________
 END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~clabrn01.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
-LAF ~DEFINE_FNP_KIT_INFO~
+ LAF ~DEFINE_FNP_KIT_INFO~
+  INT_VAR
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name 		= ~clabrn01~
+	class 			= ~ranger~
 	race 			= ~all~
 	s_Life 			= ~ranger~
 	s_Death 		= ~x~
@@ -609,19 +843,29 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	s_Shadow 		= ~x~
 	s_Magic 		= ~x~
 	s_Perdition     = ~x~
-END
+ END
 //__________________________________________________________________________________
 END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~clabrn02.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
-ACTION_IF FILE_EXISTS_IN_GAME ~d5_deity.d5~ BEGIN
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
-	c_scout			= 1
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name 		= ~clabrn02~
+	class 			= ~scout~
 	s_Life 			= ~ranger~
 	s_Death 		= ~x~
 	s_Benediction 	= ~x~
@@ -646,50 +890,28 @@ ACTION_IF FILE_EXISTS_IN_GAME ~d5_deity.d5~ BEGIN
 	s_Magic 		= ~x~
 	s_Perdition     = ~x~
  END
-END
-ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5_deity.d5~ BEGIN
- LAF ~DEFINE_FNP_KIT_INFO~
-  INT_VAR
-	c_scout			= 1
-  STR_VAR
-    clab_name 		= ~clabrn02~
-	s_Life 			= ~ranger~
-	s_Death 		= ~x~
-	s_Benediction 	= ~x~
-	s_Destruction 	= ~x~
-	s_Protection 	= ~ranger~
-	s_War 			= ~x~
-	s_Exploration   = ~x~
-	s_Knowledge 	= ~x~
-	s_Deception 	= ~x~
-	s_Thought 		= ~x~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~ranger~
-	s_Affliction 	= ~x~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~ranger~
-	s_Fire 			= ~x~
-	s_Light 		= ~x~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~x~
-	s_Perdition     = ~x~
- END
-END
 //__________________________________________________________________________________
 END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~clabrn03.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
-ACTION_IF FILE_EXISTS_IN_GAME ~d5_deity.d5~ BEGIN
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
-	c_scout			= 1
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name 		= ~clabrn03~
+	class 			= ~scout~
 	s_Life 			= ~x~
 	s_Death 		= ~x~
 	s_Benediction 	= ~x~
@@ -699,7 +921,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~d5_deity.d5~ BEGIN
 	s_Exploration   = ~x~
 	s_Knowledge 	= ~x~
 	s_Deception 	= ~ranger~
-	s_Thought 		= ~x~
+	s_Thought 		= ~ranger~
 	s_Dread 		= ~x~
 	s_Vigor 		= ~ranger~
 	s_Affliction 	= ~x~
@@ -707,64 +929,42 @@ ACTION_IF FILE_EXISTS_IN_GAME ~d5_deity.d5~ BEGIN
 	s_Plant 		= ~x~
 	s_Earth 		= ~x~
 	s_Water 		= ~x~
-	s_Air 			= ~x~
+	s_Air 			= ~ranger~
 	s_Fire 			= ~x~
 	s_Light 		= ~x~
 	s_Shadow 		= ~ranger~
 	s_Magic 		= ~x~
 	s_Perdition     = ~x~
  END
-END
-ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5_deity.d5~ BEGIN
- LAF ~DEFINE_FNP_KIT_INFO~
-  INT_VAR
-	c_scout			= 1
-  STR_VAR
-    clab_name 		= ~clabrn03~
-	s_Life 			= ~ranger~
-	s_Death 		= ~x~
-	s_Benediction 	= ~x~
-	s_Destruction 	= ~x~
-	s_Protection 	= ~ranger~
-	s_War 			= ~x~
-	s_Exploration   = ~x~
-	s_Knowledge 	= ~x~
-	s_Deception 	= ~x~
-	s_Thought 		= ~x~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~ranger~
-	s_Affliction 	= ~x~
-	s_Animal 		= ~ranger~
-	s_Plant 		= ~ranger~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~ranger~
-	s_Fire 			= ~x~
-	s_Light 		= ~ranger~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~x~
-	s_Perdition     = ~x~
- END
-END
 //__________________________________________________________________________________
 END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~clabrn04.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
-ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~d5_race.2da~ ~clabrn04~)) BEGIN
- ACTION_IF FILE_EXISTS_IN_GAME ~d5_deity.d5~ BEGIN
+ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~d5_class.2da~ ~clabrn04~)) BEGIN
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
-	c_ranger		= 1
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name 		= ~CLABRN04~
+	class 			= ~x~
 	race 			= ~all~
 	s_Life 			= ~ranger~
 	s_Death 		= ~x~
 	s_Benediction 	= ~x~
 	s_Destruction 	= ~x~
-	s_Protection 	= ~x~
+	s_Protection 	= ~ranger~
 	s_War 			= ~x~
 	s_Exploration   = ~x~
 	s_Knowledge 	= ~ranger~
@@ -783,38 +983,6 @@ ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~d5_race.2da~ ~clabrn04~)) BEGIN
 	s_Shadow 		= ~x~
 	s_Magic 		= ~x~
 	s_Perdition     = ~x~
-  END
- END
- ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5_deity.d5~ BEGIN
- LAF ~DEFINE_FNP_KIT_INFO~
-  INT_VAR
-	c_ranger		= 1
-  STR_VAR
-    clab_name 		= ~clabrn04~
-	s_Life 			= ~ranger~
-	s_Death 		= ~x~
-	s_Benediction 	= ~x~
-	s_Destruction 	= ~x~
-	s_Protection 	= ~ranger~
-	s_War 			= ~x~
-	s_Exploration   = ~x~
-	s_Knowledge 	= ~x~
-	s_Deception 	= ~x~
-	s_Thought 		= ~x~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~ranger~
-	s_Affliction 	= ~x~
-	s_Animal 		= ~ranger~
-	s_Plant 		= ~ranger~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~ranger~
-	s_Fire 			= ~x~
-	s_Light 		= ~ranger~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~x~
-	s_Perdition     = ~x~
-  END
  END
 END
 //__________________________________________________________________________________
@@ -823,10 +991,22 @@ END
 ACTION_IF FILE_EXISTS_IN_GAME ~clabrn05.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
-ACTION_IF FILE_EXISTS_IN_GAME ~d5_deity.d5~ BEGIN
  LAF ~DEFINE_FNP_KIT_INFO~
+  INT_VAR
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name 		= ~clabrn05~
+	class 			= ~x~
 	s_Life 			= ~ranger~
 	s_Death 		= ~x~
 	s_Benediction 	= ~x~
@@ -851,36 +1031,6 @@ ACTION_IF FILE_EXISTS_IN_GAME ~d5_deity.d5~ BEGIN
 	s_Magic 		= ~x~
 	s_Perdition     = ~x~
  END
-END
-ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5_deity.d5~ BEGIN
- LAF ~DEFINE_FNP_KIT_INFO~
-  STR_VAR
-    clab_name 		= ~clabrn05~
-	s_Life 			= ~ranger~
-	s_Death 		= ~x~
-	s_Benediction 	= ~x~
-	s_Destruction 	= ~x~
-	s_Protection 	= ~ranger~
-	s_War 			= ~x~
-	s_Exploration   = ~x~
-	s_Knowledge 	= ~x~
-	s_Deception 	= ~x~
-	s_Thought 		= ~x~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~ranger~
-	s_Affliction 	= ~x~
-	s_Animal 		= ~ranger~
-	s_Plant 		= ~ranger~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~ranger~
-	s_Fire 			= ~x~
-	s_Light 		= ~ranger~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~x~
-	s_Perdition     = ~x~
- END
-END
 //__________________________________________________________________________________
 END
 

@@ -156,10 +156,20 @@ END
 //
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
-	c_fighter_cleric = 1
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name = EVAL ~d5drfi~
-	race 			= ~all~
+	class 			= ~fighter_cleric~
 	s_Life 			= ~major~
 	s_Death 		= ~x~
 	s_Benediction 	= ~x~
@@ -348,10 +358,20 @@ END
 //
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
-	c_cleric_mage	= 1
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name = ~d5drma~
-	race 			= ~all~
+	class 			= ~cleric_mage~
 	s_Life 			= ~major~
 	s_Death 		= ~x~
 	s_Benediction 	= ~x~
@@ -539,10 +559,20 @@ END
 //
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
-	c_cleric_thief 	= 1
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name 		= ~d5drth~
-	race 			= ~all~
+	class 			= ~cleric_thief~
 	s_Life 			= ~major~
 	s_Death 		= ~x~
 	s_Benediction 	= ~x~
@@ -730,10 +760,20 @@ END
 //
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
-	c_ranger_cleric	= 1
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name = EVAL ~d5drra~
-	race 			= ~all~
+	class 			= ~ranger_cleric~
 	s_Life 			= ~major~
 	s_Death 		= ~x~
 	s_Benediction 	= ~x~
@@ -886,10 +926,20 @@ END
 //
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
-	c_cleric_mage	= 1
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name 		= ~d5cmazu~
-	race 			= ~all~
+	class 			= ~cleric_mage~
 	s_Life 			= ~major~
 	s_Death 		= ~x~
 	s_Benediction 	= ~major~
@@ -1071,10 +1121,20 @@ END
 //
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
-	c_cleric_mage	= 1
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name 		= ~d5acmys~
-	race 			= ~all~
+	class 			= ~cleric_mage~
 	s_Life 			= ~major~
 	s_Death 		= ~x~
 	s_Benediction 	= ~major~
@@ -1229,10 +1289,20 @@ END
 //
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
-	c_fighter_cleric = 1
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name 		= ~d5cfcla~
-	race 			= ~dwarf~
+	class 			= ~fighter_cleric~
 	s_Life 			= ~major~
 	s_Death 		= ~x~
 	s_Benediction 	= ~major~
@@ -1368,10 +1438,20 @@ END
 //
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
-	c_ranger_cleric	= 1
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name 		= ~d5crmi~
-	race 			= ~all~
+	class 			= ~ranger_cleric~
 	s_Life 			= ~major~
 	s_Death 		= ~x~
 	s_Benediction 	= ~major~
@@ -1511,10 +1591,20 @@ END
 //
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
-	c_ranger_cleric	= 1
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name 		= ~d5crsh~
-	race 			= ~all~
+	class 			= ~ranger_cleric~
 	s_Life 			= ~major~
 	s_Death 		= ~x~
 	s_Benediction 	= ~minor~
@@ -1619,7 +1709,7 @@ SAY @20801
 SAY @20802
 SAY @20803
 
-//EE KIT EXTRAS______________________________________________________________________
+//EE KIT EXTRAS_____________________________________________________________________
 //
 ACTION_IF GAME_IS ~bgee bg2ee eet iwdee~ THEN BEGIN
 	LAF fl#add_kit_ee
@@ -1655,7 +1745,7 @@ COPY ~faiths_and_powers/kits/clerics/208_helm/b_hsp02.spl~     ~override~  // He
 //  SAY NAME1 @98532
 //  SAY UNIDENTIFIED_DESC @98533
 
-//MULTICLASS KIT______________________________________________________________________
+//MULTICLASS KIT_____________________________________________________________________
 //
 ACTION_IF FILE_EXISTS_IN_GAME ~b_cfhe.2da~ BEGIN
   LAF qd_multiclass
@@ -1667,14 +1757,24 @@ ACTION_IF FILE_EXISTS_IN_GAME ~b_cfhe.2da~ BEGIN
   END
 END 
 
-//DEFINE SPHERE ACCESS______________________________________________________________
+//DEFINE SPHERE ACCESS_______________________________________________________________
 //
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
-	c_fighter_cleric = 1
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name 		= ~b_cfhe~
-	race 			= ~all~
+	class 			= ~fighter_cleric~
 	s_Life 			= ~major~
 	s_Death 		= ~minor~
 	s_Benediction 	= ~major~

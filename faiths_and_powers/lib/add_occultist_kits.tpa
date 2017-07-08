@@ -145,10 +145,20 @@ END
 //
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
-	c_cleric 		= 1
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name 		= ~b_clur~
-	race 			= ~all~
+	class 			= ~occultist~
 	s_Life 			= ~x~
 	s_Death 		= ~major~
 	s_Benediction 	        = ~x~
@@ -347,10 +357,20 @@ END
 //
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
-	c_occultist 	= 1
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name 		= ~d5obst~
-	race 			= ~all~
+	class 			= ~occultist~
 	s_Life 			= ~minor~
 	s_Death 		= ~minor~
 	s_Benediction 	= ~x~
@@ -552,10 +572,20 @@ COPY ~faiths_and_powers/kits/occultists/763_elementalist/b_ele20.2da~ ~override~
 //
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
-	c_occultist 	= 1
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name 		= ~d5oelm~
-	race 			= ~all~
+	class 			= ~occultist~
 	s_Life 			= ~minor~
 	s_Death 		= ~x~
 	s_Benediction 	= ~x~

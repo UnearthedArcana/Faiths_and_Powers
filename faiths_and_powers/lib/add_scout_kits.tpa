@@ -104,13 +104,22 @@ COPY ~faiths_and_powers/kits/scouts/953_mage_hunter/d5_mghs2.eff~ ~override~
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
-ACTION_IF FILE_EXISTS_IN_GAME ~d5_deity.d5~ BEGIN
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
-    c_scout 		= 1
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name 		= ~d5_mageh~
-	race 			= ~all~
+	class 			= ~scout~
 	s_Life 			= ~ranger~
 	s_Death 		= ~x~
 	s_Benediction 	= ~x~
@@ -135,39 +144,6 @@ ACTION_IF FILE_EXISTS_IN_GAME ~d5_deity.d5~ BEGIN
 	s_Magic 		= ~ranger~
 	s_Perdition     = ~x~
  END
-END
-ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5_deity.d5~ BEGIN
- LAF ~DEFINE_FNP_KIT_INFO~
-  INT_VAR
-    c_scout 		= 1
-  STR_VAR
-    clab_name 		= ~d5_mageh~
-	race 			= ~all~
-	s_Life 			= ~ranger~
-	s_Death 		= ~x~
-	s_Benediction 	= ~x~
-	s_Destruction 	= ~x~
-	s_Protection 	= ~ranger~
-	s_War 			= ~x~
-	s_Exploration   = ~x~
-	s_Knowledge 	= ~x~
-	s_Deception 	= ~x~
-	s_Thought 		= ~x~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~ranger~
-	s_Affliction 	= ~x~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~x~
-	s_Light 		= ~ranger~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~ranger~
-	s_Perdition     = ~x~
- END
-END
 
 END
 //__________________________________________________________________________________
@@ -270,17 +246,27 @@ COPY ~faiths_and_powers/kits/scouts/954_barbarian_ranger/d5_rback.spl~ ~override
 //
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
-    c_scout 		= 1
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name 		= ~d5_rbarb~
-	race 			= ~all~
+	class 			= ~scout~
 	s_Life 			= ~x~
 	s_Death 		= ~x~
 	s_Benediction 	= ~x~
 	s_Destruction 	= ~x~
 	s_Protection 	= ~x~
 	s_War 			= ~x~
-	s_Exploration   = ~x~
+	s_Exploration   = ~ranger~
 	s_Knowledge 	= ~x~
 	s_Deception 	= ~x~
 	s_Thought 		= ~x~
@@ -408,13 +394,22 @@ COPY ~faiths_and_powers/kits/scouts/955_elven_archer/d5_earch.2da~ ~override~
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
- ACTION_IF FILE_EXISTS_IN_GAME ~d5_deity.d5~ BEGIN
-  LAF ~DEFINE_FNP_KIT_INFO~
-   INT_VAR
-    c_scout 		= 1
-   STR_VAR
+ LAF ~DEFINE_FNP_KIT_INFO~
+  INT_VAR
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
+  STR_VAR
     clab_name 		= ~d5_earch~
-	race 			= ~elf~
+	class 			= ~scout~
 	s_Life 			= ~ranger~
 	s_Death 		= ~x~
 	s_Benediction 	= ~x~
@@ -438,39 +433,6 @@ COPY ~faiths_and_powers/kits/scouts/955_elven_archer/d5_earch.2da~ ~override~
 	s_Shadow 		= ~x~
 	s_Magic 		= ~ranger~
 	s_Perdition     = ~x~
-  END
- END
- ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5_deity.d5~ BEGIN
-  LAF ~DEFINE_FNP_KIT_INFO~
-   INT_VAR
-    c_scout 		= 1
-   STR_VAR
-    clab_name 		= ~d5_earch~
-	race 			= ~all~
-	s_Life 			= ~ranger~
-	s_Death 		= ~x~
-	s_Benediction 	= ~x~
-	s_Destruction 	= ~x~
-	s_Protection 	= ~ranger~
-	s_War 			= ~x~
-	s_Exploration   = ~x~
-	s_Knowledge 	= ~x~
-	s_Deception 	= ~ranger~
-	s_Thought 		= ~x~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~ranger~
-	s_Affliction 	= ~x~
-	s_Animal 		= ~x~
-	s_Plant 		= ~ranger~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~ranger~
-	s_Fire 			= ~x~
-	s_Light 		= ~ranger~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~ranger~
-	s_Perdition     = ~x~
-  END
  END
 
 //ADD ELVEN ARCHER TO MENUS__________________________________________________________
@@ -479,7 +441,7 @@ COPY_EXISTING ~kitlist.2da~ ~override~
 	COUNT_2DA_ROWS ~7~ "jrows"
 OUTER_SET jrows -= 2
 COPY_EXISTING ~K_R_E.2da~ ~override~
-	REPLACE_TEXTUALLY ~7~ ~%jrows%~
+	REPLACE_TEXTUALLY ~[ %TAB%]7~ ~%TAB%%jrows%~
 BUT_ONLY
 
 //ARCHERS USE ELVEN CHAIN____________________________________________________________
@@ -657,10 +619,20 @@ END
 //
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
-    c_scout 		= 1
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name 		= ~d5_sling~
-	race 			= ~halfling~
+	class 			= ~scout~
 	s_Life 			= ~ranger~
 	s_Death 		= ~x~
 	s_Benediction 	= ~x~
@@ -709,7 +681,7 @@ END
 	COUNT_2DA_ROWS ~7~ "jrows"
  OUTER_SET jrows -= 2
  COPY_EXISTING ~K_R_E.2da~ ~override~
-	REPLACE_TEXTUALLY ~7~ ~%jrows%~
+	REPLACE_TEXTUALLY ~[ %TAB%]7~ ~%TAB%%jrows%~
  BUT_ONLY
 
 END

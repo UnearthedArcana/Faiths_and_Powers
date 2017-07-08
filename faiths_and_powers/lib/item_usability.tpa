@@ -6,12 +6,76 @@
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 
+
+LAM ~READ_FNP_KIT_INFO~
+
+/*
 // NOTES:
-// clerics 	= helm flag
-// acolytes	= lathander flag
-// druids 	= totemic flag
-// mystics 	= avenger flag
-// 
+
+armor:
+- talos flag 			= any armor
+- helm flag 			= leather + chain
+- lathander flag		= leather only
+
+what about druids? 
+- totemic flag			= druid... no plate or chain
+- shapeshifter flag		= mystic
+- avenger/beast_friend	= occultist
+
+./ if not usable by clerics, then restrict from all cleric kits
+
+./ if usable by druids, make usable by all multi cleric classes
+
+./ if not usable by druids, then restrict from totemic
+
+./ make all weapons usable by all classes 
+
+./ make all armor usable by:
+	- clerics
+	- fighter/clerics
+	- cleric/thieves
+	- cleric/mages
+	- ranger/clerics
+	- (in fact, all divine classes)
+
+./ make plate mail unusable by helm, lathander, totemic, shapeshifter
+
+./ make chain mail unusable by lathander, totemic, shapeshifter
+
+change clubs' item type from maces to... quarterstaff/26?
+
+./ OR: change maces' item type to morning star/22
+
+./ deal with swords (change long swords & scimitars to small sword/19?)
+
+./ check variables:
+	- if plate = 1 -> assign talos
+	- if plate = 0 then:
+	 -- if chain = 1 -> assign helm
+	 -- if chain = 0 -> assign lathander
+	- if large blades = 0 -> 181 vs. large swords and halberds
+	- if medium blades = 0 -> 181 vs. small swords
+	- if blunt = 0 -> 181 vs. maces, morning stars, hammers, flails
+	- if bows = 0 -> 181 vs. bows and arrows
+	- if xbows = 0 -> 181 vs. xbows and bolts
+
+./ and patch weapprof also!
+
+./ give SC druids the totemic flag
+
+./ give multi druids the totemic flag
+
+./ give mystics the shapeshifter flag
+
+./ give occultists the beast_friend flag??
+
+make 'natural' plate/chain usable by totemic (static list?)
+
+./ apply 181 vs. armor to beast lord (vanilla shapeshifter)
+
+what about shields??
+
+*/ 
 
 //copy marker file___________________________________________________________________
 //
@@ -19,46 +83,422 @@ COPY ~faiths_and_powers/lib/markers/d5_fnp_usability.d5~ ~override~
 //___________________________________________________________________________________
 
 
-//prepare description patches_______________________________________________________
+//acolyte bonuses____________________________________________________________________
 //
-DEFINE_PATCH_FUNCTION ~REMOVE_CLASS_LINE_FROM_USABILITIES~
-  INT_VAR
-    offset = 0
-  STR_VAR
-    desc = ~~
-    unusable_regexp = ~~
-    unusable_replacement = ~~
-    class_regexp = ~~ //
-    class_prefix = ~~ //
-BEGIN
-  INNER_PATCH_SAVE desc ~%desc%~ BEGIN
-    REPLACE_TEXTUALLY ~%unusable_regexp%~ ~%unusable_replacement%~
-  END
-  PATCH_IF ((~%desc%~ STRING_CONTAINS_REGEXP ~^%unusable_replacement%~) == 0) BEGIN
-    INNER_PATCH_SAVE usab_block ~%desc%~ BEGIN
-      REPLACE_TEXTUALLY ~\(.*[%LNL%%MNL%%WNL%]\)*%unusable_replacement%~ ~~
-    END
-    INNER_PATCH_SAVE usab_block_new ~%usab_block%~ BEGIN
-      REPLACE_TEXTUALLY ~[%LNL%%MNL%%WNL%][- %TAB%]*$~ ~~
-      REPLACE_TEXTUALLY ~^[- %TAB%]*~ ~%class_prefix%~
-      REPLACE_TEXTUALLY ~%mage_regexp%~ ~~
-    END
-    INNER_PATCH_SAVE desc ~%desc%~ BEGIN
-      REPLACE_TEXTUALLY EXACT_MATCH ~%usab_block%~ ~%usab_block_new%~
-    END
-    INNER_PATCH_SAVE compare ~%desc%~ BEGIN 
-      REPLACE_TEXTUALLY ~^%unusable_replacement%.*[%LNL%%MNL%%WNL%]%class_prefix%[^- %TAB%]~ ~~
-    END
-    PATCH_IF (~%desc%~ STRING_EQUAL ~%compare%~) BEGIN
-      INNER_PATCH_SAVE desc ~%desc%~ BEGIN
-        REPLACE_TEXTUALLY ~[%LNL%%MNL%%WNL%]%unusable_replacement%.*~ ~~
-      END
-    END
-    SAY_EVALUATED ~%offset%~ ~%desc%~
+COPY ~faiths_and_powers/kits/misc/b_lor.spl~ ~override~
+	SAY NAME1 @6
+	SAY UNIDENTIFIED_DESC @6
+COPY ~faiths_and_powers/kits/misc/b_sp1.spl~ ~override~
+	SAY NAME1 @6
+	SAY UNIDENTIFIED_DESC @6
+COPY ~faiths_and_powers/kits/misc/b_sp2.spl~ ~override~
+	SAY NAME1 @6
+	SAY UNIDENTIFIED_DESC @6
+COPY ~faiths_and_powers/kits/misc/b_sp3.spl~ ~override~
+	SAY NAME1 @6
+	SAY UNIDENTIFIED_DESC @6
+COPY ~faiths_and_powers/kits/misc/b_sp4.spl~ ~override~
+	SAY NAME1 @6
+	SAY UNIDENTIFIED_DESC @6
+COPY ~faiths_and_powers/kits/misc/b_sp5.spl~ ~override~
+	SAY NAME1 @6
+	SAY UNIDENTIFIED_DESC @6
+COPY ~faiths_and_powers/kits/misc/b_sp6.spl~ ~override~
+	SAY NAME1 @6
+	SAY UNIDENTIFIED_DESC @6
+COPY ~faiths_and_powers/kits/misc/b_sp7.spl~ ~override~
+	SAY NAME1 @6
+	SAY UNIDENTIFIED_DESC @6
+//___________________________________________________________________________________
+
+
+//acolytes extra spells_____________________________________________________________
+//
+ACTION_PHP_EACH d5_fnp_kit_class_access AS kit => class BEGIN
+  ACTION_IF (~%class%~ STRING_EQUAL_CASE ~ACOLYTE~) BEGIN
+    COPY_EXISTING ~%kit%.2da~ ~override~
+	  LPM remove_blank_lines
+	  APPEND_FILE ~faiths_and_powers/kits/misc/morespells.txt~
+	BUT_ONLY
   END
 END
+//___________________________________________________________________________________
+
+
+//apply cleric restrictions to talos kit____________________________________________
+//
+COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~
+  PATCH_IF (~%SOURCE_SIZE%~ > ~0x71~) BEGIN
+    READ_BYTE    0x1e cleric   											// cleric class usability
+	READ_BYTE    0x29 c_kits											// cleric kit flags
+    PATCH_IF ((~%cleric%~ BAND ~0b10000000~) = ~0b10000000~) BEGIN 		// if *NOT usable* by clerics
+	  WRITE_BYTE 0x29 (~%c_kits%~ BOR ~0b00000111~) 					// set same flag for all cleric kits
+	END
+  END
+BUT_ONLY_IF_IT_CHANGES
 //__________________________________________________________________________________
 
+//usable by druid = usable by multi clerics; & no 319 effects_______________________
+//
+COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~
+  PATCH_IF (~%SOURCE_SIZE%~ > ~0x71~) BEGIN
+	READ_BYTE 0x21 druid  												// druid class usability
+	READ_BYTE 0x1f m_class  											// cleric multi usability
+	PATCH_IF ((~%druid%~ BOR ~0b10111111~) = ~0b10111111~) BEGIN 		// if *IS usable* by druids
+	  WRITE_BYTE 0x1f (~%m_class%~ BAND ~0b00111000~) 					// make usable by multi clerics
+	  LPF DELETE_EFFECT INT_VAR match_opcode = 319 match_parameter1 = 11 match_timing = 2 END
+	END
+  END
+BUT_ONLY_IF_IT_CHANGES
+//__________________________________________________________________________________
+
+//give druid class usability to new druids, plus axe/flail/bow______________________
+//
+COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~
+  PATCH_IF (~%SOURCE_SIZE%~ > ~0x71~) BEGIN
+	READ_BYTE 	0x21 druid 												// druid class usability
+	READ_BYTE 	0x29 d_kits												// druid kit flags
+	PATCH_IF ((~%druid%~ BAND ~0b01000000~) = ~0b01000000~) BEGIN 		// if *NOT usable* by druids
+	  WRITE_BYTE 0x29 (~%d_kits%~ BOR ~0b00001000~) 					// same same flag for totemic
+	END
+  END	
+BUT_ONLY_IF_IT_CHANGES
+//__________________________________________________________________________________
+
+//give fighter weapon usability to clerics__________________________________________
+//
+COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~
+  PATCH_IF (~%SOURCE_SIZE%~ > ~0x71~) BEGIN
+	READ_BYTE 0x1f fighter 												// fighter usability flag
+	READ_BYTE    0x1e c_class
+	READ_BYTE    0x1f m_class
+	READ_BYTE    0x20 r_class
+	READ_BYTE    0x21 d_class
+	READ_BYTE    0x29 c_kits
+	READ_SHORT   0x1c type
+	PATCH_IF ((~%fighter%~ BAND ~0b00100000~) = ~0b00000000~) BEGIN 	// if *IS usable* by fighter/mages (excluding scrolls and wands for now)
+	  PATCH_IF (%type% = 2) OR   	//armor
+	  		(%type% = 5) OR   	//arrow
+			(%type% = 15) OR  	//bow
+			(%type% = 16) OR  	//dagger
+			(%type% = 18) OR  	//slings
+			(%type% = 14) OR  	//bullet
+			(%type% = 19) OR  	//small swords
+			(%type% = 20) OR  	//large swords
+			(%type% = 25) OR  	//axe
+			(%type% = 21) OR  	//hammer
+			(%type% = 17) OR  	//mace
+			(%type% = 22) OR  	//morningstars
+			(%type% = 23) OR  	//flails
+			(%type% = 24) OR  	//darts
+			(%type% = 26) OR  	//quarterstaff
+			(%type% = 27) OR  	//crossbows
+			(%type% = 31) OR  	//bolts
+			(%type% = 28) OR  	//hand-to-hand
+			(%type% = 29) OR  	//spear
+			(%type% = 57) OR  	//greatswords
+			(%type% = 69) OR  	//bastard swords
+			(%type% = 30) OR  	//halberds
+			(%type% = 44) BEGIN  //clubs
+		WRITE_BYTE  0x1e (~%c_class%~ BAND ~0b01111111~) 				// make usable by clerics
+		WRITE_BYTE  0x1f (~%m_class%~ BAND ~0b00101000~) 				// make usable by divine multiclasses
+		WRITE_BYTE  0x21 (~%r_class%~ BAND ~0b11001111~) 				// make usable by rangers/paladins
+		WRITE_BYTE  0x21 (~%d_class%~ BAND ~0b10111111~) 				// make usable by druids
+	  END
+    END
+  END
+BUT_ONLY_IF_IT_CHANGES
+//__________________________________________________________________________________
+
+//set armor usability for cleric/druid kits_________________________________________
+//
+COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
+  PATCH_IF (SOURCE_SIZE > 0x71) BEGIN
+	READ_SHORT 0x1c type
+	PATCH_IF (type = 2) BEGIN
+	  READ_LONG 0x22 appearance
+	  PATCH_IF (appearance = 16691) BEGIN // chain appearance
+		WRITE_BYTE 0x29 (~%c_kits%~ BOR ~0b00111100~) 					// restrict from lathander + totemic + shapeshifter
+	  END
+	  ELSE PATCH_IF (appearance = 16692) BEGIN // plate appearance
+		WRITE_BYTE 0x29 (~%c_kits%~ BOR ~0b00111110~) 					// restrict from lat + helm + totemic + shapeshifter
+	  END
+	END
+  END
+BUT_ONLY
+//__________________________________________________________________________________
+
+//set weapon item type____________________s_________________________________________
+//
+COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
+  PATCH_IF (SOURCE_SIZE > 0x71) BEGIN
+	READ_BYTE 0x31 prof
+	PATCH_IF (prof = 90) || (prof = 95) BEGIN							// proficiency = longsword/scimitar
+	  WRITE_SHORT 0x1c 19												// type = small swords
+	END
+  END
+BUT_ONLY
+COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
+  PATCH_IF (SOURCE_SIZE > 0x71) BEGIN
+	READ_BYTE 0x31 prof
+	PATCH_IF (prof = 101) BEGIN											// proficiency = mace
+	  WRITE_SHORT 0x1c 22												// type = morning star
+	END
+  END
+BUT_ONLY
+COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
+  PATCH_IF (SOURCE_SIZE > 0x71) BEGIN
+	READ_BYTE 0x31 prof
+	PATCH_IF (prof = 115) BEGIN											// proficiency = club
+	  WRITE_SHORT 0x1c 17												// type = mace
+	END
+  END
+BUT_ONLY
+//__________________________________________________________________________________
+
+//armor and weapon variables________________________________________________________
+//
+COPY_EXISTING ~kitlist.2da~ ~override~
+  COUNT_2DA_COLS num_cols
+  READ_2DA_ENTRIES_NOW ~r2en_kitlist~ 9
+  TEXT_SPRINT hex_lat 			~04000000~
+  TEXT_SPRINT hex_helm 			~02000000~
+  TEXT_SPRINT hex_talos 		~01000000~
+  TEXT_SPRINT hex_totemic 		~08000000~
+  TEXT_SPRINT hex_shapeshifter 	~10000000~
+  TEXT_SPRINT hex_avenger		~20000000~
+  FOR (row = 3; row < r2en_kitlist; row += 1) BEGIN
+	READ_2DA_ENTRY_FORMER ~r2en_kitlist~ row 0 kit_index
+	READ_2DA_ENTRY_FORMER ~r2en_kitlist~ row 1 kit_label
+	READ_2DA_ENTRY_FORMER ~r2en_kitlist~ row 5 kit_clab
+	INNER_ACTION BEGIN
+	  COPY ~faiths_and_powers/kits/misc/d5fnpuse.spl~ ~override/d5_u%kit_index%.spl~
+	END
+	PHP_EACH d5_fnp_usable AS usable => val BEGIN
+	  PATCH_IF (VARIABLE_IS_SET $d5_fnp_kit_usable_access(~%usable%~ ~%kit_clab%~)) BEGIN
+		SPRINT access $d5_fnp_kit_usable_access(~%usable%~ ~%kit_clab%~)
+		PATCH_IF (~%usable%~ STRING_EQUAL_CASE ~CHAIN_ARMOR~) BEGIN
+		  PATCH_IF (access = 0) BEGIN
+//			TEXT_SPRINT hex_lat ~04000000~
+			SET_2DA_ENTRY row 7 9 ~0x%hex_lat%~ 
+		  END
+		  PATCH_IF (access > 0) BEGIN
+//			TEXT_SPRINT hex_helm ~02000000~
+			SET_2DA_ENTRY row 7 9 ~0x%hex_helm%~ 
+		  END
+		END
+		PATCH_IF (~%usable%~ STRING_EQUAL_CASE ~PLATE_ARMOR~) BEGIN
+		  PATCH_IF (access > 0) BEGIN
+//			TEXT_SPRINT hex_talos ~01000000~
+			SET_2DA_ENTRY row 7 9 ~0x%hex_talos%~ 
+		  END
+		END
+		PATCH_IF (~%usable%~ STRING_EQUAL_CASE ~SIMPLE_WEAPONS~) BEGIN		// clubs, daggers, staffs, spears, slings, bullets
+		  INNER_ACTION BEGIN
+			COPY_EXISTING ~weapprof.2da~ override
+			  READ_2DA_ENTRIES_NOW weapprof 3
+			  COUNT_2DA_COLS cols
+			  FOR (col = 0; col < cols - 1; ++col) BEGIN
+				READ_2DA_ENTRY_FORMER weapprof 0 col column_name
+				PATCH_IF "%column_name%" STRING_EQUAL_CASE "%kit_label%" BEGIN
+				  SET_2DA_ENTRY 16 (col + 1) 3 %access%						//	dagger
+				  SET_2DA_ENTRY 18 (col + 1) 3 %access%						//	club
+				  SET_2DA_ENTRY 23 (col + 1) 3 %access%						//	quarterstaff
+				  SET_2DA_ENTRY 19 (col + 1) 3 %access%						//	spear
+				  SET_2DA_ENTRY 28 (col + 1) 3 %access%						//	sling
+				  SET_2DA_ENTRY 26 (col + 1) 3 %access%						//	darts
+				END
+			  END
+			BUT_ONLY
+		  END
+		END
+		PATCH_IF (~%usable%~ STRING_EQUAL_CASE ~MEDIUM_SWORDS~) BEGIN		// long swords, short swords, scimitars
+		  INNER_ACTION BEGIN
+			COPY_EXISTING ~weapprof.2da~ override
+			  READ_2DA_ENTRIES_NOW weapprof 3
+			  COUNT_2DA_COLS cols
+			  FOR (col = 0; col < cols - 1; ++col) BEGIN
+				READ_2DA_ENTRY_FORMER weapprof 0 col column_name
+				PATCH_IF "%column_name%" STRING_EQUAL_CASE "%kit_label%" BEGIN
+				  SET_2DA_ENTRY 10 (col + 1) 3 %access%					//	long sword
+				  SET_2DA_ENTRY 11 (col + 1) 3 %access%					//	short sword
+				  SET_2DA_ENTRY 15 (col + 1) 3 %access%					//	scimitar
+				END
+			  END
+			BUT_ONLY
+		  END
+		  PATCH_IF (access = 0) BEGIN
+			INNER_ACTION BEGIN
+			  COPY_EXISTING ~d5_u%kit_index%.spl~ ~override~
+				LPF ADD_SPELL_EFFECT INT_VAR opcode = 181 target = 1 parameter1 = 19 parameter2 = 0 timing = 9 END
+			  BUT_ONLY
+			END
+		  END
+		END
+// change 2-hand swords to 57...?
+		PATCH_IF (~%usable%~ STRING_EQUAL_CASE ~LARGE_BLADES~) BEGIN		// 2-hand swords, bastard swords, katanas, halberds
+		  INNER_ACTION BEGIN
+			COPY_EXISTING ~weapprof.2da~ override
+			  READ_2DA_ENTRIES_NOW weapprof 3
+			  COUNT_2DA_COLS cols
+			  FOR (col = 0; col < cols - 1; ++col) BEGIN
+				READ_2DA_ENTRY_FORMER weapprof 0 col column_name
+				PATCH_IF "%column_name%" STRING_EQUAL_CASE "%kit_label%" BEGIN
+				  SET_2DA_ENTRY 9 (col + 1) 3 %access%						//	bastard sword
+				  SET_2DA_ENTRY 13 (col + 1) 3 %access%						//	2-hand sword
+				  SET_2DA_ENTRY 14 (col + 1) 3 %access%						//	katana
+				  SET_2DA_ENTRY 20 (col + 1) 3 %access%						//	halberd
+				END
+			  END
+			BUT_ONLY
+		  END
+		  PATCH_IF (access = 0) BEGIN
+			INNER_ACTION BEGIN
+			  COPY_EXISTING ~d5_u%kit_index%.spl~ ~override~
+				LPF ADD_SPELL_EFFECT INT_VAR opcode = 181 target = 1 parameter1 = 20 parameter2 = 0 timing = 9 END
+				LPF ADD_SPELL_EFFECT INT_VAR opcode = 181 target = 1 parameter1 = 30 parameter2 = 0 timing = 9 END
+				LPF ADD_SPELL_EFFECT INT_VAR opcode = 181 target = 1 parameter1 = 57 parameter2 = 0 timing = 9 END
+				LPF ADD_SPELL_EFFECT INT_VAR opcode = 181 target = 1 parameter1 = 69 parameter2 = 0 timing = 9 END
+			  BUT_ONLY
+			END
+		  END
+		END
+		PATCH_IF (~%usable%~ STRING_EQUAL_CASE ~BLUDGEONS~) BEGIN			// maces, morning stars, flails, war hammers
+		  INNER_ACTION BEGIN
+			COPY_EXISTING ~weapprof.2da~ override
+			  READ_2DA_ENTRIES_NOW weapprof 3
+			  COUNT_2DA_COLS cols
+			  FOR (col = 0; col < cols - 1; ++col) BEGIN
+				READ_2DA_ENTRY_FORMER weapprof 0 col column_name
+				PATCH_IF "%column_name%" STRING_EQUAL_CASE "%kit_label%" BEGIN
+				  SET_2DA_ENTRY 17 (col + 1) 3 %access%						// war hammer
+				  SET_2DA_ENTRY 21 (col + 1) 3 %access%						// flail/morning star
+				  SET_2DA_ENTRY 22 (col + 1) 3 %access%						// mace
+				END
+			  END
+			BUT_ONLY
+		  END
+		  PATCH_IF (access = 0) BEGIN
+			INNER_ACTION BEGIN
+			  COPY_EXISTING ~d5_u%kit_index%.spl~ ~override~
+				LPF ADD_SPELL_EFFECT INT_VAR opcode = 181 target = 1 parameter1 = 21 parameter2 = 0 timing = 9 END
+				LPF ADD_SPELL_EFFECT INT_VAR opcode = 181 target = 1 parameter1 = 22 parameter2 = 0 timing = 9 END
+				LPF ADD_SPELL_EFFECT INT_VAR opcode = 181 target = 1 parameter1 = 23 parameter2 = 0 timing = 9 END
+			  BUT_ONLY
+			END
+		  END
+		END
+		PATCH_IF (~%usable%~ STRING_EQUAL_CASE ~AXES~) BEGIN				// axes
+		  INNER_ACTION BEGIN
+			COPY_EXISTING ~weapprof.2da~ override
+			  READ_2DA_ENTRIES_NOW weapprof 3
+			  COUNT_2DA_COLS cols
+			  FOR (col = 0; col < cols - 1; ++col) BEGIN
+				READ_2DA_ENTRY_FORMER weapprof 0 col column_name
+				PATCH_IF "%column_name%" STRING_EQUAL_CASE "%kit_label%" BEGIN
+				  SET_2DA_ENTRY 12 (col + 1) 3 %access%						// axe
+				END
+			  END
+			BUT_ONLY
+		  END
+		  PATCH_IF (access = 0) BEGIN
+			INNER_ACTION BEGIN
+			  COPY_EXISTING ~d5_u%kit_index%.spl~ ~override~
+				LPF ADD_SPELL_EFFECT INT_VAR opcode = 181 target = 1 parameter1 = 25 parameter2 = 0 timing = 9 END
+			  BUT_ONLY
+			END
+		  END
+		END
+		PATCH_IF (~%usable%~ STRING_EQUAL_CASE ~BOWS~) BEGIN				// long bows, short bows, arrows
+		  INNER_ACTION BEGIN
+			COPY_EXISTING ~weapprof.2da~ override
+			  READ_2DA_ENTRIES_NOW weapprof 3
+			  COUNT_2DA_COLS cols
+			  FOR (col = 0; col < cols - 1; ++col) BEGIN
+				READ_2DA_ENTRY_FORMER weapprof 0 col column_name
+				PATCH_IF "%column_name%" STRING_EQUAL_CASE "%kit_label%" BEGIN
+				  SET_2DA_ENTRY 25 (col + 1) 3 %access%						// long bow
+				  SET_2DA_ENTRY 26 (col + 1) 3 %access%						// short bow
+				END
+			  END
+			BUT_ONLY
+		  END
+		  PATCH_IF (access = 0) BEGIN
+			INNER_ACTION BEGIN
+			  COPY_EXISTING ~d5_u%kit_index%.spl~ ~override~
+				LPF ADD_SPELL_EFFECT INT_VAR opcode = 181 target = 1 parameter1 = 15 parameter2 = 0 timing = 9 END
+				LPF ADD_SPELL_EFFECT INT_VAR opcode = 181 target = 1 parameter1 = 5 parameter2 = 0 timing = 9 END
+			  BUT_ONLY
+			END
+		  END
+		END
+		PATCH_IF (~%usable%~ STRING_EQUAL_CASE ~CROSSBOWS~) BEGIN			// crossbows, bolts
+		  INNER_ACTION BEGIN
+			COPY_EXISTING ~weapprof.2da~ override
+			  READ_2DA_ENTRIES_NOW weapprof 3
+			  COUNT_2DA_COLS cols
+			  FOR (col = 0; col < cols - 1; ++col) BEGIN
+				READ_2DA_ENTRY_FORMER weapprof 0 col column_name
+				PATCH_IF "%column_name%" STRING_EQUAL_CASE "%kit_label%" BEGIN
+				  SET_2DA_ENTRY 24 (col + 1) 3 %access%						// crossbow
+				END
+			  END
+			BUT_ONLY
+		  END
+		  PATCH_IF (access = 0) BEGIN
+			INNER_ACTION BEGIN
+			  COPY_EXISTING ~d5_u%kit_index%.spl~ ~override~
+				LPF ADD_SPELL_EFFECT INT_VAR opcode = 181 target = 1 parameter1 = 27 parameter2 = 0 timing = 9 END
+				LPF ADD_SPELL_EFFECT INT_VAR opcode = 181 target = 1 parameter1 = 31 parameter2 = 0 timing = 9 END
+			  BUT_ONLY
+			END
+		  END
+		END
+	  END
+    END
+	PHP_EACH d5_fnp_kit_class_access AS kit => class BEGIN
+	  PATCH_IF (~%kit%~ STRING_EQUAL_CASE ~%kit_clab%~) BEGIN
+		PATCH_IF (~%class%~ STRING_EQUAL_CASE ~DRUID~) BEGIN
+		  SET_2DA_ENTRY row 7 9 ~0x%hex_totemic%~ 
+		END
+		PATCH_IF (~%class%~ STRING_EQUAL_CASE ~MYSTIC~) BEGIN
+		  SET_2DA_ENTRY row 7 9 ~0x%hex_shapeshifter%~ 
+		END
+		PATCH_IF (~%class%~ STRING_EQUAL_CASE ~OCCULTIST~) BEGIN
+		  SET_2DA_ENTRY row 7 9 ~0x%hex_avenger%~ 
+		END
+	  END
+	END
+	PATCH_IF ~%kit_clab%~ STRING_EQUAL_CASE ~d5drfi~ BEGIN
+	  SET_2DA_ENTRY row 7 9 ~0x%hex_totemic%~ // usability
+	END
+	PATCH_IF ~%kit_clab%~ STRING_EQUAL_CASE ~d5drma~ BEGIN
+	  SET_2DA_ENTRY row 7 9 ~0x%hex_totemic%~ // usability
+	END
+	PATCH_IF ~%kit_clab%~ STRING_EQUAL_CASE ~d5drth~ BEGIN
+	  SET_2DA_ENTRY row 7 9 ~0x%hex_totemic%~ // usability
+	END
+	PATCH_IF ~%kit_clab%~ STRING_EQUAL_CASE ~d5drra~ BEGIN
+	  SET_2DA_ENTRY row 7 9 ~0x%hex_totemic%~ // usability
+	END
+	PATCH_IF ~%kit_clab%~ STRING_EQUAL_CASE ~d5obst~ BEGIN
+	  INNER_ACTION BEGIN
+		COPY_EXISTING ~d5_u%kit_index%.spl~ ~override~
+		  LPF ADD_SPELL_EFFECT INT_VAR opcode = 181 target = 1 parameter1 = 2 parameter2 = 0 timing = 9 END
+		BUT_ONLY
+	  END
+	END
+	INNER_ACTION BEGIN
+	  ACTION_IF FILE_EXISTS_IN_GAME ~%kit_clab%.2da~ BEGIN
+		APPEND ~%kit_clab%.2da~ ~ABILITY1    AP_d5_u%kit_index%   ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** ~
+	  END
+	END
+  END
+BUT_ONLY
+//__________________________________________________________________________________
+
+
+/*
 
 //give druid class usability to new druids, plus axe/flail/bow______________________
 //
@@ -97,33 +537,36 @@ COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~
 	  READ_BYTE    0x21 d_class
 	  READ_BYTE    0x29 c_kits
 	  READ_SHORT   0x1c type //reads the byte containing item type
-	  PATCH_IF (~%type%~ = ~5~) OR   	//arrow
-				(~%type%~ = ~15~) OR  	//bow
-				(~%type%~ = ~16~) OR  	//dagger
-				(~%type%~ = ~18~) OR  	//slings
-				(~%type%~ = ~14~) OR  	//bullet
-				(~%type%~ = ~19~) OR  	//Short Swords
-				(~%type%~ = ~20~) OR  	//Long Swords
-				(~%type%~ = ~25~) OR  	//axe
-				(~%type%~ = ~21~) OR  	//hammer
-				(~%type%~ = ~17~) OR  	//mace
-				(~%type%~ = ~22~) OR  	//morningstars
-				(~%type%~ = ~23~) OR  	//flails
-				(~%type%~ = ~24~) OR  	//darts
-				(~%type%~ = ~26~) OR  	//quarterstaff
-				(~%type%~ = ~27~) OR  	//crossbows
-				(~%type%~ = ~31~) OR  	//bolts
-				(~%type%~ = ~28~) OR  	//hand-to-hand
-				(~%type%~ = ~29~) OR  	//spear
-				(~%type%~ = ~44~) BEGIN  //clubs
+	  PATCH_IF (%type% = 5) OR   	//arrow
+				(%type% = 15) OR  	//bow
+				(%type% = 16) OR  	//dagger
+				(%type% = 18) OR  	//slings
+				(%type% = 14) OR  	//bullet
+				(%type% = 19) OR  	//Short Swords
+				(%type% = 20) OR  	//Long Swords
+				(%type% = 25) OR  	//axe
+				(%type% = 21) OR  	//hammer
+				(%type% = 17) OR  	//mace
+				(%type% = 22) OR  	//morningstars
+				(%type% = 23) OR  	//flails
+				(%type% = 24) OR  	//darts
+				(%type% = 26) OR  	//quarterstaff
+				(%type% = 27) OR  	//crossbows
+				(%type% = 31) OR  	//bolts
+				(%type% = 28) OR  	//hand-to-hand
+				(%type% = 29) OR  	//spear
+				(%type% = 57) OR  	//greatswords
+				(%type% = 69) OR  	//bastard swords
+				(%type% = 30) OR  	//halberds
+				(%type% = 44) BEGIN  //clubs
 		WRITE_BYTE  0x1e (~%c_class%~ BAND ~0b01111111~) // cleric
 		WRITE_BYTE  0x1f (~%m_class%~ BAND ~0b00101000~) // multiclasses
 //		WRITE_BYTE  0x21 (~%d_class%~ BAND ~0b10111111~) // druids
 		WRITE_BYTE  0x29 (~%c_kits%~ BAND ~0b11111001~)  // lathander and helm
 	  END
-	  PATCH_IF (%type% = 57) OR  	//greatswords
-				(%type% = 69) OR  	//bastard swords
-				(%type% = 30) BEGIN  //halberd
+	  PATCH_IF 
+				
+				
 		WRITE_BYTE  0x1e (~%c_class%~ BAND ~0b01111111~) // trueclass cleric (for safety)
 		WRITE_BYTE  0x1f (~%m_class%~ BAND ~0b00111111~) // fighter/cleric
 		WRITE_BYTE  0x29 (~%c_kits%~ BAND ~0b11111110~)  	// talos
@@ -574,27 +1017,9 @@ COPY_EXISTING ~kitlist.2da~ ~override~
   SET_2DA_ENTRY 21 7 9 ~0x%trueclass_use%~
   SET_2DA_ENTRY 22 7 9 ~0x%trueclass_use%~
 BUT_ONLY
-COPY ~faiths_and_powers/kits/misc/d5_disp1.spl~ ~override~
-	SAY NAME1 @6
-	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5_disp2.spl~ ~override~
-	SAY NAME1 @6
-	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5_disp3.spl~ ~override~
-	SAY NAME1 @6
-	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5_disp4.spl~ ~override~
-	SAY NAME1 @6
-	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5_disp5.spl~ ~override~
-	SAY NAME1 @6
-	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5_disp6.spl~ ~override~
-	SAY NAME1 @6
-	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5_disp7.spl~ ~override~
-	SAY NAME1 @6
-	SAY UNIDENTIFIED_DESC @6
 
 //__________________________________________________________________________________
+*/
+
+
 

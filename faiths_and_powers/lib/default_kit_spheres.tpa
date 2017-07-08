@@ -18,10 +18,22 @@ COPY_EXISTING ~kitlist.2da~ ~override~
 	END
 BUT_ONLY
 ACTION_PHP_EACH d5_sphere_kits AS green => eggs BEGIN
- ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~override/d5_race.2da~ ~%green%~)) BEGIN
+ ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~override/d5_class.2da~ ~%green%~)) BEGIN
   ACTION_IF (%eggs% = 3) BEGIN //..................................................clerics
-   LAF ~DEFINE_FNP_KIT_INFO~
-    STR_VAR
+LAF ~DEFINE_FNP_KIT_INFO~
+  INT_VAR
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
+  STR_VAR
     clab_name 		= EVAL ~%green%~
 	s_Life 			= ~major~
 	s_Death 		= ~minor~
@@ -29,7 +41,7 @@ ACTION_PHP_EACH d5_sphere_kits AS green => eggs BEGIN
 	s_Destruction 	= ~major~
 	s_Protection 	= ~major~
 	s_War 			= ~minor~
-	s_Exploration   = ~x~
+	s_Exploration   = ~minor~
 	s_Knowledge 	= ~major~
 	s_Deception 	= ~x~
 	s_Thought 		= ~minor~
@@ -49,8 +61,20 @@ ACTION_PHP_EACH d5_sphere_kits AS green => eggs BEGIN
    END
   END
   ACTION_IF (%eggs% = 11) BEGIN //..................................................druids
-   LAF ~DEFINE_FNP_KIT_INFO~
-    STR_VAR
+LAF ~DEFINE_FNP_KIT_INFO~
+  INT_VAR
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
+  STR_VAR
     clab_name 		= EVAL ~%green%~
 	s_Life 			= ~major~
 	s_Death 		= ~minor~
@@ -58,7 +82,7 @@ ACTION_PHP_EACH d5_sphere_kits AS green => eggs BEGIN
 	s_Destruction 	= ~x~
 	s_Protection 	= ~x~
 	s_War 			= ~x~
-	s_Exploration   = ~x~
+	s_Exploration   = ~minor~
 	s_Knowledge 	= ~x~
 	s_Deception 	= ~x~
 	s_Thought 		= ~minor~
@@ -78,8 +102,20 @@ ACTION_PHP_EACH d5_sphere_kits AS green => eggs BEGIN
    END
   END
   ACTION_IF (%eggs% = 6) BEGIN //.................................................paladins
-   LAF ~DEFINE_FNP_KIT_INFO~
-    STR_VAR
+LAF ~DEFINE_FNP_KIT_INFO~
+  INT_VAR
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
+  STR_VAR
     clab_name 		= EVAL ~%green%~
 	s_Life 			= ~paladin~
 	s_Death 		= ~x~
@@ -107,8 +143,20 @@ ACTION_PHP_EACH d5_sphere_kits AS green => eggs BEGIN
    END
   END
   ACTION_IF (%eggs% = 12) BEGIN //.................................................rangers
-   LAF ~DEFINE_FNP_KIT_INFO~
-    STR_VAR
+LAF ~DEFINE_FNP_KIT_INFO~
+  INT_VAR
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
+  STR_VAR
     clab_name 		= EVAL ~%green%~
 	s_Life 			= ~ranger~
 	s_Death 		= ~x~
@@ -116,7 +164,7 @@ ACTION_PHP_EACH d5_sphere_kits AS green => eggs BEGIN
 	s_Destruction 	= ~x~
 	s_Protection 	= ~x~
 	s_War 			= ~x~
-	s_Exploration   = ~x~
+	s_Exploration   = ~ranger~
 	s_Knowledge 	= ~x~
 	s_Deception 	= ~x~
 	s_Thought 		= ~x~

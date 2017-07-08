@@ -2,7 +2,7 @@ BACKUP ~faiths_and_powers/backup~
 AUTHOR ~SubtleD and Grammarsalad~
 
 
-VERSION ~0.69h~
+VERSION ~0.70~
 
 //README ~faiths_and_powers/readme-pnp.html~
 
@@ -39,7 +39,7 @@ ALWAYS
 	INCLUDE ~faiths_and_powers/lib/add_occultist_kits.tpa~
 	INCLUDE ~faiths_and_powers/lib/add_ranger_kits.tpa~
 	INCLUDE ~faiths_and_powers/lib/add_scout_kits.tpa~
-
+	INCLUDE ~faiths_and_powers/lib/add_champion_kits.tpa~
 	INCLUDE ~faiths_and_powers/lib/add_zealot_kits.tpa~
 	INCLUDE ~faiths_and_powers/lib/add_multiclass_kits.tpa~
 
@@ -263,64 +263,54 @@ LAM beast_lord
 LAM elementalist
 //
 // (paladins)
-INCLUDE ~faiths_and_powers/kits/champions/801_tyr/champ_tyr.tpa~
-
-ACTION_IF GAME_IS ~iwdee~ THEN BEGIN   //
-  INCLUDE ~faiths_and_powers/kits/champions/802_Kelemvor/iwdee/champ_kele.tpa~
+LAM champion_tyr
+LAM champion_azuth
+LAM champion_moradin
+ACTION_IF GAME_IS ~iwdee~ THEN BEGIN 
+  LAM iwdee_champion_kelemvor
 END
-ACTION_IF NOT GAME_IS ~iwdee~ THEN BEGIN   //
-  INCLUDE ~faiths_and_powers/kits/champions/802_Kelemvor/champ_kele.tpa~
+ACTION_IF NOT GAME_IS ~iwdee~ THEN BEGIN 
+  LAM champion_kelemvor
 END
-
 ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No feasible way to make them not fall in IWDEE
-  INCLUDE ~faiths_and_powers/kits/champions/803_tempus/champ_temp.tpa~
+  LAM champion_tempus
 END
-
 ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No Evil fallable pallys in IWDEE
-  INCLUDE ~faiths_and_powers/kits/champions/804_bane/champ_bane.tpa~
-END
-
-ACTION_IF NOT FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No Evil fallable pallys in IWDEE
-  INCLUDE ~faiths_and_powers/kits/champions/804_bane/iwdee/champ_bane.tpa~
-END
-
-ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No Evil fallable pallys in IWDEE
-  INCLUDE ~faiths_and_powers/kits/champions/805_helm/champ_helm.tpa~
+  LAM champion_bane
 END
 ACTION_IF NOT FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No Evil fallable pallys in IWDEE
-  INCLUDE ~faiths_and_powers/kits/champions/805_helm/iwdee/champ_helm.tpa~
+  LAM iwdee_champion_bane
 END
-
+ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No Evil fallable pallys in IWDEE
+  LAM champion_helm
+END
+ACTION_IF NOT FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No Evil fallable pallys in IWDEE
+  LAM iwdee_champion_helm
+END
 ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No Evil nonfallable pallys in IWDEE
-  INCLUDE ~faiths_and_powers/kits/champions/806_talos/champ_talos.tpa~
+  LAM champion_talos
 END
 ACTION_IF NOT FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No Evil nonfallable pallys in IWDEE
-  INCLUDE ~faiths_and_powers/kits/champions/806_talos/iwdee/champ_talos.tpa~
+  LAM iwdee_champion_talos
 END
-
-INCLUDE ~faiths_and_powers/kits/champions/807_Moradin/champ_moradin.tpa~
-INCLUDE ~faiths_and_powers/kits/champions/808_Azuth/champ_azuth.tpa~
 ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No feasible way to make them not fall in IWDEE without fallen.2da
-  INCLUDE ~faiths_and_powers/kits/champions/809_red/champ_red.tpa~
+  LAM champion_red
 END
 //
 // (other paladins)
 //
 // (zealot)
-ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No feasible way to make them not fall in IWDEE  w/o fallen.2da
-
-  LAM zealot_gruumsh
-  LAM zealot_talos
-  LAM zealot_kossuth
-  LAM zealot_garagos
-
-END  //End grummsh/talos/kossuth/garagos
-
 LAM zealot_ilmater
 LAM zealot_corellon
 LAM zealot_sune
 LAM zealot_mystra
 LAM zealot_eilistraee
+ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No feasible way to make them not fall in IWDEE  w/o fallen.2da
+  LAM zealot_gruumsh
+  LAM zealot_talos
+  LAM zealot_kossuth
+  LAM zealot_garagos
+END  //End grummsh/talos/kossuth/garagos
 //
 // (rangers)
 LAM forest_ranger
@@ -347,7 +337,6 @@ LAM cf_clangeddin
 LAM cr_mielikki
 LAM cr_shaundakul
 //LAM cf_helm
-//
 //__________________________________________________________________________________
 
 //special kit: ur-priest
@@ -419,7 +408,7 @@ ACTION_FOR_EACH class IN ~D~ ~R~ BEGIN
 	END
   END
 END
-//add in acolyte
+//add in acolyte and zealot__________________________________________________________
 COPY_EXISTING ~kitlist.2da~ ~override~
 	COUNT_2DA_COLS cols // amount of columns
 	READ_2DA_ENTRIES_NOW rows cols // read all file into memory  
@@ -432,7 +421,13 @@ COPY_EXISTING ~kitlist.2da~ ~override~
 	    SET zealot_row = (%row%)
 	  END
 	END
-  BUT_ONLY
+BUT_ONLY
+
+ACTION_IF GAME_IS ~bg2ee eet iwdee~ BEGIN
+  OUTER_SET acolyte_row = (acolyte_row + 1)
+  OUTER_SET zealot_row = (zealot_row + 1)
+END
+
 APPEND ~K_C_D.2da~ ~2 %acolyte_row%~ 
 APPEND ~K_C_E.2da~ ~2 %acolyte_row%~
 APPEND ~K_C_G.2da~ ~2 %acolyte_row%~
@@ -470,13 +465,14 @@ COPY ~faiths_and_powers/kits/K_X_Y/K_R_HL.2da~ ~override~
 INCLUDE ~faiths_and_powers/lib/item_usability.tpa~
 //__________________________________________________________________________________
 
-//Add IWD spells if not already in game
+//Add IWD spells if not already in game_____________________________________________
 ACTION_IF GAME_IS ~bgee bg2ee eet~ BEGIN
   ACTION_IF NOT FILE_EXISTS_IN_GAME ~b_IWD.itm~ BEGIN    //If IWD spells not installed...
    COPY ~faiths_and_powers/compatibility/b_IWD.itm~ ~override~   //to detect this component
    INCLUDE ~faiths_and_powers/lib/Setup_IWD_divine_Spells.tpa~      //install them
   END
 END
+//__________________________________________________________________________________
 
 //Sphere System_____________________________________________________________________
 //
@@ -494,7 +490,6 @@ INCLUDE ~faiths_and_powers/lib/npc_kits.tpa~
 //PRINT ~it will install *all* of the FnP kits~
 //PRINT ~it will also replace the K_C_x.2da files so only the archetype kits are available in the menus~
 //__________________________________________________________________________________
-
 
 
 
@@ -698,43 +693,41 @@ COPY_EXISTING ~ABCLASRQ.2da~ ~override~ //
     SET_2DA_ENTRY 32 6 6 13
 BUT_ONLY_IF_IT_CHANGES
 
-INCLUDE ~faiths_and_powers/kits/champions/801_tyr/champ_tyr.tpa~
-
+LAM champion_tyr
+LAM champion_azuth		//azuth essentially replaces Inquisitor
+LAM champion_moradin
 //champ of Kele effectively replaces UHunter. In IWDEE, the champ of mykrul is merely added (they're different enough conceptually to be seperate)
 ACTION_IF GAME_IS ~iwdee~ THEN BEGIN   //
-  INCLUDE ~faiths_and_powers/kits/champions/802_Kelemvor/iwdee/champ_kele.tpa~
- COPY_EXISTING ~clsrcreq.2da~ ~override~ //
+  LAM iwdee_champion_kelemvor
+  COPY_EXISTING ~clsrcreq.2da~ ~override~ //
 END
 //kelevmore undead hunter for non-iwdee
 ACTION_IF GAME_IS ~bgee bg2ee eet~ THEN BEGIN   //
-  INCLUDE ~faiths_and_powers/kits/champions/802_Kelemvor/champ_kele.tpa~
+  LAM champion_kelemvor
 END
-//azuth essentially replaces Inquisitor
-INCLUDE ~faiths_and_powers/kits/champions/808_Azuth/champ_azuth.tpa~
 ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No feasible way to make them not fall in IWDEE as yet
-  INCLUDE ~faiths_and_powers/kits/champions/803_tempus/champ_temp.tpa~
+  LAM champion_tempus
 END
 ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No Evil nonfallable pallys in IWDEE as yet
-  INCLUDE ~faiths_and_powers/kits/champions/804_bane/champ_bane.tpa~
+  LAM champion_bane
 END
 ACTION_IF NOT FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No Evil nonfallable pallys in IWDEE as yet
-  INCLUDE ~faiths_and_powers/kits/champions/804_bane/iwdee/champ_bane.tpa~
+  LAM iwdee_champion_bane
 END
 ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No Evil nonfallable pallys in IWDEE as yet
-  INCLUDE ~faiths_and_powers/kits/champions/805_helm/champ_helm.tpa~
+  LAM champion_helm
 END
 ACTION_IF NOT FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No Evil fallable pallys in IWDEE
-  INCLUDE ~faiths_and_powers/kits/champions/805_helm/iwdee/champ_helm.tpa~
+  LAM iwdee_champion_helm
 END
 ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No Evil nonfallable pallys in IWDEE
-  INCLUDE ~faiths_and_powers/kits/champions/806_talos/champ_talos.tpa~
+  LAM champion_talos
 END
 ACTION_IF NOT FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No Evil nonfallable pallys in IWDEE
-  INCLUDE ~faiths_and_powers/kits/champions/806_talos/iwdee/champ_talos.tpa~
+  LAM iwdee_champion_talos
 END
-INCLUDE ~faiths_and_powers/kits/champions/807_Moradin/champ_moradin.tpa~
 ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No feasible way to make them not fall in IWDEE without fallen.2da
-  INCLUDE ~faiths_and_powers/kits/champions/809_red/champ_red.tpa~
+  LAM champion_red
 END
 //
 // (other paladins)
@@ -755,18 +748,17 @@ COPY ~faiths_and_powers/kits/zealots/b_snk11.spl~ ~override~
 COPY ~faiths_and_powers/kits/zealots/b_snk12.spl~ ~override~
 COPY ~faiths_and_powers/kits/zealots/b_snk13.spl~ ~override~
 
+LAM zealot_ilmater
+LAM zealot_corellon
+LAM zealot_sune
+LAM zealot_mystra
+LAM zealot_eilistraee
 ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No feasible way to make them not fall in IWDEE w/o fallen.2da
   LAM zealot_gruumsh
   LAM zealot_talos
   LAM zealot_kossuth
   LAM zealot_garagos
 END  //End grummsh/talos/kossuth/garagos
-
-LAM zealot_ilmater
-LAM zealot_corellon
-LAM zealot_sune
-LAM zealot_mystra
-LAM zealot_eilistraee
 //
 // (rangers)
 LAM forest_ranger
@@ -1461,7 +1453,7 @@ COPY_EXISTING ~ABCLASRQ.2da~ ~override~ //
     SET_2DA_ENTRY 32 6 6 13
 BUT_ONLY_IF_IT_CHANGES
 
-INCLUDE ~faiths_and_powers/kits/champions/801_tyr/champ_tyr.tpa~
+LAM champion_tyr
 
 //sneaky sneaky
 COPY ~faiths_and_powers/kits/zealots/b_sneak.spl~ ~override~
@@ -1487,12 +1479,12 @@ REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~800~ @8
 
 //champ of Kele effectively replaces UHunter. In IWDEE, the champ of mykrul is merely added (they're different enough conceptually to be seperate)
 ACTION_IF GAME_IS ~iwdee~ THEN BEGIN   //
-  INCLUDE ~faiths_and_powers/kits/champions/802_Kelemvor/iwdee/champ_kele.tpa~
- COPY_EXISTING ~clsrcreq.2da~ ~override~ //
+  LAM iwdee_champion_kelemvor
+  COPY_EXISTING ~clsrcreq.2da~ ~override~ //
 END
 //kelevmore undead hunter for non-iwdee
 ACTION_IF GAME_IS ~bgee bg2ee eet~ THEN BEGIN   //
-  INCLUDE ~faiths_and_powers/kits/champions/802_Kelemvor/champ_kele.tpa~
+  LAM champion_kelemvor
 END
 //___________________________________________________________________________________
 
@@ -1502,7 +1494,7 @@ DESIGNATED 803
 REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~800~ @8
 
 //azuth essentially replaces Inquisitor
-INCLUDE ~faiths_and_powers/kits/champions/808_Azuth/champ_azuth.tpa~
+LAM champion_azuth
 //___________________________________________________________________________________
 
 //___________________________________________________________________________________
@@ -1511,7 +1503,7 @@ DESIGNATED 804
 REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~800~ @8
 REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~fallen.2da~ @8  //No feasible way to make them not fall in IWDEE as yet
 
-INCLUDE ~faiths_and_powers/kits/champions/803_tempus/champ_temp.tpa~
+LAM champion_tempus
 //___________________________________________________________________________________
 
 //___________________________________________________________________________________
@@ -1520,10 +1512,10 @@ DESIGNATED 805
 REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~800~ @8
 
 ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No Evil nonfallable pallys in IWDEE as yet
-  INCLUDE ~faiths_and_powers/kits/champions/804_bane/champ_bane.tpa~
+  LAM champion_bane
 END
 ACTION_IF NOT FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No Evil nonfallable pallys in IWDEE as yet
-  INCLUDE ~faiths_and_powers/kits/champions/804_bane/iwdee/champ_bane.tpa~
+  LAM iwdee_champion_bane
 END
 //___________________________________________________________________________________
 
@@ -1533,10 +1525,10 @@ DESIGNATED 806
 REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~800~ @8
 
 ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No Evil nonfallable pallys in IWDEE as yet
-  INCLUDE ~faiths_and_powers/kits/champions/805_helm/champ_helm.tpa~
+  LAM champion_helm
 END
 ACTION_IF NOT FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No Evil fallable pallys in IWDEE
-  INCLUDE ~faiths_and_powers/kits/champions/805_helm/iwdee/champ_helm.tpa~
+  LAM iwdee_champion_helm
 END
 //___________________________________________________________________________________
 
@@ -1546,10 +1538,10 @@ DESIGNATED 807
 REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~800~ @8
 
 ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No Evil nonfallable pallys in IWDEE
-  INCLUDE ~faiths_and_powers/kits/champions/806_talos/champ_talos.tpa~
+  LAM champion_talos
 END
 ACTION_IF NOT FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No Evil nonfallable pallys in IWDEE
-  INCLUDE ~faiths_and_powers/kits/champions/806_talos/iwdee/champ_talos.tpa~
+  LAM iwdee_champion_talos
 END
 //___________________________________________________________________________________
 
@@ -1558,7 +1550,7 @@ BEGIN @808  //  champion of moradin
 DESIGNATED 808
 REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~800~ @8
 
-INCLUDE ~faiths_and_powers/kits/champions/807_Moradin/champ_moradin.tpa~
+LAM champion_moradin
 //___________________________________________________________________________________
 
 //___________________________________________________________________________________
@@ -1567,7 +1559,7 @@ DESIGNATED 809
 REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~800~ @8
 REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~fallen.2da~ @8  //No feasible way to make them not fall in IWDEE as yet
 
-INCLUDE ~faiths_and_powers/kits/champions/809_red/champ_red.tpa~
+LAM champion_red
 //___________________________________________________________________________________
 
 //___________________________________________________________________________________

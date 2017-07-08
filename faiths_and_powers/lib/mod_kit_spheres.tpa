@@ -15,16 +15,20 @@ ACTION_IF FILE_EXISTS_IN_GAME ~a#cyric.2da~ BEGIN
 //
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
-	c_cleric 		= 1
-	c_acolyte 		= 0
-	c_fighter_cleric = 0
-	c_cleric_mage	= 0
-	c_cleric_thief 	= 1
-	c_ranger_cleric	= 0
-	c_f_m_c			= 0
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name 		= EVAL ~a#cyric~
-	race 			= ~all~
+	class 			= ~cleric~
 	s_Life 			= ~minor~
 	s_Death 		= ~major~
 	s_Benediction 	= ~major~
@@ -61,16 +65,20 @@ ACTION_IF FILE_EXISTS_IN_GAME ~a#feyw.2da~ BEGIN
 //
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
-	c_cleric 		= 1
-	c_acolyte 		= 0
-	c_fighter_cleric = 1
-	c_cleric_mage	= 0
-	c_cleric_thief 	= 0
-	c_ranger_cleric	= 0
-	c_f_m_c			= 0
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name 		= EVAL ~a#feyw~
-	race 			= ~elf~
+	class 			= ~cleric~
 	s_Life 			= ~major~
 	s_Death 		= ~x~
 	s_Benediction 	= ~major~
@@ -107,16 +115,20 @@ ACTION_IF FILE_EXISTS_IN_GAME ~a#koss.2da~ BEGIN
 //
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
-	c_cleric 		= 0
-	c_acolyte 		= 1
-	c_fighter_cleric = 0
-	c_cleric_mage	= 0
-	c_cleric_thief 	= 0
-	c_ranger_cleric	= 0
-	c_f_m_c			= 0
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name 		= EVAL ~a#koss~
-	race 			= ~all~
+	class 			= ~acolyte~
 	s_Life 			= ~major~
 	s_Death 		= ~minor~
 	s_Benediction 	= ~minor~
@@ -153,16 +165,20 @@ ACTION_IF FILE_EXISTS_IN_GAME ~a#ogma.2da~ BEGIN
 //
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
-	c_cleric 		= 0
-	c_acolyte 		= 1
-	c_fighter_cleric = 0
-	c_cleric_mage	= 1
-	c_cleric_thief 	= 0
-	c_ranger_cleric	= 0
-	c_f_m_c			= 0
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name 		= EVAL ~a#ogma~
-	race 			= ~all~
+	class 			= ~acolyte~
 	s_Life 			= ~major~
 	s_Death 		= ~minor~
 	s_Benediction 	= ~major~
@@ -221,16 +237,20 @@ ACTION_IF FILE_EXISTS_IN_GAME ~a#ooze.2da~ BEGIN
 //
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
-	c_cleric 		= 0
-	c_acolyte 		= 0
-	c_fighter_cleric = 0
-	c_cleric_mage	= 0
-	c_cleric_thief 	= 0
-	c_ranger_cleric	= 0
-	c_f_m_c			= 0
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name 		= EVAL ~a#ooze~
-	race 			= ~all~
+	class 			= ~occultist~
 	s_Life 			= ~major~
 	s_Death 		= ~minor~
 	s_Benediction 	= ~x~
@@ -267,16 +287,20 @@ ACTION_IF FILE_EXISTS_IN_GAME ~a#red.2da~ BEGIN
 //
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
-	c_cleric 		= 1
-	c_acolyte 		= 0
-	c_fighter_cleric = 1
-	c_cleric_mage	= 0
-	c_cleric_thief 	= 0
-	c_ranger_cleric	= 0
-	c_f_m_c			= 0
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name 		= EVAL ~a#red~
-	race 			= ~all~
+	class 			= ~cleric~
 	s_Life 			= ~minor~
 	s_Death 		= ~minor~
 	s_Benediction 	= ~major~
@@ -311,16 +335,20 @@ ACTION_IF FILE_EXISTS_IN_GAME ~a#shar.2da~ BEGIN
 //
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
-	c_cleric 		= 1
-	c_acolyte 		= 0
-	c_fighter_cleric = 0
-	c_cleric_mage	= 1
-	c_cleric_thief 	= 0
-	c_ranger_cleric	= 0
-	c_f_m_c			= 0
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name 		= EVAL ~a#shar~
-	race 			= ~all~
+	class 			= ~cleric~
 	s_Life 			= ~minor~
 	s_Death 		= ~major~
 	s_Benediction 	= ~major~
@@ -355,16 +383,20 @@ ACTION_IF FILE_EXISTS_IN_GAME ~a#temp.2da~ BEGIN
 //
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
-	c_cleric 		= 1
-	c_acolyte 		= 0
-	c_fighter_cleric = 1
-	c_cleric_mage	= 0
-	c_cleric_thief 	= 0
-	c_ranger_cleric	= 0
-	c_f_m_c			= 0
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name 		= EVAL ~a#temp~
-	race 			= ~all~
+	class 			= ~cleric~
 	s_Life 			= ~major~
 	s_Death 		= ~minor~
 	s_Benediction 	= ~major~
@@ -399,16 +431,20 @@ ACTION_IF FILE_EXISTS_IN_GAME ~cdilmatr.2da~ BEGIN
 //
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
-	c_cleric 		= 1
-	c_acolyte 		= 0
-	c_fighter_cleric = 0
-	c_cleric_mage	= 0
-	c_cleric_thief 	= 0
-	c_ranger_cleric	= 0
-	c_f_m_c			= 0
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name 		= EVAL ~cdilmatr~
-	race 			= ~all~
+	class 			= ~cleric~
 	s_Life 			= ~major~
 	s_Death 		= ~minor~
 	s_Benediction 	= ~major~
@@ -443,16 +479,20 @@ ACTION_IF FILE_EXISTS_IN_GAME ~cdselune.2da~ BEGIN
 //
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
-	c_cleric 		= 1
-	c_acolyte 		= 0
-	c_fighter_cleric = 0
-	c_cleric_mage	= 1
-	c_cleric_thief 	= 0
-	c_ranger_cleric	= 0
-	c_f_m_c			= 0
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name 		= EVAL ~cdselune~
-	race 			= ~all~
+	class 			= ~cleric~
 	s_Life 			= ~major~
 	s_Death 		= ~x~
 	s_Benediction 	= ~major~
@@ -487,16 +527,20 @@ ACTION_IF FILE_EXISTS_IN_GAME ~cdxvim.2da~ BEGIN
 //
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
-	c_cleric 		= 1
-	c_acolyte 		= 0
-	c_fighter_cleric = 1
-	c_cleric_mage	= 0
-	c_cleric_thief 	= 0
-	c_ranger_cleric	= 0
-	c_f_m_c			= 0
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name 		= EVAL ~cdxvim~
-	race 			= ~all~
+	class 			= ~cleric~
 	s_Life 			= ~minor~
 	s_Death 		= ~major~
 	s_Benediction 	= ~major~
@@ -531,16 +575,20 @@ ACTION_IF FILE_EXISTS_IN_GAME ~nmsune.2da~ BEGIN
 //
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
-	c_cleric 		= 0
-	c_acolyte 		= 1
-	c_fighter_cleric = 0
-	c_cleric_mage	= 0
-	c_cleric_thief 	= 1
-	c_ranger_cleric	= 0
-	c_f_m_c			= 0
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name 		= EVAL ~nmsune~
-	race 			= ~all~
+	class 			= ~acolyte~
 	s_Life 			= ~major~
 	s_Death 		= ~x~
 	s_Benediction 	= ~minor~
@@ -574,16 +622,20 @@ ACTION_IF FILE_EXISTS_IN_GAME ~nmrnwlrn.2da~ BEGIN
 //
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
-	c_cleric 		= 0
-	c_acolyte 		= 0
-	c_fighter_cleric = 0
-	c_cleric_mage	= 0
-	c_cleric_thief 	= 0
-	c_ranger_cleric	= 0
-	c_f_m_c			= 0
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name 		= EVAL ~nmrnwlrn~
-	race 			= ~all~
+	class 			= ~scout~
 	s_Life 			= ~ranger~
 	s_Death 		= ~x~
 	s_Benediction 	= ~x~
@@ -618,16 +670,20 @@ ACTION_IF FILE_EXISTS_IN_GAME ~nmrnbsln.2da~ BEGIN
 //
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
-	c_cleric 		= 0
-	c_acolyte 		= 0
-	c_fighter_cleric = 0
-	c_cleric_mage	= 0
-	c_cleric_thief 	= 0
-	c_ranger_cleric	= 0
-	c_f_m_c			= 0
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name 		= EVAL ~nmrnbsln~
-	race 			= ~all~
+	class 			= ~scout~
 	s_Life 			= ~ranger~
 	s_Death 		= ~x~
 	s_Benediction 	= ~x~
@@ -662,16 +718,20 @@ ACTION_IF FILE_EXISTS_IN_GAME ~a#feral.2da~ BEGIN
 //
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
-	c_cleric 		= 0
-	c_acolyte 		= 0
-	c_fighter_cleric = 0
-	c_cleric_mage	= 0
-	c_cleric_thief 	= 0
-	c_ranger_cleric	= 0
-	c_f_m_c			= 0
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name 		= EVAL ~a#feral~
-	race 			= ~all~
+	class 			= ~ranger~
 	s_Life 			= ~ranger~
 	s_Death 		= ~x~
 	s_Benediction 	= ~x~
@@ -706,16 +766,20 @@ ACTION_IF FILE_EXISTS_IN_GAME ~nmrnfrrn.2da~ BEGIN
 //
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
-	c_cleric 		= 0
-	c_acolyte 		= 0
-	c_fighter_cleric = 0
-	c_cleric_mage	= 0
-	c_cleric_thief 	= 0
-	c_ranger_cleric	= 0
-	c_f_m_c			= 0
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name 		= EVAL ~nmrnfrrn~
-	race 			= ~all~
+	class 			= ~scout~
 	s_Life 			= ~ranger~
 	s_Death 		= ~x~
 	s_Benediction 	= ~x~
@@ -750,16 +814,20 @@ ACTION_IF FILE_EXISTS_IN_GAME ~a#justif.2da~ BEGIN
 //
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
-	c_cleric 		= 0
-	c_acolyte 		= 0
-	c_fighter_cleric = 0
-	c_cleric_mage	= 0
-	c_cleric_thief 	= 0
-	c_ranger_cleric	= 0
-	c_f_m_c			= 0
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name 		= EVAL ~a#justif~
-	race 			= ~all~
+	class 			= ~scout~
 	s_Life 			= ~ranger~
 	s_Death 		= ~x~
 	s_Benediction 	= ~x~
@@ -792,16 +860,20 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabauri.2da~ BEGIN
 //
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
-	c_cleric 		= 1
-	c_acolyte 		= 0
-	c_fighter_cleric = 0
-	c_cleric_mage	= 1
-	c_cleric_thief 	= 0
-	c_ranger_cleric	= 0
-	c_f_m_c			= 0
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name 		= EVAL ~clabauri~
-	race 			= ~all~
+	class 			= ~cleric~
 	s_Life 			= ~minor~
 	s_Death 		= ~minor~
 	s_Benediction 	= ~major~
@@ -834,16 +906,20 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabiceg.2da~ BEGIN
 //
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
-	c_cleric 		= 1
-	c_acolyte 		= 0
-	c_fighter_cleric = 0
-	c_cleric_mage	= 0
-	c_cleric_thief 	= 0
-	c_ranger_cleric	= 1
-	c_f_m_c			= 0
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name 		= EVAL ~clabiceg~
-	race 			= ~all~
+	class 			= ~cleric~
 	s_Life 			= ~major~
 	s_Death 		= ~x~
 	s_Benediction 	= ~major~
@@ -876,16 +952,20 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabeart.2da~ BEGIN
 //
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
-	c_cleric 		= 0
-	c_acolyte 		= 1
-	c_fighter_cleric = 0
-	c_cleric_mage	= 0
-	c_cleric_thief 	= 1
-	c_ranger_cleric	= 0
-	c_f_m_c			= 0
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name 		= EVAL ~clabeart~
-	race 			= ~all~
+	class 			= ~acolyte~
 	s_Life 			= ~major~
 	s_Death 		= ~minor~
 	s_Benediction 	= ~minor~
@@ -918,16 +998,20 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clableaf.2da~ BEGIN
 //
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
-	c_cleric 		= 1
-	c_acolyte 		= 0
-	c_fighter_cleric = 0
-	c_cleric_mage	= 0
-	c_cleric_thief 	= 1
-	c_ranger_cleric	= 0
-	c_f_m_c			= 0
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name 		= EVAL ~clableaf~
-	race 			= ~halfling~
+	class 			= ~cleric~
 	s_Life 			= ~major~
 	s_Death 		= ~x~
 	s_Benediction 	= ~major~
@@ -960,16 +1044,20 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabtree.2da~ BEGIN
 //
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
-	c_cleric 		= 1
-	c_acolyte 		= 0
-	c_fighter_cleric = 0
-	c_cleric_mage	= 0
-	c_cleric_thief 	= 0
-	c_ranger_cleric	= 0
-	c_f_m_c			= 0
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name 		= EVAL ~clabtree~
-	race 			= ~gnome~
+	class 			= ~cleric~
 	s_Life 			= ~major~
 	s_Death 		= ~x~
 	s_Benediction 	= ~major~
@@ -1002,16 +1090,20 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabgruu.2da~ BEGIN
 //
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
-	c_cleric 		= 1
-	c_acolyte 		= 0
-	c_fighter_cleric = 1
-	c_cleric_mage	= 0
-	c_cleric_thief 	= 0
-	c_ranger_cleric	= 0
-	c_f_m_c			= 0
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name 		= EVAL ~clabgruu~
-	race 			= ~orc~
+	class 			= ~cleric~
 	s_Life 			= ~minor~
 	s_Death 		= ~minor~
 	s_Benediction 	= ~minor~
@@ -1044,16 +1136,20 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabluth.2da~ BEGIN
 //
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
-	c_cleric 		= 1
-	c_acolyte 		= 0
-	c_fighter_cleric = 0
-	c_cleric_mage	= 0
-	c_cleric_thief 	= 0
-	c_ranger_cleric	= 0
-	c_f_m_c			= 0
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name 		= EVAL ~clabluth~
-	race 			= ~all~
+	class 			= ~cleric~
 	s_Life 			= ~major~
 	s_Death 		= ~major~
 	s_Benediction 	= ~minor~
@@ -1086,16 +1182,20 @@ ACTION_IF FILE_EXISTS_IN_GAME ~k9hive.2da~ BEGIN
 //
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
-	c_cleric 		= 1
-	c_acolyte 		= 0
-	c_fighter_cleric = 0
-	c_cleric_mage	= 0
-	c_cleric_thief 	= 1
-	c_ranger_cleric	= 0
-	c_f_m_c			= 0
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name 		= EVAL ~k9hive~
-	race 			= ~all~
+	class 			= ~occultist~
 	s_Life 			= ~major~
 	s_Death 		= ~x~
 	s_Benediction 	= ~x~
@@ -1128,16 +1228,20 @@ ACTION_IF FILE_EXISTS_IN_GAME ~k9ilma.2da~ BEGIN
 //
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
-	c_cleric 		= 0
-	c_acolyte 		= 0
-	c_fighter_cleric = 0
-	c_cleric_mage	= 0
-	c_cleric_thief 	= 0
-	c_ranger_cleric	= 0
-	c_f_m_c			= 0
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name 		= EVAL ~k9ilma~
-	race 			= ~all~
+	class 			= ~champion~
 	s_Life 			= ~paladin~
 	s_Death 		= ~x~
 	s_Benediction 	= ~paladin~
@@ -1170,16 +1274,20 @@ ACTION_IF FILE_EXISTS_IN_GAME ~k9miel.2da~ BEGIN
 //
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
-	c_cleric 		= 0
-	c_acolyte 		= 0
-	c_fighter_cleric = 0
-	c_cleric_mage	= 0
-	c_cleric_thief 	= 0
-	c_ranger_cleric	= 0
-	c_f_m_c			= 0
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name 		= EVAL ~k9miel~
-	race 			= ~all~
+	class 			= ~champion~
 	s_Life 			= ~paladin~
 	s_Death 		= ~x~
 	s_Benediction 	= ~paladin~
@@ -1212,16 +1320,20 @@ ACTION_IF FILE_EXISTS_IN_GAME ~k9myst.2da~ BEGIN
 //
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
-	c_cleric 		= 0
-	c_acolyte 		= 0
-	c_fighter_cleric = 0
-	c_cleric_mage	= 0
-	c_cleric_thief 	= 0
-	c_ranger_cleric	= 0
-	c_f_m_c			= 0
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_simple_weapons	= 1
+	u_medium_swords		= 0
+	u_curved_swords		= 0
+	u_large_blades 		= 0
+	u_bludgeons 		= 0
+	u_axes		 		= 0
+	u_bows 				= 0
+	u_crossbows 		= 0
   STR_VAR
     clab_name 		= EVAL ~k9myst~
-	race 			= ~all~
+	class 			= ~champion~
 	s_Life 			= ~paladin~
 	s_Death 		= ~x~
 	s_Benediction 	= ~paladin~
