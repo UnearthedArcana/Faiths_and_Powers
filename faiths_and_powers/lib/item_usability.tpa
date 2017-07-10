@@ -202,6 +202,7 @@ COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~
 		WRITE_BYTE  0x1f (~%m_class%~ BAND ~0b00101000~) 				// make usable by divine multiclasses
 		WRITE_BYTE  0x21 (~%r_class%~ BAND ~0b11001111~) 				// make usable by rangers/paladins
 		WRITE_BYTE  0x21 (~%d_class%~ BAND ~0b10111111~) 				// make usable by druids
+		WRITE_BYTE  0x29 (~%c_kits%~ BAND ~0b11000000~) 				// make usable by cleric kits
 	  END
     END
   END
@@ -226,7 +227,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
 BUT_ONLY
 //__________________________________________________________________________________
 
-//set weapon item type____________________s_________________________________________
+//set weapon item types_____________________________________________________________
 //
 COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
   PATCH_IF (SOURCE_SIZE > 0x71) BEGIN
@@ -495,5 +496,61 @@ COPY_EXISTING ~kitlist.2da~ ~override~
 BUT_ONLY
 //__________________________________________________________________________________
 
+<<<<<<< HEAD
+//fix trueclass proficiencies for 2.0_______________________________________________
+//
+ACTION_IF FILE_EXISTS_IN_GAME ~enginest.2da~ BEGIN
+  ACTION_IF FILE_EXISTS_IN_GAME ~d5_menu.d5~ BEGIN
+	COPY_EXISTING ~weapprof.2da~ ~override~
+// Cleric
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 11 6 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 12 6 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 13 6 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 14 6 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 15 6 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 16 6 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 17 6 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 18 6 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 19 6 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 20 6 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 21 6 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 22 6 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 23 6 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 24 6 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 25 6 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 26 6 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 27 6 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 28 6 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 29 6 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 30 6 1
+// Druid
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 11 10 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 12 10 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 13 10 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 14 10 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 15 10 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 16 10 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 17 10 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 18 10 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 19 10 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 20 10 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 21 10 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 22 10 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 23 10 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 24 10 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 25 10 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 26 10 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 27 10 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 28 10 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 29 10 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 30 10 1
+// go!
+	  SET_2DA_ENTRIES_NOW ~#weapprof~ 1
+	BUT_ONLY
+  END
+END
+//__________________________________________________________________________________
+=======
+>>>>>>> FETCH_HEAD
 
 
