@@ -19,8 +19,8 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabshgs.2da~ BEGIN
 	u_curved_swords		= 0
 	u_large_blades 		= 0
 	u_bludgeons 		= 0
-	u_axes		 		= 0
-	u_bows 				= 0
+	u_axes		 		= 1
+	u_bows 				= 1
 	u_crossbows 		= 0
   STR_VAR
     clab_name 		= ~clabshgs~
@@ -47,7 +47,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabshgs.2da~ BEGIN
 	s_Light 		= ~x~
 	s_Shadow 		= ~major~
 	s_Magic 		= ~x~
-	s_Perdition     = ~x~
+	s_Perdition     = ~major~
  END
 //__________________________________________________________________________________
 END
@@ -65,8 +65,8 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabsh01.2da~ BEGIN
 	u_curved_swords		= 0
 	u_large_blades 		= 0
 	u_bludgeons 		= 0
-	u_axes		 		= 0
-	u_bows 				= 0
+	u_axes		 		= 1
+	u_bows 				= 1
 	u_crossbows 		= 0
   STR_VAR
     clab_name 		= ~clabsh01~
@@ -93,12 +93,12 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabsh01.2da~ BEGIN
 	s_Light 		= ~x~
 	s_Shadow 		= ~major~
 	s_Magic 		= ~x~
-	s_Perdition     = ~x~
+	s_Perdition     = ~major~
  END
 //__________________________________________________________________________________
 END
 
-ACTION_IF FILE_EXISTS_IN_GAME ~d5pr01.2da~ BEGIN
+ACTION_IF FILE_EXISTS_IN_GAME ~clabpr01.2da~ BEGIN
  ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5_deity.d5~ BEGIN
 
 //DEFINE SPHERE ACCESS______________________________________________________________
@@ -106,13 +106,13 @@ ACTION_IF FILE_EXISTS_IN_GAME ~d5pr01.2da~ BEGIN
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
-	u_chain_armor 		= 0
+	u_chain_armor 		= 1
 	u_plate_armor 		= 0
 	u_simple_weapons	= 1
 	u_medium_swords		= 0
 	u_curved_swords		= 0
 	u_large_blades 		= 0
-	u_bludgeons 		= 0
+	u_bludgeons 		= 1
 	u_axes		 		= 0
 	u_bows 				= 0
 	u_crossbows 		= 0
@@ -125,7 +125,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~d5pr01.2da~ BEGIN
 	s_Destruction 	= ~major~
 	s_Protection 	= ~major~
 	s_War 			= ~minor~
-	s_Exploration   = ~x~
+	s_Exploration   = ~minor~
 	s_Knowledge 	= ~major~
 	s_Deception 	= ~x~
 	s_Thought 		= ~minor~
@@ -148,19 +148,19 @@ ACTION_IF FILE_EXISTS_IN_GAME ~d5pr01.2da~ BEGIN
  END
 END
 
-ACTION_IF FILE_EXISTS_IN_GAME ~d5pr02.2da~ BEGIN
+ACTION_IF FILE_EXISTS_IN_GAME ~clabpr02.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
-	u_chain_armor 		= 0
+	u_chain_armor 		= 1
 	u_plate_armor 		= 0
 	u_simple_weapons	= 1
 	u_medium_swords		= 0
 	u_curved_swords		= 0
 	u_large_blades 		= 0
-	u_bludgeons 		= 0
+	u_bludgeons 		= 1
 	u_axes		 		= 0
 	u_bows 				= 0
 	u_crossbows 		= 0
@@ -173,7 +173,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~d5pr02.2da~ BEGIN
 	s_Destruction 	= ~major~
 	s_Protection 	= ~major~
 	s_War 			= ~minor~
-	s_Exploration   = ~x~
+	s_Exploration   = ~minor~
 	s_Knowledge 	= ~minor~
 	s_Deception 	= ~x~
 	s_Thought 		= ~x~
@@ -194,22 +194,22 @@ ACTION_IF FILE_EXISTS_IN_GAME ~d5pr02.2da~ BEGIN
 //__________________________________________________________________________________
 END
 
-ACTION_IF FILE_EXISTS_IN_GAME ~d5pr03.2da~ BEGIN
+ACTION_IF FILE_EXISTS_IN_GAME ~clabpr03.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
-	u_chain_armor 		= 0
+	u_chain_armor 		= 1
 	u_plate_armor 		= 0
 	u_simple_weapons	= 1
-	u_medium_swords		= 0
+	u_medium_swords		= 1
 	u_curved_swords		= 0
 	u_large_blades 		= 0
-	u_bludgeons 		= 0
+	u_bludgeons 		= 1
 	u_axes		 		= 0
 	u_bows 				= 0
-	u_crossbows 		= 0
+	u_crossbows 		= 1
   STR_VAR
     clab_name 		= ~clabpr03~
 	class 			= ~cleric~
@@ -219,7 +219,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~d5pr03.2da~ BEGIN
 	s_Destruction 	= ~minor~
 	s_Protection 	= ~major~
 	s_War 			= ~major~
-	s_Exploration   = ~x~
+	s_Exploration   = ~minor~
 	s_Knowledge 	= ~major~
 	s_Deception 	= ~x~
 	s_Thought 		= ~minor~
@@ -240,19 +240,19 @@ ACTION_IF FILE_EXISTS_IN_GAME ~d5pr03.2da~ BEGIN
 //__________________________________________________________________________________
 END
 
-ACTION_IF FILE_EXISTS_IN_GAME ~d5pr04.2da~ BEGIN
+ACTION_IF FILE_EXISTS_IN_GAME ~clabpr04.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
-	u_chain_armor 		= 0
+	u_chain_armor 		= 1
 	u_plate_armor 		= 0
 	u_simple_weapons	= 1
 	u_medium_swords		= 0
 	u_curved_swords		= 0
 	u_large_blades 		= 0
-	u_bludgeons 		= 0
+	u_bludgeons 		= 1
 	u_axes		 		= 0
 	u_bows 				= 0
 	u_crossbows 		= 0
@@ -265,7 +265,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~d5pr04.2da~ BEGIN
 	s_Destruction 	= ~minor~
 	s_Protection 	= ~major~
 	s_War 			= ~minor~
-	s_Exploration   = ~x~
+	s_Exploration   = ~minor~
 	s_Knowledge 	= ~minor~
 	s_Deception 	= ~x~
 	s_Thought 		= ~minor~
@@ -292,13 +292,13 @@ ACTION_IF FILE_EXISTS_IN_GAME ~ohtyr.2da~ BEGIN
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
-	u_chain_armor 		= 0
+	u_chain_armor 		= 1
 	u_plate_armor 		= 0
 	u_simple_weapons	= 1
-	u_medium_swords		= 0
+	u_medium_swords		= 1
 	u_curved_swords		= 0
 	u_large_blades 		= 0
-	u_bludgeons 		= 0
+	u_bludgeons 		= 1
 	u_axes		 		= 0
 	u_bows 				= 0
 	u_crossbows 		= 0
@@ -348,7 +348,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabdr01.2da~ BEGIN
 	u_large_blades 		= 0
 	u_bludgeons 		= 0
 	u_axes		 		= 0
-	u_bows 				= 0
+	u_bows 				= 1
 	u_crossbows 		= 0
   STR_VAR
     clab_name 		= ~clabdr01~
@@ -359,7 +359,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabdr01.2da~ BEGIN
 	s_Destruction 	= ~x~
 	s_Protection 	= ~x~
 	s_War 			= ~x~
-	s_Exploration   = ~x~
+	s_Exploration   = ~minor~
 	s_Knowledge 	= ~major~
 	s_Deception 	= ~minor~
 	s_Thought 		= ~minor~
@@ -396,7 +396,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabdr02.2da~ BEGIN
 	u_large_blades 		= 0
 	u_bludgeons 		= 0
 	u_axes		 		= 0
-	u_bows 				= 0
+	u_bows 				= 1
 	u_crossbows 		= 0
   STR_VAR
     clab_name 		= ~clabdr02~
@@ -407,7 +407,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabdr02.2da~ BEGIN
 	s_Destruction 	= ~x~
 	s_Protection 	= ~x~
 	s_War 			= ~x~
-	s_Exploration   = ~x~
+	s_Exploration   = ~minor~
 	s_Knowledge 	= ~major~
 	s_Deception 	= ~minor~
 	s_Thought 		= ~minor~
@@ -442,7 +442,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabdr03.2da~ BEGIN
 	u_large_blades 		= 0
 	u_bludgeons 		= 0
 	u_axes		 		= 0
-	u_bows 				= 0
+	u_bows 				= 1
 	u_crossbows 		= 0
   STR_VAR
     clab_name 		= ~clabdr03~
@@ -453,7 +453,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabdr03.2da~ BEGIN
 	s_Destruction 	= ~x~
 	s_Protection 	= ~x~
 	s_War 			= ~x~
-	s_Exploration   = ~x~
+	s_Exploration   = ~minor~
 	s_Knowledge 	= ~minor~
 	s_Deception 	= ~x~
 	s_Thought 		= ~minor~
@@ -488,7 +488,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabdr04.2da~ BEGIN
 	u_large_blades 		= 0
 	u_bludgeons 		= 0
 	u_axes		 		= 0
-	u_bows 				= 0
+	u_bows 				= 1
 	u_crossbows 		= 0
   STR_VAR
     clab_name 		= ~clabdr04~
@@ -499,7 +499,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabdr04.2da~ BEGIN
 	s_Destruction 	= ~x~
 	s_Protection 	= ~x~
 	s_War 			= ~x~
-	s_Exploration   = ~x~
+	s_Exploration   = ~minor~
 	s_Knowledge 	= ~minor~
 	s_Deception 	= ~major~
 	s_Thought 		= ~minor~
@@ -528,16 +528,16 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabpa01.2da~ BEGIN
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
-	u_chain_armor 		= 0
-	u_plate_armor 		= 0
-	u_simple_weapons	= 1
-	u_medium_swords		= 0
+	u_chain_armor 		= 1
+	u_plate_armor 		= 1
+	u_simple_weapons	= 2
+	u_medium_swords		= 2
 	u_curved_swords		= 0
-	u_large_blades 		= 0
-	u_bludgeons 		= 0
-	u_axes		 		= 0
-	u_bows 				= 0
-	u_crossbows 		= 0
+	u_large_blades 		= 2
+	u_bludgeons 		= 2
+	u_axes		 		= 2
+	u_bows 				= 2
+	u_crossbows 		= 2
   STR_VAR
     clab_name 		= ~clabpa01~
 	class 			= ~champion~
@@ -576,16 +576,16 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabpa02.2da~ BEGIN
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
-	u_chain_armor 		= 0
-	u_plate_armor 		= 0
-	u_simple_weapons	= 1
-	u_medium_swords		= 0
+	u_chain_armor 		= 1
+	u_plate_armor 		= 1
+	u_simple_weapons	= 2
+	u_medium_swords		= 2
 	u_curved_swords		= 0
-	u_large_blades 		= 0
-	u_bludgeons 		= 0
-	u_axes		 		= 0
-	u_bows 				= 0
-	u_crossbows 		= 0
+	u_large_blades 		= 2
+	u_bludgeons 		= 2
+	u_axes		 		= 2
+	u_bows 				= 2
+	u_crossbows 		= 2
   STR_VAR
     clab_name 		= ~clabpa02~
 	class 			= ~champion~
@@ -622,16 +622,16 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabpa03.2da~ BEGIN
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
-	u_chain_armor 		= 0
-	u_plate_armor 		= 0
-	u_simple_weapons	= 1
-	u_medium_swords		= 0
+	u_chain_armor 		= 1
+	u_plate_armor 		= 1
+	u_simple_weapons	= 2
+	u_medium_swords		= 2
 	u_curved_swords		= 0
-	u_large_blades 		= 0
-	u_bludgeons 		= 0
-	u_axes		 		= 0
-	u_bows 				= 0
-	u_crossbows 		= 0
+	u_large_blades 		= 2
+	u_bludgeons 		= 2
+	u_axes		 		= 2
+	u_bows 				= 2
+	u_crossbows 		= 2
   STR_VAR
     clab_name 		= ~clabpa03~
 	class 			= ~champion~
@@ -668,16 +668,16 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabpa04.2da~ BEGIN
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
-	u_chain_armor 		= 0
-	u_plate_armor 		= 0
-	u_simple_weapons	= 1
-	u_medium_swords		= 0
+	u_chain_armor 		= 1
+	u_plate_armor 		= 1
+	u_simple_weapons	= 2
+	u_medium_swords		= 2
 	u_curved_swords		= 0
-	u_large_blades 		= 0
-	u_bludgeons 		= 0
-	u_axes		 		= 0
-	u_bows 				= 0
-	u_crossbows 		= 0
+	u_large_blades 		= 2
+	u_bludgeons 		= 2
+	u_axes		 		= 2
+	u_bows 				= 2
+	u_crossbows 		= 2
   STR_VAR
     clab_name 		= ~clabpa04~
 	class 			= ~champion~
@@ -714,16 +714,16 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabpa05.2da~ BEGIN
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
-	u_chain_armor 		= 0
-	u_plate_armor 		= 0
-	u_simple_weapons	= 1
-	u_medium_swords		= 0
+	u_chain_armor 		= 1
+	u_plate_armor 		= 1
+	u_simple_weapons	= 2
+	u_medium_swords		= 2
 	u_curved_swords		= 0
-	u_large_blades 		= 0
-	u_bludgeons 		= 0
-	u_axes		 		= 0
-	u_bows 				= 0
-	u_crossbows 		= 0
+	u_large_blades 		= 2
+	u_bludgeons 		= 2
+	u_axes		 		= 2
+	u_bows 				= 2
+	u_crossbows 		= 2
   STR_VAR
     clab_name 		= ~clabpa05~
 	class 			= ~champion~
@@ -760,16 +760,16 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabpa06.2da~ BEGIN
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
-	u_chain_armor 		= 0
-	u_plate_armor 		= 0
-	u_simple_weapons	= 1
-	u_medium_swords		= 0
+	u_chain_armor 		= 1
+	u_plate_armor 		= 1
+	u_simple_weapons	= 2
+	u_medium_swords		= 2
 	u_curved_swords		= 0
-	u_large_blades 		= 0
-	u_bludgeons 		= 0
-	u_axes		 		= 0
-	u_bows 				= 0
-	u_crossbows 		= 0
+	u_large_blades 		= 2
+	u_bludgeons 		= 2
+	u_axes		 		= 2
+	u_bows 				= 2
+	u_crossbows 		= 2
   STR_VAR
     clab_name 		= ~clabpa06~
 	class 			= ~champion~
@@ -806,15 +806,15 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabrn01.2da~ BEGIN
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
-	u_chain_armor 		= 0
+	u_chain_armor 		= 1
 	u_plate_armor 		= 0
-	u_simple_weapons	= 1
-	u_medium_swords		= 0
+	u_simple_weapons	= 2
+	u_medium_swords		= 2
 	u_curved_swords		= 0
-	u_large_blades 		= 0
-	u_bludgeons 		= 0
-	u_axes		 		= 0
-	u_bows 				= 0
+	u_large_blades 		= 2
+	u_bludgeons 		= 2
+	u_axes		 		= 2
+	u_bows 				= 2
 	u_crossbows 		= 0
   STR_VAR
     clab_name 		= ~clabrn01~
@@ -826,7 +826,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabrn01.2da~ BEGIN
 	s_Destruction 	= ~x~
 	s_Protection 	= ~ranger~
 	s_War 			= ~x~
-	s_Exploration   = ~x~
+	s_Exploration   = ~ranger~
 	s_Knowledge 	= ~x~
 	s_Deception 	= ~x~
 	s_Thought 		= ~x~
@@ -856,13 +856,13 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabrn02.2da~ BEGIN
 	u_chain_armor 		= 0
 	u_plate_armor 		= 0
 	u_simple_weapons	= 1
-	u_medium_swords		= 0
+	u_medium_swords		= 1
 	u_curved_swords		= 0
-	u_large_blades 		= 0
-	u_bludgeons 		= 0
-	u_axes		 		= 0
-	u_bows 				= 0
-	u_crossbows 		= 0
+	u_large_blades 		= 1
+	u_bludgeons 		= 1
+	u_axes		 		= 1
+	u_bows 				= 5
+	u_crossbows 		= 5
   STR_VAR
     clab_name 		= ~clabrn02~
 	class 			= ~scout~
@@ -872,7 +872,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabrn02.2da~ BEGIN
 	s_Destruction 	= ~x~
 	s_Protection 	= ~ranger~
 	s_War 			= ~x~
-	s_Exploration   = ~x~
+	s_Exploration   = ~ranger~
 	s_Knowledge 	= ~x~
 	s_Deception 	= ~x~
 	s_Thought 		= ~x~
@@ -901,14 +901,14 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabrn03.2da~ BEGIN
 	u_leather_armor 	= 1
 	u_chain_armor 		= 0
 	u_plate_armor 		= 0
-	u_simple_weapons	= 1
-	u_medium_swords		= 0
+	u_simple_weapons	= 2
+	u_medium_swords		= 2
 	u_curved_swords		= 0
 	u_large_blades 		= 0
-	u_bludgeons 		= 0
-	u_axes		 		= 0
-	u_bows 				= 0
-	u_crossbows 		= 0
+	u_bludgeons 		= 2
+	u_axes		 		= 2
+	u_bows 				= 2
+	u_crossbows 		= 2
   STR_VAR
     clab_name 		= ~clabrn03~
 	class 			= ~scout~
@@ -918,7 +918,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabrn03.2da~ BEGIN
 	s_Destruction 	= ~x~
 	s_Protection 	= ~x~
 	s_War 			= ~x~
-	s_Exploration   = ~x~
+	s_Exploration   = ~ranger~
 	s_Knowledge 	= ~x~
 	s_Deception 	= ~ranger~
 	s_Thought 		= ~ranger~
@@ -948,13 +948,13 @@ ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~d5_class.2da~ ~clabrn04~)) BEGIN
 	u_leather_armor 	= 1
 	u_chain_armor 		= 0
 	u_plate_armor 		= 0
-	u_simple_weapons	= 1
+	u_simple_weapons	= 2
 	u_medium_swords		= 0
 	u_curved_swords		= 0
 	u_large_blades 		= 0
 	u_bludgeons 		= 0
-	u_axes		 		= 0
-	u_bows 				= 0
+	u_axes		 		= 2
+	u_bows 				= 2
 	u_crossbows 		= 0
   STR_VAR
     clab_name 		= ~CLABRN04~
@@ -966,7 +966,7 @@ ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~d5_class.2da~ ~clabrn04~)) BEGIN
 	s_Destruction 	= ~x~
 	s_Protection 	= ~ranger~
 	s_War 			= ~x~
-	s_Exploration   = ~x~
+	s_Exploration   = ~ranger~
 	s_Knowledge 	= ~ranger~
 	s_Deception 	= ~x~
 	s_Thought 		= ~x~
@@ -994,15 +994,15 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabrn05.2da~ BEGIN
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
-	u_chain_armor 		= 0
+	u_chain_armor 		= 1
 	u_plate_armor 		= 0
-	u_simple_weapons	= 1
-	u_medium_swords		= 0
+	u_simple_weapons	= 2
+	u_medium_swords		= 2
 	u_curved_swords		= 0
-	u_large_blades 		= 0
-	u_bludgeons 		= 0
-	u_axes		 		= 0
-	u_bows 				= 0
+	u_large_blades 		= 2
+	u_bludgeons 		= 2
+	u_axes		 		= 2
+	u_bows 				= 2
 	u_crossbows 		= 0
   STR_VAR
     clab_name 		= ~clabrn05~
@@ -1013,7 +1013,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabrn05.2da~ BEGIN
 	s_Destruction 	= ~x~
 	s_Protection 	= ~x~
 	s_War 			= ~x~
-	s_Exploration   = ~x~
+	s_Exploration   = ~ranger~
 	s_Knowledge 	= ~x~
 	s_Deception 	= ~x~
 	s_Thought 		= ~x~

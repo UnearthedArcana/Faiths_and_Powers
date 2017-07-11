@@ -16,32 +16,32 @@ ACTION_IF FILE_EXISTS_IN_GAME ~a#cyric.2da~ BEGIN
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
-	u_chain_armor 		= 0
+	u_chain_armor 		= 1
 	u_plate_armor 		= 0
 	u_simple_weapons	= 1
-	u_medium_swords		= 0
+	u_medium_swords		= 1
 	u_curved_swords		= 0
 	u_large_blades 		= 0
 	u_bludgeons 		= 0
 	u_axes		 		= 0
 	u_bows 				= 0
-	u_crossbows 		= 0
+	u_crossbows 		= 1
   STR_VAR
     clab_name 		= EVAL ~a#cyric~
 	class 			= ~cleric~
 	s_Life 			= ~minor~
 	s_Death 		= ~major~
-	s_Benediction 	= ~major~
+	s_Benediction 	= ~minor~
 	s_Destruction 	= ~major~
-	s_Protection 	= ~minor~
+	s_Protection 	= ~x~
 	s_War 			= ~x~
-	s_Exploration   = ~x~
-	s_Knowledge 	= ~major~
-	s_Deception 	= ~minor~
+	s_Exploration   = ~minor~
+	s_Knowledge 	= ~x~
+	s_Deception 	= ~major~
 	s_Thought 		= ~minor~
 	s_Dread 		= ~major~
-	s_Vigor 		= ~x~
-	s_Affliction 	= ~minor~
+	s_Vigor 		= ~minor~
+	s_Affliction 	= ~major~
 	s_Animal 		= ~x~
 	s_Plant 		= ~x~
 	s_Earth 		= ~x~
@@ -51,7 +51,7 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	s_Light 		= ~x~
 	s_Shadow 		= ~major~
 	s_Magic 		= ~minor~
-	s_Perdition     = ~x~
+	s_Perdition     = ~major~
 END
 //__________________________________________________________________________________
 END
@@ -66,15 +66,15 @@ ACTION_IF FILE_EXISTS_IN_GAME ~a#feyw.2da~ BEGIN
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
-	u_chain_armor 		= 0
+	u_chain_armor 		= 1
 	u_plate_armor 		= 0
 	u_simple_weapons	= 1
-	u_medium_swords		= 0
+	u_medium_swords		= 2
 	u_curved_swords		= 0
 	u_large_blades 		= 0
 	u_bludgeons 		= 0
 	u_axes		 		= 0
-	u_bows 				= 0
+	u_bows 				= 2
 	u_crossbows 		= 0
   STR_VAR
     clab_name 		= EVAL ~a#feyw~
@@ -85,7 +85,7 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	s_Destruction 	= ~minor~
 	s_Protection 	= ~major~
 	s_War 			= ~major~
-	s_Exploration   = ~x~
+	s_Exploration   = ~major~
 	s_Knowledge 	= ~major~
 	s_Deception 	= ~x~
 	s_Thought 		= ~minor~
@@ -119,7 +119,7 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	u_chain_armor 		= 0
 	u_plate_armor 		= 0
 	u_simple_weapons	= 1
-	u_medium_swords		= 0
+	u_medium_swords		= 1
 	u_curved_swords		= 0
 	u_large_blades 		= 0
 	u_bludgeons 		= 0
@@ -169,13 +169,13 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	u_chain_armor 		= 0
 	u_plate_armor 		= 0
 	u_simple_weapons	= 1
-	u_medium_swords		= 0
+	u_medium_swords		= 1
 	u_curved_swords		= 0
 	u_large_blades 		= 0
 	u_bludgeons 		= 0
 	u_axes		 		= 0
 	u_bows 				= 0
-	u_crossbows 		= 0
+	u_crossbows 		= 1
   STR_VAR
     clab_name 		= EVAL ~a#ogma~
 	class 			= ~acolyte~
@@ -185,7 +185,7 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	s_Destruction 	= ~minor~
 	s_Protection 	= ~major~
 	s_War 			= ~x~
-	s_Exploration   = ~x~
+	s_Exploration   = ~minor~
 	s_Knowledge 	= ~focus~
 	s_Deception 	= ~minor~
 	s_Thought 		= ~major~
@@ -257,7 +257,7 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	s_Destruction 	= ~x~
 	s_Protection 	= ~x~
 	s_War 			= ~x~
-	s_Exploration   = ~x~
+	s_Exploration   = ~minor~
 	s_Knowledge 	= ~minor~
 	s_Deception 	= ~x~
 	s_Thought 		= ~minor~
@@ -288,16 +288,16 @@ ACTION_IF FILE_EXISTS_IN_GAME ~a#red.2da~ BEGIN
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
-	u_chain_armor 		= 0
-	u_plate_armor 		= 0
-	u_simple_weapons	= 1
-	u_medium_swords		= 0
+	u_chain_armor 		= 1
+	u_plate_armor 		= 1
+	u_simple_weapons	= 2
+	u_medium_swords		= 2
 	u_curved_swords		= 0
 	u_large_blades 		= 0
-	u_bludgeons 		= 0
+	u_bludgeons 		= 2
 	u_axes		 		= 0
 	u_bows 				= 0
-	u_crossbows 		= 0
+	u_crossbows 		= 2
   STR_VAR
     clab_name 		= EVAL ~a#red~
 	class 			= ~cleric~
@@ -307,7 +307,7 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	s_Destruction 	= ~major~
 	s_Protection 	= ~major~
 	s_War 			= ~major~
-	s_Exploration   = ~x~
+	s_Exploration   = ~minor~
 	s_Knowledge 	= ~minor~
 	s_Deception 	= ~x~
 	s_Thought 		= ~minor~
@@ -336,31 +336,31 @@ ACTION_IF FILE_EXISTS_IN_GAME ~a#shar.2da~ BEGIN
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
-	u_chain_armor 		= 0
+	u_chain_armor 		= 1
 	u_plate_armor 		= 0
 	u_simple_weapons	= 1
 	u_medium_swords		= 0
 	u_curved_swords		= 0
 	u_large_blades 		= 0
-	u_bludgeons 		= 0
+	u_bludgeons 		= 1
 	u_axes		 		= 0
 	u_bows 				= 0
-	u_crossbows 		= 0
+	u_crossbows 		= 1
   STR_VAR
     clab_name 		= EVAL ~a#shar~
 	class 			= ~cleric~
 	s_Life 			= ~minor~
 	s_Death 		= ~major~
-	s_Benediction 	= ~major~
-	s_Destruction 	= ~minor~
+	s_Benediction 	= ~x~
+	s_Destruction 	= ~major~
 	s_Protection 	= ~minor~
 	s_War 			= ~x~
 	s_Exploration   = ~x~
 	s_Knowledge 	= ~minor~
-	s_Deception 	= ~major~
-	s_Thought 		= ~major~
+	s_Deception 	= ~minor~
+	s_Thought 		= ~minor~
 	s_Dread 		= ~major~
-	s_Vigor 		= ~minor~
+	s_Vigor 		= ~x~
 	s_Affliction 	= ~minor~
 	s_Animal 		= ~x~
 	s_Plant 		= ~x~
@@ -371,7 +371,7 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	s_Light 		= ~x~
 	s_Shadow 		= ~major~
 	s_Magic 		= ~major~
-	s_Perdition     = ~x~
+	s_Perdition     = ~major~
 END
 //__________________________________________________________________________________
 END
@@ -384,41 +384,41 @@ ACTION_IF FILE_EXISTS_IN_GAME ~a#temp.2da~ BEGIN
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
-	u_chain_armor 		= 0
+	u_chain_armor 		= 1
 	u_plate_armor 		= 0
-	u_simple_weapons	= 1
-	u_medium_swords		= 0
+	u_simple_weapons	= 2
+	u_medium_swords		= 2
 	u_curved_swords		= 0
 	u_large_blades 		= 0
-	u_bludgeons 		= 0
-	u_axes		 		= 0
+	u_bludgeons 		= 2
+	u_axes		 		= 2
 	u_bows 				= 0
-	u_crossbows 		= 0
+	u_crossbows 		= 1
   STR_VAR
     clab_name 		= EVAL ~a#temp~
 	class 			= ~cleric~
 	s_Life 			= ~major~
-	s_Death 		= ~minor~
+	s_Death 		= ~x~
 	s_Benediction 	= ~major~
 	s_Destruction 	= ~major~
 	s_Protection 	= ~major~
-	s_War 			= ~focus~
-	s_Exploration   = ~x~
+	s_War 			= ~major~
+	s_Exploration   = ~minor~
 	s_Knowledge 	= ~minor~
 	s_Deception 	= ~x~
-	s_Thought 		= ~x~
-	s_Dread 		= ~minor~
+	s_Thought 		= ~minor~
+	s_Dread 		= ~x~
 	s_Vigor 		= ~major~
 	s_Affliction 	= ~x~
 	s_Animal 		= ~x~
 	s_Plant 		= ~x~
 	s_Earth 		= ~minor~
 	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~minor~
-	s_Light 		= ~x~
+	s_Air 			= ~minor~
+	s_Fire 			= ~x~
+	s_Light 		= ~minor~
 	s_Shadow 		= ~x~
-	s_Magic 		= ~x~
+	s_Magic 		= ~minor~
 	s_Perdition     = ~x~
 END
 //__________________________________________________________________________________
@@ -432,13 +432,13 @@ ACTION_IF FILE_EXISTS_IN_GAME ~cdilmatr.2da~ BEGIN
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
-	u_chain_armor 		= 0
+	u_chain_armor 		= 1
 	u_plate_armor 		= 0
 	u_simple_weapons	= 1
 	u_medium_swords		= 0
 	u_curved_swords		= 0
 	u_large_blades 		= 0
-	u_bludgeons 		= 0
+	u_bludgeons 		= 1
 	u_axes		 		= 0
 	u_bows 				= 0
 	u_crossbows 		= 0
@@ -446,7 +446,7 @@ LAF ~DEFINE_FNP_KIT_INFO~
     clab_name 		= EVAL ~cdilmatr~
 	class 			= ~cleric~
 	s_Life 			= ~major~
-	s_Death 		= ~minor~
+	s_Death 		= ~x~
 	s_Benediction 	= ~major~
 	s_Destruction 	= ~minor~
 	s_Protection 	= ~major~
@@ -455,9 +455,9 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	s_Knowledge 	= ~major~
 	s_Deception 	= ~x~
 	s_Thought 		= ~minor~
-	s_Dread 		= ~major~
+	s_Dread 		= ~minor~
 	s_Vigor 		= ~major~
-	s_Affliction 	= ~minor~
+	s_Affliction 	= ~major~
 	s_Animal 		= ~x~
 	s_Plant 		= ~x~
 	s_Earth 		= ~x~
@@ -483,12 +483,12 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	u_chain_armor 		= 0
 	u_plate_armor 		= 0
 	u_simple_weapons	= 1
-	u_medium_swords		= 0
+	u_medium_swords		= 1
 	u_curved_swords		= 0
 	u_large_blades 		= 0
 	u_bludgeons 		= 0
-	u_axes		 		= 0
-	u_bows 				= 0
+	u_axes		 		= 1
+	u_bows 				= 1
 	u_crossbows 		= 0
   STR_VAR
     clab_name 		= EVAL ~cdselune~
@@ -499,7 +499,7 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	s_Destruction 	= ~x~
 	s_Protection 	= ~major~
 	s_War 			= ~minor~
-	s_Exploration   = ~x~
+	s_Exploration   = ~minor~
 	s_Knowledge 	= ~major~
 	s_Deception 	= ~minor~
 	s_Thought 		= ~major~
@@ -528,16 +528,16 @@ ACTION_IF FILE_EXISTS_IN_GAME ~cdxvim.2da~ BEGIN
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
-	u_chain_armor 		= 0
+	u_chain_armor 		= 1
 	u_plate_armor 		= 0
 	u_simple_weapons	= 1
 	u_medium_swords		= 0
 	u_curved_swords		= 0
 	u_large_blades 		= 0
-	u_bludgeons 		= 0
+	u_bludgeons 		= 1
 	u_axes		 		= 0
 	u_bows 				= 0
-	u_crossbows 		= 0
+	u_crossbows 		= 1
   STR_VAR
     clab_name 		= EVAL ~cdxvim~
 	class 			= ~cleric~
@@ -563,7 +563,7 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	s_Light 		= ~x~
 	s_Shadow 		= ~minor~
 	s_Magic 		= ~minor~
-	s_Perdition     = ~x~
+	s_Perdition     = ~major~
 END
 //__________________________________________________________________________________
 END
@@ -585,30 +585,30 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	u_bludgeons 		= 0
 	u_axes		 		= 0
 	u_bows 				= 0
-	u_crossbows 		= 0
+	u_crossbows 		= 1
   STR_VAR
     clab_name 		= EVAL ~nmsune~
 	class 			= ~acolyte~
 	s_Life 			= ~major~
 	s_Death 		= ~x~
-	s_Benediction 	= ~minor~
-	s_Destruction 	= ~minor~
-	s_Protection 	= ~major~
+	s_Benediction 	= ~major~
+	s_Destruction 	= ~x~
+	s_Protection 	= ~minor~
 	s_War 			= ~x~
-	s_Exploration   = ~x~
-	s_Knowledge 	= ~minor~
+	s_Exploration   = ~minor~
+	s_Knowledge 	= ~major~
 	s_Deception 	= ~major~
-	s_Thought 		= ~focus~
+	s_Thought 		= ~major~
 	s_Dread 		= ~major~
 	s_Vigor 		= ~major~
-	s_Affliction 	= ~minor~
+	s_Affliction 	= ~x~
 	s_Animal 		= ~x~
 	s_Plant 		= ~x~
 	s_Earth 		= ~x~
 	s_Water 		= ~x~
 	s_Air 			= ~x~
 	s_Fire 			= ~x~
-	s_Light 		= ~major~
+	s_Light 		= ~minor~
 	s_Shadow 		= ~minor~
 	s_Magic 		= ~minor~
 	s_Perdition     = ~x~
@@ -625,13 +625,13 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	u_leather_armor 	= 1
 	u_chain_armor 		= 0
 	u_plate_armor 		= 0
-	u_simple_weapons	= 1
-	u_medium_swords		= 0
+	u_simple_weapons	= 2
+	u_medium_swords		= 2
 	u_curved_swords		= 0
-	u_large_blades 		= 0
-	u_bludgeons 		= 0
-	u_axes		 		= 0
-	u_bows 				= 0
+	u_large_blades 		= 2
+	u_bludgeons 		= 2
+	u_axes		 		= 2
+	u_bows 				= 2
 	u_crossbows 		= 0
   STR_VAR
     clab_name 		= EVAL ~nmrnwlrn~
@@ -642,7 +642,7 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	s_Destruction 	= ~x~
 	s_Protection 	= ~x~
 	s_War 			= ~x~
-	s_Exploration   = ~x~
+	s_Exploration   = ~ranger~
 	s_Knowledge 	= ~x~
 	s_Deception 	= ~x~
 	s_Thought 		= ~x~
@@ -674,12 +674,12 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	u_chain_armor 		= 0
 	u_plate_armor 		= 0
 	u_simple_weapons	= 1
-	u_medium_swords		= 0
+	u_medium_swords		= 1
 	u_curved_swords		= 0
-	u_large_blades 		= 0
-	u_bludgeons 		= 0
-	u_axes		 		= 0
-	u_bows 				= 0
+	u_large_blades 		= 1
+	u_bludgeons 		= 1
+	u_axes		 		= 1
+	u_bows 				= 5
 	u_crossbows 		= 0
   STR_VAR
     clab_name 		= EVAL ~nmrnbsln~
@@ -690,7 +690,7 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	s_Destruction 	= ~x~
 	s_Protection 	= ~x~
 	s_War 			= ~x~
-	s_Exploration   = ~x~
+	s_Exploration   = ~ranger~
 	s_Knowledge 	= ~x~
 	s_Deception 	= ~x~
 	s_Thought 		= ~x~
@@ -721,13 +721,13 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	u_leather_armor 	= 1
 	u_chain_armor 		= 0
 	u_plate_armor 		= 0
-	u_simple_weapons	= 1
+	u_simple_weapons	= 2
 	u_medium_swords		= 0
 	u_curved_swords		= 0
 	u_large_blades 		= 0
 	u_bludgeons 		= 0
 	u_axes		 		= 0
-	u_bows 				= 0
+	u_bows 				= 2
 	u_crossbows 		= 0
   STR_VAR
     clab_name 		= EVAL ~a#feral~
@@ -738,7 +738,7 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	s_Destruction 	= ~x~
 	s_Protection 	= ~x~
 	s_War 			= ~x~
-	s_Exploration   = ~x~
+	s_Exploration   = ~ranger~
 	s_Knowledge 	= ~x~
 	s_Deception 	= ~x~
 	s_Thought 		= ~x~
@@ -767,15 +767,15 @@ ACTION_IF FILE_EXISTS_IN_GAME ~nmrnfrrn.2da~ BEGIN
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
-	u_chain_armor 		= 0
+	u_chain_armor 		= 1
 	u_plate_armor 		= 0
-	u_simple_weapons	= 1
-	u_medium_swords		= 0
+	u_simple_weapons	= 3
+	u_medium_swords		= 3
 	u_curved_swords		= 0
 	u_large_blades 		= 0
 	u_bludgeons 		= 0
-	u_axes		 		= 0
-	u_bows 				= 0
+	u_axes		 		= 3
+	u_bows 				= 3
 	u_crossbows 		= 0
   STR_VAR
     clab_name 		= EVAL ~nmrnfrrn~
@@ -786,7 +786,7 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	s_Destruction 	= ~x~
 	s_Protection 	= ~x~
 	s_War 			= ~x~
-	s_Exploration   = ~x~
+	s_Exploration   = ~ranger~
 	s_Knowledge 	= ~x~
 	s_Deception 	= ~x~
 	s_Thought 		= ~x~
@@ -815,16 +815,16 @@ ACTION_IF FILE_EXISTS_IN_GAME ~a#justif.2da~ BEGIN
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
-	u_chain_armor 		= 0
-	u_plate_armor 		= 0
-	u_simple_weapons	= 1
-	u_medium_swords		= 0
+	u_chain_armor 		= 1
+	u_plate_armor 		= 1
+	u_simple_weapons	= 3
+	u_medium_swords		= 3
 	u_curved_swords		= 0
-	u_large_blades 		= 0
-	u_bludgeons 		= 0
-	u_axes		 		= 0
-	u_bows 				= 0
-	u_crossbows 		= 0
+	u_large_blades 		= 3
+	u_bludgeons 		= 3
+	u_axes		 		= 3
+	u_bows 				= 3
+	u_crossbows 		= 3
   STR_VAR
     clab_name 		= EVAL ~a#justif~
 	class 			= ~scout~
@@ -861,13 +861,13 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabauri.2da~ BEGIN
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
-	u_chain_armor 		= 0
+	u_chain_armor 		= 1
 	u_plate_armor 		= 0
 	u_simple_weapons	= 1
 	u_medium_swords		= 0
 	u_curved_swords		= 0
 	u_large_blades 		= 0
-	u_bludgeons 		= 0
+	u_bludgeons 		= 1
 	u_axes		 		= 0
 	u_bows 				= 0
 	u_crossbows 		= 0
@@ -914,8 +914,8 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	u_curved_swords		= 0
 	u_large_blades 		= 0
 	u_bludgeons 		= 0
-	u_axes		 		= 0
-	u_bows 				= 0
+	u_axes		 		= 1
+	u_bows 				= 1
 	u_crossbows 		= 0
   STR_VAR
     clab_name 		= EVAL ~clabiceg~
@@ -926,7 +926,7 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	s_Destruction 	= ~x~
 	s_Protection 	= ~major~
 	s_War 			= ~minor~
-	s_Exploration   = ~x~
+	s_Exploration   = ~major~
 	s_Knowledge 	= ~minor~
 	s_Deception 	= ~x~
 	s_Thought 		= ~minor~
@@ -953,13 +953,13 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabeart.2da~ BEGIN
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
-	u_chain_armor 		= 0
+	u_chain_armor 		= 1
 	u_plate_armor 		= 0
 	u_simple_weapons	= 1
 	u_medium_swords		= 0
 	u_curved_swords		= 0
 	u_large_blades 		= 0
-	u_bludgeons 		= 0
+	u_bludgeons 		= 1
 	u_axes		 		= 0
 	u_bows 				= 0
 	u_crossbows 		= 0
@@ -1007,7 +1007,7 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	u_large_blades 		= 0
 	u_bludgeons 		= 0
 	u_axes		 		= 0
-	u_bows 				= 0
+	u_bows 				= 1
 	u_crossbows 		= 0
   STR_VAR
     clab_name 		= EVAL ~clableaf~
@@ -1018,7 +1018,7 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	s_Destruction 	= ~x~
 	s_Protection 	= ~major~
 	s_War 			= ~x~
-	s_Exploration   = ~x~
+	s_Exploration   = ~major~
 	s_Knowledge 	= ~minor~
 	s_Deception 	= ~x~
 	s_Thought 		= ~minor~
@@ -1053,7 +1053,7 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	u_large_blades 		= 0
 	u_bludgeons 		= 0
 	u_axes		 		= 0
-	u_bows 				= 0
+	u_bows 				= 1
 	u_crossbows 		= 0
   STR_VAR
     clab_name 		= EVAL ~clabtree~
@@ -1064,7 +1064,7 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	s_Destruction 	= ~x~
 	s_Protection 	= ~minor~
 	s_War 			= ~x~
-	s_Exploration   = ~x~
+	s_Exploration   = ~major~
 	s_Knowledge 	= ~minor~
 	s_Deception 	= ~x~
 	s_Thought 		= ~minor~
@@ -1091,16 +1091,16 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabgruu.2da~ BEGIN
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
-	u_chain_armor 		= 0
-	u_plate_armor 		= 0
+	u_chain_armor 		= 1
+	u_plate_armor 		= 1
 	u_simple_weapons	= 1
-	u_medium_swords		= 0
+	u_medium_swords		= 1
 	u_curved_swords		= 0
 	u_large_blades 		= 0
-	u_bludgeons 		= 0
-	u_axes		 		= 0
+	u_bludgeons 		= 1
+	u_axes		 		= 1
 	u_bows 				= 0
-	u_crossbows 		= 0
+	u_crossbows 		= 1
   STR_VAR
     clab_name 		= EVAL ~clabgruu~
 	class 			= ~cleric~
@@ -1126,7 +1126,7 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	s_Light 		= ~x~
 	s_Shadow 		= ~x~
 	s_Magic 		= ~x~
-	s_Perdition     = ~x~
+	s_Perdition     = ~major~
 END
 //__________________________________________________________________________________
 END
@@ -1137,16 +1137,16 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabluth.2da~ BEGIN
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
-	u_chain_armor 		= 0
+	u_chain_armor 		= 1
 	u_plate_armor 		= 0
 	u_simple_weapons	= 1
 	u_medium_swords		= 0
 	u_curved_swords		= 0
 	u_large_blades 		= 0
-	u_bludgeons 		= 0
+	u_bludgeons 		= 1
 	u_axes		 		= 0
 	u_bows 				= 0
-	u_crossbows 		= 0
+	u_crossbows 		= 1
   STR_VAR
     clab_name 		= EVAL ~clabluth~
 	class 			= ~cleric~
@@ -1191,7 +1191,7 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	u_large_blades 		= 0
 	u_bludgeons 		= 0
 	u_axes		 		= 0
-	u_bows 				= 0
+	u_bows 				= 1
 	u_crossbows 		= 0
   STR_VAR
     clab_name 		= EVAL ~k9hive~
@@ -1229,16 +1229,16 @@ ACTION_IF FILE_EXISTS_IN_GAME ~k9ilma.2da~ BEGIN
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
-	u_chain_armor 		= 0
-	u_plate_armor 		= 0
-	u_simple_weapons	= 1
-	u_medium_swords		= 0
+	u_chain_armor 		= 1
+	u_plate_armor 		= 1
+	u_simple_weapons	= 2
+	u_medium_swords		= 2
 	u_curved_swords		= 0
-	u_large_blades 		= 0
-	u_bludgeons 		= 0
-	u_axes		 		= 0
-	u_bows 				= 0
-	u_crossbows 		= 0
+	u_large_blades 		= 2
+	u_bludgeons 		= 2
+	u_axes		 		= 2
+	u_bows 				= 2
+	u_crossbows 		= 2
   STR_VAR
     clab_name 		= EVAL ~k9ilma~
 	class 			= ~champion~
@@ -1277,13 +1277,13 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	u_leather_armor 	= 1
 	u_chain_armor 		= 0
 	u_plate_armor 		= 0
-	u_simple_weapons	= 1
-	u_medium_swords		= 0
+	u_simple_weapons	= 2
+	u_medium_swords		= 2
 	u_curved_swords		= 0
-	u_large_blades 		= 0
-	u_bludgeons 		= 0
-	u_axes		 		= 0
-	u_bows 				= 0
+	u_large_blades 		= 2
+	u_bludgeons 		= 2
+	u_axes		 		= 2
+	u_bows 				= 3
 	u_crossbows 		= 0
   STR_VAR
     clab_name 		= EVAL ~k9miel~
@@ -1294,7 +1294,7 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	s_Destruction 	= ~x~
 	s_Protection 	= ~paladin~
 	s_War 			= ~x~
-	s_Exploration   = ~x~
+	s_Exploration   = ~paladin~
 	s_Knowledge 	= ~paladin~
 	s_Deception 	= ~x~
 	s_Thought 		= ~x~
@@ -1321,16 +1321,16 @@ ACTION_IF FILE_EXISTS_IN_GAME ~k9myst.2da~ BEGIN
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
-	u_chain_armor 		= 0
+	u_chain_armor 		= 1
 	u_plate_armor 		= 0
-	u_simple_weapons	= 1
-	u_medium_swords		= 0
+	u_simple_weapons	= 2
+	u_medium_swords		= 2
 	u_curved_swords		= 0
-	u_large_blades 		= 0
-	u_bludgeons 		= 0
-	u_axes		 		= 0
-	u_bows 				= 0
-	u_crossbows 		= 0
+	u_large_blades 		= 2
+	u_bludgeons 		= 2
+	u_axes		 		= 2
+	u_bows 				= 2
+	u_crossbows 		= 2
   STR_VAR
     clab_name 		= EVAL ~k9myst~
 	class 			= ~champion~

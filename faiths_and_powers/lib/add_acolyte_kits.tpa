@@ -23,7 +23,7 @@ ADD_KIT ~B_PRIEST_ILMATER~
 //2            		R R O A N E X L S R O X S N A E E U A R I C A O O O R N E H P O A A A A A A A A 1 1 1 1 1 1 1 1 1 1 2
 //1            		D D W R T D E E W D R E W A K R R B R D N E F W W W T G D I O N 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0
 ~B_PRIEST_ILMATER  	0 0 0 0 1 1 0 1~
-~B_PRIEST_ILMATER       1 1 1 1 1 1 1 1 0 0 1 0 0 0 0 1 1 1 1 0 1 1 1 1 0 0 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
+~B_PRIEST_ILMATER   1 1 1 1 1 1 1 1 0 0 1 0 0 0 0 1 1 1 1 0 1 1 1 1 0 0 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
 
 //MINIMUM KIT STATS_________________________________________________________________
 //                 STR DEX CON INT WIS CHR
@@ -125,11 +125,11 @@ COPY ~faiths_and_powers/kits/acolytes/314_ilmater/b_ilm03.spl~ ~override~  // En
     clab_name 		= ~b_ailm~
 	class 			= ~acolyte~
 	s_Life 			= ~major~
-	s_Death 		= ~minor~
+	s_Death 		= ~x~
 	s_Benediction 	= ~major~
 	s_Destruction 	= ~minor~
 	s_Protection 	= ~focus~
-	s_War 			= ~minor~
+	s_War 			= ~x~
 	s_Exploration   = ~x~
 	s_Knowledge 	= ~major~
 	s_Deception 	= ~x~
@@ -143,7 +143,7 @@ COPY ~faiths_and_powers/kits/acolytes/314_ilmater/b_ilm03.spl~ ~override~  // En
 	s_Water 		= ~x~
 	s_Air 			= ~x~
 	s_Fire 			= ~x~
-	s_Light 		= ~major~
+	s_Light 		= ~minor~
 	s_Shadow 		= ~x~
 	s_Magic 		= ~minor~
 	s_Perdition     = ~x~
@@ -279,21 +279,21 @@ COPY_EXISTING ~SPPR303.spl~ ~override/b_den04.spl~ // dispel magic
   STR_VAR
     clab_name 		= ~b_aden~
 	class 			= ~acolyte~
-	s_Life 			= ~major~
+	s_Life 			= ~minor~
 	s_Death 		= ~x~
 	s_Benediction 	= ~major~
 	s_Destruction 	= ~x~
 	s_Protection 	= ~major~
-	s_War 			= ~minor~
-	s_Exploration   = ~x~
+	s_War 			= ~x~
+	s_Exploration   = ~minor~
 	s_Knowledge 	= ~focus~
 	s_Deception 	= ~minor~
 	s_Thought 		= ~major~
 	s_Dread 		= ~minor~
 	s_Vigor 		= ~minor~
 	s_Affliction 	= ~x~
-	s_Animal 		= ~minor~
-	s_Plant 		= ~minor~
+	s_Animal 		= ~x~
+	s_Plant 		= ~x~
 	s_Earth 		= ~x~
 	s_Water 		= ~x~
 	s_Air 			= ~x~
@@ -455,16 +455,16 @@ COPY_EXISTING ~SPWI104.spl~ ~override/b_sun01.spl~ // Charm person
 	s_Death 		= ~x~
 	s_Benediction 	= ~major~
 	s_Destruction 	= ~x~
-	s_Protection 	= ~major~
+	s_Protection 	= ~minor~
 	s_War 			= ~x~
-	s_Exploration   = ~x~
+	s_Exploration   = ~minor~
 	s_Knowledge 	= ~major~
 	s_Deception 	= ~major~
 	s_Thought 		= ~focus~
 	s_Dread 		= ~major~
-	s_Vigor 		= ~minor~
+	s_Vigor 		= ~major~
 	s_Affliction 	= ~x~
-	s_Animal 		= ~major~
+	s_Animal 		= ~x~
 	s_Plant 		= ~x~
 	s_Earth 		= ~x~
 	s_Water 		= ~x~
@@ -583,7 +583,7 @@ END
 	u_bludgeons 		= 0
 	u_axes		 		= 0
 	u_bows 				= 0
-	u_crossbows 		= 0
+	u_crossbows 		= 1
   STR_VAR
     clab_name 		= ~b_2sun~
 	class 			= ~cleric_thief~
@@ -591,16 +591,16 @@ END
 	s_Death 		= ~x~
 	s_Benediction 	= ~major~
 	s_Destruction 	= ~x~
-	s_Protection 	= ~major~
+	s_Protection 	= ~minor~
 	s_War 			= ~x~
-	s_Exploration   = ~x~
+	s_Exploration   = ~minor~
 	s_Knowledge 	= ~major~
 	s_Deception 	= ~major~
 	s_Thought 		= ~focus~
 	s_Dread 		= ~major~
-	s_Vigor 		= ~minor~
+	s_Vigor 		= ~major~
 	s_Affliction 	= ~x~
-	s_Animal 		= ~major~
+	s_Animal 		= ~x~
 	s_Plant 		= ~x~
 	s_Earth 		= ~x~
 	s_Water 		= ~x~
@@ -719,14 +719,14 @@ COPY ~faiths_and_powers/kits/acolytes/322_tempus/b_tem02.spl~ ~override~  // WP 
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
-	u_chain_armor 		= 0
+	u_chain_armor 		= 1
 	u_plate_armor 		= 0
-	u_simple_weapons	= 1
-	u_medium_swords		= 0
+	u_simple_weapons	= 2
+	u_medium_swords		= 2
 	u_curved_swords		= 0
 	u_large_blades 		= 0
-	u_bludgeons 		= 0
-	u_axes		 		= 0
+	u_bludgeons 		= 2
+	u_axes		 		= 2
 	u_bows 				= 0
 	u_crossbows 		= 0
   STR_VAR
@@ -738,14 +738,14 @@ COPY ~faiths_and_powers/kits/acolytes/322_tempus/b_tem02.spl~ ~override~  // WP 
 	s_Destruction 	= ~major~
 	s_Protection 	= ~major~
 	s_War 			= ~focus~
-	s_Exploration   = ~x~
+	s_Exploration   = ~minor~
 	s_Knowledge 	= ~x~
 	s_Deception 	= ~x~
-	s_Thought 		= ~minor~
+	s_Thought 		= ~x~
 	s_Dread 		= ~minor~
 	s_Vigor 		= ~major~
-	s_Affliction 	= ~major~
-	s_Animal 		= ~minor~
+	s_Affliction 	= ~minor~
+	s_Animal 		= ~x~
 	s_Plant 		= ~x~
 	s_Earth 		= ~minor~
 	s_Water 		= ~x~
@@ -922,9 +922,9 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	s_Destruction 	= ~major~
 	s_Protection 	= ~major~
 	s_War 			= ~x~
-	s_Exploration   = ~x~
+	s_Exploration   = ~minor~
 	s_Knowledge 	= ~major~
-	s_Deception 	= ~minor~
+	s_Deception 	= ~x~
 	s_Thought 		= ~minor~
 	s_Dread 		= ~minor~
 	s_Vigor 		= ~minor~
@@ -937,7 +937,7 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	s_Fire 			= ~minor~
 	s_Light 		= ~major~
 	s_Shadow 		= ~minor~
-	s_Magic 		= ~major~
+	s_Magic 		= ~focus~
 	s_Perdition     = ~x~
  END
 
@@ -1064,22 +1064,22 @@ COPY ~faiths_and_powers/kits/acolytes/329_mask/d5_mask3.cre~ ~override~
 	u_bludgeons 		= 0
 	u_axes		 		= 0
 	u_bows 				= 0
-	u_crossbows 		= 0
+	u_crossbows 		= 1
   STR_VAR
     clab_name 		= ~d5amas~
 	class 			= ~acolyte~
 	s_Life 			= ~major~
 	s_Death 		= ~minor~
-	s_Benediction 	= ~major~
-	s_Destruction 	= ~minor~
+	s_Benediction 	= ~minor~
+	s_Destruction 	= ~major~
 	s_Protection 	= ~minor~
 	s_War 			= ~x~
 	s_Exploration   = ~x~
 	s_Knowledge 	= ~major~
 	s_Deception 	= ~major~
-	s_Thought 		= ~major~
+	s_Thought 		= ~minor~
 	s_Dread 		= ~major~
-	s_Vigor 		= ~minor~
+	s_Vigor 		= ~x~
 	s_Affliction 	= ~minor~
 	s_Animal 		= ~x~
 	s_Plant 		= ~x~
@@ -1200,22 +1200,22 @@ END
 	u_bludgeons 		= 0
 	u_axes		 		= 0
 	u_bows 				= 0
-	u_crossbows 		= 0
+	u_crossbows 		= 1
   STR_VAR
     clab_name 		= ~d52mas~
 	class 			= ~cleric_thief~
 	s_Life 			= ~major~
 	s_Death 		= ~minor~
-	s_Benediction 	= ~major~
-	s_Destruction 	= ~minor~
+	s_Benediction 	= ~minor~
+	s_Destruction 	= ~major~
 	s_Protection 	= ~minor~
 	s_War 			= ~x~
 	s_Exploration   = ~x~
 	s_Knowledge 	= ~major~
-	s_Deception 	= ~focus~
-	s_Thought 		= ~major~
+	s_Deception 	= ~major~
+	s_Thought 		= ~minor~
 	s_Dread 		= ~major~
-	s_Vigor 		= ~minor~
+	s_Vigor 		= ~x~
 	s_Affliction 	= ~minor~
 	s_Animal 		= ~x~
 	s_Plant 		= ~x~
@@ -1224,7 +1224,7 @@ END
 	s_Air 			= ~x~
 	s_Fire 			= ~x~
 	s_Light 		= ~x~
-	s_Shadow 		= ~major~
+	s_Shadow 		= ~focus~
 	s_Magic 		= ~minor~
 	s_Perdition     = ~x~
  END
@@ -1352,17 +1352,17 @@ COPY_EXISTING ~spwi815.spl~ ~override/d5shabl.spl~
 	class 			= ~acolyte~
 	s_Life 			= ~minor~
 	s_Death 		= ~major~
-	s_Benediction 	= ~minor~
+	s_Benediction 	= ~x~
 	s_Destruction 	= ~major~
 	s_Protection 	= ~minor~
 	s_War 			= ~x~
 	s_Exploration   = ~x~
 	s_Knowledge 	= ~minor~
-	s_Deception 	= ~major~
-	s_Thought 		= ~major~
+	s_Deception 	= ~minor~
+	s_Thought 		= ~minor~
 	s_Dread 		= ~major~
-	s_Vigor 		= ~minor~
-	s_Affliction 	 = ~minor~
+	s_Vigor 		= ~x~
+	s_Affliction 	= ~minor~
 	s_Animal 		= ~x~
 	s_Plant 		= ~x~
 	s_Earth 		= ~x~
@@ -1372,7 +1372,7 @@ COPY_EXISTING ~spwi815.spl~ ~override/d5shabl.spl~
 	s_Light 		= ~x~
 	s_Shadow 		= ~focus~
 	s_Magic 		= ~major~
-	s_Perdition     = ~x~
+	s_Perdition     = ~major~
  END
 
 //____________________________CLERIC/MAGE_____________________________________________
@@ -1488,16 +1488,16 @@ END
 	class 			= ~cleric_mage~
 	s_Life 			= ~minor~
 	s_Death 		= ~major~
-	s_Benediction 	= ~minor~
+	s_Benediction 	= ~x~
 	s_Destruction 	= ~major~
 	s_Protection 	= ~minor~
 	s_War 			= ~x~
 	s_Exploration   = ~x~
 	s_Knowledge 	= ~minor~
-	s_Deception 	= ~major~
-	s_Thought 		= ~major~
+	s_Deception 	= ~minor~
+	s_Thought 		= ~minor~
 	s_Dread 		= ~major~
-	s_Vigor 		= ~minor~
+	s_Vigor 		= ~x~
 	s_Affliction 	= ~minor~
 	s_Animal 		= ~x~
 	s_Plant 		= ~x~
@@ -1508,7 +1508,7 @@ END
 	s_Light 		= ~x~
 	s_Shadow 		= ~focus~
 	s_Magic 		= ~major~
-	s_Perdition     = ~x~
+	s_Perdition     = ~major~
  END
 
 END
@@ -1634,7 +1634,7 @@ COPY ~faiths_and_powers/kits/acolytes/331_moander/b_moa3.spl~ ~override~    //Im
 	u_curved_swords		= 0
 	u_large_blades 		= 0
 	u_bludgeons 		= 0
-	u_axes		 		= 0
+	u_axes		 		= 1
 	u_bows 				= 0
 	u_crossbows 		= 0
   STR_VAR
@@ -1645,13 +1645,13 @@ COPY ~faiths_and_powers/kits/acolytes/331_moander/b_moa3.spl~ ~override~    //Im
 	s_Benediction 	= ~x~
 	s_Destruction   = ~major~
 	s_Protection    = ~x~
-	s_War 			= ~minor~
-	s_Exploration   = ~x~
+	s_War 			= ~x~
+	s_Exploration   = ~minor~
 	s_Knowledge     = ~x~
 	s_Deception     = ~minor~
 	s_Thought 		= ~x~
 	s_Dread 		= ~major~
-	s_Vigor 		= ~x~
+	s_Vigor 		= ~minor~
 	s_Affliction    = ~major~
 	s_Animal 		= ~minor~
 	s_Plant 		= ~focus~
@@ -1661,7 +1661,7 @@ COPY ~faiths_and_powers/kits/acolytes/331_moander/b_moa3.spl~ ~override~    //Im
 	s_Fire 			= ~x~
 	s_Light 		= ~x~
 	s_Shadow 		= ~major~
-	s_Magic 		= ~minor~
+	s_Magic 		= ~x~
 	s_Perdition     = ~x~
  END
 
@@ -1863,7 +1863,7 @@ COPY ~faiths_and_powers/spheres/spells/dread/b_c501.eff~ ~override/b_bes04.eff~ 
 	u_medium_swords		= 0
 	u_curved_swords		= 0
 	u_large_blades 		= 0
-	u_bludgeons 		= 0
+	u_bludgeons 		= 1
 	u_axes		 		= 0
 	u_bows 				= 0
 	u_crossbows 		= 0
@@ -1872,17 +1872,17 @@ COPY ~faiths_and_powers/spheres/spells/dread/b_c501.eff~ ~override/b_bes04.eff~ 
 	class 			= ~acolyte~
 	s_Life 			= ~major~
 	s_Death 		= ~major~
-	s_Benediction 	        = ~major~
-	s_Destruction           = ~minor~
-	s_Protection            = ~major~
-	s_War 			= ~minor~
+	s_Benediction 	= ~major~
+	s_Destruction   = ~minor~
+	s_Protection    = ~major~
+	s_War 			= ~x~
 	s_Exploration   = ~x~
-	s_Knowledge             = ~minor~
-	s_Deception             = ~minor~
+	s_Knowledge     = ~minor~
+	s_Deception     = ~minor~
 	s_Thought 		= ~major~
 	s_Dread 		= ~focus~
 	s_Vigor 		= ~minor~
-	s_Affliction            = ~major~
+	s_Affliction    = ~minor~
 	s_Animal 		= ~x~
 	s_Plant 		= ~x~
 	s_Earth 		= ~x~
@@ -2014,7 +2014,7 @@ COPY_EXISTING ~faiths_and_powers/kits/acolytes/342_baervan/d5baerv.2da~ ~overrid
 	s_Destruction 	= ~x~
 	s_Protection 	= ~major~
 	s_War 			= ~x~
-	s_Exploration   = ~x~
+	s_Exploration   = ~minor~
 	s_Knowledge 	= ~minor~
 	s_Deception 	= ~x~
 	s_Thought 		= ~minor~
@@ -2151,7 +2151,7 @@ END
 	s_Destruction 	= ~x~
 	s_Protection 	= ~major~
 	s_War 			= ~x~
-	s_Exploration   = ~x~
+	s_Exploration   = ~minor~
 	s_Knowledge 	= ~minor~
 	s_Deception 	= ~x~
 	s_Thought 		= ~minor~

@@ -23,13 +23,13 @@ ACTION_PHP_EACH d5_sphere_kits AS green => eggs BEGIN
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
-	u_chain_armor 		= 0
+	u_chain_armor 		= 1
 	u_plate_armor 		= 0
 	u_simple_weapons	= 1
 	u_medium_swords		= 0
 	u_curved_swords		= 0
 	u_large_blades 		= 0
-	u_bludgeons 		= 0
+	u_bludgeons 		= 1
 	u_axes		 		= 0
 	u_bows 				= 0
 	u_crossbows 		= 0
@@ -72,7 +72,7 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	u_large_blades 		= 0
 	u_bludgeons 		= 0
 	u_axes		 		= 0
-	u_bows 				= 0
+	u_bows 				= 1
 	u_crossbows 		= 0
   STR_VAR
     clab_name 		= EVAL ~%green%~
@@ -105,16 +105,16 @@ LAF ~DEFINE_FNP_KIT_INFO~
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
-	u_chain_armor 		= 0
-	u_plate_armor 		= 0
-	u_simple_weapons	= 1
-	u_medium_swords		= 0
+	u_chain_armor 		= 1
+	u_plate_armor 		= 1
+	u_simple_weapons	= 2
+	u_medium_swords		= 2
 	u_curved_swords		= 0
-	u_large_blades 		= 0
-	u_bludgeons 		= 0
-	u_axes		 		= 0
-	u_bows 				= 0
-	u_crossbows 		= 0
+	u_large_blades 		= 2
+	u_bludgeons 		= 2
+	u_axes		 		= 2
+	u_bows 				= 2
+	u_crossbows 		= 2
   STR_VAR
     clab_name 		= EVAL ~%green%~
 	s_Life 			= ~paladin~
@@ -146,16 +146,16 @@ LAF ~DEFINE_FNP_KIT_INFO~
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
-	u_chain_armor 		= 0
+	u_chain_armor 		= 1
 	u_plate_armor 		= 0
-	u_simple_weapons	= 1
-	u_medium_swords		= 0
+	u_simple_weapons	= 2
+	u_medium_swords		= 2
 	u_curved_swords		= 0
-	u_large_blades 		= 0
-	u_bludgeons 		= 0
-	u_axes		 		= 0
-	u_bows 				= 0
-	u_crossbows 		= 0
+	u_large_blades 		= 2
+	u_bludgeons 		= 2
+	u_axes		 		= 2
+	u_bows 				= 2
+	u_crossbows 		= 2
   STR_VAR
     clab_name 		= EVAL ~%green%~
 	s_Life 			= ~ranger~

@@ -13,9 +13,9 @@ LAM ~READ_FNP_KIT_INFO~
 // NOTES:
 
 armor:
-- talos flag 			= any armor
-- helm flag 			= leather + chain
-- lathander flag		= leather only
+- talos flag 			= any armor			= 0x01000000
+- helm flag 			= leather + chain	= 0x02000000
+- lathander flag		= leather only		= 0x04000000
 
 what about druids? 
 - totemic flag			= druid... no plate or chain
@@ -133,7 +133,7 @@ COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~
 	  WRITE_BYTE 0x29 (~%c_kits%~ BOR ~0b00000111~) 					// set same flag for all cleric kits
 	END
   END
-BUT_ONLY_IF_IT_CHANGES
+BUT_ONLY
 //__________________________________________________________________________________
 
 //usable by druid = usable by multi clerics; & no 319 effects_______________________
@@ -147,7 +147,7 @@ COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~
 	  LPF DELETE_EFFECT INT_VAR match_opcode = 319 match_parameter1 = 11 match_timing = 2 END
 	END
   END
-BUT_ONLY_IF_IT_CHANGES
+BUT_ONLY
 //__________________________________________________________________________________
 
 //give druid class usability to new druids, plus axe/flail/bow______________________
@@ -160,14 +160,14 @@ COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~
 	  WRITE_BYTE 0x29 (~%d_kits%~ BOR ~0b00001000~) 					// same same flag for totemic
 	END
   END	
-BUT_ONLY_IF_IT_CHANGES
+BUT_ONLY
 //__________________________________________________________________________________
 
 //give fighter weapon usability to clerics__________________________________________
 //
 COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~
   PATCH_IF (~%SOURCE_SIZE%~ > ~0x71~) BEGIN
-	READ_BYTE 0x1f fighter 												// fighter usability flag
+	READ_BYTE 	 0x1f fighter 											// fighter usability flag
 	READ_BYTE    0x1e c_class
 	READ_BYTE    0x1f m_class
 	READ_BYTE    0x20 r_class
@@ -206,21 +206,26 @@ COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~
 	  END
     END
   END
-BUT_ONLY_IF_IT_CHANGES
+BUT_ONLY
 //__________________________________________________________________________________
 
 //set armor usability for cleric/druid kits_________________________________________
 //
 COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
   PATCH_IF (SOURCE_SIZE > 0x71) BEGIN
-	READ_SHORT 0x1c type
+	READ_SHORT 	0x1c type
+	READ_BYTE 	0x1f fighter
+	READ_BYTE 	0x29 c_kits
 	PATCH_IF (type = 2) BEGIN
+	  PATCH_IF ((%fighter% BAND 0b00001000) = 0b00000000) BEGIN 	// if *IS usable* by fighters
+		WRITE_BYTE 0x29 (%c_kits% BAND 0b11000000) 					// make usable by divines
+	  END
 	  READ_LONG 0x22 appearance
 	  PATCH_IF (appearance = 16691) BEGIN // chain appearance
-		WRITE_BYTE 0x29 (~%c_kits%~ BOR ~0b00111100~) 					// restrict from lathander + totemic + shapeshifter
+		WRITE_BYTE 0x29 (%c_kits% BOR  0b00111100) 					// restrict from lathander + totemic + shapeshifter + avenger
 	  END
 	  ELSE PATCH_IF (appearance = 16692) BEGIN // plate appearance
-		WRITE_BYTE 0x29 (~%c_kits%~ BOR ~0b00111110~) 					// restrict from lat + helm + totemic + shapeshifter
+		WRITE_BYTE 0x29 (%c_kits% BOR 0b00111110) 					// restrict from lat + helm + totemic + shapeshifter + avenger
 	  END
 	END
   END
@@ -496,7 +501,6 @@ COPY_EXISTING ~kitlist.2da~ ~override~
 BUT_ONLY
 //__________________________________________________________________________________
 
-<<<<<<< HEAD
 //fix trueclass proficiencies for 2.0_______________________________________________
 //
 ACTION_IF FILE_EXISTS_IN_GAME ~enginest.2da~ BEGIN
@@ -550,7 +554,5 @@ ACTION_IF FILE_EXISTS_IN_GAME ~enginest.2da~ BEGIN
   END
 END
 //__________________________________________________________________________________
-=======
->>>>>>> FETCH_HEAD
 
 

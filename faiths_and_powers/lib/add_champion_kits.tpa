@@ -129,16 +129,16 @@ END
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
-	u_chain_armor 		= 0
-	u_plate_armor 		= 0
-	u_simple_weapons	= 1
-	u_medium_swords		= 0
+	u_chain_armor 		= 1
+	u_plate_armor 		= 1
+	u_simple_weapons	= 2
+	u_medium_swords		= 2
 	u_curved_swords		= 0
-	u_large_blades 		= 0
-	u_bludgeons 		= 0
-	u_axes		 		= 0
+	u_large_blades 		= 2
+	u_bludgeons 		= 2
+	u_axes		 		= 2
 	u_bows 				= 0
-	u_crossbows 		= 0
+	u_crossbows 		= 2
   STR_VAR
     clab_name = EVAL ~b_ch01~
 	class 			= ~champion~
@@ -315,16 +315,16 @@ END
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
-	u_chain_armor 		= 0
-	u_plate_armor 		= 0
-	u_simple_weapons	= 1
-	u_medium_swords		= 0
+	u_chain_armor 		= 1
+	u_plate_armor 		= 1
+	u_simple_weapons	= 2
+	u_medium_swords		= 2
 	u_curved_swords		= 0
-	u_large_blades 		= 0
-	u_bludgeons 		= 0
-	u_axes		 		= 0
+	u_large_blades 		= 2
+	u_bludgeons 		= 2
+	u_axes		 		= 2
 	u_bows 				= 0
-	u_crossbows 		= 0
+	u_crossbows 		= 2
   STR_VAR
     clab_name = EVAL ~b_ch02~
 	class 			= ~champion~
@@ -470,16 +470,16 @@ END
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
-	u_chain_armor 		= 0
-	u_plate_armor 		= 0
-	u_simple_weapons	= 1
-	u_medium_swords		= 0
+	u_chain_armor 		= 1
+	u_plate_armor 		= 1
+	u_simple_weapons	= 2
+	u_medium_swords		= 2
 	u_curved_swords		= 0
-	u_large_blades 		= 0
-	u_bludgeons 		= 0
-	u_axes		 		= 0
+	u_large_blades 		= 2
+	u_bludgeons 		= 2
+	u_axes		 		= 2
 	u_bows 				= 0
-	u_crossbows 		= 0
+	u_crossbows 		= 2
   STR_VAR
     clab_name = EVAL ~b_ch02~
 	class 			= ~champion~
@@ -646,16 +646,16 @@ END
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
-	u_chain_armor 		= 0
-	u_plate_armor 		= 0
-	u_simple_weapons	= 1
-	u_medium_swords		= 0
+	u_chain_armor 		= 1
+	u_plate_armor 		= 1
+	u_simple_weapons	= 2
+	u_medium_swords		= 2
 	u_curved_swords		= 0
-	u_large_blades 		= 0
-	u_bludgeons 		= 0
-	u_axes		 		= 0
+	u_large_blades 		= 2
+	u_bludgeons 		= 2
+	u_axes		 		= 2
 	u_bows 				= 0
-	u_crossbows 		= 0
+	u_crossbows 		= 2
   STR_VAR
     clab_name = EVAL ~b_ch03~
 	class 			= ~champion~
@@ -820,32 +820,32 @@ END
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
-	u_chain_armor 		= 0
-	u_plate_armor 		= 0
-	u_simple_weapons	= 1
-	u_medium_swords		= 0
+	u_chain_armor 		= 1
+	u_plate_armor 		= 1
+	u_simple_weapons	= 2
+	u_medium_swords		= 2
 	u_curved_swords		= 0
-	u_large_blades 		= 0
-	u_bludgeons 		= 0
-	u_axes		 		= 0
+	u_large_blades 		= 2
+	u_bludgeons 		= 2
+	u_axes		 		= 2
 	u_bows 				= 0
-	u_crossbows 		= 0
+	u_crossbows 		= 2
   STR_VAR
     clab_name = EVAL ~b_ch04~
 	class 			= ~champion~
 	s_Life 			= ~x~
 	s_Death 		= ~paladin~
-	s_Benediction 	        = ~x~
-	s_Destruction 	        = ~paladin~
-	s_Protection 	        = ~x~
+	s_Benediction 	= ~x~
+	s_Destruction 	= ~paladin~
+	s_Protection 	= ~x~
 	s_War 			= ~paladin~
 	s_Exploration   = ~x~
-	s_Knowledge 	        = ~paladin~
-	s_Deception 	        = ~x~
+	s_Knowledge 	= ~paladin~
+	s_Deception 	= ~x~
 	s_Thought 		= ~paladin~
 	s_Dread 		= ~paladin~
 	s_Vigor 		= ~x~
-	s_Affliction 	        = ~paladin~
+	s_Affliction 	= ~paladin~
 	s_Animal 		= ~x~
 	s_Plant 		= ~x~
 	s_Earth 		= ~x~
@@ -855,7 +855,7 @@ END
 	s_Light 		= ~x~
 	s_Shadow 		= ~x~
 	s_Magic 		= ~x~
-	s_Perdition     = ~x~
+	s_Perdition     = ~paladin~
  END
 
 END
@@ -984,16 +984,16 @@ END
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
-	u_chain_armor 		= 0
-	u_plate_armor 		= 0
-	u_simple_weapons	= 1
-	u_medium_swords		= 0
+	u_chain_armor 		= 1
+	u_plate_armor 		= 1
+	u_simple_weapons	= 2
+	u_medium_swords		= 2
 	u_curved_swords		= 0
-	u_large_blades 		= 0
-	u_bludgeons 		= 0
-	u_axes		 		= 0
+	u_large_blades 		= 2
+	u_bludgeons 		= 2
+	u_axes		 		= 2
 	u_bows 				= 0
-	u_crossbows 		= 0
+	u_crossbows 		= 2
   STR_VAR
     clab_name = EVAL ~b_ch04~
 	class 			= ~champion~
@@ -1019,7 +1019,7 @@ END
 	s_Light 		= ~x~
 	s_Shadow 		= ~x~
 	s_Magic 		= ~x~
-	s_Perdition     = ~x~
+	s_Perdition     = ~paladin~
  END
 
 END
@@ -1144,16 +1144,16 @@ END
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
-	u_chain_armor 		= 0
-	u_plate_armor 		= 0
-	u_simple_weapons	= 1
-	u_medium_swords		= 0
+	u_chain_armor 		= 1
+	u_plate_armor 		= 1
+	u_simple_weapons	= 2
+	u_medium_swords		= 2
 	u_curved_swords		= 0
-	u_large_blades 		= 0
-	u_bludgeons 		= 0
-	u_axes		 		= 0
+	u_large_blades 		= 2
+	u_bludgeons 		= 2
+	u_axes		 		= 2
 	u_bows 				= 0
-	u_crossbows 		= 0
+	u_crossbows 		= 2
   STR_VAR
     clab_name = EVAL ~b_ch05~
 	class 			= ~champion~
@@ -1163,7 +1163,7 @@ END
 	s_Destruction 	= ~x~
 	s_Protection 	= ~paladin~
 	s_War 			= ~paladin~
-	s_Exploration   = ~x~
+	s_Exploration   = ~paladin~
 	s_Knowledge 	= ~paladin~
 	s_Deception 	= ~x~
 	s_Thought 		= ~paladin~
@@ -1294,16 +1294,16 @@ END
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
-	u_chain_armor 		= 0
-	u_plate_armor 		= 0
-	u_simple_weapons	= 1
-	u_medium_swords		= 0
+	u_chain_armor 		= 1
+	u_plate_armor 		= 1
+	u_simple_weapons	= 2
+	u_medium_swords		= 2
 	u_curved_swords		= 0
-	u_large_blades 		= 0
-	u_bludgeons 		= 0
-	u_axes		 		= 0
+	u_large_blades 		= 2
+	u_bludgeons 		= 2
+	u_axes		 		= 2
 	u_bows 				= 0
-	u_crossbows 		= 0
+	u_crossbows 		= 2
   STR_VAR
     clab_name = EVAL ~b_ch05~
 	class 			= ~champion~
@@ -1313,7 +1313,7 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	s_Destruction 	        = ~x~
 	s_Protection 	        = ~paladin~
 	s_War 			= ~paladin~
-	s_Exploration   = ~x~
+	s_Exploration   = ~paladin~
 	s_Knowledge 	        = ~paladin~
 	s_Deception 	        = ~x~
 	s_Thought 		= ~paladin~
@@ -1451,16 +1451,16 @@ END
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
-	u_chain_armor 		= 0
-	u_plate_armor 		= 0
-	u_simple_weapons	= 1
-	u_medium_swords		= 0
+	u_chain_armor 		= 1
+	u_plate_armor 		= 1
+	u_simple_weapons	= 2
+	u_medium_swords		= 2
 	u_curved_swords		= 0
-	u_large_blades 		= 0
-	u_bludgeons 		= 0
-	u_axes		 		= 0
+	u_large_blades 		= 2
+	u_bludgeons 		= 2
+	u_axes		 		= 2
 	u_bows 				= 0
-	u_crossbows 		= 0
+	u_crossbows 		= 2
   STR_VAR
     clab_name = EVAL ~b_ch06~
 	class 			= ~champion~
@@ -1470,7 +1470,7 @@ END
 	s_Destruction 	        = ~paladin~
 	s_Protection 	        = ~paladin~
 	s_War 			= ~paladin~
-	s_Exploration   = ~x~
+	s_Exploration   = ~paladin~
 	s_Knowledge 	        = ~x~
 	s_Deception 	        = ~x~
 	s_Thought 		= ~x~
@@ -1598,16 +1598,16 @@ END
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
-	u_chain_armor 		= 0
-	u_plate_armor 		= 0
-	u_simple_weapons	= 1
-	u_medium_swords		= 0
+	u_chain_armor 		= 1
+	u_plate_armor 		= 1
+	u_simple_weapons	= 2
+	u_medium_swords		= 2
 	u_curved_swords		= 0
-	u_large_blades 		= 0
-	u_bludgeons 		= 0
-	u_axes		 		= 0
+	u_large_blades 		= 2
+	u_bludgeons 		= 2
+	u_axes		 		= 2
 	u_bows 				= 0
-	u_crossbows 		= 0
+	u_crossbows 		= 2
   STR_VAR
     clab_name = EVAL ~b_ch06~
 	class 			= ~champion~
@@ -1617,7 +1617,7 @@ END
 	s_Destruction 	        = ~paladin~
 	s_Protection 	        = ~paladin~
 	s_War 			= ~paladin~
-	s_Exploration   = ~x~
+	s_Exploration   = ~paladin~
 	s_Knowledge 	        = ~x~
 	s_Deception 	        = ~x~
 	s_Thought 		= ~x~
@@ -1756,16 +1756,16 @@ COPY ~faiths_and_powers/kits/champions/807_Moradin/b_mor02.itm~ ~override~
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
-	u_chain_armor 		= 0
-	u_plate_armor 		= 0
-	u_simple_weapons	= 1
-	u_medium_swords		= 0
+	u_chain_armor 		= 1
+	u_plate_armor 		= 1
+	u_simple_weapons	= 2
+	u_medium_swords		= 2
 	u_curved_swords		= 0
-	u_large_blades 		= 0
-	u_bludgeons 		= 0
-	u_axes		 		= 0
+	u_large_blades 		= 2
+	u_bludgeons 		= 2
+	u_axes		 		= 2
 	u_bows 				= 0
-	u_crossbows 		= 0
+	u_crossbows 		= 2
   STR_VAR
     clab_name = EVAL ~b_ch07~
 	class 			= ~champion~
@@ -1927,16 +1927,16 @@ END
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
-	u_chain_armor 		= 0
-	u_plate_armor 		= 0
-	u_simple_weapons	= 1
-	u_medium_swords		= 0
+	u_chain_armor 		= 1
+	u_plate_armor 		= 1
+	u_simple_weapons	= 2
+	u_medium_swords		= 2
 	u_curved_swords		= 0
-	u_large_blades 		= 0
-	u_bludgeons 		= 0
-	u_axes		 		= 0
+	u_large_blades 		= 2
+	u_bludgeons 		= 2
+	u_axes		 		= 2
 	u_bows 				= 0
-	u_crossbows 		= 0
+	u_crossbows 		= 2
   STR_VAR
     clab_name = EVAL ~b_ch08~
 	class 			= ~champion~
@@ -2088,16 +2088,16 @@ END
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
-	u_chain_armor 		= 0
-	u_plate_armor 		= 0
-	u_simple_weapons	= 1
-	u_medium_swords		= 0
+	u_chain_armor 		= 1
+	u_plate_armor 		= 1
+	u_simple_weapons	= 2
+	u_medium_swords		= 2
 	u_curved_swords		= 0
-	u_large_blades 		= 0
-	u_bludgeons 		= 0
-	u_axes		 		= 0
+	u_large_blades 		= 2
+	u_bludgeons 		= 2
+	u_axes		 		= 2
 	u_bows 				= 0
-	u_crossbows 		= 0
+	u_crossbows 		= 2
   STR_VAR
     clab_name = EVAL ~b_ch09~
 	class 			= ~champion~

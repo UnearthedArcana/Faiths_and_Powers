@@ -159,25 +159,25 @@ END
 	u_leather_armor 	= 1
 	u_chain_armor 		= 0
 	u_plate_armor 		= 0
-	u_simple_weapons	= 1
+	u_simple_weapons	= 2
 	u_medium_swords		= 0
 	u_curved_swords		= 0
 	u_large_blades 		= 0
 	u_bludgeons 		= 0
 	u_axes		 		= 0
-	u_bows 				= 0
+	u_bows 				= 2
 	u_crossbows 		= 0
   STR_VAR
-    clab_name = EVAL ~d5drfi~
+    clab_name 		= ~d5drfi~
 	class 			= ~fighter_cleric~
-	s_Life 			= ~major~
+	s_Life 			= ~minor~
 	s_Death 		= ~x~
 	s_Benediction 	= ~x~
 	s_Destruction 	= ~x~
-	s_Protection 	= ~minor~
+	s_Protection 	= ~x~
 	s_War 			= ~x~
-	s_Exploration   = ~x~
-	s_Knowledge 	= ~x~
+	s_Exploration   = ~minor~
+	s_Knowledge 	= ~major~
 	s_Deception 	= ~minor~
 	s_Thought 		= ~minor~
 	s_Dread 		= ~x~
@@ -189,7 +189,7 @@ END
 	s_Water 		= ~major~
 	s_Air 			= ~minor~
 	s_Fire 			= ~x~
-	s_Light 		= ~minor~
+	s_Light 		= ~major~
 	s_Shadow 		= ~minor~
 	s_Magic 		= ~x~
 	s_Perdition     = ~x~
@@ -367,19 +367,19 @@ END
 	u_large_blades 		= 0
 	u_bludgeons 		= 0
 	u_axes		 		= 0
-	u_bows 				= 0
+	u_bows 				= 1
 	u_crossbows 		= 0
   STR_VAR
-    clab_name = ~d5drma~
+    clab_name 		= ~d5drma~
 	class 			= ~cleric_mage~
-	s_Life 			= ~major~
+	s_Life 			= ~minor~
 	s_Death 		= ~x~
 	s_Benediction 	= ~x~
 	s_Destruction 	= ~x~
-	s_Protection 	= ~minor~
+	s_Protection 	= ~x~
 	s_War 			= ~x~
-	s_Exploration   = ~x~
-	s_Knowledge 	= ~x~
+	s_Exploration   = ~minor~
+	s_Knowledge 	= ~major~
 	s_Deception 	= ~minor~
 	s_Thought 		= ~minor~
 	s_Dread 		= ~x~
@@ -391,7 +391,7 @@ END
 	s_Water 		= ~major~
 	s_Air 			= ~minor~
 	s_Fire 			= ~x~
-	s_Light 		= ~minor~
+	s_Light 		= ~major~
 	s_Shadow 		= ~minor~
 	s_Magic 		= ~x~
 	s_Perdition     = ~x~
@@ -568,19 +568,19 @@ END
 	u_large_blades 		= 0
 	u_bludgeons 		= 0
 	u_axes		 		= 0
-	u_bows 				= 0
+	u_bows 				= 1
 	u_crossbows 		= 0
   STR_VAR
     clab_name 		= ~d5drth~
 	class 			= ~cleric_thief~
-	s_Life 			= ~major~
+	s_Life 			= ~minor~
 	s_Death 		= ~x~
 	s_Benediction 	= ~x~
 	s_Destruction 	= ~x~
-	s_Protection 	= ~minor~
+	s_Protection 	= ~x~
 	s_War 			= ~x~
-	s_Exploration   = ~x~
-	s_Knowledge 	= ~x~
+	s_Exploration   = ~minor~
+	s_Knowledge 	= ~major~
 	s_Deception 	= ~minor~
 	s_Thought 		= ~minor~
 	s_Dread 		= ~x~
@@ -592,7 +592,7 @@ END
 	s_Water 		= ~major~
 	s_Air 			= ~minor~
 	s_Fire 			= ~x~
-	s_Light 		= ~minor~
+	s_Light 		= ~major~
 	s_Shadow 		= ~minor~
 	s_Magic 		= ~x~
 	s_Perdition     = ~x~
@@ -763,25 +763,25 @@ END
 	u_leather_armor 	= 1
 	u_chain_armor 		= 0
 	u_plate_armor 		= 0
-	u_simple_weapons	= 1
+	u_simple_weapons	= 2
 	u_medium_swords		= 0
 	u_curved_swords		= 0
 	u_large_blades 		= 0
 	u_bludgeons 		= 0
 	u_axes		 		= 0
-	u_bows 				= 0
+	u_bows 				= 2
 	u_crossbows 		= 0
   STR_VAR
-    clab_name = EVAL ~d5drra~
+    clab_name 		= ~d5drra~
 	class 			= ~ranger_cleric~
-	s_Life 			= ~major~
+	s_Life 			= ~minor~
 	s_Death 		= ~x~
 	s_Benediction 	= ~x~
 	s_Destruction 	= ~x~
-	s_Protection 	= ~minor~
+	s_Protection 	= ~x~
 	s_War 			= ~x~
-	s_Exploration   = ~x~
-	s_Knowledge 	= ~x~
+	s_Exploration   = ~minor~
+	s_Knowledge 	= ~major~
 	s_Deception 	= ~minor~
 	s_Thought 		= ~minor~
 	s_Dread 		= ~x~
@@ -793,7 +793,7 @@ END
 	s_Water 		= ~major~
 	s_Air 			= ~minor~
 	s_Fire 			= ~x~
-	s_Light 		= ~minor~
+	s_Light 		= ~major~
 	s_Shadow 		= ~minor~
 	s_Magic 		= ~x~
 	s_Perdition     = ~x~
@@ -936,7 +936,7 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	u_bludgeons 		= 0
 	u_axes		 		= 0
 	u_bows 				= 0
-	u_crossbows 		= 0
+	u_crossbows 		= 1
   STR_VAR
     clab_name 		= ~d5cmazu~
 	class 			= ~cleric_mage~
@@ -946,7 +946,7 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	s_Destruction 	= ~major~
 	s_Protection 	= ~major~
 	s_War 			= ~x~
-	s_Exploration   = ~x~
+	s_Exploration   = ~minor~
 	s_Knowledge 	= ~major~
 	s_Deception 	= ~minor~
 	s_Thought 		= ~minor~
@@ -1131,7 +1131,7 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	u_bludgeons 		= 0
 	u_axes		 		= 0
 	u_bows 				= 0
-	u_crossbows 		= 0
+	u_crossbows 		= 1
   STR_VAR
     clab_name 		= ~d5acmys~
 	class 			= ~cleric_mage~
@@ -1141,7 +1141,7 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	s_Destruction 	= ~major~
 	s_Protection 	= ~major~
 	s_War 			= ~x~
-	s_Exploration   = ~x~
+	s_Exploration   = ~minor~
 	s_Knowledge 	= ~major~
 	s_Deception 	= ~minor~
 	s_Thought 		= ~minor~
@@ -1290,16 +1290,16 @@ END
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
-	u_chain_armor 		= 0
-	u_plate_armor 		= 0
-	u_simple_weapons	= 1
+	u_chain_armor 		= 2
+	u_plate_armor 		= 2
+	u_simple_weapons	= 2
 	u_medium_swords		= 0
 	u_curved_swords		= 0
 	u_large_blades 		= 0
-	u_bludgeons 		= 0
-	u_axes		 		= 0
+	u_bludgeons 		= 2
+	u_axes		 		= 2
 	u_bows 				= 0
-	u_crossbows 		= 0
+	u_crossbows 		= 2
   STR_VAR
     clab_name 		= ~d5cfcla~
 	class 			= ~fighter_cleric~
@@ -1441,13 +1441,13 @@ END
 	u_leather_armor 	= 1
 	u_chain_armor 		= 0
 	u_plate_armor 		= 0
-	u_simple_weapons	= 1
-	u_medium_swords		= 0
+	u_simple_weapons	= 2
+	u_medium_swords		= 2
 	u_curved_swords		= 0
 	u_large_blades 		= 0
 	u_bludgeons 		= 0
-	u_axes		 		= 0
-	u_bows 				= 0
+	u_axes		 		= 2
+	u_bows 				= 3
 	u_crossbows 		= 0
   STR_VAR
     clab_name 		= ~d5crmi~
@@ -1458,7 +1458,7 @@ END
 	s_Destruction 	= ~x~
 	s_Protection 	= ~minor~
 	s_War 			= ~x~
-	s_Exploration   = ~x~
+	s_Exploration   = ~minor~
 	s_Knowledge 	= ~minor~
 	s_Deception 	= ~x~
 	s_Thought 		= ~x~
@@ -1472,7 +1472,7 @@ END
 	s_Air 			= ~minor~
 	s_Fire 			= ~x~
 	s_Light 		= ~minor~
-	s_Shadow 		= ~minor~
+	s_Shadow 		= ~x~
 	s_Magic 		= ~x~
 	s_Perdition     = ~x~
  END
@@ -1594,13 +1594,13 @@ END
 	u_leather_armor 	= 1
 	u_chain_armor 		= 0
 	u_plate_armor 		= 0
-	u_simple_weapons	= 1
-	u_medium_swords		= 0
+	u_simple_weapons	= 2
+	u_medium_swords		= 2
 	u_curved_swords		= 0
-	u_large_blades 		= 0
-	u_bludgeons 		= 0
-	u_axes		 		= 0
-	u_bows 				= 0
+	u_large_blades 		= 2
+	u_bludgeons 		= 2
+	u_axes		 		= 2
+	u_bows 				= 2
 	u_crossbows 		= 0
   STR_VAR
     clab_name 		= ~d5crsh~
@@ -1762,16 +1762,16 @@ END
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
-	u_chain_armor 		= 0
-	u_plate_armor 		= 0
+	u_chain_armor 		= 1
+	u_plate_armor 		= 1
 	u_simple_weapons	= 1
-	u_medium_swords		= 0
+	u_medium_swords		= 1
 	u_curved_swords		= 0
-	u_large_blades 		= 0
+	u_large_blades 		= 1
 	u_bludgeons 		= 0
 	u_axes		 		= 0
 	u_bows 				= 0
-	u_crossbows 		= 0
+	u_crossbows 		= 1
   STR_VAR
     clab_name 		= ~b_cfhe~
 	class 			= ~fighter_cleric~
@@ -1781,7 +1781,7 @@ END
 	s_Destruction 	= ~minor~
 	s_Protection 	= ~major~
 	s_War 			= ~major~
-	s_Exploration   = ~x~
+	s_Exploration   = ~minor~
 	s_Knowledge 	= ~major~
 	s_Deception 	= ~x~
 	s_Thought 		= ~minor~
