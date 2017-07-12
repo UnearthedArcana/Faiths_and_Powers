@@ -18,12 +18,15 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	u_leather_armor 	= 1
 	u_chain_armor 		= 1
 	u_plate_armor 		= 0
-	u_simple_weapons	= 1
+	u_basic_weapons 	= 1
+	u_mace_hammer 		= 0
+	u_flails 			= 0
+	u_axes 				= 0
 	u_medium_swords		= 1
 	u_curved_swords		= 0
 	u_large_blades 		= 0
-	u_bludgeons 		= 0
-	u_axes		 		= 0
+	u_spears 	 		= 0
+	u_darts		 		= 1
 	u_bows 				= 0
 	u_crossbows 		= 1
   STR_VAR
@@ -68,12 +71,15 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	u_leather_armor 	= 1
 	u_chain_armor 		= 1
 	u_plate_armor 		= 0
-	u_simple_weapons	= 1
+	u_basic_weapons 	= 1
+	u_mace_hammer 		= 0
+	u_flails 			= 0
+	u_axes 				= 0
 	u_medium_swords		= 2
-	u_curved_swords		= 0
+	u_curved_swords		= 2
 	u_large_blades 		= 0
-	u_bludgeons 		= 0
-	u_axes		 		= 0
+	u_spears 	 		= 0
+	u_darts		 		= 0
 	u_bows 				= 2
 	u_crossbows 		= 0
   STR_VAR
@@ -118,14 +124,17 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	u_leather_armor 	= 1
 	u_chain_armor 		= 0
 	u_plate_armor 		= 0
-	u_simple_weapons	= 1
-	u_medium_swords		= 1
+	u_basic_weapons 	= 1
+	u_mace_hammer 		= 1
+	u_flails 			= 1
+	u_axes 				= 0
+	u_medium_swords		= 0
 	u_curved_swords		= 0
 	u_large_blades 		= 0
-	u_bludgeons 		= 0
-	u_axes		 		= 0
+	u_spears 	 		= 1
+	u_darts		 		= 0
 	u_bows 				= 0
-	u_crossbows 		= 0
+	u_crossbows 		= 1
   STR_VAR
     clab_name 		= EVAL ~a#koss~
 	class 			= ~acolyte~
@@ -168,12 +177,15 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	u_leather_armor 	= 1
 	u_chain_armor 		= 0
 	u_plate_armor 		= 0
-	u_simple_weapons	= 1
+	u_basic_weapons 	= 1
+	u_mace_hammer 		= 1
+	u_flails 			= 0
+	u_axes 				= 0
 	u_medium_swords		= 1
 	u_curved_swords		= 0
 	u_large_blades 		= 0
-	u_bludgeons 		= 0
-	u_axes		 		= 0
+	u_spears 	 		= 1
+	u_darts		 		= 0
 	u_bows 				= 0
 	u_crossbows 		= 1
   STR_VAR
@@ -240,13 +252,16 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	u_leather_armor 	= 1
 	u_chain_armor 		= 0
 	u_plate_armor 		= 0
-	u_simple_weapons	= 1
+	u_basic_weapons 	= 1
+	u_mace_hammer 		= 0
+	u_flails 			= 0
+	u_axes 				= 0
 	u_medium_swords		= 0
 	u_curved_swords		= 0
 	u_large_blades 		= 0
-	u_bludgeons 		= 0
-	u_axes		 		= 0
-	u_bows 				= 0
+	u_spears 	 		= 1
+	u_darts		 		= 1
+	u_bows 				= 1
 	u_crossbows 		= 0
   STR_VAR
     clab_name 		= EVAL ~a#ooze~
@@ -290,12 +305,15 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	u_leather_armor 	= 1
 	u_chain_armor 		= 1
 	u_plate_armor 		= 1
-	u_simple_weapons	= 2
+	u_basic_weapons 	= 2
+	u_mace_hammer 		= 2
+	u_flails 			= 2
+	u_axes 				= 2
 	u_medium_swords		= 2
 	u_curved_swords		= 0
 	u_large_blades 		= 0
-	u_bludgeons 		= 2
-	u_axes		 		= 0
+	u_spears 	 		= 2
+	u_darts		 		= 0
 	u_bows 				= 0
 	u_crossbows 		= 2
   STR_VAR
@@ -329,7 +347,14 @@ END
 END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~a#shar.2da~ BEGIN
- COPY_EXISTING ~a#shar.2da~ ~override~
+  COPY_EXISTING ~cdshar2.spl~ ~override~
+	LPF ALTER_EFFECT INT_VAR match_opcode = 215 timing = 0 duration = 4 END
+  BUT_ONLY
+  COPY_EXISTING ~cdshar2.itm~ ~override~
+	WRITE_BYTE 0x18 (THIS BAND 0b11110011)
+	LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 233 target = 1 parameter1 = 2 parameter2 = 109 timing = 2 END
+	LPF ALTER_ITEM_HEADER INT_VAR header_type = 2 damage_type = 4 charges = 1 flag_strength = 0 END
+  BUT_ONLY
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
@@ -338,12 +363,15 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	u_leather_armor 	= 1
 	u_chain_armor 		= 1
 	u_plate_armor 		= 0
-	u_simple_weapons	= 1
+	u_basic_weapons 	= 1
+	u_mace_hammer 		= 1
+	u_flails 			= 1
+	u_axes 				= 0
 	u_medium_swords		= 0
 	u_curved_swords		= 0
 	u_large_blades 		= 0
-	u_bludgeons 		= 1
-	u_axes		 		= 0
+	u_spears 	 		= 1
+	u_darts		 		= 1
 	u_bows 				= 0
 	u_crossbows 		= 1
   STR_VAR
@@ -386,12 +414,15 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	u_leather_armor 	= 1
 	u_chain_armor 		= 1
 	u_plate_armor 		= 0
-	u_simple_weapons	= 2
-	u_medium_swords		= 2
+	u_basic_weapons 	= 2
+	u_mace_hammer 		= 2
+	u_flails 			= 2
+	u_axes 				= 2
+	u_medium_swords		= 0
 	u_curved_swords		= 0
 	u_large_blades 		= 0
-	u_bludgeons 		= 2
-	u_axes		 		= 2
+	u_spears 	 		= 2
+	u_darts		 		= 0
 	u_bows 				= 0
 	u_crossbows 		= 1
   STR_VAR
@@ -434,12 +465,15 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	u_leather_armor 	= 1
 	u_chain_armor 		= 1
 	u_plate_armor 		= 0
-	u_simple_weapons	= 1
+	u_basic_weapons 	= 1
+	u_mace_hammer 		= 0
+	u_flails 			= 0
+	u_axes 				= 0
 	u_medium_swords		= 0
 	u_curved_swords		= 0
 	u_large_blades 		= 0
-	u_bludgeons 		= 1
-	u_axes		 		= 0
+	u_spears 	 		= 1
+	u_darts		 		= 1
 	u_bows 				= 0
 	u_crossbows 		= 0
   STR_VAR
@@ -482,12 +516,15 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	u_leather_armor 	= 1
 	u_chain_armor 		= 0
 	u_plate_armor 		= 0
-	u_simple_weapons	= 1
+	u_basic_weapons 	= 1
+	u_mace_hammer 		= 1
+	u_flails 			= 0
+	u_axes 				= 0
 	u_medium_swords		= 1
-	u_curved_swords		= 0
+	u_curved_swords		= 1
 	u_large_blades 		= 0
-	u_bludgeons 		= 0
-	u_axes		 		= 1
+	u_spears 	 		= 1
+	u_darts		 		= 1
 	u_bows 				= 1
 	u_crossbows 		= 0
   STR_VAR
@@ -530,12 +567,15 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	u_leather_armor 	= 1
 	u_chain_armor 		= 1
 	u_plate_armor 		= 0
-	u_simple_weapons	= 1
+	u_basic_weapons 	= 1
+	u_mace_hammer 		= 1
+	u_flails 			= 1
+	u_axes 				= 0
 	u_medium_swords		= 0
 	u_curved_swords		= 0
 	u_large_blades 		= 0
-	u_bludgeons 		= 1
-	u_axes		 		= 0
+	u_spears 	 		= 1
+	u_darts		 		= 1
 	u_bows 				= 0
 	u_crossbows 		= 1
   STR_VAR
@@ -578,12 +618,15 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	u_leather_armor 	= 1
 	u_chain_armor 		= 0
 	u_plate_armor 		= 0
-	u_simple_weapons	= 1
+	u_basic_weapons 	= 1
+	u_mace_hammer 		= 0
+	u_flails 			= 0
+	u_axes 				= 0
 	u_medium_swords		= 0
 	u_curved_swords		= 0
 	u_large_blades 		= 0
-	u_bludgeons 		= 0
-	u_axes		 		= 0
+	u_spears 	 		= 0
+	u_darts		 		= 1
 	u_bows 				= 0
 	u_crossbows 		= 1
   STR_VAR
@@ -625,12 +668,15 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	u_leather_armor 	= 1
 	u_chain_armor 		= 0
 	u_plate_armor 		= 0
-	u_simple_weapons	= 2
+	u_basic_weapons 	= 2
+	u_mace_hammer 		= 2
+	u_flails 			= 2
+	u_axes 				= 2
 	u_medium_swords		= 2
-	u_curved_swords		= 0
+	u_curved_swords		= 2
 	u_large_blades 		= 2
-	u_bludgeons 		= 2
-	u_axes		 		= 2
+	u_spears 	 		= 2
+	u_darts		 		= 2
 	u_bows 				= 2
 	u_crossbows 		= 0
   STR_VAR
@@ -673,12 +719,15 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	u_leather_armor 	= 1
 	u_chain_armor 		= 0
 	u_plate_armor 		= 0
-	u_simple_weapons	= 1
+	u_basic_weapons 	= 1
+	u_mace_hammer 		= 1
+	u_flails 			= 1
+	u_axes 				= 1
 	u_medium_swords		= 1
-	u_curved_swords		= 0
+	u_curved_swords		= 1
 	u_large_blades 		= 1
-	u_bludgeons 		= 1
-	u_axes		 		= 1
+	u_spears 	 		= 1
+	u_darts		 		= 1
 	u_bows 				= 5
 	u_crossbows 		= 0
   STR_VAR
@@ -721,12 +770,15 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	u_leather_armor 	= 1
 	u_chain_armor 		= 0
 	u_plate_armor 		= 0
-	u_simple_weapons	= 2
+	u_basic_weapons 	= 3
+	u_mace_hammer 		= 0
+	u_flails 			= 0
+	u_axes 				= 0
 	u_medium_swords		= 0
 	u_curved_swords		= 0
 	u_large_blades 		= 0
-	u_bludgeons 		= 0
-	u_axes		 		= 0
+	u_spears 	 		= 3
+	u_darts		 		= 0
 	u_bows 				= 2
 	u_crossbows 		= 0
   STR_VAR
@@ -769,12 +821,15 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	u_leather_armor 	= 1
 	u_chain_armor 		= 1
 	u_plate_armor 		= 0
-	u_simple_weapons	= 3
+	u_basic_weapons 	= 3
+	u_mace_hammer 		= 3
+	u_flails 			= 0
+	u_axes 				= 3
 	u_medium_swords		= 3
-	u_curved_swords		= 0
+	u_curved_swords		= 3
 	u_large_blades 		= 0
-	u_bludgeons 		= 0
-	u_axes		 		= 3
+	u_spears 	 		= 0
+	u_darts		 		= 0
 	u_bows 				= 3
 	u_crossbows 		= 0
   STR_VAR
@@ -817,12 +872,15 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	u_leather_armor 	= 1
 	u_chain_armor 		= 1
 	u_plate_armor 		= 1
-	u_simple_weapons	= 3
+	u_basic_weapons 	= 3
+	u_mace_hammer 		= 3
+	u_flails 			= 3
+	u_axes 				= 3
 	u_medium_swords		= 3
 	u_curved_swords		= 0
 	u_large_blades 		= 3
-	u_bludgeons 		= 3
-	u_axes		 		= 3
+	u_spears 	 		= 3
+	u_darts		 		= 3
 	u_bows 				= 3
 	u_crossbows 		= 3
   STR_VAR
@@ -863,14 +921,17 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	u_leather_armor 	= 1
 	u_chain_armor 		= 1
 	u_plate_armor 		= 0
-	u_simple_weapons	= 1
+	u_basic_weapons 	= 1
+	u_mace_hammer 		= 1
+	u_flails 			= 1
+	u_axes 				= 0
 	u_medium_swords		= 0
 	u_curved_swords		= 0
 	u_large_blades 		= 0
-	u_bludgeons 		= 1
-	u_axes		 		= 0
+	u_spears 	 		= 0
+	u_darts		 		= 0
 	u_bows 				= 0
-	u_crossbows 		= 0
+	u_crossbows 		= 1
   STR_VAR
     clab_name 		= EVAL ~clabauri~
 	class 			= ~cleric~
@@ -909,12 +970,15 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	u_leather_armor 	= 1
 	u_chain_armor 		= 0
 	u_plate_armor 		= 0
-	u_simple_weapons	= 1
+	u_basic_weapons 	= 1
+	u_mace_hammer 		= 0
+	u_flails 			= 0
+	u_axes 				= 0
 	u_medium_swords		= 0
 	u_curved_swords		= 0
 	u_large_blades 		= 0
-	u_bludgeons 		= 0
-	u_axes		 		= 1
+	u_spears 	 		= 1
+	u_darts		 		= 1
 	u_bows 				= 1
 	u_crossbows 		= 0
   STR_VAR
@@ -955,12 +1019,15 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	u_leather_armor 	= 1
 	u_chain_armor 		= 1
 	u_plate_armor 		= 0
-	u_simple_weapons	= 1
+	u_basic_weapons 	= 1
+	u_mace_hammer 		= 1
+	u_flails 			= 1
+	u_axes 				= 0
 	u_medium_swords		= 0
 	u_curved_swords		= 0
 	u_large_blades 		= 0
-	u_bludgeons 		= 1
-	u_axes		 		= 0
+	u_spears 	 		= 0
+	u_darts		 		= 0
 	u_bows 				= 0
 	u_crossbows 		= 0
   STR_VAR
@@ -1001,12 +1068,15 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	u_leather_armor 	= 1
 	u_chain_armor 		= 0
 	u_plate_armor 		= 0
-	u_simple_weapons	= 1
+	u_basic_weapons 	= 1
+	u_mace_hammer 		= 1
+	u_flails 			= 1
+	u_axes 				= 1
 	u_medium_swords		= 0
 	u_curved_swords		= 0
 	u_large_blades 		= 0
-	u_bludgeons 		= 0
-	u_axes		 		= 0
+	u_spears 	 		= 1
+	u_darts		 		= 1
 	u_bows 				= 1
 	u_crossbows 		= 0
   STR_VAR
@@ -1047,12 +1117,15 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	u_leather_armor 	= 1
 	u_chain_armor 		= 0
 	u_plate_armor 		= 0
-	u_simple_weapons	= 1
+	u_basic_weapons 	= 1
+	u_mace_hammer 		= 1
+	u_flails 			= 1
+	u_axes 				= 1
 	u_medium_swords		= 0
 	u_curved_swords		= 0
 	u_large_blades 		= 0
-	u_bludgeons 		= 0
-	u_axes		 		= 0
+	u_spears 	 		= 1
+	u_darts		 		= 1
 	u_bows 				= 1
 	u_crossbows 		= 0
   STR_VAR
@@ -1093,12 +1166,15 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	u_leather_armor 	= 1
 	u_chain_armor 		= 1
 	u_plate_armor 		= 1
-	u_simple_weapons	= 1
-	u_medium_swords		= 1
+	u_basic_weapons 	= 2
+	u_mace_hammer 		= 2
+	u_flails 			= 0
+	u_axes 				= 0
+	u_medium_swords		= 2
 	u_curved_swords		= 0
-	u_large_blades 		= 0
-	u_bludgeons 		= 1
-	u_axes		 		= 1
+	u_large_blades 		= 2
+	u_spears 	 		= 2
+	u_darts		 		= 0
 	u_bows 				= 0
 	u_crossbows 		= 1
   STR_VAR
@@ -1139,12 +1215,15 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	u_leather_armor 	= 1
 	u_chain_armor 		= 1
 	u_plate_armor 		= 0
-	u_simple_weapons	= 1
+	u_basic_weapons 	= 1
+	u_mace_hammer 		= 2
+	u_flails 			= 0
+	u_axes 				= 2
 	u_medium_swords		= 0
 	u_curved_swords		= 0
 	u_large_blades 		= 0
-	u_bludgeons 		= 1
-	u_axes		 		= 0
+	u_spears 	 		= 1
+	u_darts		 		= 0
 	u_bows 				= 0
 	u_crossbows 		= 1
   STR_VAR
@@ -1185,12 +1264,15 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	u_leather_armor 	= 1
 	u_chain_armor 		= 0
 	u_plate_armor 		= 0
-	u_simple_weapons	= 1
+	u_basic_weapons 	= 1
+	u_mace_hammer 		= 0
+	u_flails 			= 0
+	u_axes 				= 0
 	u_medium_swords		= 0
 	u_curved_swords		= 0
 	u_large_blades 		= 0
-	u_bludgeons 		= 0
-	u_axes		 		= 0
+	u_spears 	 		= 1
+	u_darts		 		= 1
 	u_bows 				= 1
 	u_crossbows 		= 0
   STR_VAR
@@ -1231,12 +1313,15 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	u_leather_armor 	= 1
 	u_chain_armor 		= 1
 	u_plate_armor 		= 1
-	u_simple_weapons	= 2
+	u_basic_weapons 	= 2
+	u_mace_hammer 		= 2
+	u_flails 			= 2
+	u_axes 				= 2
 	u_medium_swords		= 2
-	u_curved_swords		= 0
+	u_curved_swords		= 2
 	u_large_blades 		= 2
-	u_bludgeons 		= 2
-	u_axes		 		= 2
+	u_spears 	 		= 2
+	u_darts		 		= 2
 	u_bows 				= 2
 	u_crossbows 		= 2
   STR_VAR
@@ -1277,14 +1362,17 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	u_leather_armor 	= 1
 	u_chain_armor 		= 0
 	u_plate_armor 		= 0
-	u_simple_weapons	= 2
+	u_basic_weapons 	= 2
+	u_mace_hammer 		= 2
+	u_flails 			= 2
+	u_axes 				= 2
 	u_medium_swords		= 2
-	u_curved_swords		= 0
+	u_curved_swords		= 2
 	u_large_blades 		= 2
-	u_bludgeons 		= 2
-	u_axes		 		= 2
-	u_bows 				= 3
-	u_crossbows 		= 0
+	u_spears 	 		= 2
+	u_darts		 		= 2
+	u_bows 				= 2
+	u_crossbows 		= 2
   STR_VAR
     clab_name 		= EVAL ~k9miel~
 	class 			= ~champion~
@@ -1323,12 +1411,15 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	u_leather_armor 	= 1
 	u_chain_armor 		= 1
 	u_plate_armor 		= 0
-	u_simple_weapons	= 2
+	u_basic_weapons 	= 2
+	u_mace_hammer 		= 2
+	u_flails 			= 2
+	u_axes 				= 2
 	u_medium_swords		= 2
-	u_curved_swords		= 0
+	u_curved_swords		= 2
 	u_large_blades 		= 2
-	u_bludgeons 		= 2
-	u_axes		 		= 2
+	u_spears 	 		= 2
+	u_darts		 		= 2
 	u_bows 				= 2
 	u_crossbows 		= 2
   STR_VAR

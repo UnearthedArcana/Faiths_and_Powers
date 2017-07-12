@@ -14,14 +14,17 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabshgs.2da~ BEGIN
 	u_leather_armor 	= 1
 	u_chain_armor 		= 0
 	u_plate_armor 		= 0
-	u_simple_weapons	= 1
-	u_medium_swords		= 0
-	u_curved_swords		= 0
+	u_basic_weapons 	= 1
+	u_mace_hammer 		= 0
+	u_flails 			= 0
+	u_axes 				= 1
+	u_medium_swords 	= 0
+	u_curved_swords 	= 0
 	u_large_blades 		= 0
-	u_bludgeons 		= 0
-	u_axes		 		= 1
+	u_spears 			= 1
+	u_darts 			= 1
 	u_bows 				= 1
-	u_crossbows 		= 0
+	u_crossbows 		= 0  
   STR_VAR
     clab_name 		= ~clabshgs~
 	class 			= ~shaman~
@@ -60,15 +63,18 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabsh01.2da~ BEGIN
 	u_leather_armor 	= 1
 	u_chain_armor 		= 0
 	u_plate_armor 		= 0
-	u_simple_weapons	= 1
-	u_medium_swords		= 0
-	u_curved_swords		= 0
+	u_basic_weapons 	= 1
+	u_mace_hammer 		= 0
+	u_flails 			= 0
+	u_axes 				= 1
+	u_medium_swords 	= 0
+	u_curved_swords 	= 0
 	u_large_blades 		= 0
-	u_bludgeons 		= 0
-	u_axes		 		= 1
+	u_spears 			= 1
+	u_darts 			= 1
 	u_bows 				= 1
-	u_crossbows 		= 0
-  STR_VAR
+	u_crossbows 		= 0  
+ STR_VAR
     clab_name 		= ~clabsh01~
 	class 			= ~shaman~
 	s_Life 			= ~minor~
@@ -108,14 +114,17 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabpr01.2da~ BEGIN
 	u_leather_armor 	= 1
 	u_chain_armor 		= 1
 	u_plate_armor 		= 0
-	u_simple_weapons	= 1
+	u_basic_weapons 	= 1
+	u_mace_hammer 		= 1
+	u_flails 			= 1
+	u_axes 				= 0
 	u_medium_swords		= 0
 	u_curved_swords		= 0
 	u_large_blades 		= 0
-	u_bludgeons 		= 1
-	u_axes		 		= 0
+	u_spears 	 		= 0
+	u_darts		 		= 0
 	u_bows 				= 0
-	u_crossbows 		= 0
+	u_crossbows 		= 1
   STR_VAR
     clab_name 		= ~clabpr01~
 	class 			= ~cleric~
@@ -156,14 +165,17 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabpr02.2da~ BEGIN
 	u_leather_armor 	= 1
 	u_chain_armor 		= 1
 	u_plate_armor 		= 0
-	u_simple_weapons	= 1
+	u_basic_weapons 	= 1
+	u_mace_hammer 		= 1
+	u_flails 			= 1
+	u_axes 				= 0
 	u_medium_swords		= 0
 	u_curved_swords		= 0
 	u_large_blades 		= 0
-	u_bludgeons 		= 1
-	u_axes		 		= 0
+	u_spears 	 		= 1
+	u_darts		 		= 0
 	u_bows 				= 0
-	u_crossbows 		= 0
+	u_crossbows 		= 1
   STR_VAR
     clab_name 		= ~clabpr02~
 	class 			= ~cleric~
@@ -202,15 +214,18 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabpr03.2da~ BEGIN
 	u_leather_armor 	= 1
 	u_chain_armor 		= 1
 	u_plate_armor 		= 0
-	u_simple_weapons	= 1
+	u_basic_weapons 	= 1
+	u_mace_hammer 		= 1
+	u_flails 			= 1
+	u_axes 				= 0
 	u_medium_swords		= 1
 	u_curved_swords		= 0
-	u_large_blades 		= 0
-	u_bludgeons 		= 1
-	u_axes		 		= 0
+	u_large_blades 		= 1
+	u_spears 	 		= 0
+	u_darts		 		= 0
 	u_bows 				= 0
 	u_crossbows 		= 1
-  STR_VAR
+ STR_VAR
     clab_name 		= ~clabpr03~
 	class 			= ~cleric~
 	s_Life 			= ~major~
@@ -248,14 +263,17 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabpr04.2da~ BEGIN
 	u_leather_armor 	= 1
 	u_chain_armor 		= 1
 	u_plate_armor 		= 0
-	u_simple_weapons	= 1
+	u_basic_weapons 	= 1
+	u_mace_hammer 		= 1
+	u_flails 			= 1
+	u_axes 				= 0
 	u_medium_swords		= 0
 	u_curved_swords		= 0
 	u_large_blades 		= 0
-	u_bludgeons 		= 1
-	u_axes		 		= 0
+	u_spears 	 		= 0
+	u_darts		 		= 0
 	u_bows 				= 0
-	u_crossbows 		= 0
+	u_crossbows 		= 1
   STR_VAR
     clab_name 		= ~clabpr04~
 	class 			= ~cleric~
@@ -294,14 +312,17 @@ ACTION_IF FILE_EXISTS_IN_GAME ~ohtyr.2da~ BEGIN
 	u_leather_armor 	= 1
 	u_chain_armor 		= 1
 	u_plate_armor 		= 0
-	u_simple_weapons	= 1
+	u_basic_weapons 	= 1
+	u_mace_hammer 		= 1
+	u_flails 			= 1
+	u_axes 				= 0
 	u_medium_swords		= 1
 	u_curved_swords		= 0
 	u_large_blades 		= 0
-	u_bludgeons 		= 1
-	u_axes		 		= 0
+	u_spears 	 		= 0
+	u_darts		 		= 0
 	u_bows 				= 0
-	u_crossbows 		= 0
+	u_crossbows 		= 1
   STR_VAR
     clab_name 		= ~ohtyr~
 	class 			= ~cleric~
@@ -342,12 +363,15 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabdr01.2da~ BEGIN
 	u_leather_armor 	= 1
 	u_chain_armor 		= 0
 	u_plate_armor 		= 0
-	u_simple_weapons	= 1
+	u_basic_weapons 	= 1
+	u_mace_hammer 		= 0
+	u_flails 			= 0
+	u_axes 				= 0
 	u_medium_swords		= 0
 	u_curved_swords		= 0
 	u_large_blades 		= 0
-	u_bludgeons 		= 0
-	u_axes		 		= 0
+	u_spears 	 		= 1
+	u_darts		 		= 1
 	u_bows 				= 1
 	u_crossbows 		= 0
   STR_VAR
@@ -390,12 +414,15 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabdr02.2da~ BEGIN
 	u_leather_armor 	= 1
 	u_chain_armor 		= 0
 	u_plate_armor 		= 0
-	u_simple_weapons	= 1
+	u_basic_weapons 	= 1
+	u_mace_hammer 		= 0
+	u_flails 			= 0
+	u_axes 				= 0
 	u_medium_swords		= 0
 	u_curved_swords		= 0
 	u_large_blades 		= 0
-	u_bludgeons 		= 0
-	u_axes		 		= 0
+	u_spears 	 		= 1
+	u_darts		 		= 1
 	u_bows 				= 1
 	u_crossbows 		= 0
   STR_VAR
@@ -436,12 +463,15 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabdr03.2da~ BEGIN
 	u_leather_armor 	= 1
 	u_chain_armor 		= 0
 	u_plate_armor 		= 0
-	u_simple_weapons	= 1
+	u_basic_weapons 	= 1
+	u_mace_hammer 		= 0
+	u_flails 			= 0
+	u_axes 				= 0
 	u_medium_swords		= 0
 	u_curved_swords		= 0
 	u_large_blades 		= 0
-	u_bludgeons 		= 0
-	u_axes		 		= 0
+	u_spears 	 		= 1
+	u_darts		 		= 1
 	u_bows 				= 1
 	u_crossbows 		= 0
   STR_VAR
@@ -482,12 +512,15 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabdr04.2da~ BEGIN
 	u_leather_armor 	= 1
 	u_chain_armor 		= 0
 	u_plate_armor 		= 0
-	u_simple_weapons	= 1
+	u_basic_weapons 	= 1
+	u_mace_hammer 		= 0
+	u_flails 			= 0
+	u_axes 				= 0
 	u_medium_swords		= 0
 	u_curved_swords		= 0
 	u_large_blades 		= 0
-	u_bludgeons 		= 0
-	u_axes		 		= 0
+	u_spears 	 		= 1
+	u_darts		 		= 1
 	u_bows 				= 1
 	u_crossbows 		= 0
   STR_VAR
@@ -530,12 +563,15 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabpa01.2da~ BEGIN
 	u_leather_armor 	= 1
 	u_chain_armor 		= 1
 	u_plate_armor 		= 1
-	u_simple_weapons	= 2
+	u_basic_weapons 	= 2
+	u_mace_hammer 		= 2
+	u_flails 			= 2
+	u_axes 				= 2
 	u_medium_swords		= 2
-	u_curved_swords		= 0
+	u_curved_swords		= 2
 	u_large_blades 		= 2
-	u_bludgeons 		= 2
-	u_axes		 		= 2
+	u_spears 	 		= 2
+	u_darts		 		= 2
 	u_bows 				= 2
 	u_crossbows 		= 2
   STR_VAR
@@ -578,12 +614,15 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabpa02.2da~ BEGIN
 	u_leather_armor 	= 1
 	u_chain_armor 		= 1
 	u_plate_armor 		= 1
-	u_simple_weapons	= 2
+	u_basic_weapons 	= 2
+	u_mace_hammer 		= 2
+	u_flails 			= 2
+	u_axes 				= 2
 	u_medium_swords		= 2
-	u_curved_swords		= 0
+	u_curved_swords		= 2
 	u_large_blades 		= 2
-	u_bludgeons 		= 2
-	u_axes		 		= 2
+	u_spears 	 		= 2
+	u_darts		 		= 2
 	u_bows 				= 2
 	u_crossbows 		= 2
   STR_VAR
@@ -624,12 +663,15 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabpa03.2da~ BEGIN
 	u_leather_armor 	= 1
 	u_chain_armor 		= 1
 	u_plate_armor 		= 1
-	u_simple_weapons	= 2
+	u_basic_weapons 	= 2
+	u_mace_hammer 		= 2
+	u_flails 			= 2
+	u_axes 				= 2
 	u_medium_swords		= 2
-	u_curved_swords		= 0
+	u_curved_swords		= 2
 	u_large_blades 		= 2
-	u_bludgeons 		= 2
-	u_axes		 		= 2
+	u_spears 	 		= 2
+	u_darts		 		= 2
 	u_bows 				= 2
 	u_crossbows 		= 2
   STR_VAR
@@ -670,12 +712,15 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabpa04.2da~ BEGIN
 	u_leather_armor 	= 1
 	u_chain_armor 		= 1
 	u_plate_armor 		= 1
-	u_simple_weapons	= 2
+	u_basic_weapons 	= 2
+	u_mace_hammer 		= 2
+	u_flails 			= 2
+	u_axes 				= 2
 	u_medium_swords		= 2
-	u_curved_swords		= 0
+	u_curved_swords		= 2
 	u_large_blades 		= 2
-	u_bludgeons 		= 2
-	u_axes		 		= 2
+	u_spears 	 		= 2
+	u_darts		 		= 2
 	u_bows 				= 2
 	u_crossbows 		= 2
   STR_VAR
@@ -716,12 +761,15 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabpa05.2da~ BEGIN
 	u_leather_armor 	= 1
 	u_chain_armor 		= 1
 	u_plate_armor 		= 1
-	u_simple_weapons	= 2
+	u_basic_weapons 	= 2
+	u_mace_hammer 		= 2
+	u_flails 			= 2
+	u_axes 				= 2
 	u_medium_swords		= 2
-	u_curved_swords		= 0
+	u_curved_swords		= 2
 	u_large_blades 		= 2
-	u_bludgeons 		= 2
-	u_axes		 		= 2
+	u_spears 	 		= 2
+	u_darts		 		= 2
 	u_bows 				= 2
 	u_crossbows 		= 2
   STR_VAR
@@ -762,12 +810,15 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabpa06.2da~ BEGIN
 	u_leather_armor 	= 1
 	u_chain_armor 		= 1
 	u_plate_armor 		= 1
-	u_simple_weapons	= 2
+	u_basic_weapons 	= 2
+	u_mace_hammer 		= 2
+	u_flails 			= 2
+	u_axes 				= 2
 	u_medium_swords		= 2
-	u_curved_swords		= 0
+	u_curved_swords		= 2
 	u_large_blades 		= 2
-	u_bludgeons 		= 2
-	u_axes		 		= 2
+	u_spears 	 		= 2
+	u_darts		 		= 2
 	u_bows 				= 2
 	u_crossbows 		= 2
   STR_VAR
@@ -808,14 +859,17 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabrn01.2da~ BEGIN
 	u_leather_armor 	= 1
 	u_chain_armor 		= 1
 	u_plate_armor 		= 0
-	u_simple_weapons	= 2
+	u_basic_weapons 	= 2
+	u_mace_hammer 		= 2
+	u_flails 			= 2
+	u_axes 				= 2
 	u_medium_swords		= 2
-	u_curved_swords		= 0
+	u_curved_swords		= 2
 	u_large_blades 		= 2
-	u_bludgeons 		= 2
-	u_axes		 		= 2
+	u_spears 	 		= 2
+	u_darts		 		= 2
 	u_bows 				= 2
-	u_crossbows 		= 0
+	u_crossbows 		= 2
   STR_VAR
     clab_name 		= ~clabrn01~
 	class 			= ~ranger~
@@ -855,12 +909,15 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabrn02.2da~ BEGIN
 	u_leather_armor 	= 1
 	u_chain_armor 		= 0
 	u_plate_armor 		= 0
-	u_simple_weapons	= 1
+	u_basic_weapons 	= 1
+	u_mace_hammer 		= 1
+	u_flails 			= 1
+	u_axes 				= 1
 	u_medium_swords		= 1
-	u_curved_swords		= 0
+	u_curved_swords		= 1
 	u_large_blades 		= 1
-	u_bludgeons 		= 1
-	u_axes		 		= 1
+	u_spears 	 		= 1
+	u_darts		 		= 1
 	u_bows 				= 5
 	u_crossbows 		= 5
   STR_VAR
@@ -901,12 +958,15 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabrn03.2da~ BEGIN
 	u_leather_armor 	= 1
 	u_chain_armor 		= 0
 	u_plate_armor 		= 0
-	u_simple_weapons	= 2
+	u_basic_weapons 	= 2
+	u_mace_hammer 		= 0
+	u_flails 			= 0
+	u_axes 				= 0
 	u_medium_swords		= 2
-	u_curved_swords		= 0
+	u_curved_swords		= 2
 	u_large_blades 		= 0
-	u_bludgeons 		= 2
-	u_axes		 		= 2
+	u_spears 	 		= 2
+	u_darts		 		= 2
 	u_bows 				= 2
 	u_crossbows 		= 2
   STR_VAR
@@ -948,12 +1008,15 @@ ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~d5_class.2da~ ~clabrn04~)) BEGIN
 	u_leather_armor 	= 1
 	u_chain_armor 		= 0
 	u_plate_armor 		= 0
-	u_simple_weapons	= 2
+	u_basic_weapons 	= 2
+	u_mace_hammer 		= 0
+	u_flails 			= 0
+	u_axes 				= 0
 	u_medium_swords		= 0
 	u_curved_swords		= 0
 	u_large_blades 		= 0
-	u_bludgeons 		= 0
-	u_axes		 		= 2
+	u_spears 	 		= 2
+	u_darts		 		= 2
 	u_bows 				= 2
 	u_crossbows 		= 0
   STR_VAR
@@ -996,14 +1059,17 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabrn05.2da~ BEGIN
 	u_leather_armor 	= 1
 	u_chain_armor 		= 1
 	u_plate_armor 		= 0
-	u_simple_weapons	= 2
+	u_basic_weapons 	= 2
+	u_mace_hammer 		= 2
+	u_flails 			= 2
+	u_axes 				= 2
 	u_medium_swords		= 2
-	u_curved_swords		= 0
+	u_curved_swords		= 2
 	u_large_blades 		= 2
-	u_bludgeons 		= 2
-	u_axes		 		= 2
+	u_spears 	 		= 2
+	u_darts		 		= 2
 	u_bows 				= 2
-	u_crossbows 		= 0
+	u_crossbows 		= 2
   STR_VAR
     clab_name 		= ~clabrn05~
 	class 			= ~x~

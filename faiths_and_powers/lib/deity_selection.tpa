@@ -310,7 +310,7 @@ ACTION_PHP_EACH d5_fnp_kit_class_access AS kit => class BEGIN
 		READ_2DA_ENTRIES_NOW rows cols // read all file into memory  
 		FOR (row = 4; row < rows; ++row) BEGIN // iterate over rows
 		  READ_2DA_ENTRY_FORMER rows row 5 ~clab~ // read column value
-			PATCH_IF ~%clab%~ STRING_EQUAL_CASE ~%kit%~ BEGIN
+		  PATCH_IF ~%clab%~ STRING_EQUAL_CASE ~%kit%~ BEGIN
 			  SET kit_index = %row%
 			  READ_2DA_ENTRY_FORMER rows kit_index 5 kit_clab
 			  READ_2DA_ENTRY_FORMER rows kit_index 1 kit_label
@@ -318,103 +318,103 @@ ACTION_PHP_EACH d5_fnp_kit_class_access AS kit => class BEGIN
 			  READ_2DA_ENTRY_FORMER rows kit_index 4 kit_desc
 			  READ_2DA_ENTRY_FORMER rows kit_index 0 kit_num
 			  READ_2DA_ENTRY_FORMER rows kit_index 8 kit_class
-			END
 		  END
-		BUT_ONLY
-		ACTION_CLEAR_ARRAY ~d5_kit_races~
-		OUTER_SET block_num = (%block_num% + 1)
-		ACTION_GET_STRREF EVAL %kit_name% ~name_string~
-		ACTION_GET_STRREF EVAL %kit_desc% ~desc_string~
-		ACTION_IF (~%class%~ STRING_EQUAL_CASE ~cleric~) BEGIN
-			OUTER_SET kitclass = 1
 		END
-		ACTION_IF (~%class%~ STRING_EQUAL_CASE ~acolyte~) BEGIN
-			OUTER_SET kitclass = 2
-		END
-		ACTION_IF (~%class%~ STRING_EQUAL_CASE ~fighter_cleric~) BEGIN
-			OUTER_SET kitclass = 4
-		END
-		ACTION_IF (~%class%~ STRING_EQUAL_CASE ~cleric_mage~) BEGIN
-			OUTER_SET kitclass = 5
-		END
-		ACTION_IF (~%class%~ STRING_EQUAL_CASE ~cleric_thief~) BEGIN
-			OUTER_SET kitclass = 6
-		END
-		ACTION_IF (~%class%~ STRING_EQUAL_CASE ~ranger_cleric~) BEGIN
-			OUTER_SET kitclass = 7
-		END
-		ACTION_IF (~%class%~ STRING_EQUAL_CASE ~druid~) BEGIN
-			OUTER_SET kitclass = 10
-		END
-		ACTION_IF (~%class%~ STRING_EQUAL_CASE ~mystic~) BEGIN
-			OUTER_SET kitclass = 11
-		END
-		ACTION_IF (~%class%~ STRING_EQUAL_CASE ~occultist~) BEGIN
-			OUTER_SET kitclass = 12
-		END
-		ACTION_IF (~%class%~ STRING_EQUAL_CASE ~ranger~) BEGIN
-			OUTER_SET kitclass = 13
-		END
-		ACTION_IF (~%class%~ STRING_EQUAL_CASE ~dervish~) BEGIN
-			OUTER_SET kitclass = 14
-		END
-		ACTION_IF (~%class%~ STRING_EQUAL_CASE ~scout~) BEGIN
-			OUTER_SET kitclass = 15
-		END
-		ACTION_IF (~%class%~ STRING_EQUAL_CASE ~champion~) BEGIN
-			OUTER_SET kitclass = 17
-		END
-		ACTION_IF (~%class%~ STRING_EQUAL_CASE ~zealot~) BEGIN
-			OUTER_SET kitclass = 18
-		END
-		ACTION_IF (~%class%~ STRING_EQUAL_CASE ~inquisitor~) BEGIN
-			OUTER_SET kitclass = 19
-		END
-		ACTION_IF (~%class%~ STRING_EQUAL_CASE ~shaman~) BEGIN
-			OUTER_SET kitclass = 0
-		END
-		ACTION_IF (~%class%~ STRING_EQUAL_CASE ~x~) BEGIN
-			OUTER_SET kitclass = 0
-		END
-		ACTION_IF (%kitclass% > 0) BEGIN
-		 ACTION_IF (%kit_class% = 3) BEGIN
+	BUT_ONLY
+	ACTION_CLEAR_ARRAY ~d5_kit_races~
+	OUTER_SET block_num = (%block_num% + 1)
+	ACTION_GET_STRREF EVAL %kit_name% ~name_string~
+	ACTION_GET_STRREF EVAL %kit_desc% ~desc_string~
+	ACTION_IF (~%class%~ STRING_EQUAL_CASE ~cleric~) BEGIN
+		OUTER_SET kitclass = 1
+	END
+	ACTION_IF (~%class%~ STRING_EQUAL_CASE ~acolyte~) BEGIN
+		OUTER_SET kitclass = 2
+	END
+	ACTION_IF (~%class%~ STRING_EQUAL_CASE ~fighter_cleric~) BEGIN
+		OUTER_SET kitclass = 4
+	END
+	ACTION_IF (~%class%~ STRING_EQUAL_CASE ~cleric_mage~) BEGIN
+		OUTER_SET kitclass = 5
+	END
+	ACTION_IF (~%class%~ STRING_EQUAL_CASE ~cleric_thief~) BEGIN
+		OUTER_SET kitclass = 6
+	END
+	ACTION_IF (~%class%~ STRING_EQUAL_CASE ~ranger_cleric~) BEGIN
+		OUTER_SET kitclass = 7
+	END
+	ACTION_IF (~%class%~ STRING_EQUAL_CASE ~druid~) BEGIN
+		OUTER_SET kitclass = 10
+	END
+	ACTION_IF (~%class%~ STRING_EQUAL_CASE ~mystic~) BEGIN
+		OUTER_SET kitclass = 11
+	END
+	ACTION_IF (~%class%~ STRING_EQUAL_CASE ~occultist~) BEGIN
+		OUTER_SET kitclass = 12
+	END
+	ACTION_IF (~%class%~ STRING_EQUAL_CASE ~ranger~) BEGIN
+		OUTER_SET kitclass = 13
+	END
+	ACTION_IF (~%class%~ STRING_EQUAL_CASE ~dervish~) BEGIN
+		OUTER_SET kitclass = 14
+	END
+	ACTION_IF (~%class%~ STRING_EQUAL_CASE ~scout~) BEGIN
+		OUTER_SET kitclass = 15
+	END
+	ACTION_IF (~%class%~ STRING_EQUAL_CASE ~champion~) BEGIN
+		OUTER_SET kitclass = 17
+	END
+	ACTION_IF (~%class%~ STRING_EQUAL_CASE ~zealot~) BEGIN
+		OUTER_SET kitclass = 18
+	END
+	ACTION_IF (~%class%~ STRING_EQUAL_CASE ~inquisitor~) BEGIN
+		OUTER_SET kitclass = 19
+	END
+	ACTION_IF (~%class%~ STRING_EQUAL_CASE ~shaman~) BEGIN
+		OUTER_SET kitclass = 0
+	END
+	ACTION_IF (~%class%~ STRING_EQUAL_CASE ~x~) BEGIN
+		OUTER_SET kitclass = 0
+	END
+	ACTION_IF (%kitclass% > 0) BEGIN
+		ACTION_IF (%kit_class% = 3) BEGIN
 		  OUTER_TEXT_SPRINT class_letter ~C~
-		 END
-		 ACTION_IF (%kit_class% = 11) BEGIN
+		END
+		ACTION_IF (%kit_class% = 11) BEGIN
 		  OUTER_TEXT_SPRINT class_letter ~D~
-		 END
-		 ACTION_IF (%kit_class% = 6) BEGIN
+		END
+		ACTION_IF (%kit_class% = 6) BEGIN
 		  OUTER_TEXT_SPRINT class_letter ~P~
-		 END
-		 ACTION_IF (%kit_class% = 12) BEGIN
+		END
+		ACTION_IF (%kit_class% = 12) BEGIN
 		  OUTER_TEXT_SPRINT class_letter ~R~
-		 END
-		 ACTION_IF (%kit_class% = 14) BEGIN
+		END
+		ACTION_IF (%kit_class% = 14) BEGIN
 		  OUTER_TEXT_SPRINT class_letter ~CM~
-		 END
-		 ACTION_IF (%kit_class% = 18) BEGIN
+		END
+		ACTION_IF (%kit_class% = 18) BEGIN
 		  OUTER_TEXT_SPRINT class_letter ~CR~
-		 END
-		 ACTION_IF (%kit_class% = 15) BEGIN
+		END
+		ACTION_IF (%kit_class% = 15) BEGIN
 		  OUTER_TEXT_SPRINT class_letter ~CT~
-		 END
-		 ACTION_IF (%kit_class% = 8) BEGIN
+		END
+		ACTION_IF (%kit_class% = 8) BEGIN
 		  OUTER_TEXT_SPRINT class_letter ~FC~
-		 END
-		 ACTION_IF (%kit_class% = 16) BEGIN
+		END
+		ACTION_IF (%kit_class% = 16) BEGIN
 		  OUTER_TEXT_SPRINT class_letter ~FD~
-		 END
-		 ACTION_IF (%kit_class% = 17) BEGIN
+		END
+		ACTION_IF (%kit_class% = 17) BEGIN
 		  OUTER_TEXT_SPRINT class_letter ~FMC~
-		 END
-		 ACTION_FOR_EACH race_letter IN ~D~ ~E~ ~G~ ~H~ ~HE~ ~HL~ ~HO~ BEGIN
+		END
+		ACTION_FOR_EACH race_letter IN ~D~ ~E~ ~G~ ~H~ ~HE~ ~HL~ ~HO~ BEGIN
 		  ACTION_IF FILE_EXISTS_IN_GAME ~K_%class_letter%_%race_letter%.2da~ BEGIN
 			ACTION_IF (FILE_CONTAINS_EVALUATED (~K_%class_letter%_%race_letter%.2da~ ~[ %TAB%]%kit_num%~)) BEGIN
 			  OUTER_TEXT_SPRINT $~d5_kit_races~(~%race_letter%~) ~race~
 			END
 		  END
-		 END
-		 ACTION_PHP_EACH d5_kit_races AS kitrace => val BEGIN
+		END
+		ACTION_PHP_EACH d5_kit_races AS kitrace => val BEGIN
 		  COPY_EXISTING ~alignmnt.2da~ ~override~
 			COUNT_2DA_COLS num_cols
 			COUNT_2DA_ROWS (num_cols - 1) num_rows
@@ -479,12 +479,12 @@ ACTION_PHP_EACH d5_fnp_kit_class_access AS kit => class BEGIN
 			  END
 			END
 		  BUT_ONLY
+		  ACTION_IF (%kit_label% STRING_EQUAL_CASE ~beast_friend~) BEGIN
+			OUTER_TEXT_SPRINT ~kit_label~ ~beastfriend~
+		  END
 		  APPEND_OUTER ~faiths_and_powers/deity/Dom/%kitrace%/%class%_2.txt~ ~~~~~IF ~~ THEN BEGIN B_dom0%kitclass%_%block_num% %WNL% SAY ~%desc_string%~ %WNL% IF ~~ THEN REPLY ~Select %name_string%~ DO ~AddKit(%kit_label%)~ EXIT %WNL% IF ~~ THEN REPLY ~Select a different kit~ GOTO B_dom0%kitclass%_A %WNL% END %WNL% ~~~~~ KEEP_CRLF
-		 END
 		END
-//	  END
-//	END
-//  END		
+	END
 END
 
 ACTION_FOR_EACH race IN ~d~ ~e~ ~g~ ~h~ ~he~ ~hl~ ~ho~ BEGIN

@@ -7,7 +7,10 @@
 //__________________________________________________________________________________
 
 
-LAM ~READ_FNP_KIT_INFO~
+//copy marker file___________________________________________________________________
+//
+COPY ~faiths_and_powers/lib/markers/d5_fnp_usability.d5~ ~override~ 
+//___________________________________________________________________________________
 
 /*
 // NOTES:
@@ -45,6 +48,25 @@ what about druids?
 ./ change maces' item type to morning star/22
 
 ./ deal with swords (change long swords & scimitars to small sword/19?)
+
+higher types to work with: 
+- 57 = greatswords
+- 69 = bastard swords
+- 51 = rods (?)
+- 44 = clubs
+
+changes: 
+- Change clubs from #17 to #26 "quarterstaves." Now clubs can have different usability from maces.
+- Change halberds from #30 to #57 "bastard swords." That frees up a 1-handed slot.
+- Change spears from #29 to #44 "clubs." Now two 1-handed slots are freed up.
+- If IR is not installed, change morning stars to #23 "flails," to match their proficiency.
+- If IR is installed, change morning stars to #17 "maces," to match their proficiency. Now three 1-handed slots are freed up.
+- Change 2-hand swords from "large swords" to #57 "greatswords."
+- Short swords stay as "small swords."
+- Long swords stay as "large swords."
+- Change bastard swords to #22 "morning star."
+- Change scimitar to #29 "spear."
+- Change katana to #30 "halberd."
 
 ./ check variables:
 	- if plate = 1 -> assign talos
@@ -166,7 +188,7 @@ BUT_ONLY
 //give fighter weapon usability to clerics__________________________________________
 //
 COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~
-  PATCH_IF (~%SOURCE_SIZE%~ > ~0x71~) BEGIN
+  PATCH_IF (%SOURCE_SIZE% > 0x71) BEGIN
 	READ_BYTE 	 0x1f fighter 											// fighter usability flag
 	READ_BYTE    0x1e c_class
 	READ_BYTE    0x1f m_class
@@ -212,7 +234,7 @@ BUT_ONLY
 //set armor usability for cleric/druid kits_________________________________________
 //
 COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
-  PATCH_IF (SOURCE_SIZE > 0x71) BEGIN
+  PATCH_IF (%SOURCE_SIZE% > 0x71) BEGIN
 	READ_SHORT 	0x1c type
 	READ_BYTE 	0x1f fighter
 	READ_BYTE 	0x29 c_kits
@@ -235,26 +257,42 @@ BUT_ONLY
 //set weapon item types_____________________________________________________________
 //
 COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
-  PATCH_IF (SOURCE_SIZE > 0x71) BEGIN
-	READ_BYTE 0x31 prof
-	PATCH_IF (prof = 90) || (prof = 95) BEGIN							// proficiency = longsword/scimitar
-	  WRITE_SHORT 0x1c 19												// type = small swords
+  PATCH_IF (%SOURCE_SIZE% > 0x71) BEGIN
+	READ_SHORT 0x1c type
+	PATCH_IF (%type% = 22) BEGIN									// if type = morning star
+	  PATCH_IF MOD_IS_INSTALLED ~item_rev.tp2~ ~17~ BEGIN			// if IR weapon changes installed
+		WRITE_SHORT 0x1c 23											// change to type = flails
+	  END
+	  PATCH_IF NOT MOD_IS_INSTALLED ~item_rev.tp2~ ~17~ BEGIN		// if no IR weapon changes
+		WRITE_SHORT 0x1c 17											// change to type = maces
+	  END
 	END
   END
 BUT_ONLY
+
 COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
-  PATCH_IF (SOURCE_SIZE > 0x71) BEGIN
+  PATCH_IF (%SOURCE_SIZE% > 0x71) BEGIN
 	READ_BYTE 0x31 prof
-	PATCH_IF (prof = 101) BEGIN											// proficiency = mace
-	  WRITE_SHORT 0x1c 22												// type = morning star
+	PATCH_IF (%prof% = 115) BEGIN									// proficiency = club
+	  WRITE_SHORT 0x1c 26											// change to type = staff
 	END
-  END
-BUT_ONLY
-COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
-  PATCH_IF (SOURCE_SIZE > 0x71) BEGIN
-	READ_BYTE 0x31 prof
-	PATCH_IF (prof = 115) BEGIN											// proficiency = club
-	  WRITE_SHORT 0x1c 17												// type = mace
+	PATCH_IF (%prof% = 99) BEGIN									// proficiency = halberd
+	  WRITE_SHORT 0x1c 69											// change to type = bastard swords
+	END
+	PATCH_IF (%prof% = 98) BEGIN									// proficiency = spear
+	  WRITE_SHORT 0x1c 44											// change to type = clubs
+	END
+	PATCH_IF (%prof% = 93) BEGIN									// proficiency = 2-hand sword
+	  WRITE_SHORT 0x1c 57											// change to type = greatswords
+	END
+	PATCH_IF (%prof% = 89) BEGIN									// proficiency = bastard sword
+	  WRITE_SHORT 0x1c 22											// change to type = morning stars
+	END
+	PATCH_IF (%prof% = 95) BEGIN									// proficiency = scimitar
+	  WRITE_SHORT 0x1c 29											// change to type = spears
+	END
+	PATCH_IF (%prof% = 94) BEGIN									// proficiency = katana
+	  WRITE_SHORT 0x1c 30											// change to type = halberds
 	END
   END
 BUT_ONLY
@@ -262,42 +300,50 @@ BUT_ONLY
 
 //armor and weapon variables________________________________________________________
 //
+LAM ~READ_FNP_KIT_INFO~
+
+OUTER_TEXT_SPRINT hex_lat 			~04000000~
+OUTER_TEXT_SPRINT hex_helm 			~02000000~
+OUTER_TEXT_SPRINT hex_talos 		~01000000~
+OUTER_TEXT_SPRINT hex_totemic 		~08000000~
+OUTER_TEXT_SPRINT hex_shapeshifter 	~10000000~
+OUTER_TEXT_SPRINT hex_avenger		~20000000~
+
 COPY_EXISTING ~kitlist.2da~ ~override~
   COUNT_2DA_COLS num_cols
   READ_2DA_ENTRIES_NOW ~r2en_kitlist~ 9
-  TEXT_SPRINT hex_lat 			~04000000~
-  TEXT_SPRINT hex_helm 			~02000000~
-  TEXT_SPRINT hex_talos 		~01000000~
-  TEXT_SPRINT hex_totemic 		~08000000~
-  TEXT_SPRINT hex_shapeshifter 	~10000000~
-  TEXT_SPRINT hex_avenger		~20000000~
   FOR (row = 3; row < r2en_kitlist; row += 1) BEGIN
-	READ_2DA_ENTRY_FORMER ~r2en_kitlist~ row 0 kit_index
-	READ_2DA_ENTRY_FORMER ~r2en_kitlist~ row 1 kit_label
-	READ_2DA_ENTRY_FORMER ~r2en_kitlist~ row 5 kit_clab
+   READ_2DA_ENTRY_FORMER ~r2en_kitlist~ row 0 kit_index
+   READ_2DA_ENTRY_FORMER ~r2en_kitlist~ row 1 kit_label
+   READ_2DA_ENTRY_FORMER ~r2en_kitlist~ row 5 kit_clab
+   READ_2DA_ENTRY_FORMER ~r2en_kitlist~ row 8 kit_class
+   PATCH_IF (%kit_class% = 3 || %kit_class% = 11 || %kit_class% = 21 || %kit_class% = 8 || %kit_class% = 14 || %kit_class% = 15 || %kit_class% = 18 || %kit_class% = 16) BEGIN
 	INNER_ACTION BEGIN
 	  COPY ~faiths_and_powers/kits/misc/d5fnpuse.spl~ ~override/d5_u%kit_index%.spl~
 	END
-	PHP_EACH d5_fnp_usable AS usable => val BEGIN
+	PHP_EACH d5_fnp_usable AS usable => ind BEGIN
 	  PATCH_IF (VARIABLE_IS_SET $d5_fnp_kit_usable_access(~%usable%~ ~%kit_clab%~)) BEGIN
 		SPRINT access $d5_fnp_kit_usable_access(~%usable%~ ~%kit_clab%~)
 		PATCH_IF (~%usable%~ STRING_EQUAL_CASE ~CHAIN_ARMOR~) BEGIN
 		  PATCH_IF (access = 0) BEGIN
-//			TEXT_SPRINT hex_lat ~04000000~
-			SET_2DA_ENTRY row 7 9 ~0x%hex_lat%~ 
+//			PATCH_IF (%kit_class% = 3 || %kit_class% = 11 || %kit_class% = 21 || %kit_class% = 8 || %kit_class% = 14 || %kit_class% = 15 || %kit_class% = 18 || %kit_class% = 16) BEGIN
+				SET_2DA_ENTRY row 7 9 ~0x%hex_lat%~ 
+//			END
 		  END
 		  PATCH_IF (access > 0) BEGIN
-//			TEXT_SPRINT hex_helm ~02000000~
-			SET_2DA_ENTRY row 7 9 ~0x%hex_helm%~ 
+//			PATCH_IF (%kit_class% = 3 || %kit_class% = 11 || %kit_class% = 21 || %kit_class% = 8 || %kit_class% = 14 || %kit_class% = 15 || %kit_class% = 18 || %kit_class% = 16) BEGIN
+				SET_2DA_ENTRY row 7 9 ~0x%hex_helm%~ 
+//			END
 		  END
 		END
 		PATCH_IF (~%usable%~ STRING_EQUAL_CASE ~PLATE_ARMOR~) BEGIN
 		  PATCH_IF (access > 0) BEGIN
-//			TEXT_SPRINT hex_talos ~01000000~
-			SET_2DA_ENTRY row 7 9 ~0x%hex_talos%~ 
+//			PATCH_IF (%kit_class% = 3 || %kit_class% = 11 || %kit_class% = 21 || %kit_class% = 8 || %kit_class% = 14 || %kit_class% = 15 || %kit_class% = 18 || %kit_class% = 16) BEGIN
+				SET_2DA_ENTRY row 7 9 ~0x%hex_talos%~ 
+//			END
 		  END
 		END
-		PATCH_IF (~%usable%~ STRING_EQUAL_CASE ~SIMPLE_WEAPONS~) BEGIN		// clubs, daggers, staffs, spears, slings, bullets
+		PATCH_IF (~%usable%~ STRING_EQUAL_CASE ~BASIC_WEAPONS~) BEGIN	// club, staff, sling
 		  INNER_ACTION BEGIN
 			COPY_EXISTING ~weapprof.2da~ override
 			  READ_2DA_ENTRIES_NOW weapprof 3
@@ -308,15 +354,13 @@ COPY_EXISTING ~kitlist.2da~ ~override~
 				  SET_2DA_ENTRY 16 (col + 1) 3 %access%						//	dagger
 				  SET_2DA_ENTRY 18 (col + 1) 3 %access%						//	club
 				  SET_2DA_ENTRY 23 (col + 1) 3 %access%						//	quarterstaff
-				  SET_2DA_ENTRY 19 (col + 1) 3 %access%						//	spear
 				  SET_2DA_ENTRY 28 (col + 1) 3 %access%						//	sling
-				  SET_2DA_ENTRY 26 (col + 1) 3 %access%						//	darts
 				END
 			  END
 			BUT_ONLY
 		  END
 		END
-		PATCH_IF (~%usable%~ STRING_EQUAL_CASE ~MEDIUM_SWORDS~) BEGIN		// long swords, short swords, scimitars
+		PATCH_IF (~%usable%~ STRING_EQUAL_CASE ~MACE_HAMMER~) BEGIN			// maces, war hammers
 		  INNER_ACTION BEGIN
 			COPY_EXISTING ~weapprof.2da~ override
 			  READ_2DA_ENTRIES_NOW weapprof 3
@@ -324,60 +368,8 @@ COPY_EXISTING ~kitlist.2da~ ~override~
 			  FOR (col = 0; col < cols - 1; ++col) BEGIN
 				READ_2DA_ENTRY_FORMER weapprof 0 col column_name
 				PATCH_IF "%column_name%" STRING_EQUAL_CASE "%kit_label%" BEGIN
-				  SET_2DA_ENTRY 10 (col + 1) 3 %access%					//	long sword
-				  SET_2DA_ENTRY 11 (col + 1) 3 %access%					//	short sword
-				  SET_2DA_ENTRY 15 (col + 1) 3 %access%					//	scimitar
-				END
-			  END
-			BUT_ONLY
-		  END
-		  PATCH_IF (access = 0) BEGIN
-			INNER_ACTION BEGIN
-			  COPY_EXISTING ~d5_u%kit_index%.spl~ ~override~
-				LPF ADD_SPELL_EFFECT INT_VAR opcode = 181 target = 1 parameter1 = 19 parameter2 = 0 timing = 9 END
-			  BUT_ONLY
-			END
-		  END
-		END
-// change 2-hand swords to 57...?
-		PATCH_IF (~%usable%~ STRING_EQUAL_CASE ~LARGE_BLADES~) BEGIN		// 2-hand swords, bastard swords, katanas, halberds
-		  INNER_ACTION BEGIN
-			COPY_EXISTING ~weapprof.2da~ override
-			  READ_2DA_ENTRIES_NOW weapprof 3
-			  COUNT_2DA_COLS cols
-			  FOR (col = 0; col < cols - 1; ++col) BEGIN
-				READ_2DA_ENTRY_FORMER weapprof 0 col column_name
-				PATCH_IF "%column_name%" STRING_EQUAL_CASE "%kit_label%" BEGIN
-				  SET_2DA_ENTRY 9 (col + 1) 3 %access%						//	bastard sword
-				  SET_2DA_ENTRY 13 (col + 1) 3 %access%						//	2-hand sword
-				  SET_2DA_ENTRY 14 (col + 1) 3 %access%						//	katana
-				  SET_2DA_ENTRY 20 (col + 1) 3 %access%						//	halberd
-				END
-			  END
-			BUT_ONLY
-		  END
-		  PATCH_IF (access = 0) BEGIN
-			INNER_ACTION BEGIN
-			  COPY_EXISTING ~d5_u%kit_index%.spl~ ~override~
-				LPF ADD_SPELL_EFFECT INT_VAR opcode = 181 target = 1 parameter1 = 20 parameter2 = 0 timing = 9 END
-				LPF ADD_SPELL_EFFECT INT_VAR opcode = 181 target = 1 parameter1 = 30 parameter2 = 0 timing = 9 END
-				LPF ADD_SPELL_EFFECT INT_VAR opcode = 181 target = 1 parameter1 = 57 parameter2 = 0 timing = 9 END
-				LPF ADD_SPELL_EFFECT INT_VAR opcode = 181 target = 1 parameter1 = 69 parameter2 = 0 timing = 9 END
-			  BUT_ONLY
-			END
-		  END
-		END
-		PATCH_IF (~%usable%~ STRING_EQUAL_CASE ~BLUDGEONS~) BEGIN			// maces, morning stars, flails, war hammers
-		  INNER_ACTION BEGIN
-			COPY_EXISTING ~weapprof.2da~ override
-			  READ_2DA_ENTRIES_NOW weapprof 3
-			  COUNT_2DA_COLS cols
-			  FOR (col = 0; col < cols - 1; ++col) BEGIN
-				READ_2DA_ENTRY_FORMER weapprof 0 col column_name
-				PATCH_IF "%column_name%" STRING_EQUAL_CASE "%kit_label%" BEGIN
-				  SET_2DA_ENTRY 17 (col + 1) 3 %access%						// war hammer
-				  SET_2DA_ENTRY 21 (col + 1) 3 %access%						// flail/morning star
 				  SET_2DA_ENTRY 22 (col + 1) 3 %access%						// mace
+				  SET_2DA_ENTRY 17 (col + 1) 3 %access%						// war hammer
 				END
 			  END
 			BUT_ONLY
@@ -385,8 +377,28 @@ COPY_EXISTING ~kitlist.2da~ ~override~
 		  PATCH_IF (access = 0) BEGIN
 			INNER_ACTION BEGIN
 			  COPY_EXISTING ~d5_u%kit_index%.spl~ ~override~
+				LPF ADD_SPELL_EFFECT INT_VAR opcode = 181 target = 1 parameter1 = 17 parameter2 = 0 timing = 9 END
 				LPF ADD_SPELL_EFFECT INT_VAR opcode = 181 target = 1 parameter1 = 21 parameter2 = 0 timing = 9 END
-				LPF ADD_SPELL_EFFECT INT_VAR opcode = 181 target = 1 parameter1 = 22 parameter2 = 0 timing = 9 END
+			  BUT_ONLY
+			END
+		  END
+		END
+		PATCH_IF (~%usable%~ STRING_EQUAL_CASE ~FLAILS~) BEGIN				// flails
+		  INNER_ACTION BEGIN
+			COPY_EXISTING ~weapprof.2da~ override
+			  READ_2DA_ENTRIES_NOW weapprof 3
+			  COUNT_2DA_COLS cols
+			  FOR (col = 0; col < cols - 1; ++col) BEGIN
+				READ_2DA_ENTRY_FORMER weapprof 0 col column_name
+				PATCH_IF "%column_name%" STRING_EQUAL_CASE "%kit_label%" BEGIN
+				  SET_2DA_ENTRY 21 (col + 1) 3 %access%						// flail
+				END
+			  END
+			BUT_ONLY
+		  END
+		  PATCH_IF (access = 0) BEGIN
+			INNER_ACTION BEGIN
+			  COPY_EXISTING ~d5_u%kit_index%.spl~ ~override~
 				LPF ADD_SPELL_EFFECT INT_VAR opcode = 181 target = 1 parameter1 = 23 parameter2 = 0 timing = 9 END
 			  BUT_ONLY
 			END
@@ -413,6 +425,121 @@ COPY_EXISTING ~kitlist.2da~ ~override~
 			END
 		  END
 		END
+		PATCH_IF (~%usable%~ STRING_EQUAL_CASE ~MEDIUM_SWORDS~) BEGIN		// short swords, long swords
+		  INNER_ACTION BEGIN
+			COPY_EXISTING ~weapprof.2da~ override
+			  READ_2DA_ENTRIES_NOW weapprof 3
+			  COUNT_2DA_COLS cols
+			  FOR (col = 0; col < cols - 1; ++col) BEGIN
+				READ_2DA_ENTRY_FORMER weapprof 0 col column_name
+				PATCH_IF "%column_name%" STRING_EQUAL_CASE "%kit_label%" BEGIN
+				  SET_2DA_ENTRY 11 (col + 1) 3 %access%						//	short sword
+				  SET_2DA_ENTRY 10 (col + 1) 3 %access%						//	long sword
+				END
+			  END
+			BUT_ONLY
+		  END
+		  PATCH_IF (access = 0) BEGIN
+			INNER_ACTION BEGIN
+			  COPY_EXISTING ~d5_u%kit_index%.spl~ ~override~
+				LPF ADD_SPELL_EFFECT INT_VAR opcode = 181 target = 1 parameter1 = 19 parameter2 = 0 timing = 9 END
+				LPF ADD_SPELL_EFFECT INT_VAR opcode = 181 target = 1 parameter1 = 20 parameter2 = 0 timing = 9 END
+			  BUT_ONLY
+			END
+		  END
+		END
+		PATCH_IF (~%usable%~ STRING_EQUAL_CASE ~CURVED_SWORDS~) BEGIN		// scimitars, katanas
+		  INNER_ACTION BEGIN
+			COPY_EXISTING ~weapprof.2da~ override
+			  READ_2DA_ENTRIES_NOW weapprof 3
+			  COUNT_2DA_COLS cols
+			  FOR (col = 0; col < cols - 1; ++col) BEGIN
+				READ_2DA_ENTRY_FORMER weapprof 0 col column_name
+				PATCH_IF "%column_name%" STRING_EQUAL_CASE "%kit_label%" BEGIN
+				  SET_2DA_ENTRY 15 (col + 1) 3 %access%						//	scimitar
+				  SET_2DA_ENTRY 14 (col + 1) 3 %access%						//	katana
+				END
+			  END
+			BUT_ONLY
+		  END
+		  PATCH_IF (access = 0) BEGIN
+			INNER_ACTION BEGIN
+			  COPY_EXISTING ~d5_u%kit_index%.spl~ ~override~
+				LPF ADD_SPELL_EFFECT INT_VAR opcode = 181 target = 1 parameter1 = 29 parameter2 = 0 timing = 9 END
+				LPF ADD_SPELL_EFFECT INT_VAR opcode = 181 target = 1 parameter1 = 30 parameter2 = 0 timing = 9 END
+			  BUT_ONLY
+			END
+		  END
+		END
+		PATCH_IF (~%usable%~ STRING_EQUAL_CASE ~LARGE_BLADES~) BEGIN		// 2-hand swords, bastard swords, halberds
+		  INNER_ACTION BEGIN
+			COPY_EXISTING ~weapprof.2da~ override
+			  READ_2DA_ENTRIES_NOW weapprof 3
+			  COUNT_2DA_COLS cols
+			  FOR (col = 0; col < cols - 1; ++col) BEGIN
+				READ_2DA_ENTRY_FORMER weapprof 0 col column_name
+				PATCH_IF "%column_name%" STRING_EQUAL_CASE "%kit_label%" BEGIN
+				  SET_2DA_ENTRY 9 (col + 1) 3 %access%						//	bastard sword
+				  SET_2DA_ENTRY 13 (col + 1) 3 %access%						//	2-hand sword
+				  SET_2DA_ENTRY 20 (col + 1) 3 %access%						//	halberd
+				END
+			  END
+			BUT_ONLY
+		  END
+		  PATCH_IF (access = 0) BEGIN
+			INNER_ACTION BEGIN
+			  COPY_EXISTING ~d5_u%kit_index%.spl~ ~override~
+				LPF ADD_SPELL_EFFECT INT_VAR opcode = 181 target = 1 parameter1 = 22 parameter2 = 0 timing = 9 END
+				LPF ADD_SPELL_EFFECT INT_VAR opcode = 181 target = 1 parameter1 = 57 parameter2 = 0 timing = 9 END
+				LPF ADD_SPELL_EFFECT INT_VAR opcode = 181 target = 1 parameter1 = 69 parameter2 = 0 timing = 9 END
+			  BUT_ONLY
+			END
+		  END
+		END
+		PATCH_IF (~%usable%~ STRING_EQUAL_CASE ~SPEARS~) BEGIN				// spears
+		  INNER_ACTION BEGIN
+			COPY_EXISTING ~weapprof.2da~ override
+			  READ_2DA_ENTRIES_NOW weapprof 3
+			  COUNT_2DA_COLS cols
+			  FOR (col = 0; col < cols - 1; ++col) BEGIN
+				READ_2DA_ENTRY_FORMER weapprof 0 col column_name
+				PATCH_IF "%column_name%" STRING_EQUAL_CASE "%kit_label%" BEGIN
+				  SET_2DA_ENTRY 19 (col + 1) 3 %access%						//	spear
+				END
+			  END
+			BUT_ONLY
+		  END
+		  PATCH_IF (access = 0) BEGIN
+			INNER_ACTION BEGIN
+			  COPY_EXISTING ~d5_u%kit_index%.spl~ ~override~
+				LPF ADD_SPELL_EFFECT INT_VAR opcode = 181 target = 1 parameter1 = 21 parameter2 = 0 timing = 9 END
+				LPF ADD_SPELL_EFFECT INT_VAR opcode = 181 target = 1 parameter1 = 22 parameter2 = 0 timing = 9 END
+				LPF ADD_SPELL_EFFECT INT_VAR opcode = 181 target = 1 parameter1 = 23 parameter2 = 0 timing = 9 END
+			  BUT_ONLY
+			END
+		  END
+		END
+		PATCH_IF (~%usable%~ STRING_EQUAL_CASE ~DARTS~) BEGIN				// darts
+		  INNER_ACTION BEGIN
+			COPY_EXISTING ~weapprof.2da~ override
+			  READ_2DA_ENTRIES_NOW weapprof 3
+			  COUNT_2DA_COLS cols
+			  FOR (col = 0; col < cols - 1; ++col) BEGIN
+				READ_2DA_ENTRY_FORMER weapprof 0 col column_name
+				PATCH_IF "%column_name%" STRING_EQUAL_CASE "%kit_label%" BEGIN
+				  SET_2DA_ENTRY 26 (col + 1) 3 %access%						//	darts
+				END
+			  END
+			BUT_ONLY
+		  END
+		  PATCH_IF (access = 0) BEGIN
+			INNER_ACTION BEGIN
+			  COPY_EXISTING ~d5_u%kit_index%.spl~ ~override~
+				LPF ADD_SPELL_EFFECT INT_VAR opcode = 181 target = 1 parameter1 = 24 parameter2 = 0 timing = 9 END
+			  BUT_ONLY
+			END
+		  END
+		END
 		PATCH_IF (~%usable%~ STRING_EQUAL_CASE ~BOWS~) BEGIN				// long bows, short bows, arrows
 		  INNER_ACTION BEGIN
 			COPY_EXISTING ~weapprof.2da~ override
@@ -431,7 +558,7 @@ COPY_EXISTING ~kitlist.2da~ ~override~
 			INNER_ACTION BEGIN
 			  COPY_EXISTING ~d5_u%kit_index%.spl~ ~override~
 				LPF ADD_SPELL_EFFECT INT_VAR opcode = 181 target = 1 parameter1 = 15 parameter2 = 0 timing = 9 END
-				LPF ADD_SPELL_EFFECT INT_VAR opcode = 181 target = 1 parameter1 = 5 parameter2 = 0 timing = 9 END
+//				LPF ADD_SPELL_EFFECT INT_VAR opcode = 181 target = 1 parameter1 = 5 parameter2 = 0 timing = 9 END
 			  BUT_ONLY
 			END
 		  END
@@ -453,7 +580,7 @@ COPY_EXISTING ~kitlist.2da~ ~override~
 			INNER_ACTION BEGIN
 			  COPY_EXISTING ~d5_u%kit_index%.spl~ ~override~
 				LPF ADD_SPELL_EFFECT INT_VAR opcode = 181 target = 1 parameter1 = 27 parameter2 = 0 timing = 9 END
-				LPF ADD_SPELL_EFFECT INT_VAR opcode = 181 target = 1 parameter1 = 31 parameter2 = 0 timing = 9 END
+//				LPF ADD_SPELL_EFFECT INT_VAR opcode = 181 target = 1 parameter1 = 31 parameter2 = 0 timing = 9 END
 			  BUT_ONLY
 			END
 		  END
@@ -485,7 +612,7 @@ COPY_EXISTING ~kitlist.2da~ ~override~
 	PATCH_IF ~%kit_clab%~ STRING_EQUAL_CASE ~d5drra~ BEGIN
 	  SET_2DA_ENTRY row 7 9 ~0x%hex_totemic%~ // usability
 	END
-	PATCH_IF ~%kit_clab%~ STRING_EQUAL_CASE ~d5obst~ BEGIN
+	PATCH_IF (~%kit_clab%~ STRING_EQUAL_CASE ~d5obst~) OR (~%kit_clab%~ STRING_EQUAL_CASE ~clabdr03~) BEGIN
 	  INNER_ACTION BEGIN
 		COPY_EXISTING ~d5_u%kit_index%.spl~ ~override~
 		  LPF ADD_SPELL_EFFECT INT_VAR opcode = 181 target = 1 parameter1 = 2 parameter2 = 0 timing = 9 END
@@ -497,6 +624,7 @@ COPY_EXISTING ~kitlist.2da~ ~override~
 		APPEND ~%kit_clab%.2da~ ~ABILITY1    AP_d5_u%kit_index%   ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** ~
 	  END
 	END
+   END
   END
 BUT_ONLY
 //__________________________________________________________________________________

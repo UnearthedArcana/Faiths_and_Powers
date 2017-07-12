@@ -113,14 +113,17 @@ COPY ~faiths_and_powers/kits/acolytes/314_ilmater/b_ilm03.spl~ ~override~  // En
 	u_leather_armor 	= 1
 	u_chain_armor 		= 0
 	u_plate_armor 		= 0
-	u_simple_weapons	= 1
-	u_medium_swords		= 0
-	u_curved_swords		= 0
+	u_basic_weapons 	= 1
+	u_mace_hammer 		= 0
+	u_flails 			= 0
+	u_axes 				= 0
+	u_medium_swords 	= 0
+	u_curved_swords 	= 0
 	u_large_blades 		= 0
-	u_bludgeons 		= 0
-	u_axes		 		= 0
+	u_spears 			= 0
+	u_darts 			= 1
 	u_bows 				= 0
-	u_crossbows 		= 0
+	u_crossbows 		= 0  
   STR_VAR
     clab_name 		= ~b_ailm~
 	class 			= ~acolyte~
@@ -268,12 +271,15 @@ COPY_EXISTING ~SPPR303.spl~ ~override/b_den04.spl~ // dispel magic
 	u_leather_armor 	= 1
 	u_chain_armor 		= 0
 	u_plate_armor 		= 0
-	u_simple_weapons	= 1
-	u_medium_swords		= 0
-	u_curved_swords		= 0
+	u_basic_weapons 	= 1
+	u_mace_hammer 		= 0
+	u_flails 			= 0
+	u_axes 				= 0
+	u_medium_swords 	= 0
+	u_curved_swords 	= 0
 	u_large_blades 		= 0
-	u_bludgeons 		= 0
-	u_axes		 		= 0
+	u_spears 			= 0
+	u_darts 			= 1
 	u_bows 				= 0
 	u_crossbows 		= 0
   STR_VAR
@@ -440,12 +446,15 @@ COPY_EXISTING ~SPWI104.spl~ ~override/b_sun01.spl~ // Charm person
 	u_leather_armor 	= 1
 	u_chain_armor 		= 0
 	u_plate_armor 		= 0
-	u_simple_weapons	= 1
+	u_basic_weapons 	= 1
+	u_mace_hammer 		= 0
+	u_flails 			= 0
+	u_axes 				= 0
 	u_medium_swords		= 0
 	u_curved_swords		= 0
 	u_large_blades 		= 0
-	u_bludgeons 		= 0
-	u_axes		 		= 0
+	u_spears 	 		= 0
+	u_darts		 		= 1
 	u_bows 				= 0
 	u_crossbows 		= 0
   STR_VAR
@@ -576,12 +585,15 @@ END
 	u_leather_armor 	= 1
 	u_chain_armor 		= 0
 	u_plate_armor 		= 0
-	u_simple_weapons	= 1
+	u_basic_weapons 	= 1
+	u_mace_hammer 		= 0
+	u_flails 			= 0
+	u_axes 				= 0
 	u_medium_swords		= 0
 	u_curved_swords		= 0
 	u_large_blades 		= 0
-	u_bludgeons 		= 0
-	u_axes		 		= 0
+	u_spears 	 		= 0
+	u_darts		 		= 1
 	u_bows 				= 0
 	u_crossbows 		= 1
   STR_VAR
@@ -721,12 +733,15 @@ COPY ~faiths_and_powers/kits/acolytes/322_tempus/b_tem02.spl~ ~override~  // WP 
 	u_leather_armor 	= 1
 	u_chain_armor 		= 1
 	u_plate_armor 		= 0
-	u_simple_weapons	= 2
+	u_basic_weapons 	= 2
+	u_mace_hammer 		= 0
+	u_flails 			= 0
+	u_axes 				= 0
 	u_medium_swords		= 2
 	u_curved_swords		= 0
 	u_large_blades 		= 0
-	u_bludgeons 		= 2
-	u_axes		 		= 2
+	u_spears 	 		= 2
+	u_darts		 		= 0
 	u_bows 				= 0
 	u_crossbows 		= 0
   STR_VAR
@@ -905,12 +920,15 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	u_leather_armor 	= 1
 	u_chain_armor 		= 0
 	u_plate_armor 		= 0
-	u_simple_weapons	= 1
+	u_basic_weapons 	= 1
+	u_mace_hammer 		= 0
+	u_flails 			= 0
+	u_axes 				= 0
 	u_medium_swords		= 0
 	u_curved_swords		= 0
 	u_large_blades 		= 0
-	u_bludgeons 		= 0
-	u_axes		 		= 0
+	u_spears 	 		= 0
+	u_darts		 		= 1
 	u_bows 				= 0
 	u_crossbows 		= 0
   STR_VAR
@@ -1057,12 +1075,15 @@ COPY ~faiths_and_powers/kits/acolytes/329_mask/d5_mask3.cre~ ~override~
 	u_leather_armor 	= 1
 	u_chain_armor 		= 0
 	u_plate_armor 		= 0
-	u_simple_weapons	= 1
+	u_basic_weapons 	= 1
+	u_mace_hammer 		= 0
+	u_flails 			= 0
+	u_axes 				= 0
 	u_medium_swords		= 0
 	u_curved_swords		= 0
 	u_large_blades 		= 0
-	u_bludgeons 		= 0
-	u_axes		 		= 0
+	u_spears 	 		= 0
+	u_darts		 		= 1
 	u_bows 				= 0
 	u_crossbows 		= 1
   STR_VAR
@@ -1193,12 +1214,15 @@ END
 	u_leather_armor 	= 1
 	u_chain_armor 		= 0
 	u_plate_armor 		= 0
-	u_simple_weapons	= 1
+	u_basic_weapons 	= 1
+	u_mace_hammer 		= 0
+	u_flails 			= 0
+	u_axes 				= 0
 	u_medium_swords		= 0
 	u_curved_swords		= 0
 	u_large_blades 		= 0
-	u_bludgeons 		= 0
-	u_axes		 		= 0
+	u_spears 	 		= 0
+	u_darts		 		= 1
 	u_bows 				= 0
 	u_crossbows 		= 1
   STR_VAR
@@ -1339,12 +1363,15 @@ COPY_EXISTING ~spwi815.spl~ ~override/d5shabl.spl~
 	u_leather_armor 	= 1
 	u_chain_armor 		= 0
 	u_plate_armor 		= 0
-	u_simple_weapons	= 1
+	u_basic_weapons 	= 1
+	u_mace_hammer 		= 0
+	u_flails 			= 0
+	u_axes 				= 0
 	u_medium_swords		= 0
 	u_curved_swords		= 0
 	u_large_blades 		= 0
-	u_bludgeons 		= 0
-	u_axes		 		= 0
+	u_spears 	 		= 0
+	u_darts		 		= 1
 	u_bows 				= 0
 	u_crossbows 		= 0
   STR_VAR
@@ -1475,12 +1502,15 @@ END
 	u_leather_armor 	= 1
 	u_chain_armor 		= 0
 	u_plate_armor 		= 0
-	u_simple_weapons	= 1
+	u_basic_weapons 	= 1
+	u_mace_hammer 		= 0
+	u_flails 			= 0
+	u_axes 				= 0
 	u_medium_swords		= 0
 	u_curved_swords		= 0
 	u_large_blades 		= 0
-	u_bludgeons 		= 0
-	u_axes		 		= 0
+	u_spears 	 		= 0
+	u_darts		 		= 1
 	u_bows 				= 0
 	u_crossbows 		= 0
   STR_VAR
@@ -1629,12 +1659,15 @@ COPY ~faiths_and_powers/kits/acolytes/331_moander/b_moa3.spl~ ~override~    //Im
 	u_leather_armor 	= 1
 	u_chain_armor 		= 0
 	u_plate_armor 		= 0
-	u_simple_weapons	= 1
+	u_basic_weapons 	= 1
+	u_mace_hammer 		= 0
+	u_flails 			= 0
+	u_axes 				= 0
 	u_medium_swords		= 0
 	u_curved_swords		= 0
 	u_large_blades 		= 0
-	u_bludgeons 		= 0
-	u_axes		 		= 1
+	u_spears 	 		= 0
+	u_darts		 		= 1
 	u_bows 				= 0
 	u_crossbows 		= 0
   STR_VAR
@@ -1859,12 +1892,15 @@ COPY ~faiths_and_powers/spheres/spells/dread/b_c501.eff~ ~override/b_bes04.eff~ 
 	u_leather_armor 	= 1
 	u_chain_armor 		= 0
 	u_plate_armor 		= 0
-	u_simple_weapons	= 1
+	u_basic_weapons 	= 1
+	u_mace_hammer 		= 0
+	u_flails 			= 0
+	u_axes 				= 0
 	u_medium_swords		= 0
 	u_curved_swords		= 0
 	u_large_blades 		= 0
-	u_bludgeons 		= 1
-	u_axes		 		= 0
+	u_spears 	 		= 0
+	u_darts		 		= 1
 	u_bows 				= 0
 	u_crossbows 		= 0
   STR_VAR
@@ -1997,12 +2033,15 @@ COPY_EXISTING ~faiths_and_powers/kits/acolytes/342_baervan/d5baerv.2da~ ~overrid
 	u_leather_armor 	= 1
 	u_chain_armor 		= 0
 	u_plate_armor 		= 0
-	u_simple_weapons	= 1
+	u_basic_weapons 	= 1
+	u_mace_hammer 		= 0
+	u_flails 			= 0
+	u_axes 				= 0
 	u_medium_swords		= 0
 	u_curved_swords		= 0
 	u_large_blades 		= 0
-	u_bludgeons 		= 0
-	u_axes		 		= 0
+	u_spears 	 		= 1
+	u_darts		 		= 1
 	u_bows 				= 0
 	u_crossbows 		= 0
   STR_VAR
@@ -2134,12 +2173,15 @@ END
 	u_leather_armor 	= 1
 	u_chain_armor 		= 0
 	u_plate_armor 		= 0
-	u_simple_weapons	= 1
+	u_basic_weapons 	= 1
+	u_mace_hammer 		= 0
+	u_flails 			= 0
+	u_axes 				= 0
 	u_medium_swords		= 0
 	u_curved_swords		= 0
 	u_large_blades 		= 0
-	u_bludgeons 		= 0
-	u_axes		 		= 0
+	u_spears 	 		= 1
+	u_darts		 		= 1
 	u_bows 				= 0
 	u_crossbows 		= 0
   STR_VAR

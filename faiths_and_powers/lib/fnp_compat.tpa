@@ -26,17 +26,20 @@ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5_fnp_spheres BEGIN
 END
 
 ACTION_DEFINE_ASSOCIATIVE_ARRAY d5_fnp_usable BEGIN
-  LEATHER_ARMOR => 0
-  CHAIN_ARMOR => 0
-  PLATE_ARMOR => 0
-  SIMPLE_WEAPONS => 0
-  MEDIUM_SWORDS => 0
-  CURVED_SWORDS => 0
-  LARGE_BLADES => 0
-  BLUDGEONS => 0
-  AXES => 0
-  BOWS => 0
-  CROSSBOWS => 0  
+	LEATHER_ARMOR => 0
+	CHAIN_ARMOR => 0
+	PLATE_ARMOR => 0
+	BASIC_WEAPONS => 0
+	MACE_HAMMER => 0
+	FLAILS => 0
+	AXES => 0
+	MEDIUM_SWORDS => 0
+	CURVED_SWORDS => 0
+	LARGE_BLADES => 0
+	SPEARS => 0
+	DARTS => 0
+	BOWS => 0
+	CROSSBOWS => 0  
 END
 
 ACTION_DEFINE_ASSOCIATIVE_ARRAY d5_fnp_sphere_access BEGIN
@@ -73,12 +76,15 @@ DEFINE_ACTION_FUNCTION ~DEFINE_FNP_KIT_INFO~
 	u_leather_armor = 1
 	u_chain_armor = 0
 	u_plate_armor = 0
-	u_simple_weapons = 1
+	u_basic_weapons = 1
+	u_mace_hammer = 0
+	u_flails = 0
+	u_axes = 0
 	u_medium_swords = 0
 	u_curved_swords = 0
 	u_large_blades = 0
-	u_bludgeons = 0
-	u_axes = 0
+	u_spears = 0
+	u_darts = 0
 	u_bows = 0
 	u_crossbows = 0  
   STR_VAR
@@ -153,7 +159,7 @@ BEGIN
   
   // define the text that will be added to the files
   OUTER_TEXT_SPRINT class_text ~%clab_name% %class%~
-  OUTER_TEXT_SPRINT usable_text ~%clab_name% %u_leather_armor% %u_chain_armor% %u_plate_armor% %u_simple_weapons% %u_medium_swords% %u_curved_swords% %u_large_blades% %u_bludgeons% %u_axes% %u_bows% %u_crossbows%~
+  OUTER_TEXT_SPRINT usable_text ~%clab_name% 	%u_leather_armor% %u_chain_armor% %u_plate_armor% %u_basic_weapons% %u_mace_hammer% %u_flails% %u_axes% %u_medium_swords% %u_curved_swords% %u_large_blades% %u_spears% %u_darts% %u_bows% %u_crossbows%~
   OUTER_TEXT_SPRINT sphere_text ~%clab_name% %s_Life% %s_Death% %s_Benediction% %s_Destruction% %s_Protection% %s_War% %s_Exploration% %s_Knowledge% %s_Deception% %s_Thought% %s_Dread% %s_Vigor% %s_Affliction% %s_Animal% %s_Plant% %s_Earth% %s_Water% %s_Air% %s_Fire% %s_Light% %s_Shadow% %s_Magic% %s_Perdition%~
 
   // uppercase text
