@@ -659,12 +659,22 @@ COPY ~faiths_and_powers/spheres/spells/affliction/b_ILM04.eff~ ~override~ //
 
 //__________________________________________________________________________________
 //PLANT
+
+/*		no - make this the HLA instead
 ACTION_IF GAME_IS ~iwdee bgee bg2ee eet~ THEN BEGIN    //EE only opcodes
  COPY ~faiths_and_powers/spheres/spells/plant/b_Pr601.spl~ ~override~ // Nature's Wrath
         SAY NAME1 @51401
         SAY NAME2 @51401
         SAY UNIDENTIFIED_DESC @51402
 	SAY DESC @51402
+END
+
+ COPY ~faiths_and_powers/spheres/spells/plant/d5Pr601.spl~ ~override~ // Nature's Wrath
+        SAY NAME1 @51401
+        SAY UNIDENTIFIED_DESC @51402
+ COPY ~faiths_and_powers/spheres/spells/plant/d5_clsha.itm~ ~override~
+ COPY ~faiths_and_powers/spheres/spells/plant/d5_sham.cre~ ~override~
+ COPY ~faiths_and_powers/spheres/spells/plant/d5_nfsha.spl~ ~override~
 END
 
 ACTION_IF GAME_IS ~bgt tob~ BEGIN
@@ -674,8 +684,9 @@ ACTION_IF GAME_IS ~bgt tob~ BEGIN
         SAY UNIDENTIFIED_DESC @51402
 	SAY DESC @51402
 END
+*/
 
-//Assassin Vines_________________________________________________
+//Assassin Vines_______________________________________________________________________
 ACTION_IF GAME_IS ~bgee bg2ee eet iwdee~ THEN BEGIN    //Not sure why, but I originally limited this to IWDEE TEST!
  COPY ~faiths_and_powers/spheres/spells/plant/b_c601.spl~ ~override~ //Assassin Vines
         SAY NAME1 @51404
@@ -684,7 +695,7 @@ ACTION_IF GAME_IS ~bgee bg2ee eet iwdee~ THEN BEGIN    //Not sure why, but I ori
 	SAY DESC @51405
 END
 
-//Stone Fist__________________________________________________________________________________
+//Stone Fist__________________________________________________________________________
 //EARTH
 //icons
 COPY ~faiths_and_powers/spheres/spells/earth/b_c303b.bam~ ~override~ // Stone Fist
@@ -881,6 +892,19 @@ ACTION_IF NOT FILE_EXISTS_IN_GAME ~spsd02.spl~ BEGIN
         SAY UNIDENTIFIED_DESC @52002
 	SAY DESC @52002
 END
+
+//Summon Shadows_____________________________________________________________________
+//
+COPY ~faiths_and_powers/spheres/spells/shadow/d5sh501.spl~     ~override~ 
+        SAY NAME1 @52007
+        SAY NAME2 @52007
+        SAY UNIDENTIFIED_DESC @52008
+COPY ~faiths_and_powers/spheres/spells/shadow/shadowsu.cre~     ~override~
+COPY ~faiths_and_powers/spheres/spells/shadow/shadowsu.eff~     ~override~
+COPY ~faiths_and_powers/spheres/spells/shadow/shadowsu.itm~     ~override~
+COPY ~faiths_and_powers/spheres/spells/shadow/dvwraith.cre~     ~override~
+COPY ~faiths_and_powers/spheres/spells/shadow/dvwraith.eff~     ~override~
+COPY ~faiths_and_powers/spheres/spells/shadow/dvwraith.itm~     ~override~
 
 //__________________________________________________________________________________
 
@@ -1873,6 +1897,13 @@ COPY_EXISTING ~mxsplprs.2da~ ~override/mxspldru.2da~
 //
 	COPY ~faiths_and_powers/spheres/mxsplpal.2da~ ~override~
 	COPY ~faiths_and_powers/spheres/mxsplran.2da~ ~override~
+//__________________________________________________________________________________
+
+
+
+//change shaman known spell tables__________________________________________________
+//
+	COPY ~faiths_and_powers/kits/incarnates/splshmkn.2da~ ~override~
 //__________________________________________________________________________________
 
 

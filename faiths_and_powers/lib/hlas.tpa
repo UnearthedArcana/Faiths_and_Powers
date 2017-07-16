@@ -74,6 +74,9 @@ COPY ~faiths_and_powers/spheres/hlas/general/tg#spir.spl~ ~override~ // ancestra
     WRITE_SHORT 0x1c 4
     WRITE_LONG 0x34 1
     WRITE_BYTE 0x21 (THIS & 0b00111111)
+COPY ~faiths_and_powers/spheres/hlas/general/tg#spir.cre~ ~override~
+    SAY NAME1 @60081
+    SAY NAME2 @60081
 COPY ~faiths_and_powers/spheres/hlas/general/tg#spir.eff~ ~override~
 COPY ~faiths_and_powers/spheres/hlas/general/tg#spir.itm~ ~override~
 COPY ~faiths_and_powers/spheres/hlas/general/tg#spirb.bam~ ~override~
@@ -289,44 +292,45 @@ COPY ~faiths_and_powers/kits/mystics/702_beast_mystic/d5_ww03.cre~ ~override~
 	SAY NAME1 @70218
 
 //plant______________________________________________________________________________
-LAF RES_NUM_OF_SPELL_NAME STR_VAR spell_name = ~CLERIC_STALKER~ RET spell_res END
-COPY ~faiths_and_powers/spheres/hlas/plant/d5_psham.spl~ ~override~
+//LAF RES_NUM_OF_SPELL_NAME STR_VAR spell_name = ~CLERIC_STALKER~ RET spell_res END
+COPY ~faiths_and_powers/spheres/hlas/plant/d5_shmb.spl~ ~override~
 	SAY NAME1 @61401
 	SAY UNIDENTIFIED_DESC @61402
-	LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 STR_VAR resource = EVAL ~%spell_res%~ END 
+//	LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 STR_VAR resource = EVAL ~%spell_res%~ END 
 
 COPY ~faiths_and_powers/spheres/hlas/plant/d5_sham.cre~ ~override~
 	SAY NAME1 @61403
 COPY ~faiths_and_powers/spheres/hlas/plant/d5_clsha.itm~ ~override~
 	SAY NAME1 @61404
 	SAY UNIDENTIFIED_DESC @61404
-COPY ~faiths_and_powers/spheres/hlas/plant/d5_shnf.spl~ ~override~
+COPY ~faiths_and_powers/spheres/hlas/plant/d5_nfsha.spl~ ~override~
 	SAY NAME1 @61405
 	SAY UNIDENTIFIED_DESC @61405
 
-
+/*
 ACTION_IF FILE_EXISTS_IN_GAME ~cdid723.cre~ BEGIN
 	COPY_EXISTING ~cdid723.cre~ ~override~
 	WRITE_BYTE 0x59 50
-	WRITE_BYTE 0x5a 50
+//	WRITE_BYTE 0x5a 50
 	WRITE_BYTE 0x5b 100
 	WRITE_BYTE 0x5c 50
 	WRITE_BYTE 0x5e 50
 	WRITE_BYTE 0x5f 50
 	WRITE_BYTE 0x60 50
-	WRITE_BYTE 0x61 90
+	WRITE_BYTE 0x61 75
 	WRITE_BYTE 0x62 50
 	WRITE_BYTE 0x63 50
 END
 ACTION_IF FILE_EXISTS_IN_GAME ~sshamb.cre~ BEGIN
 	COPY_EXISTING ~sshamb.cre~ ~override~
 	WRITE_BYTE 0x59 50
-	WRITE_BYTE 0x5a 50
+//	WRITE_BYTE 0x5a 50
 	WRITE_BYTE 0x5b 100
 	WRITE_BYTE 0x5c 50
 	WRITE_BYTE 0x5e 50
 	WRITE_BYTE 0x5f 50
 END
+*/
 
 //earth______________________________________________________________________________
 COPY ~faiths_and_powers/spheres/hlas/earth/li#drear.spl~ ~override~ // Refinements earth transformation
@@ -336,6 +340,11 @@ COPY ~faiths_and_powers/spheres/hlas/earth/li#drear.spl~ ~override~ // Refinemen
     WRITE_LONG 0x34 1
     WRITE_BYTE 0x21 (THIS & 0b00111111)
 COPY ~faiths_and_powers/spheres/hlas/earth/transformation~ ~override~
+ACTION_IF FILE_EXISTS_IN_GAME ~spinhum.spl~ BEGIN
+	COPY_EXISTING ~spinhum.spl~ ~override~
+	  LPF ADD_SPELL_EFFECT INT_VAR opcode = 112 target = 1  STR_VAR resource = ~li#druea~ END
+END
+
 
 COPY ~faiths_and_powers/spheres/hlas/earth/d5elsuea.spl~ ~override~ // Refinements summon earth elemental
     SAY NAME1 @61511
@@ -354,6 +363,10 @@ COPY ~faiths_and_powers/spheres/hlas/water/li#drwat.spl~ ~override~ // Refinemen
     WRITE_LONG 0x34 1
     WRITE_BYTE 0x21 (THIS & 0b00111111)
 COPY ~faiths_and_powers/spheres/hlas/water/transformation~ ~override~
+ACTION_IF FILE_EXISTS_IN_GAME ~spinhum.spl~ BEGIN
+	COPY_EXISTING ~spinhum.spl~ ~override~
+	  LPF ADD_SPELL_EFFECT INT_VAR opcode = 112 target = 1  STR_VAR resource = ~li#druwa~ END
+END
 
 COPY ~faiths_and_powers/spheres/hlas/water/d5elsuwa.spl~ ~override~ // Refinements summon water elemental
     SAY NAME1 @61611
@@ -372,6 +385,10 @@ COPY ~faiths_and_powers/spheres/hlas/air/li#drair.spl~ ~override~ // Refinements
     WRITE_LONG 0x34 1
     WRITE_BYTE 0x21 (THIS & 0b00111111)
 COPY ~faiths_and_powers/spheres/hlas/air/transformation~ ~override~
+ACTION_IF FILE_EXISTS_IN_GAME ~spinhum.spl~ BEGIN
+	COPY_EXISTING ~spinhum.spl~ ~override~
+	  LPF ADD_SPELL_EFFECT INT_VAR opcode = 112 target = 1  STR_VAR resource = ~li#druai~ END
+END
 
 COPY ~faiths_and_powers/spheres/hlas/air/d5elsuai.spl~ ~override~ // Refinements summon air elemental
     SAY NAME1 @61711
@@ -405,6 +422,10 @@ COPY ~faiths_and_powers/spheres/hlas/fire/li#drfir.spl~ ~override~ // Refinement
     WRITE_LONG 0x34 1
     WRITE_BYTE 0x21 (THIS & 0b00111111)
 COPY ~faiths_and_powers/spheres/hlas/fire/transformation~ ~override~
+ACTION_IF FILE_EXISTS_IN_GAME ~spinhum.spl~ BEGIN
+	COPY_EXISTING ~spinhum.spl~ ~override~
+	  LPF ADD_SPELL_EFFECT INT_VAR opcode = 112 target = 1  STR_VAR resource = ~li#drufi~ END
+END
 
 COPY ~faiths_and_powers/spheres/hlas/fire/d5elsufi.spl~ ~override~ // Refinements summon fire elemental
     SAY NAME1 @61811

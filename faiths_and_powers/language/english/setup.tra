@@ -1750,8 +1750,50 @@ Casting Time: 6
 Area of Effect: 1 creature
 Saving Throw: None
 
-This spell shrouds the recipient in darkness, protecting <PRO_HIMHER> from both attacks and spells.  They gain a +1 bonus to AC per four levels (maximum of +5), +2 bonus to save vs. spells, and infravision for the duration of this spell.  Additionally, if the recipeient can hide in shadows, they gain a +15% bonus to that ability.~
+This spell shrouds the recipient in darkness, protecting <PRO_HIMHER> from both attacks and spells.  They gain a +1 bonus to AC per four levels (maximum of +5), +2 bonus to save vs. spells, and infravision for the duration of this spell.  Additionally, if the recipeient can hide in shadows, they gain a +15% bonus to that ability.
+~
+@52007  = ~Summon Shadows~
+@52008  = ~Summon Shadows
+Level: 5
+Range: Long
+Duration: 3 turns
+Casting Time: 1 round
+Area of Effect: Special
+Saving Throw: None
 
+This spell summons a number of shadows, which serve the caster under any condition. The type and number of creatures that appear depend upon the level of the wizard casting the spell.
+
+9th : 3 shadows
+12th+ : 2 wraiths
+
+The shadowy creatures will remain under the caster's control until they are slain or the spell duration expires.
+
+Shadow (3 Hit Dice):
+STR -, DEX 14, CON -, INT 6, WIS 12, CHA 11;  AL Chaotic Evil
+HP 36, AC 5, THAC0 13, Saving Throws 11/13/11/13/13
+1 Attack Per Round, 1d6+1 Cold Damage (Touch +1)
+
+Combat Abilities:
+Chill Touch: creatures struck must save vs. death or lose 1 point of strength for 1 hour
+
+Special Qualities:
+Immune to normal weapons
+Immune to backstab, charm, confusion, hold, poison, sleep, stun, & death effects
+Cold Resistance 100%; Physical Damage Resistance 50%
+
+
+Wraith (5 Hit Dice):
+STR -, DEX 15, CON -, INT 11, WIS 13, CHA 12;  AL Lawful Evil
+HP 60, AC 4, THAC0 12, Saving Throws 10/13/10/13/13
+1 Attack Per Round, 1d8+1 Cold Damage (Touch +1)
+
+Combat Abilities:
+Life Drain: each successeful hit raises wraith hit points by 5 for 1 turn, and the target must save vs. death or lose 1 level
+
+Special Qualities:
+Immune to normal weapons
+Immune to backstab, blindness, charm, confusion, hold, poison, sleep, stun, & death effects
+Cold Resistance 100%; Physical Damage Resistance 50%~
 //
 // HLAs..........................................................................
 //
