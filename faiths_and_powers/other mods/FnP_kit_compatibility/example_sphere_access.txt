@@ -1,36 +1,50 @@
-
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
 ACTION_INCLUDE ~%MOD_FOLDER%/lib/fnp_compat.tpa~
+
 COPY_EXISTING ~kitlist.2da~ ~override~
 	COUNT_2DA_ROWS 1 rows
 	READ_2DA_ENTRY (%rows% - 1) 5 1 mod_clab
 BUT_ONLY
+
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
-	c_cleric 		= 0   // put a '1' next to the kit's class
-	c_acolyte 		= 0
-	c_fighter_cleric = 0   // only choose ONE of these classes!
-	c_cleric_mage	= 0
-	c_cleric_thief 	= 0
-	c_ranger_cleric	= 0
-    c_druid 		= 0
-    c_mystic 		= 0
-    c_occultist 	= 0
-    c_champion 		= 0
-    c_zealot 		= 0
-    c_ranger 		= 0
-    c_scout 		= 0
+// put a '1' next to the types of armor usable by the kit
+// put a number from '1' to '5' next to the weapons the kit can use
+// the number will determine the kit's proficiency limits with those weapons
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_club_staff	 	= 1
+	u_hammers	 		= 1
+	u_maces 	 		= 1
+	u_flails 			= 1
+	u_axes 				= 0
+	u_daggers 			= 1
+	u_short_swords		= 1
+	u_long_swords		= 0
+	u_scimitars 		= 0
+	u_katanas 			= 0
+	u_bastard_swords 	= 0
+	u_2hand_swords 		= 0
+	u_halberds 			= 0
+	u_spears 	 		= 1
+	u_darts 			= 0
+	u_slings	 		= 1
+	u_bows 				= 0
+	u_crossbows 		= 1
   STR_VAR
-    clab_name = EVAL ~%mod_clab%~
-	race 			= ~all~  // enter 'all' 'human' 'elf' 'dwarf' 'gnome' 'halfling' or 'orc'
-//
-	s_Life 			= ~x~   // for chosen spheres, enter 'focus' or 'major' or 'minor'
-	s_Death 		= ~x~   // (or 'paladin' or 'ranger' for those classes)
+// for class, enter 'cleric' 'acolyte' 'druid' 'mystic' 'occultist' 'champion' 'zealot' 'ranger' or 'scout'
+// for selected spheres, enter 'focus' 'major' 'minor' 'paladin' or 'ranger'
+    clab_name 	= EVAL ~%mod_clab%~
+	class 			= ~x~	 
+	s_Life 			= ~x~
+	s_Death 		= ~x~
 	s_Benediction 	= ~x~
 	s_Destruction 	= ~x~
 	s_Protection 	= ~x~
 	s_War 			= ~x~
+	s_Exploration   = ~x~
 	s_Knowledge 	= ~x~
 	s_Deception 	= ~x~
 	s_Thought 		= ~x~
@@ -46,11 +60,16 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	s_Light 		= ~x~
 	s_Shadow 		= ~x~
 	s_Magic 		= ~x~
+	s_Perdition     = ~x~
 END
+
+LAM ~READ_FNP_KIT_INFO~
 
 ACTION_IF FILE_EXISTS_IN_GAME ~d5_spheres.d5~ BEGIN
-  INCLUDE ~%MOD_FOLDER%/lib/add_fnp_spheres.tpa~
+  LAM apply_fnp_spheres
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~d5_fnp_usability.d5~ BEGIN
+  LAM apply_fnp_usability
 END
 //__________________________________________________________________________________
-
-

@@ -1,6 +1,12 @@
 ﻿# Faiths_and_Powers
 Faiths and Powers mod
 
+2017-07-30
+
+v. 0.71
+
+- added variables for all weapon types for custom use/proficiency
+
 2017-07-01
 
 v. 0.69e

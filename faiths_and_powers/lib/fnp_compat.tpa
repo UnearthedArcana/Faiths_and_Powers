@@ -29,15 +29,22 @@ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5_fnp_usable BEGIN
 	LEATHER_ARMOR => 0
 	CHAIN_ARMOR => 0
 	PLATE_ARMOR => 0
-	BASIC_WEAPONS => 0
-	MACE_HAMMER => 0
+	CLUB_STAFF => 0
+	HAMMERS => 0
+	MACES => 0
 	FLAILS => 0
 	AXES => 0
-	MEDIUM_SWORDS => 0
-	CURVED_SWORDS => 0
-	LARGE_BLADES => 0
+	DAGGERS => 0
+	SHORT_SWORDS => 0
+	LONG_SWORDS => 0
+	SCIMITARS => 0
+	KATANAS => 0
+	BASTARD_SWORDS => 0
+	2HAND_SWORDS => 0
+	HALBERDS => 0
 	SPEARS => 0
 	DARTS => 0
+	SLINGS => 0
 	BOWS => 0
 	CROSSBOWS => 0  
 END
@@ -63,7 +70,7 @@ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5_fnp_class_access BEGIN
   DRUID => 0
   MYSTIC => 0
   OCCULTIST => 0
-  FIGHTER_DRUID => 0
+  FIGHTER_MYSTIC => 0
   RANGER => 0
   SCOUT => 0
   CHAMPION => 0
@@ -76,15 +83,22 @@ DEFINE_ACTION_FUNCTION ~DEFINE_FNP_KIT_INFO~
 	u_leather_armor = 1
 	u_chain_armor = 0
 	u_plate_armor = 0
-	u_basic_weapons = 1
-	u_mace_hammer = 0
+	u_club_staff = 1
+	u_hammers = 0
+	u_maces = 0
 	u_flails = 0
 	u_axes = 0
-	u_medium_swords = 0
-	u_curved_swords = 0
-	u_large_blades = 0
+	u_daggers = 0
+	u_short_swords = 0
+	u_long_swords = 0
+	u_scimitars = 0
+	u_katanas = 0
+	u_bastard_swords = 0
+	u_2hand_swords = 0
+	u_halberds = 0
 	u_spears = 0
 	u_darts = 0
+	u_slings = 0
 	u_bows = 0
 	u_crossbows = 0  
   STR_VAR
@@ -159,7 +173,7 @@ BEGIN
   
   // define the text that will be added to the files
   OUTER_TEXT_SPRINT class_text ~%clab_name% %class%~
-  OUTER_TEXT_SPRINT usable_text ~%clab_name% 	%u_leather_armor% %u_chain_armor% %u_plate_armor% %u_basic_weapons% %u_mace_hammer% %u_flails% %u_axes% %u_medium_swords% %u_curved_swords% %u_large_blades% %u_spears% %u_darts% %u_bows% %u_crossbows%~
+  OUTER_TEXT_SPRINT usable_text ~%clab_name% 	%u_leather_armor% %u_chain_armor% %u_plate_armor% %u_club_staff% %u_hammers% %u_maces% %u_flails% %u_axes% %u_daggers% %u_short_swords% %u_long_swords% %u_scimitars% %u_katanas% %u_bastard_swords% %u_2hand_swords% %u_halberds% %u_spears% %u_darts% %u_slings% %u_bows% %u_crossbows%~
   OUTER_TEXT_SPRINT sphere_text ~%clab_name% %s_Life% %s_Death% %s_Benediction% %s_Destruction% %s_Protection% %s_War% %s_Exploration% %s_Knowledge% %s_Deception% %s_Thought% %s_Dread% %s_Vigor% %s_Affliction% %s_Animal% %s_Plant% %s_Earth% %s_Water% %s_Air% %s_Fire% %s_Light% %s_Shadow% %s_Magic% %s_Perdition%~
 
   // uppercase text
@@ -180,6 +194,9 @@ BEGIN
 END
 
 DEFINE_ACTION_MACRO ~READ_FNP_KIT_INFO~ BEGIN
+
+//  CLEAR_ARRAYS
+
   ACTION_IF (FILE_EXISTS_IN_GAME ~d5_class.2da~
                && FILE_EXISTS_IN_GAME ~d5_usabl.2da~
                && FILE_EXISTS_IN_GAME ~d5_spher.2da~) BEGIN

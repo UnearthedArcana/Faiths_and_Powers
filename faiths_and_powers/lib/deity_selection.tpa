@@ -303,7 +303,7 @@ BUT_ONLY
 //
 LAM ~READ_FNP_KIT_INFO~
 
-OUTER_SET block_num = 1
+//OUTER_SET block_num = 1
 ACTION_PHP_EACH d5_fnp_kit_class_access AS kit => class BEGIN
 	COPY_EXISTING ~kitlist.2da~ ~override~
 		COUNT_2DA_COLS cols // amount of columns
@@ -321,8 +321,29 @@ ACTION_PHP_EACH d5_fnp_kit_class_access AS kit => class BEGIN
 		  END
 		END
 	BUT_ONLY
+/*
+COPY_EXISTING ~kitlist.2da~ ~override~
+  COUNT_2DA_COLS num_cols
+  READ_2DA_ENTRIES_NOW ~r2en_kitlist~ 9
+  FOR (row = 3; row < r2en_kitlist; row += 1) BEGIN
+	READ_2DA_ENTRY_FORMER ~r2en_kitlist~ row 5 kit_clab
+	READ_2DA_ENTRY_FORMER ~r2en_kitlist~ row 1 kit_label
+	READ_2DA_ENTRY_FORMER ~r2en_kitlist~ row 3 kit_name
+	READ_2DA_ENTRY_FORMER ~r2en_kitlist~ row 4 kit_desc
+	READ_2DA_ENTRY_FORMER ~r2en_kitlist~ row 0 kit_num
+	READ_2DA_ENTRY_FORMER ~r2en_kitlist~ row 8 kit_class
+	PHP_EACH d5_fnp_kit_class_access AS kit => class BEGIN
+	  PATCH_IF (~%kit%~ STRING_EQUAL_CASE ~%kit_clab%~) BEGIN
+//		SET block_num = (%block_num% + 1)
+		INNER_ACTION BEGIN
+*/	
+	  
+/*
+	PATCH_IF (VARIABLE_IS_SET $d5_fnp_kit_class_access(~%kit_clab%~)) BEGIN
+	  TEXT_SPRINT class $d5_fnp_kit_class_access(~%kit_clab%~)
+*/
+
 	ACTION_CLEAR_ARRAY ~d5_kit_races~
-	OUTER_SET block_num = (%block_num% + 1)
 	ACTION_GET_STRREF EVAL %kit_name% ~name_string~
 	ACTION_GET_STRREF EVAL %kit_desc% ~desc_string~
 	ACTION_IF (~%class%~ STRING_EQUAL_CASE ~cleric~) BEGIN
@@ -433,47 +454,47 @@ ACTION_PHP_EACH d5_fnp_kit_class_access AS kit => class BEGIN
 				READ_2DA_ENTRY (row + 2) 9 1 C_E
 				PATCH_IF (L_G = 1) BEGIN
 				  INNER_ACTION BEGIN
-					APPEND_OUTER ~faiths_and_powers/deity/Dom/%kitrace%/%class%_1.txt~ ~~~~~IF ~Global("B_ALIGN","LOCALS",1)~ THEN REPLY ~Select %name_string%~ GOTO B_dom0%kitclass%_%block_num%  //LG Selection ~~~~~ KEEP_CRLF
+					APPEND_OUTER ~faiths_and_powers/deity/Dom/%kitrace%/%class%_1.txt~ ~~~~~IF ~Global("B_ALIGN","LOCALS",1)~ THEN REPLY ~Select %name_string%~ GOTO B_dom0%kitclass%_%kit_num%  //LG Selection ~~~~~ KEEP_CRLF
 				  END
 				END
 				PATCH_IF (L_N = 1) BEGIN
 				  INNER_ACTION BEGIN
-					APPEND_OUTER ~faiths_and_powers/deity/Dom/%kitrace%/%class%_1.txt~ ~~~~~IF ~Global("B_ALIGN","LOCALS",2)~ THEN REPLY ~Select %name_string%~ GOTO B_dom0%kitclass%_%block_num%  //LN Selection ~~~~~ KEEP_CRLF
+					APPEND_OUTER ~faiths_and_powers/deity/Dom/%kitrace%/%class%_1.txt~ ~~~~~IF ~Global("B_ALIGN","LOCALS",2)~ THEN REPLY ~Select %name_string%~ GOTO B_dom0%kitclass%_%kit_num%  //LN Selection ~~~~~ KEEP_CRLF
 				  END
 				END
 				PATCH_IF (L_E = 1) BEGIN
 				  INNER_ACTION BEGIN
-					APPEND_OUTER ~faiths_and_powers/deity/Dom/%kitrace%/%class%_1.txt~ ~~~~~IF ~Global("B_ALIGN","LOCALS",3)~ THEN REPLY ~Select %name_string%~ GOTO B_dom0%kitclass%_%block_num%  //LE Selection ~~~~~ KEEP_CRLF
+					APPEND_OUTER ~faiths_and_powers/deity/Dom/%kitrace%/%class%_1.txt~ ~~~~~IF ~Global("B_ALIGN","LOCALS",3)~ THEN REPLY ~Select %name_string%~ GOTO B_dom0%kitclass%_%kit_num%  //LE Selection ~~~~~ KEEP_CRLF
 				  END
 				END
 				PATCH_IF (N_G = 1) BEGIN
 				  INNER_ACTION BEGIN
-					APPEND_OUTER ~faiths_and_powers/deity/Dom/%kitrace%/%class%_1.txt~ ~~~~~IF ~Global("B_ALIGN","LOCALS",4)~ THEN REPLY ~Select %name_string%~ GOTO B_dom0%kitclass%_%block_num%  //NG Selection ~~~~~ KEEP_CRLF
+					APPEND_OUTER ~faiths_and_powers/deity/Dom/%kitrace%/%class%_1.txt~ ~~~~~IF ~Global("B_ALIGN","LOCALS",4)~ THEN REPLY ~Select %name_string%~ GOTO B_dom0%kitclass%_%kit_num%  //NG Selection ~~~~~ KEEP_CRLF
 				  END
 				END
 				PATCH_IF (T_N = 1) BEGIN
 				  INNER_ACTION BEGIN
-					APPEND_OUTER ~faiths_and_powers/deity/Dom/%kitrace%/%class%_1.txt~ ~~~~~IF ~Global("B_ALIGN","LOCALS",5)~ THEN REPLY ~Select %name_string%~ GOTO B_dom0%kitclass%_%block_num%  //TN Selection ~~~~~ KEEP_CRLF
+					APPEND_OUTER ~faiths_and_powers/deity/Dom/%kitrace%/%class%_1.txt~ ~~~~~IF ~Global("B_ALIGN","LOCALS",5)~ THEN REPLY ~Select %name_string%~ GOTO B_dom0%kitclass%_%kit_num%  //TN Selection ~~~~~ KEEP_CRLF
 				  END
 				END
 				PATCH_IF (N_E = 1) BEGIN
 				  INNER_ACTION BEGIN
-					APPEND_OUTER ~faiths_and_powers/deity/Dom/%kitrace%/%class%_1.txt~ ~~~~~IF ~Global("B_ALIGN","LOCALS",6)~ THEN REPLY ~Select %name_string%~ GOTO B_dom0%kitclass%_%block_num%  //NE Selection ~~~~~ KEEP_CRLF
+					APPEND_OUTER ~faiths_and_powers/deity/Dom/%kitrace%/%class%_1.txt~ ~~~~~IF ~Global("B_ALIGN","LOCALS",6)~ THEN REPLY ~Select %name_string%~ GOTO B_dom0%kitclass%_%kit_num%  //NE Selection ~~~~~ KEEP_CRLF
 				  END
 				END
 				PATCH_IF (C_G = 1) BEGIN
 				  INNER_ACTION BEGIN
-					APPEND_OUTER ~faiths_and_powers/deity/Dom/%kitrace%/%class%_1.txt~ ~~~~~IF ~Global("B_ALIGN","LOCALS",7)~ THEN REPLY ~Select %name_string%~ GOTO B_dom0%kitclass%_%block_num%  //CG Selection ~~~~~ KEEP_CRLF
+					APPEND_OUTER ~faiths_and_powers/deity/Dom/%kitrace%/%class%_1.txt~ ~~~~~IF ~Global("B_ALIGN","LOCALS",7)~ THEN REPLY ~Select %name_string%~ GOTO B_dom0%kitclass%_%kit_num%  //CG Selection ~~~~~ KEEP_CRLF
 				  END
 				END
 				PATCH_IF (C_N = 1) BEGIN
 				  INNER_ACTION BEGIN
-					APPEND_OUTER ~faiths_and_powers/deity/Dom/%kitrace%/%class%_1.txt~ ~~~~~IF ~Global("B_ALIGN","LOCALS",8)~ THEN REPLY ~Select %name_string%~ GOTO B_dom0%kitclass%_%block_num%  //CN Selection ~~~~~ KEEP_CRLF
+					APPEND_OUTER ~faiths_and_powers/deity/Dom/%kitrace%/%class%_1.txt~ ~~~~~IF ~Global("B_ALIGN","LOCALS",8)~ THEN REPLY ~Select %name_string%~ GOTO B_dom0%kitclass%_%kit_num%  //CN Selection ~~~~~ KEEP_CRLF
 				  END
 				END
 				PATCH_IF (C_E = 1) BEGIN
 				  INNER_ACTION BEGIN
-					APPEND_OUTER ~faiths_and_powers/deity/Dom/%kitrace%/%class%_1.txt~ ~~~~~IF ~Global("B_ALIGN","LOCALS",9)~ THEN REPLY ~Select %name_string%~ GOTO B_dom0%kitclass%_%block_num%  //CE Selection ~~~~~ KEEP_CRLF
+					APPEND_OUTER ~faiths_and_powers/deity/Dom/%kitrace%/%class%_1.txt~ ~~~~~IF ~Global("B_ALIGN","LOCALS",9)~ THEN REPLY ~Select %name_string%~ GOTO B_dom0%kitclass%_%kit_num%  //CE Selection ~~~~~ KEEP_CRLF
 				  END
 				END
 			  END
@@ -482,10 +503,16 @@ ACTION_PHP_EACH d5_fnp_kit_class_access AS kit => class BEGIN
 		  ACTION_IF (%kit_label% STRING_EQUAL_CASE ~beast_friend~) BEGIN
 			OUTER_TEXT_SPRINT ~kit_label~ ~beastfriend~
 		  END
-		  APPEND_OUTER ~faiths_and_powers/deity/Dom/%kitrace%/%class%_2.txt~ ~~~~~IF ~~ THEN BEGIN B_dom0%kitclass%_%block_num% %WNL% SAY ~%desc_string%~ %WNL% IF ~~ THEN REPLY ~Select %name_string%~ DO ~AddKit(%kit_label%)~ EXIT %WNL% IF ~~ THEN REPLY ~Select a different kit~ GOTO B_dom0%kitclass%_A %WNL% END %WNL% ~~~~~ KEEP_CRLF
+		  APPEND_OUTER ~faiths_and_powers/deity/Dom/%kitrace%/%class%_2.txt~ ~~~~~IF ~~ THEN BEGIN B_dom0%kitclass%_%kit_num% %WNL% SAY ~%desc_string%~ %WNL% IF ~~ THEN REPLY ~Select %name_string%~ DO ~AddKit(%kit_label%)~ EXIT %WNL% IF ~~ THEN REPLY ~Select a different kit~ GOTO B_dom0%kitclass%_A %WNL% END %WNL% ~~~~~ KEEP_CRLF
 		END
 	END
 END
+/*
+END
+END
+END
+BUT_ONLY
+*/
 
 ACTION_FOR_EACH race IN ~d~ ~e~ ~g~ ~h~ ~he~ ~hl~ ~ho~ BEGIN
   COPY ~faiths_and_powers/deity/Dom/b_d_%race%.d~ ~faiths_and_powers/deity/b_d_%race%.d~

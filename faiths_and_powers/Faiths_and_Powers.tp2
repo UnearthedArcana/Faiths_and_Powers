@@ -2,14 +2,14 @@ BACKUP ~faiths_and_powers/backup~
 AUTHOR ~SubtleD and Grammarsalad~
 
 
-VERSION ~0.70e~
+VERSION ~0.71~
 
 //README ~faiths_and_powers/readme-pnp.html~
 
 
 ALWAYS
 
-    INCLUDE ~faiths_and_powers/lib/alter_effect.tpa~
+//    INCLUDE ~faiths_and_powers/lib/alter_effect.tpa~
 
 	INCLUDE ~faiths_and_powers/lib/remove_lines.tpa~
 
@@ -97,6 +97,7 @@ LANGUAGE
 //					CHOOSE WHETHER/HOW TO INSTALL NEW KITS
 //__________________________________________________________________________________
 //__________________________________________________________________________________
+
 
 
 //__________________________________________________________________________________
@@ -770,10 +771,12 @@ LAM arctic_ranger
 LAM beast_master
 //
 // (scouts)
+/*
 LAM mage_hunter
 LAM barbarian_ranger
 LAM elven_archer
 LAM halfling_slinger
+*/
 //
 // (multiclass)
 LAM fighter_druid
@@ -958,6 +961,11 @@ INCLUDE ~faiths_and_powers/lib/mod_kit_spheres.tpa~
 //
 INCLUDE ~faiths_and_powers/lib/default_kit_spheres.tpa~
 //___________________________________________________________________________________
+
+//alter item usability______________________________________________________________
+//
+INCLUDE ~faiths_and_powers/lib/item_usability.tpa~
+//__________________________________________________________________________________
 
 //Add IWD spells if not already in game
 ACTION_IF GAME_IS ~bgee bg2ee eet~ BEGIN
@@ -1770,6 +1778,7 @@ COPY ~faiths_and_powers/kits/K_X_Y/K_R_HL.2da~ ~override~
 
 
 
+/*
 // FnP item usability
 
 //___________________________________________________________________________________
@@ -1780,7 +1789,7 @@ REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~103~ @8
 
 INCLUDE ~faiths_and_powers/lib/item_usability.tpa~
 //__________________________________________________________________________________
-
+*/
 
 
 
@@ -1819,6 +1828,11 @@ ACTION_IF GAME_IS ~bgee bg2ee eet~ BEGIN
 	 INCLUDE ~faiths_and_powers/lib/Setup_IWD_divine_Spells.tpa~      //install them
   END
 END
+
+//alter item usability______________________________________________________________
+//
+INCLUDE ~faiths_and_powers/lib/item_usability.tpa~
+//__________________________________________________________________________________
 
 //Sphere System_____________________________________________________________________
 //

@@ -159,15 +159,22 @@ END
 	u_leather_armor 	= 1
 	u_chain_armor 		= 0
 	u_plate_armor 		= 0
-	u_basic_weapons 	= 2
-	u_mace_hammer 		= 0
+	u_club_staff	 	= 2
+	u_hammers	 		= 0
+	u_maces 	 		= 0
 	u_flails 			= 0
 	u_axes 				= 0
-	u_medium_swords		= 0
-	u_curved_swords		= 0
-	u_large_blades 		= 0
+	u_daggers 			= 2
+	u_short_swords		= 0
+	u_long_swords		= 0
+	u_scimitars 		= 0
+	u_katanas 			= 0
+	u_bastard_swords 	= 0
+	u_2hand_swords 		= 0
+	u_halberds 			= 0
 	u_spears 	 		= 2
-	u_darts		 		= 2
+	u_darts 			= 2
+	u_slings	 		= 2
 	u_bows 				= 2
 	u_crossbows 		= 0
   STR_VAR
@@ -364,15 +371,22 @@ END
 	u_leather_armor 	= 1
 	u_chain_armor 		= 0
 	u_plate_armor 		= 0
-	u_basic_weapons 	= 1
-	u_mace_hammer 		= 0
+	u_club_staff	 	= 1
+	u_hammers	 		= 0
+	u_maces 	 		= 0
 	u_flails 			= 0
 	u_axes 				= 0
-	u_medium_swords		= 0
-	u_curved_swords		= 0
-	u_large_blades 		= 0
+	u_daggers 			= 1
+	u_short_swords		= 0
+	u_long_swords		= 0
+	u_scimitars 		= 0
+	u_katanas 			= 0
+	u_bastard_swords 	= 0
+	u_2hand_swords 		= 0
+	u_halberds 			= 0
 	u_spears 	 		= 1
-	u_darts		 		= 1
+	u_darts 			= 1
+	u_slings	 		= 1
 	u_bows 				= 1
 	u_crossbows 		= 0
   STR_VAR
@@ -568,15 +582,22 @@ END
 	u_leather_armor 	= 1
 	u_chain_armor 		= 0
 	u_plate_armor 		= 0
-	u_basic_weapons 	= 1
-	u_mace_hammer 		= 0
+	u_club_staff	 	= 1
+	u_hammers	 		= 0
+	u_maces 	 		= 0
 	u_flails 			= 0
 	u_axes 				= 0
-	u_medium_swords		= 0
-	u_curved_swords		= 0
-	u_large_blades 		= 0
+	u_daggers 			= 1
+	u_short_swords		= 0
+	u_long_swords		= 0
+	u_scimitars 		= 0
+	u_katanas 			= 0
+	u_bastard_swords 	= 0
+	u_2hand_swords 		= 0
+	u_halberds 			= 0
 	u_spears 	 		= 1
-	u_darts		 		= 1
+	u_darts 			= 1
+	u_slings	 		= 1
 	u_bows 				= 1
 	u_crossbows 		= 0
   STR_VAR
@@ -772,15 +793,22 @@ END
 	u_leather_armor 	= 1
 	u_chain_armor 		= 0
 	u_plate_armor 		= 0
-	u_basic_weapons 	= 2
-	u_mace_hammer 		= 0
+	u_club_staff	 	= 2
+	u_hammers	 		= 0
+	u_maces 	 		= 0
 	u_flails 			= 0
 	u_axes 				= 0
-	u_medium_swords		= 0
-	u_curved_swords		= 0
-	u_large_blades 		= 0
+	u_daggers 			= 2
+	u_short_swords		= 0
+	u_long_swords		= 0
+	u_scimitars 		= 0
+	u_katanas 			= 0
+	u_bastard_swords 	= 0
+	u_2hand_swords 		= 0
+	u_halberds 			= 0
 	u_spears 	 		= 2
-	u_darts		 		= 2
+	u_darts 			= 2
+	u_slings	 		= 2
 	u_bows 				= 2
 	u_crossbows 		= 0
   STR_VAR
@@ -876,7 +904,7 @@ ADD_KIT ~D5_CM_AZUTH~
 //CLASSES: Mage = 1, Fighter = 2, Cleric=3, Thief = 4, Bard = 5
 //         Paladin 6, Druid = 11, Ranger = 12, Sorcerer = 19
 //         Monk = 20
-~0x02000000 3~
+~0x02000000 14~
 
 //HIGH LEVEL ABILITIES ABBREVIATION_________________________________________________
 ~Ma0~
@@ -941,15 +969,22 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	u_leather_armor 	= 1
 	u_chain_armor 		= 0
 	u_plate_armor 		= 0
-	u_basic_weapons 	= 1
-	u_mace_hammer 		= 0
+	u_club_staff	 	= 1
+	u_hammers	 		= 1
+	u_maces 	 		= 1
 	u_flails 			= 0
 	u_axes 				= 0
-	u_medium_swords		= 0
-	u_curved_swords		= 0
-	u_large_blades 		= 0
+	u_daggers 			= 1
+	u_short_swords		= 1
+	u_long_swords		= 0
+	u_scimitars 		= 0
+	u_katanas 			= 0
+	u_bastard_swords 	= 0
+	u_2hand_swords 		= 0
+	u_halberds 			= 0
 	u_spears 	 		= 0
-	u_darts		 		= 1
+	u_darts 			= 1
+	u_slings	 		= 1
 	u_bows 				= 0
 	u_crossbows 		= 1
   STR_VAR
@@ -1045,7 +1080,7 @@ ADD_KIT ~D5_BENDR~
 //CLASSES: Mage = 1, Fighter = 2, Cleric=3, Thief = 4, Bard = 5
 //         Paladin 6, Druid = 11, Ranger = 12, Sorcerer = 19
 //         Monk = 20
-~0x02000000 3~
+~0x02000000 14~
 
 //HIGH LEVEL ABILITIES ABBREVIATION_________________________________________________
 ~Ma0~
@@ -1139,15 +1174,22 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	u_leather_armor 	= 1
 	u_chain_armor 		= 0
 	u_plate_armor 		= 0
-	u_basic_weapons 	= 1
-	u_mace_hammer 		= 0
+	u_club_staff	 	= 1
+	u_hammers	 		= 1
+	u_maces 	 		= 1
 	u_flails 			= 0
 	u_axes 				= 0
-	u_medium_swords		= 0
-	u_curved_swords		= 0
-	u_large_blades 		= 0
+	u_daggers 			= 1
+	u_short_swords		= 1
+	u_long_swords		= 0
+	u_scimitars 		= 0
+	u_katanas 			= 0
+	u_bastard_swords 	= 0
+	u_2hand_swords 		= 0
+	u_halberds 			= 0
 	u_spears 	 		= 0
-	u_darts		 		= 1
+	u_darts 			= 1
+	u_slings	 		= 1
 	u_bows 				= 0
 	u_crossbows 		= 1
   STR_VAR
@@ -1308,19 +1350,26 @@ END
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
-	u_chain_armor 		= 2
-	u_plate_armor 		= 2
-	u_basic_weapons 	= 2
-	u_mace_hammer 		= 2
-	u_flails 			= 2
-	u_axes 				= 2
-	u_medium_swords		= 0
-	u_curved_swords		= 0
-	u_large_blades 		= 0
+	u_chain_armor 		= 1
+	u_plate_armor 		= 1
+	u_club_staff	 	= 1
+	u_hammers	 		= 3
+	u_maces 	 		= 3
+	u_flails 			= 1
+	u_axes 				= 0
+	u_daggers 			= 0
+	u_short_swords		= 1
+	u_long_swords		= 0
+	u_scimitars 		= 0
+	u_katanas 			= 0
+	u_bastard_swords 	= 0
+	u_2hand_swords 		= 0
+	u_halberds 			= 0
 	u_spears 	 		= 0
-	u_darts		 		= 0
+	u_darts 			= 0
+	u_slings	 		= 0
 	u_bows 				= 0
-	u_crossbows 		= 2
+	u_crossbows 		= 1
   STR_VAR
     clab_name 		= ~d5cfcla~
 	class 			= ~fighter_cleric~
@@ -1462,15 +1511,22 @@ END
 	u_leather_armor 	= 1
 	u_chain_armor 		= 0
 	u_plate_armor 		= 0
-	u_basic_weapons 	= 2
-	u_mace_hammer 		= 2
+	u_club_staff	 	= 2
+	u_hammers	 		= 2
+	u_maces 	 		= 2
 	u_flails 			= 2
 	u_axes 				= 2
-	u_medium_swords		= 2
-	u_curved_swords		= 2
-	u_large_blades 		= 0
+	u_daggers 			= 2
+	u_short_swords		= 2
+	u_long_swords		= 2
+	u_scimitars 		= 2
+	u_katanas 			= 2
+	u_bastard_swords 	= 2
+	u_2hand_swords 		= 2
+	u_halberds 			= 2
 	u_spears 	 		= 2
-	u_darts		 		= 2
+	u_darts 			= 2
+	u_slings	 		= 2
 	u_bows 				= 3
 	u_crossbows 		= 0
   STR_VAR
@@ -1618,17 +1674,24 @@ END
 	u_leather_armor 	= 1
 	u_chain_armor 		= 0
 	u_plate_armor 		= 0
-	u_basic_weapons 	= 2
-	u_mace_hammer 		= 2
+	u_club_staff	 	= 2
+	u_hammers	 		= 2
+	u_maces 	 		= 2
 	u_flails 			= 2
 	u_axes 				= 2
-	u_medium_swords		= 2
-	u_curved_swords		= 2
-	u_large_blades 		= 2
+	u_daggers 			= 2
+	u_short_swords		= 2
+	u_long_swords		= 2
+	u_scimitars 		= 2
+	u_katanas 			= 2
+	u_bastard_swords 	= 2
+	u_2hand_swords 		= 2
+	u_halberds 			= 2
 	u_spears 	 		= 2
-	u_darts		 		= 2
+	u_darts 			= 2
+	u_slings	 		= 2
 	u_bows 				= 2
-	u_crossbows 		= 0
+	u_crossbows 		= 2
   STR_VAR
     clab_name 		= ~d5crsh~
 	class 			= ~ranger_cleric~
@@ -1791,15 +1854,22 @@ END
 	u_leather_armor 	= 1
 	u_chain_armor 		= 1
 	u_plate_armor 		= 1
-	u_basic_weapons 	= 2
-	u_mace_hammer 		= 2
+	u_club_staff	 	= 2
+	u_hammers	 		= 2
+	u_maces 	 		= 2
 	u_flails 			= 2
 	u_axes 				= 2
-	u_medium_swords		= 2
-	u_curved_swords		= 0
-	u_large_blades 		= 2
+	u_daggers 			= 0
+	u_short_swords		= 2
+	u_long_swords		= 2
+	u_scimitars 		= 0
+	u_katanas 			= 0
+	u_bastard_swords 	= 2
+	u_2hand_swords 		= 0
+	u_halberds 			= 2
 	u_spears 	 		= 2
-	u_darts		 		= 0
+	u_darts 			= 0
+	u_slings	 		= 2
 	u_bows 				= 0
 	u_crossbows 		= 2
   STR_VAR
