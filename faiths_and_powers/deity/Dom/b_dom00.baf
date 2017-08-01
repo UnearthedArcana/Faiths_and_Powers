@@ -47,8 +47,8 @@ IF
         NumTimesTalkedTo(0)
 THEN
 	RESPONSE #100
-        SetGlobal("B_RAN1","GLOBAL",1)    //base Ranger Selections
-        SetGlobal("B_SCO1","GLOBAL",1)    //base Ranger Selections
+        SetGlobal("B_RAN1","GLOBAL",1)    //Ranger Selections
+        SetGlobal("B_SCO1","GLOBAL",1)    //Scout Selections
 		Continue()
 END
 IF

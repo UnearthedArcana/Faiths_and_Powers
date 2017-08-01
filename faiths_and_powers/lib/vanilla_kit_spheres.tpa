@@ -118,9 +118,9 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabsh01.2da~ BEGIN
 //__________________________________________________________________________________
 END
 
-ACTION_IF FILE_EXISTS_IN_GAME ~clabpr01.2da~ BEGIN
- ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5_deity.d5~ BEGIN
+ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5_deity.d5~ BEGIN
 
+ACTION_IF FILE_EXISTS_IN_GAME ~clabpr01.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
  LAF ~DEFINE_FNP_KIT_INFO~
@@ -174,8 +174,6 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabpr01.2da~ BEGIN
 	s_Perdition     = ~x~
  END
 //__________________________________________________________________________________
-
- END
 END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~clabpr02.2da~ BEGIN
@@ -403,8 +401,6 @@ ACTION_IF FILE_EXISTS_IN_GAME ~ohtyr.2da~ BEGIN
 END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~clabdr01.2da~ BEGIN
- ACTION_IF NOT FILE_EXISTS_IN_GAME  ~d5_deity.d5~ BEGIN
-
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
  LAF ~DEFINE_FNP_KIT_INFO~
@@ -458,8 +454,6 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabdr01.2da~ BEGIN
 	s_Perdition     = ~x~
  END
 //__________________________________________________________________________________
-
- END
 END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~clabdr02.2da~ BEGIN
@@ -631,8 +625,6 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabdr04.2da~ BEGIN
 END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~clabpa01.2da~ BEGIN
- ACTION_IF NOT FILE_EXISTS_IN_GAME  ~d5_deity.d5~ BEGIN
-
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
  LAF ~DEFINE_FNP_KIT_INFO~
@@ -686,8 +678,6 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabpa01.2da~ BEGIN
 	s_Perdition     = ~x~
  END
 //__________________________________________________________________________________
-
- END
 END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~clabpa02.2da~ BEGIN
@@ -969,6 +959,8 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabpa06.2da~ BEGIN
  END
 //__________________________________________________________________________________
 END
+
+END		// end if not exists d5_deity.d5
 
 ACTION_IF FILE_EXISTS_IN_GAME ~clabrn01.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
