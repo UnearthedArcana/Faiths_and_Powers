@@ -146,14 +146,40 @@ END
 //___________________________________________________________________________________
 
 
-//apply cleric restrictions to talos kit____________________________________________
+// vv THIS IS OVERBROAD vv ... restrict to weapons? how??
+//apply cleric restrictions to kits__________________________________________________
 //
 COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~
   PATCH_IF (~%SOURCE_SIZE%~ > ~0x71~) BEGIN
-    READ_BYTE    0x1e cleric   											// cleric class usability
+	READ_SHORT   0x1c type
+	READ_BYTE    0x1e cleric   											// cleric class usability
 	READ_BYTE    0x29 c_kits											// cleric kit flags
-    PATCH_IF ((~%cleric%~ BAND ~0b10000000~) = ~0b10000000~) BEGIN 		// if *NOT usable* by clerics
-	  WRITE_BYTE 0x29 (~%c_kits%~ BOR ~0b00000111~) 					// set same flag for all cleric kits
+	PATCH_IF (%type% = 2) OR   	//armor
+	  		(%type% = 5) OR   	//arrow
+			(%type% = 15) OR  	//bow
+			(%type% = 16) OR  	//dagger
+			(%type% = 18) OR  	//slings
+			(%type% = 14) OR  	//bullet
+			(%type% = 19) OR  	//small swords
+			(%type% = 20) OR  	//large swords
+			(%type% = 25) OR  	//axe
+			(%type% = 21) OR  	//hammer
+			(%type% = 17) OR  	//mace
+			(%type% = 22) OR  	//morningstars
+			(%type% = 23) OR  	//flails
+			(%type% = 24) OR  	//darts
+			(%type% = 26) OR  	//quarterstaff
+			(%type% = 27) OR  	//crossbows
+			(%type% = 31) OR  	//bolts
+			(%type% = 28) OR  	//hand-to-hand
+			(%type% = 29) OR  	//spear
+			(%type% = 57) OR  	//greatswords
+			(%type% = 69) OR  	//bastard swords
+			(%type% = 30) OR  	//halberds
+			(%type% = 44) BEGIN  //clubs
+	  PATCH_IF ((~%cleric%~ BAND ~0b10000000~) = ~0b10000000~) BEGIN 		// if *NOT usable* by clerics
+		WRITE_BYTE 0x29 (~%c_kits%~ BOR ~0b00000111~) 					// set same flag for all cleric kits
+	  END
 	END
   END
 BUT_ONLY
