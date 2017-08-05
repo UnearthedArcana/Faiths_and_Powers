@@ -1961,21 +1961,9 @@ OUTER_TEXT_SPRINT total_sphere_list ~~
 
 LAM ~READ_FNP_KIT_INFO~
 
-OUTER_TEXT_SPRINT hex_grizzly ~00004027~
-COPY_EXISTING ~kitlist.2da~ ~override~
-  REPLACE_TEXTUALLY ~0xFFFFFFFF~ ~0xFFFFFFFF          2~
-  READ_2DA_ENTRIES_NOW ~r2en_kitlist~ 1
-  FOR (row = 3; row < r2en_kitlist; row += 1) BEGIN
-	READ_2DA_ENTRY_FORMER ~r2en_kitlist~ row 1 kit_label
-	PATCH_IF (~%kit_label%~ STRING_EQUAL_CASE ~GRIZZLY_BEAR~) BEGIN
-	  SET_2DA_ENTRY %row% 9 1 ~0x%hex_grizzly%~
-	END
-  END
-BUT_ONLY
-
 COPY_EXISTING ~kitlist.2da~ ~override~
   COUNT_2DA_COLS num_cols
-  READ_2DA_ENTRIES_NOW ~r2en_kitlist~ 9
+  READ_2DA_ENTRIES_NOW ~r2en_kitlist~ 10
   FOR (row = 3; row < r2en_kitlist; row += 1) BEGIN
 	READ_2DA_ENTRY_FORMER ~r2en_kitlist~ row 5 kit_clab
 	READ_2DA_ENTRY_FORMER ~r2en_kitlist~ row 0 kit_index

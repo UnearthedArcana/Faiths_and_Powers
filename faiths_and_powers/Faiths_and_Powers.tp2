@@ -2,7 +2,7 @@ BACKUP ~faiths_and_powers/backup~
 AUTHOR ~SubtleD and Grammarsalad~
 
 
-VERSION ~0.71c~
+VERSION ~0.72~
 
 //README ~faiths_and_powers/readme-pnp.html~
 
@@ -109,8 +109,8 @@ LANGUAGE
 
 BEGIN @101
 DESIGNATED 101
-REQUIRE_PREDICATE (GAME_IS ~bgee bg2ee eet iwdee~) ~Enhanced Edition game required!~
-SUBCOMPONENT @100
+//REQUIRE_PREDICATE (GAME_IS ~bgee bg2ee eet iwdee~) ~Enhanced Edition game required!~
+SUBCOMPONENT @100 (GAME_IS ~iwdee~)
 
 //copy marker file__________________________________________________________________
 //
@@ -505,7 +505,7 @@ INCLUDE ~faiths_and_powers/lib/npc_kits.tpa~
 
 BEGIN @102 // all the new kits, and kits in menus
 DESIGNATED 102
-SUBCOMPONENT @100
+SUBCOMPONENT @100 (GAME_IS ~bgee bg2ee eet~)
 //Acolyte Lore (added to clabs)
 COPY ~faiths_and_powers/kits/acolytes/B_LOR.spl~ ~override~
 
