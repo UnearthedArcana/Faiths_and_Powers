@@ -2,7 +2,7 @@ BACKUP ~faiths_and_powers/backup~
 AUTHOR ~SubtleD and Grammarsalad~
 
 
-VERSION ~0.72~
+VERSION ~0.72b~
 
 //README ~faiths_and_powers/readme-pnp.html~
 
@@ -613,6 +613,64 @@ ACTION_IF (FILE_EXISTS_IN_GAME ~sodcltxt.2da~) BEGIN
 END
 //__________________________________________________________________________________
 
+//multiclasses_______________________________________________________________________
+//
+ACTION_IF FILE_EXISTS_IN_GAME ~CLSRCREQ.2da~ BEGIN
+ COPY_EXISTING ~clsrcreq.2da~ ~override~
+  COUNT_2DA_ROWS 8 rows
+  FOR (row = 0 ; row < rows ; ++row) BEGIN
+    READ_2DA_ENTRY row 0 8 entry
+    PATCH_IF (("%entry%" STRING_COMPARE_CASE "FIGHTER_CLERIC"      = 0) OR
+              ("%entry%" STRING_COMPARE_CASE "CLERIC_THIEF"        = 0)) BEGIN // cleric/thief, fighter/cleric
+      SET_2DA_ENTRY  row 1 8 1
+      SET_2DA_ENTRY  row 2 8 1
+      SET_2DA_ENTRY  row 3 8 1
+      SET_2DA_ENTRY  row 4 8 1
+      SET_2DA_ENTRY  row 5 8 1
+      SET_2DA_ENTRY  row 6 8 1
+      SET_2DA_ENTRY  row 7 8 1
+    END
+    PATCH_IF ("%entry%" STRING_COMPARE_CASE "CLERIC_MAGE"         = 0) BEGIN // cleric/mage
+      SET_2DA_ENTRY  row 1 8 1
+      SET_2DA_ENTRY  row 2 8 1
+      SET_2DA_ENTRY  row 3 8 1
+      SET_2DA_ENTRY  row 6 8 1
+    END
+    PATCH_IF ("%entry%" STRING_COMPARE_CASE "CLERIC_RANGER"       = 0) BEGIN // cleric/ranger
+      SET_2DA_ENTRY  row 1 8 1
+      SET_2DA_ENTRY  row 2 8 1
+      SET_2DA_ENTRY  row 3 8 1
+    END
+    PATCH_IF (("%entry%" STRING_COMPARE_CASE "FIGHTER_MAGE"        = 0) OR
+              ("%entry%" STRING_COMPARE_CASE "FIGHTER_THIEF"       = 0) OR
+              ("%entry%" STRING_COMPARE_CASE "FIGHTER_MAGE_THIEF"  = 0) OR
+              ("%entry%" STRING_COMPARE_CASE "MAGE_THIEF"          = 0)) BEGIN // other human multiclasses
+      SET_2DA_ENTRY  row 1 8 1
+    END
+    PATCH_IF (("%entry%" STRING_COMPARE_CASE "FIGHTER_DRUID"       = 0)) BEGIN // no druid multiclasses
+      SET_2DA_ENTRY  row 1 8 0
+      SET_2DA_ENTRY  row 2 8 0
+      SET_2DA_ENTRY  row 3 8 0
+      SET_2DA_ENTRY  row 4 8 0
+      SET_2DA_ENTRY  row 5 8 0
+      SET_2DA_ENTRY  row 6 8 0
+      SET_2DA_ENTRY  row 7 8 0
+    END
+    PATCH_IF ("%entry%" STRING_COMPARE_CASE "FIGHTER_MAGE_CLERIC" = 0) BEGIN // fighter/mage/cleric
+      SET_2DA_ENTRY  row 1 8 0
+      SET_2DA_ENTRY  row 2 8 0
+      SET_2DA_ENTRY  row 3 8 0
+      SET_2DA_ENTRY  row 4 8 0
+      SET_2DA_ENTRY  row 5 8 0
+      SET_2DA_ENTRY  row 6 8 0
+      SET_2DA_ENTRY  row 7 8 0
+    END
+  END
+  PRETTY_PRINT_2DA
+ BUT_ONLY
+END
+//___________________________________________________________________________________
+
 //install all the kits:_____________________________________________________________
 //
 // (clerics)
@@ -701,7 +759,6 @@ LAM champion_moradin
 //champ of Kele effectively replaces UHunter. In IWDEE, the champ of mykrul is merely added (they're different enough conceptually to be seperate)
 ACTION_IF GAME_IS ~iwdee~ THEN BEGIN   //
   LAM iwdee_champion_kelemvor
-  COPY_EXISTING ~clsrcreq.2da~ ~override~ //
 END
 //kelevmore undead hunter for non-iwdee
 ACTION_IF GAME_IS ~bgee bg2ee eet~ THEN BEGIN   //
@@ -942,7 +999,7 @@ BEGIN @105 // no deity selection or new kits
 DESIGNATED 105
 SUBCOMPONENT @100
 
-//copy marker file___________________________________________________________________
+//copy marker file__________________________________________________________________
 //
 COPY ~faiths_and_powers/lib/markers/d5_nada.d5~ ~override~
 //__________________________________________________________________________________
