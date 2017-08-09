@@ -840,6 +840,8 @@ END
 
 //apply sphere system to spells_____________________________________________________
 //
+LAM d5_minor_access_levels
+
 ACTION_IF NOT FILE_EXISTS_IN_GAME ~dvsrv4here.mrk~ THEN BEGIN
   INCLUDE ~faiths_and_powers/lib/sphere_list_base.tpa~
 END
@@ -972,8 +974,13 @@ ACTION_PHP_EACH spellsphere AS spl => sph BEGIN
 	  BUT_ONLY
 	END
 	ACTION_IF (%lvl% < 4) BEGIN
-	  COPY_EXISTING ~%the_spell%.spl~ ~override/%minor_res%.spl~ 	
-		WRITE_LONG 0x34 %mlvl%
+	  COPY_EXISTING ~%the_spell%.spl~ ~override/%minor_res%.spl~ 
+		PATCH_IF (%d5_minor_shift% = 1) BEGIN
+		  WRITE_LONG 0x34 %mlvl%
+		END
+		PATCH_IF (%d5_minor_shift% = 0) BEGIN
+		  WRITE_LONG 0x34 %lvl%
+		END
 		READ_LONG 0x64 abil_offset
 		READ_SHORT 0x68 abil_number
 		READ_BYTE (%abil_offset% + 0x0c) abil_target
@@ -1059,8 +1066,13 @@ ACTION_PHP_EACH spellsphere AS spl => sph BEGIN
 	  LPF CLONE_EFFECT INT_VAR match_opcode=171 STR_VAR match_resource=~SPWI101~ resource = EVAL ~%priest_res%~ END
 	BUT_ONLY
 	ACTION_IF (%lvl% < 4) BEGIN
-	  COPY_EXISTING ~%the_spell%.spl~ ~override/%minor_res%.spl~ 	
-		WRITE_LONG 0x34 %mlvl%
+	  COPY_EXISTING ~%the_spell%.spl~ ~override/%minor_res%.spl~ 
+		PATCH_IF (%d5_minor_shift% = 1) BEGIN
+		  WRITE_LONG 0x34 %mlvl%
+		END
+		PATCH_IF (%d5_minor_shift% = 0) BEGIN
+		  WRITE_LONG 0x34 %lvl%
+		END
 		READ_LONG 0x64 abil_offset
 		READ_SHORT 0x68 abil_number
 		READ_BYTE (%abil_offset% + 0x0c) abil_target
@@ -1367,7 +1379,7 @@ OUTER_TEXT_SPRINT paladin_sphere_list ~~
 OUTER_TEXT_SPRINT ranger_sphere_list ~~
 OUTER_TEXT_SPRINT total_sphere_list ~~
 
-LAM ~READ_FNP_KIT_INFO~
+//LAM ~READ_FNP_KIT_INFO~
 
 COPY_EXISTING ~kitlist.2da~ ~override~
   COUNT_2DA_COLS num_cols
