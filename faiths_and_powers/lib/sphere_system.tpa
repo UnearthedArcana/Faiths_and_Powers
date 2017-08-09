@@ -831,9 +831,11 @@ ACTION_IF (spell_exists) BEGIN
   LAF RES_NUM_OF_SPELL_NAME
 	STR_VAR spell_name = EVAL ~CLERIC_ALICORN_LANCE~ RET spell_res 
   END
-  COPY_EXISTING ~%spell_res%.spl~ ~override~
-	LPF ALTER_EFFECT INT_VAR match_opcode = 12 parameter2 = (0 + 64 << 16) savingthrow = 0 END
-  BUT_ONLY
+  ACTION_IF FILE_EXISTS_IN_GAME ~%spell_res%.spl~ BEGIN
+	COPY_EXISTING ~%spell_res%.spl~ ~override~
+	  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 12 parameter2 = (0 + 64 << 16) savingthrow = 0 END
+	BUT_ONLY
+  END
 END
 //__________________________________________________________________________________
 
@@ -842,7 +844,7 @@ END
 //
 LAM d5_minor_access_levels
 
-ACTION_IF NOT FILE_EXISTS_IN_GAME ~dvsrv4here.mrk~ THEN BEGIN
+ACTION_IF NOT FILE_EXISTS_IN_GAME ~dvsrv4here.mrk~ BEGIN
   INCLUDE ~faiths_and_powers/lib/sphere_list_base.tpa~
 END
 ACTION_IF FILE_EXISTS_IN_GAME ~dvsrv4here.mrk~ THEN BEGIN

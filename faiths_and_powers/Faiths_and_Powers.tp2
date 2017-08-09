@@ -2,14 +2,14 @@ BACKUP ~faiths_and_powers/backup~
 AUTHOR ~SubtleD and Grammarsalad~
 
 
-VERSION ~0.74~
+VERSION ~0.74a~
 
 //README ~faiths_and_powers/readme-pnp.html~
 
 
 ALWAYS
 
-	ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5_fnp_settings.ini~ BEGIN
+	ACTION_IF NOT FILE_EXISTS ~override/d5_fnp_settings.ini~ BEGIN
   	  COPY ~faiths_and_powers/d5_fnp_settings.ini~ ~override~
 	END
   	
@@ -377,13 +377,14 @@ LAM ~READ_FNP_KIT_INFO~
 
 //more scout alignments_____________________________________________________________
 //
+ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN
 /*
 ACTION_PHP_EACH d5_fnp_kits AS ind => kit BEGIN
   ACTION_IF (VARIABLE_IS_SET $d5_fnp_kit_class_access(~%kit%~)) BEGIN
 	OUTER_TEXT_SPRINT class $d5_fnp_kit_class_access(~%kit%~)
 	ACTION_IF (~%class%~ STRING_EQUAL_CASE ~SCOUT~) BEGIN
 */
-ACTION_PHP_EACH d5_fnp_kit_class_access AS kit => class BEGIN
+ ACTION_PHP_EACH d5_fnp_kit_class_access AS kit => class BEGIN
   ACTION_IF (~%class%~ STRING_EQUAL_CASE ~SCOUT~) BEGIN
 	COPY_EXISTING ~kitlist.2da~ ~override~
 	  COUNT_2DA_COLS cols // amount of columns
@@ -411,6 +412,7 @@ ACTION_PHP_EACH d5_fnp_kit_class_access AS kit => class BEGIN
 	  SET_2DA_ENTRIES_NOW ~s2el_align~ num_cols
 	BUT_ONLY
   END
+ END
 END
 //__________________________________________________________________________________
 
@@ -589,6 +591,8 @@ ACTION_IF FILE_EXISTS_IN_GAME ~CLSRCREQ.2da~ BEGIN
   PRETTY_PRINT_2DA
  BUT_ONLY
 END
+
+LAM d5_dual_classing
 
 ACTION_IF (%d5_dual_class% = 0) BEGIN
   COPY_EXISTING ~dualclas.2da~ ~override~
