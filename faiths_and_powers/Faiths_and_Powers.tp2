@@ -2,7 +2,7 @@ BACKUP ~faiths_and_powers/backup~
 AUTHOR ~SubtleD and Grammarsalad~
 
 
-VERSION ~0.74b~
+VERSION ~0.74c~
 
 //README ~faiths_and_powers/readme-pnp.html~
 
@@ -214,6 +214,65 @@ ACTION_IF (FILE_EXISTS_IN_GAME ~sodcltxt.2da~) BEGIN
   	BUT_ONLY
 END
 //__________________________________________________________________________________
+
+//enable lots of multiclasses_______________________________________________________
+//
+ACTION_IF FILE_EXISTS_IN_GAME ~CLSRCREQ.2da~ BEGIN
+ COPY_EXISTING ~clsrcreq.2da~ ~override~
+  COUNT_2DA_ROWS 8 rows
+  FOR (row = 0 ; row < rows ; ++row) BEGIN
+    READ_2DA_ENTRY row 0 8 entry
+    PATCH_IF (("%entry%" STRING_COMPARE_CASE "FIGHTER_CLERIC"      = 0) OR
+              ("%entry%" STRING_COMPARE_CASE "CLERIC_THIEF"        = 0)) BEGIN // cleric/thief, fighter/cleric
+      SET_2DA_ENTRY  row 1 8 1
+      SET_2DA_ENTRY  row 2 8 1
+      SET_2DA_ENTRY  row 3 8 1
+      SET_2DA_ENTRY  row 4 8 1
+      SET_2DA_ENTRY  row 5 8 1
+      SET_2DA_ENTRY  row 6 8 1
+      SET_2DA_ENTRY  row 7 8 1
+    END
+    PATCH_IF ("%entry%" STRING_COMPARE_CASE "CLERIC_MAGE"         = 0) BEGIN // cleric/mage
+      SET_2DA_ENTRY  row 1 8 1
+      SET_2DA_ENTRY  row 2 8 1
+      SET_2DA_ENTRY  row 3 8 1
+      SET_2DA_ENTRY  row 6 8 1
+    END
+    PATCH_IF ("%entry%" STRING_COMPARE_CASE "CLERIC_RANGER"       = 0) BEGIN // cleric/ranger
+      SET_2DA_ENTRY  row 1 8 1
+      SET_2DA_ENTRY  row 2 8 1
+      SET_2DA_ENTRY  row 3 8 1
+    END
+    PATCH_IF (("%entry%" STRING_COMPARE_CASE "FIGHTER_MAGE"        = 0) OR
+              ("%entry%" STRING_COMPARE_CASE "FIGHTER_THIEF"       = 0) OR
+              ("%entry%" STRING_COMPARE_CASE "FIGHTER_MAGE_THIEF"  = 0) OR
+              ("%entry%" STRING_COMPARE_CASE "MAGE_THIEF"          = 0)) BEGIN // other human multiclasses
+      SET_2DA_ENTRY  row 1 8 1
+    END
+    PATCH_IF (("%entry%" STRING_COMPARE_CASE "DRUID"               = 0) OR
+    		  ("%entry%" STRING_COMPARE_CASE "FIGHTER_DRUID"       = 0)) BEGIN // druids and mystics
+      SET_2DA_ENTRY  row 1 8 1
+      SET_2DA_ENTRY  row 2 8 1
+      SET_2DA_ENTRY  row 3 8 1
+      SET_2DA_ENTRY  row 4 8 1
+      SET_2DA_ENTRY  row 5 8 1
+      SET_2DA_ENTRY  row 6 8 1
+      SET_2DA_ENTRY  row 7 8 1
+    END
+    PATCH_IF ("%entry%" STRING_COMPARE_CASE "FIGHTER_MAGE_CLERIC" = 0) BEGIN // fighter/mage/cleric
+      SET_2DA_ENTRY  row 1 8 0
+      SET_2DA_ENTRY  row 2 8 0
+      SET_2DA_ENTRY  row 3 8 0
+      SET_2DA_ENTRY  row 4 8 0
+      SET_2DA_ENTRY  row 5 8 0
+      SET_2DA_ENTRY  row 6 8 0
+      SET_2DA_ENTRY  row 7 8 0
+    END
+  END
+  PRETTY_PRINT_2DA
+ BUT_ONLY
+END
+//___________________________________________________________________________________
 
 //install all the kits:_____________________________________________________________
 //
@@ -534,64 +593,8 @@ INCLUDE ~faiths_and_powers/lib/sphere_system.tpa~
 INCLUDE ~faiths_and_powers/lib/npc_kits.tpa~
 //__________________________________________________________________________________
 
-//multiclassing, not dual-classing__________________________________________________
+//no dual-classing__________________________________________________________________
 //
-ACTION_IF FILE_EXISTS_IN_GAME ~CLSRCREQ.2da~ BEGIN
- COPY_EXISTING ~clsrcreq.2da~ ~override~
-  COUNT_2DA_ROWS 8 rows
-  FOR (row = 0 ; row < rows ; ++row) BEGIN
-    READ_2DA_ENTRY row 0 8 entry
-    PATCH_IF (("%entry%" STRING_COMPARE_CASE "FIGHTER_CLERIC"      = 0) OR
-              ("%entry%" STRING_COMPARE_CASE "CLERIC_THIEF"        = 0)) BEGIN // cleric/thief, fighter/cleric
-      SET_2DA_ENTRY  row 1 8 1
-      SET_2DA_ENTRY  row 2 8 1
-      SET_2DA_ENTRY  row 3 8 1
-      SET_2DA_ENTRY  row 4 8 1
-      SET_2DA_ENTRY  row 5 8 1
-      SET_2DA_ENTRY  row 6 8 1
-      SET_2DA_ENTRY  row 7 8 1
-    END
-    PATCH_IF ("%entry%" STRING_COMPARE_CASE "CLERIC_MAGE"         = 0) BEGIN // cleric/mage
-      SET_2DA_ENTRY  row 1 8 1
-      SET_2DA_ENTRY  row 2 8 1
-      SET_2DA_ENTRY  row 3 8 1
-      SET_2DA_ENTRY  row 6 8 1
-    END
-    PATCH_IF ("%entry%" STRING_COMPARE_CASE "CLERIC_RANGER"       = 0) BEGIN // cleric/ranger
-      SET_2DA_ENTRY  row 1 8 1
-      SET_2DA_ENTRY  row 2 8 1
-      SET_2DA_ENTRY  row 3 8 1
-    END
-    PATCH_IF (("%entry%" STRING_COMPARE_CASE "FIGHTER_MAGE"        = 0) OR
-              ("%entry%" STRING_COMPARE_CASE "FIGHTER_THIEF"       = 0) OR
-              ("%entry%" STRING_COMPARE_CASE "FIGHTER_MAGE_THIEF"  = 0) OR
-              ("%entry%" STRING_COMPARE_CASE "MAGE_THIEF"          = 0)) BEGIN // other human multiclasses
-      SET_2DA_ENTRY  row 1 8 1
-    END
-    PATCH_IF (("%entry%" STRING_COMPARE_CASE "DRUID"               = 0) OR
-    		  ("%entry%" STRING_COMPARE_CASE "FIGHTER_DRUID"       = 0)) BEGIN // druids and mystics
-      SET_2DA_ENTRY  row 1 8 1
-      SET_2DA_ENTRY  row 2 8 1
-      SET_2DA_ENTRY  row 3 8 1
-      SET_2DA_ENTRY  row 4 8 1
-      SET_2DA_ENTRY  row 5 8 1
-      SET_2DA_ENTRY  row 6 8 1
-      SET_2DA_ENTRY  row 7 8 1
-    END
-    PATCH_IF ("%entry%" STRING_COMPARE_CASE "FIGHTER_MAGE_CLERIC" = 0) BEGIN // fighter/mage/cleric
-      SET_2DA_ENTRY  row 1 8 0
-      SET_2DA_ENTRY  row 2 8 0
-      SET_2DA_ENTRY  row 3 8 0
-      SET_2DA_ENTRY  row 4 8 0
-      SET_2DA_ENTRY  row 5 8 0
-      SET_2DA_ENTRY  row 6 8 0
-      SET_2DA_ENTRY  row 7 8 0
-    END
-  END
-  PRETTY_PRINT_2DA
- BUT_ONLY
-END
-
 LAM d5_dual_classing
 
 ACTION_IF (%d5_dual_class% = 0) BEGIN
@@ -605,7 +608,7 @@ ACTION_IF (%d5_dual_class% = 0) BEGIN
 	PRETTY_PRINT_2DA
   BUT_ONLY
 END
-//___________________________________________________________________________________
+//__________________________________________________________________________________
 
 //verbiage__________________________________________________________________________
 //
@@ -733,6 +736,65 @@ ACTION_IF (FILE_EXISTS_IN_GAME ~sodcltxt.2da~) BEGIN
   	BUT_ONLY
 END
 //__________________________________________________________________________________
+
+//enable lots of multiclasses_______________________________________________________
+//
+ACTION_IF FILE_EXISTS_IN_GAME ~CLSRCREQ.2da~ BEGIN
+ COPY_EXISTING ~clsrcreq.2da~ ~override~
+  COUNT_2DA_ROWS 8 rows
+  FOR (row = 0 ; row < rows ; ++row) BEGIN
+    READ_2DA_ENTRY row 0 8 entry
+    PATCH_IF (("%entry%" STRING_COMPARE_CASE "FIGHTER_CLERIC"      = 0) OR
+              ("%entry%" STRING_COMPARE_CASE "CLERIC_THIEF"        = 0)) BEGIN // cleric/thief, fighter/cleric
+      SET_2DA_ENTRY  row 1 8 1
+      SET_2DA_ENTRY  row 2 8 1
+      SET_2DA_ENTRY  row 3 8 1
+      SET_2DA_ENTRY  row 4 8 1
+      SET_2DA_ENTRY  row 5 8 1
+      SET_2DA_ENTRY  row 6 8 1
+      SET_2DA_ENTRY  row 7 8 1
+    END
+    PATCH_IF ("%entry%" STRING_COMPARE_CASE "CLERIC_MAGE"         = 0) BEGIN // cleric/mage
+      SET_2DA_ENTRY  row 1 8 1
+      SET_2DA_ENTRY  row 2 8 1
+      SET_2DA_ENTRY  row 3 8 1
+      SET_2DA_ENTRY  row 6 8 1
+    END
+    PATCH_IF ("%entry%" STRING_COMPARE_CASE "CLERIC_RANGER"       = 0) BEGIN // cleric/ranger
+      SET_2DA_ENTRY  row 1 8 1
+      SET_2DA_ENTRY  row 2 8 1
+      SET_2DA_ENTRY  row 3 8 1
+    END
+    PATCH_IF (("%entry%" STRING_COMPARE_CASE "FIGHTER_MAGE"        = 0) OR
+              ("%entry%" STRING_COMPARE_CASE "FIGHTER_THIEF"       = 0) OR
+              ("%entry%" STRING_COMPARE_CASE "FIGHTER_MAGE_THIEF"  = 0) OR
+              ("%entry%" STRING_COMPARE_CASE "MAGE_THIEF"          = 0)) BEGIN // other human multiclasses
+      SET_2DA_ENTRY  row 1 8 1
+    END
+    PATCH_IF (("%entry%" STRING_COMPARE_CASE "DRUID"               = 0) OR
+    		  ("%entry%" STRING_COMPARE_CASE "FIGHTER_DRUID"       = 0)) BEGIN // druids and mystics
+      SET_2DA_ENTRY  row 1 8 1
+      SET_2DA_ENTRY  row 2 8 1
+      SET_2DA_ENTRY  row 3 8 1
+      SET_2DA_ENTRY  row 4 8 1
+      SET_2DA_ENTRY  row 5 8 1
+      SET_2DA_ENTRY  row 6 8 1
+      SET_2DA_ENTRY  row 7 8 1
+    END
+    PATCH_IF ("%entry%" STRING_COMPARE_CASE "FIGHTER_MAGE_CLERIC" = 0) BEGIN // fighter/mage/cleric
+      SET_2DA_ENTRY  row 1 8 0
+      SET_2DA_ENTRY  row 2 8 0
+      SET_2DA_ENTRY  row 3 8 0
+      SET_2DA_ENTRY  row 4 8 0
+      SET_2DA_ENTRY  row 5 8 0
+      SET_2DA_ENTRY  row 6 8 0
+      SET_2DA_ENTRY  row 7 8 0
+    END
+  END
+  PRETTY_PRINT_2DA
+ BUT_ONLY
+END
+//___________________________________________________________________________________
 
 //install all the kits:_____________________________________________________________
 //
@@ -952,7 +1014,7 @@ COPY_EXISTING ~kitlist.2da~ ~override~
 	END
 BUT_ONLY
 
-ACTION_FOR_EACH class IN ~C~ ~D~ ~P~ ~R~ ~FC~ ~CM~ ~CT~ ~CR~ BEGIN
+ACTION_FOR_EACH class IN ~C~ ~D~ ~P~ ~R~ ~FC~ ~FD~ ~CM~ ~CT~ ~CR~ BEGIN
   ACTION_FOR_EACH race IN ~D~ ~E~ ~G~ ~H~ ~HE~ ~HL~ ~HO~ BEGIN
 	ACTION_IF FILE_EXISTS_IN_GAME ~K_%class%_%race%.2da~ BEGIN
 	  COPY_EXISTING ~K_%class%_%race%.2da~ ~override~
@@ -1071,64 +1133,8 @@ INCLUDE ~faiths_and_powers/lib/sphere_system.tpa~
 INCLUDE ~faiths_and_powers/lib/npc_kits.tpa~
 //__________________________________________________________________________________
 
-//multiclassing, not dual-classing__________________________________________________
+//no dual-classing__________________________________________________________________
 //
-ACTION_IF FILE_EXISTS_IN_GAME ~CLSRCREQ.2da~ BEGIN
- COPY_EXISTING ~clsrcreq.2da~ ~override~
-  COUNT_2DA_ROWS 8 rows
-  FOR (row = 0 ; row < rows ; ++row) BEGIN
-    READ_2DA_ENTRY row 0 8 entry
-    PATCH_IF (("%entry%" STRING_COMPARE_CASE "FIGHTER_CLERIC"      = 0) OR
-              ("%entry%" STRING_COMPARE_CASE "CLERIC_THIEF"        = 0)) BEGIN // cleric/thief, fighter/cleric
-      SET_2DA_ENTRY  row 1 8 1
-      SET_2DA_ENTRY  row 2 8 1
-      SET_2DA_ENTRY  row 3 8 1
-      SET_2DA_ENTRY  row 4 8 1
-      SET_2DA_ENTRY  row 5 8 1
-      SET_2DA_ENTRY  row 6 8 1
-      SET_2DA_ENTRY  row 7 8 1
-    END
-    PATCH_IF ("%entry%" STRING_COMPARE_CASE "CLERIC_MAGE"         = 0) BEGIN // cleric/mage
-      SET_2DA_ENTRY  row 1 8 1
-      SET_2DA_ENTRY  row 2 8 1
-      SET_2DA_ENTRY  row 3 8 1
-      SET_2DA_ENTRY  row 6 8 1
-    END
-    PATCH_IF ("%entry%" STRING_COMPARE_CASE "CLERIC_RANGER"       = 0) BEGIN // cleric/ranger
-      SET_2DA_ENTRY  row 1 8 1
-      SET_2DA_ENTRY  row 2 8 1
-      SET_2DA_ENTRY  row 3 8 1
-    END
-    PATCH_IF (("%entry%" STRING_COMPARE_CASE "FIGHTER_MAGE"        = 0) OR
-              ("%entry%" STRING_COMPARE_CASE "FIGHTER_THIEF"       = 0) OR
-              ("%entry%" STRING_COMPARE_CASE "FIGHTER_MAGE_THIEF"  = 0) OR
-              ("%entry%" STRING_COMPARE_CASE "MAGE_THIEF"          = 0)) BEGIN // other human multiclasses
-      SET_2DA_ENTRY  row 1 8 1
-    END
-    PATCH_IF (("%entry%" STRING_COMPARE_CASE "DRUID"               = 0) OR
-    		  ("%entry%" STRING_COMPARE_CASE "FIGHTER_DRUID"       = 0)) BEGIN // druids and mystics
-      SET_2DA_ENTRY  row 1 8 1
-      SET_2DA_ENTRY  row 2 8 1
-      SET_2DA_ENTRY  row 3 8 1
-      SET_2DA_ENTRY  row 4 8 1
-      SET_2DA_ENTRY  row 5 8 1
-      SET_2DA_ENTRY  row 6 8 1
-      SET_2DA_ENTRY  row 7 8 1
-    END
-    PATCH_IF ("%entry%" STRING_COMPARE_CASE "FIGHTER_MAGE_CLERIC" = 0) BEGIN // fighter/mage/cleric
-      SET_2DA_ENTRY  row 1 8 0
-      SET_2DA_ENTRY  row 2 8 0
-      SET_2DA_ENTRY  row 3 8 0
-      SET_2DA_ENTRY  row 4 8 0
-      SET_2DA_ENTRY  row 5 8 0
-      SET_2DA_ENTRY  row 6 8 0
-      SET_2DA_ENTRY  row 7 8 0
-    END
-  END
-  PRETTY_PRINT_2DA
- BUT_ONLY
-END
-
 LAM d5_dual_classing
 
 ACTION_IF (%d5_dual_class% = 0) BEGIN
@@ -1142,7 +1148,8 @@ ACTION_IF (%d5_dual_class% = 0) BEGIN
 	PRETTY_PRINT_2DA
   BUT_ONLY
 END
-//___________________________________________________________________________________
+//__________________________________________________________________________________
+
 
 
 
@@ -1198,6 +1205,11 @@ INCLUDE ~faiths_and_powers/lib/mod_kit_spheres.tpa~
 INCLUDE ~faiths_and_powers/lib/default_kit_spheres.tpa~
 //___________________________________________________________________________________
 
+//read fnp_compat info______________________________________________________________
+//
+LAM ~READ_FNP_KIT_INFO~
+//__________________________________________________________________________________
+
 //alter item usability______________________________________________________________
 //
 INCLUDE ~faiths_and_powers/lib/item_usability.tpa~
@@ -1221,6 +1233,7 @@ INCLUDE ~faiths_and_powers/lib/sphere_system.tpa~
 PRINT ~neither the dialogue system nor any new kits will be installed~
 PRINT ~the sphere system will be installed over the vanilla kits and/or previously installed mod kits~
 //__________________________________________________________________________________
+
 
 
 //__________________________________________________________________________________
@@ -2064,6 +2077,11 @@ ACTION_IF GAME_IS ~bgee bg2ee eet~ BEGIN
 	 INCLUDE ~faiths_and_powers/lib/Setup_IWD_divine_Spells.tpa~      //install them
   END
 END
+
+//read fnp_compat info______________________________________________________________
+//
+LAM ~READ_FNP_KIT_INFO~
+//__________________________________________________________________________________
 
 //alter item usability______________________________________________________________
 //

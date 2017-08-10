@@ -1441,7 +1441,6 @@ ACTION_IF (FILE_EXISTS_IN_GAME ~clastext.2da~) BEGIN
   END
 END
 ACTION_PHP_EACH d5_kitlist_spheres AS goo => roo BEGIN
-	PRINT ~%goo% %roo%~
 	APPEND ~%goo%.2da~ ~SPHERES     AP_D5FNPSCL ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** ~
 	ACTION_IF (%roo% = 3) OR  
  			(%roo% = 11) OR  
@@ -1472,9 +1471,6 @@ ACTION_PHP_EACH d5_kitlist_spheres AS goo => roo BEGIN
 	ACTION_PHP_EACH d5_fnp_spheres AS sphere => val BEGIN
 	  ACTION_IF (VARIABLE_IS_SET $d5_fnp_kit_sphere_access(~%sphere%~ ~%goo%~)) BEGIN
 		OUTER_TEXT_SPRINT access $d5_fnp_kit_sphere_access(~%sphere%~ ~%goo%~)
-	//	ACTION_IF (~%goo%~ STRING_EQUAL_CASE ~clabpr01~) BEGIN
-	//	  PRINT ~%goo% %sphere% %access%~
-	//	END
 		ACTION_IF (VARIABLE_IS_SET $d5_fnp_sphere_access(~%access%~) && ~%access%~ STRING_EQUAL_CASE ~FOCUS~) BEGIN
 		  COPY_EXISTING ~lub_%goo_1%.2da~ ~override~
 			LPM remove_blank_lines
@@ -1629,4 +1625,3 @@ ACTION_IF GAME_IS ~tob bg2ee eet~ BEGIN
 	INCLUDE ~faiths_and_powers/lib/hlas.tpa~
 END
 //___________________________________________________________________________________
-
