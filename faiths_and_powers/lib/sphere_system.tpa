@@ -930,6 +930,11 @@ ACTION_PHP_EACH spellsphere AS spl => sph BEGIN
 	  COPY_EXISTING ~%sphere%.spl~ ~override~ 
 		LPF CLONE_EFFECT INT_VAR match_opcode=171 STR_VAR match_resource=~SPWI101~ resource = EVAL ~%the_spell%~ END
 	  BUT_ONLY
+	  ACTION_IF (%lvl% = 7) BEGIN
+		COPY_EXISTING ~%fsphere%.spl~ ~override~
+		  LPF CLONE_EFFECT INT_VAR match_opcode=171 STR_VAR match_resource=~SPWI101~ resource = EVAL ~%the_spell%~ END
+		BUT_ONLY
+	  END
 	END
 	ACTION_IF (%lvl% != %spell_lvl%) BEGIN
 	  COPY_EXISTING ~%the_spell%.spl~ ~override/%priest_res%.spl~ 
@@ -974,6 +979,11 @@ ACTION_PHP_EACH spellsphere AS spl => sph BEGIN
 	  COPY_EXISTING ~%sphere%.spl~ ~override~ 
 		LPF CLONE_EFFECT INT_VAR match_opcode=171 STR_VAR match_resource=~SPWI101~ resource = EVAL ~%priest_res%~ END
 	  BUT_ONLY
+	  ACTION_IF (%lvl% = 7) BEGIN
+		COPY_EXISTING ~%fsphere%.spl~ ~override~
+		  LPF CLONE_EFFECT INT_VAR match_opcode=171 STR_VAR match_resource=~SPWI101~ resource = EVAL ~%priest_res%~ END
+		BUT_ONLY
+	  END
 	END
 	ACTION_IF (%lvl% < 4) BEGIN
 	  COPY_EXISTING ~%the_spell%.spl~ ~override/%minor_res%.spl~ 
@@ -1014,7 +1024,6 @@ ACTION_PHP_EACH spellsphere AS spl => sph BEGIN
 	  BUT_ONLY
 	END
 	ACTION_IF (1 < %lvl%) BEGIN
-	 ACTION_IF (%lvl% < 7) BEGIN
 	  COPY_EXISTING ~%the_spell%.spl~ ~override/%focus_res%.spl~ 	
 		WRITE_LONG 0x34 %flvl%
 		READ_LONG 0x64 abil_offset
@@ -1046,7 +1055,6 @@ ACTION_PHP_EACH spellsphere AS spl => sph BEGIN
 	  COPY_EXISTING ~%fsphere%.spl~ ~override~
 		LPF CLONE_EFFECT INT_VAR match_opcode=171 STR_VAR match_resource=~SPWI101~ resource = EVAL ~%focus_res%~ END
 	  BUT_ONLY
-	 END
 	END
    END // end type = priest spells
 //
@@ -1067,6 +1075,11 @@ ACTION_PHP_EACH spellsphere AS spl => sph BEGIN
 	COPY_EXISTING ~%sphere%.spl~ ~override~
 	  LPF CLONE_EFFECT INT_VAR match_opcode=171 STR_VAR match_resource=~SPWI101~ resource = EVAL ~%priest_res%~ END
 	BUT_ONLY
+	ACTION_IF (%lvl% = 7) BEGIN
+		COPY_EXISTING ~%fsphere%.spl~ ~override~
+		  LPF CLONE_EFFECT INT_VAR match_opcode=171 STR_VAR match_resource=~SPWI101~ resource = EVAL ~%priest_res%~ END
+		BUT_ONLY
+	END
 	ACTION_IF (%lvl% < 4) BEGIN
 	  COPY_EXISTING ~%the_spell%.spl~ ~override/%minor_res%.spl~ 
 		PATCH_IF (%d5_minor_shift% = 1) BEGIN
@@ -1106,7 +1119,6 @@ ACTION_PHP_EACH spellsphere AS spl => sph BEGIN
 	  BUT_ONLY
 	END
 	ACTION_IF (1 < %lvl%) BEGIN
-	 ACTION_IF (%lvl% < 7) BEGIN
 	  COPY_EXISTING ~%the_spell%.spl~ ~override/%focus_res%.spl~ 	
 		WRITE_LONG 0x34 %flvl%
 		READ_LONG 0x64 abil_offset
@@ -1138,7 +1150,6 @@ ACTION_PHP_EACH spellsphere AS spl => sph BEGIN
 	  COPY_EXISTING ~%fsphere%.spl~ ~override~
 		LPF CLONE_EFFECT INT_VAR match_opcode=171 STR_VAR match_resource=~SPWI101~ resource = EVAL ~%focus_res%~ END
 	  BUT_ONLY
-	 END
 	END
    END
   END
