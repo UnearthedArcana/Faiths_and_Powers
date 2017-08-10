@@ -829,7 +829,7 @@ COPY_EXISTING - ~spell.ids~ ~faiths_and_powers/backup~
   COUNT_REGEXP_INSTANCES ~CLERIC_ALICORN_LANCE~ spell_exists
 ACTION_IF (spell_exists) BEGIN
   LAF RES_NUM_OF_SPELL_NAME
-	STR_VAR spell_name = EVAL ~CLERIC_ALICORN_LANCE~ RET spell_res 
+	STR_VAR spell_name = ~CLERIC_ALICORN_LANCE~ RET spell_res 
   END
   ACTION_IF FILE_EXISTS_IN_GAME ~%spell_res%.spl~ BEGIN
 	COPY_EXISTING ~%spell_res%.spl~ ~override~
@@ -915,7 +915,7 @@ ACTION_PHP_EACH spellsphere AS spl => sph BEGIN
 	BUT_ONLY
    ACTION_IF (%spell_type% = 2) BEGIN  // priest spells: add to spheres
 	ACTION_IF (%lvl% = %spell_lvl%) BEGIN
-	  COPY_EXISTING ~%the_spell%.spl~ ~override/~ 
+	  COPY_EXISTING ~%the_spell%.spl~ ~override~ 
 		READ_LONG 0x50 "valid"
 		PATCH_IF (%valid% >= 0) BEGIN 
 		  READ_STRREF 0x50 ~desc~
