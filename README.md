@@ -1,6 +1,10 @@
 ﻿# Faiths_and_Powers
 Faiths and Powers mod
 
+2017-08-12
+
+- Fix for Shades and Shadow Monsters
+
 2017-07-30
 
 v. 0.71
