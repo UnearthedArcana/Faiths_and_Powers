@@ -146,7 +146,7 @@ END
 //___________________________________________________________________________________
 
 
-// vv THIS IS OVERBROAD vv ... restrict to weapons? how??
+// vv THIS IS OVERBROAD vv ... restrict to weapons??
 //apply cleric restrictions to kits__________________________________________________
 //
 COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~
@@ -154,7 +154,7 @@ COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~
 	READ_SHORT   0x1c type
 	READ_BYTE    0x1e cleric   											// cleric class usability
 	READ_BYTE    0x29 c_kits											// cleric kit flags
-	PATCH_IF (%type% = 2) OR   	//armor
+	PATCH_IF /* (%type% = 2) OR   	//armor */
 	  		(%type% = 5) OR   	//arrow
 			(%type% = 15) OR  	//bow
 			(%type% = 16) OR  	//dagger
@@ -199,7 +199,7 @@ COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~
 BUT_ONLY
 //__________________________________________________________________________________
 
-//give druid class usability to new druids, plus axe/flail/bow______________________
+//give druid class usability to new druids__________________________________________
 //
 COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~
   PATCH_IF (~%SOURCE_SIZE%~ > ~0x71~) BEGIN
@@ -212,7 +212,7 @@ COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~
 BUT_ONLY
 //__________________________________________________________________________________
 
-//give fighter weapon usability to clerics__________________________________________
+//give fighter weapon usability to cleric class_____________________________________
 //
 COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~
   PATCH_IF (%SOURCE_SIZE% > 0x71) BEGIN
@@ -397,8 +397,8 @@ OUTER_TEXT_SPRINT hex_shapeshifter 	~10000000~
 OUTER_TEXT_SPRINT hex_avenger		~20000000~
 
 COPY_EXISTING ~kitlist.2da~ ~override~
-  COUNT_2DA_COLS num_cols
-  READ_2DA_ENTRIES_NOW ~r2en_kitlist~ 9
+  COUNT_2DA_COLS cols
+  READ_2DA_ENTRIES_NOW ~r2en_kitlist~ cols
   FOR (row = 3; row < r2en_kitlist; row += 1) BEGIN
    READ_2DA_ENTRY_FORMER ~r2en_kitlist~ row 0 kit_index
    READ_2DA_ENTRY_FORMER ~r2en_kitlist~ row 1 kit_label

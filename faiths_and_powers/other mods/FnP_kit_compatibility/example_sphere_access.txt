@@ -1,3 +1,4 @@
+
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
 ACTION_INCLUDE ~%MOD_FOLDER%/lib/fnp_compat.tpa~
@@ -35,6 +36,7 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	u_crossbows 		= 1
   STR_VAR
 // for class, enter 'cleric' 'acolyte' 'druid' 'mystic' 'occultist' 'champion' 'zealot' 'ranger' or 'scout'
+// if multiclass, enter 'fighter_cleric' 'cleric_mage' 'cleric_thief' 'ranger_cleric' or 'fighter_mystic'
 // for selected spheres, enter 'focus' 'major' 'minor' 'paladin' or 'ranger'
     clab_name 	= EVAL ~%mod_clab%~
 	class 			= ~x~	 
