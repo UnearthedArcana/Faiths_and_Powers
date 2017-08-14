@@ -25,185 +25,8 @@ END
 //___________________________________________________________________________________
 
 
-//no spells for anyone!______________________________________________________________
-//
-COPY_EXISTING_REGEXP GLOB ~.*\.spl~ ~override~
-	READ_SHORT 0x1c ~spelltype~
-	PATCH_IF (~spelltype~ = 2) BEGIN
-		WRITE_BYTE 0x21 (THIS | 0b11000000)
-	END
-BUT_ONLY
-
-
-//erase spell alignment restrictions_________________________________________________
-
-COPY_EXISTING_REGEXP GLOB ~.*\.spl~ ~override~ //copies all spl files
-	PATCH_IF (~%SOURCE_SIZE%~ > ~0x71~) BEGIN
-		READ_BYTE 0x1e align
-		WRITE_BYTE 0x1e (align BAND 0b11111001)
-	END
-BUT_ONLY
-//___________________________________________________________________________________
-
-
-//remove priest spells from joinable NPCs____________________________________________
-//
-OUTER_FOR (level = 1; level <= 7; level += 1) BEGIN
-  OUTER_SET $spell(~all~ ~%level%~ ~length~) = 0
-  OUTER_SET $spell(~cleric~ ~%level%~ ~length~) = 0
-  OUTER_SET $spell(~druid~ ~%level%~ ~length~) = 0
-  OUTER_SET $spell(~bogus~ ~%level%~ ~length~) = 0
-END
-
-COPY_EXISTING_REGEXP GLOB ~^SPPR[1-7]\(0[1-9]\|[1-4][0-9]\|50\)\.spl$~ ~override~
-  PATCH_IF (SOURCE_SIZE > 0x71) BEGIN
-    READ_SHORT 0x1c spell_type
-    PATCH_IF (spell_type == 2) BEGIN // divine, just to be sure
-      READ_SHORT 0x20 priest_type
-      READ_SHORT 0x1e exclusion_flags
-      READ_LONG  0x34 level
-      TO_UPPER SOURCE_RES
-      PATCH_IF (priest_type == 0x0000) BEGIN // all priests
-        SPRINT type ~all~
-      END
-      ELSE PATCH_IF (priest_type == 0x4000) BEGIN // druid/ranger
-        SPRINT type ~druid~
-      END
-      ELSE PATCH_IF (priest_type == 0x8000) BEGIN // cleric/paladin
-        SPRINT type ~cleric~
-      END
-      ELSE BEGIN // no priests
-        SPRINT type ~bogus~
-      END
-      PATCH_IF (level > 0 && level <= 7) BEGIN
-        SET index = $spell(~%type%~ ~%level%~ ~length~)
-        SPRINT $spell(~%type%~ ~%level%~ ~%index%~) ~%SOURCE_RES%~
-        SET $spell(~%type%~ ~%level%~ ~length~) += 1
-        SET $spell(~%type%~ ~%SOURCE_RES%~) = 1
-        SET $spell(~%SOURCE_RES%~ ~excl~) = (exclusion_flags BAND 0b111111) // store just the alignment bits
-        SET $spell(~%SOURCE_RES%~ ~level~) = level
-      END
-    END
-  END
-  BUT_ONLY
-
-DEFINE_PATCH_MACRO ~REMOVE_SPELLS_OF_TYPE~ BEGIN
-  FOR (level = 1; level <= 7; level += 1) BEGIN
-    SET length = $spell(~%type%~ ~%level%~ ~length~)
-    FOR (i = 0; i < length; i += 1) BEGIN
-      SPRINT spell $spell(~%type%~ ~%level%~ ~%i%~)
-      REMOVE_KNOWN_SPELL ~%spell%~
-    END
-  END
-END
-
-DEFINE_PATCH_FUNCTION ~REMOVE_BAD_KNOWN_SPELLS~
- // INT_VAR spell_type = 0 // 1 = cleric, 2 = druid, 3 = both
-BEGIN
-  PATCH_IF (spell_type == 1) BEGIN // remove druid spells from clerics
-    SPRINT type ~druid~
-    LAUNCH_PATCH_MACRO ~REMOVE_SPELLS_OF_TYPE~
-  END
-  ELSE PATCH_IF (spell_type = 2) BEGIN // remove cleric spells from druids
-    SPRINT type ~cleric~
-    LAUNCH_PATCH_MACRO ~REMOVE_SPELLS_OF_TYPE~
-  END
-
-  // remove bogus spells from all classes
-  SPRINT type ~bogus~
-  LAUNCH_PATCH_MACRO ~REMOVE_SPELLS_OF_TYPE~
-END
-
-COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~
-  PATCH_IF (SOURCE_SIZE > 0x2d3) BEGIN
-    READ_LONG 0x1cc biography
-    PATCH_IF (biography > 0 && biography < 2147483647) BEGIN // party-joinable NPC (thanks bigg for easy way to determine this)
-      READ_BYTE 0x273 class
-      PATCH_IF (class == 3 || class == 6 || class == 8 || class == 11 || class == 12 || class == 14 || class == 15 || class == 16 || class == 17 || class == 18) BEGIN // divine casters
-        LAUNCH_PATCH_FUNCTION ~REMOVE_BAD_KNOWN_SPELLS~ END
-//        REMOVE_MEMORIZED_SPELLS
-      END
-    END
-  END
-BUT_ONLY
-//__________________________________________________________________________________
-
-
-//certain spells for everyone_______________________________________________________
-//
-COPY_EXISTING ~sppr103.spl~ ~override~ // cure light wounds
-			~sppr210.spl~ ~override~ // resist fire/cold
-			~sppr307.spl~ ~override~ // remove curse
-			~sppr417.spl~ ~override~ // lesser restoration
-			~sppr502.spl~ ~override~ // cure critical
-			~sppr611.spl~ ~override~ // wondrous recall
-			~sppr710.spl~ ~override~ // holy word
-			~sppr715.spl~ ~override~ // unholy word
-	WRITE_BYTE 0x21 (THIS & 0b00111111)
-BUT_ONLY
-
-COPY ~faiths_and_powers/spheres/d5ph000.spl~ ~override~
-
-COPY_EXISTING ~clabpr01.2da~ ~override~
-	LPM remove_blank_lines
-	APPEND_FILE ~faiths_and_powers/spheres/universal_spells.txt~
-COPY_EXISTING ~clabdr01.2da~ ~override~
-	LPM remove_blank_lines
-	APPEND_FILE ~faiths_and_powers/spheres/universal_spells.txt~
-COPY_EXISTING ~clabpa01.2da~ ~override~
-	LPM remove_blank_lines
-	APPEND_FILE ~faiths_and_powers/spheres/universal_spells.txt~
-COPY_EXISTING ~clabrn01.2da~ ~override~
-	LPM remove_blank_lines
-	APPEND_FILE ~faiths_and_powers/spheres/universal_spells.txt~
-ACTION_IF FILE_EXISTS_IN_GAME ~clabsh01.2da~ BEGIN
-  COPY_EXISTING ~clabsh01.2da~ ~override~
-	LPM remove_blank_lines
-	APPEND_FILE ~faiths_and_powers/spheres/universal_spells.txt~
-  COPY_EXISTING ~clabshgs.2da~ ~override~
-	LPM remove_blank_lines
-	APPEND_FILE ~faiths_and_powers/spheres/universal_spells.txt~
-END
-COPY_EXISTING ~kitlist.2da~ ~override~
-	COUNT_2DA_ROWS ~9~ "rows"
-	FOR ( index = 2 ; index < rows ; index = index + 1 ) BEGIN
-		READ_2DA_ENTRY %index% 5 9 modclab
-		READ_2DA_ENTRY %index% 8 9 modclass
-		DEFINE_ASSOCIATIVE_ARRAY d5_base_spell_array BEGIN "%modclab%" => "%modclass%" END
-	END
-BUT_ONLY
-
-ACTION_PHP_EACH d5_base_spell_array AS bo => zo BEGIN
-	ACTION_IF (%zo% = 3) AND (FILE_EXISTS_IN_GAME ~%bo%.2da~) BEGIN
-		COPY_EXISTING ~%bo%.2da~ ~override~
-			LPM remove_blank_lines
-			APPEND_FILE ~faiths_and_powers/spheres/universal_spells.txt~
-	END
-	ACTION_IF (%zo% = 11) AND (FILE_EXISTS_IN_GAME ~%bo%.2da~) BEGIN
-		COPY_EXISTING ~%bo%.2da~ ~override~
-			LPM remove_blank_lines
-			APPEND_FILE ~faiths_and_powers/spheres/universal_spells.txt~
-	END
-	ACTION_IF (%zo% = 21) AND (FILE_EXISTS_IN_GAME ~%bo%.2da~) BEGIN
-		COPY_EXISTING ~%bo%.2da~ ~override~
-			LPM remove_blank_lines
-			APPEND_FILE ~faiths_and_powers/spheres/universal_spells.txt~
-	END
-	ACTION_IF (%zo% = 6) AND (FILE_EXISTS_IN_GAME ~%bo%.2da~) BEGIN
-		COPY_EXISTING ~%bo%.2da~ ~override~
-			LPM remove_blank_lines
-			APPEND_FILE ~faiths_and_powers/spheres/universal_spells.txt~
-	END
-	ACTION_IF (%zo% = 12) AND (FILE_EXISTS_IN_GAME ~%bo%.2da~) BEGIN
-		COPY_EXISTING ~%bo%.2da~ ~override~
-			LPM remove_blank_lines
-			APPEND_FILE ~faiths_and_powers/spheres/universal_spells.txt~
-	END
-END
-//__________________________________________________________________________________
-
-
 //create sphere spells______________________________________________________________
+//
 //life
 COPY ~faiths_and_powers/spheres/d5sxyz.spl~ ~override/d5splif.spl~
 COPY ~faiths_and_powers/spheres/d5sxyz.spl~ ~override/d5sflif.spl~
@@ -797,6 +620,184 @@ ACTION_IF FILE_EXISTS_IN_GAME ~dvsrv4here.mrk~ THEN BEGIN
 END
 //__________________________________________________________________________________
 */
+
+
+//no spells for anyone!______________________________________________________________
+//
+COPY_EXISTING_REGEXP GLOB ~.*\.spl~ ~override~
+	READ_SHORT 0x1c ~spelltype~
+	PATCH_IF (~spelltype~ = 2) BEGIN
+		WRITE_BYTE 0x21 (THIS | 0b11000000)
+	END
+BUT_ONLY
+
+
+//erase spell alignment restrictions_________________________________________________
+
+COPY_EXISTING_REGEXP GLOB ~.*\.spl~ ~override~ //copies all spl files
+	PATCH_IF (~%SOURCE_SIZE%~ > ~0x71~) BEGIN
+		READ_BYTE 0x1e align
+		WRITE_BYTE 0x1e (align BAND 0b11111001)
+	END
+BUT_ONLY
+//___________________________________________________________________________________
+
+
+//remove priest spells from joinable NPCs____________________________________________
+//
+OUTER_FOR (level = 1; level <= 7; level += 1) BEGIN
+  OUTER_SET $spell(~all~ ~%level%~ ~length~) = 0
+  OUTER_SET $spell(~cleric~ ~%level%~ ~length~) = 0
+  OUTER_SET $spell(~druid~ ~%level%~ ~length~) = 0
+  OUTER_SET $spell(~bogus~ ~%level%~ ~length~) = 0
+END
+
+COPY_EXISTING_REGEXP GLOB ~^SPPR[1-7]\(0[1-9]\|[1-4][0-9]\|50\)\.spl$~ ~override~
+  PATCH_IF (SOURCE_SIZE > 0x71) BEGIN
+    READ_SHORT 0x1c spell_type
+    PATCH_IF (spell_type == 2) BEGIN // divine, just to be sure
+      READ_SHORT 0x20 priest_type
+      READ_SHORT 0x1e exclusion_flags
+      READ_LONG  0x34 level
+      TO_UPPER SOURCE_RES
+      PATCH_IF (priest_type == 0x0000) BEGIN // all priests
+        SPRINT type ~all~
+      END
+      ELSE PATCH_IF (priest_type == 0x4000) BEGIN // druid/ranger
+        SPRINT type ~druid~
+      END
+      ELSE PATCH_IF (priest_type == 0x8000) BEGIN // cleric/paladin
+        SPRINT type ~cleric~
+      END
+      ELSE BEGIN // no priests
+        SPRINT type ~bogus~
+      END
+      PATCH_IF (level > 0 && level <= 7) BEGIN
+        SET index = $spell(~%type%~ ~%level%~ ~length~)
+        SPRINT $spell(~%type%~ ~%level%~ ~%index%~) ~%SOURCE_RES%~
+        SET $spell(~%type%~ ~%level%~ ~length~) += 1
+        SET $spell(~%type%~ ~%SOURCE_RES%~) = 1
+        SET $spell(~%SOURCE_RES%~ ~excl~) = (exclusion_flags BAND 0b111111) // store just the alignment bits
+        SET $spell(~%SOURCE_RES%~ ~level~) = level
+      END
+    END
+  END
+  BUT_ONLY
+
+DEFINE_PATCH_MACRO ~REMOVE_SPELLS_OF_TYPE~ BEGIN
+  FOR (level = 1; level <= 7; level += 1) BEGIN
+    SET length = $spell(~%type%~ ~%level%~ ~length~)
+    FOR (i = 0; i < length; i += 1) BEGIN
+      SPRINT spell $spell(~%type%~ ~%level%~ ~%i%~)
+      REMOVE_KNOWN_SPELL ~%spell%~
+    END
+  END
+END
+
+DEFINE_PATCH_FUNCTION ~REMOVE_BAD_KNOWN_SPELLS~
+ // INT_VAR spell_type = 0 // 1 = cleric, 2 = druid, 3 = both
+BEGIN
+  PATCH_IF (spell_type == 1) BEGIN // remove druid spells from clerics
+    SPRINT type ~druid~
+    LAUNCH_PATCH_MACRO ~REMOVE_SPELLS_OF_TYPE~
+  END
+  ELSE PATCH_IF (spell_type = 2) BEGIN // remove cleric spells from druids
+    SPRINT type ~cleric~
+    LAUNCH_PATCH_MACRO ~REMOVE_SPELLS_OF_TYPE~
+  END
+
+  // remove bogus spells from all classes
+  SPRINT type ~bogus~
+  LAUNCH_PATCH_MACRO ~REMOVE_SPELLS_OF_TYPE~
+END
+
+COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~
+  PATCH_IF (SOURCE_SIZE > 0x2d3) BEGIN
+    READ_LONG 0x1cc biography
+    PATCH_IF (biography > 0 && biography < 2147483647) BEGIN // party-joinable NPC (thanks bigg for easy way to determine this)
+      READ_BYTE 0x273 class
+      PATCH_IF (class == 3 || class == 6 || class == 8 || class == 11 || class == 12 || class == 14 || class == 15 || class == 16 || class == 17 || class == 18) BEGIN // divine casters
+        LAUNCH_PATCH_FUNCTION ~REMOVE_BAD_KNOWN_SPELLS~ END
+//        REMOVE_MEMORIZED_SPELLS
+      END
+    END
+  END
+BUT_ONLY
+//__________________________________________________________________________________
+
+
+//certain spells for everyone_______________________________________________________
+//
+COPY_EXISTING ~sppr103.spl~ ~override~ // cure light wounds
+			~sppr210.spl~ ~override~ // resist fire/cold
+			~sppr307.spl~ ~override~ // remove curse
+			~sppr417.spl~ ~override~ // lesser restoration
+			~sppr502.spl~ ~override~ // cure critical
+			~sppr611.spl~ ~override~ // wondrous recall
+			~sppr710.spl~ ~override~ // holy word
+			~sppr715.spl~ ~override~ // unholy word
+	WRITE_BYTE 0x21 (THIS & 0b00111111)
+BUT_ONLY
+
+COPY ~faiths_and_powers/spheres/d5ph000.spl~ ~override~
+
+COPY_EXISTING ~clabpr01.2da~ ~override~
+	LPM remove_blank_lines
+	APPEND_FILE ~faiths_and_powers/spheres/universal_spells.txt~
+COPY_EXISTING ~clabdr01.2da~ ~override~
+	LPM remove_blank_lines
+	APPEND_FILE ~faiths_and_powers/spheres/universal_spells.txt~
+COPY_EXISTING ~clabpa01.2da~ ~override~
+	LPM remove_blank_lines
+	APPEND_FILE ~faiths_and_powers/spheres/universal_spells.txt~
+COPY_EXISTING ~clabrn01.2da~ ~override~
+	LPM remove_blank_lines
+	APPEND_FILE ~faiths_and_powers/spheres/universal_spells.txt~
+ACTION_IF FILE_EXISTS_IN_GAME ~clabsh01.2da~ BEGIN
+  COPY_EXISTING ~clabsh01.2da~ ~override~
+	LPM remove_blank_lines
+	APPEND_FILE ~faiths_and_powers/spheres/universal_spells.txt~
+  COPY_EXISTING ~clabshgs.2da~ ~override~
+	LPM remove_blank_lines
+	APPEND_FILE ~faiths_and_powers/spheres/universal_spells.txt~
+END
+COPY_EXISTING ~kitlist.2da~ ~override~
+	COUNT_2DA_ROWS ~9~ "rows"
+	FOR ( index = 2 ; index < rows ; index = index + 1 ) BEGIN
+		READ_2DA_ENTRY %index% 5 9 modclab
+		READ_2DA_ENTRY %index% 8 9 modclass
+		DEFINE_ASSOCIATIVE_ARRAY d5_base_spell_array BEGIN "%modclab%" => "%modclass%" END
+	END
+BUT_ONLY
+
+ACTION_PHP_EACH d5_base_spell_array AS bo => zo BEGIN
+	ACTION_IF (%zo% = 3) AND (FILE_EXISTS_IN_GAME ~%bo%.2da~) BEGIN
+		COPY_EXISTING ~%bo%.2da~ ~override~
+			LPM remove_blank_lines
+			APPEND_FILE ~faiths_and_powers/spheres/universal_spells.txt~
+	END
+	ACTION_IF (%zo% = 11) AND (FILE_EXISTS_IN_GAME ~%bo%.2da~) BEGIN
+		COPY_EXISTING ~%bo%.2da~ ~override~
+			LPM remove_blank_lines
+			APPEND_FILE ~faiths_and_powers/spheres/universal_spells.txt~
+	END
+	ACTION_IF (%zo% = 21) AND (FILE_EXISTS_IN_GAME ~%bo%.2da~) BEGIN
+		COPY_EXISTING ~%bo%.2da~ ~override~
+			LPM remove_blank_lines
+			APPEND_FILE ~faiths_and_powers/spheres/universal_spells.txt~
+	END
+	ACTION_IF (%zo% = 6) AND (FILE_EXISTS_IN_GAME ~%bo%.2da~) BEGIN
+		COPY_EXISTING ~%bo%.2da~ ~override~
+			LPM remove_blank_lines
+			APPEND_FILE ~faiths_and_powers/spheres/universal_spells.txt~
+	END
+	ACTION_IF (%zo% = 12) AND (FILE_EXISTS_IN_GAME ~%bo%.2da~) BEGIN
+		COPY_EXISTING ~%bo%.2da~ ~override~
+			LPM remove_blank_lines
+			APPEND_FILE ~faiths_and_powers/spheres/universal_spells.txt~
+	END
+END
+//__________________________________________________________________________________
 
 
 //some vanilla spell modifications__________________________________________________
@@ -1594,7 +1595,7 @@ ACTION_PHP_EACH d5_kitlist_spheres AS goo => roo BEGIN
 	  END
 	END
 END
-//__________________________________________________________________________________
+//___________________________________________________________________________________
 
 CLEAR_ARRAYS
 
@@ -1604,3 +1605,23 @@ ACTION_IF GAME_IS ~tob bg2ee eet~ BEGIN
 	INCLUDE ~faiths_and_powers/lib/hlas.tpa~
 END
 //___________________________________________________________________________________
+
+//fix contingency spells_____________________________________________________________
+//
+ACTION_FOR_EACH contingency IN ~d5pw617~ ~d5fw617~ BEGIN
+  ACTION_IF FILE_EXISTS_IN_GAME ~%contingency%.spl~ BEGIN
+	COPY_EXISTING ~%contingency%.spl~ ~override~
+	  LPF DELETE_EFFECT INT_VAR silent = 1 match_probability1 = 100 END
+	  LPF ADD_SPELL_EFFECT INT_VAR silent = 1 opcode = 146 target = 1 power = 6 parameter1 = 0 parameter2 = 1 timing = 1 STR_VAR resource = ~spwi617~ END
+	BUT_ONLY
+  END
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~d5hkno1.spl~ BEGIN
+  COPY_EXISTING ~d5hkno1.spl~ ~override~
+	LPF DELETE_EFFECT INT_VAR silent = 1 match_probability1 = 100 END
+	LPF ADD_SPELL_EFFECT INT_VAR silent = 1 opcode = 146 target = 1 power = 6 parameter1 = 0 parameter2 = 1 timing = 1 STR_VAR resource = ~spwi908~ END
+  BUT_ONLY
+END
+//___________________________________________________________________________________
+

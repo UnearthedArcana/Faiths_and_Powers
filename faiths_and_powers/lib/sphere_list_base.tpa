@@ -236,7 +236,7 @@ CLERIC_AERIAL_SERVANT                  , 7 => Air
 
 //  WATER
 b_c103 /*frost fingers*/               , 1 => Water
-WIZARD_SNILLOCS_SNOWBALL_SWARM         , 1 => Water
+WIZARD_SNILLOCS_SNOWBALL_SWARM         , 2 => Water
 b_c203 /*ice blade*/                   , 2 => Water
 //WIZARD_MELF_ACID_ARROW                 , 2 => Water
 WIZARD_ICELANCE                        , 3 => Water
@@ -291,10 +291,11 @@ WIZARD_POWER_WORD_BLIND                , 7 => Shadow
 CLERIC_SILENCE_15_FOOT                 , 1 => Magic
 CLERIC_MISCAST_MAGIC                   , 2 => Magic
 CLERIC_DISPEL_MAGIC                    , 3 => Magic
-WIZARD_MINOR_SPELL_TURNING             , 4 => Magic
+WIZARD_MINOR_SPELL_DEFLECTION          , 3 => Magic
 WIZARD_SECRET_WORD                     , 4 => Magic
-CLERIC_MAGIC_RESISTANCE                , 5 => Magic
+WIZARD_MINOR_SPELL_TURNING             , 5 => Magic
 WIZARD_BREACH                          , 5 => Magic
+CLERIC_MAGIC_RESISTANCE                , 6 => Magic
 //CLERIC_WONDROUS_RECALL                 , 6 => Magic // universal
 WIZARD_GLOBE_OF_INVULNERABILITY        , 6 => Magic
 WIZARD_PIERCE_SHIELD                   , 7 => Magic

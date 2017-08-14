@@ -783,7 +783,7 @@ Advantages:
 -  Doommasters can cast a special version of the doom spell at will.  It can be used once, and only once, on a given opponent.
 -  Doommasters gain a +1 bonus to all saves.
 -  At 7th level, the doommaster can cast misfire as a special ability once per day.  Misfire works as the spell of the same name.  The doommaster can use this abilty an additional time per day at levels 10, 13, 16 and 19.
--  At 10th level, the doommaster can cast misfortune.  <PRO_HESHE> can use this abilty one additional time at levels 15, and 20.
+-  At 10th level, the doommaster can cast misfortune. <PRO_HESHE> can use this abilty one additional time at levels 15, and 20.
 
 MISFORTUNE:
 This abilty curses the target, causing them a penalty of -10 penalty to THAC0, saves and AC for one round/level if they fail a save vs. spell.
@@ -842,14 +842,28 @@ Restrictions:
 @45111  = ~Druidic Talisman~
 @45112  = ~With this item, you may choose to adhere to the tenets of the druidic orders and become a priest of Sylvanus.~
 //
-// ... monitor of mystra 
+// ... abjurist of mystra 
+//
+@46401  = ~abjurist of mystra~
+@46402  = ~Abjurist of Mystra~
+@46403  = ~ABJURIST OF MYSTRA: Mystra is known as the Lady of Spells and the Mother of Magic. She tends to the Weave, which enables mortals to cast spells. One sect of Mystra's clerics, known as Abjurists, can channel the Weave into protective shields, making them excellent spell duelists.
+
+Advantages:
+- When an Abjurist casts Spell Deflection, Spell Turning, or Spell Trap spells, <PRO_HESHE> automatically gets the benefit of a Spell Shield as well. Every Abjurist automatically has these spells in <PRO_HISHER> wizard spellbook.
+- One With the Weave: Abjurists can cast spells slightly more easily than most priests, gaining a -1 bonus to casting time.
+
+Restrictions:
+- Alignment: May not be Evil.
+~
+//
+// ... monitor of azuth 
 //
 @46501  = ~monitor of azuth~
 @46502  = ~Monitor of Azuth~
-@46503  = ~MONITOR OF AZUTH: fluff text
+@46503  = ~MONITOR OF AZUTH: Azuth is a lesser deity who assists Mystra, the Mother of Magic, in tending to 'the Weave' that enables all magic in Faerun to exist. Followers of Azuth, known as Monitors, are magical enforcers, policing misuse of the Weave by evile practitioners and empowered to challenge even the mightiest spellcasters.
 
 Advantages:
-- Monitors gain a bonus to their effective caster level, making them as effective as single-class clerics with equivalent experience (+1 caster level per 5 levels).
+- Monitors gain a bonus to their effective caster level, making them as effective as single-class spellcasterscasters with equivalent experience (+1 caster level per 5 levels).
 - One With the Weave: Monitors can cast spells slightly more easily than most priests, gaining a -1 bonus to casting time.
 
 Restrictions:
@@ -857,18 +871,18 @@ Restrictions:
 ~
 @46504  = ~MONITOR OF AZUTH: ~
 //
-// ... dweomerweaver of mystra 
+// ... spellbender 
 //
-@46601  = ~dweomerweaver of mystra~
-@46602  = ~Dweomerweaver of Mystra~
-@46603  = ~DWEOMERWEAVER OF MYSTRA: Mystra is known as the Lady of Spells and the Mother of Magic. She tends to the Weave, which enables mortals to cast spells. Mystra's clerics, known as Monitors, watch over the use of arcane magic by mortals, and seek to prevent magical abuse.
+@46601  = ~spellbender~
+@46602  = ~Spellbender~
+@46603  = ~SPELLBENDER: The goddess Mystra rules all magic, and mandates that spellcasters must formulate known spells, and must memorize the patterns of those spells in order to successfully release them. But as with any system, the are gaps and shortcuts that may be used to circumvent the rules. Sorcerers are born with the ability to shape magic directly, though only into a limited number of effects; and wild mages shape spells without discipline, achieving powerful results at the risk of disastrous side-effects. Spellbenders make a science of mapping the ways to bypass Mystra's restrictions. Practicing as generalist clerics as well as studying arcane wizardry, they learn to manipulate the intersection of those two areas of magic.
 
 Advantages:
-- May use the 'Arcane Weaving' ability in place of memorizing priest spells. This ability allows the Dweomerweaver to spontaneously cast one of several wizard spells of one level lower than the sacrificed priest spell.
-- May use the 'Divine Weaving' ability in place of memorizing wizard spells. This ability allows the Dweomerweaver to spontaneously cast one of several priest spells of one level lower than the sacrificed wizard spell.
+- May use the 'Arcane Weaving' ability in place of memorizing priest spells. This ability allows the Spellbender to spontaneously cast one of several wizard spells of one level lower than the sacrificed priest spell.
+- May use the 'Divine Weaving' ability in place of memorizing wizard spells. This ability allows the Spellbender to spontaneously cast one of several priest spells of one level lower than the sacrificed wizard spell.
 
 Restrictions:
-- Alignment: May not be Evil.
+- None.
 ~
 @46605  = ~Arcane Weaving I~
 @46606  = ~Arcane Weaving
