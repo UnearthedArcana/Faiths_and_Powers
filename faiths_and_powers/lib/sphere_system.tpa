@@ -1083,6 +1083,7 @@ ACTION_PHP_EACH spellsphere AS spl => sph BEGIN
 	END
 	ACTION_IF (%lvl% < 4) BEGIN
 	  COPY_EXISTING ~%the_spell%.spl~ ~override/%minor_res%.spl~ 
+		WRITE_SHORT 0x1c 2
 		PATCH_IF (%d5_minor_shift% = 1) BEGIN
 		  WRITE_LONG 0x34 %mlvl%
 		END
@@ -1120,7 +1121,8 @@ ACTION_PHP_EACH spellsphere AS spl => sph BEGIN
 	  BUT_ONLY
 	END
 	ACTION_IF (1 < %lvl%) BEGIN
-	  COPY_EXISTING ~%the_spell%.spl~ ~override/%focus_res%.spl~ 	
+	  COPY_EXISTING ~%the_spell%.spl~ ~override/%focus_res%.spl~ 
+		WRITE_SHORT 0x1c 2
 		WRITE_LONG 0x34 %flvl%
 		READ_LONG 0x64 abil_offset
 		READ_SHORT 0x68 abil_number
