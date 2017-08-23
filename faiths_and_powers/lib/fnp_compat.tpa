@@ -220,7 +220,7 @@ DEFINE_ACTION_MACRO ~READ_FNP_KIT_INFO~ BEGIN
         FOR (col = 0; col < (num_cols - 1); col += 1) BEGIN
           READ_2DA_ENTRY_FORMER ~r2en_d5_usable~ 0 col usable
           READ_2DA_ENTRY_FORMER ~r2en_d5_usable~ row (col + 1) access
-          TEXT_SPRINT $d5_fnp_kit_usable_access(~%usable%~ ~%kit%~) ~%access%~
+          TEXT_SPRINT $d5_fnp_kit_usable_access(~%kit%~ ~%usable%~) ~%access%~
         END
       END
     

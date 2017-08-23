@@ -13,11 +13,6 @@ COPY ~faiths_and_powers/lib/markers/d5_fnp_usability.d5~ ~override~
 //___________________________________________________________________________________
 
 
-//prep sphere/archetype/usability variables__________________________________________
-//
-//LAM ~READ_FNP_KIT_INFO~
-//___________________________________________________________________________________
-
 /*
 // NOTES:
 
@@ -396,6 +391,74 @@ OUTER_TEXT_SPRINT hex_totemic 		~08000000~
 OUTER_TEXT_SPRINT hex_shapeshifter 	~10000000~
 OUTER_TEXT_SPRINT hex_avenger		~20000000~
 
+COPY_EXISTING ~d5_usabl.2da~ ~override~
+  COUNT_2DA_COLS num_cols
+  READ_2DA_ENTRIES_NOW ~r2en_d5_usable~ (num_cols - 1)
+  FOR (row = 1; row < r2en_d5_usable; row += 1) BEGIN
+	READ_2DA_ENTRY_FORMER ~r2en_d5_usable~ row 0 kit
+	FOR (col = 0; col < (num_cols - 1); col += 1) BEGIN
+	  READ_2DA_ENTRY_FORMER ~r2en_d5_usable~ 0 col usable
+	  READ_2DA_ENTRY_FORMER ~r2en_d5_usable~ row (col + 1) access
+	  TEXT_SPRINT $d5_fnp_kit_use_access(~%kit%~ ~%usable%~) ~%access%~
+	END
+  END
+BUT_ONLY
+
+ACTION_PHP_EACH d5_fnp_kit_use_access AS clab => val BEGIN
+  ACTION_IF (~%clab_1%~ STRING_EQUAL_CASE ~CHAIN_ARMOR~) BEGIN
+	ACTION_IF (%val% = 1) BEGIN
+	  PRINT ~    %clab% : %clab_1% : %val%~
+	  COPY_EXISTING ~kitlist.2da~ ~override~
+		COUNT_2DA_COLS cols
+		READ_2DA_ENTRIES_NOW ~r2en_kitlist~ cols
+		FOR (row = 3; row < r2en_kitlist; row += 1) BEGIN
+		  READ_2DA_ENTRY_FORMER ~r2en_kitlist~ row 5 kit_clab
+		  READ_2DA_ENTRY_FORMER ~r2en_kitlist~ row 8 kit_class
+		  PATCH_IF (~%kit_clab%~ STRING_EQUAL_CASE ~%clab%~) BEGIN
+			PATCH_IF (%kit_class% = 3 || %kit_class% = 11 || %kit_class% = 21 || %kit_class% = 8 || %kit_class% = 14 || %kit_class% = 15 || %kit_class% = 18 || %kit_class% = 16) BEGIN
+			  SET_2DA_ENTRY row 7 cols ~0x%hex_helm%~
+			END
+		  END
+		END
+	  BUT_ONLY
+	END
+	ELSE BEGIN
+	  PRINT ~    %clab% : %clab_1% : %val%~
+	  COPY_EXISTING ~kitlist.2da~ ~override~
+		COUNT_2DA_COLS cols
+		READ_2DA_ENTRIES_NOW ~r2en_kitlist~ cols
+		FOR (row = 3; row < r2en_kitlist; row += 1) BEGIN
+		  READ_2DA_ENTRY_FORMER ~r2en_kitlist~ row 5 kit_clab
+		  READ_2DA_ENTRY_FORMER ~r2en_kitlist~ row 8 kit_class
+		  PATCH_IF (~%kit_clab%~ STRING_EQUAL_CASE ~%clab%~) BEGIN
+			PATCH_IF (%kit_class% = 3 || %kit_class% = 11 || %kit_class% = 21 || %kit_class% = 8 || %kit_class% = 14 || %kit_class% = 15 || %kit_class% = 18 || %kit_class% = 16) BEGIN
+			  SET_2DA_ENTRY row 7 cols ~0x%hex_lat%~
+			END
+		  END
+		END
+	  BUT_ONLY
+	END
+  END
+  ACTION_IF (~%clab_1%~ STRING_EQUAL_CASE ~PLATE_ARMOR~) BEGIN
+	ACTION_IF (%val% = 1) BEGIN
+	  PRINT ~    %clab% : %clab_1% : %val%~
+	  COPY_EXISTING ~kitlist.2da~ ~override~
+		COUNT_2DA_COLS cols
+		READ_2DA_ENTRIES_NOW ~r2en_kitlist~ cols
+		FOR (row = 3; row < r2en_kitlist; row += 1) BEGIN
+		  READ_2DA_ENTRY_FORMER ~r2en_kitlist~ row 5 kit_clab
+		  READ_2DA_ENTRY_FORMER ~r2en_kitlist~ row 8 kit_class
+		  PATCH_IF (~%kit_clab%~ STRING_EQUAL_CASE ~%clab%~) BEGIN
+			PATCH_IF (%kit_class% = 3 || %kit_class% = 11 || %kit_class% = 21 || %kit_class% = 8 || %kit_class% = 14 || %kit_class% = 15 || %kit_class% = 18 || %kit_class% = 16) BEGIN
+			  SET_2DA_ENTRY row 7 cols ~0x%hex_talos%~
+			END
+		  END
+		END
+	  BUT_ONLY
+	END
+  END
+END
+
 COPY_EXISTING ~kitlist.2da~ ~override~
   COUNT_2DA_COLS cols
   READ_2DA_ENTRIES_NOW ~r2en_kitlist~ cols
@@ -411,26 +474,7 @@ COPY_EXISTING ~kitlist.2da~ ~override~
 	PHP_EACH d5_fnp_usable AS usable => ind BEGIN
 	  PATCH_IF (VARIABLE_IS_SET $d5_fnp_kit_usable_access(~%usable%~ ~%kit_clab%~)) BEGIN
 		SPRINT access $d5_fnp_kit_usable_access(~%usable%~ ~%kit_clab%~)
-		PATCH_IF (~%usable%~ STRING_EQUAL_CASE ~CHAIN_ARMOR~) BEGIN
-		  PATCH_IF (access = 0) BEGIN
-//			PATCH_IF (%kit_class% = 3 || %kit_class% = 11 || %kit_class% = 21 || %kit_class% = 8 || %kit_class% = 14 || %kit_class% = 15 || %kit_class% = 18 || %kit_class% = 16) BEGIN
-				SET_2DA_ENTRY row 7 9 ~0x%hex_lat%~ 
-//			END
-		  END
-		  PATCH_IF (access > 0) BEGIN
-//			PATCH_IF (%kit_class% = 3 || %kit_class% = 11 || %kit_class% = 21 || %kit_class% = 8 || %kit_class% = 14 || %kit_class% = 15 || %kit_class% = 18 || %kit_class% = 16) BEGIN
-				SET_2DA_ENTRY row 7 9 ~0x%hex_helm%~ 
-//			END
-		  END
-		END
-		PATCH_IF (~%usable%~ STRING_EQUAL_CASE ~PLATE_ARMOR~) BEGIN
-		  PATCH_IF (access > 0) BEGIN
-//			PATCH_IF (%kit_class% = 3 || %kit_class% = 11 || %kit_class% = 21 || %kit_class% = 8 || %kit_class% = 14 || %kit_class% = 15 || %kit_class% = 18 || %kit_class% = 16) BEGIN
-				SET_2DA_ENTRY row 7 9 ~0x%hex_talos%~ 
-//			END
-		  END
-		END
-		PATCH_IF (~%usable%~ STRING_EQUAL_CASE ~CLUB_STAFF~) BEGIN		// club, staff
+		PATCH_IF (~%usable%~ STRING_EQUAL_CASE ~CLUB_STAFF~) BEGIN			// club, staff
 		  INNER_ACTION BEGIN
 			COPY_EXISTING ~weapprof.2da~ override
 			  READ_2DA_ENTRIES_NOW weapprof 3
@@ -903,5 +947,4 @@ ACTION_IF FILE_EXISTS_IN_GAME ~enginest.2da~ BEGIN
   END
 END
 //__________________________________________________________________________________
-
 

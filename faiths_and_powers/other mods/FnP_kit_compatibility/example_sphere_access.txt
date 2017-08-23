@@ -3,16 +3,21 @@
 //
 ACTION_INCLUDE ~%MOD_FOLDER%/lib/fnp_compat.tpa~
 
-COPY_EXISTING ~kitlist.2da~ ~override~
+ COPY_EXISTING ~kitlist.2da~ ~override~
 	COUNT_2DA_ROWS 1 rows
 	READ_2DA_ENTRY (%rows% - 1) 5 1 mod_clab
-BUT_ONLY
-
+ BUT_ONLY
+//
+// if you don't want to run this function immediately after installing your kit, you can delete the above
+// four lines, and replace '%mod_clab%' with the name of your kit's clab file in the 'clab_name' variable below.
+//
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
+//
 // put a '1' next to the types of armor usable by the kit
 // put a number from '1' to '5' next to the weapons the kit can use
 // the number will determine the kit's proficiency limits with those weapons
+//
 	u_leather_armor 	= 1
 	u_chain_armor 		= 0
 	u_plate_armor 		= 0
@@ -34,10 +39,13 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	u_slings	 		= 1
 	u_bows 				= 0
 	u_crossbows 		= 1
+//
   STR_VAR
+//
 // for class, enter 'cleric' 'acolyte' 'druid' 'mystic' 'occultist' 'champion' 'zealot' 'ranger' or 'scout'
 // if multiclass, enter 'fighter_cleric' 'cleric_mage' 'cleric_thief' 'ranger_cleric' or 'fighter_mystic'
 // for selected spheres, enter 'focus' 'major' 'minor' 'paladin' or 'ranger'
+//
     clab_name 	= EVAL ~%mod_clab%~
 	class 			= ~x~	 
 	s_Life 			= ~x~

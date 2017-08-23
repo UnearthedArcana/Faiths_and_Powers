@@ -1121,7 +1121,7 @@ ACTION_PHP_EACH spellsphere AS spl => sph BEGIN
 	  BUT_ONLY
 	END
 	ACTION_IF (1 < %lvl%) BEGIN
-	  COPY_EXISTING ~%the_spell%.spl~ ~override/%focus_res%.spl~ 
+	  COPY_EXISTING ~%the_spell%.spl~ ~override/%focus_res%.spl~ 	
 		WRITE_SHORT 0x1c 2
 		WRITE_LONG 0x34 %flvl%
 		READ_LONG 0x64 abil_offset
