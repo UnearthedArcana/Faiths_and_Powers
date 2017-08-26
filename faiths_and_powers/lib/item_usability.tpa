@@ -22,7 +22,7 @@ armor:
 - lathander flag		= leather only		= 0x04000000
 
 what about druids? 
-- totemic flag			= druid... no plate or chain
+- totemic flag			= druid, no plate/chain	= 0x08000000
 - shapeshifter flag		= mystic
 - avenger/beast_friend	= occultist
 
@@ -147,8 +147,8 @@ END
 COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~
   PATCH_IF (~%SOURCE_SIZE%~ > ~0x71~) BEGIN
 	READ_SHORT   0x1c type
-	READ_BYTE    0x1e cleric   											// cleric class usability
-	READ_BYTE    0x29 c_kits											// cleric kit flags
+	READ_BYTE    0x1e class_1   										// cleric class usability
+	READ_BYTE    0x29 kits												// cleric kit flags
 	PATCH_IF /* (%type% = 2) OR   	//armor */
 	  		(%type% = 5) OR   	//arrow
 			(%type% = 15) OR  	//bow
@@ -172,8 +172,8 @@ COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~
 			(%type% = 69) OR  	//bastard swords
 			(%type% = 30) OR  	//halberds
 			(%type% = 44) BEGIN  //clubs
-	  PATCH_IF ((~%cleric%~ BAND ~0b10000000~) = ~0b10000000~) BEGIN 		// if *NOT usable* by clerics
-		WRITE_BYTE 0x29 (~%c_kits%~ BOR ~0b00000111~) 					// set same flag for all cleric kits
+	  PATCH_IF ((%class_1% BAND 0b10000000) = 0b10000000) BEGIN 		// if *NOT usable* by clerics
+		WRITE_BYTE 0x29 (%kits% BOR 0b00000111) 						// set same flag for all cleric kits
 	  END
 	END
   END
@@ -184,42 +184,49 @@ BUT_ONLY
 //
 COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~
   PATCH_IF (~%SOURCE_SIZE%~ > ~0x71~) BEGIN
-	READ_BYTE 0x21 druid  												// druid class usability
-	READ_BYTE 0x1f m_class  											// cleric multi usability
-	PATCH_IF ((~%druid%~ BOR ~0b10111111~) = ~0b10111111~) BEGIN 		// if *IS usable* by druids
-	  WRITE_BYTE 0x1f (~%m_class%~ BAND ~0b00111000~) 					// make usable by multi clerics
+	READ_BYTE 0x1f class_2  											// cleric multi usability
+	READ_BYTE 0x21 class_4  											// druid class usability
+	READ_BYTE 0x29 kits													// kit flags
+	PATCH_IF ((%class_4% BOR 0b10111111) = 0b10111111) BEGIN 			// if *IS usable* by druids
+	  WRITE_BYTE 0x1f (%class_2% BAND 0b00111000) 						// make usable by multi clerics
+	  WRITE_BYTE 0x29 (%kits%  BAND 0b11110111) 						// make usable by totemic
 	  LPF DELETE_EFFECT INT_VAR match_opcode = 319 match_parameter1 = 11 match_timing = 2 END
 	END
   END
 BUT_ONLY
 //__________________________________________________________________________________
 
+/*
 //give druid class usability to new druids__________________________________________
 //
 COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~
   PATCH_IF (~%SOURCE_SIZE%~ > ~0x71~) BEGIN
-	READ_BYTE 	0x21 druid 												// druid class usability
+	READ_SHORT   0x1c type
+	READ_BYTE 	0x1f class_2 											// fighter-ranger class usability
+	READ_BYTE 	0x20 class_3 											// mage-thief class usability
+	READ_BYTE 	0x21 class_4 											// druid class usability
 	READ_BYTE 	0x29 d_kits												// druid kit flags
-	PATCH_IF ((~%druid%~ BAND ~0b01000000~) = ~0b01000000~) BEGIN 		// if *NOT usable* by druids
-	  WRITE_BYTE 0x29 (~%d_kits%~ BOR ~0b00001000~) 					// same same flag for totemic
+	PATCH_IF (%type% = 
+	PATCH_IF ((%class_4% BAND 0b01000000) = 0b01000000) BEGIN 			// if *NOT* usable by druids
+	  WRITE_BYTE 0x29 (%d_kits% BOR 0b00001000) 						// same same flag for totemic
 	END
   END	
 BUT_ONLY
 //__________________________________________________________________________________
+*/
 
 //give fighter weapon usability to cleric class_____________________________________
 //
 COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~
   PATCH_IF (%SOURCE_SIZE% > 0x71) BEGIN
 	READ_BYTE 	 0x1f fighter 											// fighter usability flag
-	READ_BYTE    0x1e c_class
-	READ_BYTE    0x1f m_class
-	READ_BYTE    0x20 r_class
-	READ_BYTE    0x21 d_class
-	READ_BYTE    0x29 c_kits
+	READ_BYTE    0x1e class_1
+	READ_BYTE    0x1f class_2
+	READ_BYTE    0x20 class_3
+	READ_BYTE    0x21 class_4
+	READ_BYTE    0x29 kits
 	READ_SHORT   0x1c type
-	PATCH_IF ((~%fighter%~ BAND ~0b00100000~) = ~0b00000000~) BEGIN 	// if *IS usable* by fighter/mages (excluding scrolls and wands for now)
-	  PATCH_IF (%type% = 2) OR   	//armor
+	PATCH_IF (%type% = 2) OR   	//armor
 	  		(%type% = 5) OR   	//arrow
 			(%type% = 15) OR  	//bow
 			(%type% = 16) OR  	//dagger
@@ -242,11 +249,15 @@ COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~
 			(%type% = 69) OR  	//bastard swords
 			(%type% = 30) OR  	//halberds
 			(%type% = 44) BEGIN  //clubs
-		WRITE_BYTE  0x1e (~%c_class%~ BAND ~0b01111111~) 				// make usable by clerics
-		WRITE_BYTE  0x1f (~%m_class%~ BAND ~0b00101000~) 				// make usable by divine multiclasses
-		WRITE_BYTE  0x21 (~%r_class%~ BAND ~0b11001111~) 				// make usable by rangers/paladins
-		WRITE_BYTE  0x21 (~%d_class%~ BAND ~0b10111111~) 				// make usable by druids
-		WRITE_BYTE  0x29 (~%c_kits%~ BAND ~0b11000000~) 				// make usable by cleric kits
+//	  PATCH_IF ((%class_4% BAND 0b01000000) = 0b01000000) BEGIN 		// if *NOT* usable by druids
+//		WRITE_BYTE 0x29 (%kits% BOR 0b00001000) 						// same same flag for totemic
+//	  END
+	  PATCH_IF ((%class_2% BAND 0b00100000) = 0b00000000) BEGIN 		// if *IS usable* by fighter/mages (excluding scrolls and wands for now)
+		WRITE_BYTE  0x1e (%class_1% BAND 0b01111111) 					// make usable by clerics
+		WRITE_BYTE  0x1f (%class_2% BAND 0b00101000) 					// make usable by divine multiclasses
+		WRITE_BYTE  0x20 (%class_3% BAND 0b11001111) 					// make usable by rangers/paladins
+		WRITE_BYTE  0x21 (%class_4% BAND 0b10111111) 					// make usable by druids
+		WRITE_BYTE  0x29 (%kits% BAND 0b11000000) 						// make usable by cleric kits
 	  END
     END
   END
@@ -258,18 +269,21 @@ BUT_ONLY
 COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
   PATCH_IF (%SOURCE_SIZE% > 0x71) BEGIN
 	READ_SHORT 	0x1c type
-	READ_BYTE 	0x1f fighter
-	READ_BYTE 	0x29 c_kits
+	READ_BYTE 	0x1f class_2
+	READ_BYTE 	0x29 kits
 	PATCH_IF (type = 2) BEGIN
-	  PATCH_IF ((%fighter% BAND 0b00001000) = 0b00000000) BEGIN 	// if *IS usable* by fighters
-		WRITE_BYTE 0x29 (%c_kits% BAND 0b11000000) 					// make usable by divines
+	  PATCH_IF ((%class_2% BAND 0b00001000) = 0b00000000) BEGIN 		// if *IS usable* by fighters
+		WRITE_BYTE 0x29 (%kits% BAND 0b11000000) 						// make usable by divine kits
 	  END
 	  READ_LONG 0x22 appearance
-	  PATCH_IF (appearance = 16691) BEGIN // chain appearance
-		WRITE_BYTE 0x29 (%c_kits% BOR  0b00111100) 					// restrict from lathander + totemic + shapeshifter + avenger
+//	  PATCH_IF (appearance = 16690) BEGIN 								// leather appearance
+//		WRITE_BYTE 0x29 (%kits% BAND 0b11101111) 						// make usable by shapeshifter
+//	  END
+	  PATCH_IF (appearance = 16691) BEGIN 								// chain appearance
+		WRITE_BYTE 0x29 (%kits% BOR 0b00111100) 						// restrict from lathander + totemic + shapeshifter + avenger
 	  END
-	  ELSE PATCH_IF (appearance = 16692) BEGIN // plate appearance
-		WRITE_BYTE 0x29 (%c_kits% BOR 0b00111110) 					// restrict from lat + helm + totemic + shapeshifter + avenger
+	  ELSE PATCH_IF (appearance = 16692) BEGIN 							// plate appearance
+		WRITE_BYTE 0x29 (%kits% BOR 0b00111110) 						// restrict from lat + helm + totemic + shapeshifter + avenger
 	  END
 	END
   END

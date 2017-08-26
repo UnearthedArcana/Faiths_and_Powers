@@ -87,57 +87,51 @@ END
 // ABILITY FILES_____________________________________________________________
 //
 COPY ~faiths_and_powers/kits/mystics/703_earth_mystic/d5mear.2da~ ~override~
-COPY ~faiths_and_powers/kits/misc/d5_bres2.spl~ ~override~
+COPY ~faiths_and_powers/kits/misc/d5bres2.spl~ ~override~
 	SAY NAME1 @70311
 	SAY UNIDENTIFIED_DESC @70311
-COPY ~faiths_and_powers/kits/mystics/703_earth_mystic/d5_myea1.spl~ ~override~
+COPY ~faiths_and_powers/kits/mystics/703_earth_mystic/d5myea1.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/mystics/703_earth_mystic/d5_myea1.eff~ ~override~
-COPY ~faiths_and_powers/kits/misc/d5_cllv1.spl~ ~override~
+COPY ~faiths_and_powers/kits/mystics/703_earth_mystic/d5myea1.eff~ ~override~
+COPY ~faiths_and_powers/kits/misc/d5cllv1.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5_cstbo.spl~ ~override~
+COPY ~faiths_and_powers/kits/misc/d5cstbo.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5_disp1.spl~ ~override~
+COPY ~faiths_and_powers/kits/misc/d5disp1.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5_disp2.spl~ ~override~
+COPY ~faiths_and_powers/kits/misc/d5disp2.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5_disp3.spl~ ~override~
+COPY ~faiths_and_powers/kits/misc/d5disp3.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5_disp4.spl~ ~override~
+COPY ~faiths_and_powers/kits/misc/d5disp4.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5_disp5.spl~ ~override~
+COPY ~faiths_and_powers/kits/misc/d5disp5.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5_disp6.spl~ ~override~
+COPY ~faiths_and_powers/kits/misc/d5disp6.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5_disp7.spl~ ~override~
+COPY ~faiths_and_powers/kits/misc/d5disp7.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
 ACTION_IF MOD_IS_INSTALLED "TOBEX.TP2" "100" THEN BEGIN
-	COPY ~faiths_and_powers/kits/mystics/703_earth_mystic/d5_crust.spl~ ~override~
+	COPY ~faiths_and_powers/kits/mystics/703_earth_mystic/d5crust.spl~ ~override~
 		SAY NAME1 @6
 		SAY UNIDENTIFIED_DESC @6
-	COPY_EXISTING ~d5mear.2da~ ~override~
-		LPM remove_blank_lines
-		APPEND_FILE ~faiths_and_powers/kits/mystics/703_earth_mystic/tobexcrus.txt~
-		BUT_ONLY
+	APPEND ~d5mear.2da~ ~ABILITY     AP_D5CRUST  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****     ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** ~
 END
 ACTION_IF ENGINE_IS ~bgee bg2ee iwdee eet~ THEN BEGIN
-	COPY ~faiths_and_powers/kits/mystics/703_earth_mystic/d5_cruse.spl~ ~override~
+	COPY ~faiths_and_powers/kits/mystics/703_earth_mystic/d5cruse.spl~ ~override~
 		SAY NAME1 @6
 		SAY UNIDENTIFIED_DESC @6
-	COPY_EXISTING ~d5mear.2da~ ~override~
-		LPM remove_blank_lines
-		APPEND_FILE ~faiths_and_powers/kits/mystics/703_earth_mystic/eecrus.txt~
-		BUT_ONLY
+	APPEND ~d5mear.2da~ ~ABILITY     AP_D5CRUSE  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****     ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** ~
 END	
 
 //DEFINE SPHERE ACCESS______________________________________________________________
@@ -272,7 +266,7 @@ END
 
 //ABILITY FILES_____________________________________________________________________
 COPY ~faiths_and_powers/kits/mystics/703_earth_mystic/d5mear.2da~ ~override/d5mear2.2da~
-  	REPLACE_TEXTUALLY ~AP_D5_DISP[1234567]~ ~****       ~
+  	REPLACE_TEXTUALLY ~AP_d5disp[1234567]~ ~****       ~
 
 //MULTICLASS KIT____________________________________________________________________
 //
@@ -432,41 +426,41 @@ END
 // ABILITY FILES_____________________________________________________________
 //
 COPY ~faiths_and_powers/kits/mystics/704_water_mystic/d5mwat.2da~ ~override~
-COPY ~faiths_and_powers/kits/misc/d5_ares2.spl~ ~override~
+COPY ~faiths_and_powers/kits/misc/d5ares2.spl~ ~override~
 	SAY NAME1 @70411
 	SAY UNIDENTIFIED_DESC @70411
-COPY ~faiths_and_powers/kits/misc/d5_cres2.spl~ ~override~
+COPY ~faiths_and_powers/kits/misc/d5cres2.spl~ ~override~
 	SAY NAME1 @70412
 	SAY UNIDENTIFIED_DESC @70412
-COPY ~faiths_and_powers/kits/mystics/704_water_mystic/d5_mywa1.spl~ ~override~
+COPY ~faiths_and_powers/kits/mystics/704_water_mystic/d5mywa1.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/mystics/704_water_mystic/d5_mywa1.eff~ ~override~
-COPY ~faiths_and_powers/kits/misc/d5_cllv1.spl~ ~override~
+COPY ~faiths_and_powers/kits/mystics/704_water_mystic/d5mywa1.eff~ ~override~
+COPY ~faiths_and_powers/kits/misc/d5cllv1.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5_cstbo.spl~ ~override~
+COPY ~faiths_and_powers/kits/misc/d5cstbo.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5_disp1.spl~ ~override~
+COPY ~faiths_and_powers/kits/misc/d5disp1.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5_disp2.spl~ ~override~
+COPY ~faiths_and_powers/kits/misc/d5disp2.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5_disp3.spl~ ~override~
+COPY ~faiths_and_powers/kits/misc/d5disp3.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5_disp4.spl~ ~override~
+COPY ~faiths_and_powers/kits/misc/d5disp4.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5_disp5.spl~ ~override~
+COPY ~faiths_and_powers/kits/misc/d5disp5.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5_disp6.spl~ ~override~
+COPY ~faiths_and_powers/kits/misc/d5disp6.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5_disp7.spl~ ~override~
+COPY ~faiths_and_powers/kits/misc/d5disp7.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
 
@@ -603,7 +597,7 @@ END
 // ABILITY FILES_____________________________________________________________
 //
 COPY ~faiths_and_powers/kits/mystics/704_water_mystic/d5mwat.2da~ ~override/d5mwat2.2da~
-  	REPLACE_TEXTUALLY ~AP_D5_DISP[1234567]~ ~****       ~
+  	REPLACE_TEXTUALLY ~AP_d5disp[1234567]~ ~****       ~
 
 //MULTICLASS KIT____________________________________________________________________
 //
@@ -764,41 +758,41 @@ END
 // ABILITY FILES_____________________________________________________________
 //
 COPY ~faiths_and_powers/kits/mystics/705_air_mystic/d5mair.2da~ ~override~
-COPY ~faiths_and_powers/kits/misc/d5_eres2.spl~ ~override~
+COPY ~faiths_and_powers/kits/misc/d5eres2.spl~ ~override~
 	SAY NAME1 @70511
 	SAY UNIDENTIFIED_DESC @70511
-COPY  ~faiths_and_powers/kits/mystics/705_air_mystic/d5_myai1.spl~ ~override~
+COPY  ~faiths_and_powers/kits/mystics/705_air_mystic/d5myai1.spl~ ~override~
 	SAY NAME1 @70512
 	SAY UNIDENTIFIED_DESC @70512
-COPY  ~faiths_and_powers/kits/mystics/705_air_mystic/d5_myai1.eff~ ~override~
-COPY  ~faiths_and_powers/kits/mystics/705_air_mystic/d5_myai2.spl~ ~override~
+COPY  ~faiths_and_powers/kits/mystics/705_air_mystic/d5myai1.eff~ ~override~
+COPY  ~faiths_and_powers/kits/mystics/705_air_mystic/d5myai2.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5_cllv1.spl~ ~override~
+COPY ~faiths_and_powers/kits/misc/d5cllv1.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5_cstbo.spl~ ~override~
+COPY ~faiths_and_powers/kits/misc/d5cstbo.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5_disp1.spl~ ~override~
+COPY ~faiths_and_powers/kits/misc/d5disp1.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5_disp2.spl~ ~override~
+COPY ~faiths_and_powers/kits/misc/d5disp2.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5_disp3.spl~ ~override~
+COPY ~faiths_and_powers/kits/misc/d5disp3.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5_disp4.spl~ ~override~
+COPY ~faiths_and_powers/kits/misc/d5disp4.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5_disp5.spl~ ~override~
+COPY ~faiths_and_powers/kits/misc/d5disp5.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5_disp6.spl~ ~override~
+COPY ~faiths_and_powers/kits/misc/d5disp6.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5_disp7.spl~ ~override~
+COPY ~faiths_and_powers/kits/misc/d5disp7.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
 
@@ -935,7 +929,7 @@ END
 //ABILITY FILES_____________________________________________________________________
 //
 COPY ~faiths_and_powers/kits/mystics/705_air_mystic/d5mair.2da~ ~override/d5mair2.2da~
-  	REPLACE_TEXTUALLY ~AP_D5_DISP[1234567]~ ~****       ~
+  	REPLACE_TEXTUALLY ~AP_d5disp[1234567]~ ~****       ~
 
 //MULTICLASS KIT____________________________________________________________________
 //
@@ -1095,57 +1089,51 @@ END
 // ABILITY FILES_____________________________________________________________
 //
 COPY ~faiths_and_powers/kits/mystics/706_fire_mystic/d5mfir.2da~ ~override~
-COPY ~faiths_and_powers/kits/misc/d5_fres2.spl~ ~override~
+COPY ~faiths_and_powers/kits/misc/d5fres2.spl~ ~override~
 	SAY NAME1 @70611
 	SAY UNIDENTIFIED_DESC @70611
-COPY ~faiths_and_powers/kits/mystics/706_fire_mystic/d5_myfi1.spl~ ~override~
+COPY ~faiths_and_powers/kits/mystics/706_fire_mystic/d5myfi1.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/mystics/706_fire_mystic/d5_myfi1.eff~ ~override~
-COPY ~faiths_and_powers/kits/misc/d5_cllv1.spl~ ~override~
+COPY ~faiths_and_powers/kits/mystics/706_fire_mystic/d5myfi1.eff~ ~override~
+COPY ~faiths_and_powers/kits/misc/d5cllv1.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5_cstbo.spl~ ~override~
+COPY ~faiths_and_powers/kits/misc/d5cstbo.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5_disp1.spl~ ~override~
+COPY ~faiths_and_powers/kits/misc/d5disp1.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5_disp2.spl~ ~override~
+COPY ~faiths_and_powers/kits/misc/d5disp2.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5_disp3.spl~ ~override~
+COPY ~faiths_and_powers/kits/misc/d5disp3.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5_disp4.spl~ ~override~
+COPY ~faiths_and_powers/kits/misc/d5disp4.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5_disp5.spl~ ~override~
+COPY ~faiths_and_powers/kits/misc/d5disp5.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5_disp6.spl~ ~override~
+COPY ~faiths_and_powers/kits/misc/d5disp6.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5_disp7.spl~ ~override~
+COPY ~faiths_and_powers/kits/misc/d5disp7.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
 ACTION_IF MOD_IS_INSTALLED "TOBEX.TP2" "100" THEN BEGIN
-	COPY ~faiths_and_powers/kits/mystics/706_fire_mystic/d5_purit.spl~ ~override~
+	COPY ~faiths_and_powers/kits/mystics/706_fire_mystic/d5purit.spl~ ~override~
 		SAY NAME1 @6
 		SAY UNIDENTIFIED_DESC @6
-	COPY_EXISTING ~d5mfir.2da~ ~override~
-		LPM remove_blank_lines
-		APPEND_FILE ~faiths_and_powers/kits/mystics/706_fire_mystic/tobexpur.txt~
-		BUT_ONLY
+	APPEND ~d5mfir.2da~ ~ABILITY     AP_D5PURIT  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****     ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** ~
 END
 ACTION_IF GAME_IS ~bgee bg2ee eet iwdee~ THEN BEGIN
-	COPY ~faiths_and_powers/kits/mystics/706_fire_mystic/d5_purie.spl~ ~override~
+	COPY ~faiths_and_powers/kits/mystics/706_fire_mystic/d5purie.spl~ ~override~
 		SAY NAME1 @6
 		SAY UNIDENTIFIED_DESC @6
-	COPY_EXISTING ~d5mfir.2da~ ~override~
-		LPM remove_blank_lines
-		APPEND_FILE ~faiths_and_powers/kits/mystics/706_fire_mystic/eepur.txt~
-		BUT_ONLY
+	APPEND ~d5mfir.2da~ ~ABILITY     AP_D5PURIE  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****     ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** ~
 END	
 
 //DEFINE SPHERE ACCESS______________________________________________________________
@@ -1281,7 +1269,7 @@ END
 // ABILITY FILES_____________________________________________________________
 //
 COPY ~faiths_and_powers/kits/mystics/706_fire_mystic/d5mfir.2da~ ~override/d5mfir2.2da~
-  	REPLACE_TEXTUALLY ~AP_D5_DISP[1234567]~ ~****       ~
+  	REPLACE_TEXTUALLY ~AP_d5disp[1234567]~ ~****       ~
 
 //MULTICLASS KIT____________________________________________________________________
 //
@@ -1441,44 +1429,44 @@ END
 // ABILITY FILES_____________________________________________________________
 //
 COPY ~faiths_and_powers/kits/mystics/707_light_mystic/d5mlig.2da~ ~override~
-COPY ~faiths_and_powers/kits/misc/d5_blres.spl~ ~override~
+COPY ~faiths_and_powers/kits/misc/d5blres.spl~ ~override~
 	SAY NAME1 @70711
 	SAY UNIDENTIFIED_DESC @70711
-COPY ~faiths_and_powers/kits/mystics/707_light_mystic/d5_myli1.spl~ ~override~
+COPY ~faiths_and_powers/kits/mystics/707_light_mystic/d5myli1.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/mystics/707_light_mystic/d5_myli1.eff~ ~override~
-COPY ~faiths_and_powers/kits/mystics/707_light_mystic/d5_myli2.eff~ ~override~
-COPY ~faiths_and_powers/kits/mystics/707_light_mystic/d5_myli3.eff~ ~override~
-COPY ~faiths_and_powers/kits/mystics/707_light_mystic/d5_myli4.eff~ ~override~
+COPY ~faiths_and_powers/kits/mystics/707_light_mystic/d5myli1.eff~ ~override~
+COPY ~faiths_and_powers/kits/mystics/707_light_mystic/d5myli2.eff~ ~override~
+COPY ~faiths_and_powers/kits/mystics/707_light_mystic/d5myli3.eff~ ~override~
+COPY ~faiths_and_powers/kits/mystics/707_light_mystic/d5myli4.eff~ ~override~
 COPY ~faiths_and_powers/kits/mystics/707_light_mystic/d5_ffire.vvc~ ~override~
-COPY_EXISTING ~spwi322.spl~ ~override/d5_myli2.spl~
+COPY_EXISTING ~spwi322.spl~ ~override/d5myli2.spl~
 	LPM spell_to_innate
-COPY ~faiths_and_powers/kits/misc/d5_cllv1.spl~ ~override~
+COPY ~faiths_and_powers/kits/misc/d5cllv1.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5_cstbo.spl~ ~override~
+COPY ~faiths_and_powers/kits/misc/d5cstbo.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5_disp1.spl~ ~override~
+COPY ~faiths_and_powers/kits/misc/d5disp1.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5_disp2.spl~ ~override~
+COPY ~faiths_and_powers/kits/misc/d5disp2.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5_disp3.spl~ ~override~
+COPY ~faiths_and_powers/kits/misc/d5disp3.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5_disp4.spl~ ~override~
+COPY ~faiths_and_powers/kits/misc/d5disp4.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5_disp5.spl~ ~override~
+COPY ~faiths_and_powers/kits/misc/d5disp5.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5_disp6.spl~ ~override~
+COPY ~faiths_and_powers/kits/misc/d5disp6.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5_disp7.spl~ ~override~
+COPY ~faiths_and_powers/kits/misc/d5disp7.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
 
@@ -1615,7 +1603,7 @@ END
 // ABILITY FILES_____________________________________________________________
 //
 COPY ~faiths_and_powers/kits/mystics/707_light_mystic/d5mlig.2da~ ~override/d5mlig2.2da~
-  	REPLACE_TEXTUALLY ~AP_D5_DISP[1234567]~ ~****       ~
+  	REPLACE_TEXTUALLY ~AP_d5disp[1234567]~ ~****       ~
 
 //MULTICLASS KIT____________________________________________________________________
 //
@@ -1776,40 +1764,40 @@ END
 // ABILITY FILES_____________________________________________________________
 //
 COPY ~faiths_and_powers/kits/mystics/708_shadow_mystic/d5mshd.2da~ ~override~
-COPY ~faiths_and_powers/kits/misc/d5_blres.spl~ ~override~
+COPY ~faiths_and_powers/kits/misc/d5blres.spl~ ~override~
 	SAY NAME1 @70711
 	SAY UNIDENTIFIED_DESC @70711
-COPY ~faiths_and_powers/kits/mystics/708_shadow_mystic/d5_mysh1.spl~ ~override~
+COPY ~faiths_and_powers/kits/mystics/708_shadow_mystic/d5mysh1.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/mystics/708_shadow_mystic/d5_mysh1.eff~ ~override~
-COPY_EXISTING ~spwi322.spl~ ~override/d5_myli2.spl~
+COPY ~faiths_and_powers/kits/mystics/708_shadow_mystic/d5mysh1.eff~ ~override~
+COPY_EXISTING ~spwi322.spl~ ~override/d5myli2.spl~
 	LPM spell_to_innate
-COPY ~faiths_and_powers/kits/misc/d5_cllv1.spl~ ~override~
+COPY ~faiths_and_powers/kits/misc/d5cllv1.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5_cstbo.spl~ ~override~
+COPY ~faiths_and_powers/kits/misc/d5cstbo.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5_disp1.spl~ ~override~
+COPY ~faiths_and_powers/kits/misc/d5disp1.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5_disp2.spl~ ~override~
+COPY ~faiths_and_powers/kits/misc/d5disp2.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5_disp3.spl~ ~override~
+COPY ~faiths_and_powers/kits/misc/d5disp3.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5_disp4.spl~ ~override~
+COPY ~faiths_and_powers/kits/misc/d5disp4.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5_disp5.spl~ ~override~
+COPY ~faiths_and_powers/kits/misc/d5disp5.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5_disp6.spl~ ~override~
+COPY ~faiths_and_powers/kits/misc/d5disp6.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5_disp7.spl~ ~override~
+COPY ~faiths_and_powers/kits/misc/d5disp7.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
 
@@ -1946,7 +1934,7 @@ END
 // ABILITY FILES_____________________________________________________________
 //
 COPY ~faiths_and_powers/kits/mystics/708_shadow_mystic/d5mshd.2da~ ~override/d5mshd2.2da~
-  	REPLACE_TEXTUALLY ~AP_D5_DISP[1234567]~ ~****       ~
+  	REPLACE_TEXTUALLY ~AP_d5disp[1234567]~ ~****       ~
 
 //MULTICLASS KIT____________________________________________________________________
 //
