@@ -247,8 +247,8 @@ DEFINE_ACTION_FUNCTION ~DISPLAY_FNP_KIT_INFO~ BEGIN
       PRINT ~  CLASS: %class%~
       PRINT ~  USABILITY:~
       ACTION_PHP_EACH d5_fnp_usable AS usable => val BEGIN
-        ACTION_IF (VARIABLE_IS_SET $d5_fnp_kit_usable_access(~%usable%~ ~%kit%~)) BEGIN
-          OUTER_TEXT_SPRINT access $d5_fnp_kit_usable_access(~%usable%~ ~%kit%~)
+        ACTION_IF (VARIABLE_IS_SET $d5_fnp_kit_usable_access(~%kit%~ ~%usable%~)) BEGIN
+          OUTER_TEXT_SPRINT access $d5_fnp_kit_usable_access(~%kit%~ ~%usable%~)
           ACTION_IF (IS_AN_INT access && access == 1) BEGIN
             PRINT ~    %usable%: %access%~
           END

@@ -486,8 +486,8 @@ COPY_EXISTING ~kitlist.2da~ ~override~
 	  COPY ~faiths_and_powers/kits/misc/d5fnpuse.spl~ ~override/d5_u%kit_index%.spl~
 	END
 	PHP_EACH d5_fnp_usable AS usable => ind BEGIN
-	  PATCH_IF (VARIABLE_IS_SET $d5_fnp_kit_usable_access(~%usable%~ ~%kit_clab%~)) BEGIN
-		SPRINT access $d5_fnp_kit_usable_access(~%usable%~ ~%kit_clab%~)
+	  PATCH_IF (VARIABLE_IS_SET $d5_fnp_kit_usable_access(~%kit_clab%~ ~%usable%~)) BEGIN
+		SPRINT access $d5_fnp_kit_usable_access(~%kit_clab%~ ~%usable%~)
 		PATCH_IF (~%usable%~ STRING_EQUAL_CASE ~CLUB_STAFF~) BEGIN			// club, staff
 		  INNER_ACTION BEGIN
 			COPY_EXISTING ~weapprof.2da~ override
@@ -911,7 +911,6 @@ BUT_ONLY
 //fix trueclass proficiencies for 2.0_______________________________________________
 //
 ACTION_IF FILE_EXISTS_IN_GAME ~enginest.2da~ BEGIN
-  ACTION_IF FILE_EXISTS_IN_GAME ~d5_menu.d5~ BEGIN
 	COPY_EXISTING ~weapprof.2da~ ~override~
 // Cleric
 	  SET_2DA_ENTRY_LATER ~#weapprof~ 11 6 1
@@ -955,10 +954,135 @@ ACTION_IF FILE_EXISTS_IN_GAME ~enginest.2da~ BEGIN
 	  SET_2DA_ENTRY_LATER ~#weapprof~ 28 10 1
 	  SET_2DA_ENTRY_LATER ~#weapprof~ 29 10 1
 	  SET_2DA_ENTRY_LATER ~#weapprof~ 30 10 1
+// 
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 11 13 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 12 13 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 13 13 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 14 13 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 15 13 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 16 13 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 17 13 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 18 13 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 19 13 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 20 13 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 21 13 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 22 13 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 23 13 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 24 13 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 25 13 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 26 13 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 27 13 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 28 13 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 29 13 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 30 13 1
+// 
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 11 17 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 12 17 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 13 17 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 14 17 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 15 17 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 16 17 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 17 17 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 18 17 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 19 17 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 20 17 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 21 17 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 22 17 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 23 17 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 24 17 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 25 17 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 26 17 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 27 17 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 28 17 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 29 17 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 30 17 1
+// 
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 11 18 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 12 18 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 13 18 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 14 18 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 15 18 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 16 18 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 17 18 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 18 18 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 19 18 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 20 18 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 21 18 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 22 18 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 23 18 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 24 18 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 25 18 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 26 18 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 27 18 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 28 18 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 29 18 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 30 18 1
+// 
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 11 19 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 12 19 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 13 19 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 14 19 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 15 19 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 16 19 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 17 19 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 18 19 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 19 19 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 20 19 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 21 19 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 22 19 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 23 19 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 24 19 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 25 19 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 26 19 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 27 19 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 28 19 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 29 19 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 30 19 1
+// 
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 11 20 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 12 20 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 13 20 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 14 20 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 15 20 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 16 20 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 17 20 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 18 20 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 19 20 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 20 20 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 21 20 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 22 20 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 23 20 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 24 20 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 25 20 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 26 20 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 27 20 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 28 20 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 29 20 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 30 20 1
+// c/r
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 11 21 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 12 21 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 13 21 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 14 21 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 15 21 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 16 21 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 17 21 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 18 21 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 19 21 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 20 21 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 21 21 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 22 21 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 23 21 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 24 21 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 25 21 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 26 21 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 27 21 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 28 21 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 29 21 1
+	  SET_2DA_ENTRY_LATER ~#weapprof~ 30 21 1
 // go!
 	  SET_2DA_ENTRIES_NOW ~#weapprof~ 1
 	BUT_ONLY
-  END
 END
 //__________________________________________________________________________________
 
