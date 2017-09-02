@@ -931,7 +931,7 @@ ACTION_PHP_EACH spellsphere AS spl => sph BEGIN
 	  COPY_EXISTING ~%sphere%.spl~ ~override~ 
 		LPF CLONE_EFFECT INT_VAR match_opcode=171 STR_VAR match_resource=~SPWI101~ resource = EVAL ~%the_spell%~ END
 	  BUT_ONLY
-	  ACTION_IF (%lvl% = 7) BEGIN
+	  ACTION_IF (%lvl% = 1) OR (%lvl% = 7) BEGIN
 		COPY_EXISTING ~%fsphere%.spl~ ~override~
 		  LPF CLONE_EFFECT INT_VAR match_opcode=171 STR_VAR match_resource=~SPWI101~ resource = EVAL ~%the_spell%~ END
 		BUT_ONLY
@@ -980,7 +980,7 @@ ACTION_PHP_EACH spellsphere AS spl => sph BEGIN
 	  COPY_EXISTING ~%sphere%.spl~ ~override~ 
 		LPF CLONE_EFFECT INT_VAR match_opcode=171 STR_VAR match_resource=~SPWI101~ resource = EVAL ~%priest_res%~ END
 	  BUT_ONLY
-	  ACTION_IF (%lvl% = 7) BEGIN
+	  ACTION_IF (%lvl% = 1) OR (%lvl% = 7) BEGIN
 		COPY_EXISTING ~%fsphere%.spl~ ~override~
 		  LPF CLONE_EFFECT INT_VAR match_opcode=171 STR_VAR match_resource=~SPWI101~ resource = EVAL ~%priest_res%~ END
 		BUT_ONLY
