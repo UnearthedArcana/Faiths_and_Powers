@@ -1568,7 +1568,7 @@ ACTION_PHP_EACH d5_kitlist_spheres AS goo => roo BEGIN
 		COPY_EXISTING ~%goo%.2da~ ~override~ //copy the clab of the base kit 
 		  COUNT_2DA_COLS cols // amount of columns
 		  READ_2DA_ENTRIES_NOW rows cols // read all file into memory  
-		  FOR (row = 3; row < rows; ++row) BEGIN // iterate over rows
+		  FOR (row = 1; row < rows; ++row) BEGIN // iterate over rows
 			READ_2DA_ENTRY_FORMER rows row 0 sphere // read first column
 			PATCH_IF (~%sphere%~ STRING_EQUAL_CASE ~SPHERES~) BEGIN	
 			  FOR (col = 1; col < cols; ++col) BEGIN // iterate over columns
