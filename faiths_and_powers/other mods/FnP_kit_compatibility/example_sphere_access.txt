@@ -76,10 +76,17 @@ END
 LAM ~READ_FNP_KIT_INFO~
 
 ACTION_IF FILE_EXISTS_IN_GAME ~d5_spheres.d5~ BEGIN
-  LAM apply_fnp_spheres
+//
+// 	if this is an NPC mod, put your .cre file(s) here and uncomment the following lines
+/*
+	COPY_EXISTING  ~this_npc.cre~ ~override~
+	  REMOVE_MEMORIZED_SPELLS
+	BUT_ONLY
+*/
+	LAM apply_fnp_spheres
 END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~d5_fnp_usability.d5~ BEGIN
-  LAM apply_fnp_usability
+	LAM apply_fnp_usability
 END
 //__________________________________________________________________________________

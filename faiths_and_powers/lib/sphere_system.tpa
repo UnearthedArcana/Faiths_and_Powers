@@ -1062,6 +1062,7 @@ ACTION_PHP_EACH spellsphere AS spl => sph BEGIN
    ELSE BEGIN // non-priest spells: make clones
 	COPY_EXISTING ~%the_spell%.spl~ ~override/%priest_res%.spl~ 
 	  WRITE_SHORT 0x1c 2
+	  LPF ALTER_SPELL_HEADER INT_VAR location = 2 END
 	  WRITE_LONG 0x34 %lvl%
 	  READ_LONG 0x50 "valid"
 	  PATCH_IF (%valid% >= 0) BEGIN // verify desc is valid
@@ -1084,6 +1085,7 @@ ACTION_PHP_EACH spellsphere AS spl => sph BEGIN
 	ACTION_IF (%lvl% < 4) BEGIN
 	  COPY_EXISTING ~%the_spell%.spl~ ~override/%minor_res%.spl~ 
 		WRITE_SHORT 0x1c 2
+		LPF ALTER_SPELL_HEADER INT_VAR location = 2 END
 		PATCH_IF (%d5_minor_shift% = 1) BEGIN
 		  WRITE_LONG 0x34 %mlvl%
 		END
@@ -1123,6 +1125,7 @@ ACTION_PHP_EACH spellsphere AS spl => sph BEGIN
 	ACTION_IF (1 < %lvl%) BEGIN
 	  COPY_EXISTING ~%the_spell%.spl~ ~override/%focus_res%.spl~ 	
 		WRITE_SHORT 0x1c 2
+		LPF ALTER_SPELL_HEADER INT_VAR location = 2 END
 		WRITE_LONG 0x34 %flvl%
 		READ_LONG 0x64 abil_offset
 		READ_SHORT 0x68 abil_number
@@ -1377,8 +1380,13 @@ COPY_EXISTING ~mxsplprs.2da~ ~override/mxspldru.2da~
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 
-COPY ~faiths_and_powers/spheres/d5fnpscl.spl~ ~override~
-COPY ~faiths_and_powers/spheres/d5fnpscl.itm~ ~override~
+COPY ~faiths_and_powers/spheres/d5spmem.spl~ ~override~
+	SAY NAME1 @6
+COPY ~faiths_and_powers/spheres/d5spmem.itm~ ~override~
+	SAY NAME1 @1100
+	SAY UNIDENTIFIED_DESC @1101
+COPY ~faiths_and_powers/spheres/d5spmema.bam~ ~override~
+COPY ~faiths_and_powers/spheres/d5spmemb.bam~ ~override~
 
 OUTER_SPRINT sphere_access @1002
 OUTER_SPRINT focus_access @1003
@@ -1455,7 +1463,7 @@ ACTION_IF (FILE_EXISTS_IN_GAME ~clastext.2da~) BEGIN
   END
 END
 ACTION_PHP_EACH d5_kitlist_spheres AS goo => roo BEGIN
-//	APPEND ~%goo%.2da~ ~SPHERES     AP_D5FNPSCL ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** ~
+	APPEND ~%goo%.2da~ ~SPHERES     AP_D5SPMEM  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** ~
 	ACTION_IF (%roo% = 3) OR  
  			(%roo% = 11) OR  
  			(%roo% = 8) OR  

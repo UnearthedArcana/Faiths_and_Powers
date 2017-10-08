@@ -2,7 +2,7 @@ BACKUP ~faiths_and_powers/backup~
 AUTHOR ~SubtleD and Grammarsalad~
 
 
-VERSION ~0.74m~
+VERSION ~0.74n~
 
 //README ~faiths_and_powers/readme-pnp.html~
 
@@ -23,6 +23,8 @@ ALWAYS
 
 	INCLUDE ~faiths_and_powers/lib/spell_clone_effects.tpa~
 	
+	INCLUDE ~faiths_and_powers/lib/joinable_npcs.tpa~
+
 	INCLUDE ~faiths_and_powers/lib/fnp_compat.tpa~
 	
 	INCLUDE ~faiths_and_powers/lib/qd_multiclass.tpa~
@@ -401,7 +403,7 @@ LAM cm_bender
 LAM cf_clangeddin
 LAM cr_mielikki
 LAM cr_shaundakul
-//LAM cf_helm
+LAM cf_helm
 //__________________________________________________________________________________
 
 //special kit: ur-priest
@@ -970,7 +972,7 @@ LAM cm_bender
 LAM cf_clangeddin
 LAM cr_mielikki
 LAM cr_shaundakul
-//LAM cf_helm
+LAM cf_helm
 //
 //__________________________________________________________________________________
 

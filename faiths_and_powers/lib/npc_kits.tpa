@@ -6,9 +6,39 @@
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 
-// add Faldorn here!
 
-//assign kits to NPCs________________________________________________________________
+//remove NPC memorized spalls_______________________________________________________
+//
+//	IS THERE A BETTER WAY TO DO THIS??  CAN IT BE DONE IN-GAME??
+//
+LAM JOINABLE_NPC_ARRAY
+
+ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS cre => dv BEGIN
+//  PRINT ~%cre% => %dv%~ 
+  COPY_EXISTING ~%cre%~ ~override~
+	PATCH_IF (SOURCE_SIZE > 0x2d3) BEGIN
+	  READ_BYTE 0x273 npc_class
+	  PATCH_IF (npc_class = 3) OR 
+	  			(npc_class = 6) OR 
+	  			(npc_class = 8) OR 
+	  			(npc_class = 11) OR 
+	  			(npc_class = 12) OR 
+	  			(npc_class = 14) OR 
+	  			(npc_class = 15) OR 
+	  			(npc_class = 16) OR 
+	  			(npc_class = 17) OR 
+	  			(npc_class = 18) OR 
+	  			(npc_class = 21) BEGIN 	// 	all divine casters who will be affected by the sphere system
+		REMOVE_MEMORIZED_SPELLS
+	  END
+	END
+  BUT_ONLY
+END
+//__________________________________________________________________________________
+
+// add Faldorn below!
+
+//assign kits to particular NPCs____________________________________________________
 //
 COPY_EXISTING ~kitlist.2da~ ~override~
 	COUNT_2DA_ROWS 8 "rows"
