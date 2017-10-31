@@ -2,7 +2,7 @@ BACKUP ~faiths_and_powers/backup~
 AUTHOR ~SubtleD and Grammarsalad~
 
 
-VERSION ~0.74n~
+VERSION ~0.74o~
 
 //README ~faiths_and_powers/readme-pnp.html~
 
@@ -1230,6 +1230,11 @@ END
 //run the sphere system______________________________________________________________
 //
 INCLUDE ~faiths_and_powers/lib/sphere_system.tpa~
+//__________________________________________________________________________________
+
+//Handle NPCs_______________________________________________________________________
+//
+INCLUDE ~faiths_and_powers/lib/npc_kits.tpa~
 //__________________________________________________________________________________
 
 //verbiage__________________________________________________________________________
