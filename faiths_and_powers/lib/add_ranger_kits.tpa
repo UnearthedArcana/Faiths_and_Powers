@@ -12,6 +12,7 @@ COPY_EXISTING ~clabrn01.2da~ ~override/d5rfor.2da~
 	LPM remove_blank_lines
 	APPEND_FILE ~faiths_and_powers/kits/rangers/901_forest_ranger/ranger_goodberry.txt~
 	APPEND_FILE ~faiths_and_powers/kits/rangers/901_forest_ranger/ranger_enemies.txt~
+/*
 	COUNT_2DA_COLS cols // amount of columns
 	READ_2DA_ENTRIES_NOW rows cols // read all file into memory
 	FOR (row = 3; row < rows; ++row) BEGIN // iterate over rows
@@ -21,6 +22,7 @@ COPY_EXISTING ~clabrn01.2da~ ~override/d5rfor.2da~
 	  END
 	  REMOVE_2DA_ROW patch_row cols
 	END
+*/
 
 //change ranger class text___________________________________________________________
 //
