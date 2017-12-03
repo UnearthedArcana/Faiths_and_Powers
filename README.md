@@ -1,5 +1,14 @@
 ﻿# Faiths_and_Powers
 Faiths and Powers mod
+0.74r
+
+2017-11-30
+
+- Updated Stormwall
+
+2017-11-27
+
+- Updated a few kit descriptions
 
 2017-08-12
 
