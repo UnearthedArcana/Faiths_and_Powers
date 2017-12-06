@@ -757,10 +757,13 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabsh01.2da~ BEGIN
   COPY_EXISTING ~clabsh01.2da~ ~override~
 	LPM remove_blank_lines
 	APPEND_FILE ~faiths_and_powers/spheres/universal_spells.txt~
+END  
+ACTION_IF FILE_EXISTS_IN_GAME ~clabshgs.2da~ BEGIN
   COPY_EXISTING ~clabshgs.2da~ ~override~
 	LPM remove_blank_lines
 	APPEND_FILE ~faiths_and_powers/spheres/universal_spells.txt~
 END
+
 COPY_EXISTING ~kitlist.2da~ ~override~
 	COUNT_2DA_ROWS ~9~ "rows"
 	FOR ( index = 2 ; index < rows ; index = index + 1 ) BEGIN
