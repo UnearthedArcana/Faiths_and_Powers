@@ -1,5 +1,10 @@
 ﻿# Faiths_and_Powers
 Faiths and Powers mod
+0.74s
+2017-12-06
+
+- Added a check for clabshGS.2da to avoid failed install on IWDEE 2.5.x (thanks Ramza)
+
 0.74r
 
 2017-11-30
