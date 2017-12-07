@@ -1,6 +1,18 @@
 ﻿# Faiths_and_Powers
 Faiths and Powers mod
+0.74.19
+
+2017-12-07
+
+- Updated Kelevmor Kit Description
+- Updated Cyric kit description
+- Updated Umberlee kit description
+- Updated Pally of Tyr kit description
+- Updated Harvester of Myrkrul kit description
+
+
 0.74s
+
 2017-12-06
 
 - Added a check for clabshGS.2da to avoid failed install on IWDEE 2.5.x (thanks Ramza)
