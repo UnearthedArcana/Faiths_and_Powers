@@ -1,6 +1,30 @@
 ﻿# Faiths_and_Powers
 Faiths and Powers mod
-0.74.19
+
+log
+
+version 0.74.21
+
+2018-01-06
+
+- Completely redid conjure water elemental; fixed AI (completely replaced summons) and added animation bams to differentiate elemental kinds; spell is now in line w/6th level druid fire e summon
+- Created Acolyte/thief of Shar
+- Created Cleric/fighter of kelevmor
+- Created cleric/mage of kelevmor
+- Created Cleric/Mage of talos
+- Created Acolyte/mage of Deneir
+- Created Acolyte/mage of Sune
+- Created Acolyte/mage of Moander
+- Created Acolyte/thief of moander
+
+version 0.74.20
+
+2017-12-09
+
+- Updated Text: Everwatch Knight of Helm
+- Updated Text: Cherub of the Ruby Rose
+
+version 0.74.19
 
 2017-12-07
 

@@ -269,72 +269,70 @@ COPY ~faiths_and_powers/spheres/spells/earth/b_pr301.itm~ ~override~ // Actual F
 //END
 
 //WATER
-//Summon Water Elemental______________________________________________________________________
-ACTION_IF GAME_IS ~iwdee~ THEN BEGIN    //IWDEE only animation
- COPY ~faiths_and_powers/spheres/spells/water/b_Pr602.spl~ ~override~ // Summon Water Elemental
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//____________________________________________________________Summon Water Elemental____________________________________________________________________//
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Projectile
+//VVC
+//cre
+ COPY ~faiths_and_powers/spheres/spells/water/b_wele1.cre~ ~override~ // 12 HD elemental
+        SAY NAME1 @51720
+        SAY NAME2 @51720
+ COPY ~faiths_and_powers/spheres/spells/water/b_wele2.cre~ ~override~ // 16 HD elemental
+        SAY NAME1 @51720
+        SAY NAME2 @51720
+ COPY ~faiths_and_powers/spheres/spells/water/b_wele3.cre~ ~override~ // 24 HD (greater) elemental
+        SAY NAME1 @51721
+        SAY NAME2 @51721
+//itm
+ COPY ~faiths_and_powers/spheres/spells/water/b_wele1.itm~ ~override~ // Water Elemental fist
+//bam
+// COPY ~faiths_and_powers/spheres/spells/water/iwatere.bam~ ~override~ // fist bam
+//animations -check SoD for cre animations...
+ COPY ~faiths_and_powers/spheres/spells/water/anim~ ~override~ // water anims
+//3d animation
+//sounds   Copy sound #EFF_M08
+//COPY ~Spells/data/iwd_spells/wizard_2/TRA_18.WAV~ ~override~   //
+//effs
+ COPY ~faiths_and_powers/spheres/spells/water/B_PRWA1.eff~ ~override~ // Summon Water Elemental
+ COPY ~faiths_and_powers/spheres/spells/water/B_PRWA2.eff~ ~override~ // Summon Water Elemental
+ COPY ~faiths_and_powers/spheres/spells/water/B_PRWA3.eff~ ~override~ // Summon Water Elemental
+//Spell itself
+COPY_EXISTING ~SPPR605.spl~ ~override/b_pr602.spl~  // Start with C Fire Elemental
         SAY NAME1 @51701
         SAY NAME2 @51701
         SAY UNIDENTIFIED_DESC @51702
 	SAY DESC @51702
- COPY ~faiths_and_powers/spheres/spells/water/B_PRWA1.eff~ ~override~ // Summon Water Elemental
- COPY ~faiths_and_powers/spheres/spells/water/B_PRWA2.eff~ ~override~ // Summon Water Elemental
- COPY ~faiths_and_powers/spheres/spells/water/b_wele1.itm~ ~override~ // Summon Water Elemental
- COPY ~faiths_and_powers/spheres/spells/water/b_gensu.itm~ ~override~ // Summon Water Elemental
- COPY_EXISTING ~cywatere.cre~ ~override/b_wele1.cre~
-  WRITE_BYTE 0x270 4  //Ally
-  ADD_CRE_ITEM ~b_gensu~ #0 #0 #0 ~IDENTIFIED~ ~amulet~ //Gender to summoned
-  ADD_CRE_ITEM ~b_wele1~ #0 #0 #0 ~IDENTIFIED~ ~weapon1~ EQUIP//Adds weapon
- COPY ~faiths_and_powers/spheres/spells/water/b_wele2.itm~ ~override~ // Summon Water Elemental
- COPY_EXISTING ~cywatere.cre~ ~override/b_wele2.cre~
-  WRITE_BYTE 0x270 4  //Ally
-  WRITE_BYTE 0x234 16  //Level
-  WRITE_BYTE 0x238 22  //Strength
-  WRITE_BYTE 0x23c 15  //Dex
-  WRITE_BYTE 0x23d 16  //COn
-  WRITE_BYTE 0x52 3  //THAC0
-  WRITE_BYTE 0x54 3  //death
-  WRITE_BYTE 0x55 5  //Wands
-  WRITE_BYTE 0x56 4  //Poly
-  WRITE_BYTE 0x57 3  //Breath
-  WRITE_BYTE 0x58 6  //Spell
-  WRITE_SHORT 0x24 168 //
-  WRITE_SHORT 0x26 168 // Current and max hp
-  ADD_CRE_ITEM ~b_wele2~ #0 #0 #0 ~IDENTIFIED~ ~weapon1~ EQUIP//Adds weapon
-  ADD_CRE_ITEM ~b_gensu~ #0 #0 #0 ~IDENTIFIED~ ~amulet~ //Gender to summoned
-END
-//Add the damn creature to BG1
-ACTION_IF GAME_IS ~bg2ee eet~ THEN BEGIN    //BG2EE only creature
- COPY ~faiths_and_powers/spheres/spells/water/b_Pr602.spl~ ~override~ // Summon Water Elemental
+                  LPF ALTER_EFFECT INT_VAR match_opcode = 177  STR_VAR resource = ~B_PRWA1~ match_resource = ~SPFIR1P~  END //
+                  LPF ALTER_EFFECT INT_VAR match_opcode = 177  STR_VAR resource = ~B_PRWA2~ match_resource = ~SPFIR2P~  END //
+                  LPF ALTER_EFFECT INT_VAR match_opcode = 177  STR_VAR resource = ~B_PRWA3~ match_resource = ~SPFIR3P~  END //
+/*  //Not addspelling for the time being...
+ADD_SPELL ~override/b_pr602.spl~ 1 6 ~CLERIC_CONJURE_WATER_ELEMENTAL~ //
         SAY NAME1 @51701
         SAY NAME2 @51701
         SAY UNIDENTIFIED_DESC @51702
 	SAY DESC @51702
- COPY ~faiths_and_powers/spheres/spells/water/B_PRWA1.eff~ ~override~ // Summon Water Elemental
- COPY ~faiths_and_powers/spheres/spells/water/B_PRWA2.eff~ ~override~ // Summon Water Elemental
- COPY ~faiths_and_powers/spheres/spells/water/b_wele1.itm~ ~override~ // Summon Water Elemental
- COPY ~faiths_and_powers/spheres/spells/water/b_gensu.itm~ ~override~ // Summon Water Elemental
- COPY_EXISTING ~elwatg01.cre~ ~override/b_wele1.cre~
-  WRITE_BYTE 0x270 4  //Ally
-  ADD_CRE_ITEM ~b_gensu~ #0 #0 #0 ~IDENTIFIED~ ~amulet~ //Gender to summoned
-  ADD_CRE_ITEM ~b_wele1~ #0 #0 #0 ~IDENTIFIED~ ~weapon1~ EQUIP//Adds weapon
- COPY ~faiths_and_powers/spheres/spells/water/b_wele2.itm~ ~override~ // Summon Water Elemental
- COPY_EXISTING ~elwatg01.cre~ ~override/b_wele2.cre~
-  WRITE_BYTE 0x270 4  //Ally
-  WRITE_BYTE 0x234 16  //Level
-  WRITE_BYTE 0x238 22  //Strength
-  WRITE_BYTE 0x23c 15  //Dex
-  WRITE_BYTE 0x23d 16  //COn
-  WRITE_BYTE 0x52 3  //THAC0
-  WRITE_BYTE 0x54 3  //death
-  WRITE_BYTE 0x55 5  //Wands
-  WRITE_BYTE 0x56 4  //Poly
-  WRITE_BYTE 0x57 3  //Breath
-  WRITE_BYTE 0x58 6  //Spell
-  WRITE_SHORT 0x24 168 //
-  WRITE_SHORT 0x26 168 // Current and max hp
-  ADD_CRE_ITEM ~b_wele2~ #0 #0 #0 ~IDENTIFIED~ ~weapon1~ EQUIP//Adds weapon
-  ADD_CRE_ITEM ~b_gensu~ #0 #0 #0 ~IDENTIFIED~ ~amulet~ //Gender to summoned
+//Now, other spell stuff...
+//to clear earlier versions of the spell
+LAF RES_NUM_OF_SPELL_NAME
+  STR_VAR spell_name = ~CLERIC_CONJURE_WATER_ELEMENTAL~
+  RET spell_res
 END
+
+// NEED TO CREATE UNIQUE SPELL ICON
+COPY_EXISTING ~%spell_res%.spl~ ~override~
+  LPF ALTER_SPELL_HEADER INT_VAR STR_VAR icon = EVAL  ~%spell_res%B~ END
+COPY ~faiths_and_powers/spheres/spells/charm/b_c201a.bam~ ~override/%spell_res%a.bam~
+COPY ~faiths_and_powers/spheres/spells/charm/b_c201b.bam~ ~override/%spell_res%b.bam~
+COPY ~faiths_and_powers/spheres/spells/charm/b_c201c.bam~ ~override/%spell_res%c.bam~
+//add bams to spl
+COPY_EXISTING ~%spell_res%.spl~ ~override~
+  WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
+*/
+
+//Add scrolls to stores, etc...
 
 //Ice Blade_________________________________________________________
 ACTION_IF GAME_IS ~bgee bg2ee eet iwdee~ THEN BEGIN    //Not sure why, but I originally limited these spells to IWDEE TEST!
@@ -412,7 +410,7 @@ COPY ~faiths_and_powers/spheres/spells/water/b_c103.spl~ ~override~ // Frost Fin
 	SAY DESC @51708
 	WRITE_SHORT 0x098 ~%b_c103%~
 
-END // <--huh?
+END // End redundant engine check...
 
 //__________________________________________________________________________________
 
