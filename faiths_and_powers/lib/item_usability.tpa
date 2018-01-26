@@ -388,18 +388,18 @@ COPY_EXISTING_REGEXP	~.*\.sto~	override
 			++buy_add
 		END
 		//	Update offsets
-		WRITE_LONG	0x30	(THIS + buy_add)
+		WRITE_LONG  0x30    (THIS + buy_add)
 		READ_LONG	0x34	items_off
 		PATCH_IF	items_off >= buy_off	BEGIN	
-			WRITE_LONG	0x34	(THIS + buy_add)
+			WRITE_LONG  0x34    (THIS + (buy_add * 0x04))
 		END
 		READ_LONG	0x4c	drink_off
 		PATCH_IF	drink_off >= buy_off	BEGIN
-			WRITE_LONG	0x4c	(THIS + buy_add)
+			WRITE_LONG  0x4c    (THIS + (buy_add * 0x04))
 		END
 		READ_LONG	0x70	cures_off
 		PATCH_IF	cures_off >= buy_off	BEGIN
-			WRITE_LONG	0x70	(THIS + buy_add)
+			WRITE_LONG  0x70    (THIS + (buy_add * 0x04))
 		END
 	END
 BUT_ONLY
