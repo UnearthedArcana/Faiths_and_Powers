@@ -2,7 +2,7 @@ BACKUP ~faiths_and_powers/backup~
 AUTHOR ~SubtleD and Grammarsalad~
 
 
-VERSION ~0.74.21~
+VERSION ~0.74.24~
 
 //README ~faiths_and_powers/readme-pnp.html~
 
@@ -574,7 +574,11 @@ COPY ~faiths_and_powers/kits/K_X_Y/K_R_HL.2da~ ~override~
 
 //alter item usability______________________________________________________________
 //
-INCLUDE ~faiths_and_powers/lib/item_usability.tpa~
+LAM d5_item_usability
+
+ACTION_IF (%d5_item_use% = 1) BEGIN
+  INCLUDE ~faiths_and_powers/lib/item_usability.tpa~
+END
 //__________________________________________________________________________________
 
 //Add IWD spells if not already in game_____________________________________________
@@ -1116,7 +1120,11 @@ INCLUDE ~faiths_and_powers/lib/deity_selection.tpa~
 
 //alter item usability______________________________________________________________
 //
-INCLUDE ~faiths_and_powers/lib/item_usability.tpa~
+LAM d5_item_usability
+
+ACTION_IF (%d5_item_use% = 1) BEGIN
+  INCLUDE ~faiths_and_powers/lib/item_usability.tpa~
+END
 //__________________________________________________________________________________
 
 //Add IWD spells if not already in game
@@ -1218,7 +1226,11 @@ LAM ~READ_FNP_KIT_INFO~
 
 //alter item usability______________________________________________________________
 //
-INCLUDE ~faiths_and_powers/lib/item_usability.tpa~
+LAM d5_item_usability
+
+ACTION_IF (%d5_item_use% = 1) BEGIN
+  INCLUDE ~faiths_and_powers/lib/item_usability.tpa~
+END
 //__________________________________________________________________________________
 
 //Add IWD spells if not already in game
@@ -2049,7 +2061,11 @@ DESIGNATED 110
 INSTALL_BY_DEFAULT
 REQUIRE_COMPONENT ~faiths_and_powers.tp2~ ~103~ @8
 
-INCLUDE ~faiths_and_powers/lib/item_usability.tpa~
+LAM d5_item_usability
+
+ACTION_IF (%d5_item_use% = 1) BEGIN
+  INCLUDE ~faiths_and_powers/lib/item_usability.tpa~
+END
 //__________________________________________________________________________________
 */
 
@@ -2100,7 +2116,11 @@ LAM ~READ_FNP_KIT_INFO~
 
 //alter item usability______________________________________________________________
 //
-INCLUDE ~faiths_and_powers/lib/item_usability.tpa~
+LAM d5_item_usability
+
+ACTION_IF (%d5_item_use% = 1) BEGIN
+  INCLUDE ~faiths_and_powers/lib/item_usability.tpa~
+END
 //__________________________________________________________________________________
 
 //Sphere System_____________________________________________________________________
