@@ -2,7 +2,7 @@ BACKUP ~faiths_and_powers/backup~
 AUTHOR ~SubtleD and Grammarsalad~
 
 
-VERSION ~0.74.25~
+VERSION ~0.75.00~
 
 //README ~faiths_and_powers/readme-pnp.html~
 
@@ -12,7 +12,7 @@ ALWAYS
 	ACTION_IF NOT FILE_EXISTS ~override/d5_fnp_settings.ini~ BEGIN
   	  COPY ~faiths_and_powers/d5_fnp_settings.ini~ ~override~
 	END
-  	
+
   	INCLUDE ~override/d5_fnp_settings.ini~
 
 	INCLUDE ~faiths_and_powers/lib/remove_lines.tpa~
@@ -28,6 +28,8 @@ ALWAYS
 	INCLUDE ~faiths_and_powers/lib/fnp_compat.tpa~
 	
 	INCLUDE ~faiths_and_powers/lib/qd_multiclass.tpa~
+
+        INCLUDE ~faiths_and_powers/lib/bg2fp_effect_batches_fnp.tpa~
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~a#ooze.2da~ BEGIN
 	  COPY_EXISTING ~alignmnt.2da~ ~override~
@@ -92,6 +94,8 @@ LANGUAGE
   ~English~
   ~english~
   ~faiths_and_powers/language/english/setup.tra~
+  ~faiths_and_powers/language/english/IWD_spells.tra~
+  ~faiths_and_powers/language/english/new_spells.tra~
 //___________________________________________________________________________________
 
 
@@ -583,10 +587,23 @@ END
 
 //Add IWD spells if not already in game_____________________________________________
 ACTION_IF GAME_IS ~bgee bg2ee eet~ BEGIN
-  ACTION_IF NOT FILE_EXISTS_IN_GAME ~b_IWD.itm~ BEGIN    //If IWD spells not installed...
-   COPY ~faiths_and_powers/compatibility/b_IWD.itm~ ~override~   //to detect this component
-   INCLUDE ~faiths_and_powers/lib/Setup_IWD_divine_Spells.tpa~      //install them
+ ACTION_IF (NOT MOD_IS_INSTALLED ~setup-iwdification.tp2~ ~40~) AND (NOT FILE_EXISTS_IN_GAME ~b_IWD.itm~) BEGIN  //neither IWDification nor our IWDEE spells installed (priest spells)
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY prst BEGIN
+    faiths_and_powers => my_mod
   END
+  ACTION_PHP_EACH prst AS block => rock BEGIN   //
+      INCLUDE ~faiths_and_powers/data/components/Setup_IWD_Spells.tpa~      //install priest spells
+  END
+ END
+ ACTION_IF (NOT MOD_IS_INSTALLED ~setup-iwdification.tp2~ ~30~) AND (NOT FILE_EXISTS_IN_GAME ~b_IWD.itm~) BEGIN  //neither IWDification nor our IWDEE spells installed  (mage spells)
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY wiz BEGIN
+    faiths_and_powers => my_mod
+  END
+   ACTION_PHP_EACH wiz AS block => rock BEGIN   //
+    INCLUDE ~faiths_and_powers/lib/fnp_wiz.tpa~      //install wiz spells
+  END
+ END
+   COPY ~faiths_and_powers/compatibility/b_IWD.itm~ ~override~   //to detect this component
 END
 //__________________________________________________________________________________
 
@@ -1129,12 +1146,23 @@ END
 
 //Add IWD spells if not already in game
 ACTION_IF GAME_IS ~bgee bg2ee eet~ BEGIN
- ACTION_IF NOT MOD_IS_INSTALLED ~setup-iwdification.tp2~ ~40~ BEGIN  //If IWDification not installed...
-  ACTION_IF NOT FILE_EXISTS_IN_GAME ~b_IWD.itm~ BEGIN    			//If b_ IWD spells not installed...
-	COPY ~faiths_and_powers/compatibility/b_IWD.itm~ ~override~   	//to detect this component 
-	INCLUDE ~faiths_and_powers/lib/Setup_IWD_divine_Spells.tpa~    	//install them
+ ACTION_IF (NOT MOD_IS_INSTALLED ~setup-iwdification.tp2~ ~40~) AND (NOT FILE_EXISTS_IN_GAME ~b_IWD.itm~) BEGIN  //neither IWDification nor our IWDEE spells installed (priest spells)
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY prst BEGIN
+    faiths_and_powers => my_mod
+  END
+  ACTION_PHP_EACH prst AS block => rock BEGIN   //
+      INCLUDE ~faiths_and_powers/data/components/Setup_IWD_Spells.tpa~      //install priest spells
   END
  END
+ ACTION_IF (NOT MOD_IS_INSTALLED ~setup-iwdification.tp2~ ~30~) AND (NOT FILE_EXISTS_IN_GAME ~b_IWD.itm~) BEGIN  //neither IWDification nor our IWDEE spells installed  (mage spells)
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY wiz BEGIN
+    faiths_and_powers => my_mod
+  END
+   ACTION_PHP_EACH wiz AS block => rock BEGIN   //
+    INCLUDE ~faiths_and_powers/lib/fnp_wiz.tpa~      //install wiz spells
+  END
+ END
+   COPY ~faiths_and_powers/compatibility/b_IWD.itm~ ~override~   //to detect this component
 END
 
 //Sphere System_____________________________________________________________________
@@ -1235,12 +1263,23 @@ END
 
 //Add IWD spells if not already in game
 ACTION_IF GAME_IS ~bgee bg2ee eet~ BEGIN
- ACTION_IF NOT MOD_IS_INSTALLED ~setup-iwdification.tp2~ ~40~ BEGIN  //If IWDification not installed...
-  ACTION_IF NOT FILE_EXISTS_IN_GAME ~b_IWD.itm~ BEGIN    			//If b_ IWD spells not installed...
-	COPY ~faiths_and_powers/compatibility/b_IWD.itm~ ~override~   	//to detect this component 
-	INCLUDE ~faiths_and_powers/lib/Setup_IWD_divine_Spells.tpa~    	//install them
+ ACTION_IF (NOT MOD_IS_INSTALLED ~setup-iwdification.tp2~ ~40~) AND (NOT FILE_EXISTS_IN_GAME ~b_IWD.itm~) BEGIN  //neither IWDification nor our IWDEE spells installed (priest spells)
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY prst BEGIN
+    faiths_and_powers => my_mod
+  END
+  ACTION_PHP_EACH prst AS block => rock BEGIN   //
+      INCLUDE ~faiths_and_powers/data/components/Setup_IWD_Spells.tpa~      //install priest spells
   END
  END
+ ACTION_IF (NOT MOD_IS_INSTALLED ~setup-iwdification.tp2~ ~30~) AND (NOT FILE_EXISTS_IN_GAME ~b_IWD.itm~) BEGIN  //neither IWDification nor our IWDEE spells installed  (mage spells)
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY wiz BEGIN
+    faiths_and_powers => my_mod
+  END
+   ACTION_PHP_EACH wiz AS block => rock BEGIN   //
+    INCLUDE ~faiths_and_powers/lib/fnp_wiz.tpa~      //install wiz spells
+  END
+ END
+   COPY ~faiths_and_powers/compatibility/b_IWD.itm~ ~override~   //to detect this component
 END
 
 //run the sphere system______________________________________________________________
@@ -2101,12 +2140,23 @@ INCLUDE ~faiths_and_powers/lib/default_kit_spheres.tpa~
 
 //Add IWD spells if not already in game
 ACTION_IF GAME_IS ~bgee bg2ee eet~ BEGIN
- ACTION_IF NOT MOD_IS_INSTALLED ~setup-iwdification.tp2~ ~40~ BEGIN  //If IWDification not installed...
-  ACTION_IF NOT FILE_EXISTS_IN_GAME ~b_IWD.itm~ BEGIN    			//If b_ IWD spells not installed...
-	COPY ~faiths_and_powers/compatibility/b_IWD.itm~ ~override~   	//to detect this component 
-	INCLUDE ~faiths_and_powers/lib/Setup_IWD_divine_Spells.tpa~    	//install them
+ ACTION_IF (NOT MOD_IS_INSTALLED ~setup-iwdification.tp2~ ~40~) AND (NOT FILE_EXISTS_IN_GAME ~b_IWD.itm~) BEGIN  //neither IWDification nor our IWDEE spells installed (priest spells)
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY prst BEGIN
+    faiths_and_powers => my_mod
+  END
+  ACTION_PHP_EACH prst AS block => rock BEGIN   //
+      INCLUDE ~faiths_and_powers/data/components/Setup_IWD_Spells.tpa~      //install priest spells
   END
  END
+ ACTION_IF (NOT MOD_IS_INSTALLED ~setup-iwdification.tp2~ ~30~) AND (NOT FILE_EXISTS_IN_GAME ~b_IWD.itm~) BEGIN  //neither IWDification nor our IWDEE spells installed  (mage spells)
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY wiz BEGIN
+    faiths_and_powers => my_mod
+  END
+   ACTION_PHP_EACH wiz AS block => rock BEGIN   //
+    INCLUDE ~faiths_and_powers/lib/fnp_wiz.tpa~      //install wiz spells
+  END
+ END
+   COPY ~faiths_and_powers/compatibility/b_IWD.itm~ ~override~   //to detect this component
 END
 
 //read fnp_compat info______________________________________________________________

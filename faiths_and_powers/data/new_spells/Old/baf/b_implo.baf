@@ -1,0 +1,17 @@
+IF
+        True()
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),AddSpecialAbility("b_ph03a"))
+	ActionOverride(LastSummonerOf(Myself),AddSpecialAbility("b_ph03a"))
+	ActionOverride(LastSummonerOf(Myself),AddSpecialAbility("b_ph03a"))
+	ActionOverride(LastSummonerOf(Myself),AddSpecialAbility("b_ph03a"))
+	ActionOverride(LastSummonerOf(Myself),AddSpecialAbility("b_ph03a"))
+	ActionOverride(LastSummonerOf(Myself),AddSpecialAbility("b_ph03a"))
+	ActionOverride(LastSummonerOf(Myself),AddSpecialAbility("b_ph03a"))
+	ActionOverride(LastSummonerOf(Myself),AddSpecialAbility("b_ph03a"))
+	ActionOverride(LastSummonerOf(Myself),AddSpecialAbility("b_ph03a"))
+	ActionOverride(LastSummonerOf(Myself),AddSpecialAbility("b_ph03a"))
+	ActionOverride(LastSummonerOf(Myself),AddSpecialAbility("b_ph03b"))
+	DestroySelf()               //reset all global variables, then destroy self
+END

@@ -1,0 +1,977 @@
+//Informal prefix seperating different spelltypes
+
+//xx = consecutive, but otherwise random, numbers
+//n = spell level
+
+//zero level cantrips: b_wc_1xx (wizard cantrips)
+//zero level cantrips: b_pc_1xx (priest cantrips)
+
+//1st level cantrips: b_1w1xx (wizard cantrips)
+//1st level cantrips: b_2c1xx (priest cantrips)
+
+//Regular added spells b_wnxx(wizard spells)
+//Regular added spells b_pnxx(priest spells)
+
+/*opcode = 177
+target = 2
+power = 0
+timing = 4
+parameter1 = 5
+parameter2 = 160
+power = 0
+resist_dispel = 2
+duration = 1
+probability1 = 100
+probability2 = 0
+dicenumber = 0
+dicesize = 0
+savingthrow = 0
+savebonus = 0
+header =
+insert_point = 7
+
+FYI   */
+
+//SPell REVISIONS COMPATIBLITY:  Check for it in original tp2. Install all 'extra' spells using addspell so there is no issue.  (I think this applies to v4 only)
+
+
+//IMPLEMENT SPHERE CODE (0URS). PROBABLY MUST BE INSTALLED BEFORE SPHERE.TPA.  THAT COMPONENT COULD CHECK TO SEE IF THIS, IWDEE OR IWDIFICATION IS NOT INSTALLED AND INSTALL THIS FIRST IF SO
+//DECIDE WHAT TO DO IF IWDIFICATION DIVINE SPELLS ARE INSTALLED (PROBABLY NOT INSTALL SPECIFIC SPELLS, THOUGH KEEP SOME COMPATIBILITY CODE)
+
+//2017-03-14 come back to sunscorch, cause light wounds, Resist Fire and Cold, Cure Moderate Wounds, Cause Moderate wounds, Cause Medium Wounds
+// .  Complicated especially in light of SR, but also other components of this mod
+ //COntinue from 1546
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////                                         //////////////////////////////////////
+/////////////////////////////////////             WIZARD SPELLS               //////////////////////////////////////
+/////////////////////////////////////                                         //////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//fnp specific wiz spells
+//Install wiz spells only if not installed in some other way    May change the way this works...
+ACTION_IF (NOT FILE_EXISTS_IN_GAME ~b_wizo.itm~) AND (NOT FILE_EXISTS_IN_GAME ~b_wizi.itm~) BEGIN
+ COPY ~Spells/data/iwd_spells/b_wizo.itm~ ~override~   //To detect this sub component
+    INCLUDE ~spells/lib/fnp_wiz.tpa~ //Divine spells
+END//FnP specific wizard spells
+
+//
+//To detect this subcomponent for immunities
+ COPY ~Spells/data/iwd_spells/b_wizo.itm~ ~override/b_wizd.itm~   //To detect this sub component
+
+//////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////
+////////////////////////            //////////////////////////
+////////////////////////  LEVEL 1   //////////////////////////
+////////////////////////            //////////////////////////
+//////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//____________________________________________________________Expeditious Retreat_______________________________________________________________________//
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//Spell Revisions Has a version of Ex retreat, so no need to install this spell if SR present
+ACTION_IF NOT FILE_EXISTS_IN_GAME ~dvimhere.mrk~ BEGIN   //any version of sr
+
+//THIS MAY BE A GOOD CANTRIP...COMPARE WITH SR VERSION
+
+//Revised or Cantrip verion of this spell will not work (and be despelled by) if character under haste or slow effects (using haste_list and slow_list tpas)
+//Will NOT give immunity to these (higher level) spells...
+
+//Item revisions: Spell protections ?
+//Regular Items ?
+//Projectile
+//VVC
+//bam
+//animations
+//3d animation
+//sounds
+COPY ~Spells/data/iwd_spells/wizard_1/EFF_M08.WAV~ ~override~   //
+COPY ~Spells/data/iwd_spells/wizard_1/EFF_E01.WAV~ ~override~   //
+//effs
+//Spell itself
+ADD_SPELL ~Spells/data/iwd_spells/wizard_1/b_w101.spl~ 2 1 ~WIZARD_EXPEDITIOUS_RETREAT~ //
+        SAY NAME1 @1260000
+        SAY NAME2 @1260000
+        SAY UNIDENTIFIED_DESC @1260001
+	SAY DESC @1260001
+
+//to clear earlier versions of the spell
+LAF RES_NUM_OF_SPELL_NAME
+  STR_VAR spell_name = ~WIZARD_EXPEDITIOUS_RETREAT~
+  RET spell_res
+END
+//protect from 'slowed', 'slow' and 'haste'
+ COPY_EXISTING ~%spell_res%.spl~ ~override~
+     LPF cd_apply_batch STR_VAR array_name = b_removal_haste_arrays END
+     LPF cd_apply_batch STR_VAR array_name = b_removal_slow_arrays END
+     LPF cd_apply_batch STR_VAR array_name = cd_immunity_haste_arrays END
+     LPF cd_apply_batch STR_VAR array_name = cd_immunity_slow_arrays END
+
+ COPY_EXISTING ~%spell_res%.spl~ ~override~
+  LPF ALTER_SPELL_HEADER STR_VAR icon = EVAL  ~%spell_res%B~ END
+COPY ~Spells/data/iwd_spells/wizard_1/SPWI126a.bam~ ~override/%spell_res%a.bam~
+COPY ~Spells/data/iwd_spells/wizard_1/SPWI126b.bam~ ~override/%spell_res%b.bam~
+COPY ~Spells/data/iwd_spells/wizard_1/SPWI126c.bam~ ~override/%spell_res%c.bam~
+//add bams to spl
+COPY_EXISTING ~%spell_res%.spl~ ~override~
+  WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
+
+//Sh. of Entropy immunity list  REVISED OR CANTRIP: USE
+INCLUDE ~spells/lib/spell_lists/haste_list.tpa~
+INCLUDE ~spells/lib/spell_lists/slow_list.tpa~
+
+//No scroll if Cantrips installed
+ACTION_IF NOT FILE_EXISTS_IN_GAME ~b_cant.itm~ BEGIN   //Not if cantrips installed (NOTE: CANTRIPS WILL HAVE TO REMOVE ITEM IF THIS INSTALLED FIRST...)
+//Add scroll, and add scroll to stores
+//Copy over the scroll:
+COPY ~Spells/data/iwd_spells/wizard_2/SPWI126X.itm~ ~override~
+        SAY NAME1 @10
+        SAY NAME2 @1260000
+	SAY DESC @1260001
+//Change icon
+        WRITE_ASCIIE 0x3a ~%spell_res%A~
+ COPY_EXISTING ~SPWI126X.itm~ ~override~     //these work
+  LPF ALTER_ITEM_HEADER STR_VAR icon = EVAL  ~%spell_res%A~ END
+  LPF ALTER_ITEM_EFFECT INT_VAR check_headers = 1 match_opcode = 146 STR_VAR resource = EVAL  ~%spell_res%~ END
+  LPF ALTER_ITEM_EFFECT INT_VAR check_headers = 1 match_opcode = 147 STR_VAR resource = EVAL  ~%spell_res%~ END
+//BGEE - Sorcerous Sundries
+ACTION_IF GAME_IS ~bgee~ THEN BEGIN   //  ACTION_IF GAME_IS ~bgee sod~ THEN BEGIN
+  COPY_EXISTING ~STO0703.sto~ ~override~
+    ADD_STORE_ITEM ~SPWI126X~ #1 #0 #0 ~IDENTIFIED~ #2
+//High Hedge
+  COPY_EXISTING ~HIGHHEDG.sto~ ~override~
+    ADD_STORE_ITEM ~SPWI126X~ #1 #0 #0 ~IDENTIFIED~ #2
+ ACTION_IF FILE_EXISTS_IN_GAME ~BDSORCSC.STO~ BEGIN  //SoD
+  COPY_EXISTING ~BDSORCSC.STO~ ~override~
+   ADD_STORE_ITEM ~SPWI126X~ #1 #0 #0 ~IDENTIFIED~ #2
+ END
+END
+
+ACTION_IF GAME_IS ~bg2ee eet~ THEN BEGIN   //  A
+COPY_EXISTING ~SCROLLS.STO~ ~override~
+ ADD_STORE_ITEM ~SPWI126X~ #1 #0 #0 ~IDENTIFIED~ #4
+ ACTION_IF FILE_EXISTS_IN_GAME ~BDSORCSC.STO~ BEGIN  //SoD
+  COPY_EXISTING ~BDSORCSC.STO~ ~override~
+   ADD_STORE_ITEM ~SPWI126X~ #1 #0 #0 ~IDENTIFIED~ #2
+ END
+ ACTION_IF FILE_EXISTS_IN_GAME ~STO0703.STO~ BEGIN  //SoD
+  COPY_EXISTING ~STO0703.STO~ ~override~
+   ADD_STORE_ITEM ~SPWI126X~ #1 #0 #0 ~IDENTIFIED~ #2
+ END
+
+END
+END//END if not cantrip installed
+END//End if SR not installed
+
+//////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////
+////////////////////////            //////////////////////////
+////////////////////////  LEVEL 2   //////////////////////////
+////////////////////////            //////////////////////////
+//////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//____________________________________________________________Cat's Grace_______________________________________________________________________________//
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//Item revisions: Spell protections ?
+//Regular Items ?
+//Projectile
+//VVC
+//bam
+//animations
+//3d animation
+//sounds   Copy sound #EFF_M08
+//COPY ~Spells/data/iwd_spells/wizard_2/TRA_18.WAV~ ~override~   //
+//effs
+//Spell itself
+ADD_SPELL ~Spells/data/iwd_spells/wizard_2/b_w225.spl~ 2 2 ~WIZARD_CATS_GRACE~ //
+        SAY NAME1 @2250000
+        SAY NAME2 @2250000
+        SAY UNIDENTIFIED_DESC @2250001
+	SAY DESC @2250001
+
+//to clear earlier versions of the spell
+LAF RES_NUM_OF_SPELL_NAME
+  STR_VAR spell_name = ~WIZARD_CATS_GRACE~
+  RET spell_res
+END
+COPY_EXISTING ~%spell_res%.spl~ ~override~
+  LPF ALTER_EFFECT
+      INT_VAR match_opcode = 321            //
+      STR_VAR resource = EVAL ~%spell_res%~
+  END      //
+
+//Text Dexterity Modification
+COPY_EXISTING ~%spell_res%.spl~ ~override~
+ SET strref = RESOLVE_STR_REF(@2250002)
+  LPF ALTER_EFFECT
+      INT_VAR match_opcode = 139 match_parameter1 = 14024 parameter1 = %strref%   END      //
+
+//add icons and projectile
+COPY_EXISTING ~%spell_res%.spl~ ~override~
+  LPF ALTER_SPELL_HEADER STR_VAR icon = EVAL  ~%spell_res%B~ END
+COPY ~Spells/data/iwd_spells/wizard_2/SPWI225a.bam~ ~override/%spell_res%a.bam~
+COPY ~Spells/data/iwd_spells/wizard_2/SPWI225b.bam~ ~override/%spell_res%b.bam~
+COPY ~Spells/data/iwd_spells/wizard_2/SPWI225c.bam~ ~override/%spell_res%c.bam~
+//add bams to spl
+COPY_EXISTING ~%spell_res%.spl~ ~override~
+  WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
+
+//Portrait Icons
+//Icon itself
+COPY ~Spells/data/iwd_spells/wizard_2/B_CAT.bam~ ~override~
+ SET strref = RESOLVE_STR_REF(@2250000)
+
+//Thanks kjeron and argent77!!!
+//BG(2)EE only for now (i.e. not IWDEE--Need update)
+ACTION_IF GAME_IS ~bgee bg2ee eet~ THEN BEGIN
+ COPY_EXISTING ~STATDESC.2DA~ override
+  COUNT_2DA_COLS cols
+  COUNT_2DA_ROWS cols rows
+  SET max = 0
+  FOR (i = 0; i < rows; ++i) BEGIN
+   READ_2DA_ENTRY i 0 cols num
+   PATCH_IF num > max BEGIN max = num END
+  END
+SET max += 1
+INSERT_2DA_ROW rows cols ~%max%   %strref%   B_CAT~
+PRETTY_PRINT_2DA
+COPY_EXISTING ~%spell_res%.spl~ ~override~
+  LPF ALTER_EFFECT INT_VAR match_opcode = 142 parameter2 = %max% END           //
+END
+
+//Sh. of Entropy immunity list   No immunities nec I think
+//INCLUDE ~spells/lib/spell_lists/entropy_list.tpa~
+
+//Add scroll, and add scroll to stores
+//Copy over the scroll:
+COPY ~Spells/data/iwd_spells/wizard_2/SPWI223A.itm~ ~override~
+        SAY NAME1 @10
+        SAY NAME2 @2250000
+	SAY DESC @2250001
+//Change icon
+        WRITE_ASCIIE 0x3a ~%spell_res%A~
+ COPY_EXISTING ~SPWI223A.itm~ ~override~     //these work
+  LPF ALTER_ITEM_HEADER STR_VAR icon = EVAL  ~%spell_res%A~ END
+  LPF ALTER_ITEM_EFFECT INT_VAR check_headers = 1 match_opcode = 146 STR_VAR resource = EVAL  ~%spell_res%~ END
+  LPF ALTER_ITEM_EFFECT INT_VAR check_headers = 1 match_opcode = 147 STR_VAR resource = EVAL  ~%spell_res%~ END
+//BGEE - Sorcerous Sundries
+ACTION_IF GAME_IS ~bgee~ THEN BEGIN   //  ACTION_IF GAME_IS ~bgee sod~ THEN BEGIN
+  COPY_EXISTING ~STO0703.sto~ ~override~
+    ADD_STORE_ITEM ~SPWI223A~ #1 #0 #0 ~IDENTIFIED~ #2
+//High Hedge
+  COPY_EXISTING ~HIGHHEDG.sto~ ~override~
+    ADD_STORE_ITEM ~SPWI223A~ #1 #0 #0 ~IDENTIFIED~ #2
+ ACTION_IF FILE_EXISTS_IN_GAME ~BDSORCSC.STO~ BEGIN  //SoD
+  COPY_EXISTING ~BDSORCSC.STO~ ~override~
+   ADD_STORE_ITEM ~SPWI223A~ #1 #0 #0 ~IDENTIFIED~ #2
+ END
+END
+
+ACTION_IF GAME_IS ~bg2ee eet~ THEN BEGIN   //  A
+//Lady Yuth
+COPY_EXISTING ~SCROLLS.STO~ ~override~
+ ADD_STORE_ITEM ~SPWI223A~ #1 #0 #0 ~IDENTIFIED~ #4
+//Underdark
+COPY_EXISTING ~UDDROW25.STO~ ~override~
+ ADD_STORE_ITEM ~SPWI223A~ #1 #0 #0 ~IDENTIFIED~ #4
+
+ ACTION_IF FILE_EXISTS_IN_GAME ~BDSORCSC.STO~ BEGIN  //SoD
+  COPY_EXISTING ~BDSORCSC.STO~ ~override~
+   ADD_STORE_ITEM ~SPWI223A~ #1 #0 #0 ~IDENTIFIED~ #2
+ END
+
+ ACTION_IF FILE_EXISTS_IN_GAME ~STO0703.STO~ BEGIN  //SoD
+  COPY_EXISTING ~STO0703.STO~ ~override~
+   ADD_STORE_ITEM ~SPWI223A~ #1 #0 #0 ~IDENTIFIED~ #2
+ END
+
+END
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//____________________________________________________________Decastave_________________________________________________________________________________//
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//ADD PORTRAIT ICON
+
+//Item revisions: Spell protections ?
+//Regular Items ?
+//Projectile
+//VVC
+//bam
+COPY ~Spells/data/iwd_spells/wizard_2/DECASTA.bam~ ~override~
+//animations
+COPY ~Spells/data/iwd_spells/wizard_2/INVOCH.bam~ ~override~   //
+//3d animation
+//sounds   Copy sound #EFF_M08
+COPY ~Spells/data/iwd_spells/wizard_2/#EFF_M06.WAV~ ~override~   //
+COPY ~Spells/data/iwd_spells/wizard_2/#EFF_E02.WAV~ ~override~   //
+//effs
+//itm
+COPY ~Spells/data/iwd_spells/wizard_2/DECASTA.itm~ ~override~
+        SAY NAME1 @2160000
+        SAY NAME2 @2160000
+//Spell itself
+ADD_SPELL ~Spells/data/iwd_spells/wizard_2/b_w216.spl~ 2 2 ~WIZARD_DECASTAVE~ //
+        SAY NAME1 @2160000
+        SAY NAME2 @2160000
+        SAY UNIDENTIFIED_DESC @2160001
+	SAY DESC @2160001
+//to clear earlier versions of the spell
+LAF RES_NUM_OF_SPELL_NAME
+  STR_VAR spell_name = ~WIZARD_DECASTAVE~
+  RET spell_res
+END
+COPY_EXISTING ~%spell_res%.spl~ ~override~
+     LPF cd_apply_batch STR_VAR array_name = b_magic_item_arrays END   //removes previous items first
+
+//add icons and projectile
+COPY_EXISTING ~%spell_res%.spl~ ~override~
+  LPF ALTER_SPELL_HEADER STR_VAR icon = EVAL  ~%spell_res%B~ END
+COPY ~Spells/data/iwd_spells/wizard_2/SPWI216a.bam~ ~override/%spell_res%a.bam~
+COPY ~Spells/data/iwd_spells/wizard_2/SPWI216b.bam~ ~override/%spell_res%b.bam~
+COPY ~Spells/data/iwd_spells/wizard_2/SPWI216c.bam~ ~override/%spell_res%c.bam~
+//add bams to spl
+COPY_EXISTING ~%spell_res%.spl~ ~override~
+  WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
+
+//Portrait Icons    (maybe I'll make one for this
+//Icon itself
+//COPY ~Spells/data/iwd_spells/wizard_2/B_CAT.bam~ ~override~
+// SET strref = RESOLVE_STR_REF(@2250000)
+/*    Not needed at this time
+//Thanks kjeron and argent77!!!
+//BG(2)EE only for now (i.e. not IWDEE--Need update)
+ACTION_IF GAME_IS ~bgee bg2ee eet~ THEN BEGIN
+ COPY_EXISTING ~STATDESC.2DA~ override
+  COUNT_2DA_COLS cols
+  COUNT_2DA_ROWS cols rows
+  SET max = 0
+  FOR (i = 0; i < rows; ++i) BEGIN
+   READ_2DA_ENTRY i 0 cols num
+   PATCH_IF num > max BEGIN max = num END
+  END
+SET max += 1
+INSERT_2DA_ROW rows cols ~%max%   %strref%   B_CAT~
+PRETTY_PRINT_2DA
+COPY_EXISTING ~%spell_res%.spl~ ~override~
+  LPF ALTER_EFFECT INT_VAR match_opcode = 142 parameter2 = %max% END           //
+END
+*/
+//Sh. of Entropy immunity list   No immunities nec I think
+//INCLUDE ~spells/lib/spell_lists/entropy_list.tpa~
+
+//Add scroll, and add scroll to stores
+//Copy over the scroll:
+COPY ~Spells/data/iwd_spells/wizard_2/SCDECA.itm~ ~override~
+        SAY NAME1 @10
+        SAY NAME2 @2160000
+	SAY DESC @2160001
+//Change icon
+        WRITE_ASCIIE 0x3a ~%spell_res%A~
+ COPY_EXISTING ~SCDECA.itm~ ~override~     //these work
+  LPF ALTER_ITEM_HEADER STR_VAR icon = EVAL  ~%spell_res%A~ END
+  LPF ALTER_ITEM_EFFECT INT_VAR check_headers = 1 match_opcode = 146 STR_VAR resource = EVAL  ~%spell_res%~ END
+  LPF ALTER_ITEM_EFFECT INT_VAR check_headers = 1 match_opcode = 147 STR_VAR resource = EVAL  ~%spell_res%~ END
+//BGEE - Sorcerous Sundries
+ACTION_IF GAME_IS ~bgee~ THEN BEGIN   //  ACTION_IF GAME_IS ~bgee sod~ THEN BEGIN
+  COPY_EXISTING ~STO0703.sto~ ~override~
+    ADD_STORE_ITEM ~SCDECA~ #1 #0 #0 ~IDENTIFIED~ #2
+//High Hedge
+  COPY_EXISTING ~HIGHHEDG.sto~ ~override~
+    ADD_STORE_ITEM ~SCDECA~ #1 #0 #0 ~IDENTIFIED~ #2
+ ACTION_IF FILE_EXISTS_IN_GAME ~BDSORCSC.STO~ BEGIN  //SoD
+  COPY_EXISTING ~BDSORCSC.STO~ ~override~
+   ADD_STORE_ITEM ~SCDECA~ #1 #0 #0 ~IDENTIFIED~ #2
+ END
+END
+
+ACTION_IF GAME_IS ~bg2ee eet~ THEN BEGIN   //  A
+//Lady Yuth
+COPY_EXISTING ~SCROLLS.STO~ ~override~
+ ADD_STORE_ITEM ~SCDECA~ #1 #0 #0 ~IDENTIFIED~ #4
+//Underdark
+COPY_EXISTING ~UDDROW25.STO~ ~override~
+ ADD_STORE_ITEM ~SCDECA~ #1 #0 #0 ~IDENTIFIED~ #4
+
+ ACTION_IF FILE_EXISTS_IN_GAME ~BDSORCSC.STO~ BEGIN  //SoD
+  COPY_EXISTING ~BDSORCSC.STO~ ~override~
+   ADD_STORE_ITEM ~SCDECA~ #1 #0 #0 ~IDENTIFIED~ #2
+ END
+
+ ACTION_IF FILE_EXISTS_IN_GAME ~STO0703.STO~ BEGIN  //SoD
+  COPY_EXISTING ~STO0703.STO~ ~override~
+   ADD_STORE_ITEM ~SCDECA~ #1 #0 #0 ~IDENTIFIED~ #2
+ END
+
+END
+
+//////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////
+////////////////////////            //////////////////////////
+////////////////////////  LEVEL 3   //////////////////////////
+////////////////////////            //////////////////////////
+//////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//__________________________________________________________Lance of Disruption_________________________________________________________________________//
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//Item revisions: Spell protections ?
+ADD_PROJECTILE ~Spells/data/iwd_spells/wizard_3/IDPRO313.pro~   //projectile
+//Regular Items ?
+//Projectile
+//VVC
+//bam
+//animations
+COPY ~Spells/data/iwd_spells/wizard_3/LODISRT.bam~ ~override~   //
+//3d animation
+//sounds   Copy sound #EFF_M08
+COPY ~Spells/data/iwd_spells/wizard_3/#TRA_59.WAV~ ~override~   //
+COPY ~Spells/data/iwd_spells/wizard_3/#EFF_M06.WAV~ ~override~   //
+//effs
+//Spell itself
+ADD_SPELL ~Spells/data/iwd_spells/wizard_3/b_w328.spl~ 2 3 ~WIZARD_LANCE_OF_DISRUPTION~ //
+        SAY NAME1 @3280000
+        SAY NAME2 @3280000
+        SAY UNIDENTIFIED_DESC @3280001
+	SAY DESC @3280001
+
+//to clear earlier versions of the spell
+LAF RES_NUM_OF_SPELL_NAME
+  STR_VAR spell_name = ~WIZARD_LANCE_OF_DISRUPTION~
+  RET spell_res
+END
+COPY_EXISTING ~%spell_res%.spl~ ~override~
+  LPF ALTER_EFFECT
+      INT_VAR match_opcode = 318            //
+      STR_VAR resource = EVAL ~%spell_res%~
+  END      //
+  LPF ALTER_EFFECT
+      INT_VAR match_opcode = 324            //
+      STR_VAR resource = EVAL ~%spell_res%~
+  END      //
+/*     Not needed
+//Text Dexterity Modification
+COPY_EXISTING ~%spell_res%.spl~ ~override~
+ SET strref = RESOLVE_STR_REF(@2250002)
+  LPF ALTER_EFFECT
+      INT_VAR match_opcode = 139 match_parameter1 = 14024 parameter1 = %strref%   END      //
+*/
+//add icons and projectile
+COPY_EXISTING ~%spell_res%.spl~ ~override~
+  LPF ALTER_SPELL_HEADER INT_VAR projectile = %IDPRO313% STR_VAR icon = EVAL  ~%spell_res%B~ END
+COPY ~Spells/data/iwd_spells/wizard_3/SPWI328a.bam~ ~override/%spell_res%a.bam~
+COPY ~Spells/data/iwd_spells/wizard_3/SPWI328b.bam~ ~override/%spell_res%b.bam~
+COPY ~Spells/data/iwd_spells/wizard_3/SPWI328c.bam~ ~override/%spell_res%c.bam~
+//add bams to spl
+COPY_EXISTING ~%spell_res%.spl~ ~override~
+  WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
+/* Not needeed
+//Portrait Icons
+//Icon itself
+COPY ~Spells/data/iwd_spells/wizard_2/B_CAT.bam~ ~override~
+ SET strref = RESOLVE_STR_REF(@2250000)
+
+//Thanks kjeron and argent77!!!
+//BG(2)EE only for now (i.e. not IWDEE--Need update)
+ACTION_IF GAME_IS ~bgee bg2ee eet~ THEN BEGIN
+ COPY_EXISTING ~STATDESC.2DA~ override
+  COUNT_2DA_COLS cols
+  COUNT_2DA_ROWS cols rows
+  SET max = 0
+  FOR (i = 0; i < rows; ++i) BEGIN
+   READ_2DA_ENTRY i 0 cols num
+   PATCH_IF num > max BEGIN max = num END
+  END
+SET max += 1
+INSERT_2DA_ROW rows cols ~%max%   %strref%   B_CAT~
+PRETTY_PRINT_2DA
+COPY_EXISTING ~%spell_res%.spl~ ~override~
+  LPF ALTER_EFFECT INT_VAR match_opcode = 142 parameter2 = %max% END           //
+END
+*/
+
+//Add scroll, and add scroll to stores
+//Copy over the scroll:
+COPY ~Spells/data/iwd_spells/wizard_3/SPWI319X.itm~ ~override~
+        SAY NAME1 @10
+        SAY NAME2 @3280000
+	SAY DESC @3280001
+//Change icon
+        WRITE_ASCIIE 0x3a ~%spell_res%A~
+ COPY_EXISTING ~SPWI319X.itm~ ~override~     //these work
+  LPF ALTER_ITEM_HEADER STR_VAR icon = EVAL  ~%spell_res%A~ END
+  LPF ALTER_ITEM_EFFECT INT_VAR check_headers = 1 match_opcode = 148 STR_VAR resource = EVAL  ~%spell_res%~ END
+  LPF ALTER_ITEM_EFFECT INT_VAR check_headers = 1 match_opcode = 147 STR_VAR resource = EVAL  ~%spell_res%~ END
+//BGEE - Sorcerous Sundries
+ACTION_IF GAME_IS ~bgee~ THEN BEGIN   //  ACTION_IF GAME_IS ~bgee sod~ THEN BEGIN
+  COPY_EXISTING ~STO0703.sto~ ~override~
+    ADD_STORE_ITEM ~SPWI319X~ #1 #0 #0 ~IDENTIFIED~ #2
+//High Hedge
+  COPY_EXISTING ~HIGHHEDG.sto~ ~override~
+    ADD_STORE_ITEM ~SPWI319X~ #1 #0 #0 ~IDENTIFIED~ #2
+ ACTION_IF FILE_EXISTS_IN_GAME ~BDSORCSC.STO~ BEGIN  //SoD
+  COPY_EXISTING ~BDSORCSC.STO~ ~override~
+   ADD_STORE_ITEM ~SPWI319X~ #1 #0 #0 ~IDENTIFIED~ #2
+ END
+END
+
+ACTION_IF GAME_IS ~bg2ee eet~ THEN BEGIN   //  A
+//Lady Yuth
+COPY_EXISTING ~SCROLLS.STO~ ~override~
+ ADD_STORE_ITEM ~SPWI319X~ #1 #0 #0 ~IDENTIFIED~ #4
+//Underdark
+COPY_EXISTING ~UDDROW25.STO~ ~override~
+ ADD_STORE_ITEM ~SPWI319X~ #1 #0 #0 ~IDENTIFIED~ #4
+
+ ACTION_IF FILE_EXISTS_IN_GAME ~BDSORCSC.STO~ BEGIN  //SoD
+  COPY_EXISTING ~BDSORCSC.STO~ ~override~
+   ADD_STORE_ITEM ~SPWI319X~ #1 #0 #0 ~IDENTIFIED~ #2
+ END
+
+ ACTION_IF FILE_EXISTS_IN_GAME ~STO0703.STO~ BEGIN  //SoD
+  COPY_EXISTING ~STO0703.STO~ ~override~
+   ADD_STORE_ITEM ~SPWI319X~ #1 #0 #0 ~IDENTIFIED~ #2
+ END
+
+END
+
+//////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////
+////////////////////////            //////////////////////////
+////////////////////////  LEVEL 4   //////////////////////////
+////////////////////////            //////////////////////////
+//////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//__________________________________________________________Beltyn's Burning Blood______________________________________________________________________//
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//ADD PORTRAIT ICON
+
+//Item revisions: Spell protections ?
+//Regular Items ?
+//Projectile
+//VVC
+//bam
+//sec spell
+COPY ~Spells/data/iwd_spells/wizard_4/#BELTYN.spl~ ~override~   //
+ SET strref = RESOLVE_STR_REF(@4220002)
+  LPF ALTER_EFFECT
+      INT_VAR match_opcode = 139 match_parameter1 = 37605 parameter1 = %strref%   END      //Berserk
+//animations
+//3d animation
+COPY ~Spells/data/iwd_spells/wizard_4/NECROH.bam~ ~override~   //
+//sounds   Copy sound
+COPY ~Spells/data/iwd_spells/wizard_4/#EFF_M07.WAV~ ~override~   //
+//effs
+//Spell itself
+ADD_SPELL ~Spells/data/iwd_spells/wizard_4/b_w422.spl~ 2 4 ~WIZARD_BELTYNS_BURNING_BLOOD~ //
+        SAY NAME1 @4220000
+        SAY NAME2 @4220000
+        SAY UNIDENTIFIED_DESC @4220001
+	SAY DESC @4220001
+
+//to clear earlier versions of the spell
+LAF RES_NUM_OF_SPELL_NAME
+  STR_VAR spell_name = ~WIZARD_BELTYNS_BURNING_BLOOD~
+  RET spell_res
+END
+COPY_EXISTING ~%spell_res%.spl~ ~override~
+  LPF ALTER_EFFECT
+      INT_VAR match_opcode = 321            //
+      STR_VAR resource = EVAL ~%spell_res%~
+  END      //
+  LPF ALTER_EFFECT
+      INT_VAR match_opcode = 324            //
+      STR_VAR resource = EVAL ~%spell_res%~
+  END      //
+/*     Sec spell done above
+//Text Dexterity Modification
+COPY_EXISTING ~%spell_res%.spl~ ~override~
+ SET strref = RESOLVE_STR_REF(@2250002)
+  LPF ALTER_EFFECT
+      INT_VAR match_opcode = 139 match_parameter1 = 14024 parameter1 = %strref%   END      //
+*/
+//add icons and projectile
+COPY_EXISTING ~%spell_res%.spl~ ~override~
+  LPF ALTER_SPELL_HEADER STR_VAR icon = EVAL  ~%spell_res%B~ END
+COPY ~Spells/data/iwd_spells/wizard_4/SPWI422a.bam~ ~override/%spell_res%a.bam~
+COPY ~Spells/data/iwd_spells/wizard_4/SPWI422b.bam~ ~override/%spell_res%b.bam~
+COPY ~Spells/data/iwd_spells/wizard_4/SPWI422c.bam~ ~override/%spell_res%c.bam~
+//add bams to spl
+COPY_EXISTING ~%spell_res%.spl~ ~override~
+  WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
+/* Not needeed
+//Portrait Icons
+//Icon itself
+COPY ~Spells/data/iwd_spells/wizard_2/B_CAT.bam~ ~override~
+ SET strref = RESOLVE_STR_REF(@2250000)
+
+//Thanks kjeron and argent77!!!
+//BG(2)EE only for now (i.e. not IWDEE--Need update)
+ACTION_IF GAME_IS ~bgee bg2ee eet~ THEN BEGIN
+ COPY_EXISTING ~STATDESC.2DA~ override
+  COUNT_2DA_COLS cols
+  COUNT_2DA_ROWS cols rows
+  SET max = 0
+  FOR (i = 0; i < rows; ++i) BEGIN
+   READ_2DA_ENTRY i 0 cols num
+   PATCH_IF num > max BEGIN max = num END
+  END
+SET max += 1
+INSERT_2DA_ROW rows cols ~%max%   %strref%   B_CAT~
+PRETTY_PRINT_2DA
+COPY_EXISTING ~%spell_res%.spl~ ~override~
+  LPF ALTER_EFFECT INT_VAR match_opcode = 142 parameter2 = %max% END           //
+END
+*/
+//Sh. of Entropy immunity list  nope
+// INCLUDE ~spells/lib/spell_lists/entropy_list.tpa~
+
+//Add scroll, and add scroll to stores
+//Copy over the scroll:
+COPY ~Spells/data/iwd_spells/wizard_4/SCBLOO.itm~ ~override~
+        SAY NAME1 @10
+        SAY NAME2 @4220000
+	SAY DESC @4220001
+//Change icon
+        WRITE_ASCIIE 0x3a ~%spell_res%A~
+ COPY_EXISTING ~SCBLOO.itm~ ~override~     //these work
+  LPF ALTER_ITEM_HEADER STR_VAR icon = EVAL  ~%spell_res%A~ END
+  LPF ALTER_ITEM_EFFECT INT_VAR check_headers = 1 match_opcode = 146 STR_VAR resource = EVAL  ~%spell_res%~ END
+  LPF ALTER_ITEM_EFFECT INT_VAR check_headers = 1 match_opcode = 147 STR_VAR resource = EVAL  ~%spell_res%~ END
+//BGEE - Sorcerous Sundries
+ACTION_IF GAME_IS ~bgee~ THEN BEGIN   //  ACTION_IF GAME_IS ~bgee sod~ THEN BEGIN
+  COPY_EXISTING ~STO0703.sto~ ~override~
+    ADD_STORE_ITEM ~SCBLOO~ #1 #0 #0 ~IDENTIFIED~ #2
+//High Hedge
+  COPY_EXISTING ~HIGHHEDG.sto~ ~override~
+    ADD_STORE_ITEM ~SCBLOO~ #1 #0 #0 ~IDENTIFIED~ #2
+ ACTION_IF FILE_EXISTS_IN_GAME ~BDSORCSC.STO~ BEGIN  //SoD
+  COPY_EXISTING ~BDSORCSC.STO~ ~override~
+   ADD_STORE_ITEM ~SCBLOO~ #1 #0 #0 ~IDENTIFIED~ #2
+ END
+END
+
+ACTION_IF GAME_IS ~bg2ee eet~ THEN BEGIN   //  A
+//Lady Yuth
+COPY_EXISTING ~SCROLLS.STO~ ~override~
+ ADD_STORE_ITEM ~SCBLOO~ #1 #0 #0 ~IDENTIFIED~ #4
+//Underdark
+COPY_EXISTING ~UDDROW25.STO~ ~override~
+ ADD_STORE_ITEM ~SCBLOO~ #1 #0 #0 ~IDENTIFIED~ #4
+
+ ACTION_IF FILE_EXISTS_IN_GAME ~BDSORCSC.STO~ BEGIN  //SoD
+  COPY_EXISTING ~BDSORCSC.STO~ ~override~
+   ADD_STORE_ITEM ~SCBLOO~ #1 #0 #0 ~IDENTIFIED~ #2
+ END
+
+ ACTION_IF FILE_EXISTS_IN_GAME ~STO0703.STO~ BEGIN  //SoD
+  COPY_EXISTING ~STO0703.STO~ ~override~
+   ADD_STORE_ITEM ~SCBLOO~ #1 #0 #0 ~IDENTIFIED~ #2
+ END
+
+END
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//_______________________________________________________Mordenkainen's Force Missiles__________________________________________________________________//
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//Item revisions: Spell protections ?
+//Regular Items ?
+//Projectile
+ADD_PROJECTILE ~Spells/data/iwd_spells/wizard_4/MFMISS.pro~   //projectile  primary spell
+ADD_PROJECTILE ~Spells/data/iwd_spells/wizard_4/SMLLAREA.pro~   //Sec Pro
+//Probam
+COPY ~Spells/data/iwd_spells/wizard_4/MFMISST.bam~ ~override~   //
+//VVC
+//bam
+COPY ~Spells/data/iwd_spells/wizard_4/MFMISSX.bam~ ~override~   //
+//sec spell
+//animations
+//3d animation
+//sounds   Copy sound
+COPY ~Spells/data/iwd_spells/wizard_4/TRA_55.WAV~ ~override~   //
+COPY ~Spells/data/iwd_spells/wizard_4/#FF_M103.WAV~ ~override~   //
+//effs
+//Spell itself
+ADD_SPELL ~Spells/data/iwd_spells/wizard_4/b_w430.spl~ 2 4 ~WIZARD_MORDENKAINENS_FORCE_MISSILES~ //
+        SAY NAME1 @4300000
+        SAY NAME2 @4300000
+        SAY UNIDENTIFIED_DESC @4300001
+	SAY DESC @4300001
+//to clear earlier versions of the spell
+LAF RES_NUM_OF_SPELL_NAME
+  STR_VAR spell_name = ~WIZARD_MORDENKAINENS_FORCE_MISSILES~
+  RET spell_res
+END
+COPY_EXISTING ~%spell_res%.spl~ ~override~
+  LPF ALTER_EFFECT
+      INT_VAR match_opcode = 333            //  Static Charge opcode
+      STR_VAR resource = EVAL ~%spell_res%B~
+  END      //
+//Sec Spell
+COPY ~Spells/data/iwd_spells/wizard_4/b_w430b.spl~ ~override/%spell_res%B.spl~   //
+  LPF ALTER_SPELL_HEADER INT_VAR projectile = %SMLLAREA% END
+
+/*     Sec spell done above
+//Text Dexterity Modification
+COPY_EXISTING ~%spell_res%.spl~ ~override~
+ SET strref = RESOLVE_STR_REF(@2250002)    //Does this work???
+  LPF ALTER_EFFECT
+      INT_VAR match_opcode = 139 match_parameter1 = 14024 parameter1 = %strref%   END      //
+*/
+//add icons and projectile
+COPY_EXISTING ~%spell_res%.spl~ ~override~
+  LPF ALTER_SPELL_HEADER INT_VAR projectile = %MFMISS% STR_VAR icon = EVAL  ~%spell_res%B~ END
+COPY ~Spells/data/iwd_spells/wizard_4/SPWI430a.bam~ ~override/%spell_res%a.bam~
+COPY ~Spells/data/iwd_spells/wizard_4/SPWI430b.bam~ ~override/%spell_res%b.bam~
+COPY ~Spells/data/iwd_spells/wizard_4/SPWI430c.bam~ ~override/%spell_res%c.bam~
+//add bams to spl
+COPY_EXISTING ~%spell_res%.spl~ ~override~
+  WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
+/* Not needeed
+//Portrait Icons
+//Icon itself
+COPY ~Spells/data/iwd_spells/wizard_2/B_CAT.bam~ ~override~
+ SET strref = RESOLVE_STR_REF(@2250000)
+
+//Thanks kjeron and argent77!!!
+//BG(2)EE only for now (i.e. not IWDEE--Need update)
+ACTION_IF GAME_IS ~bgee bg2ee eet~ THEN BEGIN
+ COPY_EXISTING ~STATDESC.2DA~ override
+  COUNT_2DA_COLS cols
+  COUNT_2DA_ROWS cols rows
+  SET max = 0
+  FOR (i = 0; i < rows; ++i) BEGIN
+   READ_2DA_ENTRY i 0 cols num
+   PATCH_IF num > max BEGIN max = num END
+  END
+SET max += 1
+INSERT_2DA_ROW rows cols ~%max%   %strref%   B_CAT~
+PRETTY_PRINT_2DA
+COPY_EXISTING ~%spell_res%.spl~ ~override~
+  LPF ALTER_EFFECT INT_VAR match_opcode = 142 parameter2 = %max% END           //
+END
+*/
+//Sh. of Entropy immunity list  nope
+ INCLUDE ~spells/lib/spell_lists/entropy_list.tpa~
+
+//Add scroll, and add scroll to stores
+//Copy over the scroll:
+COPY ~Spells/data/iwd_spells/wizard_4/SPWI422X.itm~ ~override~
+        SAY NAME1 @10
+        SAY NAME2 @4300000
+	SAY DESC @4300001
+//Change icon
+        WRITE_ASCIIE 0x3a ~%spell_res%A~
+ COPY_EXISTING ~SPWI422X.itm~ ~override~     //these work
+  LPF ALTER_ITEM_HEADER STR_VAR icon = EVAL  ~%spell_res%A~ END
+  LPF ALTER_ITEM_EFFECT INT_VAR check_headers = 1 match_opcode = 146 STR_VAR resource = EVAL  ~%spell_res%~ END
+  LPF ALTER_ITEM_EFFECT INT_VAR check_headers = 1 match_opcode = 147 STR_VAR resource = EVAL  ~%spell_res%~ END
+//BGEE - Sorcerous Sundries
+ACTION_IF GAME_IS ~bgee~ THEN BEGIN   //  ACTION_IF GAME_IS ~bgee sod~ THEN BEGIN
+  COPY_EXISTING ~STO0703.sto~ ~override~
+    ADD_STORE_ITEM ~SPWI422X~ #1 #0 #0 ~IDENTIFIED~ #2
+//High Hedge
+  COPY_EXISTING ~HIGHHEDG.sto~ ~override~
+    ADD_STORE_ITEM ~SPWI422X~ #1 #0 #0 ~IDENTIFIED~ #2
+ ACTION_IF FILE_EXISTS_IN_GAME ~BDSORCSC.STO~ BEGIN  //SoD
+  COPY_EXISTING ~BDSORCSC.STO~ ~override~
+   ADD_STORE_ITEM ~SPWI422X~ #1 #0 #0 ~IDENTIFIED~ #2
+ END
+END
+
+ACTION_IF GAME_IS ~bg2ee eet~ THEN BEGIN   //  A
+//Lady Yuth
+COPY_EXISTING ~SCROLLS.STO~ ~override~
+ ADD_STORE_ITEM ~SPWI422X~ #1 #0 #0 ~IDENTIFIED~ #4
+//Underdark
+COPY_EXISTING ~UDDROW25.STO~ ~override~
+ ADD_STORE_ITEM ~SPWI422X~ #1 #0 #0 ~IDENTIFIED~ #4
+
+ ACTION_IF FILE_EXISTS_IN_GAME ~BDSORCSC.STO~ BEGIN  //SoD
+  COPY_EXISTING ~BDSORCSC.STO~ ~override~
+   ADD_STORE_ITEM ~SPWI422X~ #1 #0 #0 ~IDENTIFIED~ #2
+ END
+
+ ACTION_IF FILE_EXISTS_IN_GAME ~STO0703.STO~ BEGIN  //SoD
+  COPY_EXISTING ~STO0703.STO~ ~override~
+   ADD_STORE_ITEM ~SPWI422X~ #1 #0 #0 ~IDENTIFIED~ #2
+ END
+
+END
+//4th lev
+INCLUDE ~spells/lib/spell_lists/4th_list.tpa~
+
+//////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////
+////////////////////////            //////////////////////////
+////////////////////////  LEVEL 6   //////////////////////////
+////////////////////////            //////////////////////////
+//////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//__________________________________________________________________Darts of Bone_______________________________________________________________________//
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//ADD PORTRAIT ICON
+
+//Item revisions: Spell protections ?
+//Regular Items ?
+//Projectile
+//ADD_PROJECTILE ~Spells/data/iwd_spells/wizard_6/MFMISS.pro~   //projectile  primary spell
+//ADD_PROJECTILE ~Spells/data/iwd_spells/wizard_6/SMLLAREA.pro~   //Sec Pro
+//Probam
+//COPY ~Spells/data/iwd_spells/wizard_6/MFMISST.bam~ ~override~   //
+//VVC
+//bam
+COPY ~Spells/data/iwd_spells/wizard_6/IDOBONE.bam~ ~override~   //
+//COPY ~Spells/data/iwd_spells/wizard_6/MFMISSX.bam~ ~override~   //
+//sec spell
+//Itm
+COPY ~Spells/data/iwd_spells/wizard_6/DOBONE.itm~ ~override~   //actual bone darts
+        SAY NAME1 @6300002
+        SAY NAME2 @6300002
+  LPF ALTER_ITEM_HEADER STR_VAR icon = EVAL  ~IDOBONE~ END
+        WRITE_ASCIIE 0x3a ~IDOBONE~
+//animations
+//3d animation
+//sounds   Copy sound
+//COPY ~Spells/data/iwd_spells/wizard_6/TRA_55.WAV~ ~override~   //
+//COPY ~Spells/data/iwd_spells/wizard_6/#FF_M103.WAV~ ~override~   //
+//effs
+//Spell itself
+ADD_SPELL ~Spells/data/iwd_spells/wizard_6/b_w630.spl~ 2 6 ~WIZARD_DARTS_OF_BONE~ //
+        SAY NAME1 @6300000
+        SAY NAME2 @6300000
+        SAY UNIDENTIFIED_DESC @6300001
+	SAY DESC @6300001
+//to clear earlier versions of the spell
+LAF RES_NUM_OF_SPELL_NAME
+  STR_VAR spell_name = ~WIZARD_DARTS_OF_BONE~
+  RET spell_res
+END
+COPY_EXISTING ~%spell_res%.spl~ ~override~
+     LPF cd_apply_batch STR_VAR array_name = b_magic_item_arrays END   //removes previous items first rEALLY NEEDED?
+
+/*     Sec spell done above
+//Text Dexterity Modification
+COPY_EXISTING ~%spell_res%.spl~ ~override~
+ SET strref = RESOLVE_STR_REF(@2250002)    //Does this work???
+  LPF ALTER_EFFECT
+      INT_VAR match_opcode = 139 match_parameter1 = 14024 parameter1 = %strref%   END      //
+*/
+//add icons and projectile
+COPY_EXISTING ~%spell_res%.spl~ ~override~
+  LPF ALTER_SPELL_HEADER STR_VAR icon = EVAL  ~%spell_res%B~ END
+COPY ~Spells/data/iwd_spells/wizard_6/SPWI630a.bam~ ~override/%spell_res%a.bam~
+COPY ~Spells/data/iwd_spells/wizard_6/SPWI630b.bam~ ~override/%spell_res%b.bam~
+COPY ~Spells/data/iwd_spells/wizard_6/SPWI630c.bam~ ~override/%spell_res%c.bam~
+//add bams to spl
+COPY_EXISTING ~%spell_res%.spl~ ~override~
+  WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
+/* Not needeed
+//Portrait Icons
+//Icon itself
+COPY ~Spells/data/iwd_spells/wizard_2/B_CAT.bam~ ~override~
+ SET strref = RESOLVE_STR_REF(@2250000)
+
+//Thanks kjeron and argent77!!!
+//BG(2)EE only for now (i.e. not IWDEE--Need update)
+ACTION_IF GAME_IS ~bgee bg2ee eet~ THEN BEGIN
+ COPY_EXISTING ~STATDESC.2DA~ override
+  COUNT_2DA_COLS cols
+  COUNT_2DA_ROWS cols rows
+  SET max = 0
+  FOR (i = 0; i < rows; ++i) BEGIN
+   READ_2DA_ENTRY i 0 cols num
+   PATCH_IF num > max BEGIN max = num END
+  END
+SET max += 1
+INSERT_2DA_ROW rows cols ~%max%   %strref%   B_CAT~
+PRETTY_PRINT_2DA
+COPY_EXISTING ~%spell_res%.spl~ ~override~
+  LPF ALTER_EFFECT INT_VAR match_opcode = 142 parameter2 = %max% END           //
+END
+*/
+//Sh. of Entropy immunity list  nope
+// INCLUDE ~spells/lib/spell_lists/entropy_list.tpa~
+
+//Add scroll, and add scroll to stores
+//Copy over the scroll:
+COPY ~Spells/data/iwd_spells/wizard_6/SPWI618X.itm~ ~override~
+        SAY NAME1 @10
+        SAY NAME2 @6300000
+	SAY DESC @6300001
+//Change icon
+        WRITE_ASCIIE 0x3a ~%spell_res%A~
+ COPY_EXISTING ~SPWI618X.itm~ ~override~     //these work
+  LPF ALTER_ITEM_HEADER STR_VAR icon = EVAL  ~%spell_res%A~ END
+  LPF ALTER_ITEM_EFFECT INT_VAR check_headers = 1 match_opcode = 146 STR_VAR resource = EVAL  ~%spell_res%~ END
+  LPF ALTER_ITEM_EFFECT INT_VAR check_headers = 1 match_opcode = 147 STR_VAR resource = EVAL  ~%spell_res%~ END
+//BGEE - Sorcerous Sundries
+ACTION_IF GAME_IS ~bgee~ THEN BEGIN   //  ACTION_IF GAME_IS ~bgee sod~ THEN BEGIN
+//  COPY_EXISTING ~STO0703.sto~ ~override~
+//    ADD_STORE_ITEM ~SPWI618X~ #1 #0 #0 ~IDENTIFIED~ #2
+//High Hedge
+  COPY_EXISTING ~HIGHHEDG.sto~ ~override~
+    ADD_STORE_ITEM ~SPWI618X~ #1 #0 #0 ~IDENTIFIED~ #2
+ ACTION_IF FILE_EXISTS_IN_GAME ~BDSORCSC.STO~ BEGIN  //SoD
+  COPY_EXISTING ~BDSORCSC.STO~ ~override~
+   ADD_STORE_ITEM ~SPWI618X~ #1 #0 #0 ~IDENTIFIED~ #2
+ END
+END
+
+ACTION_IF GAME_IS ~bg2ee eet~ THEN BEGIN   //  A
+//Lady Yuth
+COPY_EXISTING ~SCROLLS.STO~ ~override~
+ ADD_STORE_ITEM ~SPWI618X~ #1 #0 #0 ~IDENTIFIED~ #4
+//Underdark
+COPY_EXISTING ~UDDROW25.STO~ ~override~
+ ADD_STORE_ITEM ~SPWI618X~ #1 #0 #0 ~IDENTIFIED~ #4
+
+ ACTION_IF FILE_EXISTS_IN_GAME ~BDSORCSC.STO~ BEGIN  //SoD
+  COPY_EXISTING ~BDSORCSC.STO~ ~override~
+   ADD_STORE_ITEM ~SPWI618X~ #1 #0 #0 ~IDENTIFIED~ #2
+ END
+
+ ACTION_IF FILE_EXISTS_IN_GAME ~STO0703.STO~ BEGIN  //SoD
+  COPY_EXISTING ~STO0703.STO~ ~override~
+   ADD_STORE_ITEM ~SPWI618X~ #1 #0 #0 ~IDENTIFIED~ #2
+ END
+
+END
+
+
+
+
+

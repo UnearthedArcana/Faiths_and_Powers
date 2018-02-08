@@ -1,0 +1,7 @@
+IF
+	See(NearestEnemyOf(Myself))
+THEN
+	RESPONSE #100
+	ForceSpell(LastSummonerOf(Myself),INNATE_ALARM)
+	DestroySelf()
+END

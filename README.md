@@ -3,6 +3,291 @@ Faiths and Powers mod
 
 log
 
+- TO DO: Update spheres and immunities and do var's right! (i.e. SPRINT and SNPRINT)
+
+0.75.00 - NOT STABLE
+
+- Updated new_spells.tra with fnp specific entries
+
+- New: Added Murderous Command
+
+- New: Added Feral Instinct
+
+- Fixed a bug w/solvent of corrosion (wrong reference)
+
+- New: Created dictate (as command, but 5 rounds)
+
+- New: Iron Mind first draft 
+
+- New: Watery Fist first draft (Credit Requiem & Mordeus)
+
+- New: First draft of Reprieve spell
+
+- New: Inclde fist bam and 3rd eff for conjure water elemental to proper folder
+
+- New Spells: First draft Enthrall
+
+- Removed Armor prof stuff from fnp effects batch (using its own for sanity)
+
+- Completely redid conjure water elemental
+
+- Corellon's Arrow: specified that the bonuses apply only when in a frenzy in kit description
+
+- New Spells: 1st draft of Snilloc's Major Missile
+
+- New Spells: 1st draft of Detect Traps and Portals
+
+- New Spells: 1st draft Solvent of Corrosion
+
+- Started Charm Monster (as a new spell)
+
+- Hypnotism  (first draft)
+
+- New Spells: Disrupt Undead (life sphere if FnP installed)
+
+- Created first blush versions of abundant ammunition and camoflauge (sp) 
+
+- Updated Stormwall
+
+- Updated Disrupt Undead
+
+- Shades: Fixed reference so it shouldn't crash anymore...
+
+- Shades: Removed umber hulk reference (amimations in BGEE)
+
+- Shadow Monsters: Added missing summons (liz men)
+
+- Shades and SMon: Made it so up to 6 cre can be summoned
+
+- Updated fear removal
+
+- Updated emotion removal/protection
+
+- Fixed an error with fear removal batch
+
+- Updated and applied (generally) remove and protect vs. berserk
+
+- Charm protection added (general) for strings
+
+- Updated Lev 3 prot
+
+- Updated Lev 4 prot
+
+- Tested: Prot lev 1-4 looks good (cursory obervation)
+
+- Updated-again!-lev one protection
+
+- Updated lev two protection
+
+- Added protection from slow and haste arrays to exp. retreat
+
+- Created remove slow and haste arrays and applied to exp retreat
+
+- Created magic item and spell removal arrays and applied to Decastave and bone darts
+
+- Applied fear, confusion, beserk/rage, and feeblemind removal/immunity to Exaltation.
+
+- Added Mordenkainen's Force Missiles
+
+- Added Mordenkainen's Force Missiles pro to entropy shield protection
+
+- Added Darts of Bone (protected from entropy shield?) 
+
+- Prayer: Used cantrip removal batch, and updates cantrip descriptions (may externalize...).
+
+- Created disease batch.
+
+- Applied Disease batch to cause disease
+
+- Created and applied lev 2 immune to Cause MW, Beast Claw, Al lance, Cure mod wounds, Resist fire/cold
+
+- Created and applied lev 3 immune to Prayer (sec spells), cause disease
+
+- Updated Fnp compatibility: Curse, cause light wounds and Sunscorch
+
+- Updated Sunscorch blindness notification (via batch)
+
+- Updated fnp compat: cure mod wounds, Alicorn Lance 
+
+- Added maladiction, cure and cause minor wounds, infravision, canticle, meditation, and frost ray cantrips to 1st lev immunity
+
+- Created 1st lev immune array
+
+- Applied 1st lev immune array to globes of invuln
+
+- Used Replace_textually with curse spell
+
+- Used Replace_textually with cause light wounds spell
+
+- Created compatibility folder (in lib) and tpa files (not edited yet).  Move compatibility to these files...
+
+- Updated Blindess immunity
+
+- Updated Deafness Immunity
+
+- Updated invis detection immunity
+
+- Updated Sleep Immunity
+
+- Updated stun
+
+- Updated dispel magic
+
+- Applied stun batch to icelance
+
+- Applied fear immunity and removal to emotion: courage
+
+- Created fear batch
+
+- Applied fear batch to Emotion: fear
+
+- Applied fear removal to Emotion: Hope
+
+- Created deafness batch
+
+- Applied deafness batch to shout
+
+- Created curse batch
+
+- Applied curse batch to curse spell
+
+- Externalized (to immunity.tpa) curse interactions (also, to some degree prayer)
+
+- Started death immunity
+
+- Updated invisibility immunity
+
+- Updated Charm batch
+
+- Updated Disease batch
+
+- Finished Level drain batch
+
+- Updated poison immunity batch
+
+- Batch: web immunity delete 'held' string protection.  Create batch that removes that string.  Create new 'webbed' string
+
+- Updated drain batch.  A few stringrefs missing for BGEE and IWDEE... Also, need to REMOVE unneded strings
+
+- Added Calm Orison
+
+- Updated Fear batch
+
+- Included OHTYR1 in exaltation protection (needs to be heavily expanded...)
+
+- Batches: Updated slow immunity and confusion immunity by EE game engine
+
+- Created Berserk immunity batch
+
+- Added rage removal/protection to batches (tested with exaltation)  Need to update how exaltation et al. implemented (no longer need dif spls for dif games)
+
+- New Spells: Added Protective Shell (Thanks Subtledoctor!) as a first level wiz spell.  Changed casting speed to 6 from 0
+
+- New Spells: Added Anticipation (thanks Subtledoctor!) as a first level wiz spell.  +5 to AC, +5 breath (still 3 rounds).  Maybe tone down and make a cantrip 
+
+- Added Alarm
+
+- Briefly tested (installation and Alarm)
+
+- Started cd_batches cantrip removal macro (b_bless_cantrip_arrays) TEST!
+
+- Started special immunity code
+
+- IWDEE spells converted some spells to ALTER_SPELL_HEADER 
+
+- Removed haste immunity from free action (still need to change haste effects from 126 to 176)
+
+- Exp. retreat changed to 176
+
+- Nature's Wrath: Added fist itm, modified stats to fit description.  Fixed it(?)
+
+- Entropy prot.  Adding prot from each pro twice.  The action must be running SOMEWHERE...
+
+- fixed (duh, each component was running it...)
+
+- Started splitting up tra (IWDEE divine spells so far...need to go spell by spell to seperate fnp, and revision apsects of it )
+
+- Improved entropy prot.  BUT adds pro from sunscorch pro twice.  Not sure if it adds pro from snowball swarm or other addded spells.  CHECK AND FIX
+
+- Actually added the decastave spell (forgot to put the actual spell in folder)
+
+- Improved entropy shield protection (esp. projectiles) BE SURE IT INTERACTS WELL WITH FnP AND SR BEFORE RELEASE
+
+- Added scroll to hand of carnage.  Didn't place, however
+
+- Added decastave, cat's grace
+
+- squashed a bug with scrolls (i.e. alter check for wrong opcode)
+
+- Added Lance of disruption and Beltyn's Burning Blood
+
+- Added Expeditious Retreat IWDEE spell, though need to test!!!
+
+- Added scroll for emotion: courage
+
+- New spells: Made eyes of dead cantrip if zero lev cantrip installed
+
+- Added scrolls and added them to stores/creatures: SSnoeballStorm, Shadow mon, V sphere, ice lance
+
+- Started Cantrip Alternate spells: Cause/Inflict minor wounds.  Need to fix that one!!!  Check both sides (cantrip and alter code)
+
+- Added immunity to cure minor wounds
+
+- Tested traified REPLACE_TEXTUALLY in cantrips (cure minor wounds)  WORKS!!
+
+- Fixed icons for Misfortune (though, I think that's the icon for misfire...)
+
+- Portrait icon for emotion: courage (IWDEE Spells)
+
+- Portrait icon for good prayer (IWDEE SPELLS)
+
+- Cure minor wounds (compatibility with revised spells and fnp) UPDATE FNP!!!
+
+- Updated Exaltation, blood rage, Imp Sanctity of mind and Entropy Shield to new block system
+
+- Fixed Shadow Monsters
+
+- Fixed Recitation (though, still want to update 'friendly' bam
+
+- Reverted to IWDEE pro names
+
+- Added Wizard spell: Shout
+
+- Fixed issue with Prayer and Recitation.  NEED TO ADD TO FNP.
+
+- Added Wizard 4th level emotion spells (sometime in the past--I think I deleted past progress documentation!)
+
+- Updated Blood range and imp sanctity of mind using cleaner method (NEED TO DO Exaltation)
+
+0.74.24
+
+- ranger profs update
+- setting for item use changes
+
+2018-02-03
+
+- Upadted spell lists for new_spells
+
+2018-01-28
+
+- Separated tra files for new and IWDEE spells
+
+- Began integration of B_Spells into Fnp.  Replaced new spells with b_spells, but no immunities as yet
+
+2018-01-26
+
+version 0.74.23
+
+- Adds a fix (I think) for a few .STO files being corrupted
+
+version 0.74.22
+
+- A slight alteration to the base spell in the QD_MC function, to prevent any possible issues between multiclass kits and the SCS AI component.
+
+- More conditional checks to ensure compatibility with IWDification. If you have the IWDification Divine Spell Pack installed, the sphere system will use those spells; if you don't, FnP will add them. If FnP does add spells, it will skip the couple of arcane IWD spells if it detects that you already have the IWDification Arcane Spell Pack installed. So basically, you should be good either way. (And you WILL get the IWD divine spells and a couple arcane spells added to your game either way.)
+
+- qd_mc/IWDification improvements
+
 version 0.74.21
 
 2018-01-06

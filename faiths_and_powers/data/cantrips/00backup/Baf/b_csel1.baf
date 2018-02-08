@@ -1,0 +1,159 @@
+IF
+	OR(4)
+        Class(LastSummonerOf(Myself),FIGHTER_MAGE)
+        Class(LastSummonerOf(Myself),CLERIC_MAGE)
+        Class(LastSummonerOf(Myself),FIGHTER_MAGE_CLERIC)
+        Class(LastSummonerOf(Myself),FIGHTER_MAGE_THIEF)
+        CheckStatLT(LastSummonerOf(Myself),4,LEVEL2)
+        Kit(LastSummonerOf(Myself),TRUECLASS)
+        !Global("B_Lev","GLOBAL",1)
+
+THEN
+	RESPONSE #100
+		SetGlobal("B_Lev","GLOBAL",1)
+		SetGlobal("B_NCAN","GLOBAL",0)         //Next level (ie level 4, when new cantrip can be selected) set higher to be checked in dialog...
+                ActionOverride(LastSummonerOf(Myself),StartDialogOverride("b_csel1",Myself))
+END
+
+
+IF
+        Class(LastSummonerOf(Myself),SORCERER)
+        CheckStatLT(LastSummonerOf(Myself),4,LEVEL)
+        Kit(LastSummonerOf(Myself),TRUECLASS)
+        !Global("B_Lev","GLOBAL",1)
+
+THEN
+	RESPONSE #100
+		SetGlobal("B_Lev","GLOBAL",1)
+		SetGlobal("B_NCAN","GLOBAL",0)
+                ActionOverride(LastSummonerOf(Myself),StartDialogOverride("b_csel1",Myself))
+END
+
+
+IF
+	OR(2)
+        Class(LastSummonerOf(Myself),MAGE)
+        Class(LastSummonerOf(Myself),MAGE_THIEF)
+        Kit(LastSummonerOf(Myself),TRUECLASS)
+        CheckStatLT(LastSummonerOf(Myself),4,LEVEL)
+        !Global("B_Lev","GLOBAL",1)
+
+THEN
+	RESPONSE #100
+		SetGlobal("B_Lev","GLOBAL",1)
+		SetGlobal("B_NCAN","GLOBAL",0)
+                ActionOverride(LastSummonerOf(Myself),StartDialogOverride("b_csel1",Myself))
+END
+
+
+
+IF
+        !Global("B_Die","GLOBAL",1)
+
+THEN
+	RESPONSE #100
+                ActionOverride(LastSummonerOf(Myself),StartDialogOverride("b_csel1",Myself))
+END  
+
+IF
+	Global("B_Die","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetGlobal("B_Lev","GLOBAL",0)
+                SetGlobal("B_Die","GLOBAL",0)
+                SetGlobal("B_NCAN","GLOBAL",0)
+		DestroySelf()               //reset all global variables, then destroy self
+END
+
+/*
+From prep:
+
+IF
+	OR(4)
+        Class(LastSummonerOf(Myself),FIGHTER_MAGE)
+        Class(LastSummonerOf(Myself),CLERIC_MAGE)
+        Class(LastSummonerOf(Myself),FIGHTER_MAGE_CLERIC)
+        Class(LastSummonerOf(Myself),FIGHTER_MAGE_THIEF)
+        CheckStatLT(LastSummonerOf(Myself),4,LEVEL2)
+        !Global("B_PLev","GLOBAL",1)
+
+THEN
+	RESPONSE #100
+                SetGlobal("B_PLev","GLOBAL",1)
+		ActionOverride(LastSummonerOf(Myself),StartDialogOverride("b_csel1",Myself))
+END
+
+
+IF
+        Class(LastSummonerOf(Myself),SORCERER)
+        CheckStatLT(LastSummonerOf(Myself),4,LEVEL)
+        !Global("B_PLev","GLOBAL",1)
+
+THEN
+	RESPONSE #100
+                SetGlobal("B_PLev","GLOBAL",1)
+		ActionOverride(LastSummonerOf(Myself),StartDialogOverride("b_csel1",Myself))
+END
+
+
+IF
+	OR(2)
+        Class(LastSummonerOf(Myself),MAGE)
+        Class(LastSummonerOf(Myself),MAGE_THIEF)
+        CheckStatLT(LastSummonerOf(Myself),4,LEVEL)
+        !Global("B_PLev","GLOBAL",1)
+
+THEN
+	RESPONSE #100
+                SetGlobal("B_PLev","GLOBAL",1)
+		ActionOverride(LastSummonerOf(Myself),StartDialogOverride("b_csel1",Myself))
+END
+
+IF
+	OR(4)
+        Class(LastSummonerOf(Myself),FIGHTER_MAGE)
+        Class(LastSummonerOf(Myself),CLERIC_MAGE)
+        Class(LastSummonerOf(Myself),FIGHTER_MAGE_CLERIC)
+        Class(LastSummonerOf(Myself),FIGHTER_MAGE_THIEF)
+        CheckStatLT(Player1,4,LEVEL2)
+        !Global("B_PLev","GLOBAL",1)
+
+THEN
+	RESPONSE #100
+                SetGlobal("B_PLev","GLOBAL",1)
+		ActionOverride(LastSummonerOf(Myself),StartDialogOverride("b_csel1",Myself))
+END
+
+IF
+        !Global("B_PDie","GLOBAL",1)
+
+THEN
+	RESPONSE #100
+		ActionOverride(LastSummonerOf(Myself),StartDialogOverride("b_csel1",Myself))
+END  
+
+IF
+	Global("B_PDie","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetGlobal("B_PLev","GLOBAL",0)
+                SetGlobal("B_PDie","GLOBAL",0)
+                SetGlobal("B_PNCAN","GLOBAL",0) //Num prep
+                SetGlobal("B_PFBLT","GLOBAL",0) //fire bolt
+                SetGlobal("B_PASPL","GLOBAL",0)   //a splash
+                SetGlobal("B_PCRAY","GLOBAL",0) //cold ray
+                SetGlobal("B_PSGRA","GLOBAL",0) //S Grasp
+                SetGlobal("B_PINFA","GLOBAL",0)  //infa
+                SetGlobal("B_PFRND","GLOBAL",0)  //friend
+                SetGlobal("B_PCHIL","GLOBAL",0) //C Touch
+		DestroySelf()               //reset all global variables, then destroy self
+END
+
+IF
+	True()
+THEN
+	RESPONSE #100
+		ActionOverride(LastSummonerOf(Myself),StartDialogOverride("b_brew1",Myself))
+		DestroySelf()
+END
+       */
