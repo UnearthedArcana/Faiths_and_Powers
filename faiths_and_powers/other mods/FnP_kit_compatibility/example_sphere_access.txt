@@ -9,7 +9,7 @@ ACTION_INCLUDE ~%MOD_FOLDER%/lib/fnp_compat.tpa~
  BUT_ONLY
 //
 // if you don't want to run this function immediately after installing your kit, you can delete the above
-// four lines, and replace '%mod_clab%' with the name of your kit's clab file in the 'clab_name' variable below.
+// four lines, and replace "EVAL %mod_clab%" with the name of your kit's clab file in the 'clab_name' variable below.
 //
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
@@ -42,7 +42,7 @@ LAF ~DEFINE_FNP_KIT_INFO~
 //
   STR_VAR
 //
-// for class, enter 'cleric' 'acolyte' 'druid' 'mystic' 'occultist' 'champion' 'zealot' 'ranger' or 'scout'
+// for class, enter 'cleric' 'acolyte' 'druid' 'mystic' 'occultist' 'shaman' 'champion' 'zealot' 'ranger' or 'scout'
 // if multiclass, enter 'fighter_cleric' 'cleric_mage' 'cleric_thief' 'ranger_cleric' or 'fighter_mystic'
 // for selected spheres, enter 'focus' 'major' 'minor' 'paladin' or 'ranger'
 //
@@ -77,12 +77,13 @@ LAM ~READ_FNP_KIT_INFO~
 
 ACTION_IF FILE_EXISTS_IN_GAME ~d5_spheres.d5~ BEGIN
 //
-// 	if this is an NPC mod, put your .cre file(s) here and uncomment the following lines
+// 	if this is an NPC mod, put your divine-class .cre file(s) here and uncomment the following 3 lines
 /*
 	COPY_EXISTING  ~this_npc.cre~ ~override~
 	  REMOVE_MEMORIZED_SPELLS
 	BUT_ONLY
 */
+//
 	LAM apply_fnp_spheres
 END
 

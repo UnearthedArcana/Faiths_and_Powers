@@ -156,18 +156,7 @@ COPY_EXISTING ~sppr208.spl~ ~override~
 
 //add new spells____________________________________________________________________
 
-ACTION_DEFINE_ASSOCIATIVE_ARRAY mod BEGIN
-
-  faiths_and_powers => my_mod
-
-END
-
-ACTION_PHP_EACH mod AS block => rock BEGIN   //
-
-  INCLUDE ~%block%/data/components/Setup_New_Spells.tpa~
-
-END
-
+  INCLUDE ~%mod_folder%/data/components/Setup_New_Spells.tpa~
 
 
 /*

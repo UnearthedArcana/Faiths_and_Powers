@@ -3462,7 +3462,7 @@ ACTION_IF GAME_IS ~bgee bg2ee eet iwdee~ THEN BEGIN
 	END
 END
 
-//TALOS ABILITY FILES________________________________________________________________
+//CYRIC ABILITY FILES________________________________________________________________
 //
 COPY ~faiths_and_powers/kits/clerics/225_cyric/b_ccyr.2da~ ~override~
 //+1 vs. illusions
@@ -3594,7 +3594,7 @@ ADD_KIT ~B_CT_CYRIC~
 ~faiths_and_powers/kits/clerics/225_cyric/b_ctcyr.2da~
 
 //RACIAL KIT AVAILABILITY_____________________________________________________________
-~K_FC_E  K_FC_H  K_FC_HE  K_FC_G  K_FC_D  K_FC_HL  K_FC_HO~
+~K_CT_E  K_CT_H  K_CT_HE  K_CT_G  K_CT_D  K_CT_HL  K_CT_HO~
 
 //UNUSABLE FLAGS AND KIT BASE CLASS_________________________________________________
 //CLASSES: Mage = 1, Fighter = 2, Cleric=3, Thief = 4, Bard = 5
@@ -3603,7 +3603,7 @@ ADD_KIT ~B_CT_CYRIC~
 ~0x00004000 15~
 
 //HIGH LEVEL ABILITIES ABBREVIATION_________________________________________________
-~FC0~
+~CT0~
 
 //TOB STARTING EQUIPMENT_____________________________________________________________
 ~CHAN09	* HELM07 BAG26 RING06 RING31 * BOOT01 AMUL20 BRAC10 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 HAMM07 SW1H27 STAF08~
@@ -3629,7 +3629,7 @@ COPY ~faiths_and_powers/kits/clerics/225_cyric/b_ctcyr.2da~ ~override~
 
 //MULTICLASS KIT______________________________________________________________________
 //
-ACTION_IF FILE_EXISTS_IN_GAME ~b_2tal.2da~ BEGIN
+ACTION_IF FILE_EXISTS_IN_GAME ~b_ctcyr.2da~ BEGIN
   LAF qd_multiclass
 	STR_VAR
 		kit_name = ~B_CT_CYRIC~

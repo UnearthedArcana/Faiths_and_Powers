@@ -9,6 +9,7 @@
 ACTION_IF FILE_EXISTS_IN_GAME ~clabshgs.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~d5_class.2da~ ~clabshgs~)) BEGIN
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -59,12 +60,14 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabshgs.2da~ BEGIN
 	s_Magic 		= ~x~
 	s_Perdition     = ~major~
  END
+END
 //__________________________________________________________________________________
 END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~clabsh01.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~d5_class.2da~ ~clabsh01~)) BEGIN
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -115,6 +118,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabsh01.2da~ BEGIN
 	s_Magic 		= ~x~
 	s_Perdition     = ~major~
  END
+END
 //__________________________________________________________________________________
 END
 
@@ -123,6 +127,7 @@ ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5_deity.d5~ BEGIN
 ACTION_IF FILE_EXISTS_IN_GAME ~clabpr01.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~d5_class.2da~ ~clabpr01~)) BEGIN
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -173,12 +178,14 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabpr01.2da~ BEGIN
 	s_Magic 		= ~minor~
 	s_Perdition     = ~x~
  END
+END
 //__________________________________________________________________________________
 END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~clabpr02.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~d5_class.2da~ ~clabpr02~)) BEGIN
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -229,12 +236,14 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabpr02.2da~ BEGIN
 	s_Magic 		= ~minor~
 	s_Perdition     = ~x~
  END
+END
 //__________________________________________________________________________________
 END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~clabpr03.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~d5_class.2da~ ~clabpr03~)) BEGIN
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -285,12 +294,14 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabpr03.2da~ BEGIN
 	s_Magic 		= ~minor~
 	s_Perdition     = ~x~
  END
+END
 //__________________________________________________________________________________
 END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~clabpr04.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~d5_class.2da~ ~clabpr04~)) BEGIN
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -341,12 +352,14 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabpr04.2da~ BEGIN
 	s_Magic 		= ~minor~
 	s_Perdition     = ~x~
  END
+END
 //__________________________________________________________________________________
 END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~ohtyr.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~d5_class.2da~ ~ohtyr~)) BEGIN
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -397,12 +410,14 @@ ACTION_IF FILE_EXISTS_IN_GAME ~ohtyr.2da~ BEGIN
 	s_Magic 		= ~minor~
 	s_Perdition     = ~x~
  END
+END
 //__________________________________________________________________________________
 END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~clabdr01.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~d5_class.2da~ ~clabdr01~)) BEGIN
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -453,12 +468,14 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabdr01.2da~ BEGIN
 	s_Magic 		= ~x~
 	s_Perdition     = ~x~
  END
+END
 //__________________________________________________________________________________
 END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~clabdr02.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~d5_class.2da~ ~clabdr02~)) BEGIN
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -509,12 +526,14 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabdr02.2da~ BEGIN
 	s_Magic 		= ~x~
 	s_Perdition     = ~x~
  END
+END
 //__________________________________________________________________________________
 END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~clabdr03.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~d5_class.2da~ ~clabdr03~)) BEGIN
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -565,12 +584,14 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabdr03.2da~ BEGIN
 	s_Magic 		= ~x~
 	s_Perdition     = ~x~
  END
+END
 //__________________________________________________________________________________
 END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~clabdr04.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~d5_class.2da~ ~clabdr04~)) BEGIN
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -621,12 +642,14 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabdr04.2da~ BEGIN
 	s_Magic 		= ~major~
 	s_Perdition     = ~x~
  END
+END
 //__________________________________________________________________________________
 END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~clabpa01.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~d5_class.2da~ ~clabpa01~)) BEGIN
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -677,12 +700,14 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabpa01.2da~ BEGIN
 	s_Magic 		= ~x~
 	s_Perdition     = ~x~
  END
+END
 //__________________________________________________________________________________
 END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~clabpa02.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~d5_class.2da~ ~clabpa02~)) BEGIN
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -733,12 +758,14 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabpa02.2da~ BEGIN
 	s_Magic 		= ~x~
 	s_Perdition     = ~x~
  END
+END
 //__________________________________________________________________________________
 END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~clabpa03.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~d5_class.2da~ ~clabpa03~)) BEGIN
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -789,12 +816,14 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabpa03.2da~ BEGIN
 	s_Magic 		= ~paladin~
 	s_Perdition     = ~x~
  END
+END
 //__________________________________________________________________________________
 END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~clabpa04.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~d5_class.2da~ ~clabpa04~)) BEGIN
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -845,12 +874,14 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabpa04.2da~ BEGIN
 	s_Magic 		= ~x~
 	s_Perdition     = ~x~
  END
+END
 //__________________________________________________________________________________
 END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~clabpa05.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~d5_class.2da~ ~clabpa05~)) BEGIN
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -901,12 +932,14 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabpa05.2da~ BEGIN
 	s_Magic 		= ~x~
 	s_Perdition     = ~x~
  END
+END
 //__________________________________________________________________________________
 END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~clabpa06.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~d5_class.2da~ ~clabpa06~)) BEGIN
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -957,6 +990,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabpa06.2da~ BEGIN
 	s_Magic 		= ~x~
 	s_Perdition     = ~x~
  END
+END
 //__________________________________________________________________________________
 END
 
@@ -965,6 +999,7 @@ END		// end if not exists d5_deity.d5
 ACTION_IF FILE_EXISTS_IN_GAME ~clabrn01.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~d5_class.2da~ ~clabrn01~)) BEGIN
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -1016,12 +1051,14 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabrn01.2da~ BEGIN
 	s_Magic 		= ~x~
 	s_Perdition     = ~x~
  END
+END
 //__________________________________________________________________________________
 END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~clabrn02.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~d5_class.2da~ ~clabrn02~)) BEGIN
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -1072,12 +1109,14 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabrn02.2da~ BEGIN
 	s_Magic 		= ~x~
 	s_Perdition     = ~x~
  END
+END
 //__________________________________________________________________________________
 END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~clabrn03.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~d5_class.2da~ ~clabrn03~)) BEGIN
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -1128,6 +1167,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabrn03.2da~ BEGIN
 	s_Magic 		= ~x~
 	s_Perdition     = ~x~
  END
+END
 //__________________________________________________________________________________
 END
 
@@ -1193,6 +1233,7 @@ END
 ACTION_IF FILE_EXISTS_IN_GAME ~clabrn05.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~d5_class.2da~ ~clabrn05~)) BEGIN
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -1243,6 +1284,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabrn05.2da~ BEGIN
 	s_Magic 		= ~x~
 	s_Perdition     = ~x~
  END
+END
 //__________________________________________________________________________________
 END
 

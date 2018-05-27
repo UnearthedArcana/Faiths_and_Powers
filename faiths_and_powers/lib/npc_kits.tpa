@@ -283,3 +283,58 @@ END
 //___________________________________________________________________________________
 
 
+
+//NPC innate abilities hotfix________________________________________________________
+//
+ACTION_FOR_EACH char IN ~branwe~ ~branwe5~ ~o#bran~ ~o#bran25~ BEGIN
+  ACTION_IF FILE_EXISTS_IN_GAME ~%char%.cre~ BEGIN
+	COPY_EXISTING ~%char%.cre~ ~override~
+	  LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~SPIN113~ END
+	  LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~SPIN113~ END
+	  LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~SPIN113~ END
+  END
+END
+
+ACTION_FOR_EACH char IN ~dynahe~ ~dynahe2~ ~dynahe4~ ~dynahe6~ ~dynahe7~ BEGIN
+  ACTION_IF FILE_EXISTS_IN_GAME ~%char%.cre~ BEGIN
+	COPY_EXISTING ~%char%.cre~ ~override~
+	  LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~SPIN102~ END
+  END
+END
+
+ACTION_FOR_EACH char IN ~minsc~ ~minsc2~ ~minsc4~ ~minsc6~ ~minsc7_~ ~minsc7~ ~minsc8~ ~minsc9~ ~minsc10~ ~minsc12~ ~minsc14~ BEGIN
+  ACTION_IF FILE_EXISTS_IN_GAME ~%char%.cre~ BEGIN
+	COPY_EXISTING ~%char%.cre~ ~override~
+	  LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~SPIN117~ END
+  END
+END
+
+ACTION_FOR_EACH char IN ~tiax~ ~tiax4~ ~tiax6~ BEGIN
+  ACTION_IF FILE_EXISTS_IN_GAME ~%char%.cre~ BEGIN
+	COPY_EXISTING ~%char%.cre~ ~override~
+	  LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~SPIN115~ END
+  END
+END
+	
+ACTION_FOR_EACH char IN ~quayle~ ~quayle4~ ~quayle6~ BEGIN
+  ACTION_IF FILE_EXISTS_IN_GAME ~%char%.cre~ BEGIN
+	COPY_EXISTING ~%char%.cre~ ~override~
+	  LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~SPIN118~ END
+  END
+END
+
+ACTION_FOR_EACH char IN ~yeslic~ ~yeslic5~ BEGIN
+  ACTION_IF FILE_EXISTS_IN_GAME ~%char%.cre~ BEGIN
+	COPY_EXISTING ~%char%.cre~ ~override~
+	  LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~SPIN112~ END
+  END
+END
+
+ACTION_FOR_EACH char IN ~faldor~ ~faldor5~ BEGIN
+  ACTION_IF FILE_EXISTS_IN_GAME ~%char%.cre~ BEGIN
+	COPY_EXISTING ~%char%.cre~ ~override~
+	  LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~SPIN114~ END
+  END
+END
+//___________________________________________________________________________________
+

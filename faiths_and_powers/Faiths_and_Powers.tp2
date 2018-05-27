@@ -2,7 +2,7 @@ BACKUP ~faiths_and_powers/backup~
 AUTHOR ~SubtleD and Grammarsalad~
 
 
-VERSION ~0.75.00~
+VERSION ~0.75.02~
 
 //README ~faiths_and_powers/readme-pnp.html~
 
@@ -50,7 +50,9 @@ ALWAYS
 	INCLUDE ~faiths_and_powers/lib/add_champion_kits.tpa~
 	INCLUDE ~faiths_and_powers/lib/add_zealot_kits.tpa~
 	INCLUDE ~faiths_and_powers/lib/add_multiclass_kits.tpa~
-
+//Mod variable
+OUTER_SPRINT mod_folder ~faiths_and_powers~
+	
 // joinable NPC issues for tutu/bgt/eet:
   ACTION_IF GAME_IS ~bgee~ BEGIN
     OUTER_SPRINT tutu_var ~~
@@ -119,530 +121,7 @@ LANGUAGE
 
 BEGIN @101
 DESIGNATED 101
-//REQUIRE_PREDICATE (GAME_IS ~bgee bg2ee eet iwdee~) ~Enhanced Edition game required!~
-SUBCOMPONENT @100 (GAME_IS ~iwdee~)
-
-//copy marker file__________________________________________________________________
-//
-COPY ~faiths_and_powers/lib/markers/d5_deity.d5~ ~override~
-//__________________________________________________________________________________
-
-//multiclass text____________________________________________________________________
-//
-ACTION_IF (FILE_EXISTS_IN_GAME ~clastext.2da~) BEGIN
-  	COPY_EXISTING ~clastext.2da~ ~override~
-		COUNT_2DA_COLS cols // amount of columns
-		READ_2DA_ENTRIES_NOW rows cols // read all file into memory  
-		FOR (row = 1; row < rows; ++row) BEGIN // iterate over rows
-		  READ_2DA_ENTRY_FORMER rows row 0 ~text~ // read column value
-		  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~CLERIC~ BEGIN
-		    SET c_row = %row%
-		  END
-		  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~FIGHTER_CLERIC~ BEGIN
-		    SET fc_row = %row%
-		  END
-		  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~CLERIC_MAGE~ BEGIN
-		    SET cm_row = %row%
-		  END
-		  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~CLERIC_THIEF~ BEGIN
-		    SET ct_row = %row%
-		  END
-		  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~CLERIC_RANGER~ BEGIN
-		    SET cr_row = %row%
-		  END
-		  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~FIGHTER_DRUID~ BEGIN
-		    SET fd_row = %row%
-		  END
-		END
-		SET_2DA_ENTRY %c_row% 3 cols RESOLVE_STR_REF (@10001)
-		SET_2DA_ENTRY %c_row% 5 cols RESOLVE_STR_REF (@10002)
-		SET_2DA_ENTRY %c_row% 4 cols RESOLVE_STR_REF (@10005)
-		SET_2DA_ENTRY %fc_row% 3 cols RESOLVE_STR_REF (@10011)
-		SET_2DA_ENTRY %fc_row% 5 cols RESOLVE_STR_REF (@10012)
-		SET_2DA_ENTRY %fc_row% 4 cols RESOLVE_STR_REF (@10015)
-		SET_2DA_ENTRY %cm_row% 3 cols RESOLVE_STR_REF (@10021)
-		SET_2DA_ENTRY %cm_row% 5 cols RESOLVE_STR_REF (@10022)
-		SET_2DA_ENTRY %cm_row% 4 cols RESOLVE_STR_REF (@10025)
-		SET_2DA_ENTRY %ct_row% 3 cols RESOLVE_STR_REF (@10031)
-		SET_2DA_ENTRY %ct_row% 5 cols RESOLVE_STR_REF (@10032)
-		SET_2DA_ENTRY %ct_row% 4 cols RESOLVE_STR_REF (@10035)
-		SET_2DA_ENTRY %cr_row% 3 cols RESOLVE_STR_REF (@10041)
-		SET_2DA_ENTRY %cr_row% 5 cols RESOLVE_STR_REF (@10042)
-		SET_2DA_ENTRY %cr_row% 4 cols RESOLVE_STR_REF (@10045)
-		SET_2DA_ENTRY %fd_row% 3 cols RESOLVE_STR_REF (@10051)
-		SET_2DA_ENTRY %fd_row% 5 cols RESOLVE_STR_REF (@10052)
-		SET_2DA_ENTRY %fd_row% 4 cols RESOLVE_STR_REF (@10055)
-  	BUT_ONLY
-END
-ACTION_IF (FILE_EXISTS_IN_GAME ~sodcltxt.2da~) BEGIN
-  	COPY_EXISTING ~sodcltxt.2da~ ~override~
-		COUNT_2DA_COLS cols // amount of columns
-		READ_2DA_ENTRIES_NOW rows cols // read all file into memory  
-		FOR (row = 1; row < rows; ++row) BEGIN // iterate over rows
-		  READ_2DA_ENTRY_FORMER rows row 0 ~text~ // read column value
-		  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~CLERIC~ BEGIN
-		    SET c_row = %row%
-		  END
-		  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~FIGHTER_CLERIC~ BEGIN
-		    SET fc_row = %row%
-		  END
-		  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~CLERIC_MAGE~ BEGIN
-		    SET cm_row = %row%
-		  END
-		  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~CLERIC_THIEF~ BEGIN
-		    SET ct_row = %row%
-		  END
-		  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~CLERIC_RANGER~ BEGIN
-		    SET cr_row = %row%
-		  END
-		  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~FIGHTER_DRUID~ BEGIN
-		    SET fd_row = %row%
-		  END
-		END
-		SET_2DA_ENTRY %c_row% 3 cols RESOLVE_STR_REF (@10001)
-		SET_2DA_ENTRY %c_row% 5 cols RESOLVE_STR_REF (@10002)
-		SET_2DA_ENTRY %c_row% 4 cols RESOLVE_STR_REF (@10005)
-		SET_2DA_ENTRY %fc_row% 3 cols RESOLVE_STR_REF (@10011)
-		SET_2DA_ENTRY %fc_row% 5 cols RESOLVE_STR_REF (@10012)
-		SET_2DA_ENTRY %fc_row% 4 cols RESOLVE_STR_REF (@10015)
-		SET_2DA_ENTRY %cm_row% 3 cols RESOLVE_STR_REF (@10021)
-		SET_2DA_ENTRY %cm_row% 5 cols RESOLVE_STR_REF (@10022)
-		SET_2DA_ENTRY %cm_row% 4 cols RESOLVE_STR_REF (@10025)
-		SET_2DA_ENTRY %ct_row% 3 cols RESOLVE_STR_REF (@10031)
-		SET_2DA_ENTRY %ct_row% 5 cols RESOLVE_STR_REF (@10032)
-		SET_2DA_ENTRY %ct_row% 4 cols RESOLVE_STR_REF (@10035)
-		SET_2DA_ENTRY %cr_row% 3 cols RESOLVE_STR_REF (@10041)
-		SET_2DA_ENTRY %cr_row% 5 cols RESOLVE_STR_REF (@10042)
-		SET_2DA_ENTRY %cr_row% 4 cols RESOLVE_STR_REF (@10045)
-		SET_2DA_ENTRY %fd_row% 3 cols RESOLVE_STR_REF (@10051)
-		SET_2DA_ENTRY %fd_row% 5 cols RESOLVE_STR_REF (@10052)
-		SET_2DA_ENTRY %fd_row% 4 cols RESOLVE_STR_REF (@10055)
-  	BUT_ONLY
-END
-//__________________________________________________________________________________
-
-//enable lots of multiclasses_______________________________________________________
-//
-ACTION_IF FILE_EXISTS_IN_GAME ~CLSRCREQ.2da~ BEGIN
- COPY_EXISTING ~clsrcreq.2da~ ~override~
-  COUNT_2DA_ROWS 8 rows
-  FOR (row = 0 ; row < rows ; ++row) BEGIN
-    READ_2DA_ENTRY row 0 8 entry
-    PATCH_IF (("%entry%" STRING_COMPARE_CASE "FIGHTER_CLERIC"      = 0) OR
-              ("%entry%" STRING_COMPARE_CASE "CLERIC_THIEF"        = 0)) BEGIN // cleric/thief, fighter/cleric
-      SET_2DA_ENTRY  row 1 8 1
-      SET_2DA_ENTRY  row 2 8 1
-      SET_2DA_ENTRY  row 3 8 1
-      SET_2DA_ENTRY  row 4 8 1
-      SET_2DA_ENTRY  row 5 8 1
-      SET_2DA_ENTRY  row 6 8 1
-      SET_2DA_ENTRY  row 7 8 1
-    END
-    PATCH_IF ("%entry%" STRING_COMPARE_CASE "CLERIC_MAGE"         = 0) BEGIN // cleric/mage
-      SET_2DA_ENTRY  row 1 8 1
-      SET_2DA_ENTRY  row 2 8 1
-      SET_2DA_ENTRY  row 3 8 1
-      SET_2DA_ENTRY  row 6 8 1
-    END
-    PATCH_IF ("%entry%" STRING_COMPARE_CASE "CLERIC_RANGER"       = 0) BEGIN // cleric/ranger
-      SET_2DA_ENTRY  row 1 8 1
-      SET_2DA_ENTRY  row 2 8 1
-      SET_2DA_ENTRY  row 3 8 1
-    END
-    PATCH_IF (("%entry%" STRING_COMPARE_CASE "FIGHTER_MAGE"        = 0) OR
-              ("%entry%" STRING_COMPARE_CASE "FIGHTER_THIEF"       = 0) OR
-              ("%entry%" STRING_COMPARE_CASE "FIGHTER_MAGE_THIEF"  = 0) OR
-              ("%entry%" STRING_COMPARE_CASE "MAGE_THIEF"          = 0)) BEGIN // other human multiclasses
-      SET_2DA_ENTRY  row 1 8 1
-    END
-    PATCH_IF (("%entry%" STRING_COMPARE_CASE "DRUID"               = 0) OR
-    		  ("%entry%" STRING_COMPARE_CASE "FIGHTER_DRUID"       = 0)) BEGIN // druids and mystics
-      SET_2DA_ENTRY  row 1 8 1
-      SET_2DA_ENTRY  row 2 8 1
-      SET_2DA_ENTRY  row 3 8 1
-      SET_2DA_ENTRY  row 4 8 1
-      SET_2DA_ENTRY  row 5 8 1
-      SET_2DA_ENTRY  row 6 8 1
-      SET_2DA_ENTRY  row 7 8 1
-    END
-    PATCH_IF ("%entry%" STRING_COMPARE_CASE "FIGHTER_MAGE_CLERIC" = 0) BEGIN // fighter/mage/cleric
-      SET_2DA_ENTRY  row 1 8 0
-      SET_2DA_ENTRY  row 2 8 0
-      SET_2DA_ENTRY  row 3 8 0
-      SET_2DA_ENTRY  row 4 8 0
-      SET_2DA_ENTRY  row 5 8 0
-      SET_2DA_ENTRY  row 6 8 0
-      SET_2DA_ENTRY  row 7 8 0
-    END
-  END
-  PRETTY_PRINT_2DA
- BUT_ONLY
-END
-//___________________________________________________________________________________
-
-//install all the kits:_____________________________________________________________
-//
-// (clerics)
-LAM cleric_lathander
-LAM cleric_torm
-LAM cleric_tymora
-LAM cleric_helm
-ACTION_IF NOT GAME_IS ~iwdee~ BEGIN
-  LAM cleric_kelemvor
-END
-LAM cleric_tempus
-LAM cleric_leira
-LAM cleric_baravar
-LAM cleric_loviatar
-LAM cleric_talos
-ACTION_IF NOT GAME_IS ~iwdee~ BEGIN
-  LAM cleric_cyric
-END
-LAM cleric_umberlee
-//
-// (acolytes)
-LAM acolyte_ilmater
-LAM acolyte_deneir
-LAM acolyte_sune
-LAM acolyte_tempus
-//LAM acolyte_mystra
-LAM acolyte_mask
-LAM acolyte_shar
-LAM acolyte_moander
-LAM acolyte_beshaba
-LAM acolyte_baervan
-//
-// (druids)
-LAM forest_druid
-LAM mountain_druid
-LAM jungle_druid
-LAM desert_druid
-LAM arctic_druid
-//
-// (mystics)
-LAM earth_mystic
-LAM water_mystic
-LAM air_mystic
-LAM fire_mystic
-LAM light_mystic
-LAM shadow_mystic
-//LAM fate_mystic
-//
-// (occultists)
-LAM beast_lord
-LAM elementalist
-//
-// (paladins)
-LAM champion_tyr
-LAM champion_azuth
-LAM champion_moradin
-ACTION_IF GAME_IS ~iwdee~ THEN BEGIN 
-  LAM iwdee_champion_kelemvor
-END
-ACTION_IF NOT GAME_IS ~iwdee~ THEN BEGIN 
-  LAM champion_kelemvor
-END
-ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No feasible way to make them not fall in IWDEE
-  LAM champion_tempus
-END
-ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No Evil fallable pallys in IWDEE
-  LAM champion_bane
-END
-ACTION_IF NOT FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No Evil fallable pallys in IWDEE
-  LAM iwdee_champion_bane
-END
-ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No Evil fallable pallys in IWDEE
-  LAM champion_helm
-END
-ACTION_IF NOT FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No Evil fallable pallys in IWDEE
-  LAM iwdee_champion_helm
-END
-ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No Evil nonfallable pallys in IWDEE
-  LAM champion_talos
-END
-ACTION_IF NOT FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No Evil nonfallable pallys in IWDEE
-  LAM iwdee_champion_talos
-END
-ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No feasible way to make them not fall in IWDEE without fallen.2da
-  LAM champion_red
-END
-//
-// (other paladins)
-//
-// (zealot)
-LAM zealot_ilmater
-LAM zealot_corellon
-LAM zealot_sune
-LAM zealot_mystra
-LAM zealot_eilistraee
-ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No feasible way to make them not fall in IWDEE  w/o fallen.2da
-  LAM zealot_gruumsh
-  LAM zealot_talos
-  LAM zealot_kossuth
-  LAM zealot_garagos
-END  //End grummsh/talos/kossuth/garagos
-//
-// (rangers)
-LAM forest_ranger
-LAM mountain_ranger
-LAM jungle_ranger
-LAM desert_ranger
-LAM arctic_ranger
-LAM beast_master
-//
-// (scouts)
-LAM mage_hunter
-LAM barbarian_ranger
-LAM elven_archer
-LAM halfling_slinger
-//
-// (multiclass)
-LAM fighter_druid
-LAM druid_mage
-LAM druid_thief
-LAM druid_ranger
-LAM cm_mystra
-LAM cm_azuth
-LAM cm_bender
-LAM cf_clangeddin
-LAM cr_mielikki
-LAM cr_shaundakul
-LAM cf_helm
-//__________________________________________________________________________________
-
-//special kit: ur-priest
-LAM cleric_ur_priest
-//__________________________________________________________________________________
-
-//vanilla kits_______________________________________________________________________
-//
-INCLUDE ~faiths_and_powers/lib/vanilla_kit_spheres.tpa~
-//___________________________________________________________________________________
-
-//mod kits___________________________________________________________________________
-//
-INCLUDE ~faiths_and_powers/lib/mod_kit_spheres.tpa~
-//___________________________________________________________________________________
-
-//default access_____________________________________________________________________
-//
-INCLUDE ~faiths_and_powers/lib/default_kit_spheres.tpa~
-//___________________________________________________________________________________
-
-//Base kits_________________________________________________________________________
-//
-INCLUDE ~faiths_and_powers/kits/acolytes/acolyte.tpa~
-INCLUDE ~faiths_and_powers/kits/champions/champion.tpa~
-INCLUDE ~faiths_and_powers/kits/zealots/zealot.tpa~
-//__________________________________________________________________________________
-
-//read fnp_compat info______________________________________________________________
-//
-LAM ~READ_FNP_KIT_INFO~
-//__________________________________________________________________________________
-
-//more scout alignments_____________________________________________________________
-//
-ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN
-/*
-ACTION_PHP_EACH d5_fnp_kits AS ind => kit BEGIN
-  ACTION_IF (VARIABLE_IS_SET $d5_fnp_kit_class_access(~%kit%~)) BEGIN
-	OUTER_TEXT_SPRINT class $d5_fnp_kit_class_access(~%kit%~)
-	ACTION_IF (~%class%~ STRING_EQUAL_CASE ~SCOUT~) BEGIN
-*/
- ACTION_PHP_EACH d5_fnp_kit_class_access AS kit => class BEGIN
-  ACTION_IF (~%class%~ STRING_EQUAL_CASE ~SCOUT~) BEGIN
-	COPY_EXISTING ~kitlist.2da~ ~override~
-	  COUNT_2DA_COLS cols // amount of columns
-	  READ_2DA_ENTRIES_NOW rows cols // read all file into memory  
-	  FOR (row = 7; row < rows; ++row) BEGIN // iterate over rows
-		READ_2DA_ENTRY_FORMER rows row 5 ~clab~ // read column value
-		PATCH_IF ~%clab%~ STRING_EQUAL_CASE ~%kit%~ BEGIN
-		  SET kit_index = %row%
-		  READ_2DA_ENTRY_FORMER rows kit_index 1 kit_label
-		END
-	  END
-	BUT_ONLY
-	APPEND ~fallen.2da~ ~%kit_label%%TAB%0~
-	COPY_EXISTING ~alignmnt.2da~ ~override~
-	  COUNT_2DA_COLS num_cols
-	  READ_2DA_ENTRIES_NOW ~r2en_align~ num_cols
-	  FOR (row = 3; row < r2en_align; row += 1) BEGIN
-		READ_2DA_ENTRY_FORMER ~r2en_align~ row 0 align_name
-		PATCH_IF (~%align_name%~ STRING_EQUAL_CASE ~%kit_label%~) BEGIN
-		  FOR (col = 1; col < num_cols; col += 1) BEGIN
-			SET_2DA_ENTRY_LATER ~s2el_align~ row col 1 // more alignments
-		  END
-		END
-	  END
-	  SET_2DA_ENTRIES_NOW ~s2el_align~ num_cols
-	BUT_ONLY
-  END
- END
-END
-//__________________________________________________________________________________
-
-//deity selection___________________________________________________________________
-//
-INCLUDE ~faiths_and_powers/lib/deity_selection.tpa~
-//__________________________________________________________________________________
-
-//replace kit menus__________________________________________________________________
-// (clerics)
-
-ACTION_FOR_EACH menu_class IN ~C~ /*~D~ ~R~*/ ~P~ ~FC~ ~CM~ ~CT~ ~CR~ BEGIN
-	COPY ~faiths_and_powers/deity/K_X_Y/K_%menu_class%_D.2da~ ~override~
-	COPY ~faiths_and_powers/deity/K_X_Y/K_%menu_class%_E.2da~ ~override~
-	COPY ~faiths_and_powers/deity/K_X_Y/K_%menu_class%_G.2da~ ~override~
-	COPY ~faiths_and_powers/deity/K_X_Y/K_%menu_class%_H.2da~ ~override~
-	COPY ~faiths_and_powers/deity/K_X_Y/K_%menu_class%_HE.2da~ ~override~
-	COPY ~faiths_and_powers/deity/K_X_Y/K_%menu_class%_HL.2da~ ~override~
-	COPY ~faiths_and_powers/deity/K_X_Y/K_%menu_class%_HO.2da~ ~override~
-END
-//__________________________________________________________________________________
-
-//no trueclass in kit menus__________________________________________________________
-//
-ACTION_FOR_EACH class IN ~D~ ~R~ BEGIN
-  ACTION_FOR_EACH race IN ~D~ ~E~ ~G~ ~H~ ~HE~ ~HL~ ~HO~ BEGIN
-	ACTION_IF FILE_EXISTS_IN_GAME ~K_%class%_%race%.2da~ BEGIN
-	  COPY_EXISTING ~K_%class%_%race%.2da~ ~override~
-		COUNT_2DA_COLS cols
-		READ_2DA_ENTRIES_NOW rows cols
-		SET rows_removed = 0
-		FOR (row = 1; row < rows; ++row) BEGIN
-		  READ_2DA_ENTRY_FORMER rows row 1 kit
-		  PATCH_IF (%kit% = 0) OR 
-		  			(%kit% = 16) OR 
-		  			(%kit% = 17) OR 
-		  			(%kit% = 18) BEGIN
-			REMOVE_2DA_ROW (row - rows_removed) cols
-			SET rows_removed += 1
-		  END
-		END
-	  BUT_ONLY
-	END
-  END
-END
-//add in acolyte and zealot__________________________________________________________
-COPY_EXISTING ~kitlist.2da~ ~override~
-	COUNT_2DA_COLS cols // amount of columns
-	READ_2DA_ENTRIES_NOW rows cols // read all file into memory  
-	FOR (row = 1; row < rows; ++row) BEGIN // iterate over rows
-	  READ_2DA_ENTRY_FORMER rows row 1 ~archetype~ // read column value
-	  PATCH_IF ~%archetype%~ STRING_EQUAL_CASE ~B_ACOLYTE~ BEGIN
-	    SET acolyte_row = (%row%)
-	  END
-	  PATCH_IF ~%archetype%~ STRING_EQUAL_CASE ~B_ZEALOT_1~ BEGIN
-	    SET zealot_row = (%row%)
-	  END
-	END
-BUT_ONLY
-
-ACTION_IF GAME_IS ~bg2ee eet iwdee~ BEGIN
-  OUTER_SET acolyte_row = (acolyte_row + 1)
-  OUTER_SET zealot_row = (zealot_row + 1)
-END
-
-APPEND ~K_C_D.2da~ ~2 %acolyte_row%~ 
-APPEND ~K_C_E.2da~ ~2 %acolyte_row%~
-APPEND ~K_C_G.2da~ ~2 %acolyte_row%~
-APPEND ~K_C_H.2da~ ~2 %acolyte_row%~
-APPEND ~K_C_HE.2da~ ~2 %acolyte_row%~
-APPEND ~K_C_HL.2da~ ~2 %acolyte_row%~
-APPEND ~K_C_HO.2da~ ~2 %acolyte_row%~
-APPEND ~K_P_D.2da~ ~2 %zealot_row%~
-APPEND ~K_P_E.2da~ ~2 %zealot_row%~
-APPEND ~K_P_G.2da~ ~2 %zealot_row%~
-APPEND ~K_P_H.2da~ ~2 %zealot_row%~
-APPEND ~K_P_HE.2da~ ~2 %zealot_row%~
-APPEND ~K_P_HL.2da~ ~2 %zealot_row%~
-APPEND ~K_P_HO.2da~ ~2 %zealot_row%~
-//__________________________________________________________________________________
-
-//halfling rangers__________________________________________________________________
-//
-COPY_EXISTING ~kitlist.2da~ ~override~
-	COUNT_2DA_COLS cols // amount of columns
-	READ_2DA_ENTRIES_NOW rows cols // read all file into memory  
-	FOR (row = 1; row < rows; ++row) BEGIN // iterate over rows
-	  READ_2DA_ENTRY_FORMER rows row 1 ~sling~ // read column value
-	  PATCH_IF ~%sling%~ STRING_EQUAL_CASE ~D5SLING~ BEGIN
-	    SET sling_row = (%row% + 1)
-	  END
-	END
-  BUT_ONLY
-COPY ~faiths_and_powers/kits/K_X_Y/K_R_HL.2da~ ~override~
-	REPLACE_TEXTUALLY ~[ %TAB%]0~ ~%TAB%%sling_row%~
-//__________________________________________________________________________________
-
-//alter item usability______________________________________________________________
-//
-LAM d5_item_usability
-
-ACTION_IF (%d5_item_use% = 1) BEGIN
-  INCLUDE ~faiths_and_powers/lib/item_usability.tpa~
-END
-//__________________________________________________________________________________
-
-//Add IWD spells if not already in game_____________________________________________
-ACTION_IF GAME_IS ~bgee bg2ee eet~ BEGIN
- ACTION_IF (NOT MOD_IS_INSTALLED ~setup-iwdification.tp2~ ~40~) AND (NOT FILE_EXISTS_IN_GAME ~b_IWD.itm~) BEGIN  //neither IWDification nor our IWDEE spells installed (priest spells)
-  ACTION_DEFINE_ASSOCIATIVE_ARRAY prst BEGIN
-    faiths_and_powers => my_mod
-  END
-  ACTION_PHP_EACH prst AS block => rock BEGIN   //
-      INCLUDE ~faiths_and_powers/data/components/Setup_IWD_Spells.tpa~      //install priest spells
-  END
- END
- ACTION_IF (NOT MOD_IS_INSTALLED ~setup-iwdification.tp2~ ~30~) AND (NOT FILE_EXISTS_IN_GAME ~b_IWD.itm~) BEGIN  //neither IWDification nor our IWDEE spells installed  (mage spells)
-  ACTION_DEFINE_ASSOCIATIVE_ARRAY wiz BEGIN
-    faiths_and_powers => my_mod
-  END
-   ACTION_PHP_EACH wiz AS block => rock BEGIN   //
-    INCLUDE ~faiths_and_powers/lib/fnp_wiz.tpa~      //install wiz spells
-  END
- END
-   COPY ~faiths_and_powers/compatibility/b_IWD.itm~ ~override~   //to detect this component
-END
-//__________________________________________________________________________________
-
-//Sphere System_____________________________________________________________________
-//
-INCLUDE ~faiths_and_powers/lib/sphere_system.tpa~
-//__________________________________________________________________________________
-
-//Handle NPCs_______________________________________________________________________
-//
-INCLUDE ~faiths_and_powers/lib/npc_kits.tpa~
-//__________________________________________________________________________________
-
-//no dual-classing__________________________________________________________________
-//
-LAM d5_dual_classing
-
-ACTION_IF (%d5_dual_class% = 0) BEGIN
-  COPY_EXISTING ~dualclas.2da~ ~override~
-	COUNT_2DA_COLS cols
-	COUNT_2DA_ROWS cols rows
-	FOR (row = 0; row < (rows - 1); ++row) BEGIN
-	  SET_2DA_ENTRY row 2 cols 0
-	  SET_2DA_ENTRY row 6 cols 0
-	END
-	PRETTY_PRINT_2DA
-  BUT_ONLY
-END
-//__________________________________________________________________________________
-
-//verbiage__________________________________________________________________________
-//
-//PRINT ~this component installs the deity-by-dialogue system~
-//PRINT ~it will install *all* of the FnP kits~
-//PRINT ~it will also replace the K_C_x.2da files so only the archetype kits are available in the menus~
-//__________________________________________________________________________________
-
-
-
+DEPRECATED @18
 
 //__________________________________________________________________________________
 //__________________________________________________________________________________
@@ -653,7 +132,7 @@ END
 
 BEGIN @102 // all the new kits, and kits in menus
 DESIGNATED 102
-SUBCOMPONENT @100 (GAME_IS ~bgee bg2ee eet~)
+SUBCOMPONENT @100 /*(GAME_IS ~bgee bg2ee eet~) */
 //Acolyte Lore (added to clabs)
 COPY ~faiths_and_powers/kits/acolytes/B_LOR.spl~ ~override~
 
@@ -823,178 +302,191 @@ END
 //install all the kits:_____________________________________________________________
 //
 // (clerics)
-LAM cleric_lathander
-LAM cleric_torm
-LAM cleric_tymora
-LAM cleric_helm
-ACTION_IF NOT GAME_IS ~iwdee~ BEGIN
-  LAM cleric_kelemvor
+ACTION_IF (%d5_install_clerics% = 1) BEGIN
+ LAM cleric_lathander
+ LAM cleric_torm
+ LAM cleric_tymora
+ LAM cleric_helm
+  ACTION_IF NOT GAME_IS ~iwdee~ BEGIN
+   LAM cleric_kelemvor
+  END
+ LAM cleric_tempus
+ LAM cleric_leira
+ LAM cleric_baravar
+ LAM cleric_loviatar
+ LAM cleric_talos
+  ACTION_IF NOT GAME_IS ~iwdee~ BEGIN
+   LAM cleric_cyric
+  END
+ LAM cleric_umberlee
 END
-LAM cleric_tempus
-LAM cleric_leira
-LAM cleric_baravar
-LAM cleric_loviatar
-LAM cleric_talos
-ACTION_IF NOT GAME_IS ~iwdee~ BEGIN
-  LAM cleric_cyric
-END
-LAM cleric_umberlee
 //
 // (acolytes)
-LAM acolyte_ilmater
-LAM acolyte_deneir
-LAM acolyte_sune
-LAM acolyte_tempus
-//LAM acolyte_mystra
-LAM acolyte_mask
-LAM acolyte_shar
-LAM acolyte_moander
-LAM acolyte_beshaba
-LAM acolyte_baervan
-//
+ACTION_IF (%d5_install_acolytes% = 1) BEGIN
+ LAM acolyte_ilmater
+ LAM acolyte_deneir
+ LAM acolyte_sune
+ LAM acolyte_tempus
+ //LAM acolyte_mystra
+ LAM acolyte_mask
+ LAM acolyte_shar
+ LAM acolyte_moander
+ LAM acolyte_beshaba
+ LAM acolyte_baervan
+END//
 // (druids)
-LAM forest_druid
-LAM mountain_druid
-ACTION_IF NOT GAME_IS ~iwdee~ THEN BEGIN  //	unless/until it gets kit scroll bars
-  LAM jungle_druid
-  LAM desert_druid
-END
+ACTION_IF (%d5_install_druids% = 1) BEGIN
+ LAM forest_druid
+ LAM mountain_druid
+   LAM jungle_druid
+   LAM desert_druid
 LAM arctic_druid
+END
 //
 // (mystics)
-LAM earth_mystic
-LAM water_mystic
-LAM air_mystic
-LAM fire_mystic
-LAM light_mystic
-ACTION_IF NOT GAME_IS ~iwdee~ THEN BEGIN   //	unless/until it gets kit scroll bars
-  LAM shadow_mystic
+ACTION_IF (%d5_install_mystics% = 1) BEGIN
+  LAM earth_mystic
+  LAM water_mystic
+  LAM air_mystic
+  LAM fire_mystic
+  LAM light_mystic
+    LAM shadow_mystic
 END
 //
 // (occultists)
-LAM beast_lord
-LAM elementalist
+ACTION_IF (%d5_install_occultists% = 1) BEGIN
+ LAM beast_lord
+ LAM elementalist
+END
 //
 // (paladins)
-//any race can have their pallys
-COPY_EXISTING ~clsrcreq.2da~ ~override~ //Testing...
-//pally
+ACTION_IF (%d5_install_champions% = 1) BEGIN
+ //any race can have their pallys
+ COPY_EXISTING ~clsrcreq.2da~ ~override~ //Testing...
+ //pally
     SET_2DA_ENTRY 29 2 8 1
     SET_2DA_ENTRY 29 3 8 1
     SET_2DA_ENTRY 29 4 8 1
     SET_2DA_ENTRY 29 5 8 1
     SET_2DA_ENTRY 29 6 8 1
     SET_2DA_ENTRY 29 7 8 1
-//b guard
+ //b guard
     SET_2DA_ENTRY 33 2 8 1
     SET_2DA_ENTRY 33 3 8 1
     SET_2DA_ENTRY 33 4 8 1
     SET_2DA_ENTRY 33 5 8 1
     SET_2DA_ENTRY 33 6 8 1
     SET_2DA_ENTRY 33 7 8 1
-BUT_ONLY_IF_IT_CHANGES
-//Dwarves need to be able to take the champion class.  Cha 13 requirement
-COPY_EXISTING ~ABCLASRQ.2da~ ~override~ //
-//Pally
+ BUT_ONLY_IF_IT_CHANGES
+ //Dwarves need to be able to take the champion class.  Cha 13 requirement
+  COPY_EXISTING ~ABCLASRQ.2da~ ~override~ //
+ //Pally
     SET_2DA_ENTRY 6 6 6 13
     SET_2DA_ENTRY 30 6 6 13
     SET_2DA_ENTRY 31 6 6 13
     SET_2DA_ENTRY 32 6 6 13
-BUT_ONLY_IF_IT_CHANGES
+ BUT_ONLY_IF_IT_CHANGES
 
-LAM champion_tyr
-LAM champion_azuth		//azuth essentially replaces Inquisitor
-LAM champion_moradin
-//champ of Kele effectively replaces UHunter. In IWDEE, the champ of mykrul is merely added (they're different enough conceptually to be seperate)
-ACTION_IF GAME_IS ~iwdee~ THEN BEGIN   //
+ LAM champion_tyr
+ LAM champion_azuth		//azuth essentially replaces Inquisitor
+ LAM champion_moradin
+ //champ of Kele effectively replaces UHunter. In IWDEE, the champ of mykrul is merely added (they're different enough conceptually to be seperate)
+ ACTION_IF GAME_IS ~iwdee~ THEN BEGIN   //
   LAM iwdee_champion_kelemvor
-END
-//kelevmore undead hunter for non-iwdee
-ACTION_IF GAME_IS ~bgee bg2ee eet~ THEN BEGIN   //
+ END
+ //kelevmore undead hunter for non-iwdee
+ ACTION_IF GAME_IS ~bgee bg2ee eet~ THEN BEGIN   //
   LAM champion_kelemvor
-END
-ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No feasible way to make them not fall in IWDEE as yet
+ END
+ ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No feasible way to make them not fall in IWDEE as yet
   LAM champion_tempus
-END
-ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No Evil nonfallable pallys in IWDEE as yet
+ END
+ ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No Evil nonfallable pallys in IWDEE as yet
   LAM champion_bane
-END
-ACTION_IF NOT FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No Evil nonfallable pallys in IWDEE as yet
+ END
+ ACTION_IF NOT FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No Evil nonfallable pallys in IWDEE as yet
   LAM iwdee_champion_bane
-END
-ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No Evil nonfallable pallys in IWDEE as yet
+ END
+ ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No Evil nonfallable pallys in IWDEE as yet
   LAM champion_helm
-END
-ACTION_IF NOT FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No Evil fallable pallys in IWDEE
+ END
+ ACTION_IF NOT FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No Evil fallable pallys in IWDEE
   LAM iwdee_champion_helm
-END
-ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No Evil nonfallable pallys in IWDEE
+ END
+ ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No Evil nonfallable pallys in IWDEE
   LAM champion_talos
-END
-ACTION_IF NOT FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No Evil nonfallable pallys in IWDEE
+ END
+ ACTION_IF NOT FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No Evil nonfallable pallys in IWDEE
   LAM iwdee_champion_talos
-END
-ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No feasible way to make them not fall in IWDEE without fallen.2da
+ END
+ ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No feasible way to make them not fall in IWDEE without fallen.2da
   LAM champion_red
+ END
 END
 //
 // (other paladins)
 //
 // (zealot)
-//sneaky sneaky
-COPY ~faiths_and_powers/kits/zealots/b_sneak.spl~ ~override~
-COPY ~faiths_and_powers/kits/zealots/b_snk02.spl~ ~override~
-COPY ~faiths_and_powers/kits/zealots/b_snk03.spl~ ~override~
-COPY ~faiths_and_powers/kits/zealots/b_snk04.spl~ ~override~
-COPY ~faiths_and_powers/kits/zealots/b_snk05.spl~ ~override~
-COPY ~faiths_and_powers/kits/zealots/b_snk06.spl~ ~override~
-COPY ~faiths_and_powers/kits/zealots/b_snk07.spl~ ~override~
-COPY ~faiths_and_powers/kits/zealots/b_snk08.spl~ ~override~
-COPY ~faiths_and_powers/kits/zealots/b_snk09.spl~ ~override~
-COPY ~faiths_and_powers/kits/zealots/b_snk10.spl~ ~override~
-COPY ~faiths_and_powers/kits/zealots/b_snk11.spl~ ~override~
-COPY ~faiths_and_powers/kits/zealots/b_snk12.spl~ ~override~
-COPY ~faiths_and_powers/kits/zealots/b_snk13.spl~ ~override~
+ACTION_IF (%d5_install_zealots% = 1) BEGIN
+ //sneaky sneaky
+ COPY ~faiths_and_powers/kits/zealots/b_sneak.spl~ ~override~
+ COPY ~faiths_and_powers/kits/zealots/b_snk02.spl~ ~override~
+ COPY ~faiths_and_powers/kits/zealots/b_snk03.spl~ ~override~
+ COPY ~faiths_and_powers/kits/zealots/b_snk04.spl~ ~override~
+ COPY ~faiths_and_powers/kits/zealots/b_snk05.spl~ ~override~
+ COPY ~faiths_and_powers/kits/zealots/b_snk06.spl~ ~override~
+ COPY ~faiths_and_powers/kits/zealots/b_snk07.spl~ ~override~
+ COPY ~faiths_and_powers/kits/zealots/b_snk08.spl~ ~override~
+ COPY ~faiths_and_powers/kits/zealots/b_snk09.spl~ ~override~
+ COPY ~faiths_and_powers/kits/zealots/b_snk10.spl~ ~override~
+ COPY ~faiths_and_powers/kits/zealots/b_snk11.spl~ ~override~
+ COPY ~faiths_and_powers/kits/zealots/b_snk12.spl~ ~override~
+ COPY ~faiths_and_powers/kits/zealots/b_snk13.spl~ ~override~
 
-LAM zealot_ilmater
-LAM zealot_corellon
-LAM zealot_sune
-LAM zealot_mystra
-LAM zealot_eilistraee
-ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No feasible way to make them not fall in IWDEE w/o fallen.2da
+ LAM zealot_ilmater
+ LAM zealot_corellon
+ LAM zealot_sune
+ LAM zealot_mystra
+ LAM zealot_eilistraee
+ ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No feasible way to make them not fall in IWDEE w/o fallen.2da
   LAM zealot_gruumsh
   LAM zealot_talos
   LAM zealot_kossuth
   LAM zealot_garagos
-END  //End grummsh/talos/kossuth/garagos
+ END  //End grummsh/talos/kossuth/garagos
+END
 //
 // (rangers)
-LAM forest_ranger
-LAM mountain_ranger
-LAM jungle_ranger
-LAM desert_ranger
-LAM arctic_ranger
-LAM beast_master
+ACTION_IF (%d5_install_rangers% = 1) BEGIN
+ LAM forest_ranger
+ LAM mountain_ranger
+ LAM jungle_ranger
+ LAM desert_ranger
+ LAM arctic_ranger
+ LAM beast_master
+END
 //
 // (scouts)
-LAM mage_hunter
-LAM barbarian_ranger
-LAM elven_archer
-LAM halfling_slinger
-//
+ACTION_IF (%d5_install_scouts% = 1) BEGIN
+ LAM mage_hunter
+ LAM barbarian_ranger
+ LAM elven_archer
+ LAM halfling_slinger
+END//
 // (multiclass)
-LAM fighter_druid
-LAM druid_mage
-LAM druid_thief
-LAM druid_ranger
-LAM cm_mystra
-LAM cm_azuth
-LAM cm_bender
-LAM cf_clangeddin
-LAM cr_mielikki
-LAM cr_shaundakul
-LAM cf_helm
-//
+ACTION_IF (%d5_install_multiclass% = 1) BEGIN
+ LAM fighter_druid
+ LAM druid_mage
+ LAM druid_thief
+ LAM druid_ranger
+ LAM cm_mystra
+ LAM cm_azuth
+ LAM cm_bender
+ LAM cf_clangeddin
+ LAM cr_mielikki
+ LAM cr_shaundakul
+ LAM cf_helm
+END//
 //__________________________________________________________________________________
 
 //vanilla kits______________________________________________________________________
@@ -1147,20 +639,10 @@ END
 //Add IWD spells if not already in game
 ACTION_IF GAME_IS ~bgee bg2ee eet~ BEGIN
  ACTION_IF (NOT MOD_IS_INSTALLED ~setup-iwdification.tp2~ ~40~) AND (NOT FILE_EXISTS_IN_GAME ~b_IWD.itm~) BEGIN  //neither IWDification nor our IWDEE spells installed (priest spells)
-  ACTION_DEFINE_ASSOCIATIVE_ARRAY prst BEGIN
-    faiths_and_powers => my_mod
-  END
-  ACTION_PHP_EACH prst AS block => rock BEGIN   //
       INCLUDE ~faiths_and_powers/data/components/Setup_IWD_Spells.tpa~      //install priest spells
-  END
  END
  ACTION_IF (NOT MOD_IS_INSTALLED ~setup-iwdification.tp2~ ~30~) AND (NOT FILE_EXISTS_IN_GAME ~b_IWD.itm~) BEGIN  //neither IWDification nor our IWDEE spells installed  (mage spells)
-  ACTION_DEFINE_ASSOCIATIVE_ARRAY wiz BEGIN
-    faiths_and_powers => my_mod
-  END
-   ACTION_PHP_EACH wiz AS block => rock BEGIN   //
     INCLUDE ~faiths_and_powers/lib/fnp_wiz.tpa~      //install wiz spells
-  END
  END
    COPY ~faiths_and_powers/compatibility/b_IWD.itm~ ~override~   //to detect this component
 END
@@ -1252,6 +734,12 @@ INCLUDE ~faiths_and_powers/lib/default_kit_spheres.tpa~
 LAM ~READ_FNP_KIT_INFO~
 //__________________________________________________________________________________
 
+
+//deity selection___________________________________________________________________
+//
+INCLUDE ~faiths_and_powers/lib/deity_selection.tpa~
+//__________________________________________________________________________________
+
 //alter item usability______________________________________________________________
 //
 LAM d5_item_usability
@@ -1264,20 +752,10 @@ END
 //Add IWD spells if not already in game
 ACTION_IF GAME_IS ~bgee bg2ee eet~ BEGIN
  ACTION_IF (NOT MOD_IS_INSTALLED ~setup-iwdification.tp2~ ~40~) AND (NOT FILE_EXISTS_IN_GAME ~b_IWD.itm~) BEGIN  //neither IWDification nor our IWDEE spells installed (priest spells)
-  ACTION_DEFINE_ASSOCIATIVE_ARRAY prst BEGIN
-    faiths_and_powers => my_mod
-  END
-  ACTION_PHP_EACH prst AS block => rock BEGIN   //
       INCLUDE ~faiths_and_powers/data/components/Setup_IWD_Spells.tpa~      //install priest spells
-  END
  END
  ACTION_IF (NOT MOD_IS_INSTALLED ~setup-iwdification.tp2~ ~30~) AND (NOT FILE_EXISTS_IN_GAME ~b_IWD.itm~) BEGIN  //neither IWDification nor our IWDEE spells installed  (mage spells)
-  ACTION_DEFINE_ASSOCIATIVE_ARRAY wiz BEGIN
-    faiths_and_powers => my_mod
-  END
-   ACTION_PHP_EACH wiz AS block => rock BEGIN   //
     INCLUDE ~faiths_and_powers/lib/fnp_wiz.tpa~      //install wiz spells
-  END
  END
    COPY ~faiths_and_powers/compatibility/b_IWD.itm~ ~override~   //to detect this component
 END
@@ -2141,20 +1619,10 @@ INCLUDE ~faiths_and_powers/lib/default_kit_spheres.tpa~
 //Add IWD spells if not already in game
 ACTION_IF GAME_IS ~bgee bg2ee eet~ BEGIN
  ACTION_IF (NOT MOD_IS_INSTALLED ~setup-iwdification.tp2~ ~40~) AND (NOT FILE_EXISTS_IN_GAME ~b_IWD.itm~) BEGIN  //neither IWDification nor our IWDEE spells installed (priest spells)
-  ACTION_DEFINE_ASSOCIATIVE_ARRAY prst BEGIN
-    faiths_and_powers => my_mod
-  END
-  ACTION_PHP_EACH prst AS block => rock BEGIN   //
       INCLUDE ~faiths_and_powers/data/components/Setup_IWD_Spells.tpa~      //install priest spells
-  END
  END
  ACTION_IF (NOT MOD_IS_INSTALLED ~setup-iwdification.tp2~ ~30~) AND (NOT FILE_EXISTS_IN_GAME ~b_IWD.itm~) BEGIN  //neither IWDification nor our IWDEE spells installed  (mage spells)
-  ACTION_DEFINE_ASSOCIATIVE_ARRAY wiz BEGIN
-    faiths_and_powers => my_mod
-  END
-   ACTION_PHP_EACH wiz AS block => rock BEGIN   //
     INCLUDE ~faiths_and_powers/lib/fnp_wiz.tpa~      //install wiz spells
-  END
  END
    COPY ~faiths_and_powers/compatibility/b_IWD.itm~ ~override~   //to detect this component
 END
@@ -2162,6 +1630,11 @@ END
 //read fnp_compat info______________________________________________________________
 //
 LAM ~READ_FNP_KIT_INFO~
+//__________________________________________________________________________________
+
+//deity selection___________________________________________________________________
+//
+INCLUDE ~faiths_and_powers/lib/deity_selection.tpa~
 //__________________________________________________________________________________
 
 //alter item usability______________________________________________________________

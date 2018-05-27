@@ -45,6 +45,7 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	u_crossbows 		= 1
   STR_VAR
     clab_name 		= EVAL ~%green%~
+	class 			= ~cleric~
 	s_Life 			= ~major~
 	s_Death 		= ~minor~
 	s_Benediction 	= ~major~
@@ -96,6 +97,7 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	u_crossbows 		= 0
   STR_VAR
     clab_name 		= EVAL ~%green%~
+	class 			= ~druid~
 	s_Life 			= ~major~
 	s_Death 		= ~minor~
 	s_Benediction 	= ~x~
@@ -119,6 +121,58 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	s_Shadow 		= ~minor~
 	s_Magic 		= ~x~
 	s_Perdition     = ~x~
+   END
+  END
+  ACTION_IF (%eggs% = 21) BEGIN //..................................................shamans
+LAF ~DEFINE_FNP_KIT_INFO~
+  INT_VAR
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_club_staff	 	= 1
+	u_hammers	 		= 0
+	u_maces 	 		= 0
+	u_flails 			= 0
+	u_axes 				= 1
+	u_daggers 			= 1
+	u_short_swords		= 0
+	u_long_swords		= 0
+	u_scimitars 		= 0
+	u_katanas 			= 0
+	u_bastard_swords 	= 0
+	u_2hand_swords 		= 0
+	u_halberds 			= 0
+	u_spears 	 		= 1
+	u_darts 			= 1
+	u_slings	 		= 1
+	u_bows 				= 1
+	u_crossbows 		= 0
+  STR_VAR
+    clab_name 		= EVAL ~%green%~
+    class			= ~shaman~
+	s_Life 			= ~minor~
+	s_Death 		= ~x~
+	s_Benediction 	= ~x~
+	s_Destruction 	= ~x~
+	s_Protection 	= ~x~
+	s_War 			= ~x~
+	s_Exploration   = ~x~
+	s_Knowledge 	= ~x~
+	s_Deception 	= ~x~
+	s_Thought 		= ~x~
+	s_Dread 		= ~x~
+	s_Vigor 		= ~x~
+	s_Affliction 	= ~x~
+	s_Animal 		= ~major~
+	s_Plant 		= ~major~
+	s_Earth 		= ~x~
+	s_Water 		= ~x~
+	s_Air 			= ~x~
+	s_Fire 			= ~x~
+	s_Light 		= ~x~
+	s_Shadow 		= ~major~
+	s_Magic 		= ~x~
+	s_Perdition     = ~major~
    END
   END
   ACTION_IF (%eggs% = 6) BEGIN //.................................................paladins
@@ -147,6 +201,7 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	u_crossbows 		= 2
   STR_VAR
     clab_name 		= EVAL ~%green%~
+	class 			= ~champion~
 	s_Life 			= ~paladin~
 	s_Death 		= ~x~
 	s_Benediction 	= ~paladin~
@@ -198,6 +253,7 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	u_crossbows 		= 2
   STR_VAR
     clab_name 		= EVAL ~%green%~
+	class 			= ~ranger~
 	s_Life 			= ~ranger~
 	s_Death 		= ~x~
 	s_Benediction 	= ~x~

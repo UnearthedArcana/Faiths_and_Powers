@@ -23,21 +23,21 @@
 //Item revisions: Spell protections ?
 //Regular Items ?
 //Projectile
-ADD_PROJECTILE ~%block%/data/iwd_spells/wizard_2/IDPRO217.pro~   //projectile
+ADD_PROJECTILE ~%mod_folder%/data/iwd_spells/wizard_2/IDPRO217.pro~   //projectile
 //VVC
-COPY ~%block%/data/iwd_spells/wizard_2/#SSSWARM.vvc~ ~override~   //animation
+COPY ~%mod_folder%/data/iwd_spells/wizard_2/#SSSWARM.vvc~ ~override~   //animation
 //bam
-COPY ~%block%/data/iwd_spells/wizard_2/SSSWART.BAM~ ~override~   //animation
-COPY ~%block%/data/iwd_spells/wizard_2/SSSWARR.BAM~ ~override~   //animation
-COPY ~%block%/data/iwd_spells/wizard_2/SSSWARX.BAM~ ~override~   //animation
+COPY ~%mod_folder%/data/iwd_spells/wizard_2/SSSWART.BAM~ ~override~   //animation
+COPY ~%mod_folder%/data/iwd_spells/wizard_2/SSSWARR.BAM~ ~override~   //animation
+COPY ~%mod_folder%/data/iwd_spells/wizard_2/SSSWARX.BAM~ ~override~   //animation
 //animations
 //3d animation
 //sounds
-COPY ~%block%/data/iwd_spells/wizard_2/TRA_18.WAV~ ~override~   //
-COPY ~%block%/data/iwd_spells/wizard_2/RNG_M02.WAV~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/wizard_2/TRA_18.WAV~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/wizard_2/RNG_M02.WAV~ ~override~   //
 //effs
 //Spell itself
-ADD_SPELL ~%block%/data/iwd_spells/wizard_2/b_w204.spl~ 2 2 ~WIZARD_SNILLOCS_SNOWBALL_SWARM~ //
+ADD_SPELL ~%mod_folder%/data/iwd_spells/wizard_2/b_w204.spl~ 2 2 ~WIZARD_SNILLOCS_SNOWBALL_SWARM~ //
         SAY NAME1 @2040000
         SAY NAME2 @2040000
         SAY UNIDENTIFIED_DESC @2040001
@@ -59,16 +59,16 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
   END      //
 //add icons and projectile
   LPF ALTER_SPELL_HEADER INT_VAR projectile = %IDPRO217% STR_VAR icon = EVAL  ~%spell_res%B~ END
-COPY ~%block%/data/iwd_spells/wizard_2/SPWI204a.bam~ ~override/%spell_res%a.bam~
-COPY ~%block%/data/iwd_spells/wizard_2/SPWI204b.bam~ ~override/%spell_res%b.bam~
-COPY ~%block%/data/iwd_spells/wizard_2/SPWI204c.bam~ ~override/%spell_res%c.bam~
+COPY ~%mod_folder%/data/iwd_spells/wizard_2/SPWI204a.bam~ ~override/%spell_res%a.bam~
+COPY ~%mod_folder%/data/iwd_spells/wizard_2/SPWI204b.bam~ ~override/%spell_res%b.bam~
+COPY ~%mod_folder%/data/iwd_spells/wizard_2/SPWI204c.bam~ ~override/%spell_res%c.bam~
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
 
 //Add scroll, and add scroll to stores
 //Copy over the scroll:
-COPY ~%block%/data/iwd_spells/wizard_2/SCSNILL.itm~ ~override~
+COPY ~%mod_folder%/data/iwd_spells/wizard_2/SCSNILL.itm~ ~override~
         SAY NAME1 @10
         SAY NAME2 @2040000
 	SAY DESC @2040001
@@ -105,9 +105,9 @@ COPY_EXISTING ~SCROLLS.STO~ ~override~
 
 END
 //Sh. of Entropy immunity list
-INCLUDE ~%block%/lib/spell_lists/entropy_list.tpa~
+INCLUDE ~%mod_folder%/lib/spell_lists/entropy_list.tpa~
 //lev 2
-INCLUDE ~%block%/lib/spell_lists/2nd_list.tpa~
+INCLUDE ~%mod_folder%/lib/spell_lists/2nd_list.tpa~
 
 //////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////
@@ -126,18 +126,18 @@ INCLUDE ~%block%/lib/spell_lists/2nd_list.tpa~
 //Item revisions: Spell protections ?
 //Regular Items ?
 //Projectile
-ADD_PROJECTILE ~%block%/data/iwd_spells/wizard_3/IDPRO251.pro~   //projectile
+ADD_PROJECTILE ~%mod_folder%/data/iwd_spells/wizard_3/IDPRO251.pro~   //projectile
 //VVC
 //bam
-COPY ~%block%/data/iwd_spells/wizard_3/ICELANT.BAM~ ~override~   //animation
+COPY ~%mod_folder%/data/iwd_spells/wizard_3/ICELANT.BAM~ ~override~   //animation
 //animations
 //3d animation
 //sounds
-COPY ~%block%/data/iwd_spells/wizard_3/#TRA_19.wav~ ~override~   //animation
+COPY ~%mod_folder%/data/iwd_spells/wizard_3/#TRA_19.wav~ ~override~   //animation
 //effs
 //%b_pfire%
 //Spell itself
-ADD_SPELL ~%block%/data/iwd_spells/wizard_3/b_w327.spl~ 2 3 ~WIZARD_ICELANCE~ //
+ADD_SPELL ~%mod_folder%/data/iwd_spells/wizard_3/b_w327.spl~ 2 3 ~WIZARD_ICELANCE~ //
         SAY NAME1 @3270000
         SAY NAME2 @3270000
         SAY UNIDENTIFIED_DESC @3270001
@@ -161,9 +161,9 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
 //add icons and projectile
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   LPF ALTER_SPELL_HEADER INT_VAR projectile = %IDPRO251% STR_VAR icon = EVAL  ~%spell_res%B~ END
-COPY ~%block%/data/iwd_spells/wizard_3/SPWI327a.bam~ ~override/%spell_res%a.bam~
-COPY ~%block%/data/iwd_spells/wizard_3/SPWI327b.bam~ ~override/%spell_res%b.bam~
-COPY ~%block%/data/iwd_spells/wizard_3/SPWI327c.bam~ ~override/%spell_res%c.bam~
+COPY ~%mod_folder%/data/iwd_spells/wizard_3/SPWI327a.bam~ ~override/%spell_res%a.bam~
+COPY ~%mod_folder%/data/iwd_spells/wizard_3/SPWI327b.bam~ ~override/%spell_res%b.bam~
+COPY ~%mod_folder%/data/iwd_spells/wizard_3/SPWI327c.bam~ ~override/%spell_res%c.bam~
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
@@ -171,7 +171,7 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
 
 //Add scroll, and add scroll to stores
 //Copy over the scroll:
-COPY ~%block%/data/iwd_spells/wizard_3/SCICE.itm~ ~override~
+COPY ~%mod_folder%/data/iwd_spells/wizard_3/SCICE.itm~ ~override~
         SAY NAME1 @10
         SAY NAME2 @3270000
 	SAY DESC @3270001
@@ -208,7 +208,7 @@ COPY_EXISTING ~SCROLLS.STO~ ~override~
 
 END
 //Sh. of Entropy immunity list
-INCLUDE ~%block%/lib/spell_lists/entropy_list.tpa~
+INCLUDE ~%mod_folder%/lib/spell_lists/entropy_list.tpa~
 
 //////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////
@@ -227,22 +227,22 @@ INCLUDE ~%block%/lib/spell_lists/entropy_list.tpa~
 //Item revisions: Spell protections ?
 //Regular Items ?
 //Projectile
-ADD_PROJECTILE ~%block%/data/iwd_spells/wizard_4/idpro316.pro~   //projectile
-ADD_PROJECTILE ~%block%/data/iwd_spells/wizard_4/SMLLARNC.pro~   //projectile
+ADD_PROJECTILE ~%mod_folder%/data/iwd_spells/wizard_4/idpro316.pro~   //projectile
+ADD_PROJECTILE ~%mod_folder%/data/iwd_spells/wizard_4/SMLLARNC.pro~   //projectile
 //VVC
 //bam
-COPY ~%block%/data/iwd_spells/wizard_4/VSPHERT.BAM~ ~override~   //animation
-COPY ~%block%/data/iwd_spells/wizard_4/VSPHERX.BAM~ ~override~   //animation
-COPY ~%block%/data/iwd_spells/wizard_4/ACIDH.BAM~ ~override~   //animation
+COPY ~%mod_folder%/data/iwd_spells/wizard_4/VSPHERT.BAM~ ~override~   //animation
+COPY ~%mod_folder%/data/iwd_spells/wizard_4/VSPHERX.BAM~ ~override~   //animation
+COPY ~%mod_folder%/data/iwd_spells/wizard_4/ACIDH.BAM~ ~override~   //animation
 //animations
 //3d animation
 //sounds
-COPY ~%block%/data/iwd_spells/wizard_4/#TRA_60.WAV~ ~override~   //
-COPY ~%block%/data/iwd_spells/wizard_4/TRA_06.WAV~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/wizard_4/#TRA_60.WAV~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/wizard_4/TRA_06.WAV~ ~override~   //
 //effs
 //%b_pfire%
 //Spell itself
-ADD_SPELL ~%block%/data/iwd_spells/wizard_4/b_w432.spl~ 2 4 ~WIZARD_VITRIOLIC_SPHERE~ //
+ADD_SPELL ~%mod_folder%/data/iwd_spells/wizard_4/b_w432.spl~ 2 4 ~WIZARD_VITRIOLIC_SPHERE~ //
         SAY NAME1 @4320000
         SAY NAME2 @4320000
         SAY UNIDENTIFIED_DESC @4320001
@@ -255,10 +255,10 @@ END
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   LPF ALTER_SPELL_HEADER INT_VAR projectile = %idpro316% STR_VAR icon = EVAL  ~%spell_res%B~ END
 
-COPY ~%block%/data/iwd_spells/wizard_4/b_w432y.spl~ ~override/%spell_res%y.spl~   //sec spell
+COPY ~%mod_folder%/data/iwd_spells/wizard_4/b_w432y.spl~ ~override/%spell_res%y.spl~   //sec spell
 //pro (and, sure, spell icon) to spell
 	LPF ALTER_SPELL_HEADER INT_VAR projectile = %idpro316% STR_VAR icon = EVAL  ~%spell_res%B~ END
-COPY ~%block%/data/iwd_spells/wizard_4/b_w432z.spl~ ~override/%spell_res%z.spl~   //sec spell
+COPY ~%mod_folder%/data/iwd_spells/wizard_4/b_w432z.spl~ ~override/%spell_res%z.spl~   //sec spell
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   LPF ALTER_EFFECT
       INT_VAR match_opcode = 146            //
@@ -266,16 +266,16 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
   END      //
   LPF CLONE_EFFECT INT_VAR match_opcode = 146 STR_VAR resource = EVAL ~%spell_res%z~ END     //
 //icons
-COPY ~%block%/data/iwd_spells/wizard_4/SPWI432a.bam~ ~override/%spell_res%a.bam~
-COPY ~%block%/data/iwd_spells/wizard_4/SPWI432b.bam~ ~override/%spell_res%b.bam~
-COPY ~%block%/data/iwd_spells/wizard_4/SPWI432c.bam~ ~override/%spell_res%c.bam~
+COPY ~%mod_folder%/data/iwd_spells/wizard_4/SPWI432a.bam~ ~override/%spell_res%a.bam~
+COPY ~%mod_folder%/data/iwd_spells/wizard_4/SPWI432b.bam~ ~override/%spell_res%b.bam~
+COPY ~%mod_folder%/data/iwd_spells/wizard_4/SPWI432c.bam~ ~override/%spell_res%c.bam~
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
 
 //Add scroll, and add scroll to stores
 //Copy over the scroll:
-COPY ~%block%/data/iwd_spells/wizard_4/SPWI424X.itm~ ~override~
+COPY ~%mod_folder%/data/iwd_spells/wizard_4/SPWI424X.itm~ ~override~
         SAY NAME1 @10
         SAY NAME2 @4320000
 	SAY DESC @4320001
@@ -318,7 +318,7 @@ COPY_EXISTING ~UDDROW25.STO~ ~override~
 
 END
 //4th lev
-INCLUDE ~%block%/lib/spell_lists/4th_list.tpa~
+INCLUDE ~%mod_folder%/lib/spell_lists/4th_list.tpa~
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -331,48 +331,48 @@ INCLUDE ~%block%/lib/spell_lists/4th_list.tpa~
 //Projectile
 //VVC
 //2da
-COPY ~%block%/data/iwd_spells/wizard_4/b_sh01.2da~ ~override~   //animation
-COPY ~%block%/data/iwd_spells/wizard_4/b_sh02.2da~ ~override~   //animation
+COPY ~%mod_folder%/data/iwd_spells/wizard_4/b_sh01.2da~ ~override~   //animation
+COPY ~%mod_folder%/data/iwd_spells/wizard_4/b_sh02.2da~ ~override~   //animation
 //bam
-COPY ~%block%/data/iwd_spells/wizard_4/MSumm1X.bam~ ~override~   //animation
-COPY ~%block%/data/iwd_spells/wizard_4/MSumm1H.bam~ ~override~   //animation
+COPY ~%mod_folder%/data/iwd_spells/wizard_4/MSumm1X.bam~ ~override~   //animation
+COPY ~%mod_folder%/data/iwd_spells/wizard_4/MSumm1H.bam~ ~override~   //animation
 //animations
 //3d animation
 //itm
-COPY ~%block%/data/iwd_spells/wizard_4/TRANS20.itm~ ~override~   //
-COPY ~%block%/data/iwd_spells/wizard_4/SUMRING.itm~ ~override~   //
-COPY ~%block%/data/iwd_spells/wizard_4/P1-6.itm~ ~override~   //
-COPY ~%block%/data/iwd_spells/wizard_4/S1-12.itm~ ~override~   //
-COPY ~%block%/data/iwd_spells/wizard_4/M1D7SLSH.itm~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/wizard_4/TRANS20.itm~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/wizard_4/SUMRING.itm~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/wizard_4/P1-6.itm~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/wizard_4/S1-12.itm~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/wizard_4/M1D7SLSH.itm~ ~override~   //
 //sounds
 //effs
 //cre
-COPY ~%block%/data/iwd_spells/wizard_4/SS1gob1.cre~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/wizard_4/SS1gob1.cre~ ~override~   //
         SAY NAME1 ~goblin~
         SAY NAME2 ~goblin~
-COPY ~%block%/data/iwd_spells/wizard_4/SS1GOB2.cre~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/wizard_4/SS1GOB2.cre~ ~override~   //
         SAY NAME1 ~goblin~
         SAY NAME2 ~goblin~
-COPY ~%block%/data/iwd_spells/wizard_4/SS1GOB3.cre~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/wizard_4/SS1GOB3.cre~ ~override~   //
         SAY NAME1 ~goblin~
         SAY NAME2 ~goblin~
-COPY ~%block%/data/iwd_spells/wizard_4/SS1liz3.cre~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/wizard_4/SS1liz3.cre~ ~override~   //
         SAY NAME1 ~Lizard Man~
         SAY NAME2 ~Lizard Man~
-COPY ~%block%/data/iwd_spells/wizard_4/SS1liz4.cre~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/wizard_4/SS1liz4.cre~ ~override~   //
         SAY NAME1 ~Lizard Man~
         SAY NAME2 ~Lizard Man~
-COPY ~%block%/data/iwd_spells/wizard_4/SS1TRL6.cre~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/wizard_4/SS1TRL6.cre~ ~override~   //
         SAY NAME1 ~Troll~
         SAY NAME2 ~Troll~
-COPY ~%block%/data/iwd_spells/wizard_4/SS1TRL7.cre~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/wizard_4/SS1TRL7.cre~ ~override~   //
         SAY NAME1 ~Troll~
         SAY NAME2 ~Troll~
-COPY ~%block%/data/iwd_spells/wizard_4/SS1TRL8.cre~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/wizard_4/SS1TRL8.cre~ ~override~   //
         SAY NAME1 ~Troll~
         SAY NAME2 ~Troll~
 //Spell itself
-ADD_SPELL ~%block%/data/iwd_spells/wizard_4/b_w426.spl~ 2 4 ~WIZARD_SHADOW_MONSTERS~ //
+ADD_SPELL ~%mod_folder%/data/iwd_spells/wizard_4/b_w426.spl~ 2 4 ~WIZARD_SHADOW_MONSTERS~ //
         SAY NAME1 @4260000
         SAY NAME2 @4260000
         SAY UNIDENTIFIED_DESC @4260001
@@ -392,9 +392,9 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
   LPF CLONE_EFFECT INT_VAR multi_match = 1     match_opcode = 331  probability1 = 32 END   //33% 5 cre
   LPF CLONE_EFFECT INT_VAR multi_match = 1     match_opcode = 331  probability1 = 16 END   //~17% 6 cre
 //icons
-COPY ~%block%/data/iwd_spells/wizard_4/SPWI426a.bam~ ~override/%spell_res%a.bam~
-COPY ~%block%/data/iwd_spells/wizard_4/SPWI426b.bam~ ~override/%spell_res%b.bam~
-COPY ~%block%/data/iwd_spells/wizard_4/SPWI426c.bam~ ~override/%spell_res%c.bam~
+COPY ~%mod_folder%/data/iwd_spells/wizard_4/SPWI426a.bam~ ~override/%spell_res%a.bam~
+COPY ~%mod_folder%/data/iwd_spells/wizard_4/SPWI426b.bam~ ~override/%spell_res%b.bam~
+COPY ~%mod_folder%/data/iwd_spells/wizard_4/SPWI426c.bam~ ~override/%spell_res%c.bam~
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   LPF ALTER_SPELL_HEADER STR_VAR icon = EVAL  ~%spell_res%B~ END
@@ -403,7 +403,7 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
 //put a scroll on Kalah
 //Add scroll, and add scroll to stores
 //Copy over the scroll:
-COPY ~%block%/data/iwd_spells/wizard_4/SCSHAD.itm~ ~override~
+COPY ~%mod_folder%/data/iwd_spells/wizard_4/SCSHAD.itm~ ~override~
         SAY NAME1 @10
         SAY NAME2 @4260000
 	SAY DESC @4260001
@@ -451,17 +451,17 @@ END
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //Projectile
-ADD_PROJECTILE ~%block%/data/iwd_spells/wizard_4/idpro407.pro~   //projectile
+ADD_PROJECTILE ~%mod_folder%/data/iwd_spells/wizard_4/idpro407.pro~   //projectile
 //VVC
 //bam
 //bam
 //animations
 //3d animation
 //sounds
-COPY ~%block%/data/iwd_spells/wizard_4/#EFF_M05.WAV~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/wizard_4/#EFF_M05.WAV~ ~override~   //
 //effs
 //Spell itself
-ADD_SPELL ~%block%/data/iwd_spells/wizard_4/b_w427.spl~ 2 4 ~WIZARD_EMOTION_COURAGE~ //
+ADD_SPELL ~%mod_folder%/data/iwd_spells/wizard_4/b_w427.spl~ 2 4 ~WIZARD_EMOTION_COURAGE~ //
         SAY NAME1 @4270000
         SAY NAME2 @4270000
         SAY UNIDENTIFIED_DESC @4270001
@@ -478,12 +478,12 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
   LPF ALTER_EFFECT
       INT_VAR match_opcode = 321 STR_VAR match_resource = ~SPWI427~ resource = EVAL ~%spell_res%~ END      // SPWI427
 //icons
-COPY ~%block%/data/iwd_spells/wizard_4/SPWI427a.bam~ ~override/%spell_res%a.bam~
-COPY ~%block%/data/iwd_spells/wizard_4/SPWI427b.bam~ ~override/%spell_res%b.bam~
-COPY ~%block%/data/iwd_spells/wizard_4/SPWI427c.bam~ ~override/%spell_res%c.bam~
+COPY ~%mod_folder%/data/iwd_spells/wizard_4/SPWI427a.bam~ ~override/%spell_res%a.bam~
+COPY ~%mod_folder%/data/iwd_spells/wizard_4/SPWI427b.bam~ ~override/%spell_res%b.bam~
+COPY ~%mod_folder%/data/iwd_spells/wizard_4/SPWI427c.bam~ ~override/%spell_res%c.bam~
 //Portrait Icons
 //Icon itself
-COPY ~%block%/data/iwd_spells/wizard_4/B_COUR.bam~ ~override~
+COPY ~%mod_folder%/data/iwd_spells/wizard_4/B_COUR.bam~ ~override~
  SET strref = RESOLVE_STR_REF(@4270000)
 
 //Thanks kjeron and argent77!!!
@@ -510,13 +510,13 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
   WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
 
 //bloodrage immunity list
-INCLUDE ~%block%/lib/spell_lists/blood_list.tpa~
+INCLUDE ~%mod_folder%/lib/spell_lists/blood_list.tpa~
 //emotion
-INCLUDE ~%block%/lib/spell_lists/emotion_list.tpa~
+INCLUDE ~%mod_folder%/lib/spell_lists/emotion_list.tpa~
 
 //Add scroll, and add scroll to stores
 //Copy over the scroll:
-COPY ~%block%/data/iwd_spells/wizard_4/SCCOUR.itm~ ~override~
+COPY ~%mod_folder%/data/iwd_spells/wizard_4/SCCOUR.itm~ ~override~
         SAY NAME1 @10
         SAY NAME2 @4270000
 	SAY DESC @4270001
@@ -566,21 +566,21 @@ END
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Projectile
-ADD_PROJECTILE ~%block%/data/iwd_spells/wizard_4/idpro255.pro~   //projectile
+ADD_PROJECTILE ~%mod_folder%/data/iwd_spells/wizard_4/idpro255.pro~   //projectile
 //VVC
-COPY ~%block%/data/iwd_spells/wizard_4/#GENENCH.VVC~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/wizard_4/#GENENCH.VVC~ ~override~   //
 //bam
-COPY ~%block%/data/iwd_spells/wizard_4/ENCHANX.BAM~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/wizard_4/ENCHANX.BAM~ ~override~   //
 //bam
 //animations
 //3d animation
 //sounds
-COPY ~%block%/data/iwd_spells/wizard_4/ARE_M21.WAV~ ~override~   //#EFF_E05.WAV
-COPY ~%block%/data/iwd_spells/wizard_4/#EFF_E05.WAV~ ~override~   //
-COPY ~%block%/data/iwd_spells/wizard_4/#EFF_M05.WAV~ ~override~   //#EFF_E05.WAV
+COPY ~%mod_folder%/data/iwd_spells/wizard_4/ARE_M21.WAV~ ~override~   //#EFF_E05.WAV
+COPY ~%mod_folder%/data/iwd_spells/wizard_4/#EFF_E05.WAV~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/wizard_4/#EFF_M05.WAV~ ~override~   //#EFF_E05.WAV
 //effs
 //Spell itself
-ADD_SPELL ~%block%/data/iwd_spells/wizard_4/b_w428.spl~ 2 4 ~WIZARD_EMOTION_FEAR~ //
+ADD_SPELL ~%mod_folder%/data/iwd_spells/wizard_4/b_w428.spl~ 2 4 ~WIZARD_EMOTION_FEAR~ //
         SAY NAME1 @4280000
         SAY NAME2 @4280000
         SAY UNIDENTIFIED_DESC @4280001
@@ -597,21 +597,21 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
   LPF ALTER_EFFECT
       INT_VAR match_opcode = 139 parameter1 = %strref%   END      //
 //icons
-COPY ~%block%/data/iwd_spells/wizard_4/SPWI428a.bam~ ~override/%spell_res%a.bam~
-COPY ~%block%/data/iwd_spells/wizard_4/SPWI428b.bam~ ~override/%spell_res%b.bam~
-COPY ~%block%/data/iwd_spells/wizard_4/SPWI428c.bam~ ~override/%spell_res%c.bam~
+COPY ~%mod_folder%/data/iwd_spells/wizard_4/SPWI428a.bam~ ~override/%spell_res%a.bam~
+COPY ~%mod_folder%/data/iwd_spells/wizard_4/SPWI428b.bam~ ~override/%spell_res%b.bam~
+COPY ~%mod_folder%/data/iwd_spells/wizard_4/SPWI428c.bam~ ~override/%spell_res%c.bam~
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   LPF ALTER_SPELL_HEADER INT_VAR projectile = %idpro255% STR_VAR icon = EVAL  ~%spell_res%B~ END
   WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
 //bloodrage immunity list
-INCLUDE ~%block%/lib/spell_lists/blood_list.tpa~
+INCLUDE ~%mod_folder%/lib/spell_lists/blood_list.tpa~
 //fear
-INCLUDE ~%block%/lib/spell_lists/fear_list.tpa~
+INCLUDE ~%mod_folder%/lib/spell_lists/fear_list.tpa~
 
 //Add scroll, and add scroll to stores
 //Copy over the scroll:
-COPY ~%block%/data/iwd_spells/wizard_4/SCFEAR.itm~ ~override~
+COPY ~%mod_folder%/data/iwd_spells/wizard_4/SCFEAR.itm~ ~override~
         SAY NAME1 @10
         SAY NAME2 @4280000
 	SAY DESC @4280001
@@ -662,18 +662,18 @@ END
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //Projectile
-ADD_PROJECTILE ~%block%/data/iwd_spells/wizard_4/idpro407.pro~   //projectile
+ADD_PROJECTILE ~%mod_folder%/data/iwd_spells/wizard_4/idpro407.pro~   //projectile
 //VVC
 //bam
 //bam
 //animations
 //3d animation
 //sounds
-COPY ~%block%/data/iwd_spells/wizard_4/#EFF_M05.WAV~ ~override~   //
-COPY ~%block%/data/iwd_spells/wizard_4/#EFF_E03.WAV~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/wizard_4/#EFF_M05.WAV~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/wizard_4/#EFF_E03.WAV~ ~override~   //
 //effs
 //Spell itself
-ADD_SPELL ~%block%/data/iwd_spells/wizard_4/b_w429.spl~ 2 4 ~WIZARD_EMOTION_HOPE~ //
+ADD_SPELL ~%mod_folder%/data/iwd_spells/wizard_4/b_w429.spl~ 2 4 ~WIZARD_EMOTION_HOPE~ //
         SAY NAME1 @4290000
         SAY NAME2 @4290000
         SAY UNIDENTIFIED_DESC @4290001
@@ -690,12 +690,12 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
       STR_VAR resource = EVAL ~%spell_res%~
   END      //
 //icons
-COPY ~%block%/data/iwd_spells/wizard_4/SPWI429a.bam~ ~override/%spell_res%a.bam~
-COPY ~%block%/data/iwd_spells/wizard_4/SPWI429b.bam~ ~override/%spell_res%b.bam~
-COPY ~%block%/data/iwd_spells/wizard_4/SPWI429c.bam~ ~override/%spell_res%c.bam~
+COPY ~%mod_folder%/data/iwd_spells/wizard_4/SPWI429a.bam~ ~override/%spell_res%a.bam~
+COPY ~%mod_folder%/data/iwd_spells/wizard_4/SPWI429b.bam~ ~override/%spell_res%b.bam~
+COPY ~%mod_folder%/data/iwd_spells/wizard_4/SPWI429c.bam~ ~override/%spell_res%c.bam~
 //Portrait Icons
 //Icon itself
-COPY ~%block%/data/iwd_spells/wizard_4/B_HOPE.bam~ ~override~
+COPY ~%mod_folder%/data/iwd_spells/wizard_4/B_HOPE.bam~ ~override~
  SET strref = RESOLVE_STR_REF(@4290000)
 
 //Thanks kjeron and argent77!!!
@@ -722,9 +722,9 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
   WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
 
 //bloodrage immunity list
-INCLUDE ~%block%/lib/spell_lists/blood_list.tpa~
+INCLUDE ~%mod_folder%/lib/spell_lists/blood_list.tpa~
 //emotion
-INCLUDE ~%block%/lib/spell_lists/emotion_list.tpa~
+INCLUDE ~%mod_folder%/lib/spell_lists/emotion_list.tpa~
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -733,19 +733,19 @@ INCLUDE ~%block%/lib/spell_lists/emotion_list.tpa~
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //Projectile
-ADD_PROJECTILE ~%block%/data/iwd_spells/wizard_4/idpro315.pro~   //projectile
+ADD_PROJECTILE ~%mod_folder%/data/iwd_spells/wizard_4/idpro315.pro~   //projectile
 //VVC
 //bam
-COPY ~%block%/data/iwd_spells/wizard_4/SHOUTT.BAM~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/wizard_4/SHOUTT.BAM~ ~override~   //
 //bam
 //animations
 //3d animation
 //sounds
-COPY ~%block%/data/iwd_spells/wizard_4/#TRA_08.WAV~ ~override~   //#FF_M100.WAV
-COPY ~%block%/data/iwd_spells/wizard_4/#FF_M100.WAV~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/wizard_4/#TRA_08.WAV~ ~override~   //#FF_M100.WAV
+COPY ~%mod_folder%/data/iwd_spells/wizard_4/#FF_M100.WAV~ ~override~   //
 //effs
 //Spell itself
-ADD_SPELL ~%block%/data/iwd_spells/wizard_4/b_w431.spl~ 2 4 ~WIZARD_SHOUT~ //
+ADD_SPELL ~%mod_folder%/data/iwd_spells/wizard_4/b_w431.spl~ 2 4 ~WIZARD_SHOUT~ //
         SAY NAME1 @4310000
         SAY NAME2 @4310000
         SAY UNIDENTIFIED_DESC @4310001
@@ -762,15 +762,15 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
       STR_VAR resource = EVAL ~%spell_res%~
   END      //
 //icons
-COPY ~%block%/data/iwd_spells/wizard_4/SPWI431a.bam~ ~override/%spell_res%a.bam~
-COPY ~%block%/data/iwd_spells/wizard_4/SPWI431b.bam~ ~override/%spell_res%b.bam~
-COPY ~%block%/data/iwd_spells/wizard_4/SPWI431c.bam~ ~override/%spell_res%c.bam~
+COPY ~%mod_folder%/data/iwd_spells/wizard_4/SPWI431a.bam~ ~override/%spell_res%a.bam~
+COPY ~%mod_folder%/data/iwd_spells/wizard_4/SPWI431b.bam~ ~override/%spell_res%b.bam~
+COPY ~%mod_folder%/data/iwd_spells/wizard_4/SPWI431c.bam~ ~override/%spell_res%c.bam~
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   LPF ALTER_SPELL_HEADER INT_VAR projectile = %idpro315% STR_VAR icon = EVAL  ~%spell_res%B~ END
   WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
 //bloodrage immunity list
-//INCLUDE ~%block%/lib/spell_lists/blood_list.tpa~
+//INCLUDE ~%mod_folder%/lib/spell_lists/blood_list.tpa~
 
 
 //////////////////////////////////////////////////////////////
@@ -792,52 +792,52 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
 //Projectile
 //VVC
 //2da
-COPY ~%block%/data/iwd_spells/wizard_6/b_sh03.2da~ ~override~   //animation
+COPY ~%mod_folder%/data/iwd_spells/wizard_6/b_sh03.2da~ ~override~   //animation
 //bam
 //animations
 //3d animation
 //itm
-COPY ~%block%/data/iwd_spells/wizard_6/TRANS40.itm~ ~override~   //
-COPY ~%block%/data/iwd_spells/wizard_6/S1-8.itm~ ~override~   //
-COPY ~%block%/data/iwd_spells/wizard_6/B1-12.itm~ ~override~   //
-COPY ~%block%/data/iwd_spells/wizard_6/REG1HP2.itm~ ~override~   //
-COPY ~%block%/data/iwd_spells/wizard_6/TRANS60.itm~ ~override~   //
-COPY ~%block%/data/iwd_spells/wizard_6/SUMAMU.itm~ ~override~   //
-COPY ~%block%/data/iwd_spells/wizard_6/UMBERHLK.itm~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/wizard_6/TRANS40.itm~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/wizard_6/S1-8.itm~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/wizard_6/B1-12.itm~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/wizard_6/REG1HP2.itm~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/wizard_6/TRANS60.itm~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/wizard_6/SUMAMU.itm~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/wizard_6/UMBERHLK.itm~ ~override~   //
 //sounds
 //effs
 //cre
-COPY ~%block%/data/iwd_spells/wizard_6/SS2gob2.cre~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/wizard_6/SS2gob2.cre~ ~override~   //
         SAY NAME1 ~Goblin Elite~
         SAY NAME2 ~Goblin Elite~
-COPY ~%block%/data/iwd_spells/wizard_6/SS2gob3.cre~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/wizard_6/SS2gob3.cre~ ~override~   //
         SAY NAME1 ~Goblin Elite~
         SAY NAME2 ~Goblin Elite~
-COPY ~%block%/data/iwd_spells/wizard_6/SS2liz5.cre~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/wizard_6/SS2liz5.cre~ ~override~   //
         SAY NAME1 ~Tough Lizard Man~
         SAY NAME2 ~Tough Lizard Man~
-COPY ~%block%/data/iwd_spells/wizard_6/SS2liz6.cre~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/wizard_6/SS2liz6.cre~ ~override~   //
         SAY NAME1 ~Tough Lizard Man~
         SAY NAME2 ~Tough Lizard Man~
-COPY ~%block%/data/iwd_spells/wizard_6/SS2liz7.cre~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/wizard_6/SS2liz7.cre~ ~override~   //
         SAY NAME1 ~Tough Lizard Man~
         SAY NAME2 ~Tough Lizard Man~
-COPY ~%block%/data/iwd_spells/wizard_6/SS3trl7.cre~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/wizard_6/SS3trl7.cre~ ~override~   //
         SAY NAME1 ~Troll~
         SAY NAME2 ~Troll~
-COPY ~%block%/data/iwd_spells/wizard_6/SS3trl8.cre~ ~override~   // Check animations...actually check all animations
+COPY ~%mod_folder%/data/iwd_spells/wizard_6/SS3trl8.cre~ ~override~   // Check animations...actually check all animations
         SAY NAME1 ~Troll~
         SAY NAME2 ~Troll~
 /*    Uhulk anims not in all
-COPY ~%block%/data/iwd_spells/wizard_6/SS3umb8.cre~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/wizard_6/SS3umb8.cre~ ~override~   //
         SAY NAME1 ~Umber Hulk~
         SAY NAME2 ~Umber Hulk~
-COPY ~%block%/data/iwd_spells/wizard_6/SS3umb9.cre~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/wizard_6/SS3umb9.cre~ ~override~   //
         SAY NAME1 ~Umber Hulk~
         SAY NAME2 ~Umber Hulk~
 */
 //Spell itself
-ADD_SPELL ~%block%/data/iwd_spells/wizard_6/B_W629.spl~ 2 6 ~WIZARD_SHADES~ //
+ADD_SPELL ~%mod_folder%/data/iwd_spells/wizard_6/B_W629.spl~ 2 6 ~WIZARD_SHADES~ //
         SAY NAME1 @6290000
         SAY NAME2 @6290000
         SAY UNIDENTIFIED_DESC @6290001
@@ -856,9 +856,9 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
   LPF CLONE_EFFECT INT_VAR multi_match = 1     match_opcode = 331  probability1 = 16 END   //~17% 6 cre
 
 //icons
-COPY ~%block%/data/iwd_spells/wizard_6/SPWI629a.bam~ ~override/%spell_res%a.bam~
-COPY ~%block%/data/iwd_spells/wizard_6/SPWI629b.bam~ ~override/%spell_res%b.bam~
-COPY ~%block%/data/iwd_spells/wizard_6/SPWI629c.bam~ ~override/%spell_res%c.bam~
+COPY ~%mod_folder%/data/iwd_spells/wizard_6/SPWI629a.bam~ ~override/%spell_res%a.bam~
+COPY ~%mod_folder%/data/iwd_spells/wizard_6/SPWI629b.bam~ ~override/%spell_res%b.bam~
+COPY ~%mod_folder%/data/iwd_spells/wizard_6/SPWI629c.bam~ ~override/%spell_res%c.bam~
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   LPF ALTER_SPELL_HEADER STR_VAR icon = EVAL  ~%spell_res%B~ END
@@ -873,11 +873,11 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
 //Item revisions: Spell protections ?
 //Regular Items ?
 //Projectile
-ADD_PROJECTILE ~%block%/data/iwd_spells/wizard_6/idpro299.pro~   //projectile
+ADD_PROJECTILE ~%mod_folder%/data/iwd_spells/wizard_6/idpro299.pro~   //projectile
 //probam
-COPY ~%block%/data/iwd_spells/wizard_6/SEATERA.bam~ ~override~   //animation
+COPY ~%mod_folder%/data/iwd_spells/wizard_6/SEATERA.bam~ ~override~   //animation
 //Spell itself
-ADD_SPELL ~%block%/data/iwd_spells/wizard_6/B_W631.spl~ 2 6 ~WIZARD_SOUL_EATER~ //
+ADD_SPELL ~%mod_folder%/data/iwd_spells/wizard_6/B_W631.spl~ 2 6 ~WIZARD_SOUL_EATER~ //
         SAY NAME1 @6310000
         SAY NAME2 @6310000
         SAY UNIDENTIFIED_DESC @6310001
@@ -896,20 +896,20 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
       STR_VAR resource = EVAL ~%spell_res%b~
   END      //
 //secondary spells
-COPY ~%block%/data/iwd_spells/wizard_6/B_W631b.spl~ ~override/%spell_res%b.spl~   //sec spell
+COPY ~%mod_folder%/data/iwd_spells/wizard_6/B_W631b.spl~ ~override/%spell_res%b.spl~   //sec spell
 //creature for secspell
-COPY ~%block%/data/iwd_spells/wizard_6/AD3SKLM.cre~ ~override~   //sec spell cre
+COPY ~%mod_folder%/data/iwd_spells/wizard_6/AD3SKLM.cre~ ~override~   //sec spell cre
         SAY NAME1 ~Skeleton~
         SAY NAME2 ~Skeleton~
 //cre items
-COPY ~%block%/data/iwd_spells/wizard_6/RNDTRE40.itm~ ~override~   //sec spell cre itm
-COPY ~%block%/data/iwd_spells/wizard_6/RING95.itm~ ~override~   //sec spell cre itm
+COPY ~%mod_folder%/data/iwd_spells/wizard_6/RNDTRE40.itm~ ~override~   //sec spell cre itm
+COPY ~%mod_folder%/data/iwd_spells/wizard_6/RING95.itm~ ~override~   //sec spell cre itm
 //cre script
-  COMPILE ~%block%/data/iwd_spells/wizard_6/GNSUMMM.baf~
+  COMPILE ~%mod_folder%/data/iwd_spells/wizard_6/GNSUMMM.baf~
 //icons
-COPY ~%block%/data/iwd_spells/wizard_6/SPWI631a.bam~ ~override/%spell_res%a.bam~
-COPY ~%block%/data/iwd_spells/wizard_6/SPWI631b.bam~ ~override/%spell_res%b.bam~
-COPY ~%block%/data/iwd_spells/wizard_6/SPWI631c.bam~ ~override/%spell_res%c.bam~
+COPY ~%mod_folder%/data/iwd_spells/wizard_6/SPWI631a.bam~ ~override/%spell_res%a.bam~
+COPY ~%mod_folder%/data/iwd_spells/wizard_6/SPWI631b.bam~ ~override/%spell_res%b.bam~
+COPY ~%mod_folder%/data/iwd_spells/wizard_6/SPWI631c.bam~ ~override/%spell_res%c.bam~
 //add pro/bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   LPF ALTER_SPELL_HEADER INT_VAR projectile = %idpro299% STR_VAR icon = EVAL  ~%spell_res%B~ END
@@ -932,18 +932,18 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
 //Item revisions: Spell protections ?
 //Regular Items ?
 //Projectile
-ADD_PROJECTILE ~%block%/data/iwd_spells/wizard_7/idpro211.pro~   //projectile
+ADD_PROJECTILE ~%mod_folder%/data/iwd_spells/wizard_7/idpro211.pro~   //projectile
 //VVC
 //bam
-COPY ~%block%/data/iwd_spells/wizard_7/ASTORMA.bam~ ~override~   //animation
+COPY ~%mod_folder%/data/iwd_spells/wizard_7/ASTORMA.bam~ ~override~   //animation
 //animations
 //3d animation
 //sounds
-COPY ~%block%/data/iwd_spells/wizard_7/ARE_M04.WAV~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/wizard_7/ARE_M04.WAV~ ~override~   //
 //effs
 //%b_pfire%
 //Spell itself
-ADD_SPELL ~%block%/data/iwd_spells/wizard_7/b_w724.spl~ 2 7 ~WIZARD_ACID_STORM~ //
+ADD_SPELL ~%mod_folder%/data/iwd_spells/wizard_7/b_w724.spl~ 2 7 ~WIZARD_ACID_STORM~ //
         SAY NAME1 @7240000
         SAY NAME2 @7240000
         SAY UNIDENTIFIED_DESC @7240001
@@ -959,9 +959,9 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
       STR_VAR resource = EVAL ~%spell_res%~
   END      //
 //icons
-COPY ~%block%/data/iwd_spells/wizard_7/SPWI724a.bam~ ~override/%spell_res%a.bam~
-COPY ~%block%/data/iwd_spells/wizard_7/SPWI724b.bam~ ~override/%spell_res%b.bam~
-COPY ~%block%/data/iwd_spells/wizard_7/SPWI724c.bam~ ~override/%spell_res%c.bam~
+COPY ~%mod_folder%/data/iwd_spells/wizard_7/SPWI724a.bam~ ~override/%spell_res%a.bam~
+COPY ~%mod_folder%/data/iwd_spells/wizard_7/SPWI724b.bam~ ~override/%spell_res%b.bam~
+COPY ~%mod_folder%/data/iwd_spells/wizard_7/SPWI724c.bam~ ~override/%spell_res%c.bam~
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   LPF ALTER_SPELL_HEADER INT_VAR projectile = %idpro211% STR_VAR icon = EVAL  ~%spell_res%B~ END

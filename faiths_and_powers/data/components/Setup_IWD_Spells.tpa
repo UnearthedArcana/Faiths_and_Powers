@@ -51,7 +51,7 @@ FYI   */
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //detect this sub component
- COPY ~%block%/data/iwd_spells/b_wizo.itm~ ~override/b_prez.itm~   //To detect this sub component
+ COPY ~%mod_folder%/data/iwd_spells/b_wizo.itm~ ~override/b_prez.itm~   //To detect this sub component
 
 //////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////
@@ -70,22 +70,22 @@ FYI   */
 //Item revisions: Spell protections ?
 //Regular Items ?
 //Projectile
-ADD_PROJECTILE ~%block%/data/iwd_spells/priest_1/idpro237.pro~   //projectile
+ADD_PROJECTILE ~%mod_folder%/data/iwd_spells/priest_1/idpro237.pro~   //projectile
 //VVC
-COPY ~%block%/data/iwd_spells/priest_1/#BLESS.vvc~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_1/#BLESS.vvc~ ~override~   //
 //bam
-COPY ~%block%/data/iwd_spells/priest_1/AREA1X.bam~ ~override~   //animation
+COPY ~%mod_folder%/data/iwd_spells/priest_1/AREA1X.bam~ ~override~   //animation
 //animations
 //3d animation
-COPY ~%block%/data/iwd_spells/priest_1/CURSEH.bam~ ~override~   //animation
+COPY ~%mod_folder%/data/iwd_spells/priest_1/CURSEH.bam~ ~override~   //animation
 //sounds
-COPY ~%block%/data/iwd_spells/priest_1/#EFF_P99.WAV~ ~override~   //sound
-COPY ~%block%/data/iwd_spells/priest_1/#EFF_P32.wav~ ~override~   //sound
-COPY ~%block%/data/iwd_spells/priest_1/#EFF_E04.WAV~ ~override~   //sound
+COPY ~%mod_folder%/data/iwd_spells/priest_1/#EFF_P99.WAV~ ~override~   //sound
+COPY ~%mod_folder%/data/iwd_spells/priest_1/#EFF_P32.wav~ ~override~   //sound
+COPY ~%mod_folder%/data/iwd_spells/priest_1/#EFF_E04.WAV~ ~override~   //sound
 //effs
 //%b_pfire%
 //Spell itself
-ADD_SPELL ~%block%/data/iwd_spells/priest_1/b_p112.spl~ 1 1 ~CLERIC_CURSE~ //Curse Spell
+ADD_SPELL ~%mod_folder%/data/iwd_spells/priest_1/b_p112.spl~ 1 1 ~CLERIC_CURSE~ //Curse Spell
         SAY NAME1 @11200000
         SAY NAME2 @11200000
         SAY UNIDENTIFIED_DESC @11200001
@@ -104,15 +104,15 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
 //     LPF cd_apply_batch STR_VAR array_name = b_bless_cantrip_arrays END
       //
 //icons
-COPY ~%block%/data/iwd_spells/priest_1/sppr112a.bam~ ~override/%spell_res%a.bam~
-COPY ~%block%/data/iwd_spells/priest_1/sppr112b.bam~ ~override/%spell_res%b.bam~
-COPY ~%block%/data/iwd_spells/priest_1/sppr112c.bam~ ~override/%spell_res%c.bam~
+COPY ~%mod_folder%/data/iwd_spells/priest_1/sppr112a.bam~ ~override/%spell_res%a.bam~
+COPY ~%mod_folder%/data/iwd_spells/priest_1/sppr112b.bam~ ~override/%spell_res%b.bam~
+COPY ~%mod_folder%/data/iwd_spells/priest_1/sppr112c.bam~ ~override/%spell_res%c.bam~
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   LPF ALTER_SPELL_HEADER INT_VAR projectile = %idpro237% STR_VAR icon = EVAL  ~%spell_res%B~ END
   WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
 //Remove Curse
-INCLUDE ~%block%/lib/spell_lists/curse_list.tpa~
+INCLUDE ~%mod_folder%/lib/spell_lists/curse_list.tpa~
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -128,12 +128,12 @@ ACTION_IF NOT FILE_EXISTS_IN_GAME ~dvsrv4here.mrk~ BEGIN
 //Projectile
 //animations
 //3d animation
-COPY ~%block%/data/iwd_spells/priest_1/cldamah.bam~ ~override~   //animation
+COPY ~%mod_folder%/data/iwd_spells/priest_1/cldamah.bam~ ~override~   //animation
 //sounds
 //effs
 //%b_pfire%
 //Spell itself
-ADD_SPELL ~%block%/data/iwd_spells/priest_1/b_p114.spl~ 1 1 ~CLERIC_CAUSE_LIGHT_WOUNDS~ //CLW Spell
+ADD_SPELL ~%mod_folder%/data/iwd_spells/priest_1/b_p114.spl~ 1 1 ~CLERIC_CAUSE_LIGHT_WOUNDS~ //CLW Spell
         SAY NAME1 @11400000
         SAY NAME2 @11400000
         SAY UNIDENTIFIED_DESC @11400001
@@ -171,9 +171,9 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
 END
 
 //icons
-COPY ~%block%/data/iwd_spells/priest_1/sppr114a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~%block%/data/iwd_spells/priest_1/sppr114b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~%block%/data/iwd_spells/priest_1/sppr114c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_1/sppr114a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~%mod_folder%/data/iwd_spells/priest_1/sppr114b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_1/sppr114c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
@@ -193,18 +193,18 @@ END //END SR NOT INSTALLED
 //Not installed if any version of SR is installed:
 ACTION_IF NOT FILE_EXISTS_IN_GAME ~dvimhere.mrk~ BEGIN
 
-COPY ~%block%/data/iwd_spells/priest_1/SUNSCOH.bam~ ~override~   //pro bam
-ADD_PROJECTILE ~%block%/data/iwd_spells/priest_1/SUNSCOH.pro~   //projectile
+COPY ~%mod_folder%/data/iwd_spells/priest_1/SUNSCOH.bam~ ~override~   //pro bam
+ADD_PROJECTILE ~%mod_folder%/data/iwd_spells/priest_1/SUNSCOH.pro~   //projectile
 //animations
-COPY ~%block%/data/iwd_spells/priest_1/sppr115a.bam~ ~override~   //scroll bam
-COPY ~%block%/data/iwd_spells/priest_1/sppr115b.bam~ ~override~   //bam
-COPY ~%block%/data/iwd_spells/priest_1/sppr115c.bam~ ~override~   //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_1/sppr115a.bam~ ~override~   //scroll bam
+COPY ~%mod_folder%/data/iwd_spells/priest_1/sppr115b.bam~ ~override~   //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_1/sppr115c.bam~ ~override~   //bam
 //3d animation
 //sounds
-COPY ~%block%/data/iwd_spells/priest_1/#EFF_P39.wav~ ~override~   //sound
+COPY ~%mod_folder%/data/iwd_spells/priest_1/#EFF_P39.wav~ ~override~   //sound
 //effs
 //Spell itself
-ADD_SPELL ~%block%/data/iwd_spells/priest_1/b_p115.spl~ 1 1 ~CLERIC_SUNSCORCH~ //CLW Spell
+ADD_SPELL ~%mod_folder%/data/iwd_spells/priest_1/b_p115.spl~ 1 1 ~CLERIC_SUNSCORCH~ //CLW Spell
         SAY NAME1 @11500000
         SAY NAME2 @11500000
         SAY UNIDENTIFIED_DESC @11500001
@@ -222,18 +222,18 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
   END      //
 
 //secondary spells
-COPY ~%block%/data/iwd_spells/priest_1/sppr115D.spl~ ~override/%spell_res%D.spl~   //sec spell
+COPY ~%mod_folder%/data/iwd_spells/priest_1/sppr115D.spl~ ~override/%spell_res%D.spl~   //sec spell
 //icons
-COPY ~%block%/data/iwd_spells/priest_1/sppr115a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~%block%/data/iwd_spells/priest_1/sppr115b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~%block%/data/iwd_spells/priest_1/sppr115c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_1/sppr115a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~%mod_folder%/data/iwd_spells/priest_1/sppr115b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_1/sppr115c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams and projectiles to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   LPF ALTER_SPELL_HEADER INT_VAR projectile = %SUNSCOH% STR_VAR icon = EVAL  ~%spell_res%B~ END
   WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
 
 //Sh. of Entropy immunity list
-INCLUDE ~%block%/lib/spell_lists/entropy_list.tpa~
+INCLUDE ~%mod_folder%/lib/spell_lists/entropy_list.tpa~
 
 END  //end not SR
 
@@ -258,14 +258,14 @@ ACTION_IF NOT FILE_EXISTS_IN_GAME ~dvimhere.mrk~ BEGIN    //SR installs resist e
 //Projectile
 //animations
 //3d animation
-COPY ~%block%/data/iwd_spells/priest_2/ALTERH.bam~ ~override~   //animation
+COPY ~%mod_folder%/data/iwd_spells/priest_2/ALTERH.bam~ ~override~   //animation
 //sounds
-COPY ~%block%/data/iwd_spells/priest_2/#EFF_P07.WAV~ ~override~   //sound
-COPY ~%block%/data/iwd_spells/priest_2/#EFF_E03.WAV~ ~override~   //sound
+COPY ~%mod_folder%/data/iwd_spells/priest_2/#EFF_P07.WAV~ ~override~   //sound
+COPY ~%mod_folder%/data/iwd_spells/priest_2/#EFF_E03.WAV~ ~override~   //sound
 //effs
 //secondary spells
 //Spell itself
-ADD_SPELL ~%block%/data/iwd_spells/priest_2/b_p216.spl~ 1 2 ~CLERIC_RESIST_FIRE_AND_COLD~ //CMW Spell
+ADD_SPELL ~%mod_folder%/data/iwd_spells/priest_2/b_p216.spl~ 1 2 ~CLERIC_RESIST_FIRE_AND_COLD~ //CMW Spell
         SAY NAME1 @21600000
         SAY NAME2 @21600000
         SAY UNIDENTIFIED_DESC @21600001
@@ -280,9 +280,9 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
       STR_VAR resource = EVAL ~%spell_res%~
   END      //
 //icons
-COPY ~%block%/data/iwd_spells/priest_2/sppr210a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~%block%/data/iwd_spells/priest_2/sppr210b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~%block%/data/iwd_spells/priest_2/sppr210c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_2/sppr210a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~%mod_folder%/data/iwd_spells/priest_2/sppr210b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_2/sppr210c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams and projectiles to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   LPF ALTER_SPELL_HEADER STR_VAR icon = EVAL  ~%spell_res%B~ END
@@ -305,13 +305,13 @@ ACTION_IF NOT FILE_EXISTS_IN_GAME ~dvimhere.mrk~ BEGIN
 //Projectile
 //animations
 //3d animation
-COPY ~%block%/data/iwd_spells/priest_2/cmwounh.bam~ ~override~   //animation
+COPY ~%mod_folder%/data/iwd_spells/priest_2/cmwounh.bam~ ~override~   //animation
 //sounds
-COPY ~%block%/data/iwd_spells/priest_2/#EFF_P26.WAV~ ~override~   //sound
+COPY ~%mod_folder%/data/iwd_spells/priest_2/#EFF_P26.WAV~ ~override~   //sound
 //effs
 //secondary spells
 //Spell itself
-ADD_SPELL ~%block%/data/iwd_spells/priest_2/b_p217.spl~ 1 2 ~CLERIC_CURE_MODERATE_WOUNDS~ //CMW Spell
+ADD_SPELL ~%mod_folder%/data/iwd_spells/priest_2/b_p217.spl~ 1 2 ~CLERIC_CURE_MODERATE_WOUNDS~ //CMW Spell
         SAY NAME1 @21700000
         SAY NAME2 @21700000
         SAY UNIDENTIFIED_DESC @21700001
@@ -347,9 +347,9 @@ ACTION_IF FILE_EXISTS_IN_GAME ~b_revise.itm~ BEGIN
    END  //
 END
 //icons
-COPY ~%block%/data/iwd_spells/priest_2/sppr217a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~%block%/data/iwd_spells/priest_2/sppr217b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~%block%/data/iwd_spells/priest_2/sppr217c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_2/sppr217a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~%mod_folder%/data/iwd_spells/priest_2/sppr217b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_2/sppr217c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams and projectiles to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   LPF ALTER_SPELL_HEADER STR_VAR icon = EVAL  ~%spell_res%B~ END
@@ -367,20 +367,20 @@ END
 //DOES ENTROPY SPHERE PROTECT VS   SAY 0x1c
 
 //Projectile
-ADD_PROJECTILE ~%block%/data/iwd_spells/priest_2/IDPRO298.pro~   //projectile
+ADD_PROJECTILE ~%mod_folder%/data/iwd_spells/priest_2/IDPRO298.pro~   //projectile
 //animations
-COPY ~%block%/data/iwd_spells/priest_2/ALANCET.BAM~ ~override~   //Pro bam
+COPY ~%mod_folder%/data/iwd_spells/priest_2/ALANCET.BAM~ ~override~   //Pro bam
 
 //3d animation
 //sounds
-COPY ~%block%/data/iwd_spells/priest_2/#EFF_E08.WAV~ ~override~   //sound
-COPY ~%block%/data/iwd_spells/priest_2/#TRA_57.WAV~ ~override~   //Pro sound
+COPY ~%mod_folder%/data/iwd_spells/priest_2/#EFF_E08.WAV~ ~override~   //sound
+COPY ~%mod_folder%/data/iwd_spells/priest_2/#TRA_57.WAV~ ~override~   //Pro sound
 //effs
-COPY ~%block%/data/iwd_spells/priest_2/b_p218.eff~ ~override~   //for notification
+COPY ~%mod_folder%/data/iwd_spells/priest_2/b_p218.eff~ ~override~   //for notification
   SAY 0x1c @21800003    //Notification
 //secondary spells
 //Spell itself
-ADD_SPELL ~%block%/data/iwd_spells/priest_2/b_p218.spl~ 1 2 ~CLERIC_ALICORN_LANCE~ // Spell
+ADD_SPELL ~%mod_folder%/data/iwd_spells/priest_2/b_p218.spl~ 1 2 ~CLERIC_ALICORN_LANCE~ // Spell
         SAY NAME1 @21800000
         SAY NAME2 @21800000
         SAY UNIDENTIFIED_DESC @21800001
@@ -396,15 +396,15 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
   END      //
 
 //icons
-COPY ~%block%/data/iwd_spells/priest_2/sppr218a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~%block%/data/iwd_spells/priest_2/sppr218b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~%block%/data/iwd_spells/priest_2/sppr218c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_2/sppr218a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~%mod_folder%/data/iwd_spells/priest_2/sppr218b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_2/sppr218c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   LPF ALTER_SPELL_HEADER INT_VAR projectile = %IDPRO298% STR_VAR icon = EVAL  ~%spell_res%B~ END
   WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
 //Sh. of Entropy immunity list
-INCLUDE ~%block%/lib/spell_lists/entropy_list.tpa~
+INCLUDE ~%mod_folder%/lib/spell_lists/entropy_list.tpa~
 
 
 
@@ -417,19 +417,19 @@ INCLUDE ~%block%/lib/spell_lists/entropy_list.tpa~
 //Projectile
 //probam
 //3d animation
-COPY ~%block%/data/iwd_spells/priest_2/ALTERH.BAM~ ~override~   //sound
+COPY ~%mod_folder%/data/iwd_spells/priest_2/ALTERH.BAM~ ~override~   //sound
 //sounds
-COPY ~%block%/data/iwd_spells/priest_2/#EFF_P07.WAV~ ~override~   //sound
+COPY ~%mod_folder%/data/iwd_spells/priest_2/#EFF_P07.WAV~ ~override~   //sound
 //itm
-COPY ~%block%/data/iwd_spells/priest_2/BCLAW.itm~ ~override~   //item
+COPY ~%mod_folder%/data/iwd_spells/priest_2/BCLAW.itm~ ~override~   //item
         SAY NAME1 @21900000
         SAY NAME2 @21900000
 //itm icons
-COPY ~%block%/data/iwd_spells/priest_2/IBCLAW.BAM~ ~override~   //item
+COPY ~%mod_folder%/data/iwd_spells/priest_2/IBCLAW.BAM~ ~override~   //item
 //effs
 //secondary spells
 //Spell itself
-ADD_SPELL ~%block%/data/iwd_spells/priest_2/b_p219.spl~ 1 2 ~CLERIC_BEAST_CLAW~ // Spell
+ADD_SPELL ~%mod_folder%/data/iwd_spells/priest_2/b_p219.spl~ 1 2 ~CLERIC_BEAST_CLAW~ // Spell
         SAY NAME1 @21900000
         SAY NAME2 @21900000
         SAY UNIDENTIFIED_DESC @21900001
@@ -440,9 +440,9 @@ LAF RES_NUM_OF_SPELL_NAME
 END
 
 //icons
-COPY ~%block%/data/iwd_spells/priest_2/sppr219a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~%block%/data/iwd_spells/priest_2/sppr219b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~%block%/data/iwd_spells/priest_2/sppr219c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_2/sppr219a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~%mod_folder%/data/iwd_spells/priest_2/sppr219b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_2/sppr219c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   LPF ALTER_SPELL_HEADER STR_VAR icon = EVAL  ~%spell_res%B~ END
@@ -459,13 +459,13 @@ ACTION_IF NOT FILE_EXISTS_IN_GAME ~dvsrv4here.mrk~ BEGIN
 //Projectile
 //animations
 //3d animation
-COPY ~%block%/data/iwd_spells/priest_2/CMDAMAH.BAM~ ~override~   //animation
+COPY ~%mod_folder%/data/iwd_spells/priest_2/CMDAMAH.BAM~ ~override~   //animation
 //sounds
-COPY ~%block%/data/iwd_spells/priest_2/#FF_P103.WAV~ ~override~   //sound
+COPY ~%mod_folder%/data/iwd_spells/priest_2/#FF_P103.WAV~ ~override~   //sound
 //effs
 //secondary spells
 //Spell itself
-ADD_SPELL ~%block%/data/iwd_spells/priest_2/b_p220.spl~ 1 2 ~CLERIC_CAUSE_MODERATE_WOUNDS~ //CMW Spell
+ADD_SPELL ~%mod_folder%/data/iwd_spells/priest_2/b_p220.spl~ 1 2 ~CLERIC_CAUSE_MODERATE_WOUNDS~ //CMW Spell
         SAY NAME1 @22000000
         SAY NAME2 @22000000
         SAY UNIDENTIFIED_DESC @22000001
@@ -496,9 +496,9 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
 END
 
 //icons
-COPY ~%block%/data/iwd_spells/priest_2/sppr220a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~%block%/data/iwd_spells/priest_2/sppr220b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~%block%/data/iwd_spells/priest_2/sppr220c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_2/sppr220a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~%mod_folder%/data/iwd_spells/priest_2/sppr220b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_2/sppr220c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams and projectiles to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   LPF ALTER_SPELL_HEADER STR_VAR icon = EVAL  ~%spell_res%B~ END
@@ -524,20 +524,20 @@ END
 //AI: Make a version that badguys can use
 
 //Projectile
-ADD_PROJECTILE ~%block%/data/iwd_spells/priest_3/OHVRNP.pro~   //projectile    vs badguys
-ADD_PROJECTILE ~%block%/data/iwd_spells/priest_3/OHVRPO.pro~   //projectile    goodies
+ADD_PROJECTILE ~%mod_folder%/data/iwd_spells/priest_3/OHVRNP.pro~   //projectile    vs badguys
+ADD_PROJECTILE ~%mod_folder%/data/iwd_spells/priest_3/OHVRPO.pro~   //projectile    goodies
 //probam
 //3d animation
-COPY ~%block%/data/iwd_spells/priest_3/PRAYERH.BAM~ ~override~   //
-COPY ~%block%/data/iwd_spells/priest_3/PRAYERG.BAM~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_3/PRAYERH.BAM~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_3/PRAYERG.BAM~ ~override~   //
 //sounds
-COPY ~%block%/data/iwd_spells/priest_3/#EFF_P31.WAV~ ~override~   //
-COPY ~%block%/data/iwd_spells/priest_3/EFF_E03.WAV~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_3/#EFF_P31.WAV~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_3/EFF_E03.WAV~ ~override~   //
 //itm
 //itm icons
 //effs
 //secondary spells
-COPY ~%block%/data/iwd_spells/priest_3/#PRAYERB.SPL~ ~override~   //spl
+COPY ~%mod_folder%/data/iwd_spells/priest_3/#PRAYERB.SPL~ ~override~   //spl
   LPF ALTER_EFFECT INT_VAR match_opcode = 139 parameter1 = RESOLVE_STR_REF (@31600002) END  //Notification: Combat Pentalties
   LPF ALTER_EFFECT
       INT_VAR match_opcode = 215            //
@@ -547,7 +547,7 @@ LPF ALTER_SPELL_HEADER INT_VAR projectile = %OHVRNP% END
 //  LPF cd_apply_batch STR_VAR array_name = b_bless_cantrip_arrays END //bless related cantrip removal/protection
 
 
-COPY ~%block%/data/iwd_spells/priest_3/#PRAYERG.SPL~ ~override~   //spl
+COPY ~%mod_folder%/data/iwd_spells/priest_3/#PRAYERG.SPL~ ~override~   //spl
   LPF ALTER_EFFECT INT_VAR match_opcode = 139 parameter1 = RESOLVE_STR_REF (@31600004) END  //Notification: Combat Bounouses
   LPF ALTER_EFFECT  INT_VAR match_opcode = 139 opcode = 177 parameter1 = 0  parameter2 = 2  STR_VAR resource = EVAL ~PRAYG~ END
   LPF ALTER_EFFECT  INT_VAR match_opcode = 215    STR_VAR resource = EVAL ~PRAYERH~    END      // aaaahhh
@@ -555,13 +555,13 @@ COPY ~%block%/data/iwd_spells/priest_3/#PRAYERG.SPL~ ~override~   //spl
   LPF ALTER_SPELL_HEADER INT_VAR projectile = %OHVRPO% END
 //  LPF cd_apply_batch STR_VAR array_name = b_bless_cantrip_arrays END //bless related cantrip removal/protection
 //text eff
-COPY ~%block%/data/iwd_spells/priest_2/b_p218.eff~ ~override/PRAYG.eff~   //for notification
+COPY ~%mod_folder%/data/iwd_spells/priest_2/b_p218.eff~ ~override/PRAYG.eff~   //for notification
   SAY 0x1c @31600004   //Combat Boni
 
 
 //Portrait Icon
 //Icon itself
-COPY ~%block%/data/iwd_spells/priest_3/B_PRAYG.bam~ ~override~
+COPY ~%mod_folder%/data/iwd_spells/priest_3/B_PRAYG.bam~ ~override~
  SET strref = RESOLVE_STR_REF(@31600002)
 
 //Thanks kjeron and argent77!!!
@@ -583,7 +583,7 @@ COPY_EXISTING ~#PRAYERG.spl~ ~override~
 END
 
 //Spell itself
-ADD_SPELL ~%block%/data/iwd_spells/priest_3/b_p316.spl~ 1 3 ~CLERIC_PRAYER~ // Spell
+ADD_SPELL ~%mod_folder%/data/iwd_spells/priest_3/b_p316.spl~ 1 3 ~CLERIC_PRAYER~ // Spell
         SAY NAME1 @31600000
         SAY NAME2 @31600000
         SAY UNIDENTIFIED_DESC @31600001
@@ -633,9 +633,9 @@ COPY_EXISTING ~b_po040.spl~ ~override~  //Meditation
 END
 
 //icons
-COPY ~%block%/data/iwd_spells/priest_3/sppr316a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~%block%/data/iwd_spells/priest_3/sppr316b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~%block%/data/iwd_spells/priest_3/sppr316c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_3/sppr316a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~%mod_folder%/data/iwd_spells/priest_3/sppr316b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_3/sppr316c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   LPF ALTER_SPELL_HEADER STR_VAR icon = EVAL  ~%spell_res%B~ END
@@ -653,16 +653,16 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
 //probam
 //icons
 //3d animation
-COPY ~%block%/data/iwd_spells/priest_3/CDISEAH.BAM~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_3/CDISEAH.BAM~ ~override~   //
 //sounds
-COPY ~%block%/data/iwd_spells/priest_3/#FF_P108.WAV~ ~override~   //
-COPY ~%block%/data/iwd_spells/priest_3/EFF_E03.WAV~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_3/#FF_P108.WAV~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_3/EFF_E03.WAV~ ~override~   //
 //itm
 //itm icons
 //effs
 //secondary spells
 //Spell itself
-ADD_SPELL ~%block%/data/iwd_spells/priest_3/b_p320.spl~ 1 3 ~CLERIC_CAUSE_DISEASE~ // Spell
+ADD_SPELL ~%mod_folder%/data/iwd_spells/priest_3/b_p320.spl~ 1 3 ~CLERIC_CAUSE_DISEASE~ // Spell
         SAY NAME1 @32000000
         SAY NAME2 @32000000
         SAY UNIDENTIFIED_DESC @32000001
@@ -679,15 +679,15 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
 //  LPF cd_apply_batch STR_VAR array_name = b_disease_arrays END
 
 //icons
-COPY ~%block%/data/iwd_spells/priest_3/sppr320a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~%block%/data/iwd_spells/priest_3/sppr320b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~%block%/data/iwd_spells/priest_3/sppr320c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_3/sppr320a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~%mod_folder%/data/iwd_spells/priest_3/sppr320b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_3/sppr320c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   LPF ALTER_SPELL_HEADER STR_VAR icon = EVAL  ~%spell_res%B~ END
   WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
 //Remove Disease
-INCLUDE ~%block%/lib/spell_lists/disease_list.tpa~
+INCLUDE ~%mod_folder%/lib/spell_lists/disease_list.tpa~
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -699,9 +699,9 @@ INCLUDE ~%block%/lib/spell_lists/disease_list.tpa~
 //Projectile
 //probam
 //3d animation
-COPY ~%block%/data/iwd_spells/priest_3/EXALTAH.BAM~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_3/EXALTAH.BAM~ ~override~   //
 //sounds
-COPY ~%block%/data/iwd_spells/priest_3/#FF_P106.WAV~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_3/#FF_P106.WAV~ ~override~   //
 //itm
 //itm icons
 //effs
@@ -709,7 +709,7 @@ COPY ~%block%/data/iwd_spells/priest_3/#FF_P106.WAV~ ~override~   //
 //Spell itself
 //Need to remove blood rage (prob animal rage, too?)
 //Copied over for protections
-ADD_SPELL ~%block%/data/iwd_spells/priest_3/b_p321.spl~ 1 3 ~CLERIC_EXALTATION~ // Spell
+ADD_SPELL ~%mod_folder%/data/iwd_spells/priest_3/b_p321.spl~ 1 3 ~CLERIC_EXALTATION~ // Spell
         SAY NAME1 @32100000
         SAY NAME2 @32100000
         SAY UNIDENTIFIED_DESC @32100001
@@ -734,17 +734,17 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
       STR_VAR resource = EVAL ~%spell_res%~
   END      //
 //icons
-COPY ~%block%/data/iwd_spells/priest_3/sppr321a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~%block%/data/iwd_spells/priest_3/sppr321b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~%block%/data/iwd_spells/priest_3/sppr321c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_3/sppr321a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~%mod_folder%/data/iwd_spells/priest_3/sppr321b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_3/sppr321c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   LPF ALTER_SPELL_HEADER STR_VAR icon = EVAL  ~%spell_res%B~ END
   WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
 //Remove bless
-INCLUDE ~%block%/lib/spell_lists/bless_list.tpa~
+INCLUDE ~%mod_folder%/lib/spell_lists/bless_list.tpa~
 //3rd lev
-INCLUDE ~%block%/lib/spell_lists/3rd_list.tpa~
+INCLUDE ~%mod_folder%/lib/spell_lists/3rd_list.tpa~
 
 //CONTINUE FROM HERE
 
@@ -758,19 +758,19 @@ INCLUDE ~%block%/lib/spell_lists/3rd_list.tpa~
 //probam
 //3d animation
 //sounds
-COPY ~%block%/data/iwd_spells/priest_3/#EFF_M06.WAV~ ~override~   //itm sound
+COPY ~%mod_folder%/data/iwd_spells/priest_3/#EFF_M06.WAV~ ~override~   //itm sound
 //itm
-COPY ~%block%/data/iwd_spells/priest_3/MOONBLA.itm~ ~override~   //itm
+COPY ~%mod_folder%/data/iwd_spells/priest_3/MOONBLA.itm~ ~override~   //itm
         SAY NAME1 @32200000
         SAY NAME2 @32200000
 //itm icons
-COPY ~%block%/data/iwd_spells/priest_3/MOONBLA.BAM~ ~override~   //
-COPY ~%block%/data/iwd_spells/priest_3/GSW1H01.BAM~ ~override~   //
-COPY ~%block%/data/iwd_spells/priest_3/INVOCH.BAM~ ~override~   //itm 3d
+COPY ~%mod_folder%/data/iwd_spells/priest_3/MOONBLA.BAM~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_3/GSW1H01.BAM~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_3/INVOCH.BAM~ ~override~   //itm 3d
 //effs
 //secondary spells
 //Spell itself
-ADD_SPELL ~%block%/data/iwd_spells/priest_3/b_p322.spl~ 1 3 ~CLERIC_MOONBLADE~ // Spell
+ADD_SPELL ~%mod_folder%/data/iwd_spells/priest_3/b_p322.spl~ 1 3 ~CLERIC_MOONBLADE~ // Spell
         SAY NAME1 @32200000
         SAY NAME2 @32200000
         SAY UNIDENTIFIED_DESC @32200001
@@ -781,9 +781,9 @@ LAF RES_NUM_OF_SPELL_NAME
 END
 
 //icons
-COPY ~%block%/data/iwd_spells/priest_3/sppr322a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~%block%/data/iwd_spells/priest_3/sppr322b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~%block%/data/iwd_spells/priest_3/sppr322c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_3/sppr322a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~%mod_folder%/data/iwd_spells/priest_3/sppr322b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_3/sppr322c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   LPF ALTER_SPELL_HEADER STR_VAR icon = EVAL  ~%spell_res%B~ END
@@ -798,18 +798,18 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
 //Projectile
 //probam
 //3d animation
-COPY ~%block%/data/iwd_spells/priest_3/COBONH1.BAM~ ~override~   //
-COPY ~%block%/data/iwd_spells/priest_3/COBONH2.BAM~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_3/COBONH1.BAM~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_3/COBONH2.BAM~ ~override~   //
 //sounds
-COPY ~%block%/data/iwd_spells/priest_3/#ARE_P21.WAV~ ~override~   //
-COPY ~%block%/data/iwd_spells/priest_3/#AFT_P22.WAV~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_3/#ARE_P21.WAV~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_3/#AFT_P22.WAV~ ~override~   //
 //itm
 //itm icons
 //effs
 //secondary spells
-COPY ~%block%/data/iwd_spells/priest_3/SPPR323D.spl~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_3/SPPR323D.spl~ ~override~   //
 //Spell itself
-ADD_SPELL ~%block%/data/iwd_spells/priest_3/b_p323.spl~ 1 3 ~CLERIC_CIRCLE_OF_BONES~ // Spell
+ADD_SPELL ~%mod_folder%/data/iwd_spells/priest_3/b_p323.spl~ 1 3 ~CLERIC_CIRCLE_OF_BONES~ // Spell
         SAY NAME1 @32300000
         SAY NAME2 @32300000
         SAY UNIDENTIFIED_DESC @32300001
@@ -820,9 +820,9 @@ LAF RES_NUM_OF_SPELL_NAME
 END
 
 //icons
-COPY ~%block%/data/iwd_spells/priest_3/sppr323a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~%block%/data/iwd_spells/priest_3/sppr323b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~%block%/data/iwd_spells/priest_3/sppr323c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_3/sppr323a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~%mod_folder%/data/iwd_spells/priest_3/sppr323b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_3/sppr323c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   LPF ALTER_SPELL_HEADER STR_VAR icon = EVAL  ~%spell_res%B~ END
@@ -837,9 +837,9 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
 //not installed if SRv4 is installed
 ACTION_IF NOT FILE_EXISTS_IN_GAME ~dvsrv4here.mrk~ BEGIN
 //Projectile
-ADD_PROJECTILE ~%block%/data/iwd_spells/priest_3/idpro300.pro~   //projectile
+ADD_PROJECTILE ~%mod_folder%/data/iwd_spells/priest_3/idpro300.pro~   //projectile
 //probam
-COPY ~%block%/data/iwd_spells/priest_3/sgrowta.BAM~ ~override~   //pro bam
+COPY ~%mod_folder%/data/iwd_spells/priest_3/sgrowta.BAM~ ~override~   //pro bam
 //3d animation
 //sounds
 //itm
@@ -847,7 +847,7 @@ COPY ~%block%/data/iwd_spells/priest_3/sgrowta.BAM~ ~override~   //pro bam
 //effs
 //secondary spells
 //Spell itself
-ADD_SPELL ~%block%/data/iwd_spells/priest_3/b_p324.spl~ 1 3 ~CLERIC_SPIKE_GROWTH~ // Spell
+ADD_SPELL ~%mod_folder%/data/iwd_spells/priest_3/b_p324.spl~ 1 3 ~CLERIC_SPIKE_GROWTH~ // Spell
         SAY NAME1 @32400000
         SAY NAME2 @32400000
         SAY UNIDENTIFIED_DESC @32400001
@@ -862,15 +862,15 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
       STR_VAR resource = EVAL ~%spell_res%~
   END      //
 //icons
-COPY ~%block%/data/iwd_spells/priest_3/sppr324a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~%block%/data/iwd_spells/priest_3/sppr324b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~%block%/data/iwd_spells/priest_3/sppr324c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_3/sppr324a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~%mod_folder%/data/iwd_spells/priest_3/sppr324b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_3/sppr324c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   LPF ALTER_SPELL_HEADER INT_VAR projectile = %idpro300% STR_VAR icon = EVAL  ~%spell_res%B~ END
   WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
 //3rd lev
-INCLUDE ~%block%/lib/spell_lists/3rd_list.tpa~
+INCLUDE ~%mod_folder%/lib/spell_lists/3rd_list.tpa~
 
 END
 
@@ -882,20 +882,20 @@ END
 
 //REMOVE Shroud of Flame (wizard spell) once added
 //Projectile
-ADD_PROJECTILE ~%block%/data/iwd_spells/priest_3/idpro301.pro~   //projectile
+ADD_PROJECTILE ~%mod_folder%/data/iwd_spells/priest_3/idpro301.pro~   //projectile
 //probam
-COPY ~%block%/data/iwd_spells/priest_3/sgrowta.BAM~ ~override~   //pro bam
+COPY ~%mod_folder%/data/iwd_spells/priest_3/sgrowta.BAM~ ~override~   //pro bam
 //3d animation
-COPY ~%block%/data/iwd_spells/priest_3/CLOUDBA.bam~ ~override~   // bam
-COPY ~%block%/data/iwd_spells/priest_3/CLOUDBH.BAM~ ~override~   // bam
+COPY ~%mod_folder%/data/iwd_spells/priest_3/CLOUDBA.bam~ ~override~   // bam
+COPY ~%mod_folder%/data/iwd_spells/priest_3/CLOUDBH.BAM~ ~override~   // bam
 //sounds
-COPY ~%block%/data/iwd_spells/priest_3/ARE_P24.WAV~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_3/ARE_P24.WAV~ ~override~   //
 //itm
 //itm icons
 //effs
 //secondary spells
 //Spell itself
-ADD_SPELL ~%block%/data/iwd_spells/priest_3/b_p325.spl~ 1 3 ~CLERIC_CLOUDBURST~ // Spell
+ADD_SPELL ~%mod_folder%/data/iwd_spells/priest_3/b_p325.spl~ 1 3 ~CLERIC_CLOUDBURST~ // Spell
         SAY NAME1 @32500000
         SAY NAME2 @32500000
         SAY UNIDENTIFIED_DESC @32500001
@@ -914,15 +914,15 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
       STR_VAR resource = EVAL ~%spell_res%~
   END      //
 //icons
-COPY ~%block%/data/iwd_spells/priest_3/sppr325a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~%block%/data/iwd_spells/priest_3/sppr325b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~%block%/data/iwd_spells/priest_3/sppr325c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_3/sppr325a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~%mod_folder%/data/iwd_spells/priest_3/sppr325b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_3/sppr325c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   LPF ALTER_SPELL_HEADER INT_VAR projectile = %idpro301% STR_VAR icon = EVAL  ~%spell_res%B~ END
   WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
 //3rd lev
-INCLUDE ~%block%/lib/spell_lists/3rd_list.tpa~
+INCLUDE ~%mod_folder%/lib/spell_lists/3rd_list.tpa~
 
 /* When Shround of flame is added... From drench cantrip.  Changes are needed...Need to do this with fire macro???
 LAF RES_NUM_OF_SPELL_NAME
@@ -944,17 +944,17 @@ COPY_EXISTING ~b_wc003.spl~ ~override~    //This needs to be cloudburst...
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //Projectile
-ADD_PROJECTILE ~%block%/data/iwd_spells/priest_3/idmold.pro~   //projectile
+ADD_PROJECTILE ~%mod_folder%/data/iwd_spells/priest_3/idmold.pro~   //projectile
 //probam
 //3d animation
-COPY ~%block%/data/iwd_spells/priest_3/MTOUCHH.BAM~ ~override~   // bam
+COPY ~%mod_folder%/data/iwd_spells/priest_3/MTOUCHH.BAM~ ~override~   // bam
 //sounds
-COPY ~%block%/data/iwd_spells/priest_3/#FF_P107.WAV~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_3/#FF_P107.WAV~ ~override~   //
 //itm
 //itm icons
 //effs
 //Spell itself
-ADD_SPELL ~%block%/data/iwd_spells/priest_3/b_p326.spl~ 1 3 ~CLERIC_MOLD_TOUCH~ // Spell
+ADD_SPELL ~%mod_folder%/data/iwd_spells/priest_3/b_p326.spl~ 1 3 ~CLERIC_MOLD_TOUCH~ // Spell
         SAY NAME1 @32600000
         SAY NAME2 @32600000
         SAY UNIDENTIFIED_DESC @32600001
@@ -974,21 +974,21 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
       STR_VAR resource = EVAL ~%spell_res%~
   END      //
 //secondary spells
-COPY ~%block%/data/iwd_spells/priest_3/SPPR326B.spl~ ~override/%spell_res%B.spl~   // bam  NEEDED?
+COPY ~%mod_folder%/data/iwd_spells/priest_3/SPPR326B.spl~ ~override/%spell_res%B.spl~   // bam  NEEDED?
   LPF ALTER_SPELL_HEADER INT_VAR projectile = %idmold% STR_VAR icon = EVAL  ~%spell_res%B~ END
 
 //icons
-COPY ~%block%/data/iwd_spells/priest_3/sppr326a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~%block%/data/iwd_spells/priest_3/sppr326b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~%block%/data/iwd_spells/priest_3/sppr326c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_3/sppr326a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~%mod_folder%/data/iwd_spells/priest_3/sppr326b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_3/sppr326c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   LPF ALTER_SPELL_HEADER STR_VAR icon = EVAL  ~%spell_res%B~ END
   WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
 //Remove Disease
-INCLUDE ~%block%/lib/spell_lists/disease_list.tpa~
+INCLUDE ~%mod_folder%/lib/spell_lists/disease_list.tpa~
 //3rd lev
-INCLUDE ~%block%/lib/spell_lists/3rd_list.tpa~
+INCLUDE ~%mod_folder%/lib/spell_lists/3rd_list.tpa~
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -999,18 +999,18 @@ INCLUDE ~%block%/lib/spell_lists/3rd_list.tpa~
 //Projectile
 //probam
 //icons
-COPY ~%block%/data/iwd_spells/priest_3/sppr327a.bam~ ~override~   //scroll bam
-COPY ~%block%/data/iwd_spells/priest_3/sppr327b.bam~ ~override~   //bam
-COPY ~%block%/data/iwd_spells/priest_3/sppr327c.bam~ ~override~   //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_3/sppr327a.bam~ ~override~   //scroll bam
+COPY ~%mod_folder%/data/iwd_spells/priest_3/sppr327b.bam~ ~override~   //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_3/sppr327c.bam~ ~override~   //bam
 //3d animation
-COPY ~%block%/data/iwd_spells/priest_3/ISTORMA.BAM~ ~override~   // bam
+COPY ~%mod_folder%/data/iwd_spells/priest_3/ISTORMA.BAM~ ~override~   // bam
 //sounds
 //itm
 //itm icons
 //effs
 //secondary spells
 //Spell itself
-ADD_SPELL ~%block%/data/iwd_spells/priest_3/b_p327.spl~ 1 3 ~CLERIC_STORM_SHELL~ // Spell
+ADD_SPELL ~%mod_folder%/data/iwd_spells/priest_3/b_p327.spl~ 1 3 ~CLERIC_STORM_SHELL~ // Spell
         SAY NAME1 @32700000
         SAY NAME2 @32700000
         SAY UNIDENTIFIED_DESC @32700001
@@ -1021,9 +1021,9 @@ LAF RES_NUM_OF_SPELL_NAME
 END
 
 //icons
-COPY ~%block%/data/iwd_spells/priest_3/sppr327a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~%block%/data/iwd_spells/priest_3/sppr327b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~%block%/data/iwd_spells/priest_3/sppr327c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_3/sppr327a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~%mod_folder%/data/iwd_spells/priest_3/sppr327b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_3/sppr327c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   LPF ALTER_SPELL_HEADER STR_VAR icon = EVAL  ~%spell_res%B~ END
@@ -1041,15 +1041,15 @@ ACTION_IF NOT FILE_EXISTS_IN_GAME ~dvsrv4here.mrk~ BEGIN
 //Projectile
 //probam
 //3d animation
-COPY ~%block%/data/iwd_spells/priest_3/CMDAMAH.BAM~ ~override~   // bam
+COPY ~%mod_folder%/data/iwd_spells/priest_3/CMDAMAH.BAM~ ~override~   // bam
 //sounds
-COPY ~%block%/data/iwd_spells/priest_3/#FF_P103.WAV~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_3/#FF_P103.WAV~ ~override~   //
 //itm
 //itm icons
 //effs
 //secondary spells
 //Spell itself
-ADD_SPELL ~%block%/data/iwd_spells/priest_3/b_p330.spl~ 1 3 ~CLERIC_CAUSE_MEDIUM_WOUNDS~ // Spell
+ADD_SPELL ~%mod_folder%/data/iwd_spells/priest_3/b_p330.spl~ 1 3 ~CLERIC_CAUSE_MEDIUM_WOUNDS~ // Spell
         SAY NAME1 @33000000
         SAY NAME2 @33000000
         SAY UNIDENTIFIED_DESC @33000001
@@ -1065,9 +1065,9 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
   END      //
 
 //icons
-COPY ~%block%/data/iwd_spells/priest_3/sppr330a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~%block%/data/iwd_spells/priest_3/sppr330b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~%block%/data/iwd_spells/priest_3/sppr330c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_3/sppr330a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~%mod_folder%/data/iwd_spells/priest_3/sppr330b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_3/sppr330c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   LPF ALTER_SPELL_HEADER STR_VAR icon = EVAL  ~%spell_res%B~ END
@@ -1081,22 +1081,22 @@ END
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //unfamilliar opcode.  Hope it's good
 //Projectile
-ADD_PROJECTILE ~%block%/data/iwd_spells/priest_3/sparklpu.pro~   //projectile
+ADD_PROJECTILE ~%mod_folder%/data/iwd_spells/priest_3/sparklpu.pro~   //projectile
 //probam
-COPY ~%block%/data/iwd_spells/priest_3/TRAVEL.bam~ ~override~   //pro bam
-COPY ~%block%/data/iwd_spells/priest_3/STTRAVL5.BMP~ ~override~   //bmp
+COPY ~%mod_folder%/data/iwd_spells/priest_3/TRAVEL.bam~ ~override~   //pro bam
+COPY ~%mod_folder%/data/iwd_spells/priest_3/STTRAVL5.BMP~ ~override~   //bmp
 //3d animation
-COPY ~%block%/data/iwd_spells/priest_3/CMWOUNH.BAM~ ~override~   // bam
-COPY ~%block%/data/iwd_spells/priest_3/CMDAMAH.BAM~ ~override~   // bam
+COPY ~%mod_folder%/data/iwd_spells/priest_3/CMWOUNH.BAM~ ~override~   // bam
+COPY ~%mod_folder%/data/iwd_spells/priest_3/CMDAMAH.BAM~ ~override~   // bam
 //sounds
-COPY ~%block%/data/iwd_spells/priest_3/#EFF_P26.WAV~ ~override~   //
-COPY ~%block%/data/iwd_spells/priest_3/#FF_P103.WAV~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_3/#EFF_P26.WAV~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_3/#FF_P103.WAV~ ~override~   //
 //itm
 //itm icons
 //effs
 //secondary spells
 //Spell itself
-ADD_SPELL ~%block%/data/iwd_spells/priest_3/b_p327.spl~ 1 3 ~CLERIC_FAVOR_OF_ILMATER~ // Spell
+ADD_SPELL ~%mod_folder%/data/iwd_spells/priest_3/b_p327.spl~ 1 3 ~CLERIC_FAVOR_OF_ILMATER~ // Spell
         SAY NAME1 @33100000
         SAY NAME2 @33100000
         SAY UNIDENTIFIED_DESC @33100001
@@ -1111,9 +1111,9 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
       STR_VAR resource = EVAL ~%spell_res%~
   END      //
 //icons
-COPY ~%block%/data/iwd_spells/priest_3/sppr331a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~%block%/data/iwd_spells/priest_3/sppr331b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~%block%/data/iwd_spells/priest_3/sppr331c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_3/sppr331a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~%mod_folder%/data/iwd_spells/priest_3/sppr331b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_3/sppr331c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   LPF ALTER_SPELL_HEADER INT_VAR projectile = %sparklpu% STR_VAR icon = EVAL  ~%spell_res%B~ END
@@ -1136,90 +1136,90 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
 //Projectile
 //probam
 //3d animation
-COPY ~%block%/data/iwd_spells/priest_4/cldamah.BAM~ ~override~   // bam
-COPY ~%block%/data/iwd_spells/priest_4/CURSEH.BAM~ ~override~   // bam
-COPY ~%block%/data/iwd_spells/priest_4/mbbma1.BAM~ ~override~   // bam
-COPY ~%block%/data/iwd_spells/priest_4/mbbma1e.BAM~ ~override~   // bam
-COPY ~%block%/data/iwd_spells/priest_4/mbbma4.BAM~ ~override~   // bam
-COPY ~%block%/data/iwd_spells/priest_4/mbbma4e.BAM~ ~override~   // bam
-COPY ~%block%/data/iwd_spells/priest_4/mbbmca.BAM~ ~override~   // bam
-COPY ~%block%/data/iwd_spells/priest_4/mbbmcae.BAM~ ~override~   // bam
-COPY ~%block%/data/iwd_spells/priest_4/mbbmde.BAM~ ~override~   // bam
-COPY ~%block%/data/iwd_spells/priest_4/mbbmdee.BAM~ ~override~   // bam
-COPY ~%block%/data/iwd_spells/priest_4/mbbmgh.BAM~ ~override~   // bam
-COPY ~%block%/data/iwd_spells/priest_4/mbbmghe.BAM~ ~override~   // bam
-COPY ~%block%/data/iwd_spells/priest_4/mbbmgu.BAM~ ~override~   // bam
-COPY ~%block%/data/iwd_spells/priest_4/mbbmgue.BAM~ ~override~   // bam
-COPY ~%block%/data/iwd_spells/priest_4/mbbmsc.BAM~ ~override~   // bam
-COPY ~%block%/data/iwd_spells/priest_4/mbbmsce.BAM~ ~override~   // bam
-COPY ~%block%/data/iwd_spells/priest_4/mbbmsd.BAM~ ~override~   // bam
-COPY ~%block%/data/iwd_spells/priest_4/mbbmsde.BAM~ ~override~   // bam
-COPY ~%block%/data/iwd_spells/priest_4/mbbmsl.BAM~ ~override~   // bam
-COPY ~%block%/data/iwd_spells/priest_4/mbbmsle.BAM~ ~override~   // bam
-COPY ~%block%/data/iwd_spells/priest_4/mbbmsp.BAM~ ~override~   // bam
-COPY ~%block%/data/iwd_spells/priest_4/mbbmspe.BAM~ ~override~   // bam
-COPY ~%block%/data/iwd_spells/priest_4/mbbmtw.BAM~ ~override~   // bam
-COPY ~%block%/data/iwd_spells/priest_4/mbbmtwe.BAM~ ~override~   // bam
-COPY ~%block%/data/iwd_spells/priest_4/mbbmwk.BAM~ ~override~   // bam
-COPY ~%block%/data/iwd_spells/priest_4/mbbmwke.BAM~ ~override~   // bam
-COPY ~%block%/data/iwd_spells/priest_4/mbeta1.BAM~ ~override~   // bam
-COPY ~%block%/data/iwd_spells/priest_4/mbeta1e.BAM~ ~override~   // bam
-COPY ~%block%/data/iwd_spells/priest_4/mbetca.BAM~ ~override~   // bam
-COPY ~%block%/data/iwd_spells/priest_4/mbetcae.BAM~ ~override~   // bam
-COPY ~%block%/data/iwd_spells/priest_4/mbetde.BAM~ ~override~   // bam
-COPY ~%block%/data/iwd_spells/priest_4/mbetdee.BAM~ ~override~   // bam
-COPY ~%block%/data/iwd_spells/priest_4/mbetgh.BAM~ ~override~   // bam
-COPY ~%block%/data/iwd_spells/priest_4/mbetghe.BAM~ ~override~   // bam
-COPY ~%block%/data/iwd_spells/priest_4/mbetgu.BAM~ ~override~   // bam
-COPY ~%block%/data/iwd_spells/priest_4/mbetgue.BAM~ ~override~   // bam
-COPY ~%block%/data/iwd_spells/priest_4/mbetsc.BAM~ ~override~   // bam
-COPY ~%block%/data/iwd_spells/priest_4/mbetsce.BAM~ ~override~   // bam
-COPY ~%block%/data/iwd_spells/priest_4/mbetsd.BAM~ ~override~   // bam
-COPY ~%block%/data/iwd_spells/priest_4/mbetsde.BAM~ ~override~   // bam
-COPY ~%block%/data/iwd_spells/priest_4/mbetsl.BAM~ ~override~   // bam
-COPY ~%block%/data/iwd_spells/priest_4/mbetsle.BAM~ ~override~   // bam
-COPY ~%block%/data/iwd_spells/priest_4/mbetsp.BAM~ ~override~   // bam
-COPY ~%block%/data/iwd_spells/priest_4/mbetspe.BAM~ ~override~   // bam
-COPY ~%block%/data/iwd_spells/priest_4/mbettw.BAM~ ~override~   // bam
-COPY ~%block%/data/iwd_spells/priest_4/mbettwe.BAM~ ~override~   // bam
-COPY ~%block%/data/iwd_spells/priest_4/mbetwk.BAM~ ~override~   // bam
-COPY ~%block%/data/iwd_spells/priest_4/mbetwke.BAM~ ~override~   // bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/cldamah.BAM~ ~override~   // bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/CURSEH.BAM~ ~override~   // bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/mbbma1.BAM~ ~override~   // bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/mbbma1e.BAM~ ~override~   // bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/mbbma4.BAM~ ~override~   // bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/mbbma4e.BAM~ ~override~   // bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/mbbmca.BAM~ ~override~   // bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/mbbmcae.BAM~ ~override~   // bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/mbbmde.BAM~ ~override~   // bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/mbbmdee.BAM~ ~override~   // bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/mbbmgh.BAM~ ~override~   // bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/mbbmghe.BAM~ ~override~   // bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/mbbmgu.BAM~ ~override~   // bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/mbbmgue.BAM~ ~override~   // bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/mbbmsc.BAM~ ~override~   // bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/mbbmsce.BAM~ ~override~   // bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/mbbmsd.BAM~ ~override~   // bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/mbbmsde.BAM~ ~override~   // bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/mbbmsl.BAM~ ~override~   // bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/mbbmsle.BAM~ ~override~   // bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/mbbmsp.BAM~ ~override~   // bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/mbbmspe.BAM~ ~override~   // bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/mbbmtw.BAM~ ~override~   // bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/mbbmtwe.BAM~ ~override~   // bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/mbbmwk.BAM~ ~override~   // bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/mbbmwke.BAM~ ~override~   // bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/mbeta1.BAM~ ~override~   // bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/mbeta1e.BAM~ ~override~   // bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/mbetca.BAM~ ~override~   // bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/mbetcae.BAM~ ~override~   // bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/mbetde.BAM~ ~override~   // bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/mbetdee.BAM~ ~override~   // bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/mbetgh.BAM~ ~override~   // bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/mbetghe.BAM~ ~override~   // bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/mbetgu.BAM~ ~override~   // bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/mbetgue.BAM~ ~override~   // bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/mbetsc.BAM~ ~override~   // bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/mbetsce.BAM~ ~override~   // bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/mbetsd.BAM~ ~override~   // bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/mbetsde.BAM~ ~override~   // bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/mbetsl.BAM~ ~override~   // bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/mbetsle.BAM~ ~override~   // bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/mbetsp.BAM~ ~override~   // bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/mbetspe.BAM~ ~override~   // bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/mbettw.BAM~ ~override~   // bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/mbettwe.BAM~ ~override~   // bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/mbetwk.BAM~ ~override~   // bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/mbetwke.BAM~ ~override~   // bam
 //sounds
-COPY ~%block%/data/iwd_spells/priest_4/#EFF_E04.WAV~ ~override~   //
-COPY ~%block%/data/iwd_spells/priest_4/#EFF_P32.WAV~ ~override~   //
-COPY ~%block%/data/iwd_spells/priest_4/#EFF_P39.WAV~ ~override~   //
-COPY ~%block%/data/iwd_spells/priest_4/bomba01.WAV~ ~override~   //
-COPY ~%block%/data/iwd_spells/priest_4/bomba02.WAV~ ~override~   //
-COPY ~%block%/data/iwd_spells/priest_4/bomba03a.WAV~ ~override~   //
-COPY ~%block%/data/iwd_spells/priest_4/bomba03b.WAV~ ~override~   //
-COPY ~%block%/data/iwd_spells/priest_4/bomba03c.WAV~ ~override~   //
-COPY ~%block%/data/iwd_spells/priest_4/bomba07.WAV~ ~override~   //
-COPY ~%block%/data/iwd_spells/priest_4/bomba08.WAV~ ~override~   //
-COPY ~%block%/data/iwd_spells/priest_4/bomba09a.WAV~ ~override~   //
-COPY ~%block%/data/iwd_spells/priest_4/bomba09b.WAV~ ~override~   //
-COPY ~%block%/data/iwd_spells/priest_4/bomba11.WAV~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_4/#EFF_E04.WAV~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_4/#EFF_P32.WAV~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_4/#EFF_P39.WAV~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_4/bomba01.WAV~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_4/bomba02.WAV~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_4/bomba03a.WAV~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_4/bomba03b.WAV~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_4/bomba03c.WAV~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_4/bomba07.WAV~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_4/bomba08.WAV~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_4/bomba09a.WAV~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_4/bomba09b.WAV~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_4/bomba11.WAV~ ~override~   //
 //cre
-COPY ~%block%/data/iwd_spells/priest_4/b_bebom.cre~ ~override~   //  bomba beetle
+COPY ~%mod_folder%/data/iwd_spells/priest_4/b_bebom.cre~ ~override~   //  bomba beetle
         SAY NAME1 @41800003
         SAY NAME2 @41800003
-COPY ~%block%/data/iwd_spells/priest_4/b_bebor.cre~ ~override~   // boring beetle
+COPY ~%mod_folder%/data/iwd_spells/priest_4/b_bebor.cre~ ~override~   // boring beetle
         SAY NAME1 @41800004
         SAY NAME2 @41800004
 //2da
-COPY ~%block%/data/iwd_spells/priest_4/b_ginsc.2da~ ~override~   //
-COPY ~%block%/data/iwd_spells/priest_4/mbbm.2da~ ~override~   //
-COPY ~%block%/data/iwd_spells/priest_4/mbet.2da~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_4/b_ginsc.2da~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_4/mbbm.2da~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_4/mbet.2da~ ~override~   //
 //itm
-COPY ~%block%/data/iwd_spells/priest_4/fartrng.itm~ ~override~   //
-COPY ~%block%/data/iwd_spells/priest_4/s1-12.itm~ ~override~   //
-COPY ~%block%/data/iwd_spells/priest_4/s5-20.itm~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_4/fartrng.itm~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_4/s1-12.itm~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_4/s5-20.itm~ ~override~   //
 //itm icons
-COPY ~%block%/data/iwd_spells/priest_4/pincers.BAM~ ~override~   // bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/pincers.BAM~ ~override~   // bam
 //effs
-COPY ~%block%/data/iwd_spells/priest_4/b_ginsc.eff~ ~override~   // actual summon eff
+COPY ~%mod_folder%/data/iwd_spells/priest_4/b_ginsc.eff~ ~override~   // actual summon eff
 //secondary spells
 //Spell itself
-ADD_SPELL ~%block%/data/iwd_spells/priest_4/b_p418.spl~ 1 4 ~CLERIC_GIANT_INSECT~ // Spell
+ADD_SPELL ~%mod_folder%/data/iwd_spells/priest_4/b_p418.spl~ 1 4 ~CLERIC_GIANT_INSECT~ // Spell
         SAY NAME1 @41800000
         SAY NAME2 @41800000
         SAY UNIDENTIFIED_DESC @41800001
@@ -1230,9 +1230,9 @@ LAF RES_NUM_OF_SPELL_NAME
   RET spell_res
 END
 //icons
-COPY ~%block%/data/iwd_spells/priest_4/sppr418a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~%block%/data/iwd_spells/priest_4/sppr418b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~%block%/data/iwd_spells/priest_4/sppr418c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/sppr418a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/sppr418b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/sppr418c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   LPF ALTER_SPELL_HEADER STR_VAR icon = EVAL  ~%spell_res%B~ END
@@ -1247,16 +1247,16 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
 
 //_______________________________________________________
 //Projectile
-ADD_PROJECTILE ~%block%/data/iwd_spells/priest_4/idpro215.pro~   //projectile
+ADD_PROJECTILE ~%mod_folder%/data/iwd_spells/priest_4/idpro215.pro~   //projectile
 //probam
-COPY ~%block%/data/iwd_spells/priest_4/PFIREA.bam~ ~override~   // bam
-COPY ~%block%/data/iwd_spells/priest_4/PFIREX.bam~ ~override~   // bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/PFIREA.bam~ ~override~   // bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/PFIREX.bam~ ~override~   // bam
 //vvc
-COPY ~%block%/data/iwd_spells/priest_4/#PRFIRE.vvc~ ~override~   // bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/#PRFIRE.vvc~ ~override~   // bam
 //3d animation
 //sounds
-COPY ~%block%/data/iwd_spells/priest_4/#EFF_P45.WAV~ ~override~   //
-COPY ~%block%/data/iwd_spells/priest_4/#ARE_P03.WAV~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_4/#EFF_P45.WAV~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_4/#ARE_P03.WAV~ ~override~   //
 //cre
 //2da
 //itm
@@ -1264,7 +1264,7 @@ COPY ~%block%/data/iwd_spells/priest_4/#ARE_P03.WAV~ ~override~   //
 //effs
 //secondary spells
 //Spell itself
-ADD_SPELL ~%block%/data/iwd_spells/priest_4/b_p419.spl~ 1 4 ~CLERIC_PRODUCE_FIRE~ // Spell
+ADD_SPELL ~%mod_folder%/data/iwd_spells/priest_4/b_p419.spl~ 1 4 ~CLERIC_PRODUCE_FIRE~ // Spell
         SAY NAME1 @41900000
         SAY NAME2 @41900000
         SAY UNIDENTIFIED_DESC @41900001
@@ -1283,17 +1283,17 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
       STR_VAR resource = EVAL ~%spell_res%~
   END      //
 //icons
-COPY ~%block%/data/iwd_spells/priest_4/sppr419a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~%block%/data/iwd_spells/priest_4/sppr419b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~%block%/data/iwd_spells/priest_4/sppr419c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/sppr419a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/sppr419b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/sppr419c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   LPF ALTER_SPELL_HEADER INT_VAR projectile = %idpro215% STR_VAR icon = EVAL  ~%spell_res%B~ END
   WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
 //Remove/prevent fire
-INCLUDE ~%block%/lib/spell_lists/fire_list.tpa~
+INCLUDE ~%mod_folder%/lib/spell_lists/fire_list.tpa~
 //4th lev
-INCLUDE ~%block%/lib/spell_lists/4th_list.tpa~
+INCLUDE ~%mod_folder%/lib/spell_lists/4th_list.tpa~
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1304,14 +1304,14 @@ INCLUDE ~%block%/lib/spell_lists/4th_list.tpa~
 
 //Projectile
 //secondary projectile
-ADD_PROJECTILE ~%block%/data/iwd_spells/priest_4/idstatic.pro~   //projectile
+ADD_PROJECTILE ~%mod_folder%/data/iwd_spells/priest_4/idstatic.pro~   //projectile
 //probam
 //vvc
 //icons
 //3d animation
-COPY ~%block%/data/iwd_spells/priest_4/SCHARGH.BAM~ ~override~   //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/SCHARGH.BAM~ ~override~   //bam
 //sounds
-COPY ~%block%/data/iwd_spells/priest_4/EFF_P42.WAV~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_4/EFF_P42.WAV~ ~override~   //
 //cre
 //2da
 //itm
@@ -1319,7 +1319,7 @@ COPY ~%block%/data/iwd_spells/priest_4/EFF_P42.WAV~ ~override~   //
 //effs
 
 //Spell itself
-ADD_SPELL ~%block%/data/iwd_spells/priest_4/b_p420.spl~ 1 4 ~CLERIC_STATIC_CHARGE~ // Spell
+ADD_SPELL ~%mod_folder%/data/iwd_spells/priest_4/b_p420.spl~ 1 4 ~CLERIC_STATIC_CHARGE~ // Spell
         SAY NAME1 @42000000
         SAY NAME2 @42000000
         SAY UNIDENTIFIED_DESC @42000001
@@ -1343,7 +1343,7 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
   END      //
 
 //secondary spell
-COPY ~%block%/data/iwd_spells/priest_4/sppr420b.spl~ ~override/%spell_res%B.spl~   //sec spell
+COPY ~%mod_folder%/data/iwd_spells/priest_4/sppr420b.spl~ ~override/%spell_res%B.spl~   //sec spell
   LPF ALTER_EFFECT
       INT_VAR match_opcode = 139            //
       parameter1 = 13107
@@ -1352,23 +1352,23 @@ COPY ~%block%/data/iwd_spells/priest_4/sppr420b.spl~ ~override/%spell_res%B.spl~
       INT_VAR match_opcode = 324            //
       STR_VAR resource = EVAL ~%spell_res%b~
   END      //
-COPY ~%block%/data/iwd_spells/priest_4/b_p420a.eff~ ~override~   //text notification
+COPY ~%mod_folder%/data/iwd_spells/priest_4/b_p420a.eff~ ~override~   //text notification
   SAY 0x1c @42000004    //Notification
 //must add projectile
 COPY_EXISTING ~%spell_res%B.spl~ ~override~
 	WRITE_SHORT 0x098 ~%idstatic%~  //Projectile
 //icons
-COPY ~%block%/data/iwd_spells/priest_4/sppr420a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~%block%/data/iwd_spells/priest_4/sppr420b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~%block%/data/iwd_spells/priest_4/sppr420c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/sppr420a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/sppr420b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/sppr420c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   LPF ALTER_SPELL_HEADER STR_VAR icon = EVAL  ~%spell_res%B~ END
   WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
 //Remove/prevent electricty(?)
-INCLUDE ~%block%/lib/spell_lists/elect_list.tpa~
+INCLUDE ~%mod_folder%/lib/spell_lists/elect_list.tpa~
 //4th lev
-INCLUDE ~%block%/lib/spell_lists/4th_list.tpa~
+INCLUDE ~%mod_folder%/lib/spell_lists/4th_list.tpa~
 
 
 
@@ -1379,30 +1379,30 @@ INCLUDE ~%block%/lib/spell_lists/4th_list.tpa~
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //Projectile
-ADD_PROJECTILE ~%block%/data/iwd_spells/priest_4/b_p421a.pro~   //projectile
-ADD_PROJECTILE ~%block%/data/iwd_spells/priest_4/b_p421b.pro~   //projectile
+ADD_PROJECTILE ~%mod_folder%/data/iwd_spells/priest_4/b_p421a.pro~   //projectile
+ADD_PROJECTILE ~%mod_folder%/data/iwd_spells/priest_4/b_p421b.pro~   //projectile
 //probam
 //vvc
 //3d animation
-COPY ~%block%/data/iwd_spells/priest_4/RECITAH.BAM~ ~override~   //bam
-COPY ~%block%/data/iwd_spells/priest_4/B_RECR.bam~ ~override~   //bam (missing, so created)
+COPY ~%mod_folder%/data/iwd_spells/priest_4/RECITAH.BAM~ ~override~   //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/B_RECR.bam~ ~override~   //bam (missing, so created)
 //sounds
-COPY ~%block%/data/iwd_spells/priest_4/#EFF_P44.WAV~ ~override~   //Wav
-COPY ~%block%/data/iwd_spells/priest_4/EFF_E03.WAV~ ~override~   //Wav
+COPY ~%mod_folder%/data/iwd_spells/priest_4/#EFF_P44.WAV~ ~override~   //Wav
+COPY ~%mod_folder%/data/iwd_spells/priest_4/EFF_E03.WAV~ ~override~   //Wav
 //cre
 //2da
 //itm
 //itm icons
 //effs
 //secondary spell
-COPY ~%block%/data/iwd_spells/priest_4/#RECITEG.spl~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_4/#RECITEG.spl~ ~override~   //
   LPF ALTER_SPELL_HEADER INT_VAR projectile = %OHVRPO% END
   LPF ALTER_EFFECT INT_VAR match_opcode = 139 parameter1 = RESOLVE_STR_REF (@31600004) END  //Notification: combat bonuses
   LPF ALTER_EFFECT
       INT_VAR match_opcode = 142            //
       parameter2 = 17     //blessed
   END      //
-COPY ~%block%/data/iwd_spells/priest_4/#RECITEB.spl~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_4/#RECITEB.spl~ ~override~   //
 LPF ALTER_SPELL_HEADER INT_VAR projectile = %OHVRNP% END
   LPF ALTER_EFFECT INT_VAR match_opcode = 139 parameter1 = RESOLVE_STR_REF (@31600002) END  //Notification: Combat Penalties
   LPF ALTER_EFFECT
@@ -1415,7 +1415,7 @@ LPF ALTER_SPELL_HEADER INT_VAR projectile = %OHVRNP% END
   END      //
 
 //Spell itself
-ADD_SPELL ~%block%/data/iwd_spells/priest_4/b_p421.spl~ 1 4 ~CLERIC_RECITATION~ // Spell
+ADD_SPELL ~%mod_folder%/data/iwd_spells/priest_4/b_p421.spl~ 1 4 ~CLERIC_RECITATION~ // Spell
         SAY NAME1 @42100000
         SAY NAME2 @42100000
         SAY UNIDENTIFIED_DESC @42100001
@@ -1425,15 +1425,15 @@ LAF RES_NUM_OF_SPELL_NAME
   RET spell_res
 END
 //icons
-COPY ~%block%/data/iwd_spells/priest_4/sppr421a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~%block%/data/iwd_spells/priest_4/sppr421b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~%block%/data/iwd_spells/priest_4/sppr421c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/sppr421a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/sppr421b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/sppr421c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   LPF ALTER_SPELL_HEADER STR_VAR icon = EVAL  ~%spell_res%B~ END
   WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
 //Remove bless
-INCLUDE ~%block%/lib/spell_lists/bless_list.tpa~
+INCLUDE ~%mod_folder%/lib/spell_lists/bless_list.tpa~
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1457,7 +1457,7 @@ INCLUDE ~%block%/lib/spell_lists/bless_list.tpa~
 //effs
 //secondary spell
 //Spell itself
-ADD_SPELL ~%block%/data/iwd_spells/priest_4/b_p422.spl~ 1 4 ~CLERIC_BLOOD_RAGE~
+ADD_SPELL ~%mod_folder%/data/iwd_spells/priest_4/b_p422.spl~ 1 4 ~CLERIC_BLOOD_RAGE~
         SAY NAME1 @42200000
         SAY NAME2 @42200000
         SAY UNIDENTIFIED_DESC @42200001
@@ -1475,9 +1475,9 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
   LPF ALTER_EFFECT INT_VAR match_opcode = 1 opcode = 318 STR_VAR resource = EVAL ~%spell_res%~ END
 
 //icons
-COPY ~%block%/data/iwd_spells/priest_4/sppr422a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~%block%/data/iwd_spells/priest_4/sppr422b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~%block%/data/iwd_spells/priest_4/sppr422c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/sppr422a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/sppr422b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/sppr422c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   LPF ALTER_SPELL_HEADER STR_VAR icon = EVAL  ~%spell_res%B~ END
@@ -1488,16 +1488,16 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
 //MAKE PROTECT FROM WIZARD EMOTION SPELLS ONCE ADDED
 
 //sanctity immunity list
-INCLUDE ~%block%/lib/spell_lists/sanctity_list.tpa~
+INCLUDE ~%mod_folder%/lib/spell_lists/sanctity_list.tpa~
 
 //exaltation immunity list
-INCLUDE ~%block%/lib/spell_lists/exaltation_list.tpa~
+INCLUDE ~%mod_folder%/lib/spell_lists/exaltation_list.tpa~
 
 //rage immunity list
-INCLUDE ~%block%/lib/spell_lists/rage_list.tpa~
+INCLUDE ~%mod_folder%/lib/spell_lists/rage_list.tpa~
 
 //Emotion dispelling
-INCLUDE ~%block%/lib/spell_lists/emo_disp_list.tpa~
+INCLUDE ~%mod_folder%/lib/spell_lists/emo_disp_list.tpa~
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1507,13 +1507,13 @@ INCLUDE ~%block%/lib/spell_lists/emo_disp_list.tpa~
 
 //will anything remove or prevent this spell?
 //Projectile
-ADD_PROJECTILE ~%block%/data/iwd_spells/priest_4/idpro309.pro~   //projectile
+ADD_PROJECTILE ~%mod_folder%/data/iwd_spells/priest_4/idpro309.pro~   //projectile
 //probam
-COPY ~%block%/data/iwd_spells/priest_4/copesta.BAM~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_4/copesta.BAM~ ~override~   //
 //vvc
 //3d animation
 //sounds
-COPY ~%block%/data/iwd_spells/priest_4/ARE_P25.WAV~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_4/ARE_P25.WAV~ ~override~   //
 //cre
 //2da
 //itm
@@ -1522,14 +1522,14 @@ COPY ~%block%/data/iwd_spells/priest_4/ARE_P25.WAV~ ~override~   //
 //secondary spell
 //Spell itself                                                //WHY DIFFERENT VERSIONS OF SPELL????
 ACTION_IF GAME_IS ~bgee~ THEN BEGIN   //  ACTION_IF GAME_IS ~bgee sod~ THEN BEGIN 
- ADD_SPELL ~%block%/data/iwd_spells/priest_4/bgee/b_p423.spl~ 1 4 ~CLERIC_CLOUD_OF_PESTILENCE~ // Spell
+ ADD_SPELL ~%mod_folder%/data/iwd_spells/priest_4/bgee/b_p423.spl~ 1 4 ~CLERIC_CLOUD_OF_PESTILENCE~ // Spell
         SAY NAME1 @42300000
         SAY NAME2 @42300000
         SAY UNIDENTIFIED_DESC @42300001
 	SAY DESC @42300001
 END
 ACTION_IF GAME_IS ~bg2ee eet~ THEN BEGIN   //
- ADD_SPELL ~%block%/data/iwd_spells/priest_4/bg2ee/b_p423.spl~ 1 4 ~CLERIC_CLOUD_OF_PESTILENCE~ // Spell
+ ADD_SPELL ~%mod_folder%/data/iwd_spells/priest_4/bg2ee/b_p423.spl~ 1 4 ~CLERIC_CLOUD_OF_PESTILENCE~ // Spell
         SAY NAME1 @42300000
         SAY NAME2 @42300000
         SAY UNIDENTIFIED_DESC @42300001
@@ -1550,17 +1550,17 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
       STR_VAR resource = EVAL ~%spell_res%~
   END      //
 //icons
-COPY ~%block%/data/iwd_spells/priest_4/sppr423a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~%block%/data/iwd_spells/priest_4/sppr423b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~%block%/data/iwd_spells/priest_4/sppr423c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/sppr423a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/sppr423b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/sppr423c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   LPF ALTER_SPELL_HEADER INT_VAR projectile = %idpro309% STR_VAR icon = EVAL  ~%spell_res%B~ END
   WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
 //Remove CoP (zone of clear air??)
-INCLUDE ~%block%/lib/spell_lists/cloud_list.tpa~ // //
+INCLUDE ~%mod_folder%/lib/spell_lists/cloud_list.tpa~ // //
 //4th lev
-INCLUDE ~%block%/lib/spell_lists/4th_list.tpa~
+INCLUDE ~%mod_folder%/lib/spell_lists/4th_list.tpa~
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1572,9 +1572,9 @@ INCLUDE ~%block%/lib/spell_lists/4th_list.tpa~
 //probam
 //vvc
 //3d animation
-COPY ~%block%/data/iwd_spells/priest_4/NECROH.BAM~ ~override~   //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/NECROH.BAM~ ~override~   //bam
 //sounds
-COPY ~%block%/data/iwd_spells/priest_4/#FF_P112.WAV~ ~override~   //Wav
+COPY ~%mod_folder%/data/iwd_spells/priest_4/#FF_P112.WAV~ ~override~   //Wav
 //cre
 //2da
 //itm
@@ -1582,7 +1582,7 @@ COPY ~%block%/data/iwd_spells/priest_4/#FF_P112.WAV~ ~override~   //Wav
 //effs
 //secondary spell
 //Spell itself
-ADD_SPELL ~%block%/data/iwd_spells/priest_4/b_p424.spl~ 1 4 ~CLERIC_UNFAILING_ENDURANCE~ // Spell
+ADD_SPELL ~%mod_folder%/data/iwd_spells/priest_4/b_p424.spl~ 1 4 ~CLERIC_UNFAILING_ENDURANCE~ // Spell
         SAY NAME1 @42400000
         SAY NAME2 @42400000
         SAY UNIDENTIFIED_DESC @42400001
@@ -1592,9 +1592,9 @@ LAF RES_NUM_OF_SPELL_NAME
   RET spell_res
 END
 //icons
-COPY ~%block%/data/iwd_spells/priest_4/sppr424a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~%block%/data/iwd_spells/priest_4/sppr424b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~%block%/data/iwd_spells/priest_4/sppr424c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/sppr424a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/sppr424b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/sppr424c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   LPF ALTER_SPELL_HEADER  STR_VAR icon = EVAL  ~%spell_res%B~ END
@@ -1606,17 +1606,17 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
 ACTION_IF FILE_EXISTS_IN_GAME ~b_revise.itm~ BEGIN
 //should be able to use exact same code for iwdee and iwdification
 //spec ability
-COPY ~%block%/data/revised_spells/unfailing_endurance/b_fatig.spl~ ~override~
+COPY ~%mod_folder%/data/revised_spells/unfailing_endurance/b_fatig.spl~ ~override~
         SAY NAME1 @10100000
         SAY NAME2 @10100000
         SAY UNIDENTIFIED_DESC @10100004
 	SAY DESC @10100004
 //heal notification
-COPY ~%block%/data/revised_spells/unfailing_endurance/B_HEALN.eff~ ~override~
+COPY ~%mod_folder%/data/revised_spells/unfailing_endurance/B_HEALN.eff~ ~override~
   SAY 0x1c ~Healed~ //healed (already in dialog.tlk so...)
 
 //animation
-COPY ~%block%/data/revised_spells/unfailing_endurance/ENCHAH.bam~ ~override~
+COPY ~%mod_folder%/data/revised_spells/unfailing_endurance/ENCHAH.bam~ ~override~
 
 LAF RES_NUM_OF_SPELL_NAME
   STR_VAR spell_name = ~CLERIC_UNFAILING_ENDURANCE~
@@ -1651,22 +1651,22 @@ END  //End 'my version'
 //probam
 //vvc
 //3d animation
-COPY ~%block%/data/iwd_spells/priest_4/ISMCUDGE.bam~ ~override~   //bam
-COPY ~%block%/data/iwd_spells/priest_4/CONJUH.bam~ ~override~   //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/ISMCUDGE.bam~ ~override~   //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/CONJUH.bam~ ~override~   //bam
 //sounds
-COPY ~%block%/data/iwd_spells/priest_4/#EFF_P02.WAV~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_4/#EFF_P02.WAV~ ~override~   //
 //cre
 //2da
 //itm
-COPY ~%block%/data/iwd_spells/priest_4/SMCUDGE.itm~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_4/SMCUDGE.itm~ ~override~   //
         SAY NAME1 @42500000
         SAY NAME2 @42500000
 //itm icons
 //effs
-COPY ~%block%/data/iwd_spells/priest_4/SMCUDGE.eff~ ~override~   //eff
+COPY ~%mod_folder%/data/iwd_spells/priest_4/SMCUDGE.eff~ ~override~   //eff
 //secondary spell
 //Spell itself
-ADD_SPELL ~%block%/data/iwd_spells/priest_4/b_p425.spl~ 1 4 ~CLERIC_STAR_METAL_CUDGEL~ // Spell
+ADD_SPELL ~%mod_folder%/data/iwd_spells/priest_4/b_p425.spl~ 1 4 ~CLERIC_STAR_METAL_CUDGEL~ // Spell
         SAY NAME1 @42500000
         SAY NAME2 @42500000
         SAY UNIDENTIFIED_DESC @42500001
@@ -1676,9 +1676,9 @@ LAF RES_NUM_OF_SPELL_NAME
   RET spell_res
 END
 //icons
-COPY ~%block%/data/iwd_spells/priest_4/sppr425a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~%block%/data/iwd_spells/priest_4/sppr425b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~%block%/data/iwd_spells/priest_4/sppr425c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/sppr425a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/sppr425b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/sppr425c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   LPF ALTER_SPELL_HEADER STR_VAR icon = EVAL  ~%spell_res%B~ END
@@ -1695,15 +1695,15 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
 //ADD CD_STUN/UNCONSCIOUS STUFF (OR MAKE A NEW ONE IF NEEDED) TEST IT!!
 
 //Projectile
-ADD_PROJECTILE ~%block%/data/iwd_spells/priest_4/swave.pro~   //projectile
+ADD_PROJECTILE ~%mod_folder%/data/iwd_spells/priest_4/swave.pro~   //projectile
 //probam
-COPY ~%block%/data/iwd_spells/priest_4/SWAVEX.bam~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_4/SWAVEX.bam~ ~override~   //
 //vvc
 //3d animation
-COPY ~%block%/data/iwd_spells/priest_4/SWAVEX.bam~ ~override~   //
-COPY ~%block%/data/iwd_spells/priest_4/SWAVEH.BAM~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_4/SWAVEX.bam~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_4/SWAVEH.BAM~ ~override~   //
 //sounds
-COPY ~%block%/data/iwd_spells/priest_4/#FF_P110.WAV~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_4/#FF_P110.WAV~ ~override~   //
 //cre
 //2da
 //itm
@@ -1711,7 +1711,7 @@ COPY ~%block%/data/iwd_spells/priest_4/#FF_P110.WAV~ ~override~   //
 //effs  missing stun display (check for immunities...)
 //secondary spell
 //Spell itself
-ADD_SPELL ~%block%/data/iwd_spells/priest_4/b_p426.spl~ 1 4 ~CLERIC_SMASHING_WAVE~ // Spell
+ADD_SPELL ~%mod_folder%/data/iwd_spells/priest_4/b_p426.spl~ 1 4 ~CLERIC_SMASHING_WAVE~ // Spell
         SAY NAME1 @42600000
         SAY NAME2 @42600000
         SAY UNIDENTIFIED_DESC @42600001
@@ -1747,15 +1747,15 @@ ACTION_IF GAME_IS ~bgee~ THEN BEGIN   //
   END      //
 END      //
 //icons
-COPY ~%block%/data/iwd_spells/priest_4/sppr426a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~%block%/data/iwd_spells/priest_4/sppr426b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~%block%/data/iwd_spells/priest_4/sppr426c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/sppr426a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/sppr426b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/sppr426c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   LPF ALTER_SPELL_HEADER INT_VAR projectile = %swave% STR_VAR icon = EVAL  ~%spell_res%B~ END
   WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
 //4th lev
-INCLUDE ~%block%/lib/spell_lists/4th_list.tpa~
+INCLUDE ~%mod_folder%/lib/spell_lists/4th_list.tpa~
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1764,13 +1764,13 @@ INCLUDE ~%block%/lib/spell_lists/4th_list.tpa~
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //Projectile
-ADD_PROJECTILE ~%block%/data/iwd_spells/priest_4/idpro303.pro~   //projectile
+ADD_PROJECTILE ~%mod_folder%/data/iwd_spells/priest_4/idpro303.pro~   //projectile
 //probam
-COPY ~%block%/data/iwd_spells/priest_4/TSPRAYT.bam~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_4/TSPRAYT.bam~ ~override~   //
 //vvc
 //3d animation
 //sounds
-COPY ~%block%/data/iwd_spells/priest_4/#TRA_61.WAV~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_4/#TRA_61.WAV~ ~override~   //
 //cre
 //2da
 //itm
@@ -1778,7 +1778,7 @@ COPY ~%block%/data/iwd_spells/priest_4/#TRA_61.WAV~ ~override~   //
 //effs
 //secondary spell
 //Spell itself
-ADD_SPELL ~%block%/data/iwd_spells/priest_4/b_p427.spl~ 1 4 ~CLERIC_THORN_SPRAY~ // Spell
+ADD_SPELL ~%mod_folder%/data/iwd_spells/priest_4/b_p427.spl~ 1 4 ~CLERIC_THORN_SPRAY~ // Spell
         SAY NAME1 @42700000
         SAY NAME2 @42700000
         SAY UNIDENTIFIED_DESC @42700001
@@ -1793,15 +1793,15 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
       STR_VAR resource = EVAL ~%spell_res%~
   END      //
 //icons
-COPY ~%block%/data/iwd_spells/priest_4/sppr427a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~%block%/data/iwd_spells/priest_4/sppr427b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~%block%/data/iwd_spells/priest_4/sppr427c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/sppr427a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/sppr427b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/sppr427c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   LPF ALTER_SPELL_HEADER INT_VAR projectile = %idpro303% STR_VAR icon = EVAL  ~%spell_res%B~ END
   WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
 //4th lev
-INCLUDE ~%block%/lib/spell_lists/4th_list.tpa~
+INCLUDE ~%mod_folder%/lib/spell_lists/4th_list.tpa~
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1812,22 +1812,22 @@ INCLUDE ~%block%/lib/spell_lists/4th_list.tpa~
 //DID I REMOVE THE ALIGNMENT STUFF?  ADD IT AGAIN
 
 //Projectile
-ADD_PROJECTILE ~%block%/data/iwd_spells/priest_4/womoon.pro~   //projectile
+ADD_PROJECTILE ~%mod_folder%/data/iwd_spells/priest_4/womoon.pro~   //projectile
 //probam
-COPY ~%block%/data/iwd_spells/priest_4/WOMOONX.bam~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_4/WOMOONX.bam~ ~override~   //
 //vvc
-COPY ~%block%/data/iwd_spells/priest_4/WOMOONX.vvc~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_4/WOMOONX.vvc~ ~override~   //
 //3d animation
 //sounds
-COPY ~%block%/data/iwd_spells/priest_4/ARE_P22.WAV~ ~override~   //
-COPY ~%block%/data/iwd_spells/priest_4/AFT_P21.WAV~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_4/ARE_P22.WAV~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_4/AFT_P21.WAV~ ~override~   //
 //cre
 //2da
 //itm
 //itm icons
 //effs
 //Spell itself
-ADD_SPELL ~%block%/data/iwd_spells/priest_4/B_P428.spl~ 1 4 ~CLERIC_WALL_OF_MOONLIGHT~ // Spell
+ADD_SPELL ~%mod_folder%/data/iwd_spells/priest_4/B_P428.spl~ 1 4 ~CLERIC_WALL_OF_MOONLIGHT~ // Spell
         SAY NAME1 @42800000
         SAY NAME2 @42800000
         SAY UNIDENTIFIED_DESC @42800001
@@ -1847,18 +1847,18 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
   END      //
   LPF CLONE_EFFECT INT_VAR match_opcode = 326 parameter2 = 1 STR_VAR resource = EVAL ~%spell_res%B~ END
 //Secondary Spells
-COPY ~%block%/data/iwd_spells/priest_4/SPPR428A.spl~ ~override/%spell_res%A.spl~   //
-COPY ~%block%/data/iwd_spells/priest_4/SPPR428B.spl~ ~override/%spell_res%B.spl~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_4/SPPR428A.spl~ ~override/%spell_res%A.spl~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_4/SPPR428B.spl~ ~override/%spell_res%B.spl~   //
 //icons
-COPY ~%block%/data/iwd_spells/priest_4/sppr428a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~%block%/data/iwd_spells/priest_4/sppr428b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~%block%/data/iwd_spells/priest_4/sppr428c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/sppr428a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/sppr428b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_4/sppr428c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   LPF ALTER_SPELL_HEADER INT_VAR projectile = %womoon% STR_VAR icon = EVAL  ~%spell_res%B~ END
   WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
 //4th lev
-INCLUDE ~%block%/lib/spell_lists/4th_list.tpa~
+INCLUDE ~%mod_folder%/lib/spell_lists/4th_list.tpa~
 
 //////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////
@@ -1876,27 +1876,27 @@ INCLUDE ~%block%/lib/spell_lists/4th_list.tpa~
 
 //display icon not yet available (ADD THEM!)  Using 'Heroism' for now...
 //Projectile
-ADD_PROJECTILE ~%block%/data/iwd_spells/priest_5/idpro266.pro~   //projectile
+ADD_PROJECTILE ~%mod_folder%/data/iwd_spells/priest_5/idpro266.pro~   //projectile
 //probam
-COPY ~%block%/data/iwd_spells/priest_5/ABJURAX.bam~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_5/ABJURAX.bam~ ~override~   //
 //vvc
-COPY ~%block%/data/iwd_spells/priest_5/#GENABJU.vvc~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_5/#GENABJU.vvc~ ~override~   //
 //icons
-COPY ~%block%/data/iwd_spells/priest_5/sppr518a.bam~ ~override~   //scroll bam
-COPY ~%block%/data/iwd_spells/priest_5/sppr518b.bam~ ~override~   //bam
-COPY ~%block%/data/iwd_spells/priest_5/sppr518c.bam~ ~override~   //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_5/sppr518a.bam~ ~override~   //scroll bam
+COPY ~%mod_folder%/data/iwd_spells/priest_5/sppr518b.bam~ ~override~   //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_5/sppr518c.bam~ ~override~   //bam
 //3d animation
-COPY ~%block%/data/iwd_spells/priest_5/RWOTFAH.BAM~ ~override~   //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_5/RWOTFAH.BAM~ ~override~   //bam
 //sounds
-COPY ~%block%/data/iwd_spells/priest_5/#EFF_P36.WAV~ ~override~   //
-COPY ~%block%/data/iwd_spells/priest_5/#EFF_E01.WAV~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_5/#EFF_P36.WAV~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_5/#EFF_E01.WAV~ ~override~   //
 //cre
 //2da
 //itm
 //itm icons
 //effs
 //Spell itself
-ADD_SPELL ~%block%/data/iwd_spells/priest_5/B_P518.spl~ 1 5 ~CLERIC_RIGHTEOUS_WRATH_OF_THE_FAITHFUL~ // Spell
+ADD_SPELL ~%mod_folder%/data/iwd_spells/priest_5/B_P518.spl~ 1 5 ~CLERIC_RIGHTEOUS_WRATH_OF_THE_FAITHFUL~ // Spell
         SAY NAME1 @51800000
         SAY NAME2 @51800000
         SAY UNIDENTIFIED_DESC @51800001
@@ -1916,20 +1916,20 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
   END      //
 //secondary spells
 ACTION_IF GAME_IS ~bgee~ THEN BEGIN   //
- COPY ~%block%/data/iwd_spells/priest_5/bgee/SPPR518A.spl~ ~override/%spell_res%A.spl~   //
+ COPY ~%mod_folder%/data/iwd_spells/priest_5/bgee/SPPR518A.spl~ ~override/%spell_res%A.spl~   //
 END
 ACTION_IF GAME_IS ~bg2ee eet~ THEN BEGIN   //
- COPY ~%block%/data/iwd_spells/priest_5/bg2ee/SPPR518A.spl~ ~override/%spell_res%A.spl~   //
+ COPY ~%mod_folder%/data/iwd_spells/priest_5/bg2ee/SPPR518A.spl~ ~override/%spell_res%A.spl~   //
 END
-COPY ~%block%/data/iwd_spells/priest_5/SPPR518B.spl~ ~override/%spell_res%B.spl~   // CHECK STRINGS, SOUND EFFECTS AND ANIMATIONS
+COPY ~%mod_folder%/data/iwd_spells/priest_5/SPPR518B.spl~ ~override/%spell_res%B.spl~   // CHECK STRINGS, SOUND EFFECTS AND ANIMATIONS
   LPF ALTER_EFFECT
       INT_VAR match_opcode = 321            //
       STR_VAR resource = EVAL ~%spell_res%B~
   END      //
 //icons
-COPY ~%block%/data/iwd_spells/priest_5/sppr518a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~%block%/data/iwd_spells/priest_5/sppr518b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~%block%/data/iwd_spells/priest_5/sppr518c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_5/sppr518a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~%mod_folder%/data/iwd_spells/priest_5/sppr518b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_5/sppr518c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   LPF ALTER_SPELL_HEADER INT_VAR projectile = %idpro266% STR_VAR icon = EVAL  ~%spell_res%B~ END
@@ -1943,15 +1943,15 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //Projectile
-ADD_PROJECTILE ~%block%/data/iwd_spells/priest_5/idpro213.pro~   //projectile
+ADD_PROJECTILE ~%mod_folder%/data/iwd_spells/priest_5/idpro213.pro~   //projectile
 //probam
-COPY ~%block%/data/iwd_spells/priest_5/SSTONEA.BAM~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_5/SSTONEA.BAM~ ~override~   //
 //vvc
 //3d animation
 //sounds
-COPY ~%block%/data/iwd_spells/priest_5/ARE_P04.WAV~ ~override~   //
-COPY ~%block%/data/iwd_spells/priest_5/EFF_P48.WAV~ ~override~   //
-COPY ~%block%/data/iwd_spells/priest_5/#CRE_P03.WAV~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_5/ARE_P04.WAV~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_5/EFF_P48.WAV~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_5/#CRE_P03.WAV~ ~override~   //
 //cre
 //2da
 //itm
@@ -1959,7 +1959,7 @@ COPY ~%block%/data/iwd_spells/priest_5/#CRE_P03.WAV~ ~override~   //
 //effs
 //secondary spell
 //Spell itself
-ADD_SPELL ~%block%/data/iwd_spells/priest_5/B_P519.spl~ 1 5 ~CLERIC_SPIKE_STONES~ // Spell
+ADD_SPELL ~%mod_folder%/data/iwd_spells/priest_5/B_P519.spl~ 1 5 ~CLERIC_SPIKE_STONES~ // Spell
         SAY NAME1 @51900000
         SAY NAME2 @51900000
         SAY UNIDENTIFIED_DESC @51900001
@@ -1974,9 +1974,9 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
       STR_VAR resource = EVAL ~%spell_res%~
   END      //
 //icons
-COPY ~%block%/data/iwd_spells/priest_5/sppr519a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~%block%/data/iwd_spells/priest_5/sppr519b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~%block%/data/iwd_spells/priest_5/sppr519c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_5/sppr519a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~%mod_folder%/data/iwd_spells/priest_5/sppr519b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_5/sppr519c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   LPF ALTER_SPELL_HEADER INT_VAR projectile = %idpro213% STR_VAR icon = EVAL  ~%spell_res%B~ END
@@ -1994,7 +1994,7 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
 //probam
 //vvc
 //3d animation
-COPY ~%block%/data/iwd_spells/priest_5/SPSTRENH.bam~ ~override~   //bams  missing! using 'boon of lath' instead (already included)
+COPY ~%mod_folder%/data/iwd_spells/priest_5/SPSTRENH.bam~ ~override~   //bams  missing! using 'boon of lath' instead (already included)
 //sounds
 //cre
 //2da
@@ -2003,7 +2003,7 @@ COPY ~%block%/data/iwd_spells/priest_5/SPSTRENH.bam~ ~override~   //bams  missin
 //effs
 //secondary spell
 //Spell itself
-ADD_SPELL ~%block%/data/iwd_spells/priest_5/B_P520.spl~ 1 5 ~CLERIC_SHIELD_OF_LATHANDER~ // Spell
+ADD_SPELL ~%mod_folder%/data/iwd_spells/priest_5/B_P520.spl~ 1 5 ~CLERIC_SHIELD_OF_LATHANDER~ // Spell
         SAY NAME1 @52000000
         SAY NAME2 @52000000
         SAY UNIDENTIFIED_DESC @52000001
@@ -2018,9 +2018,9 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
       STR_VAR resource = EVAL ~%spell_res%~
   END      //
 //icons
-COPY ~%block%/data/iwd_spells/priest_5/sppr520a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~%block%/data/iwd_spells/priest_5/sppr520b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~%block%/data/iwd_spells/priest_5/sppr520c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_5/sppr520a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~%mod_folder%/data/iwd_spells/priest_5/sppr520b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_5/sppr520c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   LPF ALTER_SPELL_HEADER STR_VAR icon = EVAL  ~%spell_res%B~ END
@@ -2033,15 +2033,15 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //WHAT IS THE POINT OF THIS SPELL?  SO A PRIEST CAN USE WHILE DOING OTHER THINGS? LET"S SEE ABOUT IMPROVING IT
 //Projectile
-ADD_PROJECTILE ~%block%/data/iwd_spells/priest_5/uward.pro~   //projectile
+ADD_PROJECTILE ~%mod_folder%/data/iwd_spells/priest_5/uward.pro~   //projectile
 //probam
-COPY ~%block%/data/iwd_spells/priest_5/UWARDX.BAM~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_5/UWARDX.BAM~ ~override~   //
 //vvc
-COPY ~%block%/data/iwd_spells/priest_5/UWARDX.vvc~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_5/UWARDX.vvc~ ~override~   //
 //3d animation
 //sounds
-COPY ~%block%/data/iwd_spells/priest_5/#ARE_P28.WAV~ ~override~   //
-COPY ~%block%/data/iwd_spells/priest_5/#AFT_P27.WAV~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_5/#ARE_P28.WAV~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_5/#AFT_P27.WAV~ ~override~   //
 //cre
 //2da
 //itm
@@ -2049,7 +2049,7 @@ COPY ~%block%/data/iwd_spells/priest_5/#AFT_P27.WAV~ ~override~   //
 //effs
 //secondary spell
 //Spell itself
-ADD_SPELL ~%block%/data/iwd_spells/priest_5/B_P521.spl~ 1 5 ~CLERIC_UNDEAD_WARD~ // Spell
+ADD_SPELL ~%mod_folder%/data/iwd_spells/priest_5/B_P521.spl~ 1 5 ~CLERIC_UNDEAD_WARD~ // Spell
         SAY NAME1 @52100000
         SAY NAME2 @52100000
         SAY UNIDENTIFIED_DESC @52100001
@@ -2064,9 +2064,9 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
       STR_VAR resource = EVAL ~%spell_res%~
   END      //
 //icons
-COPY ~%block%/data/iwd_spells/priest_5/sppr521a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~%block%/data/iwd_spells/priest_5/sppr521b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~%block%/data/iwd_spells/priest_5/sppr521c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_5/sppr521a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~%mod_folder%/data/iwd_spells/priest_5/sppr521b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_5/sppr521c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   LPF ALTER_SPELL_HEADER INT_VAR projectile = %uward% STR_VAR icon = EVAL  ~%spell_res%B~ END
@@ -2083,15 +2083,15 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
 //vvc
 //3d animation
 //sounds
-COPY ~%block%/data/iwd_spells/priest_5/#ARE_P28.WAV~ ~override~   //
-COPY ~%block%/data/iwd_spells/priest_5/#AFT_P27.WAV~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_5/#ARE_P28.WAV~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_5/#AFT_P27.WAV~ ~override~   //
 //cre
 //2da
 //itm
 //itm icons
 //effs
 //Spell itself
-ADD_SPELL ~%block%/data/iwd_spells/priest_5/b_p522.spl~ 1 5 ~CLERIC_ANIMAL_RAGE~ // Spell
+ADD_SPELL ~%mod_folder%/data/iwd_spells/priest_5/b_p522.spl~ 1 5 ~CLERIC_ANIMAL_RAGE~ // Spell
         SAY NAME1 @52200000
         SAY NAME2 @52200000
         SAY UNIDENTIFIED_DESC @52200001
@@ -2106,25 +2106,25 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
       STR_VAR resource = EVAL ~%spell_res%~
   END      //
 //secondary spell
-COPY ~%block%/data/iwd_spells/priest_5/SPPR522B.spl~ ~override/%spell_res%b.spl~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_5/SPPR522B.spl~ ~override/%spell_res%b.spl~   //
 
 //icons
-COPY ~%block%/data/iwd_spells/priest_5/sppr522a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~%block%/data/iwd_spells/priest_5/sppr522b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~%block%/data/iwd_spells/priest_5/sppr522c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_5/sppr522a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~%mod_folder%/data/iwd_spells/priest_5/sppr522b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_5/sppr522c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   LPF ALTER_SPELL_HEADER STR_VAR icon = EVAL  ~%spell_res%B~ END
   WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
 
 //sanctity immunity list
-INCLUDE ~%block%/lib/spell_lists/sanctity_list.tpa~
+INCLUDE ~%mod_folder%/lib/spell_lists/sanctity_list.tpa~
 
 //exaltation immunity list
-INCLUDE ~%block%/lib/spell_lists/exaltation_list.tpa~
+INCLUDE ~%mod_folder%/lib/spell_lists/exaltation_list.tpa~
 
 //rage immunity list
-INCLUDE ~%block%/lib/spell_lists/rage_list.tpa~
+INCLUDE ~%mod_folder%/lib/spell_lists/rage_list.tpa~
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -2133,20 +2133,20 @@ INCLUDE ~%block%/lib/spell_lists/rage_list.tpa~
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //Projectile
-ADD_PROJECTILE ~%block%/data/iwd_spells/priest_5/sparrenp.pro~   //projectile
+ADD_PROJECTILE ~%mod_folder%/data/iwd_spells/priest_5/sparrenp.pro~   //projectile
 //probam
 //vvc
 //bmp
-COPY ~%block%/data/iwd_spells/priest_5/STTRAVL6.BMP~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_5/STTRAVL6.BMP~ ~override~   //
 //icons
-COPY ~%block%/data/iwd_spells/priest_5/sppr523a.bam~ ~override~   //scroll bam
-COPY ~%block%/data/iwd_spells/priest_5/sppr523b.bam~ ~override~   //bam
-COPY ~%block%/data/iwd_spells/priest_5/sppr523c.bam~ ~override~   //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_5/sppr523a.bam~ ~override~   //scroll bam
+COPY ~%mod_folder%/data/iwd_spells/priest_5/sppr523b.bam~ ~override~   //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_5/sppr523c.bam~ ~override~   //bam
 //3d animation
-COPY ~%block%/data/iwd_spells/priest_5/TRAVEL.bam~ ~override~   //bam
-COPY ~%block%/data/iwd_spells/priest_5/CLDAMAH.bam~ ~override~   //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_5/TRAVEL.bam~ ~override~   //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_5/CLDAMAH.bam~ ~override~   //bam
 //sounds
-COPY ~%block%/data/iwd_spells/priest_5/#FF_P103.WAV~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_5/#FF_P103.WAV~ ~override~   //
 //cre
 //2da
 //itm
@@ -2154,7 +2154,7 @@ COPY ~%block%/data/iwd_spells/priest_5/#FF_P103.WAV~ ~override~   //
 //effs
 //secondary spell
 //Spell itself
-ADD_SPELL ~%block%/data/iwd_spells/priest_5/b_p523.spl~ 1 5 ~CLERIC_MASS_CAUSE_LIGHT_WOUNDS~ // Spell
+ADD_SPELL ~%mod_folder%/data/iwd_spells/priest_5/b_p523.spl~ 1 5 ~CLERIC_MASS_CAUSE_LIGHT_WOUNDS~ // Spell
         SAY NAME1 @52300000
         SAY NAME2 @52300000
         SAY UNIDENTIFIED_DESC @52300001
@@ -2169,9 +2169,9 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
       STR_VAR resource = EVAL ~%spell_res%~
   END      //
 //icons
-COPY ~%block%/data/iwd_spells/priest_5/sppr523a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~%block%/data/iwd_spells/priest_5/sppr523b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~%block%/data/iwd_spells/priest_5/sppr523c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_5/sppr523a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~%mod_folder%/data/iwd_spells/priest_5/sppr523b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_5/sppr523c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   LPF ALTER_SPELL_HEADER INT_VAR projectile = %sparrenp% STR_VAR icon = EVAL  ~%spell_res%B~ END
@@ -2204,8 +2204,8 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
 //vvc
 //bmp
 //3d animation
-COPY ~%block%/data/iwd_spells/priest_6/ABJURH.bam~ ~override~   //bam
-//COPY ~%block%/data/iwd_spells/priest_6/#ENTROPY.bam~ ~override~   //bam  Missing #ENTROPY.bam
+COPY ~%mod_folder%/data/iwd_spells/priest_6/ABJURH.bam~ ~override~   //bam
+//COPY ~%mod_folder%/data/iwd_spells/priest_6/#ENTROPY.bam~ ~override~   //bam  Missing #ENTROPY.bam
 //sounds
 //cre
 //2da
@@ -2213,7 +2213,7 @@ COPY ~%block%/data/iwd_spells/priest_6/ABJURH.bam~ ~override~   //bam
 //itm icons
 //effs
 //Spell itself
-ADD_SPELL ~%block%/data/iwd_spells/priest_6/b_p615.spl~ 1 6 ~CLERIC_ENTROPY_SHIELD~ // Spell
+ADD_SPELL ~%mod_folder%/data/iwd_spells/priest_6/b_p615.spl~ 1 6 ~CLERIC_ENTROPY_SHIELD~ // Spell
         SAY NAME1 @61500000
         SAY NAME2 @61500000
         SAY UNIDENTIFIED_DESC @61500001
@@ -2230,9 +2230,9 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
 // now sol's searing orb projectile immunity
   LPF CLONE_EFFECT INT_VAR match_opcode = 0 opcode = 83 parameter1 = 0 parameter2 = 257 END
 //icons
-COPY ~%block%/data/iwd_spells/priest_6/sppr615a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~%block%/data/iwd_spells/priest_6/sppr615b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~%block%/data/iwd_spells/priest_6/sppr615c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_6/sppr615a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~%mod_folder%/data/iwd_spells/priest_6/sppr615b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_6/sppr615c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   LPF ALTER_SPELL_HEADER STR_VAR icon = EVAL  ~%spell_res%B~ END
@@ -2247,14 +2247,14 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //Projectile
-ADD_PROJECTILE ~%block%/data/iwd_spells/priest_6/whirlw.pro~   //projectile
+ADD_PROJECTILE ~%mod_folder%/data/iwd_spells/priest_6/whirlw.pro~   //projectile
 //probam
-COPY ~%block%/data/iwd_spells/priest_6/WHIRLWX.bam~ ~override~   //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_6/WHIRLWX.bam~ ~override~   //bam
 //vvc
 //bmp
 //3d animation
 //sounds
-COPY ~%block%/data/iwd_spells/priest_6/EFF_P105.WAV~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_6/EFF_P105.WAV~ ~override~   //
 //cre
 //2da
 //itm
@@ -2262,7 +2262,7 @@ COPY ~%block%/data/iwd_spells/priest_6/EFF_P105.WAV~ ~override~   //
 //effs
 //secondary spell
 //Spell itself
-ADD_SPELL ~%block%/data/iwd_spells/priest_6/b_p617.spl~ 1 6 ~CLERIC_WHIRLWIND~ // Spell
+ADD_SPELL ~%mod_folder%/data/iwd_spells/priest_6/b_p617.spl~ 1 6 ~CLERIC_WHIRLWIND~ // Spell
         SAY NAME1 @61700000
         SAY NAME2 @61700000
         SAY UNIDENTIFIED_DESC @61700001
@@ -2299,9 +2299,9 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
   END      //
 END
 //icons
-COPY ~%block%/data/iwd_spells/priest_6/sppr617a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~%block%/data/iwd_spells/priest_6/sppr617b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~%block%/data/iwd_spells/priest_6/sppr617c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_6/sppr617a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~%mod_folder%/data/iwd_spells/priest_6/sppr617b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_6/sppr617c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   LPF ALTER_SPELL_HEADER INT_VAR projectile = %whirlw% STR_VAR icon = EVAL  ~%spell_res%B~ END
@@ -2315,19 +2315,19 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //Projectile
-ADD_PROJECTILE ~%block%/data/iwd_spells/priest_6/idpro312.pro~   //projectile
+ADD_PROJECTILE ~%mod_folder%/data/iwd_spells/priest_6/idpro312.pro~   //projectile
 //sec pro
-//ADD_PROJECTILE ~%block%/data/iwd_spells/priest_6/IDPRO207.pro~   //projectile
+//ADD_PROJECTILE ~%mod_folder%/data/iwd_spells/priest_6/IDPRO207.pro~   //projectile
 //don't know how to add this...use an existing one that is similar enough (a non-bouncing lightning bolt...) seems to automatically use the bg2ee equiv
 //probam
 //vvc
 //bmp
 //3d animation
-COPY ~%block%/data/iwd_spells/priest_6/INVOCH.bam~ ~override~   //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_6/INVOCH.bam~ ~override~   //bam
 //sounds
-COPY ~%block%/data/iwd_spells/priest_6/TRA_08.WAV~ ~override~   //
-COPY ~%block%/data/iwd_spells/priest_6/TRA_09.WAV~ ~override~   //
-COPY ~%block%/data/iwd_spells/priest_6/#EFF_P05.WAV~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_6/TRA_08.WAV~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_6/TRA_09.WAV~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_6/#EFF_P05.WAV~ ~override~   //
 //cre
 //2da
 //itm
@@ -2335,7 +2335,7 @@ COPY ~%block%/data/iwd_spells/priest_6/#EFF_P05.WAV~ ~override~   //
 //effs
 //secondary spell
 //Spell itself
-ADD_SPELL ~%block%/data/iwd_spells/priest_6/b_p618.spl~ 1 6 ~CLERIC_SPIRITUAL_WRATH~ // Spell
+ADD_SPELL ~%mod_folder%/data/iwd_spells/priest_6/b_p618.spl~ 1 6 ~CLERIC_SPIRITUAL_WRATH~ // Spell
         SAY NAME1 @61800000
         SAY NAME2 @61800000
         SAY UNIDENTIFIED_DESC @61800001
@@ -2350,9 +2350,9 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
       STR_VAR resource = EVAL ~%spell_res%~
   END      //
 //icons
-COPY ~%block%/data/iwd_spells/priest_6/sppr616a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~%block%/data/iwd_spells/priest_6/sppr616b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~%block%/data/iwd_spells/priest_6/sppr616c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_6/sppr616a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~%mod_folder%/data/iwd_spells/priest_6/sppr616b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_6/sppr616c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   LPF ALTER_SPELL_HEADER INT_VAR projectile = %idpro312% STR_VAR icon = EVAL  ~%spell_res%B~ END
@@ -2376,29 +2376,29 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
 
 //Portrait icon: Nauseated. Update portrait icons and change to pain
 //Projectile
-ADD_PROJECTILE ~%block%/data/iwd_spells/priest_7/iceglyp.pro~   //projectile
+ADD_PROJECTILE ~%mod_folder%/data/iwd_spells/priest_7/iceglyp.pro~   //projectile
 //probam
 //vvc
-COPY ~%block%/data/iwd_spells/priest_7/ICSPAIN.vvc~ ~override~   //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_7/ICSPAIN.vvc~ ~override~   //bam
 //bmp
 //3d animation
-COPY ~%block%/data/iwd_spells/priest_7/SPGLYPTI.bam~ ~override~   //bam
-COPY ~%block%/data/iwd_spells/priest_7/SHGLYPH.bam~ ~override~   //bam
-COPY ~%block%/data/iwd_spells/priest_7/SPSPAINI.bam~ ~override~   //bam
-COPY ~%block%/data/iwd_spells/priest_7/CONJUH.bam~ ~override~   //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_7/SPGLYPTI.bam~ ~override~   //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_7/SHGLYPH.bam~ ~override~   //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_7/SPSPAINI.bam~ ~override~   //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_7/CONJUH.bam~ ~override~   //bam
 //sounds
-COPY ~%block%/data/iwd_spells/priest_7/#EFF_P02.WAV~ ~override~   //
-COPY ~%block%/data/iwd_spells/priest_7/#EFF_E04.WAV~ ~override~   //
-COPY ~%block%/data/iwd_spells/priest_7/EFF_P22A.WAV~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_7/#EFF_P02.WAV~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_7/#EFF_E04.WAV~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_7/EFF_P22A.WAV~ ~override~   //
 //cre
 //2da
 //itm
 //itm icons
 //effs
-COPY ~%block%/data/iwd_spells/priest_7/B_P714a.eff~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_7/B_P714a.eff~ ~override~   //
 //secondary spell
 //Spell itself
-ADD_SPELL ~%block%/data/iwd_spells/priest_7/b_p714.spl~ 1 7 ~CLERIC_SYMBOL_OF_PAIN~ // Spell
+ADD_SPELL ~%mod_folder%/data/iwd_spells/priest_7/b_p714.spl~ 1 7 ~CLERIC_SYMBOL_OF_PAIN~ // Spell
         SAY NAME1 @71400000
         SAY NAME2 @71400000
         SAY UNIDENTIFIED_DESC @71400001
@@ -2414,19 +2414,19 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
   END      //
 
 //icons
-COPY ~%block%/data/iwd_spells/priest_7/sppr714a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~%block%/data/iwd_spells/priest_7/sppr714b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~%block%/data/iwd_spells/priest_7/sppr714c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_7/sppr714a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~%mod_folder%/data/iwd_spells/priest_7/sppr714b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_7/sppr714c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   LPF ALTER_SPELL_HEADER INT_VAR projectile = %iceglyp% STR_VAR icon = EVAL  ~%spell_res%B~ END
   WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
 
 //bloodrage immunity list
-INCLUDE ~%block%/lib/spell_lists/blood_list.tpa~
+INCLUDE ~%mod_folder%/lib/spell_lists/blood_list.tpa~
 
 //spells that remove pain effects
-INCLUDE ~%block%/lib/spell_lists/pain_list.tpa~
+INCLUDE ~%mod_folder%/lib/spell_lists/pain_list.tpa~
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -2435,19 +2435,19 @@ INCLUDE ~%block%/lib/spell_lists/pain_list.tpa~
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //Projectile
-ADD_PROJECTILE ~%block%/data/iwd_spells/priest_7/idpro277.pro~   //projectile
+ADD_PROJECTILE ~%mod_folder%/data/iwd_spells/priest_7/idpro277.pro~   //projectile
 //probam
-COPY ~%block%/data/iwd_spells/priest_7/SOHOPEX.bam~ ~override~   //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_7/SOHOPEX.bam~ ~override~   //bam
 //vvc
-COPY ~%block%/data/iwd_spells/priest_7/SOHOPEX.vvc~ ~override~   //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_7/SOHOPEX.vvc~ ~override~   //bam
 //bmp
 //3d animation
-COPY ~%block%/data/iwd_spells/priest_7/PARALH.bam~ ~override~   //bam
-COPY ~%block%/data/iwd_spells/priest_7/SPGLYPTI.bam~ ~override~   //bam
-COPY ~%block%/data/iwd_spells/priest_7/SHGLYPH.bam~ ~override~   //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_7/PARALH.bam~ ~override~   //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_7/SPGLYPTI.bam~ ~override~   //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_7/SHGLYPH.bam~ ~override~   //bam
 //sounds
-COPY ~%block%/data/iwd_spells/priest_7/#EFF_P02.WAV~ ~override~   //
-COPY ~%block%/data/iwd_spells/priest_7/#EFF_E04.WAV~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_7/#EFF_P02.WAV~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_7/#EFF_E04.WAV~ ~override~   //
 //cre
 //2da
 //itm
@@ -2455,7 +2455,7 @@ COPY ~%block%/data/iwd_spells/priest_7/#EFF_E04.WAV~ ~override~   //
 //effs
 //secondary spell
 //Spell itself
-ADD_SPELL ~%block%/data/iwd_spells/priest_7/b_p716.spl~ 1 7 ~CLERIC_SYMBOL_OF_HOPELESSNESS~ // Spell
+ADD_SPELL ~%mod_folder%/data/iwd_spells/priest_7/b_p716.spl~ 1 7 ~CLERIC_SYMBOL_OF_HOPELESSNESS~ // Spell
         SAY NAME1 @71600000
         SAY NAME2 @71600000
         SAY UNIDENTIFIED_DESC @71600001
@@ -2466,25 +2466,25 @@ LAF RES_NUM_OF_SPELL_NAME
 END
 
 //icons
-COPY ~%block%/data/iwd_spells/priest_7/sppr716a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~%block%/data/iwd_spells/priest_7/sppr716b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~%block%/data/iwd_spells/priest_7/sppr716c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_7/sppr716a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~%mod_folder%/data/iwd_spells/priest_7/sppr716b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_7/sppr716c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   LPF ALTER_SPELL_HEADER INT_VAR projectile = %idpro277% STR_VAR icon = EVAL  ~%spell_res%B~ END
   WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
 
 //bloodrage immunity list
-INCLUDE ~%block%/lib/spell_lists/blood_list.tpa~
+INCLUDE ~%mod_folder%/lib/spell_lists/blood_list.tpa~
 
 //sanctity immunity list
-INCLUDE ~%block%/lib/spell_lists/sanctity_list.tpa~
+INCLUDE ~%mod_folder%/lib/spell_lists/sanctity_list.tpa~
 
 //REmove hopelessness
-INCLUDE ~%block%/lib/spell_lists/hopeless_list.tpa~
+INCLUDE ~%mod_folder%/lib/spell_lists/hopeless_list.tpa~
 
 //emotion
-INCLUDE ~%block%/lib/spell_lists/emotion_list.tpa~
+INCLUDE ~%mod_folder%/lib/spell_lists/emotion_list.tpa~
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -2497,10 +2497,10 @@ INCLUDE ~%block%/lib/spell_lists/emotion_list.tpa~
 //vvc
 //bmp
 //3d animation
-COPY ~%block%/data/iwd_spells/priest_7/ABJURH.BAM~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_7/ABJURH.BAM~ ~override~   //
 //sounds
-COPY ~%block%/data/iwd_spells/priest_7/#EFF_E03.WAV~ ~override~   //
-COPY ~%block%/data/iwd_spells/priest_7/#EFF_P01.WAV~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_7/#EFF_E03.WAV~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_7/#EFF_P01.WAV~ ~override~   //
 //cre
 //2da
 //itm
@@ -2508,7 +2508,7 @@ COPY ~%block%/data/iwd_spells/priest_7/#EFF_P01.WAV~ ~override~   //
 //effs
 //secondary spell
 //Spell itself
-ADD_SPELL ~%block%/data/iwd_spells/priest_7/b_p733.spl~ 1 7 ~CLERIC_IMPERVIOUS_SANCTITY_OF_MIND~ // Spell
+ADD_SPELL ~%mod_folder%/data/iwd_spells/priest_7/b_p733.spl~ 1 7 ~CLERIC_IMPERVIOUS_SANCTITY_OF_MIND~ // Spell
         SAY NAME1 @73300000
         SAY NAME2 @73300000
         SAY UNIDENTIFIED_DESC @73300001
@@ -2519,9 +2519,9 @@ LAF RES_NUM_OF_SPELL_NAME
 END
 
 //icons
-COPY ~%block%/data/iwd_spells/priest_7/sppr733a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~%block%/data/iwd_spells/priest_7/sppr733b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~%block%/data/iwd_spells/priest_7/sppr733c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_7/sppr733a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~%mod_folder%/data/iwd_spells/priest_7/sppr733b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_7/sppr733c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   LPF ALTER_SPELL_HEADER STR_VAR icon = EVAL  ~%spell_res%B~ END
@@ -2549,9 +2549,9 @@ END
 //vvc
 //bmp
 //3d animation
-COPY ~%block%/data/iwd_spells/priest_7/DESTRUH.BAM~ ~override~   //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_7/DESTRUH.BAM~ ~override~   //bam
 //sounds
-COPY ~%block%/data/iwd_spells/priest_7/#FF_P113.WAV~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_7/#FF_P113.WAV~ ~override~   //
 //cre
 //2da
 //itm
@@ -2559,7 +2559,7 @@ COPY ~%block%/data/iwd_spells/priest_7/#FF_P113.WAV~ ~override~   //
 //effs
 //secondary spell
 //Spell itself
-ADD_SPELL ~%block%/data/iwd_spells/priest_7/b_p734.spl~ 1 7 ~CLERIC_DESTRUCTION~ // Spell
+ADD_SPELL ~%mod_folder%/data/iwd_spells/priest_7/b_p734.spl~ 1 7 ~CLERIC_DESTRUCTION~ // Spell
         SAY NAME1 @73400000
         SAY NAME2 @73400000
         SAY UNIDENTIFIED_DESC @73400001
@@ -2570,15 +2570,15 @@ LAF RES_NUM_OF_SPELL_NAME
 END
 
 //icons
-COPY ~%block%/data/iwd_spells/priest_7/sppr734a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~%block%/data/iwd_spells/priest_7/sppr734b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~%block%/data/iwd_spells/priest_7/sppr734c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_7/sppr734a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~%mod_folder%/data/iwd_spells/priest_7/sppr734b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_7/sppr734c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   LPF ALTER_SPELL_HEADER STR_VAR icon = EVAL  ~%spell_res%B~ END
   WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
 //protect vs. death
-INCLUDE ~%block%/lib/spell_lists/death_list.tpa~
+INCLUDE ~%mod_folder%/lib/spell_lists/death_list.tpa~
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -2601,7 +2601,7 @@ INCLUDE ~%block%/lib/spell_lists/death_list.tpa~
 //effs
 //secondary spell
 //Spell itself
-ADD_SPELL ~%block%/data/iwd_spells/priest_7/b_p735.spl~ 1 7 ~CLERIC_GREATER_SHIELD_OF_LATHANDER~ // Spell
+ADD_SPELL ~%mod_folder%/data/iwd_spells/priest_7/b_p735.spl~ 1 7 ~CLERIC_GREATER_SHIELD_OF_LATHANDER~ // Spell
         SAY NAME1 @73500000
         SAY NAME2 @73500000
         SAY UNIDENTIFIED_DESC @73500001
@@ -2617,9 +2617,9 @@ LPF ALTER_EFFECT
   END      //
 
 //icons
-COPY ~%block%/data/iwd_spells/priest_7/sppr735a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~%block%/data/iwd_spells/priest_7/sppr735b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~%block%/data/iwd_spells/priest_7/sppr735c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_7/sppr735a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~%mod_folder%/data/iwd_spells/priest_7/sppr735b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_7/sppr735c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   LPF ALTER_SPELL_HEADER STR_VAR icon = EVAL  ~%spell_res%B~ END
@@ -2633,14 +2633,14 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //Projectile
-ADD_PROJECTILE ~%block%/data/iwd_spells/priest_7/idpro307.pro~   //projectile
+ADD_PROJECTILE ~%mod_folder%/data/iwd_spells/priest_7/idpro307.pro~   //projectile
 //probam
-COPY ~%block%/data/iwd_spells/priest_7/MOELDAA.BAM~ ~override~   //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_7/MOELDAA.BAM~ ~override~   //bam
 //vvc
 //bmp
 //3d animation
 //sounds
-COPY ~%block%/data/iwd_spells/priest_7/EFF_P104.WAV~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_7/EFF_P104.WAV~ ~override~   //
 //cre
 //2da
 //itm
@@ -2648,7 +2648,7 @@ COPY ~%block%/data/iwd_spells/priest_7/EFF_P104.WAV~ ~override~   //
 //effs
 //secondary spell
 //Spell itself
-ADD_SPELL ~%block%/data/iwd_spells/priest_7/b_p736.spl~ 1 7 ~CLERIC_MIST_OF_ELDATH~ // Spell
+ADD_SPELL ~%mod_folder%/data/iwd_spells/priest_7/b_p736.spl~ 1 7 ~CLERIC_MIST_OF_ELDATH~ // Spell
         SAY NAME1 @73600000
         SAY NAME2 @73600000
         SAY UNIDENTIFIED_DESC @73600001
@@ -2659,9 +2659,9 @@ LAF RES_NUM_OF_SPELL_NAME
 END
 
 //icons
-COPY ~%block%/data/iwd_spells/priest_7/sppr736a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~%block%/data/iwd_spells/priest_7/sppr736b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~%block%/data/iwd_spells/priest_7/sppr736c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_7/sppr736a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~%mod_folder%/data/iwd_spells/priest_7/sppr736b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_7/sppr736c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   LPF ALTER_SPELL_HEADER INT_VAR projectile = %idpro307% STR_VAR icon = EVAL  ~%spell_res%B~ END
@@ -2677,13 +2677,13 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
 //REVISE IN LIGHT OF THE NATURE'S WRATH SPELL...
 //Projectile
 //probam
-COPY ~%block%/data/iwd_spells/priest_7/MOELDAA.BAM~ ~override~   //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_7/MOELDAA.BAM~ ~override~   //bam
 //vvc
 //bmp
 //3d animation
 //sounds
 //cre
-COPY ~%block%/data/iwd_spells/priest_7/SMOUNDSU.cre~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_7/SMOUNDSU.cre~ ~override~   //
 //script
 //COMPILE if Needed
 //2da
@@ -2692,7 +2692,7 @@ COPY ~%block%/data/iwd_spells/priest_7/SMOUNDSU.cre~ ~override~   //
 //effs
 //secondary spell
 //Spell itself
-ADD_SPELL ~%block%/data/iwd_spells/priest_7/b_p737.spl~ 1 7 ~CLERIC_STALKER~ // Spell
+ADD_SPELL ~%mod_folder%/data/iwd_spells/priest_7/b_p737.spl~ 1 7 ~CLERIC_STALKER~ // Spell
         SAY NAME1 @73700000
         SAY NAME2 @73700000
         SAY UNIDENTIFIED_DESC @73700001
@@ -2703,9 +2703,9 @@ LAF RES_NUM_OF_SPELL_NAME
 END
 
 //icons
-COPY ~%block%/data/iwd_spells/priest_7/sppr737a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~%block%/data/iwd_spells/priest_7/sppr737b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~%block%/data/iwd_spells/priest_7/sppr737c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_7/sppr737a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~%mod_folder%/data/iwd_spells/priest_7/sppr737b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_7/sppr737c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   LPF ALTER_SPELL_HEADER STR_VAR icon = EVAL  ~%spell_res%B~ END
@@ -2724,7 +2724,7 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
 //bmp
 //3d animation
 //sounds
-COPY ~%block%/data/iwd_spells/priest_7/EFF_M07.WAV~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_7/EFF_M07.WAV~ ~override~   //
 //cre
 //script
 //2da
@@ -2733,7 +2733,7 @@ COPY ~%block%/data/iwd_spells/priest_7/EFF_M07.WAV~ ~override~   //
 //effs
 //secondary spell
 //Spell itself
-ADD_SPELL ~%block%/data/iwd_spells/priest_7/b_p739.spl~ 1 7 ~CLERIC_ENERGY_DRAIN~ // Spell
+ADD_SPELL ~%mod_folder%/data/iwd_spells/priest_7/b_p739.spl~ 1 7 ~CLERIC_ENERGY_DRAIN~ // Spell
         SAY NAME1 @73900000
         SAY NAME2 @73900000
         SAY UNIDENTIFIED_DESC @73900001
@@ -2755,15 +2755,15 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
   END      //
 END
 //icons
-COPY ~%block%/data/iwd_spells/priest_7/SPWI914a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~%block%/data/iwd_spells/priest_7/SPWI914b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~%block%/data/iwd_spells/priest_7/SPWI914c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_7/SPWI914a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~%mod_folder%/data/iwd_spells/priest_7/SPWI914b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_7/SPWI914c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   LPF ALTER_SPELL_HEADER STR_VAR icon = EVAL  ~%spell_res%B~ END
   WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
 //protect vs. drain
-INCLUDE ~%block%/lib/spell_lists/drain_list.tpa~
+INCLUDE ~%mod_folder%/lib/spell_lists/drain_list.tpa~
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -2776,7 +2776,7 @@ INCLUDE ~%block%/lib/spell_lists/drain_list.tpa~
 //bmp
 //3d animation
 //missing! Using Dust?  Why not
-COPY ~%block%/data/iwd_spells/priest_7/DUST.BAM~ ~override~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_7/DUST.BAM~ ~override~   //
 //sounds
 //cre
 //2da
@@ -2784,7 +2784,7 @@ COPY ~%block%/data/iwd_spells/priest_7/DUST.BAM~ ~override~   //
 //itm icons
 //secondary spell
 //Spell itself
-ADD_SPELL ~%block%/data/iwd_spells/priest_7/b_p740.spl~ 1 7 ~CLERIC_WITHER~ // Spell
+ADD_SPELL ~%mod_folder%/data/iwd_spells/priest_7/b_p740.spl~ 1 7 ~CLERIC_WITHER~ // Spell
         SAY NAME1 @74000000
         SAY NAME2 @74000000
         SAY UNIDENTIFIED_DESC @74000001
@@ -2819,18 +2819,18 @@ LPF ALTER_EFFECT
   END      //
 
 //eff
-COPY ~%block%/data/iwd_spells/priest_7/SPPR740.eff~ ~override/%spell_res%.eff~   //
+COPY ~%mod_folder%/data/iwd_spells/priest_7/SPPR740.eff~ ~override/%spell_res%.eff~   //
 
 //icons
-COPY ~%block%/data/iwd_spells/priest_7/sppr740a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~%block%/data/iwd_spells/priest_7/sppr740b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~%block%/data/iwd_spells/priest_7/sppr740c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_7/sppr740a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~%mod_folder%/data/iwd_spells/priest_7/sppr740b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_7/sppr740c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   LPF ALTER_SPELL_HEADER STR_VAR icon = EVAL  ~%spell_res%B~ END
   WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
 //remove disease?
-INCLUDE ~%block%/lib/spell_lists/disease_list.tpa~
+INCLUDE ~%mod_folder%/lib/spell_lists/disease_list.tpa~
 
 
 //////////////////////////////////////////////////////////////

@@ -3,7 +3,76 @@ Faiths and Powers mod
 
 log
 
-- TO DO: Update spheres and immunities and do var's right! (i.e. SPRINT and SNPRINT)
+- TO DO: Update spheres and immunities (transfer from B_Spells when done)
+
+2018-05-26
+
+Version 0.75.02
+
+- Integrated Fixes from SD's build: Copied over sphere_list_iwd_sr
+- Integrated Fixes from SD's build: Depreciated component 1
+- Integrated from SD's build: Removed not IWDEE req from jungle/desert druid and shadow mystic
+
+
+2018-05-12
+
+- Recopied 0.75.00 Spell lists to main build.  I believe that it contains recently added spells.
+
+
+Version 0.75.01
+
+- Integrate: Added INCLUDE deity_selection as per 0.74.29
+- Integrate: Replaced default_kit_spheres.tpa with 0.74.29 version
+- Integrate: Replaced npc_kits.tpa with 0.74.29 version
+- Integrate: Replaced other mods folder with 0.74.29 version
+- Version 0.74.29 Integrated(?) 
+- Integrate: Replaced add_cleric_kits.tpa with 0.74.30 version
+- Versio 0.74.30 Integrated(?) 
+- Integrate: Second Pass
+- Integrate: Replaced b_dom00.baf and b_dom00.baf MC with 0.74.26 versions
+- Integrate: Replaced d5dom00.spl with 0.74.30 version
+- Integrate: Replaced All kit folders and contents with 0.74.26 and 0.74.27 versions
+- Integrate: Replaced All marker, qu_mc folders and contents with 0.74.26 versions
+- Integrate: Replaced All add_<class>_kits.tpas with 0.74.26 and 0.74.30 versions
+- Integrate: Replaced d5_class, d5_spher and d5_usabl 2das with 0.74.26 versions
+- Integrate: Replaced default_kit_spheres.tpa and npc_kits.tpawith 0.74.29 versions
+- Integrate: Replaced deity_selection, fl#add_kit_ee, fnp_compat, hlas, item_usability, joinable_npcs, and mod_kit_spheres tpas with 0.74.26 versions
+- Integrate: Replaced sphere lists with 0.74.26 and 0.74.28 versions
+- Integrate: Replaced d5spmem itm and spl, d5spmema.bam, d5spmemb.bam with 0.74.26 versions
+- Integrate: Replaced clab and hlas folders with 0.74.26 versions
+- Integrate: Replaced shambler cre and B_P737.spl with 0.74.26 versions
+- Integrate: Replaced b_elect1.bam, and b_storm1.pro with 0.74.26 versions
+- Integrate: Replaced b_c601.spl with 0.74.26 version
+- Integrate: copied over a number of files from shadow spells from version 0.74.26
+- Integrate: Replaced a number of files for water sphere from version 0.74.26
+- Integrated: Complete(?) Installs
+
+2018-05-11
+
+- Integrate: Finished adding all class conditionals.
+- Version 0.74.26 Integrated(?) 
+- Integrate: Replaced d5eelear.spl, and d5eelfir.spl with 0.74.27 version (just in case).  
+- Version 0.74.27 integrated(?)
+- Integrate: Replaced vanilla_kit_spheres.tpa with 0.74.28 version
+- Version 0.74.28 Integrated(?) 
+
+
+
+2018-05-09
+
+- Integrate: Copied over weidu and gitignore (just in case)
+- Integrate: Replaced ini with 74.26 version
+- Integrate: Added conditionsals for clerics, acolytes, druids and mystics (install 1)
+
+2018-02-28
+
+- Started Immunities (as per Camdawg's guide)  See line 603 in tp2 and TEST!!!
+
+2018-02-12
+
+- Created mod_folder var
+
+2018-02-07
 
 0.75.00 - NOT STABLE
 
