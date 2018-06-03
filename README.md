@@ -1,9 +1,15 @@
 ﻿# Faiths_and_Powers
 Faiths and Powers mod
 
-log
+# log
 
 - TO DO: Update spheres and immunities (transfer from B_Spells when done)
+
+2018-06-03
+
+Version 0.75.03
+
+- Changed location of new spells (lib--not not present so this build will not install!!!!)
 
 2018-05-26
 
