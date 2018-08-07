@@ -147,7 +147,9 @@ COPY ~faiths_and_powers/deity/dom/b_dom00.spl~ ~override~
   SAY NAME1 @10107 // Select Deity
 COPY ~faiths_and_powers/deity/dom/d5dom00.spl~ ~override~
   SAY NAME1 ~ ~ 
-  LPF CLONE_EFFECT INT_VAR multi_match = 1 match_opcode = 177 parameter1 = %acolyte_code% END
+  PATCH_IF (IS_AN_INT %acolyte_code%) BEGIN
+	LPF CLONE_EFFECT INT_VAR multi_match = 1 match_opcode = 177 parameter1 = %acolyte_code% END
+  END
 COPY ~faiths_and_powers/deity/dom/d5dom00.eff~ ~override~
 
 COPY ~faiths_and_powers/deity/dom/b_dom01.eff~ ~override~ // (Alignment internals)
@@ -187,23 +189,39 @@ BUT_ONLY_IF_IT_CHANGES
 
 //OUTER_SET block_num = 1
 ACTION_PHP_EACH d5_fnp_kit_class_access AS kit => class BEGIN
-	COPY_EXISTING ~kitlist.2da~ ~override~
-		COUNT_2DA_COLS cols // amount of columns
-		READ_2DA_ENTRIES_NOW rows cols // read all file into memory  
-		FOR (row = 7; row < rows; ++row) BEGIN // iterate over rows
-		  READ_2DA_ENTRY_FORMER rows row 5 ~clab~ // read column value
-		  PATCH_IF ~%clab%~ STRING_EQUAL_CASE ~%kit%~ BEGIN
-			  SET kit_index = %row%
-			  READ_2DA_ENTRY_FORMER rows kit_index 5 kit_clab
-			  READ_2DA_ENTRY_FORMER rows kit_index 1 kit_label
-			  READ_2DA_ENTRY_FORMER rows kit_index 3 kit_name
-			  READ_2DA_ENTRY_FORMER rows kit_index 4 kit_desc
-			  READ_2DA_ENTRY_FORMER rows kit_index 0 kit_num
-			  READ_2DA_ENTRY_FORMER rows kit_index 8 kit_class
-//			  READ_2DA_ENTRY_FORMER rows kit_index 9 kit_ids
-		  END
-		END
-	BUT_ONLY
+  COPY_EXISTING ~kitlist.2da~ ~override~
+	COUNT_2DA_COLS cols // amount of columns
+	READ_2DA_ENTRIES_NOW rows cols // read all file into memory  
+	FOR (row = 7; row < rows; ++row) BEGIN // iterate over rows
+	  READ_2DA_ENTRY_FORMER rows row 5 ~clab~ // read column value
+	  PATCH_IF ~%clab%~ STRING_EQUAL_CASE ~%kit%~ BEGIN
+		  SET kit_index = %row%
+		  READ_2DA_ENTRY_FORMER rows kit_index 5 kit_clab
+		  READ_2DA_ENTRY_FORMER rows kit_index 1 kit_label
+		  READ_2DA_ENTRY_FORMER rows kit_index 3 kit_name
+		  READ_2DA_ENTRY_FORMER rows kit_index 4 kit_desc
+		  READ_2DA_ENTRY_FORMER rows kit_index 0 kit_num
+		  READ_2DA_ENTRY_FORMER rows kit_index 8 kit_class
+//		  READ_2DA_ENTRY_FORMER rows kit_index 9 kit_ids
+	  END
+	END
+  BUT_ONLY
+  ACTION_IF (VARIABLE_IS_SET %kit_name%) BEGIN
+  	ACTION_IF (~%kit_label%~ STRING_EQUAL_CASE ~BEAST_FRIEND~) BEGIN
+	  OUTER_TEXT_SPRINT kit_label ~BEASTFRIEND~
+	END
+  	ACTION_IF (~%kit_label%~ STRING_EQUAL_CASE ~LATHANDER~) BEGIN
+	  OUTER_TEXT_SPRINT kit_label ~GODLATHANDER~
+	END
+  	ACTION_IF (~%kit_label%~ STRING_EQUAL_CASE ~HELM~) BEGIN
+	  OUTER_TEXT_SPRINT kit_label ~GODHELM~
+	END
+  	ACTION_IF (~%kit_label%~ STRING_EQUAL_CASE ~TALOS~) BEGIN
+	  OUTER_TEXT_SPRINT kit_label ~GODTALOS~
+	END
+  	ACTION_IF (~%kit_label%~ STRING_EQUAL_CASE ~TOTEMIC_DRUID~) BEGIN
+	  OUTER_TEXT_SPRINT kit_label ~TOTEMIC~
+	END
 	ACTION_CLEAR_ARRAY ~d5_kit_races~
 	ACTION_GET_STRREF EVAL %kit_name% ~name_string~
 	ACTION_GET_STRREF EVAL %kit_desc% ~desc_string~
@@ -361,12 +379,13 @@ ACTION_PHP_EACH d5_fnp_kit_class_access AS kit => class BEGIN
 			  END
 			END
 		  BUT_ONLY
-		  ACTION_IF (%kit_label% STRING_EQUAL_CASE ~beast_friend~) BEGIN
-			OUTER_TEXT_SPRINT ~kit_label~ ~beastfriend~
-		  END
+//		  ACTION_IF (%kit_label% STRING_EQUAL_CASE ~beast_friend~) BEGIN
+//			OUTER_TEXT_SPRINT ~kit_label~ ~beastfriend~
+//		  END
 		  APPEND_OUTER ~faiths_and_powers/deity/Dom/%kitrace%/%class%_2.txt~ ~~~~~IF ~~ THEN BEGIN B_dom0%kitclass%_%kit_num% %WNL% SAY ~%desc_string%~ %WNL% IF ~~ THEN REPLY ~Select %name_string%~ DO ~AddKit(%kit_label%)~ EXIT %WNL% IF ~~ THEN REPLY ~Select a different kit~ GOTO B_dom0%kitclass%_A %WNL% END %WNL% ~~~~~ KEEP_CRLF
 		END
 	END
+  END
 END
 
 ACTION_FOR_EACH race IN ~d~ ~e~ ~g~ ~h~ ~he~ ~hl~ ~ho~ BEGIN

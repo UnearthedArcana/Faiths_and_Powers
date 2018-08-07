@@ -2,7 +2,7 @@ BACKUP ~faiths_and_powers/backup~
 AUTHOR ~SubtleD and Grammarsalad~
 
 
-VERSION ~0.75.03~
+VERSION ~0.74.37~
 
 //README ~faiths_and_powers/readme-pnp.html~
 
@@ -12,7 +12,7 @@ ALWAYS
 	ACTION_IF NOT FILE_EXISTS ~override/d5_fnp_settings.ini~ BEGIN
   	  COPY ~faiths_and_powers/d5_fnp_settings.ini~ ~override~
 	END
-
+  	
   	INCLUDE ~override/d5_fnp_settings.ini~
 
 	INCLUDE ~faiths_and_powers/lib/remove_lines.tpa~
@@ -28,8 +28,6 @@ ALWAYS
 	INCLUDE ~faiths_and_powers/lib/fnp_compat.tpa~
 	
 	INCLUDE ~faiths_and_powers/lib/qd_multiclass.tpa~
-
-        INCLUDE ~faiths_and_powers/lib/bg2fp_effect_batches_fnp.tpa~
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~a#ooze.2da~ BEGIN
 	  COPY_EXISTING ~alignmnt.2da~ ~override~
@@ -50,9 +48,7 @@ ALWAYS
 	INCLUDE ~faiths_and_powers/lib/add_champion_kits.tpa~
 	INCLUDE ~faiths_and_powers/lib/add_zealot_kits.tpa~
 	INCLUDE ~faiths_and_powers/lib/add_multiclass_kits.tpa~
-//Mod variable
-OUTER_SPRINT mod_folder ~faiths_and_powers~
-	
+
 // joinable NPC issues for tutu/bgt/eet:
   ACTION_IF GAME_IS ~bgee~ BEGIN
     OUTER_SPRINT tutu_var ~~
@@ -96,8 +92,6 @@ LANGUAGE
   ~English~
   ~english~
   ~faiths_and_powers/language/english/setup.tra~
-  ~faiths_and_powers/language/english/IWD_spells.tra~
-  ~faiths_and_powers/language/english/new_spells.tra~
 //___________________________________________________________________________________
 
 
@@ -110,8 +104,6 @@ LANGUAGE
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 
-
-
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 //
@@ -123,16 +115,17 @@ BEGIN @101
 DESIGNATED 101
 DEPRECATED @18
 
+
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 //
-//					ALL KITS + SPHERE SYSTEM; KITS IN MENUS
+//					102: ALL KITS + SPHERE SYSTEM; KITS IN MENUS
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 
 BEGIN @102 // all the new kits, and kits in menus
 DESIGNATED 102
-SUBCOMPONENT @100 /*(GAME_IS ~bgee bg2ee eet~) */
+SUBCOMPONENT @100 /*(GAME_IS ~bgee bg2ee eet~)*/
 //Acolyte Lore (added to clabs)
 COPY ~faiths_and_powers/kits/acolytes/B_LOR.spl~ ~override~
 
@@ -307,17 +300,17 @@ ACTION_IF (%d5_install_clerics% = 1) BEGIN
  LAM cleric_torm
  LAM cleric_tymora
  LAM cleric_helm
-  ACTION_IF NOT GAME_IS ~iwdee~ BEGIN
-   LAM cleric_kelemvor
-  END
+ ACTION_IF NOT GAME_IS ~iwdee~ BEGIN
+  LAM cleric_kelemvor
+ END
  LAM cleric_tempus
  LAM cleric_leira
  LAM cleric_baravar
  LAM cleric_loviatar
  LAM cleric_talos
-  ACTION_IF NOT GAME_IS ~iwdee~ BEGIN
-   LAM cleric_cyric
-  END
+ ACTION_IF NOT GAME_IS ~iwdee~ BEGIN
+  LAM cleric_cyric
+ END
  LAM cleric_umberlee
 END
 //
@@ -327,30 +320,31 @@ ACTION_IF (%d5_install_acolytes% = 1) BEGIN
  LAM acolyte_deneir
  LAM acolyte_sune
  LAM acolyte_tempus
- //LAM acolyte_mystra
+// LAM acolyte_mystra
  LAM acolyte_mask
  LAM acolyte_shar
  LAM acolyte_moander
  LAM acolyte_beshaba
  LAM acolyte_baervan
-END//
+END
+//
 // (druids)
 ACTION_IF (%d5_install_druids% = 1) BEGIN
  LAM forest_druid
  LAM mountain_druid
-   LAM jungle_druid
-   LAM desert_druid
-LAM arctic_druid
+ LAM jungle_druid
+ LAM desert_druid
+ LAM arctic_druid
 END
 //
 // (mystics)
 ACTION_IF (%d5_install_mystics% = 1) BEGIN
-  LAM earth_mystic
-  LAM water_mystic
-  LAM air_mystic
-  LAM fire_mystic
-  LAM light_mystic
-    LAM shadow_mystic
+ LAM earth_mystic
+ LAM water_mystic
+ LAM air_mystic
+ LAM fire_mystic
+ LAM light_mystic
+ LAM shadow_mystic
 END
 //
 // (occultists)
@@ -379,7 +373,7 @@ ACTION_IF (%d5_install_champions% = 1) BEGIN
     SET_2DA_ENTRY 33 7 8 1
  BUT_ONLY_IF_IT_CHANGES
  //Dwarves need to be able to take the champion class.  Cha 13 requirement
-  COPY_EXISTING ~ABCLASRQ.2da~ ~override~ //
+ COPY_EXISTING ~ABCLASRQ.2da~ ~override~ //
  //Pally
     SET_2DA_ENTRY 6 6 6 13
     SET_2DA_ENTRY 30 6 6 13
@@ -472,7 +466,8 @@ ACTION_IF (%d5_install_scouts% = 1) BEGIN
  LAM barbarian_ranger
  LAM elven_archer
  LAM halfling_slinger
-END//
+END
+//
 // (multiclass)
 ACTION_IF (%d5_install_multiclass% = 1) BEGIN
  LAM fighter_druid
@@ -486,7 +481,8 @@ ACTION_IF (%d5_install_multiclass% = 1) BEGIN
  LAM cr_mielikki
  LAM cr_shaundakul
  LAM cf_helm
-END//
+END
+//
 //__________________________________________________________________________________
 
 //vanilla kits______________________________________________________________________
@@ -638,13 +634,12 @@ END
 
 //Add IWD spells if not already in game
 ACTION_IF GAME_IS ~bgee bg2ee eet~ BEGIN
- ACTION_IF (NOT MOD_IS_INSTALLED ~setup-iwdification.tp2~ ~40~) AND (NOT FILE_EXISTS_IN_GAME ~b_IWD.itm~) BEGIN  //neither IWDification nor our IWDEE spells installed (priest spells)
-      INCLUDE ~faiths_and_powers/data/components/Setup_IWD_Spells.tpa~      //install priest spells
+ ACTION_IF NOT MOD_IS_INSTALLED ~setup-iwdification.tp2~ ~40~ BEGIN  //If IWDification not installed...
+  ACTION_IF NOT FILE_EXISTS_IN_GAME ~b_IWD.itm~ BEGIN    			//If b_ IWD spells not installed...
+	COPY ~faiths_and_powers/compatibility/b_IWD.itm~ ~override~   	//to detect this component 
+	INCLUDE ~faiths_and_powers/lib/Setup_IWD_divine_Spells.tpa~    	//install them
+  END
  END
- ACTION_IF (NOT MOD_IS_INSTALLED ~setup-iwdification.tp2~ ~30~) AND (NOT FILE_EXISTS_IN_GAME ~b_IWD.itm~) BEGIN  //neither IWDification nor our IWDEE spells installed  (mage spells)
-    INCLUDE ~faiths_and_powers/lib/fnp_wiz.tpa~      //install wiz spells
- END
-   COPY ~faiths_and_powers/compatibility/b_IWD.itm~ ~override~   //to detect this component
 END
 
 //Sphere System_____________________________________________________________________
@@ -681,7 +676,7 @@ END
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 //
-//						CHOOSE COMPONENTS INDIVIDUALLY
+//						103: CHOOSE COMPONENTS INDIVIDUALLY
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 
@@ -702,6 +697,15 @@ PRINT ~without the dialogue system, kits are chosen from the menus~
 PRINT ~therefore, we'll let the player to choose which ones to install~
 //__________________________________________________________________________________
 
+
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+//						 105: NO KITS, JUST SPHERE SYSTEM
+//__________________________________________________________________________________
+//__________________________________________________________________________________
 
 
 //__________________________________________________________________________________
@@ -734,7 +738,6 @@ INCLUDE ~faiths_and_powers/lib/default_kit_spheres.tpa~
 LAM ~READ_FNP_KIT_INFO~
 //__________________________________________________________________________________
 
-
 //deity selection___________________________________________________________________
 //
 INCLUDE ~faiths_and_powers/lib/deity_selection.tpa~
@@ -751,13 +754,12 @@ END
 
 //Add IWD spells if not already in game
 ACTION_IF GAME_IS ~bgee bg2ee eet~ BEGIN
- ACTION_IF (NOT MOD_IS_INSTALLED ~setup-iwdification.tp2~ ~40~) AND (NOT FILE_EXISTS_IN_GAME ~b_IWD.itm~) BEGIN  //neither IWDification nor our IWDEE spells installed (priest spells)
-      INCLUDE ~faiths_and_powers/data/components/Setup_IWD_Spells.tpa~      //install priest spells
+ ACTION_IF NOT MOD_IS_INSTALLED ~setup-iwdification.tp2~ ~40~ BEGIN  //If IWDification not installed...
+  ACTION_IF NOT FILE_EXISTS_IN_GAME ~b_IWD.itm~ BEGIN    			//If b_ IWD spells not installed...
+	COPY ~faiths_and_powers/compatibility/b_IWD.itm~ ~override~   	//to detect this component 
+	INCLUDE ~faiths_and_powers/lib/Setup_IWD_divine_Spells.tpa~    	//install them
+  END
  END
- ACTION_IF (NOT MOD_IS_INSTALLED ~setup-iwdification.tp2~ ~30~) AND (NOT FILE_EXISTS_IN_GAME ~b_IWD.itm~) BEGIN  //neither IWDification nor our IWDEE spells installed  (mage spells)
-    INCLUDE ~faiths_and_powers/lib/fnp_wiz.tpa~      //install wiz spells
- END
-   COPY ~faiths_and_powers/compatibility/b_IWD.itm~ ~override~   //to detect this component
 END
 
 //run the sphere system______________________________________________________________
@@ -775,6 +777,8 @@ INCLUDE ~faiths_and_powers/lib/npc_kits.tpa~
 PRINT ~neither the dialogue system nor any new kits will be installed~
 PRINT ~the sphere system will be installed over the vanilla kits and/or previously installed mod kits~
 //__________________________________________________________________________________
+
+
 
 
 
@@ -1618,13 +1622,12 @@ INCLUDE ~faiths_and_powers/lib/default_kit_spheres.tpa~
 
 //Add IWD spells if not already in game
 ACTION_IF GAME_IS ~bgee bg2ee eet~ BEGIN
- ACTION_IF (NOT MOD_IS_INSTALLED ~setup-iwdification.tp2~ ~40~) AND (NOT FILE_EXISTS_IN_GAME ~b_IWD.itm~) BEGIN  //neither IWDification nor our IWDEE spells installed (priest spells)
-      INCLUDE ~faiths_and_powers/data/components/Setup_IWD_Spells.tpa~      //install priest spells
+ ACTION_IF NOT MOD_IS_INSTALLED ~setup-iwdification.tp2~ ~40~ BEGIN  //If IWDification not installed...
+  ACTION_IF NOT FILE_EXISTS_IN_GAME ~b_IWD.itm~ BEGIN    			//If b_ IWD spells not installed...
+	COPY ~faiths_and_powers/compatibility/b_IWD.itm~ ~override~   	//to detect this component 
+	INCLUDE ~faiths_and_powers/lib/Setup_IWD_divine_Spells.tpa~    	//install them
+  END
  END
- ACTION_IF (NOT MOD_IS_INSTALLED ~setup-iwdification.tp2~ ~30~) AND (NOT FILE_EXISTS_IN_GAME ~b_IWD.itm~) BEGIN  //neither IWDification nor our IWDEE spells installed  (mage spells)
-    INCLUDE ~faiths_and_powers/lib/fnp_wiz.tpa~      //install wiz spells
- END
-   COPY ~faiths_and_powers/compatibility/b_IWD.itm~ ~override~   //to detect this component
 END
 
 //read fnp_compat info______________________________________________________________

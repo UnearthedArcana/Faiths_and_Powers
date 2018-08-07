@@ -14,22 +14,22 @@ CLERIC_CURE_MODERATE_WOUNDS            , 2 => Life
 CLERIC_CURE_MEDIUM_WOUNDS              , 3 => Life
 CLERIC_CURE_SERIOUS_WOUNDS             , 4 => Life
 //CLERIC_CURE_CRITICAL_WOUNDS            , 5 => Life // universal
-CLERIC_RAISE_DEAD                      , 5 => Life
 CLERIC_MASS_CURE                       , 5 => Life
+CLERIC_RAISE_DEAD                      , 6 => Life
 CLERIC_HEAL                            , 6 => Life
 CLERIC_RESURRECTION                    , 7 => Life
 
 //  DEATH
-CLERIC_EYES_OF_THE_DEAD                , 1 => Death
-CLERIC_DISRUPT_UNDEAD                  , 1 => Death
+b_c104 /*eyes of the dead*/            , 1 => Death
+b_c105 /*disrupt undead*/              , 1 => Death
 WIZARD_LARLOCH_MINOR_DRAIN             , 1 => Death
-CLERIC_PACIFY_DEAD                     , 2 => Death
+b_c202 /*pacify the dead*/             , 2 => Death
 WIZARD_HOLD_UNDEAD                     , 2 => Death
 CLERIC_CIRCLE_OF_BONES                 , 3 => Death
 CLERIC_ANIMATE_DEAD                    , 4 => Death
 CLERIC_UNDEAD_WARD                     , 4 => Death
 CLERIC_SLAY_LIVING                     , 5 => Death
-CLERIC_RECALL_SPIRIT                   , 5 => Death // a 'good' spell in Death?
+CLERIC_RECALL_SPIRIT                   , 6 => Death // a 'good' spell in Death?
 WIZARD_SOUL_EATER                      , 6 => Death
 CLERIC_SYMBOL_DEATH                    , 7 => Death
 CLERIC_FINGER_OF_DEATH                 , 7 => Death
@@ -50,15 +50,15 @@ CLERIC_RIGHTEOUS_WRATH_OF_THE_FAITHFUL , 6 => Benediction
 CLERIC_IMPERVIOUS_SANCTITY_OF_MIND     , 7 => Benediction
 
 //  DESTRUCTION
-CLERIC_HAND_OF_CARNAGE                 , 1 => Destruction
-//PALADIN_SMITE_EVIL                   , 1 => Destruction
+b_pr101 /*holy smite*/                 , 1 => Destruction
+//PALADIN_SMITE_EVIL                     , 1 => Destruction
 CLERIC_CAUSE_LIGHT_WOUNDS              , 1 => Destruction
-CLERIC_SHATTER                         , 2 => Destruction
+b_pr201 /*shatter*/                    , 2 => Destruction
 CLERIC_CAUSE_MODERATE_WOUNDS           , 2 => Destruction
 CLERIC_CAUSE_MEDIUM_WOUNDS             , 3 => Destruction
 CLERIC_HOLY_SMITE                      , 3 => Destruction
 CLERIC_UNHOLY_BLIGHT                   , 3 => Destruction
-WIZARD_SHOUT                           , 4 => Destruction
+b_pr401 /*shout*/                      , 4 => Destruction
 CLERIC_CAUSE_SERIOUS_WOUNDS            , 4 => Destruction
 CLERIC_CAUSE_CRITICAL_WOUNDS           , 5 => Destruction
 CLERIC_MASS_CAUSE_LIGHT_WOUNDS         , 5 => Destruction
@@ -130,7 +130,7 @@ WIZARD_SIMULACRUM                      , 7 => Deception
 CLERIC_COMMAND                         , 1 => Thought
 WIZARD_SLEEP                           , 2 => Thought
 CLERIC_CHARM_PERSON                    , 2 => Thought
-CLERIC_MURDEROUS_COMMAND               , 3 => Thought
+b_c301 /*murderous command*/           , 3 => Thought
 CLERIC_EXALTATION                      , 3 => Thought
 //CLERIC_SPIRITUAL_CLARITY               , 3 => Thought (does it duplicate exaltation?)
 CLERIC_RIGID_THINKING                  , 3 => Thought
@@ -144,7 +144,7 @@ CLERIC_NATURE_BEAUTY                   , 7 => Thought
 //  DREAD
 CLERIC_CURSE                           , 1 => Dread
 CLERIC_DOOM                            , 1 => Dread
-CLERIC_FORBID                          , 2 => Dread
+b_c201 /*forbiddance*/                 , 2 => Dread
 CLERIC_HOLD_PERSON                     , 3 => Dread
 CLERIC_CLOAK_OF_FEAR                   , 3 => Dread
 WIZARD_GREATER_MALISON                 , 4 => Dread
@@ -164,8 +164,8 @@ CLERIC_FAVOR_OF_ILMATER                , 3 => Vigor
 //CLERIC_NEUTRALIZE_POISON               , 4 => Vigor // why does this spell exist??
 CLERIC_ANIMAL_RAGE                     , 5 => Vigor
 //WIZARD_TENSERS_TRANSFORMATION          , 6 => Vigor
+CLERIC_REGENERATE                      , 6 => Vigor
 CLERIC_RESTORATION                     , 7 => Vigor
-CLERIC_REGENERATE                      , 7 => Vigor
 
 //  AFFLICTION
 CLERIC_CAUSE_DISEASE                   , 1 => Affliction
@@ -182,7 +182,7 @@ CLERIC_WITHER                          , 7 => Affliction
 CLERIC_SYMBOL_STUN                     , 7 => Affliction
 
 //  ANIMAL
-CLERIC_ANIMAL_EYES                     , 1 => Animal
+b_c102 /*animal eyes*/                 , 1 => Animal
 CLERIC_HOLD_ANIMAL                     , 1 => Animal
 CLERIC_BEAST_CLAW                      , 2 => Animal
 CLERIC_SUMMON_INSECTS                  , 3 => Animal
@@ -203,15 +203,15 @@ CLERIC_BARKSKIN                        , 2 => Plant
 CLERIC_THORN_SPRAY                     , 3 => Plant
 CLERIC_SPIKE_GROWTH                    , 4 => Plant
 CLERIC_CALL_WOODLAND_BEINGS            , 5 => Plant
-CLERIC_NATURES_WRATH                   , 6 => Plant
-//d5pr601 /*nature's wrath*/             , 6 => Plant
+b_pr601 /*nature's wrath*/             , 6 => Plant
+d5pr601 /*nature's wrath*/             , 6 => Plant
 b_c601 /*assassin vines*/              , 6 => Plant
 CLERIC_STALKER                         , 7 => Plant
 
 //  EARTH
 CLERIC_MAGIC_STONE                     , 1 => Earth
 CLERIC_PROTECTION_FROM_LIGHTNING       , 2 => Earth
-CLERIC_STONE_FIST                      , 3 => Earth
+b_pr301 /*stone fist*/                 , 3 => Earth
 CLERIC_STAR_METAL_CUDGEL               , 4 => Earth
 CLERIC_SPIKE_STONES                    , 4 => Earth
 CLERIC_IRONSKIN                        , 5 => Earth
@@ -235,9 +235,9 @@ WIZARD_DEATH_FOG                       , 7 => Air
 CLERIC_AERIAL_SERVANT                  , 7 => Air
 
 //  WATER
-CLERIC_FROST_FINGERS                   , 1 => Water
+b_c103 /*frost fingers*/               , 1 => Water
 WIZARD_SNILLOCS_SNOWBALL_SWARM         , 2 => Water
-CLERIC_ICE_BLADE                       , 2 => Water
+b_c203 /*ice blade*/                   , 2 => Water
 //WIZARD_MELF_ACID_ARROW                 , 2 => Water
 WIZARD_ICELANCE                        , 3 => Water
 CLERIC_SMASHING_WAVE                   , 4 => Water
@@ -245,7 +245,7 @@ CLERIC_SMASHING_WAVE                   , 4 => Water
 WIZARD_CONE_OF_COLD                    , 4 => Water
 WIZARD_ICE_STORM                       , 5 => Water
 CLERIC_MIST_OF_ELDATH                  , 6 => Water
-CLERIC_CONJURE_WATER_ELEMENTAL         , 6 => Water
+b_pr602 /*water elemental*/            , 6 => Water
 WIZARD_ACID_STORM                      , 7 => Water
 
 //  FIRE
