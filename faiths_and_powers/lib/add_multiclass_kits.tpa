@@ -1,849 +1,3 @@
-
-//__________________________________________________________________________________
-//__________________________________________________________________________________
-//
-//							FIGHTER/DRUID
-//__________________________________________________________________________________
-//__________________________________________________________________________________
-
-DEFINE_ACTION_MACRO fighter_druid BEGIN
-
-ADD_KIT ~D5_DR_FIGHTER~
-
-//WEAPON PROFICIENCIES_______________________________________________________________
-//11                                     T   S           F   Q             S S
-//10             L S                     W   C           L   U             W I
-//9              A M             B L S   O   I   W       A   A             O N
-//8              R A             A O H   H   M   A       I   R C   S       R G
-//7              G L           M S N O   A   I   R     H L   T R L H     2 D L 2                 E E E E E E E E E E E
-//6              E L       S   I T G R   N K T D H     A M   E O O O     H A E W E E E E E E E E X X X X X X X X X X X
-//5              S S   S B P   S A S T   D A A A A   S L O   R S N R   S A N W E X X X X X X X X T T T T T T T T T T T
-//4              W W   P L I   S R W S   E T R G M C P B R M S S G T D L N D E A T T T T T T T T R R R R R R R R R R R
-//3              O O B E U K A I D O W A D A W G M L E E N A T B B B A I D S A P R R R R R R R R A A A A A A A A A A A
-//2              R R O A N E X L S R O X S N A E E U A R I C A O O O R N E H P O A A A A A A A A 1 1 1 1 1 1 1 1 1 1 2
-//1              D D W R T D E E W D R E W A K R R B R D N E F W W W T G D I O N 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0
-~D5_DR_FIGHTER   0 2 2 0 2 2 0 2~
-~D5_DR_FIGHTER   0 2 2 0 2 2 0 2 0 0 0 0 0 0 2 2 0 2 2 0 2 0 2 0 2 2 2 2 2 0 2 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
-
-//MINIMUM KIT STATS_________________________________________________________________
-//                 STR DEX CON INT WIS CHR
-~D5_DR_FIGHTER       9   0   0   0   12  0~
-
-//KIT STAT MODIFIERS________________________________________________________________
-//                 STR DEX CON INT WIS CHR
-~D5_DR_FIGHTER       0   0   0   0   0   0~
-
-//REQUIREMENTS TO DUAL TO THIS KIT__________________________________________________
-//                 STR DEX CON INT WIS CHR
-~D5_DR_FIGHTER       17  0   0   0   17  0~
-
-//REQUIREMENTS TO DUAL FROM THIS KIT________________________________________________
-//                 STR DEX CON INT WIS CHR
-~D5_DR_FIGHTER        15  0   0   0   15  0~
-
-//ALIGNMENT RESTRICTIONS____________________________________________________________
-//                 LG LN LE NG TN NE CG CN CE
-~D5_DR_FIGHTER       0  1  0  1  1  1  0  1  0~
-
-//DUAL CLASS OPTIONS________________________________________________________________
-//                 FT CL MA TH DR RA
-~D5_DR_FIGHTER       0  0  0  0  0  0~
-
-//KIT ABILITIES 2DA FILE______________________________________________________________
-~faiths_and_powers/kits/multiclass/452_fighter_druid/d5drfi.2da~
-
-//RACIAL KIT AVAILABILITY_____________________________________________________________
-~K_FC_D  K_FC_E  K_FC_G  K_FC_H  K_FC_HE  K_FC_HL  K_FC_HO~
-
-//UNUSABLE FLAGS AND KIT BASE CLASS_________________________________________________
-//CLASSES: Mage = 1, Fighter = 2, Cleric=3, Thief = 4, Bard = 5
-//         Paladin 6, Druid = 11, Ranger = 12, Sorcerer = 19
-//         Monk = 20
-~0x08000000 8~ // totemic flag
-
-//HIGH LEVEL ABILITIES ABBREVIATION_________________________________________________
-~Dr0~
-
-//TOB STARTING EQUIPMENT_____________________________________________________________
-~CHAN09	* HELM07 BAG26 RING06 RING31 * BOOT01 AMUL20 BRAC10 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 HAMM07 SW1H27 STAF08~
-
-//CHARACTER CREATION KIT DESCRIPTION________________________________________________
-SAY @45101
-SAY @45106
-SAY @45103
-
-//EE KIT EXTRAS______________________________________________________________________
-// 
-ACTION_IF GAME_IS ~bgee bg2ee eet iwdee~ THEN BEGIN
-	LAF fl#add_kit_ee
-		INT_VAR
-			briefdesc = RESOLVE_STR_REF (@45104)
-		STR_VAR
-			kit_name = D5_DR_FIGHTER
-			clswpbon = ~1 0 2~
-	END
-END
-
-//MULTICLASS DRUID FILES______________________________________________________________
-//
-COPY_EXISTING ~faiths_and_powers/kits/multiclass/452_fighter_druid/d5drfi.2da~ ~override~
-COPY ~faiths_and_powers/kits/misc/d5_notu.spl~ ~override~
-COPY ~faiths_and_powers/kits/druids/shapechange/d5drsc.spl~ ~override~
-	SAY NAME1 @73111
-	SAY UNIDENTIFIED_DESC @73112
-COPY ~faiths_and_powers/kits/druids/shapechange/d5_drinv.spl~ ~override~
-	SAY NAME1 @6
-	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/druids/shapechange/d5_drnf.spl~ ~override~
-	SAY NAME1 @73113
-	SAY UNIDENTIFIED_DESC @73114
-COPY ~faiths_and_powers/kits/druids/shapechange/d5drwlf.spl~ ~override~
-	SAY NAME1 @73115
-	SAY UNIDENTIFIED_DESC @73116
-COPY ~faiths_and_powers/kits/druids/shapechange/d5_wolf.cre~ ~override~
-COPY ~faiths_and_powers/kits/druids/shapechange/d5_wolfd.cre~ ~override~
-COPY ~faiths_and_powers/kits/druids/shapechange/d5_clwlf.itm~ ~override~
-COPY ~faiths_and_powers/kits/druids/shapechange/d5drfer.spl~ ~override~
-	SAY NAME1 @73117
-	SAY UNIDENTIFIED_DESC @73118
-COPY ~faiths_and_powers/kits/druids/shapechange/d5_feret.cre~ ~override~
-COPY ~faiths_and_powers/kits/druids/shapechange/d5_clrat.itm~ ~override~
-COPY ~faiths_and_powers/kits/druids/shapechange/d5drbbl.spl~ ~override~
-	SAY NAME1 @73119
-	SAY UNIDENTIFIED_DESC @73120
-COPY ~faiths_and_powers/kits/druids/shapechange/d5_berbl.cre~ ~override~
-COPY ~faiths_and_powers/kits/druids/shapechange/d5_clber.itm~ ~override~
-/*
-COPY ~faiths_and_powers/kits/multiclass/451_multi_druid/d5_mudru.itm~ ~override~
-	SAY NAME1 @45111
-	SAY NAME2 @45111
-	SAY UNIDENTIFIED_DESC @45112
-	SAY IDENTIFIED_DESC @45112
-COPY ~faiths_and_powers/kits/multiclass/451_multi_druid/d5_mudru.spl~ ~override~
-	SAY NAME1 @6
-	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/multiclass/451_multi_druid/d5_mudru.cre~ ~override~
-COMPILE ~faiths_and_powers/kits/multiclass/451_multi_druid/d5_mudru.baf~
-ACTION_IF FILE_EXISTS_IN_GAME ~tem2601.sto~ THEN BEGIN
-	COPY_EXISTING ~tem2601.sto~ ~override~
-		ADD_STORE_ITEM ~d5_mudru~ #0 #0 #0 ~identified~ #1
-END
-ACTION_IF FILE_EXISTS_IN_GAME ~shop06.sto~ THEN BEGIN
-	COPY_EXISTING ~shop06.sto~ ~override~
-		ADD_STORE_ITEM ~d5_mudru~ #0 #0 #0 ~identified~ #1
-END
-ACTION_IF (FILE_EXISTS_IN_GAME ~kuoswald.sto~) THEN BEGIN
-	COPY_EXISTING ~kuoswald.sto~ ~override~
-		ADD_STORE_ITEM ~d5_mudru~ #0 #0 #0 ~identified~ #1
-	COPY_EXISTING ~ehpomab.sto~ ~override~
-		ADD_STORE_ITEM ~d5_mudru~ #0 #0 #0 ~identified~ #1
-END
-*/
-
-//MULTICLASS KIT______________________________________________________________________
-//
-ACTION_IF FILE_EXISTS_IN_GAME ~d5drfi.2da~ BEGIN
-  LAF qd_multiclass
-	STR_VAR
-		kit_name = ~D5_DR_FIGHTER~ 
-		kit_clab = ~d5drfi~
-		base_class = ~P~
-		mc_dir = ~faiths_and_powers/lib/qd_mc~
-  END
-END 
-
-//DEFINE SPHERE ACCESS______________________________________________________________
-//
- LAF ~DEFINE_FNP_KIT_INFO~
-  INT_VAR
-	u_leather_armor 	= 1
-	u_chain_armor 		= 0
-	u_plate_armor 		= 0
-	u_club_staff	 	= 2
-	u_hammers	 		= 0
-	u_maces 	 		= 0
-	u_flails 			= 0
-	u_axes 				= 0
-	u_daggers 			= 2
-	u_short_swords		= 0
-	u_long_swords		= 0
-	u_scimitars 		= 0
-	u_katanas 			= 0
-	u_bastard_swords 	= 0
-	u_2hand_swords 		= 0
-	u_halberds 			= 0
-	u_spears 	 		= 2
-	u_darts 			= 2
-	u_slings	 		= 2
-	u_bows 				= 2
-	u_crossbows 		= 0
-  STR_VAR
-    clab_name 		= ~d5drfi~
-	class 			= ~fighter_cleric~
-	s_Life 			= ~minor~
-	s_Death 		= ~x~
-	s_Benediction 	= ~x~
-	s_Destruction 	= ~x~
-	s_Protection 	= ~x~
-	s_War 			= ~x~
-	s_Exploration   = ~minor~
-	s_Knowledge 	= ~major~
-	s_Deception 	= ~minor~
-	s_Thought 		= ~minor~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~major~
-	s_Affliction 	= ~major~
-	s_Animal 		= ~major~
-	s_Plant 		= ~major~
-	s_Earth 		= ~major~
-	s_Water 		= ~major~
-	s_Air 			= ~minor~
-	s_Fire 			= ~x~
-	s_Light 		= ~major~
-	s_Shadow 		= ~minor~
-	s_Magic 		= ~x~
-	s_Perdition     = ~x~
- END
-
-END
-//__________________________________________________________________________________
-
-
-
-
-//__________________________________________________________________________________
-//__________________________________________________________________________________
-//
-//							DRUID/MAGE
-//__________________________________________________________________________________
-//__________________________________________________________________________________
-
-DEFINE_ACTION_MACRO druid_mage BEGIN
-
-ADD_KIT ~D5_DR_MAGE~
-
-//WEAPON PROFICIENCIES________________________________________________________________
-//11                                     T   S           F   Q             S S
-//10             L S                     W   C           L   U             W I
-//9              A M             B L S   O   I   W       A   A             O N
-//8              R A             A O H   H   M   A       I   R C   S       R G
-//7              G L           M S N O   A   I   R     H L   T R L H     2 D L 2                 E E E E E E E E E E E
-//6              E L       S   I T G R   N K T D H     A M   E O O O     H A E W E E E E E E E E X X X X X X X X X X X
-//5              S S   S B P   S A S T   D A A A A   S L O   R S N R   S A N W E X X X X X X X X T T T T T T T T T T T
-//4              W W   P L I   S R W S   E T R G M C P B R M S S G T D L N D E A T T T T T T T T R R R R R R R R R R R
-//3              O O B E U K A I D O W A D A W G M L E E N A T B B B A I D S A P R R R R R R R R A A A A A A A A A A A
-//2              R R O A N E X L S R O X S N A E E U A R I C A O O O R N E H P O A A A A A A A A 1 1 1 1 1 1 1 1 1 1 2
-//1              D D W R T D E E W D R E W A K R R B R D N E F W W W T G D I O N 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0
-~D5_DR_MAGE      0 0 0 0 1 1 0 1~
-~D5_DR_MAGE      0 1 0 0 1 1 0 1 0 0 1 0 0 0 1 1 0 1 1 0 1 0 1 0 0 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
-
-//MINIMUM KIT STATS_________________________________________________________________
-//                 STR DEX CON INT WIS CHR
-~D5_DR_MAGE          0   0   0   0   11  0~
-
-//KIT STAT MODIFIERS________________________________________________________________
-//                 STR DEX CON INT WIS CHR
-~D5_DR_MAGE          0   0   0   0   0   0~
-
-//REQUIREMENTS TO DUAL TO THIS KIT_________________________________________________
-//                 STR DEX CON INT WIS CHR
-~D5_DR_MAGE          0   0   0   0   17  0~
-
-//REQUIREMENTS TO DUAL FROM THIS KIT________________________________________________
-//                 STR DEX CON INT WIS CHR
-~D5_DR_MAGE          0   0   0   0   15  0~
-
-//ALIGNMENT RESTRICTIONS____________________________________________________________
-//                 LG LN LE NG TN NE CG CN CE
-~D5_DR_MAGE          0  1  0  1  1  1  0  1  0~
-
-//DUAL CLASS OPTIONS________________________________________________________________
-//                 FT CL MA TH DR RA
-~D5_DR_MAGE          0  0  0  0  0  0~
-
-//KIT ABILITIES 2DA FILE______________________________________________________________
-~faiths_and_powers/kits/multiclass/453_druid_mage/d5drma.2da~
-
-//RACIAL KIT AVAILABILITY_____________________________________________________________
-~K_CM_D  K_CM_E  K_CM_G  K_CM_H  K_CM_HE  K_CM_HL  K_CM_HO~
-
-//UNUSABLE FLAGS AND KIT BASE CLASS_________________________________________________
-//CLASSES: Mage = 1, Fighter = 2, Cleric=3, Thief = 4, Bard = 5
-//         Paladin 6, Druid = 11, Ranger = 12, Sorcerer = 19
-//         Monk = 20
-~0x08000000 14~ // totemic flag
-
-//HIGH LEVEL ABILITIES ABBREVIATION_________________________________________________
-~CM0~
-
-//TOB STARTING EQUIPMENT_____________________________________________________________
-~CHAN09	* HELM07 BAG26 RING06 RING31 * BOOT01 AMUL20 BRAC10 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 HAMM07 SW1H27 STAF08~
-
-//CHARACTER CREATION KIT DESCRIPTION________________________________________________
-SAY @45101
-SAY @45107
-SAY @45103
-
-//EE KIT EXTRAS______________________________________________________________________
-// 
-ACTION_IF GAME_IS ~bgee bg2ee eet iwdee~ THEN BEGIN
-	LAF fl#add_kit_ee
-		INT_VAR
-			briefdesc = RESOLVE_STR_REF (@45104)
-		STR_VAR
-			kit_name = D5_DR_MAGE
-			clswpbon = ~0 0 3~
-	END
-END
-
-//MULTICLASS DRUID FILES______________________________________________________________
-//
-COPY_EXISTING ~faiths_and_powers/kits/multiclass/453_druid_mage/d5drma.2da~ ~override~
-COPY ~faiths_and_powers/kits/misc/d5_notu.spl~ ~override~
-COPY ~faiths_and_powers/kits/druids/shapechange/d5drsc.spl~ ~override~
-	SAY NAME1 @73111
-	SAY UNIDENTIFIED_DESC @73112
-COPY ~faiths_and_powers/kits/druids/shapechange/d5_drinv.spl~ ~override~
-	SAY NAME1 @6
-	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/druids/shapechange/d5_drnf.spl~ ~override~
-	SAY NAME1 @73113
-	SAY UNIDENTIFIED_DESC @73114
-COPY ~faiths_and_powers/kits/druids/shapechange/d5drwlf.spl~ ~override~
-	SAY NAME1 @73115
-	SAY UNIDENTIFIED_DESC @73116
-COPY ~faiths_and_powers/kits/druids/shapechange/d5_wolf.cre~ ~override~
-COPY ~faiths_and_powers/kits/druids/shapechange/d5_wolfd.cre~ ~override~
-COPY ~faiths_and_powers/kits/druids/shapechange/d5_clwlf.itm~ ~override~
-COPY ~faiths_and_powers/kits/druids/shapechange/d5drfer.spl~ ~override~
-	SAY NAME1 @73117
-	SAY UNIDENTIFIED_DESC @73118
-COPY ~faiths_and_powers/kits/druids/shapechange/d5_feret.cre~ ~override~
-COPY ~faiths_and_powers/kits/druids/shapechange/d5_clrat.itm~ ~override~
-COPY ~faiths_and_powers/kits/druids/shapechange/d5drbbl.spl~ ~override~
-	SAY NAME1 @73119
-	SAY UNIDENTIFIED_DESC @73120
-COPY ~faiths_and_powers/kits/druids/shapechange/d5_berbl.cre~ ~override~
-COPY ~faiths_and_powers/kits/druids/shapechange/d5_clber.itm~ ~override~
-/*
-COPY ~faiths_and_powers/kits/multiclass/451_multi_druid/d5_mudru.itm~ ~override~
-	SAY NAME1 @45111
-	SAY NAME2 @45111
-	SAY UNIDENTIFIED_DESC @45112
-	SAY IDENTIFIED_DESC @45112
-COPY ~faiths_and_powers/kits/multiclass/451_multi_druid/d5_mudru.spl~ ~override~
-	SAY NAME1 @6
-	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/multiclass/451_multi_druid/d5_mudru.cre~ ~override~
-COMPILE ~faiths_and_powers/kits/multiclass/451_multi_druid/d5_mudru.baf~
-ACTION_IF FILE_EXISTS_IN_GAME ~tem2601.sto~ THEN BEGIN
-	COPY_EXISTING ~tem2601.sto~ ~override~
-		ADD_STORE_ITEM ~d5_mudru~ #0 #0 #0 ~identified~ #1
-END
-ACTION_IF FILE_EXISTS_IN_GAME ~shop06.sto~ THEN BEGIN
-	COPY_EXISTING ~shop06.sto~ ~override~
-		ADD_STORE_ITEM ~d5_mudru~ #0 #0 #0 ~identified~ #1
-END
-ACTION_IF (FILE_EXISTS_IN_GAME ~kuoswald.sto~) THEN BEGIN
-	COPY_EXISTING ~kuoswald.sto~ ~override~
-		ADD_STORE_ITEM ~d5_mudru~ #0 #0 #0 ~identified~ #1
-	COPY_EXISTING ~ehpomab.sto~ ~override~
-		ADD_STORE_ITEM ~d5_mudru~ #0 #0 #0 ~identified~ #1
-END
-*/
-
-//MULTICLASS KIT______________________________________________________________________
-//
-ACTION_IF FILE_EXISTS_IN_GAME ~d5drma.2da~ BEGIN
-  LAF qd_multiclass
-	STR_VAR
-		kit_name = ~D5_DR_MAGE~ 
-		kit_clab = ~d5drma~
-		base_class = ~P~
-		mc_dir = ~faiths_and_powers/lib/qd_mc~
-  END
-END 
-
-//DEFINE SPHERE ACCESS______________________________________________________________
-//
- LAF ~DEFINE_FNP_KIT_INFO~
-  INT_VAR
-	u_leather_armor 	= 1
-	u_chain_armor 		= 0
-	u_plate_armor 		= 0
-	u_club_staff	 	= 1
-	u_hammers	 		= 0
-	u_maces 	 		= 0
-	u_flails 			= 0
-	u_axes 				= 0
-	u_daggers 			= 1
-	u_short_swords		= 0
-	u_long_swords		= 0
-	u_scimitars 		= 0
-	u_katanas 			= 0
-	u_bastard_swords 	= 0
-	u_2hand_swords 		= 0
-	u_halberds 			= 0
-	u_spears 	 		= 1
-	u_darts 			= 1
-	u_slings	 		= 1
-	u_bows 				= 1
-	u_crossbows 		= 0
-  STR_VAR
-    clab_name 		= ~d5drma~
-	class 			= ~cleric_mage~
-	s_Life 			= ~minor~
-	s_Death 		= ~x~
-	s_Benediction 	= ~x~
-	s_Destruction 	= ~x~
-	s_Protection 	= ~x~
-	s_War 			= ~x~
-	s_Exploration   = ~minor~
-	s_Knowledge 	= ~major~
-	s_Deception 	= ~minor~
-	s_Thought 		= ~minor~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~major~
-	s_Affliction 	= ~major~
-	s_Animal 		= ~major~
-	s_Plant 		= ~major~
-	s_Earth 		= ~major~
-	s_Water 		= ~major~
-	s_Air 			= ~minor~
-	s_Fire 			= ~x~
-	s_Light 		= ~major~
-	s_Shadow 		= ~minor~
-	s_Magic 		= ~x~
-	s_Perdition     = ~x~
- END
-
-END
-//__________________________________________________________________________________
-
-
-
-//__________________________________________________________________________________
-//__________________________________________________________________________________
-//
-//							DRUID/THIEF
-//__________________________________________________________________________________
-//__________________________________________________________________________________
-
-DEFINE_ACTION_MACRO druid_thief BEGIN
-
-ADD_KIT ~D5_DR_THIEF~
-
-//WEAPON PROFICIENCIES________________________________________________________________
-//11                                     T   S           F   Q             S S
-//10             L S                     W   C           L   U             W I
-//9              A M             B L S   O   I   W       A   A             O N
-//8              R A             A O H   H   M   A       I   R C   S       R G
-//7              G L           M S N O   A   I   R     H L   T R L H     2 D L 2                 E E E E E E E E E E E
-//6              E L       S   I T G R   N K T D H     A M   E O O O     H A E W E E E E E E E E X X X X X X X X X X X
-//5              S S   S B P   S A S T   D A A A A   S L O   R S N R   S A N W E X X X X X X X X T T T T T T T T T T T
-//4              W W   P L I   S R W S   E T R G M C P B R M S S G T D L N D E A T T T T T T T T R R R R R R R R R R R
-//3              O O B E U K A I D O W A D A W G M L E E N A T B B B A I D S A P R R R R R R R R A A A A A A A A A A A
-//2              R R O A N E X L S R O X S N A E E U A R I C A O O O R N E H P O A A A A A A A A 1 1 1 1 1 1 1 1 1 1 2
-//1              D D W R T D E E W D R E W A K R R B R D N E F W W W T G D I O N 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0
-~D5_DR_THIEF     0 0 0 0 1 1 0 1~
-~D5_DR_THIEF     0 1 0 0 1 1 0 1 0 1 1 0 0 0 1 1 0 1 0 0 0 0 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
-
-//MINIMUM KIT STATS_________________________________________________________________
-//                  STR DEX CON INT WIS CHR
-~D5_DR_THIEF         0   9   0   0   11  0~
-
-//KIT STAT MODIFIERS________________________________________________________________
-//                  STR DEX CON INT WIS CHR
-~D5_DR_THIEF         0   0   0   0   0   0~
-
-//REQUIREMENTS TO DUAL TO THIS KIT_________________________________________________
-//                  STR DEX CON INT WIS CHR
-~D5_DR_THIEF         0   17  0   0   17  0~
-
-//REQUIREMENTS TO DUAL FROM THIS KIT________________________________________________
-//                  STR DEX CON INT WIS CHR
-~D5_DR_THIEF         0   15  0   0   15  0~
-
-//ALIGNMENT RESTRICTIONS____________________________________________________________
-//                  LG LN LE NG TN NE CG CN CE
-~D5_DR_THIEF         0  1  0  1  1  1  0  1  0~
-
-//DUAL CLASS OPTIONS________________________________________________________________
-//                  FT CL MA TH DR RA
-~D5_DR_THIEF         0  0  0  0  0  0~
-
-//KIT ABILITIES 2DA FILE______________________________________________________________
-~faiths_and_powers/kits/multiclass/454_druid_thief/d5drth.2da~
-
-//RACIAL KIT AVAILABILITY_____________________________________________________________
-~K_CT_D  K_CT_E  K_CT_G  K_CT_H  K_CT_HE  K_CT_HL  K_CT_HO~
-
-//UNUSABLE FLAGS AND KIT BASE CLASS_________________________________________________
-//CLASSES: Mage = 1, Fighter = 2, Cleric=3, Thief = 4, Bard = 5
-//         Paladin 6, Druid = 11, Ranger = 12, Sorcerer = 19
-//         Monk = 20
-~0x08000000 15~ // totemic flag
-
-//HIGH LEVEL ABILITIES ABBREVIATION_________________________________________________
-~CT0~
-
-//TOB STARTING EQUIPMENT_____________________________________________________________
-~CHAN09	* HELM07 BAG26 RING06 RING31 * BOOT01 AMUL20 BRAC10 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 HAMM07 SW1H27 STAF08~
-
-//CHARACTER CREATION KIT DESCRIPTION________________________________________________
-SAY @45101
-SAY @45108
-SAY @45103
-
-//EE KIT EXTRAS______________________________________________________________________
-// 
-ACTION_IF GAME_IS ~bgee bg2ee eet iwdee~ THEN BEGIN
-	LAF fl#add_kit_ee
-		INT_VAR
-			briefdesc = RESOLVE_STR_REF (@45104)
-		STR_VAR
-			kit_name = D5_DR_THIEF
-			clswpbon = ~0 0 3~
-	END
-END
-
-//MULTICLASS DRUID FILES______________________________________________________________
-//
-COPY_EXISTING ~faiths_and_powers/kits/multiclass/454_druid_thief/d5drth.2da~ ~override~
-COPY ~faiths_and_powers/kits/misc/d5_notu.spl~ ~override~
-COPY ~faiths_and_powers/kits/druids/shapechange/d5drsc.spl~ ~override~
-	SAY NAME1 @73111
-	SAY UNIDENTIFIED_DESC @73112
-COPY ~faiths_and_powers/kits/druids/shapechange/d5_drinv.spl~ ~override~
-	SAY NAME1 @6
-	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/druids/shapechange/d5_drnf.spl~ ~override~
-	SAY NAME1 @73113
-	SAY UNIDENTIFIED_DESC @73114
-COPY ~faiths_and_powers/kits/druids/shapechange/d5drwlf.spl~ ~override~
-	SAY NAME1 @73115
-	SAY UNIDENTIFIED_DESC @73116
-COPY ~faiths_and_powers/kits/druids/shapechange/d5_wolf.cre~ ~override~
-COPY ~faiths_and_powers/kits/druids/shapechange/d5_wolfd.cre~ ~override~
-COPY ~faiths_and_powers/kits/druids/shapechange/d5_clwlf.itm~ ~override~
-COPY ~faiths_and_powers/kits/druids/shapechange/d5drfer.spl~ ~override~
-	SAY NAME1 @73117
-	SAY UNIDENTIFIED_DESC @73118
-COPY ~faiths_and_powers/kits/druids/shapechange/d5_feret.cre~ ~override~
-COPY ~faiths_and_powers/kits/druids/shapechange/d5_clrat.itm~ ~override~
-COPY ~faiths_and_powers/kits/druids/shapechange/d5drbbl.spl~ ~override~
-	SAY NAME1 @73119
-	SAY UNIDENTIFIED_DESC @73120
-COPY ~faiths_and_powers/kits/druids/shapechange/d5_berbl.cre~ ~override~
-COPY ~faiths_and_powers/kits/druids/shapechange/d5_clber.itm~ ~override~
-/*
-COPY ~faiths_and_powers/kits/multiclass/451_multi_druid/d5_mudru.itm~ ~override~
-	SAY NAME1 @45111
-	SAY NAME2 @45111
-	SAY UNIDENTIFIED_DESC @45112
-	SAY IDENTIFIED_DESC @45112
-COPY ~faiths_and_powers/kits/multiclass/451_multi_druid/d5_mudru.spl~ ~override~
-	SAY NAME1 @6
-	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/multiclass/451_multi_druid/d5_mudru.cre~ ~override~
-COMPILE ~faiths_and_powers/kits/multiclass/451_multi_druid/d5_mudru.baf~
-ACTION_IF FILE_EXISTS_IN_GAME ~tem2601.sto~ THEN BEGIN
-	COPY_EXISTING ~tem2601.sto~ ~override~
-		ADD_STORE_ITEM ~d5_mudru~ #0 #0 #0 ~identified~ #1
-END
-ACTION_IF FILE_EXISTS_IN_GAME ~shop06.sto~ THEN BEGIN
-	COPY_EXISTING ~shop06.sto~ ~override~
-		ADD_STORE_ITEM ~d5_mudru~ #0 #0 #0 ~identified~ #1
-END
-ACTION_IF (FILE_EXISTS_IN_GAME ~kuoswald.sto~) THEN BEGIN
-	COPY_EXISTING ~kuoswald.sto~ ~override~
-		ADD_STORE_ITEM ~d5_mudru~ #0 #0 #0 ~identified~ #1
-	COPY_EXISTING ~ehpomab.sto~ ~override~
-		ADD_STORE_ITEM ~d5_mudru~ #0 #0 #0 ~identified~ #1
-END
-*/
-
-//MULTICLASS KIT______________________________________________________________________
-//
-ACTION_IF FILE_EXISTS_IN_GAME ~d5drth.2da~ BEGIN
-  LAF qd_multiclass
-	STR_VAR
-		kit_name = ~D5_DR_THIEF~ 
-		kit_clab = ~d5drth~
-		base_class = ~P~
-		mc_dir = ~faiths_and_powers/lib/qd_mc~
-  END
-END 
-
-//DEFINE SPHERE ACCESS______________________________________________________________
-//
- LAF ~DEFINE_FNP_KIT_INFO~
-  INT_VAR
-	u_leather_armor 	= 1
-	u_chain_armor 		= 0
-	u_plate_armor 		= 0
-	u_club_staff	 	= 1
-	u_hammers	 		= 0
-	u_maces 	 		= 0
-	u_flails 			= 0
-	u_axes 				= 0
-	u_daggers 			= 1
-	u_short_swords		= 0
-	u_long_swords		= 0
-	u_scimitars 		= 0
-	u_katanas 			= 0
-	u_bastard_swords 	= 0
-	u_2hand_swords 		= 0
-	u_halberds 			= 0
-	u_spears 	 		= 1
-	u_darts 			= 1
-	u_slings	 		= 1
-	u_bows 				= 1
-	u_crossbows 		= 0
-  STR_VAR
-    clab_name 		= ~d5drth~
-	class 			= ~cleric_thief~
-	s_Life 			= ~minor~
-	s_Death 		= ~x~
-	s_Benediction 	= ~x~
-	s_Destruction 	= ~x~
-	s_Protection 	= ~x~
-	s_War 			= ~x~
-	s_Exploration   = ~minor~
-	s_Knowledge 	= ~major~
-	s_Deception 	= ~minor~
-	s_Thought 		= ~minor~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~major~
-	s_Affliction 	= ~major~
-	s_Animal 		= ~major~
-	s_Plant 		= ~major~
-	s_Earth 		= ~major~
-	s_Water 		= ~major~
-	s_Air 			= ~minor~
-	s_Fire 			= ~x~
-	s_Light 		= ~major~
-	s_Shadow 		= ~minor~
-	s_Magic 		= ~x~
-	s_Perdition     = ~x~
- END
-
-END
-//__________________________________________________________________________________
-
-
-
-//__________________________________________________________________________________
-//__________________________________________________________________________________
-//
-//							DRUID/RANGER
-//__________________________________________________________________________________
-//__________________________________________________________________________________
-
-DEFINE_ACTION_MACRO druid_ranger BEGIN
-
-ADD_KIT ~D5_DR_RANGER~
-
-//WEAPON PROFICIENCIES________________________________________________________________
-//11                                     T   S           F   Q             S S
-//10             L S                     W   C           L   U             W I
-//9              A M             B L S   O   I   W       A   A             O N
-//8              R A             A O H   H   M   A       I   R C   S       R G
-//7              G L           M S N O   A   I   R     H L   T R L H     2 D L 2                 E E E E E E E E E E E
-//6              E L       S   I T G R   N K T D H     A M   E O O O     H A E W E E E E E E E E X X X X X X X X X X X
-//5              S S   S B P   S A S T   D A A A A   S L O   R S N R   S A N W E X X X X X X X X T T T T T T T T T T T
-//4              W W   P L I   S R W S   E T R G M C P B R M S S G T D L N D E A T T T T T T T T R R R R R R R R R R R
-//3              O O B E U K A I D O W A D A W G M L E E N A T B B B A I D S A P R R R R R R R R A A A A A A A A A A A
-//2              R R O A N E X L S R O X S N A E E U A R I C A O O O R N E H P O A A A A A A A A 1 1 1 1 1 1 1 1 1 1 2
-//1              D D W R T D E E W D R E W A K R R B R D N E F W W W T G D I O N 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0
-~D5_DR_RANGER    0 2 2 0 2 2 0 2~
-~D5_DR_RANGER    0 2 2 0 2 2 0 2 0 0 0 0 0 0 2 2 0 2 2 0 2 0 2 0 2 2 2 2 2 0 2 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
-
-//MINIMUM KIT STATS_________________________________________________________________
-//                  STR DEX CON INT WIS CHR
-~D5_DR_RANGER        0   0   9   0   11  0~
-
-//KIT STAT MODIFIERS________________________________________________________________
-//                  STR DEX CON INT WIS CHR
-~D5_DR_RANGER        0   0   0   0   0   0~
-
-//REQUIREMENTS TO DUAL TO THIS KIT_________________________________________________
-//                  STR DEX CON INT WIS CHR
-~D5_DR_RANGER        0   0   17  0   17  0~
-
-//REQUIREMENTS TO DUAL FROM THIS KIT________________________________________________
-//                  STR DEX CON INT WIS CHR
-~D5_DR_RANGER        0   0   15  0   15  0~
-
-//ALIGNMENT RESTRICTIONS____________________________________________________________
-//                  LG LN LE NG TN NE CG CN CE
-~D5_DR_RANGER        0  1  0  1  1  1  0  1  0~
-
-//DUAL CLASS OPTIONS________________________________________________________________
-//                  FT CL MA TH DR RA
-~D5_DR_RANGER        0  0  0  0  0  0~
-
-//KIT ABILITIES 2DA FILE______________________________________________________________
-~faiths_and_powers/kits/multiclass/455_druid_ranger/d5drra.2da~
-
-//RACIAL KIT AVAILABILITY_____________________________________________________________
-~K_CR_D  K_CR_E  K_CR_G  K_CR_H  K_CR_HE  K_CR_HL  K_CR_HO~
-
-//UNUSABLE FLAGS AND KIT BASE CLASS_________________________________________________
-//CLASSES: Mage = 1, Fighter = 2, Cleric=3, Thief = 4, Bard = 5
-//         Paladin 6, Druid = 11, Ranger = 12, Sorcerer = 19
-//         Monk = 20
-~0x08000000 18~ // totemic flag
-
-//HIGH LEVEL ABILITIES ABBREVIATION_________________________________________________
-~CR0~
-
-//TOB STARTING EQUIPMENT_____________________________________________________________
-~CHAN09	* HELM07 BAG26 RING06 RING31 * BOOT01 AMUL20 BRAC10 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 HAMM07 SW1H27 STAF08~
-
-//CHARACTER CREATION KIT DESCRIPTION________________________________________________
-SAY @45101
-SAY @45109
-SAY @45103
-
-//EE KIT EXTRAS______________________________________________________________________
-// 
-ACTION_IF GAME_IS ~bgee bg2ee eet iwdee~ THEN BEGIN
-	LAF fl#add_kit_ee
-		INT_VAR
-			briefdesc = RESOLVE_STR_REF (@45104)
-		STR_VAR
-			kit_name = D5_DR_RANGER
-			clswpbon = ~1 0 2~
-	END
-END
-
-//MULTICLASS DRUID FILES______________________________________________________________
-//
-COPY_EXISTING ~faiths_and_powers/kits/multiclass/455_druid_ranger/d5drra.2da~ ~override~
-COPY ~faiths_and_powers/kits/misc/d5_notu.spl~ ~override~
-COPY ~faiths_and_powers/kits/druids/shapechange/d5drsc.spl~ ~override~
-	SAY NAME1 @73111
-	SAY UNIDENTIFIED_DESC @73112
-COPY ~faiths_and_powers/kits/druids/shapechange/d5_drinv.spl~ ~override~
-	SAY NAME1 @6
-	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/druids/shapechange/d5_drnf.spl~ ~override~
-	SAY NAME1 @73113
-	SAY UNIDENTIFIED_DESC @73114
-COPY ~faiths_and_powers/kits/druids/shapechange/d5drwlf.spl~ ~override~
-	SAY NAME1 @73115
-	SAY UNIDENTIFIED_DESC @73116
-COPY ~faiths_and_powers/kits/druids/shapechange/d5_wolf.cre~ ~override~
-COPY ~faiths_and_powers/kits/druids/shapechange/d5_wolfd.cre~ ~override~
-COPY ~faiths_and_powers/kits/druids/shapechange/d5_clwlf.itm~ ~override~
-COPY ~faiths_and_powers/kits/druids/shapechange/d5drfer.spl~ ~override~
-	SAY NAME1 @73117
-	SAY UNIDENTIFIED_DESC @73118
-COPY ~faiths_and_powers/kits/druids/shapechange/d5_feret.cre~ ~override~
-COPY ~faiths_and_powers/kits/druids/shapechange/d5_clrat.itm~ ~override~
-COPY ~faiths_and_powers/kits/druids/shapechange/d5drbbl.spl~ ~override~
-	SAY NAME1 @73119
-	SAY UNIDENTIFIED_DESC @73120
-COPY ~faiths_and_powers/kits/druids/shapechange/d5_berbl.cre~ ~override~
-COPY ~faiths_and_powers/kits/druids/shapechange/d5_clber.itm~ ~override~
-/*
-COPY ~faiths_and_powers/kits/multiclass/451_multi_druid/d5_mudru.itm~ ~override~
-	SAY NAME1 @45111
-	SAY NAME2 @45111
-	SAY UNIDENTIFIED_DESC @45112
-	SAY IDENTIFIED_DESC @45112
-COPY ~faiths_and_powers/kits/multiclass/451_multi_druid/d5_mudru.spl~ ~override~
-	SAY NAME1 @6
-	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/multiclass/451_multi_druid/d5_mudru.cre~ ~override~
-COMPILE ~faiths_and_powers/kits/multiclass/451_multi_druid/d5_mudru.baf~
-ACTION_IF FILE_EXISTS_IN_GAME ~tem2601.sto~ THEN BEGIN
-	COPY_EXISTING ~tem2601.sto~ ~override~
-		ADD_STORE_ITEM ~d5_mudru~ #0 #0 #0 ~identified~ #1
-END
-ACTION_IF FILE_EXISTS_IN_GAME ~shop06.sto~ THEN BEGIN
-	COPY_EXISTING ~shop06.sto~ ~override~
-		ADD_STORE_ITEM ~d5_mudru~ #0 #0 #0 ~identified~ #1
-END
-ACTION_IF (FILE_EXISTS_IN_GAME ~kuoswald.sto~) THEN BEGIN
-	COPY_EXISTING ~kuoswald.sto~ ~override~
-		ADD_STORE_ITEM ~d5_mudru~ #0 #0 #0 ~identified~ #1
-	COPY_EXISTING ~ehpomab.sto~ ~override~
-		ADD_STORE_ITEM ~d5_mudru~ #0 #0 #0 ~identified~ #1
-END
-*/
-
-//MULTICLASS KIT______________________________________________________________________
-//
-ACTION_IF FILE_EXISTS_IN_GAME ~d5drra.2da~ BEGIN
-  LAF qd_multiclass
-	STR_VAR
-		kit_name = ~D5_DR_RANGER~ 
-		kit_clab = ~d5drra~
-		base_class = ~P~
-		mc_dir = ~faiths_and_powers/lib/qd_mc~
-  END
-END 
-
-//DEFINE SPHERE ACCESS______________________________________________________________
-//
- LAF ~DEFINE_FNP_KIT_INFO~
-  INT_VAR
-	u_leather_armor 	= 1
-	u_chain_armor 		= 0
-	u_plate_armor 		= 0
-	u_club_staff	 	= 2
-	u_hammers	 		= 0
-	u_maces 	 		= 0
-	u_flails 			= 0
-	u_axes 				= 0
-	u_daggers 			= 2
-	u_short_swords		= 0
-	u_long_swords		= 0
-	u_scimitars 		= 0
-	u_katanas 			= 0
-	u_bastard_swords 	= 0
-	u_2hand_swords 		= 0
-	u_halberds 			= 0
-	u_spears 	 		= 2
-	u_darts 			= 2
-	u_slings	 		= 2
-	u_bows 				= 2
-	u_crossbows 		= 0
-  STR_VAR
-    clab_name 		= ~d5drra~
-	class 			= ~ranger_cleric~
-	s_Life 			= ~minor~
-	s_Death 		= ~x~
-	s_Benediction 	= ~x~
-	s_Destruction 	= ~x~
-	s_Protection 	= ~x~
-	s_War 			= ~x~
-	s_Exploration   = ~minor~
-	s_Knowledge 	= ~major~
-	s_Deception 	= ~minor~
-	s_Thought 		= ~minor~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~major~
-	s_Affliction 	= ~major~
-	s_Animal 		= ~major~
-	s_Plant 		= ~major~
-	s_Earth 		= ~major~
-	s_Water 		= ~major~
-	s_Air 			= ~minor~
-	s_Fire 			= ~x~
-	s_Light 		= ~major~
-	s_Shadow 		= ~minor~
-	s_Magic 		= ~x~
-	s_Perdition     = ~x~
- END
-
-END
-//__________________________________________________________________________________
-
-
-
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 //
@@ -2095,5 +1249,1259 @@ END
  END
 
 END
+//__________________________________________________________________________________
+
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+//							MULTICLASS SORCERERS
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+// TO DO:
+// - use 319 to prevent armor use??
+// - give kensai usability code?
+// - how to allow this kit to use mage items? gonna be hard.
+// - what about metamagic?
+// - what about Identify?
+
+DEFINE_ACTION_MACRO multi_sorcerers BEGIN
+
+//base .2da file
+//
+COPY ~faiths_and_powers/kits/multiclass/450_sorcerers/d5sorc.2da~ ~override~
+
+ADD_KIT ~D5_FIGHTER_SORCERER~
+
+//WEAPON PROFICIENCIES________________________________________________________________
+//11                                            T   S           F   Q             S S
+//10          	 		L S                     W   C           L   U             W I
+//9     	       		A M             B L S   O   I   W       A   A             O N
+//8     	       		R A             A O H   H   M   A       I   R C   S       R G
+//7     	       		G L           M S N O   A   I   R     H L   T R L H     2 D L 2                 E E E E E E E E E E E
+//6     	       		E L       S   I T G R   N K T D H     A M   E O O O     H A E W E E E E E E E E X X X X X X X X X X X
+//5     	       		S S   S B P   S A S T   D A A A A   S L O   R S N R   S A N W E X X X X X X X X T T T T T T T T T T T
+//4     	       		W W   P L I   S R W S   E T R G M C P B R M S S G T D L N D E A T T T T T T T T R R R R R R R R R R R
+//3     	       		O O B E U K A I D O W A D A W G M L E E N A T B B B A I D S A P R R R R R R R R A A A A A A A A A A A
+//2     	       		R R O A N E X L S R O X S N A E E U A R I C A O O O R N E H P O A A A A A A A A 1 1 1 1 1 1 1 1 1 1 2
+//1     	       		D D W R T D E E W D R E W A K R R B R D N E F W W W T G D I O N 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0
+~D5_FIGHTER_SORCERER  	2 2 2 2 2 2 2 2~
+~D5_FIGHTER_SORCERER    0 0 0 0 0 0 0 0 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
+
+//MINIMUM KIT STATS_________________________________________________________________
+//  	               STR DEX CON INT WIS CHR
+~D5_FIGHTER_SORCERER   0   0   0   0   0   0~
+
+//KIT STAT MODIFIERS________________________________________________________________
+//      	           STR DEX CON INT WIS CHR
+~D5_FIGHTER_SORCERER   0   0   0   0   0   0~
+
+//REQUIREMENTS TO DUAL TO THIS KIT_________________________________________________
+//          	       STR DEX CON INT WIS CHR
+~D5_FIGHTER_SORCERER   0   0   0   0   0   0~
+
+//REQUIREMENTS TO DUAL FROM THIS KIT________________________________________________
+//              	   STR DEX CON INT WIS CHR
+~D5_FIGHTER_SORCERER   0   0   0   0   0   0~
+
+//ALIGNMENT RESTRICTIONS____________________________________________________________
+//                 	  LG LN LE NG TN NE CG CN CE
+~D5_FIGHTER_SORCERER  1  1  1  1  1  0  1  1  1~
+
+//DUAL CLASS OPTIONS________________________________________________________________
+//      	           	FT CL MA TH DR RA
+~D5_FIGHTER_SORCERER    0  0  0  0  0  0~
+
+//KIT ABILITIES 2DA FILE______________________________________________________________
+~faiths_and_powers/kits/multiclass/450_sorcerers/d5fsorc.2da~
+
+//RACIAL KIT AVAILABILITY_____________________________________________________________
+~K_FC_E K_FC_H K_FC_HE K_FC_G K_FC_D K_FC_HL K_FC_HO~
+
+//UNUSABLE FLAGS AND KIT BASE CLASS_________________________________________________
+//CLASSES: Mage = 1, Fighter = 2, Cleric=3, Thief = 4, Bard = 5
+//         Paladin 6, Druid = 11, Ranger = 12, Sorcerer = 19
+//         Monk = 20, FC = 8, CT = 15, CR = 18
+~0x00004000 8~
+
+//HIGH LEVEL ABILITIES ABBREVIATION_________________________________________________
+~FC0~
+
+//TOB STARTING EQUIPMENT_____________________________________________________________
+~CHAN09	* HELM07 BAG26 RING06 RING31 * BOOT01 AMUL20 BRAC10 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 HAMM07 SW1H27 STAF08~
+
+//CHARACTER CREATION KIT DESCRIPTION________________________________________________
+SAY @45101
+SAY @45102
+SAY @45103
+
+//EE KIT EXTRAS_____________________________________________________________________
+// 
+ACTION_IF GAME_IS ~bgee bg2ee eet iwdee~ THEN BEGIN
+	LAF fl#add_kit_ee
+		INT_VAR
+			briefdesc = RESOLVE_STR_REF (@45103)
+		STR_VAR
+			kit_name = D5_FIGHTER_SORCERER
+			clswpbon = ~1 0 3~
+			hpclass = ~HPFM~
+	END
+END
+
+//DEFINE SPHERE ACCESS______________________________________________________________
+//
+ LAF ~DEFINE_FNP_KIT_INFO~
+  INT_VAR
+	u_leather_armor 	= 1
+	u_chain_armor 		= 1
+	u_plate_armor 		= 1
+	u_club_staff	 	= 2
+	u_hammers	 		= 2
+	u_maces 	 		= 2
+	u_flails 			= 2
+	u_axes 				= 2
+	u_daggers 			= 2
+	u_short_swords		= 2
+	u_long_swords		= 2
+	u_scimitars 		= 2
+	u_katanas 			= 2
+	u_bastard_swords 	= 2
+	u_2hand_swords 		= 2
+	u_halberds 			= 2
+	u_spears 			= 2
+	u_darts 			= 2
+	u_slings 			= 2
+	u_bows 				= 2
+	u_crossbows 		= 2  
+  STR_VAR
+    clab_name 		= ~d5fsorc~
+	class 			= ~cleric_mage~
+	s_Life 			= ~x~
+	s_Death 		= ~x~
+	s_Benediction 	= ~x~
+	s_Destruction 	= ~x~
+	s_Protection 	= ~x~
+	s_War 			= ~x~
+	s_Exploration   = ~x~
+	s_Knowledge 	= ~x~
+	s_Deception 	= ~x~
+	s_Thought 		= ~x~
+	s_Dread 		= ~x~
+	s_Vigor 		= ~x~
+	s_Affliction 	= ~x~
+	s_Animal 		= ~x~
+	s_Plant 		= ~x~
+	s_Earth 		= ~x~
+	s_Water 		= ~x~
+	s_Air 			= ~x~
+	s_Fire 			= ~x~
+	s_Light 		= ~x~
+	s_Shadow 		= ~x~
+	s_Magic 		= ~x~
+	s_Perdition     = ~x~
+ END
+
+ADD_KIT ~D5_RANGER_SORCERER~
+
+//WEAPON PROFICIENCIES________________________________________________________________
+//11                                            T   S           F   Q             S S
+//10          	 		L S                     W   C           L   U             W I
+//9     	       		A M             B L S   O   I   W       A   A             O N
+//8     	       		R A             A O H   H   M   A       I   R C   S       R G
+//7     	       		G L           M S N O   A   I   R     H L   T R L H     2 D L 2                 E E E E E E E E E E E
+//6     	       		E L       S   I T G R   N K T D H     A M   E O O O     H A E W E E E E E E E E X X X X X X X X X X X
+//5     	       		S S   S B P   S A S T   D A A A A   S L O   R S N R   S A N W E X X X X X X X X T T T T T T T T T T T
+//4     	       		W W   P L I   S R W S   E T R G M C P B R M S S G T D L N D E A T T T T T T T T R R R R R R R R R R R
+//3     	       		O O B E U K A I D O W A D A W G M L E E N A T B B B A I D S A P R R R R R R R R A A A A A A A A A A A
+//2     	       		R R O A N E X L S R O X S N A E E U A R I C A O O O R N E H P O A A A A A A A A 1 1 1 1 1 1 1 1 1 1 2
+//1     	       		D D W R T D E E W D R E W A K R R B R D N E F W W W T G D I O N 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0
+~D5_RANGER_SORCERER  	2 2 2 2 2 2 2 2~
+~D5_RANGER_SORCERER     0 0 0 0 0 0 0 0 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
+
+//MINIMUM KIT STATS_________________________________________________________________
+//  	               STR DEX CON INT WIS CHR
+~D5_RANGER_SORCERER    0   0   0   0   0   0~
+
+//KIT STAT MODIFIERS________________________________________________________________
+//      	           STR DEX CON INT WIS CHR
+~D5_RANGER_SORCERER    0   0   0   0   0   0~
+
+//REQUIREMENTS TO DUAL TO THIS KIT_________________________________________________
+//          	       STR DEX CON INT WIS CHR
+~D5_RANGER_SORCERER    0   0   0   0   0   0~
+
+//REQUIREMENTS TO DUAL FROM THIS KIT________________________________________________
+//              	   STR DEX CON INT WIS CHR
+~D5_RANGER_SORCERER    0   0   0   0   0   0~
+
+//ALIGNMENT RESTRICTIONS____________________________________________________________
+//                 	  LG LN LE NG TN NE CG CN CE
+~D5_RANGER_SORCERER   1  0  0  1  0  0  1  0  0~
+
+//DUAL CLASS OPTIONS________________________________________________________________
+//      	           	FT CL MA TH DR RA
+~D5_RANGER_SORCERER     0  0  0  0  0  0~
+
+//KIT ABILITIES 2DA FILE______________________________________________________________
+~faiths_and_powers/kits/multiclass/450_sorcerers/d5rsorc.2da~
+
+//RACIAL KIT AVAILABILITY_____________________________________________________________
+~K_CR_E K_CR_H K_CR_HE K_CR_G K_CR_D K_CR_HL K_CR_HO~
+
+//UNUSABLE FLAGS AND KIT BASE CLASS_________________________________________________
+//CLASSES: Mage = 1, Fighter = 2, Cleric=3, Thief = 4, Bard = 5
+//         Paladin 6, Druid = 11, Ranger = 12, Sorcerer = 19
+//         Monk = 20, FC = 8, CT = 15, CR = 18
+~0x00004000 18~
+
+//HIGH LEVEL ABILITIES ABBREVIATION_________________________________________________
+~CR0~
+
+//TOB STARTING EQUIPMENT_____________________________________________________________
+~CHAN09	* HELM07 BAG26 RING06 RING31 * BOOT01 AMUL20 BRAC10 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 HAMM07 SW1H27 STAF08~
+
+//CHARACTER CREATION KIT DESCRIPTION________________________________________________
+SAY @45201
+SAY @45202
+SAY @45203
+
+//EE KIT EXTRAS_____________________________________________________________________
+// 
+ACTION_IF GAME_IS ~bgee bg2ee eet iwdee~ THEN BEGIN
+	LAF fl#add_kit_ee
+		INT_VAR
+			briefdesc = RESOLVE_STR_REF (@45203)
+		STR_VAR
+			kit_name = D5_RANGER_SORCERER
+			clswpbon = ~1 0 3~
+			hpclass = ~HPFM~
+	END
+END
+
+//DEFINE SPHERE ACCESS______________________________________________________________
+//
+ LAF ~DEFINE_FNP_KIT_INFO~
+  INT_VAR
+	u_leather_armor 	= 1
+	u_chain_armor 		= 1
+	u_plate_armor 		= 0
+	u_club_staff	 	= 2
+	u_hammers	 		= 2
+	u_maces 	 		= 2
+	u_flails 			= 2
+	u_axes 				= 2
+	u_daggers 			= 2
+	u_short_swords		= 2
+	u_long_swords		= 2
+	u_scimitars 		= 2
+	u_katanas 			= 2
+	u_bastard_swords 	= 2
+	u_2hand_swords 		= 2
+	u_halberds 			= 2
+	u_spears 			= 2
+	u_darts 			= 2
+	u_slings 			= 2
+	u_bows 				= 2
+	u_crossbows 		= 2  
+  STR_VAR
+    clab_name 		= ~d5rsorc~
+	class 			= ~cleric_mage~
+	s_Life 			= ~x~
+	s_Death 		= ~x~
+	s_Benediction 	= ~x~
+	s_Destruction 	= ~x~
+	s_Protection 	= ~x~
+	s_War 			= ~x~
+	s_Exploration   = ~x~
+	s_Knowledge 	= ~x~
+	s_Deception 	= ~x~
+	s_Thought 		= ~x~
+	s_Dread 		= ~x~
+	s_Vigor 		= ~x~
+	s_Affliction 	= ~x~
+	s_Animal 		= ~x~
+	s_Plant 		= ~x~
+	s_Earth 		= ~x~
+	s_Water 		= ~x~
+	s_Air 			= ~x~
+	s_Fire 			= ~x~
+	s_Light 		= ~x~
+	s_Shadow 		= ~x~
+	s_Magic 		= ~x~
+	s_Perdition     = ~x~
+ END
+
+ADD_KIT ~D5_SORCERER_THIEF~
+
+//WEAPON PROFICIENCIES________________________________________________________________
+//11                                            T   S           F   Q             S S
+//10          	 		L S                     W   C           L   U             W I
+//9     	       		A M             B L S   O   I   W       A   A             O N
+//8     	       		R A             A O H   H   M   A       I   R C   S       R G
+//7     	       		G L           M S N O   A   I   R     H L   T R L H     2 D L 2                 E E E E E E E E E E E
+//6     	       		E L       S   I T G R   N K T D H     A M   E O O O     H A E W E E E E E E E E X X X X X X X X X X X
+//5     	       		S S   S B P   S A S T   D A A A A   S L O   R S N R   S A N W E X X X X X X X X T T T T T T T T T T T
+//4     	       		W W   P L I   S R W S   E T R G M C P B R M S S G T D L N D E A T T T T T T T T R R R R R R R R R R R
+//3     	       		O O B E U K A I D O W A D A W G M L E E N A T B B B A I D S A P R R R R R R R R A A A A A A A A A A A
+//2     	       		R R O A N E X L S R O X S N A E E U A R I C A O O O R N E H P O A A A A A A A A 1 1 1 1 1 1 1 1 1 1 2
+//1     	       		D D W R T D E E W D R E W A K R R B R D N E F W W W T G D I O N 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0
+~D5_SORCERER_THIEF  	1 1 1 1 1 1 1 1~
+~D5_SORCERER_THIEF      0 0 0 0 0 0 0 0 0 1 1 0 0 1 1 1 0 1 0 0 0 0 1 1 0 1 1 1 1 1 1 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
+
+//MINIMUM KIT STATS_________________________________________________________________
+//  	               STR DEX CON INT WIS CHR
+~D5_SORCERER_THIEF     0   0   0   0   0   0~
+
+//KIT STAT MODIFIERS________________________________________________________________
+//      	           STR DEX CON INT WIS CHR
+~D5_SORCERER_THIEF     0   0   0   0   0   0~
+
+//REQUIREMENTS TO DUAL TO THIS KIT_________________________________________________
+//          	       STR DEX CON INT WIS CHR
+~D5_SORCERER_THIEF     0   0   0   0   0   0~
+
+//REQUIREMENTS TO DUAL FROM THIS KIT________________________________________________
+//              	   STR DEX CON INT WIS CHR
+~D5_SORCERER_THIEF     0   0   0   0   0   0~
+
+//ALIGNMENT RESTRICTIONS____________________________________________________________
+//                 	  LG LN LE NG TN NE CG CN CE
+~D5_SORCERER_THIEF    0  1  1  1  1  0  1  1  1~
+
+//DUAL CLASS OPTIONS________________________________________________________________
+//      	           	FT CL MA TH DR RA
+~D5_SORCERER_THIEF      0  0  0  0  0  0~
+
+//KIT ABILITIES 2DA FILE______________________________________________________________
+~faiths_and_powers/kits/multiclass/450_sorcerers/d5tsorc.2da~
+
+//RACIAL KIT AVAILABILITY_____________________________________________________________
+~K_CT_E K_CT_H K_CT_HE K_CT_G K_CT_D K_CT_HL K_CT_HO~
+
+//UNUSABLE FLAGS AND KIT BASE CLASS_________________________________________________
+//CLASSES: Mage = 1, Fighter = 2, Cleric=3, Thief = 4, Bard = 5
+//         Paladin 6, Druid = 11, Ranger = 12, Sorcerer = 19
+//         Monk = 20, FC = 8, CT = 15, CR = 18
+~0x00004000 15~
+
+//HIGH LEVEL ABILITIES ABBREVIATION_________________________________________________
+~CT0~
+
+//TOB STARTING EQUIPMENT_____________________________________________________________
+~CHAN09	* HELM07 BAG26 RING06 RING31 * BOOT01 AMUL20 BRAC10 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 HAMM07 SW1H27 STAF08~
+
+//CHARACTER CREATION KIT DESCRIPTION________________________________________________
+SAY @45301
+SAY @45302
+SAY @45303
+
+//EE KIT EXTRAS_____________________________________________________________________
+// 
+ACTION_IF GAME_IS ~bgee bg2ee eet iwdee~ THEN BEGIN
+	LAF fl#add_kit_ee
+		INT_VAR
+			briefdesc = RESOLVE_STR_REF (@45303)
+		STR_VAR
+			kit_name = D5_SORCERER_THIEF
+			clswpbon = ~0 0 3~
+			hpclass = ~HPMT~
+	END
+END
+
+//DEFINE SPHERE ACCESS______________________________________________________________
+//
+ LAF ~DEFINE_FNP_KIT_INFO~
+  INT_VAR
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_club_staff	 	= 1
+	u_hammers	 		= 0
+	u_maces 	 		= 0
+	u_flails 			= 0
+	u_axes 				= 0
+	u_daggers 			= 1
+	u_short_swords		= 1
+	u_long_swords		= 1
+	u_scimitars 		= 1
+	u_katanas 			= 1
+	u_bastard_swords 	= 0
+	u_2hand_swords 		= 0
+	u_halberds 			= 0
+	u_spears 			= 0
+	u_darts 			= 1
+	u_slings 			= 1
+	u_bows 				= 1
+	u_crossbows 		= 1  
+  STR_VAR
+    clab_name 		= ~d5tsorc~
+	class 			= ~cleric_thief~
+	s_Life 			= ~x~
+	s_Death 		= ~x~
+	s_Benediction 	= ~x~
+	s_Destruction 	= ~x~
+	s_Protection 	= ~x~
+	s_War 			= ~x~
+	s_Exploration   = ~x~
+	s_Knowledge 	= ~x~
+	s_Deception 	= ~x~
+	s_Thought 		= ~x~
+	s_Dread 		= ~x~
+	s_Vigor 		= ~x~
+	s_Affliction 	= ~x~
+	s_Animal 		= ~x~
+	s_Plant 		= ~x~
+	s_Earth 		= ~x~
+	s_Water 		= ~x~
+	s_Air 			= ~x~
+	s_Fire 			= ~x~
+	s_Light 		= ~x~
+	s_Shadow 		= ~x~
+	s_Magic 		= ~x~
+	s_Perdition     = ~x~
+ END
+
+
+//get kit identifiers_________________________________________________________________
+//
+COPY_EXISTING ~kit.ids~ ~override~
+  COUNT_2DA_COLS cols 
+  READ_2DA_ENTRIES_NOW rows cols 
+  FOR (row = 1; row < rows; ++row) BEGIN 
+    READ_2DA_ENTRY_FORMER rows row 1 ~kit_name~ 
+    PATCH_IF ~%kit_name%~ STRING_EQUAL_CASE ~D5_FIGHTER_SORCERER~ BEGIN
+      SET fighter_sorcerer_row = %row%
+      READ_2DA_ENTRY_FORMER rows fighter_sorcerer_row 0 fighter_sorcerer_code
+    END
+    PATCH_IF ~%kit_name%~ STRING_EQUAL_CASE ~D5_RANGER_SORCERER~ BEGIN
+      SET ranger_sorcerer_row = %row%
+      READ_2DA_ENTRY_FORMER rows ranger_sorcerer_row 0 ranger_sorcerer_code
+    END
+    PATCH_IF ~%kit_name%~ STRING_EQUAL_CASE ~D5_SORCERER_THIEF~ BEGIN
+      SET sorcerer_thief_row = %row%
+      READ_2DA_ENTRY_FORMER rows sorcerer_thief_row 0 sorcerer_thief_code
+    END
+  END
+BUT_ONLY
+
+
+//add spell slot stat checks to SPLPROT_______________________________________________
+//
+APPEND ~splprot.2da~ ~D5_SLOTS_1_4%TAB%113%TAB%-1%TAB%7~
+APPEND ~splprot.2da~ ~D5_SLOTS_5_9%TAB%114%TAB%-1%TAB%7~
+APPEND ~splprot.2da~ ~D5_FATIGUE_IS%TAB%30%TAB%-1%TAB%1~
+
+COPY_EXISTING ~splprot.2da~ ~override~
+  COUNT_2DA_COLS cols
+  READ_2DA_ENTRIES_NOW rows cols
+  FOR (row = 1; row < rows; ++row) BEGIN
+	READ_2DA_ENTRY_FORMER rows row 0 ~stat~
+	PATCH_IF ~%stat%~ STRING_EQUAL_CASE ~D5_SLOTS_1_4~ BEGIN
+	  SET fake_sorc_slots_1_4 = %row%
+	END
+	PATCH_IF ~%stat%~ STRING_EQUAL_CASE ~D5_SLOTS_5_9~ BEGIN
+	  SET fake_sorc_slots_5_9 = %row%
+	END
+	PATCH_IF ~%stat%~ STRING_EQUAL_CASE ~D5_FATIGUE_IS~ BEGIN
+	  SET fatigue_value = %row%
+	END
+  END
+BUT_ONLY
+
+
+//remove all cleric spell slots_______________________________________________________
+//
+COPY_EXISTING ~spcl221.spl~ ~override/d50slot.spl~
+  SAY NAME1 ~ ~
+  SAY UNIDENTIFIED_DESC ~ ~
+  LPF DELETE_EFFECT END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 62 target = 1 parameter1 = (0 - 1) parameter2 = 127 timing = 9 END
+BUT_ONLY
+
+APPEND ~d5sorc.2da~ ~NOSLOTS     AP_D50SLOT  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** 
+NOSLOTS     AP_D50SLOT  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** 
+NOSLOTS     AP_D50SLOT  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** 
+NOSLOTS     AP_D50SLOT  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** 
+NOSLOTS     AP_D50SLOT  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** 
+NOSLOTS     AP_D50SLOT  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** 
+NOSLOTS     AP_D50SLOT  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** 
+NOSLOTS     AP_D50SLOT  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** 
+NOSLOTS     AP_D50SLOT  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** 
+NOSLOTS     AP_D50SLOT  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** 
+NOSLOTS     AP_D50SLOT  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** 
+NOSLOTS     AP_D50SLOT  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** 
+~
+
+/* moved to end of sphere system tpa
+//remove universal spells from Incarnate______________________________________________
+//
+COPY_EXISTING ~spcl221.spl~ ~override/d50spls.spl~
+  SAY NAME1 ~ ~
+  SAY UNIDENTIFIED_DESC ~ ~
+  LPF DELETE_EFFECT END
+COPY_EXISTING ~d5unvrsl.2da~ ~override~
+  COUNT_2DA_COLS cols
+  COUNT_2DA_ROWS cols rows
+  FOR (row = 1; row < rows; ++row) BEGIN
+	READ_2DA_ENTRY row 0 cols ~universal_spell~
+	INNER_ACTION BEGIN
+	  COPY_EXISTING ~d50spls.spl~ ~override~
+		LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 timing = 9 STR_VAR resource = EVAL ~%universal_spell%~ END
+	  BUT_ONLY
+	END
+  END
+BUT_ONLY
+ACTION_IF FILE_EXISTS_IN_GAME ~d5sorc.2da~ BEGIN
+  APPEND ~d5sorc.2da~ ~NO_USPLS    AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS ~
+END
+*/
+
+COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d50wz.spl~
+
+//make level 1-9 spell-level innates__________________________________________________
+//
+COPY ~faiths_and_powers/kits/multiclass/450_sorcerers/d5src1b.bam~ ~override~
+COPY ~faiths_and_powers/kits/multiclass/450_sorcerers/d5src2b.bam~ ~override~
+COPY ~faiths_and_powers/kits/multiclass/450_sorcerers/d5src3b.bam~ ~override~
+COPY ~faiths_and_powers/kits/multiclass/450_sorcerers/d5src4b.bam~ ~override~
+COPY ~faiths_and_powers/kits/multiclass/450_sorcerers/d5src5b.bam~ ~override~
+COPY ~faiths_and_powers/kits/multiclass/450_sorcerers/d5src6b.bam~ ~override~
+COPY ~faiths_and_powers/kits/multiclass/450_sorcerers/d5src7b.bam~ ~override~
+COPY ~faiths_and_powers/kits/multiclass/450_sorcerers/d5src8b.bam~ ~override~
+COPY ~faiths_and_powers/kits/multiclass/450_sorcerers/d5src9b.bam~ ~override~
+COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5srci1.spl~
+  SAY NAME1 @45011
+  SAY UNIDENTIFIED_DESC @45011
+  LPF ALTER_SPELL_HEADER INT_VAR location = 2 target = 7 STR_VAR icon = ~d5src1b~ END  
+COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5srci2.spl~
+  SAY NAME1 @45012
+  SAY UNIDENTIFIED_DESC @45012
+  LPF ALTER_SPELL_HEADER INT_VAR location = 2 target = 7 STR_VAR icon = ~d5src2b~ END
+COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5srci3.spl~
+  SAY NAME1 @45013
+  SAY UNIDENTIFIED_DESC @45013
+  LPF ALTER_SPELL_HEADER INT_VAR location = 2 target = 7 STR_VAR icon = ~d5src3b~ END
+COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5srci4.spl~
+  SAY NAME1 @45014
+  SAY UNIDENTIFIED_DESC @45014
+  LPF ALTER_SPELL_HEADER INT_VAR location = 2 target = 7 STR_VAR icon = ~d5src4b~ END
+COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5srci5.spl~
+  SAY NAME1 @45015
+  SAY UNIDENTIFIED_DESC @45015
+  LPF ALTER_SPELL_HEADER INT_VAR location = 2 target = 7 STR_VAR icon = ~d5src5b~ END
+COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5srci6.spl~
+  SAY NAME1 @45016
+  SAY UNIDENTIFIED_DESC @45016
+  LPF ALTER_SPELL_HEADER INT_VAR location = 2 target = 7 STR_VAR icon = ~d5src6b~ END
+COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5srci7.spl~
+  SAY NAME1 @45017
+  SAY UNIDENTIFIED_DESC @45017
+  LPF ALTER_SPELL_HEADER INT_VAR location = 2 target = 7 STR_VAR icon = ~d5src7b~ END
+COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5srci8.spl~
+  SAY NAME1 @45018
+  SAY UNIDENTIFIED_DESC @45018
+  LPF ALTER_SPELL_HEADER INT_VAR location = 2 target = 7 STR_VAR icon = ~d5src8b~ END
+COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5srci9.spl~
+  SAY NAME1 @45019
+  SAY UNIDENTIFIED_DESC @45019
+  LPF ALTER_SPELL_HEADER INT_VAR location = 2 target = 7 STR_VAR icon = ~d5src9b~ END
+
+
+//make spell selection dialogue_______________________________________________________
+//... adapt from TnB
+//... choice will apply %learn_spell%
+//
+/*
+// for now, just apply a spell to give a bunch of spells (171 the cleric spells and 321 the 206 spells)
+
+COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5zzzz.spl~
+  SAY NAME1 ~add some wizard spells~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5w2102~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 9 STR_VAR resource = ~d5wx102~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5w2107~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 9 STR_VAR resource = ~d5wx107~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5w2114~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 9 STR_VAR resource = ~d5wx114~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5w2201~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 9 STR_VAR resource = ~d5wx201~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5w2212~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 9 STR_VAR resource = ~d5wx212~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5w2214~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 9 STR_VAR resource = ~d5wx214~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5w2309~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 9 STR_VAR resource = ~d5wx309~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5w2311~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 9 STR_VAR resource = ~d5wx311~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5w2317~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 9 STR_VAR resource = ~d5wx317~ END
+
+APPEND ~d5sorc.2da~ ~TEMP_ADD    ****        AP_D5ZZZZ   ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** ~
+*/
+COPY_EXISTING ~SPLSRCKN.2da~ ~override/d5_splsrckn.2da~ //save a copy of the existing sorcerer spell progression 
+
+COPY ~faiths_and_powers/kits/multiclass/450_sorcerers/d5msorc.cre~ ~override~ 
+			WRITE_ASCII 0x248 ~d5msorc~ #8
+			WRITE_ASCII 0x2cc ~d5msorc~ #8
+
+COPY ~faiths_and_powers/kits/multiclass/450_sorcerers/d5msorc.spl~ ~override~
+			SAY NAME1 @45021 // ~Spell Knowledge~
+			SAY UNIDENTIFIED_DESC @45021
+			LPF ALTER_SPELL_EFFECT 
+				INT_VAR 
+					match_opcode = 67
+				STR_VAR 
+					resource = ~d5msorc~ 
+			END 
+			
+COMPILE ~faiths_and_powers/kits/multiclass/450_sorcerers/d5msorc.baf~
+COPY 	~faiths_and_powers/kits/multiclass/450_sorcerers/d5msorc.d~ ~override~ //easy to access copy of .d file to update
+
+//level spells known snippet
+<<<<<<<< d5/sor_spells_known.baf
+	IF
+		Level(LastSummonerOf(Myself),%lvl%)
+	THEN	
+		RESPONSE #100 
+			SetGlobal("qd_sor_max_1","GLOBAL",%first%)
+			SetGlobal("qd_sor_max_2","GLOBAL",%second%)
+			SetGlobal("qd_sor_max_3","GLOBAL",%third%)
+			SetGlobal("qd_sor_max_4","GLOBAL",%fourth%)
+			SetGlobal("qd_sor_max_5","GLOBAL",%fifth%)
+			SetGlobal("qd_sor_max_6","GLOBAL",%sixth%)
+			SetGlobal("qd_sor_max_7","GLOBAL",%seventh%)
+			SetGlobal("qd_sor_max_8","GLOBAL",%eighth%)
+			SetGlobal("qd_sor_max_9","GLOBAL",%ninth%)
+			Continue() 
+	END 
+>>>>>>>>
+//level spells known ([second to] last defined level) snippet
+<<<<<<<< d5/sor_spells_known_max.baf
+	IF
+		OR(2)
+		Level(LastSummonerOf(Myself),%lvl%)
+		LevelGT(LastSummonerOf(Myself),%lvl%)
+	THEN	
+		RESPONSE #100 
+			SetGlobal("qd_sor_max_1","GLOBAL",%first%)
+			SetGlobal("qd_sor_max_2","GLOBAL",%second%)
+			SetGlobal("qd_sor_max_3","GLOBAL",%third%)
+			SetGlobal("qd_sor_max_4","GLOBAL",%fourth%)
+			SetGlobal("qd_sor_max_5","GLOBAL",%fifth%)
+			SetGlobal("qd_sor_max_6","GLOBAL",%sixth%)
+			SetGlobal("qd_sor_max_7","GLOBAL",%seventh%)
+			SetGlobal("qd_sor_max_8","GLOBAL",%eighth%)
+			SetGlobal("qd_sor_max_9","GLOBAL",%ninth%)
+			Continue() 
+	END 
+>>>>>>>>
+
+COPY ~override/d5_splsrckn.2da~ ~override~ 
+	COUNT_2DA_COLS num_cols
+//	COUNT_2DA_ROWS num_cols num_rows
+	READ_2DA_ENTRIES_NOW ~r2en_sor_spl_kwn~ num_cols
+	FOR (row = 0; row < r2en_sor_spl_kwn; row += 1) BEGIN
+		READ_2DA_ENTRY_FORMER ~r2en_sor_spl_kwn~ row 1 first
+		READ_2DA_ENTRY_FORMER ~r2en_sor_spl_kwn~ row 2 second
+		READ_2DA_ENTRY_FORMER ~r2en_sor_spl_kwn~ row 3 third
+		READ_2DA_ENTRY_FORMER ~r2en_sor_spl_kwn~ row 4 fourth
+		READ_2DA_ENTRY_FORMER ~r2en_sor_spl_kwn~ row 5 fifth
+		READ_2DA_ENTRY_FORMER ~r2en_sor_spl_kwn~ row 6 sixth
+		READ_2DA_ENTRY_FORMER ~r2en_sor_spl_kwn~ row 7 seventh
+		READ_2DA_ENTRY_FORMER ~r2en_sor_spl_kwn~ row 8 eighth
+		READ_2DA_ENTRY_FORMER ~r2en_sor_spl_kwn~ row 9 ninth
+		INNER_ACTION BEGIN 
+			ACTION_IF (row = %r2en_sor_spl_kwn%-1) THEN BEGIN 
+				EXTEND_BOTTOM ~d5msorc.bcs~ ~d5/sor_spells_known_max.baf~ 
+					lvl = (%row% + 1)
+					EVAL 
+			END 
+			ELSE BEGIN 
+				EXTEND_BOTTOM ~d5msorc.bcs~ ~d5/sor_spells_known.baf~ 
+					lvl = (%row% + 1)
+					EVAL 
+			END 
+		END 
+	END 
+BUT_ONLY	
+
+//script spell check snippet
+<<<<<<<< d5/script_add_spell_check.baf
+	IF
+		NextTriggerObject(LastSummonerOf(Myself)) 
+		HaveKnownSpellRES("%display_spell%") 
+	THEN	
+		RESPONSE #100 
+			IncrementGlobal("%cur_lvl%","GLOBAL",1)
+			Continue() 
+	END 
+>>>>>>>>
+//script initiate dialog snippet
+<<<<<<<< d5/script_spells_end.baf
+	IF
+		True()
+	THEN
+		RESPONSE #100
+//			ActionOverride(LastSummonerOf(Myself),StartDialogOverride("D5MSORC",Myself)) // use this if/when switch to LOCALS
+			StartDialog("D5MSORC",LastSummonerOf(Myself))
+	END
+>>>>>>>>
+//dialog spell details snippet
+<<<<<<<< d5/dialog_spell_info.d
+	IF ~~ %spl% 
+		SAY ~%desc%~ 
+			++ @45023 DO ~ActionOverride(LastSummonerOf(Myself),AddSpecialAbility("%display_spell%")) ActionOverride(LastSummonerOf(Myself),ApplySpellRES("%learn_spell%")) ActionOverride(LastSummonerOf(Myself),Rest()) IncrementGlobal("%cur_lvl%","GLOBAL",1) SmallWait(1)~ + refresh
+			++ @45024 + %lvl_menu%
+			++ @45025 + main_menu
+			++ @45026 + end
+	END 
+>>>>>>>>
+
+
+//clone arcane spells_________________________________________________________________
+//
+//... to innates, with added 146 casting subspells with 233 reducing level 1-9 stats (see below)
+//... and to blank mage spells w/ 146/148 casting innates
+//... and to blank cleric spells w/ nuthin'
+//
+<<<<<<<< d5/d5wclons.2da
+2DA V1.0 
+SPLRES
+		206		LEARN	EFF		CAST	INNATE	DISPLAY
+>>>>>>>> 
+
+COPY ~d5/d5wclons.2da~ ~override/d5wclons.2da~ 
+
+COPY_EXISTING_REGEXP GLOB ~^.+\.spl$~ ~override~
+ PATCH_IF FILE_EXISTS_IN_GAME ~%SOURCE_RES%.spl~ BEGIN
+//  SNPRINT 4 spell_prefix ~%SOURCE_RES%~
+  READ_SHORT 0x1c spell_type 
+  READ_BYTE 0x25 spell_school
+  READ_LONG 0x34 spell_level
+  PATCH_IF (~%SOURCE_RES%~ STRING_MATCHES_REGEXP ~[Ss][Pp][Ww][Ii][1-9][0-9][0-9]~ = 0) && (spell_type = 1) && NOT (spell_school = 10) BEGIN
+	SNPRINT (0 - 3) spell_num ~%SOURCE_RES%~
+	PATCH_IF NOT (FILE_CONTAINS_EVALUATED (~hidespl.2da~ ~%SOURCE_RES%~)) BEGIN
+	  SPRINT ~spell_res~ ~%SOURCE_RES%~
+	  READ_STRREF NAME1 spell_name
+	  READ_STRREF UNIDENTIFIED_DESC spell_description
+//	  LPF NAME_NUM_OF_SPELL_RES STR_VAR spell_res = EVAL ~%SOURCE_RES%~ RET spell_name spell_num END
+	  PATCH_IF (FILE_CONTAINS_EVALUATED (~spell.ids~ ~2%spell_num%~)) BEGIN
+		INNER_PATCH_SAVE 206_spell ~%SOURCE_RES%~ BEGIN
+		  REPLACE_TEXTUALLY ~^[Ss][Pp][Ww][Ii]~ ~d5wz~
+		END
+		INNER_PATCH_SAVE learn_spell ~%SOURCE_RES%~ BEGIN
+		  REPLACE_TEXTUALLY ~^[Ss][Pp][Ww][Ii]~ ~d5wx~
+		END
+		INNER_PATCH_SAVE spell_eff ~%SOURCE_RES%~ BEGIN
+		  REPLACE_TEXTUALLY ~^[Ss][Pp][Ww][Ii]~ ~D5WV~
+		END
+//		TO_UPPER ~%spell_eff%~
+		INNER_PATCH_SAVE cast_spell ~%SOURCE_RES%~ BEGIN
+		  REPLACE_TEXTUALLY ~^[Ss][Pp][Ww][Ii]~ ~d5w1~
+		END
+		INNER_PATCH_SAVE innate_spell ~%SOURCE_RES%~ BEGIN
+		  REPLACE_TEXTUALLY ~^[Ss][Pp][Ww][Ii]~ ~d5w4~
+		END
+		INNER_PATCH_SAVE display_spell ~%SOURCE_RES%~ BEGIN
+		  REPLACE_TEXTUALLY ~^[Ss][Pp][Ww][Ii]~ ~d5w2~
+		END
+		INNER_ACTION BEGIN
+		  APPEND ~d5wclons.2da~ ~%SOURCE_RES%	%206_spell%	%learn_spell%	%spell_eff%	%cast_spell%	%innate_spell%	%display_spell% ~
+// make arcane clone with 146/148 casting the innate versions
+		  COPY_EXISTING ~%SOURCE_RES%.spl~ ~override/%cast_spell%.spl~
+			READ_LONG 0x64 abil_offset
+			READ_SHORT 0x68 abil_number
+			READ_BYTE (%abil_offset% + 0x0c) abil_target
+			READ_SHORT (%abil_offset% + 0x0e) abil_range
+			READ_LONG 0x6a eff_offset
+			WHILE (%abil_number% > 0) BEGIN
+			  SET abil_number = (%abil_number% - 1)
+			  WRITE_SHORT (%abil_offset% + 0x26 + (0x28 * %abil_number%)) 1
+			END
+			READ_BYTE (%eff_offset% + 0x02) eff_target
+			LPF DELETE_EFFECT END
+			PATCH_IF (%abil_target% = 4) BEGIN
+			  LPF ADD_SPELL_EFFECT INT_VAR opcode = 148 target = 1 power = %spell_level% parameter1 = 0 parameter2 = 1 timing = 1 STR_VAR resource = EVAL ~%innate_spell%~ END
+			  PATCH_IF (%abil_range% < 35) BEGIN
+				PATCH_IF (%abil_range% > 4) BEGIN
+				  LPF ALTER_SPELL_HEADER INT_VAR range = (%abil_range% - 3) END
+				END
+				PATCH_IF (%abil_range% < 5) BEGIN
+				  LPF ALTER_SPELL_HEADER INT_VAR target = 5 END	// self? better than just making it short-range?
+ //				  LPF ALTER_SPELL_HEADER INT_VAR range = 2 END	// alternatively
+				END
+			  END
+			END
+			ELSE BEGIN
+			  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = %eff_target% power = %spell_level% parameter1 = 0 parameter2 = 1 timing = 1 STR_VAR resource = EVAL ~%innate_spell%~ END
+			END
+// make divine versions with no effects
+		  COPY_EXISTING ~%SOURCE_RES%.spl~ ~override/%display_spell%.spl~
+			WRITE_SHORT 0x1c 2
+			LPF DELETE_EFFECT END
+// make innates with real spell effects
+		  COPY_EXISTING ~%SOURCE_RES%.spl~ ~override/%innate_spell%.spl~
+			WRITE_SHORT 0x1c 4
+			PATCH_IF spell_level = 1 BEGIN
+			  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5src-1~ END
+			END
+			PATCH_IF spell_level = 2 BEGIN
+			  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5src-2~ END
+			END
+			PATCH_IF spell_level = 3 BEGIN
+			  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5src-3~ END
+			END
+			PATCH_IF spell_level = 4 BEGIN
+			  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5src-4~ END
+			END
+			PATCH_IF spell_level = 5 BEGIN
+			  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5src-5~ END
+			END
+			PATCH_IF spell_level = 6 BEGIN
+			  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5src-6~ END
+			END
+			PATCH_IF spell_level = 7 BEGIN
+			  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5src-7~ END
+			END
+			PATCH_IF spell_level = 8 BEGIN
+			  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5src-8~ END
+			END
+			PATCH_IF spell_level = 9 BEGIN
+			  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5src-9~ END
+			END
+// make .EFFs adding the arcane clone
+		  CREATE EFF ~%spell_eff%~
+			WRITE_LONG 0x10 171
+			WRITE_LONG 0x14 1
+			WRITE_LONG 0x24 0
+			WRITE_LONG 0x28 1
+			WRITE_SHORT 0x2c 100
+			WRITE_EVALUATED_ASCII 0x30 ~%cast_spell%~ #8
+			WRITE_LONG 0x90 1
+			WRITE_EVALUATED_ASCII 0x94 ~%spell_eff%~ #8
+// make 206 spells preventing the .EFF
+		  COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/%206_spell%.spl~
+			WRITE_SHORT 0x1c 4
+		  	LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 STR_VAR resource = EVAL ~%spell_eff%~ END
+// add 206 spells to CLAB spell
+// why isn't d50wz working with qd_multi??
+		  COPY_EXISTING ~d50wz.spl~ ~override~
+			LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 9 STR_VAR resource = EVAL ~%206_spell%~ END
+/* this doesn't work either!!
+		  APPEND ~d5sorc.2da~ ~NO_WSPLS    AP_%206_spell%  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** ~
+*/
+// make learn spells canceling the 206
+		  COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/%learn_spell%.spl~
+			WRITE_SHORT 0x1c 4
+		  	LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 9 STR_VAR resource = EVAL ~%206_spell%~ END
+			LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 STR_VAR resource = EVAL ~%206_spell%~ END
+		  	LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = EVAL ~%display_spell%~ END
+// add EFF to casting innates
+		  COPY_EXISTING ~d5srci1.spl~ ~override~
+			PATCH_IF spell_level = 1 BEGIN
+			  LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 1 parameter2 = 2 timing = 1 STR_VAR resource = EVAL ~%spell_eff%~ END
+			END
+		  	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 172 target = 1 timing = 9 STR_VAR resource = EVAL ~%cast_spell%~ END
+		  COPY_EXISTING ~d5srci2.spl~ ~override~
+			PATCH_IF spell_level = 2 BEGIN
+			  LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 1 parameter2 = 2 timing = 1 STR_VAR resource = EVAL ~%spell_eff%~ END
+			END
+		  	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 172 target = 1 timing = 9 STR_VAR resource = EVAL ~%cast_spell%~ END
+		  COPY_EXISTING ~d5srci3.spl~ ~override~
+			PATCH_IF spell_level = 3 BEGIN
+			  LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 1 parameter2 = 2 timing = 1 STR_VAR resource = EVAL ~%spell_eff%~ END
+			END
+		  	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 172 target = 1 timing = 9 STR_VAR resource = EVAL ~%cast_spell%~ END
+		  COPY_EXISTING ~d5srci4.spl~ ~override~
+			PATCH_IF spell_level = 4 BEGIN
+			  LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 1 parameter2 = 2 timing = 1 STR_VAR resource = EVAL ~%spell_eff%~ END
+			END
+		  	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 172 target = 1 timing = 9 STR_VAR resource = EVAL ~%cast_spell%~ END
+		  COPY_EXISTING ~d5srci5.spl~ ~override~
+			PATCH_IF spell_level = 5 BEGIN
+			  LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 1 parameter2 = 2 timing = 1 STR_VAR resource = EVAL ~%spell_eff%~ END
+			END
+		  	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 172 target = 1 timing = 9 STR_VAR resource = EVAL ~%cast_spell%~ END
+		  COPY_EXISTING ~d5srci6.spl~ ~override~
+			PATCH_IF spell_level = 6 BEGIN
+			  LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 1 parameter2 = 2 timing = 1 STR_VAR resource = EVAL ~%spell_eff%~ END
+			END
+		  	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 172 target = 1 timing = 9 STR_VAR resource = EVAL ~%cast_spell%~ END
+		  COPY_EXISTING ~d5srci7.spl~ ~override~
+			PATCH_IF spell_level = 7 BEGIN
+			  LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 1 parameter2 = 2 timing = 1 STR_VAR resource = EVAL ~%spell_eff%~ END
+			END
+		  	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 172 target = 1 timing = 9 STR_VAR resource = EVAL ~%cast_spell%~ END
+		  COPY_EXISTING ~d5srci8.spl~ ~override~
+			PATCH_IF spell_level = 8 BEGIN
+			  LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 1 parameter2 = 2 timing = 1 STR_VAR resource = EVAL ~%spell_eff%~ END
+			END
+		  	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 172 target = 1 timing = 9 STR_VAR resource = EVAL ~%cast_spell%~ END
+		  COPY_EXISTING ~d5srci9.spl~ ~override~
+			PATCH_IF spell_level = 9 BEGIN
+			  LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 1 parameter2 = 2 timing = 1 STR_VAR resource = EVAL ~%spell_eff%~ END
+			END
+		  	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 172 target = 1 timing = 9 STR_VAR resource = EVAL ~%cast_spell%~ END
+		  EXTEND_BOTTOM ~d5msorc.bcs~ ~d5/script_add_spell_check.baf~ 
+			SPRINT spl ~%spell_res%~ 
+			SPRINT cur_lvl ~qd_sor_cur_~^~%spell_level%~
+			EVAL 
+		  COPY_EXISTING ~override/d5msorc.d~ ~override~ 
+			SPRINT name "%spell_name%"
+			SPRINT desc "%spell_description%"
+			SPRINT cur_lvl "qd_sor_cur_"^"%spell_level%"
+			SPRINT spl "%spell_res%"
+			SPRINT lvl "%spell_level%"
+			SPRINT lvl_menu "level_"^"%lvl%"
+			APPEND_FILE_EVALUATE  ~d5/dialog_spell_info.d~ 
+			REPLACE_TEXTUALLY ~//Marker %spell_level%~ ~~~~~+ ~NextTriggerObject(LastSummonerOf(Myself)) !HaveKnownSpellRES("%display_spell%")~ +~%spell_name%~ + %spl% 
+								//Marker %spell_level%~~~~~
+		END // end inner_action
+	  END
+	END
+  END
+ END
+BUT_ONLY
+
+
+//finish spell learning dialogue______________________________________________________
+//
+EXTEND_BOTTOM ~d5msorc.bcs~ ~d5/script_spells_end.baf~ EVAL 
+COMPILE ~override/d5msorc.d~ 
+
+APPEND ~d5sorc.2da~ ~LEARNSPLS   GA_D5MSORC  GA_D5MSORC  GA_D5MSORC  GA_D5MSORC  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** ~
+                                
+
+//finish up other stuff_______________________________________________________________
+//
+/* dirty dirty hack. do this in deity_selection.tpa instead, cause it overwrites clabpr01
+APPEND ~clabpr01.2da~ ~NO_WSPLS    AP_D50WZ    ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** ~
+*/
+
+COPY_EXISTING ~d5srci1.spl~ ~override~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 214 target = 1 parameter2 = 1 timing = 1 END
+COPY_EXISTING ~d5srci2.spl~ ~override~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 214 target = 1 parameter2 = 1 timing = 1 END
+COPY_EXISTING ~d5srci3.spl~ ~override~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 214 target = 1 parameter2 = 1 timing = 1 END
+COPY_EXISTING ~d5srci4.spl~ ~override~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 214 target = 1 parameter2 = 1 timing = 1 END
+COPY_EXISTING ~d5srci5.spl~ ~override~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 214 target = 1 parameter2 = 1 timing = 1 END
+COPY_EXISTING ~d5srci6.spl~ ~override~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 214 target = 1 parameter2 = 1 timing = 1 END
+COPY_EXISTING ~d5srci7.spl~ ~override~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 214 target = 1 parameter2 = 1 timing = 1 END
+COPY_EXISTING ~d5srci8.spl~ ~override~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 214 target = 1 parameter2 = 1 timing = 1 END
+COPY_EXISTING ~d5srci9.spl~ ~override~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 214 target = 1 parameter2 = 1 timing = 1 END
+
+
+//assign "spell slots" (stats) to each spell level____________________________________
+//
+// level 1 = 113 << 16
+// level 2 = 113 << 20
+// level 3 = 113 << 24
+// level 4 = 113 << 28
+// level 5 = 114 << 8
+// level 6 = 114 << 12
+// level 7 = 114 << 16
+// level 8 = 114 << 20
+// level 9 = 114 << 24
+//
+COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5src1.spl~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 233 target = 1 parameter1 = (1 << 16) parameter2 = (113 + (0x10000 * 1)) timing = 9 END
+COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5src2.spl~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 233 target = 1 parameter1 = (1 << 20) parameter2 = (113 + (0x10000 * 1)) timing = 9 END
+COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5src3.spl~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 233 target = 1 parameter1 = (1 << 24) parameter2 = (113 + (0x10000 * 1)) timing = 9 END
+COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5src4.spl~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 233 target = 1 parameter1 = (1 << 28) parameter2 = (113 + (0x10000 * 1)) timing = 9 END
+COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5src5.spl~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 233 target = 1 parameter1 = (1 << 8) parameter2 = (114 + (0x10000 * 1)) timing = 9 END
+COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5src6.spl~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 233 target = 1 parameter1 = (1 << 12) parameter2 = (114 + (0x10000 * 1)) timing = 9 END
+COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5src7.spl~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 233 target = 1 parameter1 = (1 << 16) parameter2 = (114 + (0x10000 * 1)) timing = 9 END
+COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5src8.spl~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 233 target = 1 parameter1 = (1 << 20) parameter2 = (114 + (0x10000 * 1)) timing = 9 END
+COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5src9.spl~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 233 target = 1 parameter1 = (1 << 24) parameter2 = (114 + (0x10000 * 1)) timing = 9 END
+
+COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5src-1.spl~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 233 target = 1 parameter1 = ((0 - 1) << 16) parameter2 = (113 + (0x10000 * 1)) timing = 1 END
+COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5src-2.spl~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 233 target = 1 parameter1 = ((0 - 1) << 20) parameter2 = (113 + (0x10000 * 1)) timing = 1 END
+COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5src-3.spl~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 233 target = 1 parameter1 = ((0 - 1) << 24) parameter2 = (113 + (0x10000 * 1)) timing = 1 END
+COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5src-4.spl~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 233 target = 1 parameter1 = ((0 - 1) << 28) parameter2 = (113 + (0x10000 * 1)) timing = 1 END
+COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5src-5.spl~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 233 target = 1 parameter1 = ((0 - 1) << 8) parameter2 = (114 + (0x10000 * 1)) timing = 1 END
+COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5src-6.spl~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 233 target = 1 parameter1 = ((0 - 1) << 12) parameter2 = (114 + (0x10000 * 1)) timing = 1 END
+COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5src-7.spl~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 233 target = 1 parameter1 = ((0 - 1) << 16) parameter2 = (114 + (0x10000 * 1)) timing = 1 END
+COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5src-8.spl~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 233 target = 1 parameter1 = ((0 - 1) << 20) parameter2 = (114 + (0x10000 * 1)) timing = 1 END
+COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5src-9.spl~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 233 target = 1 parameter1 = ((0 - 1) << 24) parameter2 = (114 + (0x10000 * 1)) timing = 1 END
+
+APPEND ~d5sorc.2da~ ~SRCSLOTS    AP_D5SRC1   AP_D5SRC1   AP_D5SRC1   AP_D5SRC1   AP_D5SRC2   AP_D5SRC2   AP_D5SRC2   AP_D5SRC3   AP_D5SRC3   AP_D5SRC4   AP_D5SRC4   AP_D5SRC5   AP_D5SRC5   AP_D5SRC6   AP_D5SRC6   AP_D5SRC7   AP_D5SRC7   AP_D5SRC8   AP_D5SRC8   AP_D5SRC9   ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** 
+SRCSLOTS    AP_D5SRC1   ****        ****        AP_D5SRC2   ****        AP_D5SRC3   AP_D5SRC3   AP_D5SRC4   AP_D5SRC4   AP_D5SRC5   AP_D5SRC5   AP_D5SRC6   AP_D5SRC6   AP_D5SRC7   AP_D5SRC7   AP_D5SRC8   AP_D5SRC8   AP_D5SRC9   AP_D5SRC9   AP_D5SRC9   ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** 
+SRCSLOTS    AP_D5SRC1   ****        ****        AP_D5SRC2   ****        AP_D5SRC3   ****        AP_D5SRC4   ****        AP_D5SRC5   ****        AP_D5SRC6   ****        AP_D5SRC7   ****        AP_D5SRC8   ****        AP_D5SRC9   ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** 
+SRCSLOTS    ****        ****        ****        AP_D5SRC2   ****        AP_D5SRC3   ****        AP_D5SRC4   ****        AP_D5SRC5   ****        AP_D5SRC6   ****        AP_D5SRC7   ****        AP_D5SRC8   ****        AP_D5SRC9   ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** 
+~
+
+
+//manage spell slots__________________________________________________________________
+//
+COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5slotz.spl~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 1 parameter2 = 2 timing = 9 STR_VAR resource = ~d5slots~ END
+
+APPEND ~d5sorc.2da~ ~SPLSLOTS    AP_D5SLOTZ  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** ~
+
+CREATE EFF ~d5slots~
+  WRITE_LONG 0x10 232
+  WRITE_LONG 0x14 1
+  WRITE_LONG 0x1c 0
+  WRITE_LONG 0x20 20
+  WRITE_LONG 0x24 9
+  WRITE_SHORT 0x2c 100
+  WRITE_ASCII 0x30 ~d5slots~ #8
+  WRITE_LONG 0x48 102
+
+COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5slots.spl~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 timing = 9 STR_VAR resource = EVAL ~d5srci1~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 timing = 9 STR_VAR resource = EVAL ~d5srci2~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 timing = 9 STR_VAR resource = EVAL ~d5srci3~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 timing = 9 STR_VAR resource = EVAL ~d5srci4~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 timing = 9 STR_VAR resource = EVAL ~d5srci5~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 timing = 9 STR_VAR resource = EVAL ~d5srci6~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 timing = 9 STR_VAR resource = EVAL ~d5srci7~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 timing = 9 STR_VAR resource = EVAL ~d5srci8~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 timing = 9 STR_VAR resource = EVAL ~d5srci9~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (1 << 16) parameter2 = %fake_sorc_slots_1_4% timing = 1 STR_VAR resource = ~d5slot1a~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (2 << 16) parameter2 = %fake_sorc_slots_1_4% timing = 1 STR_VAR resource = ~d5slot1b~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (4 << 16) parameter2 = %fake_sorc_slots_1_4% timing = 1 STR_VAR resource = ~d5slot1c~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (8 << 16) parameter2 = %fake_sorc_slots_1_4% timing = 1 STR_VAR resource = ~d5slot1d~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (1 << 20) parameter2 = %fake_sorc_slots_1_4% timing = 1 STR_VAR resource = ~d5slot2a~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (2 << 20) parameter2 = %fake_sorc_slots_1_4% timing = 1 STR_VAR resource = ~d5slot2b~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (4 << 20) parameter2 = %fake_sorc_slots_1_4% timing = 1 STR_VAR resource = ~d5slot2c~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (8 << 20) parameter2 = %fake_sorc_slots_1_4% timing = 1 STR_VAR resource = ~d5slot2d~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (1 << 24) parameter2 = %fake_sorc_slots_1_4% timing = 1 STR_VAR resource = ~d5slot3a~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (2 << 24) parameter2 = %fake_sorc_slots_1_4% timing = 1 STR_VAR resource = ~d5slot3b~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (4 << 24) parameter2 = %fake_sorc_slots_1_4% timing = 1 STR_VAR resource = ~d5slot3c~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (8 << 24) parameter2 = %fake_sorc_slots_1_4% timing = 1 STR_VAR resource = ~d5slot3d~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (1 << 28) parameter2 = %fake_sorc_slots_1_4% timing = 1 STR_VAR resource = ~d5slot4a~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (2 << 28) parameter2 = %fake_sorc_slots_1_4% timing = 1 STR_VAR resource = ~d5slot4b~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (4 << 28) parameter2 = %fake_sorc_slots_1_4% timing = 1 STR_VAR resource = ~d5slot4c~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (8 << 28) parameter2 = %fake_sorc_slots_1_4% timing = 1 STR_VAR resource = ~d5slot4d~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (1 << 8) parameter2 = %fake_sorc_slots_5_9% timing = 1 STR_VAR resource = ~d5slot5a~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (2 << 8) parameter2 = %fake_sorc_slots_5_9% timing = 1 STR_VAR resource = ~d5slot5b~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (4 << 8) parameter2 = %fake_sorc_slots_5_9% timing = 1 STR_VAR resource = ~d5slot5c~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (8 << 8) parameter2 = %fake_sorc_slots_5_9% timing = 1 STR_VAR resource = ~d5slot5d~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (1 << 12) parameter2 = %fake_sorc_slots_5_9% timing = 1 STR_VAR resource = ~d5slot6a~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (2 << 12) parameter2 = %fake_sorc_slots_5_9% timing = 1 STR_VAR resource = ~d5slot6b~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (4 << 12) parameter2 = %fake_sorc_slots_5_9% timing = 1 STR_VAR resource = ~d5slot6c~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (8 << 12) parameter2 = %fake_sorc_slots_5_9% timing = 1 STR_VAR resource = ~d5slot6d~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (1 << 16) parameter2 = %fake_sorc_slots_5_9% timing = 1 STR_VAR resource = ~d5slot7a~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (2 << 16) parameter2 = %fake_sorc_slots_5_9% timing = 1 STR_VAR resource = ~d5slot7b~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (4 << 16) parameter2 = %fake_sorc_slots_5_9% timing = 1 STR_VAR resource = ~d5slot7c~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (8 << 16) parameter2 = %fake_sorc_slots_5_9% timing = 1 STR_VAR resource = ~d5slot7d~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (1 << 20) parameter2 = %fake_sorc_slots_5_9% timing = 1 STR_VAR resource = ~d5slot8a~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (2 << 20) parameter2 = %fake_sorc_slots_5_9% timing = 1 STR_VAR resource = ~d5slot8b~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (4 << 20) parameter2 = %fake_sorc_slots_5_9% timing = 1 STR_VAR resource = ~d5slot8c~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (8 << 20) parameter2 = %fake_sorc_slots_5_9% timing = 1 STR_VAR resource = ~d5slot8d~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (1 << 24) parameter2 = %fake_sorc_slots_5_9% timing = 1 STR_VAR resource = ~d5slot9a~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (2 << 24) parameter2 = %fake_sorc_slots_5_9% timing = 1 STR_VAR resource = ~d5slot9b~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (4 << 24) parameter2 = %fake_sorc_slots_5_9% timing = 1 STR_VAR resource = ~d5slot9c~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (8 << 24) parameter2 = %fake_sorc_slots_5_9% timing = 1 STR_VAR resource = ~d5slot9d~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = 0 parameter2 = %fatigue_value% timing = 1 STR_VAR resource = ~d5srfrsh~ END
+
+COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5slot1a.spl~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5srci1~ END
+ COPY_EXISTING ~d5slot1a.spl~ ~override/d5slot1b.spl~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5srci1~ END
+ COPY_EXISTING ~d5slot1b.spl~ ~override/d5slot1c.spl~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5srci1~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5srci1~ END
+ COPY_EXISTING ~d5slot1c.spl~ ~override/d5slot1d.spl~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5srci1~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5srci1~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5srci1~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5srci1~ END
+COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5slot2a.spl~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5srci2~ END
+ COPY_EXISTING ~d5slot2a.spl~ ~override/d5slot2b.spl~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5srci2~ END
+ COPY_EXISTING ~d5slot2b.spl~ ~override/d5slot2c.spl~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5srci2~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5srci2~ END
+ COPY_EXISTING ~d5slot2c.spl~ ~override/d5slot2d.spl~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5srci2~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5srci2~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5srci2~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5srci2~ END
+COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5slot3a.spl~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5srci3~ END
+ COPY_EXISTING ~d5slot3a.spl~ ~override/d5slot3b.spl~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5srci3~ END
+ COPY_EXISTING ~d5slot3b.spl~ ~override/d5slot3c.spl~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5srci3~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5srci3~ END
+ COPY_EXISTING ~d5slot3c.spl~ ~override/d5slot3d.spl~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5srci3~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5srci3~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5srci3~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5srci3~ END
+COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5slot4a.spl~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5srci4~ END
+ COPY_EXISTING ~d5slot4a.spl~ ~override/d5slot4b.spl~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5srci4~ END
+ COPY_EXISTING ~d5slot4b.spl~ ~override/d5slot4c.spl~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5srci4~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5srci4~ END
+ COPY_EXISTING ~d5slot4c.spl~ ~override/d5slot4d.spl~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5srci4~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5srci4~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5srci4~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5srci4~ END
+COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5slot5a.spl~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5srci5~ END
+ COPY_EXISTING ~d5slot5a.spl~ ~override/d5slot5b.spl~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5srci5~ END
+ COPY_EXISTING ~d5slot5b.spl~ ~override/d5slot5c.spl~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5srci5~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5srci5~ END
+ COPY_EXISTING ~d5slot5c.spl~ ~override/d5slot5d.spl~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5srci5~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5srci5~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5srci5~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5srci5~ END
+COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5slot6a.spl~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5srci6~ END
+ COPY_EXISTING ~d5slot6a.spl~ ~override/d5slot6b.spl~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5srci6~ END
+ COPY_EXISTING ~d5slot6b.spl~ ~override/d5slot6c.spl~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5srci6~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5srci6~ END
+ COPY_EXISTING ~d5slot6c.spl~ ~override/d5slot6d.spl~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5srci6~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5srci6~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5srci6~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5srci6~ END
+COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5slot7a.spl~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5srci7~ END
+ COPY_EXISTING ~d5slot7a.spl~ ~override/d5slot7b.spl~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5srci7~ END
+ COPY_EXISTING ~d5slot7b.spl~ ~override/d5slot7c.spl~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5srci7~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5srci7~ END
+ COPY_EXISTING ~d5slot7c.spl~ ~override/d5slot7d.spl~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5srci7~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5srci7~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5srci7~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5srci7~ END
+COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5slot8a.spl~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5srci8~ END
+ COPY_EXISTING ~d5slot8a.spl~ ~override/d5slot8b.spl~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5srci8~ END
+ COPY_EXISTING ~d5slot8b.spl~ ~override/d5slot8c.spl~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5srci8~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5srci8~ END
+ COPY_EXISTING ~d5slot8c.spl~ ~override/d5slot8d.spl~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5srci8~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5srci8~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5srci8~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5srci8~ END
+COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5slot9a.spl~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5srci9~ END
+ COPY_EXISTING ~d5slot9a.spl~ ~override/d5slot9b.spl~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5srci9~ END
+ COPY_EXISTING ~d5slot9b.spl~ ~override/d5slot9c.spl~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5srci9~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5srci9~ END
+ COPY_EXISTING ~d5slot9c.spl~ ~override/d5slot9d.spl~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5srci9~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5srci9~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5srci9~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5srci9~ END
+
+
+// spell to refresh spell slots_______________________________________________________
+COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5srfrsh.spl~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 93 target = 1 parameter1 = 1 parameter2 = 1 timing = 1 END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 9 STR_VAR resource = ~d5src-1~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 9 STR_VAR resource = ~d5src-2~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 9 STR_VAR resource = ~d5src-3~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 9 STR_VAR resource = ~d5src-4~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 9 STR_VAR resource = ~d5src-5~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 9 STR_VAR resource = ~d5src-6~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 9 STR_VAR resource = ~d5src-7~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 9 STR_VAR resource = ~d5src-8~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 9 STR_VAR resource = ~d5src-9~ END
+
+COPY_EXISTING ~d5sorc.2da~ ~override/d5fsorc.2da~
+COPY_EXISTING ~d5sorc.2da~ ~override/d5rsorc.2da~
+COPY_EXISTING ~d5sorc.2da~ ~override/d5tsorc.2da~
+
+
+//remove universal spells from spellbook______________________________________________
+//
+COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d50spls.spl~
+COPY_EXISTING ~d5unvrsl.2da~ ~override~
+  COUNT_2DA_COLS cols
+  COUNT_2DA_ROWS cols rows
+  FOR (row = 1; row < rows; ++row) BEGIN
+	READ_2DA_ENTRY row 0 cols ~universal_spell~
+	INNER_ACTION BEGIN
+	  COPY_EXISTING ~d50spls.spl~ ~override~
+		LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 timing = 4 duration = 1 STR_VAR resource = EVAL ~%universal_spell%~ END
+	  BUT_ONLY
+	END
+  END
+BUT_ONLY
+APPEND ~d5fsorc.2da~ ~NO_USPLS    AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS ~
+APPEND ~d5rsorc.2da~ ~NO_USPLS    AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS ~
+APPEND ~d5tsorc.2da~ ~NO_USPLS    AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS  AP_D50SPLS ~
+
+
+//QD_MULTICLASS_______________________________________________________________________
+//
+ACTION_IF FILE_EXISTS_IN_GAME ~d5fsorc.2da~ BEGIN
+  LAF qd_multiclass
+	STR_VAR
+		kit_name = ~D5_FIGHTER_SORCERER~ 
+		kit_clab = ~d5fsorc~
+		base_class = ~P~
+		mc_dir = ~faiths_and_powers/lib/qd_mc~
+  END
+END 
+
+ACTION_IF FILE_EXISTS_IN_GAME ~d5rsorc.2da~ BEGIN
+  LAF qd_multiclass
+	STR_VAR
+		kit_name = ~D5_RANGER_SORCERER~ 
+		kit_clab = ~d5rsorc~
+		base_class = ~P~
+		mc_dir = ~faiths_and_powers/lib/qd_mc~
+  END
+END 
+
+ACTION_IF FILE_EXISTS_IN_GAME ~d5tsorc.2da~ BEGIN
+  LAF qd_multiclass
+	STR_VAR
+		kit_name = ~D5_SORCERER_THIEF~ 
+		kit_clab = ~d5tsorc~
+		base_class = ~P~
+		mc_dir = ~faiths_and_powers/lib/qd_mc~
+  END
+END 
+
+
+END // end multi sorcerers function
 //__________________________________________________________________________________
 

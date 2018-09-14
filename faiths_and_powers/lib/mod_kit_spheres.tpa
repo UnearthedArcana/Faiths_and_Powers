@@ -6,6 +6,8 @@
 //__________________________________________________________________________________
 
 
+// DIVINE REMIX - CYRIC
+
 ACTION_IF FILE_EXISTS_IN_GAME ~a#cyric.2da~ BEGIN
  COPY_EXISTING ~a#cyric.2da~ ~override~
   REPLACE_TEXTUALLY ~KITBIL1~ ~SPCL423~ // poison weapon as 1/5
@@ -65,6 +67,9 @@ LAF ~DEFINE_FNP_KIT_INFO~
 END
 //__________________________________________________________________________________
 END
+
+
+// DIVINE REMIX - CORELLON LARETHIAN
 
 ACTION_IF FILE_EXISTS_IN_GAME ~a#feyw.2da~ BEGIN
  COPY_EXISTING ~a#feyw.2da~ ~override~
@@ -126,6 +131,8 @@ END
 //__________________________________________________________________________________
 END
 
+// DIVINE REMIX - KOSSUTH
+
 ACTION_IF FILE_EXISTS_IN_GAME ~a#koss.2da~ BEGIN
  COPY_EXISTING ~a#koss.2da~ ~override~
   REPLACE_TEXTUALLY ~KITBIL1~ ~a#kos09~
@@ -186,6 +193,8 @@ END
 //__________________________________________________________________________________
 END
 
+// DIVINE REMIX - OGHMA
+
 ACTION_IF FILE_EXISTS_IN_GAME ~a#ogma.2da~ BEGIN
  COPY_EXISTING ~a#ogma.2da~ ~override~
   COUNT_2DA_COLS cols
@@ -245,6 +254,8 @@ LAF ~DEFINE_FNP_KIT_INFO~
 END
 //__________________________________________________________________________________
 END
+
+// DIVINE REMIX - OOZEMASTER
 
 ACTION_IF FILE_EXISTS_IN_GAME ~a#ooze.2da~ BEGIN
   ACTION_IF FILE_EXISTS_IN_GAME ~a#ooze4.spl~ BEGIN
@@ -328,6 +339,8 @@ END
 //__________________________________________________________________________________
 END
 
+// DIVINE REMIX - RED KNIGHT
+
 ACTION_IF FILE_EXISTS_IN_GAME ~a#red.2da~ BEGIN
  COPY_EXISTING ~a#red.2da~ ~override~
   REPLACE_TEXTUALLY ~KITBIL1~ ~a#re07 ~
@@ -387,6 +400,8 @@ LAF ~DEFINE_FNP_KIT_INFO~
 END
 //__________________________________________________________________________________
 END
+
+// DIVINE REMIX - SHAR
 
 ACTION_IF FILE_EXISTS_IN_GAME ~a#shar.2da~ BEGIN
   COPY_EXISTING ~cdshar2.spl~ ~override~
@@ -453,6 +468,8 @@ END
 //__________________________________________________________________________________
 END
 
+// DIVINE REMIX - TEMPUS
+
 ACTION_IF FILE_EXISTS_IN_GAME ~a#temp.2da~ BEGIN
  COPY_EXISTING ~a#temp.2da~ ~override~
 
@@ -510,6 +527,8 @@ LAF ~DEFINE_FNP_KIT_INFO~
 END
 //__________________________________________________________________________________
 END
+
+// DIVINE REMIX - ILMATER
 
 ACTION_IF FILE_EXISTS_IN_GAME ~cdilmatr.2da~ BEGIN
  COPY_EXISTING ~cdilmatr.2da~ ~override~
@@ -569,6 +588,8 @@ END
 //__________________________________________________________________________________
 END
 
+// DIVINE REMIX - SELUNE
+
 ACTION_IF FILE_EXISTS_IN_GAME ~cdselune.2da~ BEGIN
  COPY_EXISTING ~cdselune.2da~ ~override~
 
@@ -626,6 +647,8 @@ LAF ~DEFINE_FNP_KIT_INFO~
 END
 //__________________________________________________________________________________
 END
+
+// DIVINE REMIX - IACHTU XVIM
 
 ACTION_IF FILE_EXISTS_IN_GAME ~cdxvim.2da~ BEGIN
  COPY_EXISTING ~cdxvim.2da~ ~override~
@@ -685,6 +708,8 @@ END
 //__________________________________________________________________________________
 END
 
+// DIVINE REMIX - SUNE
+
 ACTION_IF FILE_EXISTS_IN_GAME ~nmsune.2da~ BEGIN
  COPY_EXISTING ~nmsune.2da~ ~override~
 
@@ -743,6 +768,8 @@ END
 //__________________________________________________________________________________
 END
 
+// DIVINE REMIX - WILDERNESS RUNNER
+
 ACTION_IF FILE_EXISTS_IN_GAME ~nmrnwlrn.2da~ BEGIN
 
 //DEFINE SPHERE ACCESS______________________________________________________________
@@ -800,6 +827,7 @@ END
 //__________________________________________________________________________________
 END
 
+// DIVINE REMIX - BOWSLINGER
 
 ACTION_IF FILE_EXISTS_IN_GAME ~nmrnbsln.2da~ BEGIN
 
@@ -858,6 +886,7 @@ END
 //__________________________________________________________________________________
 END
 
+// DIVINE REMIX - FERALAN
 
 ACTION_IF FILE_EXISTS_IN_GAME ~a#feral.2da~ BEGIN
 
@@ -916,6 +945,7 @@ END
 //__________________________________________________________________________________
 END
 
+// DIVINE REMIX - FOREST RUNNER
 
 ACTION_IF FILE_EXISTS_IN_GAME ~nmrnfrrn.2da~ BEGIN
 
@@ -974,6 +1004,7 @@ END
 //__________________________________________________________________________________
 END
 
+// DIVINE REMIX - JUSTIFIER
 
 ACTION_IF FILE_EXISTS_IN_GAME ~a#justif.2da~ BEGIN
 
@@ -1032,6 +1063,8 @@ END
 //__________________________________________________________________________________
 END
 
+// FROSTY JOURNEY - AURIL
+
 ACTION_IF FILE_EXISTS_IN_GAME ~clabauri.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
@@ -1087,6 +1120,8 @@ LAF ~DEFINE_FNP_KIT_INFO~
 END
 //__________________________________________________________________________________
 END
+
+// FROSTY JOURNEY - ULUTIU
 
 ACTION_IF FILE_EXISTS_IN_GAME ~clabiceg.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
@@ -1144,6 +1179,8 @@ END
 //__________________________________________________________________________________
 END
 
+// FROSTY JOURNEY - EARTH GOD THING
+
 ACTION_IF FILE_EXISTS_IN_GAME ~clabeart.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
@@ -1199,6 +1236,8 @@ LAF ~DEFINE_FNP_KIT_INFO~
 END
 //__________________________________________________________________________________
 END
+
+// FROSTY JOURNEY - LEAFTENDER
 
 ACTION_IF FILE_EXISTS_IN_GAME ~clableaf.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
@@ -1256,6 +1295,8 @@ END
 //__________________________________________________________________________________
 END
 
+// FROSTY JOURNEY - TREETENDER
+
 ACTION_IF FILE_EXISTS_IN_GAME ~clabtree.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
@@ -1311,6 +1352,8 @@ LAF ~DEFINE_FNP_KIT_INFO~
 END
 //__________________________________________________________________________________
 END
+
+// FROSTY JOURNEY - GRUUMSH
 
 ACTION_IF FILE_EXISTS_IN_GAME ~clabgruu.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
@@ -1368,6 +1411,8 @@ END
 //__________________________________________________________________________________
 END
 
+// FROSTY JOURNEY - LUTHIC
+
 ACTION_IF FILE_EXISTS_IN_GAME ~clabluth.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
@@ -1423,6 +1468,8 @@ LAF ~DEFINE_FNP_KIT_INFO~
 END
 //__________________________________________________________________________________
 END
+
+// FROSTY JOURNEY - HIVEMASTER
 
 ACTION_IF FILE_EXISTS_IN_GAME ~k9hive.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
@@ -1480,6 +1527,8 @@ END
 //__________________________________________________________________________________
 END
 
+// FROSTY JOURNEY - PALADIN OF ILMATER
+
 ACTION_IF FILE_EXISTS_IN_GAME ~k9ilma.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
@@ -1535,6 +1584,8 @@ LAF ~DEFINE_FNP_KIT_INFO~
 END
 //__________________________________________________________________________________
 END
+
+// FROSTY JOURNEY - PALADIN OF MIELIKKI
 
 ACTION_IF FILE_EXISTS_IN_GAME ~k9miel.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
@@ -1592,6 +1643,8 @@ END
 //__________________________________________________________________________________
 END
 
+// FROSTY JOURNEY - PALADIN OF MYSTRA
+
 ACTION_IF FILE_EXISTS_IN_GAME ~k9myst.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
@@ -1648,3 +1701,60 @@ END
 //__________________________________________________________________________________
 END
 
+// SIRENE - PALADIN OF ILMATER
+
+ACTION_IF FILE_EXISTS_IN_GAME ~c0ilmcl.2da~ BEGIN
+//DEFINE SPHERE ACCESS______________________________________________________________
+//
+LAF ~DEFINE_FNP_KIT_INFO~
+  INT_VAR
+	u_leather_armor 	= 1
+	u_chain_armor 		= 1
+	u_plate_armor 		= 1
+	u_club_staff	 	= 2
+	u_hammers	 		= 2
+	u_maces 	 		= 2
+	u_flails 			= 2
+	u_axes 				= 2
+	u_daggers 			= 2
+	u_short_swords		= 2
+	u_long_swords		= 2
+	u_scimitars 		= 2
+	u_katanas 			= 2
+	u_bastard_swords 	= 2
+	u_2hand_swords 		= 2
+	u_halberds 			= 2
+	u_spears 	 		= 2
+	u_darts 			= 0
+	u_slings	 		= 2
+	u_bows 				= 2
+	u_crossbows 		= 2
+  STR_VAR
+    clab_name 		= ~c0ilmcl~
+	class 			= ~champion~
+	s_Life 			= ~paladin~
+	s_Death 		= ~x~
+	s_Benediction 	= ~paladin~
+	s_Destruction 	= ~X~
+	s_Protection 	= ~paladin~
+	s_War 			= ~x~
+	s_Exploration   = ~x~
+	s_Knowledge 	= ~paladin~
+	s_Deception 	= ~x~
+	s_Thought 		= ~x~
+	s_Dread 		= ~paladin~
+	s_Vigor 		= ~paladin~
+	s_Affliction 	= ~x~
+	s_Animal 		= ~x~
+	s_Plant 		= ~x~
+	s_Earth 		= ~x~
+	s_Water 		= ~x~
+	s_Air 			= ~x~
+	s_Fire 			= ~x~
+	s_Light 		= ~x~
+	s_Shadow 		= ~x~
+	s_Magic 		= ~x~
+	s_Perdition     = ~x~
+END
+//__________________________________________________________________________________
+END

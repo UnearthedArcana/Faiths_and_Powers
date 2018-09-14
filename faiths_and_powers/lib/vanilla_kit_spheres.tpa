@@ -451,17 +451,17 @@ ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~d5_class.2da~ ~clabdr01~)) BEGIN
 	s_Protection 	= ~x~
 	s_War 			= ~x~
 	s_Exploration   = ~minor~
-	s_Knowledge 	= ~major~
-	s_Deception 	= ~minor~
+	s_Knowledge 	= ~minor~
+	s_Deception 	= ~x~
 	s_Thought 		= ~minor~
 	s_Dread 		= ~x~
 	s_Vigor 		= ~major~
-	s_Affliction 	= ~major~
+	s_Affliction 	= ~minor~
 	s_Animal 		= ~major~
 	s_Plant 		= ~major~
 	s_Earth 		= ~major~
 	s_Water 		= ~major~
-	s_Air 			= ~minor~
+	s_Air 			= ~major~
 	s_Fire 			= ~minor~
 	s_Light 		= ~major~
 	s_Shadow 		= ~minor~
@@ -509,17 +509,17 @@ ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~d5_class.2da~ ~clabdr02~)) BEGIN
 	s_Protection 	= ~x~
 	s_War 			= ~x~
 	s_Exploration   = ~minor~
-	s_Knowledge 	= ~major~
-	s_Deception 	= ~minor~
+	s_Knowledge 	= ~minor~
+	s_Deception 	= ~x~
 	s_Thought 		= ~minor~
 	s_Dread 		= ~x~
 	s_Vigor 		= ~major~
-	s_Affliction 	= ~major~
+	s_Affliction 	= ~minor~
 	s_Animal 		= ~major~
 	s_Plant 		= ~major~
 	s_Earth 		= ~major~
 	s_Water 		= ~major~
-	s_Air 			= ~minor~
+	s_Air 			= ~major~
 	s_Fire 			= ~minor~
 	s_Light 		= ~major~
 	s_Shadow 		= ~minor~
@@ -626,20 +626,20 @@ ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~d5_class.2da~ ~clabdr04~)) BEGIN
 	s_War 			= ~x~
 	s_Exploration   = ~minor~
 	s_Knowledge 	= ~minor~
-	s_Deception 	= ~major~
-	s_Thought 		= ~minor~
+	s_Deception 	= ~x~
+	s_Thought 		= ~x~
 	s_Dread 		= ~x~
 	s_Vigor 		= ~major~
 	s_Affliction 	= ~major~
-	s_Animal 		= ~major~
+	s_Animal 		= ~minor~
 	s_Plant 		= ~major~
-	s_Earth 		= ~minor~
-	s_Water 		= ~minor~
-	s_Air 			= ~minor~
+	s_Earth 		= ~major~
+	s_Water 		= ~major~
+	s_Air 			= ~major~
 	s_Fire 			= ~minor~
-	s_Light 		= ~minor~
-	s_Shadow 		= ~major~
-	s_Magic 		= ~major~
+	s_Light 		= ~major~
+	s_Shadow 		= ~minor~
+	s_Magic 		= ~minor~
 	s_Perdition     = ~x~
  END
 END
@@ -996,7 +996,7 @@ END
 
 END		// end if not exists d5_deity.d5
 
-ACTION_IF FILE_EXISTS_IN_GAME ~clabrn01.2da~ BEGIN
+ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5rsorc.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
 ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~d5_class.2da~ ~clabrn01~)) BEGIN

@@ -6,7 +6,7 @@
 //
 @100  = ~Select an installation method below:~
 @101  = ~ALL the new kits, the kit selection dialogue, and the sphere system ('radical version')~
-@102  = ~all the new kits and the sphere system~
+@102  = ~install the kits designated in settings.ini, and the sphere system~
 @103  = ~choose components individually~
 @105  = ~no new kits - JUST install the sphere system~
 @110  = ~Change item usability for priests~
@@ -41,12 +41,15 @@
 @332  = ~Add Acolyte of Beshaba~
 @342  = ~Add Acolyte of Baervan Wildwanderer~
 //
-// ... Incarnate kits = 401-450
+// ... Incarnate kits = 401-449
 //
 @405  = ~Add Incarnate of Mystra~
 //
+// ... multiclass kits = 450-499
 //
-// ... multiclass kits = 451-499
+@451  = ~Add Fighter/Sorcerer~
+@452  = ~Add Ranger/Sorcerer~
+@453  = ~Add Sorcerer/Thief~
 //
 @499  = ~install multiclass kits~
 //
@@ -809,36 +812,103 @@ Restrictions:
 @34204 = ~PRIEST OF BAERVAN: Usually found far abreast from heavily urban areas, followers of Baervan Wildwanderer seek to protect nature from evil creatures. They have a particular affinity for forest plants and creatures, especially raccoons.
 ~
 //
-// ... multiclass druids
+// ... incarnate of mystra 
 //
-@45101  = ~druid of silvanus~
-@45102  = ~Druid of Silvanus~
-@45103  = ~DRUID OF SILVANUS: Forest Druids reside in the regions where soil is nutritious, plant life is abundant and animals thrive. Tall forests are a paradise in many ways: they provide shade from the sun, food and homes for animals and people, and wood for tools. While other wildlands can be wondrous escapes, forests are incessantly under threat of being torn down and subjugated by careless humans and demihumans. Forest druids therefore often live with a constant low-grade paranoia, which informs the stereotype of druids being hostile to civilization.
+@40501  = ~arcane soul~
+@40502  = ~Arcane Soul~
+@40503  = ~INCARNATE OF MYSTRA: yadda yadda.
 
 Advantages:
-- At 1st level, may summon a Spirit Wolf. The HD of the spirit animal increases to match the druid's level at 3rd, 5th, 7th and 10th level.
-- At 2nd level, may shapeshift into the form of a wolf. At 7th level this grows to a stronger dire wolf form.
-- At 5th level, may shapeshift into the form of a ferret.
-- At 9th level, may shapeshift into the form of a black bear.
-- 15th level: Gains 10% resistance to cold, fire, electricity, and acid; gains a further 10% resistance at levels 18 and 21.
+- Cast like a sorcerer, etc.
 
-WOLF: in wolf form the druid can detect hidden enemies. He can attack 1.5 times per round for 2d3 slashing damage.
-
-FERRET: in ferret form the druid is hidden from view for up to three rounds. He can attack once per round, causing 1d2 damage; if the target fails a save vs. death, the wound causes disease that saps the targets strength for one turn, and distraction that causes a 10% chance of spell failure.
-
-BLACK BEAR: in bear form, the Druid has 19 strength. He can attack twice per round with claws that cause 1d6 crushing damage and 1d6 slashing damage.
-
-Restrictions: 
-- The practice of arcane magic somewhat disturbs a druid's connection to nature; druid/mages may not shapeshift as other druids can.
+Restrictions:
+- Progresses as a sorcerer in hit points and thac0
+- May not use divine magic
 ~
-@45104  = ~DRUID OF SILVANUS: Forest Druids reside in the regions where soil is nutritious, plant life is abundant and animals thrive. Tall forests are a paradise in many ways: they provide shade from the sun, food and homes for animals and people, and wood for tools. While other wildlands can be wondrous escapes, forests are incessantly under threat of being torn down and subjugated by careless humans and demihumans. Forest druids therefore often live with a constant low-grade paranoia, which informs the stereotype of druids being hostile to civilization.~
-@45105  = ~~
-@45106  = ~Fighter/Druid~
-@45107  = ~Druid/Mage~
-@45108  = ~Druid/Thief~
-@45109  = ~Druid/Ranger~
-@45111  = ~Druidic Talisman~
-@45112  = ~With this item, you may choose to adhere to the tenets of the druidic orders and become a priest of Sylvanus.~
+//
+// ... multiclass sorcerers 
+//
+@45011  = ~1st-level spells~
+@45012  = ~2nd-level spells~
+@45013  = ~3rd-level spells~
+@45014  = ~4th-level spells~
+@45015  = ~5th-level spells~
+@45016  = ~6th-level spells~
+@45017  = ~7th-level spells~
+@45018  = ~8th-level spells~
+@45019  = ~9th-level spells~
+@45021  = ~Spell Knowledge
+
+This ability allows you to select your spells known for each spell level.~
+@45023 = ~Learn this spell.~
+@45024 = ~View other spells of the same level.~
+@45025 = ~Select a different spell level.~
+@45026 = ~End.~
+@45027 = ~Return to level selection.~ 
+@45028 = ~You can learn more spells of the following levels.~
+@45031 = ~First~
+@45032 = ~Second~
+@45033 = ~Third~
+@45034 = ~Fourth~
+@45035 = ~Fifth~
+@45036 = ~Sixth~
+@45037 = ~Seventh~
+@45038 = ~Eighth~
+@45039 = ~Ninth~
+@45041 = ~You can select new 1st level spells from the following list.~
+@45042 = ~You can select new 2nd level spells from the following list.~
+@45043 = ~You can select new 3rd level spells from the following list.~
+@45044 = ~You can select new 4th level spells from the following list.~
+@45045 = ~You can select new 5th level spells from the following list.~
+@45046 = ~You can select new 6th level spells from the following list.~
+@45047 = ~You can select new 7th level spells from the following list.~
+@45048 = ~You can select new 8th level spells from the following list.~
+@45049 = ~You can select new 9th level spells from the following list.~
+@45101 = ~fighter/sorcerer~
+@45102 = ~Fighter/Sorcerer~
+@45103 = ~FIGHTER/SORCERER: Sorcerers are practitioners of magic who were born with the innate ability to cast spells. It is thought that the blood of some powerful creature flows through their veins; perhaps they are the spawn of the gods themselves, or even dragons walking in humanoid form. Regardless, the Sorcerer's magic is intuitive rather than logical. They know fewer spells than Mages, and acquire spells more slowly, but they can cast spells more often and have no need to select and prepare spells ahead of time.
+
+Advantages:
+- May cast arcane spells.
+- Sorcerers do not scribe and memorize spells as Mages do. Instead, they learn a small number of spells at each level, and can cast any of those spells without memorization.
+
+Disadvantages:
+- May not wear any armor.
+- May only use the following weapons: dagger, quarterstaff, dart, sling.
+- May only become Proficient (one slot) in any weapon class.
+- May not place any slots in any fighting style.
+- Hit Die: d4
+~
+@45201 = ~ranger/sorcerer~
+@45202 = ~Ranger/Sorcerer~
+@45203 = ~RANGER/SORCERER: Sorcerers are practitioners of magic who were born with the innate ability to cast spells. It is thought that the blood of some powerful creature flows through their veins; perhaps they are the spawn of the gods themselves, or even dragons walking in humanoid form. Regardless, the Sorcerer's magic is intuitive rather than logical. They know fewer spells than Mages, and acquire spells more slowly, but they can cast spells more often and have no need to select and prepare spells ahead of time.
+
+Advantages:
+- May cast arcane spells.
+- Sorcerers do not scribe and memorize spells as Mages do. Instead, they learn a small number of spells at each level, and can cast any of those spells without memorization.
+
+Disadvantages:
+- May not wear any armor.
+- May only use the following weapons: dagger, quarterstaff, dart, sling.
+- May only become Proficient (one slot) in any weapon class.
+- May not place any slots in any fighting style.
+- Hit Die: d4
+~
+@45301 = ~sorcerer/thief~
+@45302 = ~Sorcerer/Thief~
+@45303 = ~SORCERER/THIEF: Sorcerers are practitioners of magic who were born with the innate ability to cast spells. It is thought that the blood of some powerful creature flows through their veins; perhaps they are the spawn of the gods themselves, or even dragons walking in humanoid form. Regardless, the Sorcerer's magic is intuitive rather than logical. They know fewer spells than Mages, and acquire spells more slowly, but they can cast spells more often and have no need to select and prepare spells ahead of time.
+
+Advantages:
+- May cast arcane spells.
+- Sorcerers do not scribe and memorize spells as Mages do. Instead, they learn a small number of spells at each level, and can cast any of those spells without memorization.
+
+Disadvantages:
+- May not wear any armor.
+- May only use the following weapons: dagger, quarterstaff, dart, sling.
+- May only become Proficient (one slot) in any weapon class.
+- May not place any slots in any fighting style.
+- Hit Die: d4
+~
 //
 // ... abjurist of mystra 
 //
@@ -2175,11 +2245,11 @@ Greater Shades is similar to the Shadow Monsters spell in that it allows the cas
 @70002  = ~Mystic~
 @70003  = ~MYSTICS: Through study and meditation, Mystics form a spiritual connection with some aspect of the natural world, and channel energy through that connection to create magical effects. This art has been practiced in some fashion since the dawn of time, before there were religions or deities; some say Mystics are the original magic-users. 
 
-PURE MYSTICS form a deep, spiritual connection with a fundamental aspect of the universe: one of the prime elements, or light or shadow. The magic that flows through them is raw and powerful, but their ability to shape it is limited to effects closely related to their focus.
+PURE MYSTICS form a deep, spiritual connection with a fundamental aspect of the universe: one of the prime elements, or light or shadow. The magic that flows through them is raw and powerful, but their ability to shape it is limited to effects closely related to their focus. Some say Mystics are all blessed by Mystra, as practitioners of the purest form of magic. The goddess herself has not deigned to comment on such claims.
 
-DRUIDS are a branch of Mystics focused on the balanced combinations of elemental energies that result in living ecosystems. At the direction of the deities Sylvanus and Chauntea, they have organized themselves into ordered hierarchies in which to teach and practice their abilities. They have mastery over various facets of the natural world: different chapters specialize in particular environments, such as forests, jungles, mountains, and deserts.
+DRUIDS are a branch of Mystics focused on the balanced combinations of elemental energies that result in living ecosystems. At the direction of the deities Sylvanus and Chauntea, they have organized themselves into ordered hierarchies in which to teach and practice their abilities. They have mastery over all facets of the natural world.  Some are generalists, while others focus on a particular habitat or aspect of nature.
 
-OCCULTISTS learn to tap magical power in nontraditional ways. Through study and unnatural experiments, they can learn to harness the boiling energies of the inner planes, or infernal powers from the outer planes, or the wild, animal nature seething inside every man and woman. Some have even learned to steal magical energy from the deities themselves - calling into question whether those beings are truly omnipotent.
+OCCULTISTS learn to tap magical power in nontraditional ways. Through study and (often) unnatural experiments, they can learn to harness the boiling energies of the inner planes, or infernal powers from the outer planes, or the wild, animal nature seething inside every man and woman. Some have even learned to steal magical energy from the deities themselves - calling into question whether those beings are truly omnipotent.
 
 All of these classes share some common attributes. Creating and maintaining the spiritual connections to perform this type of magic is very demanding. Therefore, they may not spare the time to master the use of complicated or martial weapons; they are excluded from using 2-handed swords, halberds, katanas, bastard swords, long swords, flails, morning stars, maces, and crossbows. 
 ~
@@ -2389,26 +2459,90 @@ Restrictions:
 
 Upon using this ability, the Mystic is allowed to choose a spell from his repertoire of known spells. One spell level every 3 levels of the caster is allowed (rounded up), up to 7th-level spells at 19th level. Once the spell is chosen, the caster can choose a condition of some kind from the list provided, such as "an enemy being sighted." Once this starting condition is satisfied, the spell that was chosen will be cast. This requires no action by the wizard, but happens automatically and instantaneously.~
 //
-// ... forest druid:
+// ... druid shapeshifting:
+//
+@73001  = ~Shapeshift: natural form~
+@73003  = ~Shapeshift: ferret~
+@73004  = ~Shift into the form of a ferret.~
+@73009  = ~Shapeshift: wolf~
+@73010  = ~Shift into the form of a wolf~
+@73011  = ~Shapeshift: dire wolf~
+@73012  = ~Shift into the form of a dire wolf~
+@73013  = ~Shapeshift: winter wolf~
+@73014  = ~Shift into the form of a winter wolf~
+@73015  = ~Shapeshift: dread wolf~
+@73016  = ~Shift into the form of a dread wolf~
+@73017  = ~Shapeshift: vampire wolf~
+@73018  = ~Shift into the form of a vampire wolf~
+@73019  = ~Shapeshift: shadow wolf~
+@73020  = ~Shift into the form of a shadow wolf~
+@73023  = ~Shapeshift: black bear~
+@73024  = ~Shift into the form of a black bear~
+@73025  = ~Shapeshift: grizzly bear~
+@73026  = ~Shift into the form of a grizzly bear~
+@73027  = ~Shapeshift: polar bear~
+@73028  = ~Shift into the form of a polar bear~
+@73031  = ~Shapeshift: mountain lion~
+@73032  = ~Shift into the form of a mountain lion~
+@73033  = ~Shapeshift: panther~
+@73034  = ~Shift into the form of a panther~
+@73039  = ~Shapeshift: yeti~
+@73040  = ~Shift into the form of a yeti~
+@73041  = ~Shapeshift: python~
+@73042  = ~Shift into the form of a python~
+@73045  = ~Shapeshift: wyvern~
+@73046  = ~Shift into the form of a large wyvern~
+@73051  = ~Shapeshift: giant spider~
+@73052  = ~Shift into the form of a giant spider~
+@73053  = ~Shapeshift: sword spider~
+@73054  = ~Shift into the form of a sword spider~
+@73061  = ~Shapeshift: boring beetle~
+@73062  = ~Shift into the form of a boring beetle~
+@73063  = ~Shapeshift: fire beetle~
+@73064  = ~Shift into the form of a fire beetle~
+@73065  = ~Shapeshift: bonbardier beetle~
+@73066  = ~Shift into the form of bombardier beetle~
+@73067  = ~Shapeshift: rhinocerous beetle~
+@73068  = ~Shift into the form of a rhinocerous beetle~
+@73071  = ~Shapeshift: carrion crawler~
+@73072  = ~Shift into the form of a carrion crawler~
+@73073  = ~Shapeshift: remorhaz~
+@73074  = ~Shift into the form of a remorhaz~
+//
+// ... druids:
 //
 @73101  = ~forest druid~
-@73102  = ~Forest Druid~
-@73103  = ~FOREST DRUID: Forest Druids reside in the regions where soil is nutritious, plant life is abundant and animals thrive. Tall forests are a paradise in many ways: they provide shade from the sun, food and homes for animals and people, and wood for tools. While other wildlands can be wondrous escapes, forests are incessantly under threat of being torn down and subjugated by careless humans and demihumans. Forest druids therefore often live with a constant low-grade paranoia, which informs the stereotype of druids being hostile to civilization.
+@73102  = ~Druid~
+@73103  = ~DRUID: Most druids reside in the regions where soil is nutritious, plant life is abundant and animals thrive.  These regions are in many ways the epitome of harmonious ecosystems, and druids often charge themselves with nurturing and defending them.  Tall forests are a paradise in many ways: they provide shade from the sun, food and homes for animals and people, and wood for tools.  Forests are incessantly under threat of being torn down and subjugated by careless humans and demihumans. Forest druids therefore often live with a constant low-grade paranoia, which informs the stereotype of druids being hostile to civilization.
 
 Advantages:
-- At 1st level, may summon a Spirit Wolf. The HD of the spirit animal increases to match the druid's level at 3rd, 5th, 7th and 10th level.
-- At 2nd level, may shapeshift into the form of a wolf. At 7th level this grows to a stronger dire wolf form.
-- At 5th level, may shapeshift into the form of a ferret.
-- At 9th level, may shapeshift into the form of a black bear.
-- 15th level: Gains 10% resistance to cold, fire, electricity, and acid; gains a further 10% resistance at levels 18 and 21.
+- At 1st level, may summon a Spirit Bear. The HD of the spirit animal increases to match the druid's level at 3rd, 5th, 7th and 10th level.
+- At 3rd level, may shapeshift into the form of a wolf or a ferret at will.
+- At 5th level, may shapeshift into the form of a black bear.
+- At 7th level, may shapeshift into the form of a python or a mountain lion.
+- At 9th level, may shapeshift into a larger dire wolf instead of a wolf.
+- At 9th level, the druid become immune to poison.
+- At 11th level, may shapeshift into a larger grizzly bear instead of a black bear.
+- At 13th level, may shapeshift into a large wyvern.
+- At 15th level, gains 10% resistance to damage from cold, fire, electricity, and acid.  These resistances increase by another 10% at levels 18 and 21.
 
-WOLF: in wolf form the druid can detect hidden enemies. He can attack 1.5 times per round for 2d3 slashing damage.
+WOLF: in wolf form the druid can detect hidden enemies. He can attack 1.5 times per round for 2d4 piercing damage. Successful attacks have a chance to grapple the target, briefly Slowing them; they must make a saving throw to avoid this.
 
-FERRET: in ferret form the druid is hidden from view for up to three rounds. He can attack once per round, causing 1d2 damage; if the target fails a save vs. death, the wound causes disease that saps the targets strength for one turn, and distraction that causes a 10% chance of spell failure.
+FERRET: in ferret form the druid is hidden from view for up to two rounds. <PRO_HESHE> can use this to escape enemies or move undetected, and can attack once per round for 1d2 piercing damage.
 
-BLACK BEAR: in bear form, the Druid has 19 strength. He can attack twice per round with claws that cause 1d6 crushing damage and 1d6 slashing damage.
+BLACK BEAR: in black bear form, the druid has 19 strength. <PRO_HESHE> can attack twice per round with claws that cause 2d6 slashing damage.
+
+PYTHON: in snake form, the druid can attack with a bite that causes 1d3 damage and poisons the target with similar effects to the Assassin's "Poison Weapon" ability. Additionally, the druid can attempt to constrict around an opponent, briefly paralyzing them if they fail a saving throw.
+
+MOUNTAIN LION: in mountain lion form, the druid can attack twice per round for 2d4 slashing damage. Successful attacks can knock the target to the ground if they fail a saving throw. 
+
+DIRE WOLF: in dire wolf form the druid has 19 STR. He can attack 1.5 times per round for 2d6 piercing damage. Successful attacks have a chance to grapple the target, briefly Slowing them; they must make a saving throw to avoid this.
+
+GRIZZLY BEAR: in grizzly bear form, the druid has 20 strength. <PRO_HESHE> can attack twice per round with claws that cause 2d6 slashing damage and, if the target fails a saving throw, and additional 2d4 crushing damage.
+
+WYVERN: in wyvern form the druid can fly over ground-based obstacles like Entangle and Web spells. <PRO_HISHER> powerful claws can rake victims for 2d6 damage and <PRO_HISHER> attacks can poison the target with similar effects to the Assassin's "Poison Weapon" ability. Additionally, the druid can create a powerful gust of wind that acts like a smaller version of a dragon's "Wing Buffet" ability.
 ~
-@73104  = ~FOREST DRUID: Forest Druids reside in the regions where soil is nutritious, plant life is abundant and animals thrive. Tall forests are a paradise in many ways: they provide shade from the sun, food and homes for animals and people, and wood for tools. While other wildlands can be wondrous escapes, forests are incessantly under threat of being torn down and subjugated by careless humans and demihumans. Forest druids therefore often live with a constant low-grade paranoia, which informs the stereotype of druids being hostile to civilization.~
+@73104  = ~FOREST DRUID: Most druids reside in the regions where soil is nutritious, plant life is abundant and animals thrive.  These regions are in many ways the epitome of harmonious ecosystems, and druids often charge themselves with nurturing and defending them.  Tall forests are a paradise in many ways: they provide shade from the sun, food and homes for animals and people, and wood for tools.  Forests are incessantly under threat of being torn down and subjugated by careless humans and demihumans. Forest druids therefore often live with a constant low-grade paranoia, which informs the stereotype of druids being hostile to civilization.~
 @73105  = ~~
 @73111  = ~Druid Shapechange~
 @73112  = ~Shapechange into various animal forms~
@@ -2423,123 +2557,180 @@ BLACK BEAR: in bear form, the Druid has 19 strength. He can attack twice per rou
 @73121  = ~Shapechange: Shambling Mound~
 @73122  = ~Shapechange into a powerful shambling mound~
 //
-// ... mountain druid:
+// ... totemic druid:
 //
-@73201  = ~mountain druid~
-@73202  = ~Mountain Druid~
-@73203  = ~MOUNTAIN DRUID: Mountain druids occupy and protect the high places where the stony earth reaches up to touch the sky. Like their homes and the creatures that share them, mountain druids tend to be hardy and remote, and difficult to know well. Comfortable climbing dangerous cliffs and delving into deep caves, they develop a fearlessness that makes them tenacious opponents.
+@73201  = ~totemic druid~
+@73202  = ~Totemic Druid~
+@73203  = ~TOTEMIC DRUID: This druid is similar in many ways to a traditional one. However, a Totemic Druid does not learn to change their shape into that of animals. Rather, they <PRO_HESHE> manifests <PRO_HISHER> connection to the animal world as an external force, able to call upon more Spirit Animals to aid <PRO_HIMHER>, and do so more often.
 
 Advantages:
-- At 1st level, may summon a Spirit Bear. The HD of the spirit animal increases to match the druid's level at 3rd, 5th, 7th and 10th level.
-- At 2nd level, may shapeshift into the form of a mountain lion.
-- At 5th level, may shapeshift into the form of a rat.
-- At 9th level, may shapeshift into the form of a grizzly bear.
-- 15th level: Gains 10% resistance to cold, fire, electricity, and acid; gains a further 10% resistance at levels 18 and 21.
+- At 1st level, may use the Summon Spirit Animal ability once per day. Gains an additional use every 3 levels thereafter.
+- At 9th level, the druid becomes immune to poison.
+- At 15th level, gains 10% resistance to damage from cold, fire, electricity, and acid.  These resistances increase by another 10% at levels 18 and 21.
 
-MOUNTAIN LION: in lion form the druid can attack 1.5 times per round for 2d3 slashing damage. If the target fails a save vs. death, the ragged wound is particularly savage, causing another 2 points of damage per round for 3 rounds.
+SUMMON SPIRIT ANIMAL: The Totemic Druid can summon any of several spirit animals (spirit bear, spirit wolf, spirit lion, or spirit snake) to aid <PRO_HIMHER> for 6 turns. The spirit animal has 1 HD at level 1, 3 HD at level 3, 5 HD at level 5, 7 HD at level 7, and 10 HD at level 10.
 
-RAT: in rat form the druid is hidden from view for up to three rounds. He can attack once per round, causing 1d2 damage; if the target fails a save vs. death, the wound causes disease that saps the targets strength for one turn, and distraction that causes a 10% chance of spell failure.
-
-GRIZZLY BEAR: in bear form, the Druid has 20 strength. He can attack twice per round with claws that cause 1d6 crushing damage and 1d6 slashing damage.
+Disadvantages:
+- Cannot shapeshift.
 ~
-@73204  = ~MOUNTAIN DRUID: Mountain druids occupy and protect the high places where the stony earth reaches up to touch the sky. Like their homes and the creatures that share them, mountain druids tend to be hardy and remote, and difficult to know well. Comfortable climbing dangerous cliffs and delving into deep caves, they develop a fearlessness that makes them tenacious opponents.~
-@73205  = ~~
-@73211  = ~Shapechange: Mountain Lion~
-@73212  = ~Shapechange into a mountain lion form~
-@73213  = ~Shapechange: Rat~
-@73214  = ~Shapechange into a rat form~
-@73215  = ~Shapechange: Cave Bear~
-@73216  = ~Shapechange into a cave bear form~
 //
-// ... jungle druid:
+// ... avenger => hivekeeper:
 //
-@73301  = ~jungle druid~
-@73302  = ~Jungle Druid~
-@73303  = ~JUNGLE DRUID: Jungle Druids occupy dangerous lands where life forms crowd each other and compete viciously for resources. They take what some consider an unhealthy interest in the biological forms of warfare in which jungle-dwelling animals specialize: toxins and disease. The Jungle druid also practices the magic of deception to gain tactical advantages in an environment where a single sting can mean the end of one's life.
+@73401  = ~hivekeeper~
+@73402  = ~Hivekeeper~
+@73403  = ~HIVEKEEPER: these druids ... .
 
 Advantages:
-- At 1st level, may summon a Spirit Snake. The HD of the spirit animal increases to match the druid's level at 3rd, 5th, 7th and 10th level.
-- At 2nd level, may shapeshift into the form of a panther.
-- At 5th level, may shapeshift into the form of a spider.
-- At 9th level, may shapeshift into the form of a wyvern.
-- 15th level: Gains 10% resistance to cold, fire, electricity, and acid; gains a further 10% resistance at levels 18 and 21.
+- At 1st level, may summon a Spirit Spider. The HD of the spirit animal increases to match the druid's level at 3rd, 5th, 7th and 10th level.
+- At 3rd level, may shapeshift into the form of a giant beetle at will.
+- At 5th level, may shapeshift into the form of a giant spider.
+- At 7th level, may shapeshift into the form of a giant fire beetle or an acidic bombardier beetle.
+- At 9th level, may shapeshift into a sword spider.
+- At 9th level, the druid becomes immune to poison.
+- At 11th level, may shapeshift into a carrion crawler.
+- At 13th level, may shapeshift into a rhinocerous beetle.
+- At 15th level, gains 10% resistance to damage from cold, fire, electricity, and acid.  These resistances increase by another 10% at levels 18 and 21.
 
-PANTHER: in wolf form the druid can attack 1.5 times per round for 2d3 slashing damage. If the target fails a save vs. death, the ragged wound is particularly savage, causing another 2 points of damage per round for 3 rounds.
+BORING BEETLE: in this form the druid can make a powerful piercing attack once per round for 2d6+2 piercing damage. The beetle's hard shell gives the druid a 3-point armor class bonus against missile weapons, and 50% resistance to physical damage generally.
 
-SPIDER: in spider form the druid is hidden from view for up to three rounds. He can attack once per round, causing 1d2 damage; if the target fails a save vs. death, the wound injects poison into the victim which causes 1 point of damage every 3 seconds for 3 rounds.
+GIANT SPIDER: in this form the druid can make 1.5 attacks per round for 1d8 piercing damage; when successful, these attacks deliver a poison with similar effects to the Assassin's "Poison Weapon" ability. The druid is immune to magical and nonmagical webs while in this form, and can deliver a lesser version of the "Web" spell at foes once per three rounds.
 
-WYVERN: in wyvern form, the druid is immune to entanglement and webs. He can attack twice per round with claws that cause 2d4 slashing damage; if the target fails a save vs. death, the wound injects poison into the victim which causes 1 point of damage every 2 seconds for 3 rounds.
+FIRE BEETLE: in this form, the druid can make one pincer attack per round, for 2d4 piercing damage and and extra 2d4 fire damage. The druid has a 3-point armor class bonus against missile attacks, and 75% resistance to fire damage.
+
+BOMBARDIER BEETLE: in this form, the druid can make one pincer attack per round, for 2d4 piercing damage and and extra 2d4 acid damage. The druid has a 3-point armor class bonus against missile attacks, and 75% resistance to acid damage.
+
+SWORD SPIDER: in this form, the druid can move extremely fast and attack 4 times per round for 2d4 slashing damage. The druid is immune to magical and nonmagical webs while in this form.
+
+CARRION CRAWLER: in this form the druid can attack twice per round for 2d4 piercing damage. Successful attacks have a 50% chance to paralyze the victim for several rounds if they fail a saving throw vs. poison.
+
+RHINOCEROUS BEETLE: in this massive form, the druid has 22 strength. <PRO_HESHE> can attack twice per round with incredibly powerful pincers, for 3d6 piercing damage. <PRO_HISHER> hard armor gives a 4-point armor class bonus against slashing, crushing, and missile attacks, and 50% resistance to physical damage generally.
 ~
-@73304  = ~JUNGLE DRUID: Jungle Druids occupy dangerous lands where life forms crowd each other and compete viciously for resources. They take what some consider an unhealthy interest in the biological forms of warfare in which jungle-dwelling animals specialize: toxins and disease. The Jungle druid also practices the magic of deception to gain tactical advantages in an environment where a single sting can mean the end of one's life.~
-@73305  = ~~
-@73311  = ~Shapechange: Panther~
-@73312  = ~Shapechange into panther form~
-@73313  = ~Shapechange: Spider~
-@73314  = ~Shapechange into spider form~
-@73315  = ~Shapechange: Wyvern~
-@73316  = ~Shapechange into wyvern form~
-//
-// ... desert druid:
-//
-@73401  = ~desert druid~
-@73402  = ~Desert Druid~
-@73403  = ~DESERT DRUID: The desert druid is equally at home in hot scrublands, sandy wastes, and canyoned badlands. The harsh, remote nature of such environs provides a serene beauty in which to bask. Desert druids tend to emulate the animals that make homes in such places, exuding an air of power, fleetness, and proud majesty. Often seen by others as aloof and haughty, desert druids become passionate and determined foes when roused to anger.
-
-Advantages:
-- At 1st level, may summon a Spirit Lion. The HD of the spirit animal increases to match the druid's level at 3rd, 5th, 7th and 10th level.
-- At 2nd level, may shapeshift into the form of a leopard.
-- At 5th level, may shapeshift into the form of a hare.
-- At 9th level, may shapeshift into the form of a basilisk.
-- 15th level: Gains 10% resistance to cold, fire, electricity, and acid; gains a further 10% resistance at levels 18 and 21.
-
-LEOPARD: in leopard form the druid can attack 1.5 times per round for 2d3 slashing damage. If the target fails a save vs. death, the ragged wound is particularly savage, causing another 2 points of damage per round for 3 rounds.
-
-HARE: in hare form the druid is hidden from view for up to three rounds. He can attack once per round, causing 1d2 damage; if the target fails a save vs. death, the wound causes disease that saps the targets strength for one turn, and distraction that causes a 10% chance of spell failure.
-
-BASILISK: in basilisk form, the druid mat attack once per round with a powerful bite attack that does 1d6 crushing damage and 1d6 slashing damage. In addition, the druid may use a version of the basislisk's gaze attack which, while weaker than that of the real creature, can paralyze a creature that fails a save vs. petrification, for 60 seconds.
-~
-@73404  = ~DESERT DRUID: The desert druid is equally at home in hot scrublands, sandy wastes, and canyoned badlands. The harsh, remote nature of such environs provides a serene beauty in which to bask. Desert druids tend to emulate the animals that make homes in such places, exuding an air of power, fleetness, and proud majesty. Often seen by others as aloof and haughty, desert druids become passionate and determined foes when roused to anger.~
-@73405  = ~~
-@73411  = ~Shapechange: Leopard~
-@73412  = ~Shapechange into leopard form~
-@73413  = ~Shapechange: Hare~
-@73414  = ~Shapechange into rabbit form~
-@73415  = ~Shapechange: Basilisk~
-@73416  = ~Shapechange into basilisk form~
+@73411  = ~Sumon Spirit Spider~
+@73412  = ~~
+@73413  = ~Spirit Spider~
 //
 // ... arctic druid:
 //
-@73501  = ~arctic druid~
-@73502  = ~Arctic Druid~
-@73503  = ~ARCTIC DRUID: Even in the frozen tundra, life persists. Arctic druids revel in the harsh but balanced wilds in which the cold is every creature's most dangerous predator. They revel in arctic storms and learn to manipulate the forces of water and air that cause them. Through seclusion and training, they learn the importance of perseverance and determination in the face of privation and seeming hopelessness. This makes Arctic druids quite dangerous foes to those who would offend nature in the frozen north.
+@73501  = ~northern druid~
+@73502  = ~Northern Druid~
+@73503  = ~NORTHERN DRUID: Even in the frozen tundra and on windswept mountains, life persists. Arctic druids revel in the harsh but balanced wilds in which the cold is every creature's most dangerous predator. They revel in arctic storms and learn to manipulate the forces of water and air. Through seclusion and training, they learn the importance of perseverance and determination in the face of privation and seeming hopelessness, and harness the strengths of animals that develop such perserverance naturally. This makes northern druids quite dangerous foes to those who would offend nature in the frozen north.
+
+Advantages:
+- At 1st level, may summon a Spirit Wolf. The HD of the spirit animal increases to match the druid's level at 3rd, 5th, 7th and 10th level.
+- At 3rd level, may shapeshift into the form of a wolf at will.
+- At 5th level, may shapeshift into the form of a black bear or a giant beetle.
+- At 7th level, may shapeshift into the form of a yeti.
+- At 9th level, may shapeshift into a winter wolf instead of a wolf.
+- At 9th level, the druid become immune to poison.
+- At 11th level, may shapeshift into a polar bear instead of a black bear.
+- At 13th level, may shapeshift into a remorhaz.
+- At 15th level, gains 10% resistance to damage from cold, fire, electricity, and acid.  These resistances increase by another 10% at levels 18 and 21.
+
+WOLF: in this form the druid can detect hidden enemies. He can attack 1.5 times per round for 2d4 piercing damage. Successful attacks have a chance to grapple the target, briefly Slowing them; they must make a saving throw to avoid this.
+
+BLACK BEAR: in this form, the druid has 19 strength. <PRO_HESHE> can attack twice per round with claws that cause 2d6 slashing damage.
+
+BORING BEETLE: in this form the druid can make a powerful piercing attack once per round for 2d6+2 piercing damage. The beetle's hard shell gives the druid a 3-point armor class bonus against missile weapons, and 50% resistance to physical damage generally.
+
+YETI: in this form the druid has 19 strength. <PRO_HESHE> can attack twice per round with fists that cause 2d6 crushing damage.  Additionally, successful attacks can knock the target away from the druid on a failed saving throw.
+
+FIRE BEETLE: in this form, the druid can make one pincer attack per round, for 2d4 piercing damage and and extra 2d4 fire damage. The druid has a 3-point armor class bonus against missile attacks, and 75% resistance to fire damage.
+
+WINTER WOLF: in this form the druid can attack 1.5 times per round for 2d4 piercing damage. Successful attacks have a chance to grapple the target, briefly Slowing them; they must make a saving throw to avoid this. Additionally, the druid gains the ability to use a ranged Ice Breath attack doing 6d4 cold damage (save for half).
+
+POLAR BEAR: in this form, the druid has 21 strength. <PRO_HESHE> can attack twice per round with claws that cause 2d8 slashing damage and, if the target fails a saving throw, and additional 2d4 crushing damage.
+
+REMORHAZ: in this powerful form, the druid has 21 strength and 100% resistance to cold damage. <PRO_HESHE> can attack 3 times per round with powerful pincers, for 2d6 piercing damage. <PRO_HISHER> hard armor gives a 4-point armor class bonus against slashing, crushing, and missile attacks, and 50% resistance to physical damage generally.
+~
+//
+// ... shadow druid:
+//
+@73801  = ~shadow druid~
+@73802  = ~Shadow Druid~
+@73803  = ~SHADOW DRUID: ... .
+
+Advantages:
+- At 1st level, may summon a Shadow Wolf. The HD of the spirit animal increases to match the druid's level at 3rd, 5th, 7th and 10th level.
+- At 5th level, may shapeshift into the form of a shadow wolf.
+- At 9th level, may shapeshift into a panther.
+- At 9th level, the druid becomes immune to poison.
+- At 15th level, gains 10% resistance to damage from cold, fire, electricity, and acid.  These resistances increase by another 10% at levels 18 and 21.
+
+SHADOW WOLF: in this form ...
+
+PANTHER: in this form ...
+
+Disadvantages:
+- No access to spells from the sphere of Light.
+~
+@73811  = ~Sumon Shadow Wolf~
+@73812  = ~~
+@73813  = ~Shadow Wolf~
+//
+// ... lost druid:
+//
+@73901  = ~lost druid~
+@73902  = ~Lost Druid~
+@73903  = ~LOST DRUID: Lost druids find that many other druids no longer consider them kin. Stricken by death in some traumatic way, these brooding individuals have a near-obsessive interest in the role of death in the cycles of life. They even take this as far as reanimating animal corpses and embracing necromantic magic in order to seek vengeance. This makes Lost Druids particularly dangerous, shunned by nearly everyone.
+
+Advantages:
+- At 1st level, may summon a Dread Wolf. This ability summons two dread wolves at 7th level, and three at 10th level.
+- At 5th level, may shapeshift into the form of a dread wolf.
+- At 9th level, may shapeshift into a vampiric wolf.
+- At 9th level, the druid becomes immune to level drain.
+- At 15th level, gains 10% resistance to damage from cold, fire, electricity, and acid.  These resistances increase by another 10% at levels 18 and 21.
+
+DREAD WOLF: in this form the druid can can attack 1.5 times per round for 2d4 piercing damage. Successful attacks can cause Disease in the target, sapping their Strength by 1 point if they fail a saving throw.  Additionally, the druid is 100% resistant to cold damage and 50% resistant to fire and electric damage.
+
+VAMPIRIC WOLF: in this form the druid can can attack 1.5 times per round for 2d6 piercing damage. Successful attacks drain the target of 2 points of Constitution if they fail a saving throw.  Additionally, the druid is 100% resistant to cold damage and 50% resistant to fire and electric damage.
+
+Disadvantages:
+- No access to spells from the sphere of Life.
+~
+@73911  = ~Summon Dread Wolf~
+//
+// ... multiclass druids
+//
+@74100  = ~Fighter/Druid~
+@74300  = ~Druid/Mage~
+@74500  = ~Druid/Ranger~
+@74700  = ~Druid/Thief~
+@74101  = ~druid of silvanus~
+@74102  = ~Druid of Silvanus~
+@74103  = ~DRUID OF SILVANUS: Most druids reside in the regions where soil is nutritious, plant life is abundant and animals thrive.  These regions are in many ways the epitome of harmonious ecosystems, and druids often charge themselves with nurturing and defending them.  Tall forests are a paradise in many ways: they provide shade from the sun, food and homes for animals and people, and wood for tools.  Forests are incessantly under threat of being torn down and subjugated by careless humans and demihumans. Forest druids therefore often live with a constant low-grade paranoia, which informs the stereotype of druids being hostile to civilization.
 
 Advantages:
 - At 1st level, may summon a Spirit Bear. The HD of the spirit animal increases to match the druid's level at 3rd, 5th, 7th and 10th level.
-- At 2nd level, may shapeshift into the form of a winter wolf.
-- At 5th level, may shapeshift into the form of a hare.
-- At 9th level, may shapeshift into the form of a polar bear.
-- 15th level: Gains 10% resistance to cold, fire, electricity, and acid; gains a further 10% resistance at levels 18 and 21.
+- At 3rd level, may shapeshift into the form of a wolf or a ferret at will.
+- At 5th level, may shapeshift into the form of a black bear.
+- At 7th level, may shapeshift into the form of a python or a mountain lion.
+- At 9th level, may shapeshift into a larger dire wolf instead of a wolf.
+- At 9th level, the druid become immune to poison.
+- At 11th level, may shapeshift into a larger grizzly bear instead of a black bear.
+- At 13th level, may shapeshift into a large wyvern.
+- At 15th level, gains 10% resistance to damage from cold, fire, electricity, and acid.  These resistances increase by another 10% at levels 18 and 21.
 
-WINTER WOLF: in wolf form the druid can attack 1.5 times per round for 2d3 slashing damage. Once per round, the druid may also project frost breath at a nearby foe, causing up to 1d12 points of cold damage.
+WOLF: in wolf form the druid can detect hidden enemies. He can attack 1.5 times per round for 2d4 piercing damage. Successful attacks have a chance to grapple the target, briefly Slowing them; they must make a saving throw to avoid this.
 
-HARE: in hare form the druid is hidden from view for up to three rounds. He can attack once per round, causing 1d2 damage; if the target fails a save vs. death, the wound causes disease that saps the targets strength for one turn, and distraction that causes a 10% chance of spell failure.
+FERRET: in ferret form the druid is hidden from view for up to two rounds. <PRO_HESHE> can use this to escape enemies or move undetected, and can attack once per round for 1d2 piercing damage.
 
-POLAR BEAR: in bear form, the Druid has 21 strength. He can attack twice per round with claws that cause 1d6 crushing damage and 1d6 slashing damage. 
-~
-@73504  = ~ARCTIC DRUID: Even in the frozen tundra, life persists. Arctic druids thrive in the harsh lands in which the cold is every creature's most dangerous predator. They revel in arctic storms and learn to manipulate the forces of water and wind that cause them. Through seclusion and training, they learn the importance of perserverance and determination in the face of privation and seeming hopelessness. This makes Arctic druids quite dangerous foes to those who would offend nature in the frozen north.~
-@73505  = ~~
-@73511  = ~Shapechange: Winter Wolf~
-@73512  = ~Shapechange into winter wolf form~
-@73513  = ~Shapechange: Arctic Hare~
-@73514  = ~Shapechange into rabbit form~
-@73515  = ~Shapechange: Polar Bear~
-@73516  = ~Shapechange into polar bear form~
+BLACK BEAR: in black bear form, the druid has 19 strength. <PRO_HESHE> can attack twice per round with claws that cause 2d6 slashing damage.
+
+PYTHON: in snake form, the druid can attack with a bite that causes 1d3 damage and poisons the target with similar effects to the Assassin's "Poison Weapon" ability. Additionally, the druid can attempt to constrict around an opponent, briefly paralyzing them if they fail a saving throw.
+
+MOUNTAIN LION: in mountain lion form, the druid can attack twice per round for 2d4 slashing damage. Successful attacks can knock the target to the ground if they fail a saving throw. 
+
+DIRE WOLF: in dire wolf form the druid has 19 STR. He can attack 1.5 times per round for 2d6 piercing damage. Successful attacks have a chance to grapple the target, briefly Slowing them; they must make a saving throw to avoid this.
+
+GRIZZLY BEAR: in grizzly bear form, the druid has 20 strength. <PRO_HESHE> can attack twice per round with claws that cause 2d6 slashing damage and, if the target fails a saving throw, and additional 2d4 crushing damage.
+
+WYVERN: in wyvern form the druid can fly over ground-based obstacles like Entangle and Web spells. <PRO_HISHER> powerful claws can rake victims for 2d6 damage and <PRO_HISHER> attacks can poison the target with similar effects to the Assassin's "Poison Weapon" ability. Additionally, the druid can create a powerful gust of wind that acts like a smaller version of a dragon's "Wing Buffet" ability.~
 //
-// ... lycanthropic mystic:
+// ... lycanthropic occultist:
 //
 @76201  = ~beast lord~
 @76202  = ~Beast Lord~
-@76203  = ~BEAST LORD: these individuals have come to understand that within even the most rational and civilized man or woman lies an animal driven by primal needs and desires. (Often, this understanding is developed from horrifying experiments performed on subjects who are very rarely willing.) Through the application of a serum derived from a strain of lycanthropy, the Beast Lord can all forth <PRO_HISHER> own bestial nature, causing <PRO_HISHER> very body to take on lupine qualities. This also gives the Beast Lord a deep insight into magic relating to summoning and controlling animals.
+@76203  = ~BEAST LORD: these individuals have come to understand that within even the most rational and civilized man or woman lies an animal driven by primal needs and desires. (Often, this understanding is developed from horrifying experiments performed on subjects who are very rarely willing.) Through the application of a serum derived from a strain of lycanthropy, the Beast Lord can call forth <PRO_HISHER> own bestial nature, causing <PRO_HISHER> very body to take on lupine qualities. This also gives the Beast Lord a deep insight into magic relating to summoning and controlling animals.
 
 Advantages:
 - May cast "Beast Claw" as an innate ability, at will.

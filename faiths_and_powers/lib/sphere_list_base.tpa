@@ -93,10 +93,10 @@ CLERIC_BOLT_OF_GLORY                   , 6 => War
 CLERIC_SYMBOL_FEAR                     , 7 => War
 
 //  EXPLORATION
-WIZARD_PFP_OLD                         , 1 => Exploration // exped. retreat... need to add for non-IWDEE
+WIZARD_PFP_OLD                         , 1 => Exploration // IWDEE exped. retreat... need to add for non-IWDEE
 CLERIC_FIND_TRAPS                      , 1 => Exploration
 MAZZY_HASTE                            , 2 => Exploration
-CLERIC_FREE_ACTION                     , 3 => Exploration
+CLERIC_FREE_ACTION                     , 3 => Exploration // move higher, make new low-level version
 WIZARD_EYE                             , 4 => Exploration
 WIZARD_DIMENSION_DOOR                  , 5 => Exploration
 WIZARD_TELEPORT_FIELD                  , 6 => Exploration
@@ -105,6 +105,7 @@ WIZARD_FREEDOM                         , 7 => Exploration
 CLERIC_ETHER_GATE                      , 7 => Exploration
 
 //  KNOWLEDGE
+//WIZARD_IDENTIFY                        , 1 => Knowledge
 CLERIC_DETECT_EVIL                     , 1 => Knowledge
 CLERIC_KNOW_ALIGNMENT                  , 1 => Knowledge
 WIZARD_CLAIRVOYANCE                    , 2 => Knowledge
@@ -277,8 +278,9 @@ CLERIC_SUNRAY                          , 7 => Light
 //  SHADOW
 CLERIC_SANCTUARY                       , 1 => Shadow
 WIZARD_BLINDNESS                       , 2 => Shadow
+// add enhanced Chameleon here          , 2 => Shadow
 b_c302 /*cloak of darkness*/           , 3 => Shadow
-WIZARD_SHADOW_MONSTERS                 , 3 => Shadow
+WIZARD_DEMI_SHADOW_MONSTERS            , 4 => Shadow
 WIZARD_PHANTOM_BLADE                   , 4 => Shadow
 WIZARD_SHADOW_DOOR                     , 4 => Shadow
 d5sh501 /*SR summon shadows*/          , 5 => Shadow

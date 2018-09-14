@@ -115,6 +115,9 @@ END
 //COPY CLAB__________________________________________________________________________
 //Just Cleric Clab.  Will add any needed kits
 COPY ~faiths_and_powers/deity/Clab/clabpr01.2da~ ~override~
+ACTION_IF FILE_EXISTS_IN_GAME ~d5sorc.2da~ BEGIN
+  APPEND ~clabpr01.2da~ ~NO_WSPLS    AP_D50WZ    ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** ~
+END
 COPY ~faiths_and_powers/deity/Clab/clabdr01.2da~ ~override~
 COPY ~faiths_and_powers/deity/Clab/clabrn01.2da~ ~override~
 COPY ~faiths_and_powers/deity/Clab/clabpa01.2da~ ~override~
