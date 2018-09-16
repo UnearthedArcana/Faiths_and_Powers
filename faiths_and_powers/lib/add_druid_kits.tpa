@@ -901,7 +901,7 @@ SAY @73703
 ACTION_IF GAME_IS ~bgee bg2ee eet iwdee~ THEN BEGIN
 	LAF fl#add_kit_ee
 		INT_VAR
-			briefdesc = RESOLVE_STR_REF (@73603)
+			briefdesc = RESOLVE_STR_REF (@73703)
 		STR_VAR
 			kit_name = D5_DR_GRAY
 			clswpbon = ~0 0 3~
@@ -910,60 +910,31 @@ END
 
 //SHADOW DRUID ABILITY FILES_________________________________________________________
 //
-COPY ~faiths_and_powers/kits/druids/738_shadow_druid/d5dshad.2da~ ~override~
+COPY ~faiths_and_powers/kits/druids/737_gray_druid/d5dshad.2da~ ~override~
 
-COPY ~faiths_and_powers/kits/druids/738_shadow_druid/d5drss8.spl~ ~override~
-  SAY NAME1 @73811 // ~Summon Shadow Wolf~
-  SAY UNIDENTIFIED_DESC @73813 // ~Shadow Wolf - etc.~
-COPY ~faiths_and_powers/kits/druids/738_shadow_druid/d5drssw1.eff~ ~override~
-COPY ~faiths_and_powers/kits/druids/738_shadow_druid/d5drssw1.cre~ ~override~
-  SAY NAME1 @73813 // ~Shadow Wolf~
-COPY ~faiths_and_powers/kits/druids/738_shadow_druid/d5drssw2.eff~ ~override~
-COPY ~faiths_and_powers/kits/druids/738_shadow_druid/d5drssw2.cre~ ~override~
-  SAY NAME1 @73813
-COPY ~faiths_and_powers/kits/druids/738_shadow_druid/d5drssw3.eff~ ~override~
-COPY ~faiths_and_powers/kits/druids/738_shadow_druid/d5drssw3.cre~ ~override~
-  SAY NAME1 @73813
-COPY ~faiths_and_powers/kits/druids/738_shadow_druid/d5drssw4.eff~ ~override~
-COPY ~faiths_and_powers/kits/druids/738_shadow_druid/d5drssw4.cre~ ~override~
-  SAY NAME1 @73813
-COPY ~faiths_and_powers/kits/druids/738_shadow_druid/d5drssw5.eff~ ~override~
-COPY ~faiths_and_powers/kits/druids/738_shadow_druid/d5drssw5.cre~ ~override~
-  SAY NAME1 @73813
+COPY ~faiths_and_powers/kits/druids/737_gray_druid/d5drss8.spl~ ~override~
+  SAY NAME1 @737__ 				// ~Summon...?~
+  SAY UNIDENTIFIED_DESC @737 	// ~...~
+COPY ~faiths_and_powers/kits/druids/737_gray_druid/d5drssw1.eff~ ~override~
+COPY ~faiths_and_powers/kits/druids/737_gray_druid/d5drssw1.cre~ ~override~
+  SAY NAME1 @737
+COPY ~faiths_and_powers/kits/druids/737_gray_druid/d5drssw2.eff~ ~override~
+COPY ~faiths_and_powers/kits/druids/737_gray_druid/d5drssw2.cre~ ~override~
+  SAY NAME1 @737
+COPY ~faiths_and_powers/kits/druids/737_gray_druid/d5drssw3.eff~ ~override~
+COPY ~faiths_and_powers/kits/druids/737_gray_druid/d5drssw3.cre~ ~override~
+  SAY NAME1 @737
+COPY ~faiths_and_powers/kits/druids/737_gray_druid/d5drssw4.eff~ ~override~
+COPY ~faiths_and_powers/kits/druids/737_gray_druid/d5drssw4.cre~ ~override~
+  SAY NAME1 @737
+COPY ~faiths_and_powers/kits/druids/737_gray_druid/d5drssw5.eff~ ~override~
+COPY ~faiths_and_powers/kits/druids/737_gray_druid/d5drssw5.cre~ ~override~
+  SAY NAME1 @737
 
-COPY ~faiths_and_powers/kits/druids/738_shadow_druid/d5drsc8.spl~ ~override~
+COPY ~faiths_and_powers/kits/druids/737_gray_druid/d5drsc8.spl~ ~override~
   SAY NAME1 @73111
   SAY UNIDENTIFIED_DESC @73111
-COPY ~faiths_and_powers/kits/druids/738_shadow_druid/d5drss8.eff~ ~override~
-
-//REMOVE FROM BGEE MENUS____________________________________________________________
-//
-ACTION_IF GAME_IS ~bgee~ BEGIN
-  COPY_EXISTING ~kitlist.2da~ ~override~
-	COUNT_2DA_COLS cols
-	READ_2DA_ENTRIES_NOW rows cols
-	FOR (row = 1; row < rows; ++row) BEGIN
-	  READ_2DA_ENTRY_FORMER rows row 1 ~kit~
-	  PATCH_IF ~%kit%~ STRING_EQUAL_CASE ~D5_DR_SHAD~ BEGIN
-	    READ_2DA_ENTRY_FORMER rows row 0 shadow_druid_num
-	  END
-	END
-  BUT_ONLY
-  ACTION_FOR_EACH race IN ~D~ ~E~ ~G~ ~H~ ~HE~ ~HL~ ~HO~ BEGIN
-	ACTION_IF FILE_EXISTS_IN_GAME ~K_D_%race%.2da~ BEGIN
-	  COPY_EXISTING ~K_D_%race%.2da~ ~override~
-		COUNT_2DA_COLS cols
-		READ_2DA_ENTRIES_NOW rows cols
-		FOR (row = 1; row < rows; ++row) BEGIN
-		  READ_2DA_ENTRY_FORMER rows row 1 kit_num
-		  PATCH_IF (%kit_num% = shadow_druid_num) BEGIN
-			REMOVE_2DA_ROW row cols
-		  END
-		END
-	  BUT_ONLY
-	END
-  END
-END
+COPY ~faiths_and_powers/kits/druids/737_gray_druid/d5drss8.eff~ ~override~
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
@@ -991,7 +962,7 @@ END
 	u_bows 				= 1
 	u_crossbows 		= 0
   STR_VAR
-    clab_name 		= ~d5dshad~
+    clab_name 		= ~d5dgray~
 	class 			= ~druid~
 	s_Life 			= ~minor~
 	s_Death 		= ~x~

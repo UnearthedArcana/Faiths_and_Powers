@@ -326,6 +326,18 @@ COPY_EXISTING ~mxsplprs.2da~ ~override/mxspldru.2da~
 	COPY ~faiths_and_powers/kits/incarnates/splshmkn.2da~ ~override~
 //__________________________________________________________________________________
 
+//Add IWD spells if not already in game_____________________________________________
+//
+ACTION_IF GAME_IS ~bgee bg2ee eet~ BEGIN
+ ACTION_IF NOT MOD_IS_INSTALLED ~setup-iwdification.tp2~ ~40~ BEGIN  //If IWDification not installed...
+  ACTION_IF NOT FILE_EXISTS_IN_GAME ~b_IWD.itm~ BEGIN    			//If b_ IWD spells not installed...
+	COPY ~faiths_and_powers/compatibility/b_IWD.itm~ ~override~   	//to detect this component 
+	INCLUDE ~faiths_and_powers/lib/Setup_IWD_divine_Spells.tpa~    	//install them
+  END
+ END
+END
+//__________________________________________________________________________________
+
 //Create Sphere System______________________________________________________________
 //
 INCLUDE ~faiths_and_powers/lib/create_sphere_system.tpa~
@@ -796,16 +808,6 @@ ACTION_IF (%d5_item_use% = 1) BEGIN
   INCLUDE ~faiths_and_powers/lib/item_usability.tpa~
 END
 //__________________________________________________________________________________
-
-//Add IWD spells if not already in game
-ACTION_IF GAME_IS ~bgee bg2ee eet~ BEGIN
- ACTION_IF NOT MOD_IS_INSTALLED ~setup-iwdification.tp2~ ~40~ BEGIN  //If IWDification not installed...
-  ACTION_IF NOT FILE_EXISTS_IN_GAME ~b_IWD.itm~ BEGIN    			//If b_ IWD spells not installed...
-	COPY ~faiths_and_powers/compatibility/b_IWD.itm~ ~override~   	//to detect this component 
-	INCLUDE ~faiths_and_powers/lib/Setup_IWD_divine_Spells.tpa~    	//install them
-  END
- END
-END
 
 //Apply Sphere System_______________________________________________________________
 //

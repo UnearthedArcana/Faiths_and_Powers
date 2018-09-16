@@ -6,6 +6,7 @@
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 
+INCLUDE ~faiths_and_powers/lib/hla_actions.tpa~
 
 COPY ~faiths_and_powers/spheres/d5spmem.spl~ ~override~
 	SAY NAME1 @6
@@ -241,6 +242,82 @@ CLEAR_ARRAYS
 ACTION_IF GAME_IS ~tob bg2ee eet~ BEGIN
 	INCLUDE ~faiths_and_powers/lib/hlas.tpa~
 END
+//___________________________________________________________________________________
+
+//multi sorcerer HLAs________________________________________________________________
+//
+COPY_EXISTING ~kitlist.2da~ ~override~
+  COUNT_2DA_COLS cols 
+  READ_2DA_ENTRIES_NOW rows cols 
+  FOR (row = 1; row < rows; ++row) BEGIN 
+    READ_2DA_ENTRY_FORMER rows row 1 ~kit_name~ 
+    PATCH_IF ~%kit_name%~ STRING_EQUAL_CASE ~D5_FIGHTER_SORCERER~ BEGIN
+      SET fighter_sorcerer_row = %row%
+      READ_2DA_ENTRY_FORMER rows fighter_sorcerer_row 0 fighter_sorcerer_index
+    END
+    PATCH_IF ~%kit_name%~ STRING_EQUAL_CASE ~D5_RANGER_SORCERER~ BEGIN
+      SET ranger_sorcerer_row = %row%
+      READ_2DA_ENTRY_FORMER rows ranger_sorcerer_row 0 ranger_sorcerer_index
+    END
+    PATCH_IF ~%kit_name%~ STRING_EQUAL_CASE ~D5_SORCERER_THIEF~ BEGIN
+      SET sorcerer_thief_row = %row%
+      READ_2DA_ENTRY_FORMER rows sorcerer_thief_row 0 sorcerer_thief_index
+    END
+  END
+BUT_ONLY
+
+ACTION_IF FILE_EXISTS_IN_GAME ~LUFM0.2da~ BEGIN
+  COPY_EXISTING ~LUFM0.2DA~ ~override/lub_%fighter_sorcerer_index%.2da~
+	REPLACE_TEXTUALLY ~spwi920~ ~d5hl920~
+	REPLACE_TEXTUALLY ~spwi921~ ~d5hl921~
+	REPLACE_TEXTUALLY ~spwi922~ ~d5hl922~
+	REPLACE_TEXTUALLY ~spwi923~ ~d5hl923~
+	REPLACE_TEXTUALLY ~spwi924~ ~d5hl924~
+	REPLACE_TEXTUALLY ~spwi925~ ~d5hl925~
+	REPLACE_TEXTUALLY ~spcl928~ ~d5hl928~
+	REPLACE_TEXTUALLY ~spcl929~ ~d5hl929~
+	REPLACE_TEXTUALLY ~spcl930~ ~d5hl930~
+  COPY_EXISTING ~LUFM0.2DA~ ~override/lub_%ranger_sorcerer_index%.2da~
+	REPLACE_TEXTUALLY ~spwi920~ ~d5hl920~
+	REPLACE_TEXTUALLY ~spwi921~ ~d5hl921~
+	REPLACE_TEXTUALLY ~spwi922~ ~d5hl922~
+	REPLACE_TEXTUALLY ~spwi923~ ~d5hl923~
+	REPLACE_TEXTUALLY ~spwi924~ ~d5hl924~
+	REPLACE_TEXTUALLY ~spwi925~ ~d5hl925~
+	REPLACE_TEXTUALLY ~spcl928~ ~d5hl928~
+	REPLACE_TEXTUALLY ~spcl929~ ~d5hl929~
+	REPLACE_TEXTUALLY ~spcl930~ ~d5hl930~
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~LUMT0.2da~ BEGIN
+  COPY_EXISTING ~LUMT0.2DA~ ~override/lub_%sorcerer_thief_index%.2da~
+	REPLACE_TEXTUALLY ~spwi920~ ~d5hl920~
+	REPLACE_TEXTUALLY ~spwi921~ ~d5hl921~
+	REPLACE_TEXTUALLY ~spwi922~ ~d5hl922~
+	REPLACE_TEXTUALLY ~spwi923~ ~d5hl923~
+	REPLACE_TEXTUALLY ~spwi924~ ~d5hl924~
+	REPLACE_TEXTUALLY ~spwi925~ ~d5hl925~
+	REPLACE_TEXTUALLY ~spcl928~ ~d5hl928~
+	REPLACE_TEXTUALLY ~spcl929~ ~d5hl929~
+	REPLACE_TEXTUALLY ~spcl930~ ~d5hl930~
+END
+//___________________________________________________________________________________
+
+//multi druid HLAs___________________________________________________________________
+//
+LAF action_remove_hla STR_VAR kit_name = ~D5_DR_FIGHTER~ remove_ability = ~AP_D5PHLA5~ END
+LAF action_remove_hla STR_VAR kit_name = ~D5_DR_RANGER~ remove_ability = ~AP_D5PHLA5~ END
+LAF action_remove_hla STR_VAR kit_name = ~D5_DR_THIEF~ remove_ability = ~AP_D5PHLA5~ END
+LAF action_remove_hla STR_VAR kit_name = ~D5_DR_MAGE~ remove_ability = ~AP_D5PHLA5~ END
+
+LAF action_add_hla STR_VAR kit_name = ~D5_DR_FIGHTER~ ability = ~AP_D5PHLA4~ num_allowed = ~1~ END
+LAF action_add_hla STR_VAR kit_name = ~D5_DR_RANGER~ ability = ~AP_D5PHLA4~ num_allowed = ~1~ END
+LAF action_add_hla STR_VAR kit_name = ~D5_DR_THIEF~ ability = ~AP_D5PHLA4~ num_allowed = ~1~ END
+LAF action_add_hla STR_VAR kit_name = ~D5_DR_MAGE~ ability = ~AP_D5PHLA4~ num_allowed = ~1~ END
+
+LAF action_add_hla STR_VAR kit_name = ~D5_DR_FIGHTER~ ability = ~GA_TG#SPIR~ num_allowed = ~1~ END
+LAF action_add_hla STR_VAR kit_name = ~D5_DR_RANGER~ ability = ~GA_TG#SPIR~ num_allowed = ~1~ END
+LAF action_add_hla STR_VAR kit_name = ~D5_DR_THIEF~ ability = ~GA_TG#SPIR~ num_allowed = ~1~ END
+LAF action_add_hla STR_VAR kit_name = ~D5_DR_MAGE~ ability = ~GA_TG#SPIR~ num_allowed = ~1~ END
 //___________________________________________________________________________________
 
 //fix contingency spells_____________________________________________________________

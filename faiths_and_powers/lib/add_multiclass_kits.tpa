@@ -1979,7 +1979,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.spl$~ ~override~
   READ_SHORT 0x1c spell_type 
   READ_BYTE 0x25 spell_school
   READ_LONG 0x34 spell_level
-  PATCH_IF (~%SOURCE_RES%~ STRING_MATCHES_REGEXP ~[Ss][Pp][Ww][Ii][1-9][0-9][0-9]~ = 0) && (spell_type = 1) && NOT (spell_school = 10) BEGIN
+  PATCH_IF (~%SOURCE_RES%~ STRING_MATCHES_REGEXP ~[Ss][Pp][Ww][Ii][1-9][0-9][0-9]~ = 0) && (spell_type = 1) && NOT (spell_school = 10) && NOT (~%SOURCE_RES%~ STRING_EQUAL_CASE ~SPWI420~) && NOT (~%SOURCE_RES%~ STRING_EQUAL_CASE ~SPWI710~) && NOT (~%SOURCE_RES%~ STRING_EQUAL_CASE ~SPWI809~) && NOT (~%SOURCE_RES%~ STRING_EQUAL_CASE ~SPWI617~) && NOT (~%SOURCE_RES%~ STRING_EQUAL_CASE ~SPWI908~) BEGIN
 	SNPRINT (0 - 3) spell_num ~%SOURCE_RES%~
 	PATCH_IF NOT (FILE_CONTAINS_EVALUATED (~hidespl.2da~ ~%SOURCE_RES%~)) BEGIN
 	  SPRINT ~spell_res~ ~%SOURCE_RES%~
@@ -2444,6 +2444,170 @@ COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5srfrsh.spl~
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 9 STR_VAR resource = ~d5src-8~ END
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 9 STR_VAR resource = ~d5src-9~ END
 
+//manually create versions of sequencer/contingency___________________________________
+// ...they should use the .EFFs to add all known spells up to the proper level
+// ...then 
+
+
+//item usability______________________________________________________________________
+// ...find everything usable by FC but not FM
+// ...- add 319 vs. fsorc
+// ...ditto CR vs. FM, CT vs. MT
+//
+COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~
+  PATCH_IF (~%SOURCE_SIZE%~ > ~0x71~) BEGIN
+	READ_BYTE 0x1f class_2  											// FM etc. usability
+	READ_BYTE 0x20 class_3  											// MT usability
+	PATCH_IF ((%class_2% BOR 0b10111111) = 0b10111111) && ((%class_2% BAND 0b00100000) = 0b00100000)  BEGIN // if IS usable by FC but NOT by FM,
+	  LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 319 parameter1 = %fighter_sorcerer_code% parameter2 = 9 power = 0 timing = 2 END
+	END
+	PATCH_IF ((%class_2% BOR 0b11111011) = 0b11111011) && ((%class_2% BAND 0b00100000) = 0b00100000)  BEGIN // if IS usable by CR but NOT by FM,
+	  LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 319 parameter1 = %ranger_sorcerer_code% parameter2 = 9 power = 0 timing = 2 END
+	END
+	PATCH_IF ((%class_2% BOR 0b11111101) = 0b11111101) && ((%class_3% BAND 0b00001000) = 0b00001000)  BEGIN // if IS usable by CT but NOT by MT,
+	  LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 319 parameter1 = %sorcerer_thief_code% parameter2 = 9 power = 0 timing = 2 END
+	END
+  END
+BUT_ONLY
+
+// ...find all items usable by FM but not... F
+// ...- make them usable by FC, CR, CT
+// ...- make them unusable by Lathander, Helm, Talos
+// ...all FnP kits will use a cleric kit flag, but these ones won't
+// ...(thus, they are excluded at line 456 of item_usability.tpa)
+//
+COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~
+  PATCH_IF (~%SOURCE_SIZE%~ > ~0x71~) BEGIN
+	READ_BYTE 0x1f class_2  											// fighter etc. usability
+	READ_BYTE 0x29 c_kits												// cleric kit flags
+	PATCH_IF ((%class_2% BOR 0b11011111) = 0b11011111) && ((%class_2% BAND 0b00001000) = 0b00001000)  BEGIN // if IS usable by F/M but NOT by F,
+	  WRITE_BYTE 0x1f (%class_2% BAND 0b10111001) 						// make usable by FC, CR, CT
+	  WRITE_BYTE 0x29 (%c_kits% BOR 0b00000111) 						// make UNusable cleric kits
+	END
+  END
+BUT_ONLY
+
+// ...find all armor (type = 2 with leather, chain, or plate appearance)
+// ...if not caster armor, add 177 targeting these kits; EFF = disable spells button(s)
+// ...(how to make this work with YARAS?? figure it out later)
+//
+COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
+  PATCH_IF (SOURCE_SIZE > 0x71) BEGIN
+	READ_SHORT 0x1c type
+	PATCH_IF (type = 2) BEGIN
+	  READ_LONG 0x22 appearance
+	  PATCH_IF (appearance = 16690) OR	// leather appearance
+				(appearance = 16691) OR		// chain appearance
+				(appearance = 16692) BEGIN 	// plate appearance
+		LPF CLONE_EFFECT INT_VAR multi_match = 1 match_opcode = 145 match_parameter2 = 0 opcode = 177 parameter1 = %fighter_sorcerer_code% parameter2 = 9 STR_VAR resource = ~d5srcar1~ END
+		LPF CLONE_EFFECT INT_VAR multi_match = 1 match_opcode = 145 match_parameter2 = 0 opcode = 177 parameter1 = %fighter_sorcerer_code% parameter2 = 9 STR_VAR resource = ~d5srcar2~ END
+		LPF CLONE_EFFECT INT_VAR multi_match = 1 match_opcode = 145 match_parameter2 = 0 opcode = 177 parameter1 = %fighter_sorcerer_code% parameter2 = 9 STR_VAR resource = ~d5srcar3~ END
+		LPF CLONE_EFFECT INT_VAR multi_match = 1 match_opcode = 145 match_parameter2 = 0 opcode = 177 parameter1 = %fighter_sorcerer_code% parameter2 = 9 STR_VAR resource = ~d5srcar4~ END
+		LPF CLONE_EFFECT INT_VAR multi_match = 1 match_opcode = 145 match_parameter2 = 0 opcode = 177 parameter1 = %ranger_sorcerer_code% parameter2 = 9 STR_VAR resource = ~d5srcar1~ END
+		LPF CLONE_EFFECT INT_VAR multi_match = 1 match_opcode = 145 match_parameter2 = 0 opcode = 177 parameter1 = %ranger_sorcerer_code% parameter2 = 9 STR_VAR resource = ~d5srcar2~ END
+		LPF CLONE_EFFECT INT_VAR multi_match = 1 match_opcode = 145 match_parameter2 = 0 opcode = 177 parameter1 = %ranger_sorcerer_code% parameter2 = 9 STR_VAR resource = ~d5srcar3~ END
+		LPF CLONE_EFFECT INT_VAR multi_match = 1 match_opcode = 145 match_parameter2 = 0 opcode = 177 parameter1 = %ranger_sorcerer_code% parameter2 = 9 STR_VAR resource = ~d5srcar4~ END
+		LPF CLONE_EFFECT INT_VAR multi_match = 1 match_opcode = 145 match_parameter2 = 0 opcode = 177 parameter1 = %sorcerer_thief_code% parameter2 = 9 STR_VAR resource = ~d5srcar1~ END
+	  END
+	END
+  END
+BUT_ONLY
+
+CREATE EFF ~d5srcar1~
+  WRITE_LONG 0x10 144
+  WRITE_LONG 0x14 1
+  WRITE_LONG 0x20 2
+  WRITE_LONG 0x24 2
+  WRITE_SHORT 0x2c 100
+CREATE EFF ~d5srcar2~
+  WRITE_LONG 0x10 144
+  WRITE_LONG 0x14 1
+  WRITE_LONG 0x20 3
+  WRITE_LONG 0x24 2
+  WRITE_SHORT 0x2c 100
+CREATE EFF ~d5srcar3~
+  WRITE_LONG 0x10 144
+  WRITE_LONG 0x14 1
+  WRITE_LONG 0x20 4
+  WRITE_LONG 0x24 2
+  WRITE_SHORT 0x2c 100
+CREATE EFF ~d5srcar4~
+  WRITE_LONG 0x10 144
+  WRITE_LONG 0x14 1
+  WRITE_LONG 0x20 5
+  WRITE_LONG 0x24 2
+  WRITE_SHORT 0x2c 100
+
+// ...make sequencer/contingency scrolls unusable by multi sorcerers
+//
+ACTION_FOR_EACH meta_scroll IN ~scrl6p~ ~scrl8l~ ~scrl9d~ ~scrl7u~ ~scrl9q~ BEGIN
+  ACTION_IF FILE_EXISTS_IN_GAME ~%meta_scroll%.itm~ BEGIN
+	COPY_EXISTING ~%meta_scroll%.itm~ ~override~
+	  LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 319 parameter1 = %fighter_sorcerer_code% parameter2 = 9 power = 0 timing = 2 END
+	  LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 319 parameter1 = %ranger_sorcerer_code% parameter2 = 9 power = 0 timing = 2 END
+	  LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 319 parameter1 = %sorcerer_thief_code% parameter2 = 9 power = 0 timing = 2 END
+  END
+END
+
+//make HLA tables_____________________________________________________________________
+// ...clone sorcerer HLAs as innates
+//
+ACTION_IF FILE_EXISTS_IN_GAME ~spwi920.spl~ BEGIN
+  COPY_EXISTING ~spwi920.spl~ ~override/d5hl920.spl~
+	WRITE_SHORT 0x1c 4
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~spwi921.spl~ BEGIN
+  COPY_EXISTING ~spwi921.spl~ ~override/d5hl921.spl~
+	WRITE_SHORT 0x1c 4
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~spwi922.spl~ BEGIN
+  COPY_EXISTING ~spwi922.spl~ ~override/d5hl922.spl~
+	WRITE_SHORT 0x1c 4
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~spwi923.spl~ BEGIN
+  COPY_EXISTING ~spwi923.spl~ ~override/d5hl923.spl~
+	WRITE_SHORT 0x1c 4
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~spwi924.spl~ BEGIN
+  COPY_EXISTING ~spwi924.spl~ ~override/d5hl924.spl~
+	WRITE_SHORT 0x1c 4
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~spwi925.spl~ BEGIN
+  COPY_EXISTING ~spwi925.spl~ ~override/d5hl925.spl~
+	WRITE_SHORT 0x1c 4
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~spcl928.spl~ BEGIN
+  COPY_EXISTING ~spcl928.spl~ ~override/d5hl928.spl~
+	LPF ALTER_EFFECT INT_VAR match_opcode = 42 opcode = 233 target = 1 parameter1 = (1 << 12) parameter2 = (114 + (0x10000 * 1)) timing = 9 END
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~spcl929.spl~ BEGIN
+  COPY_EXISTING ~spcl929.spl~ ~override/d5hl929.spl~
+	LPF ALTER_EFFECT INT_VAR match_opcode = 42 opcode = 233 target = 1 parameter1 = (1 << 16) parameter2 = (114 + (0x10000 * 1)) timing = 9 END	
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~spcl930.spl~ BEGIN
+  COPY_EXISTING ~spcl930.spl~ ~override/d5hl930.spl~
+	LPF ALTER_EFFECT INT_VAR match_opcode = 42 opcode = 233 target = 1 parameter1 = (1 << 20) parameter2 = (114 + (0x10000 * 1)) timing = 9 END
+END
+
+/* below has to be done after apply_spheres HLA stuff
+// ...remove universal cleric HLAs from table
+// ...add sorcerer HLA clones to table
+*/
+
+
+//disable quickspell buttons__________________________________________________________
+// ...they would only show the empty display spells anyway
+//
+COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5srcnq.spl~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 144 target = 1 parameter2 = 3 timing = 9 END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 144 target = 1 parameter2 = 4 timing = 9 END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 144 target = 1 parameter2 = 5 timing = 9 END
+
+APPEND ~d5sorc.2da~ ~NO_QUICK    AP_D5SRCNQ  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** ~
+
+
+//make all three clab tables__________________________________________________________
+//
 COPY_EXISTING ~d5sorc.2da~ ~override/d5fsorc.2da~
 COPY_EXISTING ~d5sorc.2da~ ~override/d5rsorc.2da~
 COPY_EXISTING ~d5sorc.2da~ ~override/d5tsorc.2da~
@@ -2500,7 +2664,6 @@ ACTION_IF FILE_EXISTS_IN_GAME ~d5tsorc.2da~ BEGIN
 		mc_dir = ~faiths_and_powers/lib/qd_mc~
   END
 END 
-
 
 END // end multi sorcerers function
 //__________________________________________________________________________________
