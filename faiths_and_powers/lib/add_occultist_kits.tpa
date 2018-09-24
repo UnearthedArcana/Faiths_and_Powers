@@ -8,7 +8,7 @@
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 
-DEFINE_ACTION_MACRO cleric_ur_priest BEGIN
+DEFINE_ACTION_FUNCTION cleric_ur_priest BEGIN
 
 ADD_KIT ~B_CLERIC_UR_PRIEST~
 
@@ -208,7 +208,7 @@ END
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 
-DEFINE_ACTION_MACRO beast_lord BEGIN
+DEFINE_ACTION_FUNCTION beast_lord BEGIN
 
 ADD_KIT ~D5_OC_BEAST~
 
@@ -429,7 +429,7 @@ END
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 
-DEFINE_ACTION_MACRO elementalist BEGIN
+DEFINE_ACTION_FUNCTION elementalist BEGIN
 
 ADD_KIT ~D5_OC_ELEM~
 
@@ -654,7 +654,7 @@ END
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 
-DEFINE_ACTION_MACRO chaos_priest BEGIN
+DEFINE_ACTION_FUNCTION chaos_priest BEGIN
 
 ADD_KIT ~D5XAOS~
 

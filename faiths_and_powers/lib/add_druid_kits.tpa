@@ -7,11 +7,11 @@
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 
-DEFINE_ACTION_MACRO forest_druid BEGIN
+DEFINE_ACTION_FUNCTION forest_druid BEGIN
 
 ADD_KIT ~D5_DR_FOR~
 
-//WEAPON PROFICIENCIES________________________________________________________________
+//WEAPON PROFICIENCIES_______________________________________________________________
 //11                                    T   S           F   Q             S S
 //10            L S                     W   C           L   U             W I
 //9             A M             B L S   O   I   W       A   A             O N
@@ -54,7 +54,7 @@ ADD_KIT ~D5_DR_FOR~
 ~faiths_and_powers/kits/druids/731_forest_druid/d5dfor.2da~
 
 //RACIAL KIT AVAILABILITY_____________________________________________________________
-~K_D_H    K_D_D   K_D_G   K_D_E   K_D_HE   K_D_HL   K_D_HO~
+~~
 
 //UNUSABLE FLAGS AND KIT BASE CLASS_________________________________________________
 //CLASSES: Mage = 1, Fighter = 2, Cleric=3, Thief = 4, Bard = 5
@@ -96,44 +96,13 @@ COPY ~faiths_and_powers/kits/druids/731_forest_druid/d5drsc1.eff~ ~override~
 
 //REPLACE VANILLA KIT WITH THIS KIT__________________________________________________
 //
-/*
-ACTION_IF FILE_EXISTS_IN_GAME ~d5_druids.d5~ BEGIN
-  COPY_EXISTING ~kitlist.2da~ ~override~
-	COUNT_2DA_COLS cols
-	READ_2DA_ENTRIES_NOW rows cols
-	FOR (row = 1; row < rows; ++row) BEGIN
-	  READ_2DA_ENTRY_FORMER rows row 1 ~kit~
-	  PATCH_IF ~%kit%~ STRING_EQUAL_CASE ~D5_DR_FOR~ BEGIN
-	    READ_2DA_ENTRY_FORMER rows row 0 forest_druid_num
-	  END
-	END
-  BUT_ONLY
-  ACTION_FOR_EACH race IN ~D~ ~E~ ~G~ ~H~ ~HE~ ~HL~ ~HO~ BEGIN
-	ACTION_IF FILE_EXISTS_IN_GAME ~K_D_%race%.2da~ BEGIN
-	  COPY_EXISTING ~K_D_%race%.2da~ ~override~
-		REPLACE_TEXTUALLY ~[ %TAB%]0~ ~%forest_druid_num%~
-/*
-		COUNT_2DA_COLS cols
-		READ_2DA_ENTRIES_NOW rows cols
-		FOR (row = 1; row < rows; ++row) BEGIN
-		  READ_2DA_ENTRY_FORMER rows row 1 kit
-		  PATCH_IF (%kit% = 0) BEGIN
-			REMOVE_2DA_ROW row cols
-		  END
-		END
-*/
-	  BUT_ONLY
-	END
-  END
-END
-*/
   COPY_EXISTING ~kitlist.2da~ ~override~
 	COUNT_2DA_COLS cols
 	READ_2DA_ENTRIES_NOW rows cols
 	FOR (row = 1; row < rows; ++row) BEGIN
 	  READ_2DA_ENTRY_FORMER rows row 1 ~kit~
 	  PATCH_IF (~%kit%~ STRING_EQUAL_CASE ~D5_DR_FOR~) BEGIN
-	    SET druid_row = (%row% + 1)
+	    SET druid_row = (%row%)
 	  END
 	END
   BUT_ONLY
@@ -210,7 +179,7 @@ END
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 
-DEFINE_ACTION_MACRO totemic_druid BEGIN
+DEFINE_ACTION_FUNCTION totemic_druid BEGIN
 
 ACTION_IF (FILE_EXISTS_IN_GAME ~clastext.2da~) BEGIN
     COPY_EXISTING ~clastext.2da~ ~override~
@@ -325,9 +294,9 @@ END
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 
-// looks like we're justs straight-up changing this into a hivekeeper kit
+// looks like we're just straight-up changing this into a hivekeeper kit
 
-DEFINE_ACTION_MACRO hivekeeper_druid BEGIN
+DEFINE_ACTION_FUNCTION hivekeeper_druid BEGIN
 
 ACTION_IF (FILE_EXISTS_IN_GAME ~clastext.2da~) BEGIN
     COPY_EXISTING ~clastext.2da~ ~override~
@@ -339,8 +308,8 @@ ACTION_IF (FILE_EXISTS_IN_GAME ~clastext.2da~) BEGIN
                 SET patch_row = %row%
             END
         END
-// 	    SET_2DA_ENTRY %patch_row% 3 cols RESOLVE_STR_REF (@73401)
-//	    SET_2DA_ENTRY %patch_row% 5 cols RESOLVE_STR_REF (@73402)
+ 	    SET_2DA_ENTRY %patch_row% 3 cols RESOLVE_STR_REF (@73401)
+	    SET_2DA_ENTRY %patch_row% 5 cols RESOLVE_STR_REF (@73402)
         SET_2DA_ENTRY %patch_row% 4 cols RESOLVE_STR_REF (@73403)
     BUT_ONLY
 END
@@ -354,8 +323,8 @@ ACTION_IF (FILE_EXISTS_IN_GAME ~sodcltxt.2da~) BEGIN
                 SET patch_row = %row%
             END
         END
-// 	    SET_2DA_ENTRY %patch_row% 3 cols RESOLVE_STR_REF (@73401)
-//	    SET_2DA_ENTRY %patch_row% 5 cols RESOLVE_STR_REF (@73402)
+ 	    SET_2DA_ENTRY %patch_row% 3 cols RESOLVE_STR_REF (@73401)
+	    SET_2DA_ENTRY %patch_row% 5 cols RESOLVE_STR_REF (@73402)
         SET_2DA_ENTRY %patch_row% 4 cols RESOLVE_STR_REF (@73403)
     BUT_ONLY
 END
@@ -369,8 +338,8 @@ ACTION_IF (FILE_EXISTS_IN_GAME ~kitlist.2da~) BEGIN
                 SET patch_row = %row%
             END
         END
-//	    SET_2DA_ENTRY %patch_row% 2 cols RESOLVE_STR_REF (@73401)
-//	    SET_2DA_ENTRY %patch_row% 3 cols RESOLVE_STR_REF (@73402)
+	    SET_2DA_ENTRY %patch_row% 2 cols RESOLVE_STR_REF (@73401)
+	    SET_2DA_ENTRY %patch_row% 3 cols RESOLVE_STR_REF (@73402)
         SET_2DA_ENTRY %patch_row% 4 cols RESOLVE_STR_REF (@73403)
     BUT_ONLY
 END
@@ -474,7 +443,7 @@ END
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 
-DEFINE_ACTION_MACRO northern_druid BEGIN
+DEFINE_ACTION_FUNCTION northern_druid BEGIN
 
 ADD_KIT ~D5_DR_ARC~
 
@@ -628,7 +597,7 @@ END
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 
-DEFINE_ACTION_MACRO shadow_druid BEGIN
+DEFINE_ACTION_FUNCTION shadow_druid BEGIN
 
 ADD_KIT ~D5_DR_SHAD~
 
@@ -830,7 +799,7 @@ END
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 
-DEFINE_ACTION_MACRO gray_druid BEGIN
+DEFINE_ACTION_FUNCTION gray_druid BEGIN
 
 ADD_KIT ~D5_DR_GRAY~
 
@@ -1002,7 +971,7 @@ END
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 
-DEFINE_ACTION_MACRO lost_druid BEGIN
+DEFINE_ACTION_FUNCTION lost_druid BEGIN
 
 ADD_KIT ~D5_DR_LOST~
 
@@ -1328,13 +1297,48 @@ END
   LPF CLONE_EFFECT INT_VAR multi_match = 1 match_opcode = 206 STR_VAR resource = ~d5smper~ END
  BUT_ONLY
 */
- APPEND ~clabdr01.2da~ ~SPHER206    ****        AP_D5DR206  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****       ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****~
- APPEND ~clabdr02.2da~ ~SPHER206    ****        AP_D5DR206  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****       ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****~
- APPEND ~clabdr03.2da~ ~SPHER206    ****        AP_D5DR206  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****       ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****~
- APPEND ~clabdr04.2da~ ~SPHER206    ****        AP_D5DR206  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****       ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****~
- APPEND  ~d5darc.2da~  ~SPHER206    ****        AP_D5DR206  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****       ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****~
 
+ACTION_IF FILE_EXISTS_IN_GAME ~clabdr01.2da~ BEGIN
+ APPEND ~clabdr01.2da~ ~SPHER206    ****        AP_D5DR206  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****       ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****~
 END
+ACTION_IF FILE_EXISTS_IN_GAME ~clabdr02.2da~ BEGIN
+ APPEND ~clabdr02.2da~ ~SPHER206    ****        AP_D5DR206  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****       ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****~
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~clabdr03.2da~ BEGIN
+ APPEND ~clabdr03.2da~ ~SPHER206    ****        AP_D5DR206  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****       ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****~
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~clabdr04.2da~ BEGIN
+ APPEND ~clabdr04.2da~ ~SPHER206    ****        AP_D5DR206  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****       ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****~
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~d5darc.2da~ BEGIN
+ APPEND  ~d5darc.2da~  ~SPHER206    ****        AP_D5DR206  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****       ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****~
+END
+
+//AMARANDE DIALOGUE_________________________________________________________________
+//
+<<<<<<<< d5/amaran+.d
+EXTEND_BOTTOM AMARAN 0
++ ~Class(Player1,DRUID_ALL)~ + ~Hungry for death, you say? Death stalks the land around us, whether we hunger or not. Innocents are murdered, families torn asunder, and the shadow of war looms over us all. Your fractious infighting only compounds it! You would speak of death? Let me SHOW you what death looks like!~ + druid_kitchange
+END
+
+APPEND AMARAN
+IF ~~ THEN druid_kitchange
+SAY ~(You feel something dark rise up from within, changing you, encouraging you to truly embrace death in your soul and in your abilities. Do you give in to this power, or do you fight to suppress it?)~
+++ ~(You embrace death as a Lost Druid.)~ DO ~AddKit("D5_DR_LOST")~ EXIT //starts your kitchange and other reactions
+++ ~(You push the darkness back down and remain as you were.)~ + no_change
+END
+IF ~~ THEN no_change
+SAY ~Ah, strong words! Maybe you aren't such a weakling after all!~
+
+COPY_TRANS AMARAN 0 //player can continue as in original game
+END
+
+END 
+>>>>>>>> 
+
+COMPILE ~d5/amaran+.d~
+
+END // end lost druid macro
 //__________________________________________________________________________________
 
 
@@ -1346,7 +1350,7 @@ END
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 
-DEFINE_ACTION_MACRO fighter_druid BEGIN
+DEFINE_ACTION_FUNCTION fighter_druid BEGIN
 
 ADD_KIT ~D5_DR_FIGHTER~
 
@@ -1514,11 +1518,11 @@ END
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 
-DEFINE_ACTION_MACRO druid_mage BEGIN
+DEFINE_ACTION_FUNCTION druid_mage BEGIN
 
 ADD_KIT ~D5_DR_MAGE~
 
-//WEAPON PROFICIENCIES________________________________________________________________
+//WEAPON PROFICIENCIES_______________________________________________________________
 //11                                     T   S           F   Q             S S
 //10             L S                     W   C           L   U             W I
 //9              A M             B L S   O   I   W       A   A             O N
@@ -1681,7 +1685,7 @@ END
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 
-DEFINE_ACTION_MACRO druid_ranger BEGIN
+DEFINE_ACTION_FUNCTION druid_ranger BEGIN
 
 ADD_KIT ~D5_DR_RANGER~
 
@@ -1848,7 +1852,7 @@ END
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 
-DEFINE_ACTION_MACRO druid_thief BEGIN
+DEFINE_ACTION_FUNCTION druid_thief BEGIN
 
 ADD_KIT ~D5_DR_THIEF~
 
@@ -2017,7 +2021,7 @@ END
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 
-DEFINE_ACTION_MACRO druid_shapeshifting BEGIN
+DEFINE_ACTION_FUNCTION druid_shapeshifting BEGIN
 
 // get kit codes
 //
@@ -2255,14 +2259,15 @@ COPY ~faiths_and_powers/kits/druids/shapechange/d5drnf.spl~ ~override~
   							~d5drbask~ BEGIN
 	LPF ADD_SPELL_EFFECT INT_VAR opcode = 112 STR_VAR resource = ~%animal%~  END 
   END
-  LPF CLONE_EFFECT INT_VAR multi_match = 1 opcode = 177 match_target = 1 match_parameter2 = 9 parameter1 = %forest_druid_code% STR_VAR match_resource = ~d5drsc4~ resource = ~d5drsc1~ END
-  LPF CLONE_EFFECT INT_VAR multi_match = 1 opcode = 177 match_target = 1 match_parameter2 = 9 parameter1 = %northern_druid_code% STR_VAR match_resource = ~d5drsc4~ resource = ~d5drsc5~ END
-//  LPF CLONE_EFFECT INT_VAR multi_match = 1 opcode = 177 match_target = 1 match_parameter2 = 9 parameter1 = %shadow_druid_code% STR_VAR match_resource = ~d5drsc4~ resource = ~d5drsc8~ END
-  LPF CLONE_EFFECT INT_VAR multi_match = 1 opcode = 177 match_target = 1 match_parameter2 = 9 parameter1 = %lost_druid_code% STR_VAR match_resource = ~d5drsc4~ resource = ~d5drsc9~ END
-  LPF CLONE_EFFECT INT_VAR multi_match = 1 opcode = 177 match_target = 1 match_parameter2 = 9 parameter1 = %fighter_druid_code% STR_VAR match_resource = ~d5drsc4~ resource = ~d5drsc1~ END
-  LPF CLONE_EFFECT INT_VAR multi_match = 1 opcode = 177 match_target = 1 match_parameter2 = 9 parameter1 = %mage_druid_code% STR_VAR match_resource = ~d5drsc4~ resource = ~d5drsc1~ END
-  LPF CLONE_EFFECT INT_VAR multi_match = 1 opcode = 177 match_target = 1 match_parameter2 = 9 parameter1 = %ranger_druid_code% STR_VAR match_resource = ~d5drsc4~ resource = ~d5drsc1~ END
-  LPF CLONE_EFFECT INT_VAR multi_match = 1 opcode = 177 match_target = 1 match_parameter2 = 9 parameter1 = %thief_druid_code% STR_VAR match_resource = ~d5drsc4~ resource = ~d5drsc1~ END
+  LPF ALTER_EFFECT INT_VAR match_opcode = 177 match_target = 1 match_parameter2 = 9 STR_VAR resource = ~d5drsc4~ END
+  LPF CLONE_EFFECT INT_VAR multi_match = 1 match_opcode = 177 match_target = 1 match_parameter2 = 9 parameter1 = %forest_druid_code% STR_VAR resource = ~d5drsc1~ END
+  LPF CLONE_EFFECT INT_VAR multi_match = 1 match_opcode = 177 match_target = 1 match_parameter2 = 9 parameter1 = %northern_druid_code% STR_VAR resource = ~d5drsc5~ END
+//  LPF CLONE_EFFECT INT_VAR multi_match = 1 match_opcode = 177 match_target = 1 match_parameter2 = 9 parameter1 = %shadow_druid_code% STR_VAR resource = ~d5drsc8~ END
+  LPF CLONE_EFFECT INT_VAR multi_match = 1 match_opcode = 177 match_target = 1 match_parameter2 = 9 parameter1 = %lost_druid_code% STR_VAR resource = ~d5drsc9~ END
+  LPF CLONE_EFFECT INT_VAR multi_match = 1 match_opcode = 177 match_target = 1 match_parameter2 = 9 parameter1 = %fighter_druid_code% STR_VAR resource = ~d5drsc1~ END
+  LPF CLONE_EFFECT INT_VAR multi_match = 1 match_opcode = 177 match_target = 1 match_parameter2 = 9 parameter1 = %mage_druid_code% STR_VAR resource = ~d5drsc1~ END
+  LPF CLONE_EFFECT INT_VAR multi_match = 1 match_opcode = 177 match_target = 1 match_parameter2 = 9 parameter1 = %ranger_druid_code% STR_VAR resource = ~d5drsc1~ END
+  LPF CLONE_EFFECT INT_VAR multi_match = 1 match_opcode = 177 match_target = 1 match_parameter2 = 9 parameter1 = %thief_druid_code% STR_VAR resource = ~d5drsc1~ END
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 parameter1 = 0 parameter2 = 1 timing = 9 STR_VAR resource = ~d5drnf~ END
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 parameter1 = 0 parameter2 = 1 timing = 9 STR_VAR resource = ~d5drbask~ END
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 parameter1 = 0 parameter2 = 1 timing = 9 STR_VAR resource = ~d5drwwlf~ END

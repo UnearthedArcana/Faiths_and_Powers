@@ -6,7 +6,7 @@
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 
-DEFINE_ACTION_MACRO forest_ranger BEGIN
+DEFINE_ACTION_FUNCTION forest_ranger BEGIN
 
 COPY_EXISTING ~clabrn01.2da~ ~override/d5rfor.2da~
 	LPM remove_blank_lines
@@ -269,7 +269,7 @@ END
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 
-DEFINE_ACTION_MACRO mountain_ranger BEGIN
+DEFINE_ACTION_FUNCTION mountain_ranger BEGIN
 
 ADD_KIT ~D5_RA_MOU~
 
@@ -439,7 +439,7 @@ END
 //__________________________________________________________________________________
 
 
-DEFINE_ACTION_MACRO desert_ranger BEGIN
+DEFINE_ACTION_FUNCTION desert_ranger BEGIN
 
 ADD_KIT ~D5_RA_DES~
 
@@ -604,7 +604,7 @@ END
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 
-DEFINE_ACTION_MACRO jungle_ranger BEGIN
+DEFINE_ACTION_FUNCTION jungle_ranger BEGIN
 
 ADD_KIT ~D5_RA_JUN~
 
@@ -767,7 +767,7 @@ END
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 
-DEFINE_ACTION_MACRO arctic_ranger BEGIN
+DEFINE_ACTION_FUNCTION arctic_ranger BEGIN
 
 ADD_KIT ~D5_RA_ARC~
 
@@ -929,7 +929,7 @@ END
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 
-DEFINE_ACTION_MACRO beast_master BEGIN
+DEFINE_ACTION_FUNCTION beast_master BEGIN
 
 //copy marker file__________________________________________________________________
 //

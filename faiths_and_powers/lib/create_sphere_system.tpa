@@ -6,6 +6,7 @@
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 
+DEFINE_ACTION_FUNCTION create_spheres BEGIN
 
 //copy marker file___________________________________________________________________
 //
@@ -864,6 +865,14 @@ END
 
 //apply sphere system to spells_____________________________________________________
 //
+<<<<<<<< d5/d5sphspl.2da
+2DA V1.0 
+SPHERE
+			SPELL		LEVEL
+>>>>>>>> 
+
+COPY ~d5/d5sphspl.2da~ ~override/d5sphspl.2da~ 
+
 LAM d5_minor_access_levels
 
 ACTION_IF NOT FILE_EXISTS_IN_GAME ~dvsrv4here.mrk~ BEGIN
@@ -901,6 +910,7 @@ ACTION_PHP_EACH spellsphere AS spl => sph BEGIN
   ELSE BEGIN
 	OUTER_TEXT_SPRINT the_spell ~%spl%~
   END  
+  APPEND ~d5sphspl.2da~ ~%sph%	%the_spell%	%lvl%~
   OUTER_INNER_PATCH_SAVE minor_res ~%the_spell%~ BEGIN
 	REPLACE_TEXTUALLY ~^[Ss][Pp][Pp][Rr]~ ~d5mp~
 	REPLACE_TEXTUALLY ~^[Ss][Pp][Ww][Ii]~ ~d5mw~
@@ -1342,3 +1352,10 @@ COPY_EXISTING
 //__________________________________________________________________________________
 
 
+//clean up shere-spell .2da_________________________________________________________
+//
+COPY_EXISTING ~d5sphspl.2da~ ~override~
+  PRETTY_PRINT_2DA
+//__________________________________________________________________________________
+
+END // end function

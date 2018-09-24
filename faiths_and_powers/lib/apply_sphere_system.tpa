@@ -6,6 +6,8 @@
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 
+DEFINE_ACTION_FUNCTION apply_spheres BEGIN
+
 INCLUDE ~faiths_and_powers/lib/hla_actions.tpa~
 
 COPY ~faiths_and_powers/spheres/d5spmem.spl~ ~override~
@@ -360,4 +362,4 @@ FNP         D5SF ~
 //___________________________________________________________________________________
 */
 
-
+END // end function

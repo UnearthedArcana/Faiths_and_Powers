@@ -6,6 +6,7 @@
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 
+DEFINE_ACTION_FUNCTION npc_kits BEGIN
 
 //remove NPC memorized spalls_______________________________________________________
 //
@@ -85,7 +86,7 @@ ACTION_IF VARIABLE_IS_SET %d5drfi% BEGIN
 					~%tutu_var%jaheir2~ 
 					~%tutu_var%jaheir4~ 
 					~%tutu_var%jaheir6~ 
-					~jaheir7~ 
+					~%jaheir7_var%~ 
 					~jaheir8~ 
 					~jaheir11~ 
 					~jaheir12~ 
@@ -199,8 +200,8 @@ ACTION_IF VARIABLE_IS_SET %d5asha% BEGIN
 ACTION_FOR_EACH char IN ~viconi~
 					~viconi4~ 
 					~viconi6~ 
-					~viconi7~
                     ~%viconi6_var%~
+					~viconi7~
 					~viconi8~ 
 					~viconi9~ 
 					~viconi11~ 
@@ -338,3 +339,4 @@ ACTION_FOR_EACH char IN ~faldor~ ~faldor5~ BEGIN
 END
 //___________________________________________________________________________________
 
+END // end function

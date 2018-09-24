@@ -2,7 +2,7 @@ BACKUP ~faiths_and_powers/backup~
 AUTHOR ~SubtleD and Grammarsalad~
 
 
-VERSION ~0.75.01~
+VERSION ~0.75.11~
 
 //README ~faiths_and_powers/readme-pnp.html~
 
@@ -37,18 +37,6 @@ ALWAYS
 		REPLACE_TEXTUALLY ~SHAPESHIFTER.+$~ ~SHAPESHIFTER	0	1	0	1	1	1	0	1	0 ~
 		REPLACE_TEXTUALLY ~BEAST_FRIEND.+$~ ~BEAST_FRIEND	0	1	0	1	1	1	0	1	0 ~
 	END
-
-	INCLUDE ~faiths_and_powers/lib/add_cleric_kits.tpa~
-	INCLUDE ~faiths_and_powers/lib/add_acolyte_kits.tpa~
-	INCLUDE ~faiths_and_powers/lib/add_incarnate_kits.tpa~
-	INCLUDE ~faiths_and_powers/lib/add_druid_kits.tpa~
-	INCLUDE ~faiths_and_powers/lib/add_mystic_kits.tpa~
-	INCLUDE ~faiths_and_powers/lib/add_occultist_kits.tpa~
-	INCLUDE ~faiths_and_powers/lib/add_ranger_kits.tpa~
-	INCLUDE ~faiths_and_powers/lib/add_scout_kits.tpa~
-	INCLUDE ~faiths_and_powers/lib/add_champion_kits.tpa~
-	INCLUDE ~faiths_and_powers/lib/add_zealot_kits.tpa~
-	INCLUDE ~faiths_and_powers/lib/add_multiclass_kits.tpa~
 
 // joinable NPC issues for tutu/bgt/eet:
   ACTION_IF GAME_IS ~bgee~ BEGIN
@@ -136,14 +124,29 @@ COPY ~faiths_and_powers/lib/markers/d5_menu.d5~ ~override~
 COPY ~faiths_and_powers/lib/markers/d5_deity.d5~ ~override~
 //__________________________________________________________________________________
 
+//read in kit functions_____________________________________________________________
+//
+INCLUDE ~faiths_and_powers/lib/add_cleric_kits.tpa~
+INCLUDE ~faiths_and_powers/lib/add_acolyte_kits.tpa~
+INCLUDE ~faiths_and_powers/lib/add_incarnate_kits.tpa~
+INCLUDE ~faiths_and_powers/lib/add_druid_kits.tpa~
+INCLUDE ~faiths_and_powers/lib/add_mystic_kits.tpa~
+INCLUDE ~faiths_and_powers/lib/add_occultist_kits.tpa~
+INCLUDE ~faiths_and_powers/lib/add_ranger_kits.tpa~
+INCLUDE ~faiths_and_powers/lib/add_scout_kits.tpa~
+INCLUDE ~faiths_and_powers/lib/add_champion_kits.tpa~
+INCLUDE ~faiths_and_powers/lib/add_zealot_kits.tpa~
+INCLUDE ~faiths_and_powers/lib/add_multiclass_kits.tpa~
+//__________________________________________________________________________________
+
 //multiclass text____________________________________________________________________
 //
 ACTION_IF (FILE_EXISTS_IN_GAME ~clastext.2da~) BEGIN
   	COPY_EXISTING ~clastext.2da~ ~override~
-		COUNT_2DA_COLS cols // amount of columns
-		READ_2DA_ENTRIES_NOW rows cols // read all file into memory  
-		FOR (row = 1; row < rows; ++row) BEGIN // iterate over rows
-		  READ_2DA_ENTRY_FORMER rows row 0 ~text~ // read column value
+		COUNT_2DA_COLS cols
+		READ_2DA_ENTRIES_NOW rows cols  
+		FOR (row = 1; row < rows; ++row) BEGIN
+		  READ_2DA_ENTRY_FORMER rows row 0 ~text~
 		  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~CLERIC~ BEGIN
 		    SET c_row = %row%
 		  END
@@ -289,8 +292,41 @@ ACTION_IF FILE_EXISTS_IN_GAME ~CLSRCREQ.2da~ BEGIN
 END
 //___________________________________________________________________________________
 
-//druids on cleric spell/xp tables__________________________________________________
+//change druid class text____________________________________________________________
+//
+ACTION_IF (FILE_EXISTS_IN_GAME ~clastext.2da~) BEGIN
+  COPY_EXISTING ~clastext.2da~ ~override~
+	COUNT_2DA_COLS cols // amount of columns
+	READ_2DA_ENTRIES_NOW rows cols // read all file into memory  
+	FOR (row = 1; row < rows; ++row) BEGIN // iterate over rows
+	  READ_2DA_ENTRY_FORMER rows row 0 ~text~ // read column value
+	  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~DRUID~ BEGIN
+	    SET patch_row = %row%
+	  END
+	END
+	SET_2DA_ENTRY %patch_row% 3 cols RESOLVE_STR_REF (@70001)
+	SET_2DA_ENTRY %patch_row% 5 cols RESOLVE_STR_REF (@70002)
+	SET_2DA_ENTRY %patch_row% 4 cols RESOLVE_STR_REF (@70003)
+  BUT_ONLY
+END
+ACTION_IF (FILE_EXISTS_IN_GAME ~sodcltxt.2da~) BEGIN
+  COPY_EXISTING ~sodcltxt.2da~ ~override~
+	COUNT_2DA_COLS cols // amount of columns
+	READ_2DA_ENTRIES_NOW rows cols // read all file into memory  
+	FOR (row = 1; row < rows; ++row) BEGIN // iterate over rows
+	  READ_2DA_ENTRY_FORMER rows row 0 ~text~ // read column value
+	  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~DRUID~ BEGIN
+	    SET patch_row = %row%
+	  END
+	END
+	SET_2DA_ENTRY %patch_row% 3 cols RESOLVE_STR_REF (@70001)
+	SET_2DA_ENTRY %patch_row% 5 cols RESOLVE_STR_REF (@70002)
+	SET_2DA_ENTRY %patch_row% 4 cols RESOLVE_STR_REF (@70003)
+  BUT_ONLY
+END
+//__________________________________________________________________________________
 
+//druids on cleric spell/xp tables__________________________________________________
 // from BG2Tweaks
 
 COPY_EXISTING ~xplevel.2da~ ~override~
@@ -317,13 +353,13 @@ COPY_EXISTING ~mxsplprs.2da~ ~override/mxspldru.2da~
 
 //ranger/paladin spell tables_______________________________________________________
 //
-	COPY ~faiths_and_powers/spheres/mxsplpal.2da~ ~override~
-	COPY ~faiths_and_powers/spheres/mxsplran.2da~ ~override~
+COPY ~faiths_and_powers/spheres/mxsplpal.2da~ ~override~
+COPY ~faiths_and_powers/spheres/mxsplran.2da~ ~override~
 //__________________________________________________________________________________
 
 //change shaman known spell tables__________________________________________________
 //
-	COPY ~faiths_and_powers/kits/incarnates/splshmkn.2da~ ~override~
+COPY ~faiths_and_powers/kits/incarnates/splshmkn.2da~ ~override~
 //__________________________________________________________________________________
 
 //Add IWD spells if not already in game_____________________________________________
@@ -341,6 +377,7 @@ END
 //Create Sphere System______________________________________________________________
 //
 INCLUDE ~faiths_and_powers/lib/create_sphere_system.tpa~
+LAF create_spheres END
 //__________________________________________________________________________________
 
 //install the kits__________________________________________________________________
@@ -349,130 +386,130 @@ LAM d5_kit_choices
 
 // (clerics)
 ACTION_IF (%d5_cleric_lathander% = 1) BEGIN
- LAM cleric_lathander
+ LAF cleric_lathander END
 END
 ACTION_IF (%d5_cleric_torm% = 1) BEGIN
- LAM cleric_torm
+ LAF cleric_torm END
 END
 ACTION_IF (%d5_cleric_tymora% = 1) BEGIN
- LAM cleric_tymora
+ LAF cleric_tymora END
 END
 ACTION_IF (%d5_cleric_helm% = 1) BEGIN
- LAM cleric_helm
+ LAF cleric_helm END
 END
 ACTION_IF (%d5_cleric_kelemvor% = 1) BEGIN
  ACTION_IF NOT GAME_IS ~iwdee~ BEGIN
-  LAM cleric_kelemvor
+  LAF cleric_kelemvor END
  END
 END
 ACTION_IF (%d5_cleric_tempus% = 1) BEGIN
- LAM cleric_tempus
+ LAF cleric_tempus END
 END
 ACTION_IF (%d5_cleric_leira% = 1) BEGIN
- LAM cleric_leira
+ LAF cleric_leira END
 END
 ACTION_IF (%d5_cleric_baravar% = 1) BEGIN
- LAM cleric_baravar
+ LAF cleric_baravar END
 END
 ACTION_IF (%d5_cleric_loviatar% = 1) BEGIN
- LAM cleric_loviatar
+ LAF cleric_loviatar END
 END
 ACTION_IF (%d5_cleric_talos% = 1) BEGIN
- LAM cleric_talos
+ LAF cleric_talos END
 END
 ACTION_IF (%d5_cleric_cyric% = 1) BEGIN
  ACTION_IF NOT GAME_IS ~iwdee~ BEGIN
-  LAM cleric_cyric
+  LAF cleric_cyric END
  END
 END
 ACTION_IF (%d5_cleric_umberlee% = 1) BEGIN
- LAM cleric_umberlee
+ LAF cleric_umberlee END
 END
 //
 // (acolytes)
 ACTION_IF (%d5_acolyte_ilmater% = 1) BEGIN
- LAM acolyte_ilmater
+ LAF acolyte_ilmater END
 END
 ACTION_IF (%d5_acolyte_deneir% = 1) BEGIN
- LAM acolyte_deneir
+ LAF acolyte_deneir END
 END
 ACTION_IF (%d5_acolyte_sune% = 1) BEGIN
- LAM acolyte_sune
+ LAF acolyte_sune END
 END
 ACTION_IF (%d5_acolyte_tempus% = 1) BEGIN
- LAM acolyte_tempus
+ LAF acolyte_tempus END
 END
 ACTION_IF (%d5_acolyte_mask% = 1) BEGIN
- LAM acolyte_mask
+ LAF acolyte_mask END
 END
 ACTION_IF (%d5_acolyte_shar% = 1) BEGIN
- LAM acolyte_shar
+ LAF acolyte_shar END
 END
 ACTION_IF (%d5_acolyte_moander% = 1) BEGIN
- LAM acolyte_moander
+ LAF acolyte_moander END
 END
 ACTION_IF (%d5_acolyte_beshaba% = 1) BEGIN
- LAM acolyte_beshaba
+ LAF acolyte_beshaba END
 END
 ACTION_IF (%d5_acolyte_baervan% = 1) BEGIN
- LAM acolyte_baervan
+ LAF acolyte_baervan END
 END
 //
 // (incarnates)
-// LAM incarnate_mystra
+// LAF incarnate_mystra
 //
 // (druids)
 ACTION_IF (%d5_forest_druid% = 1) BEGIN
- LAM forest_druid
+ LAF forest_druid END
 END
 ACTION_IF (%d5_totemic_druid% = 1) BEGIN
- LAM totemic_druid
+ LAF totemic_druid END
 END
 ACTION_IF (%d5_hivekeeper_druid% = 1) BEGIN
- LAM hivekeeper_druid
+ LAF hivekeeper_druid END
 END
 ACTION_IF (%d5_northern_druid% = 1) BEGIN
- LAM northern_druid
+ LAF northern_druid END
 END
 ACTION_IF (%d5_lost_druid% = 1) BEGIN
- LAM lost_druid
+ LAF lost_druid END
 END
 ACTION_IF (%d5_multiclass_druids% = 1) BEGIN
- LAM fighter_druid
- LAM druid_mage
- LAM druid_thief
- LAM druid_ranger
+ LAF fighter_druid END
+ LAF druid_mage END
+ LAF druid_thief END
+ LAF druid_ranger END
 END
 ACTION_IF (%d5_forest_druid% + %d5_totemic_druid% + %d5_hivekeeper_druid% + %d5_northern_druid% + %d5_lost_druid% + %d5_multiclass_druids% > 0) BEGIN
- LAM druid_shapeshifting
+ LAF druid_shapeshifting END
 END
 //
 // (mystics)
 ACTION_IF (%d5_earth_mystic% = 1) BEGIN
- LAM earth_mystic
+ LAF earth_mystic END
 END
 ACTION_IF (%d5_water_mystic% = 1) BEGIN
- LAM water_mystic
+ LAF water_mystic END
 END
 ACTION_IF (%d5_air_mystic% = 1) BEGIN
- LAM air_mystic
+ LAF air_mystic END
 END
 ACTION_IF (%d5_fire_mystic% = 1) BEGIN
- LAM fire_mystic
+ LAF fire_mystic END
 END
 ACTION_IF (%d5_light_mystic% = 1) BEGIN
- LAM light_mystic
+ LAF light_mystic END
 END
 ACTION_IF (%d5_shadow_mystic% = 1) BEGIN
- LAM shadow_mystic
+ LAF shadow_mystic END
 END
 //
 // (occultists)
 ACTION_IF (%d5_beast_lord% = 1) BEGIN
- LAM beast_lord
+ LAF beast_lord END
 END
 ACTION_IF (%d5_elementalist% = 1) BEGIN
- LAM elementalist
+ LAF elementalist END
 END
 //
 // (paladins)
@@ -505,56 +542,56 @@ ACTION_IF (%d5_champion_tyr% + %d5_champion_azuth% + %d5_champion_moradin% + %d5
 END
 
 ACTION_IF (%d5_champion_tyr% = 1) BEGIN
- LAM champion_tyr
+ LAF champion_tyr END
 END
 ACTION_IF (%d5_champion_azuth% = 1) BEGIN
- LAM champion_azuth		//azuth essentially replaces Inquisitor
+ LAF champion_azuth	 END	//azuth essentially replaces Inquisitor
 END
 ACTION_IF (%d5_champion_moradin% = 1) BEGIN
- LAM champion_moradin
+ LAF champion_moradin END
 END
 ACTION_IF (%d5_champion_kelemvor% = 1) BEGIN
  //champ of Kele effectively replaces UHunter. In IWDEE, the champ of mykrul is merely added (they're different enough conceptually to be seperate)
  ACTION_IF GAME_IS ~iwdee~ THEN BEGIN   //
-  LAM iwdee_champion_kelemvor
+  LAF iwdee_champion_kelemvor END
  END
  //kelevmore undead hunter for non-iwdee
  ACTION_IF GAME_IS ~bgee bg2ee eet~ THEN BEGIN   //
-  LAM champion_kelemvor
+  LAF champion_kelemvor END
  END
 END
 ACTION_IF (%d5_champion_tempus% = 1) BEGIN
  ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No feasible way to make them not fall in IWDEE as yet
-  LAM champion_tempus
+  LAF champion_tempus END
  END
 END
 ACTION_IF (%d5_champion_bane% = 1) BEGIN
  ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No Evil nonfallable pallys in IWDEE as yet
-  LAM champion_bane
+  LAF champion_bane END
  END
  ACTION_IF NOT FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No Evil nonfallable pallys in IWDEE as yet
-  LAM iwdee_champion_bane
+  LAF iwdee_champion_bane END
  END
 END
 ACTION_IF (%d5_champion_helm% = 1) BEGIN
  ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No Evil nonfallable pallys in IWDEE as yet
-  LAM champion_helm
+  LAF champion_helm END
  END
  ACTION_IF NOT FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No Evil fallable pallys in IWDEE
-  LAM iwdee_champion_helm
+  LAF iwdee_champion_helm END
  END
 END
 ACTION_IF (%d5_champion_talos% = 1) BEGIN
  ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No Evil nonfallable pallys in IWDEE
-  LAM champion_talos
+  LAF champion_talos END
  END
  ACTION_IF NOT FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No Evil nonfallable pallys in IWDEE
-  LAM iwdee_champion_talos
+  LAF iwdee_champion_talos END
  END
 END
 ACTION_IF (%d5_champion_red% = 1) BEGIN
  ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No feasible way to make them not fall in IWDEE without fallen.2da
-  LAM champion_red
+  LAF champion_red END
  END
 END
 //
@@ -579,114 +616,119 @@ ACTION_IF (%d5_zealot_ilmater% + %d5_zealot_corellon% + %d5_zealot_sune% + %d5_z
 END
 
 ACTION_IF (%d5_zealot_ilmater% = 1) BEGIN
- LAM zealot_ilmater
+ LAF zealot_ilmater END
 END
 ACTION_IF (%d5_zealot_corellon% = 1) BEGIN
- LAM zealot_corellon
+ LAF zealot_corellon END
 END
 ACTION_IF (%d5_zealot_sune% = 1) BEGIN
- LAM zealot_sune
+ LAF zealot_sune END
 END
 ACTION_IF (%d5_zealot_mystra% = 1) BEGIN
- LAM zealot_mystra
+ LAF zealot_mystra END
 END
 ACTION_IF (%d5_zealot_eilistraee% = 1) BEGIN
- LAM zealot_eilistraee
+ LAF zealot_eilistraee END
 END
 ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No feasible way to make them not fall in IWDEE w/o fallen.2da
  ACTION_IF (%d5_zealot_gruumsh% = 1) BEGIN
-  LAM zealot_gruumsh
+  LAF zealot_gruumsh END
  END
  ACTION_IF (%d5_zealot_talos% = 1) BEGIN
-  LAM zealot_talos
+  LAF zealot_talos END
  END
  ACTION_IF (%d5_zealot_kossuth% = 1) BEGIN
-  LAM zealot_kossuth
+  LAF zealot_kossuth END
  END
  ACTION_IF (%d5_zealot_garagos% = 1) BEGIN
-  LAM zealot_garagos
+  LAF zealot_garagos END
  END
 END  //End grummsh/talos/kossuth/garagos
 //
 // (rangers)
 ACTION_IF (%d5_forest_ranger% = 1) BEGIN
- LAM forest_ranger
+ LAF forest_ranger END
 END
 ACTION_IF (%d5_mountain_ranger% = 1) BEGIN
- LAM mountain_ranger
+ LAF mountain_ranger END
 END
 ACTION_IF (%d5_jungle_ranger% = 1) BEGIN
- LAM jungle_ranger
+ LAF jungle_ranger END
 END
 ACTION_IF (%d5_desert_ranger% = 1) BEGIN
- LAM desert_ranger
+ LAF desert_ranger END
 END
 ACTION_IF (%d5_arctic_ranger% = 1) BEGIN
- LAM arctic_ranger
+ LAF arctic_ranger END
 END
 ACTION_IF (%d5_beast_master% = 1) BEGIN
- LAM beast_master
+ LAF beast_master END
 END
 //
 // (scouts)
 ACTION_IF (%d5_mage_hunter% = 1) BEGIN
- LAM mage_hunter
+ LAF mage_hunter END
 END
 ACTION_IF (%d5_barbarian_ranger% = 1) BEGIN
- LAM barbarian_ranger
+ LAF barbarian_ranger END
 END
 ACTION_IF (%d5_elven_archer% = 1) BEGIN
- LAM elven_archer
+ LAF elven_archer END
 END
 ACTION_IF (%d5_halfling_slinger% = 1) BEGIN
- LAM halfling_slinger
+ LAF halfling_slinger END
 END
 //
 // (multiclass)
 ACTION_IF (%d5_cm_mystra% = 1) BEGIN
- LAM cm_mystra
+ LAF cm_mystra END
 END
 ACTION_IF (%d5_cm_azuth% = 1) BEGIN
- LAM cm_azuth
+ LAF cm_azuth END
 END
 ACTION_IF (%d5_cm_bender% = 1) BEGIN
- LAM cm_bender
+ LAF cm_bender END
 END
 ACTION_IF (%d5_cf_clangeddin% = 1) BEGIN
- LAM cf_clangeddin
+ LAF cf_clangeddin END
 END
 ACTION_IF (%d5_cr_mielikki% = 1) BEGIN
- LAM cr_mielikki
+ LAF cr_mielikki END
 END
 ACTION_IF (%d5_cr_shaundakul% = 1) BEGIN
- LAM cr_shaundakul
+ LAF cr_shaundakul END
 END
 ACTION_IF (%d5_cf_helm% = 1) BEGIN
- LAM cf_helm
+ LAF cf_helm END
 END
+/*
 ACTION_IF (%d5_multi_sorcerers% = 1) BEGIN
- LAM multi_sorcerers
+ LAF multi_sorcerers END
 END
+*/
 //
 //__________________________________________________________________________________
 
 //vanilla kits______________________________________________________________________
 //
 INCLUDE ~faiths_and_powers/lib/vanilla_kit_spheres.tpa~
+LAF vanilla_kit_spheres END
 //__________________________________________________________________________________
 
 //mod kits__________________________________________________________________________
 //
 INCLUDE ~faiths_and_powers/lib/mod_kit_spheres.tpa~
+LAF mod_kit_spheres END
 //__________________________________________________________________________________
 
 //default access____________________________________________________________________
 //
 INCLUDE ~faiths_and_powers/lib/default_kit_spheres.tpa~
+LAF default_kit_spheres END
 //__________________________________________________________________________________
 
 //special kit: ur-priest
-LAM cleric_ur_priest
+LAF cleric_ur_priest END
 //__________________________________________________________________________________
 
 //Base kits_________________________________________________________________________
@@ -743,7 +785,8 @@ END
 
 //halfling rangers__________________________________________________________________
 //
-COPY_EXISTING ~kitlist.2da~ ~override~
+ACTION_IF FILE_EXISTS_IN_GAME ~d5_sling.2da~ BEGIN
+  COPY_EXISTING ~kitlist.2da~ ~override~
 	COUNT_2DA_COLS cols
 	READ_2DA_ENTRIES_NOW rows cols
 	FOR (row = 1; row < rows; ++row) BEGIN
@@ -753,8 +796,9 @@ COPY_EXISTING ~kitlist.2da~ ~override~
 	  END
 	END
   BUT_ONLY
-COPY ~faiths_and_powers/kits/K_X_Y/K_R_HL.2da~ ~override~
+  COPY ~faiths_and_powers/kits/K_X_Y/K_R_HL.2da~ ~override~
 	REPLACE_TEXTUALLY ~[ %TAB%]0~ ~%TAB%%sling_row%~
+END
 //__________________________________________________________________________________
 
 //more scout alignments_____________________________________________________________
@@ -798,6 +842,7 @@ LAM ~READ_FNP_KIT_INFO~
 //deity selection___________________________________________________________________
 //
 INCLUDE ~faiths_and_powers/lib/deity_selection.tpa~
+LAF deity_dialogue END
 //__________________________________________________________________________________
 
 //alter item usability______________________________________________________________
@@ -806,17 +851,20 @@ LAM d5_item_usability
 
 ACTION_IF (%d5_item_use% = 1) BEGIN
   INCLUDE ~faiths_and_powers/lib/item_usability.tpa~
+  LAF change_usability END
 END
 //__________________________________________________________________________________
 
 //Apply Sphere System_______________________________________________________________
 //
 INCLUDE ~faiths_and_powers/lib/apply_sphere_system.tpa~
+LAF apply_spheres END
 //__________________________________________________________________________________
 
 //Handle NPCs_______________________________________________________________________
 //
 INCLUDE ~faiths_and_powers/lib/npc_kits.tpa~
+LAF npc_kits END
 //__________________________________________________________________________________
 
 //no dual-classing__________________________________________________________________
@@ -838,7 +886,6 @@ END
 
 
 
-
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 //
@@ -857,19 +904,28 @@ SUBCOMPONENT @100
 COPY ~faiths_and_powers/lib/markers/d5_nada.d5~ ~override~
 //__________________________________________________________________________________
 
+//run the sphere system______________________________________________________________
+//
+INCLUDE ~faiths_and_powers/lib/create_sphere_system.tpa~
+LAF create_spheres END
+//__________________________________________________________________________________
+
 //vanilla kits_______________________________________________________________________
 //
 INCLUDE ~faiths_and_powers/lib/vanilla_kit_spheres.tpa~
+LAF vanilla_kit_spheres END
 //___________________________________________________________________________________
 
 //mod kits___________________________________________________________________________
 //
 INCLUDE ~faiths_and_powers/lib/mod_kit_spheres.tpa~
+LAF mod_kit_spheres END
 //___________________________________________________________________________________
 
 //default access_____________________________________________________________________
 //
 INCLUDE ~faiths_and_powers/lib/default_kit_spheres.tpa~
+LAF default_kit_spheres END
 //___________________________________________________________________________________
 
 //read fnp_compat info______________________________________________________________
@@ -880,6 +936,7 @@ LAM ~READ_FNP_KIT_INFO~
 //deity selection___________________________________________________________________
 //
 INCLUDE ~faiths_and_powers/lib/deity_selection.tpa~
+LAF deity_dialogue END
 //__________________________________________________________________________________
 
 //alter item usability______________________________________________________________
@@ -888,6 +945,7 @@ LAM d5_item_usability
 
 ACTION_IF (%d5_item_use% = 1) BEGIN
   INCLUDE ~faiths_and_powers/lib/item_usability.tpa~
+  LAF change_usability END
 END
 //__________________________________________________________________________________
 
@@ -903,12 +961,14 @@ END
 
 //run the sphere system______________________________________________________________
 //
-INCLUDE ~faiths_and_powers/lib/sphere_system.tpa~
+INCLUDE ~faiths_and_powers/lib/apply_sphere_system.tpa~
+LAF apply_spheres END
 //__________________________________________________________________________________
 
 //Handle NPCs_______________________________________________________________________
 //
 INCLUDE ~faiths_and_powers/lib/npc_kits.tpa~
+LAF npc_kits END
 //__________________________________________________________________________________
 
 //verbiage__________________________________________________________________________
