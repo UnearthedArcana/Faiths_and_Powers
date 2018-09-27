@@ -432,8 +432,8 @@ ACTION_PHP_EACH d5_fnp_kit_use_access AS clab => val BEGIN
 	ACTION_IF (%val% = 1) BEGIN
 	  PRINT ~    %clab% : %clab_1% : %val%~
 	  COPY_EXISTING ~kitlist.2da~ ~override~
-		COUNT_2DA_COLS cols
-		READ_2DA_ENTRIES_NOW ~r2en_kitlist~ cols
+//		COUNT_2DA_COLS cols
+		READ_2DA_ENTRIES_NOW ~r2en_kitlist~ 10
 		FOR (row = 3; row < r2en_kitlist; row += 1) BEGIN
 		  READ_2DA_ENTRY_FORMER ~r2en_kitlist~ row 5 kit_clab
 		  READ_2DA_ENTRY_FORMER ~r2en_kitlist~ row 8 kit_class
@@ -448,8 +448,8 @@ ACTION_PHP_EACH d5_fnp_kit_use_access AS clab => val BEGIN
 	ELSE BEGIN
 	  PRINT ~    %clab% : %clab_1% : %val%~
 	  COPY_EXISTING ~kitlist.2da~ ~override~
-		COUNT_2DA_COLS cols
-		READ_2DA_ENTRIES_NOW ~r2en_kitlist~ cols
+//		COUNT_2DA_COLS cols
+		READ_2DA_ENTRIES_NOW ~r2en_kitlist~ 10
 		FOR (row = 3; row < r2en_kitlist; row += 1) BEGIN
 		  READ_2DA_ENTRY_FORMER ~r2en_kitlist~ row 5 kit_clab
 		  READ_2DA_ENTRY_FORMER ~r2en_kitlist~ row 8 kit_class
@@ -467,8 +467,8 @@ ACTION_PHP_EACH d5_fnp_kit_use_access AS clab => val BEGIN
 	ACTION_IF (%val% = 1) BEGIN
 	  PRINT ~    %clab% : %clab_1% : %val%~
 	  COPY_EXISTING ~kitlist.2da~ ~override~
-		COUNT_2DA_COLS cols
-		READ_2DA_ENTRIES_NOW ~r2en_kitlist~ cols
+//		COUNT_2DA_COLS cols
+		READ_2DA_ENTRIES_NOW ~r2en_kitlist~ 10
 		FOR (row = 3; row < r2en_kitlist; row += 1) BEGIN
 		  READ_2DA_ENTRY_FORMER ~r2en_kitlist~ row 5 kit_clab
 		  READ_2DA_ENTRY_FORMER ~r2en_kitlist~ row 8 kit_class
@@ -484,8 +484,8 @@ ACTION_PHP_EACH d5_fnp_kit_use_access AS clab => val BEGIN
 END
 
 COPY_EXISTING ~kitlist.2da~ ~override~
-  COUNT_2DA_COLS cols
-  READ_2DA_ENTRIES_NOW ~r2en_kitlist~ cols
+//  COUNT_2DA_COLS cols
+  READ_2DA_ENTRIES_NOW ~r2en_kitlist~ 10
   FOR (row = 3; row < r2en_kitlist; row += 1) BEGIN
    READ_2DA_ENTRY_FORMER ~r2en_kitlist~ row 0 kit_index
    READ_2DA_ENTRY_FORMER ~r2en_kitlist~ row 1 kit_label

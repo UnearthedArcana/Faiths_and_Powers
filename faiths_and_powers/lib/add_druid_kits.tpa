@@ -97,8 +97,8 @@ COPY ~faiths_and_powers/kits/druids/731_forest_druid/d5drsc1.eff~ ~override~
 //REPLACE VANILLA KIT WITH THIS KIT__________________________________________________
 //
   COPY_EXISTING ~kitlist.2da~ ~override~
-	COUNT_2DA_COLS cols
-	READ_2DA_ENTRIES_NOW rows cols
+//	COUNT_2DA_COLS cols
+	READ_2DA_ENTRIES_NOW rows 9
 	FOR (row = 1; row < rows; ++row) BEGIN
 	  READ_2DA_ENTRY_FORMER rows row 1 ~kit~
 	  PATCH_IF (~%kit%~ STRING_EQUAL_CASE ~D5_DR_FOR~) BEGIN

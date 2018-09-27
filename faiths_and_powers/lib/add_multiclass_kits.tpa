@@ -92,8 +92,8 @@ COPY ~faiths_and_powers/kits/misc/d5cstbo.spl~ ~override~
 COPY ~faiths_and_powers/kits/multiclass/464_cm_mystra/d5+abj.spl~ ~override~
 COPY ~faiths_and_powers/kits/multiclass/464_cm_mystra/d5_abju.eff~ ~override~
 COPY_EXISTING ~kitlist.2da~ ~override~
-  COUNT_2DA_COLS cols
-  READ_2DA_ENTRIES_NOW r2en cols
+//  COUNT_2DA_COLS cols
+  READ_2DA_ENTRIES_NOW r2en 10
   FOR (row = 1; row < r2en; ++row) BEGIN
 	READ_2DA_ENTRY_FORMER r2en row 1 ~kit_label~
 	PATCH_IF ~%kit_label%~ STRING_EQUAL_CASE ~D5_CM_MYSTRA~ BEGIN

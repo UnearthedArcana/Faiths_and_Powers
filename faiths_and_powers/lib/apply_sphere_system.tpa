@@ -36,8 +36,8 @@ OUTER_TEXT_SPRINT total_sphere_list ~~
 //LAM ~READ_FNP_KIT_INFO~
 
 COPY_EXISTING ~kitlist.2da~ ~override~
-  COUNT_2DA_COLS cols
-  READ_2DA_ENTRIES_NOW ~r2en_kitlist~ cols
+//  COUNT_2DA_COLS cols
+  READ_2DA_ENTRIES_NOW ~r2en_kitlist~ 10
   FOR (row = 3; row < r2en_kitlist; row += 1) BEGIN
 	READ_2DA_ENTRY_FORMER ~r2en_kitlist~ row 5 kit_clab
 	READ_2DA_ENTRY_FORMER ~r2en_kitlist~ row 0 kit_index
@@ -249,8 +249,8 @@ END
 //multi sorcerer HLAs________________________________________________________________
 //
 COPY_EXISTING ~kitlist.2da~ ~override~
-  COUNT_2DA_COLS cols 
-  READ_2DA_ENTRIES_NOW rows cols 
+//  COUNT_2DA_COLS cols 
+  READ_2DA_ENTRIES_NOW rows 10
   FOR (row = 1; row < rows; ++row) BEGIN 
     READ_2DA_ENTRY_FORMER rows row 1 ~kit_name~ 
     PATCH_IF ~%kit_name%~ STRING_EQUAL_CASE ~D5_FIGHTER_SORCERER~ BEGIN
