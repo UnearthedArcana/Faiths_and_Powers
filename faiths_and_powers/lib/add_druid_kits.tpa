@@ -102,7 +102,7 @@ COPY ~faiths_and_powers/kits/druids/731_forest_druid/d5drsc1.eff~ ~override~
 	FOR (row = 1; row < rows; ++row) BEGIN
 	  READ_2DA_ENTRY_FORMER rows row 1 ~kit~
 	  PATCH_IF (~%kit%~ STRING_EQUAL_CASE ~D5_DR_FOR~) BEGIN
-	    SET druid_row = (%row%)
+	    SET druid_row = (%row% - 1)
 	  END
 	END
   BUT_ONLY
