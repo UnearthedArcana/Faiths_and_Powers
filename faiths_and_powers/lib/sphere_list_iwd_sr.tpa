@@ -88,6 +88,7 @@ CLERIC_GREATER_SHIELD_OF_LATHANDER     , 7 => Protection
 
 //  WAR
 CLERIC_REMOVE_FEAR                     , 1 => War
+CLERIC_ABUNDANT_AMMO                   , 1 => War
 CLERIC_SPIRITUAL_HAMMER                , 2 => War
 CLERIC_STRENGTH_OF_ONE                 , 3 => War
 CLERIC_HOLY_POWER                      , 3 => War
@@ -136,9 +137,11 @@ WIZARD_SIMULACRUM                      , 7 => Deception
 
 //  THOUGHT/CHARM
 CLERIC_COMMAND                         , 1 => Thought
-WIZARD_SLEEP                           , 2 => Thought
+CLERIC_ENTHRALL                         , 2 => Thought
+CLERIC_FORBID                         , 2 => Thought
 CLERIC_CHARM_PERSON                    , 2 => Thought
 b_c301 /*murderous command*/           , 3 => Thought
+CLERIC_DICTATE                      , 3 => Thought
 CLERIC_EXALTATION                      , 3 => Thought
 //CLERIC_SPIRITUAL_CLARITY               , 3 => Thought (does it duplicate exaltation?)
 CLERIC_RIGID_THINKING                  , 3 => Thought
@@ -201,6 +204,7 @@ CLERIC_BEAST_CLAW                      , 1 => Animal
 sppr220 /*SR Animal summon 2*/         , 2 => Animal
 CLERIC_HOLD_ANIMAL                     , 2 => Animal
 sppr320 /*SR Animal summon 3*/         , 3 => Animal
+CLERIC_FERAL_INSTINCT                  , 3 => Animal
 sppr324 /*SR magic fang*/              , 3 => Animal
 CLERIC_SUMMON_INSECTS                  , 3 => Animal
 CLERIC_ANIMAL_SUMMONING_1              , 4 => Animal // now SR AS4
@@ -220,6 +224,7 @@ CLERIC_GOOD_BERRIES                    , 2 => Plant
 //CLERIC_GOODBERRY                       , 1 => Plant // is now SR cure moderate
 CLERIC_BARKSKIN                        , 2 => Plant
 CLERIC_THORN_SPRAY                     , 3 => Plant
+CLERIC_SNARE                           , 3 => Plant
 //CLERIC_SPIKE_GROWTH                    , 4 => Plant // use SR's instead...?
 sppr325 /*SR spike growth*/            , 4 => Plant
 CLERIC_CALL_WOODLAND_BEINGS            , 5 => Plant
@@ -231,6 +236,7 @@ CLERIC_CONJURE_EARTH_ELEMENTAL         , 7 => Plant // SR shambling mound
 
 //  EARTH
 sppr115 /*SR strength of stone*/       , 1 => Earth
+CLERIC_CAMOUFLAGE                     , 1 => Earth
 CLERIC_MAGIC_STONE                     , 2 => Earth
 //CLERIC_PROTECTION_FROM_LIGHTNING       , 2 => Earth
 b_pr301 /*stone fist*/                 , 3 => Earth
@@ -261,7 +267,7 @@ WIZARD_DEATH_FOG                       , 7 => Air
 
 //  WATER
 b_c103 /*frost fingers*/               , 1 => Water
-WIZARD_SNILLOCS_SNOWBALL_SWARM         , 2 => Water
+CLERIC_WATERY_FIST                     , 2 => Water
 b_c203 /*ice blade*/                   , 2 => Water
 //WIZARD_MELF_ACID_ARROW                 , 2 => Water
 WIZARD_ICELANCE                        , 3 => Water

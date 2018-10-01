@@ -1,5 +1,11 @@
 # Log
 
+Version 0.75.16
+
+2018-10-01
+
+- Added Compatibility for B_Spells
+
 VERSION 0.74.37
 
 2018-07-26
