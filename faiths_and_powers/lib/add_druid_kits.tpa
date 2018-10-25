@@ -1316,6 +1316,8 @@ END
 
 //AMARANDE DIALOGUE_________________________________________________________________
 //
+ACTION_IF GAME_IS ~bgee eet~ BEGIN
+
 <<<<<<<< d5/amaran+.d
 EXTEND_BOTTOM AMARAN 0
 + ~Class(Player1,DRUID_ALL)~ + ~Hungry for death, you say? Death stalks the land around us, whether we hunger or not. Innocents are murdered, families torn asunder, and the shadow of war looms over us all. Your fractious infighting only compounds it! You would speak of death? Let me SHOW you what death looks like!~ + druid_kitchange
@@ -1337,6 +1339,8 @@ END
 >>>>>>>> 
 
 COMPILE ~d5/amaran+.d~
+
+END
 
 END // end lost druid macro
 //__________________________________________________________________________________

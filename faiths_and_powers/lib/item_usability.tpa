@@ -8,7 +8,7 @@
 
 DEFINE_ACTION_FUNCTION change_usability BEGIN
 
-ACTION_IF NOT GAME_IS ~iwdee~ BEGIN 
+//ACTION_IF NOT GAME_IS ~iwdee~ BEGIN 
 
 //copy marker file___________________________________________________________________
 //
@@ -1096,7 +1096,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~enginest.2da~ BEGIN
 END
 //__________________________________________________________________________________
 
-END  // 	end not iwdee
+//END  // 	end not iwdee
 
 END // end function
 
