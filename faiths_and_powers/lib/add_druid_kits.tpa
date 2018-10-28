@@ -2056,19 +2056,19 @@ COPY_EXISTING ~kit.ids~ ~override~
     END
     PATCH_IF ~%kit_name%~ STRING_EQUAL_CASE ~D5_DR_FIGHTER~ BEGIN
       SET fighter_row = %row%
-      READ_2DA_ENTRY_FORMER rows forest_row 0 fighter_druid_code
+      READ_2DA_ENTRY_FORMER rows fighter_row 0 fighter_druid_code
     END
     PATCH_IF ~%kit_name%~ STRING_EQUAL_CASE ~D5_DR_MAGE~ BEGIN
       SET mage_row = %row%
-      READ_2DA_ENTRY_FORMER rows forest_row 0 mage_druid_code
+      READ_2DA_ENTRY_FORMER rows mage_row 0 mage_druid_code
     END
     PATCH_IF ~%kit_name%~ STRING_EQUAL_CASE ~D5_DR_RANGER~ BEGIN
       SET ranger_row = %row%
-      READ_2DA_ENTRY_FORMER rows forest_row 0 ranger_druid_code
+      READ_2DA_ENTRY_FORMER rows ranger_row 0 ranger_druid_code
     END
     PATCH_IF ~%kit_name%~ STRING_EQUAL_CASE ~D5_DR_THIEF~ BEGIN
       SET thief_row = %row%
-      READ_2DA_ENTRY_FORMER rows forest_row 0 thief_druid_code
+      READ_2DA_ENTRY_FORMER rows thief_row 0 thief_druid_code
     END
   END
 BUT_ONLY
