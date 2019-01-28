@@ -2,7 +2,7 @@ BACKUP ~faiths_and_powers/backup~
 AUTHOR ~SubtleD and Grammarsalad~
 
 
-VERSION ~0.75.20~
+VERSION ~0.75.21~
 
 
 //README ~faiths_and_powers/readme-pnp.html~
@@ -116,6 +116,9 @@ DEPRECATED @18
 BEGIN @102 // all the new kits, and kits in menus
 DESIGNATED 102
 SUBCOMPONENT @100 /*(GAME_IS ~bgee bg2ee eet~)*/
+
+LAM d5_sphere_system
+
 //Acolyte Lore (added to clabs)
 COPY ~faiths_and_powers/kits/acolytes/B_LOR.spl~ ~override~
 
@@ -377,13 +380,27 @@ END
 
 //Create Sphere System______________________________________________________________
 //
-INCLUDE ~faiths_and_powers/lib/create_sphere_system.tpa~
-LAF create_spheres END
+ACTION_IF (%d5_use_spheres% = 1) BEGIN
+ INCLUDE ~faiths_and_powers/lib/create_sphere_system.tpa~
+ LAF create_spheres END
+END
 //__________________________________________________________________________________
 
 //install the kits__________________________________________________________________
 //
+
 LAM d5_kit_choices
+
+ACTION_IF (%d5_use_spheres% = 0) BEGIN
+   OUTER_SET d5_multiclass_druids =	0
+   OUTER_SET d5_earth_mystic 	=	0
+   OUTER_SET d5_water_mystic 	=	0
+   OUTER_SET d5_air_mystic 		=	0
+   OUTER_SET d5_fire_mystic 	=	0
+   OUTER_SET d5_light_mystic 	=	0
+   OUTER_SET d5_shadow_mystic 	=	0
+   OUTER_SET d5_elementalist 	=	0
+END
 
 // (clerics)
 ACTION_IF (%d5_cleric_lathander% = 1) BEGIN
@@ -858,14 +875,18 @@ END
 
 //Apply Sphere System_______________________________________________________________
 //
-INCLUDE ~faiths_and_powers/lib/apply_sphere_system.tpa~
-LAF apply_spheres END
+ACTION_IF (%d5_use_spheres% = 1) BEGIN
+  INCLUDE ~faiths_and_powers/lib/apply_sphere_system.tpa~
+  LAF apply_spheres END
+END
 //__________________________________________________________________________________
 
 //Handle NPCs_______________________________________________________________________
 //
-INCLUDE ~faiths_and_powers/lib/npc_kits.tpa~
-LAF npc_kits END
+ACTION_IF (%d5_use_spheres% = 1) BEGIN
+  INCLUDE ~faiths_and_powers/lib/npc_kits.tpa~
+  LAF npc_kits END
+END
 //__________________________________________________________________________________
 
 //no dual-classing__________________________________________________________________

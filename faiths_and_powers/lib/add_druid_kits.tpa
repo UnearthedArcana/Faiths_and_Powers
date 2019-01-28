@@ -2264,14 +2264,28 @@ COPY ~faiths_and_powers/kits/druids/shapechange/d5drnf.spl~ ~override~
 	LPF ADD_SPELL_EFFECT INT_VAR opcode = 112 STR_VAR resource = ~%animal%~  END 
   END
   LPF ALTER_EFFECT INT_VAR match_opcode = 177 match_target = 1 match_parameter2 = 9 STR_VAR resource = ~d5drsc4~ END
-  LPF CLONE_EFFECT INT_VAR multi_match = 1 match_opcode = 177 match_target = 1 match_parameter2 = 9 parameter1 = %forest_druid_code% STR_VAR resource = ~d5drsc1~ END
-  LPF CLONE_EFFECT INT_VAR multi_match = 1 match_opcode = 177 match_target = 1 match_parameter2 = 9 parameter1 = %northern_druid_code% STR_VAR resource = ~d5drsc5~ END
+  PATCH_IF VARIABLE_IS_SET %forest_druid_code% BEGIN
+   LPF CLONE_EFFECT INT_VAR multi_match = 1 match_opcode = 177 match_target = 1 match_parameter2 = 9 parameter1 = %forest_druid_code% STR_VAR resource = ~d5drsc1~ END
+  END
+  PATCH_IF VARIABLE_IS_SET %northern_druid_code% BEGIN
+   LPF CLONE_EFFECT INT_VAR multi_match = 1 match_opcode = 177 match_target = 1 match_parameter2 = 9 parameter1 = %northern_druid_code% STR_VAR resource = ~d5drsc5~ END
+  END
 //  LPF CLONE_EFFECT INT_VAR multi_match = 1 match_opcode = 177 match_target = 1 match_parameter2 = 9 parameter1 = %shadow_druid_code% STR_VAR resource = ~d5drsc8~ END
-  LPF CLONE_EFFECT INT_VAR multi_match = 1 match_opcode = 177 match_target = 1 match_parameter2 = 9 parameter1 = %lost_druid_code% STR_VAR resource = ~d5drsc9~ END
-  LPF CLONE_EFFECT INT_VAR multi_match = 1 match_opcode = 177 match_target = 1 match_parameter2 = 9 parameter1 = %fighter_druid_code% STR_VAR resource = ~d5drsc1~ END
-  LPF CLONE_EFFECT INT_VAR multi_match = 1 match_opcode = 177 match_target = 1 match_parameter2 = 9 parameter1 = %mage_druid_code% STR_VAR resource = ~d5drsc1~ END
-  LPF CLONE_EFFECT INT_VAR multi_match = 1 match_opcode = 177 match_target = 1 match_parameter2 = 9 parameter1 = %ranger_druid_code% STR_VAR resource = ~d5drsc1~ END
-  LPF CLONE_EFFECT INT_VAR multi_match = 1 match_opcode = 177 match_target = 1 match_parameter2 = 9 parameter1 = %thief_druid_code% STR_VAR resource = ~d5drsc1~ END
+  PATCH_IF VARIABLE_IS_SET %lost_druid_code% BEGIN
+   LPF CLONE_EFFECT INT_VAR multi_match = 1 match_opcode = 177 match_target = 1 match_parameter2 = 9 parameter1 = %lost_druid_code% STR_VAR resource = ~d5drsc9~ END
+  END
+  PATCH_IF VARIABLE_IS_SET %fighter_druid_code% BEGIN
+	LPF CLONE_EFFECT INT_VAR multi_match = 1 match_opcode = 177 match_target = 1 match_parameter2 = 9 parameter1 = %fighter_druid_code% STR_VAR resource = ~d5drsc1~ END
+  END
+  PATCH_IF VARIABLE_IS_SET %mage_druid_code% BEGIN
+	LPF CLONE_EFFECT INT_VAR multi_match = 1 match_opcode = 177 match_target = 1 match_parameter2 = 9 parameter1 = %mage_druid_code% STR_VAR resource = ~d5drsc1~ END
+  END
+  PATCH_IF VARIABLE_IS_SET %ranger_druid_code% BEGIN
+	LPF CLONE_EFFECT INT_VAR multi_match = 1 match_opcode = 177 match_target = 1 match_parameter2 = 9 parameter1 = %ranger_druid_code% STR_VAR resource = ~d5drsc1~ END
+  END
+  PATCH_IF VARIABLE_IS_SET %thief_druid_code% BEGIN
+	LPF CLONE_EFFECT INT_VAR multi_match = 1 match_opcode = 177 match_target = 1 match_parameter2 = 9 parameter1 = %thief_druid_code% STR_VAR resource = ~d5drsc1~ END
+  END
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 parameter1 = 0 parameter2 = 1 timing = 9 STR_VAR resource = ~d5drnf~ END
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 parameter1 = 0 parameter2 = 1 timing = 9 STR_VAR resource = ~d5drbask~ END
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 parameter1 = 0 parameter2 = 1 timing = 9 STR_VAR resource = ~d5drwwlf~ END
