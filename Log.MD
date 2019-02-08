@@ -1,5 +1,13 @@
 # Log
 
+Version 0.75.22
+
+2019-02-08
+
+- Separated newly added spells from create_sphere_system.tpa
+
+- added fnp_new_spells.tpa to lib folder with newly added spells
+
 Version 0.75.16
 
 2018-10-01

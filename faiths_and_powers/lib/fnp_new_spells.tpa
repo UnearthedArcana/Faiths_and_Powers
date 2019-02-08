@@ -1,0 +1,458 @@
+//DESTRUCTION
+//spell etc
+COPY ~faiths_and_powers/spheres/spells/Destruction/b_pr101.spl~ ~override~  // Hand of Carnage
+	SAY NAME1 @50401
+	SAY NAME2 @50401
+	SAY UNIDENTIFIED_DESC @50402
+	SAY DESC @50402
+COPY ~faiths_and_powers/spheres/spells/Destruction/b_pr101.eff~ ~override~
+
+//Shatter__________________________________________________________________________________
+//icons
+COPY ~faiths_and_powers/spheres/spells/Destruction/b_c204b.bam~ ~override~  // Shatter
+COPY ~faiths_and_powers/spheres/spells/Destruction/b_c204c.bam~ ~override~  // Shatter
+//spell etc
+COPY ~faiths_and_powers/spheres/spells/Destruction/b_pr201.spl~ ~override~ // Shatter
+        SAY NAME1 @50408
+        SAY NAME2 @50408
+        SAY UNIDENTIFIED_DESC @50409
+	SAY DESC @50409
+COPY ~faiths_and_powers/spheres/spells/Destruction/b_pr201A.spl~ ~override~ // Shatter 2nd
+COPY ~faiths_and_powers/spheres/spells/Destruction/b_pr201B.spl~ ~override~ // Shatter   3rd
+COPY ~faiths_and_powers/spheres/spells/Destruction/b_pr201A.eff~ ~override~ // Shatter  x dam golem
+COPY ~faiths_and_powers/spheres/spells/Destruction/b_pr201B.eff~ ~override~ // Shatter  cast 2
+COPY ~faiths_and_powers/spheres/spells/Destruction/b_pr201C.eff~ ~override~ // Shatter  x dam
+COPY ~faiths_and_powers/spheres/spells/Destruction/b_pr201D.eff~ ~override~ // Shatter  cast 3
+
+//Need to copy all elementals, and change their type to monster
+COPY_EXISTING_REGEXP GLOB ~.*\.cre~ ~override~ //copies all cre files
+	PATCH_IF (~%SOURCE_SIZE%~ > ~0x71~) BEGIN
+		READ_BYTE ~0x272~ ~type~ //reads the byte containing cre type
+		PATCH_IF (~%type%~ = ~145~) BEGIN
+	          WRITE_SHORT 0x271 255
+	          WRITE_BYTE  0x272 145   //I have no idea why I need to do this...
+                END
+         END
+BUT_ONLY_IF_IT_CHANGES
+
+//Shout__________________________________________________________________________________
+COPY ~faiths_and_powers/spheres/spells/Destruction/b_pr402.spl~ ~override~ // Shout
+        SAY NAME1 @50405
+        SAY NAME2 @50405
+        SAY UNIDENTIFIED_DESC @50406
+	SAY DESC @50406
+
+OUTER_SET $aoe_spell(~b_pr402~)=1
+
+//AFFLICTION
+
+//Wave of Agony__________________________________________________________________________________
+COPY ~faiths_and_powers/spheres/spells/affliction/b_Pr501.spl~ ~override~ // Wave of Agony
+        SAY NAME1 @51201
+        SAY NAME2 @51201
+        SAY UNIDENTIFIED_DESC @51202
+	SAY DESC @51202
+COPY ~faiths_and_powers/spheres/spells/affliction/b_ILM04a.spl~ ~override~ // Wave of Agony spla
+COPY ~faiths_and_powers/spheres/spells/affliction/b_ILM04b.spl~ ~override~ // etc.
+COPY ~faiths_and_powers/spheres/spells/affliction/b_ILM04.eff~ ~override~ //
+  SAY 0x1c @51203 //Wracked in Agony
+
+OUTER_SET $aoe_spell(~b_Pr501~)=1
+
+//__________________________________________________________________________________
+//PLANT
+
+/*		no - make this the HLA instead
+ACTION_IF GAME_IS ~iwdee bgee bg2ee eet~ THEN BEGIN    //EE only opcodes
+ COPY ~faiths_and_powers/spheres/spells/plant/b_Pr601.spl~ ~override~ // Nature's Wrath
+        SAY NAME1 @51401
+        SAY NAME2 @51401
+        SAY UNIDENTIFIED_DESC @51402
+	SAY DESC @51402
+END
+
+ COPY ~faiths_and_powers/spheres/spells/plant/d5Pr601.spl~ ~override~ // Nature's Wrath
+        SAY NAME1 @51401
+        SAY UNIDENTIFIED_DESC @51402
+ COPY ~faiths_and_powers/spheres/spells/plant/d5_clsha.itm~ ~override~
+ COPY ~faiths_and_powers/spheres/spells/plant/d5_sham.cre~ ~override~
+ COPY ~faiths_and_powers/spheres/spells/plant/d5_nfsha.spl~ ~override~
+END
+
+ACTION_IF GAME_IS ~bgt tob~ BEGIN
+ COPY ~faiths_and_powers/spheres/spells/plant/NonIWDEE/b_Pr601.spl~ ~override~ // Nature's Wrath
+        SAY NAME1 @51401
+        SAY NAME2 @51401
+        SAY UNIDENTIFIED_DESC @51402
+	SAY DESC @51402
+END
+*/
+
+//Assassin Vines_______________________________________________________________________
+ACTION_IF GAME_IS ~bgee bg2ee eet iwdee~ THEN BEGIN    //Not sure why, but I originally limited this to IWDEE TEST!
+ COPY ~faiths_and_powers/spheres/spells/plant/b_c601.spl~ ~override~ //Assassin Vines
+        SAY NAME1 @51404
+        SAY NAME2 @51404
+        SAY UNIDENTIFIED_DESC @51405
+	SAY DESC @51405
+	
+OUTER_SET $aoe_spell(~b_c601~)=1
+END
+
+//Stone Fist__________________________________________________________________________
+//EARTH
+//icons
+COPY ~faiths_and_powers/spheres/spells/earth/b_c303b.bam~ ~override~ // Stone Fist
+COPY ~faiths_and_powers/spheres/spells/earth/b_c303c.bam~ ~override~ // Stone Fist
+//spell etc
+COPY ~faiths_and_powers/spheres/spells/earth/b_pr301.spl~ ~override~ // Stone Fist
+        SAY NAME1 @51501
+        SAY NAME2 @51501
+        SAY UNIDENTIFIED_DESC @51503
+	SAY DESC @51503
+COPY ~faiths_and_powers/spheres/spells/earth/b_pr301.itm~ ~override~ // Actual Fist
+        SAY NAME1 @51501
+        SAY NAME2 @51501
+        SAY UNIDENTIFIED_DESC @51504
+	SAY DESC @51504
+//END
+
+//WATER
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//____________________________________________________________Summon Water Elemental____________________________________________________________________//
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Projectile
+//VVC
+//cre
+ COPY ~faiths_and_powers/spheres/spells/water/b_wele1.cre~ ~override~ // 12 HD elemental
+        SAY NAME1 @51720
+        SAY NAME2 @51720
+ COPY ~faiths_and_powers/spheres/spells/water/b_wele2.cre~ ~override~ // 16 HD elemental
+        SAY NAME1 @51720
+        SAY NAME2 @51720
+ COPY ~faiths_and_powers/spheres/spells/water/b_wele3.cre~ ~override~ // 24 HD (greater) elemental
+        SAY NAME1 @51721
+        SAY NAME2 @51721
+//itm
+ COPY ~faiths_and_powers/spheres/spells/water/b_wele1.itm~ ~override~ // Water Elemental fist
+//bam
+// COPY ~faiths_and_powers/spheres/spells/water/iwatere.bam~ ~override~ // fist bam
+//animations -check SoD for cre animations...
+ COPY ~faiths_and_powers/spheres/spells/water/anim~ ~override~ // water anims
+//3d animation
+//sounds   Copy sound #EFF_M08
+//COPY ~Spells/data/iwd_spells/wizard_2/TRA_18.WAV~ ~override~   //
+//effs
+ COPY ~faiths_and_powers/spheres/spells/water/B_PRWA1.eff~ ~override~ // Summon Water Elemental
+ COPY ~faiths_and_powers/spheres/spells/water/B_PRWA2.eff~ ~override~ // Summon Water Elemental
+ COPY ~faiths_and_powers/spheres/spells/water/B_PRWA3.eff~ ~override~ // Summon Water Elemental
+//Spell itself
+COPY_EXISTING ~SPPR605.spl~ ~override/b_pr602.spl~  // Start with C Fire Elemental
+        SAY NAME1 @51701
+        SAY NAME2 @51701
+        SAY UNIDENTIFIED_DESC @51702
+	SAY DESC @51702
+                  LPF ALTER_EFFECT INT_VAR match_opcode = 177  STR_VAR resource = ~B_PRWA1~ match_resource = ~SPFIR1P~  END //
+                  LPF ALTER_EFFECT INT_VAR match_opcode = 177  STR_VAR resource = ~B_PRWA2~ match_resource = ~SPFIR2P~  END //
+                  LPF ALTER_EFFECT INT_VAR match_opcode = 177  STR_VAR resource = ~B_PRWA3~ match_resource = ~SPFIR3P~  END //
+/*  //Not addspelling for the time being...
+ADD_SPELL ~override/b_pr602.spl~ 1 6 ~CLERIC_CONJURE_WATER_ELEMENTAL~ //
+        SAY NAME1 @51701
+        SAY NAME2 @51701
+        SAY UNIDENTIFIED_DESC @51702
+	SAY DESC @51702
+//Now, other spell stuff...
+//to clear earlier versions of the spell
+LAF RES_NUM_OF_SPELL_NAME
+  STR_VAR spell_name = ~CLERIC_CONJURE_WATER_ELEMENTAL~
+  RET spell_res
+END
+
+// NEED TO CREATE UNIQUE SPELL ICON
+COPY_EXISTING ~%spell_res%.spl~ ~override~
+  LPF ALTER_SPELL_HEADER INT_VAR STR_VAR icon = EVAL  ~%spell_res%B~ END
+COPY ~faiths_and_powers/spheres/spells/charm/b_c201a.bam~ ~override/%spell_res%a.bam~
+COPY ~faiths_and_powers/spheres/spells/charm/b_c201b.bam~ ~override/%spell_res%b.bam~
+COPY ~faiths_and_powers/spheres/spells/charm/b_c201c.bam~ ~override/%spell_res%c.bam~
+//add bams to spl
+COPY_EXISTING ~%spell_res%.spl~ ~override~
+  WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
+*/
+
+//Add scrolls to stores, etc...
+
+//Ice Blade_________________________________________________________
+ACTION_IF GAME_IS ~bgee bg2ee eet iwdee~ THEN BEGIN    //Not sure why, but I originally limited these spells to IWDEE TEST!
+//Icons
+COPY ~faiths_and_powers/spheres/spells/water/b_c203b.bam~ ~override~   //bam
+COPY ~faiths_and_powers/spheres/spells/water/b_c203c.bam~ ~override~   //bam
+//blades
+COPY ~faiths_and_powers/spheres/spells/water/moonbla.bam~ ~override~   //bam
+COPY ~faiths_and_powers/spheres/spells/water/b_iceb1.itm~ ~override~   //blade
+        SAY NAME1 @51704
+        SAY NAME2 @51704
+        SAY UNIDENTIFIED_DESC @51710
+	SAY DESC @51710
+COPY ~faiths_and_powers/spheres/spells/water/b_iceb2.itm~ ~override~   //blade
+        SAY NAME1 @51704
+        SAY NAME2 @51704
+        SAY UNIDENTIFIED_DESC @51711
+	SAY DESC @51711
+COPY ~faiths_and_powers/spheres/spells/water/b_iceb3.itm~ ~override~   //blade
+        SAY NAME1 @51704
+        SAY NAME2 @51704
+        SAY UNIDENTIFIED_DESC @51712
+	SAY DESC @51712
+COPY ~faiths_and_powers/spheres/spells/water/b_iceb4.itm~ ~override~   //blade
+        SAY NAME1 @51704
+        SAY NAME2 @51704
+        SAY UNIDENTIFIED_DESC @51713
+	SAY DESC @51713
+COPY ~faiths_and_powers/spheres/spells/water/b_iceb5.itm~ ~override~   //blade
+        SAY NAME1 @51704
+        SAY NAME2 @51704
+        SAY UNIDENTIFIED_DESC @51714
+	SAY DESC @51714
+COPY ~faiths_and_powers/spheres/spells/water/b_iceb6.itm~ ~override~   //blade
+        SAY NAME1 @51704
+        SAY NAME2 @51704
+        SAY UNIDENTIFIED_DESC @51715
+	SAY DESC @51715
+COPY ~faiths_and_powers/spheres/spells/water/b_iceb7.itm~ ~override~   //blade
+        SAY NAME1 @51704
+        SAY NAME2 @51704
+        SAY UNIDENTIFIED_DESC @51716
+	SAY DESC @51716
+COPY ~faiths_and_powers/spheres/spells/water/b_iceb8.itm~ ~override~   //blade
+        SAY NAME1 @51704
+        SAY NAME2 @51704
+        SAY UNIDENTIFIED_DESC @51717
+	SAY DESC @51717
+COPY ~faiths_and_powers/spheres/spells/water/b_iceb9.itm~ ~override~   //blade
+        SAY NAME1 @51704
+        SAY NAME2 @51704
+        SAY UNIDENTIFIED_DESC @51718
+	SAY DESC @51718
+COPY ~faiths_and_powers/spheres/spells/water/b_iceb10.itm~ ~override~   //blade
+        SAY NAME1 @51704
+        SAY NAME2 @51704
+        SAY UNIDENTIFIED_DESC @51719
+	SAY DESC @51719
+COPY ~faiths_and_powers/spheres/spells/water/b_c203.spl~ ~override~ // Ice Blade
+        SAY NAME1 @51704
+        SAY NAME2 @51704
+        SAY UNIDENTIFIED_DESC @51705
+	SAY DESC @51705
+
+//Frost Fingers____________________________________________________________
+//icons
+COPY ~faiths_and_powers/spheres/spells/water/b_c103b.bam~ ~override~ // Frost Fingers
+COPY ~faiths_and_powers/spheres/spells/water/b_c103c.bam~ ~override~ // Frost Fingers
+//spell etc
+ADD_PROJECTILE ~faiths_and_powers/spheres/spells/water/b_c103.pro~
+COPY ~faiths_and_powers/spheres/spells/water/b_c103.spl~ ~override~ // Frost Fingers
+        SAY NAME1 @51707
+        SAY NAME2 @51707
+        SAY UNIDENTIFIED_DESC @51708
+	SAY DESC @51708
+	WRITE_SHORT 0x098 ~%b_c103%~
+
+END // End redundant engine check...
+
+//__________________________________________________________________________________
+
+//SHADOW
+
+//Cloak of Darkness_________________________________________________________
+//icons
+COPY ~faiths_and_powers/spheres/spells/shadow/b_c302b.bam~ ~override~ // Cloak of Darkness
+COPY ~faiths_and_powers/spheres/spells/shadow/b_c302c.bam~ ~override~ // Cloak of Darkness
+//spell etc
+COPY ~faiths_and_powers/spheres/spells/shadow/b_c302.spl~ ~override~ // Cloak of Darkness
+        SAY NAME1 @52003
+        SAY NAME2 @52003
+        SAY UNIDENTIFIED_DESC @52004
+	SAY DESC @52004
+
+//special case: shadowstep__________________________________________________________
+// Is this a spell?
+ACTION_IF NOT FILE_EXISTS_IN_GAME ~spsd02.spl~ BEGIN
+	COPY ~faiths_and_powers/spheres/spells/shadow/spsd02.spl~ ~override~ // Shadowstep
+        SAY NAME1 @52001
+        SAY NAME2 @52001
+        SAY UNIDENTIFIED_DESC @52002
+	SAY DESC @52002
+END
+
+//Summon Shadows_____________________________________________________________________
+//
+COPY ~faiths_and_powers/spheres/spells/shadow/d5fnp01.spl~     ~override~ 
+        SAY NAME1 @52007
+        SAY NAME2 @52007
+        SAY UNIDENTIFIED_DESC @52008
+COPY ~faiths_and_powers/spheres/spells/shadow/shadowsu.cre~     ~override~
+COPY ~faiths_and_powers/spheres/spells/shadow/shadowsu.eff~     ~override~
+COPY ~faiths_and_powers/spheres/spells/shadow/shadowsu.itm~     ~override~
+COPY ~faiths_and_powers/spheres/spells/shadow/dvwraith.cre~     ~override~
+COPY ~faiths_and_powers/spheres/spells/shadow/dvwraith.eff~     ~override~
+COPY ~faiths_and_powers/spheres/spells/shadow/dvwraith.itm~     ~override~
+
+//__________________________________________________________________________________
+
+//CHARM/THOUGHT
+//ACTION_IF GAME_IS ~bgee bg2ee eet iwdee~ THEN BEGIN    //originally made iwdee only test
+//what is going on here??????
+//end ee only
+//__________________________________________________________________________________
+
+//DEATH
+
+//Pacify the Dead______________________________________________________________
+//icons
+COPY ~faiths_and_powers/spheres/spells/death/b_c202b.bam~ ~override~ // Pacify the Dead
+COPY ~faiths_and_powers/spheres/spells/death/b_c202c.bam~ ~override~ // Pacify the Dead
+//spells etc
+COPY ~faiths_and_powers/spheres/spells/death/b_c202.spl~ ~override~ // Pacify the Dead
+        SAY NAME1 @50301
+        SAY NAME2 @50301
+        SAY UNIDENTIFIED_DESC @50302
+	SAY DESC @50302
+  LPF ALTER_EFFECT
+      INT_VAR match_opcode = 324
+      parameter1 = 0
+      parameter2 = 2
+      STR_VAR resource = EVAL ~b_c202~
+     END
+  LPF CLONE_EFFECT INT_VAR match_opcode = 40 opcode = 321 parameter1 = 0 patameter2 = 0 timing = 0 STR_VAR resource = EVAL ~b_c202~ END
+  LPF CLONE_EFFECT INT_VAR match_opcode = 40 opcode = 321 parameter1 = 0 patameter2 = 0 timing = 0 STR_VAR resource = EVAL ~b_f201~ END
+//add removal
+ACTION_IF FILE_EXISTS_IN_GAME ~spwi312.spl~ BEGIN
+ COPY_EXISTING ~spwi312.spl~ ~override~
+  LPF CLONE_EFFECT INT_VAR match_opcode = 40 opcode = 321 parameter1 = 0 patameter2 = 0 timing = 0 STR_VAR resource = EVAL ~b_c202~ END
+  LPF CLONE_EFFECT INT_VAR match_opcode = 40 opcode = 321 parameter1 = 0 patameter2 = 0 timing = 0 STR_VAR resource = EVAL ~b_f201~ END
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~spwish25.spl~ BEGIN
+ COPY_EXISTING ~spwish25.spl~ ~override~
+  LPF CLONE_EFFECT INT_VAR match_opcode = 40 opcode = 321 parameter1 = 0 patameter2 = 0 timing = 0 STR_VAR resource = EVAL ~b_c202~ END
+  LPF CLONE_EFFECT INT_VAR match_opcode = 40 opcode = 321 parameter1 = 0 patameter2 = 0 timing = 0 STR_VAR resource = EVAL ~b_f201~ END
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~spin146.spl~ BEGIN
+ COPY_EXISTING ~spin146.spl~ ~override~
+  LPF CLONE_EFFECT INT_VAR match_opcode = 40 opcode = 321 parameter1 = 0 patameter2 = 0 timing = 0 STR_VAR resource = EVAL ~b_c202~ END
+  LPF CLONE_EFFECT INT_VAR match_opcode = 40 opcode = 321 parameter1 = 0 patameter2 = 0 timing = 0 STR_VAR resource = EVAL ~b_f201~ END
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~spin977.spl~ BEGIN
+ COPY_EXISTING ~spin977.spl~ ~override~
+  LPF CLONE_EFFECT INT_VAR match_opcode = 40 opcode = 321 parameter1 = 0 patameter2 = 0 timing = 0 STR_VAR resource = EVAL ~b_c202~ END
+  LPF CLONE_EFFECT INT_VAR match_opcode = 40 opcode = 321 parameter1 = 0 patameter2 = 0 timing = 0 STR_VAR resource = EVAL ~b_f201~ END
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~spwm164.spl~ BEGIN
+ COPY_EXISTING ~spwm164.spl~ ~override~
+  LPF CLONE_EFFECT INT_VAR match_opcode = 40 opcode = 321 parameter1 = 0 patameter2 = 0 timing = 0 STR_VAR resource = EVAL ~b_c202~ END
+  LPF CLONE_EFFECT INT_VAR match_opcode = 40 opcode = 321 parameter1 = 0 patameter2 = 0 timing = 0 STR_VAR resource = EVAL ~b_f201~ END
+END
+
+  //Eyes of the Dead_________________________________________________________
+//Icons
+COPY ~faiths_and_powers/spheres/spells/death/b_c104b.bam~ ~override~ //
+COPY ~faiths_and_powers/spheres/spells/death/b_c104c.bam~ ~override~ //
+//spell etc
+COPY ~faiths_and_powers/spheres/spells/death/b_c104.spl~ ~override~ //
+        SAY NAME1 @50304
+        SAY NAME2 @50304
+        SAY UNIDENTIFIED_DESC @50305
+	SAY DESC @50305
+
+//LIFE
+
+//Disrupt Undead_________________________________________________________
+//Icons
+COPY ~faiths_and_powers/spheres/spells/death/b_c105b.bam~ ~override~ //
+COPY ~faiths_and_powers/spheres/spells/death/b_c105c.bam~ ~override~ //
+//spell etc
+COPY ~faiths_and_powers/spheres/spells/death/b_c105.spl~ ~override~ //
+        SAY NAME1 @50307
+        SAY NAME2 @50307
+        SAY UNIDENTIFIED_DESC @50308
+	SAY DESC @50308
+//__________________________________________________________________________________
+
+//ANIMAL
+
+//Hold Animal ---> Hold Beast
+COPY ~faiths_and_powers/spheres/spells/animal/#GENENCH.vvc~ ~override~ // vvc
+COPY ~faiths_and_powers/spheres/spells/animal/ENCHANX.bam~ ~override~ // vvc bam
+COPY ~faiths_and_powers/spheres/spells/animal/#ARE_P21.WAV~ ~override~ // vvc sound
+ADD_PROJECTILE ~faiths_and_powers/spheres/spells/animal/b_beast.pro~   //pro
+COPY ~faiths_and_powers/spheres/spells/animal/sppr305.spl~ ~override~ // Hold Beast
+        SAY NAME1 @51104
+        SAY NAME2 @51104
+        SAY UNIDENTIFIED_DESC @51105
+	SAY DESC @51105
+	WRITE_SHORT 0x098 ~%b_beast%~
+
+//Animal Eyes____________________________________________________________
+//icons
+COPY ~faiths_and_powers/spheres/spells/animal/b_c102b.bam~ ~override~ // Animal eyes
+COPY ~faiths_and_powers/spheres/spells/animal/b_c102c.bam~ ~override~ // Animal eyes
+//spell etc
+COPY ~faiths_and_powers/spheres/spells/animal/b_c102.spl~ ~override~ // Animal eyes
+        SAY NAME1 @51101
+        SAY NAME2 @51101
+        SAY UNIDENTIFIED_DESC @51102
+	SAY DESC @51102
+
+//__________________________________________________________________________________
+
+//DREAD
+//Forbiddance___________________________________________________________________  (changed to dread)
+//icons
+COPY ~faiths_and_powers/spheres/spells/charm/b_c201b.bam~ ~override~ // Forbiddance
+COPY ~faiths_and_powers/spheres/spells/charm/b_c201c.bam~ ~override~ // Forbiddance
+//spell etc
+COPY ~faiths_and_powers/spheres/spells/charm/b_c201.spl~ ~override~ // Forbiddance
+        SAY NAME1 @50800
+        SAY NAME2 @50800
+        SAY UNIDENTIFIED_DESC @50801
+	SAY DESC @50801
+
+//Feral Instinct_____________________________________________________________
+//icons
+COPY ~faiths_and_powers/spheres/spells/charm/b_c301b.bam~ ~override~ // Murderous Command
+COPY ~faiths_and_powers/spheres/spells/charm/b_c301c.bam~ ~override~ // Murderous Command
+//spell etc
+COPY ~faiths_and_powers/spheres/spells/charm/b_c301.spl~ ~override~ // Murderous Command
+        SAY NAME1 @50803
+        SAY NAME2 @50803
+        SAY UNIDENTIFIED_DESC @50804
+	SAY DESC @50804
+
+//Misfire____________________________________________________________________
+//icons
+COPY ~faiths_and_powers/spheres/spells/dread/b_c501b.bam~ ~override~ // Misfire
+COPY ~faiths_and_powers/spheres/spells/dread/b_c501c.bam~ ~override~ // Misfire
+//spl etc
+COPY ~faiths_and_powers/spheres/spells/dread/b_c501.eff~ ~override~ // Misfire
+  SAY 0x1c @50901     //Misfire
+
+COPY ~faiths_and_powers/spheres/spells/dread/b_c501.spl~ ~override~ // Misfire
+        SAY NAME1 @50901
+        SAY NAME2 @50901
+        SAY UNIDENTIFIED_DESC @50902
+	SAY DESC @50902
+
+//AIR
+
+//Storm Wall_________________________________________________________________
+COPY ~faiths_and_powers/spheres/spells/air/b_elect1.bam~ ~override~ // 
+COPY ~faiths_and_powers/spheres/spells/air/b_storm1.vvc~ ~override~ //
+COPY ~faiths_and_powers/spheres/spells/air/b_c401a.spl~ ~override~ //sub-spell
+ADD_PROJECTILE ~faiths_and_powers/spheres/spells/air/b_storm1.pro~   //pro
+COPY ~faiths_and_powers/spheres/spells/air/b_c401.spl~ ~override~ //spell
+        SAY NAME1 @51601
+        SAY NAME2 @51601
+        SAY UNIDENTIFIED_DESC @51602
+	SAY DESC @51602
+	WRITE_SHORT 0x098 ~%b_storm1%~
