@@ -1,5 +1,11 @@
 # Log
 
+Version 0.75.23
+
+2019-02-08_2
+
+- set mod_folder var to faiths_and_powers
+
 Version 0.75.22
 
 2019-02-08

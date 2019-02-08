@@ -2,7 +2,7 @@ BACKUP ~faiths_and_powers/backup~
 AUTHOR ~SubtleD and Grammarsalad~
 
 
-VERSION ~0.75.22~
+VERSION ~0.75.23~
 
 
 //README ~faiths_and_powers/readme-pnp.html~
@@ -14,6 +14,8 @@ ALWAYS
   	  COPY ~faiths_and_powers/d5_fnp_settings.ini~ ~override~
 	END
   	
+  	OUTER_SPRINT ~mod_folder~ ~faiths_and_powers~
+
   	INCLUDE ~override/d5_fnp_settings.ini~
 
 	INCLUDE ~faiths_and_powers/lib/remove_lines.tpa~
