@@ -1,5 +1,11 @@
 # Log
 
+Version 0.75.24
+
+2019-02-14
+
+- New Sphere System (with possibility to change spell/sphere assignments on the fly)
+
 Version 0.75.23
 
 2019-02-08_2

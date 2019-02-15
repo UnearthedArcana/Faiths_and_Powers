@@ -108,6 +108,8 @@ COPY ~faiths_and_powers/kits/acolytes/314_ilmater/b_ilm03.spl~ ~override~  // En
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM acolyte_ilmater_spheres
+
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -134,29 +136,6 @@ COPY ~faiths_and_powers/kits/acolytes/314_ilmater/b_ilm03.spl~ ~override~  // En
   STR_VAR
     clab_name 		= ~b_ailm~
 	class 			= ~acolyte~
-	s_Life 			= ~major~
-	s_Death 		= ~x~
-	s_Benediction 	= ~major~
-	s_Destruction 	= ~minor~
-	s_Protection 	= ~focus~
-	s_War 			= ~x~
-	s_Exploration   = ~x~
-	s_Knowledge 	= ~major~
-	s_Deception 	= ~x~
-	s_Thought 		= ~minor~
-	s_Dread 		= ~minor~
-	s_Vigor 		= ~major~
-	s_Affliction 	= ~major~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~x~
-	s_Light 		= ~minor~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~minor~
-	s_Perdition     = ~x~
  END
 
 END
@@ -273,6 +252,8 @@ COPY_EXISTING ~SPPR303.spl~ ~override/b_den04.spl~ // dispel magic
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM acolyte_deneir_spheres
+
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -299,32 +280,9 @@ COPY_EXISTING ~SPPR303.spl~ ~override/b_den04.spl~ // dispel magic
   STR_VAR
     clab_name 		= ~b_aden~
 	class 			= ~acolyte~
-	s_Life 			= ~minor~
-	s_Death 		= ~x~
-	s_Benediction 	= ~major~
-	s_Destruction 	= ~x~
-	s_Protection 	= ~major~
-	s_War 			= ~x~
-	s_Exploration   = ~minor~
-	s_Knowledge 	= ~focus~
-	s_Deception 	= ~minor~
-	s_Thought 		= ~major~
-	s_Dread 		= ~minor~
-	s_Vigor 		= ~minor~
-	s_Affliction 	= ~x~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~x~
-	s_Light 		= ~major~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~major~
-	s_Perdition     = ~x~
  END
 
- /////////////////////////////////////////Acolyte/Mage of DENEIR
+/////////////////////////////////////////Acolyte/Mage of DENEIR
 COPY ~faiths_and_powers/kits/acolytes/315_deneir/b_aden.2da~ ~override/b_2den.2da~
 
  ADD_KIT ~B_CM_DENEIR~
@@ -420,6 +378,7 @@ END
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM acolyte_cm_deneir_spheres
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -446,29 +405,6 @@ END
   STR_VAR
     clab_name 		= ~b_2den~
 	class 			= ~cleric_mage~
-	s_Life 			= ~minor~
-	s_Death 		= ~x~
-	s_Benediction 	        = ~major~
-	s_Destruction 	        = ~x~
-	s_Protection 	        = ~major~
-	s_War 			= ~x~
-	s_Exploration           = ~minor~
-	s_Knowledge 	        = ~focus~
-	s_Deception 	        = ~minor~
-	s_Thought 		= ~major~
-	s_Dread 		= ~minor~
-	s_Vigor 		= ~minor~
-	s_Affliction 	        = ~x~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~x~
-	s_Light 		= ~major~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~major~
-	s_Perdition             = ~x~
  END
 
 END
@@ -602,6 +538,8 @@ COPY_EXISTING ~SPWI104.spl~ ~override/b_sun01.spl~ // Charm person
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM acolyte_sune_spheres
+
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -628,30 +566,7 @@ COPY_EXISTING ~SPWI104.spl~ ~override/b_sun01.spl~ // Charm person
   STR_VAR
     clab_name 		= ~b_asun~
 	class 			= ~acolyte~
-	s_Life 			= ~major~
-	s_Death 		= ~x~
-	s_Benediction 	= ~major~
-	s_Destruction 	= ~x~
-	s_Protection 	= ~minor~
-	s_War 			= ~x~
-	s_Exploration   = ~minor~
-	s_Knowledge 	= ~major~
-	s_Deception 	= ~major~
-	s_Thought 		= ~focus~
-	s_Dread 		= ~major~
-	s_Vigor 		= ~major~
-	s_Affliction 	= ~x~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~x~
-	s_Light 		= ~minor~
-	s_Shadow 		= ~minor~
-	s_Magic 		= ~minor~
-	s_Perdition     = ~x~
-END
+ END
 
 //CLERIC/THIEF________________________________________________________________________
 
@@ -748,6 +663,8 @@ END
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM acolyte_ct_sune_spheres
+
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -774,32 +691,9 @@ END
   STR_VAR
     clab_name 		= ~b_2sun~
 	class 			= ~cleric_thief~
-	s_Life 			= ~major~
-	s_Death 		= ~x~
-	s_Benediction 	= ~major~
-	s_Destruction 	= ~x~
-	s_Protection 	= ~minor~
-	s_War 			= ~x~
-	s_Exploration   = ~minor~
-	s_Knowledge 	= ~major~
-	s_Deception 	= ~major~
-	s_Thought 		= ~focus~
-	s_Dread 		= ~major~
-	s_Vigor 		= ~major~
-	s_Affliction 	= ~x~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~x~
-	s_Light 		= ~minor~
-	s_Shadow 		= ~minor~
-	s_Magic 		= ~minor~
-	s_Perdition     = ~x~
  END
 
- /////////////////////////////////////////Acolyte/Mage of Sune
+/////////////////////////////////////////Acolyte/Mage of Sune
 COPY ~faiths_and_powers/kits/acolytes/316_sune/b_2sun.2da~ ~override/b_3sun.2da~
 
  ADD_KIT ~B_CM_SUNE~
@@ -895,6 +789,8 @@ END
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM acolyte_cm_sune_spheres
+
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -921,29 +817,6 @@ END
   STR_VAR
     clab_name 		= ~b_3sun~
 	class 			= ~cleric_mage~
-	s_Life 			= ~major~
-	s_Death 		= ~x~
-	s_Benediction 	= ~major~
-	s_Destruction 	= ~x~
-	s_Protection 	= ~minor~
-	s_War 			= ~x~
-	s_Exploration   = ~minor~
-	s_Knowledge 	= ~major~
-	s_Deception 	= ~major~
-	s_Thought 		= ~focus~
-	s_Dread 		= ~major~
-	s_Vigor 		= ~major~
-	s_Affliction 	= ~x~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~x~
-	s_Light 		= ~minor~
-	s_Shadow 		= ~minor~
-	s_Magic 		= ~minor~
-	s_Perdition     = ~x~
  END
 
 END
@@ -1050,6 +923,8 @@ COPY ~faiths_and_powers/kits/acolytes/322_tempus/b_tem02.spl~ ~override~  // WP 
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM acolyte_tempus_spheres
+
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -1076,29 +951,6 @@ COPY ~faiths_and_powers/kits/acolytes/322_tempus/b_tem02.spl~ ~override~  // WP 
   STR_VAR
     clab_name 		= ~b_atem~
 	class 			= ~acolyte~
-	s_Life 			= ~major~
-	s_Death 		= ~minor~
-	s_Benediction 	= ~major~
-	s_Destruction 	= ~major~
-	s_Protection 	= ~major~
-	s_War 			= ~focus~
-	s_Exploration   = ~minor~
-	s_Knowledge 	= ~x~
-	s_Deception 	= ~x~
-	s_Thought 		= ~x~
-	s_Dread 		= ~minor~
-	s_Vigor 		= ~major~
-	s_Affliction 	= ~minor~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~minor~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~minor~
-	s_Light 		= ~x~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~x~
-	s_Perdition     = ~x~
  END
 
 END
@@ -1244,7 +1096,9 @@ END
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
-LAF ~DEFINE_FNP_KIT_INFO~
+LAM acolyte_mystra_spheres
+
+ LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
 	u_chain_armor 		= 0
@@ -1270,29 +1124,6 @@ LAF ~DEFINE_FNP_KIT_INFO~
   STR_VAR
     clab_name 		= ~d5acmys~
 	class 			= ~acolyte~
-	s_Life 			= ~major~
-	s_Death 		= ~x~
-	s_Benediction 	= ~major~
-	s_Destruction 	= ~major~
-	s_Protection 	= ~major~
-	s_War 			= ~x~
-	s_Exploration   = ~minor~
-	s_Knowledge 	= ~major~
-	s_Deception 	= ~x~
-	s_Thought 		= ~minor~
-	s_Dread 		= ~minor~
-	s_Vigor 		= ~minor~
-	s_Affliction 	= ~x~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~minor~
-	s_Light 		= ~major~
-	s_Shadow 		= ~minor~
-	s_Magic 		= ~focus~
-	s_Perdition     = ~x~
  END
 
 END
@@ -1406,6 +1237,8 @@ COPY ~faiths_and_powers/kits/acolytes/329_mask/d5_mask3.cre~ ~override~
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM acolyte_mask_spheres
+
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -1432,29 +1265,6 @@ COPY ~faiths_and_powers/kits/acolytes/329_mask/d5_mask3.cre~ ~override~
   STR_VAR
     clab_name 		= ~d5amas~
 	class 			= ~acolyte~
-	s_Life 			= ~major~
-	s_Death 		= ~minor~
-	s_Benediction 	= ~minor~
-	s_Destruction 	= ~major~
-	s_Protection 	= ~minor~
-	s_War 			= ~x~
-	s_Exploration   = ~x~
-	s_Knowledge 	= ~major~
-	s_Deception 	= ~major~
-	s_Thought 		= ~minor~
-	s_Dread 		= ~major~
-	s_Vigor 		= ~x~
-	s_Affliction 	= ~minor~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~x~
-	s_Light 		= ~x~
-	s_Shadow 		= ~focus~
-	s_Magic 		= ~minor~
-	s_Perdition     = ~x~
  END
 
 //CLERIC/THIEF______________________________________________________________________
@@ -1552,6 +1362,8 @@ END
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM acolyte_ct_mask_spheres
+
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -1578,29 +1390,6 @@ END
   STR_VAR
     clab_name 		= ~d52mas~
 	class 			= ~cleric_thief~
-	s_Life 			= ~major~
-	s_Death 		= ~minor~
-	s_Benediction 	= ~minor~
-	s_Destruction 	= ~major~
-	s_Protection 	= ~minor~
-	s_War 			= ~x~
-	s_Exploration   = ~x~
-	s_Knowledge 	= ~major~
-	s_Deception 	= ~major~
-	s_Thought 		= ~minor~
-	s_Dread 		= ~major~
-	s_Vigor 		= ~x~
-	s_Affliction 	= ~minor~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~x~
-	s_Light 		= ~x~
-	s_Shadow 		= ~focus~
-	s_Magic 		= ~minor~
-	s_Perdition     = ~x~
  END
 
 END
@@ -1708,6 +1497,8 @@ COPY_EXISTING ~spwi815.spl~ ~override/d5shabl.spl~
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM acolyte_shar_spheres
+
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -1734,29 +1525,6 @@ COPY_EXISTING ~spwi815.spl~ ~override/d5shabl.spl~
   STR_VAR
     clab_name 		= ~d5asha~
 	class 			= ~acolyte~
-	s_Life 			= ~minor~
-	s_Death 		= ~major~
-	s_Benediction 	= ~x~
-	s_Destruction 	= ~major~
-	s_Protection 	= ~minor~
-	s_War 			= ~x~
-	s_Exploration   = ~x~
-	s_Knowledge 	= ~minor~
-	s_Deception 	= ~minor~
-	s_Thought 		= ~minor~
-	s_Dread 		= ~major~
-	s_Vigor 		= ~x~
-	s_Affliction 	= ~minor~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~x~
-	s_Light 		= ~x~
-	s_Shadow 		= ~focus~
-	s_Magic 		= ~major~
-	s_Perdition     = ~major~
  END
 
 //____________________________CLERIC/MAGE_____________________________________________
@@ -1854,6 +1622,8 @@ END
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM acolyte_cm_shar_spheres
+
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -1880,33 +1650,8 @@ END
   STR_VAR
     clab_name 		= ~d52sha~
 	class 			= ~cleric_mage~
-	s_Life 			= ~minor~
-	s_Death 		= ~major~
-	s_Benediction 	= ~x~
-	s_Destruction 	= ~major~
-	s_Protection 	= ~minor~
-	s_War 			= ~x~
-	s_Exploration   = ~x~
-	s_Knowledge 	= ~minor~
-	s_Deception 	= ~minor~
-	s_Thought 		= ~minor~
-	s_Dread 		= ~major~
-	s_Vigor 		= ~x~
-	s_Affliction 	= ~minor~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~x~
-	s_Light 		= ~x~
-	s_Shadow 		= ~focus~
-	s_Magic 		= ~major~
-	s_Perdition     = ~major~
  END
 
-
-//__________________________________________________________________________________
 
 //____________________________CLERIC/Thief of Shar_____________________________________________
 COPY ~faiths_and_powers/kits/acolytes/330_shar/d52sha.2da~ ~override/b_ctshr.2da~
@@ -2004,6 +1749,8 @@ END
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM acolyte_ct_shar_spheres
+
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -2030,29 +1777,6 @@ END
   STR_VAR
     clab_name 		= ~b_ctshr~
 	class 			= ~cleric_thief~
-	s_Life 			= ~minor~
-	s_Death 		= ~major~
-	s_Benediction 	= ~x~
-	s_Destruction 	= ~major~
-	s_Protection 	= ~minor~
-	s_War 			= ~x~
-	s_Exploration   = ~x~
-	s_Knowledge 	= ~minor~
-	s_Deception 	= ~minor~
-	s_Thought 		= ~minor~
-	s_Dread 		= ~major~
-	s_Vigor 		= ~x~
-	s_Affliction 	= ~minor~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~x~
-	s_Light 		= ~x~
-	s_Shadow 		= ~focus~
-	s_Magic 		= ~major~
-	s_Perdition     = ~major~
  END
 
 END
@@ -2167,6 +1891,8 @@ COPY ~faiths_and_powers/kits/acolytes/331_moander/b_moa3.spl~ ~override~    //Im
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM acolyte_moander_spheres
+
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -2193,29 +1919,6 @@ COPY ~faiths_and_powers/kits/acolytes/331_moander/b_moa3.spl~ ~override~    //Im
   STR_VAR
     clab_name 		= ~b_cmoa~
 	class 			= ~acolyte~
-	s_Life 			= ~x~
-	s_Death 		= ~major~
-	s_Benediction 	= ~x~
-	s_Destruction   = ~major~
-	s_Protection    = ~x~
-	s_War 			= ~x~
-	s_Exploration   = ~minor~
-	s_Knowledge     = ~x~
-	s_Deception     = ~minor~
-	s_Thought 		= ~x~
-	s_Dread 		= ~major~
-	s_Vigor 		= ~minor~
-	s_Affliction    = ~major~
-	s_Animal 		= ~minor~
-	s_Plant 		= ~focus~
-	s_Earth 		= ~major~
-	s_Water 		= ~minor~
-	s_Air 			= ~minor~
-	s_Fire 			= ~x~
-	s_Light 		= ~x~
-	s_Shadow 		= ~major~
-	s_Magic 		= ~x~
-	s_Perdition     = ~x~
  END
 
 //____________________________CLERIC/MAGE_____________________________________________
@@ -2313,6 +2016,8 @@ END
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM acolyte_cm_moander_spheres
+
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -2339,29 +2044,6 @@ END
   STR_VAR
     clab_name 		= ~b_c2moa~
 	class 			= ~cleric_mage~
-	s_Life 			= ~x~
-	s_Death 		= ~major~
-	s_Benediction 	        = ~x~
-	s_Destruction           = ~major~
-	s_Protection            = ~x~
-	s_War 			= ~x~
-	s_Exploration           = ~minor~
-	s_Knowledge             = ~x~
-	s_Deception             = ~minor~
-	s_Thought 		= ~x~
-	s_Dread 		= ~major~
-	s_Vigor 		= ~minor~
-	s_Affliction            = ~major~
-	s_Animal 		= ~minor~
-	s_Plant 		= ~focus~
-	s_Earth 		= ~major~
-	s_Water 		= ~minor~
-	s_Air 			= ~minor~
-	s_Fire 			= ~x~
-	s_Light 		= ~x~
-	s_Shadow 		= ~major~
-	s_Magic 		= ~x~
-	s_Perdition             = ~x~
  END
 
 //____________________________CLERIC/Thief of Moander_____________________________________________
@@ -2459,6 +2141,8 @@ END
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM acolyte_ct_moander_spheres
+
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -2485,29 +2169,6 @@ END
   STR_VAR
     clab_name 		= ~b_c3moa~
 	class 			= ~cleric_thief~
-	s_Life 			= ~x~
-	s_Death 		= ~major~
-	s_Benediction 	        = ~x~
-	s_Destruction           = ~major~
-	s_Protection            = ~x~
-	s_War 			= ~x~
-	s_Exploration           = ~minor~
-	s_Knowledge             = ~x~
-	s_Deception             = ~minor~
-	s_Thought 		= ~x~
-	s_Dread 		= ~major~
-	s_Vigor 		= ~minor~
-	s_Affliction            = ~major~
-	s_Animal 		= ~minor~
-	s_Plant 		= ~focus~
-	s_Earth 		= ~major~
-	s_Water 		= ~minor~
-	s_Air 			= ~minor~
-	s_Fire 			= ~x~
-	s_Light 		= ~x~
-	s_Shadow 		= ~major~
-	s_Magic 		= ~x~
-	s_Perdition             = ~x~
  END
 
 END
@@ -2602,7 +2263,7 @@ ACTION_IF GAME_IS ~bgee bg2ee eet iwdee~ THEN BEGIN
 	END
 END
 
-//MOANDER ABILITY FILES________________________________________________________________
+//BESHABA ABILITY FILES______________________________________________________________
 //
 COPY ~faiths_and_powers/kits/acolytes/332_beshaba/b_abes.2da~ ~override~
 
@@ -2699,6 +2360,8 @@ COPY ~faiths_and_powers/spheres/spells/dread/b_c501.eff~ ~override/b_bes04.eff~ 
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM acolyte_beshaba_spheres
+
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -2725,29 +2388,6 @@ COPY ~faiths_and_powers/spheres/spells/dread/b_c501.eff~ ~override/b_bes04.eff~ 
   STR_VAR
     clab_name 		= ~b_abes~
 	class 			= ~acolyte~
-	s_Life 			= ~major~
-	s_Death 		= ~major~
-	s_Benediction 	= ~major~
-	s_Destruction   = ~minor~
-	s_Protection    = ~major~
-	s_War 			= ~x~
-	s_Exploration   = ~x~
-	s_Knowledge     = ~minor~
-	s_Deception     = ~minor~
-	s_Thought 		= ~major~
-	s_Dread 		= ~focus~
-	s_Vigor 		= ~minor~
-	s_Affliction    = ~minor~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~x~
-	s_Light 		= ~x~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~minor~
-	s_Perdition     = ~x~
  END
 
 END
@@ -2758,7 +2398,7 @@ END
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 //
-//							CLERIC KITS
+//							ACOLYTE OF BAERVAN
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 
@@ -2847,6 +2487,8 @@ COPY_EXISTING ~faiths_and_powers/kits/acolytes/342_baervan/d5baerv.2da~ ~overrid
 
 //DEFINE SPHERE ACCESS________________________________________________________________
 //
+LAM acolyte_baervan_spheres
+
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -2873,31 +2515,7 @@ COPY_EXISTING ~faiths_and_powers/kits/acolytes/342_baervan/d5baerv.2da~ ~overrid
   STR_VAR
     clab_name 		= ~d5baerv~
 	class 			= ~acolyte~
-	s_Life 			= ~major~
-	s_Death 		= ~x~
-	s_Benediction 	= ~major~
-	s_Destruction 	= ~x~
-	s_Protection 	= ~major~
-	s_War 			= ~x~
-	s_Exploration   = ~minor~
-	s_Knowledge 	= ~minor~
-	s_Deception 	= ~x~
-	s_Thought 		= ~minor~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~minor~
-	s_Affliction 	= ~x~
-	s_Animal 		= ~focus~
-	s_Plant 		= ~major~
-	s_Earth 		= ~major~
-	s_Water 		= ~minor~
-	s_Air 			= ~x~
-	s_Fire 			= ~x~
-	s_Light 		= ~minor~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~x~
-	s_Perdition     = ~x~
  END
-
 
 //____________________________CLERIC/MAGE_____________________________________________
 
@@ -2994,6 +2612,8 @@ END
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM acolyte_cm_baervan_spheres
+
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -3020,29 +2640,6 @@ END
   STR_VAR
     clab_name 		= ~d5baer2~
 	class 			= ~cleric_mage~
-	s_Life 			= ~major~
-	s_Death 		= ~x~
-	s_Benediction 	= ~major~
-	s_Destruction 	= ~x~
-	s_Protection 	= ~major~
-	s_War 			= ~x~
-	s_Exploration   = ~minor~
-	s_Knowledge 	= ~minor~
-	s_Deception 	= ~x~
-	s_Thought 		= ~minor~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~minor~
-	s_Affliction 	= ~x~
-	s_Animal 		= ~focus~
-	s_Plant 		= ~major~
-	s_Earth 		= ~major~
-	s_Water 		= ~minor~
-	s_Air 			= ~x~
-	s_Fire 			= ~x~
-	s_Light 		= ~minor~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~x~
-	s_Perdition     = ~x~
  END
 
 END

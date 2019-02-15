@@ -121,6 +121,12 @@ ACTION_PHP_EACH d5_kitlist_spheres AS goo => roo BEGIN
 	  COPY ~faiths_and_powers/spheres/hlas/lucmxyz.2da~ ~override/lub_%goo_1%.2da~
 	END
 	ACTION_PHP_EACH d5_fnp_spheres AS sphere => val BEGIN
+//	  LAM ~set_sphere_names~
+	  OUTER_INNER_PATCH_SAVE sphere_name ~%sphere%~ BEGIN
+		PHP_EACH sphere_name_changes AS fnp_sphere => new_sphere BEGIN
+		  REPLACE_TEXTUALLY CASE_INSENSITIVE EXACT_MATCH ~%fnp_sphere%~ ~%new_sphere%~
+		END
+	  END
 	  ACTION_IF (VARIABLE_IS_SET $d5_fnp_kit_sphere_access(~%sphere%~ ~%goo%~)) BEGIN
 		OUTER_TEXT_SPRINT access $d5_fnp_kit_sphere_access(~%sphere%~ ~%goo%~)
 		OUTER_INNER_PATCH ~%sphere%~ BEGIN
@@ -135,7 +141,7 @@ ACTION_PHP_EACH d5_kitlist_spheres AS goo => roo BEGIN
 			REPLACE_TEXTUALLY ~[%LNL%%MNL%%WNL%]zzz~ ~~
 		  BUT_ONLY
 		  APPEND ~%goo%.2da~ ~SPHERES     AP_D5SF%shortsphere%  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** ~ 
-		  OUTER_TEXT_SPRINT focus_sphere_list ~%focus_sphere_list% %sphere%~
+		  OUTER_TEXT_SPRINT focus_sphere_list ~%focus_sphere_list% %sphere_name%~
 		END
 		ACTION_IF (VARIABLE_IS_SET $d5_fnp_sphere_access(~%access%~) && ~%access%~ STRING_EQUAL_CASE ~MAJOR~) BEGIN
 		  COPY_EXISTING ~lub_%goo_1%.2da~ ~override~
@@ -146,19 +152,19 @@ ACTION_PHP_EACH d5_kitlist_spheres AS goo => roo BEGIN
 			REPLACE_TEXTUALLY ~[%LNL%%MNL%%WNL%]zzz~ ~~
 		  BUT_ONLY
 		  APPEND ~%goo%.2da~ ~SPHERES     AP_D5SP%shortsphere%  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** ~ 
-		  OUTER_TEXT_SPRINT major_sphere_list ~%major_sphere_list% %sphere%,~
+		  OUTER_TEXT_SPRINT major_sphere_list ~%major_sphere_list% %sphere_name%,~
 		END
 		ACTION_IF (VARIABLE_IS_SET $d5_fnp_sphere_access(~%access%~) && ~%access%~ STRING_EQUAL_CASE ~MINOR~) BEGIN
 		  APPEND ~%goo%.2da~ ~SPHERES     AP_D5SM%shortsphere%  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** ~ 
-		  OUTER_TEXT_SPRINT minor_sphere_list ~%minor_sphere_list% %sphere%,~
+		  OUTER_TEXT_SPRINT minor_sphere_list ~%minor_sphere_list% %sphere_name%,~
 		END
 		ACTION_IF (VARIABLE_IS_SET $d5_fnp_sphere_access(~%access%~) && ~%access%~ STRING_EQUAL_CASE ~PALADIN~) BEGIN
 		  APPEND ~%goo%.2da~ ~SPHERES     AP_D5SP%shortsphere%  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** ~ 
-		  OUTER_TEXT_SPRINT minor_sphere_list ~%minor_sphere_list% %sphere%,~
+		  OUTER_TEXT_SPRINT minor_sphere_list ~%minor_sphere_list% %sphere_name%,~
 		END
 		ACTION_IF (VARIABLE_IS_SET $d5_fnp_sphere_access(~%access%~) && ~%access%~ STRING_EQUAL_CASE ~RANGER~) BEGIN
 		  APPEND ~%goo%.2da~ ~SPHERES     AP_D5SP%shortsphere%  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** ~ 
-		  OUTER_TEXT_SPRINT minor_sphere_list ~%minor_sphere_list% %sphere%,~
+		  OUTER_TEXT_SPRINT minor_sphere_list ~%minor_sphere_list% %sphere_name%,~
 		END
 	  END
 	END

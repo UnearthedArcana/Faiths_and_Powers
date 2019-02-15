@@ -140,7 +140,7 @@ BEGIN
   
   // validate class
   ACTION_TO_UPPER class
-  ACTION_IF (NOT VARIABLE_IS_SET $d5_fnp_class_access(~%class%~)) BEGIN
+  ACTION_IF NOT (VARIABLE_IS_SET $d5_fnp_class_access(~%class%~)) BEGIN
     FAIL ~DEFINE_FNP_KIT_INFO: The specified class (%class%) does not match one of the valid options: ALL, HUMAN, ELF, DWARF, GNOME, HALFLING, or ORC.~
   END
   
@@ -151,7 +151,7 @@ BEGIN
     OUTER_TEXT_SPRINT access EVAL ~%%sphere%%~
     ACTION_TO_UPPER %access%
     ACTION_IF (NOT VARIABLE_IS_SET $d5_fnp_sphere_access(~%access%~)) BEGIN
-      FAIL ~DEFINE_FNP_KIT_INFO: The access value (%access%) for the sphere %sphere% does not match one of the valid options: NONE, MAJOR, MINOR, FOCUS, PALADIN, or RANGER.~
+      FAIL ~DEFINE_FNP_KIT_INFO: The access value (%access%) for the sphere %sphere% does not match one of the valid options: X, MAJOR, MINOR, FOCUS, PALADIN, or RANGER.~
     END
   END
 
@@ -170,27 +170,173 @@ BEGIN
   ACTION_IF (NOT FILE_EXISTS_IN_GAME ~d5_spher.2da~) BEGIN
     COPY ~%2da_folder%/d5_spher.2da~ ~override~
   END
-  
-  // define the text that will be added to the files
-  OUTER_TEXT_SPRINT class_text ~%clab_name% %class%~
-  OUTER_TEXT_SPRINT usable_text ~%clab_name% 	%u_leather_armor% %u_chain_armor% %u_plate_armor% %u_club_staff% %u_hammers% %u_maces% %u_flails% %u_axes% %u_daggers% %u_short_swords% %u_long_swords% %u_scimitars% %u_katanas% %u_bastard_swords% %u_2hand_swords% %u_halberds% %u_spears% %u_darts% %u_slings% %u_bows% %u_crossbows%~
-  OUTER_TEXT_SPRINT sphere_text ~%clab_name% %s_Life% %s_Death% %s_Benediction% %s_Destruction% %s_Protection% %s_War% %s_Exploration% %s_Knowledge% %s_Deception% %s_Thought% %s_Dread% %s_Vigor% %s_Affliction% %s_Animal% %s_Plant% %s_Earth% %s_Water% %s_Air% %s_Fire% %s_Light% %s_Shadow% %s_Magic% %s_Perdition%~
+
+  ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~d5_class.2da~ ~%clab_name%~)) BEGIN
+
+   ACTION_IF FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~ BEGIN
+	INCLUDE ~override/fnp_sphere_list.tpa~
+   END
+   ACTION_PHP_EACH EVAL ~%clab_name%_spheres~ AS this_variable => kit_access BEGIN
+	OUTER_INNER_PATCH_SAVE variable ~%this_variable%~ BEGIN
+	  PHP_EACH sphere_name_changes AS fnp_sphere => new_sphere BEGIN
+		REPLACE_TEXTUALLY CASE_INSENSITIVE EXACT_MATCH ~%new_sphere%~ ~%fnp_sphere%~
+	  END
+	END
+	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~Life~) BEGIN
+	  OUTER_SPRINT s_Life ~%kit_access%~
+	END
+	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~Death~) BEGIN
+	  OUTER_SPRINT s_Death ~%kit_access%~
+	END
+	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~Benediction~) BEGIN
+	  OUTER_SPRINT s_Benediction ~%kit_access%~
+	END
+	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~Destruction~) BEGIN
+	  OUTER_SPRINT s_Destruction ~%kit_access%~
+	END
+	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~Protection~) BEGIN
+	  OUTER_SPRINT s_Protection ~%kit_access%~
+	END
+	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~War~) BEGIN
+	  OUTER_SPRINT s_War ~%kit_access%~
+	END
+	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~Exploration~) BEGIN
+	  OUTER_SPRINT s_Exploration ~%kit_access%~
+	END
+	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~Knowledge~) BEGIN
+	  OUTER_SPRINT s_Knowledge ~%kit_access%~
+	END
+	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~Deception~) BEGIN
+	  OUTER_SPRINT s_Deception ~%kit_access%~
+	END
+	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~Thought~) BEGIN
+	  OUTER_SPRINT s_Thought ~%kit_access%~
+	END
+	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~Dread~) BEGIN
+	  OUTER_SPRINT s_Dread ~%kit_access%~
+	END
+	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~Vigor~) BEGIN
+	  OUTER_SPRINT s_Vigor ~%kit_access%~
+	END
+	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~Affliction~) BEGIN
+	  OUTER_SPRINT s_Affliction ~%kit_access%~
+	END
+	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~Animal~) BEGIN
+	  OUTER_SPRINT s_Animal ~%kit_access%~
+	END
+	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~Plant~) BEGIN
+	  OUTER_SPRINT s_Plant ~%kit_access%~
+	END
+	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~Earth~) BEGIN
+	  OUTER_SPRINT s_Earth ~%kit_access%~
+	END
+	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~Air~) BEGIN
+	  OUTER_SPRINT s_Air ~%kit_access%~
+	END
+	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~Water~) BEGIN
+	  OUTER_SPRINT s_Water ~%kit_access%~
+	END
+	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~Fire~) BEGIN
+	  OUTER_SPRINT s_Fire ~%kit_access%~
+	END
+	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~Light~) BEGIN
+	  OUTER_SPRINT s_Light ~%kit_access%~
+	END
+	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~Shadow~) BEGIN
+	  OUTER_SPRINT s_Shadow ~%kit_access%~
+	END
+	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~Magic~) BEGIN
+	  OUTER_SPRINT s_Magic ~%kit_access%~
+	END
+	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~Perdition~) BEGIN
+	  OUTER_SPRINT s_Perdition ~%kit_access%~
+	END
+	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~leather_armor_use~) BEGIN
+	  OUTER_SET u_leather_armor = %kit_access%
+	END
+	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~chain_armor_use~) BEGIN
+	  OUTER_SET u_chain_armor = %kit_access%
+	END
+	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~plate_armor_use~) BEGIN
+	  OUTER_SET u_plate_armor = %kit_access%
+	END
+	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~club_staff_prof~) BEGIN
+	  OUTER_SET u_club_staff = %kit_access%
+	END
+	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~hammers_prof~) BEGIN
+	  OUTER_SET u_hammers = %kit_access%
+	END
+	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~maces_prof~) BEGIN
+	  OUTER_SET u_maces = %kit_access%
+	END
+	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~flails_prof~) BEGIN
+	  OUTER_SET u_flails = %kit_access%
+	END
+	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~axes_prof~) BEGIN
+	  OUTER_SET u_axes = %kit_access%
+	END
+	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~daggers_prof~) BEGIN
+	  OUTER_SET u_daggers = %kit_access%
+	END
+	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~short_swords_prof~) BEGIN
+	  OUTER_SET u_short_swords = %kit_access%
+	END
+	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~long_swords_prof~) BEGIN
+	  OUTER_SET u_long_swords = %kit_access%
+	END
+	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~scimitars_prof~) BEGIN
+	  OUTER_SET u_scimitars = %kit_access%
+	END
+	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~katanas_prof~) BEGIN
+	  OUTER_SET u_katanas = %kit_access%
+	END
+	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~bastard_swords_prof~) BEGIN
+	  OUTER_SET u_bastard_swords = %kit_access%
+	END
+	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~2hand_swords_prof~) BEGIN
+	  OUTER_SET u_2hand_swords = %kit_access%
+	END
+	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~halberds_prof~) BEGIN
+	  OUTER_SET u_halberds = %kit_access%
+	END
+	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~spears_prof~) BEGIN
+	  OUTER_SET u_spears = %kit_access%
+	END
+	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~darts_prof~) BEGIN
+	  OUTER_SET u_darts = %kit_access%
+	END
+	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~slings_prof~) BEGIN
+	  OUTER_SET u_slings = %kit_access%
+	END
+	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~bows_prof~) BEGIN
+	  OUTER_SET u_bows = %kit_access%
+	END
+	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~crossbows_prof~) BEGIN
+	  OUTER_SET u_crossbows = %kit_access%
+	END
+   END
+
+  // define the text that will be added to the 2da files
+   OUTER_TEXT_SPRINT class_text ~%clab_name% %class%~
+   OUTER_TEXT_SPRINT usable_text ~%clab_name% 	%u_leather_armor% %u_chain_armor% %u_plate_armor% %u_club_staff% %u_hammers% %u_maces% %u_flails% %u_axes% %u_daggers% %u_short_swords% %u_long_swords% %u_scimitars% %u_katanas% %u_bastard_swords% %u_2hand_swords% %u_halberds% %u_spears% %u_darts% %u_slings% %u_bows% %u_crossbows%~
+   OUTER_TEXT_SPRINT sphere_text ~%clab_name% %s_Life% %s_Death% %s_Benediction% %s_Destruction% %s_Protection% %s_War% %s_Exploration% %s_Knowledge% %s_Deception% %s_Thought% %s_Dread% %s_Vigor% %s_Affliction% %s_Animal% %s_Plant% %s_Earth% %s_Water% %s_Air% %s_Fire% %s_Light% %s_Shadow% %s_Magic% %s_Perdition%~
 
   // uppercase text
-  ACTION_TO_UPPER class_text
-  ACTION_TO_UPPER usable_text
-  ACTION_TO_UPPER sphere_text
+   ACTION_TO_UPPER class_text
+   ACTION_TO_UPPER usable_text
+   ACTION_TO_UPPER sphere_text
     
   // append to the .2da files
-  APPEND ~d5_class.2da~ ~%class_text%~
-  APPEND ~d5_usabl.2da~ ~%usable_text%~
-  APPEND ~d5_spher.2da~ ~%sphere_text%~
+   APPEND ~d5_class.2da~ ~%class_text%~
+   APPEND ~d5_usabl.2da~ ~%usable_text%~
+   APPEND ~d5_spher.2da~ ~%sphere_text%~
   
   // clean up the .2da files
-  COPY_EXISTING ~d5_usabl.2da~ ~override~
+   COPY_EXISTING ~d5_usabl.2da~ ~override~
                 ~d5_class.2da~ ~override~
                 ~d5_spher.2da~ ~override~
-    PRETTY_PRINT_2DA
+	PRETTY_PRINT_2DA
+  END
 END
 
 DEFINE_ACTION_MACRO ~READ_FNP_KIT_INFO~ BEGIN
@@ -266,3 +412,19 @@ DEFINE_ACTION_FUNCTION ~DISPLAY_FNP_KIT_INFO~ BEGIN
     END
   END
 END
+
+// NECESSARY FUNCTIONS________________________________________________________________
+// Don't change this stuff
+//
+ACTION_IF FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~ BEGIN
+//  INCLUDE ~override/fnp_sphere_list.tpa~
+  ACTION_PHP_EACH alt_spheres AS spell => sphere BEGIN
+	OUTER_INNER_PATCH_SAVE sphere_name ~%sphere%~ BEGIN
+	  PHP_EACH sphere_name_changes AS fnp_sphere => new_sphere BEGIN
+		REPLACE_TEXTUALLY CASE_INSENSITIVE EXACT_MATCH ~%new_sphere%~ ~%fnp_sphere%~
+	  END
+	END
+	OUTER_SPRINT $spellsphere(~%spell%~ ~%spell_1%~) ~%sphere_name%~
+  END
+END
+//____________________________________________________________________________________

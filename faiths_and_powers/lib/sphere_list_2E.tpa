@@ -1,0 +1,4455 @@
+
+// NEW SPHERE NAMES___________________________________________________________________
+//
+// You can define the names of your spheres in the right-hand column
+// There can be 23 spheres at most; they must correspond to the FnP spheres
+// So DO NOT change anything in the left column.
+
+ACTION_DEFINE_ASSOCIATIVE_ARRAY sphere_name_changes BEGIN
+	Life 			=> Healing
+	Death 			=> Necromancy
+	Benediction 	=> All
+	Destruction 	=> Combat
+	Protection 		=> Protection
+	War 			=> War
+	Exploration 	=> Travelers
+	Knowledge 		=> Divination
+	Deception 		=> Wards
+	Thought 		=> Thought
+	Dread 			=> Charm
+	Vigor 			=> Law
+	Affliction 		=> Chaos
+	Animal 			=> Animal
+	Plant 			=> Plant
+	Earth 			=> Earth
+	Air 			=> Air
+	Water 			=> Water
+	Fire 			=> Fire
+	Light 			=> Sun
+	Shadow 			=> Shadow
+	Magic 			=> Weather
+	Perdition 		=> Astral
+END
+//____________________________________________________________________________________
+
+
+// NEW SPHERE DEFINITIONS_____________________________________________________________
+//
+// The right-hand column defines which sphere a spell belongs to.  
+// Use the names in the right column above.
+//
+// The left-hand column can include filenames (e.g. "sppr101") *OR* IDS names (e.g. "CLERIC_BLESS").
+
+ACTION_DEFINE_ASSOCIATIVE_ARRAY alt_spheres BEGIN
+
+//  UNIVERSAL
+// 	universal spells will be available to every kit, regardless of their defined sphere assignments
+// 	this "sphere" MUST MUST MUST have at least one spell of each spell level
+// 	and their spell level MUST NOT be changed from the vanilla game
+// 	those are the rules you MUST abide by if you want to change which spells are uiniversal
+
+CLERIC_CURE_LIGHT_WOUNDS               , 1 => Universal
+CLERIC_RESIST_FIRE_AND_COLD            , 2 => Universal
+CLERIC_DISPEL_MAGIC                    , 3 => Universal
+CLERIC_LESSER_RESTORATION              , 4 => Universal
+CLERIC_CURE_CRITICAL_WOUNDS            , 5 => Universal
+CLERIC_WONDROUS_RECALL                 , 6 => Universal
+CLERIC_HOLY_WORD                       , 7 => Universal
+CLERIC_UNHOLY_WORD                     , 7 => Universal
+
+//  "Healing"
+CLERIC_CURE_LIGHT_WOUNDS               , 1 => Healing 
+CLERIC_CAUSE_LIGHT_WOUNDS              , 1 => Healing
+CLERIC_CURE_MODERATE_WOUNDS            , 2 => Healing
+CLERIC_CAUSE_MODERATE_WOUNDS           , 2 => Healing
+CLERIC_SLOW_POISON                     , 1 => Healing 
+CLERIC_CURE_MEDIUM_WOUNDS              , 3 => Healing
+CLERIC_CAUSE_MEDIUM_WOUNDS             , 3 => Healing
+CLERIC_EXALTATION                      , 3 => Healing
+CLERIC_CURE_SERIOUS_WOUNDS             , 4 => Healing
+CLERIC_CAUSE_SERIOUS_WOUNDS            , 4 => Healing
+CLERIC_NEUTRALIZE_POISON               , 4 => Healing 
+CLERIC_POISON                          , 4 => Healing
+CLERIC_CURE_CRITICAL_WOUNDS            , 5 => Healing 
+CLERIC_CAUSE_CRITICAL_WOUNDS           , 5 => Healing
+CLERIC_MASS_CURE                       , 5 => Healing
+CLERIC_MASS_CAUSE_LIGHT_WOUNDS         , 5 => Healing
+CLERIC_HEAL                            , 6 => Healing
+CLERIC_HARM                            , 6 => Healing
+CLERIC_REGENERATE                      , 6 => Healing
+CLERIC_RESTORATION                     , 7 => Healing
+CLERIC_RESURRECTION                    , 7 => Healing
+
+//  "Necromancy"
+b_c104 /*eyes of the dead*/            , 1 => Necromancy
+b_c105 /*disrupt undead*/              , 1 => Necromancy
+b_c202 /*pacify the dead*/             , 2 => Necromancy
+CLERIC_CIRCLE_OF_BONES                 , 3 => Necromancy
+CLERIC_FAVOR_OF_ILMATER                , 3 => Necromancy
+CLERIC_CAUSE_DISEASE                   , 3 => Necromancy
+CLERIC_CURE_DISEASE                    , 3 => Necromancy
+CLERIC_ANIMATE_DEAD                    , 3 => Necromancy
+CLERIC_DEATH_WARD                      , 4 => Necromancy
+CLERIC_NEGATIVE_PLANE_PROTECTION       , 4 => Necromancy
+CLERIC_LESSER_RESTORATION              , 4 => Necromancy 
+CLERIC_UNFAILING_ENDURANCE             , 4 => Necromancy
+CLERIC_RAISE_DEAD                      , 5 => Necromancy
+CLERIC_REPULSE_UNDEAD                  , 5 => Necromancy
+CLERIC_DOLOROUS_DECAY                  , 6 => Necromancy
+WIZARD_SOUL_EATER                      , 6 => Necromancy
+CLERIC_SYMBOL_DEATH                    , 7 => Necromancy
+CLERIC_FINGER_OF_DEATH                 , 7 => Necromancy
+
+//  "All"
+CLERIC_BLESS                           , 1 => All
+CLERIC_DETECT_EVIL                     , 1 => All
+CLERIC_CURSE                           , 1 => All
+CLERIC_CHANT                           , 2 => All
+CLERIC_REMOVE_CURSE                    , 2 => All
+CLERIC_DISPEL_MAGIC                    , 3 => All
+CLERIC_PRAYER                          , 3 => All
+CLERIC_RECITATION                      , 4 => All
+CLERIC_RIGHTEOUS_WRATH_OF_THE_FAITHFUL , 5 => All
+
+//  "Combat"
+CLERIC_MAGIC_STONE                     , 1 => Combat
+CLERIC_SHILLELAGH                      , 1 => Combat
+b_pr101 /*holy smite*/                 , 1 => Combat
+CLERIC_BEAST_CLAW                      , 2 => Combat
+CLERIC_ALICORN_LANCE                   , 2 => Combat
+CLERIC_SPIRITUAL_HAMMER                , 2 => Combat
+CLERIC_DRAW_UPON_HOLY_MIGHT            , 3 => Combat
+CLERIC_MOONBLADE                       , 3 => Combat
+CLERIC_HOLY_SMITE                      , 3 => Combat
+CLERIC_UNHOLY_BLIGHT                   , 3 => Combat
+CLERIC_HOLY_POWER                      , 3 => Combat
+CLERIC_BLOOD_RAGE                      , 4 => Combat
+CLERIC_CLOUD_OF_PESTILENCE             , 4 => Combat
+CLERIC_STAR_METAL_CUDGEL               , 4 => Combat
+CLERIC_FLAME_STRIKE                    , 5 => Combat
+CLERIC_SLAY_LIVING                     , 5 => Combat
+CLERIC_RIGHTEOUS_MAGIC                 , 5 => Combat
+CLERIC_PIXIE_DUST                      , 5 => Combat
+CLERIC_ANIMAL_RAGE                     , 5 => Combat
+CLERIC_DOLOROUS_DECAY                  , 6 => Combat
+CLERIC_BOLT_OF_GLORY                   , 6 => Combat
+CLERIC_SPIRITUAL_WRATH                 , 6 => Combat
+CLERIC_DESTRUCTION                     , 7 => Combat
+
+//  "Protection"
+CLERIC_PROTECT_FROM_EVIL               , 1 => Protection
+CLERIC_SANCTUARY                       , 1 => Protection
+CLERIC_ARMOR_OF_FAITH                  , 1 => Protection
+CLERIC_RESIST_FIRE_AND_COLD            , 2 => Protection 
+CLERIC_BARKSKIN                        , 2 => Protection
+CLERIC_SPIRITUAL_CLARITY               , 3 => Protection
+CLERIC_FAVOR_OF_ILMATER                , 3 => Protection
+CLERIC_STORM_SHELL                     , 3 => Protection
+CLERIC_REMOVE_PARALYSIS                , 3 => Protection
+CLERIC_PROTECTION_FROM_FIRE            , 3 => Protection
+CLERIC_PROTECTION_FROM_LIGHTNING       , 4 => Protection
+CLERIC_PROTECTION_FROM_EVIL_10_FOOT    , 4 => Protection
+CLERIC_NEGATIVE_PLANE_PROTECTION       , 4 => Protection
+CLERIC_WALL_OF_MOONLIGHT               , 4 => Protection
+CLERIC_MAGIC_RESISTANCE                , 5 => Protection
+CLERIC_ENTROPY_SHIELD                  , 6 => Protection
+CLERIC_PHYSICAL_MIRROR                 , 6 => Protection
+CLERIC_SHIELD_OF_THE_ARCHONS           , 7 => Protection
+CLERIC_GREATER_SHIELD_OF_LATHANDER     , 7 => Protection
+
+//  "War"
+CLERIC_ABUNDANT_AMMO                   , 1 => War
+
+//  "Travelers"
+CLERIC_FREE_ACTION                     , 3 => Travelers
+
+//  "Divination"
+// WIZARD_IDENTIFY                        , 1 => Divination
+CLERIC_DETECT_EVIL                     , 1 => Divination
+CLERIC_KNOW_ALIGNMENT                  , 1 => Divination
+CLERIC_FIND_TRAPS                      , 1 => Divination
+WIZARD_CLAIRVOYANCE                    , 2 => Divination
+CLERIC_INVISIBILITY_PURGE              , 3 => Divination
+CLERIC_FAR_SIGHT                       , 4 => Divination
+WIZARD_DETECT_ILLUSION                 , 4 => Divination
+WIZARD_ORACLE                          , 5 => Divination
+CLERIC_TRUE_SIGHT                      , 6 => Divination
+WIZARD_CONTINGENCY                     , 7 => Divination
+
+//  "Wards"
+CLERIC_SPIRIT_WARD                     , 1 => Wards
+CLERIC_SILENCE_15_FOOT                 , 2 => Wards
+CLERIC_ZONE_OF_SWEET_AIR               , 3 => Wards
+CLERIC_GLYPH_OF_WARDING                , 3 => Wards
+CLERIC_SHIELD_OF_LATHANDER             , 5 => Wards
+CLERIC_UNDEAD_WARD                     , 5 => Wards
+CLERIC_SPIRITUAL_LOCK                  , 6 => Wards
+CLERIC_BLADE_BARRIER                   , 6 => Wards
+
+//  "Thought"
+CLERIC_FORBID                          , 2 => Thought
+CLERIC_DICTATE                         , 3 => Thought
+CLERIC_MENTAL_DOMINATION               , 4 => Thought
+CLERIC_CONFUSION                       , 6 => Thought
+CLERIC_IMPERVIOUS_SANCTITY_OF_MIND     , 7 => Thought
+
+//  "Charm"
+CLERIC_COMMAND                         , 1 => Charm
+CLERIC_DOOM                            , 1 => Charm
+CLERIC_REMOVE_FEAR                     , 1 => Charm
+CLERIC_ENTHRALL                        , 2 => Charm
+CLERIC_HOLD_PERSON                     , 3 => Charm
+CLERIC_CLOAK_OF_FEAR                   , 3 => Charm
+CLERIC_GREATER_COMMAND                 , 5 => Charm
+CLERIC_WONDROUS_RECALL                 , 6 => Charm
+
+//  "Law"
+CLERIC_STRENGTH_OF_ONE                 , 3 => Law
+CLERIC_RIGID_THINKING                  , 3 => Law
+CLERIC_DEFENSIVE_HARMONY               , 4 => Law
+CLERIC_CHAMPIONS_STRENGTH              , 5 => Law
+
+//  "Chaos"
+CLERIC_MISCAST_MAGIC                   , 2 => Chaos
+CLERIC_CHAOTIC_COMMANDS                , 5 => Chaos
+
+//  "Animal"
+b_c102 /*animal eyes*/                 , 1 => Animal
+CLERIC_HOLD_ANIMAL                     , 1 => Animal
+CLERIC_BEAST_CLAW                      , 2 => Animal
+CLERIC_CHARM_PERSON                    , 2 => Animal
+CLERIC_SUMMON_INSECTS                  , 3 => Animal
+CLERIC_FERAL_INSTINCT                  , 3 => Animal
+CLERIC_ANIMAL_SUMMONING_1              , 4 => Animal
+CLERIC_GIANT_INSECT                    , 4 => Animal
+CLERIC_ANIMAL_SUMMONING_2              , 5 => Animal
+CLERIC_INSECT_PLAGUE                   , 5 => Animal
+CLERIC_ANIMAL_SUMMONING_3              , 6 => Animal
+CLERIC_CONJURE_ANIMALS                 , 6 => Animal
+CLERIC_CREEPING_DOOM                   , 7 => Animal
+
+//  "Plant"
+CLERIC_ENTANGLE                        , 1 => Plant
+CLERIC_SHILLELAGH                      , 1 => Plant
+//CLERIC_GOOD_BERRIES                  , 1 => Plant
+CLERIC_GOODBERRY                       , 1 => Plant
+CLERIC_BARKSKIN                        , 2 => Plant
+CLERIC_THORN_SPRAY                     , 3 => Plant
+CLERIC_MOLD_TOUCH                      , 3 => Plant
+CLERIC_SNARE                           , 3 => Plant
+CLERIC_SPIKE_GROWTH                    , 4 => Plant
+CLERIC_CALL_WOODLAND_BEINGS            , 5 => Plant
+b_pr601 /*nature's wrath*/             , 6 => Plant
+d5pr601 /*nature's wrath*/             , 6 => Plant
+b_c601 /*assassin vines*/              , 6 => Plant
+CLERIC_STALKER                         , 7 => Plant
+
+//  "Elemental Earth"
+CLERIC_MAGIC_STONE                     , 1 => Earth
+b_pr301 /*stone fist*/                 , 3 => Earth
+CLERIC_SPIKE_STONES                    , 4 => Earth
+CLERIC_IRONSKIN                        , 5 => Earth
+WIZARD_STONE_TO_FLESH                  , 5 => Earth
+CLERIC_CONJURE_EARTH_ELEMENTAL         , 6 => Earth
+WIZARD_FLESH_TO_STONE                  , 6 => Earth
+CLERIC_EARTHQUAKE                      , 7 => Earth
+
+//  "Elemental Air"
+WIZARD_STINKING_CLOUD                  , 2 => Air
+CLERIC_ZONE_OF_SWEET_AIR               , 3 => Air
+CLERIC_CLOUD_OF_PESTILENCE             , 5 => Air
+CLERIC_WHIRLWIND                       , 5 => Air
+WIZARD_CHAIN_LIGHTNING                 , 6 => Air
+
+//  "Elemental Water"
+b_c103 /*frost fingers*/               , 1 => Water
+CLERIC_CLOUDBURST                      , 3 => Water
+CLERIC_WATERY_FIST                     , 2 => Water
+b_c203 /*ice blade*/                   , 2 => Water
+CLERIC_SMASHING_WAVE                   , 4 => Water
+WIZARD_ICE_STORM                       , 5 => Water
+CLERIC_MIST_OF_ELDATH                  , 6 => Water
+b_pr602 /*water elemental*/            , 6 => Water
+WIZARD_ACID_STORM                      , 7 => Water
+
+//  "Elemental Fire"
+CLERIC_FLAME_BLADE                     , 2 => Fire
+CLERIC_PROTECTION_FROM_FIRE            , 3 => Fire
+CLERIC_PRODUCE_FIRE                    , 4 => Fire
+CLERIC_CONJURE_FIRE_ELEMENTAL          , 6 => Fire
+CLERIC_FIRE_SEEDS                      , 6 => Fire
+CLERIC_FIRE_STORM                      , 7 => Fire
+
+//  "Sun"
+CLERIC_SUNSCORCH                       , 1 => Sun
+CLERIC_MOONBLADE                       , 3 => Sun
+CLERIC_WALL_OF_MOONLIGHT               , 4 => Sun
+CLERIC_FALSE_DAWN                      , 6 => Sun
+CLERIC_SOL_SEARING_ORB                 , 6 => Sun
+CLERIC_SUNRAY                          , 7 => Sun
+
+//  "Shadow"
+WIZARD_BLINDNESS                       , 2 => Shadow
+// add enhanced Chameleon here          , 2 => Shadow
+b_c302 /*cloak of darkness*/           , 3 => Shadow
+WIZARD_DEMI_SHADOW_MONSTERS            , 4 => Shadow
+WIZARD_PHANTOM_BLADE                   , 4 => Shadow
+WIZARD_SHADOW_DOOR                     , 4 => Shadow
+d5sh501 /*SR summon shadows*/          , 5 => Shadow
+spsd02 /*shadowstep*/                  , 5 => Shadow
+WIZARD_SHADES                          , 5 => Shadow
+WIZARD_WRAITH_FORM                     , 6 => Shadow
+WIZARD_POWER_WORD_BLIND                , 7 => Shadow
+
+//  "Weather"
+CLERIC_STORM_SHELL                     , 3 => Weather
+CLERIC_CALL_LIGHTNING                  , 3 => Weather
+CLERIC_PROTECTION_FROM_LIGHTNING       , 4 => Weather
+CLERIC_STATIC_CHARGE                   , 4 => Weather
+b_c401 /*stormwall*/                   , 4 => Weather
+WIZARD_ICE_STORM                       , 5 => Weather
+
+//  "Astral"
+CLERIC_SPIRIT_WARD                     , 1 => Astral // modify to work against all planar creatures, maybe undead too?
+CLERIC_WRITHING_FOG                    , 2 => Astral
+CLERIC_SPIRIT_FIRE                     , 3 => Astral
+CLERIC_RECALL_SPIRIT                   , 5 => Astral
+CLERIC_AERIAL_SERVANT                  , 6 => Astral
+
+END
+//___________________________________________________________________________________
+
+
+// VANILLA KIT SPHERE ASSIGNMENTS_____________________________________________________
+
+
+// FnP KIT SPHERE ASSIGNMENTS_________________________________________________________
+
+// UR-PRIEST__________________________________________________________________________
+//
+DEFINE_ACTION_MACRO ur_priest_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_clur_spheres BEGIN
+	Healing		 		=> x
+	Necromancy		 	=> major
+	All					=> x
+	Combat		 		=> major
+	Protection		 	=> major
+	War		 			=> major
+	Travelers		  	=> major
+	Divination		 	=> major
+	Wards	 			=> x
+	Thought		 		=> major
+	Charm		 		=> major
+	Law		 			=> major
+	Chaos		 		=> major
+	Animal		 		=> x
+	Plant		 		=> x
+	Earth		 		=> minor
+	Water		 		=> minor
+	Air		 			=> minor
+	Fire		 		=> minor
+	Sun	 				=> major
+	Shadow		 		=> major
+	Weather		 		=> major
+	Astral		    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+// CLERIC OF LATHANDER________________________________________________________________
+//
+DEFINE_ACTION_MACRO cleric_lathander_spheres BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY b_clat_spheres BEGIN
+	Healing		 		=> major
+	Necromancy	 		=> x
+	All					=> major
+	Combat			 	=> x
+	Protection		 	=> major
+	War		 			=> minor
+	Travelers		  	=> minor
+	Divination		 	=> minor
+	Wards		 		=> x
+	Thought		 		=> minor
+	Charm		 		=> x
+	Law			 		=> major
+	Chaos			 	=> x
+	Animal		 		=> x
+	Plant		 		=> x
+	Earth		 		=> x
+	Water		 		=> x
+	Air		 			=> minor
+	Fire		 		=> major
+	Sun		 			=> major
+	Shadow		 		=> x
+	Weather		 		=> minor
+	Astral			    => x
+  END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO cleric_torm_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_ctor_spheres BEGIN
+	Healing		 		=> major
+	Necromancy	 		=> major
+	All					=> major
+	Combat			 	=> minor
+	Protection		 	=> focus
+	War		 			=> major
+	Travelers		  	=> minor
+	Divination		 	=> minor
+	Wards		 		=> x
+	Thought		 		=> major
+	Charm		 		=> minor
+	Law			 		=> major
+	Chaos			 	=> x
+	Animal		 		=> x
+	Plant		 		=> x
+	Earth		 		=> x
+	Water		 		=> x
+	Air		 			=> x
+	Fire		 		=> x
+	Sun		 			=> minor
+	Shadow		 		=> x
+	Weather		 		=> x
+	Astral			    => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO fighter_cleric_torm_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_2tor_spheres BEGIN
+	Healing		 		=> major
+	Necromancy	 		=> major
+	All					=> major
+	Combat			 	=> minor
+	Protection		 	=> focus
+	War		 			=> major
+	Travelers		  	=> minor
+	Divination		 	=> minor
+	Wards		 		=> x
+	Thought		 		=> major
+	Charm		 		=> minor
+	Law			 		=> major
+	Chaos			 	=> x
+	Animal		 		=> x
+	Plant		 		=> x
+	Earth		 		=> x
+	Water		 		=> x
+	Air		 			=> x
+	Fire		 		=> x
+	Sun		 			=> minor
+	Shadow		 		=> x
+	Weather		 		=> x
+	Astral			    => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO cleric_tymora_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5ctym_spheres BEGIN
+	Healing		 		=> major
+	Necromancy	 		=> x
+	All					=> major
+	Combat			 	=> minor
+	Protection		 	=> major
+	War		 			=> x
+	Travelers		  	=> major
+	Divination		 	=> minor
+	Wards		 		=> minor
+	Thought		 		=> major
+	Charm		 		=> minor
+	Law			 		=> minor
+	Chaos			 	=> x
+	Animal		 		=> x
+	Plant		 		=> x
+	Earth		 		=> x
+	Water		 		=> x
+	Air		 			=> major
+	Fire		 		=> x
+	Sun		 			=> major
+	Shadow		 		=> x
+	Weather		 		=> minor
+	Astral			    => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO cleric_thief_tymora_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d52tym_spheres BEGIN
+	Healing		 		=> major
+	Necromancy	 		=> x
+	All					=> major
+	Combat			 	=> minor
+	Protection		 	=> major
+	War		 			=> x
+	Travelers		  	=> major
+	Divination		 	=> minor
+	Wards		 		=> minor
+	Thought		 		=> major
+	Charm		 		=> minor
+	Law			 		=> minor
+	Chaos			 	=> x
+	Animal		 		=> x
+	Plant		 		=> x
+	Earth		 		=> x
+	Water		 		=> x
+	Air		 			=> major
+	Fire		 		=> x
+	Sun		 			=> major
+	Shadow		 		=> x
+	Weather		 		=> minor
+	Astral			    => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO cleric_helm_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_chel_spheres BEGIN
+	Healing		 		=> major
+	Necromancy	 		=> minor
+	All					=> major
+	Combat			 	=> major
+	Protection		 	=> major
+	War		 			=> major
+	Travelers		  	=> minor
+	Divination		 	=> major
+	Wards		 		=> x
+	Thought		 		=> minor
+	Charm		 		=> minor
+	Law			 		=> major
+	Chaos			 	=> x
+	Animal		 		=> x
+	Plant		 		=> x
+	Earth		 		=> x
+	Water		 		=> x
+	Air		 			=> x
+	Fire		 		=> x
+	Sun		 			=> minor
+	Shadow		 		=> x
+	Weather		 		=> minor
+	Astral			    => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO cleric_kelemvor_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_ckel_spheres BEGIN
+	Healing		 		=> major
+	Necromancy	 		=> major
+	All					=> x
+	Combat			 	=> x
+	Protection		 	=> major
+	War		 			=> major
+	Travelers		  	=> minor
+	Divination		 	=> major
+	Wards		 		=> x
+	Thought		 		=> minor
+	Charm		 		=> major
+	Law			 		=> x
+	Chaos			 	=> x
+	Animal		 		=> x
+	Plant		 		=> x
+	Earth		 		=> minor
+	Water		 		=> minor
+	Air		 			=> x
+	Fire		 		=> minor
+	Sun		 			=> x
+	Shadow		 		=> x
+	Weather		 		=> minor
+	Astral			    => major
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO cleric_mage_kelemvor_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_cmkel_spheres BEGIN
+	Healing		 		=> major
+	Necromancy	 		=> major
+	All					=> x
+	Combat			 	=> x
+	Protection		 	=> major
+	War		 			=> major
+	Travelers		  	=> minor
+	Divination		 	=> major
+	Wards		 		=> x
+	Thought		 		=> minor
+	Charm		 		=> major
+	Law			 		=> x
+	Chaos			 	=> x
+	Animal		 		=> x
+	Plant		 		=> x
+	Earth		 		=> minor
+	Water		 		=> minor
+	Air		 			=> x
+	Fire		 		=> minor
+	Sun		 			=> x
+	Shadow		 		=> x
+	Weather		 		=> minor
+	Astral			    => major
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO fighter_cleric_kelemvor_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_cfkel_spheres BEGIN
+	Healing		 		=> major
+	Necromancy	 		=> major
+	All					=> x
+	Combat			 	=> x
+	Protection		 	=> major
+	War		 			=> major
+	Travelers		  	=> minor
+	Divination		 	=> major
+	Wards		 		=> x
+	Thought		 		=> minor
+	Charm		 		=> major
+	Law			 		=> x
+	Chaos			 	=> x
+	Animal		 		=> x
+	Plant		 		=> x
+	Earth		 		=> minor
+	Water		 		=> minor
+	Air		 			=> x
+	Fire		 		=> minor
+	Sun		 			=> x
+	Shadow		 		=> x
+	Weather		 		=> minor
+	Astral			    => major
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO cleric_tempus_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_ctem_spheres BEGIN
+	Healing		 		=> major
+	Necromancy	 		=> x
+	All					=> major
+	Combat			 	=> major
+	Protection		 	=> major
+	War		 			=> major
+	Travelers		  	=> minor
+	Divination		 	=> minor
+	Wards		 		=> x
+	Thought		 		=> minor
+	Charm		 		=> x
+	Law			 		=> major
+	Chaos			 	=> x
+	Animal		 		=> x
+	Plant		 		=> x
+	Earth		 		=> minor
+	Water		 		=> x
+	Air		 			=> minor
+	Fire		 		=> x
+	Sun		 			=> minor
+	Shadow		 		=> x
+	Weather		 		=> minor
+	Astral			    => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO fighter_cleric_tempus_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_2tem_spheres BEGIN
+	Healing		 		=> major
+	Necromancy	 		=> x
+	All					=> major
+	Combat			 	=> major
+	Protection		 	=> major
+	War		 			=> major
+	Travelers		  	=> minor
+	Divination		 	=> minor
+	Wards		 		=> x
+	Thought		 		=> minor
+	Charm		 		=> x
+	Law			 		=> major
+	Chaos			 	=> x
+	Animal		 		=> x
+	Plant		 		=> x
+	Earth		 		=> minor
+	Water		 		=> x
+	Air		 			=> minor
+	Fire		 		=> x
+	Sun		 			=> minor
+	Shadow		 		=> x
+	Weather		 		=> minor
+	Astral			    => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO cleric_leira_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5clei_spheres BEGIN
+	Healing		 		=> major
+	Necromancy	 		=> x
+	All					=> major
+	Combat			 	=> x
+	Protection		 	=> minor
+	War		 			=> x
+	Travelers		  	=> major
+	Divination		 	=> major
+	Wards		 		=> major
+	Thought		 		=> major
+	Charm		 		=> minor
+	Law			 		=> minor
+	Chaos			 	=> x
+	Animal		 		=> x
+	Plant		 		=> x
+	Earth		 		=> x
+	Water		 		=> minor
+	Air		 			=> x
+	Fire		 		=> x
+	Sun		 			=> major
+	Shadow		 		=> minor
+	Weather		 		=> minor
+	Astral			    => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO cleric_thief_leira_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d52lei_spheres BEGIN
+	Healing		 		=> major
+	Necromancy	 		=> x
+	All					=> major
+	Combat			 	=> x
+	Protection		 	=> minor
+	War		 			=> x
+	Travelers		  	=> major
+	Divination		 	=> major
+	Wards		 		=> major
+	Thought		 		=> major
+	Charm		 		=> minor
+	Law			 		=> minor
+	Chaos			 	=> x
+	Animal		 		=> x
+	Plant		 		=> x
+	Earth		 		=> x
+	Water		 		=> minor
+	Air		 			=> x
+	Fire		 		=> x
+	Sun		 			=> major
+	Shadow		 		=> minor
+	Weather		 		=> minor
+	Astral			    => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO cleric_baravar_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_bara_spheres BEGIN
+	Healing		 		=> major
+	Necromancy	 		=> x
+	All					=> major
+	Combat			 	=> x
+	Protection		 	=> minor
+	War		 			=> x
+	Travelers		  	=> major
+	Divination		 	=> major
+	Wards		 		=> major
+	Thought		 		=> major
+	Charm		 		=> minor
+	Law			 		=> minor
+	Chaos			 	=> x
+	Animal		 		=> x
+	Plant		 		=> x
+	Earth		 		=> x
+	Water		 		=> minor
+	Air		 			=> x
+	Fire		 		=> x
+	Sun		 			=> major
+	Shadow		 		=> minor
+	Weather		 		=> minor
+	Astral			    => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO cleric_thief_baravar_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_bart_spheres BEGIN
+	Healing		 		=> major
+	Necromancy	 		=> x
+	All					=> major
+	Combat			 	=> x
+	Protection		 	=> minor
+	War		 			=> x
+	Travelers		  	=> major
+	Divination		 	=> major
+	Wards		 		=> major
+	Thought		 		=> major
+	Charm		 		=> minor
+	Law			 		=> minor
+	Chaos			 	=> x
+	Animal		 		=> x
+	Plant		 		=> x
+	Earth		 		=> x
+	Water		 		=> minor
+	Air		 			=> x
+	Fire		 		=> x
+	Sun		 			=> major
+	Shadow		 		=> minor
+	Weather		 		=> minor
+	Astral			    => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO cleric_loviatar_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_clov_spheres BEGIN
+	Healing		 		=> major
+	Necromancy	 		=> major
+	All					=> minor
+	Combat			 	=> minor
+	Protection		 	=> x
+	War		 			=> minor
+	Travelers		  	=> minor
+	Divination		 	=> major
+	Wards		 		=> minor
+	Thought		 		=> major
+	Charm		 		=> major
+	Law			 		=> minor
+	Chaos			 	=> major
+	Animal		 		=> x
+	Plant		 		=> x
+	Earth		 		=> x
+	Water		 		=> x
+	Air		 			=> x
+	Fire		 		=> x
+	Sun		 			=> x
+	Shadow		 		=> minor
+	Weather		 		=> x
+	Astral			    => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO cleric_thief_loviatar_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_2lov_spheres BEGIN
+	Healing		 		=> major
+	Necromancy	 		=> major
+	All					=> minor
+	Combat			 	=> minor
+	Protection		 	=> x
+	War		 			=> minor
+	Travelers		  	=> minor
+	Divination		 	=> major
+	Wards		 		=> minor
+	Thought		 		=> major
+	Charm		 		=> major
+	Law			 		=> minor
+	Chaos			 	=> major
+	Animal		 		=> x
+	Plant		 		=> x
+	Earth		 		=> x
+	Water		 		=> x
+	Air		 			=> x
+	Fire		 		=> x
+	Sun		 			=> x
+	Shadow		 		=> minor
+	Weather		 		=> x
+	Astral			    => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO cleric_talos_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_ctal_spheres BEGIN
+	Healing		 		=> major
+	Necromancy	 		=> x
+	All					=> major
+	Combat			 	=> major
+	Protection		 	=> major
+	War		 			=> minor
+	Travelers		  	=> major
+	Divination		 	=> x
+	Wards		 		=> x
+	Thought		 		=> x
+	Charm		 		=> minor
+	Law			 		=> minor
+	Chaos			 	=> minor
+	Animal		 		=> x
+	Plant		 		=> x
+	Earth		 		=> x
+	Water		 		=> x
+	Air		 			=> major
+	Fire		 		=> major
+	Sun		 			=> minor
+	Shadow		 		=> x
+	Weather		 		=> minor
+	Astral			    => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO fighter_cleric_talos_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_2tal_spheres BEGIN
+	Healing		 		=> major
+	Necromancy	 		=> x
+	All					=> major
+	Combat			 	=> major
+	Protection		 	=> major
+	War		 			=> minor
+	Travelers		  	=> major
+	Divination		 	=> x
+	Wards		 		=> x
+	Thought		 		=> x
+	Charm		 		=> minor
+	Law			 		=> minor
+	Chaos			 	=> minor
+	Animal		 		=> x
+	Plant		 		=> x
+	Earth		 		=> x
+	Water		 		=> x
+	Air		 			=> major
+	Fire		 		=> major
+	Sun		 			=> minor
+	Shadow		 		=> x
+	Weather		 		=> minor
+	Astral			    => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO cleric_mage_talos_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_3tal_spheres BEGIN
+	Healing		 		=> major
+	Necromancy	 		=> x
+	All					=> major
+	Combat			 	=> major
+	Protection		 	=> major
+	War		 			=> minor
+	Travelers		  	=> major
+	Divination		 	=> x
+	Wards		 		=> x
+	Thought		 		=> x
+	Charm		 		=> minor
+	Law			 		=> minor
+	Chaos			 	=> minor
+	Animal		 		=> x
+	Plant		 		=> x
+	Earth		 		=> x
+	Water		 		=> x
+	Air		 			=> major
+	Fire		 		=> major
+	Sun		 			=> minor
+	Shadow		 		=> x
+	Weather		 		=> minor
+	Astral			    => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO cleric_cyric_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_ccyr_spheres BEGIN
+	Healing		 		=> minor
+	Necromancy	 		=> major
+	All					=> minor
+	Combat			 	=> major
+	Protection		 	=> x
+	War		 			=> x
+	Travelers		  	=> minor
+	Divination		 	=> x
+	Wards		 		=> major
+	Thought		 		=> minor
+	Charm		 		=> major
+	Law			 		=> minor
+	Chaos			 	=> major
+	Animal		 		=> x
+	Plant		 		=> x
+	Earth		 		=> x
+	Water		 		=> x
+	Air		 			=> x
+	Fire		 		=> x
+	Sun		 			=> x
+	Shadow		 		=> major
+	Weather		 		=> minor
+	Astral			    => major
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO cleric_thief_cyric_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_ctcyr_spheres BEGIN
+	Healing		 		=> minor
+	Necromancy	 		=> major
+	All					=> minor
+	Combat			 	=> major
+	Protection		 	=> x
+	War		 			=> x
+	Travelers		  	=> minor
+	Divination		 	=> x
+	Wards		 		=> major
+	Thought		 		=> minor
+	Charm		 		=> major
+	Law			 		=> minor
+	Chaos			 	=> major
+	Animal		 		=> x
+	Plant		 		=> x
+	Earth		 		=> x
+	Water		 		=> x
+	Air		 			=> x
+	Fire		 		=> x
+	Sun		 			=> x
+	Shadow		 		=> major
+	Weather		 		=> minor
+	Astral			    => major
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO cleric_umberlee_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_umb_spheres BEGIN
+	Healing		 		=> major
+	Necromancy	 		=> x
+	All					=> major
+	Combat			 	=> major
+	Protection		 	=> major
+	War		 			=> minor
+	Travelers		  	=> major
+	Divination		 	=> minor
+	Wards		 		=> x
+	Thought		 		=> x
+	Charm		 		=> major
+	Law			 		=> minor
+	Chaos			 	=> minor
+	Animal		 		=> x
+	Plant		 		=> x
+	Earth		 		=> x
+	Water		 		=> focus
+	Air		 			=> major
+	Fire		 		=> x
+	Sun		 			=> x
+	Shadow		 		=> x
+	Weather		 		=> minor
+	Astral			    => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO acolyte_ilmater_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_ailm_spheres BEGIN
+	Healing		 		=> major
+	Necromancy	 		=> x
+	All					=> major
+	Combat			 	=> minor
+	Protection		 	=> focus
+	War		 			=> x
+	Travelers		  	=> x
+	Divination		 	=> major
+	Wards		 		=> x
+	Thought		 		=> minor
+	Charm		 		=> minor
+	Law			 		=> major
+	Chaos			 	=> major
+	Animal		 		=> x
+	Plant		 		=> x
+	Earth		 		=> x
+	Water		 		=> x
+	Air		 			=> x
+	Fire		 		=> x
+	Sun		 			=> minor
+	Shadow		 		=> x
+	Weather		 		=> minor
+	Astral			    => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO acolyte_deneir_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_aden_spheres BEGIN
+	Healing		 		=> minor
+	Necromancy	 		=> x
+	All					=> major
+	Combat			 	=> x
+	Protection		 	=> major
+	War		 			=> x
+	Travelers		  	=> minor
+	Divination		 	=> focus
+	Wards		 		=> minor
+	Thought		 		=> major
+	Charm		 		=> minor
+	Law			 		=> minor
+	Chaos			 	=> x
+	Animal		 		=> x
+	Plant		 		=> x
+	Earth		 		=> x
+	Water		 		=> x
+	Air		 			=> x
+	Fire		 		=> x
+	Sun		 			=> major
+	Shadow		 		=> x
+	Weather		 		=> major
+	Astral			    => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO acolyte_cm_deneir_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_2den_spheres BEGIN
+	Healing		 		=> minor
+	Necromancy	 		=> x
+	All					=> major
+	Combat			 	=> x
+	Protection		 	=> major
+	War		 			=> x
+	Travelers		  	=> minor
+	Divination		 	=> focus
+	Wards		 		=> minor
+	Thought		 		=> major
+	Charm		 		=> minor
+	Law			 		=> minor
+	Chaos			 	=> x
+	Animal		 		=> x
+	Plant		 		=> x
+	Earth		 		=> x
+	Water		 		=> x
+	Air		 			=> x
+	Fire		 		=> x
+	Sun		 			=> major
+	Shadow		 		=> x
+	Weather		 		=> major
+	Astral			    => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO acolyte_sune_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_asun_spheres BEGIN
+	Healing		 		=> major
+	Necromancy	 		=> x
+	All					=> major
+	Combat			 	=> x
+	Protection		 	=> minor
+	War		 			=> x
+	Travelers		  	=> minor
+	Divination		 	=> major
+	Wards		 		=> major
+	Thought		 		=> focus
+	Charm		 		=> major
+	Law			 		=> major
+	Chaos			 	=> x
+	Animal		 		=> x
+	Plant		 		=> x
+	Earth		 		=> x
+	Water		 		=> x
+	Air		 			=> x
+	Fire		 		=> x
+	Sun		 			=> minor
+	Shadow		 		=> minor
+	Weather		 		=> minor
+	Astral			    => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO acolyte_ct_sune_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_2sun_spheres BEGIN
+	Healing		 		=> major
+	Necromancy	 		=> x
+	All					=> major
+	Combat			 	=> x
+	Protection		 	=> minor
+	War		 			=> x
+	Travelers		  	=> minor
+	Divination		 	=> major
+	Wards		 		=> major
+	Thought		 		=> focus
+	Charm		 		=> major
+	Law			 		=> major
+	Chaos			 	=> x
+	Animal		 		=> x
+	Plant		 		=> x
+	Earth		 		=> x
+	Water		 		=> x
+	Air		 			=> x
+	Fire		 		=> x
+	Sun		 			=> minor
+	Shadow		 		=> minor
+	Weather		 		=> minor
+	Astral			    => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO acolyte_cm_sune_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_3sun_spheres BEGIN
+	Healing		 		=> major
+	Necromancy	 		=> x
+	All					=> major
+	Combat			 	=> x
+	Protection		 	=> minor
+	War		 			=> x
+	Travelers		  	=> minor
+	Divination		 	=> major
+	Wards		 		=> major
+	Thought		 		=> focus
+	Charm		 		=> major
+	Law			 		=> major
+	Chaos			 	=> x
+	Animal		 		=> x
+	Plant		 		=> x
+	Earth		 		=> x
+	Water		 		=> x
+	Air		 			=> x
+	Fire		 		=> x
+	Sun		 			=> minor
+	Shadow		 		=> minor
+	Weather		 		=> minor
+	Astral			    => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO acolyte_tempus_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_atem_spheres BEGIN
+	Healing		 		=> major
+	Necromancy	 		=> minor
+	All					=> major
+	Combat			 	=> major
+	Protection		 	=> major
+	War		 			=> focus
+	Travelers		  	=> minor
+	Divination		 	=> x
+	Wards		 		=> x
+	Thought		 		=> x
+	Charm		 		=> minor
+	Law			 		=> major
+	Chaos			 	=> minor
+	Animal		 		=> x
+	Plant		 		=> x
+	Earth		 		=> minor
+	Water		 		=> x
+	Air		 			=> x
+	Fire		 		=> minor
+	Sun		 			=> x
+	Shadow		 		=> x
+	Weather		 		=> x
+	Astral			    => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO acolyte_mystra_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5acmys_spheres BEGIN
+	Healing		 		=> major
+	Necromancy	 		=> x
+	All					=> major
+	Combat			 	=> major
+	Protection		 	=> major
+	War		 			=> x
+	Travelers		  	=> minor
+	Divination		 	=> major
+	Wards		 		=> x
+	Thought		 		=> minor
+	Charm		 		=> minor
+	Law			 		=> minor
+	Chaos			 	=> x
+	Animal		 		=> x
+	Plant		 		=> x
+	Earth		 		=> x
+	Water		 		=> x
+	Air		 			=> x
+	Fire		 		=> minor
+	Sun		 			=> major
+	Shadow		 		=> minor
+	Weather		 		=> focus
+	Astral			    => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO acolyte_mask_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5amas_spheres BEGIN
+	Healing		 		=> major
+	Necromancy	 		=> minor
+	All					=> minor
+	Combat			 	=> major
+	Protection		 	=> minor
+	War		 			=> x
+	Travelers		  	=> x
+	Divination		 	=> major
+	Wards		 		=> major
+	Thought		 		=> minor
+	Charm		 		=> major
+	Law			 		=> x
+	Chaos			 	=> minor
+	Animal		 		=> x
+	Plant		 		=> x
+	Earth		 		=> x
+	Water		 		=> x
+	Air		 			=> x
+	Fire		 		=> x
+	Sun		 			=> x
+	Shadow		 		=> focus
+	Weather		 		=> minor
+	Astral			    => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO acolyte_ct_mask_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d52mas_spheres BEGIN
+	Healing		 		=> major
+	Necromancy	 		=> minor
+	All					=> minor
+	Combat			 	=> major
+	Protection		 	=> minor
+	War		 			=> x
+	Travelers		  	=> x
+	Divination		 	=> major
+	Wards		 		=> major
+	Thought		 		=> minor
+	Charm		 		=> major
+	Law			 		=> x
+	Chaos			 	=> minor
+	Animal		 		=> x
+	Plant		 		=> x
+	Earth		 		=> x
+	Water		 		=> x
+	Air		 			=> x
+	Fire		 		=> x
+	Sun		 			=> x
+	Shadow		 		=> focus
+	Weather		 		=> minor
+	Astral			    => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO acolyte_shar_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5asha_spheres BEGIN
+	Healing		 		=> minor
+	Necromancy	 		=> major
+	All					=> x
+	Combat			 	=> major
+	Protection		 	=> minor
+	War		 			=> x
+	Travelers		  	=> x
+	Divination		 	=> minor
+	Wards		 		=> minor
+	Thought		 		=> minor
+	Charm		 		=> major
+	Law			 		=> x
+	Chaos			 	=> minor
+	Animal		 		=> x
+	Plant		 		=> x
+	Earth		 		=> x
+	Water		 		=> x
+	Air		 			=> x
+	Fire		 		=> x
+	Sun		 			=> x
+	Shadow		 		=> focus
+	Weather		 		=> major
+	Astral			    => major
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO acolyte_cm_shar_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d52sha_spheres BEGIN
+	Healing		 		=> minor
+	Necromancy	 		=> major
+	All					=> x
+	Combat			 	=> major
+	Protection		 	=> minor
+	War		 			=> x
+	Travelers		  	=> x
+	Divination		 	=> minor
+	Wards		 		=> minor
+	Thought		 		=> minor
+	Charm		 		=> major
+	Law			 		=> x
+	Chaos			 	=> minor
+	Animal		 		=> x
+	Plant		 		=> x
+	Earth		 		=> x
+	Water		 		=> x
+	Air		 			=> x
+	Fire		 		=> x
+	Sun		 			=> x
+	Shadow		 		=> focus
+	Weather		 		=> major
+	Astral			    => major
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO acolyte_ct_shar_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_ctshr_spheres BEGIN
+	Healing		 		=> minor
+	Necromancy	 		=> major
+	All					=> x
+	Combat			 	=> major
+	Protection		 	=> minor
+	War		 			=> x
+	Travelers		  	=> x
+	Divination		 	=> minor
+	Wards		 		=> minor
+	Thought		 		=> minor
+	Charm		 		=> major
+	Law			 		=> x
+	Chaos			 	=> minor
+	Animal		 		=> x
+	Plant		 		=> x
+	Earth		 		=> x
+	Water		 		=> x
+	Air		 			=> x
+	Fire		 		=> x
+	Sun		 			=> x
+	Shadow		 		=> focus
+	Weather		 		=> major
+	Astral			    => major
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO acolyte_moander_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_cmoa_spheres BEGIN
+	Healing		 		=> x
+	Necromancy	 		=> major
+	All					=> x
+	Combat			 	=> major
+	Protection		 	=> x
+	War		 			=> x
+	Travelers		  	=> minor
+	Divination		 	=> x
+	Wards		 		=> minor
+	Thought		 		=> x
+	Charm		 		=> major
+	Law			 		=> minor
+	Chaos			 	=> major
+	Animal		 		=> minor
+	Plant		 		=> focus
+	Earth		 		=> major
+	Water		 		=> minor
+	Air		 			=> minor
+	Fire		 		=> x
+	Sun		 			=> x
+	Shadow		 		=> major
+	Weather		 		=> x
+	Astral			    => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO acolyte_cm_moander_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_c2moa_spheres BEGIN
+	Healing		 		=> x
+	Necromancy	 		=> major
+	All					=> x
+	Combat			 	=> major
+	Protection		 	=> x
+	War		 			=> x
+	Travelers		  	=> minor
+	Divination		 	=> x
+	Wards		 		=> minor
+	Thought		 		=> x
+	Charm		 		=> major
+	Law			 		=> minor
+	Chaos			 	=> major
+	Animal		 		=> minor
+	Plant		 		=> focus
+	Earth		 		=> major
+	Water		 		=> minor
+	Air		 			=> minor
+	Fire		 		=> x
+	Sun		 			=> x
+	Shadow		 		=> major
+	Weather		 		=> x
+	Astral			    => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO acolyte_ct_moander_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_c3moa_spheres BEGIN
+	Healing		 		=> x
+	Necromancy	 		=> major
+	All					=> x
+	Combat			 	=> major
+	Protection		 	=> x
+	War		 			=> x
+	Travelers		  	=> minor
+	Divination		 	=> x
+	Wards		 		=> minor
+	Thought		 		=> x
+	Charm		 		=> major
+	Law			 		=> minor
+	Chaos			 	=> major
+	Animal		 		=> minor
+	Plant		 		=> focus
+	Earth		 		=> major
+	Water		 		=> minor
+	Air		 			=> minor
+	Fire		 		=> x
+	Sun		 			=> x
+	Shadow		 		=> major
+	Weather		 		=> x
+	Astral			    => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO acolyte_beshaba_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_abes_spheres BEGIN
+	Healing		 		=> major
+	Necromancy	 		=> major
+	All					=> major
+	Combat			 	=> minor
+	Protection		 	=> major
+	War		 			=> x
+	Travelers		  	=> x
+	Divination		 	=> minor
+	Wards		 		=> minor
+	Thought		 		=> major
+	Charm		 		=> focus
+	Law			 		=> minor
+	Chaos			 	=> minor
+	Animal		 		=> x
+	Plant		 		=> x
+	Earth		 		=> x
+	Water		 		=> x
+	Air		 			=> x
+	Fire		 		=> x
+	Sun		 			=> x
+	Shadow		 		=> x
+	Weather		 		=> minor
+	Astral			    => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO acolyte_baervan_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5baerv_spheres BEGIN
+	Healing		 		=> major
+	Necromancy	 		=> x
+	All					=> major
+	Combat			 	=> x
+	Protection		 	=> major
+	War		 			=> x
+	Travelers		  	=> minor
+	Divination		 	=> minor
+	Wards		 		=> x
+	Thought		 		=> minor
+	Charm		 		=> x
+	Law			 		=> minor
+	Chaos			 	=> x
+	Animal		 		=> focus
+	Plant		 		=> major
+	Earth		 		=> major
+	Water		 		=> minor
+	Air		 			=> x
+	Fire		 		=> x
+	Sun		 			=> minor
+	Shadow		 		=> x
+	Weather		 		=> x
+	Astral			    => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO acolyte_cm_baervan_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5baer2_spheres BEGIN
+	Healing		 		=> major
+	Necromancy	 		=> x
+	All					=> major
+	Combat			 	=> x
+	Protection		 	=> major
+	War		 			=> x
+	Travelers		  	=> minor
+	Divination		 	=> minor
+	Wards		 		=> x
+	Thought		 		=> minor
+	Charm		 		=> x
+	Law			 		=> minor
+	Chaos			 	=> x
+	Animal		 		=> focus
+	Plant		 		=> major
+	Earth		 		=> major
+	Water		 		=> minor
+	Air		 			=> x
+	Fire		 		=> x
+	Sun		 			=> minor
+	Shadow		 		=> x
+	Weather		 		=> x
+	Astral			    => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO druid_forest_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5dfor_spheres BEGIN
+	Healing 		=> minor
+	Necromancy		=> x
+	All				=> x
+	Combat			=> x
+	Protection 		=> x
+	War 			=> x
+	Travelers		=> minor
+	Divination 		=> minor
+	Wards	 		=> x
+	Thought 		=> minor
+	Charm 			=> x
+	Law	 			=> major
+	Chaos	 		=> minor
+	Animal 			=> major
+	Plant 			=> major
+	Earth 			=> major
+	Water 			=> major
+	Air 			=> major
+	Fire 			=> minor
+	Sun	 			=> major
+	Shadow 			=> minor
+	Weather 		=> x
+	Astral	    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO druid_totemic_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY clabdr02_spheres BEGIN
+	Healing 		=> minor
+	Necromancy		=> x
+	All				=> x
+	Combat			=> x
+	Protection 		=> x
+	War 			=> x
+	Travelers   	=> minor
+	Divination 		=> minor
+	Wards	 		=> x
+	Thought 		=> minor
+	Charm 			=> x
+	Law	 			=> major
+	Chaos	 		=> minor
+	Animal 			=> major
+	Plant 			=> major
+	Earth 			=> major
+	Water 			=> major
+	Air 			=> major
+	Fire 			=> minor
+	Sun	 			=> major
+	Shadow 			=> minor
+	Weather 		=> x
+	Astral	     	=> x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO druid_hivekeeper_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY clabdr04_spheres BEGIN
+	Healing 		=> minor
+	Necromancy		=> x
+	All				=> x
+	Combat			=> x
+	Protection 		=> x
+	War 			=> x
+	Travelers   	=> minor
+	Divination 		=> minor
+	Wards	 		=> x
+	Thought 		=> x
+	Charm 			=> x
+	Law	 			=> major
+	Chaos	 		=> major
+	Animal 			=> minor
+	Plant 			=> major
+	Earth 			=> major
+	Water 			=> major
+	Air 			=> major
+	Fire 			=> minor
+	Sun	 			=> major
+	Shadow 			=> minor
+	Weather 		=> minor
+	Astral	     	=> x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO druid_northern_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5darc_spheres BEGIN
+	Healing 		=> minor
+	Necromancy		=> x
+	All				=> x
+	Combat			=> x
+	Protection 		=> x
+	War 			=> x
+	Travelers   	=> major
+	Divination 		=> minor
+	Wards	 		=> x
+	Thought 		=> minor
+	Charm 			=> x
+	Law	 			=> major
+	Chaos	 		=> minor
+	Animal 			=> major
+	Plant 			=> minor
+	Earth 			=> major
+	Water 			=> focus
+	Air 			=> major
+	Fire 			=> minor
+	Sun	 			=> major
+	Shadow 			=> minor
+	Weather 		=> x
+	Astral	     	=> x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO druid_shadow_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5dshad_spheres BEGIN
+	Healing 		=> minor
+	Necromancy		=> x
+	All				=> x
+	Combat			=> x
+	Protection 		=> x
+	War 			=> x
+	Travelers   	=> minor
+	Divination 		=> minor
+	Wards	 		=> x
+	Thought 		=> minor
+	Charm 			=> minor
+	Law	 			=> major
+	Chaos	 		=> minor
+	Animal 			=> major
+	Plant 			=> major
+	Earth 			=> major
+	Water 			=> major
+	Air 			=> major
+	Fire 			=> x
+	Sun	 			=> x
+	Shadow 			=> major
+	Weather 		=> x
+	Astral	     	=> x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO druid_gray_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5dgray_spheres BEGIN
+	Healing 		=> minor
+	Necromancy		=> x
+	All				=> x
+	Combat			=> x
+	Protection 		=> x
+	War 			=> x
+	Travelers   	=> minor
+	Divination 		=> minor
+	Wards	 		=> x
+	Thought 		=> minor
+	Charm 			=> minor
+	Law	 			=> major
+	Chaos	 		=> minor
+	Animal 			=> major
+	Plant 			=> major
+	Earth 			=> major
+	Water 			=> major
+	Air 			=> major
+	Fire 			=> x
+	Sun	 			=> x
+	Shadow 			=> major
+	Weather 		=> x
+	Astral	     	=> x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO druid_lost_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5dlost_spheres BEGIN
+	Healing 		=> minor
+	Necromancy		=> major
+	All				=> x
+	Combat			=> x
+	Protection 		=> x
+	War 			=> x
+	Travelers   	=> minor
+	Divination 		=> minor
+	Wards	 		=> x
+	Thought 		=> minor
+	Charm 			=> x
+	Law	 			=> major
+	Chaos	 		=> minor
+	Animal 			=> major
+	Plant 			=> major
+	Earth 			=> major
+	Water 			=> major
+	Air 			=> major
+	Fire 			=> minor
+	Sun	 			=> x
+	Shadow 			=> minor
+	Weather 		=> x
+	Astral	     	=> x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO druid_fighter_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5drfi_spheres BEGIN
+	Healing 		=> minor
+	Necromancy		=> x
+	All				=> x
+	Combat			=> x
+	Protection 		=> x
+	War 			=> x
+	Travelers   	=> minor
+	Divination 		=> minor
+	Wards	 		=> x
+	Thought 		=> minor
+	Charm 			=> x
+	Law	 			=> major
+	Chaos	 		=> minor
+	Animal 			=> major
+	Plant 			=> major
+	Earth 			=> major
+	Water 			=> major
+	Air 			=> major
+	Fire 			=> minor
+	Sun	 			=> major
+	Shadow 			=> minor
+	Weather 		=> x
+	Astral	     	=> x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO druid_mage_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5drma_spheres BEGIN
+	Healing 		=> minor
+	Necromancy		=> x
+	All				=> x
+	Combat			=> x
+	Protection 		=> x
+	War 			=> x
+	Travelers   	=> minor
+	Divination 		=> minor
+	Wards	 		=> x
+	Thought 		=> minor
+	Charm 			=> x
+	Law	 			=> major
+	Chaos	 		=> minor
+	Animal 			=> major
+	Plant 			=> major
+	Earth 			=> major
+	Water 			=> major
+	Air 			=> major
+	Fire 			=> minor
+	Sun	 			=> major
+	Shadow 			=> minor
+	Weather 		=> x
+	Astral	     	=> x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO druid_ranger_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5drra_spheres BEGIN
+	Healing 		=> minor
+	Necromancy		=> x
+	All				=> x
+	Combat			=> x
+	Protection 		=> x
+	War 			=> x
+	Travelers		=> minor
+	Divination 		=> minor
+	Wards	 		=> x
+	Thought 		=> minor
+	Charm 			=> x
+	Law	 			=> major
+	Chaos	 		=> minor
+	Animal 			=> major
+	Plant 			=> major
+	Earth 			=> major
+	Water 			=> major
+	Air 			=> major
+	Fire 			=> minor
+	Sun	 			=> major
+	Shadow 			=> minor
+	Weather 		=> x
+	Astral	    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO druid_thief_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5drth_spheres BEGIN
+	Healing 		=> minor
+	Necromancy		=> x
+	All				=> x
+	Combat			=> x
+	Protection 		=> x
+	War 			=> x
+	Travelers		=> minor
+	Divination 		=> minor
+	Wards	 		=> x
+	Thought 		=> minor
+	Charm 			=> x
+	Law	 			=> major
+	Chaos	 		=> minor
+	Animal 			=> major
+	Plant 			=> major
+	Earth 			=> major
+	Water 			=> major
+	Air 			=> major
+	Fire 			=> minor
+	Sun	 			=> major
+	Shadow 			=> minor
+	Weather 		=> x
+	Astral	    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO mystic_earth_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5mear_spheres BEGIN
+	Healing 		=> major
+	Necromancy		=> x
+	All				=> x
+	Combat			=> x
+	Protection 		=> major
+	War 			=> x
+	Travelers		=> minor
+	Divination 		=> minor
+	Wards	 		=> x
+	Thought 		=> x
+	Charm 			=> x
+	Law	 			=> major
+	Chaos	 		=> minor
+	Animal 			=> x
+	Plant 			=> major
+	Earth 			=> focus
+	Water 			=> x
+	Air 			=> x
+	Fire 			=> x
+	Sun	 			=> x
+	Shadow 			=> x
+	Weather 		=> major
+	Astral	    	=> minor
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO mystic_warrior_earth_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5mear2_spheres BEGIN
+	Healing 		=> major
+	Necromancy		=> x
+	All				=> x
+	Combat			=> x
+	Protection 		=> major
+	War 			=> x
+	Travelers		=> minor
+	Divination 		=> minor
+	Wards	 		=> x
+	Thought 		=> x
+	Charm 			=> x
+	Law	 			=> major
+	Chaos	 		=> minor
+	Animal 			=> x
+	Plant 			=> major
+	Earth 			=> focus
+	Water 			=> x
+	Air 			=> x
+	Fire 			=> x
+	Sun	 			=> x
+	Shadow 			=> x
+	Weather 		=> major
+	Astral	    	=> minor
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO mystic_water_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5mwat_spheres BEGIN
+	Healing 		=> major
+	Necromancy		=> x
+	All				=> x
+	Combat			=> x
+	Protection 		=> x
+	War 			=> x
+	Travelers		=> minor
+	Divination 		=> x
+	Wards	 		=> minor
+	Thought 		=> x
+	Charm 			=> x
+	Law	 			=> major
+	Chaos	 		=> major
+	Animal 			=> minor
+	Plant 			=> minor
+	Earth 			=> x
+	Water 			=> focus
+	Air 			=> x
+	Fire 			=> x
+	Sun	 			=> x
+	Shadow 			=> x
+	Weather 		=> major
+	Astral	    	=> minor
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO mystic_warrior_water_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5mwat2_spheres BEGIN
+	Healing 		=> major
+	Necromancy		=> x
+	All				=> x
+	Combat			=> x
+	Protection 		=> x
+	War 			=> x
+	Travelers		=> minor
+	Divination 		=> x
+	Wards	 		=> minor
+	Thought 		=> x
+	Charm 			=> x
+	Law	 			=> major
+	Chaos	 		=> major
+	Animal 			=> minor
+	Plant 			=> minor
+	Earth 			=> x
+	Water 			=> focus
+	Air 			=> x
+	Fire 			=> x
+	Sun	 			=> x
+	Shadow 			=> x
+	Weather 		=> major
+	Astral	    	=> minor
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO mystic_air_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5mair_spheres BEGIN
+	Healing 		=> major
+	Necromancy		=> x
+	All				=> x
+	Combat			=> x
+	Protection 		=> minor
+	War 			=> x
+	Travelers		=> major
+	Divination 		=> major
+	Wards	 		=> x
+	Thought 		=> minor
+	Charm 			=> x
+	Law	 			=> major
+	Chaos	 		=> x
+	Animal 			=> x
+	Plant 			=> x
+	Earth 			=> x
+	Water 			=> x
+	Air 			=> focus
+	Fire 			=> x
+	Sun	 			=> minor
+	Shadow 			=> x
+	Weather 		=> major
+	Astral	    	=> minor
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO mystic_warrior_air_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5mair2_spheres BEGIN
+	Healing 		=> major
+	Necromancy		=> x
+	All				=> x
+	Combat			=> x
+	Protection 		=> minor
+	War 			=> x
+	Travelers		=> major
+	Divination 		=> major
+	Wards	 		=> x
+	Thought 		=> minor
+	Charm 			=> x
+	Law	 			=> major
+	Chaos	 		=> x
+	Animal 			=> x
+	Plant 			=> x
+	Earth 			=> x
+	Water 			=> x
+	Air 			=> focus
+	Fire 			=> x
+	Sun	 			=> minor
+	Shadow 			=> x
+	Weather 		=> major
+	Astral	    	=> minor
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO mystic_fire_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5mfir_spheres BEGIN
+	Healing 		=> major
+	Necromancy		=> x
+	All				=> x
+	Combat			=> minor
+	Protection 		=> major
+	War 			=> x
+	Travelers		=> minor
+	Divination 		=> x
+	Wards	 		=> x
+	Thought 		=> x
+	Charm 			=> minor
+	Law	 			=> minor
+	Chaos	 		=> x
+	Animal 			=> x
+	Plant 			=> x
+	Earth 			=> x
+	Water 			=> x
+	Air 			=> x
+	Fire 			=> focus
+	Sun	 			=> major
+	Shadow 			=> x
+	Weather 		=> major
+	Astral	    	=> minor
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO mystic_warrior_fire_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5mfir2_spheres BEGIN
+	Healing 		=> major
+	Necromancy		=> x
+	All				=> x
+	Combat			=> minor
+	Protection 		=> major
+	War 			=> x
+	Travelers		=> minor
+	Divination 		=> x
+	Wards	 		=> x
+	Thought 		=> x
+	Charm 			=> minor
+	Law	 			=> minor
+	Chaos	 		=> x
+	Animal 			=> x
+	Plant 			=> x
+	Earth 			=> x
+	Water 			=> x
+	Air 			=> x
+	Fire 			=> focus
+	Sun	 			=> major
+	Shadow 			=> x
+	Weather 		=> major
+	Astral	    	=> minor
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO mystic_light_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5mlig_spheres BEGIN
+	Healing 		=> major
+	Necromancy		=> x
+	All				=> x
+	Combat			=> x
+	Protection 		=> major
+	War 			=> x
+	Travelers		=> minor
+	Divination 		=> minor
+	Wards	 		=> major
+	Thought 		=> x
+	Charm 			=> x
+	Law	 			=> minor
+	Chaos	 		=> x
+	Animal 			=> x
+	Plant 			=> x
+	Earth 			=> x
+	Water 			=> x
+	Air 			=> minor
+	Fire 			=> minor
+	Sun	 			=> focus
+	Shadow 			=> x
+	Weather 		=> major
+	Astral	    	=> minor
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO mystic_warrior_light_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5mlig2_spheres BEGIN
+	Healing 		=> major
+	Necromancy		=> x
+	All				=> x
+	Combat			=> x
+	Protection 		=> major
+	War 			=> x
+	Travelers		=> minor
+	Divination 		=> minor
+	Wards	 		=> major
+	Thought 		=> x
+	Charm 			=> x
+	Law	 			=> minor
+	Chaos	 		=> x
+	Animal 			=> x
+	Plant 			=> x
+	Earth 			=> x
+	Water 			=> x
+	Air 			=> minor
+	Fire 			=> minor
+	Sun	 			=> focus
+	Shadow 			=> x
+	Weather 		=> major
+	Astral	    	=> minor
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO mystic_shadow_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5mshd_spheres BEGIN
+	Healing 		=> minor
+	Necromancy		=> x
+	All				=> x
+	Combat			=> x
+	Protection 		=> x
+	War 			=> x
+	Travelers		=> minor
+	Divination 		=> minor
+	Wards	 		=> minor
+	Thought 		=> major
+	Charm 			=> major
+	Law	 			=> major
+	Chaos	 		=> x
+	Animal 			=> x
+	Plant 			=> x
+	Earth 			=> x
+	Water 			=> x
+	Air 			=> x
+	Fire 			=> x
+	Sun	 			=> x
+	Shadow 			=> focus
+	Weather 		=> major
+	Astral	    	=> minor
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO mystic_warrior_shadow_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5mshd2_spheres BEGIN
+	Healing 		=> minor
+	Necromancy		=> x
+	All				=> x
+	Combat			=> x
+	Protection 		=> x
+	War 			=> x
+	Travelers		=> minor
+	Divination 		=> minor
+	Wards	 		=> minor
+	Thought 		=> major
+	Charm 			=> major
+	Law	 			=> major
+	Chaos	 		=> x
+	Animal 			=> x
+	Plant 			=> x
+	Earth 			=> x
+	Water 			=> x
+	Air 			=> x
+	Fire 			=> x
+	Sun	 			=> x
+	Shadow 			=> focus
+	Weather 		=> major
+	Astral	    	=> minor
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO beast_lord_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5obst_spheres BEGIN
+	Healing 		=> minor
+	Necromancy		=> minor
+	All				=> x
+	Combat			=> x
+	Protection 		=> x
+	War 			=> x
+	Travelers		=> major
+	Divination 		=> x
+	Wards	 		=> x
+	Thought 		=> major
+	Charm 			=> minor
+	Law	 			=> major
+	Chaos	 		=> major
+	Animal 			=> focus
+	Plant 			=> x
+	Earth 			=> x
+	Water 			=> minor
+	Air 			=> x
+	Fire 			=> x
+	Sun	 			=> x
+	Shadow 			=> minor
+	Weather 		=> x
+	Astral	    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO occultist_elementalist_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5oelm_spheres BEGIN
+	Healing 		=> minor
+	Necromancy		=> x
+	All				=> x
+	Combat			=> minor
+	Protection 		=> minor
+	War 			=> x
+	Travelers		=> x
+	Divination 		=> x
+	Wards	 		=> x
+	Thought 		=> x
+	Charm 			=> minor
+	Law	 			=> minor
+	Chaos	 		=> x
+	Animal 			=> x
+	Plant 			=> x
+	Earth 			=> major
+	Water 			=> major
+	Air 			=> major
+	Fire 			=> major
+	Sun	 			=> major
+	Shadow 			=> minor
+	Weather 		=> minor
+	Astral	    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO champion_tyr_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_ch01_spheres BEGIN
+	Healing 		=> paladin
+	Necromancy		=> x
+	All				=> paladin
+	Combat			=> x
+	Protection  	=> paladin
+	War 			=> paladin
+	Travelers		=> x
+	Divination 		=> paladin
+	Wards	 		=> x
+	Thought 		=> x
+	Charm 			=> x
+	Law	 			=> paladin
+	Chaos	 		=> x
+	Animal 			=> x
+	Plant 			=> x
+	Earth 			=> x
+	Water 			=> x
+	Air 			=> x
+	Fire 			=> x
+	Sun	 			=> paladin
+	Shadow 			=> x
+	Weather 		=> x
+	Astral	    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO champion_kelemvor_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_ch02_spheres BEGIN
+	Healing 		=> paladin
+	Necromancy		=> paladin
+	All				=> x
+	Combat			=> x
+	Protection		=> paladin
+	War 			=> paladin
+	Travelers		=> x
+	Divination 		=> paladin
+	Wards	 		=> x
+	Thought 		=> x
+	Charm 			=> paladin
+	Law	 			=> x
+	Chaos	 		=> paladin
+	Animal 			=> x
+	Plant 			=> x
+	Earth 			=> x
+	Water 			=> x
+	Air 			=> x
+	Fire 			=> x
+	Sun	 			=> x
+	Shadow 			=> x
+	Weather 		=> x
+	Astral	    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO champion_tempus_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_ch03_spheres BEGIN
+	Healing 		=> paladin
+	Necromancy		=> x
+	All		 	 	=> paladin
+	Combat	 	 	=> x
+	Protection 	 	=> paladin
+	War 			=> paladin
+	Travelers		=> x
+	Divination 	 	=> paladin
+	Wards	 	 	=> x
+	Thought 		=> x
+	Charm 			=> x
+	Law	 			=> paladin
+	Chaos	 	 	=> x
+	Animal 			=> x
+	Plant 			=> x
+	Earth 			=> x
+	Water 			=> x
+	Air 			=> x
+	Fire 			=> x
+	Sun	 			=> paladin
+	Shadow 			=> x
+	Weather 		=> x
+	Astral	    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO champion_bane_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_ch04_spheres BEGIN
+	Healing 		=> x
+	Necromancy		=> paladin
+	All				=> x
+	Combat			=> paladin
+	Protection		=> x
+	War 			=> paladin
+	Travelers		=> x
+	Divination 		=> paladin
+	Wards	 		=> x
+	Thought 		=> paladin
+	Charm 			=> paladin
+	Law	 			=> x
+	Chaos	 		=> paladin
+	Animal 			=> x
+	Plant 			=> x
+	Earth 			=> x
+	Water 			=> x
+	Air 			=> x
+	Fire 			=> x
+	Sun	 			=> x
+	Shadow 			=> x
+	Weather 		=> x
+	Astral	    	=> paladin
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO champion_helm_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_ch05_spheres BEGIN
+	Healing 		=> paladin
+	Necromancy		=> x
+	All				=> paladin
+	Combat			=> x
+	Protection		=> paladin
+	War 			=> paladin
+	Travelers		=> paladin
+	Divination 		=> paladin
+	Wards	 		=> x
+	Thought 		=> paladin
+	Charm 			=> x
+	Law	 			=> paladin
+	Chaos	 		=> x
+	Animal 			=> x
+	Plant 			=> x
+	Earth 			=> x
+	Water 			=> x
+	Air 			=> x
+	Fire 			=> x
+	Sun	 			=> x
+	Shadow 			=> x
+	Weather 		=> x
+	Astral	    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO champion_talos_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_ch06_spheres BEGIN
+	Healing 		=> x
+	Necromancy		=> paladin
+	All				=> x
+	Combat			=> paladin
+	Protection		=> paladin
+	War 			=> paladin
+	Travelers		=> paladin
+	Divination 		=> x
+	Wards	 		=> x
+	Thought 		=> x
+	Charm 			=> paladin
+	Law	 			=> x
+	Chaos	 		=> paladin
+	Animal 			=> x
+	Plant 			=> x
+	Earth 			=> x
+	Water 			=> x
+	Air 			=> x
+	Fire 			=> x
+	Sun	 			=> x
+	Shadow 			=> x
+	Weather 		=> paladin
+	Astral	    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO champion_moradin_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_ch07_spheres BEGIN
+	Healing 		=> paladin
+	Necromancy		=> x
+	All				=> paladin
+	Combat			=> x
+	Protection		=> paladin
+	War 			=> paladin
+	Travelers		=> x
+	Divination 		=> x
+	Wards	 		=> x
+	Thought 		=> x
+	Charm 			=> x
+	Law	 			=> paladin
+	Chaos	 		=> x
+	Animal 			=> x
+	Plant 			=> x
+	Earth 			=> paladin
+	Water 			=> x
+	Air 			=> x
+	Fire 			=> x
+	Sun	 			=> paladin
+	Shadow 			=> x
+	Weather 		=> x
+	Astral	    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO champion_azuth_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_ch08_spheres BEGIN
+	Healing 		=> x
+	Necromancy		=> x
+	All				=> paladin
+	Combat			=> x
+	Protection		=> paladin
+	War 			=> x
+	Travelers		=> x
+	Divination 		=> paladin
+	Wards	 		=> x
+	Thought 		=> paladin
+	Charm 			=> x
+	Law	 			=> x
+	Chaos	 		=> paladin
+	Animal 			=> x
+	Plant 			=> x
+	Earth 			=> x
+	Water 			=> x
+	Air 			=> paladin
+	Fire 			=> paladin
+	Sun	 			=> x
+	Shadow 			=> x
+	Weather 		=> paladin
+	Astral	    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO champion_red_knight_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_ch09_spheres BEGIN
+	Healing 		=> paladin
+	Necromancy		=> x
+	All				=> paladin
+	Combat			=> x
+	Protection		=> paladin
+	War 			=> paladin
+	Travelers		=> x
+	Divination 		=> paladin
+	Wards	 		=> x
+	Thought 		=> paladin
+	Charm 			=> x
+	Law	 			=> paladin
+	Chaos	 		=> x
+	Animal 			=> x
+	Plant 			=> x
+	Earth 			=> x
+	Water 			=> x
+	Air 			=> x
+	Fire 			=> x
+	Sun	 			=> x
+	Shadow 			=> x
+	Weather 		=> x
+	Astral	    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO zealot_gruumsh_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_ze02_spheres BEGIN
+	Healing 		=> x
+	Necromancy		=> ranger
+	All				=> x
+	Combat			=> ranger
+	Protection		=> ranger
+	War 			=> ranger
+	Travelers		=> x
+	Divination 		=> x
+	Wards	 		=> x
+	Thought 		=> x
+	Charm 			=> ranger
+	Law	 			=> ranger
+	Chaos	 		=> ranger
+	Animal 			=> ranger
+	Plant 			=> x
+	Earth 			=> x
+	Water 			=> x
+	Air 			=> x
+	Fire 			=> x
+	Sun	 			=> x
+	Shadow 			=> x
+	Weather 		=> x
+	Astral	    	=> x
+ END
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_zgruu_spheres BEGIN
+	Healing 		=> x
+	Necromancy		=> ranger
+	All				=> x
+	Combat			=> ranger
+	Protection		=> ranger
+	War 			=> ranger
+	Travelers		=> x
+	Divination 		=> x
+	Wards	 		=> x
+	Thought 		=> x
+	Charm 			=> ranger
+	Law	 			=> ranger
+	Chaos	 		=> ranger
+	Animal 			=> ranger
+	Plant 			=> x
+	Earth 			=> x
+	Water 			=> x
+	Air 			=> x
+	Fire 			=> x
+	Sun	 			=> x
+	Shadow 			=> x
+	Weather 		=> x
+	Astral	    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO zealot_talos_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_ze03_spheres BEGIN
+	Healing 		=> x
+	Necromancy		=> ranger
+	All				=> x
+	Combat			=> ranger
+	Protection		=> ranger
+	War 			=> ranger
+	Travelers		=> x
+	Divination 		=> x
+	Wards	 		=> x
+	Thought 		=> x
+	Charm 			=> ranger
+	Law	 			=> x
+	Chaos	 		=> ranger
+	Animal 			=> x
+	Plant 			=> x
+	Earth 			=> x
+	Water 			=> x
+	Air 			=> ranger
+	Fire 			=> ranger
+	Sun	 			=> x
+	Shadow 			=> x
+	Weather 		=> x
+	Astral	    	=> x
+ END
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_ztal_spheres BEGIN
+	Healing 		=> x
+	Necromancy		=> ranger
+	All				=> x
+	Combat			=> ranger
+	Protection		=> ranger
+	War 			=> ranger
+	Travelers		=> x
+	Divination 		=> x
+	Wards	 		=> x
+	Thought 		=> x
+	Charm 			=> ranger
+	Law	 			=> x
+	Chaos	 		=> ranger
+	Animal 			=> x
+	Plant 			=> x
+	Earth 			=> x
+	Water 			=> x
+	Air 			=> ranger
+	Fire 			=> ranger
+	Sun	 			=> x
+	Shadow 			=> x
+	Weather 		=> x
+	Astral	    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO zealot_kossuth_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_ze04_spheres BEGIN
+	Healing 		=> x
+	Necromancy		=> x
+	All				=> x
+	Combat			=> ranger
+	Protection		=> ranger
+	War 			=> ranger
+	Travelers		=> x
+	Divination 		=> ranger
+	Wards	 		=> x
+	Thought 		=> x
+	Charm 			=> ranger
+	Law	 			=> ranger
+	Chaos	 		=> ranger
+	Animal 			=> x
+	Plant 			=> x
+	Earth 			=> x
+	Water 			=> x
+	Air 			=> x
+	Fire 			=> ranger
+	Sun	 			=> x
+	Shadow 			=> x
+	Weather 		=> x
+	Astral	    	=> x
+ END
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_koss_spheres BEGIN
+	Healing 		=> x
+	Necromancy		=> x
+	All				=> x
+	Combat			=> ranger
+	Protection		=> ranger
+	War 			=> ranger
+	Travelers		=> x
+	Divination 		=> ranger
+	Wards	 		=> x
+	Thought 		=> x
+	Charm 			=> ranger
+	Law	 			=> ranger
+	Chaos	 		=> ranger
+	Animal 			=> x
+	Plant 			=> x
+	Earth 			=> x
+	Water 			=> x
+	Air 			=> x
+	Fire 			=> ranger
+	Sun	 			=> x
+	Shadow 			=> x
+	Weather 		=> x
+	Astral	    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO zealot_ilmater_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_ze05_spheres BEGIN
+	Healing 		=> ranger
+	Necromancy		=> x
+	All				=> ranger
+	Combat			=> ranger
+	Protection		=> ranger
+	War 			=> ranger
+	Travelers		=> x
+	Divination 		=> ranger
+	Wards	 		=> x
+	Thought 		=> x
+	Charm 			=> x
+	Law	 			=> ranger
+	Chaos	 		=> ranger
+	Animal 			=> x
+	Plant 			=> x
+	Earth 			=> x
+	Water 			=> x
+	Air 			=> x
+	Fire 			=> x
+	Sun	 			=> x
+	Shadow 			=> x
+	Weather 		=> x
+	Astral	    	=> x
+ END
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_zilm_spheres BEGIN
+	Healing 		=> ranger
+	Necromancy		=> x
+	All				=> ranger
+	Combat			=> ranger
+	Protection		=> ranger
+	War 			=> ranger
+	Travelers		=> x
+	Divination 		=> ranger
+	Wards	 		=> x
+	Thought 		=> x
+	Charm 			=> x
+	Law	 			=> ranger
+	Chaos	 		=> ranger
+	Animal 			=> x
+	Plant 			=> x
+	Earth 			=> x
+	Water 			=> x
+	Air 			=> x
+	Fire 			=> x
+	Sun	 			=> x
+	Shadow 			=> x
+	Weather 		=> x
+	Astral	    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO zealot_garagos_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_ze06_spheres BEGIN
+	Healing 		=> ranger
+	Necromancy		=> x
+	All				=> ranger
+	Combat			=> ranger
+	Protection		=> ranger
+	War 			=> ranger
+	Travelers		=> x
+	Divination 		=> x
+	Wards	 		=> x
+	Thought 		=> x
+	Charm 			=> ranger
+	Law	 			=> ranger
+	Chaos	 		=> x
+	Animal 			=> ranger
+	Plant 			=> x
+	Earth 			=> x
+	Water 			=> x
+	Air 			=> x
+	Fire 			=> x
+	Sun	 			=> x
+	Shadow 			=> x
+	Weather 		=> x
+	Astral	    	=> x
+ END
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_gara_spheres BEGIN
+	Healing 		=> ranger
+	Necromancy		=> x
+	All				=> ranger
+	Combat			=> ranger
+	Protection		=> ranger
+	War 			=> ranger
+	Travelers		=> x
+	Divination 		=> x
+	Wards	 		=> x
+	Thought 		=> x
+	Charm 			=> ranger
+	Law	 			=> ranger
+	Chaos	 		=> x
+	Animal 			=> ranger
+	Plant 			=> x
+	Earth 			=> x
+	Water 			=> x
+	Air 			=> x
+	Fire 			=> x
+	Sun	 			=> x
+	Shadow 			=> x
+	Weather 		=> x
+	Astral	    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO zealot_corellon_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_ze07_spheres BEGIN
+	Healing 		=> ranger
+	Necromancy		=> x
+	All				=> ranger
+	Combat			=> x
+	Protection		=> ranger
+	War 			=> ranger
+	Travelers		=> x
+	Divination 		=> ranger
+	Wards	 		=> x
+	Thought 		=> x
+	Charm 			=> x
+	Law	 			=> ranger
+	Chaos	 		=> ranger
+	Animal 			=> x
+	Plant 			=> x
+	Earth 			=> x
+	Water 			=> x
+	Air 			=> x
+	Fire 			=> x
+	Sun	 			=> x
+	Shadow 			=> x
+	Weather 		=> ranger
+	Astral	    	=> x
+ END
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_zcor_spheres BEGIN
+	Healing 		=> ranger
+	Necromancy		=> x
+	All				=> ranger
+	Combat			=> x
+	Protection		=> ranger
+	War 			=> ranger
+	Travelers		=> x
+	Divination 		=> ranger
+	Wards	 		=> x
+	Thought 		=> x
+	Charm 			=> x
+	Law	 			=> ranger
+	Chaos	 		=> ranger
+	Animal 			=> x
+	Plant 			=> x
+	Earth 			=> x
+	Water 			=> x
+	Air 			=> x
+	Fire 			=> x
+	Sun	 			=> x
+	Shadow 			=> x
+	Weather 		=> ranger
+	Astral	    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO zealot_sune_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_ze08_spheres BEGIN
+	Healing 		=> ranger
+	Necromancy		=> x
+	All				=> ranger
+	Combat			=> x
+	Protection		=> ranger
+	War 			=> x
+	Travelers		=> x
+	Divination 		=> ranger
+	Wards	 		=> ranger
+	Thought 		=> ranger
+	Charm 			=> ranger
+	Law	 			=> ranger
+	Chaos	 		=> x
+	Animal 			=> x
+	Plant 			=> x
+	Earth 			=> x
+	Water 			=> x
+	Air 			=> x
+	Fire 			=> x
+	Sun	 			=> x
+	Shadow 			=> x
+	Weather 		=> x
+	Astral	    	=> x
+ END
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_zsun_spheres BEGIN
+	Healing 		=> ranger
+	Necromancy		=> x
+	All				=> ranger
+	Combat			=> x
+	Protection		=> ranger
+	War 			=> x
+	Travelers		=> x
+	Divination 		=> ranger
+	Wards	 		=> ranger
+	Thought 		=> ranger
+	Charm 			=> ranger
+	Law	 			=> ranger
+	Chaos	 		=> x
+	Animal 			=> x
+	Plant 			=> x
+	Earth 			=> x
+	Water 			=> x
+	Air 			=> x
+	Fire 			=> x
+	Sun	 			=> x
+	Shadow 			=> x
+	Weather 		=> x
+	Astral	    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO zealot_mystra_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_ze09_spheres BEGIN
+	Healing 		=> ranger
+	Necromancy		=> x
+	All				=> ranger
+	Combat			=> ranger
+	Protection		=> ranger
+	War 			=> ranger
+	Travelers		=> x
+	Divination 		=> ranger
+	Wards	 		=> x
+	Thought 		=> x
+	Charm 			=> x
+	Law	 			=> ranger
+	Chaos	 		=> ranger
+	Animal 			=> x
+	Plant 			=> x
+	Earth 			=> x
+	Water 			=> x
+	Air 			=> x
+	Fire 			=> x
+	Sun	 			=> x
+	Shadow 			=> x
+	Weather 		=> x
+	Astral	    	=> x
+ END
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_zmys_spheres BEGIN
+	Healing 		=> ranger
+	Necromancy		=> x
+	All				=> ranger
+	Combat			=> ranger
+	Protection		=> ranger
+	War 			=> ranger
+	Travelers		=> x
+	Divination 		=> ranger
+	Wards	 		=> x
+	Thought 		=> x
+	Charm 			=> x
+	Law	 			=> ranger
+	Chaos	 		=> ranger
+	Animal 			=> x
+	Plant 			=> x
+	Earth 			=> x
+	Water 			=> x
+	Air 			=> x
+	Fire 			=> x
+	Sun	 			=> x
+	Shadow 			=> x
+	Weather 		=> x
+	Astral	    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO zealot_eilistraee_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_ze10_spheres BEGIN
+	Healing 		=> ranger
+	Necromancy		=> x
+	All				=> ranger
+	Combat			=> x
+	Protection		=> ranger
+	War 			=> x
+	Travelers		=> x
+	Divination 		=> ranger
+	Wards	 		=> x
+	Thought 		=> ranger
+	Charm 			=> ranger
+	Law	 			=> x
+	Chaos	 		=> x
+	Animal 			=> x
+	Plant 			=> x
+	Earth 			=> x
+	Water 			=> x
+	Air 			=> x
+	Fire 			=> x
+	Sun	 			=> ranger
+	Shadow 			=> ranger
+	Weather 		=> x
+	Astral	    	=> x
+ END
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_zeil_spheres BEGIN
+	Healing 		=> ranger
+	Necromancy		=> x
+	All				=> ranger
+	Combat			=> x
+	Protection		=> ranger
+	War 			=> x
+	Travelers		=> x
+	Divination 		=> ranger
+	Wards	 		=> x
+	Thought 		=> ranger
+	Charm 			=> ranger
+	Law	 			=> x
+	Chaos	 		=> x
+	Animal 			=> x
+	Plant 			=> x
+	Earth 			=> x
+	Water 			=> x
+	Air 			=> x
+	Fire 			=> x
+	Sun	 			=> ranger
+	Shadow 			=> ranger
+	Weather 		=> x
+	Astral	    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO ranger_forest_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5rfor_spheres BEGIN
+	Healing 		=> ranger
+	Necromancy		=> x
+	All				=> x
+	Combat			=> x
+	Protection		=> ranger
+	War 			=> x
+	Travelers		=> ranger
+	Divination 		=> ranger
+	Wards	 		=> x
+	Thought 		=> x
+	Charm 			=> x
+	Law	 			=> ranger
+	Chaos	 		=> x
+	Animal 			=> ranger
+	Plant 			=> ranger
+	Earth 			=> x
+	Water 			=> x
+	Air 			=> x
+	Fire 			=> x
+	Sun	 			=> ranger
+	Shadow 			=> x
+	Weather 		=> x
+	Astral	    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO ranger_mountain_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5rmou_spheres BEGIN
+	Healing 		=> ranger
+	Necromancy		=> x
+	All				=> x
+	Combat			=> x
+	Protection		=> ranger
+	War 			=> x
+	Travelers		=> ranger
+	Divination 		=> ranger
+	Wards	 		=> x
+	Thought 		=> x
+	Charm 			=> x
+	Law	 			=> ranger
+	Chaos	 		=> x
+	Animal 			=> ranger
+	Plant 			=> x
+	Earth 			=> ranger
+	Water 			=> x
+	Air 			=> x
+	Fire 			=> x
+	Sun	 			=> x
+	Shadow 			=> ranger
+	Weather 		=> x
+	Astral	    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO ranger_desert_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5rdes_spheres BEGIN
+	Healing 		=> ranger
+	Necromancy		=> x
+	All				=> x
+	Combat			=> x
+	Protection		=> ranger
+	War 			=> x
+	Travelers		=> ranger
+	Divination 		=> ranger
+	Wards	 		=> x
+	Thought 		=> x
+	Charm 			=> x
+	Law	 			=> ranger
+	Chaos	 		=> x
+	Animal 			=> ranger
+	Plant 			=> x
+	Earth 			=> x
+	Water 			=> x
+	Air 			=> ranger
+	Fire 			=> x
+	Sun	 			=> ranger
+	Shadow 			=> x
+	Weather 		=> x
+	Astral	    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO ranger_jungle_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5rjun_spheres BEGIN
+	Healing 		=> ranger
+	Necromancy		=> x
+	All				=> x
+	Combat			=> x
+	Protection		=> x
+	War 			=> x
+	Travelers		=> ranger
+	Divination 		=> ranger
+	Wards	 		=> x
+	Thought 		=> x
+	Charm 			=> x
+	Law	 			=> ranger
+	Chaos	 		=> ranger
+	Animal 			=> x
+	Plant 			=> ranger
+	Earth 			=> x
+	Water 			=> ranger
+	Air 			=> x
+	Fire 			=> x
+	Sun	 			=> x
+	Shadow 			=> ranger
+	Weather 		=> x
+	Astral	    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO ranger_arctic_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5rarc_spheres BEGIN
+	Healing 		=> ranger
+	Necromancy		=> x
+	All				=> x
+	Combat			=> x
+	Protection		=> ranger
+	War 			=> x
+	Travelers		=> ranger
+	Divination 		=> ranger
+	Wards	 		=> x
+	Thought 		=> x
+	Charm 			=> x
+	Law	 			=> ranger
+	Chaos	 		=> x
+	Animal 			=> ranger
+	Plant 			=> x
+	Earth 			=> x
+	Water 			=> ranger
+	Air 			=> ranger
+	Fire 			=> x
+	Sun	 			=> x
+	Shadow 			=> x
+	Weather 		=> x
+	Astral	    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO ranger_beastmaster_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY clabrn04_spheres BEGIN
+	Healing 		=> ranger
+	Necromancy		=> x
+	All				=> x
+	Combat			=> x
+	Protection		=> x
+	War 			=> x
+	Travelers		=> ranger
+	Divination 		=> ranger
+	Wards	 		=> x
+	Thought 		=> x
+	Charm 			=> x
+	Law	 			=> ranger
+	Chaos	 		=> x
+	Animal 			=> ranger
+	Plant 			=> x
+	Earth 			=> x
+	Water 			=> x
+	Air 			=> x
+	Fire 			=> x
+	Sun	 			=> x
+	Shadow 			=> x
+	Weather 		=> x
+	Astral	    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO barbarian_ranger_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5_rbarb_spheres BEGIN
+	Healing 		=> x
+	Necromancy		=> x
+	All				=> x
+	Combat			=> x
+	Protection		=> x
+	War 			=> x
+	Travelers		=> ranger
+	Divination 		=> x
+	Wards	 		=> x
+	Thought 		=> x
+	Charm 			=> x
+	Law	 			=> ranger
+	Chaos	 		=> x
+	Animal 			=> ranger
+	Plant 			=> x
+	Earth 			=> x
+	Water 			=> x
+	Air 			=> x
+	Fire 			=> x
+	Sun	 			=> x
+	Shadow 			=> x
+	Weather 		=> x
+	Astral	    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO scout_mage_hunter_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5_mageh_spheres BEGIN
+	Healing 		=> ranger
+	Necromancy		=> x
+	All				=> x
+	Combat			=> x
+	Protection		=> ranger
+	War 			=> x
+	Travelers		=> ranger
+	Divination 		=> x
+	Wards	 		=> x
+	Thought 		=> x
+	Charm 			=> x
+	Law	 			=> ranger
+	Chaos	 		=> x
+	Animal 			=> x
+	Plant 			=> x
+	Earth 			=> x
+	Water 			=> x
+	Air 			=> x
+	Fire 			=> x
+	Sun	 			=> ranger
+	Shadow 			=> x
+	Weather 		=> ranger
+	Astral	    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO scout_elven_archer_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5_earch_spheres BEGIN
+	Healing 		=> ranger
+	Necromancy		=> x
+	All				=> x
+	Combat			=> x
+	Protection		=> ranger
+	War 			=> x
+	Travelers		=> ranger
+	Divination 		=> ranger
+	Wards	 		=> ranger
+	Thought 		=> x
+	Charm 			=> x
+	Law	 			=> ranger
+	Chaos	 		=> x
+	Animal 			=> x
+	Plant 			=> ranger
+	Earth 			=> x
+	Water 			=> x
+	Air 			=> x
+	Fire 			=> x
+	Sun	 			=> ranger
+	Shadow 			=> x
+	Weather 		=> ranger
+	Astral	    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO scout_slinger_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5_sling_spheres BEGIN
+	Healing 		=> x
+	Necromancy		=> x
+	All				=> x
+	Combat			=> x
+	Protection		=> ranger
+	War 			=> x
+	Travelers		=> ranger
+	Divination 		=> x
+	Wards	 		=> x
+	Thought 		=> x
+	Charm 			=> x
+	Law	 			=> ranger
+	Chaos	 		=> x
+	Animal 			=> x
+	Plant 			=> x
+	Earth 			=> x
+	Water 			=> x
+	Air 			=> ranger
+	Fire 			=> x
+	Sun	 			=> x
+	Shadow 			=> x
+	Weather 		=> x
+	Astral	    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO cm_mystra_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5cmmys_spheres BEGIN
+	Healing 		=> major
+	Necromancy		=> x
+	All				=> major
+	Combat			=> major
+	Protection		=> major
+	War 			=> x
+	Travelers		=> minor
+	Divination 		=> major
+	Wards	 		=> minor
+	Thought 		=> minor
+	Charm 			=> x
+	Law	 			=> minor
+	Chaos	 		=> x
+	Animal 			=> x
+	Plant 			=> x
+	Earth 			=> x
+	Water 			=> x
+	Air 			=> x
+	Fire 			=> minor
+	Sun	 			=> minor
+	Shadow 			=> x
+	Weather 		=> major
+	Astral	    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO cm_azuth_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5cmazu_spheres BEGIN
+	Healing 		=> major
+	Necromancy		=> x
+	All				=> major
+	Combat			=> major
+	Protection		=> major
+	War 			=> x
+	Travelers		=> minor
+	Divination 		=> major
+	Wards	 		=> minor
+	Thought 		=> minor
+	Charm 			=> minor
+	Law	 			=> minor
+	Chaos	 		=> x
+	Animal 			=> x
+	Plant 			=> x
+	Earth 			=> x
+	Water 			=> x
+	Air 			=> x
+	Fire 			=> minor
+	Sun	 			=> major
+	Shadow 			=> minor
+	Weather 		=> major
+	Astral	    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO cm_spellbender_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5_bendr_spheres BEGIN
+	Healing 		=> minor
+	Necromancy		=> x
+	All				=> x
+	Combat			=> major
+	Protection		=> minor
+	War 			=> x
+	Travelers		=> major
+	Divination 		=> major
+	Wards	 		=> minor
+	Thought 		=> major
+	Charm 			=> major
+	Law	 			=> x
+	Chaos	 		=> x
+	Animal 			=> x
+	Plant 			=> x
+	Earth 			=> x
+	Water 			=> x
+	Air 			=> x
+	Fire 			=> x
+	Sun	 			=> minor
+	Shadow 			=> minor
+	Weather 		=> major
+	Astral	    	=> minor
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO fc_clangeddin_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5cfcla_spheres BEGIN
+	Healing 		=> major
+	Necromancy		=> x
+	All				=> major
+	Combat			=> minor
+	Protection		=> major
+	War 			=> major
+	Travelers		=> x
+	Divination 		=> minor
+	Wards	 		=> x
+	Thought 		=> x
+	Charm 			=> minor
+	Law	 			=> major
+	Chaos	 		=> x
+	Animal 			=> x
+	Plant 			=> x
+	Earth 			=> major
+	Water 			=> x
+	Air 			=> x
+	Fire 			=> x
+	Sun	 			=> minor
+	Shadow 			=> x
+	Weather 		=> minor
+	Astral	    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO cr_mielikki_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5crmi_spheres BEGIN
+	Healing 		=> major
+	Necromancy		=> x
+	All				=> major
+	Combat			=> x
+	Protection		=> minor
+	War 			=> x
+	Travelers		=> minor
+	Divination 		=> minor
+	Wards	 		=> x
+	Thought 		=> x
+	Charm 			=> x
+	Law	 			=> focus
+	Chaos	 		=> minor
+	Animal 			=> major
+	Plant 			=> major
+	Earth 			=> major
+	Water 			=> minor
+	Air 			=> minor
+	Fire 			=> x
+	Sun	 			=> minor
+	Shadow 			=> x
+	Weather 		=> x
+	Astral	    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO cr_shaundakul_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5crsh_spheres BEGIN
+	Healing 		=> major
+	Necromancy		=> x
+	All				=> minor
+	Combat			=> x
+	Protection		=> major
+	War 			=> x
+	Travelers		=> focus
+	Divination 		=> major
+	Wards	 		=> minor
+	Thought 		=> x
+	Charm 			=> x
+	Law	 			=> major
+	Chaos	 		=> x
+	Animal 			=> minor
+	Plant 			=> minor
+	Earth 			=> x
+	Water 			=> minor
+	Air 			=> major
+	Fire 			=> x
+	Sun	 			=> major
+	Shadow 			=> x
+	Weather 		=> minor
+	Astral	    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO fc_helm_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_cfhe_spheres BEGIN
+	Healing 		=> major
+	Necromancy		=> minor
+	All				=> major
+	Combat			=> minor
+	Protection		=> major
+	War 			=> major
+	Travelers		=> minor
+	Divination 		=> major
+	Wards	 		=> x
+	Thought 		=> minor
+	Charm 			=> minor
+	Law	 			=> major
+	Chaos	 		=> x
+	Animal 			=> x
+	Plant 			=> x
+	Earth 			=> x
+	Water 			=> x
+	Air 			=> x
+	Fire 			=> x
+	Sun	 			=> minor
+	Shadow 			=> x
+	Weather 		=> minor
+	Astral	    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+// DEFAULT KIT SPHERE ASSIGNMENTS____________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO vanilla_shaman_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY clabshgs_spheres BEGIN
+	Healing 		=> minor
+	Necromancy		=> x
+	All				=> x
+	Combat			=> x
+	Protection		=> x
+	War 			=> x
+	Travelers		=> x
+	Divination 		=> x
+	Wards	 		=> x
+	Thought 		=> x
+	Charm 			=> x
+	Law	 			=> x
+	Chaos	 		=> x
+	Animal 			=> major
+	Plant 			=> major
+	Earth 			=> x
+	Water 			=> x
+	Air 			=> x
+	Fire 			=> x
+	Sun	 			=> x
+	Shadow 			=> major
+	Weather 		=> x
+	Astral	    	=> major
+ END
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY clabsh01_spheres BEGIN
+	Healing 		=> minor
+	Necromancy		=> x
+	All				=> x
+	Combat			=> x
+	Protection		=> x
+	War 			=> x
+	Travelers		=> x
+	Divination 		=> x
+	Wards	 		=> x
+	Thought 		=> x
+	Charm 			=> x
+	Law	 			=> x
+	Chaos	 		=> x
+	Animal 			=> major
+	Plant 			=> major
+	Earth 			=> x
+	Water 			=> x
+	Air 			=> x
+	Fire 			=> x
+	Sun	 			=> x
+	Shadow 			=> major
+	Weather 		=> x
+	Astral	    	=> major
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO vanilla_cleric_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY clabpr01_spheres BEGIN
+	Healing 		=> major
+	Necromancy		=> minor
+	All				=> major
+	Combat			=> major
+	Protection		=> major
+	War 			=> minor
+	Travelers		=> minor
+	Divination 		=> major
+	Wards	 		=> x
+	Thought 		=> minor
+	Charm 			=> major
+	Law	 			=> minor
+	Chaos	 		=> x
+	Animal 			=> x
+	Plant 			=> x
+	Earth 			=> x
+	Water 			=> x
+	Air 			=> x
+	Fire 			=> minor
+	Sun	 			=> major
+	Shadow 			=> x
+	Weather 		=> minor
+	Astral	    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO vanilla_cleric_talos_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY clabpr02_spheres BEGIN
+	Healing 		=> major
+	Necromancy		=> x
+	All				=> major
+	Combat			=> major
+	Protection		=> major
+	War 			=> minor
+	Travelers		=> minor
+	Divination 		=> minor
+	Wards	 		=> x
+	Thought 		=> x
+	Charm 			=> minor
+	Law	 			=> minor
+	Chaos	 		=> x
+	Animal 			=> x
+	Plant 			=> x
+	Earth 			=> x
+	Water 			=> major
+	Air 			=> major
+	Fire 			=> x
+	Sun	 			=> minor
+	Shadow 			=> x
+	Weather 		=> minor
+	Astral	    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO vanilla_cleric_helm_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY clabpr03_spheres BEGIN
+	Healing 		=> major
+	Necromancy		=> minor
+	All				=> major
+	Combat			=> minor
+	Protection		=> major
+	War 			=> major
+	Travelers		=> minor
+	Divination 		=> major
+	Wards	 		=> x
+	Thought 		=> minor
+	Charm 			=> minor
+	Law	 			=> major
+	Chaos	 		=> x
+	Animal 			=> x
+	Plant 			=> x
+	Earth 			=> x
+	Water 			=> x
+	Air 			=> x
+	Fire 			=> x
+	Sun	 			=> minor
+	Shadow 			=> x
+	Weather 		=> minor
+	Astral	    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO vanilla_cleric_lathander_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY clabpr04_spheres BEGIN
+	Healing 		=> major
+	Necromancy		=> x
+	All				=> major
+	Combat			=> minor
+	Protection		=> major
+	War 			=> minor
+	Travelers		=> minor
+	Divination 		=> minor
+	Wards	 		=> x
+	Thought 		=> minor
+	Charm 			=> x
+	Law	 			=> major
+	Chaos	 		=> x
+	Animal 			=> x
+	Plant 			=> x
+	Earth 			=> x
+	Water 			=> x
+	Air 			=> minor
+	Fire 			=> major
+	Sun	 			=> major
+	Shadow 			=> x
+	Weather 		=> minor
+	Astral	    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO vanilla_cleric_tyr_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY ohtyr_spheres BEGIN
+	Healing 		=> major
+	Necromancy		=> minor
+	All				=> major
+	Combat			=> minor
+	Protection		=> major
+	War 			=> major
+	Travelers		=> x
+	Divination 		=> major
+	Wards	 		=> x
+	Thought 		=> minor
+	Charm 			=> minor
+	Law	 			=> major
+	Chaos	 		=> x
+	Animal 			=> x
+	Plant 			=> x
+	Earth 			=> x
+	Water 			=> x
+	Air 			=> x
+	Fire 			=> x
+	Sun	 			=> minor
+	Shadow 			=> x
+	Weather 		=> minor
+	Astral	    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO vanilla_cleric_tempus_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY ohtempus_spheres BEGIN
+	Healing 		=> major
+	Necromancy		=> x
+	All				=> major
+	Combat			=> major
+	Protection		=> major
+	War 			=> major
+	Travelers		=> minor
+	Divination 		=> minor
+	Wards	 		=> x
+	Thought 		=> minor
+	Charm 			=> x
+	Law	 			=> major
+	Chaos	 		=> x
+	Animal 			=> x
+	Plant 			=> x
+	Earth 			=> minor
+	Water 			=> x
+	Air 			=> minor
+	Fire 			=> x
+	Sun	 			=> minor
+	Shadow 			=> x
+	Weather 		=> minor
+	Astral	    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO vanilla_druid_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY clabdr01_spheres BEGIN
+	Healing 		=> minor
+	Necromancy		=> x
+	All				=> x
+	Combat			=> x
+	Protection		=> x
+	War 			=> x
+	Travelers		=> minor
+	Divination 		=> minor
+	Wards	 		=> x
+	Thought 		=> minor
+	Charm 			=> x
+	Law	 			=> major
+	Chaos	 		=> minor
+	Animal 			=> major
+	Plant 			=> major
+	Earth 			=> major
+	Water 			=> major
+	Air 			=> major
+	Fire 			=> minor
+	Sun	 			=> major
+	Shadow 			=> minor
+	Weather 		=> x
+	Astral	    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO vanilla_druid_totemic_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY clabdr02_spheres BEGIN
+	Healing 		=> minor
+	Necromancy		=> x
+	All				=> x
+	Combat			=> x
+	Protection		=> x
+	War 			=> x
+	Travelers		=> minor
+	Divination 		=> minor
+	Wards	 		=> x
+	Thought 		=> minor
+	Charm 			=> x
+	Law	 			=> major
+	Chaos	 		=> minor
+	Animal 			=> major
+	Plant 			=> major
+	Earth 			=> major
+	Water 			=> major
+	Air 			=> major
+	Fire 			=> minor
+	Sun	 			=> major
+	Shadow 			=> minor
+	Weather 		=> x
+	Astral	    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO vanilla_shapeshifter_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY clabdr03_spheres BEGIN
+	Healing 		=> minor
+	Necromancy		=> x
+	All				=> x
+	Combat			=> x
+	Protection		=> x
+	War 			=> x
+	Travelers		=> minor
+	Divination 		=> minor
+	Wards	 		=> x
+	Thought 		=> minor
+	Charm 			=> minor
+	Law	 			=> major
+	Chaos	 		=> major
+	Animal 			=> focus
+	Plant 			=> major
+	Earth 			=> minor
+	Water 			=> minor
+	Air 			=> minor
+	Fire 			=> x
+	Sun	 			=> x
+	Shadow 			=> minor
+	Weather 		=> x
+	Astral	    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO vanilla_avenger_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY clabdr04_spheres BEGIN
+	Healing 		=> minor
+	Necromancy		=> x
+	All				=> x
+	Combat			=> x
+	Protection		=> x
+	War 			=> x
+	Travelers		=> minor
+	Divination 		=> minor
+	Wards	 		=> x
+	Thought 		=> x
+	Charm 			=> x
+	Law	 			=> major
+	Chaos	 		=> major
+	Animal 			=> minor
+	Plant 			=> major
+	Earth 			=> major
+	Water 			=> major
+	Air 			=> major
+	Fire 			=> minor
+	Sun	 			=> major
+	Shadow 			=> minor
+	Weather 		=> minor
+	Astral	    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO vanilla_paladin_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY clabpa01_spheres BEGIN
+	Healing 		=> paladin
+	Necromancy		=> x
+	All				=> paladin
+	Combat			=> paladin
+	Protection		=> paladin
+	War 			=> paladin
+	Travelers		=> x
+	Divination 		=> paladin
+	Wards	 		=> x
+	Thought 		=> x
+	Charm 			=> x
+	Law	 			=> x
+	Chaos	 		=> x
+	Animal 			=> x
+	Plant 			=> x
+	Earth 			=> x
+	Water 			=> x
+	Air 			=> x
+	Fire 			=> x
+	Sun	 			=> paladin
+	Shadow 			=> x
+	Weather 		=> x
+	Astral	    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO vanilla_paladin_cavalier_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY clabpa02_spheres BEGIN
+	Healing 		=> paladin
+	Necromancy		=> x
+	All				=> paladin
+	Combat			=> paladin
+	Protection		=> paladin
+	War 			=> paladin
+	Travelers		=> x
+	Divination 		=> paladin
+	Wards	 		=> x
+	Thought 		=> x
+	Charm 			=> x
+	Law	 			=> x
+	Chaos	 		=> x
+	Animal 			=> x
+	Plant 			=> x
+	Earth 			=> x
+	Water 			=> x
+	Air 			=> x
+	Fire 			=> x
+	Sun	 			=> paladin
+	Shadow 			=> x
+	Weather 		=> x
+	Astral	    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO vanilla_paladin_inquisitor_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY clabpa03_spheres BEGIN
+	Healing 		=> paladin
+	Necromancy		=> x
+	All				=> paladin
+	Combat			=> x
+	Protection		=> paladin
+	War 			=> x
+	Travelers		=> x
+	Divination 		=> paladin
+	Wards	 		=> x
+	Thought 		=> paladin
+	Charm 			=> x
+	Law	 			=> x
+	Chaos	 		=> x
+	Animal 			=> x
+	Plant 			=> x
+	Earth 			=> x
+	Water 			=> x
+	Air 			=> x
+	Fire 			=> x
+	Sun	 			=> x
+	Shadow 			=> x
+	Weather 		=> paladin
+	Astral	    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO vanilla_paladin_undead_hunter_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY clabpa04_spheres BEGIN
+	Healing 		=> paladin
+	Necromancy		=> paladin
+	All				=> paladin
+	Combat			=> x
+	Protection		=> paladin
+	War 			=> paladin
+	Travelers		=> x
+	Divination 		=> paladin
+	Wards	 		=> x
+	Thought 		=> x
+	Charm 			=> x
+	Law	 			=> x
+	Chaos	 		=> x
+	Animal 			=> x
+	Plant 			=> x
+	Earth 			=> x
+	Water 			=> x
+	Air 			=> x
+	Fire 			=> x
+	Sun	 			=> paladin
+	Shadow 			=> x
+	Weather 		=> x
+	Astral	    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO vanilla_fallen_paladin_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY clabpa05_spheres BEGIN
+	Healing 		=> paladin
+	Necromancy		=> x
+	All				=> paladin
+	Combat			=> paladin
+	Protection		=> paladin
+	War 			=> paladin
+	Travelers		=> x
+	Divination 		=> paladin
+	Wards	 		=> x
+	Thought 		=> x
+	Charm 			=> x
+	Law	 			=> x
+	Chaos	 		=> x
+	Animal 			=> x
+	Plant 			=> x
+	Earth 			=> x
+	Water 			=> x
+	Air 			=> x
+	Fire 			=> x
+	Sun	 			=> paladin
+	Shadow 			=> x
+	Weather 		=> x
+	Astral	    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO vanilla_blackguard_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY clabpa06_spheres BEGIN
+	Healing 		=> x
+	Necromancy		=> paladin
+	All				=> x
+	Combat			=> paladin
+	Protection		=> x
+	War 			=> paladin
+	Travelers		=> x
+	Divination 		=> x
+	Wards	 		=> x
+	Thought 		=> x
+	Charm 			=> paladin
+	Law	 			=> paladin
+	Chaos	 		=> paladin
+	Animal 			=> x
+	Plant 			=> x
+	Earth 			=> x
+	Water 			=> x
+	Air 			=> x
+	Fire 			=> x
+	Sun	 			=> x
+	Shadow 			=> paladin
+	Weather 		=> x
+	Astral	    	=> paladin
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO vanilla_ranger_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY clabrn01_spheres BEGIN
+	Healing 		=> ranger
+	Necromancy		=> x
+	All				=> x
+	Combat			=> x
+	Protection		=> ranger
+	War 			=> x
+	Travelers		=> ranger
+	Divination 		=> x
+	Wards	 		=> x
+	Thought 		=> x
+	Charm 			=> x
+	Law	 			=> ranger
+	Chaos	 		=> x
+	Animal 			=> ranger
+	Plant 			=> ranger
+	Earth 			=> x
+	Water 			=> x
+	Air 			=> ranger
+	Fire 			=> x
+	Sun	 			=> ranger
+	Shadow 			=> x
+	Weather 		=> x
+	Astral	    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO vanilla_ranger_archer_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY clabrn02_spheres BEGIN
+	Healing 		=> ranger
+	Necromancy		=> x
+	All				=> x
+	Combat			=> x
+	Protection		=> ranger
+	War 			=> x
+	Travelers		=> ranger
+	Divination 		=> x
+	Wards	 		=> x
+	Thought 		=> x
+	Charm 			=> x
+	Law	 			=> ranger
+	Chaos	 		=> x
+	Animal 			=> x
+	Plant 			=> x
+	Earth 			=> x
+	Water 			=> x
+	Air 			=> ranger
+	Fire 			=> x
+	Sun	 			=> x
+	Shadow 			=> x
+	Weather 		=> x
+	Astral	    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO vanilla_ranger_stalker_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY clabrn03_spheres BEGIN
+	Healing 		=> x
+	Necromancy		=> x
+	All				=> x
+	Combat			=> x
+	Protection		=> x
+	War 			=> x
+	Travelers		=> ranger
+	Divination 		=> x
+	Wards	 		=> ranger
+	Thought 		=> ranger
+	Charm 			=> x
+	Law	 			=> ranger
+	Chaos	 		=> x
+	Animal 			=> x
+	Plant 			=> x
+	Earth 			=> x
+	Water 			=> x
+	Air 			=> ranger
+	Fire 			=> x
+	Sun	 			=> x
+	Shadow 			=> ranger
+	Weather 		=> x
+	Astral	    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO vanilla_ranger_beastmaster_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY clabrn04_spheres BEGIN
+	Healing 		=> ranger
+	Necromancy		=> x
+	All				=> x
+	Combat			=> x
+	Protection		=> ranger
+	War 			=> x
+	Travelers		=> ranger
+	Divination 		=> ranger
+	Wards	 		=> x
+	Thought 		=> x
+	Charm 			=> x
+	Law	 			=> ranger
+	Chaos	 		=> x
+	Animal 			=> ranger
+	Plant 			=> x
+	Earth 			=> x
+	Water 			=> x
+	Air 			=> x
+	Fire 			=> x
+	Sun	 			=> x
+	Shadow 			=> x
+	Weather 		=> x
+	Astral	    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO vanilla_fallen_ranger_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY clabrn05_spheres BEGIN
+	Healing 		=> ranger
+	Necromancy		=> x
+	All				=> x
+	Combat			=> x
+	Protection 		=> x
+	War 			=> x
+	Travelers		=> ranger
+	Divination 		=> x
+	Wards	 		=> x
+	Thought 		=> x
+	Charm 			=> x
+	Law	 			=> ranger
+	Chaos	 		=> x
+	Animal 			=> ranger
+	Plant 			=> ranger
+	Earth 			=> x
+	Water 			=> x
+	Air 			=> ranger
+	Fire 			=> x
+	Sun	 			=> ranger
+	Shadow 			=> x
+	Weather 		=> x
+	Astral	     	=> x
+ END
+END
+//___________________________________________________________________________________
+

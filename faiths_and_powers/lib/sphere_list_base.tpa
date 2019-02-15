@@ -1,25 +1,50 @@
+
+// sphere names
+
+ACTION_DEFINE_ASSOCIATIVE_ARRAY sphere_name_changes BEGIN
+	yyyyy 	=> Zzzzz
+END
+
+
 // spell spheres
 
-// FIRST ITEM: SPELL IDS NAME
+// First item: spell IDS name or RES
+// Digit after comma: desired spell level
+// Item after arrow: sphere
 
-// DIGIT AFTER COMMA: SPELL LEVEL
-
-// ITEM AFTER ARROW: SPHERE
+// To change which sphere a spell belongs to, 
+// simply change the entry in the right-most column to the new sphere.
+// You don't have to actually move the spell, though you can if you want to.
 
 ACTION_DEFINE_ASSOCIATIVE_ARRAY spellsphere BEGIN
 
+//  UNIVERSAL
+// 	universal spells will be available to every kit, regardless of their defined sphere assignments
+// 	this "sphere" MUST MUST MUST have at least one spell of each spell level
+// 	and their spell level MUST NOT be changed from the vanilla game
+// 	those are the rules you MUST abide by if you want to change which spells are uiniversal
+
+CLERIC_CURE_LIGHT_WOUNDS               , 1 => Universal
+CLERIC_RESIST_FIRE_AND_COLD            , 2 => Universal
+CLERIC_DISPEL_MAGIC                    , 3 => Universal
+CLERIC_LESSER_RESTORATION              , 4 => Universal
+CLERIC_CURE_CRITICAL_WOUNDS            , 5 => Universal
+CLERIC_WONDROUS_RECALL                 , 6 => Universal
+CLERIC_HOLY_WORD                       , 7 => Universal
+CLERIC_UNHOLY_WORD                     , 7 => Universal
+
 //  LIFE 
-//CLERIC_CURE_LIGHT_WOUNDS               , 1 => Life // universal
+
 CLERIC_CURE_MODERATE_WOUNDS            , 2 => Life
 CLERIC_CURE_MEDIUM_WOUNDS              , 3 => Life
 CLERIC_CURE_SERIOUS_WOUNDS             , 4 => Life
-//CLERIC_CURE_CRITICAL_WOUNDS            , 5 => Life // universal
 CLERIC_MASS_CURE                       , 5 => Life
 CLERIC_RAISE_DEAD                      , 6 => Life
 CLERIC_HEAL                            , 6 => Life
 CLERIC_RESURRECTION                    , 7 => Life
 
 //  DEATH
+
 b_c104 /*eyes of the dead*/            , 1 => Death
 b_c105 /*disrupt undead*/              , 1 => Death
 WIZARD_LARLOCH_MINOR_DRAIN             , 1 => Death
@@ -35,21 +60,20 @@ CLERIC_SYMBOL_DEATH                    , 7 => Death
 CLERIC_FINGER_OF_DEATH                 , 7 => Death
 
 //  BENEDICTION
+
 CLERIC_BLESS                           , 1 => Benediction
 CLERIC_AID                             , 1 => Benediction
 CLERIC_CHANT                           , 2 => Benediction
-//CLERIC_REMOVE_CURSE                    , 2 => Benediction // universal
 CLERIC_PRAYER                          , 3 => Benediction
-//CLERIC_LESSER_RESTORATION              , 3 => Benediction // universal
+CLERIC_REMOVE_CURSE                    , 3 => Benediction
 CLERIC_RECITATION                      , 4 => Benediction
 WIZARD_EMOTION_HOPE                    , 4 => Benediction
 WIZARD_EMOTION_COURAGE                 , 5 => Benediction
 CLERIC_RIGHTEOUS_WRATH_OF_THE_FAITHFUL , 6 => Benediction
-//CLERIC_HOLY_WORD                       , 7 => Benediction // universal
-//CLERIC_UNHOLY_WORD                     , 7 => Benediction // universal
 CLERIC_IMPERVIOUS_SANCTITY_OF_MIND     , 7 => Benediction
 
 //  DESTRUCTION
+
 b_pr101 /*holy smite*/                 , 1 => Destruction
 //PALADIN_SMITE_EVIL                     , 1 => Destruction
 CLERIC_CAUSE_LIGHT_WOUNDS              , 1 => Destruction
@@ -68,6 +92,7 @@ WIZARD_DISINTEGRATE                    , 6 => Destruction
 CLERIC_DESTRUCTION                     , 7 => Destruction
 
 //  PROTECTION
+
 CLERIC_PROTECT_FROM_EVIL               , 1 => Protection
 CLERIC_ARMOR_OF_FAITH                  , 1 => Protection
 WIZARD_SHIELD                          , 2 => Protection
@@ -81,6 +106,7 @@ CLERIC_SHIELD_OF_THE_ARCHONS           , 7 => Protection
 CLERIC_GREATER_SHIELD_OF_LATHANDER     , 7 => Protection
 
 //  WAR
+
 CLERIC_REMOVE_FEAR                     , 1 => War
 CLERIC_ABUNDANT_AMMO                   , 1 => War
 CLERIC_SPIRITUAL_HAMMER                , 2 => War
@@ -94,10 +120,12 @@ CLERIC_BOLT_OF_GLORY                   , 6 => War
 CLERIC_SYMBOL_FEAR                     , 7 => War
 
 //  EXPLORATION
+
 WIZARD_PFP_OLD                         , 1 => Exploration // IWDEE exped. retreat... need to add for non-IWDEE
-CLERIC_FIND_TRAPS                      , 1 => Exploration
-MAZZY_HASTE                            , 2 => Exploration
-CLERIC_FREE_ACTION                     , 3 => Exploration // move higher, make new low-level version
+CLERIC_FIND_TRAPS                      , 2 => Exploration
+CLERIC_FAR_SIGHT                       , 2 => Knowledge
+WIZARD_HASTE                           , 3 => Exploration
+CLERIC_FREE_ACTION                     , 3 => Exploration // move higher; make new low-level version
 WIZARD_EYE                             , 4 => Exploration
 WIZARD_DIMENSION_DOOR                  , 5 => Exploration
 WIZARD_TELEPORT_FIELD                  , 6 => Exploration
@@ -106,18 +134,20 @@ WIZARD_FREEDOM                         , 7 => Exploration
 CLERIC_ETHER_GATE                      , 7 => Exploration
 
 //  KNOWLEDGE
-//WIZARD_IDENTIFY                        , 1 => Knowledge
+
+//WIZARD_IDENTIFY                        , 1 => Knowledge // make cleric version
 CLERIC_DETECT_EVIL                     , 1 => Knowledge
 CLERIC_KNOW_ALIGNMENT                  , 1 => Knowledge
 WIZARD_CLAIRVOYANCE                    , 2 => Knowledge
 CLERIC_INVISIBILITY_PURGE              , 3 => Knowledge
-CLERIC_FAR_SIGHT                       , 3 => Knowledge
+CLERIC_SPIRITUAL_CLARITY               , 3 => Knowledge // MOVED
 WIZARD_DETECT_ILLUSION                 , 4 => Knowledge
 WIZARD_ORACLE                          , 5 => Knowledge
 CLERIC_TRUE_SIGHT                      , 6 => Knowledge
 WIZARD_CONTINGENCY                     , 7 => Knowledge
 
 //  DECEPTION
+
 WIZARD_REFLECTED_IMAGE                 , 1 => Deception
 WIZARD_BLUR                            , 2 => Deception
 WIZARD_INVISIBILITY                    , 3 => Deception
@@ -129,14 +159,14 @@ CLERIC_PIXIE_DUST                      , 6 => Deception
 WIZARD_SIMULACRUM                      , 7 => Deception
 
 //  THOUGHT/CHARM
+
 CLERIC_COMMAND                         , 1 => Thought
-CLERIC_ENTHRALL                         , 2 => Thought
-CLERIC_FORBID                         , 2 => Thought
+CLERIC_ENTHRALL                        , 2 => Thought
+CLERIC_FORBID 						   , 2 => Thought
 CLERIC_CHARM_PERSON                    , 2 => Thought
 b_c301 /*murderous command*/           , 3 => Thought
+CLERIC_DICTATE                    	   , 3 => Thought
 CLERIC_EXALTATION                      , 3 => Thought
-CLERIC_DICTATE                      , 3 => Thought
-//CLERIC_SPIRITUAL_CLARITY               , 3 => Thought (does it duplicate exaltation?)
 CLERIC_RIGID_THINKING                  , 3 => Thought
 CLERIC_MENTAL_DOMINATION               , 4 => Thought
 CLERIC_BLOOD_RAGE                      , 4 => Thought
@@ -146,6 +176,7 @@ CLERIC_CONFUSION                       , 6 => Thought
 CLERIC_NATURE_BEAUTY                   , 7 => Thought
 
 //  DREAD
+
 CLERIC_CURSE                           , 1 => Dread
 CLERIC_DOOM                            , 1 => Dread
 b_c201 /*forbiddance*/                 , 2 => Dread
@@ -159,19 +190,21 @@ CLERIC_SPIRITUAL_WRATH                 , 6 => Dread
 CLERIC_SYMBOL_OF_HOPELESSNESS          , 7 => Dread
 
 //  VIGOR
+
 CLERIC_UNFAILING_ENDURANCE             , 1 => Vigor
-CLERIC_SLOW_POISON                     , 1 => Vigor // universal
+CLERIC_SLOW_POISON                     , 1 => Vigor // make universal?
 CLERIC_CURE_DISEASE                    , 2 => Vigor
 CLERIC_REMOVE_PARALYSIS                , 2 => Vigor
 CLERIC_DRAW_UPON_HOLY_MIGHT            , 3 => Vigor
 CLERIC_FAVOR_OF_ILMATER                , 3 => Vigor
-//CLERIC_NEUTRALIZE_POISON               , 4 => Vigor // why does this spell exist??
+CLERIC_NEUTRALIZE_POISON               , 4 => Vigor // why does this spell exist??
 CLERIC_ANIMAL_RAGE                     , 5 => Vigor
 //WIZARD_TENSERS_TRANSFORMATION          , 6 => Vigor
 CLERIC_REGENERATE                      , 6 => Vigor
 CLERIC_RESTORATION                     , 7 => Vigor
 
 //  AFFLICTION
+
 CLERIC_CAUSE_DISEASE                   , 1 => Affliction
 WIZARD_BLINDNESS                       , 2 => Affliction
 WIZARD_RAY_OF_ENFEEBLEMENT             , 2 => Affliction
@@ -186,6 +219,7 @@ CLERIC_WITHER                          , 7 => Affliction
 CLERIC_SYMBOL_STUN                     , 7 => Affliction
 
 //  ANIMAL
+
 b_c102 /*animal eyes*/                 , 1 => Animal
 CLERIC_HOLD_ANIMAL                     , 1 => Animal
 CLERIC_BEAST_CLAW                      , 2 => Animal
@@ -200,6 +234,7 @@ CLERIC_CONJURE_ANIMALS                 , 7 => Animal
 CLERIC_CREEPING_DOOM                   , 7 => Animal
 
 //  PLANT
+
 CLERIC_ENTANGLE                        , 1 => Plant
 CLERIC_SHILLELAGH                      , 1 => Plant
 //CLERIC_GOOD_BERRIES                  , 1 => Plant
@@ -215,8 +250,9 @@ b_c601 /*assassin vines*/              , 6 => Plant
 CLERIC_STALKER                         , 7 => Plant
 
 //  EARTH
+
 CLERIC_MAGIC_STONE                     , 1 => Earth
-CLERIC_CAMOUFLAGE                     , 1 => Earth
+CLERIC_CAMOUFLAGE                      , 1 => Earth
 CLERIC_PROTECTION_FROM_LIGHTNING       , 2 => Earth
 b_pr301 /*stone fist*/                 , 3 => Earth
 CLERIC_STAR_METAL_CUDGEL               , 4 => Earth
@@ -228,6 +264,7 @@ WIZARD_FLESH_TO_STONE                  , 6 => Earth
 CLERIC_EARTHQUAKE                      , 7 => Earth
 
 //  AIR
+
 CLERIC_ZONE_OF_SWEET_AIR               , 1 => Air
 WIZARD_STINKING_CLOUD                  , 2 => Air
 CLERIC_STORM_SHELL                     , 3 => Air
@@ -238,10 +275,11 @@ CLERIC_STATIC_CHARGE                   , 5 => Air
 CLERIC_WHIRLWIND                       , 5 => Air
 CLERIC_ENTROPY_SHIELD                  , 6 => Air
 WIZARD_CHAIN_LIGHTNING                 , 6 => Air
+CLERIC_AERIAL_SERVANT                  , 6 => Air
 WIZARD_DEATH_FOG                       , 7 => Air
-CLERIC_AERIAL_SERVANT                  , 7 => Air
 
 //  WATER
+
 b_c103 /*frost fingers*/               , 1 => Water
 CLERIC_WATERY_FIST                     , 2 => Water
 b_c203 /*ice blade*/                   , 2 => Water
@@ -256,9 +294,9 @@ b_pr602 /*water elemental*/            , 6 => Water
 WIZARD_ACID_STORM                      , 7 => Water
 
 //  FIRE
+
 WIZARD_BURNING_HANDS                   , 1 => Fire
 //CLERIC_RESIST_FIRE                   , 1 => Fire
-//CLERIC_RESIST_FIRE_AND_COLD            , 1 => Fire // universal
 CLERIC_FLAME_BLADE                     , 2 => Fire
 WIZARD_AGANNAZAR_SCORCHER              , 2 => Fire
 CLERIC_PROTECTION_FROM_FIRE            , 3 => Fire
@@ -271,6 +309,7 @@ CLERIC_FIRE_SEEDS                      , 6 => Fire
 CLERIC_FIRE_STORM                      , 7 => Fire
 
 //  LIGHT
+
 CLERIC_SUNSCORCH                       , 1 => Light
 WIZARD_GLITTERDUST                     , 2 => Light
 CLERIC_ALICORN_LANCE                   , 2 => Light
@@ -282,6 +321,7 @@ CLERIC_SOL_SEARING_ORB                 , 6 => Light
 CLERIC_SUNRAY                          , 7 => Light
 
 //  SHADOW
+
 CLERIC_SANCTUARY                       , 1 => Shadow
 WIZARD_BLINDNESS                       , 2 => Shadow
 // add enhanced Chameleon here          , 2 => Shadow
@@ -296,19 +336,19 @@ WIZARD_WRAITH_FORM                     , 6 => Shadow
 WIZARD_POWER_WORD_BLIND                , 7 => Shadow
 
 //  MAGIC
+
 CLERIC_SILENCE_15_FOOT                 , 1 => Magic
 CLERIC_MISCAST_MAGIC                   , 2 => Magic
-CLERIC_DISPEL_MAGIC                    , 3 => Magic
 WIZARD_MINOR_SPELL_DEFLECTION          , 3 => Magic
 WIZARD_SECRET_WORD                     , 4 => Magic
 WIZARD_MINOR_SPELL_TURNING             , 5 => Magic
 WIZARD_BREACH                          , 5 => Magic
 CLERIC_MAGIC_RESISTANCE                , 6 => Magic
-//CLERIC_WONDROUS_RECALL                 , 6 => Magic // universal
 WIZARD_GLOBE_OF_INVULNERABILITY        , 6 => Magic
 WIZARD_PIERCE_SHIELD                   , 7 => Magic
 
 //  PERDITION
+
 CLERIC_SPIRIT_WARD                     , 1 => Perdition // modify to work against all planar creatures, maybe undead too?
 CLERIC_WRITHING_FOG                    , 2 => Perdition
 CLERIC_SPIRIT_FIRE                     , 3 => Perdition
@@ -318,8 +358,4331 @@ WIZARD_CACOFIEND                       , 6 => Perdition
 WIZARD_MALAVONS_RAGE                   , 7 => Perdition // need to add for non-IWDEE
 WIZARD_SUMMON_FIEND                    , 7 => Perdition
 
-
 END
 
-// This code is copied from Mike1072's armor_list.tpa file. 
-// WeiDU is now on my hate list as well - Yaro, 7/26
+
+// VANILLA KIT SPHERE ASSIGNMENTS_____________________________________________________
+
+
+// FnP KIT SPHERE ASSIGNMENTS_________________________________________________________
+
+// UR-PRIEST__________________________________________________________________________
+//
+DEFINE_ACTION_MACRO ur_priest_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_clur_spheres BEGIN
+	Life		 		=> x
+	Death		 		=> major
+	Benediction			=> x
+	Destruction		 	=> major
+	Protection		 	=> major
+	War		 			=> major
+	Exploration		  	=> major
+	Knowledge		 	=> major
+	Deception	 		=> x
+	Thought		 		=> major
+	Dread		 		=> major
+	Vigor		 		=> major
+	Affliction		 	=> major
+	Animal		 		=> x
+	Plant		 		=> x
+	Earth		 		=> minor
+	Water		 		=> minor
+	Air		 			=> minor
+	Fire		 		=> minor
+	Light	 			=> major
+	Shadow		 		=> major
+	Magic		 		=> major
+	Perdition		    => x
+ END
+END
+//___________________________________________________________________________________
+
+// CLERIC OF LATHANDER________________________________________________________________
+//
+DEFINE_ACTION_MACRO cleric_lathander_spheres BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY b_clat_spheres BEGIN
+	Life		 		=> major
+	Death		 		=> x
+	Benediction			=> major
+	Destruction		 	=> x
+	Protection		 	=> major
+	War		 			=> minor
+	Exploration		  	=> minor
+	Knowledge		 	=> minor
+	Deception	 		=> x
+	Thought		 		=> minor
+	Dread		 		=> x
+	Vigor		 		=> major
+	Affliction		 	=> x
+	Animal		 		=> x
+	Plant		 		=> x
+	Earth		 		=> x
+	Water		 		=> x
+	Air		 			=> minor
+	Fire		 		=> major
+	Light	 			=> major
+	Shadow		 		=> x
+	Magic		 		=> minor
+	Perdition		    => x
+  END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO cleric_torm_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_ctor_spheres BEGIN
+	Life		 		=> major
+	Death		 		=> major
+	Benediction			=> major
+	Destruction		 	=> minor
+	Protection		 	=> focus
+	War		 			=> major
+	Exploration		  	=> minor
+	Knowledge		 	=> minor
+	Deception	 		=> x
+	Thought		 		=> major
+	Dread		 		=> minor
+	Vigor		 		=> major
+	Affliction		 	=> x
+	Animal		 		=> x
+	Plant		 		=> x
+	Earth		 		=> x
+	Water		 		=> x
+	Air		 			=> x
+	Fire		 		=> x
+	Light	 			=> minor
+	Shadow		 		=> x
+	Magic		 		=> x
+	Perdition		    => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO fighter_cleric_torm_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_2tor_spheres BEGIN
+	Life		 		=> major
+	Death		 		=> major
+	Benediction			=> major
+	Destruction		 	=> minor
+	Protection		 	=> focus
+	War		 			=> major
+	Exploration		  	=> minor
+	Knowledge		 	=> minor
+	Deception	 		=> x
+	Thought		 		=> major
+	Dread		 		=> minor
+	Vigor		 		=> major
+	Affliction		 	=> x
+	Animal		 		=> x
+	Plant		 		=> x
+	Earth		 		=> x
+	Water		 		=> x
+	Air		 			=> x
+	Fire		 		=> x
+	Light	 			=> minor
+	Shadow		 		=> x
+	Magic		 		=> x
+	Perdition		    => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO cleric_tymora_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5ctym_spheres BEGIN
+	Life		 		=> major
+	Death		 		=> x
+	Benediction			=> major
+	Destruction		 	=> minor
+	Protection		 	=> major
+	War		 			=> x
+	Exploration		  	=> major
+	Knowledge		 	=> minor
+	Deception	 		=> minor
+	Thought		 		=> major
+	Dread		 		=> minor
+	Vigor		 		=> minor
+	Affliction		 	=> x
+	Animal		 		=> x
+	Plant		 		=> x
+	Earth		 		=> x
+	Water		 		=> x
+	Air		 			=> major
+	Fire		 		=> x
+	Light	 			=> major
+	Shadow		 		=> x
+	Magic		 		=> minor
+	Perdition		    => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO cleric_thief_tymora_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d52tym_spheres BEGIN
+	Life		 		=> major
+	Death		 		=> x
+	Benediction			=> major
+	Destruction		 	=> minor
+	Protection		 	=> major
+	War		 			=> x
+	Exploration		  	=> major
+	Knowledge		 	=> minor
+	Deception	 		=> minor
+	Thought		 		=> major
+	Dread		 		=> minor
+	Vigor		 		=> minor
+	Affliction		 	=> x
+	Animal		 		=> x
+	Plant		 		=> x
+	Earth		 		=> x
+	Water		 		=> x
+	Air		 			=> major
+	Fire		 		=> x
+	Light	 			=> major
+	Shadow		 		=> x
+	Magic		 		=> minor
+	Perdition		    => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO cleric_helm_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_chel_spheres BEGIN
+	Life		 		=> major
+	Death		 		=> minor
+	Benediction			=> major
+	Destruction		 	=> major
+	Protection		 	=> major
+	War		 			=> major
+	Exploration		  	=> minor
+	Knowledge		 	=> major
+	Deception	 		=> x
+	Thought		 		=> minor
+	Dread		 		=> minor
+	Vigor		 		=> major
+	Affliction		 	=> x
+	Animal		 		=> x
+	Plant		 		=> x
+	Earth		 		=> x
+	Water		 		=> x
+	Air		 			=> x
+	Fire		 		=> x
+	Light	 			=> minor
+	Shadow		 		=> x
+	Magic		 		=> minor
+	Perdition		    => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO cleric_kelemvor_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_ckel_spheres BEGIN
+	Life		 		=> major
+	Death		 		=> major
+	Benediction			=> x
+	Destruction		 	=> x
+	Protection		 	=> major
+	War		 			=> major
+	Exploration		  	=> minor
+	Knowledge		 	=> major
+	Deception	 		=> x
+	Thought		 		=> minor
+	Dread		 		=> major
+	Vigor		 		=> x
+	Affliction		 	=> x
+	Animal		 		=> x
+	Plant		 		=> x
+	Earth		 		=> minor
+	Water		 		=> minor
+	Air		 			=> x
+	Fire		 		=> minor
+	Light	 			=> x
+	Shadow		 		=> x
+	Magic		 		=> minor
+	Perdition		    => major
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO cleric_mage_kelemvor_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_cmkel_spheres BEGIN
+	Life		 		=> major
+	Death		 		=> major
+	Benediction			=> x
+	Destruction		 	=> x
+	Protection		 	=> major
+	War		 			=> major
+	Exploration		  	=> minor
+	Knowledge		 	=> major
+	Deception	 		=> x
+	Thought		 		=> minor
+	Dread		 		=> major
+	Vigor		 		=> x
+	Affliction		 	=> x
+	Animal		 		=> x
+	Plant		 		=> x
+	Earth		 		=> minor
+	Water		 		=> minor
+	Air		 			=> x
+	Fire		 		=> minor
+	Light	 			=> x
+	Shadow		 		=> x
+	Magic		 		=> minor
+	Perdition		    => major
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO fighter_cleric_kelemvor_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_cfkel_spheres BEGIN
+	Life		 		=> major
+	Death		 		=> major
+	Benediction			=> x
+	Destruction		 	=> x
+	Protection		 	=> major
+	War		 			=> major
+	Exploration		  	=> minor
+	Knowledge		 	=> major
+	Deception	 		=> x
+	Thought		 		=> minor
+	Dread		 		=> major
+	Vigor		 		=> x
+	Affliction		 	=> x
+	Animal		 		=> x
+	Plant		 		=> x
+	Earth		 		=> minor
+	Water		 		=> minor
+	Air		 			=> x
+	Fire		 		=> minor
+	Light	 			=> x
+	Shadow		 		=> x
+	Magic		 		=> minor
+	Perdition		    => major
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO cleric_tempus_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_ctem_spheres BEGIN
+	Life		 		=> major
+	Death		 		=> x
+	Benediction			=> major
+	Destruction		 	=> major
+	Protection		 	=> major
+	War		 			=> major
+	Exploration		  	=> minor
+	Knowledge		 	=> minor
+	Deception	 		=> x
+	Thought		 		=> minor
+	Dread		 		=> x
+	Vigor		 		=> major
+	Affliction		 	=> x
+	Animal		 		=> x
+	Plant		 		=> x
+	Earth		 		=> minor
+	Water		 		=> x
+	Air		 			=> minor
+	Fire		 		=> x
+	Light	 			=> minor
+	Shadow		 		=> x
+	Magic		 		=> minor
+	Perdition		    => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO fighter_cleric_tempus_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_2tem_spheres BEGIN
+	Life		 		=> major
+	Death		 		=> x
+	Benediction			=> major
+	Destruction		 	=> major
+	Protection		 	=> major
+	War		 			=> major
+	Exploration		  	=> minor
+	Knowledge		 	=> minor
+	Deception	 		=> x
+	Thought		 		=> minor
+	Dread		 		=> x
+	Vigor		 		=> major
+	Affliction		 	=> x
+	Animal		 		=> x
+	Plant		 		=> x
+	Earth		 		=> minor
+	Water		 		=> x
+	Air		 			=> minor
+	Fire		 		=> x
+	Light	 			=> minor
+	Shadow		 		=> x
+	Magic		 		=> minor
+	Perdition		    => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO cleric_leira_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5clei_spheres BEGIN
+	Life		 		=> major
+	Death		 		=> x
+	Benediction			=> major
+	Destruction		 	=> x
+	Protection		 	=> minor
+	War		 			=> x
+	Exploration		  	=> major
+	Knowledge		 	=> major
+	Deception	 		=> major
+	Thought		 		=> major
+	Dread		 		=> minor
+	Vigor		 		=> minor
+	Affliction		 	=> x
+	Animal		 		=> x
+	Plant		 		=> x
+	Earth		 		=> x
+	Water		 		=> minor
+	Air		 			=> x
+	Fire		 		=> x
+	Light	 			=> major
+	Shadow		 		=> minor
+	Magic		 		=> minor
+	Perdition		    => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO cleric_thief_leira_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d52lei_spheres BEGIN
+	Life		 		=> major
+	Death		 		=> x
+	Benediction			=> major
+	Destruction		 	=> x
+	Protection		 	=> minor
+	War		 			=> x
+	Exploration		  	=> major
+	Knowledge		 	=> major
+	Deception	 		=> major
+	Thought		 		=> major
+	Dread		 		=> minor
+	Vigor		 		=> minor
+	Affliction		 	=> x
+	Animal		 		=> x
+	Plant		 		=> x
+	Earth		 		=> x
+	Water		 		=> minor
+	Air		 			=> x
+	Fire		 		=> x
+	Light	 			=> major
+	Shadow		 		=> minor
+	Magic		 		=> minor
+	Perdition		    => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO cleric_baravar_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_bara_spheres BEGIN
+	Life		 		=> major
+	Death		 		=> x
+	Benediction			=> major
+	Destruction		 	=> x
+	Protection		 	=> minor
+	War		 			=> x
+	Exploration		  	=> major
+	Knowledge		 	=> major
+	Deception	 		=> major
+	Thought		 		=> major
+	Dread		 		=> minor
+	Vigor		 		=> minor
+	Affliction		 	=> x
+	Animal		 		=> x
+	Plant		 		=> x
+	Earth		 		=> x
+	Water		 		=> minor
+	Air		 			=> x
+	Fire		 		=> x
+	Light	 			=> major
+	Shadow		 		=> minor
+	Magic		 		=> minor
+	Perdition		    => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO cleric_thief_baravar_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_bart_spheres BEGIN
+	Life		 		=> major
+	Death		 		=> x
+	Benediction			=> major
+	Destruction		 	=> x
+	Protection		 	=> minor
+	War		 			=> x
+	Exploration		  	=> major
+	Knowledge		 	=> major
+	Deception	 		=> major
+	Thought		 		=> major
+	Dread		 		=> minor
+	Vigor		 		=> minor
+	Affliction		 	=> x
+	Animal		 		=> x
+	Plant		 		=> x
+	Earth		 		=> x
+	Water		 		=> minor
+	Air		 			=> x
+	Fire		 		=> x
+	Light	 			=> major
+	Shadow		 		=> minor
+	Magic		 		=> minor
+	Perdition		    => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO cleric_loviatar_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_clov_spheres BEGIN
+	Life		 		=> major
+	Death		 		=> major
+	Benediction			=> minor
+	Destruction		 	=> minor
+	Protection		 	=> x
+	War		 			=> minor
+	Exploration		  	=> minor
+	Knowledge		 	=> major
+	Deception	 		=> minor
+	Thought		 		=> major
+	Dread		 		=> major
+	Vigor		 		=> minor
+	Affliction		 	=> major
+	Animal		 		=> x
+	Plant		 		=> x
+	Earth		 		=> x
+	Water		 		=> x
+	Air		 			=> x
+	Fire		 		=> x
+	Light	 			=> x
+	Shadow		 		=> minor
+	Magic		 		=> x
+	Perdition		    => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO cleric_thief_loviatar_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_2lov_spheres BEGIN
+	Life		 		=> major
+	Death		 		=> major
+	Benediction			=> minor
+	Destruction		 	=> minor
+	Protection		 	=> x
+	War		 			=> minor
+	Exploration		  	=> minor
+	Knowledge		 	=> major
+	Deception	 		=> minor
+	Thought		 		=> major
+	Dread		 		=> major
+	Vigor		 		=> minor
+	Affliction		 	=> major
+	Animal		 		=> x
+	Plant		 		=> x
+	Earth		 		=> x
+	Water		 		=> x
+	Air		 			=> x
+	Fire		 		=> x
+	Light	 			=> x
+	Shadow		 		=> minor
+	Magic		 		=> x
+	Perdition		    => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO cleric_talos_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_ctal_spheres BEGIN
+	Life		 		=> major
+	Death		 		=> x
+	Benediction			=> major
+	Destruction		 	=> major
+	Protection		 	=> major
+	War		 			=> minor
+	Exploration		  	=> major
+	Knowledge		 	=> x
+	Deception	 		=> x
+	Thought		 		=> x
+	Dread		 		=> minor
+	Vigor		 		=> minor
+	Affliction		 	=> minor
+	Animal		 		=> x
+	Plant		 		=> x
+	Earth		 		=> x
+	Water		 		=> x
+	Air		 			=> major
+	Fire		 		=> major
+	Light	 			=> minor
+	Shadow		 		=> x
+	Magic		 		=> minor
+	Perdition		    => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO fighter_cleric_talos_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_2tal_spheres BEGIN
+	Life		 		=> major
+	Death		 		=> x
+	Benediction			=> major
+	Destruction		 	=> major
+	Protection		 	=> major
+	War		 			=> minor
+	Exploration		  	=> major
+	Knowledge		 	=> x
+	Deception	 		=> x
+	Thought		 		=> x
+	Dread		 		=> minor
+	Vigor		 		=> minor
+	Affliction		 	=> minor
+	Animal		 		=> x
+	Plant		 		=> x
+	Earth		 		=> x
+	Water		 		=> x
+	Air		 			=> major
+	Fire		 		=> major
+	Light	 			=> minor
+	Shadow		 		=> x
+	Magic		 		=> minor
+	Perdition		    => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO cleric_mage_talos_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_3tal_spheres BEGIN
+	Life		 		=> major
+	Death		 		=> x
+	Benediction			=> major
+	Destruction		 	=> major
+	Protection		 	=> major
+	War		 			=> minor
+	Exploration		  	=> major
+	Knowledge		 	=> x
+	Deception	 		=> x
+	Thought		 		=> x
+	Dread		 		=> minor
+	Vigor		 		=> minor
+	Affliction		 	=> minor
+	Animal		 		=> x
+	Plant		 		=> x
+	Earth		 		=> x
+	Water		 		=> x
+	Air		 			=> major
+	Fire		 		=> major
+	Light	 			=> minor
+	Shadow		 		=> x
+	Magic		 		=> minor
+	Perdition		    => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO cleric_cyric_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_ccyr_spheres BEGIN
+	Life		 		=> minor
+	Death		 		=> major
+	Benediction			=> minor
+	Destruction		 	=> major
+	Protection		 	=> x
+	War		 			=> x
+	Exploration		  	=> minor
+	Knowledge		 	=> x
+	Deception	 		=> major
+	Thought		 		=> minor
+	Dread		 		=> major
+	Vigor		 		=> minor
+	Affliction		 	=> major
+	Animal		 		=> x
+	Plant		 		=> x
+	Earth		 		=> x
+	Water		 		=> x
+	Air		 			=> x
+	Fire		 		=> x
+	Light	 			=> x
+	Shadow		 		=> major
+	Magic		 		=> minor
+	Perdition		    => major
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO cleric_thief_cyric_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_ctcyr_spheres BEGIN
+	Life		 		=> minor
+	Death		 		=> major
+	Benediction			=> minor
+	Destruction		 	=> major
+	Protection		 	=> x
+	War		 			=> x
+	Exploration		  	=> minor
+	Knowledge		 	=> x
+	Deception	 		=> major
+	Thought		 		=> minor
+	Dread		 		=> major
+	Vigor		 		=> minor
+	Affliction		 	=> major
+	Animal		 		=> x
+	Plant		 		=> x
+	Earth		 		=> x
+	Water		 		=> x
+	Air		 			=> x
+	Fire		 		=> x
+	Light	 			=> x
+	Shadow		 		=> major
+	Magic		 		=> minor
+	Perdition		    => major
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO cleric_umberlee_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_umb_spheres BEGIN
+	Life		 		=> major
+	Death		 		=> x
+	Benediction			=> major
+	Destruction		 	=> major
+	Protection		 	=> major
+	War		 			=> minor
+	Exploration		  	=> major
+	Knowledge		 	=> minor
+	Deception	 		=> x
+	Thought		 		=> x
+	Dread		 		=> major
+	Vigor		 		=> minor
+	Affliction		 	=> minor
+	Animal		 		=> x
+	Plant		 		=> x
+	Earth		 		=> x
+	Water		 		=> focus
+	Air		 			=> major
+	Fire		 		=> x
+	Light	 			=> x
+	Shadow		 		=> x
+	Magic		 		=> minor
+	Perdition		    => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO acolyte_ilmater_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_ailm_spheres BEGIN
+	Life		 		=> major
+	Death		 		=> x
+	Benediction			=> major
+	Destruction		 	=> minor
+	Protection		 	=> focus
+	War		 			=> x
+	Exploration		  	=> x
+	Knowledge		 	=> major
+	Deception	 		=> x
+	Thought		 		=> minor
+	Dread		 		=> minor
+	Vigor		 		=> major
+	Affliction		 	=> major
+	Animal		 		=> x
+	Plant		 		=> x
+	Earth		 		=> x
+	Water		 		=> x
+	Air		 			=> x
+	Fire		 		=> x
+	Light	 			=> minor
+	Shadow		 		=> x
+	Magic		 		=> minor
+	Perdition		    => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO acolyte_deneir_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_aden_spheres BEGIN
+	Life		 		=> minor
+	Death		 		=> x
+	Benediction			=> major
+	Destruction		 	=> x
+	Protection		 	=> major
+	War		 			=> x
+	Exploration		  	=> minor
+	Knowledge		 	=> focus
+	Deception	 		=> minor
+	Thought		 		=> major
+	Dread		 		=> minor
+	Vigor		 		=> minor
+	Affliction		 	=> x
+	Animal		 		=> x
+	Plant		 		=> x
+	Earth		 		=> x
+	Water		 		=> x
+	Air		 			=> x
+	Fire		 		=> x
+	Light	 			=> major
+	Shadow		 		=> x
+	Magic		 		=> major
+	Perdition		    => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO acolyte_cm_deneir_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_2den_spheres BEGIN
+	Life		 		=> minor
+	Death		 		=> x
+	Benediction			=> major
+	Destruction		 	=> x
+	Protection		 	=> major
+	War		 			=> x
+	Exploration		  	=> minor
+	Knowledge		 	=> focus
+	Deception	 		=> minor
+	Thought		 		=> major
+	Dread		 		=> minor
+	Vigor		 		=> minor
+	Affliction		 	=> x
+	Animal		 		=> x
+	Plant		 		=> x
+	Earth		 		=> x
+	Water		 		=> x
+	Air		 			=> x
+	Fire		 		=> x
+	Light	 			=> major
+	Shadow		 		=> x
+	Magic		 		=> major
+	Perdition		    => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO acolyte_sune_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_asun_spheres BEGIN
+	Life		 		=> major
+	Death		 		=> x
+	Benediction			=> major
+	Destruction		 	=> x
+	Protection		 	=> minor
+	War		 			=> x
+	Exploration		  	=> minor
+	Knowledge		 	=> major
+	Deception	 		=> major
+	Thought		 		=> focus
+	Dread		 		=> major
+	Vigor		 		=> major
+	Affliction		 	=> x
+	Animal		 		=> x
+	Plant		 		=> x
+	Earth		 		=> x
+	Water		 		=> x
+	Air		 			=> x
+	Fire		 		=> x
+	Light	 			=> minor
+	Shadow		 		=> minor
+	Magic		 		=> minor
+	Perdition		    => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO acolyte_ct_sune_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_2sun_spheres BEGIN
+	Life		 		=> major
+	Death		 		=> x
+	Benediction			=> major
+	Destruction		 	=> x
+	Protection		 	=> minor
+	War		 			=> x
+	Exploration		  	=> minor
+	Knowledge		 	=> major
+	Deception	 		=> major
+	Thought		 		=> focus
+	Dread		 		=> major
+	Vigor		 		=> major
+	Affliction		 	=> x
+	Animal		 		=> x
+	Plant		 		=> x
+	Earth		 		=> x
+	Water		 		=> x
+	Air		 			=> x
+	Fire		 		=> x
+	Light	 			=> minor
+	Shadow		 		=> minor
+	Magic		 		=> minor
+	Perdition		    => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO acolyte_cm_sune_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_3sun_spheres BEGIN
+	Life		 		=> major
+	Death		 		=> x
+	Benediction			=> major
+	Destruction		 	=> x
+	Protection		 	=> minor
+	War		 			=> x
+	Exploration		  	=> minor
+	Knowledge		 	=> major
+	Deception	 		=> major
+	Thought		 		=> focus
+	Dread		 		=> major
+	Vigor		 		=> major
+	Affliction		 	=> x
+	Animal		 		=> x
+	Plant		 		=> x
+	Earth		 		=> x
+	Water		 		=> x
+	Air		 			=> x
+	Fire		 		=> x
+	Light	 			=> minor
+	Shadow		 		=> minor
+	Magic		 		=> minor
+	Perdition		    => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO acolyte_tempus_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_atem_spheres BEGIN
+	Life		 		=> major
+	Death		 		=> minor
+	Benediction			=> major
+	Destruction		 	=> major
+	Protection		 	=> major
+	War		 			=> focus
+	Exploration		  	=> minor
+	Knowledge		 	=> x
+	Deception	 		=> x
+	Thought		 		=> x
+	Dread		 		=> minor
+	Vigor		 		=> major
+	Affliction		 	=> minor
+	Animal		 		=> x
+	Plant		 		=> x
+	Earth		 		=> minor
+	Water		 		=> x
+	Air		 			=> x
+	Fire		 		=> minor
+	Light	 			=> x
+	Shadow		 		=> x
+	Magic		 		=> x
+	Perdition		    => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO acolyte_mystra_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5acmys_spheres BEGIN
+	Life		 		=> major
+	Death		 		=> x
+	Benediction			=> major
+	Destruction		 	=> major
+	Protection		 	=> major
+	War		 			=> x
+	Exploration		  	=> minor
+	Knowledge		 	=> major
+	Deception	 		=> x
+	Thought		 		=> minor
+	Dread		 		=> minor
+	Vigor		 		=> minor
+	Affliction		 	=> x
+	Animal		 		=> x
+	Plant		 		=> x
+	Earth		 		=> x
+	Water		 		=> x
+	Air		 			=> x
+	Fire		 		=> minor
+	Light	 			=> major
+	Shadow		 		=> minor
+	Magic		 		=> focus
+	Perdition		    => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO acolyte_mask_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5amas_spheres BEGIN
+	Life		 		=> major
+	Death		 		=> minor
+	Benediction			=> minor
+	Destruction		 	=> major
+	Protection		 	=> minor
+	War		 			=> x
+	Exploration		  	=> x
+	Knowledge		 	=> major
+	Deception	 		=> major
+	Thought		 		=> minor
+	Dread		 		=> major
+	Vigor		 		=> x
+	Affliction		 	=> minor
+	Animal		 		=> x
+	Plant		 		=> x
+	Earth		 		=> x
+	Water		 		=> x
+	Air		 			=> x
+	Fire		 		=> x
+	Light	 			=> x
+	Shadow		 		=> focus
+	Magic		 		=> minor
+	Perdition		    => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO acolyte_ct_mask_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d52mas_spheres BEGIN
+	Life		 		=> major
+	Death		 		=> minor
+	Benediction			=> minor
+	Destruction		 	=> major
+	Protection		 	=> minor
+	War		 			=> x
+	Exploration		  	=> x
+	Knowledge		 	=> major
+	Deception	 		=> major
+	Thought		 		=> minor
+	Dread		 		=> major
+	Vigor		 		=> x
+	Affliction		 	=> minor
+	Animal		 		=> x
+	Plant		 		=> x
+	Earth		 		=> x
+	Water		 		=> x
+	Air		 			=> x
+	Fire		 		=> x
+	Light	 			=> x
+	Shadow		 		=> focus
+	Magic		 		=> minor
+	Perdition		    => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO acolyte_shar_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5asha_spheres BEGIN
+	Life		 		=> minor
+	Death		 		=> major
+	Benediction			=> x
+	Destruction		 	=> major
+	Protection		 	=> minor
+	War		 			=> x
+	Exploration		  	=> x
+	Knowledge		 	=> minor
+	Deception	 		=> minor
+	Thought		 		=> minor
+	Dread		 		=> major
+	Vigor		 		=> x
+	Affliction		 	=> minor
+	Animal		 		=> x
+	Plant		 		=> x
+	Earth		 		=> x
+	Water		 		=> x
+	Air		 			=> x
+	Fire		 		=> x
+	Light	 			=> x
+	Shadow		 		=> focus
+	Magic		 		=> major
+	Perdition		    => major
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO acolyte_cm_shar_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d52sha_spheres BEGIN
+	Life		 		=> minor
+	Death		 		=> major
+	Benediction			=> x
+	Destruction		 	=> major
+	Protection		 	=> minor
+	War		 			=> x
+	Exploration		  	=> x
+	Knowledge		 	=> minor
+	Deception	 		=> minor
+	Thought		 		=> minor
+	Dread		 		=> major
+	Vigor		 		=> x
+	Affliction		 	=> minor
+	Animal		 		=> x
+	Plant		 		=> x
+	Earth		 		=> x
+	Water		 		=> x
+	Air		 			=> x
+	Fire		 		=> x
+	Light	 			=> x
+	Shadow		 		=> focus
+	Magic		 		=> major
+	Perdition		    => major
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO acolyte_ct_shar_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_ctshr_spheres BEGIN
+	Life		 		=> minor
+	Death		 		=> major
+	Benediction			=> x
+	Destruction		 	=> major
+	Protection		 	=> minor
+	War		 			=> x
+	Exploration		  	=> x
+	Knowledge		 	=> minor
+	Deception	 		=> minor
+	Thought		 		=> minor
+	Dread		 		=> major
+	Vigor		 		=> x
+	Affliction		 	=> minor
+	Animal		 		=> x
+	Plant		 		=> x
+	Earth		 		=> x
+	Water		 		=> x
+	Air		 			=> x
+	Fire		 		=> x
+	Light	 			=> x
+	Shadow		 		=> focus
+	Magic		 		=> major
+	Perdition		    => major
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO acolyte_moander_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_cmoa_spheres BEGIN
+	Life		 		=> x
+	Death		 		=> major
+	Benediction			=> x
+	Destruction		 	=> major
+	Protection		 	=> x
+	War		 			=> x
+	Exploration		  	=> minor
+	Knowledge		 	=> x
+	Deception	 		=> minor
+	Thought		 		=> x
+	Dread		 		=> major
+	Vigor		 		=> minor
+	Affliction		 	=> major
+	Animal		 		=> minor
+	Plant		 		=> focus
+	Earth		 		=> major
+	Water		 		=> minor
+	Air		 			=> minor
+	Fire		 		=> x
+	Light	 			=> x
+	Shadow		 		=> major
+	Magic		 		=> x
+	Perdition		    => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO acolyte_cm_moander_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_c2moa_spheres BEGIN
+	Life		 		=> x
+	Death		 		=> major
+	Benediction			=> x
+	Destruction		 	=> major
+	Protection		 	=> x
+	War		 			=> x
+	Exploration		  	=> minor
+	Knowledge		 	=> x
+	Deception	 		=> minor
+	Thought		 		=> x
+	Dread		 		=> major
+	Vigor		 		=> minor
+	Affliction		 	=> major
+	Animal		 		=> minor
+	Plant		 		=> focus
+	Earth		 		=> major
+	Water		 		=> minor
+	Air		 			=> minor
+	Fire		 		=> x
+	Light	 			=> x
+	Shadow		 		=> major
+	Magic		 		=> x
+	Perdition		    => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO acolyte_ct_moander_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_c3moa_spheres BEGIN
+	Life		 		=> x
+	Death		 		=> major
+	Benediction			=> x
+	Destruction		 	=> major
+	Protection		 	=> x
+	War		 			=> x
+	Exploration		  	=> minor
+	Knowledge		 	=> x
+	Deception	 		=> minor
+	Thought		 		=> x
+	Dread		 		=> major
+	Vigor		 		=> minor
+	Affliction		 	=> major
+	Animal		 		=> minor
+	Plant		 		=> focus
+	Earth		 		=> major
+	Water		 		=> minor
+	Air		 			=> minor
+	Fire		 		=> x
+	Light	 			=> x
+	Shadow		 		=> major
+	Magic		 		=> x
+	Perdition		    => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO acolyte_beshaba_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_abes_spheres BEGIN
+	Life		 		=> major
+	Death		 		=> major
+	Benediction			=> major
+	Destruction		 	=> minor
+	Protection		 	=> major
+	War		 			=> x
+	Exploration		  	=> x
+	Knowledge		 	=> minor
+	Deception	 		=> minor
+	Thought		 		=> major
+	Dread		 		=> focus
+	Vigor		 		=> minor
+	Affliction		 	=> minor
+	Animal		 		=> x
+	Plant		 		=> x
+	Earth		 		=> x
+	Water		 		=> x
+	Air		 			=> x
+	Fire		 		=> x
+	Light	 			=> x
+	Shadow		 		=> x
+	Magic		 		=> minor
+	Perdition		    => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO acolyte_baervan_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5baerv_spheres BEGIN
+	Life		 		=> major
+	Death		 		=> x
+	Benediction			=> major
+	Destruction		 	=> x
+	Protection		 	=> major
+	War		 			=> x
+	Exploration		  	=> minor
+	Knowledge		 	=> minor
+	Deception	 		=> x
+	Thought		 		=> minor
+	Dread		 		=> x
+	Vigor		 		=> minor
+	Affliction		 	=> x
+	Animal		 		=> focus
+	Plant		 		=> major
+	Earth		 		=> major
+	Water		 		=> minor
+	Air		 			=> x
+	Fire		 		=> x
+	Light	 			=> minor
+	Shadow		 		=> x
+	Magic		 		=> x
+	Perdition		    => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO acolyte_cm_baervan_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5baer2_spheres BEGIN
+	Life		 		=> major
+	Death		 		=> x
+	Benediction			=> major
+	Destruction		 	=> x
+	Protection		 	=> major
+	War		 			=> x
+	Exploration		  	=> minor
+	Knowledge		 	=> minor
+	Deception	 		=> x
+	Thought		 		=> minor
+	Dread		 		=> x
+	Vigor		 		=> minor
+	Affliction		 	=> x
+	Animal		 		=> focus
+	Plant		 		=> major
+	Earth		 		=> major
+	Water		 		=> minor
+	Air		 			=> x
+	Fire		 		=> x
+	Light	 			=> minor
+	Shadow		 		=> x
+	Magic		 		=> x
+	Perdition		    => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO druid_forest_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5dfor_spheres BEGIN
+	Life 			=> minor
+	Death 			=> x
+	Benediction 	=> x
+	Destruction 	=> x
+	Protection 		=> x
+	War 			=> x
+	Exploration  	=> minor
+	Knowledge 		=> minor
+	Deception 		=> x
+	Thought 		=> minor
+	Dread 			=> x
+	Vigor 			=> major
+	Affliction 		=> minor
+	Animal 			=> major
+	Plant 			=> major
+	Earth 			=> major
+	Water 			=> major
+	Air 			=> major
+	Fire 			=> minor
+	Light 			=> major
+	Shadow 			=> minor
+	Magic 			=> x
+	Perdition    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO druid_totemic_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY clabdr02_spheres BEGIN
+	Life 			=> minor
+	Death 			=> x
+	Benediction 	=> x
+	Destruction 	=> x
+	Protection 		=> x
+	War 			=> x
+	Exploration   	=> minor
+	Knowledge 		=> minor
+	Deception 		=> x
+	Thought 		=> minor
+	Dread 			=> x
+	Vigor 			=> major
+	Affliction 		=> minor
+	Animal 			=> major
+	Plant 			=> major
+	Earth 			=> major
+	Water 			=> major
+	Air 			=> major
+	Fire 			=> minor
+	Light 			=> major
+	Shadow 			=> minor
+	Magic 			=> x
+	Perdition     	=> x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO druid_hivekeeper_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY clabdr04_spheres BEGIN
+	Life 			=> minor
+	Death 			=> x
+	Benediction 	=> x
+	Destruction 	=> x
+	Protection 		=> x
+	War 			=> x
+	Exploration   	=> minor
+	Knowledge 		=> minor
+	Deception 		=> x
+	Thought 		=> x
+	Dread 			=> x
+	Vigor 			=> major
+	Affliction 		=> major
+	Animal 			=> minor
+	Plant 			=> major
+	Earth 			=> major
+	Water 			=> major
+	Air 			=> major
+	Fire 			=> minor
+	Light 			=> major
+	Shadow 			=> minor
+	Magic 			=> minor
+	Perdition     	=> x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO druid_northern_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5darc_spheres BEGIN
+	Life 			=> minor
+	Death 			=> x
+	Benediction 	=> x
+	Destruction 	=> x
+	Protection 		=> x
+	War 			=> x
+	Exploration   	=> major
+	Knowledge 		=> minor
+	Deception 		=> x
+	Thought 		=> minor
+	Dread 			=> x
+	Vigor 			=> major
+	Affliction 		=> minor
+	Animal 			=> major
+	Plant 			=> minor
+	Earth 			=> major
+	Water 			=> focus
+	Air 			=> major
+	Fire 			=> minor
+	Light 			=> major
+	Shadow 			=> minor
+	Magic 			=> x
+	Perdition     	=> x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO druid_shadow_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5dshad_spheres BEGIN
+	Life 			=> minor
+	Death 			=> x
+	Benediction 	=> x
+	Destruction 	=> x
+	Protection 		=> x
+	War 			=> x
+	Exploration   	=> minor
+	Knowledge 		=> minor
+	Deception 		=> x
+	Thought 		=> minor
+	Dread 			=> minor
+	Vigor 			=> major
+	Affliction 		=> minor
+	Animal 			=> major
+	Plant 			=> major
+	Earth 			=> major
+	Water 			=> major
+	Air 			=> major
+	Fire 			=> x
+	Light 			=> x
+	Shadow 			=> major
+	Magic 			=> x
+	Perdition     	=> x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO druid_gray_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5dgray_spheres BEGIN
+	Life 			=> minor
+	Death 			=> x
+	Benediction 	=> x
+	Destruction 	=> x
+	Protection 		=> x
+	War 			=> x
+	Exploration   	=> minor
+	Knowledge 		=> minor
+	Deception 		=> x
+	Thought 		=> minor
+	Dread 			=> minor
+	Vigor 			=> major
+	Affliction 		=> minor
+	Animal 			=> major
+	Plant 			=> major
+	Earth 			=> major
+	Water 			=> major
+	Air 			=> major
+	Fire 			=> x
+	Light 			=> x
+	Shadow 			=> major
+	Magic 			=> x
+	Perdition     	=> x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO druid_lost_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5dlost_spheres BEGIN
+	Life 			=> minor
+	Death 			=> major
+	Benediction 	=> x
+	Destruction 	=> x
+	Protection 		=> x
+	War 			=> x
+	Exploration   	=> minor
+	Knowledge 		=> minor
+	Deception 		=> x
+	Thought 		=> minor
+	Dread 			=> x
+	Vigor 			=> major
+	Affliction 		=> minor
+	Animal 			=> major
+	Plant 			=> major
+	Earth 			=> major
+	Water 			=> major
+	Air 			=> major
+	Fire 			=> minor
+	Light 			=> x
+	Shadow 			=> minor
+	Magic 			=> x
+	Perdition     	=> x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO druid_fighter_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5drfi_spheres BEGIN
+	Life 			=> minor
+	Death 			=> x
+	Benediction 	=> x
+	Destruction 	=> x
+	Protection 		=> x
+	War 			=> x
+	Exploration   	=> minor
+	Knowledge 		=> minor
+	Deception 		=> x
+	Thought 		=> minor
+	Dread 			=> x
+	Vigor 			=> major
+	Affliction 		=> minor
+	Animal 			=> major
+	Plant 			=> major
+	Earth 			=> major
+	Water 			=> major
+	Air 			=> major
+	Fire 			=> minor
+	Light 			=> major
+	Shadow 			=> minor
+	Magic 			=> x
+	Perdition     	=> x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO druid_mage_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5drma_spheres BEGIN
+	Life 			=> minor
+	Death 			=> x
+	Benediction 	=> x
+	Destruction 	=> x
+	Protection 		=> x
+	War 			=> x
+	Exploration   	=> minor
+	Knowledge 		=> minor
+	Deception 		=> x
+	Thought 		=> minor
+	Dread 			=> x
+	Vigor 			=> major
+	Affliction 		=> minor
+	Animal 			=> major
+	Plant 			=> major
+	Earth 			=> major
+	Water 			=> major
+	Air 			=> major
+	Fire 			=> minor
+	Light 			=> major
+	Shadow 			=> minor
+	Magic 			=> x
+	Perdition     	=> x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO druid_ranger_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5drra_spheres BEGIN
+	Life 			=> minor
+	Death 			=> x
+	Benediction 	=> x
+	Destruction 	=> x
+	Protection 		=> x
+	War 			=> x
+	Exploration  	=> minor
+	Knowledge 		=> minor
+	Deception 		=> x
+	Thought 		=> minor
+	Dread 			=> x
+	Vigor 			=> major
+	Affliction 		=> minor
+	Animal 			=> major
+	Plant 			=> major
+	Earth 			=> major
+	Water 			=> major
+	Air 			=> major
+	Fire 			=> minor
+	Light 			=> major
+	Shadow 			=> minor
+	Magic 			=> x
+	Perdition    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO druid_thief_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5drth_spheres BEGIN
+	Life 			=> minor
+	Death 			=> x
+	Benediction 	=> x
+	Destruction 	=> x
+	Protection 		=> x
+	War 			=> x
+	Exploration  	=> minor
+	Knowledge 		=> minor
+	Deception 		=> x
+	Thought 		=> minor
+	Dread 			=> x
+	Vigor 			=> major
+	Affliction 		=> minor
+	Animal 			=> major
+	Plant 			=> major
+	Earth 			=> major
+	Water 			=> major
+	Air 			=> major
+	Fire 			=> minor
+	Light 			=> major
+	Shadow 			=> minor
+	Magic 			=> x
+	Perdition    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO mystic_earth_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5mear_spheres BEGIN
+	Life 			=> major
+	Death 			=> x
+	Benediction 	=> x
+	Destruction 	=> x
+	Protection 		=> major
+	War 			=> x
+	Exploration   => minor
+	Knowledge 		=> minor
+	Deception 		=> x
+	Thought 		=> x
+	Dread 			=> x
+	Vigor 			=> major
+	Affliction 		=> minor
+	Animal 			=> x
+	Plant 			=> major
+	Earth 			=> focus
+	Water 			=> x
+	Air 			=> x
+	Fire 			=> x
+	Light 			=> x
+	Shadow 			=> x
+	Magic 			=> major
+	Perdition    	=> minor
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO mystic_warrior_earth_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5mear2_spheres BEGIN
+	Life 			=> major
+	Death 			=> x
+	Benediction 	=> x
+	Destruction 	=> x
+	Protection 		=> major
+	War 			=> x
+	Exploration   => minor
+	Knowledge 		=> minor
+	Deception 		=> x
+	Thought 		=> x
+	Dread 			=> x
+	Vigor 			=> major
+	Affliction 		=> minor
+	Animal 			=> x
+	Plant 			=> major
+	Earth 			=> focus
+	Water 			=> x
+	Air 			=> x
+	Fire 			=> x
+	Light 			=> x
+	Shadow 			=> x
+	Magic 			=> major
+	Perdition    	=> minor
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO mystic_water_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5mwat_spheres BEGIN
+	Life 			=> major
+	Death 			=> x
+	Benediction 	=> x
+	Destruction 	=> x
+	Protection 		=> x
+	War 			=> x
+	Exploration   => minor
+	Knowledge 		=> x
+	Deception 		=> minor
+	Thought 		=> x
+	Dread 			=> x
+	Vigor 			=> major
+	Affliction 		=> major
+	Animal 			=> minor
+	Plant 			=> minor
+	Earth 			=> x
+	Water 			=> focus
+	Air 			=> x
+	Fire 			=> x
+	Light 			=> x
+	Shadow 			=> x
+	Magic 			=> major
+	Perdition    	=> minor
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO mystic_warrior_water_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5mwat2_spheres BEGIN
+	Life 			=> major
+	Death 			=> x
+	Benediction 	=> x
+	Destruction 	=> x
+	Protection 		=> x
+	War 			=> x
+	Exploration   => minor
+	Knowledge 		=> x
+	Deception 		=> minor
+	Thought 		=> x
+	Dread 			=> x
+	Vigor 			=> major
+	Affliction 		=> major
+	Animal 			=> minor
+	Plant 			=> minor
+	Earth 			=> x
+	Water 			=> focus
+	Air 			=> x
+	Fire 			=> x
+	Light 			=> x
+	Shadow 			=> x
+	Magic 			=> major
+	Perdition    	=> minor
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO mystic_air_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5mair_spheres BEGIN
+	Life 			=> major
+	Death 			=> x
+	Benediction 	=> x
+	Destruction 	=> x
+	Protection 		=> minor
+	War 			=> x
+	Exploration   => major
+	Knowledge 		=> major
+	Deception 		=> x
+	Thought 		=> minor
+	Dread 			=> x
+	Vigor 			=> major
+	Affliction 		=> x
+	Animal 			=> x
+	Plant 			=> x
+	Earth 			=> x
+	Water 			=> x
+	Air 			=> focus
+	Fire 			=> x
+	Light 			=> minor
+	Shadow 			=> x
+	Magic 			=> major
+	Perdition    	=> minor
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO mystic_warrior_air_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5mair2_spheres BEGIN
+	Life 			=> major
+	Death 			=> x
+	Benediction 	=> x
+	Destruction 	=> x
+	Protection 		=> minor
+	War 			=> x
+	Exploration   => major
+	Knowledge 		=> major
+	Deception 		=> x
+	Thought 		=> minor
+	Dread 			=> x
+	Vigor 			=> major
+	Affliction 		=> x
+	Animal 			=> x
+	Plant 			=> x
+	Earth 			=> x
+	Water 			=> x
+	Air 			=> focus
+	Fire 			=> x
+	Light 			=> minor
+	Shadow 			=> x
+	Magic 			=> major
+	Perdition    	=> minor
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO mystic_fire_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5mfir_spheres BEGIN
+	Life 			=> major
+	Death 			=> x
+	Benediction 	=> x
+	Destruction 	=> minor
+	Protection 		=> major
+	War 			=> x
+	Exploration   => minor
+	Knowledge 		=> x
+	Deception 		=> x
+	Thought 		=> x
+	Dread 			=> minor
+	Vigor 			=> minor
+	Affliction 		=> x
+	Animal 			=> x
+	Plant 			=> x
+	Earth 			=> x
+	Water 			=> x
+	Air 			=> x
+	Fire 			=> focus
+	Light 			=> major
+	Shadow 			=> x
+	Magic 			=> major
+	Perdition    	=> minor
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO mystic_warrior_fire_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5mfir2_spheres BEGIN
+	Life 			=> major
+	Death 			=> x
+	Benediction 	=> x
+	Destruction 	=> minor
+	Protection 		=> major
+	War 			=> x
+	Exploration   => minor
+	Knowledge 		=> x
+	Deception 		=> x
+	Thought 		=> x
+	Dread 			=> minor
+	Vigor 			=> minor
+	Affliction 		=> x
+	Animal 			=> x
+	Plant 			=> x
+	Earth 			=> x
+	Water 			=> x
+	Air 			=> x
+	Fire 			=> focus
+	Light 			=> major
+	Shadow 			=> x
+	Magic 			=> major
+	Perdition    	=> minor
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO mystic_light_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5mlig_spheres BEGIN
+	Life 			=> major
+	Death 			=> x
+	Benediction 	=> x
+	Destruction 	=> x
+	Protection 		=> major
+	War 			=> x
+	Exploration   => minor
+	Knowledge 		=> minor
+	Deception 		=> major
+	Thought 		=> x
+	Dread 			=> x
+	Vigor 			=> minor
+	Affliction 		=> x
+	Animal 			=> x
+	Plant 			=> x
+	Earth 			=> x
+	Water 			=> x
+	Air 			=> minor
+	Fire 			=> minor
+	Light 			=> focus
+	Shadow 			=> x
+	Magic 			=> major
+	Perdition    	=> minor
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO mystic_warrior_light_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5mlig2_spheres BEGIN
+	Life 			=> major
+	Death 			=> x
+	Benediction 	=> x
+	Destruction 	=> x
+	Protection 		=> major
+	War 			=> x
+	Exploration   => minor
+	Knowledge 		=> minor
+	Deception 		=> major
+	Thought 		=> x
+	Dread 			=> x
+	Vigor 			=> minor
+	Affliction 		=> x
+	Animal 			=> x
+	Plant 			=> x
+	Earth 			=> x
+	Water 			=> x
+	Air 			=> minor
+	Fire 			=> minor
+	Light 			=> focus
+	Shadow 			=> x
+	Magic 			=> major
+	Perdition    	=> minor
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO mystic_shadow_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5mshd_spheres BEGIN
+	Life 			=> minor
+	Death 			=> x
+	Benediction 	=> x
+	Destruction 	=> x
+	Protection 		=> x
+	War 			=> x
+	Exploration   => minor
+	Knowledge 		=> minor
+	Deception 		=> minor
+	Thought 		=> major
+	Dread 			=> major
+	Vigor 			=> major
+	Affliction 		=> x
+	Animal 			=> x
+	Plant 			=> x
+	Earth 			=> x
+	Water 			=> x
+	Air 			=> x
+	Fire 			=> x
+	Light 			=> x
+	Shadow 			=> focus
+	Magic 			=> major
+	Perdition    	=> minor
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO mystic_warrior_shadow_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5mshd2_spheres BEGIN
+	Life 			=> minor
+	Death 			=> x
+	Benediction 	=> x
+	Destruction 	=> x
+	Protection 		=> x
+	War 			=> x
+	Exploration   => minor
+	Knowledge 		=> minor
+	Deception 		=> minor
+	Thought 		=> major
+	Dread 			=> major
+	Vigor 			=> major
+	Affliction 		=> x
+	Animal 			=> x
+	Plant 			=> x
+	Earth 			=> x
+	Water 			=> x
+	Air 			=> x
+	Fire 			=> x
+	Light 			=> x
+	Shadow 			=> focus
+	Magic 			=> major
+	Perdition    	=> minor
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO beast_lord_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5obst_spheres BEGIN
+	Life 			=> minor
+	Death 			=> minor
+	Benediction 	=> x
+	Destruction 	=> x
+	Protection 		=> x
+	War 			=> x
+	Exploration   => major
+	Knowledge 		=> x
+	Deception 		=> x
+	Thought 		=> major
+	Dread 			=> minor
+	Vigor 			=> major
+	Affliction 		=> major
+	Animal 			=> focus
+	Plant 			=> x
+	Earth 			=> x
+	Water 			=> minor
+	Air 			=> x
+	Fire 			=> x
+	Light 			=> x
+	Shadow 			=> minor
+	Magic 			=> x
+	Perdition     => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO occultist_elementalist_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5oelm_spheres BEGIN
+	Life 			=> minor
+	Death 			=> x
+	Benediction 	=> x
+	Destruction 	=> minor
+	Protection 		=> minor
+	War 			=> x
+	Exploration   => x
+	Knowledge 		=> x
+	Deception 		=> x
+	Thought 		=> x
+	Dread 			=> minor
+	Vigor 			=> minor
+	Affliction 		=> x
+	Animal 			=> x
+	Plant 			=> x
+	Earth 			=> major
+	Water 			=> major
+	Air 			=> major
+	Fire 			=> major
+	Light 			=> major
+	Shadow 			=> minor
+	Magic 			=> minor
+	Perdition     => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO champion_tyr_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_ch01_spheres BEGIN
+	Life 			=> paladin
+	Death 		=> x
+	Benediction 	=> paladin
+	Destruction 	=> x
+	Protection  	=> paladin
+	War 			=> paladin
+	Exploration   => x
+	Knowledge 	=> paladin
+	Deception 	=> x
+	Thought 		=> x
+	Dread 		=> x
+	Vigor 		=> paladin
+	Affliction 	=> x
+	Animal 		=> x
+	Plant 		=> x
+	Earth 		=> x
+	Water 		=> x
+	Air 			=> x
+	Fire 			=> x
+	Light 		=> paladin
+	Shadow 		=> x
+	Magic 		=> x
+	Perdition     => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO champion_kelemvor_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_ch02_spheres BEGIN
+	Life 			=> paladin
+	Death 		=> paladin
+	Benediction 	=> x
+	Destruction 	=> x
+	Protection 	=> paladin
+	War 			=> paladin
+	Exploration   => x
+	Knowledge 	=> paladin
+	Deception 	=> x
+	Thought 		=> x
+	Dread 		=> paladin
+	Vigor 		=> x
+	Affliction 	=> paladin
+	Animal 		=> x
+	Plant 		=> x
+	Earth 		=> x
+	Water 		=> x
+	Air 			=> x
+	Fire 			=> x
+	Light 		=> x
+	Shadow 		=> x
+	Magic 		=> x
+	Perdition     => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO champion_tempus_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_ch03_spheres BEGIN
+	Life 			=> paladin
+	Death 		=> x
+	Benediction 	 => paladin
+	Destruction 	 => x
+	Protection 	 => paladin
+	War 			=> paladin
+	Exploration   => x
+	Knowledge 	 => paladin
+	Deception 	 => x
+	Thought 		=> x
+	Dread 		=> x
+	Vigor 		=> paladin
+	Affliction 	 => x
+	Animal 		=> x
+	Plant 		=> x
+	Earth 		=> x
+	Water 		=> x
+	Air 			=> x
+	Fire 			=> x
+	Light 		=> paladin
+	Shadow 		=> x
+	Magic 		=> x
+	Perdition     => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO champion_bane_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_ch04_spheres BEGIN
+	Life 			=> x
+	Death 		=> paladin
+	Benediction 	=> x
+	Destruction 	=> paladin
+	Protection 	=> x
+	War 			=> paladin
+	Exploration   => x
+	Knowledge 	=> paladin
+	Deception 	=> x
+	Thought 		=> paladin
+	Dread 		=> paladin
+	Vigor 		=> x
+	Affliction 	=> paladin
+	Animal 		=> x
+	Plant 		=> x
+	Earth 		=> x
+	Water 		=> x
+	Air 			=> x
+	Fire 			=> x
+	Light 		=> x
+	Shadow 		=> x
+	Magic 		=> x
+	Perdition     => paladin
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO champion_helm_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_ch05_spheres BEGIN
+	Life 			=> paladin
+	Death 		=> x
+	Benediction 	=> paladin
+	Destruction 	=> x
+	Protection 	=> paladin
+	War 			=> paladin
+	Exploration   => paladin
+	Knowledge 	=> paladin
+	Deception 	=> x
+	Thought 		=> paladin
+	Dread 		=> x
+	Vigor 		=> paladin
+	Affliction 	=> x
+	Animal 		=> x
+	Plant 		=> x
+	Earth 		=> x
+	Water 		=> x
+	Air 			=> x
+	Fire 			=> x
+	Light 		=> x
+	Shadow 		=> x
+	Magic 		=> x
+	Perdition     => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO champion_talos_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_ch06_spheres BEGIN
+	Life 			=> x
+	Death 		=> paladin
+	Benediction 	=> x
+	Destruction 	=> paladin
+	Protection 	=> paladin
+	War 			=> paladin
+	Exploration   => paladin
+	Knowledge 	=> x
+	Deception 	=> x
+	Thought 		=> x
+	Dread 		=> paladin
+	Vigor 		=> x
+	Affliction 	=> paladin
+	Animal 		=> x
+	Plant 		=> x
+	Earth 		=> x
+	Water 		=> x
+	Air 			=> x
+	Fire 			=> x
+	Light 		=> x
+	Shadow 		=> x
+	Magic 		=> paladin
+	Perdition     => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO champion_moradin_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_ch07_spheres BEGIN
+	Life 			=> paladin
+	Death 		=> x
+	Benediction 	=> paladin
+	Destruction 	=> x
+	Protection 	=> paladin
+	War 			=> paladin
+	Exploration   => x
+	Knowledge 	=> x
+	Deception 	=> x
+	Thought 		=> x
+	Dread 		=> x
+	Vigor 		=> paladin
+	Affliction 	=> x
+	Animal 		=> x
+	Plant 		=> x
+	Earth 		=> paladin
+	Water 		=> x
+	Air 			=> x
+	Fire 			=> x
+	Light 		=> paladin
+	Shadow 		=> x
+	Magic 		=> x
+	Perdition     => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO champion_azuth_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_ch08_spheres BEGIN
+	Life 			=> x
+	Death 		=> x
+	Benediction 	=> paladin
+	Destruction 	=> x
+	Protection 	=> paladin
+	War 			=> x
+	Exploration   => x
+	Knowledge 	=> paladin
+	Deception 	=> x
+	Thought 		=> paladin
+	Dread 		=> x
+	Vigor 		=> x
+	Affliction 	=> paladin
+	Animal 		=> x
+	Plant 		=> x
+	Earth 		=> x
+	Water 		=> x
+	Air 			=> paladin
+	Fire 			=> paladin
+	Light 		=> x
+	Shadow 		=> x
+	Magic 		=> paladin
+	Perdition     => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO champion_red_knight_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_ch09_spheres BEGIN
+	Life 			=> paladin
+	Death 		=> x
+	Benediction 	=> paladin
+	Destruction 	=> x
+	Protection 	=> paladin
+	War 			=> paladin
+	Exploration   => x
+	Knowledge 	=> paladin
+	Deception 	=> x
+	Thought 		=> paladin
+	Dread 		=> x
+	Vigor 		=> paladin
+	Affliction 	=> x
+	Animal 		=> x
+	Plant 		=> x
+	Earth 		=> x
+	Water 		=> x
+	Air 			=> x
+	Fire 			=> x
+	Light 		=> x
+	Shadow 		=> x
+	Magic 		=> x
+	Perdition     => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO zealot_gruumsh_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_ze02_spheres BEGIN
+	Life 			=> x
+	Death 		=> ranger
+	Benediction 	=> x
+	Destruction 	=> ranger
+	Protection 	=> ranger
+	War 			=> ranger
+	Exploration   => x
+	Knowledge 	=> x
+	Deception 	=> x
+	Thought 		=> x
+	Dread 		=> ranger
+	Vigor 		=> ranger
+	Affliction 	=> ranger
+	Animal 		=> ranger
+	Plant 		=> x
+	Earth 		=> x
+	Water 		=> x
+	Air 			=> x
+	Fire 			=> x
+	Light 		=> x
+	Shadow 		=> x
+	Magic 		=> x
+	Perdition     => x
+ END
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_zgruu_spheres BEGIN
+	Life 			=> x
+	Death 		=> ranger
+	Benediction 	=> x
+	Destruction 	=> ranger
+	Protection 	=> ranger
+	War 			=> ranger
+	Exploration   => x
+	Knowledge 	=> x
+	Deception 	=> x
+	Thought 		=> x
+	Dread 		=> ranger
+	Vigor 		=> ranger
+	Affliction 	=> ranger
+	Animal 		=> ranger
+	Plant 		=> x
+	Earth 		=> x
+	Water 		=> x
+	Air 			=> x
+	Fire 			=> x
+	Light 		=> x
+	Shadow 		=> x
+	Magic 		=> x
+	Perdition     => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO zealot_talos_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_ze03_spheres BEGIN
+	Life 			=> x
+	Death 		=> ranger
+	Benediction 	=> x
+	Destruction 	=> ranger
+	Protection 	=> ranger
+	War 			=> ranger
+	Exploration   => x
+	Knowledge 	=> x
+	Deception 	=> x
+	Thought 		=> x
+	Dread 		=> ranger
+	Vigor 		=> x
+	Affliction 	=> ranger
+	Animal 		=> x
+	Plant 		=> x
+	Earth 		=> x
+	Water 		=> x
+	Air 			=> ranger
+	Fire 			=> ranger
+	Light 		=> x
+	Shadow 		=> x
+	Magic 		=> x
+	Perdition     => x
+ END
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_ztal_spheres BEGIN
+	Life 			=> x
+	Death 		=> ranger
+	Benediction 	=> x
+	Destruction 	=> ranger
+	Protection 	=> ranger
+	War 			=> ranger
+	Exploration   => x
+	Knowledge 	=> x
+	Deception 	=> x
+	Thought 		=> x
+	Dread 		=> ranger
+	Vigor 		=> x
+	Affliction 	=> ranger
+	Animal 		=> x
+	Plant 		=> x
+	Earth 		=> x
+	Water 		=> x
+	Air 			=> ranger
+	Fire 			=> ranger
+	Light 		=> x
+	Shadow 		=> x
+	Magic 		=> x
+	Perdition     => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO zealot_kossuth_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_ze04_spheres BEGIN
+	Life 			=> x
+	Death 		=> x
+	Benediction 	=> x
+	Destruction 	=> ranger
+	Protection 	=> ranger
+	War 			=> ranger
+	Exploration   => x
+	Knowledge 	=> ranger
+	Deception 	=> x
+	Thought 		=> x
+	Dread 		=> ranger
+	Vigor 		=> ranger
+	Affliction 	=> ranger
+	Animal 		=> x
+	Plant 		=> x
+	Earth 		=> x
+	Water 		=> x
+	Air 			=> x
+	Fire 			=> ranger
+	Light 		=> x
+	Shadow 		=> x
+	Magic 		=> x
+	Perdition     => x
+ END
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_koss_spheres BEGIN
+	Life 			=> x
+	Death 		=> x
+	Benediction 	=> x
+	Destruction 	=> ranger
+	Protection 	=> ranger
+	War 			=> ranger
+	Exploration   => x
+	Knowledge 	=> ranger
+	Deception 	=> x
+	Thought 		=> x
+	Dread 		=> ranger
+	Vigor 		=> ranger
+	Affliction 	=> ranger
+	Animal 		=> x
+	Plant 		=> x
+	Earth 		=> x
+	Water 		=> x
+	Air 			=> x
+	Fire 			=> ranger
+	Light 		=> x
+	Shadow 		=> x
+	Magic 		=> x
+	Perdition     => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO zealot_ilmater_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_ze05_spheres BEGIN
+	Life 			=> ranger
+	Death 		=> x
+	Benediction 	=> ranger
+	Destruction 	=> ranger
+	Protection 	=> ranger
+	War 			=> ranger
+	Exploration   => x
+	Knowledge 	=> ranger
+	Deception 	=> x
+	Thought 		=> x
+	Dread 		=> x
+	Vigor 		=> ranger
+	Affliction 	=> ranger
+	Animal 		=> x
+	Plant 		=> x
+	Earth 		=> x
+	Water 		=> x
+	Air 			=> x
+	Fire 			=> x
+	Light 		=> x
+	Shadow 		=> x
+	Magic 		=> x
+	Perdition     => x
+ END
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_zilm_spheres BEGIN
+	Life 			=> ranger
+	Death 		=> x
+	Benediction 	=> ranger
+	Destruction 	=> ranger
+	Protection 	=> ranger
+	War 			=> ranger
+	Exploration   => x
+	Knowledge 	=> ranger
+	Deception 	=> x
+	Thought 		=> x
+	Dread 		=> x
+	Vigor 		=> ranger
+	Affliction 	=> ranger
+	Animal 		=> x
+	Plant 		=> x
+	Earth 		=> x
+	Water 		=> x
+	Air 			=> x
+	Fire 			=> x
+	Light 		=> x
+	Shadow 		=> x
+	Magic 		=> x
+	Perdition     => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO zealot_garagos_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_ze06_spheres BEGIN
+	Life 			=> ranger
+	Death 		=> x
+	Benediction 	=> ranger
+	Destruction 	=> ranger
+	Protection 	=> ranger
+	War 			=> ranger
+	Exploration   => x
+	Knowledge 	=> x
+	Deception 	=> x
+	Thought 		=> x
+	Dread 		=> ranger
+	Vigor 		=> ranger
+	Affliction 	=> x
+	Animal 		=> ranger
+	Plant 		=> x
+	Earth 		=> x
+	Water 		=> x
+	Air 			=> x
+	Fire 			=> x
+	Light 		=> x
+	Shadow 		=> x
+	Magic 		=> x
+	Perdition     => x
+ END
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_gara_spheres BEGIN
+	Life 			=> ranger
+	Death 		=> x
+	Benediction 	=> ranger
+	Destruction 	=> ranger
+	Protection 	=> ranger
+	War 			=> ranger
+	Exploration   => x
+	Knowledge 	=> x
+	Deception 	=> x
+	Thought 		=> x
+	Dread 		=> ranger
+	Vigor 		=> ranger
+	Affliction 	=> x
+	Animal 		=> ranger
+	Plant 		=> x
+	Earth 		=> x
+	Water 		=> x
+	Air 			=> x
+	Fire 			=> x
+	Light 		=> x
+	Shadow 		=> x
+	Magic 		=> x
+	Perdition     => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO zealot_corellon_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_ze07_spheres BEGIN
+	Life 			=> ranger
+	Death 		=> x
+	Benediction 	=> ranger
+	Destruction 	=> x
+	Protection 	=> ranger
+	War 			=> ranger
+	Exploration   => x
+	Knowledge 	=> ranger
+	Deception 	=> x
+	Thought 		=> x
+	Dread 		=> x
+	Vigor 		=> ranger
+	Affliction 	=> ranger
+	Animal 		=> x
+	Plant 		=> x
+	Earth 		=> x
+	Water 		=> x
+	Air 			=> x
+	Fire 			=> x
+	Light 		=> x
+	Shadow 		=> x
+	Magic 		=> ranger
+	Perdition     => x
+ END
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_zcor_spheres BEGIN
+	Life 			=> ranger
+	Death 		=> x
+	Benediction 	=> ranger
+	Destruction 	=> x
+	Protection 	=> ranger
+	War 			=> ranger
+	Exploration   => x
+	Knowledge 	=> ranger
+	Deception 	=> x
+	Thought 		=> x
+	Dread 		=> x
+	Vigor 		=> ranger
+	Affliction 	=> ranger
+	Animal 		=> x
+	Plant 		=> x
+	Earth 		=> x
+	Water 		=> x
+	Air 			=> x
+	Fire 			=> x
+	Light 		=> x
+	Shadow 		=> x
+	Magic 		=> ranger
+	Perdition     => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO zealot_sune_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_ze08_spheres BEGIN
+	Life 			=> ranger
+	Death 		=> x
+	Benediction 	=> ranger
+	Destruction 	=> x
+	Protection 	=> ranger
+	War 			=> x
+	Exploration   => x
+	Knowledge 	=> ranger
+	Deception 	=> ranger
+	Thought 		=> ranger
+	Dread 		=> ranger
+	Vigor 		=> ranger
+	Affliction 	=> x
+	Animal 		=> x
+	Plant 		=> x
+	Earth 		=> x
+	Water 		=> x
+	Air 			=> x
+	Fire 			=> x
+	Light 		=> x
+	Shadow 		=> x
+	Magic 		=> x
+	Perdition     => x
+ END
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_zsun_spheres BEGIN
+	Life 			=> ranger
+	Death 		=> x
+	Benediction 	=> ranger
+	Destruction 	=> x
+	Protection 	=> ranger
+	War 			=> x
+	Exploration   => x
+	Knowledge 	=> ranger
+	Deception 	=> ranger
+	Thought 		=> ranger
+	Dread 		=> ranger
+	Vigor 		=> ranger
+	Affliction 	=> x
+	Animal 		=> x
+	Plant 		=> x
+	Earth 		=> x
+	Water 		=> x
+	Air 			=> x
+	Fire 			=> x
+	Light 		=> x
+	Shadow 		=> x
+	Magic 		=> x
+	Perdition     => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO zealot_mystra_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_ze09_spheres BEGIN
+	Life 			=> ranger
+	Death 		=> x
+	Benediction 	=> ranger
+	Destruction 	=> ranger
+	Protection 	=> ranger
+	War 			=> ranger
+	Exploration   => x
+	Knowledge 	=> ranger
+	Deception 	=> x
+	Thought 		=> x
+	Dread 		=> x
+	Vigor 		=> ranger
+	Affliction 	=> ranger
+	Animal 		=> x
+	Plant 		=> x
+	Earth 		=> x
+	Water 		=> x
+	Air 			=> x
+	Fire 			=> x
+	Light 		=> x
+	Shadow 		=> x
+	Magic 		=> x
+	Perdition     => x
+ END
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_zmys_spheres BEGIN
+	Life 			=> ranger
+	Death 		=> x
+	Benediction 	=> ranger
+	Destruction 	=> ranger
+	Protection 	=> ranger
+	War 			=> ranger
+	Exploration   => x
+	Knowledge 	=> ranger
+	Deception 	=> x
+	Thought 		=> x
+	Dread 		=> x
+	Vigor 		=> ranger
+	Affliction 	=> ranger
+	Animal 		=> x
+	Plant 		=> x
+	Earth 		=> x
+	Water 		=> x
+	Air 			=> x
+	Fire 			=> x
+	Light 		=> x
+	Shadow 		=> x
+	Magic 		=> x
+	Perdition     => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO zealot_eilistraee_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_ze10_spheres BEGIN
+	Life 			=> ranger
+	Death 		=> x
+	Benediction 	=> ranger
+	Destruction 	=> x
+	Protection 	=> ranger
+	War 			=> x
+	Exploration   => x
+	Knowledge 	=> ranger
+	Deception 	=> x
+	Thought 		=> ranger
+	Dread 		=> ranger
+	Vigor 		=> x
+	Affliction 	=> x
+	Animal 		=> x
+	Plant 		=> x
+	Earth 		=> x
+	Water 		=> x
+	Air 			=> x
+	Fire 			=> x
+	Light 		=> ranger
+	Shadow 		=> ranger
+	Magic 		=> x
+	Perdition     => x
+ END
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_zeil_spheres BEGIN
+	Life 			=> ranger
+	Death 		=> x
+	Benediction 	=> ranger
+	Destruction 	=> x
+	Protection 	=> ranger
+	War 			=> x
+	Exploration   => x
+	Knowledge 	=> ranger
+	Deception 	=> x
+	Thought 		=> ranger
+	Dread 		=> ranger
+	Vigor 		=> x
+	Affliction 	=> x
+	Animal 		=> x
+	Plant 		=> x
+	Earth 		=> x
+	Water 		=> x
+	Air 			=> x
+	Fire 			=> x
+	Light 		=> ranger
+	Shadow 		=> ranger
+	Magic 		=> x
+	Perdition     => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO ranger_forest_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5rfor_spheres BEGIN
+	Life 			=> ranger
+	Death 		=> x
+	Benediction 	=> x
+	Destruction 	=> x
+	Protection 	=> ranger
+	War 			=> x
+	Exploration   => ranger
+	Knowledge 	=> ranger
+	Deception 	=> x
+	Thought 		=> x
+	Dread 		=> x
+	Vigor 		=> ranger
+	Affliction 	=> x
+	Animal 		=> ranger
+	Plant 		=> ranger
+	Earth 		=> x
+	Water 		=> x
+	Air 			=> x
+	Fire 			=> x
+	Light 		=> ranger
+	Shadow 		=> x
+	Magic 		=> x
+	Perdition     => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO ranger_mountain_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5rmou_spheres BEGIN
+	Life 			=> ranger
+	Death 		=> x
+	Benediction 	=> x
+	Destruction 	=> x
+	Protection 	=> ranger
+	War 			=> x
+	Exploration   => ranger
+	Knowledge 	=> ranger
+	Deception 	=> x
+	Thought 		=> x
+	Dread 		=> x
+	Vigor 		=> ranger
+	Affliction 	=> x
+	Animal 		=> ranger
+	Plant 		=> x
+	Earth 		=> ranger
+	Water 		=> x
+	Air 			=> x
+	Fire 			=> x
+	Light 		=> x
+	Shadow 		=> ranger
+	Magic 		=> x
+	Perdition     => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO ranger_desert_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5rdes_spheres BEGIN
+	Life 			=> ranger
+	Death 		=> x
+	Benediction 	=> x
+	Destruction 	=> x
+	Protection 	=> ranger
+	War 			=> x
+	Exploration   => ranger
+	Knowledge 	=> ranger
+	Deception 	=> x
+	Thought 		=> x
+	Dread 		=> x
+	Vigor 		=> ranger
+	Affliction 	=> x
+	Animal 		=> ranger
+	Plant 		=> x
+	Earth 		=> x
+	Water 		=> x
+	Air 			=> ranger
+	Fire 			=> x
+	Light 		=> ranger
+	Shadow 		=> x
+	Magic 		=> x
+	Perdition     => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO ranger_jungle_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5rjun_spheres BEGIN
+	Life 			=> ranger
+	Death 		=> x
+	Benediction 	=> x
+	Destruction 	=> x
+	Protection 	=> x
+	War 			=> x
+	Exploration   => ranger
+	Knowledge 	=> ranger
+	Deception 	=> x
+	Thought 		=> x
+	Dread 		=> x
+	Vigor 		=> ranger
+	Affliction 	=> ranger
+	Animal 		=> x
+	Plant 		=> ranger
+	Earth 		=> x
+	Water 		=> ranger
+	Air 			=> x
+	Fire 			=> x
+	Light 		=> x
+	Shadow 		=> ranger
+	Magic 		=> x
+	Perdition     => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO ranger_arctic_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5rarc_spheres BEGIN
+	Life 			=> ranger
+	Death 		=> x
+	Benediction 	=> x
+	Destruction 	=> x
+	Protection 	=> ranger
+	War 			=> x
+	Exploration   => ranger
+	Knowledge 	=> ranger
+	Deception 	=> x
+	Thought 		=> x
+	Dread 		=> x
+	Vigor 		=> ranger
+	Affliction 	=> x
+	Animal 		=> ranger
+	Plant 		=> x
+	Earth 		=> x
+	Water 		=> ranger
+	Air 			=> ranger
+	Fire 			=> x
+	Light 		=> x
+	Shadow 		=> x
+	Magic 		=> x
+	Perdition     => x
+ END
+END
+//___________________________________________________________________________________
+
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO ranger_beastmaster_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY clabrn04_spheres BEGIN
+	Life 			=> ranger
+	Death 		=> x
+	Benediction 	=> x
+	Destruction 	=> x
+	Protection 	=> x
+	War 			=> x
+	Exploration   => ranger
+	Knowledge 	=> ranger
+	Deception 	=> x
+	Thought 		=> x
+	Dread 		=> x
+	Vigor 		=> ranger
+	Affliction 	=> x
+	Animal 		=> ranger
+	Plant 		=> x
+	Earth 		=> x
+	Water 		=> x
+	Air 			=> x
+	Fire 			=> x
+	Light 		=> x
+	Shadow 		=> x
+	Magic 		=> x
+	Perdition     => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO barbarian_ranger_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5_rbarb_spheres BEGIN
+	Life 			=> x
+	Death 		=> x
+	Benediction 	=> x
+	Destruction 	=> x
+	Protection 	=> x
+	War 			=> x
+	Exploration   => ranger
+	Knowledge 	=> x
+	Deception 	=> x
+	Thought 		=> x
+	Dread 		=> x
+	Vigor 		=> ranger
+	Affliction 	=> x
+	Animal 		=> ranger
+	Plant 		=> x
+	Earth 		=> x
+	Water 		=> x
+	Air 			=> x
+	Fire 			=> x
+	Light 		=> x
+	Shadow 		=> x
+	Magic 		=> x
+	Perdition     => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO scout_mage_hunter_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5_mageh_spheres BEGIN
+	Life 			=> ranger
+	Death 		=> x
+	Benediction 	=> x
+	Destruction 	=> x
+	Protection 	=> ranger
+	War 			=> x
+	Exploration   => ranger
+	Knowledge 	=> x
+	Deception 	=> x
+	Thought 		=> x
+	Dread 		=> x
+	Vigor 		=> ranger
+	Affliction 	=> x
+	Animal 		=> x
+	Plant 		=> x
+	Earth 		=> x
+	Water 		=> x
+	Air 			=> x
+	Fire 			=> x
+	Light 		=> ranger
+	Shadow 		=> x
+	Magic 		=> ranger
+	Perdition     => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO scout_elven_archer_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5_earch_spheres BEGIN
+	Life 			=> ranger
+	Death 		=> x
+	Benediction 	=> x
+	Destruction 	=> x
+	Protection 	=> ranger
+	War 			=> x
+	Exploration   => ranger
+	Knowledge 	=> ranger
+	Deception 	=> ranger
+	Thought 		=> x
+	Dread 		=> x
+	Vigor 		=> ranger
+	Affliction 	=> x
+	Animal 		=> x
+	Plant 		=> ranger
+	Earth 		=> x
+	Water 		=> x
+	Air 			=> x
+	Fire 			=> x
+	Light 		=> ranger
+	Shadow 		=> x
+	Magic 		=> ranger
+	Perdition     => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO scout_slinger_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5_sling_spheres BEGIN
+	Life 			=> x
+	Death 		=> x
+	Benediction 	=> x
+	Destruction 	=> x
+	Protection 	=> ranger
+	War 			=> x
+	Exploration   => ranger
+	Knowledge 	=> x
+	Deception 	=> x
+	Thought 		=> x
+	Dread 		=> x
+	Vigor 		=> ranger
+	Affliction 	=> x
+	Animal 		=> x
+	Plant 		=> x
+	Earth 		=> x
+	Water 		=> x
+	Air 			=> ranger
+	Fire 			=> x
+	Light 		=> x
+	Shadow 		=> x
+	Magic 		=> x
+	Perdition     => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO cm_mystra_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5cmmys_spheres BEGIN
+	Life 			=> major
+	Death 		=> x
+	Benediction 	=> major
+	Destruction 	=> major
+	Protection 	=> major
+	War 			=> x
+	Exploration   => minor
+	Knowledge 	=> major
+	Deception 	=> minor
+	Thought 		=> minor
+	Dread 		=> x
+	Vigor 		=> minor
+	Affliction 	=> x
+	Animal 		=> x
+	Plant 		=> x
+	Earth 		=> x
+	Water 		=> x
+	Air 			=> x
+	Fire 			=> minor
+	Light 		=> minor
+	Shadow 		=> x
+	Magic 		=> major
+	Perdition     => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO cm_azuth_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5cmazu_spheres BEGIN
+	Life 			=> major
+	Death 		=> x
+	Benediction 	=> major
+	Destruction 	=> major
+	Protection 	=> major
+	War 			=> x
+	Exploration   => minor
+	Knowledge 	=> major
+	Deception 	=> minor
+	Thought 		=> minor
+	Dread 		=> minor
+	Vigor 		=> minor
+	Affliction 	=> x
+	Animal 		=> x
+	Plant 		=> x
+	Earth 		=> x
+	Water 		=> x
+	Air 			=> x
+	Fire 			=> minor
+	Light 		=> major
+	Shadow 		=> minor
+	Magic 		=> major
+	Perdition     => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO cm_spellbender_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5_bendr_spheres BEGIN
+	Life 			=> minor
+	Death 		=> x
+	Benediction 	=> x
+	Destruction 	=> major
+	Protection 	=> minor
+	War 			=> x
+	Exploration   => major
+	Knowledge 	=> major
+	Deception 	=> minor
+	Thought 		=> major
+	Dread 		=> major
+	Vigor 		=> x
+	Affliction 	=> x
+	Animal 		=> x
+	Plant 		=> x
+	Earth 		=> x
+	Water 		=> x
+	Air 			=> x
+	Fire 			=> x
+	Light 		=> minor
+	Shadow 		=> minor
+	Magic 		=> major
+	Perdition     => minor
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO fc_clangeddin_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5cfcla_spheres BEGIN
+	Life 			=> major
+	Death 		=> x
+	Benediction 	=> major
+	Destruction 	=> minor
+	Protection 	=> major
+	War 			=> major
+	Exploration   => x
+	Knowledge 	=> minor
+	Deception 	=> x
+	Thought 		=> x
+	Dread 		=> minor
+	Vigor 		=> major
+	Affliction 	=> x
+	Animal 		=> x
+	Plant 		=> x
+	Earth 		=> major
+	Water 		=> x
+	Air 			=> x
+	Fire 			=> x
+	Light 		=> minor
+	Shadow 		=> x
+	Magic 		=> minor
+	Perdition     => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO cr_mielikki_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5crmi_spheres BEGIN
+	Life 			=> major
+	Death 		=> x
+	Benediction 	=> major
+	Destruction 	=> x
+	Protection 	=> minor
+	War 			=> x
+	Exploration   => minor
+	Knowledge 	=> minor
+	Deception 	=> x
+	Thought 		=> x
+	Dread 		=> x
+	Vigor 		=> focus
+	Affliction 	=> minor
+	Animal 		=> major
+	Plant 		=> major
+	Earth 		=> major
+	Water 		=> minor
+	Air 			=> minor
+	Fire 			=> x
+	Light 		=> minor
+	Shadow 		=> x
+	Magic 		=> x
+	Perdition     => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO cr_shaundakul_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY d5crsh_spheres BEGIN
+	Life 			=> major
+	Death 		=> x
+	Benediction 	=> minor
+	Destruction 	=> x
+	Protection 	=> major
+	War 			=> x
+	Exploration   => focus
+	Knowledge 	=> major
+	Deception 	=> minor
+	Thought 		=> x
+	Dread 		=> x
+	Vigor 		=> major
+	Affliction 	=> x
+	Animal 		=> minor
+	Plant 		=> minor
+	Earth 		=> x
+	Water 		=> minor
+	Air 			=> major
+	Fire 			=> x
+	Light 		=> major
+	Shadow 		=> x
+	Magic 		=> minor
+	Perdition     => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO fc_helm_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY b_cfhe_spheres BEGIN
+	Life 			=> major
+	Death 		=> minor
+	Benediction 	=> major
+	Destruction 	=> minor
+	Protection 	=> major
+	War 			=> major
+	Exploration   => minor
+	Knowledge 	=> major
+	Deception 	=> x
+	Thought 		=> minor
+	Dread 		=> minor
+	Vigor 		=> major
+	Affliction 	=> x
+	Animal 		=> x
+	Plant 		=> x
+	Earth 		=> x
+	Water 		=> x
+	Air 			=> x
+	Fire 			=> x
+	Light 		=> minor
+	Shadow 		=> x
+	Magic 		=> minor
+	Perdition     => x
+ END
+END
+//___________________________________________________________________________________
+
+// DEFAULT KIT SPHERE ASSIGNMENTS____________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO vanilla_shaman_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY clabshgs_spheres BEGIN
+	Life 			=> minor
+	Death 		=> x
+	Benediction 	=> x
+	Destruction 	=> x
+	Protection 	=> x
+	War 			=> x
+	Exploration   => x
+	Knowledge 	=> x
+	Deception 	=> x
+	Thought 		=> x
+	Dread 		=> x
+	Vigor 		=> x
+	Affliction 	=> x
+	Animal 		=> major
+	Plant 		=> major
+	Earth 		=> x
+	Water 		=> x
+	Air 			=> x
+	Fire 			=> x
+	Light 		=> x
+	Shadow 		=> major
+	Magic 		=> x
+	Perdition     => major
+ END
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY clabsh01_spheres BEGIN
+	Life 			=> minor
+	Death 		=> x
+	Benediction 	=> x
+	Destruction 	=> x
+	Protection 	=> x
+	War 			=> x
+	Exploration   => x
+	Knowledge 	=> x
+	Deception 	=> x
+	Thought 		=> x
+	Dread 		=> x
+	Vigor 		=> x
+	Affliction 	=> x
+	Animal 		=> major
+	Plant 		=> major
+	Earth 		=> x
+	Water 		=> x
+	Air 			=> x
+	Fire 			=> x
+	Light 		=> x
+	Shadow 		=> major
+	Magic 		=> x
+	Perdition     => major
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO vanilla_cleric_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY clabpr01_spheres BEGIN
+	Life 			=> major
+	Death 		=> minor
+	Benediction 	=> major
+	Destruction 	=> major
+	Protection 	=> major
+	War 			=> minor
+	Exploration   => minor
+	Knowledge 	=> major
+	Deception 	=> x
+	Thought 		=> minor
+	Dread 		=> major
+	Vigor 		=> minor
+	Affliction 	=> x
+	Animal 		=> x
+	Plant 		=> x
+	Earth 		=> x
+	Water 		=> x
+	Air 			=> x
+	Fire 			=> minor
+	Light 		=> major
+	Shadow 		=> x
+	Magic 		=> minor
+	Perdition     => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO vanilla_cleric_talos_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY clabpr02_spheres BEGIN
+	Life 			=> major
+	Death 		=> x
+	Benediction 	=> major
+	Destruction 	=> major
+	Protection 	=> major
+	War 			=> minor
+	Exploration   => minor
+	Knowledge 	=> minor
+	Deception 	=> x
+	Thought 		=> x
+	Dread 		=> minor
+	Vigor 		=> minor
+	Affliction 	=> x
+	Animal 		=> x
+	Plant 		=> x
+	Earth 		=> x
+	Water 		=> major
+	Air 			=> major
+	Fire 			=> x
+	Light 		=> minor
+	Shadow 		=> x
+	Magic 		=> minor
+	Perdition     => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO vanilla_cleric_helm_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY clabpr03_spheres BEGIN
+	Life 			=> major
+	Death 		=> minor
+	Benediction 	=> major
+	Destruction 	=> minor
+	Protection 	=> major
+	War 			=> major
+	Exploration   => minor
+	Knowledge 	=> major
+	Deception 	=> x
+	Thought 		=> minor
+	Dread 		=> minor
+	Vigor 		=> major
+	Affliction 	=> x
+	Animal 		=> x
+	Plant 		=> x
+	Earth 		=> x
+	Water 		=> x
+	Air 			=> x
+	Fire 			=> x
+	Light 		=> minor
+	Shadow 		=> x
+	Magic 		=> minor
+	Perdition     => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO vanilla_cleric_lathander_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY clabpr04_spheres BEGIN
+	Life 			=> major
+	Death 		=> x
+	Benediction 	=> major
+	Destruction 	=> minor
+	Protection 	=> major
+	War 			=> minor
+	Exploration   => minor
+	Knowledge 	=> minor
+	Deception 	=> x
+	Thought 		=> minor
+	Dread 		=> x
+	Vigor 		=> major
+	Affliction 	=> x
+	Animal 		=> x
+	Plant 		=> x
+	Earth 		=> x
+	Water 		=> x
+	Air 			=> minor
+	Fire 			=> major
+	Light 		=> major
+	Shadow 		=> x
+	Magic 		=> minor
+	Perdition     => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO vanilla_cleric_tyr_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY ohtyr_spheres BEGIN
+	Life 			=> major
+	Death 		=> minor
+	Benediction 	=> major
+	Destruction 	=> minor
+	Protection 	=> major
+	War 			=> major
+	Exploration   => x
+	Knowledge 	=> major
+	Deception 	=> x
+	Thought 		=> minor
+	Dread 		=> minor
+	Vigor 		=> major
+	Affliction 	=> x
+	Animal 		=> x
+	Plant 		=> x
+	Earth 		=> x
+	Water 		=> x
+	Air 			=> x
+	Fire 			=> x
+	Light 		=> minor
+	Shadow 		=> x
+	Magic 		=> minor
+	Perdition     => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO vanilla_cleric_tempus_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY ohtempus_spheres BEGIN
+	Life 			=> major
+	Death 		=> x
+	Benediction 	=> major
+	Destruction 	=> major
+	Protection 	=> major
+	War 			=> major
+	Exploration   => minor
+	Knowledge 	=> minor
+	Deception 	=> x
+	Thought 		=> minor
+	Dread 		=> x
+	Vigor 		=> major
+	Affliction 	=> x
+	Animal 		=> x
+	Plant 		=> x
+	Earth 		=> minor
+	Water 		=> x
+	Air 			=> minor
+	Fire 			=> x
+	Light 		=> minor
+	Shadow 		=> x
+	Magic 		=> minor
+	Perdition     => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO vanilla_druid_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY clabdr01_spheres BEGIN
+	Life 			=> minor
+	Death 		=> x
+	Benediction 	=> x
+	Destruction 	=> x
+	Protection 	=> x
+	War 			=> x
+	Exploration   => minor
+	Knowledge 	=> minor
+	Deception 	=> x
+	Thought 		=> minor
+	Dread 		=> x
+	Vigor 		=> major
+	Affliction 	=> minor
+	Animal 		=> major
+	Plant 		=> major
+	Earth 		=> major
+	Water 		=> major
+	Air 			=> major
+	Fire 			=> minor
+	Light 		=> major
+	Shadow 		=> minor
+	Magic 		=> x
+	Perdition     => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO vanilla_druid_totemic_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY clabdr02_spheres BEGIN
+	Life 			=> minor
+	Death 		=> x
+	Benediction 	=> x
+	Destruction 	=> x
+	Protection 	=> x
+	War 			=> x
+	Exploration   => minor
+	Knowledge 	=> minor
+	Deception 	=> x
+	Thought 		=> minor
+	Dread 		=> x
+	Vigor 		=> major
+	Affliction 	=> minor
+	Animal 		=> major
+	Plant 		=> major
+	Earth 		=> major
+	Water 		=> major
+	Air 			=> major
+	Fire 			=> minor
+	Light 		=> major
+	Shadow 		=> minor
+	Magic 		=> x
+	Perdition     => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO vanilla_shapeshifter_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY clabdr03_spheres BEGIN
+	Life 			=> minor
+	Death 		=> x
+	Benediction 	=> x
+	Destruction 	=> x
+	Protection 	=> x
+	War 			=> x
+	Exploration   => minor
+	Knowledge 	=> minor
+	Deception 	=> x
+	Thought 		=> minor
+	Dread 		=> minor
+	Vigor 		=> major
+	Affliction 	=> major
+	Animal 		=> focus
+	Plant 		=> major
+	Earth 		=> minor
+	Water 		=> minor
+	Air 			=> minor
+	Fire 			=> x
+	Light 		=> x
+	Shadow 		=> minor
+	Magic 		=> x
+	Perdition     => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO vanilla_avenger_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY clabdr04_spheres BEGIN
+	Life 			=> minor
+	Death 		=> x
+	Benediction 	=> x
+	Destruction 	=> x
+	Protection 	=> x
+	War 			=> x
+	Exploration   => minor
+	Knowledge 	=> minor
+	Deception 	=> x
+	Thought 		=> x
+	Dread 		=> x
+	Vigor 		=> major
+	Affliction 	=> major
+	Animal 		=> minor
+	Plant 		=> major
+	Earth 		=> major
+	Water 		=> major
+	Air 			=> major
+	Fire 			=> minor
+	Light 		=> major
+	Shadow 		=> minor
+	Magic 		=> minor
+	Perdition     => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO vanilla_paladin_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY clabpa01_spheres BEGIN
+	Life 			=> paladin
+	Death 		=> x
+	Benediction 	=> paladin
+	Destruction 	=> paladin
+	Protection 	=> paladin
+	War 			=> paladin
+	Exploration   => x
+	Knowledge 	=> paladin
+	Deception 	=> x
+	Thought 		=> x
+	Dread 		=> x
+	Vigor 		=> x
+	Affliction 	=> x
+	Animal 		=> x
+	Plant 		=> x
+	Earth 		=> x
+	Water 		=> x
+	Air 			=> x
+	Fire 			=> x
+	Light 		=> paladin
+	Shadow 		=> x
+	Magic 		=> x
+	Perdition     => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO vanilla_paladin_cavalier_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY clabpa02_spheres BEGIN
+	Life 			=> paladin
+	Death 		=> x
+	Benediction 	=> paladin
+	Destruction 	=> paladin
+	Protection 	=> paladin
+	War 			=> paladin
+	Exploration   => x
+	Knowledge 	=> paladin
+	Deception 	=> x
+	Thought 		=> x
+	Dread 		=> x
+	Vigor 		=> x
+	Affliction 	=> x
+	Animal 		=> x
+	Plant 		=> x
+	Earth 		=> x
+	Water 		=> x
+	Air 			=> x
+	Fire 			=> x
+	Light 		=> paladin
+	Shadow 		=> x
+	Magic 		=> x
+	Perdition     => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO vanilla_paladin_inquisitor_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY clabpa03_spheres BEGIN
+	Life 			=> paladin
+	Death 		=> x
+	Benediction 	=> paladin
+	Destruction 	=> x
+	Protection 	=> paladin
+	War 			=> x
+	Exploration   => x
+	Knowledge 	=> paladin
+	Deception 	=> x
+	Thought 		=> paladin
+	Dread 		=> x
+	Vigor 		=> x
+	Affliction 	=> x
+	Animal 		=> x
+	Plant 		=> x
+	Earth 		=> x
+	Water 		=> x
+	Air 			=> x
+	Fire 			=> x
+	Light 		=> x
+	Shadow 		=> x
+	Magic 		=> paladin
+	Perdition     => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO vanilla_paladin_undead_hunter_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY clabpa04_spheres BEGIN
+	Life 			=> paladin
+	Death 		=> paladin
+	Benediction 	=> paladin
+	Destruction 	=> x
+	Protection 	=> paladin
+	War 			=> paladin
+	Exploration   => x
+	Knowledge 	=> paladin
+	Deception 	=> x
+	Thought 		=> x
+	Dread 		=> x
+	Vigor 		=> x
+	Affliction 	=> x
+	Animal 		=> x
+	Plant 		=> x
+	Earth 		=> x
+	Water 		=> x
+	Air 			=> x
+	Fire 			=> x
+	Light 		=> paladin
+	Shadow 		=> x
+	Magic 		=> x
+	Perdition     => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO vanilla_fallen_paladin_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY clabpa05_spheres BEGIN
+	Life 			=> paladin
+	Death 		=> x
+	Benediction 	=> paladin
+	Destruction 	=> paladin
+	Protection 	=> paladin
+	War 			=> paladin
+	Exploration   => x
+	Knowledge 	=> paladin
+	Deception 	=> x
+	Thought 		=> x
+	Dread 		=> x
+	Vigor 		=> x
+	Affliction 	=> x
+	Animal 		=> x
+	Plant 		=> x
+	Earth 		=> x
+	Water 		=> x
+	Air 			=> x
+	Fire 			=> x
+	Light 		=> paladin
+	Shadow 		=> x
+	Magic 		=> x
+	Perdition     => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO vanilla_blackguard_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY clabpa06_spheres BEGIN
+	Life 			=> x
+	Death 		=> paladin
+	Benediction 	=> x
+	Destruction 	=> paladin
+	Protection 	=> x
+	War 			=> paladin
+	Exploration   => x
+	Knowledge 	=> x
+	Deception 	=> x
+	Thought 		=> x
+	Dread 		=> paladin
+	Vigor 		=> paladin
+	Affliction 	=> paladin
+	Animal 		=> x
+	Plant 		=> x
+	Earth 		=> x
+	Water 		=> x
+	Air 			=> x
+	Fire 			=> x
+	Light 		=> x
+	Shadow 		=> paladin
+	Magic 		=> x
+	Perdition     => paladin
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO vanilla_ranger_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY clabrn01_spheres BEGIN
+	Life 			=> ranger
+	Death 		=> x
+	Benediction 	=> x
+	Destruction 	=> x
+	Protection 	=> ranger
+	War 			=> x
+	Exploration   => ranger
+	Knowledge 	=> x
+	Deception 	=> x
+	Thought 		=> x
+	Dread 		=> x
+	Vigor 		=> ranger
+	Affliction 	=> x
+	Animal 		=> ranger
+	Plant 		=> ranger
+	Earth 		=> x
+	Water 		=> x
+	Air 			=> ranger
+	Fire 			=> x
+	Light 		=> ranger
+	Shadow 		=> x
+	Magic 		=> x
+	Perdition     => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO vanilla_ranger_archer_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY clabrn02_spheres BEGIN
+	Life 			=> ranger
+	Death 		=> x
+	Benediction 	=> x
+	Destruction 	=> x
+	Protection 	=> ranger
+	War 			=> x
+	Exploration   => ranger
+	Knowledge 	=> x
+	Deception 	=> x
+	Thought 		=> x
+	Dread 		=> x
+	Vigor 		=> ranger
+	Affliction 	=> x
+	Animal 		=> x
+	Plant 		=> x
+	Earth 		=> x
+	Water 		=> x
+	Air 			=> ranger
+	Fire 			=> x
+	Light 		=> x
+	Shadow 		=> x
+	Magic 		=> x
+	Perdition     => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO vanilla_ranger_stalker_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY clabrn03_spheres BEGIN
+	Life 			=> x
+	Death 		=> x
+	Benediction 	=> x
+	Destruction 	=> x
+	Protection 	=> x
+	War 			=> x
+	Exploration   => ranger
+	Knowledge 	=> x
+	Deception 	=> ranger
+	Thought 		=> ranger
+	Dread 		=> x
+	Vigor 		=> ranger
+	Affliction 	=> x
+	Animal 		=> x
+	Plant 		=> x
+	Earth 		=> x
+	Water 		=> x
+	Air 			=> ranger
+	Fire 			=> x
+	Light 		=> x
+	Shadow 		=> ranger
+	Magic 		=> x
+	Perdition     => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO vanilla_ranger_beastmaster_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY clabrn04_spheres BEGIN
+	Life 			=> ranger
+	Death 		=> x
+	Benediction 	=> x
+	Destruction 	=> x
+	Protection 	=> ranger
+	War 			=> x
+	Exploration   => ranger
+	Knowledge 	=> ranger
+	Deception 	=> x
+	Thought 		=> x
+	Dread 		=> x
+	Vigor 		=> ranger
+	Affliction 	=> x
+	Animal 		=> ranger
+	Plant 		=> x
+	Earth 		=> x
+	Water 		=> x
+	Air 			=> x
+	Fire 			=> x
+	Light 		=> x
+	Shadow 		=> x
+	Magic 		=> x
+	Perdition     => x
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO vanilla_fallen_ranger_spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY clabrn05_spheres BEGIN
+	Life 			=> ranger
+	Death 		=> x
+	Benediction 	=> x
+	Destruction 	=> x
+	Protection 	=> x
+	War 			=> x
+	Exploration   => ranger
+	Knowledge 	=> x
+	Deception 	=> x
+	Thought 		=> x
+	Dread 		=> x
+	Vigor 		=> ranger
+	Affliction 	=> x
+	Animal 		=> ranger
+	Plant 		=> ranger
+	Earth 		=> x
+	Water 		=> x
+	Air 			=> ranger
+	Fire 			=> x
+	Light 		=> ranger
+	Shadow 		=> x
+	Magic 		=> x
+	Perdition     => x
+ END
+END
+//___________________________________________________________________________________
+
+/*
+
+// OTHER MOD KIT SPHERE ASSIGNMENTS__________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO __spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY _spheres BEGIN
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO __spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY _spheres BEGIN
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO __spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY _spheres BEGIN
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO __spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY _spheres BEGIN
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO __spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY _spheres BEGIN
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO __spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY _spheres BEGIN
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO __spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY _spheres BEGIN
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO __spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY _spheres BEGIN
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO __spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY _spheres BEGIN
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO __spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY _spheres BEGIN
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO __spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY _spheres BEGIN
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO __spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY _spheres BEGIN
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO __spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY _spheres BEGIN
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO __spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY _spheres BEGIN
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO __spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY _spheres BEGIN
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO __spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY _spheres BEGIN
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO __spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY _spheres BEGIN
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO __spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY _spheres BEGIN
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO __spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY _spheres BEGIN
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO __spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY _spheres BEGIN
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO __spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY _spheres BEGIN
+ END
+END
+//___________________________________________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO __spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY _spheres BEGIN
+ END
+END
+//___________________________________________________________________________________
+
+
+// DEFAULT KIT SPHERE ASSIGNMENTS____________________________________________________
+
+// ________________________________________________________________
+//
+DEFINE_ACTION_MACRO __spheres BEGIN
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY _spheres BEGIN
+ END
+END
+//___________________________________________________________________________________
+
+*/

@@ -104,6 +104,8 @@ COPY ~faiths_and_powers/kits/scouts/953_mage_hunter/d5_mghs2.eff~ ~override~
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM scout_mage_hunter_spheres
+
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -130,29 +132,6 @@ COPY ~faiths_and_powers/kits/scouts/953_mage_hunter/d5_mghs2.eff~ ~override~
   STR_VAR
     clab_name 		= ~d5_mageh~
 	class 			= ~scout~
-	s_Life 			= ~ranger~
-	s_Death 		= ~x~
-	s_Benediction 	= ~x~
-	s_Destruction 	= ~x~
-	s_Protection 	= ~ranger~
-	s_War 			= ~x~
-	s_Exploration   = ~ranger~
-	s_Knowledge 	= ~x~
-	s_Deception 	= ~x~
-	s_Thought 		= ~x~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~ranger~
-	s_Affliction 	= ~x~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~x~
-	s_Light 		= ~ranger~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~ranger~
-	s_Perdition     = ~x~
  END
 
 END
@@ -254,6 +233,8 @@ COPY ~faiths_and_powers/kits/scouts/954_barbarian_ranger/d5_rback.spl~ ~override
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM barbarian_ranger_spheres
+
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -280,29 +261,6 @@ COPY ~faiths_and_powers/kits/scouts/954_barbarian_ranger/d5_rback.spl~ ~override
   STR_VAR
     clab_name 		= ~d5_rbarb~
 	class 			= ~scout~
-	s_Life 			= ~x~
-	s_Death 		= ~x~
-	s_Benediction 	= ~x~
-	s_Destruction 	= ~x~
-	s_Protection 	= ~x~
-	s_War 			= ~x~
-	s_Exploration   = ~ranger~
-	s_Knowledge 	= ~x~
-	s_Deception 	= ~x~
-	s_Thought 		= ~x~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~ranger~
-	s_Affliction 	= ~x~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~x~
-	s_Light 		= ~x~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~x~
-	s_Perdition     = ~x~
  END
 
 //FIX BARB USABILITY__________________________________________________________________
@@ -414,6 +372,8 @@ COPY ~faiths_and_powers/kits/scouts/955_elven_archer/d5_earch.2da~ ~override~
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM scout_elven_archer_spheres
+
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -440,29 +400,6 @@ COPY ~faiths_and_powers/kits/scouts/955_elven_archer/d5_earch.2da~ ~override~
   STR_VAR
     clab_name 		= ~d5_earch~
 	class 			= ~scout~
-	s_Life 			= ~ranger~
-	s_Death 		= ~x~
-	s_Benediction 	= ~x~
-	s_Destruction 	= ~x~
-	s_Protection 	= ~ranger~
-	s_War 			= ~x~
-	s_Exploration   = ~ranger~
-	s_Knowledge 	= ~ranger~
-	s_Deception 	= ~ranger~
-	s_Thought 		= ~x~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~ranger~
-	s_Affliction 	= ~x~
-	s_Animal 		= ~x~
-	s_Plant 		= ~ranger~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~ranger~
-	s_Fire 			= ~x~
-	s_Light 		= ~ranger~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~ranger~
-	s_Perdition     = ~x~
  END
 
 //ADD ELVEN ARCHER TO MENUS__________________________________________________________
@@ -647,6 +584,8 @@ END
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM scout_slinger_spheres
+
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -673,29 +612,6 @@ END
   STR_VAR
     clab_name 		= ~d5_sling~
 	class 			= ~scout~
-	s_Life 			= ~ranger~
-	s_Death 		= ~x~
-	s_Benediction 	= ~x~
-	s_Destruction 	= ~x~
-	s_Protection 	= ~ranger~
-	s_War 			= ~x~
-	s_Exploration   = ~ranger~
-	s_Knowledge 	= ~x~
-	s_Deception 	= ~x~
-	s_Thought 		= ~x~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~ranger~
-	s_Affliction 	= ~x~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~ranger~
-	s_Fire 			= ~x~
-	s_Light 		= ~x~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~x~
-	s_Perdition     = ~x~
  END
 
 //Halfling Rangers__________________________________________________________________

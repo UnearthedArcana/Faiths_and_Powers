@@ -126,10 +126,8 @@ END
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
-COPY_EXISTING ~kitlist.2da~ ~override~
-	COUNT_2DA_ROWS 1 rows
-	READ_2DA_ENTRY (%rows% - 1) 5 1 clab
-BUT_ONLY
+LAM zealot_gruumsh_spheres
+
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -154,31 +152,8 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	u_bows 				= 2
 	u_crossbows 		= 2
   STR_VAR
-    clab_name = EVAL ~%clab%~
+    clab_name = EVAL ~b_ze02~
 	class 			= ~zealot~
-	s_Life 			= ~x~
-	s_Death 		= ~ranger~
-	s_Benediction 	        = ~x~
-	s_Destruction 	        = ~ranger~
-	s_Protection 	        = ~ranger~
-	s_War 			= ~ranger~
-	s_Exploration   = ~x~
-	s_Knowledge 	        = ~x~
-	s_Deception 	        = ~x~
-	s_Thought 		= ~x~
-	s_Dread 		= ~ranger~
-	s_Vigor 		= ~ranger~
-	s_Affliction 	        = ~ranger~
-	s_Animal 		= ~ranger~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~x~
-	s_Light 		= ~x~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~x~
-	s_Perdition     = ~x~
  END
 
 //___________________________________________________________________________________
@@ -281,10 +256,8 @@ COPY ~faiths_and_powers/kits/zealots/862_Gruumsh/component_2/b_gruu.spl~ ~overri
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
-COPY_EXISTING ~kitlist.2da~ ~override~
-	COUNT_2DA_ROWS 1 rows
-	READ_2DA_ENTRY (%rows% - 1) 5 1 clab
-BUT_ONLY
+LAM zealot_gruumsh_spheres
+
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -309,31 +282,8 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	u_bows 				= 2
 	u_crossbows 		= 2
   STR_VAR
-    clab_name = EVAL ~%clab%~
+    clab_name = EVAL ~b_zgruu~
 	class 			= ~zealot~
-	s_Life 			= ~x~
-	s_Death 		= ~ranger~
-	s_Benediction 	        = ~x~
-	s_Destruction 	        = ~ranger~
-	s_Protection 	        = ~ranger~
-	s_War 			= ~ranger~
-	s_Exploration   = ~x~
-	s_Knowledge 	        = ~x~
-	s_Deception 	        = ~x~
-	s_Thought 		= ~x~
-	s_Dread 		= ~ranger~
-	s_Vigor 		= ~ranger~
-	s_Affliction 	        = ~ranger~
-	s_Animal 		= ~ranger~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~x~
-	s_Light 		= ~x~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~x~
-	s_Perdition     = ~x~
  END
 
 END
@@ -479,10 +429,8 @@ END
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
-COPY_EXISTING ~kitlist.2da~ ~override~
-	COUNT_2DA_ROWS 1 rows
-	READ_2DA_ENTRY (%rows% - 1) 5 1 clab
-BUT_ONLY
+LAM zealot_talos_spheres
+
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -507,31 +455,8 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	u_bows 				= 2
 	u_crossbows 		= 2
   STR_VAR
-    clab_name = EVAL ~%clab%~
+    clab_name = EVAL ~b_ze03~
 	class 			= ~zealot~
-	s_Life 			= ~x~
-	s_Death 		= ~ranger~
-	s_Benediction 	        = ~x~
-	s_Destruction 	        = ~ranger~
-	s_Protection 	        = ~ranger~
-	s_War 			= ~ranger~
-	s_Exploration   = ~x~
-	s_Knowledge 	        = ~x~
-	s_Deception 	        = ~x~
-	s_Thought 		= ~x~
-	s_Dread 		= ~ranger~
-	s_Vigor 		= ~x~
-	s_Affliction 	        = ~ranger~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~ranger~
-	s_Fire 			= ~ranger~
-	s_Light 		= ~x~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~x~
-	s_Perdition     = ~x~
  END
 
 //___________________________________________________________________________________
@@ -635,10 +560,8 @@ END
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
-COPY_EXISTING ~kitlist.2da~ ~override~
-	COUNT_2DA_ROWS 1 rows
-	READ_2DA_ENTRY (%rows% - 1) 5 1 clab
-BUT_ONLY
+LAM zealot_talos_spheres
+
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -663,31 +586,8 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	u_bows 				= 2
 	u_crossbows 		= 2
   STR_VAR
-    clab_name = EVAL ~%clab%~
+    clab_name = EVAL ~b_ztal~
 	class 			= ~zealot~
-	s_Life 			= ~x~
-	s_Death 		= ~ranger~
-	s_Benediction 	        = ~x~
-	s_Destruction 	        = ~ranger~
-	s_Protection 	        = ~ranger~
-	s_War 			= ~ranger~
-	s_Exploration   = ~x~
-	s_Knowledge 	        = ~x~
-	s_Deception 	        = ~x~
-	s_Thought 		= ~x~
-	s_Dread 		= ~ranger~
-	s_Vigor 		= ~x~
-	s_Affliction 	        = ~ranger~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~ranger~
-	s_Fire 			= ~ranger~
-	s_Light 		= ~x~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~x~
-	s_Perdition     = ~x~
  END
 
 END
@@ -698,7 +598,7 @@ END
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 //
-//							CHAMPION OF KOSSUTH
+//							ZEALOT OF KOSSUTH
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 
@@ -836,10 +736,8 @@ END
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
-COPY_EXISTING ~kitlist.2da~ ~override~
-	COUNT_2DA_ROWS 1 rows
-	READ_2DA_ENTRY (%rows% - 1) 5 1 clab
-BUT_ONLY
+LAM zealot_kossuth_spheres
+
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -864,31 +762,8 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	u_bows 				= 2
 	u_crossbows 		= 2
   STR_VAR
-    clab_name = EVAL ~%clab%~
+    clab_name = EVAL ~b_ze04~
 	class 			= ~zealot~
-	s_Life 			= ~x~
-	s_Death 		= ~x~
-	s_Benediction 	        = ~x~
-	s_Destruction 	        = ~ranger~
-	s_Protection 	        = ~ranger~
-	s_War 			= ~ranger~
-	s_Exploration   = ~x~
-	s_Knowledge 	        = ~ranger~
-	s_Deception 	        = ~x~
-	s_Thought 		= ~x~
-	s_Dread 		= ~ranger~
-	s_Vigor 		= ~ranger~
-	s_Affliction 	        = ~ranger~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~ranger~
-	s_Light 		= ~x~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~x~
-	s_Perdition     = ~x~
  END
 
 //___________________________________________________________________________________
@@ -991,10 +866,8 @@ END
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
-COPY_EXISTING ~kitlist.2da~ ~override~
-	COUNT_2DA_ROWS 1 rows
-	READ_2DA_ENTRY (%rows% - 1) 5 1 clab
-BUT_ONLY
+LAM zealot_kossuth_spheres
+
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -1019,31 +892,8 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	u_bows 				= 2
 	u_crossbows 		= 2
   STR_VAR
-    clab_name = EVAL ~%clab%~
+    clab_name = EVAL ~b_koss~
 	class 			= ~zealot~
-	s_Life 			= ~x~
-	s_Death 		= ~x~
-	s_Benediction 	        = ~x~
-	s_Destruction 	        = ~ranger~
-	s_Protection 	        = ~ranger~
-	s_War 			= ~ranger~
-	s_Exploration   = ~x~
-	s_Knowledge 	        = ~ranger~
-	s_Deception 	        = ~x~
-	s_Thought 		= ~x~
-	s_Dread 		= ~ranger~
-	s_Vigor 		= ~ranger~
-	s_Affliction 	        = ~ranger~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~ranger~
-	s_Light 		= ~x~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~x~
-	s_Perdition     = ~x~
  END
 
 END
@@ -1176,10 +1026,8 @@ END
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
-COPY_EXISTING ~kitlist.2da~ ~override~
-	COUNT_2DA_ROWS 1 rows
-	READ_2DA_ENTRY (%rows% - 1) 5 1 clab
-BUT_ONLY
+LAM zealot_ilmater_spheres
+
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -1204,31 +1052,8 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	u_bows 				= 2
 	u_crossbows 		= 2
   STR_VAR
-    clab_name = EVAL ~%clab%~
+    clab_name = EVAL ~b_ze05~
 	class 			= ~zealot~
-	s_Life 			= ~ranger~
-	s_Death 		= ~x~
-	s_Benediction 	        = ~ranger~
-	s_Destruction 	        = ~ranger~
-	s_Protection 	        = ~ranger~
-	s_War 			= ~ranger~
-	s_Exploration   = ~x~
-	s_Knowledge 	        = ~ranger~
-	s_Deception 	        = ~x~
-	s_Thought 		= ~x~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~ranger~
-	s_Affliction 	        = ~ranger~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~x~
-	s_Light 		= ~x~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~x~
-	s_Perdition     = ~x~
  END
 
 //___________________________________________________________________________________
@@ -1331,10 +1156,8 @@ COPY ~faiths_and_powers/kits/zealots/865_ilmater/component_2/b_zilm.spl~ ~overri
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
-COPY_EXISTING ~kitlist.2da~ ~override~
-	COUNT_2DA_ROWS 1 rows
-	READ_2DA_ENTRY (%rows% - 1) 5 1 clab
-BUT_ONLY
+LAM zealot_ilmater_spheres
+
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -1359,31 +1182,8 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	u_bows 				= 2
 	u_crossbows 		= 2
   STR_VAR
-    clab_name = EVAL ~%clab%~
+    clab_name = EVAL ~b_zilm~
 	class 			= ~zealot~
-	s_Life 			= ~ranger~
-	s_Death 		= ~x~
-	s_Benediction 	        = ~ranger~
-	s_Destruction 	        = ~ranger~
-	s_Protection 	        = ~ranger~
-	s_War 			= ~ranger~
-	s_Exploration   = ~x~
-	s_Knowledge 	        = ~ranger~
-	s_Deception 	        = ~x~
-	s_Thought 		= ~x~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~ranger~
-	s_Affliction 	        = ~ranger~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~x~
-	s_Light 		= ~x~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~x~
-	s_Perdition     = ~x~
  END
 
 END
@@ -1518,10 +1318,8 @@ END
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
-COPY_EXISTING ~kitlist.2da~ ~override~
-	COUNT_2DA_ROWS 1 rows
-	READ_2DA_ENTRY (%rows% - 1) 5 1 clab
-BUT_ONLY
+LAM zealot_garagos_spheres
+
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -1546,31 +1344,8 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	u_bows 				= 2
 	u_crossbows 		= 2
   STR_VAR
-    clab_name = EVAL ~%clab%~
+    clab_name = EVAL ~b_ze06~
 	class 			= ~zealot~
-	s_Life 			= ~ranger~
-	s_Death 		= ~x~
-	s_Benediction 	        = ~ranger~
-	s_Destruction 	        = ~ranger~
-	s_Protection 	        = ~ranger~
-	s_War 			= ~ranger~
-	s_Exploration   = ~x~
-	s_Knowledge 	        = ~x~
-	s_Deception 	        = ~x~
-	s_Thought 		= ~x~
-	s_Dread 		= ~ranger~
-	s_Vigor 		= ~ranger~
-	s_Affliction 	        = ~x~
-	s_Animal 		= ~ranger~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~x~
-	s_Light 		= ~x~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~x~
-	s_Perdition     = ~x~
  END
 
 //___________________________________________________________________________________
@@ -1675,10 +1450,8 @@ END
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
-COPY_EXISTING ~kitlist.2da~ ~override~
-	COUNT_2DA_ROWS 1 rows
-	READ_2DA_ENTRY (%rows% - 1) 5 1 clab
-BUT_ONLY
+LAM zealot_garagos_spheres
+
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -1703,31 +1476,8 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	u_bows 				= 2
 	u_crossbows 		= 2
   STR_VAR
-    clab_name = EVAL ~%clab%~
+    clab_name = EVAL ~b_gara~
 	class 			= ~zealot~
-	s_Life 			= ~ranger~
-	s_Death 		= ~x~
-	s_Benediction 	        = ~ranger~
-	s_Destruction 	        = ~ranger~
-	s_Protection 	        = ~ranger~
-	s_War 			= ~ranger~
-	s_Exploration   = ~x~
-	s_Knowledge 	        = ~x~
-	s_Deception 	        = ~x~
-	s_Thought 		= ~x~
-	s_Dread 		= ~ranger~
-	s_Vigor 		= ~ranger~
-	s_Affliction 	        = ~x~
-	s_Animal 		= ~ranger~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~x~
-	s_Light 		= ~x~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~x~
-	s_Perdition     = ~x~
  END
 
 END
@@ -1860,10 +1610,8 @@ END
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
-COPY_EXISTING ~kitlist.2da~ ~override~
-	COUNT_2DA_ROWS 1 rows
-	READ_2DA_ENTRY (%rows% - 1) 5 1 clab
-BUT_ONLY
+LAM zealot_corellon_spheres
+
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -1888,31 +1636,8 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	u_bows 				= 2
 	u_crossbows 		= 2
   STR_VAR
-    clab_name = EVAL ~%clab%~
+    clab_name = EVAL ~b_ze07~
 	class 			= ~zealot~
-	s_Life 			= ~ranger~
-	s_Death 		= ~x~
-	s_Benediction 	        = ~ranger~
-	s_Destruction 	        = ~x~
-	s_Protection 	        = ~ranger~
-	s_War 			= ~ranger~
-	s_Exploration   = ~x~
-	s_Knowledge 	        = ~ranger~
-	s_Deception 	        = ~x~
-	s_Thought 		= ~x~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~ranger~
-	s_Affliction 	        = ~ranger~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~x~
-	s_Light 		= ~x~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~ranger~
-	s_Perdition     = ~x~
  END
 
 //___________________________________________________________________________________
@@ -2015,10 +1740,8 @@ COPY ~faiths_and_powers/kits/zealots/867_corellon/component_2/b_zcor.spl~ ~overr
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
-COPY_EXISTING ~kitlist.2da~ ~override~
-	COUNT_2DA_ROWS 1 rows
-	READ_2DA_ENTRY (%rows% - 1) 5 1 clab
-BUT_ONLY
+LAM zealot_corellon_spheres
+
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -2043,31 +1766,8 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	u_bows 				= 2
 	u_crossbows 		= 2
   STR_VAR
-    clab_name = EVAL ~%clab%~
+    clab_name = EVAL ~b_zcor~
 	class 			= ~zealot~
-	s_Life 			= ~ranger~
-	s_Death 		= ~x~
-	s_Benediction 	        = ~ranger~
-	s_Destruction 	        = ~x~
-	s_Protection 	        = ~ranger~
-	s_War 			= ~ranger~
-	s_Exploration   = ~x~
-	s_Knowledge 	        = ~ranger~
-	s_Deception 	        = ~x~
-	s_Thought 		= ~x~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~ranger~
-	s_Affliction 	        = ~ranger~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~x~
-	s_Light 		= ~x~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~ranger~
-	s_Perdition     = ~x~
  END
 
 END
@@ -2202,10 +1902,8 @@ END
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
-COPY_EXISTING ~kitlist.2da~ ~override~
-	COUNT_2DA_ROWS 1 rows
-	READ_2DA_ENTRY (%rows% - 1) 5 1 clab
-BUT_ONLY
+LAM zealot_sune_spheres
+
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -2230,31 +1928,8 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	u_bows 				= 2
 	u_crossbows 		= 2
   STR_VAR
-    clab_name = EVAL ~%clab%~
+    clab_name = EVAL ~b_ze08~
 	class 			= ~zealot~
-	s_Life 			= ~ranger~
-	s_Death 		= ~x~
-	s_Benediction 	        = ~ranger~
-	s_Destruction 	        = ~x~
-	s_Protection 	        = ~ranger~
-	s_War 			= ~x~
-	s_Exploration   = ~x~
-	s_Knowledge 	        = ~ranger~
-	s_Deception 	        = ~ranger~
-	s_Thought 		= ~ranger~
-	s_Dread 		= ~ranger~
-	s_Vigor 		= ~ranger~
-	s_Affliction 	        = ~x~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~x~
-	s_Light 		= ~x~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~x~
-	s_Perdition     = ~x~
  END
 
 //___________________________________________________________________________________
@@ -2355,10 +2030,8 @@ COPY ~faiths_and_powers/kits/zealots/868_sune/component_2/b_zsun.spl~ ~override~
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
-COPY_EXISTING ~kitlist.2da~ ~override~
-	COUNT_2DA_ROWS 1 rows
-	READ_2DA_ENTRY (%rows% - 1) 5 1 clab
-BUT_ONLY
+LAM zealot_sune_spheres
+
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -2383,31 +2056,8 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	u_bows 				= 2
 	u_crossbows 		= 2
   STR_VAR
-    clab_name = EVAL ~%clab%~
+    clab_name = EVAL ~b_zsun~
 	class 			= ~zealot~
-	s_Life 			= ~ranger~
-	s_Death 		= ~x~
-	s_Benediction 	        = ~ranger~
-	s_Destruction 	        = ~x~
-	s_Protection 	        = ~ranger~
-	s_War 			= ~x~
-	s_Exploration   = ~x~
-	s_Knowledge 	        = ~ranger~
-	s_Deception 	        = ~ranger~
-	s_Thought 		= ~ranger~
-	s_Dread 		= ~ranger~
-	s_Vigor 		= ~ranger~
-	s_Affliction 	        = ~x~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~x~
-	s_Light 		= ~x~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~x~
-	s_Perdition     = ~x~
  END
 
 END
@@ -2558,10 +2208,8 @@ END
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
-COPY_EXISTING ~kitlist.2da~ ~override~
-	COUNT_2DA_ROWS 1 rows
-	READ_2DA_ENTRY (%rows% - 1) 5 1 clab
-BUT_ONLY
+LAM zealot_mystra_spheres
+
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -2586,31 +2234,8 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	u_bows 				= 2
 	u_crossbows 		= 2
   STR_VAR
-    clab_name = EVAL ~%clab%~
+    clab_name = EVAL ~b_ze09~
 	class 			= ~zealot~
-	s_Life 			= ~ranger~
-	s_Death 		= ~x~
-	s_Benediction 	        = ~ranger~
-	s_Destruction 	        = ~ranger~
-	s_Protection 	        = ~ranger~
-	s_War 			= ~ranger~
-	s_Exploration   = ~x~
-	s_Knowledge 	        = ~ranger~
-	s_Deception 	        = ~x~
-	s_Thought 		= ~x~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~ranger~
-	s_Affliction 	        = ~ranger~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~x~
-	s_Light 		= ~x~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~x~
-	s_Perdition     = ~x~
  END
 
 //___________________________________________________________________________________
@@ -2711,10 +2336,8 @@ COPY ~faiths_and_powers/kits/zealots/869_mystra/component_2/b_zmys.spl~ ~overrid
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
-COPY_EXISTING ~kitlist.2da~ ~override~
-	COUNT_2DA_ROWS 1 rows
-	READ_2DA_ENTRY (%rows% - 1) 5 1 clab
-BUT_ONLY
+LAM zealot_mystra_spheres
+
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -2739,31 +2362,8 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	u_bows 				= 2
 	u_crossbows 		= 2
   STR_VAR
-    clab_name = EVAL ~%clab%~
+    clab_name = EVAL ~b_zmys~
 	class 			= ~zealot~
-	s_Life 			= ~ranger~
-	s_Death 		= ~x~
-	s_Benediction 	        = ~ranger~
-	s_Destruction 	        = ~ranger~
-	s_Protection 	        = ~ranger~
-	s_War 			= ~ranger~
-	s_Exploration   = ~x~
-	s_Knowledge 	        = ~ranger~
-	s_Deception 	        = ~x~
-	s_Thought 		= ~x~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~ranger~
-	s_Affliction 	        = ~ranger~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~x~
-	s_Light 		= ~x~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~x~
-	s_Perdition     = ~x~
  END
 
 END
@@ -2896,10 +2496,8 @@ END
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
-COPY_EXISTING ~kitlist.2da~ ~override~
-	COUNT_2DA_ROWS 1 rows
-	READ_2DA_ENTRY (%rows% - 1) 5 1 clab
-BUT_ONLY
+LAM zealot_eilistraee_spheres
+
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -2924,31 +2522,8 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	u_bows 				= 2
 	u_crossbows 		= 2
   STR_VAR
-    clab_name = EVAL ~%clab%~
+    clab_name = EVAL ~b_ze10~
 	class 			= ~zealot~
-	s_Life 			= ~ranger~
-	s_Death 		= ~x~
-	s_Benediction 	        = ~ranger~
-	s_Destruction 	        = ~x~
-	s_Protection 	        = ~ranger~
-	s_War 			= ~x~
-	s_Exploration   = ~x~
-	s_Knowledge 	        = ~ranger~
-	s_Deception 	        = ~x~
-	s_Thought 		= ~ranger~
-	s_Dread 		= ~ranger~
-	s_Vigor 		= ~x~
-	s_Affliction 	        = ~x~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~x~
-	s_Light 		= ~ranger~
-	s_Shadow 		= ~ranger~
-	s_Magic 		= ~x~
-	s_Perdition     = ~x~
  END
 
 //___________________________________________________________________________________
@@ -3049,11 +2624,9 @@ COPY ~faiths_and_powers/kits/zealots/870_eilistraee/component_2/b_zeil.spl~ ~ove
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
-COPY_EXISTING ~kitlist.2da~ ~override~
-	COUNT_2DA_ROWS 1 rows
-	READ_2DA_ENTRY (%rows% - 1) 5 1 clab
-BUT_ONLY
-LAF ~DEFINE_FNP_KIT_INFO~
+LAM zealot_eilistraee_spheres
+
+ LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
 	u_chain_armor 		= 0
@@ -3077,31 +2650,8 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	u_bows 				= 2
 	u_crossbows 		= 2
   STR_VAR
-    clab_name = EVAL ~%clab%~
+    clab_name = EVAL ~b_zeil~
 	class 			= ~zealot~
-	s_Life 			= ~ranger~
-	s_Death 		= ~x~
-	s_Benediction 	        = ~ranger~
-	s_Destruction 	        = ~x~
-	s_Protection 	        = ~ranger~
-	s_War 			= ~x~
-	s_Exploration   = ~x~
-	s_Knowledge 	        = ~ranger~
-	s_Deception 	        = ~x~
-	s_Thought 		= ~ranger~
-	s_Dread 		= ~ranger~
-	s_Vigor 		= ~x~
-	s_Affliction 	        = ~x~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~x~
-	s_Light 		= ~ranger~
-	s_Shadow 		= ~ranger~
-	s_Magic 		= ~x~
-	s_Perdition     = ~x~
  END
 
 END

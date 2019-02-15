@@ -136,6 +136,8 @@ END
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM mystic_earth_spheres
+
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -162,29 +164,6 @@ END
   STR_VAR
     clab_name 		= ~d5mear~
 	class 			= ~mystic~
-	s_Life 			= ~major~
-	s_Death 		= ~x~
-	s_Benediction 	= ~x~
-	s_Destruction 	= ~x~
-	s_Protection 	= ~major~
-	s_War 			= ~x~
-	s_Exploration   = ~minor~
-	s_Knowledge 	= ~minor~
-	s_Deception 	= ~x~
-	s_Thought 		= ~x~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~major~
-	s_Affliction 	= ~minor~
-	s_Animal 		= ~x~
-	s_Plant 		= ~major~
-	s_Earth 		= ~focus~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~x~
-	s_Light 		= ~x~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~major~
-	s_Perdition     = ~x~
  END
 
 //___________________________________________________________________________________
@@ -282,6 +261,8 @@ END
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM mystic_warrior_earth_spheres
+
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -308,29 +289,6 @@ END
   STR_VAR
     clab_name 		= ~d5mear2~
 	class 			= ~mystic~
-	s_Life 			= ~major~
-	s_Death 		= ~x~
-	s_Benediction 	= ~x~
-	s_Destruction 	= ~x~
-	s_Protection 	= ~major~
-	s_War 			= ~x~
-	s_Exploration   = ~minor~
-	s_Knowledge 	= ~minor~
-	s_Deception 	= ~x~
-	s_Thought 		= ~x~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~major~
-	s_Affliction 	= ~minor~
-	s_Animal 		= ~x~
-	s_Plant 		= ~major~
-	s_Earth 		= ~focus~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~x~
-	s_Light 		= ~x~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~major~
-	s_Perdition     = ~x~
  END
 //__________________________________________________________________________________
 
@@ -466,6 +424,8 @@ COPY ~faiths_and_powers/kits/misc/d5disp7.spl~ ~override~
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM mystic_water_spheres
+
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -492,29 +452,6 @@ COPY ~faiths_and_powers/kits/misc/d5disp7.spl~ ~override~
   STR_VAR
     clab_name 		= ~d5mwat~
 	class 			= ~mystic~
-	s_Life 			= ~major~
-	s_Death 		= ~x~
-	s_Benediction 	= ~x~
-	s_Destruction 	= ~x~
-	s_Protection 	= ~x~
-	s_War 			= ~x~
-	s_Exploration   = ~minor~
-	s_Knowledge 	= ~x~
-	s_Deception 	= ~minor~
-	s_Thought 		= ~x~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~major~
-	s_Affliction 	= ~major~
-	s_Animal 		= ~minor~
-	s_Plant 		= ~minor~
-	s_Earth 		= ~x~
-	s_Water 		= ~focus~
-	s_Air 			= ~x~
-	s_Fire 			= ~x~
-	s_Light 		= ~x~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~major~
-	s_Perdition     = ~x~
  END
 
 //__________________________________________________________________________________
@@ -613,6 +550,8 @@ END
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM mystic_warrior_water_spheres
+
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -639,29 +578,6 @@ END
   STR_VAR
     clab_name 		= ~d5mwat2~
 	class 			= ~mystic~
-	s_Life 			= ~major~
-	s_Death 		= ~x~
-	s_Benediction 	= ~x~
-	s_Destruction 	= ~x~
-	s_Protection 	= ~x~
-	s_War 			= ~x~
-	s_Exploration   = ~minor~
-	s_Knowledge 	= ~x~
-	s_Deception 	= ~minor~
-	s_Thought 		= ~x~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~major~
-	s_Affliction 	= ~major~
-	s_Animal 		= ~minor~
-	s_Plant 		= ~minor~
-	s_Earth 		= ~x~
-	s_Water 		= ~focus~
-	s_Air 			= ~x~
-	s_Fire 			= ~x~
-	s_Light 		= ~x~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~major~
-	s_Perdition     = ~x~
  END
 //__________________________________________________________________________________
 
@@ -798,6 +714,8 @@ COPY ~faiths_and_powers/kits/misc/d5disp7.spl~ ~override~
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM mystic_air_spheres
+
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -824,29 +742,6 @@ COPY ~faiths_and_powers/kits/misc/d5disp7.spl~ ~override~
   STR_VAR
     clab_name 		= ~d5mair~
 	class 			= ~mystic~
-	s_Life 			= ~major~
-	s_Death 		= ~x~
-	s_Benediction 	= ~x~
-	s_Destruction 	= ~x~
-	s_Protection 	= ~minor~
-	s_War 			= ~x~
-	s_Exploration   = ~major~
-	s_Knowledge 	= ~major~
-	s_Deception 	= ~x~
-	s_Thought 		= ~minor~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~major~
-	s_Affliction 	= ~x~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~focus~
-	s_Fire 			= ~x~
-	s_Light 		= ~minor~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~major~
-	s_Perdition     = ~x~
  END
 
 //__________________________________________________________________________________
@@ -945,6 +840,8 @@ END
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM mystic_warrior_air_spheres
+
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -971,29 +868,6 @@ END
   STR_VAR
     clab_name 		= ~d5mair2~
 	class 			= ~mystic~
-	s_Life 			= ~major~
-	s_Death 		= ~x~
-	s_Benediction 	= ~x~
-	s_Destruction 	= ~x~
-	s_Protection 	= ~minor~
-	s_War 			= ~x~
-	s_Exploration   = ~major~
-	s_Knowledge 	= ~major~
-	s_Deception 	= ~x~
-	s_Thought 		= ~minor~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~major~
-	s_Affliction 	= ~x~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~focus~
-	s_Fire 			= ~x~
-	s_Light 		= ~minor~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~major~
-	s_Perdition     = ~x~
  END
 //__________________________________________________________________________________
 
@@ -1138,6 +1012,8 @@ END
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM mystic_fire_spheres
+
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -1164,29 +1040,6 @@ END
   STR_VAR
     clab_name 		= ~d5mfir~
 	class 			= ~mystic~
-	s_Life 			= ~major~
-	s_Death 		= ~x~
-	s_Benediction 	= ~x~
-	s_Destruction 	= ~minor~
-	s_Protection 	= ~major~
-	s_War 			= ~x~
-	s_Exploration   = ~minor~
-	s_Knowledge 	= ~x~
-	s_Deception 	= ~x~
-	s_Thought 		= ~x~
-	s_Dread 		= ~minor~
-	s_Vigor 		= ~minor~
-	s_Affliction 	= ~x~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~focus~
-	s_Light 		= ~major~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~major~
-	s_Perdition     = ~x~
  END
 
 //__________________________________________________________________________________
@@ -1285,6 +1138,8 @@ END
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM mystic_warrior_fire_spheres
+
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -1311,29 +1166,6 @@ END
   STR_VAR
     clab_name 		= ~d5mfir2~
 	class 			= ~mystic~
-	s_Life 			= ~major~
-	s_Death 		= ~x~
-	s_Benediction 	= ~x~
-	s_Destruction 	= ~minor~
-	s_Protection 	= ~major~
-	s_War 			= ~x~
-	s_Exploration   = ~minor~
-	s_Knowledge 	= ~x~
-	s_Deception 	= ~x~
-	s_Thought 		= ~x~
-	s_Dread 		= ~minor~
-	s_Vigor 		= ~minor~
-	s_Affliction 	= ~x~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~focus~
-	s_Light 		= ~major~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~major~
-	s_Perdition     = ~x~
  END
 //__________________________________________________________________________________
 
@@ -1472,6 +1304,8 @@ COPY ~faiths_and_powers/kits/misc/d5disp7.spl~ ~override~
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM mystic_light_spheres
+
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -1498,29 +1332,6 @@ COPY ~faiths_and_powers/kits/misc/d5disp7.spl~ ~override~
   STR_VAR
     clab_name 		= ~d5mlig~
 	class 			= ~mystic~
-	s_Life 			= ~major~
-	s_Death 		= ~x~
-	s_Benediction 	= ~x~
-	s_Destruction 	= ~x~
-	s_Protection 	= ~major~
-	s_War 			= ~x~
-	s_Exploration   = ~minor~
-	s_Knowledge 	= ~minor~
-	s_Deception 	= ~major~
-	s_Thought 		= ~x~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~minor~
-	s_Affliction 	= ~x~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~minor~
-	s_Fire 			= ~minor~
-	s_Light 		= ~focus~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~major~
-	s_Perdition     = ~x~
  END
 
 //__________________________________________________________________________________
@@ -1619,6 +1430,8 @@ END
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM mystic_warrior_light_spheres
+
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -1803,6 +1616,8 @@ COPY ~faiths_and_powers/kits/misc/d5disp7.spl~ ~override~
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM mystic_shadow_spheres
+
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -1829,29 +1644,6 @@ COPY ~faiths_and_powers/kits/misc/d5disp7.spl~ ~override~
   STR_VAR
     clab_name 		= ~d5mshd~
 	class 			= ~mystic~
-	s_Life 			= ~minor~
-	s_Death 		= ~x~
-	s_Benediction 	= ~x~
-	s_Destruction 	= ~x~
-	s_Protection 	= ~x~
-	s_War 			= ~x~
-	s_Exploration   = ~minor~
-	s_Knowledge 	= ~minor~
-	s_Deception 	= ~minor~
-	s_Thought 		= ~major~
-	s_Dread 		= ~major~
-	s_Vigor 		= ~major~
-	s_Affliction 	= ~x~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~x~
-	s_Light 		= ~x~
-	s_Shadow 		= ~focus~
-	s_Magic 		= ~major~
-	s_Perdition     = ~x~
  END
 
 //__________________________________________________________________________________
@@ -1950,6 +1742,8 @@ END
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM mystic_warrior_shadow_spheres
+
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -1976,29 +1770,6 @@ END
   STR_VAR
     clab_name 		= ~d5mshd2~
 	class 			= ~mystic~
-	s_Life 			= ~minor~
-	s_Death 		= ~x~
-	s_Benediction 	= ~x~
-	s_Destruction 	= ~x~
-	s_Protection 	= ~x~
-	s_War 			= ~x~
-	s_Exploration   = ~minor~
-	s_Knowledge 	= ~minor~
-	s_Deception 	= ~minor~
-	s_Thought 		= ~major~
-	s_Dread 		= ~major~
-	s_Vigor 		= ~major~
-	s_Affliction 	= ~x~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~x~
-	s_Light 		= ~x~
-	s_Shadow 		= ~focus~
-	s_Magic 		= ~major~
-	s_Perdition     = ~x~
  END
 
 //__________________________________________________________________________________

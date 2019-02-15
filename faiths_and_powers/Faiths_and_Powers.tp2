@@ -2,7 +2,7 @@ BACKUP ~faiths_and_powers/backup~
 AUTHOR ~SubtleD and Grammarsalad~
 
 
-VERSION ~0.75.23~
+VERSION ~0.75.24~
 
 
 //README ~faiths_and_powers/readme-pnp.html~
@@ -117,17 +117,47 @@ DEPRECATED @18
 
 BEGIN @102 // all the new kits, and kits in menus
 DESIGNATED 102
-SUBCOMPONENT @100 /*(GAME_IS ~bgee bg2ee eet~)*/
+SUBCOMPONENT @100 /*(GAME_IS ~bgee bg2ee eet iwdee~)*/
 
+//determine which sphere system to use______________________________________________
+//
 LAM d5_sphere_system
 
-//Acolyte Lore (added to clabs)
+ACTION_IF (%d5_use_spheres% = 1) BEGIN
+  LAM d5_2E_spheres
+  ACTION_IF (FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~) BEGIN
+	  INCLUDE ~override/fnp_sphere_list.tpa~
+  END
+  ACTION_IF !(FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~) BEGIN
+	ACTION_IF (%d5_2E_spheres% = 1) BEGIN
+	  COPY ~faiths_and_powers/lib/sphere_list_2E.tpa~ ~override/fnp_sphere_list.tpa~
+	  INCLUDE ~override/fnp_sphere_list.tpa~
+	END
+	ACTION_IF (%d5_2E_spheres% = 0) BEGIN
+	  ACTION_IF NOT FILE_EXISTS_IN_GAME ~dvsrv4here.mrk~ BEGIN
+		INCLUDE ~faiths_and_powers/lib/sphere_list_base.tpa~
+	  END
+	  ACTION_IF FILE_EXISTS_IN_GAME ~dvsrv4here.mrk~ THEN BEGIN
+		ACTION_IF GAME_IS ~iwdee~ BEGIN
+		  INCLUDE ~faiths_and_powers/lib/sphere_list_iwd_sr.tpa~
+		END
+		ELSE BEGIN
+		  INCLUDE ~faiths_and_powers/lib/sphere_list_sr.tpa~
+		END
+	  END
+	END
+  END
+END	
+//__________________________________________________________________________________
+
+//Acolyte Lore (added to clabs)_____________________________________________________
+//
 COPY ~faiths_and_powers/kits/acolytes/B_LOR.spl~ ~override~
+//__________________________________________________________________________________
 
 //copy marker files_________________________________________________________________
 //
 COPY ~faiths_and_powers/lib/markers/d5_menu.d5~ ~override~
-COPY ~faiths_and_powers/lib/markers/d5_deity.d5~ ~override~
 //__________________________________________________________________________________
 
 //read in kit functions_____________________________________________________________
@@ -926,6 +956,32 @@ SUBCOMPONENT @100
 //copy marker file__________________________________________________________________
 //
 COPY ~faiths_and_powers/lib/markers/d5_nada.d5~ ~override~
+//__________________________________________________________________________________
+
+//determine which sphere system to use______________________________________________
+//
+  LAM d5_2E_spheres
+  ACTION_IF (FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~) BEGIN
+	  INCLUDE ~override/fnp_sphere_list.tpa~
+  END
+  ACTION_IF !(FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~) BEGIN
+	ACTION_IF (%d5_2E_spheres% = 1) BEGIN
+	  COPY ~faiths_and_powers/lib/sphere_list_2E.tpa~ ~override/fnp_sphere_list.tpa~
+	END
+	ACTION_IF (%d5_2E_spheres% = 0) BEGIN
+	  ACTION_IF NOT FILE_EXISTS_IN_GAME ~dvsrv4here.mrk~ BEGIN
+		INCLUDE ~faiths_and_powers/lib/sphere_list_base.tpa~
+	  END
+	  ACTION_IF FILE_EXISTS_IN_GAME ~dvsrv4here.mrk~ THEN BEGIN
+		ACTION_IF GAME_IS ~iwdee~ BEGIN
+		  INCLUDE ~faiths_and_powers/lib/sphere_list_iwd_sr.tpa~
+		END
+		ELSE BEGIN
+		  INCLUDE ~faiths_and_powers/lib/sphere_list_sr.tpa~
+		END
+	  END
+	END
+  END
 //__________________________________________________________________________________
 
 //run the sphere system______________________________________________________________

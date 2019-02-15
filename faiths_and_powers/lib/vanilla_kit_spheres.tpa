@@ -7,10 +7,10 @@
 
 DEFINE_ACTION_FUNCTION vanilla_kit_spheres BEGIN
 
-ACTION_IF FILE_EXISTS_IN_GAME ~clabshgs.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
-ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~d5_class.2da~ ~clabshgs~)) BEGIN
+ACTION_IF FILE_EXISTS_IN_GAME ~clabshgs.2da~ BEGIN
+ LAM vanilla_shaman_spheres
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -37,38 +37,14 @@ ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~d5_class.2da~ ~clabshgs~)) BEGIN
   STR_VAR
     clab_name 		= ~clabshgs~
 	class 			= ~shaman~
-	s_Life 			= ~minor~
-	s_Death 		= ~x~
-	s_Benediction 	= ~x~
-	s_Destruction 	= ~x~
-	s_Protection 	= ~x~
-	s_War 			= ~x~
-	s_Exploration   = ~x~
-	s_Knowledge 	= ~x~
-	s_Deception 	= ~x~
-	s_Thought 		= ~x~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~x~
-	s_Affliction 	= ~x~
-	s_Animal 		= ~major~
-	s_Plant 		= ~major~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~x~
-	s_Light 		= ~x~
-	s_Shadow 		= ~major~
-	s_Magic 		= ~x~
-	s_Perdition     = ~major~
  END
 END
 //__________________________________________________________________________________
-END
 
-ACTION_IF FILE_EXISTS_IN_GAME ~clabsh01.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
-ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~d5_class.2da~ ~clabsh01~)) BEGIN
+ACTION_IF FILE_EXISTS_IN_GAME ~clabsh01.2da~ BEGIN
+ LAM vanilla_shaman_spheres
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -95,40 +71,16 @@ ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~d5_class.2da~ ~clabsh01~)) BEGIN
  STR_VAR
     clab_name 		= ~clabsh01~
 	class 			= ~shaman~
-	s_Life 			= ~minor~
-	s_Death 		= ~x~
-	s_Benediction 	= ~x~
-	s_Destruction 	= ~x~
-	s_Protection 	= ~x~
-	s_War 			= ~x~
-	s_Exploration   = ~x~
-	s_Knowledge 	= ~x~
-	s_Deception 	= ~x~
-	s_Thought 		= ~x~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~x~
-	s_Affliction 	= ~x~
-	s_Animal 		= ~major~
-	s_Plant 		= ~major~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~x~
-	s_Light 		= ~x~
-	s_Shadow 		= ~major~
-	s_Magic 		= ~x~
-	s_Perdition     = ~major~
  END
 END
 //__________________________________________________________________________________
-END
 
-ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5_deity.d5~ BEGIN
+//ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5_deity.d5~ BEGIN
 
-ACTION_IF FILE_EXISTS_IN_GAME ~clabpr01.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
-ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~d5_class.2da~ ~clabpr01~)) BEGIN
+ACTION_IF FILE_EXISTS_IN_GAME ~clabpr01.2da~ BEGIN
+ LAM vanilla_cleric_spheres
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -155,38 +107,14 @@ ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~d5_class.2da~ ~clabpr01~)) BEGIN
   STR_VAR
     clab_name 		= ~clabpr01~
 	class 			= ~cleric~
-	s_Life 			= ~major~
-	s_Death 		= ~minor~
-	s_Benediction 	= ~major~
-	s_Destruction 	= ~major~
-	s_Protection 	= ~major~
-	s_War 			= ~minor~
-	s_Exploration   = ~minor~
-	s_Knowledge 	= ~major~
-	s_Deception 	= ~x~
-	s_Thought 		= ~minor~
-	s_Dread 		= ~major~
-	s_Vigor 		= ~minor~
-	s_Affliction 	= ~x~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~minor~
-	s_Light 		= ~major~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~minor~
-	s_Perdition     = ~x~
  END
 END
 //__________________________________________________________________________________
-END
 
-ACTION_IF FILE_EXISTS_IN_GAME ~clabpr02.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
-ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~d5_class.2da~ ~clabpr02~)) BEGIN
+ACTION_IF FILE_EXISTS_IN_GAME ~clabpr02.2da~ BEGIN
+ LAM vanilla_cleric_talos_spheres
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -213,38 +141,14 @@ ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~d5_class.2da~ ~clabpr02~)) BEGIN
   STR_VAR
     clab_name 		= ~clabpr02~
 	class 			= ~cleric~
-	s_Life 			= ~major~
-	s_Death 		= ~x~
-	s_Benediction 	= ~major~
-	s_Destruction 	= ~major~
-	s_Protection 	= ~major~
-	s_War 			= ~minor~
-	s_Exploration   = ~minor~
-	s_Knowledge 	= ~minor~
-	s_Deception 	= ~x~
-	s_Thought 		= ~x~
-	s_Dread 		= ~minor~
-	s_Vigor 		= ~minor~
-	s_Affliction 	= ~x~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~major~
-	s_Air 			= ~major~
-	s_Fire 			= ~x~
-	s_Light 		= ~minor~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~minor~
-	s_Perdition     = ~x~
  END
 END
 //__________________________________________________________________________________
-END
 
-ACTION_IF FILE_EXISTS_IN_GAME ~clabpr03.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
-ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~d5_class.2da~ ~clabpr03~)) BEGIN
+ACTION_IF FILE_EXISTS_IN_GAME ~clabpr03.2da~ BEGIN
+ LAM vanilla_cleric_helm_spheres
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -271,38 +175,14 @@ ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~d5_class.2da~ ~clabpr03~)) BEGIN
  STR_VAR
     clab_name 		= ~clabpr03~
 	class 			= ~cleric~
-	s_Life 			= ~major~
-	s_Death 		= ~minor~
-	s_Benediction 	= ~major~
-	s_Destruction 	= ~minor~
-	s_Protection 	= ~major~
-	s_War 			= ~major~
-	s_Exploration   = ~minor~
-	s_Knowledge 	= ~major~
-	s_Deception 	= ~x~
-	s_Thought 		= ~minor~
-	s_Dread 		= ~minor~
-	s_Vigor 		= ~major~
-	s_Affliction 	= ~x~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~x~
-	s_Light 		= ~minor~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~minor~
-	s_Perdition     = ~x~
  END
 END
 //__________________________________________________________________________________
-END
 
-ACTION_IF FILE_EXISTS_IN_GAME ~clabpr04.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
-ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~d5_class.2da~ ~clabpr04~)) BEGIN
+ACTION_IF FILE_EXISTS_IN_GAME ~clabpr04.2da~ BEGIN
+ LAM vanilla_cleric_lathander_spheres
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -329,38 +209,14 @@ ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~d5_class.2da~ ~clabpr04~)) BEGIN
   STR_VAR
     clab_name 		= ~clabpr04~
 	class 			= ~cleric~
-	s_Life 			= ~major~
-	s_Death 		= ~x~
-	s_Benediction 	= ~major~
-	s_Destruction 	= ~minor~
-	s_Protection 	= ~major~
-	s_War 			= ~minor~
-	s_Exploration   = ~minor~
-	s_Knowledge 	= ~minor~
-	s_Deception 	= ~x~
-	s_Thought 		= ~minor~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~major~
-	s_Affliction 	= ~x~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~minor~
-	s_Fire 			= ~major~
-	s_Light 		= ~major~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~minor~
-	s_Perdition     = ~x~
  END
 END
 //__________________________________________________________________________________
-END
 
-ACTION_IF FILE_EXISTS_IN_GAME ~ohtyr.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
-ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~d5_class.2da~ ~ohtyr~)) BEGIN
+ACTION_IF FILE_EXISTS_IN_GAME ~ohtyr.2da~ BEGIN
+ LAM vanilla_cleric_tyr_spheres
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -387,38 +243,48 @@ ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~d5_class.2da~ ~ohtyr~)) BEGIN
   STR_VAR
     clab_name 		= ~ohtyr~
 	class 			= ~cleric~
-	s_Life 			= ~major~
-	s_Death 		= ~minor~
-	s_Benediction 	= ~major~
-	s_Destruction 	= ~minor~
-	s_Protection 	= ~major~
-	s_War 			= ~major~
-	s_Exploration   = ~x~
-	s_Knowledge 	= ~major~
-	s_Deception 	= ~x~
-	s_Thought 		= ~minor~
-	s_Dread 		= ~minor~
-	s_Vigor 		= ~major~
-	s_Affliction 	= ~x~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~x~
-	s_Light 		= ~minor~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~minor~
-	s_Perdition     = ~x~
  END
 END
 //__________________________________________________________________________________
-END
 
-ACTION_IF FILE_EXISTS_IN_GAME ~clabdr01.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
-ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~d5_class.2da~ ~clabdr01~)) BEGIN
+ACTION_IF FILE_EXISTS_IN_GAME ~ohtempus.2da~ BEGIN
+ LAM vanilla_cleric_tempus_spheres
+ LAF ~DEFINE_FNP_KIT_INFO~
+  INT_VAR
+	u_leather_armor 	= 1
+	u_chain_armor 		= 1
+	u_plate_armor 		= 1
+	u_club_staff	 	= 1
+	u_hammers	 		= 1
+	u_maces 	 		= 1
+	u_flails 			= 1
+	u_axes 				= 0
+	u_daggers 			= 0
+	u_short_swords		= 1
+	u_long_swords		= 1
+	u_scimitars 		= 0
+	u_katanas 			= 0
+	u_bastard_swords 	= 0
+	u_2hand_swords 		= 0
+	u_halberds 			= 0
+	u_spears 	 		= 1
+	u_darts 			= 0
+	u_slings		 	= 1
+	u_bows 				= 0
+	u_crossbows 		= 1
+  STR_VAR
+    clab_name 		= ~ohtempus~
+	class 			= ~cleric~
+ END
+END
+//__________________________________________________________________________________
+
+//DEFINE SPHERE ACCESS______________________________________________________________
+//
+ACTION_IF FILE_EXISTS_IN_GAME ~clabdr01.2da~ BEGIN
+ LAM vanilla_druid_spheres
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -445,38 +311,14 @@ ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~d5_class.2da~ ~clabdr01~)) BEGIN
   STR_VAR
     clab_name 		= ~clabdr01~
 	class 			= ~druid~
-	s_Life 			= ~minor~
-	s_Death 		= ~x~
-	s_Benediction 	= ~x~
-	s_Destruction 	= ~x~
-	s_Protection 	= ~x~
-	s_War 			= ~x~
-	s_Exploration   = ~minor~
-	s_Knowledge 	= ~minor~
-	s_Deception 	= ~x~
-	s_Thought 		= ~minor~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~major~
-	s_Affliction 	= ~minor~
-	s_Animal 		= ~major~
-	s_Plant 		= ~major~
-	s_Earth 		= ~major~
-	s_Water 		= ~major~
-	s_Air 			= ~major~
-	s_Fire 			= ~minor~
-	s_Light 		= ~major~
-	s_Shadow 		= ~minor~
-	s_Magic 		= ~x~
-	s_Perdition     = ~x~
  END
 END
 //__________________________________________________________________________________
-END
 
-ACTION_IF FILE_EXISTS_IN_GAME ~clabdr02.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
-ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~d5_class.2da~ ~clabdr02~)) BEGIN
+ACTION_IF FILE_EXISTS_IN_GAME ~clabdr02.2da~ BEGIN
+ LAM vanilla_druid_totemic_spheres
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -503,38 +345,14 @@ ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~d5_class.2da~ ~clabdr02~)) BEGIN
   STR_VAR
     clab_name 		= ~clabdr02~
 	class 			= ~druid~
-	s_Life 			= ~minor~
-	s_Death 		= ~x~
-	s_Benediction 	= ~x~
-	s_Destruction 	= ~x~
-	s_Protection 	= ~x~
-	s_War 			= ~x~
-	s_Exploration   = ~minor~
-	s_Knowledge 	= ~minor~
-	s_Deception 	= ~x~
-	s_Thought 		= ~minor~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~major~
-	s_Affliction 	= ~minor~
-	s_Animal 		= ~major~
-	s_Plant 		= ~major~
-	s_Earth 		= ~major~
-	s_Water 		= ~major~
-	s_Air 			= ~major~
-	s_Fire 			= ~minor~
-	s_Light 		= ~major~
-	s_Shadow 		= ~minor~
-	s_Magic 		= ~x~
-	s_Perdition     = ~x~
  END
 END
 //__________________________________________________________________________________
-END
 
-ACTION_IF FILE_EXISTS_IN_GAME ~clabdr03.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
-ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~d5_class.2da~ ~clabdr03~)) BEGIN
+ACTION_IF FILE_EXISTS_IN_GAME ~clabdr03.2da~ BEGIN
+ LAM vanilla_shapeshifter_spheres
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -561,38 +379,14 @@ ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~d5_class.2da~ ~clabdr03~)) BEGIN
   STR_VAR
     clab_name 		= ~clabdr03~
 	class 			= ~druid~
-	s_Life 			= ~minor~
-	s_Death 		= ~x~
-	s_Benediction 	= ~x~
-	s_Destruction 	= ~x~
-	s_Protection 	= ~x~
-	s_War 			= ~x~
-	s_Exploration   = ~minor~
-	s_Knowledge 	= ~minor~
-	s_Deception 	= ~x~
-	s_Thought 		= ~minor~
-	s_Dread 		= ~minor~
-	s_Vigor 		= ~major~
-	s_Affliction 	= ~major~
-	s_Animal 		= ~focus~
-	s_Plant 		= ~major~
-	s_Earth 		= ~minor~
-	s_Water 		= ~minor~
-	s_Air 			= ~minor~
-	s_Fire 			= ~x~
-	s_Light 		= ~x~
-	s_Shadow 		= ~minor~
-	s_Magic 		= ~x~
-	s_Perdition     = ~x~
  END
 END
 //__________________________________________________________________________________
-END
 
-ACTION_IF FILE_EXISTS_IN_GAME ~clabdr04.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
-ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~d5_class.2da~ ~clabdr04~)) BEGIN
+ACTION_IF FILE_EXISTS_IN_GAME ~clabdr04.2da~ BEGIN
+ LAM vanilla_avenger_spheres
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -619,38 +413,14 @@ ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~d5_class.2da~ ~clabdr04~)) BEGIN
   STR_VAR
     clab_name 		= ~clabdr04~
 	class 			= ~druid~
-	s_Life 			= ~minor~
-	s_Death 		= ~x~
-	s_Benediction 	= ~x~
-	s_Destruction 	= ~x~
-	s_Protection 	= ~x~
-	s_War 			= ~x~
-	s_Exploration   = ~minor~
-	s_Knowledge 	= ~minor~
-	s_Deception 	= ~x~
-	s_Thought 		= ~x~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~major~
-	s_Affliction 	= ~major~
-	s_Animal 		= ~minor~
-	s_Plant 		= ~major~
-	s_Earth 		= ~major~
-	s_Water 		= ~major~
-	s_Air 			= ~major~
-	s_Fire 			= ~minor~
-	s_Light 		= ~major~
-	s_Shadow 		= ~minor~
-	s_Magic 		= ~minor~
-	s_Perdition     = ~x~
  END
 END
 //__________________________________________________________________________________
-END
 
-ACTION_IF FILE_EXISTS_IN_GAME ~clabpa01.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
-ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~d5_class.2da~ ~clabpa01~)) BEGIN
+ACTION_IF FILE_EXISTS_IN_GAME ~clabpa01.2da~ BEGIN
+ LAM vanilla_paladin_spheres
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -677,38 +447,14 @@ ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~d5_class.2da~ ~clabpa01~)) BEGIN
   STR_VAR
     clab_name 		= ~clabpa01~
 	class 			= ~champion~
-	s_Life 			= ~paladin~
-	s_Death 		= ~x~
-	s_Benediction 	= ~paladin~
-	s_Destruction 	= ~paladin~
-	s_Protection 	= ~paladin~
-	s_War 			= ~paladin~
-	s_Exploration   = ~x~
-	s_Knowledge 	= ~paladin~
-	s_Deception 	= ~x~
-	s_Thought 		= ~x~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~x~
-	s_Affliction 	= ~x~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~x~
-	s_Light 		= ~paladin~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~x~
-	s_Perdition     = ~x~
  END
 END
 //__________________________________________________________________________________
-END
 
-ACTION_IF FILE_EXISTS_IN_GAME ~clabpa02.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
-ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~d5_class.2da~ ~clabpa02~)) BEGIN
+ACTION_IF FILE_EXISTS_IN_GAME ~clabpa02.2da~ BEGIN
+ LAM vanilla_paladin_cavalier_spheres
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -735,38 +481,14 @@ ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~d5_class.2da~ ~clabpa02~)) BEGIN
   STR_VAR
     clab_name 		= ~clabpa02~
 	class 			= ~champion~
-	s_Life 			= ~paladin~
-	s_Death 		= ~x~
-	s_Benediction 	= ~paladin~
-	s_Destruction 	= ~paladin~
-	s_Protection 	= ~paladin~
-	s_War 			= ~paladin~
-	s_Exploration   = ~x~
-	s_Knowledge 	= ~paladin~
-	s_Deception 	= ~x~
-	s_Thought 		= ~x~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~x~
-	s_Affliction 	= ~x~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~x~
-	s_Light 		= ~paladin~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~x~
-	s_Perdition     = ~x~
  END
 END
 //__________________________________________________________________________________
-END
 
-ACTION_IF FILE_EXISTS_IN_GAME ~clabpa03.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
-ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~d5_class.2da~ ~clabpa03~)) BEGIN
+ACTION_IF FILE_EXISTS_IN_GAME ~clabpa03.2da~ BEGIN
+ LAM vanilla_paladin_inquisitor_spheres
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -793,38 +515,14 @@ ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~d5_class.2da~ ~clabpa03~)) BEGIN
   STR_VAR
     clab_name 		= ~clabpa03~
 	class 			= ~champion~
-	s_Life 			= ~paladin~
-	s_Death 		= ~x~
-	s_Benediction 	= ~paladin~
-	s_Destruction 	= ~x~
-	s_Protection 	= ~paladin~
-	s_War 			= ~x~
-	s_Exploration   = ~x~
-	s_Knowledge 	= ~paladin~
-	s_Deception 	= ~x~
-	s_Thought 		= ~paladin~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~x~
-	s_Affliction 	= ~x~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~x~
-	s_Light 		= ~x~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~paladin~
-	s_Perdition     = ~x~
  END
 END
 //__________________________________________________________________________________
-END
 
-ACTION_IF FILE_EXISTS_IN_GAME ~clabpa04.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
-ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~d5_class.2da~ ~clabpa04~)) BEGIN
+ACTION_IF FILE_EXISTS_IN_GAME ~clabpa04.2da~ BEGIN
+ LAM vanilla_paladin_undead_hunter_spheres
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -851,38 +549,14 @@ ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~d5_class.2da~ ~clabpa04~)) BEGIN
   STR_VAR
     clab_name 		= ~clabpa04~
 	class 			= ~champion~
-	s_Life 			= ~paladin~
-	s_Death 		= ~paladin~
-	s_Benediction 	= ~paladin~
-	s_Destruction 	= ~x~
-	s_Protection 	= ~paladin~
-	s_War 			= ~paladin~
-	s_Exploration   = ~x~
-	s_Knowledge 	= ~paladin~
-	s_Deception 	= ~x~
-	s_Thought 		= ~x~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~x~
-	s_Affliction 	= ~x~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~x~
-	s_Light 		= ~paladin~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~x~
-	s_Perdition     = ~x~
  END
 END
 //__________________________________________________________________________________
-END
 
-ACTION_IF FILE_EXISTS_IN_GAME ~clabpa05.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
-ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~d5_class.2da~ ~clabpa05~)) BEGIN
+ACTION_IF FILE_EXISTS_IN_GAME ~clabpa05.2da~ BEGIN
+ LAM vanilla_fallen_paladin_spheres
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -909,38 +583,14 @@ ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~d5_class.2da~ ~clabpa05~)) BEGIN
   STR_VAR
     clab_name 		= ~clabpa05~
 	class 			= ~champion~
-	s_Life 			= ~paladin~
-	s_Death 		= ~x~
-	s_Benediction 	= ~paladin~
-	s_Destruction 	= ~paladin~
-	s_Protection 	= ~paladin~
-	s_War 			= ~paladin~
-	s_Exploration   = ~x~
-	s_Knowledge 	= ~paladin~
-	s_Deception 	= ~x~
-	s_Thought 		= ~x~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~x~
-	s_Affliction 	= ~x~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~x~
-	s_Light 		= ~paladin~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~x~
-	s_Perdition     = ~x~
  END
 END
 //__________________________________________________________________________________
-END
 
-ACTION_IF FILE_EXISTS_IN_GAME ~clabpa06.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
-ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~d5_class.2da~ ~clabpa06~)) BEGIN
+ACTION_IF FILE_EXISTS_IN_GAME ~clabpa06.2da~ BEGIN
+ LAM vanilla_blackguard_spheres
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -967,40 +617,16 @@ ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~d5_class.2da~ ~clabpa06~)) BEGIN
   STR_VAR
     clab_name 		= ~clabpa06~
 	class 			= ~champion~
-	s_Life 			= ~x~
-	s_Death 		= ~paladin~
-	s_Benediction 	= ~x~
-	s_Destruction 	= ~paladin~
-	s_Protection 	= ~x~
-	s_War 			= ~paladin~
-	s_Exploration   = ~x~
-	s_Knowledge 	= ~paladin~
-	s_Deception 	= ~x~
-	s_Thought 		= ~x~
-	s_Dread 		= ~paladin~
-	s_Vigor 		= ~paladin~
-	s_Affliction 	= ~paladin~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~x~
-	s_Light 		= ~x~
-	s_Shadow 		= ~paladin~
-	s_Magic 		= ~x~
-	s_Perdition     = ~x~
  END
 END
 //__________________________________________________________________________________
-END
 
-END		// end if not exists d5_deity.d5
+//END		// end if not exists d5_deity.d5
 
-ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5rsorc.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
-ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~d5_class.2da~ ~clabrn01~)) BEGIN
+ACTION_IF FILE_EXISTS_IN_GAME ~clabrn01.2da~ BEGIN
+ LAM vanilla_ranger_spheres
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -1027,39 +653,14 @@ ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~d5_class.2da~ ~clabrn01~)) BEGIN
   STR_VAR
     clab_name 		= ~clabrn01~
 	class 			= ~ranger~
-	race 			= ~all~
-	s_Life 			= ~ranger~
-	s_Death 		= ~x~
-	s_Benediction 	= ~x~
-	s_Destruction 	= ~x~
-	s_Protection 	= ~ranger~
-	s_War 			= ~x~
-	s_Exploration   = ~ranger~
-	s_Knowledge 	= ~x~
-	s_Deception 	= ~x~
-	s_Thought 		= ~x~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~ranger~
-	s_Affliction 	= ~x~
-	s_Animal 		= ~ranger~
-	s_Plant 		= ~ranger~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~ranger~
-	s_Fire 			= ~x~
-	s_Light 		= ~ranger~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~x~
-	s_Perdition     = ~x~
  END
 END
 //__________________________________________________________________________________
-END
 
-ACTION_IF FILE_EXISTS_IN_GAME ~clabrn02.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
-ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~d5_class.2da~ ~clabrn02~)) BEGIN
+ACTION_IF FILE_EXISTS_IN_GAME ~clabrn02.2da~ BEGIN
+ LAM vanilla_ranger_archer_spheres
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -1086,38 +687,14 @@ ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~d5_class.2da~ ~clabrn02~)) BEGIN
   STR_VAR
     clab_name 		= ~clabrn02~
 	class 			= ~scout~
-	s_Life 			= ~ranger~
-	s_Death 		= ~x~
-	s_Benediction 	= ~x~
-	s_Destruction 	= ~x~
-	s_Protection 	= ~ranger~
-	s_War 			= ~x~
-	s_Exploration   = ~ranger~
-	s_Knowledge 	= ~x~
-	s_Deception 	= ~x~
-	s_Thought 		= ~x~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~ranger~
-	s_Affliction 	= ~x~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~ranger~
-	s_Fire 			= ~x~
-	s_Light 		= ~x~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~x~
-	s_Perdition     = ~x~
  END
 END
 //__________________________________________________________________________________
-END
 
-ACTION_IF FILE_EXISTS_IN_GAME ~clabrn03.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
-ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~d5_class.2da~ ~clabrn03~)) BEGIN
+ACTION_IF FILE_EXISTS_IN_GAME ~clabrn03.2da~ BEGIN
+ LAM vanilla_ranger_stalker_spheres
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -1144,38 +721,14 @@ ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~d5_class.2da~ ~clabrn03~)) BEGIN
   STR_VAR
     clab_name 		= ~clabrn03~
 	class 			= ~scout~
-	s_Life 			= ~x~
-	s_Death 		= ~x~
-	s_Benediction 	= ~x~
-	s_Destruction 	= ~x~
-	s_Protection 	= ~x~
-	s_War 			= ~x~
-	s_Exploration   = ~ranger~
-	s_Knowledge 	= ~x~
-	s_Deception 	= ~ranger~
-	s_Thought 		= ~ranger~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~ranger~
-	s_Affliction 	= ~x~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~ranger~
-	s_Fire 			= ~x~
-	s_Light 		= ~x~
-	s_Shadow 		= ~ranger~
-	s_Magic 		= ~x~
-	s_Perdition     = ~x~
  END
 END
 //__________________________________________________________________________________
-END
 
-ACTION_IF FILE_EXISTS_IN_GAME ~clabrn04.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
-ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~d5_class.2da~ ~clabrn04~)) BEGIN
+ACTION_IF FILE_EXISTS_IN_GAME ~clabrn04.2da~ BEGIN
+ LAM vanilla_ranger_beastmaster_spheres
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -1200,41 +753,16 @@ ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~d5_class.2da~ ~clabrn04~)) BEGIN
 	u_bows 				= 2
 	u_crossbows 		= 0
   STR_VAR
-    clab_name 		= ~CLABRN04~
+    clab_name 		= ~clabrn04~
 	class 			= ~x~
-	race 			= ~all~
-	s_Life 			= ~ranger~
-	s_Death 		= ~x~
-	s_Benediction 	= ~x~
-	s_Destruction 	= ~x~
-	s_Protection 	= ~ranger~
-	s_War 			= ~x~
-	s_Exploration   = ~ranger~
-	s_Knowledge 	= ~ranger~
-	s_Deception 	= ~x~
-	s_Thought 		= ~x~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~ranger~
-	s_Affliction 	= ~x~
-	s_Animal 		= ~ranger~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~x~
-	s_Light 		= ~x~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~x~
-	s_Perdition     = ~x~
  END
 END
 //__________________________________________________________________________________
-END
 
-ACTION_IF FILE_EXISTS_IN_GAME ~clabrn05.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
-ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~d5_class.2da~ ~clabrn05~)) BEGIN
+ACTION_IF FILE_EXISTS_IN_GAME ~clabrn05.2da~ BEGIN
+ LAM vanilla_fallen_ranger_spheres
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -1261,32 +789,8 @@ ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~d5_class.2da~ ~clabrn05~)) BEGIN
   STR_VAR
     clab_name 		= ~clabrn05~
 	class 			= ~x~
-	s_Life 			= ~ranger~
-	s_Death 		= ~x~
-	s_Benediction 	= ~x~
-	s_Destruction 	= ~x~
-	s_Protection 	= ~x~
-	s_War 			= ~x~
-	s_Exploration   = ~ranger~
-	s_Knowledge 	= ~x~
-	s_Deception 	= ~x~
-	s_Thought 		= ~x~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~ranger~
-	s_Affliction 	= ~x~
-	s_Animal 		= ~ranger~
-	s_Plant 		= ~ranger~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~ranger~
-	s_Fire 			= ~x~
-	s_Light 		= ~ranger~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~x~
-	s_Perdition     = ~x~
  END
 END
 //__________________________________________________________________________________
-END
 
 END // end function

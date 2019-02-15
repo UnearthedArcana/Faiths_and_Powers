@@ -116,6 +116,8 @@ COPY ~faiths_and_powers/kits/druids/731_forest_druid/d5drsc1.eff~ ~override~
 	  
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM druid_forest_spheres
+
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -142,29 +144,6 @@ COPY ~faiths_and_powers/kits/druids/731_forest_druid/d5drsc1.eff~ ~override~
   STR_VAR
     clab_name 		= ~d5dfor~
 	class 			= ~druid~
-	s_Life 			= ~minor~
-	s_Death 		= ~x~
-	s_Benediction 	= ~x~
-	s_Destruction 	= ~x~
-	s_Protection 	= ~x~
-	s_War 			= ~x~
-	s_Exploration   = ~minor~
-	s_Knowledge 	= ~minor~
-	s_Deception 	= ~x~
-	s_Thought 		= ~minor~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~major~
-	s_Affliction 	= ~minor~
-	s_Animal 		= ~major~
-	s_Plant 		= ~major~
-	s_Earth 		= ~major~
-	s_Water 		= ~major~
-	s_Air 			= ~major~
-	s_Fire 			= ~minor~
-	s_Light 		= ~major~
-	s_Shadow 		= ~minor~
-	s_Magic 		= ~x~
-	s_Perdition     = ~x~
  END
 
 END
@@ -231,6 +210,8 @@ COPY ~faiths_and_powers/kits/druids/732_totemic/totemic.2da~ ~override/clabdr02.
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM druid_totemic_spheres
+
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -257,29 +238,6 @@ COPY ~faiths_and_powers/kits/druids/732_totemic/totemic.2da~ ~override/clabdr02.
   STR_VAR
     clab_name 		= ~clabdr02~
 	class 			= ~druid~
-	s_Life 			= ~minor~
-	s_Death 		= ~x~
-	s_Benediction 	= ~x~
-	s_Destruction 	= ~x~
-	s_Protection 	= ~x~
-	s_War 			= ~x~
-	s_Exploration   = ~minor~
-	s_Knowledge 	= ~minor~
-	s_Deception 	= ~x~
-	s_Thought 		= ~minor~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~major~
-	s_Affliction 	= ~minor~
-	s_Animal 		= ~major~
-	s_Plant 		= ~major~
-	s_Earth 		= ~major~
-	s_Water 		= ~major~
-	s_Air 			= ~major~
-	s_Fire 			= ~minor~
-	s_Light 		= ~major~
-	s_Shadow 		= ~minor~
-	s_Magic 		= ~x~
-	s_Perdition     = ~x~
  END
 
 END
@@ -380,6 +338,8 @@ APPEND ~clabdr04.2da~ ~HIVEKEEPER   ****        GA_%spell-res%  ****        ****
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM druid_hivekeeper_spheres
+
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -406,29 +366,6 @@ APPEND ~clabdr04.2da~ ~HIVEKEEPER   ****        GA_%spell-res%  ****        ****
   STR_VAR
     clab_name 		= ~clabdr04~
 	class 			= ~druid~
-	s_Life 			= ~minor~
-	s_Death 		= ~x~
-	s_Benediction 	= ~x~
-	s_Destruction 	= ~x~
-	s_Protection 	= ~x~
-	s_War 			= ~x~
-	s_Exploration   = ~minor~
-	s_Knowledge 	= ~minor~
-	s_Deception 	= ~x~
-	s_Thought 		= ~x~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~major~
-	s_Affliction 	= ~major~
-	s_Animal 		= ~minor~
-	s_Plant 		= ~major~
-	s_Earth 		= ~major~
-	s_Water 		= ~major~
-	s_Air 			= ~major~
-	s_Fire 			= ~minor~
-	s_Light 		= ~major~
-	s_Shadow 		= ~minor~
-	s_Magic 		= ~minor~
-	s_Perdition     = ~x~
  END
 
 END
@@ -533,6 +470,8 @@ COPY ~faiths_and_powers/kits/druids/735_arctic_druid/d5drsc5.eff~ ~override~
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM druid_northern_spheres
+
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -559,29 +498,6 @@ COPY ~faiths_and_powers/kits/druids/735_arctic_druid/d5drsc5.eff~ ~override~
   STR_VAR
     clab_name 		= ~d5darc~
 	class 			= ~druid~
-	s_Life 			= ~minor~
-	s_Death 		= ~x~
-	s_Benediction 	= ~x~
-	s_Destruction 	= ~x~
-	s_Protection 	= ~x~
-	s_War 			= ~x~
-	s_Exploration   = ~major~
-	s_Knowledge 	= ~minor~
-	s_Deception 	= ~x~
-	s_Thought 		= ~minor~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~major~
-	s_Affliction 	= ~minor~
-	s_Animal 		= ~major~
-	s_Plant 		= ~minor~
-	s_Earth 		= ~major~
-	s_Water 		= ~focus~
-	s_Air 			= ~major~
-	s_Fire 			= ~minor~
-	s_Light 		= ~major~
-	s_Shadow 		= ~minor~
-	s_Magic 		= ~x~
-	s_Perdition     = ~x~
  END
 
 END
@@ -734,6 +650,8 @@ END
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM druid_shadow_spheres
+
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -760,29 +678,6 @@ END
   STR_VAR
     clab_name 		= ~d5dshad~
 	class 			= ~druid~
-	s_Life 			= ~minor~
-	s_Death 		= ~x~
-	s_Benediction 	= ~x~
-	s_Destruction 	= ~x~
-	s_Protection 	= ~x~
-	s_War 			= ~x~
-	s_Exploration   = ~minor~
-	s_Knowledge 	= ~minor~
-	s_Deception 	= ~x~
-	s_Thought 		= ~minor~
-	s_Dread 		= ~minor~
-	s_Vigor 		= ~major~
-	s_Affliction 	= ~minor~
-	s_Animal 		= ~major~
-	s_Plant 		= ~major~
-	s_Earth 		= ~major~
-	s_Water 		= ~major~
-	s_Air 			= ~major~
-	s_Fire 			= ~x~
-	s_Light 		= ~x~
-	s_Shadow 		= ~major~
-	s_Magic 		= ~x~
-	s_Perdition     = ~x~
  END
 
 END
@@ -907,6 +802,8 @@ COPY ~faiths_and_powers/kits/druids/737_gray_druid/d5drss8.eff~ ~override~
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM druid_gray_spheres
+
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -933,29 +830,6 @@ COPY ~faiths_and_powers/kits/druids/737_gray_druid/d5drss8.eff~ ~override~
   STR_VAR
     clab_name 		= ~d5dgray~
 	class 			= ~druid~
-	s_Life 			= ~minor~
-	s_Death 		= ~x~
-	s_Benediction 	= ~x~
-	s_Destruction 	= ~x~
-	s_Protection 	= ~x~
-	s_War 			= ~x~
-	s_Exploration   = ~minor~
-	s_Knowledge 	= ~minor~
-	s_Deception 	= ~x~
-	s_Thought 		= ~minor~
-	s_Dread 		= ~minor~
-	s_Vigor 		= ~major~
-	s_Affliction 	= ~minor~
-	s_Animal 		= ~major~
-	s_Plant 		= ~major~
-	s_Earth 		= ~major~
-	s_Water 		= ~major~
-	s_Air 			= ~major~
-	s_Fire 			= ~x~
-	s_Light 		= ~x~
-	s_Shadow 		= ~major~
-	s_Magic 		= ~x~
-	s_Perdition     = ~x~
  END
 
 END
@@ -1099,6 +973,8 @@ END
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM druid_lost_spheres
+
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -1125,47 +1001,12 @@ END
   STR_VAR
     clab_name 		= ~d5dlost~
 	class 			= ~druid~
-	s_Life 			= ~minor~
-	s_Death 		= ~major~
-	s_Benediction 	= ~x~
-	s_Destruction 	= ~x~
-	s_Protection 	= ~x~
-	s_War 			= ~x~
-	s_Exploration   = ~minor~
-	s_Knowledge 	= ~minor~
-	s_Deception 	= ~x~
-	s_Thought 		= ~minor~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~major~
-	s_Affliction 	= ~minor~
-	s_Animal 		= ~major~
-	s_Plant 		= ~major~
-	s_Earth 		= ~major~
-	s_Water 		= ~major~
-	s_Air 			= ~major~
-	s_Fire 			= ~minor~
-	s_Light 		= ~x~
-	s_Shadow 		= ~minor~
-	s_Magic 		= ~x~
-	s_Perdition     = ~x~
  END
 //__________________________________________________________________________________
 
 //remove spells from Life___________________________________________________________
 //
  COPY ~faiths_and_powers/kits/druids/739_lost_druid/d5drnlif.spl~ ~override~
-
-  ACTION_IF NOT FILE_EXISTS_IN_GAME ~dvsrv4here.mrk~ BEGIN
-    INCLUDE ~faiths_and_powers/lib/sphere_list_base.tpa~
-  END
-  ACTION_IF FILE_EXISTS_IN_GAME ~dvsrv4here.mrk~ THEN BEGIN
-    ACTION_IF GAME_IS ~iwdee~ BEGIN
-	  INCLUDE ~faiths_and_powers/lib/sphere_list_iwd_sr.tpa~
-    END
-    ELSE BEGIN
-	  INCLUDE ~faiths_and_powers/lib/sphere_list_sr.tpa~
-    END
-  END
 
   ACTION_PHP_EACH spellsphere AS spell => sphere BEGIN 
     ACTION_IF (~%sphere%~ STRING_EQUAL_CASE ~Life~) BEGIN
@@ -1458,6 +1299,8 @@ END
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM druid_fighter_spheres
+
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -1484,29 +1327,6 @@ END
   STR_VAR
     clab_name 		= ~d5drfi~
 	class 			= ~fighter_cleric~
-	s_Life 			= ~minor~
-	s_Death 		= ~x~
-	s_Benediction 	= ~x~
-	s_Destruction 	= ~x~
-	s_Protection 	= ~x~
-	s_War 			= ~x~
-	s_Exploration   = ~minor~
-	s_Knowledge 	= ~minor~
-	s_Deception 	= ~x~
-	s_Thought 		= ~minor~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~major~
-	s_Affliction 	= ~minor~
-	s_Animal 		= ~major~
-	s_Plant 		= ~major~
-	s_Earth 		= ~major~
-	s_Water 		= ~major~
-	s_Air 			= ~major~
-	s_Fire 			= ~minor~
-	s_Light 		= ~major~
-	s_Shadow 		= ~minor~
-	s_Magic 		= ~x~
-	s_Perdition     = ~x~
  END
 
 END
@@ -1626,6 +1446,8 @@ END
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM druid_mage_spheres
+
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -1652,29 +1474,6 @@ END
   STR_VAR
     clab_name 		= ~d5drma~
 	class 			= ~cleric_mage~
-	s_Life 			= ~minor~
-	s_Death 		= ~x~
-	s_Benediction 	= ~x~
-	s_Destruction 	= ~x~
-	s_Protection 	= ~x~
-	s_War 			= ~x~
-	s_Exploration   = ~minor~
-	s_Knowledge 	= ~minor~
-	s_Deception 	= ~x~
-	s_Thought 		= ~minor~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~major~
-	s_Affliction 	= ~minor~
-	s_Animal 		= ~major~
-	s_Plant 		= ~major~
-	s_Earth 		= ~major~
-	s_Water 		= ~major~
-	s_Air 			= ~major~
-	s_Fire 			= ~minor~
-	s_Light 		= ~major~
-	s_Shadow 		= ~minor~
-	s_Magic 		= ~x~
-	s_Perdition     = ~x~
  END
 
 END
@@ -1793,6 +1592,8 @@ END
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM druid_ranger_spheres
+
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -1819,29 +1620,6 @@ END
   STR_VAR
     clab_name 		= ~d5drra~
 	class 			= ~ranger_cleric~
-	s_Life 			= ~minor~
-	s_Death 		= ~x~
-	s_Benediction 	= ~x~
-	s_Destruction 	= ~x~
-	s_Protection 	= ~x~
-	s_War 			= ~x~
-	s_Exploration   = ~minor~
-	s_Knowledge 	= ~minor~
-	s_Deception 	= ~x~
-	s_Thought 		= ~minor~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~major~
-	s_Affliction 	= ~minor~
-	s_Animal 		= ~major~
-	s_Plant 		= ~major~
-	s_Earth 		= ~major~
-	s_Water 		= ~major~
-	s_Air 			= ~major~
-	s_Fire 			= ~minor~
-	s_Light 		= ~major~
-	s_Shadow 		= ~minor~
-	s_Magic 		= ~x~
-	s_Perdition     = ~x~
  END
 
 END
@@ -1961,6 +1739,8 @@ END
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM druid_thief_spheres
+
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -1987,29 +1767,6 @@ END
   STR_VAR
     clab_name 		= ~d5drth~
 	class 			= ~cleric_thief~
-	s_Life 			= ~minor~
-	s_Death 		= ~x~
-	s_Benediction 	= ~x~
-	s_Destruction 	= ~x~
-	s_Protection 	= ~x~
-	s_War 			= ~x~
-	s_Exploration   = ~minor~
-	s_Knowledge 	= ~minor~
-	s_Deception 	= ~x~
-	s_Thought 		= ~minor~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~major~
-	s_Affliction 	= ~minor~
-	s_Animal 		= ~major~
-	s_Plant 		= ~major~
-	s_Earth 		= ~major~
-	s_Water 		= ~major~
-	s_Air 			= ~major~
-	s_Fire 			= ~minor~
-	s_Light 		= ~major~
-	s_Shadow 		= ~minor~
-	s_Magic 		= ~x~
-	s_Perdition     = ~x~
  END
 
 END

@@ -126,6 +126,8 @@ END
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM champion_tyr_spheres
+
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -152,29 +154,6 @@ END
   STR_VAR
     clab_name = EVAL ~b_ch01~
 	class 			= ~champion~
-	s_Life 			= ~paladin~
-	s_Death 		= ~x~
-	s_Benediction 	= ~paladin~
-	s_Destruction 	= ~x~
-	s_Protection  	= ~paladin~
-	s_War 			= ~paladin~
-	s_Exploration   = ~x~
-	s_Knowledge 	= ~paladin~
-	s_Deception 	= ~x~
-	s_Thought 		= ~x~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~paladin~
-	s_Affliction 	= ~x~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~x~
-	s_Light 		= ~paladin~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~x~
-	s_Perdition     = ~x~
  END
 
 END
@@ -322,6 +301,8 @@ END
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM champion_kelemvor_spheres
+
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -348,29 +329,6 @@ END
   STR_VAR
     clab_name = EVAL ~b_ch02~
 	class 			= ~champion~
-	s_Life 			= ~paladin~
-	s_Death 		= ~paladin~
-	s_Benediction 	= ~x~
-	s_Destruction 	= ~x~
-	s_Protection 	= ~paladin~
-	s_War 			= ~paladin~
-	s_Exploration   = ~x~
-	s_Knowledge 	= ~paladin~
-	s_Deception 	= ~x~
-	s_Thought 		= ~x~
-	s_Dread 		= ~paladin~
-	s_Vigor 		= ~x~
-	s_Affliction 	= ~paladin~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~x~
-	s_Light 		= ~x~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~x~
-	s_Perdition     = ~x~
  END
 
 END
@@ -487,6 +445,8 @@ END
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM champion_kelemvor_spheres
+
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -513,29 +473,6 @@ END
   STR_VAR
     clab_name = EVAL ~b_ch02~
 	class 			= ~champion~
-	s_Life 			= ~paladin~
-	s_Death 		= ~paladin~
-	s_Benediction 	= ~x~
-	s_Destruction 	= ~x~
-	s_Protection 	= ~paladin~
-	s_War 			= ~paladin~
-	s_Exploration   = ~x~
-	s_Knowledge 	= ~paladin~
-	s_Deception 	= ~x~
-	s_Thought 		= ~x~
-	s_Dread 		= ~paladin~
-	s_Vigor 		= ~x~
-	s_Affliction 	= ~paladin~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~x~
-	s_Light 		= ~x~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~x~
-	s_Perdition     = ~x~
  END
 
 END
@@ -673,7 +610,9 @@ END
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
-LAF ~DEFINE_FNP_KIT_INFO~
+LAM champion_tempus_spheres
+
+ LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
 	u_chain_armor 		= 1
@@ -699,29 +638,6 @@ LAF ~DEFINE_FNP_KIT_INFO~
   STR_VAR
     clab_name = EVAL ~b_ch03~
 	class 			= ~champion~
-	s_Life 			= ~paladin~
-	s_Death 		= ~x~
-	s_Benediction 	        = ~paladin~
-	s_Destruction 	        = ~x~
-	s_Protection 	        = ~paladin~
-	s_War 			= ~paladin~
-	s_Exploration   = ~x~
-	s_Knowledge 	        = ~paladin~
-	s_Deception 	        = ~x~
-	s_Thought 		= ~x~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~paladin~
-	s_Affliction 	        = ~x~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~x~
-	s_Light 		= ~paladin~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~x~
-	s_Perdition     = ~x~
  END
 
 END
@@ -857,6 +773,8 @@ END
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM champion_bane_spheres
+
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -883,29 +801,6 @@ END
   STR_VAR
     clab_name = EVAL ~b_ch04~
 	class 			= ~champion~
-	s_Life 			= ~x~
-	s_Death 		= ~paladin~
-	s_Benediction 	= ~x~
-	s_Destruction 	= ~paladin~
-	s_Protection 	= ~x~
-	s_War 			= ~paladin~
-	s_Exploration   = ~x~
-	s_Knowledge 	= ~paladin~
-	s_Deception 	= ~x~
-	s_Thought 		= ~paladin~
-	s_Dread 		= ~paladin~
-	s_Vigor 		= ~x~
-	s_Affliction 	= ~paladin~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~x~
-	s_Light 		= ~x~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~x~
-	s_Perdition     = ~paladin~
  END
 
 END
@@ -1031,6 +926,8 @@ END
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM champion_bane_spheres
+
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -1057,29 +954,6 @@ END
   STR_VAR
     clab_name = EVAL ~b_ch04~
 	class 			= ~champion~
-	s_Life 			= ~x~
-	s_Death 		= ~paladin~
-	s_Benediction 	        = ~x~
-	s_Destruction 	        = ~paladin~
-	s_Protection 	        = ~x~
-	s_War 			= ~paladin~
-	s_Exploration   = ~x~
-	s_Knowledge 	        = ~paladin~
-	s_Deception 	        = ~x~
-	s_Thought 		= ~paladin~
-	s_Dread 		= ~paladin~
-	s_Vigor 		= ~x~
-	s_Affliction 	        = ~paladin~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~x~
-	s_Light 		= ~x~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~x~
-	s_Perdition     = ~paladin~
  END
 
 END
@@ -1201,6 +1075,8 @@ END
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM champion_helm_spheres
+
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -1227,29 +1103,6 @@ END
   STR_VAR
     clab_name = EVAL ~b_ch05~
 	class 			= ~champion~
-	s_Life 			= ~paladin~
-	s_Death 		= ~x~
-	s_Benediction 	= ~paladin~
-	s_Destruction 	= ~x~
-	s_Protection 	= ~paladin~
-	s_War 			= ~paladin~
-	s_Exploration   = ~paladin~
-	s_Knowledge 	= ~paladin~
-	s_Deception 	= ~x~
-	s_Thought 		= ~paladin~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~paladin~
-	s_Affliction 	= ~x~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~x~
-	s_Light 		= ~x~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~x~
-	s_Perdition     = ~x~
  END
 
 END
@@ -1361,7 +1214,9 @@ END
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
-LAF ~DEFINE_FNP_KIT_INFO~
+LAM champion_helm_spheres
+
+ LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
 	u_chain_armor 		= 1
@@ -1387,29 +1242,6 @@ LAF ~DEFINE_FNP_KIT_INFO~
   STR_VAR
     clab_name = EVAL ~b_ch05~
 	class 			= ~champion~
-	s_Life 			= ~paladin~
-	s_Death 		= ~x~
-	s_Benediction 	        = ~paladin~
-	s_Destruction 	        = ~x~
-	s_Protection 	        = ~paladin~
-	s_War 			= ~paladin~
-	s_Exploration   = ~paladin~
-	s_Knowledge 	        = ~paladin~
-	s_Deception 	        = ~x~
-	s_Thought 		= ~paladin~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~paladin~
-	s_Affliction 	        = ~x~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~x~
-	s_Light 		= ~x~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~x~
-	s_Perdition     = ~x~
  END
 
 END
@@ -1528,6 +1360,8 @@ END
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM champion_talos_spheres
+
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -1554,29 +1388,6 @@ END
   STR_VAR
     clab_name = EVAL ~b_ch06~
 	class 			= ~champion~
-	s_Life 			= ~x~
-	s_Death 		= ~paladin~
-	s_Benediction 	        = ~x~
-	s_Destruction 	        = ~paladin~
-	s_Protection 	        = ~paladin~
-	s_War 			= ~paladin~
-	s_Exploration   = ~paladin~
-	s_Knowledge 	        = ~x~
-	s_Deception 	        = ~x~
-	s_Thought 		= ~x~
-	s_Dread 		= ~paladin~
-	s_Vigor 		= ~x~
-	s_Affliction 	        = ~paladin~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~x~
-	s_Light 		= ~x~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~paladin~
-	s_Perdition     = ~x~
  END
 
 END
@@ -1685,6 +1496,8 @@ END
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM champion_talos_spheres
+
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -1711,29 +1524,6 @@ END
   STR_VAR
     clab_name = EVAL ~b_ch06~
 	class 			= ~champion~
-	s_Life 			= ~x~
-	s_Death 		= ~paladin~
-	s_Benediction 	        = ~x~
-	s_Destruction 	        = ~paladin~
-	s_Protection 	        = ~paladin~
-	s_War 			= ~paladin~
-	s_Exploration   = ~paladin~
-	s_Knowledge 	        = ~x~
-	s_Deception 	        = ~x~
-	s_Thought 		= ~x~
-	s_Dread 		= ~paladin~
-	s_Vigor 		= ~x~
-	s_Affliction 	        = ~paladin~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~x~
-	s_Light 		= ~x~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~paladin~
-	s_Perdition     = ~x~
  END
 
 END
@@ -1853,6 +1643,8 @@ COPY ~faiths_and_powers/kits/champions/807_Moradin/b_mor02.itm~ ~override~
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM champion_moradin_spheres
+
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -1879,29 +1671,6 @@ COPY ~faiths_and_powers/kits/champions/807_Moradin/b_mor02.itm~ ~override~
   STR_VAR
     clab_name = EVAL ~b_ch07~
 	class 			= ~champion~
-	s_Life 			= ~paladin~
-	s_Death 		= ~x~
-	s_Benediction 	        = ~paladin~
-	s_Destruction 	        = ~x~
-	s_Protection 	        = ~paladin~
-	s_War 			= ~paladin~
-	s_Exploration   = ~x~
-	s_Knowledge 	        = ~x~
-	s_Deception 	        = ~x~
-	s_Thought 		= ~x~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~paladin~
-	s_Affliction 	        = ~x~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~paladin~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~x~
-	s_Light 		= ~paladin~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~x~
-	s_Perdition     = ~x~
  END
 
 END
@@ -2034,6 +1803,8 @@ END
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM champion_azuth_spheres
+
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -2060,29 +1831,6 @@ END
   STR_VAR
     clab_name = EVAL ~b_ch08~
 	class 			= ~champion~
-	s_Life 			= ~x~
-	s_Death 		= ~x~
-	s_Benediction 	        = ~paladin~
-	s_Destruction 	        = ~x~
-	s_Protection 	        = ~paladin~
-	s_War 			= ~x~
-	s_Exploration   = ~x~
-	s_Knowledge 	        = ~paladin~
-	s_Deception 	        = ~x~
-	s_Thought 		= ~paladin~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~x~
-	s_Affliction 	        = ~paladin~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~paladin~
-	s_Fire 			= ~paladin~
-	s_Light 		= ~x~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~paladin~
-	s_Perdition     = ~x~
  END
 
 END
@@ -2205,7 +1953,9 @@ END
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
-LAF ~DEFINE_FNP_KIT_INFO~
+LAM champion_red_knight_spheres
+
+ LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
 	u_chain_armor 		= 1
@@ -2231,29 +1981,6 @@ LAF ~DEFINE_FNP_KIT_INFO~
   STR_VAR
     clab_name = EVAL ~b_ch09~
 	class 			= ~champion~
-	s_Life 			= ~paladin~
-	s_Death 		= ~x~
-	s_Benediction 	        = ~paladin~
-	s_Destruction 	        = ~x~
-	s_Protection 	        = ~paladin~
-	s_War 			= ~paladin~
-	s_Exploration   = ~x~
-	s_Knowledge 	        = ~paladin~
-	s_Deception 	        = ~x~
-	s_Thought 		= ~paladin~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~paladin~
-	s_Affliction 	        = ~x~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~x~
-	s_Light 		= ~x~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~x~
-	s_Perdition     = ~x~
  END
 
 END
