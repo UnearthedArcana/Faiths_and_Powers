@@ -1,0 +1,862 @@
+////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////
+////////      Special Case- Entropy Sield           ////////////////
+////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////
+//IWDEE SPECIFIC PRIEST SPELLS ONLY
+
+//Once entropy immunities is done, do this check
+//Check for IWDEE priest spells (including Entropy Shield)
+ACTION_IF FILE_CONTAINS_EVALUATED(~spell.ids~ ~CLERIC_ENTROPY_SHIELD~) BEGIN //If Entropy Shield installd
+
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+/////////////////////////  Entropy Shield   //////////////////////////
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+//ALICORN LANCE: MAKE ENTROPY SHIELD PROTECT VS @21800003    //Notification "Outlined in a Silvery Radiance (AC penalty of 2)"
+//Prob have to do it via 177
+
+//Entropy immunity SR neutral
+INCLUDE ~%mod_folder%/lib/entropy_immunity.tpa~
+
+
+END//End Entropy Shield installed
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+//////////////////      Modify Batchs           ////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
+
+ //spell level immunities
+ACTION_PHP_EACH prot AS block => rock BEGIN
+    //1st level immune
+  ACTION_IF (~%rock%~ STRING_EQUAL ~lev_one~) BEGIN
+    COPY ~%mod_folder%/lib/bg2fp_effect_batches_fnp.tpa~ ~%mod_folder%/lib/bg2fp_effect_batches_fnp.tpa~
+      REPLACE_TEXTUALLY ~206, "-1", "-10", "LEV_ONE", "-10", "-10", "same" => 1~ ~206, "-1", "-10", "%block%", "-10", "-10", "same" => 1
+      206, "-1", "-10", "LEV_ONE", "-10", "-10", "same" => 1~
+  END
+    //2nd level immune
+  ACTION_IF (~%rock%~ STRING_EQUAL ~lev_two~) BEGIN
+    COPY ~%mod_folder%/lib/bg2fp_effect_batches_fnp.tpa~ ~%mod_folder%/lib/bg2fp_effect_batches_fnp.tpa~
+      REPLACE_TEXTUALLY ~206, "-1", "-10", "LEV_TWO", "-10", "-10", "same" => 1~ ~206, "-1", "-10", "%block%", "-10", "-10", "same" => 1
+      206, "-1", "-10", "LEV_TWO", "-10", "-10", "same" => 1~
+  END
+    //3rd level immune
+  ACTION_IF (~%rock%~ STRING_EQUAL ~lev_three~) BEGIN
+    COPY ~%mod_folder%/lib/bg2fp_effect_batches_fnp.tpa~ ~%mod_folder%/lib/bg2fp_effect_batches_fnp.tpa~
+      REPLACE_TEXTUALLY ~206, "-1", "-10", "LEV_THR", "-10", "-10", "same" => 1~ ~206, "-1", "-10", "%block%", "-10", "-10", "same" => 1
+      206, "-1", "-10", "LEV_THR", "-10", "-10", "same" => 1~
+  END
+    //4th level immune
+  ACTION_IF (~%rock%~ STRING_EQUAL ~lev_four~) BEGIN
+    COPY ~%mod_folder%/lib/bg2fp_effect_batches_fnp.tpa~ ~%mod_folder%/lib/bg2fp_effect_batches_fnp.tpa~
+      REPLACE_TEXTUALLY ~206, "-1", "-10", "LEV_FOU", "-10", "-10", "same" => 1~ ~206, "-1", "-10", "%block%", "-10", "-10", "same" => 1
+      206, "-1", "-10", "LEV_FOU", "-10", "-10", "same" => 1~
+  END
+
+    //Fear removal
+  ACTION_IF (~%rock%~ STRING_EQUAL ~fear~) BEGIN
+    //Fear spells
+    COPY ~%mod_folder%/lib/bg2fp_effect_batches_fnp.tpa~ ~%mod_folder%/lib/bg2fp_effect_batches_fnp.tpa~
+      REPLACE_TEXTUALLY ~321, "-10", "-10", "FEAR_R", 1, 0, "same" => 1~ ~321, "-10", "-10", "%block%", 1, 0, "same" => 1
+      321, "-10", "-10", "FEAR_R", 1, 0, "same" => 1~
+  END
+
+      //Fear protect
+  ACTION_IF (~%rock%~ STRING_EQUAL ~fear~) BEGIN
+    //Fear spells
+    COPY ~%mod_folder%/lib/bg2fp_effect_batches_fnp.tpa~ ~%mod_folder%/lib/bg2fp_effect_batches_fnp.tpa~
+      REPLACE_TEXTUALLY ~321, "-10", "-10", "FEAR_P", 1, 0, "same" => 1~ ~321, "-10", "-10", "%block%", 1, 0, "same" => 1
+      321, "-10", "-10", "FEAR_P", 1, 0, "same" => 1~
+  END
+
+    //Rage immune
+    //Berserk   Blood Rage has a unique icon that needs to be protected against!!! Is this done???
+  ACTION_IF (~%rock%~ STRING_EQUAL ~rage~) BEGIN
+    //Beserk removal and immunity
+    COPY ~%mod_folder%/lib/bg2fp_effect_batches_fnp.tpa~ ~%mod_folder%/lib/bg2fp_effect_batches_fnp.tpa~
+      REPLACE_TEXTUALLY ~321, "0", "0", "RAGE_R",  "-10", "-10", "same" => 1~ ~321, "0", "0", "%block%",  "-10", "-10", "same" => 1
+      321, "0", "0", "RAGE_R",  "-10", "-10", "same" => 1~
+      REPLACE_TEXTUALLY ~324, "0", "0", "RAGE_P",  "-10", "-10", "same" => 1~ ~324, "0", "0", "%block%",  "-10", "-10", "same" => 1
+      324, "0", "0", "RAGE_P",  "-10", "-10", "same" => 1~
+  END
+  ACTION_IF (~%rock%~ STRING_EQUAL ~blood~) BEGIN   //blood rage specific removes
+    COPY ~%mod_folder%/lib/bg2fp_effect_batches_fnp.tpa~ ~%mod_folder%/lib/bg2fp_effect_batches_fnp.tpa~
+      REPLACE_TEXTUALLY ~321, "-10", "-10", "EMO_R", 1,"-10", "same" => 1~ ~321, "-10", "-10", "%block%", 1,"-10", "same" => 1
+      321, "-10", "-10", "EMO_R", 1,"-10", "same" => 1~
+      REPLACE_TEXTUALLY ~318, "-10", "-10", "EMO_P", "-10","-10", "same" => 1~ ~318, "-10", "-10", "%block%", "-10","-10", "same" => 1
+      318, "-10", "-10", "EMO_P", "-10","-10", "same" => 1~
+  END
+  ACTION_IF (~%rock%~ STRING_EQUAL ~entropy~) BEGIN
+    COPY ~%mod_folder%/lib/bg2fp_effect_batches_fnp.tpa~ ~%mod_folder%/lib/bg2fp_effect_batches_fnp.tpa~
+      REPLACE_TEXTUALLY ~318, "-10", "-10", "ENT_P", "-10","-10", "same" => 1~ ~318, "-10", "-10", "%block%", "-10","-10", "same" => 1
+      318, "-10", "-10", "ENT_P", "-10","-10", "same" => 1~
+  END
+  ACTION_IF (~%rock%~ STRING_EQUAL ~entropy_pro~) BEGIN
+    COPY ~%mod_folder%/lib/bg2fp_effect_batches_fnp.tpa~ ~%mod_folder%/lib/bg2fp_effect_batches_fnp.tpa~
+      REPLACE_TEXTUALLY ~83, "-10", 314, "", "-10","-10", "same" => 1~ ~83, "-10", "%block%", "", "-10","-10", "same" => 1
+      83, "-10", 314, "", "-10","-10", "same" => 1~
+  END
+
+END
+
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+//////////////////           Remove Gunk          //////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
+
+//Remove Gunk
+COPY ~%mod_folder%/lib/bg2fp_effect_batches_fnp.tpa~ ~%mod_folder%/lib/bg2fp_effect_batches_fnp.tpa~
+      REPLACE_TEXTUALLY ~321, "-10", "-10", "FEAR_R", 1, 0, "same" => 1~ ~~
+      REPLACE_TEXTUALLY ~321, "-10", "-10", "FEAR_P", 1, 0, "same" => 1~ ~~
+      REPLACE_TEXTUALLY ~206, "-1", "-10", "LEV_ONE", "-10", "-10", "same" => 1~ ~~
+      REPLACE_TEXTUALLY ~206, "-1", "-10", "LEV_TWO", "-10", "-10", "same" => 1~ ~~
+      REPLACE_TEXTUALLY ~206, "-1", "-10", "LEV_THR", "-10", "-10", "same" => 1~ ~~
+      REPLACE_TEXTUALLY ~206, "-1", "-10", "LEV_FOU", "-10", "-10", "same" => 1~ ~~
+      REPLACE_TEXTUALLY ~324, "0", "0", "RAGE_P",  "-10", "-10", "same" => 1~ ~~
+      REPLACE_TEXTUALLY ~321, "0", "0", "RAGE_R",  "-10", "-10", "same" => 1~ ~~
+      REPLACE_TEXTUALLY ~321, "-10", "-10", "EMO_R", 1,"-10", "same" => 1~ ~~
+      REPLACE_TEXTUALLY ~318, "-10", "-10", "EMO_P", "-10","-10", "same" => 1~ ~~
+      REPLACE_TEXTUALLY ~318, "-10", "-10", "ENT_P", "-10","-10", "same" => 1~ ~~
+//Reinclude effect_batches
+REINCLUDE ~%mod_folder%/lib/bg2fp_effect_batches_fnp.tpa~
+
+
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+//////////////////       Apply Batchs           ////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+PRINT @13
+
+COPY_EXISTING_REGEXP GLOB ~^.+\.spl$~ ~override~ //copy over all spl files
+  LPF cd_apply_batch STR_VAR array_name = b_removal_cure_bleed END  //Cure Bleed
+  LPF cd_apply_batch STR_VAR array_name = cd_immunity_spell_level_1_arrays END  //Level 1
+  LPF cd_apply_batch STR_VAR array_name = cd_immunity_spell_level_2_arrays END  //Level 2
+  LPF cd_apply_batch STR_VAR array_name = cd_immunity_spell_level_3_arrays END  //Level 3
+  LPF cd_apply_batch STR_VAR array_name = cd_immunity_spell_level_4_arrays END  //Level 4   Is there a need to make WIZARD_MORDENKAINENS_FORCE_MISSILES special???
+  LPF cd_apply_batch STR_VAR array_name = cd_fear_removal_arrays END            //Fear
+  LPF cd_apply_batch STR_VAR array_name = cd_immunity_fear_arrays END            //Fear
+  LPF cd_apply_batch STR_VAR array_name = b_removal_rage_arrays END // apply based on iwdee or not
+  LPF cd_apply_batch STR_VAR array_name = b_removal_rage_arrays_second END // for RAGE_R to be altered if needed
+  LPF cd_apply_batch STR_VAR array_name = b_removal_rage_arrays_end END // Just to remover RAGE_R if nec
+  LPF cd_apply_batch STR_VAR array_name = b_immunity_berserk_arrays END //
+  LPF cd_apply_batch STR_VAR array_name = b_immunity_berserk_arrays_second END //
+  LPF cd_apply_batch STR_VAR array_name = b_immunity_berserk_arrays_end END
+//  LPF cd_apply_batch STR_VAR array_name = cd_immunity_some_other_thing END
+  // etc.
+  BUT_ONLY
+
+
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+//////////////////// Special- Blood Rage    //////////////////////////
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+//Only in blood rage installed
+ACTION_IF FILE_CONTAINS_EVALUATED(~spell.ids~ ~CLERIC_BLOOD_RAGE~) BEGIN //Only if at least fnp IWDEE Wiz spells installed
+
+LAF RES_NUM_OF_SPELL_NAME
+  STR_VAR spell_name = ~CLERIC_BLOOD_RAGE~
+  RET spell_res
+END
+     COPY_EXISTING ~%spell_res%.spl~ ~override~
+       LPF cd_apply_batch STR_VAR array_name = b_blood_rage_arrays END  //TEST!!!!!!!!!!!!
+
+//NEEDS to protect vs this string if present:   SAY 0x1c @51203 //Wracked in Agony
+ ACTION_IF FILE_CONTAINS_EVALUATED(~spell.ids~ ~WAVES_OF_AGONY~) BEGIN //Only if waves of agony is actually in the game
+  LAF RES_NUM_OF_SPELL_NAME
+    STR_VAR spell_name = ~CLERIC_BLOOD_RAGE~
+    RET spell_res
+  END
+  COPY_EXISTING ~%spell_res%.spl~ ~override~
+    LPF CLONE_EFFECT INT_VAR match_opcode = 267 parameter1 = RESOLVE_STR_REF (@51203) multi_match = 1 END  //Protect from 'wracked in agony' text
+  
+ END  //End wav of ag special
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+////////////////  Special- Entropy Shield   //////////////////////////
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+//If BR installed, ES installed, so same check
+LAF RES_NUM_OF_SPELL_NAME
+  STR_VAR spell_name = ~CLERIC_ENTROPY_SHIELD~
+  RET spell_res
+END
+     COPY_EXISTING ~%spell_res%.spl~ ~override~
+  //     LPF cd_apply_batch STR_VAR array_name = b_entropy_shield_arrays END  //Create array and TEST!!!
+
+END//End IWDEE priest spells installed
+
+ /*
+
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+///////////////////////// 4th level immune  //////////////////////////
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+
+///WHAT IS GOING ON HERe?
+
+//Special Case
+//HAVE TO ENSURE THIS IS INSTALLED...
+ACTION_IF (FILE_EXISTS_IN_GAME ~b_IWD.itm~) BEGIN //This mod is the only one that installs this spell (AFAIK)
+
+LAF RES_NUM_OF_SPELL_NAME
+  STR_VAR spell_name = ~WIZARD_MORDENKAINENS_FORCE_MISSILES~
+  RET spell_res
+END
+
+  COPY_EXISTING_REGEXP GLOB ~.*\.spl~ ~override~ //copy over all spl files
+   PATCH_IF (SOURCE_SIZE > 0x71) BEGIN // avoid crashing on empty items //
+     LPF cd_apply_batch STR_VAR array_name = cd_immunity_spell_level_4_arrays END //prot from lev 2
+       LPF ALTER_EFFECT INT_VAR match_opcode = 206 STR_VAR match_resource = ~LEV_FOU~ resource = EVAL ~%spell_res%B~ END  //
+   END //
+  BUT_ONLY//
+  
+END//check
+//IS THIS NEEDED FOR IMMUNITY????
+*/
+//Add the below on case by case basis
+/*
+//Imperv. sanctity of mind (Special case???)
+
+ ACTION_PHP_EACH prot AS stalk => chalk BEGIN
+  ACTION_IF (~%chalk%~ STRING_EQUAL ~sanct~) BEGIN
+     COPY_EXISTING ~%spell_res%.spl~ ~override~
+       LPF CLONE_EFFECT INT_VAR multi_match = 1 match_opcode = 206 opcode = 318 parameter1 = 0 STR_VAR resource = EVAL ~%stalk%~ END
+       LPF CLONE_EFFECT INT_VAR multi_match = 1 match_opcode = 206 parameter1 = 0 STR_VAR resource = EVAL ~%stalk%~ END
+  END
+END
+
+
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+/////////////////////////      Bless        //////////////////////////
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+//Code at end protecs vs. all cantrips... Not sure this is needed
+/*
+ACTION_DEFINE_ASSOCIATIVE_ARRAY prot BEGIN
+
+~%spell_res%~ => bless
+
+END
+
+//Prayer is a special case.  Remove boni: #PRAYERG.SPL
+
+ACTION_PHP_EACH prot AS block => rock BEGIN   //
+  ACTION_IF (~%rock%~ STRING_EQUAL ~bless~) BEGIN  //
+
+
+  COPY_EXISTING_REGEXP GLOB ~.*\.spl~ ~override~ //copy over all spl files
+   PATCH_IF (SOURCE_SIZE > 0x71) BEGIN // avoid crashing on empty items //
+     LPF cd_apply_batch STR_VAR array_name = b_bless_arrays END //bless
+     LPF cd_apply_batch STR_VAR array_name = b_pos_chant_arrays END //pos chant
+//       LPF ALTER_EFFECT INT_VAR match_opcode = 206 STR_VAR match_resource = ~LEV_FOU~ resource = EVAL ~%block%~ END  //not nec apparently
+   END //
+  BUT_ONLY//
+
+
+ END
+END
+*/
+
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+/////////////////////////     Clouds        //////////////////////////
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+//REMOVE CLOUDS (e.g. SR wind gust, zone of sweet air, Whirlwind)
+/*
+ACTION_DEFINE_ASSOCIATIVE_ARRAY prot BEGIN
+
+~%spell_res%~ => cloud
+
+END
+*/
+
+
+
+
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+/////////////////////////     COMMAND       //////////////////////////
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+//command type spells break enchantment sr (others?)
+/*
+ACTION_DEFINE_ASSOCIATIVE_ARRAY prot BEGIN
+
+~%spell_res%~ => command
+
+END
+*/
+
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+/////////////////////////     CHARM         //////////////////////////
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+//SR: break enchantment sr (others?) Looked at it, not really necessary...
+
+//minimum (maaaay need to check for break enchantment
+  COPY_EXISTING_REGEXP GLOB ~.*\.spl~ ~override~ //copy over all spl files
+   PATCH_IF (SOURCE_SIZE > 0x71) BEGIN // avoid crashing on empty items //
+     LPF cd_apply_batch STR_VAR array_name = cd_immunity_charm_arrays END //base charm immunity.  Removal????
+   END //
+  BUT_ONLY//
+
+
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+/////////////////////////      Curse        //////////////////////////
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+//Remove curse stuff, removes canticle (special-is bless like, but what removes curse removes canticle), maladiction (Special), meditation (special),
+//DO CD_effect_batches for cantrips IN ADDITION TO THIS! Gives special that must be conditionally removed while core spell readded
+//ALSO certain spells protect against bless/curese like cantrips
+
+//Additional Text notifications to be protected from...
+///Prayer: @31600002 = COMBAT PENALTIES
+///@31600004 = Combat Bonuses
+
+//NEED TO CHECK FOR NEW SPELLS?????
+
+//ALSO, WHAT ABOUT CURSE PROJECTILES????
+
+
+//k, need to check to see if Curse is in the game
+ACTION_IF ((MOD_IS_INSTALLED ~SETUP-IWDIFICATION.TP2~ ~40~) OR (FILE_EXISTS_IN_GAME ~b_IWD.itm~)) OR ((GAME_IS ~iwdee~) OR (FILE_EXISTS_IN_GAME ~b_cant.itm~)) BEGIN //Detects curse like spells installed
+
+ACTION_IF FILE_EXISTS_IN_GAME ~CDID313G.spl~ BEGIN  //IWDIFICATION PRAYER
+COPY_EXISTING ~CDID313G.spl~ ~override~
+    LPF cd_apply_batch STR_VAR array_name = b_bless_cantrip_arrays END
+COPY_EXISTING ~CDID313B.spl~ ~override~
+    LPF cd_apply_batch STR_VAR array_name = b_bless_cantrip_arrays END
+
+END//END IWDIFICATION...
+ACTION_IF FILE_EXISTS_IN_GAME ~#PRAYERB.spl~ BEGIN  //OTHER VERSIONS...
+COPY_EXISTING ~#PRAYERB.spl~ ~override~
+    LPF cd_apply_batch STR_VAR array_name = b_bless_cantrip_arrays END
+
+
+//compatibility
+//Spell Revisions (Break Enchantment removes Curse)
+ACTION_IF FILE_EXISTS_IN_GAME ~dvimhere.mrk~ BEGIN   //any version of sr
+COPY_EXISTING ~sppr307.spl~ ~override~
+  LPF CLONE_EFFECT INT_VAR match_opcode = 221 opcode = 321 parameter1 = 0 parameter2 = 0 STR_VAR resource = EVAL ~#PRAYERB~ END
+COPY_EXISTING ~spwi410.spl~ ~override~
+  LPF CLONE_EFFECT INT_VAR match_opcode = 221 opcode = 321 parameter1 = 0 parameter2 = 0 STR_VAR resource = EVAL ~#PRAYERB~ END
+END //End SR
+
+COPY_EXISTING ~#PRAYERG.spl~ ~override~
+    LPF cd_apply_batch STR_VAR array_name = b_bless_cantrip_arrays END
+
+END //END OTHER VERSIONS...
+
+//compatibility
+//Spell Revisions (Break Enchantment removes Curse)
+ACTION_IF FILE_EXISTS_IN_GAME ~dvimhere.mrk~ BEGIN   //any version of sr
+ ACTION_PHP_EACH prot AS block => rock BEGIN
+  ACTION_IF (~%rock%~ STRING_EQUAL ~curse~) BEGIN
+COPY_EXISTING ~sppr307.spl~ ~override~
+  LPF CLONE_EFFECT INT_VAR match_opcode = 221 opcode = 321 parameter1 = 0 parameter2 = 0 STR_VAR resource = EVAL ~%block%~ END
+COPY_EXISTING ~spwi410.spl~ ~override~
+  LPF CLONE_EFFECT INT_VAR match_opcode = 221 opcode = 321 parameter1 = 0 parameter2 = 0 STR_VAR resource = EVAL ~%block%~ END
+  END //
+ END
+END //SR Compat
+
+END //END if IWD spells installed
+/*
+ACTION_DEFINE_ASSOCIATIVE_ARRAY prot BEGIN
+
+~%spell_res%~ => curse
+
+END
+*/
+//Prayer is a special case.  Remove boni: #PRAYERB.SPL
+
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+/////////////////////////      DEATH        //////////////////////////
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+//protect vs. death Destruction, Energy drain with SR
+/*
+ACTION_DEFINE_ASSOCIATIVE_ARRAY prot BEGIN
+
+~%spell_res%~ => death
+
+END
+*/
+
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+/////////////////////////      Disease      //////////////////////////
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+//remove disease stuff (cause disease, mold touch, wither?, )
+/*
+ACTION_DEFINE_ASSOCIATIVE_ARRAY prot BEGIN
+
+~%spell_res%~ => disease
+
+END
+*/
+
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+/////////////////////////      DRAIN        //////////////////////////
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+//protect vs. drain like NPP.  Death with SR    MAYBE ADD THOSE DRAIN SPELLS TO THIS
+/*
+ACTION_DEFINE_ASSOCIATIVE_ARRAY prot BEGIN
+
+~%spell_res%~ => drain
+
+END
+*/
+
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+/////////////////////////   Elect Spells    //////////////////////////
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+//? Static charge, lightning bolt, chain lightning, 
+//what spells?  May not apply
+/*
+ACTION_DEFINE_ASSOCIATIVE_ARRAY prot BEGIN
+
+~%spell_res%~ => elect
+
+END
+*/
+
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+/////////////////////////      Emotion      //////////////////////////
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+//for any immunity to emotion spells (pos or neg, not fear)
+// Have to do it for specific spells (i.e. blood rage-others?) because it's difficult to uniquely identify these spells...
+/*
+ACTION_DEFINE_ASSOCIATIVE_ARRAY prot BEGIN
+
+~%spell_res%~ => emotion
+
+END
+*/
+//Any prot emotion spells?
+ACTION_PHP_EACH dispel AS shock => spock BEGIN   //
+  ACTION_IF (~%spock%~ STRING_EQUAL ~emo_disp~) BEGIN  //
+
+
+ ACTION_PHP_EACH prot AS block => rock BEGIN   //
+   ACTION_IF (~%rock%~ STRING_EQUAL ~emotion~) BEGIN  //
+
+
+COPY_EXISTING ~%shock%.spl~ ~override~
+   PATCH_IF (SOURCE_SIZE > 0x71) BEGIN // avoid crashing on empty items //
+     LPF cd_apply_batch STR_VAR array_name = b_blood_rage_arrays END //
+       LPF ALTER_EFFECT INT_VAR match_opcode = 321 STR_VAR match_resource = ~EMO_R~ resource = EVAL ~%block%~ END  //remove emotion
+       LPF ALTER_EFFECT INT_VAR match_opcode = 318 STR_VAR match_resource = ~EMO_P~ resource = EVAL ~%block%~ END  //prot vs. emotion
+   END //
+  BUT_ONLY//
+
+
+  END
+ END
+
+ END
+END
+
+
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+/////////////////////////      Entangle     //////////////////////////
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+//Add assassin vines???
+//Add custom strong "Entangled" to spell(s)
+//Be sure to protect vs. that string...
+
+
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+/////////////////////////        Fear       //////////////////////////
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+//
+
+
+ACTION_PHP_EACH prot AS block => rock BEGIN   //
+  ACTION_IF (~%rock%~ STRING_EQUAL ~fear~) BEGIN  //
+
+
+  COPY_EXISTING_REGEXP GLOB ~.*\.spl~ ~override~ //copy over all spl files
+   PATCH_IF (SOURCE_SIZE > 0x71) BEGIN // avoid crashing on empty items //
+     LPF cd_apply_batch STR_VAR array_name = cd_fear_removal_arrays END //fear removal
+       LPF ALTER_EFFECT INT_VAR match_opcode = 321 STR_VAR match_resource = ~FEAR_R~ resource = EVAL ~%block%~ END  //Remove fear
+   END //
+  BUT_ONLY//
+
+
+ END
+END
+
+
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+/////////////////////////   Fire Spells     //////////////////////////
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+//remove fire stuff (Flame Blade, Shroud of Flame, and salamander auras are extinguished by Cloudburst.)
+//SHould smashing wave remove them?  Cantrip drench?
+//Cloud burst should prevent Produce Fire and possibly other fire spells, from working
+//Include produce fire,
+/*
+ACTION_DEFINE_ASSOCIATIVE_ARRAY prot BEGIN
+
+~%spell_res%~ => fire
+
+END
+*/
+
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+/////////////////////////  Free action      //////////////////////////
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+
+//: Just in case
+COPY_EXISTING ~SPPR403.spl~ ~override~
+    LPF cd_apply_batch STR_VAR array_name = cd_immunity_free_action_arrays END
+    LPF cd_apply_batch STR_VAR array_name = cd_immunity_entangle_arrays END    //I've added at least one entry so far (changed to 318)
+    LPF cd_apply_batch STR_VAR array_name = cd_immunity_slow_arrays END
+    LPF cd_apply_batch STR_VAR array_name = cd_immunity_hold_special_arrays END  //I have at least one hold spell that needs to be added...(maybe not this way)
+    LPF cd_apply_batch STR_VAR array_name = cd_immunity_hold_arrays END  //I have at least one hold spell that needs to be added...(maybe not this way)
+    LPF cd_apply_batch STR_VAR array_name = cd_immunity_web_arrays END
+    LPF cd_apply_batch STR_VAR array_name = cd_immunity_grease_arrays END
+//ring of free action
+ACTION_IF FILE_EXISTS_IN_GAME ~CIGBARD.itm~ BEGIN   //
+ COPY_EXISTING ~CIGBARD.itm~ ~override~
+    LPF cd_apply_batch STR_VAR array_name = cd_immunity_free_action_arrays END
+    LPF cd_apply_batch STR_VAR array_name = cd_immunity_entangle_arrays END    //I've added at least one entry so far (changed to 318)
+    LPF cd_apply_batch STR_VAR array_name = cd_immunity_slow_arrays END
+    LPF cd_apply_batch STR_VAR array_name = cd_immunity_hold_special_arrays END  //I have at least one hold spell that needs to be added...(maybe not this way)
+    LPF cd_apply_batch STR_VAR array_name = cd_immunity_hold_arrays END  //I have at least one hold spell that needs to be added...(maybe not this way)
+    LPF cd_apply_batch STR_VAR array_name = cd_immunity_web_arrays END
+    LPF cd_apply_batch STR_VAR array_name = cd_immunity_grease_arrays END
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~FREEACT.itm~ BEGIN   //
+ COPY_EXISTING ~FREEACT.itm~ ~override~
+    LPF cd_apply_batch STR_VAR array_name = cd_immunity_free_action_arrays END
+    LPF cd_apply_batch STR_VAR array_name = cd_immunity_entangle_arrays END    //I've added at least one entry so far (changed to 318)
+    LPF cd_apply_batch STR_VAR array_name = cd_immunity_slow_arrays END
+    LPF cd_apply_batch STR_VAR array_name = cd_immunity_hold_special_arrays END  //I have at least one hold spell that needs to be added...(maybe not this way)
+    LPF cd_apply_batch STR_VAR array_name = cd_immunity_hold_arrays END  //I have at least one hold spell that needs to be added...(maybe not this way)
+    LPF cd_apply_batch STR_VAR array_name = cd_immunity_web_arrays END
+    LPF cd_apply_batch STR_VAR array_name = cd_immunity_grease_arrays END
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~RING09.itm~ BEGIN   //
+ COPY_EXISTING ~RING09.itm~ ~override~
+    LPF cd_apply_batch STR_VAR array_name = cd_immunity_free_action_arrays END
+    LPF cd_apply_batch STR_VAR array_name = cd_immunity_entangle_arrays END    //I've added at least one entry so far (changed to 318)
+    LPF cd_apply_batch STR_VAR array_name = cd_immunity_slow_arrays END
+    LPF cd_apply_batch STR_VAR array_name = cd_immunity_hold_special_arrays END  //I have at least one hold spell that needs to be added...(maybe not this way)
+    LPF cd_apply_batch STR_VAR array_name = cd_immunity_hold_arrays END  //I have at least one hold spell that needs to be added...(maybe not this way)
+    LPF cd_apply_batch STR_VAR array_name = cd_immunity_web_arrays END
+    LPF cd_apply_batch STR_VAR array_name = cd_immunity_grease_arrays END
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~FREERING.itm~ BEGIN   //
+ COPY_EXISTING ~FREERING.itm~ ~override~
+    LPF cd_apply_batch STR_VAR array_name = cd_immunity_free_action_arrays END
+    LPF cd_apply_batch STR_VAR array_name = cd_immunity_entangle_arrays END    //I've added at least one entry so far (changed to 318)
+    LPF cd_apply_batch STR_VAR array_name = cd_immunity_slow_arrays END
+    LPF cd_apply_batch STR_VAR array_name = cd_immunity_hold_special_arrays END  //I have at least one hold spell that needs to be added...(maybe not this way)
+    LPF cd_apply_batch STR_VAR array_name = cd_immunity_hold_arrays END  //I have at least one hold spell that needs to be added...(maybe not this way)
+    LPF cd_apply_batch STR_VAR array_name = cd_immunity_web_arrays END
+    LPF cd_apply_batch STR_VAR array_name = cd_immunity_grease_arrays END
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~FREERING.itm~ BEGIN   //
+ COPY_EXISTING ~FREERING.itm~ ~override~
+    LPF cd_apply_batch STR_VAR array_name = cd_immunity_free_action_arrays END
+    LPF cd_apply_batch STR_VAR array_name = cd_immunity_entangle_arrays END    //I've added at least one entry so far (changed to 318)
+    LPF cd_apply_batch STR_VAR array_name = cd_immunity_slow_arrays END
+    LPF cd_apply_batch STR_VAR array_name = cd_immunity_hold_special_arrays END  //I have at least one hold spell that needs to be added...(maybe not this way)
+    LPF cd_apply_batch STR_VAR array_name = cd_immunity_hold_arrays END  //I have at least one hold spell that needs to be added...(maybe not this way)
+    LPF cd_apply_batch STR_VAR array_name = cd_immunity_web_arrays END
+    LPF cd_apply_batch STR_VAR array_name = cd_immunity_grease_arrays END
+END
+
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+/////////////////////////  HOPELESSNESS     //////////////////////////
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+//REMOVE HOPELESSNESS EFFECTS (BLOOD RAGE AND Imp. SANCTITY OF MIND DO IT THE 'other way'
+/*
+ACTION_DEFINE_ASSOCIATIVE_ARRAY prot BEGIN
+
+~%spell_res%~ => hopeless
+
+END
+*/
+
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+/////////////////////////       PAIN        //////////////////////////
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+//REMOVES PAIN.  NOTE THAT BLOOD RAGE DOES IT THE 'other way'.
+//SHOULD ADD THAT LOVIATAR ABILITY TO THIS LIST
+/*
+ACTION_DEFINE_ASSOCIATIVE_ARRAY prot BEGIN
+
+~%spell_res%~ => pain
+
+END
+*/
+
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+/////////////////////////      RAGE         //////////////////////////
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+//EFFECTS THAT REMOVE OR PREVENT 'RAGE like effects'.
+//Blood rage and animal rage are accounted for sanctity etc, but maybe do it this way instead
+
+//Blood Rage, animal rage, murderous command
+
+//APPLY BATCHES BEFORE rage array below as non-IWDEE games
+/*
+ACTION_DEFINE_ASSOCIATIVE_ARRAY prot BEGIN
+
+~%spell_res%~ => rage
+
+END
+*/
+
+
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+///////////////////////// SLEEP/Unconscious //////////////////////////
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+//DRowse cantrip (w/sleep)
+
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+/////////////////////////      STONE        //////////////////////////
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+//1st lev. protective shell not stack with stoneskin
+/*
+ACTION_DEFINE_ASSOCIATIVE_ARRAY prot BEGIN
+
+~%spell_res%~ => stone    //Not actually created yet
+
+END
+*/
+
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+/////////////////////////      Webbed       //////////////////////////
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+//Change webbed text from 'held' to 'webbed'
+//Apply special protection from that string...
+
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+/////////////////////////      WIZ EYE      //////////////////////////
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+//Wiz eye, eyes of dead, animal eyes spells must preclude each other
+/*
+ACTION_DEFINE_ASSOCIATIVE_ARRAY prot BEGIN
+
+~%spell_res%~ => eye    //Not actually created yet
+
+END
+*/
+
+
+
+
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+/////////////////////////    Exaltation     //////////////////////////
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+
+//exaltation protection  blood and animal rage
+
+LAF RES_NUM_OF_SPELL_NAME
+  STR_VAR spell_name = ~CLERIC_EXALTATION~
+  RET spell_res
+END
+     COPY_EXISTING ~%spell_res%.spl~ ~override~
+       LPF cd_apply_batch STR_VAR array_name = b_immunity_berserk_arrays END
+       LPF cd_apply_batch STR_VAR array_name = b_removal_rage_arrays END
+       LPF cd_apply_batch STR_VAR array_name = b_immunity_rage_arrays END
+
+ACTION_PHP_EACH prot AS block => rock BEGIN
+  ACTION_IF (~%rock%~ STRING_EQUAL ~exalt~) BEGIN
+     COPY_EXISTING ~%spell_res%.spl~ ~override~
+       LPF CLONE_EFFECT INT_VAR match_opcode = 4 opcode = 321 timing = 0 STR_VAR resource = EVAL ~%block%~ END
+       LPF CLONE_EFFECT INT_VAR match_opcode = 106 opcode = 206 parameter1 = 0 parameter2 = 0 STR_VAR resource = EVAL ~%block%~ END
+  END
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~OHTYR1.spl~ BEGIN
+     COPY_EXISTING ~OHTYR1.spl~ ~override~
+       LPF cd_apply_batch STR_VAR array_name = b_immunity_berserk_arrays END
+       LPF cd_apply_batch STR_VAR array_name = b_removal_rage_arrays END
+       LPF cd_apply_batch STR_VAR array_name = b_immunity_rage_arrays END
+
+ACTION_PHP_EACH prot AS block => rock BEGIN
+  ACTION_IF (~%rock%~ STRING_EQUAL ~exalt~) BEGIN
+     COPY_EXISTING ~OHTYR1.spl~ ~override~
+       LPF CLONE_EFFECT INT_VAR match_opcode = 4 opcode = 321 timing = 0 STR_VAR resource = EVAL ~%block%~ END
+       LPF CLONE_EFFECT INT_VAR match_opcode = 106 opcode = 206 parameter1 = 0 parameter2 = 0 STR_VAR resource = EVAL ~%block%~ END
+  END
+END
+END
+
+END//end protect if entropy shield/exaltation installed
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////     CANTRIPS      //////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Start with spells we know
+//bless
+COPY_EXISTING ~SPPR101.spl~ ~override~   //bless
+  LPF cd_apply_batch STR_VAR array_name = b_bless_cantrip_arrays END //Remove cantrips
+//doom
+COPY_EXISTING ~SPPR113.spl~ ~override~   //doom
+  LPF cd_apply_batch STR_VAR array_name = b_bless_cantrip_arrays END //Remove cantrips
+//aid
+COPY_EXISTING ~SPPR201.spl~ ~override~   //aid
+  LPF cd_apply_batch STR_VAR array_name = b_bless_cantrip_arrays END //Remove cantrips
+//chant
+COPY_EXISTING ~SPPR203D.spl~ ~override~   //chant
+  LPF cd_apply_batch STR_VAR array_name = b_bless_cantrip_arrays END //Remove cantrips
+COPY_EXISTING ~SPPR203E.spl~ ~override~   //chant
+  LPF cd_apply_batch STR_VAR array_name = b_bless_cantrip_arrays END //Remove cantrips
+//Compatibility, but spells we know about beforehand
+//prayer
+ACTION_IF FILE_EXISTS_IN_GAME ~#PRAYERB.spl~ BEGIN
+ COPY_EXISTING ~#PRAYERB.spl~ ~override~   //chant
+  LPF cd_apply_batch STR_VAR array_name = b_bless_cantrip_arrays END //Remove cantrips
+ COPY_EXISTING ~#PRAYERG.spl~ ~override~   //chant
+  LPF cd_apply_batch STR_VAR array_name = b_bless_cantrip_arrays END //Remove cantrips
+//prayer text in cantrip spells
+ACTION_IF FILE_EXISTS_IN_GAME ~b_po020.spl~ BEGIN //if canticle in game
+ COPY_EXISTING ~b_po020.spl~ ~override~   //canticle
+  SPRINT old @102000005//old text
+  SPRINT new @102000006//new text
+   READ_LONG 0x50 "valid"
+   PATCH_IF (%valid% >= 0) BEGIN // verify desc is valid
+   READ_STRREF 0x50 ~desc~
+	INNER_PATCH_SAVE new_desc ~%desc%~ BEGIN
+	REPLACE_TEXTUALLY ~%old%~ ~%new%~        //replacing old with new (adds prayer immunity)
+	END
+   SAY_EVALUATED 0x50 ~%new_desc%~
+   END  //
+ END //end if canticle in game
+//Malediction (do if exists in game for all cantrip files JUST in Case...
+ACTION_IF FILE_EXISTS_IN_GAME ~b_po030.spl~ BEGIN //if Malediction in game
+COPY_EXISTING ~b_po030.spl~ ~override~
+ SPRINT old @103000004//old text
+ SPRINT new @103000005//new text
+  READ_LONG 0x50 "valid"
+  PATCH_IF (%valid% >= 0) BEGIN // verify desc is valid
+  READ_STRREF 0x50 ~desc~
+	INNER_PATCH_SAVE new_desc ~%desc%~ BEGIN
+	REPLACE_TEXTUALLY ~%old%~ ~%new%~        //replacing old with new (curse and prayer in text)
+	END
+  SAY_EVALUATED 0x50 ~%new_desc%~
+  END  //
+END
+END//End if Malediction in game
+
+//Meditation (do if exists in game for all cantrip files JUST in Case...
+ACTION_IF FILE_EXISTS_IN_GAME ~b_po040.spl~ BEGIN //if Meditation in game
+COPY_EXISTING ~b_po040.spl~ ~override~
+ SPRINT old @104000005//old text
+ SPRINT new @104000006//new text
+  READ_LONG 0x50 "valid"
+  PATCH_IF (%valid% >= 0) BEGIN // verify desc is valid
+  READ_STRREF 0x50 ~desc~
+	INNER_PATCH_SAVE new_desc ~%desc%~ BEGIN
+	REPLACE_TEXTUALLY ~%old%~ ~%new%~        //replacing old with new (curse and prayer in text)
+	END
+  SAY_EVALUATED 0x50 ~%new_desc%~
+  END  //
+END
+
+//Curse
+ACTION_IF ((MOD_IS_INSTALLED ~SETUP-IWDIFICATION.TP2~ ~40~) OR (FILE_EXISTS_IN_GAME ~b_IWD.itm~)) OR (GAME_IS ~iwdee~) BEGIN
+LAF RES_NUM_OF_SPELL_NAME
+  STR_VAR spell_name = ~CLERIC_CURSE~
+  RET spell_res
+END
+COPY_EXISTING ~%spell_res%.spl~ ~override~
+  LPF cd_apply_batch STR_VAR array_name = b_bless_cantrip_arrays END //Remove cantrips
+//prayer text in cantrip spells
+//canticle
+ACTION_IF FILE_EXISTS_IN_GAME ~b_po020.spl~ BEGIN      //if canticle in game
+ COPY_EXISTING ~b_po020.spl~ ~override~ //canticle (curse)
+  SPRINT old @102000007//old text
+  SPRINT new @102000008//new text
+   READ_LONG 0x50 "valid"
+   PATCH_IF (%valid% >= 0) BEGIN // verify desc is valid
+   READ_STRREF 0x50 ~desc~
+	INNER_PATCH_SAVE new_desc ~%desc%~ BEGIN
+	REPLACE_TEXTUALLY ~%old%~ ~%new%~        //replacing old with new (adds prayer immunity)
+	END
+   SAY_EVALUATED 0x50 ~%new_desc%~
+   END  //
+ END //end if canticle in game
+
+//Malediction (do if exists in game for all cantrip files JUST in Case...
+ACTION_IF FILE_EXISTS_IN_GAME ~b_po030.spl~ BEGIN //if Malediction in game
+COPY_EXISTING ~b_po030.spl~ ~override~
+ SPRINT old @103000006//old text
+ SPRINT new @103000007//new text
+  READ_LONG 0x50 "valid"
+  PATCH_IF (%valid% >= 0) BEGIN // verify desc is valid
+  READ_STRREF 0x50 ~desc~
+	INNER_PATCH_SAVE new_desc ~%desc%~ BEGIN
+	REPLACE_TEXTUALLY ~%old%~ ~%new%~        //replacing old with new (curse and prayer in text)
+	END
+  SAY_EVALUATED 0x50 ~%new_desc%~
+  END  //
+END
+END//End if Malediction in game
+//Meditation (do if exists in game for all cantrip files JUST in Case...
+ACTION_IF FILE_EXISTS_IN_GAME ~b_po040.spl~ BEGIN //if Meditation in game
+COPY_EXISTING ~b_po040.spl~ ~override~
+ SPRINT old @104000007//old text
+ SPRINT new @104000008//new text
+  READ_LONG 0x50 "valid"
+  PATCH_IF (%valid% >= 0) BEGIN // verify desc is valid
+  READ_STRREF 0x50 ~desc~
+	INNER_PATCH_SAVE new_desc ~%desc%~ BEGIN
+	REPLACE_TEXTUALLY ~%old%~ ~%new%~        //replacing old with new (curse and prayer in text)
+	END
+  SAY_EVALUATED 0x50 ~%new_desc%~
+  END  //
+END
+*/

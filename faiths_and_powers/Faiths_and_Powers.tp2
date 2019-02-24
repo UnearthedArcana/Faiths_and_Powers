@@ -2,7 +2,7 @@ BACKUP ~faiths_and_powers/backup~
 AUTHOR ~SubtleD and Grammarsalad~
 
 
-VERSION ~0.75.24~
+VERSION ~0.76.00~
 
 
 //README ~faiths_and_powers/readme-pnp.html~
@@ -13,12 +13,18 @@ ALWAYS
 	ACTION_IF NOT FILE_EXISTS ~override/d5_fnp_settings.ini~ BEGIN
   	  COPY ~faiths_and_powers/d5_fnp_settings.ini~ ~override~
 	END
-  	
+ 
+        ACTION_IF ((!FILE_CONTAINS_EVALUATED(~spell.ids~ ~CLERIC_OBSCURING_MIST~)) AND (FILE_EXISTS_IN_GAME ~dvsrv4here.mrk~)) BEGIN
+	   INCLUDE ~faiths_and_powers/lib/add_ids.tpa~
+        END
+
   	OUTER_SPRINT ~mod_folder~ ~faiths_and_powers~
 
   	INCLUDE ~override/d5_fnp_settings.ini~
 
 	INCLUDE ~faiths_and_powers/lib/remove_lines.tpa~
+
+        INCLUDE ~faiths_and_powers/lib/bg2fp_effect_batches_fnp.tpa~
 
 	INCLUDE ~faiths_and_powers/lib/spell_to_innate.tpa~
 
@@ -84,6 +90,9 @@ LANGUAGE
   ~English~
   ~english~
   ~faiths_and_powers/language/english/setup.tra~
+  ~faiths_and_powers/language/english/IWD_spells.tra~
+  ~faiths_and_powers/language/english/new_spells.tra~
+  ~faiths_and_powers/language/english/HLA.tra~
 //___________________________________________________________________________________
 
 
@@ -400,14 +409,34 @@ COPY ~faiths_and_powers/kits/incarnates/splshmkn.2da~ ~override~
 
 //Add IWD spells if not already in game_____________________________________________
 //
-ACTION_IF GAME_IS ~bgee bg2ee eet~ BEGIN
- ACTION_IF NOT MOD_IS_INSTALLED ~setup-iwdification.tp2~ ~40~ BEGIN  //If IWDification not installed...
-  ACTION_IF NOT FILE_EXISTS_IN_GAME ~b_IWD.itm~ BEGIN    			//If b_ IWD spells not installed...
-	COPY ~faiths_and_powers/compatibility/b_IWD.itm~ ~override~   	//to detect this component 
-	INCLUDE ~faiths_and_powers/lib/Setup_IWD_divine_Spells.tpa~    	//install them
-  END
- END
+ACTION_CLEAR_ARRAY aoe_spell
+
+ACTION_IF (!FILE_CONTAINS_EVALUATED(~spell.ids~ ~CLERIC_CURSE~)) BEGIN  //if not IWDEE priest spells..from any source
+	COPY ~%mod_folder%/compatibility/b_IWD.itm~ ~override~   	//to detect this component
+      COPY ~%mod_folder%/compatibility/b_IWD.itm~ ~override/B_pri.itm~
+      INCLUDE ~%mod_folder%/data/components/Setup_IWD_Spells.tpa~      //install priest spells
 END
+//special, older versions of SR and IWDee
+ACTION_IF GAME_IS ~iwdee~ BEGIN
+  ACTION_IF ((!FILE_CONTAINS_EVALUATED(~spell.ids~ ~CLERIC_BEAST_CLAW~)) AND (FILE_EXISTS_IN_GAME ~dvsrv4here.mrk~)) BEGIN
+   INCLUDE ~faiths_and_powers/lib/iwdee_sr_readd.tpa~
+  END
+END
+//special: reinstall spells if any version of SR installed
+  ACTION_IF FILE_EXISTS_IN_GAME ~dvsrv4here.mrk~ BEGIN
+   INCLUDE ~faiths_and_powers/lib/sr_readd.tpa~
+  END
+//add new spells____________________________________________________________________
+
+
+INCLUDE ~%mod_folder%/lib/fnp_wiz.tpa~
+INCLUDE ~%mod_folder%/lib/fnp_new_spells.tpa~
+
+//Now, Immunities.  DO AT THE VERY END OF ALL SPELL INSTALLS
+INCLUDE ~%mod_folder%/lib/immunities.tpa~
+//sr spell deflection compatibility
+INCLUDE ~%mod_folder%/lib/compatibility_SR.tpa~
+
 //__________________________________________________________________________________
 
 //Create Sphere System______________________________________________________________
@@ -416,6 +445,8 @@ ACTION_IF (%d5_use_spheres% = 1) BEGIN
  INCLUDE ~faiths_and_powers/lib/create_sphere_system.tpa~
  LAF create_spheres END
 END
+
+
 //__________________________________________________________________________________
 
 //install the kits__________________________________________________________________
@@ -938,6 +969,9 @@ ACTION_IF (%d5_dual_class% = 0) BEGIN
 END
 //__________________________________________________________________________________
 
+//SPell Immunities, etc.____________________________________________________________
+//Now, Immunities.  DO AT THE VERY END OF ALL SPELL INSTALLS (including kits with spls)
+INCLUDE ~%mod_folder%/lib/immunities.tpa~
 
 
 //__________________________________________________________________________________
@@ -1029,15 +1063,35 @@ ACTION_IF (%d5_item_use% = 1) BEGIN
 END
 //__________________________________________________________________________________
 
-//Add IWD spells if not already in game
-ACTION_IF GAME_IS ~bgee bg2ee eet~ BEGIN
- ACTION_IF NOT MOD_IS_INSTALLED ~setup-iwdification.tp2~ ~40~ BEGIN  //If IWDification not installed...
-  ACTION_IF NOT FILE_EXISTS_IN_GAME ~b_IWD.itm~ BEGIN    			//If b_ IWD spells not installed...
-	COPY ~faiths_and_powers/compatibility/b_IWD.itm~ ~override~   	//to detect this component 
-	INCLUDE ~faiths_and_powers/lib/Setup_IWD_divine_Spells.tpa~    	//install them
-  END
- END
+//Add IWD spells if not already in game_____________________________________________
+//
+ACTION_CLEAR_ARRAY aoe_spell
+
+ACTION_IF (!FILE_CONTAINS_EVALUATED(~spell.ids~ ~CLERIC_CURSE~)) BEGIN  //if not IWDEE priest spells..from any source
+	COPY ~%mod_folder%/compatibility/b_IWD.itm~ ~override~   	//to detect this component
+      COPY ~%mod_folder%/compatibility/b_IWD.itm~ ~override/B_pri.itm~
+      INCLUDE ~%mod_folder%/data/components/Setup_IWD_Spells.tpa~      //install priest spells
 END
+//special, older versions of SR and IWDee
+ACTION_IF GAME_IS ~iwdee~ BEGIN
+  ACTION_IF ((!FILE_CONTAINS_EVALUATED(~spell.ids~ ~CLERIC_BEAST_CLAW~)) AND (FILE_EXISTS_IN_GAME ~dvsrv4here.mrk~)) BEGIN
+   INCLUDE ~faiths_and_powers/lib/iwdee_sr_readd.tpa~
+  END
+END
+//special: reinstall spells if any version of SR installed
+  ACTION_IF FILE_EXISTS_IN_GAME ~dvsrv4here.mrk~ BEGIN
+   INCLUDE ~faiths_and_powers/lib/sr_readd.tpa~
+  END
+//add new spells____________________________________________________________________
+
+
+INCLUDE ~%mod_folder%/lib/fnp_wiz.tpa~
+INCLUDE ~%mod_folder%/lib/fnp_new_spells.tpa~
+
+//Now, Immunities.  DO AT THE VERY END OF ALL SPELL INSTALLS
+INCLUDE ~%mod_folder%/lib/immunities.tpa~
+//sr spell deflection compatibility
+INCLUDE ~%mod_folder%/lib/compatibility_SR.tpa~
 
 //run the sphere system______________________________________________________________
 //

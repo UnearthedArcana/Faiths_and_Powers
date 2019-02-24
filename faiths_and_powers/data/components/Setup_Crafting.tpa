@@ -1,0 +1,533 @@
+////////////////////////////////////////////////////////////////
+/////////////////         Components        ////////////////////
+////////////////////////////////////////////////////////////////
+INCLUDE ~%mod_folder%/lib/Setup_New_Wands.tpa~      //Priest Scrolls
+
+
+
+////////////////////////////////////////////////////////////////
+/////////////////         Brew Potion       ////////////////////
+////////////////////////////////////////////////////////////////
+//
+
+
+/*
+
+// -----------------------------
+// ARCANE CRAFTING (by GRAMMARSALAD)
+// -----------------------------
+//http://kmansadventures.proboards.com/thread/6480/2nd-ed-magic-items-potions
+//https://dnd.sinister.net/alchemy/
+//https://www.realmshelps.net/magic/items/wands.shtml
+//http://murphysvictim.blogspot.com/2013/10/ad-recharging-magic-items.html
+//http://www.datapacrat.com/Art/Games/RPG/DND/DRAGON/147SPELL.TXT
+
+//The code below is by Grammarsalad and use with permission.
+////////////////////////////////////////////////////////////////
+/////////////////         Craft Wand        ////////////////////
+////////////////////////////////////////////////////////////////
+
+  COMPILE ~%mod_folder%/data/arcane_crafting/wand/bg/b_wand1.baf~
+  COMPILE ~%mod_folder%/data/arcane_crafting/wand/bg/b_wand1.d~
+
+COPY ~%mod_folder%/data/arcane_crafting/wand/b_wand1.cre~ ~override~
+
+////////////////////////////////////////////////////////////////
+/////////////////      Recharge Wand        ////////////////////
+////////////////////////////////////////////////////////////////
+
+COPY ~%mod_folder%/data/arcane_crafting/wand/b_rech1.spl~ ~override~
+  SAY NAME1 @115038//Recharge Wands
+  SAY UNIDENTIFIED_DESC @115039
+
+  
+  COMPILE ~%mod_folder%/data/arcane_crafting/wand/bg/b_rech1.baf~ ~override~
+  COMPILE ~%mod_folder%/data/arcane_crafting/wand/bg/b_rech1.d~ ~override~
+
+COPY ~%mod_folder%/data/arcane_crafting/wand/b_rech1.cre~ ~override~
+
+////////////////////////////////////////////////////////////////
+/////////////////        Scribe Scroll      ////////////////////
+/////////////////         All Versions      ////////////////////
+////////////////////////////////////////////////////////////////
+
+//Items: for all versions
+COPY ~%mod_folder%/data/arcane_crafting/scroll/b_scr01.bam~ ~override~  //NRD
+COPY ~%mod_folder%/data/arcane_crafting/scroll/b_scr01.itm~ ~override~
+  SAY NAME1 @115027//NRD
+  SAY UNIDENTIFIED_DESC @115028
+  
+COPY ~%mod_folder%/data/arcane_crafting/scroll/b_scr02.bam~ ~override~  //Chaos Shield
+COPY ~%mod_folder%/data/arcane_crafting/scroll/b_scr02.itm~ ~override~
+  SAY NAME1 @115029//CS
+  SAY UNIDENTIFIED_DESC @115030
+
+COPY ~%mod_folder%/data/arcane_crafting/scroll/b_scr03.bam~ ~override~  //Improved Chaos Shield
+COPY ~%mod_folder%/data/arcane_crafting/scroll/b_scr03.itm~ ~override~
+  SAY NAME1 @115031//ICS
+  SAY UNIDENTIFIED_DESC @115032
+  
+////////////////////////////////////////////////////////////////
+/////////////////        Scribe Scroll      ////////////////////
+/////////////////         Just Gold         ////////////////////
+////////////////////////////////////////////////////////////////
+COPY ~%mod_folder%/data/arcane_crafting/scroll/b_scrib.spl~ ~override~   //Scribe Spl
+  SAY NAME1 @115003//Scribe Scroll
+  SAY UNIDENTIFIED_DESC @115017
+
+
+COMPILE ~%mod_folder%/data/arcane_crafting/scroll/b_scrib.baf~ ~override~   //Scribe script
+COMPILE ~%mod_folder%/data/arcane_crafting/scroll/b_scrib.d~ ~override~     //Scribe dlg
+COPY ~%mod_folder%/data/arcane_crafting/scroll/b_scrib.cre~ ~override~      //scribe creature
+
+
+////////////////////////////////////////////////////////////////
+/////////////////         Brew Potion       ////////////////////
+////////////////////////////////////////////////////////////////
+//Tiers: http://baldursgate.wikia.com/wiki/Keen-Scentin%27_Concocter_of_Marvelous_Draughts#Concocter
+COPY ~%mod_folder%/data/arcane_crafting/potion/b_Brew1.spl~ ~override~
+  SAY NAME1 @115025//Brew Potion
+  SAY UNIDENTIFIED_DESC @115254
+COMPILE ~%mod_folder%/data/arcane_crafting/potion/b_Brew1.baf~ ~override~
+COMPILE ~%mod_folder%/data/arcane_crafting/potion/b_Brew1.d~ ~override~
+COPY ~%mod_folder%/data/arcane_crafting/potion/b_Brew1.cre~ ~override~
+  
+  
+///////////////////////////////////////////////////////////////
+//All more or less universal crafting files
+//
+//1st level scribe scroll for mage only
+//1st level scribe scroll for mage only
+COPY ~%mod_folder%/data/arcane_crafting/QDSCRCK.spl~ ~override~  //craft mage only
+COPY ~%mod_folder%/data/arcane_crafting/QDSCRCK.EFF~ ~override~  //craft mage only
+COPY ~%mod_folder%/data/arcane_crafting/b_ic1.spl~ ~override~  //craft mage only
+  SAY NAME1 @115255//Craft item
+  SAY UNIDENTIFIED_DESC @115256
+
+COPY ~%mod_folder%/data/arcane_crafting/b_ic10.2da~ ~override~  //craft mage only
+COPY ~%mod_folder%/data/arcane_crafting/b_ic11.2da~ ~override~  //craft mage only
+COPY ~%mod_folder%/data/arcane_crafting/b_ic12.2da~ ~override~  //craft mage only
+COPY ~%mod_folder%/data/arcane_crafting/b_ic13.2da~ ~override~  //craft mage only
+
+COPY ~%mod_folder%/data/arcane_crafting/b_ic2.spl~ ~override~  //craft sor only
+COPY ~%mod_folder%/data/arcane_crafting/b_ic3.spl~ ~override~  //craft sor only
+  SAY NAME1 @115255//Craft item
+  SAY UNIDENTIFIED_DESC @115256
+COPY ~%mod_folder%/data/arcane_crafting/b_ic3.eff~ ~override~  //craft sor only
+COPY ~%mod_folder%/data/arcane_crafting/b_ic30.2da~ ~override~  //craft sor only
+COPY ~%mod_folder%/data/arcane_crafting/b_ic31.2da~ ~override~  //craft sor only
+COPY ~%mod_folder%/data/arcane_crafting/b_ic32.2da~ ~override~  //craft sor only
+//adding craft wands to mages and sorcerers
+
+	//adding craft wands to mages and sorcerers
+INCLUDE ~%mod_folder%/data/core/tnb_kit_list.tpa~ 
+	//mages get scribe scroll, potion and craft wand
+ACTION_PHP_EACH tnb_kit_list AS kitinfo => kitclab BEGIN 
+	ACTION_IF (FILE_EXISTS_IN_GAME ~%kitclab%.2da~) BEGIN 
+		ACTION_IF (kitinfo_1 = 0) BEGIN 
+			APPEND ~%kitclab%.2da~ ~ARCNCRFT  AP_QDSCRCK   ****       ****       ****       AP_B_ic2   ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****   	****       ****       ****       ****       ****       ****       ****       ****       ****       ****~
+		END 
+		ACTION_IF (kitinfo_1 = 1) BEGIN 
+			APPEND ~%kitclab%.2da~ ~ARCNCRFT GA_b_ic1	 ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****     ****       ****       ****       ****       ****       ****       ****       ****       ****       ****~
+		END 
+		ACTION_IF (kitinfo_1 = 19) BEGIN 
+			APPEND ~%kitclab%.2da~ ~ARCNCRFT ****       ****       ****       ****       GA_B_ic3 ****       ****       ****       ****       ****      ****       ****       ****       ****       **** ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****   ****       ****       ****       ****       ****       ****       ****       ****       ****       ****~
+		END 
+	END 
+END  
+
+
+
+	COPY_EXISTING - ~clastext.2da~ ~override~
+		COUNT_2DA_COLS num_cols
+			READ_2DA_ENTRIES_NOW ~r2en_clastext~ num_cols
+			FOR (row = 1; row < r2en_clastext; row += 1) BEGIN
+				READ_2DA_ENTRY_FORMER ~r2en_clastext~ row 0 kitname
+				READ_2DA_ENTRY_FORMER ~r2en_clastext~ row 4 desc
+				PATCH_IF ((~%kitname%~ STRING_EQUAL_CASE ~MAGE~)) BEGIN
+					INNER_ACTION  BEGIN 
+						ACTION_IF (desc >= 0) BEGIN
+							ACTION_GET_STRREF desc oldstring
+							OUTER_SPRINT old @1201
+							OUTER_SPRINT new @1202
+							OUTER_PATCH_SAVE oldstring ~%oldstring%~ BEGIN
+								REPLACE_TEXTUALLY ~%old%~ ~%new%~
+							END
+							STRING_SET_EVALUATE desc ~%oldstring%~
+						END 
+					END
+				END
+				PATCH_IF ((~%kitname%~ STRING_EQUAL_CASE ~SORCERER~)) BEGIN
+					INNER_ACTION  BEGIN 
+						ACTION_IF (desc >= 0) BEGIN
+							ACTION_GET_STRREF desc oldstring
+							OUTER_SPRINT old @1203
+							OUTER_SPRINT new @1204
+							OUTER_PATCH_SAVE oldstring ~%oldstring%~ BEGIN
+								REPLACE_TEXTUALLY ~%old%~ ~%new%~
+							END
+							STRING_SET_EVALUATE desc ~%oldstring%~
+						END 
+					END
+				END
+			END 
+/*
+COPY ~TomeAndBlood/data/arcane_crafting/wand/b_wand1.spl~ ~override~
+  SAY NAME1 @115020//Craft Wand
+  SAY UNIDENTIFIED_DESC @115021
+
+COPY_EXISTING ~WAND03.itm~ ~override/b_wnd01.itm~
+  WRITE_SHORT 0x94 60   //Wand of magic missile 60 charges
+  WRITE_BYTE  0x42 0
+  
+COPY_EXISTING ~WAND08.itm~ ~override/b_wnd02.itm~
+  WRITE_SHORT 0x94 60   //Sleep
+  WRITE_BYTE  0x42 0
+
+
+COPY_EXISTING ~WAND02.itm~ ~override/b_wnd03.itm~
+  WRITE_SHORT 0x94 24   //Wand of fear 24 charges
+  WRITE_BYTE  0x42 0
+
+COPY_EXISTING ~WAND10.itm~ ~override/b_wnd04.itm~
+  WRITE_SHORT 0x94 15   //Wand of Mon Sum 15 charges
+  WRITE_BYTE  0x42 0
+
+
+COPY_EXISTING ~WAND05.itm~ ~override/b_wnd05.itm~
+  WRITE_SHORT 0x94 15   //Wand of fire 15 charges
+  WRITE_SHORT 0xCC 15   //Wand of fire 15 charges
+  WRITE_BYTE  0x42 0
+
+COPY_EXISTING ~WAND04.itm~ ~override/b_wnd06.itm~
+  WRITE_SHORT 0x94 8   //Wand of paralysis
+  WRITE_BYTE  0x42 0
+
+COPY_EXISTING ~WAND07.itm~ ~override/b_wnd07.itm~
+  WRITE_SHORT 0x94 15   //Wand of Lightning 15 charges
+  WRITE_BYTE  0x42 0
+
+COPY_EXISTING ~WAND06.itm~ ~override/b_wnd08.itm~
+  WRITE_SHORT 0x94 8   //Wand of frost 8 charges
+  WRITE_BYTE  0x42 0
+
+COPY_EXISTING ~WAND18.itm~ ~override/b_wnd09.itm~
+  WRITE_SHORT 0x94 7   //Wand of Spell Striking 7 charges
+  WRITE_SHORT 0xCC 7   //Wand of Spell Striking 7 charges
+  WRITE_BYTE  0x42 0
+
+//IWDEE ONLY
+ACTION_IF GAME_IS ~iwdee~ THEN BEGIN
+  COPY_EXISTING ~WANDARM.itm~ ~override/b_wnd10.itm~
+    WRITE_SHORT 0x94 10   //Wand of Armory 10 charges
+    WRITE_SHORT 0xCC 10
+    WRITE_BYTE  0x42 0
+END
+
+//BGEE BG2EE ONLY (need to check for Item revisions)
+ACTION_IF GAME_IS ~bgee bg2ee eet~ THEN BEGIN
+COPY ~TomeAndBlood/data/arcane_crafting/wand/b_wnd10.itm~ ~override~
+  SAY NAME1 @115125//Armory
+  SAY UNIDENTIFIED_DESC @115126
+    WRITE_SHORT 0x94 10   //Wand of Armory 10 charges   might qualify as a lower tier wand...
+END
+
+ACTION_IF GAME_IS ~bgee bg2ee~ THEN BEGIN
+  COPY_EXISTING ~WAND09.itm~ ~override/b_wnd14.itm~
+    WRITE_SHORT 0x94 10   //Wand of Polymorph
+    WRITE_BYTE  0x42 0
+END
+
+ACTION_IF GAME_IS ~iwdee~ THEN BEGIN      //NEED TO CHECK FOR IR
+COPY ~TomeAndBlood/data/arcane_crafting/wand/b_wnd14.itm~ ~override~ //
+  SAY NAME1 @115136//Polymorph other
+  SAY UNIDENTIFIED_DESC @115137
+    WRITE_SHORT 0x94 10   //Wand of Polymorph
+END
+
+
+COPY_EXISTING ~WAND19.itm~ ~override/b_wnd15.itm~
+  WRITE_SHORT 0x94 7   //Wand of Cursing 7 charges
+  WRITE_BYTE  0x42 0
+
+ACTION_IF GAME_IS ~bgee bg2ee eet~ THEN BEGIN
+  COPY_EXISTING ~WAND13.itm~ ~override/b_wnd19.itm~
+    WRITE_SHORT 0x94 8   //Wand of Cloudkill
+    WRITE_BYTE  0x42 0
+END
+
+ACTION_IF GAME_IS ~iwdee~ THEN BEGIN      //NEED TO CHECK FOR IR
+COPY ~TomeAndBlood/data/arcane_crafting/wand/b_wnd19.itm~ ~override~ //
+  SAY NAME1 @115154//Wand of Cloudkill
+  SAY UNIDENTIFIED_DESC @115155
+    WRITE_SHORT 0x94 8   //Wand of Cloudkill
+END
+
+
+//FIGURE OUT WHAT IS GOING ON WITH FREEZING DEATH AND CORROSION --Will have to wait on this one
+
+COPY ~TomeAndBlood/data/arcane_crafting/wand/b_wnd11.itm~ ~override~
+  SAY NAME1 #17625//Freezing Death
+  SAY UNIDENTIFIED_DESC @115118
+
+COPY ~TomeAndBlood/data/arcane_crafting/wand/b_wnd12.itm~ ~override~ //Recharge original Freezing Death Wand
+  SAY NAME1 #17625//Freezing Death
+  SAY UNIDENTIFIED_DESC @115119
+
+//Freezing Death for BGEE(2) (add a check for Item revisions...)
+COPY ~TomeAndBlood/data/arcane_crafting/wand/b_wnd13.itm~ ~override~ //Recharge original Freezing Death Wand
+  SAY NAME1 @115121//Freezing Death
+  SAY UNIDENTIFIED_DESC @115120
+
+
+
+
+COPY ~TomeAndBlood/data/arcane_crafting/wand/b_wnd16.itm~ ~override~ //
+  SAY NAME1 @115146//Wand of Corrosion
+  SAY UNIDENTIFIED_DESC @115147
+  
+COPY ~TomeAndBlood/data/arcane_crafting/wand/b_wnd17.itm~ ~override~ //player created version
+  SAY NAME1 @115146//Wand of Corrosion
+  SAY UNIDENTIFIED_DESC @115148
+
+
+//Wand of corrosion for BGEE(2)
+COPY ~TomeAndBlood/data/arcane_crafting/wand/b_wnd18.itm~ ~override~ //player created version
+  SAY NAME1 @115146//Wand of Corrosion
+  SAY UNIDENTIFIED_DESC @115149
+
+
+//FIGURE OUT WHAT IS GOING ON WITH THE ITEMS ABOVE
+
+
+
+//IWDEE ONLY
+ACTION_IF GAME_IS ~iwdee~ THEN BEGIN
+  COMPILE ~TomeAndBlood/data/arcane_crafting/wand/iwd/b_wand1.baf~ ~override~
+  COMPILE ~TomeAndBlood/data/arcane_crafting/wand/iwd/b_wand1.d~ ~override~
+END
+//END IWDEE
+
+//BGEE ONLY
+ACTION_IF GAME_IS ~bgee bg2ee eet~ THEN BEGIN
+  COMPILE ~TomeAndBlood/data/arcane_crafting/wand/bg/b_wand1.baf~ ~override~
+  COMPILE ~TomeAndBlood/data/arcane_crafting/wand/bg/b_wand1.d~ ~override~
+END
+//END BGEE
+
+COPY ~TomeAndBlood/data/arcane_crafting/wand/b_wand1.cre~ ~override~
+
+////////////////////////////////////////////////////////////////
+/////////////////      Recharge Wand        ////////////////////
+////////////////////////////////////////////////////////////////
+COPY_EXISTING ~WAND02.itm~ ~override~
+  WRITE_SHORT 0x94 24   //Wand of fear 24 charges
+
+COPY_EXISTING ~WAND03.itm~ ~override~
+  WRITE_SHORT 0x94 60   //Wand of magic missile 60 charges
+
+COPY_EXISTING ~WAND04.itm~ ~override~
+  WRITE_SHORT 0x94 8   //Wand of paralysis missile 8 charges
+
+COPY_EXISTING ~WAND05.itm~ ~override~
+  WRITE_SHORT 0x94 15   //Wand of fire 15 charges
+  WRITE_SHORT 0xCC 15   //Wand of fire 15 charges
+
+COPY_EXISTING ~WAND06.itm~ ~override~
+  WRITE_SHORT 0x94 8   //Wand of frost 8 charges
+
+COPY_EXISTING ~WAND07.itm~ ~override~
+  WRITE_SHORT 0x94 15   //Wand of Lightning 15 charges
+
+COPY_EXISTING ~WAND08.itm~ ~override~
+  WRITE_SHORT 0x94 60   //
+
+//BGEE only
+ACTION_IF GAME_IS ~bgee bg2ee eet~ THEN BEGIN
+  COPY_EXISTING ~WAND09.itm~ ~override~
+    WRITE_SHORT 0x94 10   //
+  COPY_EXISTING ~WAND13.itm~ ~override~
+    WRITE_SHORT 0x94 8   //Wand of Cloudkill 10 charges
+	
+	
+COPY_EXISTING ~WAND99.itm~ ~override~
+  WRITE_SHORT 0x94 60   //Wand of magic missile 60 charges
+
+END//End BGEE ONLY
+
+COPY_EXISTING ~WAND10.itm~ ~override~
+  WRITE_SHORT 0x94 15   //Wand of Mon Sum 15 charges
+  
+COPY_EXISTING ~WAND12.itm~ ~override~
+  WRITE_SHORT 0x94 60   //Wand of magic missile 60 charges
+
+//BGEE only
+//End BGEE ONLY
+
+COPY_EXISTING ~WAND18.itm~ ~override~
+  WRITE_SHORT 0x94 7   //Wand of Spell Striking 7 charges
+  WRITE_SHORT 0xCC 7   //Wand of Spell Striking 7 charges
+
+COPY_EXISTING ~WAND19.itm~ ~override~
+  WRITE_SHORT 0x94 7   //Wand of Cursing 7 charges
+
+//IWDEE ONLY
+ACTION_IF GAME_IS ~iwdee~ THEN BEGIN
+  COPY_EXISTING ~WANDARM.itm~ ~override~
+    WRITE_SHORT 0x94 10   //Wand of Armory 10 charges
+    WRITE_SHORT 0xCC 10
+
+  COPY_EXISTING ~WANDFAK.itm~ ~override~
+    WRITE_SHORT 0x94 15  //Wand of Lightning 15 charges
+
+  COPY_EXISTING ~WANDREA.itm~ ~override~
+    WRITE_SHORT 0x94 15  //Wand of Lightning 15 charges
+END
+//END IWDEE ONLY
+
+
+COPY ~TomeAndBlood/data/arcane_crafting/wand/b_rech1.spl~ ~override~
+  SAY NAME1 @115038//Recharge Wands
+  SAY UNIDENTIFIED_DESC @115039
+
+//IWDEE ONLY
+ACTION_IF GAME_IS ~iwdee~ THEN BEGIN
+  COMPILE ~TomeAndBlood/data/arcane_crafting/wand/iwd/b_rech1.baf~ ~override~
+  COMPILE ~TomeAndBlood/data/arcane_crafting/wand/iwd/b_rech1.d~ ~override~
+END
+//END IWDEE ONLY
+
+//BGEE ONLY
+ACTION_IF GAME_IS ~bgee bg2ee eet~ THEN BEGIN
+  COMPILE ~TomeAndBlood/data/arcane_crafting/wand/bg/b_rech1.baf~ ~override~
+  COMPILE ~TomeAndBlood/data/arcane_crafting/wand/bg/b_rech1.d~ ~override~
+END
+//END BGEE ONLY
+
+COPY ~TomeAndBlood/data/arcane_crafting/wand/b_rech1.cre~ ~override~
+
+////////////////////////////////////////////////////////////////
+/////////////////        Scribe Scroll      ////////////////////
+/////////////////         All Versions      ////////////////////
+////////////////////////////////////////////////////////////////
+//Items: for all versions
+COPY ~TomeAndBlood/data/arcane_crafting/scroll/b_scr01.bam~ ~override~  //NRD
+COPY ~TomeAndBlood/data/arcane_crafting/scroll/b_scr01.itm~ ~override~
+  SAY NAME1 @115027//NRD
+  SAY UNIDENTIFIED_DESC @115028
+  
+COPY ~TomeAndBlood/data/arcane_crafting/scroll/b_scr02.bam~ ~override~  //Chaos Shield
+COPY ~TomeAndBlood/data/arcane_crafting/scroll/b_scr02.itm~ ~override~
+  SAY NAME1 @115029//CS
+  SAY UNIDENTIFIED_DESC @115030
+
+COPY ~TomeAndBlood/data/arcane_crafting/scroll/b_scr03.bam~ ~override~  //Improved Chaos Shield
+COPY ~TomeAndBlood/data/arcane_crafting/scroll/b_scr03.itm~ ~override~
+  SAY NAME1 @115031//ICS
+  SAY UNIDENTIFIED_DESC @115032
+
+
+////////////////////////////////////////////////////////////////
+/////////////////        Scribe Scroll      ////////////////////
+/////////////////         Just Gold         ////////////////////
+////////////////////////////////////////////////////////////////
+COPY ~TomeAndBlood/data/arcane_crafting/scroll/b_scrib.spl~ ~override~   //Scribe Spl
+  SAY NAME1 @115003//Scribe Scroll
+  SAY UNIDENTIFIED_DESC @115017
+
+
+COMPILE ~TomeAndBlood/data/arcane_crafting/scroll/b_scrib.baf~ ~override~   //Scribe script
+COMPILE ~TomeAndBlood/data/arcane_crafting/scroll/b_scrib.d~ ~override~     //Scribe dlg
+COPY ~TomeAndBlood/data/arcane_crafting/scroll/b_scrib.cre~ ~override~      //scribe creature
+
+////////////////////////////////////////////////////////////////
+/////////////////         Brew Potion       ////////////////////
+////////////////////////////////////////////////////////////////
+
+COPY ~TomeAndBlood/data/arcane_crafting/potion/b_Brew1.spl~ ~override~
+  SAY NAME1 @115025//Brew Potion
+  SAY UNIDENTIFIED_DESC @115254
+COMPILE ~TomeAndBlood/data/arcane_crafting/potion/b_Brew1.baf~ ~override~
+COMPILE ~TomeAndBlood/data/arcane_crafting/potion/b_Brew1.d~ ~override~
+COPY ~TomeAndBlood/data/arcane_crafting/potion/b_Brew1.cre~ ~override~
+
+///////////////////////////////////////////////////////////////
+//All more or less universal crafting files
+//
+//1st level scribe scroll for mage only
+//1st level scribe scroll for mage only
+COPY ~TomeAndBlood/data/arcane_crafting/QDSCRCK.spl~ ~override~  //craft mage only
+COPY ~TomeAndBlood/data/arcane_crafting/QDSCRCK.EFF~ ~override~  //craft mage only
+COPY ~TomeAndBlood/data/arcane_crafting/b_ic1.spl~ ~override~  //craft mage only
+  SAY NAME1 @115255//Craft item
+  SAY UNIDENTIFIED_DESC @115256
+
+COPY ~TomeAndBlood/data/arcane_crafting/b_ic10.2da~ ~override~  //craft mage only
+COPY ~TomeAndBlood/data/arcane_crafting/b_ic11.2da~ ~override~  //craft mage only
+COPY ~TomeAndBlood/data/arcane_crafting/b_ic12.2da~ ~override~  //craft mage only
+COPY ~TomeAndBlood/data/arcane_crafting/b_ic13.2da~ ~override~  //craft mage only
+
+COPY ~TomeAndBlood/data/arcane_crafting/b_ic2.spl~ ~override~  //craft sor only
+COPY ~TomeAndBlood/data/arcane_crafting/b_ic3.spl~ ~override~  //craft sor only
+  SAY NAME1 @115255//Craft item
+  SAY UNIDENTIFIED_DESC @115256
+COPY ~TomeAndBlood/data/arcane_crafting/b_ic3.eff~ ~override~  //craft sor only
+COPY ~TomeAndBlood/data/arcane_crafting/b_ic30.2da~ ~override~  //craft sor only
+COPY ~TomeAndBlood/data/arcane_crafting/b_ic31.2da~ ~override~  //craft sor only
+COPY ~TomeAndBlood/data/arcane_crafting/b_ic32.2da~ ~override~  //craft sor only
+//adding craft wands to mages and sorcerers
+
+	//adding craft wands to mages and sorcerers
+INCLUDE ~TomeAndBlood/data/core/tnb_kit_list.tpa~ 
+	//mages get scribe scroll, potion and craft wand
+ACTION_PHP_EACH tnb_kit_list AS kitinfo => kitclab BEGIN 
+	ACTION_IF (FILE_EXISTS_IN_GAME ~%kitclab%.2da~) BEGIN 
+		ACTION_IF (kitinfo_1 = 0) BEGIN 
+			APPEND ~%kitclab%.2da~ ~ARCNCRFT  AP_QDSCRCK   ****       ****       ****       AP_B_ic2   ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****   	****       ****       ****       ****       ****       ****       ****       ****       ****       ****~
+		END 
+		ACTION_IF (kitinfo_1 = 1) BEGIN 
+			APPEND ~%kitclab%.2da~ ~ARCNCRFT GA_b_ic1	 ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****     ****       ****       ****       ****       ****       ****       ****       ****       ****       ****~
+		END 
+		ACTION_IF (kitinfo_1 = 19) BEGIN 
+			APPEND ~%kitclab%.2da~ ~ARCNCRFT ****       ****       ****       ****       GA_B_ic3 ****       ****       ****       ****       ****      ****       ****       ****       ****       **** ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****       ****   ****       ****       ****       ****       ****       ****       ****       ****       ****       ****~
+		END 
+	END 
+END  
+
+
+
+	COPY_EXISTING - ~clastext.2da~ ~override~
+		COUNT_2DA_COLS num_cols
+			READ_2DA_ENTRIES_NOW ~r2en_clastext~ num_cols
+			FOR (row = 1; row < r2en_clastext; row += 1) BEGIN
+				READ_2DA_ENTRY_FORMER ~r2en_clastext~ row 0 kitname
+				READ_2DA_ENTRY_FORMER ~r2en_clastext~ row 4 desc
+				PATCH_IF ((~%kitname%~ STRING_EQUAL_CASE ~MAGE~)) BEGIN
+					INNER_ACTION  BEGIN 
+						ACTION_IF (desc >= 0) BEGIN
+							ACTION_GET_STRREF desc oldstring
+							OUTER_SPRINT old @1201
+							OUTER_SPRINT new @1202
+							OUTER_PATCH_SAVE oldstring ~%oldstring%~ BEGIN
+								REPLACE_TEXTUALLY ~%old%~ ~%new%~
+							END
+							STRING_SET_EVALUATE desc ~%oldstring%~
+						END 
+					END
+				END
+				PATCH_IF ((~%kitname%~ STRING_EQUAL_CASE ~SORCERER~)) BEGIN
+					INNER_ACTION  BEGIN 
+						ACTION_IF (desc >= 0) BEGIN
+							ACTION_GET_STRREF desc oldstring
+							OUTER_SPRINT old @1203
+							OUTER_SPRINT new @1204
+							OUTER_PATCH_SAVE oldstring ~%oldstring%~ BEGIN
+								REPLACE_TEXTUALLY ~%old%~ ~%new%~
+							END
+							STRING_SET_EVALUATE desc ~%oldstring%~
+						END 
+					END
+				END
+			END 
+*/
+*/

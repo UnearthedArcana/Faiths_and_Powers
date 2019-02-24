@@ -1,0 +1,23 @@
+IF
+	True()
+THEN
+	RESPONSE #100
+	MoveToObject(LastSummonerOf(Myself))
+	Continue()
+END
+
+
+IF
+	See(NearestEnemyOf(Myself))
+THEN
+	RESPONSE #100
+	ForceSpell(LastSummonerOf(Myself),INNATE_ALARM)
+	DestroySelf()
+END
+
+IF
+	True()
+THEN
+	RESPONSE #100
+	Wait(3)
+END

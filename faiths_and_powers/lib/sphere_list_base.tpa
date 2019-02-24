@@ -45,17 +45,17 @@ CLERIC_RESURRECTION                    , 7 => Life
 
 //  DEATH
 
-b_c104 /*eyes of the dead*/            , 1 => Death
-b_c105 /*disrupt undead*/              , 1 => Death
+CLERIC_EYES_OF_THE_DEAD            , 1 => Death
+CLERIC_DISRUPT_UNDEAD              , 1 => Death
 WIZARD_LARLOCH_MINOR_DRAIN             , 1 => Death
-b_c202 /*pacify the dead*/             , 2 => Death
+CLERIC_PACIFY_DEAD             , 2 => Death
 WIZARD_HOLD_UNDEAD                     , 2 => Death
 CLERIC_CIRCLE_OF_BONES                 , 3 => Death
 CLERIC_ANIMATE_DEAD                    , 4 => Death
 CLERIC_UNDEAD_WARD                     , 4 => Death
 CLERIC_SLAY_LIVING                     , 5 => Death
 CLERIC_RECALL_SPIRIT                   , 6 => Death // a 'good' spell in Death?
-WIZARD_SOUL_EATER                      , 6 => Death
+B_W631                                 , 6 => Death  //soul eater 
 CLERIC_SYMBOL_DEATH                    , 7 => Death
 CLERIC_FINGER_OF_DEATH                 , 7 => Death
 
@@ -74,15 +74,15 @@ CLERIC_IMPERVIOUS_SANCTITY_OF_MIND     , 7 => Benediction
 
 //  DESTRUCTION
 
-b_pr101 /*holy smite*/                 , 1 => Destruction
+CLERIC_HAND_OF_CARNAGE                 , 1 => Destruction
 //PALADIN_SMITE_EVIL                     , 1 => Destruction
 CLERIC_CAUSE_LIGHT_WOUNDS              , 1 => Destruction
-b_pr201 /*shatter*/                    , 2 => Destruction
+CLERIC_SHATTER                    , 2 => Destruction
 CLERIC_CAUSE_MODERATE_WOUNDS           , 2 => Destruction
 CLERIC_CAUSE_MEDIUM_WOUNDS             , 3 => Destruction
 CLERIC_HOLY_SMITE                      , 3 => Destruction
 CLERIC_UNHOLY_BLIGHT                   , 3 => Destruction
-b_pr401 /*shout*/                      , 4 => Destruction
+b_w431 /*shout*/                       , 4 => Destruction
 CLERIC_CAUSE_SERIOUS_WOUNDS            , 4 => Destruction
 CLERIC_CAUSE_CRITICAL_WOUNDS           , 5 => Destruction
 CLERIC_MASS_CAUSE_LIGHT_WOUNDS         , 5 => Destruction
@@ -109,6 +109,7 @@ CLERIC_GREATER_SHIELD_OF_LATHANDER     , 7 => Protection
 
 CLERIC_REMOVE_FEAR                     , 1 => War
 CLERIC_ABUNDANT_AMMO                   , 1 => War
+CLERIC_MAGIC_WEAPON                    , 1 => War
 CLERIC_SPIRITUAL_HAMMER                , 2 => War
 CLERIC_STRENGTH_OF_ONE                 , 3 => War
 CLERIC_HOLY_POWER                      , 3 => War
@@ -164,12 +165,15 @@ CLERIC_COMMAND                         , 1 => Thought
 CLERIC_ENTHRALL                        , 2 => Thought
 CLERIC_FORBID 						   , 2 => Thought
 CLERIC_CHARM_PERSON                    , 2 => Thought
-b_c301 /*murderous command*/           , 3 => Thought
+CLERIC_MURDEROUS_COMMAND           , 3 => Thought
 CLERIC_DICTATE                    	   , 3 => Thought
 CLERIC_EXALTATION                      , 3 => Thought
 CLERIC_RIGID_THINKING                  , 3 => Thought
 CLERIC_MENTAL_DOMINATION               , 4 => Thought
 CLERIC_BLOOD_RAGE                      , 4 => Thought
+b_w427                                 , 4 => Thought //Emotion: Courage
+b_w428                                 , 4 => Thought //Emotion: Fear
+b_w429                                 , 4 => Thought //Emotion: Hope
 CLERIC_CHAOTIC_COMMANDS                , 5 => Thought
 CLERIC_GREATER_COMMAND                 , 5 => Thought
 CLERIC_CONFUSION                       , 6 => Thought
@@ -179,12 +183,12 @@ CLERIC_NATURE_BEAUTY                   , 7 => Thought
 
 CLERIC_CURSE                           , 1 => Dread
 CLERIC_DOOM                            , 1 => Dread
-b_c201 /*forbiddance*/                 , 2 => Dread
+CLERIC_FORBID                          , 2 => Dread
 CLERIC_HOLD_PERSON                     , 3 => Dread
 CLERIC_CLOAK_OF_FEAR                   , 3 => Dread
 WIZARD_GREATER_MALISON                 , 4 => Dread
 WIZARD_EMOTION_FEAR                    , 4 => Dread
-b_c501 /*misfire*/                     , 5 => Dread
+CLERIC_MISFIRE                         , 5 => Dread
 WIZARD_EMOTION_HOPELESSNESS            , 5 => Dread
 CLERIC_SPIRITUAL_WRATH                 , 6 => Dread
 CLERIC_SYMBOL_OF_HOPELESSNESS          , 7 => Dread
@@ -211,7 +215,7 @@ WIZARD_RAY_OF_ENFEEBLEMENT             , 2 => Affliction
 CLERIC_MOLD_TOUCH                      , 3 => Affliction
 CLERIC_POISON                          , 4 => Affliction
 WIZARD_CONTAGION                       , 4 => Affliction
-b_pr501 /*waves of agony*/             , 5 => Affliction
+CLERIC_WAVES_OF_AGONY             , 5 => Affliction
 CLERIC_CLOUD_OF_PESTILENCE             , 5 => Affliction
 CLERIC_DOLOROUS_DECAY                  , 6 => Affliction
 CLERIC_SYMBOL_OF_PAIN                  , 6 => Affliction
@@ -220,7 +224,7 @@ CLERIC_SYMBOL_STUN                     , 7 => Affliction
 
 //  ANIMAL
 
-b_c102 /*animal eyes*/                 , 1 => Animal
+CLERIC_ANIMAL_EYES                 , 1 => Animal
 CLERIC_HOLD_ANIMAL                     , 1 => Animal
 CLERIC_BEAST_CLAW                      , 2 => Animal
 CLERIC_SUMMON_INSECTS                  , 3 => Animal
@@ -244,9 +248,9 @@ CLERIC_THORN_SPRAY                     , 3 => Plant
 CLERIC_SNARE                           , 3 => Plant
 CLERIC_SPIKE_GROWTH                    , 4 => Plant
 CLERIC_CALL_WOODLAND_BEINGS            , 5 => Plant
-b_pr601 /*nature's wrath*/             , 6 => Plant
-d5pr601 /*nature's wrath*/             , 6 => Plant
-b_c601 /*assassin vines*/              , 6 => Plant
+CLERIC_NATURES_WRATH             , 6 => Plant
+//d5pr601 /*nature's wrath*/             , 6 => Plant  //commented out
+CLERIC_ASSASSIN_VINES              , 6 => Plant
 CLERIC_STALKER                         , 7 => Plant
 
 //  EARTH
@@ -254,7 +258,7 @@ CLERIC_STALKER                         , 7 => Plant
 CLERIC_MAGIC_STONE                     , 1 => Earth
 CLERIC_CAMOUFLAGE                      , 1 => Earth
 CLERIC_PROTECTION_FROM_LIGHTNING       , 2 => Earth
-b_pr301 /*stone fist*/                 , 3 => Earth
+CLERIC_STONE_FIST                 , 3 => Earth
 CLERIC_STAR_METAL_CUDGEL               , 4 => Earth
 CLERIC_SPIKE_STONES                    , 4 => Earth
 CLERIC_IRONSKIN                        , 5 => Earth
@@ -269,7 +273,7 @@ CLERIC_ZONE_OF_SWEET_AIR               , 1 => Air
 WIZARD_STINKING_CLOUD                  , 2 => Air
 CLERIC_STORM_SHELL                     , 3 => Air
 CLERIC_CLOUDBURST                      , 3 => Air
-b_c401 /*stormwall*/                   , 4 => Air
+CLERIC_STORMWALL                   , 4 => Air
 CLERIC_CALL_LIGHTNING                  , 4 => Air
 CLERIC_STATIC_CHARGE                   , 5 => Air
 CLERIC_WHIRLWIND                       , 5 => Air
@@ -280,18 +284,18 @@ WIZARD_DEATH_FOG                       , 7 => Air
 
 //  WATER
 
-b_c103 /*frost fingers*/               , 1 => Water
+CLERIC_FROST_FINGERS                   , 1 => Water
 CLERIC_WATERY_FIST                     , 2 => Water
-b_c203 /*ice blade*/                   , 2 => Water
-//WIZARD_MELF_ACID_ARROW                 , 2 => Water
-WIZARD_ICELANCE                        , 3 => Water
+CLERIC_ICE_BLADE                       , 2 => Water
+b_w204                                 , 2 => Water //Snowball Swarm
+b_w327                                 , 3 => Water   //icelance
 CLERIC_SMASHING_WAVE                   , 4 => Water
-//WIZARD_VITRIOLIC_SPHERE                , 4 => Water
+b_w432                                 , 4 => Water //v sphere
 WIZARD_CONE_OF_COLD                    , 4 => Water
 WIZARD_ICE_STORM                       , 5 => Water
 CLERIC_MIST_OF_ELDATH                  , 6 => Water
-b_pr602 /*water elemental*/            , 6 => Water
-WIZARD_ACID_STORM                      , 7 => Water
+CLERIC_CONJURE_WATER_ELEMENTAL         , 6 => Water
+b_w724                                 , 7 => Water  //acid storm
 
 //  FIRE
 
@@ -324,14 +328,14 @@ CLERIC_SUNRAY                          , 7 => Light
 
 CLERIC_SANCTUARY                       , 1 => Shadow
 WIZARD_BLINDNESS                       , 2 => Shadow
-// add enhanced Chameleon here          , 2 => Shadow
-b_c302 /*cloak of darkness*/           , 3 => Shadow
-WIZARD_DEMI_SHADOW_MONSTERS            , 4 => Shadow
+// add enhanced Chameleon here         , 2 => Shadow
+CLERIC_CLOAK_DARKNESS                  , 3 => Shadow
+b_w426                                 , 4 => Shadow  //Shadow Monsters
 WIZARD_PHANTOM_BLADE                   , 4 => Shadow
 WIZARD_SHADOW_DOOR                     , 4 => Shadow
 d5sh501 /*SR summon shadows*/          , 5 => Shadow
-spsd02 /*shadowstep*/                  , 5 => Shadow
-WIZARD_SHADES                          , 5 => Shadow
+B_SSTEP /*shadowstep*/                 , 5 => Shadow
+B_W629                                 , 6 => Shadow //Shades
 WIZARD_WRAITH_FORM                     , 6 => Shadow
 WIZARD_POWER_WORD_BLIND                , 7 => Shadow
 

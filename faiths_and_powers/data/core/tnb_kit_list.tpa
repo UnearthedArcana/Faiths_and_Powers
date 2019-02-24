@@ -1,0 +1,40 @@
+// These lists define kit groups for each arcane magic class, These are used in the various mechanics tweak components of Tome and Blood, 
+// 
+
+//class_name , class_num , 0th cantrip => clab
+//
+//class_num: mage 		= 1 
+// 			 sorcerer 	= 19 
+// 			 trueclass 	= 0 
+//
+//cantrip: D5_CANT1 = choose 
+//		   D5_WIAB = protective shell
+//		   D5_WINE = stiffen bones
+//		   ...
+//
+//source: 	 vanilla 	= van 
+//			 TnB [QD]	= tnb
+		 
+ACTION_DEFINE_ASSOCIATIVE_ARRAY tnb_kit_list BEGIN 
+	mage_sorc		, 0  ,  D5_CANT1 => CLABMA01
+	abjurer 		, 1	 ,  D5_WIAB => CLABMA02
+	necromancer 	, 1  ,  D5_WINE	=> CLABMA03
+	transmuter 		, 1  ,  D5_WITR	=> CLABMA04
+	diviner 		, 1  ,  D5_WIDI => CLABMA05
+	conjurer 		, 1  ,  D5_WICO => CLABMA06
+	invoker 		, 1  ,  D5_WIIN => CLABMA07
+	illusionist		, 1  ,  D5_WIIL	=> CLABMA08
+	enchanter 		, 1  ,  D5_WIEN => CLABMA09
+	dd				, 19 ,  D5_WFIR	=> CLABSO01
+	tnb_magus		, 19 ,  D5_WIAB =>  QDMAGUS
+	tnb_acid_dd		, 19 ,  D5_WACD =>  QDDDACI
+	tnb_cold_dd		, 19 ,  D5_WCLD	=>  QDDDCOL 
+	tnb_elec_dd		, 19 ,  D5_WELC =>  QDDDELE
+	tnb_fire_dd		, 19 ,  D5_WFIR	=>  QDDDFIR 
+	tnb_favsoul		, 19 , 	D5_WIDI =>  QDFAVSL
+	tnb_sylv_d		, 19 ,	D5_WIEN =>  QDSYLSR
+	tnb_reven_d		, 19 ,	D5_WINE =>  QDREVSR
+	tnb_ooze_d		, 19 ,	D5_WITR =>  QDOOZSR
+	A7_CHAOS_SORCERER , 19 , D5_CANT1 => a7_csrc
+END 
+
