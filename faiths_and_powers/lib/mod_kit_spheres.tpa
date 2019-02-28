@@ -16,7 +16,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~a#cyric.2da~ BEGIN
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
-//LAM __spheres
+LAM DR_cyric_spheres
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -43,29 +43,6 @@ LAF ~DEFINE_FNP_KIT_INFO~
   STR_VAR
     clab_name 		= EVAL ~a#cyric~
 	class 			= ~cleric~
-	s_Life 			= ~minor~
-	s_Death 		= ~major~
-	s_Benediction 	= ~minor~
-	s_Destruction 	= ~major~
-	s_Protection 	= ~x~
-	s_War 			= ~x~
-	s_Exploration   = ~minor~
-	s_Knowledge 	= ~x~
-	s_Deception 	= ~major~
-	s_Thought 		= ~minor~
-	s_Dread 		= ~major~
-	s_Vigor 		= ~minor~
-	s_Affliction 	= ~major~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~x~
-	s_Light 		= ~x~
-	s_Shadow 		= ~major~
-	s_Magic 		= ~minor~
-	s_Perdition     = ~major~
 END
 //__________________________________________________________________________________
 END
@@ -80,6 +57,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~a#feyw.2da~ BEGIN
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM DR_corellon_spheres
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -106,29 +84,6 @@ LAF ~DEFINE_FNP_KIT_INFO~
   STR_VAR
     clab_name 		= EVAL ~a#feyw~
 	class 			= ~cleric~
-	s_Life 			= ~major~
-	s_Death 		= ~x~
-	s_Benediction 	= ~major~
-	s_Destruction 	= ~minor~
-	s_Protection 	= ~major~
-	s_War 			= ~major~
-	s_Exploration   = ~major~
-	s_Knowledge 	= ~major~
-	s_Deception 	= ~x~
-	s_Thought 		= ~minor~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~minor~
-	s_Affliction 	= ~x~
-	s_Animal 		= ~x~
-	s_Plant 		= ~major~
-	s_Earth 		= ~x~
-	s_Water 		= ~minor~
-	s_Air 			= ~minor~
-	s_Fire 			= ~x~
-	s_Light 		= ~major~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~minor~
-	s_Perdition     = ~x~
 END
 //__________________________________________________________________________________
 END
@@ -142,6 +97,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~a#koss.2da~ BEGIN
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM DR_kossuth_spheres
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -168,29 +124,6 @@ LAF ~DEFINE_FNP_KIT_INFO~
   STR_VAR
     clab_name 		= EVAL ~a#koss~
 	class 			= ~acolyte~
-	s_Life 			= ~major~
-	s_Death 		= ~minor~
-	s_Benediction 	= ~minor~
-	s_Destruction 	= ~major~
-	s_Protection 	= ~major~
-	s_War 			= ~minor~
-	s_Exploration   = ~x~
-	s_Knowledge 	= ~major~
-	s_Deception 	= ~x~
-	s_Thought 		= ~x~
-	s_Dread 		= ~minor~
-	s_Vigor 		= ~minor~
-	s_Affliction 	= ~x~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~focus~
-	s_Light 		= ~major~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~minor~
-	s_Perdition     = ~x~
 END
 //__________________________________________________________________________________
 END
@@ -204,6 +137,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~a#ogma.2da~ BEGIN
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM DR_oghma_spheres
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -230,29 +164,6 @@ LAF ~DEFINE_FNP_KIT_INFO~
   STR_VAR
     clab_name 		= EVAL ~a#ogma~
 	class 			= ~acolyte~
-	s_Life 			= ~major~
-	s_Death 		= ~minor~
-	s_Benediction 	= ~major~
-	s_Destruction 	= ~minor~
-	s_Protection 	= ~major~
-	s_War 			= ~x~
-	s_Exploration   = ~minor~
-	s_Knowledge 	= ~focus~
-	s_Deception 	= ~minor~
-	s_Thought 		= ~major~
-	s_Dread 		= ~minor~
-	s_Vigor 		= ~x~
-	s_Affliction 	= ~x~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~x~
-	s_Light 		= ~minor~
-	s_Shadow 		= ~minor~
-	s_Magic 		= ~major~
-	s_Perdition     = ~x~
 END
 //__________________________________________________________________________________
 END
@@ -288,6 +199,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~a#ooze.2da~ BEGIN
   END
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM DR_oozemaster_spheres
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -314,29 +226,6 @@ LAF ~DEFINE_FNP_KIT_INFO~
   STR_VAR
     clab_name 		= EVAL ~a#ooze~
 	class 			= ~occultist~
-	s_Life 			= ~major~
-	s_Death 		= ~minor~
-	s_Benediction 	= ~x~
-	s_Destruction 	= ~x~
-	s_Protection 	= ~x~
-	s_War 			= ~x~
-	s_Exploration   = ~minor~
-	s_Knowledge 	= ~minor~
-	s_Deception 	= ~x~
-	s_Thought 		= ~minor~
-	s_Dread 		= ~minor~
-	s_Vigor 		= ~major~
-	s_Affliction 	= ~major~
-	s_Animal 		= ~x~
-	s_Plant 		= ~major~
-	s_Earth 		= ~major~
-	s_Water 		= ~major~
-	s_Air 			= ~minor~
-	s_Fire 			= ~x~
-	s_Light 		= ~x~
-	s_Shadow 		= ~minor~
-	s_Magic 		= ~x~
-	s_Perdition     = ~x~
 END
 //__________________________________________________________________________________
 END
@@ -350,6 +239,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~a#red.2da~ BEGIN
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM DR_redknight_spheres
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -376,29 +266,6 @@ LAF ~DEFINE_FNP_KIT_INFO~
   STR_VAR
     clab_name 		= EVAL ~a#red~
 	class 			= ~cleric~
-	s_Life 			= ~minor~
-	s_Death 		= ~minor~
-	s_Benediction 	= ~major~
-	s_Destruction 	= ~major~
-	s_Protection 	= ~major~
-	s_War 			= ~major~
-	s_Exploration   = ~minor~
-	s_Knowledge 	= ~minor~
-	s_Deception 	= ~x~
-	s_Thought 		= ~minor~
-	s_Dread 		= ~major~
-	s_Vigor 		= ~major~
-	s_Affliction 	= ~x~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~minor~
-	s_Light 		= ~minor~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~x~
-	s_Perdition     = ~x~
 END
 //__________________________________________________________________________________
 END
@@ -417,6 +284,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~a#shar.2da~ BEGIN
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM DR_shar_spheres
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -443,29 +311,6 @@ LAF ~DEFINE_FNP_KIT_INFO~
   STR_VAR
     clab_name 		= EVAL ~a#shar~
 	class 			= ~cleric~
-	s_Life 			= ~minor~
-	s_Death 		= ~major~
-	s_Benediction 	= ~x~
-	s_Destruction 	= ~major~
-	s_Protection 	= ~minor~
-	s_War 			= ~x~
-	s_Exploration   = ~x~
-	s_Knowledge 	= ~minor~
-	s_Deception 	= ~minor~
-	s_Thought 		= ~minor~
-	s_Dread 		= ~major~
-	s_Vigor 		= ~x~
-	s_Affliction 	= ~minor~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~x~
-	s_Light 		= ~x~
-	s_Shadow 		= ~major~
-	s_Magic 		= ~major~
-	s_Perdition     = ~major~
 END
 //__________________________________________________________________________________
 END
@@ -477,6 +322,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~a#temp.2da~ BEGIN
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM DR_tempus_spheres
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -503,29 +349,6 @@ LAF ~DEFINE_FNP_KIT_INFO~
   STR_VAR
     clab_name 		= EVAL ~a#temp~
 	class 			= ~cleric~
-	s_Life 			= ~major~
-	s_Death 		= ~x~
-	s_Benediction 	= ~major~
-	s_Destruction 	= ~major~
-	s_Protection 	= ~major~
-	s_War 			= ~major~
-	s_Exploration   = ~minor~
-	s_Knowledge 	= ~minor~
-	s_Deception 	= ~x~
-	s_Thought 		= ~minor~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~major~
-	s_Affliction 	= ~x~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~minor~
-	s_Water 		= ~x~
-	s_Air 			= ~minor~
-	s_Fire 			= ~x~
-	s_Light 		= ~minor~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~minor~
-	s_Perdition     = ~x~
 END
 //__________________________________________________________________________________
 END
@@ -537,6 +360,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~cdilmatr.2da~ BEGIN
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM DR_ilmater_spheres
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -563,29 +387,6 @@ LAF ~DEFINE_FNP_KIT_INFO~
   STR_VAR
     clab_name 		= EVAL ~cdilmatr~
 	class 			= ~cleric~
-	s_Life 			= ~major~
-	s_Death 		= ~x~
-	s_Benediction 	= ~major~
-	s_Destruction 	= ~minor~
-	s_Protection 	= ~major~
-	s_War 			= ~x~
-	s_Exploration   = ~x~
-	s_Knowledge 	= ~major~
-	s_Deception 	= ~x~
-	s_Thought 		= ~minor~
-	s_Dread 		= ~minor~
-	s_Vigor 		= ~major~
-	s_Affliction 	= ~major~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~x~
-	s_Light 		= ~minor~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~minor~
-	s_Perdition     = ~x~
 END
 //__________________________________________________________________________________
 END
@@ -597,6 +398,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~cdselune.2da~ BEGIN
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM DR_selune_spheres
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -623,29 +425,6 @@ LAF ~DEFINE_FNP_KIT_INFO~
   STR_VAR
     clab_name 		= EVAL ~cdselune~
 	class 			= ~cleric~
-	s_Life 			= ~major~
-	s_Death 		= ~x~
-	s_Benediction 	= ~major~
-	s_Destruction 	= ~x~
-	s_Protection 	= ~major~
-	s_War 			= ~minor~
-	s_Exploration   = ~minor~
-	s_Knowledge 	= ~major~
-	s_Deception 	= ~minor~
-	s_Thought 		= ~major~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~minor~
-	s_Affliction 	= ~minor~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~major~
-	s_Fire 			= ~x~
-	s_Light 		= ~major~
-	s_Shadow 		= ~minor~
-	s_Magic 		= ~minor~
-	s_Perdition     = ~x~
 END
 //__________________________________________________________________________________
 END
@@ -657,6 +436,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~cdxvim.2da~ BEGIN
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM DR_xvim_spheres
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -683,29 +463,6 @@ LAF ~DEFINE_FNP_KIT_INFO~
   STR_VAR
     clab_name 		= EVAL ~cdxvim~
 	class 			= ~cleric~
-	s_Life 			= ~minor~
-	s_Death 		= ~major~
-	s_Benediction 	= ~major~
-	s_Destruction 	= ~major~
-	s_Protection 	= ~x~
-	s_War 			= ~major~
-	s_Exploration   = ~x~
-	s_Knowledge 	= ~minor~
-	s_Deception 	= ~x~
-	s_Thought 		= ~minor~
-	s_Dread 		= ~major~
-	s_Vigor 		= ~minor~
-	s_Affliction 	= ~major~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~x~
-	s_Light 		= ~x~
-	s_Shadow 		= ~minor~
-	s_Magic 		= ~minor~
-	s_Perdition     = ~major~
 END
 //__________________________________________________________________________________
 END
@@ -717,6 +474,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~nmsune.2da~ BEGIN
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM DR_sune_spheres
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -743,29 +501,6 @@ LAF ~DEFINE_FNP_KIT_INFO~
   STR_VAR
     clab_name 		= EVAL ~nmsune~
 	class 			= ~acolyte~
-	s_Life 			= ~major~
-	s_Death 		= ~x~
-	s_Benediction 	= ~major~
-	s_Destruction 	= ~x~
-	s_Protection 	= ~minor~
-	s_War 			= ~x~
-	s_Exploration   = ~minor~
-	s_Knowledge 	= ~major~
-	s_Deception 	= ~major~
-	s_Thought 		= ~major~
-	s_Dread 		= ~major~
-	s_Vigor 		= ~major~
-	s_Affliction 	= ~x~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~x~
-	s_Light 		= ~minor~
-	s_Shadow 		= ~minor~
-	s_Magic 		= ~minor~
-	s_Perdition     = ~x~
 END
 //__________________________________________________________________________________
 END
@@ -776,6 +511,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~nmrnwlrn.2da~ BEGIN
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM DR_wildrunner_spheres
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -802,29 +538,6 @@ LAF ~DEFINE_FNP_KIT_INFO~
   STR_VAR
     clab_name 		= EVAL ~nmrnwlrn~
 	class 			= ~scout~
-	s_Life 			= ~ranger~
-	s_Death 		= ~x~
-	s_Benediction 	= ~x~
-	s_Destruction 	= ~x~
-	s_Protection 	= ~x~
-	s_War 			= ~x~
-	s_Exploration   = ~ranger~
-	s_Knowledge 	= ~x~
-	s_Deception 	= ~x~
-	s_Thought 		= ~x~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~ranger~
-	s_Affliction 	= ~x~
-	s_Animal 		= ~ranger~
-	s_Plant 		= ~ranger~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~ranger~
-	s_Fire 			= ~x~
-	s_Light 		= ~ranger~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~x~
-	s_Perdition     = ~x~
 END
 //__________________________________________________________________________________
 END
@@ -835,6 +548,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~nmrnbsln.2da~ BEGIN
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM DR_bowslinger_spheres
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -861,29 +575,6 @@ LAF ~DEFINE_FNP_KIT_INFO~
   STR_VAR
     clab_name 		= EVAL ~nmrnbsln~
 	class 			= ~scout~
-	s_Life 			= ~ranger~
-	s_Death 		= ~x~
-	s_Benediction 	= ~x~
-	s_Destruction 	= ~x~
-	s_Protection 	= ~x~
-	s_War 			= ~x~
-	s_Exploration   = ~ranger~
-	s_Knowledge 	= ~x~
-	s_Deception 	= ~x~
-	s_Thought 		= ~x~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~ranger~
-	s_Affliction 	= ~x~
-	s_Animal 		= ~ranger~
-	s_Plant 		= ~ranger~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~ranger~
-	s_Fire 			= ~x~
-	s_Light 		= ~ranger~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~x~
-	s_Perdition     = ~x~
 END
 //__________________________________________________________________________________
 END
@@ -894,6 +585,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~a#feral.2da~ BEGIN
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM DR_feralan_spheres
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -920,29 +612,6 @@ LAF ~DEFINE_FNP_KIT_INFO~
   STR_VAR
     clab_name 		= EVAL ~a#feral~
 	class 			= ~ranger~
-	s_Life 			= ~ranger~
-	s_Death 		= ~x~
-	s_Benediction 	= ~x~
-	s_Destruction 	= ~x~
-	s_Protection 	= ~x~
-	s_War 			= ~x~
-	s_Exploration   = ~ranger~
-	s_Knowledge 	= ~x~
-	s_Deception 	= ~x~
-	s_Thought 		= ~x~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~ranger~
-	s_Affliction 	= ~x~
-	s_Animal 		= ~ranger~
-	s_Plant 		= ~ranger~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~ranger~
-	s_Fire 			= ~x~
-	s_Light 		= ~ranger~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~x~
-	s_Perdition     = ~x~
 END
 //__________________________________________________________________________________
 END
@@ -953,6 +622,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~nmrnfrrn.2da~ BEGIN
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM DR_forrunner_spheres
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -979,29 +649,6 @@ LAF ~DEFINE_FNP_KIT_INFO~
   STR_VAR
     clab_name 		= EVAL ~nmrnfrrn~
 	class 			= ~scout~
-	s_Life 			= ~ranger~
-	s_Death 		= ~x~
-	s_Benediction 	= ~x~
-	s_Destruction 	= ~x~
-	s_Protection 	= ~x~
-	s_War 			= ~x~
-	s_Exploration   = ~ranger~
-	s_Knowledge 	= ~x~
-	s_Deception 	= ~x~
-	s_Thought 		= ~x~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~ranger~
-	s_Affliction 	= ~x~
-	s_Animal 		= ~ranger~
-	s_Plant 		= ~ranger~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~ranger~
-	s_Fire 			= ~x~
-	s_Light 		= ~ranger~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~x~
-	s_Perdition     = ~x~
 END
 //__________________________________________________________________________________
 END
@@ -1012,6 +659,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~a#justif.2da~ BEGIN
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM DR_justifier_spheres
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -1038,29 +686,6 @@ LAF ~DEFINE_FNP_KIT_INFO~
   STR_VAR
     clab_name 		= EVAL ~a#justif~
 	class 			= ~scout~
-	s_Life 			= ~ranger~
-	s_Death 		= ~x~
-	s_Benediction 	= ~x~
-	s_Destruction 	= ~x~
-	s_Protection 	= ~x~
-	s_War 			= ~x~
-	s_Exploration   = ~x~
-	s_Knowledge 	= ~x~
-	s_Deception 	= ~x~
-	s_Thought 		= ~x~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~ranger~
-	s_Affliction 	= ~x~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~x~
-	s_Light 		= ~ranger~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~x~
-	s_Perdition     = ~x~
 END
 //__________________________________________________________________________________
 END
@@ -1070,6 +695,7 @@ END
 ACTION_IF FILE_EXISTS_IN_GAME ~clabauri.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM FJ_auril_spheres
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -1096,29 +722,6 @@ LAF ~DEFINE_FNP_KIT_INFO~
   STR_VAR
     clab_name 		= EVAL ~clabauri~
 	class 			= ~cleric~
-	s_Life 			= ~minor~
-	s_Death 		= ~minor~
-	s_Benediction 	= ~major~
-	s_Destruction 	= ~major~
-	s_Protection 	= ~major~
-	s_War 			= ~minor~
-	s_Exploration   = ~x~
-	s_Knowledge 	= ~major~
-	s_Deception 	= ~x~
-	s_Thought 		= ~minor~
-	s_Dread 		= ~major~
-	s_Vigor 		= ~x~
-	s_Affliction 	= ~x~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~major~
-	s_Air 			= ~x~
-	s_Fire 			= ~x~
-	s_Light 		= ~x~
-	s_Shadow 		= ~minor~
-	s_Magic 		= ~minor~
-	s_Perdition     = ~x~
 END
 //__________________________________________________________________________________
 END
@@ -1128,6 +731,7 @@ END
 ACTION_IF FILE_EXISTS_IN_GAME ~clabiceg.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM FJ_ulutiu_spheres
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -1154,29 +758,6 @@ LAF ~DEFINE_FNP_KIT_INFO~
   STR_VAR
     clab_name 		= EVAL ~clabiceg~
 	class 			= ~cleric~
-	s_Life 			= ~major~
-	s_Death 		= ~x~
-	s_Benediction 	= ~major~
-	s_Destruction 	= ~x~
-	s_Protection 	= ~major~
-	s_War 			= ~minor~
-	s_Exploration   = ~major~
-	s_Knowledge 	= ~minor~
-	s_Deception 	= ~x~
-	s_Thought 		= ~minor~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~major~
-	s_Affliction 	= ~x~
-	s_Animal 		= ~major~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~focus~
-	s_Air 			= ~minor~
-	s_Fire 			= ~x~
-	s_Light 		= ~minor~
-	s_Shadow 		= ~minor~
-	s_Magic 		= ~x~
-	s_Perdition     = ~x~
 END
 //__________________________________________________________________________________
 END
@@ -1186,6 +767,7 @@ END
 ACTION_IF FILE_EXISTS_IN_GAME ~clabeart.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM FJ_earth_spheres
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -1212,29 +794,6 @@ LAF ~DEFINE_FNP_KIT_INFO~
   STR_VAR
     clab_name 		= EVAL ~clabeart~
 	class 			= ~acolyte~
-	s_Life 			= ~major~
-	s_Death 		= ~minor~
-	s_Benediction 	= ~minor~
-	s_Destruction 	= ~major~
-	s_Protection 	= ~minor~
-	s_War 			= ~minor~
-	s_Exploration   = ~x~
-	s_Knowledge 	= ~major~
-	s_Deception 	= ~x~
-	s_Thought 		= ~minor~
-	s_Dread 		= ~major~
-	s_Vigor 		= ~major~
-	s_Affliction 	= ~x~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~focus~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~x~
-	s_Light 		= ~x~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~minor~
-	s_Perdition     = ~x~
 END
 //__________________________________________________________________________________
 END
@@ -1244,6 +803,7 @@ END
 ACTION_IF FILE_EXISTS_IN_GAME ~clableaf.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM FJ_leaftender_spheres
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -1270,29 +830,6 @@ LAF ~DEFINE_FNP_KIT_INFO~
   STR_VAR
     clab_name 		= EVAL ~clableaf~
 	class 			= ~cleric~
-	s_Life 			= ~major~
-	s_Death 		= ~x~
-	s_Benediction 	= ~major~
-	s_Destruction 	= ~x~
-	s_Protection 	= ~major~
-	s_War 			= ~x~
-	s_Exploration   = ~major~
-	s_Knowledge 	= ~minor~
-	s_Deception 	= ~x~
-	s_Thought 		= ~minor~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~major~
-	s_Affliction 	= ~x~
-	s_Animal 		= ~x~
-	s_Plant 		= ~major~
-	s_Earth 		= ~minor~
-	s_Water 		= ~minor~
-	s_Air 			= ~minor~
-	s_Fire 			= ~x~
-	s_Light 		= ~major~
-	s_Shadow 		= ~minor~
-	s_Magic 		= ~x~
-	s_Perdition     = ~x~
 END
 //__________________________________________________________________________________
 END
@@ -1302,6 +839,7 @@ END
 ACTION_IF FILE_EXISTS_IN_GAME ~clabtree.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM FJ_treetender_spheres
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -1328,29 +866,6 @@ LAF ~DEFINE_FNP_KIT_INFO~
   STR_VAR
     clab_name 		= EVAL ~clabtree~
 	class 			= ~cleric~
-	s_Life 			= ~major~
-	s_Death 		= ~x~
-	s_Benediction 	= ~major~
-	s_Destruction 	= ~x~
-	s_Protection 	= ~minor~
-	s_War 			= ~x~
-	s_Exploration   = ~major~
-	s_Knowledge 	= ~minor~
-	s_Deception 	= ~x~
-	s_Thought 		= ~minor~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~major~
-	s_Affliction 	= ~x~
-	s_Animal 		= ~x~
-	s_Plant 		= ~major~
-	s_Earth 		= ~major~
-	s_Water 		= ~minor~
-	s_Air 			= ~minor~
-	s_Fire 			= ~x~
-	s_Light 		= ~major~
-	s_Shadow 		= ~minor~
-	s_Magic 		= ~x~
-	s_Perdition     = ~x~
 END
 //__________________________________________________________________________________
 END
@@ -1360,6 +875,7 @@ END
 ACTION_IF FILE_EXISTS_IN_GAME ~clabgruu.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM FJ_gruumsh_spheres
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -1386,29 +902,6 @@ LAF ~DEFINE_FNP_KIT_INFO~
   STR_VAR
     clab_name 		= EVAL ~clabgruu~
 	class 			= ~cleric~
-	s_Life 			= ~minor~
-	s_Death 		= ~minor~
-	s_Benediction 	= ~minor~
-	s_Destruction 	= ~major~
-	s_Protection 	= ~minor~
-	s_War 			= ~major~
-	s_Exploration   = ~x~
-	s_Knowledge 	= ~x~
-	s_Deception 	= ~x~
-	s_Thought 		= ~x~
-	s_Dread 		= ~major~
-	s_Vigor 		= ~major~
-	s_Affliction 	= ~major~
-	s_Animal 		= ~minor~
-	s_Plant 		= ~x~
-	s_Earth 		= ~major~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~minor~
-	s_Light 		= ~x~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~x~
-	s_Perdition     = ~major~
 END
 //__________________________________________________________________________________
 END
@@ -1418,6 +911,7 @@ END
 ACTION_IF FILE_EXISTS_IN_GAME ~clabluth.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM FJ_luthic_spheres
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -1444,29 +938,6 @@ LAF ~DEFINE_FNP_KIT_INFO~
   STR_VAR
     clab_name 		= EVAL ~clabluth~
 	class 			= ~cleric~
-	s_Life 			= ~major~
-	s_Death 		= ~major~
-	s_Benediction 	= ~minor~
-	s_Destruction 	= ~major~
-	s_Protection 	= ~major~
-	s_War 			= ~minor~
-	s_Exploration   = ~x~
-	s_Knowledge 	= ~major~
-	s_Deception 	= ~x~
-	s_Thought 		= ~minor~
-	s_Dread 		= ~major~
-	s_Vigor 		= ~minor~
-	s_Affliction 	= ~minor~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~x~
-	s_Light 		= ~x~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~minor~
-	s_Perdition     = ~x~
 END
 //__________________________________________________________________________________
 END
@@ -1476,6 +947,7 @@ END
 ACTION_IF FILE_EXISTS_IN_GAME ~k9hive.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM FJ_hivemaster_spheres
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -1502,29 +974,6 @@ LAF ~DEFINE_FNP_KIT_INFO~
   STR_VAR
     clab_name 		= EVAL ~k9hive~
 	class 			= ~occultist~
-	s_Life 			= ~major~
-	s_Death 		= ~x~
-	s_Benediction 	= ~x~
-	s_Destruction 	= ~x~
-	s_Protection 	= ~x~
-	s_War 			= ~x~
-	s_Exploration   = ~x~
-	s_Knowledge 	= ~minor~
-	s_Deception 	= ~x~
-	s_Thought 		= ~minor~
-	s_Dread 		= ~minor~
-	s_Vigor 		= ~major~
-	s_Affliction 	= ~major~
-	s_Animal 		= ~major~
-	s_Plant 		= ~major~
-	s_Earth 		= ~minor~
-	s_Water 		= ~minor~
-	s_Air 			= ~major~
-	s_Fire 			= ~x~
-	s_Light 		= ~x~
-	s_Shadow 		= ~minor~
-	s_Magic 		= ~x~
-	s_Perdition     = ~x~
 END
 //__________________________________________________________________________________
 END
@@ -1534,6 +983,7 @@ END
 ACTION_IF FILE_EXISTS_IN_GAME ~k9ilma.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM FJ_palilmater_spheres
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -1560,29 +1010,6 @@ LAF ~DEFINE_FNP_KIT_INFO~
   STR_VAR
     clab_name 		= EVAL ~k9ilma~
 	class 			= ~champion~
-	s_Life 			= ~paladin~
-	s_Death 		= ~x~
-	s_Benediction 	= ~paladin~
-	s_Destruction 	= ~paladin~
-	s_Protection 	= ~paladin~
-	s_War 			= ~x~
-	s_Exploration   = ~x~
-	s_Knowledge 	= ~paladin~
-	s_Deception 	= ~x~
-	s_Thought 		= ~x~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~paladin~
-	s_Affliction 	= ~x~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~x~
-	s_Light 		= ~x~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~x~
-	s_Perdition     = ~x~
 END
 //__________________________________________________________________________________
 END
@@ -1592,6 +1019,7 @@ END
 ACTION_IF FILE_EXISTS_IN_GAME ~k9miel.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM FJ_palmielikki_spheres
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -1618,29 +1046,6 @@ LAF ~DEFINE_FNP_KIT_INFO~
   STR_VAR
     clab_name 		= EVAL ~k9miel~
 	class 			= ~champion~
-	s_Life 			= ~paladin~
-	s_Death 		= ~x~
-	s_Benediction 	= ~paladin~
-	s_Destruction 	= ~x~
-	s_Protection 	= ~paladin~
-	s_War 			= ~x~
-	s_Exploration   = ~paladin~
-	s_Knowledge 	= ~paladin~
-	s_Deception 	= ~x~
-	s_Thought 		= ~x~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~x~
-	s_Affliction 	= ~x~
-	s_Animal 		= ~paladin~
-	s_Plant 		= ~paladin~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~x~
-	s_Light 		= ~x~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~x~
-	s_Perdition     = ~x~
 END
 //__________________________________________________________________________________
 END
@@ -1650,6 +1055,7 @@ END
 ACTION_IF FILE_EXISTS_IN_GAME ~k9myst.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM fj_palmystra_spheres
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -1676,29 +1082,6 @@ LAF ~DEFINE_FNP_KIT_INFO~
   STR_VAR
     clab_name 		= EVAL ~k9myst~
 	class 			= ~champion~
-	s_Life 			= ~paladin~
-	s_Death 		= ~x~
-	s_Benediction 	= ~paladin~
-	s_Destruction 	= ~paladin~
-	s_Protection 	= ~paladin~
-	s_War 			= ~paladin~
-	s_Exploration   = ~x~
-	s_Knowledge 	= ~paladin~
-	s_Deception 	= ~x~
-	s_Thought 		= ~x~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~x~
-	s_Affliction 	= ~x~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~x~
-	s_Light 		= ~x~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~paladin~
-	s_Perdition     = ~x~
 END
 //__________________________________________________________________________________
 END
@@ -1708,6 +1091,7 @@ END
 ACTION_IF FILE_EXISTS_IN_GAME ~c0ilmcl.2da~ BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+LAM sirene_ilmater_spheres
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -1734,29 +1118,6 @@ LAF ~DEFINE_FNP_KIT_INFO~
   STR_VAR
     clab_name 		= ~c0ilmcl~
 	class 			= ~champion~
-	s_Life 			= ~paladin~
-	s_Death 		= ~x~
-	s_Benediction 	= ~paladin~
-	s_Destruction 	= ~X~
-	s_Protection 	= ~paladin~
-	s_War 			= ~x~
-	s_Exploration   = ~x~
-	s_Knowledge 	= ~paladin~
-	s_Deception 	= ~x~
-	s_Thought 		= ~x~
-	s_Dread 		= ~paladin~
-	s_Vigor 		= ~paladin~
-	s_Affliction 	= ~x~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~x~
-	s_Light 		= ~x~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~x~
-	s_Perdition     = ~x~
 END
 //__________________________________________________________________________________
 END

@@ -925,10 +925,10 @@ END
 //effs
 //Spell itself
 ADD_SPELL ~%mod_folder%/data/new_spells/priest_1/B_C107.spl~ 1 1 ~CLERIC_MAGIC_WEAPON~ //
-        SAY NAME1 @50000
-        SAY NAME2 @50000
-        SAY UNIDENTIFIED_DESC @50001
-	SAY DESC @50001
+        SAY NAME1 @53025
+        SAY NAME2 @53025
+        SAY UNIDENTIFIED_DESC @53026
+	SAY DESC @53026
 //to clear earlier versions of the spell
 LAF RES_NUM_OF_SPELL_NAME
   STR_VAR spell_name = ~CLERIC_MAGIC_WEAPON~

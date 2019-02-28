@@ -10,6 +10,12 @@ TO DO 04: SR in IWDEE: Beast Claw --> b_p219.spl; Cause Disease --> b_p320.spl; 
 
 TO DO 05: Convert rest of IWD wiz fnp spells to priest res 
 
+Version 0.76.01
+
+2019-02-26
+
+- Incorporated additional mod kit sphere info (for 3rd pary mod npcs and kits)
+
 Version 0.76.00
 
 2019-02-23
