@@ -2,7 +2,7 @@ BACKUP ~faiths_and_powers/backup~
 AUTHOR ~SubtleD and Grammarsalad~
 
 
-VERSION ~0.76.01~
+VERSION ~0.76.02~
 
 
 //README ~faiths_and_powers/readme-pnp.html~
@@ -24,7 +24,7 @@ ALWAYS
 
 	INCLUDE ~faiths_and_powers/lib/remove_lines.tpa~
 
-        INCLUDE ~faiths_and_powers/lib/bg2fp_effect_batches_fnp.tpa~
+	INCLUDE ~faiths_and_powers/lib/bg2fp_effect_batches_fnp.tpa~
 
 	INCLUDE ~faiths_and_powers/lib/spell_to_innate.tpa~
 
@@ -434,8 +434,11 @@ INCLUDE ~%mod_folder%/lib/fnp_new_spells.tpa~
 
 //Now, Immunities.  DO AT THE VERY END OF ALL SPELL INSTALLS
 INCLUDE ~%mod_folder%/lib/immunities.tpa~
+
 //sr spell deflection compatibility
-INCLUDE ~%mod_folder%/lib/compatibility_SR.tpa~
+ACTION_IF MOD_IS_INSTALLED ~spell_rev.tp2~ ~55~ BEGIN
+  INCLUDE ~%mod_folder%/lib/compatibility_SR.tpa~
+END
 
 //__________________________________________________________________________________
 
@@ -445,8 +448,6 @@ ACTION_IF (%d5_use_spheres% = 1) BEGIN
  INCLUDE ~faiths_and_powers/lib/create_sphere_system.tpa~
  LAF create_spheres END
 END
-
-
 //__________________________________________________________________________________
 
 //install the kits__________________________________________________________________
@@ -537,7 +538,9 @@ ACTION_IF (%d5_acolyte_baervan% = 1) BEGIN
 END
 //
 // (incarnates)
-// LAF incarnate_mystra
+ACTION_IF (%d5_incarnate_mystra% = 1) BEGIN
+ LAF incarnate_mystra END
+END
 //
 // (druids)
 ACTION_IF (%d5_forest_druid% = 1) BEGIN
