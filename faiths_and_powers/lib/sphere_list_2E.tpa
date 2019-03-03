@@ -103,6 +103,7 @@ CLERIC_BLESS_WATER                     , 1 => Creation
 //Divine Symbol                        , 2 => Creation //NEW SPELL
 //Grease                               , 3 => Creation //NEW SPELL   (as wiz spell, or sim)
 //Spellweb                             , 3 => Creation //NEW SPELL  (as wiz web spell, but needs better name!)
+//Disable Construct                    , 4 => Creation //NEW SPELL http://www.d20pfsrd.com/magic/all-spells/d/disable-construct no save 1st round. Save each round after
 //Vesting                              , 5 => Creation //NEW SPELL
 //Heroes' feast                        , 6 => Creation //NEW SPELL
 //Animate Object                       , 7 => Creation //NEW SPELL
@@ -215,10 +216,12 @@ b_w429                                 , 4 => Charm  //Emotion: Hope
 CLERIC_NATURE_BEAUTY                   , 7 => Charm
 
 //  "Law"
+//Castigate                            , 2 => Law    // NEW SPELL http://www.d20pfsrd.com/magic/all-spells/c/castigate single target fear
 CLERIC_STRENGTH_OF_ONE                 , 3 => Law
 CLERIC_RIGID_THINKING                  , 3 => Law  //sr accounted for
 CLERIC_DEFENSIVE_HARMONY               , 4 => Law
 CLERIC_CHAMPIONS_STRENGTH              , 5 => Law
+//Rebuke                               , 5 => Law // NEW SPELL http://www.d20pfsrd.com/magic/all-spells/r/rebuke
 
 //  "Chaos"
 CLERIC_MISCAST_MAGIC                   , 2 => Chaos
@@ -276,11 +279,15 @@ WIZARD_FLESH_TO_STONE                  , 6 => Earth
 CLERIC_EARTHQUAKE                      , 7 => Earth
 
 //  "Elemental Air"
+//SR_CLERIC_OBSCURING_MIST             , 1 => Air // Sr SPELL
+// Wispering wind                      , 1 => Air // NEW SPELL as aud glammer
 WIZARD_STINKING_CLOUD                  , 2 => Air
 CLERIC_ZONE_OF_SWEET_AIR               , 3 => Air
+//Gaseous form                         , 4 => Air // NEW SPELL http://www.d20pfsrd.com/magic/all-spells/g/gaseous-form no attack, slow move, almost invulnerable, wind spells push
 CLERIC_CLOUD_OF_PESTILENCE             , 5 => Air
 CLERIC_WHIRLWIND                       , 5 => Air
-WIZARD_CHAIN_LIGHTNING                 , 6 => Air
+//winds of vengeance                   , 7 => Air  // NEW SPELL http://www.d20pfsrd.com/magic/all-spells/w/winds-of-vengeance
+
 
 //  "Elemental Water"
 CLERIC_FROST_FINGERS                   , 1 => Water
@@ -316,8 +323,7 @@ CLERIC_SOL_SEARING_ORB                 , 6 => Sun
 CLERIC_SUNRAY                          , 7 => Sun
 
 //  "Shadow"
-WIZARD_BLINDNESS                       , 2 => Shadow
-// add enhanced Chameleon here         , 2 => Shadow
+b_w206                                 , 2 => Shadow  //Blindness (and no conflicts with SR)
 CLERIC_CLOAK_DARKNESS                  , 3 => Shadow
 b_w426                                 , 4 => Shadow  //Shadow Monsters
 WIZARD_PHANTOM_BLADE                   , 4 => Shadow
@@ -335,6 +341,7 @@ CLERIC_PROTECTION_FROM_LIGHTNING       , 4 => Weather
 CLERIC_STATIC_CHARGE                   , 4 => Weather
 CLERIC_STORMWALL                       , 4 => Weather
 WIZARD_ICE_STORM                       , 5 => Weather
+WIZARD_CHAIN_LIGHTNING                 , 6 => Weather
 
 //  "Astral"
 CLERIC_SPIRIT_WARD                     , 1 => Astral // modify to work against all planar creatures, maybe undead too?

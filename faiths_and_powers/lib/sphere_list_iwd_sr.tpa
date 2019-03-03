@@ -26,10 +26,10 @@ WIZARD_LARLOCH_MINOR_DRAIN             , 1 => Death
 CLERIC_PACIFY_DEAD                     , 2 => Death
 CLERIC_CAUSE_MODERATE_WOUNDS           , 2 => Death  //sr accounted for
 WIZARD_HOLD_UNDEAD                     , 2 => Death
-CLERIC_CIRCLE_OF_BONES               , 3 => Death // SR accounted for
+CLERIC_CIRCLE_OF_BONES                 , 3 => Death // SR accounted for
 CLERIC_ANIMATE_DEAD                    , 4 => Death
 //CLERIC_UNDEAD_WARD                   , 4 => Death // is now SR prot. from cold
-CLERIC_MASS_CAUSE_LIGHT_WOUNDS       , 5 => Death // SR accounted for
+CLERIC_MASS_CAUSE_LIGHT_WOUNDS         , 5 => Death // SR accounted for
 CLERIC_SLAY_LIVING                     , 5 => Death
 CLERIC_RECALL_SPIRIT                   , 5 => Death // a 'good' spell in Death?
 CLERIC_HARM                            , 6 => Death
@@ -314,7 +314,7 @@ CLERIC_SUNRAY                          , 7 => Light
 
 //  SHADOW
 CLERIC_SANCTUARY                       , 1 => Shadow
-spwi106 /*SR obscuring mist*/          , 1 => Shadow
+b_w206                                 , 2 => Shadow  //Blindness (and no conflicts with SR)
 CLERIC_CLOAK_DARKNESS                  , 3 => Shadow
 b_w426                                 , 4 => Shadow  //Shadow Monsters
 WIZARD_PHANTOM_BLADE                   , 4 => Shadow

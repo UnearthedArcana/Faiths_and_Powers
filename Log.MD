@@ -26,7 +26,15 @@ TO DO 12: Add Pecca's spon casting as an option
 
 TO DO 13: Add Cha based turning as an option
 
+Version 0.76.03
+
+2019-03-03
+
+- Added cleric blindness spl for shadow sphere
+
 Version 0.76.02
+
+2019-02-28
 
 - Fixed a few parse errors, etc.
 
