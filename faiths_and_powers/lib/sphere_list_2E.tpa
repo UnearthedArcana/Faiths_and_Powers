@@ -50,7 +50,6 @@ ACTION_DEFINE_ASSOCIATIVE_ARRAY alt_spheres BEGIN
 
 //Universal/all
 CLERIC_BLESS                           , 1 => Universal
-CLERIC_DETECT_EVIL                     , 1 => Universal
 CLERIC_CURSE                           , 1 => Universal
 CLERIC_CHANT                           , 2 => Universal
 CLERIC_REMOVE_CURSE                    , 2 => Universal
@@ -99,10 +98,10 @@ CLERIC_FINGER_OF_DEATH                 , 7 => Necromantic
 //  "Creation"
 CLERIC_ABUNDANT_AMMO                   , 1 => Creation
 CLERIC_BLESS_WATER                     , 1 => Creation
-//Armor                                , 1 => Creation //NEW SPELL  (as wiz spell, or sim)
+CLERIC_BINDING                         , 1 => Creation 
 //Divine Symbol                        , 2 => Creation //NEW SPELL
-//Grease                               , 3 => Creation //NEW SPELL   (as wiz spell, or sim)
-//Spellweb                             , 3 => Creation //NEW SPELL  (as wiz web spell, but needs better name!)
+WIZARD_GREASE                          , 3 => Creation //NEW SPELL   (as wiz spell, or sim)
+WIZARD_WEB                             , 3 => Creation //NEW SPELL
 //Disable Construct                    , 4 => Creation //NEW SPELL http://www.d20pfsrd.com/magic/all-spells/d/disable-construct no save 1st round. Save each round after
 //Vesting                              , 5 => Creation //NEW SPELL
 //Heroes' feast                        , 6 => Creation //NEW SPELL
@@ -184,7 +183,7 @@ CLERIC_TRUE_SIGHT                      , 6 => Divination
 WIZARD_CONTINGENCY                     , 7 => Divination
 
 //  "Wards"
-CLERIC_SPIRIT_WARD                     , 1 => Wards
+CLERIC_SPIRIT_WARD                     , 1 => Wards     // modify to work against all planar creatures, maybe undead too?
 CLERIC_SILENCE_15_FOOT                 , 2 => Wards
 CLERIC_ZONE_OF_SWEET_AIR               , 3 => Wards
 CLERIC_GLYPH_OF_WARDING                , 3 => Wards
@@ -344,7 +343,6 @@ WIZARD_ICE_STORM                       , 5 => Weather
 WIZARD_CHAIN_LIGHTNING                 , 6 => Weather
 
 //  "Astral"
-CLERIC_SPIRIT_WARD                     , 1 => Astral // modify to work against all planar creatures, maybe undead too?
 CLERIC_WRITHING_FOG                    , 2 => Astral
 CLERIC_SPIRIT_FIRE                     , 3 => Astral
 CLERIC_RECALL_SPIRIT                   , 5 => Astral
