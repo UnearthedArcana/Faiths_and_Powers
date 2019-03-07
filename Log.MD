@@ -26,6 +26,12 @@ TO DO 12: Add Pecca's spon casting as an option
 
 TO DO 13: Add Cha based turning as an option
 
+Version 0.76.05
+
+2019-03-07
+
+- Updated Binding Spell Duration
+
 Version 0.76.04
 
 2019-03-07
