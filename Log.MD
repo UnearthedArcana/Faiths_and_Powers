@@ -26,6 +26,12 @@ TO DO 12: Add Pecca's spon casting as an option
 
 TO DO 13: Add Cha based turning as an option
 
+Version 0.76.06
+
+2019-03-08
+
+- Added Castigate priest spell
+
 Version 0.76.05
 
 2019-03-07
