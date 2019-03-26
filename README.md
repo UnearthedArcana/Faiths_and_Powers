@@ -4,7 +4,7 @@ Faiths and Powers mod
 **Compatibility**: Should be completely compatible with the following mods if installed after them:
 
 - Spell Revisions
-- Deities of Faerûn
+- ~~Deities of Faerûn~~
 - Divine Remix (do not install their sphere system)
 - MORE
 
