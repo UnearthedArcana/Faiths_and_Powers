@@ -1376,8 +1376,116 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
 INCLUDE ~%mod_folder%/lib/spell_lists/ice_list.tpa~
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//______________________________________________________________Minor Creation__________________________________________________________________________//
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/* //for copying and changing existing
+COPY_EXISTING ~AROW08.itm~ ~override/B_TEST01.itm~
+      WRITE_LONG 0x0034 0   //price 0
+      WRITE_BYTE 0x0042 0   //id lore 0
+      WRITE_ASCIIE 0x003a ~IAROW07~  //inv bam
+  LPF ALTER_EFFECT
+      INT_VAR match_opcode = 12 parameter2 = 65536   // acid damage
+      STR_VAR
+  END      //
+ LPF ALTER_ITEM_HEADER INT_VAR projectile = 12 STR_VAR icon = EVAL  ~IAROW07~  END    //
+*/
+
+//THIS AIn'T READY!
+/*
+//Projectile
+//VVC
+//bam
+//animations
+//3d animation
+//sounds
+//2da
+COPY ~%mod_folder%/data/new_spells/priest_2/B_C211A.2da~ ~override~    //lev 1-3
+COPY ~%mod_folder%/data/new_spells/priest_2/B_C211A.2da~ ~override~    //lev 4-6
+COPY ~%mod_folder%/data/new_spells/priest_2/B_C211A.2da~ ~override~    //lev 7-9
+COPY ~%mod_folder%/data/new_spells/priest_2/B_C211A.2da~ ~override~    //lev 10-12
+COPY ~%mod_folder%/data/new_spells/priest_2/B_C211A.2da~ ~override~    //lev 13+
+//effs
+//Spell itself
+ADD_SPELL ~%mod_folder%/data/new_spells/priest_2/B_C211.spl~ 1 2 ~CLERIC_MINOR_CREATION~ // won't be selectable at 1st; have to add to clab (ranger lev 8 or 9, whenever they normally get 1st lev spells)
+        SAY NAME1 @53033
+        SAY NAME2 @53033
+        SAY UNIDENTIFIED_DESC @53034
+	SAY DESC @53034
+//okay...items
+//long sword
+COPY_EXISTING ~SW1H04.itm~ ~override/B_CR001.itm~
+      WRITE_LONG 0x0034 0   //price 0
+      WRITE_BYTE 0x0042 0   //id lore 0
+//l.swd spells
+COPY ~%mod_folder%/data/new_spells/ranger_1/B_R101A.SPL~ ~override/B_CR001A.SPL~   //Long sword1 spl
+        SAY NAME1 #2893
+        SAY NAME2 #2893
+  LPF ALTER_EFFECT
+      INT_VAR match_opcode = 122  parameter1 = 2          // 2 items (4 lbs ea)
+      STR_VAR resource = ~B_CR001~
+  END      //
+
+COPY ~%mod_folder%/data/new_spells/ranger_1/B_R101A.SPL~ ~override/B_CR001B.SPL~   //Long sword2 spl
+        SAY NAME1 #2893
+        SAY NAME2 #2893
+  LPF ALTER_EFFECT
+      INT_VAR match_opcode = 122  parameter1 = 5          // 5 items (4 lbs ea)
+      STR_VAR resource = ~B_CR001~
+  END      //
+
+//CONTINUE  SPELLS
+
+//short sword
+COPY_EXISTING ~SW1H07.itm~ ~override/B_CR002.itm~
+      WRITE_LONG 0x0034 0   //price 0
+      WRITE_BYTE 0x0042 0   //id lore 0
+
+//CONTINUE  SPELLS
+
+//Dagger
+COPY_EXISTING ~DAGG01.itm~ ~override/B_CR003.itm~
+      WRITE_LONG 0x0034 0   //price 0
+      WRITE_BYTE 0x0042 0   //id lore 0
+
+//CONTINUE  SPELLS
+
+//B,Axe
+COPY_EXISTING ~AX1H01.itm~ ~override/B_CR004.itm~
+      WRITE_LONG 0x0034 0   //price 0
+      WRITE_BYTE 0x0042 0   //id lore 0
+//CONTINUE  SPELLS
+
+//CONTINUE  ITEMS!!!
 
 
+//to clear earlier versions of the spell
+LAF RES_NUM_OF_SPELL_NAME
+  STR_VAR spell_name = ~CLERIC_MINOR_CREATION~
+  RET spell_res
+END
+
+/* //no custom icons yet
+//bams seem to be messed up (sigh, again!)
+COPY_EXISTING ~%spell_res%.spl~ ~override~
+//add icons and projectile
+  LPF ALTER_SPELL_HEADER STR_VAR icon = EVAL  ~%spell_res%B~ END
+COPY ~%mod_folder%/data/new_spells/ranger_1/B_R101A.bam~ ~override/%spell_res%A.bam~
+COPY ~%mod_folder%/data/new_spells/ranger_1/B_R101B.bam~ ~override/%spell_res%B.bam~
+COPY ~%mod_folder%/data/new_spells/ranger_1/B_R101C.bam~ ~override/%spell_res%C.bam~
+//add bams to spl
+//COPY_EXISTING ~%spell_res%.spl~ ~override~
+  WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
+
+//Sh. of Entropy immunity list
+//INCLUDE ~%mod_folder%/lib/spell_lists/entropy_list.tpa~
+
+//COMPATIBILITY: IN FNP WILL BE ADDED TO WAR SPHERE
+
+*/  //custom icons
+*/ //Remove when spell is ready
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1535,8 +1643,8 @@ COPY ~%mod_folder%/spheres/spells/death/#EFF_P04.wav~ ~override~ //
 ADD_SPELL ~%mod_folder%/spheres/spells/earth/b_pr301.spl~ 1 3 ~CLERIC_STONE_FIST~ //
         SAY NAME1 @51501
         SAY NAME2 @51501
-        SAY UNIDENTIFIED_DESC @51503
-	SAY DESC @51503
+        SAY UNIDENTIFIED_DESC @51502
+	SAY DESC @51502
 
 //to clear earlier versions of the spell
 LAF RES_NUM_OF_SPELL_NAME

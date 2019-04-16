@@ -183,16 +183,15 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
 //Sh. of Entropy immunity list
 INCLUDE ~%mod_folder%/lib/spell_lists/entropy_list.tpa~
 
-FYI   */
+FYI   
+*/
 
 // SD: eliminate #bonecir.spl from IWDEE
-ACTION_IF GAME_IS ~iwdee~ BEGIN
-  ACTION_IF FILE_EXISTS_IN_GAME "#bonecir.spl" BEGIN
+ACTION_IF FILE_EXISTS_IN_GAME "#bonecir.spl" BEGIN
 	DISABLE_FROM_KEY "#bonecir.spl"
   END
   ACTION_IF FILE_EXISTS "override\#bonecir.spl" BEGIN
 	DELETE "override\#bonecir.spl"
-  END
 END
 
 
@@ -228,6 +227,88 @@ END
 //////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//______________________________________________________________Invisibility to Undead__________________________________________________________________//
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//Spell itself
+ADD_SPELL ~%mod_folder%/data/new_spells/priest_1/B_C108.spl~ 1 1 ~CLERIC_INVISIBILITY_TO_UNDEAD~ //
+        SAY NAME1 @68011
+        SAY NAME2 @68011
+        SAY UNIDENTIFIED_DESC @68012
+	SAY DESC @68012
+  LPF ALTER_EFFECT
+      INT_VAR match_opcode = 139 parameter1 = RESOLVE_STR_REF (@68013)            // Accelerated Metabolism
+      STR_VAR
+  END      //
+
+//to clear earlier versions of the spell
+LAF RES_NUM_OF_SPELL_NAME
+  STR_VAR spell_name = ~CLERIC_INVISIBILITY_TO_UNDEAD~
+  RET spell_res
+END
+COPY_EXISTING ~%spell_res%.spl~ ~override~
+  LPF ALTER_EFFECT
+      INT_VAR match_opcode = 321            //
+      STR_VAR resource = EVAL ~%spell_res%~
+  END      //
+
+//no unique icons (or scrolls)
+/*
+//add icons and projectile
+  LPF ALTER_SPELL_HEADER INT_VAR STR_VAR icon = EVAL  ~%spell_res%B~ END
+COPY ~%mod_folder%/data/new_spells/mage_1/B_W103a.bam~ ~override/%spell_res%a.bam~
+COPY ~%mod_folder%/data/new_spells/mage_1/B_W103b.bam~ ~override/%spell_res%b.bam~
+COPY ~%mod_folder%/data/new_spells/mage_1/B_W103c.bam~ ~override/%spell_res%c.bam~
+//add bams to spl
+COPY_EXISTING ~%spell_res%.spl~ ~override~
+  WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
+//scroll
+COPY ~%mod_folder%/data/new_spells/mage_1/B_W103.itm~ ~override/%spell_res%.itm~
+        SAY NAME1 @10
+        SAY NAME2 @66013
+	SAY DESC @66014
+  LPF ALTER_ITEM_HEADER STR_VAR icon = EVAL  ~%spell_res%A~ END
+  LPF ALTER_ITEM_EFFECT INT_VAR check_headers = 1 match_opcode = 146 STR_VAR resource = EVAL  ~%spell_res%~ END
+  LPF ALTER_ITEM_EFFECT INT_VAR check_headers = 1 match_opcode = 147 STR_VAR resource = EVAL  ~%spell_res%~ END
+//scrolls in stores
+//sod
+//BGEE - Sorcerous Sundries
+ACTION_IF GAME_IS ~bgee~ THEN BEGIN   //  ACTION_IF GAME_IS ~bgee sod~ THEN BEGIN
+  COPY_EXISTING ~STO0703.sto~ ~override~
+    ADD_STORE_ITEM ~%spell_res%~ #1 #0 #0 ~IDENTIFIED~ #2
+//High Hedge
+  COPY_EXISTING ~HIGHHEDG.sto~ ~override~
+    ADD_STORE_ITEM ~%spell_res%~ #1 #0 #0 ~IDENTIFIED~ #2
+END//End BGEE
+ ACTION_IF FILE_EXISTS_IN_GAME ~BDSORCSC.STO~ BEGIN  //SoD
+  COPY_EXISTING ~BDSORCSC.STO~ ~override~
+   ADD_STORE_ITEM ~%spell_res%~ #1 #0 #0 ~IDENTIFIED~ #2
+ END
+//bg2ee
+ACTION_IF GAME_IS ~bg2ee eet~ THEN BEGIN   //  A
+//Lady Yuth
+COPY_EXISTING ~SCROLLS.STO~ ~override~
+ ADD_STORE_ITEM ~%spell_res%~ #1 #0 #0 ~IDENTIFIED~ #4
+//Underdark
+COPY_EXISTING ~UDDROW25.STO~ ~override~
+ ADD_STORE_ITEM ~%spell_res%~ #1 #0 #0 ~IDENTIFIED~ #4
+
+ ACTION_IF FILE_EXISTS_IN_GAME ~BDSORCSC.STO~ BEGIN  //SoD
+  COPY_EXISTING ~BDSORCSC.STO~ ~override~
+   ADD_STORE_ITEM ~%spell_res%~ #1 #0 #0 ~IDENTIFIED~ #2
+ END
+
+ ACTION_IF FILE_EXISTS_IN_GAME ~STO0703.STO~ BEGIN  //SoD
+  COPY_EXISTING ~STO0703.STO~ ~override~
+   ADD_STORE_ITEM ~%spell_res%~ #1 #0 #0 ~IDENTIFIED~ #2
+ END
+END//end only bg2ee
+//immunities and protections?
+//INCLUDE ~%mod_folder%/lib/spell_lists/entropy_list.tpa~
+*/
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -288,10 +369,10 @@ END
 //effs
 //Spell itself
 ADD_SPELL ~%mod_folder%/data/new_spells/mage_1/B_W103.spl~ 2 1 ~WIZARD_ACCELERATE_HEALING~ //
-        SAY NAME1 @61013
-        SAY NAME2 @61013
-        SAY UNIDENTIFIED_DESC @61014
-	SAY DESC @61014
+        SAY NAME1 @66013
+        SAY NAME2 @66013
+        SAY UNIDENTIFIED_DESC @66014
+	SAY DESC @66014
 
 //to clear earlier versions of the spell
 LAF RES_NUM_OF_SPELL_NAME
@@ -304,7 +385,7 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
       STR_VAR resource = EVAL ~%spell_res%~
   END      //
   LPF ALTER_EFFECT
-      INT_VAR match_opcode = 139 parameter1 = RESOLVE_STR_REF (@61015)            // Accelerated Metabolism
+      INT_VAR match_opcode = 139 parameter1 = RESOLVE_STR_REF (@66015)            // Accelerated Metabolism
       STR_VAR
   END      //
 //add icons and projectile
@@ -318,8 +399,8 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
 //scroll
 COPY ~%mod_folder%/data/new_spells/mage_1/B_W103.itm~ ~override/%spell_res%.itm~
         SAY NAME1 @10
-        SAY NAME2 @61013
-	SAY DESC @61014
+        SAY NAME2 @66013
+	SAY DESC @66014
   LPF ALTER_ITEM_HEADER STR_VAR icon = EVAL  ~%spell_res%A~ END
   LPF ALTER_ITEM_EFFECT INT_VAR check_headers = 1 match_opcode = 146 STR_VAR resource = EVAL  ~%spell_res%~ END
   LPF ALTER_ITEM_EFFECT INT_VAR check_headers = 1 match_opcode = 147 STR_VAR resource = EVAL  ~%spell_res%~ END
@@ -375,21 +456,21 @@ END//end only bg2ee
 //effs
 //Secondary spell(s)
 ADD_SPELL ~%mod_folder%/data/new_spells/mage_1/b_alarm.spl~ 3 1 ~INNATE_ALARM~ //Innate
-	SAY NAME1 @60201
+	SAY NAME1 @65201
 //itm
 COPY ~%mod_folder%/data/new_spells/mage_1/b_w101.itm~ ~override~   //itm alarm
 //baf
 COMPILE ~%mod_folder%/data/new_spells/mage_1/b_alarm.baf~    //script
 //cre
 COPY ~%mod_folder%/data/new_spells/mage_1/b_w101.cre~ ~override~   //cre alarm
-       SAY 0x8 @60201
-       SAY 0xc @60201
+       SAY 0x8 @65201
+       SAY 0xc @65201
 //Spell itself
 ADD_SPELL ~%mod_folder%/data/new_spells/mage_1/b_w101.spl~ 2 1 ~WIZARD_ALARM~ //
-        SAY NAME1 @60201
-        SAY NAME2 @60201
-        SAY UNIDENTIFIED_DESC @60202
-	SAY DESC @60202
+        SAY NAME1 @65201
+        SAY NAME2 @65201
+        SAY UNIDENTIFIED_DESC @65202
+	SAY DESC @65202
 LAF RES_NUM_OF_SPELL_NAME
   STR_VAR spell_name = ~WIZARD_ALARM~
   RET spell_res
@@ -413,8 +494,8 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
 //scroll
 COPY ~%mod_folder%/data/new_spells/mage_1/B_W103.itm~ ~override/%spell_res%.itm~
         SAY NAME1 @10
-        SAY NAME2 @60201
-	SAY DESC @60202
+        SAY NAME2 @65201
+	SAY DESC @65202
   LPF ALTER_ITEM_HEADER STR_VAR icon = EVAL  ~%spell_res%A~ END
   LPF ALTER_ITEM_EFFECT INT_VAR check_headers = 1 match_opcode = 146 STR_VAR resource = EVAL  ~%spell_res%~ END
   LPF ALTER_ITEM_EFFECT INT_VAR check_headers = 1 match_opcode = 147 STR_VAR resource = EVAL  ~%spell_res%~ END
@@ -472,10 +553,10 @@ END//end only bg2ee
 //effs
 //Spell itself
 ADD_SPELL ~%mod_folder%/data/new_spells/mage_1/D5_WIDI.spl~ 2 1 ~WIZARD_ANTICIPATION~ //
-        SAY NAME1 @60101
-        SAY NAME2 @60101
-        SAY UNIDENTIFIED_DESC @60102
-	SAY DESC @60102
+        SAY NAME1 @65101
+        SAY NAME2 @65101
+        SAY UNIDENTIFIED_DESC @65102
+	SAY DESC @65102
 LAF RES_NUM_OF_SPELL_NAME
   STR_VAR spell_name = ~WIZARD_ANTICIPATION~
   RET spell_res
@@ -499,8 +580,8 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
 //scroll
 COPY ~%mod_folder%/data/new_spells/mage_1/D5_WIDI.itm~ ~override/%spell_res%.itm~
         SAY NAME1 @10
-        SAY NAME2 @60101
-	SAY DESC @60102
+        SAY NAME2 @65101
+	SAY DESC @65102
   LPF ALTER_ITEM_HEADER STR_VAR icon = EVAL  ~%spell_res%A~ END
   LPF ALTER_ITEM_EFFECT INT_VAR check_headers = 1 match_opcode = 146 STR_VAR resource = EVAL  ~%spell_res%~ END
   LPF ALTER_ITEM_EFFECT INT_VAR check_headers = 1 match_opcode = 147 STR_VAR resource = EVAL  ~%spell_res%~ END
@@ -556,10 +637,10 @@ COPY ~%mod_folder%/data/new_spells/mage_1/B_DETT.cre~ ~override~
 COPY ~%mod_folder%/data/new_spells/ranger_1/B_INVIS.itm~ ~override~
 
 ADD_SPELL ~%mod_folder%/data/new_spells/mage_1/B_W105.spl~ 2 1 ~WIZARD_DETECT_TRAPS~ //
-          SAY NAME1 @61001
-          SAY NAME2 @61001
-          SAY UNIDENTIFIED_DESC @61002
-  	  SAY DESC @61002
+          SAY NAME1 @66001
+          SAY NAME2 @66001
+          SAY UNIDENTIFIED_DESC @66002
+  	  SAY DESC @66002
 
 LAF RES_NUM_OF_SPELL_NAME
   STR_VAR spell_name = ~WIZARD_DETECT_TRAPS~
@@ -582,8 +663,8 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
 //scroll
 COPY ~%mod_folder%/data/new_spells/mage_1/D5_WIDI.itm~ ~override/%spell_res%.itm~ //It's fine to use the same scroll
         SAY NAME1 @10
-        SAY NAME2 @61001
-	SAY DESC @61002
+        SAY NAME2 @66001
+	SAY DESC @66002
   LPF ALTER_ITEM_HEADER STR_VAR icon = EVAL  ~%spell_res%A~ END
   LPF ALTER_ITEM_EFFECT INT_VAR check_headers = 1 match_opcode = 146 STR_VAR resource = EVAL  ~%spell_res%~ END
   LPF ALTER_ITEM_EFFECT INT_VAR check_headers = 1 match_opcode = 147 STR_VAR resource = EVAL  ~%spell_res%~ END
@@ -638,10 +719,10 @@ END//end only bg2ee
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 ADD_SPELL ~%mod_folder%/data/new_spells/mage_1/B_W106.spl~ 2 1 ~WIZARD_FARSEER~ //
-          SAY NAME1 @61110
-          SAY NAME2 @61110
-          SAY UNIDENTIFIED_DESC @61111
-  	  SAY DESC @61111
+          SAY NAME1 @66110
+          SAY NAME2 @66110
+          SAY UNIDENTIFIED_DESC @66111
+  	  SAY DESC @66111
 LAF RES_NUM_OF_SPELL_NAME
   STR_VAR spell_name = ~WIZARD_FARSEER~
   RET spell_res
@@ -656,7 +737,7 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
       STR_VAR resource = EVAL ~%spell_res%~
   END      //  Blind immune
   LPF ALTER_EFFECT 
-      INT_VAR match_opcode = 139 parameter1 = RESOLVE_STR_REF (@61112)
+      INT_VAR match_opcode = 139 parameter1 = RESOLVE_STR_REF (@66112)
   END  // Farseer notification
 //No icons as yet
 //add icons and projectile
@@ -670,8 +751,8 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
 //scroll
 COPY ~%mod_folder%/data/new_spells/mage_1/B_W103.itm~ ~override/%spell_res%.itm~ //It's fine to use the same scroll
         SAY NAME1 @10
-        SAY NAME2 @61110
-	SAY DESC @61111
+        SAY NAME2 @66110
+	SAY DESC @66111
   LPF ALTER_ITEM_HEADER STR_VAR icon = EVAL  ~%spell_res%A~ END
   LPF ALTER_ITEM_EFFECT INT_VAR check_headers = 1 match_opcode = 146 STR_VAR resource = EVAL  ~%spell_res%~ END
   LPF ALTER_ITEM_EFFECT INT_VAR check_headers = 1 match_opcode = 147 STR_VAR resource = EVAL  ~%spell_res%~ END
@@ -732,10 +813,10 @@ END//end only bg2ee
 //Using command as a base spell
 COPY_EXISTING ~SPPR102.spl~ ~override/b_1w1xx.spl~
 ADD_SPELL ~override/b_1w1xx.spl~ 2 1 ~WIZARD_HYPNOTISM~ //
-          SAY NAME1 @60203
-          SAY NAME2 @60203
-          SAY UNIDENTIFIED_DESC @60204
-  	  SAY DESC @60204
+          SAY NAME1 @65203
+          SAY NAME2 @65203
+          SAY UNIDENTIFIED_DESC @65204
+  	  SAY DESC @65204
  WRITE_BYTE 0x1c 1//Wizard Spells
  WRITE_LONG 0x1e 0x1000//General spells, exclude necro
  WRITE_LONG 0x18 0//Remove hostility
@@ -743,7 +824,7 @@ ADD_SPELL ~override/b_1w1xx.spl~ 2 1 ~WIZARD_HYPNOTISM~ //
       INT_VAR match_opcode = 39  opcode = 76          //change to feeblemind opcode
   END      //
   LPF CLONE_EFFECT INT_VAR match_opcode = 76 opcode = 324 parameter2 = 1 END  //Protection complete below
-  LPF CLONE_EFFECT INT_VAR match_opcode = 76 opcode = 139 parameter1 = RESOLVE_STR_REF (@60205) END  //Notification: Hypnotized
+  LPF CLONE_EFFECT INT_VAR match_opcode = 76 opcode = 139 parameter1 = RESOLVE_STR_REF (@65205) END  //Notification: Hypnotized
   LPF CLONE_EFFECT INT_VAR match_opcode = 76 opcode = 232 parameter2 = 7 END  //Notification: Hypnotized
   LPF ALTER_SPELL_HEADER INT_VAR projectile = 190 END  //hold projectile
 //  LPF ALTER_SPELL_HEADER INT_VAR projectile = %IDPRO217% STR_VAR icon = EVAL  ~%spell_res%B~ END
@@ -757,10 +838,10 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
   LPF ALTER_EFFECT INT_VAR match_opcode = 324 STR_VAR resource = EVAL ~%spell_res%~ END   //no undead
   LPF CLONE_EFFECT INT_VAR match_opcode = 324 parameter2 = 27 STR_VAR resource = EVAL ~%spell_res%~ END  //no golem
 COPY ~%mod_folder%/data/new_spells/mage_1/B_W1XXA.spl~ ~override/%spell_res%A.spl~   //Notification: No longer Hypnotized
-          SAY NAME1 @60206
-          SAY NAME2 @60206
+          SAY NAME1 @65206
+          SAY NAME2 @65206
   LPF ALTER_EFFECT INT_VAR match_opcode = 321 STR_VAR resource = EVAL ~%spell_res%~ END  //
-//  LPF ALTER_EFFECT INT_VAR match_opcode = 139 parameter1 = RESOLVE_STR_REF (@60206) END  //Notification: No longer Hypnotized
+//  LPF ALTER_EFFECT INT_VAR match_opcode = 139 parameter1 = RESOLVE_STR_REF (@65206) END  //Notification: No longer Hypnotized
 //add icons and projectile
 /*
   LPF ALTER_SPELL_HEADER INT_VAR STR_VAR icon = EVAL  ~%spell_res%B~ END
@@ -774,8 +855,8 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
 //scroll
 COPY ~%mod_folder%/data/new_spells/mage_1/SCRL69.itm~ ~override/%spell_res%.itm~ //It's fine to use the same scroll
         SAY NAME1 @10
-        SAY NAME2 @60203
-	SAY DESC @60204
+        SAY NAME2 @65203
+	SAY DESC @65204
   LPF ALTER_ITEM_HEADER STR_VAR icon = EVAL  ~%spell_res%A~ END
   LPF ALTER_ITEM_EFFECT INT_VAR check_headers = 1 match_opcode = 146 STR_VAR resource = EVAL  ~%spell_res%~ END
   LPF ALTER_ITEM_EFFECT INT_VAR check_headers = 1 match_opcode = 147 STR_VAR resource = EVAL  ~%spell_res%~ END
@@ -818,6 +899,95 @@ INCLUDE ~%mod_folder%/lib/spell_lists/hypno_list.tpa~
 INCLUDE ~%mod_folder%/lib/spell_lists/1st_list.tpa~
 INCLUDE ~%mod_folder%/lib/spell_lists/blood_list.tpa~
 
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//______________________________________________________________Invisibility to Undead__________________________________________________________________//
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//Spell itself
+ADD_SPELL ~%mod_folder%/data/new_spells/priest_1/B_W107.spl~ 2 1 ~WIZARD_INVISIBILITY_TO_UNDEAD~ //
+        SAY NAME1 @68011
+        SAY NAME2 @68011
+        SAY UNIDENTIFIED_DESC @68014
+	SAY DESC @68014
+  LPF ALTER_EFFECT
+      INT_VAR match_opcode = 139 parameter1 = RESOLVE_STR_REF (@68013)            // Protected from undead
+      STR_VAR
+  END      //
+//to clear earlier versions of the spell
+LAF RES_NUM_OF_SPELL_NAME
+  STR_VAR spell_name = ~WIZARD_INVISIBILITY_TO_UNDEAD~
+  RET spell_res
+END
+COPY_EXISTING ~%spell_res%.spl~ ~override~
+  LPF ALTER_EFFECT
+      INT_VAR match_opcode = 321            //
+      STR_VAR resource = EVAL ~%spell_res%~
+  END      //
+
+//no unique icons (or scrolls)
+/*
+//add icons and projectile
+  LPF ALTER_SPELL_HEADER INT_VAR STR_VAR icon = EVAL  ~%spell_res%B~ END
+COPY ~%mod_folder%/data/new_spells/mage_1/B_W103a.bam~ ~override/%spell_res%a.bam~
+COPY ~%mod_folder%/data/new_spells/mage_1/B_W103b.bam~ ~override/%spell_res%b.bam~
+COPY ~%mod_folder%/data/new_spells/mage_1/B_W103c.bam~ ~override/%spell_res%c.bam~
+//add bams to spl
+COPY_EXISTING ~%spell_res%.spl~ ~override~
+  WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
+*/
+//scroll
+COPY ~%mod_folder%/data/new_spells/mage_1/B_W107.itm~ ~override/%spell_res%.itm~
+        SAY NAME1 @10
+        SAY NAME2 @68011
+	SAY DESC @68014
+//  LPF ALTER_ITEM_HEADER STR_VAR icon = EVAL  ~%spell_res%A~ END
+  LPF ALTER_ITEM_EFFECT INT_VAR check_headers = 1 match_opcode = 146 STR_VAR resource = EVAL  ~%spell_res%~ END
+  LPF ALTER_ITEM_EFFECT INT_VAR check_headers = 1 match_opcode = 147 STR_VAR resource = EVAL  ~%spell_res%~ END
+//scrolls in stores
+//sod
+
+//BGEE - Sorcerous Sundries
+ACTION_IF FILE_EXISTS_IN_GAME ~STO0703.STO~ THEN BEGIN   //
+  COPY_EXISTING ~STO0703.sto~ ~override~
+    ADD_STORE_ITEM ~%spell_res%~ #1 #0 #0 ~IDENTIFIED~ #2
+END
+
+//High Hedge
+ACTION_IF FILE_EXISTS_IN_GAME ~HIGHHEDG.STO~ THEN BEGIN   //
+  COPY_EXISTING ~HIGHHEDG.sto~ ~override~
+    ADD_STORE_ITEM ~%spell_res%~ #1 #0 #0 ~IDENTIFIED~ #2
+END//
+ ACTION_IF FILE_EXISTS_IN_GAME ~BDSORCSC.STO~ BEGIN  //SoD
+  COPY_EXISTING ~BDSORCSC.STO~ ~override~
+   ADD_STORE_ITEM ~%spell_res%~ #1 #0 #0 ~IDENTIFIED~ #2
+ END
+
+//bg2ee
+//Lady Yuth
+ ACTION_IF FILE_EXISTS_IN_GAME ~SCROLLS.STO~ BEGIN  //
+   COPY_EXISTING ~SCROLLS.STO~ ~override~
+     ADD_STORE_ITEM ~%spell_res%~ #1 #0 #0 ~IDENTIFIED~ #4
+ END
+
+//Underdark
+ ACTION_IF FILE_EXISTS_IN_GAME ~UDDROW25.STO~ BEGIN  //
+  COPY_EXISTING ~UDDROW25.STO~ ~override~
+   ADD_STORE_ITEM ~%spell_res%~ #1 #0 #0 ~IDENTIFIED~ #4
+ END
+ ACTION_IF FILE_EXISTS_IN_GAME ~BDSORCSC.STO~ BEGIN  //SoD
+  COPY_EXISTING ~BDSORCSC.STO~ ~override~
+   ADD_STORE_ITEM ~%spell_res%~ #1 #0 #0 ~IDENTIFIED~ #2
+ END
+ ACTION_IF FILE_EXISTS_IN_GAME ~STO0703.STO~ BEGIN  //SoD
+  COPY_EXISTING ~STO0703.STO~ ~override~
+   ADD_STORE_ITEM ~%spell_res%~ #1 #0 #0 ~IDENTIFIED~ #2
+ END
+//immunities and protections?
+//INCLUDE ~%mod_folder%/lib/spell_lists/entropy_list.tpa~
+
 //CONTINUE HERE
 
 
@@ -835,6 +1005,88 @@ INCLUDE ~%mod_folder%/lib/spell_lists/blood_list.tpa~
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Phantasmal Force (illusion that does decent dam but 'dispelled' if hit--i.e. has 1 hp)
 //(see how in BG2 they did illusory werewolves in the tent--or maybe 1 hp summons)
+//scripts
+//IWDEE 37456
+//BGEE 25267
+ACTION_IF GAME_IS ~bgee iwdee~ THEN BEGIN
+ COMPILE ~%mod_folder%/data/new_spells/mage_1/%game%/ILLUSION.baf~  //script
+END
+
+//creatures
+//kobold
+COPY ~%mod_folder%/data/new_spells/mage_1/b_kbds01.cre~ ~override~
+        SAY NAME1 @68005
+        SAY NAME2 @68005
+        LAUNCH_PATCH_FUNCTION make_illusion END
+//Ogrillon
+COPY ~%mod_folder%/data/new_spells/mage_1/b_ogr01.cre~ ~override~
+        SAY NAME1 @68006
+        SAY NAME2 @68006
+        LAUNCH_PATCH_FUNCTION make_illusion END
+//Worg
+COPY ~%mod_folder%/data/new_spells/mage_1/b_wrg01.cre~ ~override~
+        SAY NAME1 @68007
+        SAY NAME2 @68007
+        LAUNCH_PATCH_FUNCTION make_illusion END
+//Wild Dog
+COPY ~%mod_folder%/data/new_spells/mage_1/b_dog01.cre~ ~override~
+        SAY NAME1 @68008
+        SAY NAME2 @68008
+        LAUNCH_PATCH_FUNCTION make_illusion END
+//natty weapons and illusory item
+COPY ~%mod_folder%/data/new_spells/mage_1/b_nl1-6.itm~ ~override~
+COPY ~%mod_folder%/data/new_spells/mage_1/b_nla01.itm~ ~override~
+COPY ~%mod_folder%/data/new_spells/mage_1/b_nl1-4.itm~ ~override~
+COPY ~%mod_folder%/data/new_spells/mage_1/b_nl1-8.itm~ ~override~
+COPY ~%mod_folder%/data/new_spells/mage_1/b_ill01.itm~ ~override~  //illusion ring immunities and such need to add string immunities,etc
+
+//Spell itself
+ADD_SPELL ~%mod_folder%/data/new_spells/mage_1/B_WZ101.spl~ 2 1 ~WIZARD_PHANTASMAL_FORCE~ //
+        SAY NAME1 @68003
+        SAY NAME2 @68003
+        SAY UNIDENTIFIED_DESC @68004
+	SAY DESC @68004
+	  LPF ALTER_EFFECT INT_VAR match_opcode = 177 resist_dispel = 3 STR_VAR END
+
+//to clear earlier versions of the spell
+LAF RES_NUM_OF_SPELL_NAME
+  STR_VAR spell_name = ~WIZARD_PHANTASMAL_FORCE~
+  RET spell_res
+END
+COPY_EXISTING ~%spell_res%.spl~ ~override~
+  LPF ALTER_EFFECT
+      INT_VAR power = 1 STR_VAR resource = EVAL ~%spell_res%~
+  END      //
+//eff
+COPY ~%mod_folder%/data/new_spells/mage_1/B_WZ101.eff~ ~override/%spell_res%.eff~
+
+//2da
+COPY ~%mod_folder%/data/new_spells/mage_1/B_WZ101.2da~ ~override~
+
+//Belief spell
+COPY ~%mod_folder%/data/new_spells/mage_1/b_belie.spl~ ~override~
+        SAY NAME1 @68009
+        SAY NAME2 @68009
+  LPF ALTER_EFFECT INT_VAR match_opcode = 139 parameter1 = RESOLVE_STR_REF (@68010) END  //Disbelieves Illusion
+
+//Belief eff
+COPY ~%mod_folder%/data/new_spells/mage_1/b_belie.eff~ ~override~
+
+
+/*
+//add icons and projectile
+  LPF ALTER_SPELL_HEADER INT_VAR projectile = %IDPRO217% STR_VAR icon = EVAL  ~%spell_res%B~ END
+COPY ~%mod_folder%/data/iwd_spells/wizard_2/SPWI204a.bam~ ~override/%spell_res%a.bam~
+COPY ~%mod_folder%/data/iwd_spells/wizard_2/SPWI204b.bam~ ~override/%spell_res%b.bam~
+COPY ~%mod_folder%/data/iwd_spells/wizard_2/SPWI204c.bam~ ~override/%spell_res%c.bam~
+//add bams to spl
+COPY_EXISTING ~%spell_res%.spl~ ~override~
+  WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
+
+//Sh. of illusion immunity list
+INCLUDE ~%mod_folder%/lib/spell_lists/illusion_list.tpa~
+*/
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -861,10 +1113,10 @@ INCLUDE ~%mod_folder%/lib/spell_lists/blood_list.tpa~
 //effs
 //Spell itself
 ADD_SPELL ~%mod_folder%/data/new_spells/mage_1/D5_WIAB.spl~ 2 1 ~WIZARD_PROTECTIVE_SHELL~ //
-        SAY NAME1 @60001
-        SAY NAME2 @60001
-        SAY UNIDENTIFIED_DESC @60002
-	SAY DESC @60002
+        SAY NAME1 @65001
+        SAY NAME2 @65001
+        SAY UNIDENTIFIED_DESC @65002
+	SAY DESC @65002
 LAF RES_NUM_OF_SPELL_NAME
   STR_VAR spell_name = ~WIZARD_PROTECTIVE_SHELL~
   RET spell_res
@@ -887,8 +1139,8 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
 //scroll
 COPY ~%mod_folder%/data/new_spells/mage_1/D5_WIDI.itm~ ~override/%spell_res%.itm~
         SAY NAME1 @10
-        SAY NAME2 @60001
-	SAY DESC @60002
+        SAY NAME2 @65001
+	SAY DESC @65002
   LPF ALTER_ITEM_HEADER STR_VAR icon = EVAL  ~%spell_res%A~ END
   LPF ALTER_ITEM_EFFECT INT_VAR check_headers = 1 match_opcode = 146 STR_VAR resource = EVAL  ~%spell_res%~ END
   LPF ALTER_ITEM_EFFECT INT_VAR check_headers = 1 match_opcode = 147 STR_VAR resource = EVAL  ~%spell_res%~ END
@@ -935,17 +1187,17 @@ END//end only bg2ee
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Spell itself
 ADD_SPELL ~%mod_folder%/data/new_spells/mage_1/B_M101.spl~ 2 1 ~WIZARD_ENERVATING_RAY~ //
-        SAY NAME1 @61101
-        SAY NAME2 @61101
-        SAY UNIDENTIFIED_DESC @61102
-	SAY DESC @61102
+        SAY NAME1 @66101
+        SAY NAME2 @66101
+        SAY UNIDENTIFIED_DESC @66102
+	SAY DESC @66102
 //to clear earlier versions of the spell
 LAF RES_NUM_OF_SPELL_NAME
   STR_VAR spell_name = ~WIZARD_ENERVATING_RAY~
   RET spell_res
 END
 COPY_EXISTING ~%spell_res%.spl~ ~override~
-  LPF ALTER_EFFECT INT_VAR match_opcode = 139 parameter1 = RESOLVE_STR_REF (@61103) END  //
+  LPF ALTER_EFFECT INT_VAR match_opcode = 139 parameter1 = RESOLVE_STR_REF (@66103) END  //
   LPF CLONE_EFFECT INT_VAR match_opcode = 12 opcode = 324 timing = 0 parameter1 = 0 parameter2 = 1 duration = 1 dicenumber = 0 dicesize = 0 savingthrow = 0 STR_VAR resource = EVAL ~%spell_res%~  END   //undead immune
   LPF CLONE_EFFECT INT_VAR match_opcode = 12 opcode = 324 timing = 0 parameter1 = 0 parameter2 = 9 duration = 1 dicenumber = 0 dicesize = 0 savingthrow = 0 STR_VAR resource = EVAL ~%spell_res%~  END   //elemental immune
   LPF CLONE_EFFECT INT_VAR match_opcode = 12 opcode = 324 timing = 0 parameter1 = 0 parameter2 = 27 duration = 1 dicenumber = 0 dicesize = 0 savingthrow = 0 STR_VAR resource = EVAL ~%spell_res%~  END   //golem immune
@@ -960,8 +1212,8 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
 //scroll
 COPY ~%mod_folder%/data/new_spells/mage_1/B_M101.itm~ ~override/%spell_res%.itm~
         SAY NAME1 @10
-        SAY NAME2 @61101
-	SAY DESC @61102
+        SAY NAME2 @66101
+	SAY DESC @66102
   LPF ALTER_ITEM_HEADER STR_VAR icon = EVAL  ~%spell_res%A~ END
   LPF ALTER_ITEM_EFFECT INT_VAR check_headers = 1 match_opcode = 146 STR_VAR resource = EVAL  ~%spell_res%~ END
   LPF ALTER_ITEM_EFFECT INT_VAR check_headers = 1 match_opcode = 147 STR_VAR resource = EVAL  ~%spell_res%~ END
@@ -1018,10 +1270,10 @@ END//end only bg2ee
 //effs
 //Spell itself
 ADD_SPELL ~%mod_folder%/data/new_spells/mage_1/B_W102.spl~ 2 1 ~WIZARD_REPRIEVE~ //
-        SAY NAME1 @61011
-        SAY NAME2 @61011
-        SAY UNIDENTIFIED_DESC @61012
-	SAY DESC @61012
+        SAY NAME1 @66011
+        SAY NAME2 @66011
+        SAY UNIDENTIFIED_DESC @66012
+	SAY DESC @66012
 LAF RES_NUM_OF_SPELL_NAME
   STR_VAR spell_name = ~WIZARD_REPRIEVE~
   RET spell_res
@@ -1048,10 +1300,10 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
 */
 //Scroll
 COPY ~%mod_folder%/data/new_spells/mage_1/B_W102.itm~ ~override~ // Actual Scroll
-        SAY NAME1 @61011
-        SAY NAME2 @61011
-        SAY UNIDENTIFIED_DESC @61012
-	SAY DESC @61012
+        SAY NAME1 @66011
+        SAY NAME2 @66011
+        SAY UNIDENTIFIED_DESC @66012
+	SAY DESC @66012
 //  LPF ALTER_ITEM_HEADER STR_VAR icon = EVAL  ~%spell_res%A~ END   //scroll icon
   LPF ALTER_EFFECT
       INT_VAR match_opcode = 146            // Cast from scroll
@@ -1100,10 +1352,10 @@ END
 //effs
 //Spell itself
 ADD_SPELL ~%mod_folder%/data/new_spells/mage_1/B_W104.spl~ 2 1 ~WIZARD_VANISH~ //
-        SAY NAME1 @61016
-        SAY NAME2 @61016
-        SAY UNIDENTIFIED_DESC @61017
-	SAY DESC @61017
+        SAY NAME1 @66016
+        SAY NAME2 @66016
+        SAY UNIDENTIFIED_DESC @66017
+	SAY DESC @66017
 LAF RES_NUM_OF_SPELL_NAME
   STR_VAR spell_name = ~WIZARD_VANISH~
   RET spell_res
@@ -1124,10 +1376,10 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
 */
 //Scroll
 COPY ~%mod_folder%/data/new_spells/mage_1/B_W104.itm~ ~override~ // Actual Scroll
-        SAY NAME1 @61016
-        SAY NAME2 @61016
-        SAY UNIDENTIFIED_DESC @61017
-	SAY DESC @61017
+        SAY NAME1 @66016
+        SAY NAME2 @66016
+        SAY UNIDENTIFIED_DESC @66017
+	SAY DESC @66017
 //  LPF ALTER_ITEM_HEADER STR_VAR icon = EVAL  ~%spell_res%A~ END   //scroll icon
   LPF ALTER_EFFECT
       INT_VAR match_opcode = 146            // Cast from scroll
@@ -1185,10 +1437,10 @@ END//end only bg2ee
 
 
 ADD_SPELL ~%mod_folder%/data/new_spells/mage_2/B_W201.spl~ 2 2 ~WIZARD_BOLT_OF_PARALYSIS~ //
-        SAY NAME1 @62000
-        SAY NAME2 @62000
-        SAY UNIDENTIFIED_DESC @62001
-	SAY DESC @62001
+        SAY NAME1 @67000
+        SAY NAME2 @67000
+        SAY UNIDENTIFIED_DESC @67001
+	SAY DESC @67001
 LAF RES_NUM_OF_SPELL_NAME
   STR_VAR spell_name = ~WIZARD_BOLT_OF_PARALYSIS~
   RET spell_res
@@ -1206,7 +1458,7 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
       INT_VAR match_opcode = 45 opcode = 142 parameter2 = 55
     END
     LPF CLONE_EFFECT
-      INT_VAR match_opcode = 45 opcode = 139 timing = 1 parameter1 = RESOLVE_STR_REF (@62002)     //paralyzed
+      INT_VAR match_opcode = 45 opcode = 139 timing = 1 parameter1 = RESOLVE_STR_REF (@67002)     //paralyzed
     END
     LPF CLONE_EFFECT
       INT_VAR match_opcode = 40 opcode = 142 parameter2 = 41
@@ -1229,10 +1481,10 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
 
 //Scroll
 COPY ~%mod_folder%/data/new_spells/mage_2/B_W201.itm~ ~override~ // Actual Scroll
-        SAY NAME1 @62000
-        SAY NAME2 @62000
-        SAY UNIDENTIFIED_DESC @62001
-	SAY DESC @62001
+        SAY NAME1 @67000
+        SAY NAME2 @67000
+        SAY UNIDENTIFIED_DESC @67001
+	SAY DESC @67001
 //  LPF ALTER_ITEM_HEADER STR_VAR icon = EVAL  ~%spell_res%A~ END   //scroll icon
   LPF ALTER_EFFECT
       INT_VAR match_opcode = 146            // Cast from scroll
@@ -1298,10 +1550,10 @@ END//end only bg2ee
 //effs
 //Spell itself
 ADD_SPELL ~%mod_folder%/data/new_spells/mage_3/B_W301.spl~ 2 3 ~SOLVENT_OF_CORROSION~ //
-        SAY NAME1 @63001
-        SAY NAME2 @63001
-        SAY UNIDENTIFIED_DESC @63002
-	SAY DESC @63002
+        SAY NAME1 @67301
+        SAY NAME2 @67301
+        SAY UNIDENTIFIED_DESC @67302
+	SAY DESC @67302
 LAF RES_NUM_OF_SPELL_NAME
   STR_VAR spell_name = ~SOLVENT_OF_CORROSION~
   RET spell_res
@@ -1330,10 +1582,10 @@ INCLUDE ~%mod_folder%/lib/spell_lists/acid_list.tpa~
 //effs
 //Spell itself
 ADD_SPELL ~%mod_folder%/data/new_spells/mage_3/b_w302.spl~ 2 3 ~WIZARD_IRON_MIND~ //
-        SAY NAME1 @63003
-        SAY NAME2 @63003
-        SAY UNIDENTIFIED_DESC @63004
-	SAY DESC @63004
+        SAY NAME1 @67303
+        SAY NAME2 @67303
+        SAY UNIDENTIFIED_DESC @67304
+	SAY DESC @67304
 
 //to clear earlier versions of the spell
 LAF RES_NUM_OF_SPELL_NAME
@@ -1393,10 +1645,10 @@ COPY_EXISTING ~SPWI104.spl~ ~override/b_1w4xx.spl~  //Copy over charm person
 //add another sec spell that imposes a -4 to save vs. spell (which will be applied to humanoids.)
 
 ADD_SPELL ~override/b_1w4xx.spl~ 2 4 ~WIZARD_CHARM_MONSTER~ //
-          SAY NAME1 @64001
-          SAY NAME2 @64001
-          SAY UNIDENTIFIED_DESC @64002
-  	  SAY DESC @64002
+          SAY NAME1 @67401
+          SAY NAME2 @67401
+          SAY UNIDENTIFIED_DESC @67402
+  	  SAY DESC @67402
 LAF RES_NUM_OF_SPELL_NAME
   STR_VAR spell_name = ~WIZARD_CHARM_MONSTER~
   RET spell_res
@@ -1412,10 +1664,10 @@ INCLUDE ~%mod_folder%/lib/spell_lists/blood_list.tpa~
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 ADD_SPELL ~%mod_folder%/data/new_spells/mage_4/B_W401.spl~ 2 4 ~WIZARD_MINDSIGHT~ //
-          SAY NAME1 @64001
-          SAY NAME2 @64001
-          SAY UNIDENTIFIED_DESC @64002
-  	  SAY DESC @64002
+          SAY NAME1 @67410
+          SAY NAME2 @67410
+          SAY UNIDENTIFIED_DESC @67411
+  	  SAY DESC @67411
 LAF RES_NUM_OF_SPELL_NAME
   STR_VAR spell_name = ~WIZARD_MINDSIGHT~
   RET spell_res
@@ -1463,10 +1715,10 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
 //effs
 //Spell itself
 ADD_SPELL ~%mod_folder%/data/new_spells/mage_5/B_W501.spl~ 2 5 ~WIZARD_SNILLOCS_MAJOR_MISSILE~ //
-        SAY NAME1 @65001
-        SAY NAME2 @65001
-        SAY UNIDENTIFIED_DESC @65002
-	SAY DESC @65002
+        SAY NAME1 @67501
+        SAY NAME2 @67501
+        SAY UNIDENTIFIED_DESC @67502
+	SAY DESC @67502
 
 //to clear earlier versions of the spell
 LAF RES_NUM_OF_SPELL_NAME
@@ -1519,10 +1771,10 @@ INCLUDE ~%mod_folder%/lib/spell_lists/entropy_list.tpa~
 //effs
 //Spell itself
 ADD_SPELL ~%mod_folder%/data/new_spells/mage_5/B_W502.spl~ 2 5 ~WIZARD_USURP_SHELL~ //
-        SAY NAME1 @65003
-        SAY NAME2 @65003
-        SAY UNIDENTIFIED_DESC @65004
-	SAY DESC @65004
+        SAY NAME1 @67503
+        SAY NAME2 @67503
+        SAY UNIDENTIFIED_DESC @67504
+	SAY DESC @67504
 
 //to clear earlier versions of the spell
 LAF RES_NUM_OF_SPELL_NAME
@@ -1538,7 +1790,7 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
       INT_VAR match_opcode = 324            //
       STR_VAR resource = EVAL ~%spell_res%~
   END      //
-  LPF ALTER_EFFECT INT_VAR match_opcode = 139 parameter1 = RESOLVE_STR_REF (@65005) END  //Notification: Combat Pentalties
+  LPF ALTER_EFFECT INT_VAR match_opcode = 139 parameter1 = RESOLVE_STR_REF (@67505) END  //Notification: Combat Pentalties
 
 //add icons and projectile
   LPF ALTER_SPELL_HEADER INT_VAR STR_VAR icon = EVAL  ~%spell_res%B~ END
@@ -1552,8 +1804,8 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
 //scroll
 COPY ~%mod_folder%/data/new_spells/mage_5/b_w502.itm~ ~override/%spell_res%.itm~
         SAY NAME1 @10
-        SAY NAME2 @65003
-	SAY DESC @65004
+        SAY NAME2 @67503
+	SAY DESC @67504
   LPF ALTER_ITEM_HEADER STR_VAR icon = EVAL  ~%spell_res%A~ END
   LPF ALTER_ITEM_EFFECT INT_VAR check_headers = 1 match_opcode = 146 STR_VAR resource = EVAL  ~%spell_res%~ END
   LPF ALTER_ITEM_EFFECT INT_VAR check_headers = 1 match_opcode = 147 STR_VAR resource = EVAL  ~%spell_res%~ END
@@ -1604,10 +1856,10 @@ END//end only bg2ee
 //effs
 //Spell itself
 ADD_SPELL ~%mod_folder%/data/new_spells/mage_6/B_W601.spl~ 2 6 ~WIZARD_SIPHON_VITALITY~ //
-        SAY NAME1 @66000
-        SAY NAME2 @66000
-        SAY UNIDENTIFIED_DESC @66001
-	SAY DESC @66001
+        SAY NAME1 @68000
+        SAY NAME2 @68000
+        SAY UNIDENTIFIED_DESC @68001
+	SAY DESC @68001
 
 //to clear earlier versions of the spell
 LAF RES_NUM_OF_SPELL_NAME
@@ -1630,7 +1882,7 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
 //sec spell
 COPY ~%mod_folder%/data/new_spells/mage_6/B_W601A.spl~ ~override/%spell_res%A.spl~
   LPF ALTER_EFFECT
-      INT_VAR match_opcode = 206 parameter1 = RESOLVE_STR_REF (@60206)            //
+      INT_VAR match_opcode = 206 parameter1 = RESOLVE_STR_REF (@68002)            //
       STR_VAR resource = EVAL ~%spell_res%A~
   END      //
 
@@ -1848,8 +2100,6 @@ COPY ~TomeAndBlood/data/cantrips/d5_wert.spl~ ~override~
 ////////////////////////            //////////////////////////
 //////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////
-
-
 
 
 

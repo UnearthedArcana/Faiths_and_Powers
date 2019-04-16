@@ -332,9 +332,9 @@ APPEND ~clabdr04.2da~ ~HIVEKEEPER   ****        GA_SPDR201  ****        ****    
 //LAF RES_NUM_OF_SPELL_NAME STR_VAR spell_name = ~CLERIC_GIANT_INSECT~ RET spell_res spell_num END
 //APPEND ~clabdr04.2da~ ~HIVEKEEPER   ****        GA_%spell-res%  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****       ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****~
 LAF RES_NUM_OF_SPELL_NAME STR_VAR spell_name = ~CLERIC_INSECT_PLAGUE~ RET spell_res spell_num END
-APPEND ~clabdr04.2da~ ~HIVEKEEPER   ****        GA_%spell-res%  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****       ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****~
+APPEND ~clabdr04.2da~ ~HIVEKEEPER   ****        GA_%spell_res%  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****       ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****~
 LAF RES_NUM_OF_SPELL_NAME STR_VAR spell_name = ~CLERIC_CREEPING_DOOM~ RET spell_res spell_num END
-APPEND ~clabdr04.2da~ ~HIVEKEEPER   ****        GA_%spell-res%  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****       ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****~
+APPEND ~clabdr04.2da~ ~HIVEKEEPER   ****        GA_%spell_res%  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****       ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****~
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
@@ -772,7 +772,7 @@ ACTION_IF GAME_IS ~bgee bg2ee eet iwdee~ THEN BEGIN
 	END
 END
 
-//SHADOW DRUID ABILITY FILES_________________________________________________________
+//GRAY DRUID ABILITY FILES___________________________________________________________
 //
 COPY ~faiths_and_powers/kits/druids/737_gray_druid/d5dshad.2da~ ~override~
 
@@ -1293,7 +1293,6 @@ ACTION_IF FILE_EXISTS_IN_GAME ~d5drfi.2da~ BEGIN
 		kit_name = ~D5_DR_FIGHTER~ 
 		kit_clab = ~d5drfi~
 		base_class = ~P~
-		mc_dir = ~faiths_and_powers/lib/qd_mc~
   END
 END 
 
@@ -1440,7 +1439,6 @@ ACTION_IF FILE_EXISTS_IN_GAME ~d5drma.2da~ BEGIN
 		kit_name = ~D5_DR_MAGE~ 
 		kit_clab = ~d5drma~
 		base_class = ~P~
-		mc_dir = ~faiths_and_powers/lib/qd_mc~
   END
 END 
 
@@ -1586,7 +1584,6 @@ ACTION_IF FILE_EXISTS_IN_GAME ~d5drra.2da~ BEGIN
 		kit_name = ~D5_DR_RANGER~ 
 		kit_clab = ~d5drra~
 		base_class = ~P~
-		mc_dir = ~faiths_and_powers/lib/qd_mc~
   END
 END 
 
@@ -1733,7 +1730,6 @@ ACTION_IF FILE_EXISTS_IN_GAME ~d5drth.2da~ BEGIN
 		kit_name = ~D5_DR_THIEF~ 
 		kit_clab = ~d5drth~
 		base_class = ~P~
-		mc_dir = ~faiths_and_powers/lib/qd_mc~
   END
 END 
 
@@ -2759,7 +2755,224 @@ COPY ~faiths_and_powers/kits/druids/shapechange/d5drscb.itm~ ~override/d5dr.itm~
   LPF ALTER_ITEM_HEADER INT_VAR header_type = 1 header = 1 damage_type =  dicenumber =  dicesize =  thac0_bonus =  damage_bonus =  speed =  STR_VAR icon = ~iwolf~  END 
 
 */
+END // end shapeshifting function
 
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+//							DRUID STRONGHOLDS
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+ACTION_IF GAME_IS ~bg2ee eet~ BEGIN
+
+<<<<<<<< d5/cechall+.d
+EXTEND_BOTTOM CECHALLE 2
+
+ IF ~LevelGT(Player1,13)
+	Global("GreatDruid","GLOBAL",0)
+	!Global("GaveTitle","LOCALS",1)
+	OR(4)
+	  Kit(Player1,D5_DR_FIGHTER)
+	  Kit(Player1,D5_DR_RANGER)
+	  Kit(Player1,D5_DR_THIEF)
+	  Kit(Player1,D5_DR_MAGE)
+~ THEN REPLY #55515  DO ~ClearAllActions()
+
+StartCutSceneMode()
+
+StartCutSceneEx("Cut63a",FALSE)
+
+~ EXIT
+
+ IF ~LevelLT(Player1,14)
+	Global("GreatDruid","GLOBAL",0)
+	!Global("GaveTitle","LOCALS",1)
+	OR(4)
+	  Kit(Player1,D5_DR_FIGHTER)
+	  Kit(Player1,D5_DR_RANGER)
+	  Kit(Player1,D5_DR_THIEF)
+	  Kit(Player1,D5_DR_MAGE)
+~ THEN REPLY #58673  EXIT
+END
+
+EXTEND_BOTTOM CECHALLE 4
+  IF ~  Global("CerndChallenge","GLOBAL",0)
+	Global("PlayerHasStronghold","GLOBAL",0)
+	OR(4)
+	  Kit(Player1,D5_DR_FIGHTER)
+	  Kit(Player1,D5_DR_RANGER)
+	  Kit(Player1,D5_DR_THIEF)
+	  Kit(Player1,D5_DR_MAGE)
+~ THEN DO ~SetGlobal("SPRITE_IS_DEADFaldorn","GLOBAL",1)
+SetGlobal("SPRITE_IS_DEADcefaldor","GLOBAL",1)
+SetNumTimesTalkedTo(1)
+~ GOTO 7
+END
+>>>>>>>> 
+COMPILE ~d5/cechall+.d~
+
+<<<<<<<< d5/cefaldo+.d
+EXTEND_BOTTOM CEFALDOR 2
+
+  IF ~See(Player1)
+	!StateCheck(Player1,STATE_SLEEPING)
+	OR(4)
+	  Kit(Player1,D5_DR_FIGHTER)
+	  Kit(Player1,D5_DR_RANGER)
+	  Kit(Player1,D5_DR_THIEF)
+	  Kit(Player1,D5_DR_MAGE)
+~ THEN REPLY #9621  GOTO 13
+
+  IF ~ !Name("Jaheira",Player2)
+	!Name("Cernd",Player2)
+	See(Player2)
+	!StateCheck(Player2,STATE_SLEEPING)
+	OR(4)
+	  Kit(Player2,D5_DR_FIGHTER)
+	  Kit(Player2,D5_DR_RANGER)
+	  Kit(Player2,D5_DR_THIEF)
+	  Kit(Player2,D5_DR_MAGE)
+~ THEN REPLY #9948  GOTO 22
+
+  IF ~ !Name("Jaheira",Player3)
+	!Name("Cernd",Player3)
+	See(Player3)
+	!StateCheck(Player3,STATE_SLEEPING)
+	OR(4)
+	  Kit(Player3,D5_DR_FIGHTER)
+	  Kit(Player3,D5_DR_RANGER)
+	  Kit(Player3,D5_DR_THIEF)
+	  Kit(Player3,D5_DR_MAGE)
+~ THEN REPLY #9952  GOTO 22
+
+  IF ~ !Name("Jaheira",Player4)
+	!Name("Cernd",Player4)
+	See(Player4)
+	!StateCheck(Player4,STATE_SLEEPING)
+	OR(4)
+	  Kit(Player4,D5_DR_FIGHTER)
+	  Kit(Player4,D5_DR_RANGER)
+	  Kit(Player4,D5_DR_THIEF)
+	  Kit(Player4,D5_DR_MAGE)
+~ THEN REPLY #9953  GOTO 22
+
+  IF ~ !Name("Jaheira",Player5)
+	!Name("Cernd",Player5)
+	See(Player5)
+	!StateCheck(Player5,STATE_SLEEPING)
+	OR(4)
+	  Kit(Player5,D5_DR_FIGHTER)
+	  Kit(Player5,D5_DR_RANGER)
+	  Kit(Player5,D5_DR_THIEF)
+	  Kit(Player5,D5_DR_MAGE)
+~ THEN REPLY #9954  GOTO 22
+
+  IF ~ !Name("Jaheira",Player6)
+	!Name("Cernd",Player6)
+	See(Player6)
+	!StateCheck(Player6,STATE_SLEEPING)
+	OR(4)
+	  Kit(Player6,D5_DR_FIGHTER)
+	  Kit(Player6,D5_DR_RANGER)
+	  Kit(Player6,D5_DR_THIEF)
+	  Kit(Player6,D5_DR_MAGE)
+~ THEN REPLY #9955  GOTO 22
+END
+
+EXTEND_BOTTOM CEFALDOR 5
+
+  IF ~ OR(4)
+	  Kit(Player1,D5_DR_FIGHTER)
+	  Kit(Player1,D5_DR_RANGER)
+	  Kit(Player1,D5_DR_THIEF)
+	  Kit(Player1,D5_DR_MAGE)
+~ THEN REPLY #9866  DO ~SetGlobal("TalkedFaldor1","GLOBAL",1)
+~ GOTO 0
+END
+>>>>>>>> 
+COMPILE ~d5/cefaldo+.d~
+
+<<<<<<<< d5/druidad+.d
+EXTEND_BOTTOM DRUIDAD 0
+
+  IF ~ LevelGT(Player1,13)
+	Global("GreatDruid","GLOBAL",0)
+	OR(4)
+	  Kit(Player1,D5_DR_FIGHTER)
+	  Kit(Player1,D5_DR_RANGER)
+	  Kit(Player1,D5_DR_THIEF)
+	  Kit(Player1,D5_DR_MAGE)
+~ THEN GOTO 1
+END
+
+EXTEND_BOTTOM DRUIDAD 10
+  IF ~ LevelGT(Player1,13)
+	Global("GreatDruid","GLOBAL",0)
+	OR(4)
+	  Kit(Player1,D5_DR_FIGHTER)
+	  Kit(Player1,D5_DR_RANGER)
+	  Kit(Player1,D5_DR_THIEF)
+	  Kit(Player1,D5_DR_MAGE)
+~ THEN GOTO 11
+
+  IF ~ False()
+	LevelGT(Player2,13)
+	Global("GreatDruid","GLOBAL",0)
+	OR(4)
+	  Kit(Player2,D5_DR_FIGHTER)
+	  Kit(Player2,D5_DR_RANGER)
+	  Kit(Player2,D5_DR_THIEF)
+	  Kit(Player2,D5_DR_MAGE)
+~ THEN GOTO 12
+
+  IF ~ False()
+	LevelGT(Player3,13)
+	Global("GreatDruid","GLOBAL",0)
+	OR(4)
+	  Kit(Player3,D5_DR_FIGHTER)
+	  Kit(Player3,D5_DR_RANGER)
+	  Kit(Player3,D5_DR_THIEF)
+	  Kit(Player3,D5_DR_MAGE)
+~ THEN GOTO 13
+
+  IF ~ False()
+	LevelGT(Player4,13)
+	Global("GreatDruid","GLOBAL",0)
+	OR(4)
+	  Kit(Player4,D5_DR_FIGHTER)
+	  Kit(Player4,D5_DR_RANGER)
+	  Kit(Player4,D5_DR_THIEF)
+	  Kit(Player4,D5_DR_MAGE)
+~ THEN GOTO 14
+
+  IF ~ False()
+	LevelGT(Player5,13)
+	Global("GreatDruid","GLOBAL",0)
+	OR(4)
+	  Kit(Player5,D5_DR_FIGHTER)
+	  Kit(Player5,D5_DR_RANGER)
+	  Kit(Player5,D5_DR_THIEF)
+	  Kit(Player5,D5_DR_MAGE)
+~ THEN GOTO 15
+
+  IF ~ False()
+	LevelGT(Player6,13)
+	Global("GreatDruid","GLOBAL",0)
+	OR(4)
+	  Kit(Player6,D5_DR_FIGHTER)
+	  Kit(Player6,D5_DR_RANGER)
+	  Kit(Player6,D5_DR_THIEF)
+	  Kit(Player6,D5_DR_MAGE)
+~ THEN GOTO 16
+END
+>>>>>>>> 
+COMPILE ~d5/druidad+.d~
+
+END
+//__________________________________________________________________________________
 
 /*
 //FALDORN___________________________________________________________________________
@@ -2831,4 +3044,3 @@ END
 //__________________________________________________________________________________
 */
 
-END

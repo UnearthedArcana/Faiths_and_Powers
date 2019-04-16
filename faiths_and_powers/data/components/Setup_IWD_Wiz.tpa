@@ -1528,6 +1528,34 @@ COPY ~%mod_folder%/data/iwd_spells/wizard_4/SS1TRL7.cre~ ~override~   //
 COPY ~%mod_folder%/data/iwd_spells/wizard_4/SS1TRL8.cre~ ~override~   //
         SAY NAME1 ~Troll~
         SAY NAME2 ~Troll~
+//Compatibility with B_Attributes
+ACTION_IF FILE_EXISTS_IN_GAME ~B_IIRM4.spl~ BEGIN
+  COPY_EXISTING ~SS1gob1.cre SS1gob2.cre SS1gob3.cre SS1liz3.cre SS1liz4.cre SS1TRL6.cre SS1TRL7.cre SS1TRL8.cre~ ~override~
+        LAUNCH_PATCH_FUNCTION make_illusion END
+        WRITE_BYTE 0x0234 6
+  COPY_EXISTING ~SS1gob2.cre~ ~override~
+        LAUNCH_PATCH_FUNCTION make_illusion END
+        WRITE_BYTE 0x0234 6
+  COPY_EXISTING ~SS1gob3.cre~ ~override~
+        LAUNCH_PATCH_FUNCTION make_illusion END
+        WRITE_BYTE 0x0234 6
+  COPY_EXISTING ~SS1liz3.cre~ ~override~
+        LAUNCH_PATCH_FUNCTION make_illusion END
+        WRITE_BYTE 0x0234 6
+  COPY_EXISTING ~SS1liz4.cre~ ~override~
+        LAUNCH_PATCH_FUNCTION make_illusion END
+        WRITE_BYTE 0x0234 6
+  COPY_EXISTING ~SS1TRL6.cre~ ~override~
+        LAUNCH_PATCH_FUNCTION make_illusion END
+        WRITE_BYTE 0x0234 6
+  COPY_EXISTING ~SS1TRL7.cre~ ~override~
+        LAUNCH_PATCH_FUNCTION make_illusion END
+        WRITE_BYTE 0x0234 6
+  COPY_EXISTING ~SS1TRL8.cre~ ~override~
+        LAUNCH_PATCH_FUNCTION make_illusion END
+        WRITE_BYTE 0x0234 6
+END
+
 //Spell itself
 ADD_SPELL ~%mod_folder%/data/iwd_spells/wizard_4/b_w426.spl~ 2 4 ~WIZARD_SHADOW_MONSTERS~ //
         SAY NAME1 @4260000

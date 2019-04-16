@@ -26,6 +26,72 @@ TO DO 12: Add Pecca's spon casting as an option
 
 TO DO 13: Add Cha based turning as an option
 
+Version 0.77.01
+
+2019-04-15
+
+- Added Compatibility with B_Attributes pnp illusion immunity Int 22 lev 4 illusion immunity (prot from shadow beasts) for both fnp added wiz priest SB and iwdee added SB
+
+- Added illusion_crea.tpa
+
+- Other Spell related updates
+
+- Updated "item_use.tpa," "sequencer_menu.tpa," and "add_druid_kits.tpa" for some... subtle changes :)
+
+2019-03-30
+
+- Updated New_spells.tra
+
+Version 0.77.01
+
+2019-03-27
+
+- Minor Text Update
+
+Version 0.77.00
+
+- More 2e sphere updates
+
+- Removed Setup_IWD_divine_Spells.tpa, apply_sphere_system.tpa, create_sphere_system.tpa, vanilla_kit_spheres.tpa, mod_kit_spheres.tpa--no longer needed
+
+- Integrated SD's Lib changes
+
+- Integrated SD's kit changes
+
+2019-03-26
+
+- Integrated new new tp2 and ini
+
+- The Hivekeeper bug is fixed.
+
+- The Beast Lord, neé Shapeshifter, can now cast spells with Beast Claw active, and can shapeshift into a werewolf more often.
+
+- Instead of getting shoehorned into the sphere system with a bunch of spells for free, Shamans now choose spells just as in the vanilla game - this can co-exist with the sphere system thanks to @kjeron's spell-learning UI mod.
+
+- Spell selection at character generation is fixed, and now controlled by the sphere system code.
+
+- The sphere system now fully supports alternate sphere definitions. (None are included yet - the 2E system in this package is unfinished, @Grammarsalad is working on it.)
+
+- The "Incarnate of Mystra" is enabled, if anyone wants to try out the spontaneous-casting system (it's just like the Might & Guile bardic casting.)
+
+- The "install sphere system only" option has been tested as rigorously as the "install everything" option
+
+2019-03-26
+
+- Integrated Changes to tp2 and ini (made by both GS for spells and SR compatibility and SD for updated sphere system)
+
+Version 0.76.08
+
+2019-03-21
+
+- Changed Harm Sphere to Decay (2e version)
+
+- Added a few spells to 2e Fire sphere
+
+- Incorporated beginning of Minor creation (from B_Spells)
+
+- Added res version of Expeditious Retreat
+
 Version 0.76.07
 
 2019-03-20

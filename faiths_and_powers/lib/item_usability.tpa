@@ -439,7 +439,7 @@ ACTION_PHP_EACH d5_fnp_kit_use_access AS clab => val BEGIN
 		  READ_2DA_ENTRY_FORMER ~r2en_kitlist~ row 8 kit_class
 		  PATCH_IF (~%kit_clab%~ STRING_EQUAL_CASE ~%clab%~) BEGIN
 			PATCH_IF (%kit_class% = 3 || %kit_class% = 11 || %kit_class% = 21 || %kit_class% = 8 || %kit_class% = 14 || %kit_class% = 15 || %kit_class% = 18 || %kit_class% = 16) BEGIN
-			  SET_2DA_ENTRY row 7 cols ~0x%hex_helm%~
+			  SET_2DA_ENTRY (row + 1) 7 cols ~0x%hex_helm%~
 			END
 		  END
 		END
@@ -456,7 +456,7 @@ ACTION_PHP_EACH d5_fnp_kit_use_access AS clab => val BEGIN
 		  PATCH_IF (~%kit_clab%~ STRING_EQUAL_CASE ~%clab%~) && NOT (~%kit_clab%~ STRING_EQUAL_CASE ~d5fsorc~) && NOT (~%kit_clab%~ STRING_EQUAL_CASE ~d5rsorc~) && NOT (~%kit_clab%~ STRING_EQUAL_CASE ~d5tsorc~) BEGIN
 // (exclude multi sorcerers from this)
 			PATCH_IF (%kit_class% = 3 || %kit_class% = 11 || %kit_class% = 21 || %kit_class% = 8 || %kit_class% = 14 || %kit_class% = 15 || %kit_class% = 18 || %kit_class% = 16) BEGIN
-			  SET_2DA_ENTRY row 7 cols ~0x%hex_lat%~
+			  SET_2DA_ENTRY (row + 1) 7 cols ~0x%hex_lat%~
 			END
 		  END
 		END
@@ -474,7 +474,7 @@ ACTION_PHP_EACH d5_fnp_kit_use_access AS clab => val BEGIN
 		  READ_2DA_ENTRY_FORMER ~r2en_kitlist~ row 8 kit_class
 		  PATCH_IF (~%kit_clab%~ STRING_EQUAL_CASE ~%clab%~) BEGIN
 			PATCH_IF (%kit_class% = 3 || %kit_class% = 11 || %kit_class% = 21 || %kit_class% = 8 || %kit_class% = 14 || %kit_class% = 15 || %kit_class% = 18 || %kit_class% = 16) BEGIN
-			  SET_2DA_ENTRY row 7 cols ~0x%hex_talos%~
+			  SET_2DA_ENTRY (row + 1) 7 cols ~0x%hex_talos%~
 			END
 		  END
 		END
@@ -879,27 +879,27 @@ COPY_EXISTING ~kitlist.2da~ ~override~
 	PHP_EACH d5_fnp_kit_class_access AS kit => class BEGIN
 	  PATCH_IF (~%kit%~ STRING_EQUAL_CASE ~%kit_clab%~) BEGIN
 		PATCH_IF (~%class%~ STRING_EQUAL_CASE ~DRUID~) BEGIN
-		  SET_2DA_ENTRY row 7 9 ~0x%hex_totemic%~ 
+		  SET_2DA_ENTRY (row + 1) 7 9 ~0x%hex_totemic%~ 
 		END
 		PATCH_IF (~%class%~ STRING_EQUAL_CASE ~MYSTIC~) BEGIN
-		  SET_2DA_ENTRY row 7 9 ~0x%hex_shapeshifter%~ 
+		  SET_2DA_ENTRY (row + 1) 7 9 ~0x%hex_shapeshifter%~ 
 		END
 		PATCH_IF (~%class%~ STRING_EQUAL_CASE ~OCCULTIST~) BEGIN
-		  SET_2DA_ENTRY row 7 9 ~0x%hex_avenger%~ 
+		  SET_2DA_ENTRY (row + 1) 7 9 ~0x%hex_avenger%~ 
 		END
 	  END
 	END
 	PATCH_IF ~%kit_clab%~ STRING_EQUAL_CASE ~d5drfi~ BEGIN
-	  SET_2DA_ENTRY row 7 9 ~0x%hex_totemic%~ // usability
+	  SET_2DA_ENTRY (row + 1) 7 9 ~0x%hex_totemic%~ // usability
 	END
 	PATCH_IF ~%kit_clab%~ STRING_EQUAL_CASE ~d5drma~ BEGIN
-	  SET_2DA_ENTRY row 7 9 ~0x%hex_totemic%~ // usability
+	  SET_2DA_ENTRY (row + 1) 7 9 ~0x%hex_totemic%~ // usability
 	END
 	PATCH_IF ~%kit_clab%~ STRING_EQUAL_CASE ~d5drth~ BEGIN
-	  SET_2DA_ENTRY row 7 9 ~0x%hex_totemic%~ // usability
+	  SET_2DA_ENTRY (row + 1) 7 9 ~0x%hex_totemic%~ // usability
 	END
 	PATCH_IF ~%kit_clab%~ STRING_EQUAL_CASE ~d5drra~ BEGIN
-	  SET_2DA_ENTRY row 7 9 ~0x%hex_totemic%~ // usability
+	  SET_2DA_ENTRY (row + 1) 7 9 ~0x%hex_totemic%~ // usability
 	END
 	PATCH_IF (~%kit_clab%~ STRING_EQUAL_CASE ~d5obst~) OR (~%kit_clab%~ STRING_EQUAL_CASE ~clabdr03~) BEGIN
 	  INNER_ACTION BEGIN

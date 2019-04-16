@@ -1,0 +1,284 @@
+//missing spells
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//_______________________________________________________________Cause Light Wounds_____________________________________________________________________//
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//TRIPLE CHECK THIS ONE... (AND COME BACK TO IT)
+
+//not installed if SRv4 is installed (though, see revisions to alter that version)
+
+ACTION_IF NOT FILE_EXISTS_IN_GAME ~dvsrv4here.mrk~ BEGIN
+//Projectile
+//animations
+//3d animation
+COPY ~%mod_folder%/data/iwd_spells/priest_1/cldamah.bam~ ~override~   //animation
+//sounds
+//effs
+//%b_pfire%
+//Spell itself
+ADD_SPELL ~%mod_folder%/data/iwd_spells/priest_1/b_p114.spl~ 1 1 ~CLERIC_CAUSE_LIGHT_WOUNDS~ //CLW Spell
+        SAY NAME1 @11400000
+        SAY NAME2 @11400000
+        SAY UNIDENTIFIED_DESC @11400001
+	SAY DESC @11400001
+
+LAF RES_NUM_OF_SPELL_NAME
+  STR_VAR spell_name = ~CLERIC_CAUSE_LIGHT_WOUNDS~
+  RET spell_res
+END
+COPY_EXISTING ~%spell_res%.spl~ ~override~
+  LPF ALTER_EFFECT
+      INT_VAR match_opcode = 324            //
+      STR_VAR resource = EVAL ~%spell_res%~
+  END      //
+//compatibity revised spells
+//20% damage + 6 damage (save vs death for half) and name changed to 'inflict'
+ACTION_IF FILE_EXISTS_IN_GAME ~b_revise.itm~ BEGIN
+COPY_EXISTING ~%spell_res%.spl~ ~override~
+  LPF DELETE_EFFECT INT_VAR match_opcode= 12 END//
+  LPF CLONE_EFFECT INT_VAR match_opcode = 215 opcode = 12 parameter1 = 3 parameter2 = 4194304 savingthrow = 0 STR_VAR resource = EVAL ~~  END
+  LPF CLONE_EFFECT INT_VAR match_opcode = 12 parameter1 = 1 savingthrow = 4 END
+  LPF CLONE_EFFECT INT_VAR match_opcode = 12 parameter1 = 10 parameter2 = 4194307 END
+
+COPY_EXISTING ~%spell_res%.spl~ ~override~
+ SPRINT old @11400004//old text
+ SPRINT new @11400005//new text
+  READ_LONG 0x50 "valid"
+  PATCH_IF (%valid% >= 0) BEGIN // verify desc is valid
+  READ_STRREF 0x50 ~desc~
+	INNER_PATCH_SAVE new_desc ~%desc%~ BEGIN
+	REPLACE_TEXTUALLY ~%old%~ ~%new%~        //replacing old w new
+	END
+  SAY_EVALUATED 0x50 ~%new_desc%~
+  END  //
+END
+
+//icons
+COPY ~%mod_folder%/data/iwd_spells/priest_1/sppr114a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~%mod_folder%/data/iwd_spells/priest_1/sppr114b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_1/sppr114c.bam~ ~override/%spell_res%c.bam~    //bam
+//add bams to spl
+COPY_EXISTING ~%spell_res%.spl~ ~override~
+  WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
+  WRITE_EVALUATED_ASCII 0x0076 ~%spell_res%B~
+
+//The Scroll Not in IWDEE.  Will have to create it
+
+//Copy over the scroll:
+COPY ~%mod_folder%/data/scrolls/priest_1/generic/B_ge146.itm~ ~override/%spell_res%.itm~
+        SAY NAME1 @10
+        SAY NAME2 @11400000
+	SAY DESC @11400001
+//Change icons and spells
+  LPF ALTER_ITEM_HEADER STR_VAR icon = EVAL  ~%spell_res%A~ END
+  LPF ALTER_ITEM_EFFECT INT_VAR check_headers = 1 match_opcode = 146 STR_VAR resource = EVAL  ~%spell_res%~ END
+  WRITE_ASCIIE 0x3a ~%spell_res%A~
+
+/*
+//BGEE - Sorcerous Sundries
+ACTION_IF GAME_IS ~bgee~ THEN BEGIN   //  ACTION_IF GAME_IS ~bgee sod~ THEN BEGIN
+  COPY_EXISTING ~STO0703.sto~ ~override~
+    ADD_STORE_ITEM ~SPWI223A~ #1 #0 #0 ~IDENTIFIED~ #2
+//High Hedge
+  COPY_EXISTING ~HIGHHEDG.sto~ ~override~
+    ADD_STORE_ITEM ~SPWI223A~ #1 #0 #0 ~IDENTIFIED~ #2
+ ACTION_IF FILE_EXISTS_IN_GAME ~BDSORCSC.STO~ BEGIN  //SoD
+  COPY_EXISTING ~BDSORCSC.STO~ ~override~
+   ADD_STORE_ITEM ~SPWI223A~ #1 #0 #0 ~IDENTIFIED~ #2
+ END
+END
+
+ACTION_IF GAME_IS ~bg2ee eet~ THEN BEGIN   //  A
+//Lady Yuth
+COPY_EXISTING ~SCROLLS.STO~ ~override~
+ ADD_STORE_ITEM ~SPWI223A~ #1 #0 #0 ~IDENTIFIED~ #4
+//Underdark
+COPY_EXISTING ~UDDROW25.STO~ ~override~
+ ADD_STORE_ITEM ~SPWI223A~ #1 #0 #0 ~IDENTIFIED~ #4
+
+ ACTION_IF FILE_EXISTS_IN_GAME ~BDSORCSC.STO~ BEGIN  //SoD
+  COPY_EXISTING ~BDSORCSC.STO~ ~override~
+   ADD_STORE_ITEM ~SPWI223A~ #1 #0 #0 ~IDENTIFIED~ #2
+ END
+
+ ACTION_IF FILE_EXISTS_IN_GAME ~STO0703.STO~ BEGIN  //SoD
+  COPY_EXISTING ~STO0703.STO~ ~override~
+   ADD_STORE_ITEM ~SPWI223A~ #1 #0 #0 ~IDENTIFIED~ #2
+ END
+
+END */
+
+
+END //END SR NOT INSTALLED
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//________________________________________________________________Cause Moderate Wounds_________________________________________________________________//
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//not installed if SRv4 is installed
+ACTION_IF NOT FILE_EXISTS_IN_GAME ~dvsrv4here.mrk~ BEGIN
+//Projectile
+//animations
+//3d animation
+COPY ~%mod_folder%/data/iwd_spells/priest_2/CMDAMAH.BAM~ ~override~   //animation
+//sounds
+COPY ~%mod_folder%/data/iwd_spells/priest_2/#FF_P103.WAV~ ~override~   //sound
+//effs
+//secondary spells
+//Spell itself
+ADD_SPELL ~%mod_folder%/data/iwd_spells/priest_2/b_p220.spl~ 1 2 ~CLERIC_CAUSE_MODERATE_WOUNDS~ //CMW Spell
+        SAY NAME1 @22000000
+        SAY NAME2 @22000000
+        SAY UNIDENTIFIED_DESC @22000001
+	SAY DESC @22000001
+LAF RES_NUM_OF_SPELL_NAME
+  STR_VAR spell_name = ~CLERIC_CAUSE_MODERATE_WOUNDS~
+  RET spell_res
+END
+COPY_EXISTING ~%spell_res%.spl~ ~override~
+  LPF ALTER_EFFECT
+      INT_VAR match_opcode = 324            //
+      STR_VAR resource = EVAL ~%spell_res%~
+  END      //
+
+//compatibity revised spells
+//30% damage + 8 damage (save vs death for half) and name changed to 'inflict'
+ACTION_IF FILE_EXISTS_IN_GAME ~b_revise.itm~ BEGIN
+COPY_EXISTING ~%spell_res%.spl~ ~override~
+        SAY NAME1 @11400005
+        SAY NAME2 @11400005
+        SAY UNIDENTIFIED_DESC @11400003
+	SAY DESC @11400003
+  LPF DELETE_EFFECT INT_VAR match_opcode= 12 END//
+  LPF CLONE_EFFECT INT_VAR match_opcode = 215 opcode = 12 parameter1 = 3 parameter2 = 4194304 savingthrow = 0 STR_VAR resource = EVAL ~ ~  END
+  LPF CLONE_EFFECT INT_VAR match_opcode = 12 parameter1 = 1 savingthrow = 4 END
+  LPF CLONE_EFFECT INT_VAR match_opcode = 12 parameter1 = 10 parameter2 = 4194307 END
+//spheres installed, change sphere to 'life'
+END
+
+//icons
+COPY ~%mod_folder%/data/iwd_spells/priest_2/sppr220a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~%mod_folder%/data/iwd_spells/priest_2/sppr220b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_2/sppr220c.bam~ ~override/%spell_res%c.bam~    //bam
+//add bams and projectiles to spl
+COPY_EXISTING ~%spell_res%.spl~ ~override~
+  LPF ALTER_SPELL_HEADER STR_VAR icon = EVAL  ~%spell_res%B~ END
+  WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
+
+END
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//______________________________________________________________Cause Medium Wounds_____________________________________________________________________//
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//not installed if SRv4 is installed
+ACTION_IF NOT FILE_EXISTS_IN_GAME ~dvsrv4here.mrk~ BEGIN
+//Projectile
+//probam
+//3d animation
+COPY ~%mod_folder%/data/iwd_spells/priest_3/CMDAMAH.BAM~ ~override~   // bam
+//sounds
+COPY ~%mod_folder%/data/iwd_spells/priest_3/#FF_P103.WAV~ ~override~   //
+//itm
+//itm icons
+//effs
+//secondary spells
+//Spell itself
+ADD_SPELL ~%mod_folder%/data/iwd_spells/priest_3/b_p330.spl~ 1 3 ~CLERIC_CAUSE_MEDIUM_WOUNDS~ // Spell
+        SAY NAME1 @33000000
+        SAY NAME2 @33000000
+        SAY UNIDENTIFIED_DESC @33000001
+	SAY DESC @33000001
+LAF RES_NUM_OF_SPELL_NAME
+  STR_VAR spell_name = ~CLERIC_CAUSE_MEDIUM_WOUNDS~
+  RET spell_res
+END
+COPY_EXISTING ~%spell_res%.spl~ ~override~
+  LPF ALTER_EFFECT
+      INT_VAR match_opcode = 324            //
+      STR_VAR resource = EVAL ~%spell_res%~
+  END      //
+
+//icons
+COPY ~%mod_folder%/data/iwd_spells/priest_3/sppr330a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~%mod_folder%/data/iwd_spells/priest_3/sppr330b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_3/sppr330c.bam~ ~override/%spell_res%c.bam~    //bam
+//add bams to spl
+COPY_EXISTING ~%spell_res%.spl~ ~override~
+  LPF ALTER_SPELL_HEADER STR_VAR icon = EVAL  ~%spell_res%B~ END
+  WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
+END
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//_______________________________________________________________Cure Moderate Wounds___________________________________________________________________//
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////
+//Not installed if any version of SR is installed (but, see revised spells)
+ACTION_IF NOT FILE_EXISTS_IN_GAME ~dvimhere.mrk~ BEGIN
+
+//Projectile
+//animations
+//3d animation
+COPY ~%mod_folder%/data/iwd_spells/priest_2/cmwounh.bam~ ~override~   //animation
+//sounds
+COPY ~%mod_folder%/data/iwd_spells/priest_2/#EFF_P26.WAV~ ~override~   //sound
+//effs
+//secondary spells
+//Spell itself
+ADD_SPELL ~%mod_folder%/data/iwd_spells/priest_2/b_p217.spl~ 1 2 ~CLERIC_CURE_MODERATE_WOUNDS~ //CMW Spell
+        SAY NAME1 @21700000
+        SAY NAME2 @21700000
+        SAY UNIDENTIFIED_DESC @21700001
+	SAY DESC @21700001
+LAF RES_NUM_OF_SPELL_NAME
+  STR_VAR spell_name = ~CLERIC_CURE_MODERATE_WOUNDS~
+  RET spell_res
+END
+COPY_EXISTING ~%spell_res%.spl~ ~override~
+  LPF ALTER_EFFECT
+      INT_VAR match_opcode = 324            //
+      STR_VAR resource = EVAL ~%spell_res%~
+  END      //
+//COMPATIBILITY: REVISED CURE SPELLS
+//cure moderate wound 30%
+
+ACTION_IF FILE_EXISTS_IN_GAME ~b_revise.itm~ BEGIN
+ COPY_EXISTING ~%spell_res%.spl~ ~override~
+  LPF ALTER_EFFECT
+      INT_VAR match_opcode = 17            //
+                  parameter1 = 6
+  END      //
+  LPF CLONE_EFFECT INT_VAR match_opcode = 17 parameter1 = 30 parameter2 = 2 END
+  SPRINT old @10100012//old text
+  SPRINT new @10100013//new text
+   READ_LONG 0x50 "valid"
+   PATCH_IF (%valid% >= 0) BEGIN // verify desc is valid
+   READ_STRREF 0x50 ~desc~
+	INNER_PATCH_SAVE new_desc ~%desc%~ BEGIN
+	REPLACE_TEXTUALLY ~%old%~ ~%new%~        //replacing old w new
+	END
+   SAY_EVALUATED 0x50 ~%new_desc%~
+   END  //
+END
+//icons
+COPY ~%mod_folder%/data/iwd_spells/priest_2/sppr217a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~%mod_folder%/data/iwd_spells/priest_2/sppr217b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~%mod_folder%/data/iwd_spells/priest_2/sppr217c.bam~ ~override/%spell_res%c.bam~    //bam
+//add bams and projectiles to spl
+COPY_EXISTING ~%spell_res%.spl~ ~override~
+  LPF ALTER_SPELL_HEADER STR_VAR icon = EVAL  ~%spell_res%B~ END
+  WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
+
+END
+

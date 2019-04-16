@@ -1,0 +1,22 @@
+DEFINE_PATCH_FUNCTION make_illusion
+  INT_VAR   power_level   = "-1"
+BEGIN
+  WRITE_LONG 0x0010 THIS | BIT1      // No corpse
+  WRITE_LONG 0x0014 0                // XP
+  WRITE_LONG 0x001c 0                // Gold
+  WRITE_BYTE 0x0270 IDS_OF_SYMBOL("ea" "neutral")
+  WRITE_BYTE 0x0275 IDS_OF_SYMBOL("gender" "illusionary")
+
+  // Add unstealable&undroppable flags to carried items
+  GET_OFFSET_ARRAY itm_array CRE_V10_ITEMS
+  PHP_EACH itm_array AS int => itm_offset
+  BEGIN
+    WRITE_LONG (itm_offset + 0x0010) (THIS | (BIT1 | BIT3))
+  END
+
+  // Handle power level if specified
+  PATCH_IF (power_level >= 0)
+  BEGIN
+    WRITE_LONG  0x0018 power_level
+  END
+END

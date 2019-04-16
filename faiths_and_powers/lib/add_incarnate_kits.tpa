@@ -655,6 +655,7 @@ COPY_EXISTING ~d5cclons.2da~ ~override~
 		COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/%206_spell%.spl~
 		 WRITE_SHORT 0x1c 4
 	  	 LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 STR_VAR resource = EVAL ~%spell_eff%~ END
+	  	 LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 321 target = 1 timing = 9 STR_VAR resource = EVAL ~%206_spell%~ END
 //	  END
 // add 206 spells to CLAB spell
 	  COPY_EXISTING ~d5c206.spl~ ~override~

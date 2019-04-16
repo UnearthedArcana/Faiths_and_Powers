@@ -2,7 +2,7 @@ BACKUP ~faiths_and_powers/backup~
 AUTHOR ~SubtleD and Grammarsalad~
 
 
-VERSION ~0.76.07~
+VERSION ~0.77.02~
 
 
 //README ~faiths_and_powers/readme-pnp.html~
@@ -20,24 +20,24 @@ ALWAYS
 
   	OUTER_SPRINT ~mod_folder~ ~faiths_and_powers~
 
+        INCLUDE ~faiths_and_powers/lib/illusion_crea.tpa~
+
   	INCLUDE ~override/d5_fnp_settings.ini~
 
-	INCLUDE ~faiths_and_powers/lib/remove_lines.tpa~
+	INCLUDE ~faiths_and_powers/lib/misc_functions.tpa~
 
 	INCLUDE ~faiths_and_powers/lib/bg2fp_effect_batches_fnp.tpa~
 
-	INCLUDE ~faiths_and_powers/lib/spell_to_innate.tpa~
-
 	INCLUDE ~faiths_and_powers/lib/fl#add_kit_ee.tpa~
 
-	INCLUDE ~faiths_and_powers/lib/spell_clone_effects.tpa~
+	INCLUDE ~faiths_and_powers/lib/qd_multiclass.tpa~
+
+//	INCLUDE ~faiths_and_powers/lib/spell_clone_effects.tpa~
 	
 	INCLUDE ~faiths_and_powers/lib/joinable_npcs.tpa~
 
 	INCLUDE ~faiths_and_powers/lib/fnp_compat.tpa~
 	
-	INCLUDE ~faiths_and_powers/lib/qd_multiclass.tpa~
-
 	ACTION_IF FILE_EXISTS_IN_GAME ~a#ooze.2da~ BEGIN
 	  COPY_EXISTING ~alignmnt.2da~ ~override~
 		REPLACE_TEXTUALLY ~DRUID.+$~ ~DRUID	0	1	0	1	1	1	0	1	0 ~
@@ -46,6 +46,8 @@ ALWAYS
 		REPLACE_TEXTUALLY ~SHAPESHIFTER.+$~ ~SHAPESHIFTER	0	1	0	1	1	1	0	1	0 ~
 		REPLACE_TEXTUALLY ~BEAST_FRIEND.+$~ ~BEAST_FRIEND	0	1	0	1	1	1	0	1	0 ~
 	END
+
+	COPY ~faiths_and_powers/kits/acolytes/B_LOR.spl~ ~override~
 
 // joinable NPC issues for tutu/bgt/eet:
   ACTION_IF GAME_IS ~bgee~ BEGIN
@@ -156,12 +158,9 @@ ACTION_IF (%d5_use_spheres% = 1) BEGIN
 	  END
 	END
   END
-END	
-//__________________________________________________________________________________
 
-//Acolyte Lore (added to clabs)_____________________________________________________
-//
-COPY ~faiths_and_powers/kits/acolytes/B_LOR.spl~ ~override~
+  INCLUDE ~faiths_and_powers/lib/sphere_system.tpa~
+END	
 //__________________________________________________________________________________
 
 //copy marker files_________________________________________________________________
@@ -182,229 +181,37 @@ INCLUDE ~faiths_and_powers/lib/add_scout_kits.tpa~
 INCLUDE ~faiths_and_powers/lib/add_champion_kits.tpa~
 INCLUDE ~faiths_and_powers/lib/add_zealot_kits.tpa~
 INCLUDE ~faiths_and_powers/lib/add_multiclass_kits.tpa~
+INCLUDE ~faiths_and_powers/lib/default_kit_spheres.tpa~
 //__________________________________________________________________________________
 
 //multiclass text____________________________________________________________________
 //
-ACTION_IF (FILE_EXISTS_IN_GAME ~clastext.2da~) BEGIN
-  	COPY_EXISTING ~clastext.2da~ ~override~
-		COUNT_2DA_COLS cols
-		READ_2DA_ENTRIES_NOW rows cols  
-		FOR (row = 1; row < rows; ++row) BEGIN
-		  READ_2DA_ENTRY_FORMER rows row 0 ~text~
-		  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~CLERIC~ BEGIN
-		    SET c_row = %row%
-		  END
-		  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~FIGHTER_CLERIC~ BEGIN
-		    SET fc_row = %row%
-		  END
-		  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~CLERIC_MAGE~ BEGIN
-		    SET cm_row = %row%
-		  END
-		  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~CLERIC_THIEF~ BEGIN
-		    SET ct_row = %row%
-		  END
-		  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~CLERIC_RANGER~ BEGIN
-		    SET cr_row = %row%
-		  END
-		  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~FIGHTER_DRUID~ BEGIN
-		    SET fd_row = %row%
-		  END
-		END
-		SET_2DA_ENTRY %c_row% 3 cols RESOLVE_STR_REF (@10001)
-		SET_2DA_ENTRY %c_row% 5 cols RESOLVE_STR_REF (@10002)
-		SET_2DA_ENTRY %c_row% 4 cols RESOLVE_STR_REF (@10005)
-		SET_2DA_ENTRY %fc_row% 3 cols RESOLVE_STR_REF (@10011)
-		SET_2DA_ENTRY %fc_row% 5 cols RESOLVE_STR_REF (@10012)
-		SET_2DA_ENTRY %fc_row% 4 cols RESOLVE_STR_REF (@10015)
-		SET_2DA_ENTRY %cm_row% 3 cols RESOLVE_STR_REF (@10021)
-		SET_2DA_ENTRY %cm_row% 5 cols RESOLVE_STR_REF (@10022)
-		SET_2DA_ENTRY %cm_row% 4 cols RESOLVE_STR_REF (@10025)
-		SET_2DA_ENTRY %ct_row% 3 cols RESOLVE_STR_REF (@10031)
-		SET_2DA_ENTRY %ct_row% 5 cols RESOLVE_STR_REF (@10032)
-		SET_2DA_ENTRY %ct_row% 4 cols RESOLVE_STR_REF (@10035)
-		SET_2DA_ENTRY %cr_row% 3 cols RESOLVE_STR_REF (@10041)
-		SET_2DA_ENTRY %cr_row% 5 cols RESOLVE_STR_REF (@10042)
-		SET_2DA_ENTRY %cr_row% 4 cols RESOLVE_STR_REF (@10045)
-		SET_2DA_ENTRY %fd_row% 3 cols RESOLVE_STR_REF (@10051)
-		SET_2DA_ENTRY %fd_row% 5 cols RESOLVE_STR_REF (@10052)
-		SET_2DA_ENTRY %fd_row% 4 cols RESOLVE_STR_REF (@10055)
-  	BUT_ONLY
-END
-ACTION_IF (FILE_EXISTS_IN_GAME ~sodcltxt.2da~) BEGIN
-  	COPY_EXISTING ~sodcltxt.2da~ ~override~
-		COUNT_2DA_COLS cols // amount of columns
-		READ_2DA_ENTRIES_NOW rows cols // read all file into memory  
-		FOR (row = 1; row < rows; ++row) BEGIN // iterate over rows
-		  READ_2DA_ENTRY_FORMER rows row 0 ~text~ // read column value
-		  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~CLERIC~ BEGIN
-		    SET c_row = %row%
-		  END
-		  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~FIGHTER_CLERIC~ BEGIN
-		    SET fc_row = %row%
-		  END
-		  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~CLERIC_MAGE~ BEGIN
-		    SET cm_row = %row%
-		  END
-		  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~CLERIC_THIEF~ BEGIN
-		    SET ct_row = %row%
-		  END
-		  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~CLERIC_RANGER~ BEGIN
-		    SET cr_row = %row%
-		  END
-		  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~FIGHTER_DRUID~ BEGIN
-		    SET fd_row = %row%
-		  END
-		END
-		SET_2DA_ENTRY %c_row% 3 cols RESOLVE_STR_REF (@10001)
-		SET_2DA_ENTRY %c_row% 5 cols RESOLVE_STR_REF (@10002)
-		SET_2DA_ENTRY %c_row% 4 cols RESOLVE_STR_REF (@10005)
-		SET_2DA_ENTRY %fc_row% 3 cols RESOLVE_STR_REF (@10011)
-		SET_2DA_ENTRY %fc_row% 5 cols RESOLVE_STR_REF (@10012)
-		SET_2DA_ENTRY %fc_row% 4 cols RESOLVE_STR_REF (@10015)
-		SET_2DA_ENTRY %cm_row% 3 cols RESOLVE_STR_REF (@10021)
-		SET_2DA_ENTRY %cm_row% 5 cols RESOLVE_STR_REF (@10022)
-		SET_2DA_ENTRY %cm_row% 4 cols RESOLVE_STR_REF (@10025)
-		SET_2DA_ENTRY %ct_row% 3 cols RESOLVE_STR_REF (@10031)
-		SET_2DA_ENTRY %ct_row% 5 cols RESOLVE_STR_REF (@10032)
-		SET_2DA_ENTRY %ct_row% 4 cols RESOLVE_STR_REF (@10035)
-		SET_2DA_ENTRY %cr_row% 3 cols RESOLVE_STR_REF (@10041)
-		SET_2DA_ENTRY %cr_row% 5 cols RESOLVE_STR_REF (@10042)
-		SET_2DA_ENTRY %cr_row% 4 cols RESOLVE_STR_REF (@10045)
-		SET_2DA_ENTRY %fd_row% 3 cols RESOLVE_STR_REF (@10051)
-		SET_2DA_ENTRY %fd_row% 5 cols RESOLVE_STR_REF (@10052)
-		SET_2DA_ENTRY %fd_row% 4 cols RESOLVE_STR_REF (@10055)
-  	BUT_ONLY
-END
+LAF multiclass_text END
 //__________________________________________________________________________________
 
 //enable lots of multiclasses_______________________________________________________
 //
-ACTION_IF FILE_EXISTS_IN_GAME ~CLSRCREQ.2da~ BEGIN
- COPY_EXISTING ~clsrcreq.2da~ ~override~
-  COUNT_2DA_ROWS 8 rows
-  FOR (row = 0 ; row < rows ; ++row) BEGIN
-    READ_2DA_ENTRY row 0 8 entry
-    PATCH_IF (("%entry%" STRING_COMPARE_CASE "FIGHTER_CLERIC"      = 0) OR
-              ("%entry%" STRING_COMPARE_CASE "CLERIC_THIEF"        = 0)) BEGIN // cleric/thief, fighter/cleric
-      SET_2DA_ENTRY  row 1 8 1
-      SET_2DA_ENTRY  row 2 8 1
-      SET_2DA_ENTRY  row 3 8 1
-      SET_2DA_ENTRY  row 4 8 1
-      SET_2DA_ENTRY  row 5 8 1
-      SET_2DA_ENTRY  row 6 8 1
-      SET_2DA_ENTRY  row 7 8 1
-    END
-    PATCH_IF ("%entry%" STRING_COMPARE_CASE "CLERIC_MAGE"         = 0) BEGIN // cleric/mage
-      SET_2DA_ENTRY  row 1 8 1
-      SET_2DA_ENTRY  row 2 8 1
-      SET_2DA_ENTRY  row 3 8 1
-      SET_2DA_ENTRY  row 6 8 1
-    END
-    PATCH_IF ("%entry%" STRING_COMPARE_CASE "CLERIC_RANGER"       = 0) BEGIN // cleric/ranger
-      SET_2DA_ENTRY  row 1 8 1
-      SET_2DA_ENTRY  row 2 8 1
-      SET_2DA_ENTRY  row 3 8 1
-    END
-    PATCH_IF (("%entry%" STRING_COMPARE_CASE "FIGHTER_MAGE"        = 0) OR
-              ("%entry%" STRING_COMPARE_CASE "FIGHTER_THIEF"       = 0) OR
-              ("%entry%" STRING_COMPARE_CASE "FIGHTER_MAGE_THIEF"  = 0) OR
-              ("%entry%" STRING_COMPARE_CASE "MAGE_THIEF"          = 0)) BEGIN // other human multiclasses
-      SET_2DA_ENTRY  row 1 8 1
-    END
-    PATCH_IF (("%entry%" STRING_COMPARE_CASE "DRUID"               = 0) OR
-    		  ("%entry%" STRING_COMPARE_CASE "FIGHTER_DRUID"       = 0)) BEGIN // druids and mystics
-      SET_2DA_ENTRY  row 1 8 1
-      SET_2DA_ENTRY  row 2 8 1
-      SET_2DA_ENTRY  row 3 8 1
-      SET_2DA_ENTRY  row 4 8 1
-      SET_2DA_ENTRY  row 5 8 1
-      SET_2DA_ENTRY  row 6 8 1
-      SET_2DA_ENTRY  row 7 8 1
-    END
-    PATCH_IF ("%entry%" STRING_COMPARE_CASE "FIGHTER_MAGE_CLERIC" = 0) BEGIN // fighter/mage/cleric
-      SET_2DA_ENTRY  row 1 8 0
-      SET_2DA_ENTRY  row 2 8 0
-      SET_2DA_ENTRY  row 3 8 0
-      SET_2DA_ENTRY  row 4 8 0
-      SET_2DA_ENTRY  row 5 8 0
-      SET_2DA_ENTRY  row 6 8 0
-      SET_2DA_ENTRY  row 7 8 0
-    END
-  END
-  PRETTY_PRINT_2DA
- BUT_ONLY
-END
+LAF enable_multiclasses END
 //___________________________________________________________________________________
 
 //change druid class text____________________________________________________________
 //
-ACTION_IF (FILE_EXISTS_IN_GAME ~clastext.2da~) BEGIN
-  COPY_EXISTING ~clastext.2da~ ~override~
-	COUNT_2DA_COLS cols // amount of columns
-	READ_2DA_ENTRIES_NOW rows cols // read all file into memory  
-	FOR (row = 1; row < rows; ++row) BEGIN // iterate over rows
-	  READ_2DA_ENTRY_FORMER rows row 0 ~text~ // read column value
-	  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~DRUID~ BEGIN
-	    SET patch_row = %row%
-	  END
-	END
-	SET_2DA_ENTRY %patch_row% 3 cols RESOLVE_STR_REF (@70001)
-	SET_2DA_ENTRY %patch_row% 5 cols RESOLVE_STR_REF (@70002)
-	SET_2DA_ENTRY %patch_row% 4 cols RESOLVE_STR_REF (@70003)
-  BUT_ONLY
-END
-ACTION_IF (FILE_EXISTS_IN_GAME ~sodcltxt.2da~) BEGIN
-  COPY_EXISTING ~sodcltxt.2da~ ~override~
-	COUNT_2DA_COLS cols // amount of columns
-	READ_2DA_ENTRIES_NOW rows cols // read all file into memory  
-	FOR (row = 1; row < rows; ++row) BEGIN // iterate over rows
-	  READ_2DA_ENTRY_FORMER rows row 0 ~text~ // read column value
-	  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~DRUID~ BEGIN
-	    SET patch_row = %row%
-	  END
-	END
-	SET_2DA_ENTRY %patch_row% 3 cols RESOLVE_STR_REF (@70001)
-	SET_2DA_ENTRY %patch_row% 5 cols RESOLVE_STR_REF (@70002)
-	SET_2DA_ENTRY %patch_row% 4 cols RESOLVE_STR_REF (@70003)
-  BUT_ONLY
-END
+LAF druid_class_text END
 //__________________________________________________________________________________
 
 //druids on cleric spell/xp tables__________________________________________________
-// from BG2Tweaks
-
-COPY_EXISTING ~xplevel.2da~ ~override~
-REPLACE_TEXTUALLY
-~CLERIC \(.*\)
-DRUID \(.*\)~
-~CLERIC \1
-DRUID  \1~
-BUT_ONLY
-
-ACTION_IF FILE_EXISTS_IN_GAME ~lunumab.2da~ THEN BEGIN
-  COPY_EXISTING ~lunumab.2da~ ~override~
-    READ_2DA_ENTRY  2 1 5 "cleric"   // read trueclass cleric value for initial HLA level
-    SET_2DA_ENTRY   6 1 5 "%cleric%" // write trueclass cleric value for initial HLA level into druid slot
-    READ_2DA_ENTRY  9 1 5 "f_c"      // read dual f/c value for initial HLA level
-    SET_2DA_ENTRY  15 1 5 "%f_c%"    // write dual f/c cleric value for initial HLA level into dual f/d slot
-    READ_2DA_ENTRY 22 1 5 "multic"   // read multiclass cleric value for initial HLA level
-    SET_2DA_ENTRY  24 1 5 "%multic%" // write multiclass cleric value for initial HLA level into multiclass druid slot
-  BUT_ONLY
-END
-
-COPY_EXISTING ~mxsplprs.2da~ ~override/mxspldru.2da~
+//
+LAF druid_xp END
 //__________________________________________________________________________________
 
 //ranger/paladin spell tables_______________________________________________________
 //
-COPY ~faiths_and_powers/spheres/mxsplpal.2da~ ~override~
-COPY ~faiths_and_powers/spheres/mxsplran.2da~ ~override~
+LAF spell_tables END
 //__________________________________________________________________________________
 
-//change shaman known spell tables__________________________________________________
+//change shaman known spells________________________________________________________
 //
-COPY ~faiths_and_powers/kits/incarnates/splshmkn.2da~ ~override~
+LAF shaman_spells END
 //__________________________________________________________________________________
 
 //Add IWD spells if not already in game_____________________________________________
@@ -412,16 +219,18 @@ COPY ~faiths_and_powers/kits/incarnates/splshmkn.2da~ ~override~
 ACTION_CLEAR_ARRAY aoe_spell
 
 ACTION_IF (!FILE_CONTAINS_EVALUATED(~spell.ids~ ~CLERIC_CURSE~)) BEGIN  //if not IWDEE priest spells..from any source
-	COPY ~%mod_folder%/compatibility/b_IWD.itm~ ~override~   	//to detect this component
-      COPY ~%mod_folder%/compatibility/b_IWD.itm~ ~override/B_pri.itm~
-      INCLUDE ~%mod_folder%/data/components/Setup_IWD_Spells.tpa~      //install priest spells
+ COPY ~%mod_folder%/compatibility/b_IWD.itm~ ~override~   	//to detect this component  Needed anymore???
+ COPY ~%mod_folder%/compatibility/b_IWD.itm~ ~override/B_pri.itm~    //Needed anymore???
+  INCLUDE ~%mod_folder%/data/components/Setup_IWD_Spells.tpa~      //install priest spells
 END
-//special, older versions of SR and IWDee
+
+//special, 'older' versions of SR and IWDee
 ACTION_IF GAME_IS ~iwdee~ BEGIN
   ACTION_IF ((!FILE_CONTAINS_EVALUATED(~spell.ids~ ~CLERIC_BEAST_CLAW~)) AND (FILE_EXISTS_IN_GAME ~dvsrv4here.mrk~)) BEGIN
    INCLUDE ~faiths_and_powers/lib/iwdee_sr_readd.tpa~
   END
 END
+
 //special: reinstall spells if any version of SR installed
   ACTION_IF FILE_EXISTS_IN_GAME ~dvsrv4here.mrk~ BEGIN
    INCLUDE ~faiths_and_powers/lib/sr_readd.tpa~
@@ -445,21 +254,19 @@ END
 //Create Sphere System______________________________________________________________
 //
 ACTION_IF (%d5_use_spheres% = 1) BEGIN
- INCLUDE ~faiths_and_powers/lib/create_sphere_system.tpa~
  LAF create_spheres END
 END
 //__________________________________________________________________________________
 
 //install the kits__________________________________________________________________
 //
-
 LAM d5_kit_choices
 
 ACTION_IF (%d5_use_spheres% = 0) BEGIN
    OUTER_SET d5_multiclass_druids =	0
    OUTER_SET d5_earth_mystic 	=	0
    OUTER_SET d5_water_mystic 	=	0
-   OUTER_SET d5_air_mystic 		=	0
+   OUTER_SET d5_air_mystic 	=	0
    OUTER_SET d5_fire_mystic 	=	0
    OUTER_SET d5_light_mystic 	=	0
    OUTER_SET d5_shadow_mystic 	=	0
@@ -785,29 +592,21 @@ END
 ACTION_IF (%d5_cf_helm% = 1) BEGIN
  LAF cf_helm END
 END
-/*
-ACTION_IF (%d5_multi_sorcerers% = 1) BEGIN
- LAF multi_sorcerers END
-END
-*/
 //
 //__________________________________________________________________________________
 
 //vanilla kits______________________________________________________________________
 //
-INCLUDE ~faiths_and_powers/lib/vanilla_kit_spheres.tpa~
 LAF vanilla_kit_spheres END
 //__________________________________________________________________________________
 
 //mod kits__________________________________________________________________________
 //
-INCLUDE ~faiths_and_powers/lib/mod_kit_spheres.tpa~
 LAF mod_kit_spheres END
 //__________________________________________________________________________________
 
 //default access____________________________________________________________________
 //
-INCLUDE ~faiths_and_powers/lib/default_kit_spheres.tpa~
 LAF default_kit_spheres END
 //__________________________________________________________________________________
 
@@ -817,116 +616,30 @@ LAF cleric_ur_priest END
 
 //Base kits_________________________________________________________________________
 //
-INCLUDE ~faiths_and_powers/kits/acolytes/acolyte.tpa~
-INCLUDE ~faiths_and_powers/kits/champions/champion.tpa~
-INCLUDE ~faiths_and_powers/kits/zealots/zealot.tpa~
+//INCLUDE ~faiths_and_powers/kits/acolytes/acolyte.tpa~
+//INCLUDE ~faiths_and_powers/kits/champions/champion.tpa~
+//INCLUDE ~faiths_and_powers/kits/zealots/zealot.tpa~
 //__________________________________________________________________________________
 
 //remove unwanted kits from menus___________________________________________________
 //
-COPY_EXISTING ~kitlist.2da~ ~override~
-//	COUNT_2DA_COLS k_cols
-	READ_2DA_ENTRIES_NOW k_rows 9
-	FOR (k_row = 1; k_row < k_rows; ++k_row) BEGIN
-	  READ_2DA_ENTRY_FORMER k_rows k_row 1 ~k_kit~
-	  PATCH_IF ~%k_kit%~ STRING_EQUAL_CASE ~B_ACOLYTE~ BEGIN
-	    READ_2DA_ENTRY_FORMER k_rows k_row 0 acolyte_num
-	  END
-	  PATCH_IF ~%k_kit%~ STRING_EQUAL_CASE ~B_ZEALOT_1~ BEGIN
-	    READ_2DA_ENTRY_FORMER k_rows k_row 0 zealot_num
-	  END
-	END
-BUT_ONLY
-
-ACTION_FOR_EACH class IN ~C~ ~D~ ~P~ ~R~ ~FC~ ~FD~ ~CM~ ~CT~ ~CR~ BEGIN
-  ACTION_FOR_EACH race IN ~D~ ~E~ ~G~ ~H~ ~HE~ ~HL~ ~HO~ BEGIN
-	ACTION_IF FILE_EXISTS_IN_GAME ~K_%class%_%race%.2da~ BEGIN
-	  COPY_EXISTING ~K_%class%_%race%.2da~ ~override~
-		COUNT_2DA_COLS cols
-		READ_2DA_ENTRIES_NOW rows cols
-		SET rows_removed = 0
-		FOR (row = 1; row < rows; ++row) BEGIN
-		  READ_2DA_ENTRY_FORMER rows row 1 kit
-		  PATCH_IF (%kit% = 0) OR 
-		  			(%kit% = 17) OR 
-		  			(%kit% = 19) OR 
-		  			(%kit% = 20) OR 
-		  			(%kit% = 21) OR 
-		  			(%kit% = 4) OR 
-		  			(%kit% = 5) OR 
-		  			(%kit% = 6) OR 
-		  			(%kit% = acolyte_num) OR 
-		  			(%kit% = zealot_num) BEGIN
-			REMOVE_2DA_ROW (row - rows_removed) cols
-			SET rows_removed += 1
-		  END
-		END
-	  BUT_ONLY
-	END
-  END
-END
-//__________________________________________________________________________________
-
-//halfling rangers__________________________________________________________________
-//
-ACTION_IF FILE_EXISTS_IN_GAME ~d5_sling.2da~ BEGIN
-  COPY_EXISTING ~kitlist.2da~ ~override~
-//	COUNT_2DA_COLS cols
-	READ_2DA_ENTRIES_NOW rows 9
-	FOR (row = 1; row < rows; ++row) BEGIN
-	  READ_2DA_ENTRY_FORMER rows row 1 ~sling~
-	  PATCH_IF ~%sling%~ STRING_EQUAL_CASE ~D5SLING~ BEGIN
-	    SET sling_row = (%row% + 1)
-	  END
-	END
-  BUT_ONLY
-  COPY ~faiths_and_powers/kits/K_X_Y/K_R_HL.2da~ ~override~
-	REPLACE_TEXTUALLY ~[ %TAB%]0~ ~%TAB%%sling_row%~
-END
+LAF remove_menu_kits END
 //__________________________________________________________________________________
 
 //more scout alignments_____________________________________________________________
 //
-ACTION_PHP_EACH d5_fnp_kit_class_access AS kit => class BEGIN
-  ACTION_IF (~%class%~ STRING_EQUAL_CASE ~SCOUT~) BEGIN
-	COPY_EXISTING ~kitlist.2da~ ~override~
-//	  COUNT_2DA_COLS cols
-	  READ_2DA_ENTRIES_NOW rows 9
-	  FOR (row = 7; row < rows; ++row) BEGIN
-		READ_2DA_ENTRY_FORMER rows row 5 ~clab~
-		PATCH_IF ~%clab%~ STRING_EQUAL_CASE ~%kit%~ BEGIN
-		  SET kit_index = %row%
-		  READ_2DA_ENTRY_FORMER rows kit_index 1 kit_label
-		END
-	  END
-	BUT_ONLY
-	APPEND ~fallen.2da~ ~%kit_label%%TAB%0~
-	COPY_EXISTING ~alignmnt.2da~ ~override~
-	  COUNT_2DA_COLS num_cols
-	  READ_2DA_ENTRIES_NOW ~r2en_align~ num_cols
-	  FOR (row = 3; row < r2en_align; row += 1) BEGIN
-		READ_2DA_ENTRY_FORMER ~r2en_align~ row 0 align_name
-		PATCH_IF (~%align_name%~ STRING_EQUAL_CASE ~%kit_label%~) BEGIN
-		  FOR (col = 1; col < num_cols; col += 1) BEGIN
-			SET_2DA_ENTRY_LATER ~s2el_align~ row col 1 // more alignments
-		  END
-		END
-	  END
-	  SET_2DA_ENTRIES_NOW ~s2el_align~ num_cols
-	BUT_ONLY
-  END
-END
+LAF more_ranger_alignments END
 //__________________________________________________________________________________
 
-//read fnp_compat info______________________________________________________________
+//read fnp_compat info in order to apply sphere system/item usability_______________
 //
 LAM ~READ_FNP_KIT_INFO~
 //__________________________________________________________________________________
 
 //deity selection___________________________________________________________________
 //
-INCLUDE ~faiths_and_powers/lib/deity_selection.tpa~
-LAF deity_dialogue END
+//INCLUDE ~faiths_and_powers/lib/deity_selection.tpa~
+//LAF deity_dialogue END
 //__________________________________________________________________________________
 
 //alter item usability______________________________________________________________
@@ -942,7 +655,6 @@ END
 //Apply Sphere System_______________________________________________________________
 //
 ACTION_IF (%d5_use_spheres% = 1) BEGIN
-  INCLUDE ~faiths_and_powers/lib/apply_sphere_system.tpa~
   LAF apply_spheres END
 END
 //__________________________________________________________________________________
@@ -957,24 +669,15 @@ END
 
 //no dual-classing__________________________________________________________________
 //
-LAM d5_dual_classing
-
-ACTION_IF (%d5_dual_class% = 0) BEGIN
-  COPY_EXISTING ~dualclas.2da~ ~override~
-	COUNT_2DA_COLS cols
-	COUNT_2DA_ROWS cols rows
-	FOR (row = 0; row < (rows - 1); ++row) BEGIN
-	  SET_2DA_ENTRY row 2 cols 0
-	  SET_2DA_ENTRY row 6 cols 0
-	END
-	PRETTY_PRINT_2DA
-  BUT_ONLY
-END
+//LAF disable_dual_classing END
 //__________________________________________________________________________________
 
-//SPell Immunities, etc.____________________________________________________________
-//Now, Immunities.  DO AT THE VERY END OF ALL SPELL INSTALLS (including kits with spls)
-INCLUDE ~%mod_folder%/lib/immunities.tpa~
+//universal spells available at CharGen_____________________________________________
+//
+ACTION_IF (%d5_use_spheres% = 1) BEGIN
+  LAF universal_spells END
+END
+//__________________________________________________________________________________
 
 
 //__________________________________________________________________________________
@@ -997,13 +700,14 @@ COPY ~faiths_and_powers/lib/markers/d5_nada.d5~ ~override~
 
 //determine which sphere system to use______________________________________________
 //
-  LAM d5_2E_spheres
-  ACTION_IF (FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~) BEGIN
-	  INCLUDE ~override/fnp_sphere_list.tpa~
-  END
-  ACTION_IF !(FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~) BEGIN
+LAM d5_2E_spheres
+ACTION_IF (FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~) BEGIN
+	INCLUDE ~override/fnp_sphere_list.tpa~
+END
+ACTION_IF !(FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~) BEGIN
 	ACTION_IF (%d5_2E_spheres% = 1) BEGIN
 	  COPY ~faiths_and_powers/lib/sphere_list_2E.tpa~ ~override/fnp_sphere_list.tpa~
+	  INCLUDE ~override/fnp_sphere_list.tpa~
 	END
 	ACTION_IF (%d5_2E_spheres% = 0) BEGIN
 	  ACTION_IF NOT FILE_EXISTS_IN_GAME ~dvsrv4here.mrk~ BEGIN
@@ -1018,52 +722,44 @@ COPY ~faiths_and_powers/lib/markers/d5_nada.d5~ ~override~
 		END
 	  END
 	END
-  END
+END
+
+INCLUDE ~faiths_and_powers/lib/sphere_system.tpa~
 //__________________________________________________________________________________
 
-//run the sphere system______________________________________________________________
-//
-INCLUDE ~faiths_and_powers/lib/create_sphere_system.tpa~
-LAF create_spheres END
-//__________________________________________________________________________________
-
-//vanilla kits_______________________________________________________________________
-//
-INCLUDE ~faiths_and_powers/lib/vanilla_kit_spheres.tpa~
-LAF vanilla_kit_spheres END
-//___________________________________________________________________________________
-
-//mod kits___________________________________________________________________________
-//
-INCLUDE ~faiths_and_powers/lib/mod_kit_spheres.tpa~
-LAF mod_kit_spheres END
-//___________________________________________________________________________________
-
-//default access_____________________________________________________________________
+//read in kit functions_____________________________________________________________
 //
 INCLUDE ~faiths_and_powers/lib/default_kit_spheres.tpa~
-LAF default_kit_spheres END
+//__________________________________________________________________________________
+
+//multiclass text____________________________________________________________________
+//
+LAF multiclass_text END
+//__________________________________________________________________________________
+
+//enable lots of multiclasses_______________________________________________________
+//
+LAF enable_multiclasses END
 //___________________________________________________________________________________
 
-//read fnp_compat info______________________________________________________________
+//change druid class text____________________________________________________________
 //
-LAM ~READ_FNP_KIT_INFO~
+LAF druid_class_text END
 //__________________________________________________________________________________
 
-//deity selection___________________________________________________________________
+//druids on cleric spell/xp tables__________________________________________________
 //
-INCLUDE ~faiths_and_powers/lib/deity_selection.tpa~
-LAF deity_dialogue END
+LAF druid_xp END
 //__________________________________________________________________________________
 
-//alter item usability______________________________________________________________
+//ranger/paladin spell tables_______________________________________________________
 //
-LAM d5_item_usability
+LAF spell_tables END
+//__________________________________________________________________________________
 
-ACTION_IF (%d5_item_use% = 1) BEGIN
-  INCLUDE ~faiths_and_powers/lib/item_usability.tpa~
-  LAF change_usability END
-END
+//change shaman known spells________________________________________________________
+//
+LAF shaman_spells END
 //__________________________________________________________________________________
 
 //Add IWD spells if not already in game_____________________________________________
@@ -1071,9 +767,9 @@ END
 ACTION_CLEAR_ARRAY aoe_spell
 
 ACTION_IF (!FILE_CONTAINS_EVALUATED(~spell.ids~ ~CLERIC_CURSE~)) BEGIN  //if not IWDEE priest spells..from any source
-	COPY ~%mod_folder%/compatibility/b_IWD.itm~ ~override~   	//to detect this component
-      COPY ~%mod_folder%/compatibility/b_IWD.itm~ ~override/B_pri.itm~
-      INCLUDE ~%mod_folder%/data/components/Setup_IWD_Spells.tpa~      //install priest spells
+ COPY ~%mod_folder%/compatibility/b_IWD.itm~ ~override~   	//to detect this component
+ COPY ~%mod_folder%/compatibility/b_IWD.itm~ ~override/B_pri.itm~
+  INCLUDE ~%mod_folder%/data/components/Setup_IWD_Spells.tpa~      //install priest spells
 END
 //special, older versions of SR and IWDee
 ACTION_IF GAME_IS ~iwdee~ BEGIN
@@ -1093,12 +789,56 @@ INCLUDE ~%mod_folder%/lib/fnp_new_spells.tpa~
 
 //Now, Immunities.  DO AT THE VERY END OF ALL SPELL INSTALLS
 INCLUDE ~%mod_folder%/lib/immunities.tpa~
+
 //sr spell deflection compatibility
-INCLUDE ~%mod_folder%/lib/compatibility_SR.tpa~
+ACTION_IF MOD_IS_INSTALLED ~spell_rev.tp2~ ~55~ BEGIN
+  INCLUDE ~%mod_folder%/lib/compatibility_SR.tpa~
+END
+//__________________________________________________________________________________
 
 //run the sphere system______________________________________________________________
 //
-INCLUDE ~faiths_and_powers/lib/apply_sphere_system.tpa~
+LAF create_spheres END
+//__________________________________________________________________________________
+
+//vanilla kits______________________________________________________________________
+//
+LAF vanilla_kit_spheres END
+//__________________________________________________________________________________
+
+//mod kits__________________________________________________________________________
+//
+LAF mod_kit_spheres END
+//__________________________________________________________________________________
+
+//default access____________________________________________________________________
+//
+LAF default_kit_spheres END
+//__________________________________________________________________________________
+
+//read fnp_compat info______________________________________________________________
+//
+LAM ~READ_FNP_KIT_INFO~
+//__________________________________________________________________________________
+
+//deity selection___________________________________________________________________
+//
+//INCLUDE ~faiths_and_powers/lib/deity_selection.tpa~
+//LAF deity_dialogue END
+//__________________________________________________________________________________
+
+//alter item usability______________________________________________________________
+//
+LAM d5_item_usability
+
+ACTION_IF (%d5_item_use% = 1) BEGIN
+  INCLUDE ~faiths_and_powers/lib/item_usability.tpa~
+  LAF change_usability END
+END
+//__________________________________________________________________________________
+
+//Apply Sphere System_______________________________________________________________
+//
 LAF apply_spheres END
 //__________________________________________________________________________________
 
@@ -1106,6 +846,11 @@ LAF apply_spheres END
 //
 INCLUDE ~faiths_and_powers/lib/npc_kits.tpa~
 LAF npc_kits END
+//__________________________________________________________________________________
+
+//make sure spells available at CharGen_____________________________________________
+//
+LAF universal_spells END
 //__________________________________________________________________________________
 
 //verbiage__________________________________________________________________________

@@ -173,148 +173,94 @@ BEGIN
 
   ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~d5_class.2da~ ~%clab_name%~)) BEGIN
 
-   ACTION_IF FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~ BEGIN
-	INCLUDE ~override/fnp_sphere_list.tpa~
-   END
-   ACTION_PHP_EACH EVAL ~%clab_name%_spheres~ AS this_variable => kit_access BEGIN
-	OUTER_INNER_PATCH_SAVE variable ~%this_variable%~ BEGIN
-	  PHP_EACH sphere_name_changes AS fnp_sphere => new_sphere BEGIN
-		REPLACE_TEXTUALLY CASE_INSENSITIVE EXACT_MATCH ~%new_sphere%~ ~%fnp_sphere%~
+	ACTION_IF FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~ BEGIN
+	  INCLUDE ~override/fnp_sphere_list.tpa~
+	END
+	ACTION_PHP_EACH EVAL ~%clab_name%_spheres~ AS this_variable => kit_access BEGIN
+	  ACTION_IF FILE_EXISTS_IN_GAME ~d5altsph.2da~ BEGIN
+		COPY_EXISTING ~d5altsph.2da~ ~override~
+		  READ_2DA_ENTRIES_NOW rows 2
+		  FOR (row = 0; row < rows; ++row) BEGIN
+			READ_2DA_ENTRY_FORMER rows row 0 ~fnp_sphere~
+			READ_2DA_ENTRY_FORMER rows row 1 ~alt_sphere~
+			PATCH_IF ~%this_variable%~ STRING_EQUAL_CASE ~%alt_sphere%~ BEGIN
+			  SPRINT new_variable ~%fnp_sphere%~
+			END
+		  END
+		BUT_ONLY
+	  END ELSE BEGIN
+		OUTER_SPRINT new_variable ~%this_variable%~
 	  END
-	END
-	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~Life~) BEGIN
-	  OUTER_SPRINT s_Life ~%kit_access%~
-	END
-	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~Death~) BEGIN
-	  OUTER_SPRINT s_Death ~%kit_access%~
-	END
-	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~Benediction~) BEGIN
-	  OUTER_SPRINT s_Benediction ~%kit_access%~
-	END
-	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~Destruction~) BEGIN
-	  OUTER_SPRINT s_Destruction ~%kit_access%~
-	END
-	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~Protection~) BEGIN
-	  OUTER_SPRINT s_Protection ~%kit_access%~
-	END
-	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~War~) BEGIN
-	  OUTER_SPRINT s_War ~%kit_access%~
-	END
-	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~Exploration~) BEGIN
-	  OUTER_SPRINT s_Exploration ~%kit_access%~
-	END
-	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~Knowledge~) BEGIN
-	  OUTER_SPRINT s_Knowledge ~%kit_access%~
-	END
-	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~Deception~) BEGIN
-	  OUTER_SPRINT s_Deception ~%kit_access%~
-	END
-	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~Thought~) BEGIN
-	  OUTER_SPRINT s_Thought ~%kit_access%~
-	END
-	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~Dread~) BEGIN
-	  OUTER_SPRINT s_Dread ~%kit_access%~
-	END
-	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~Vigor~) BEGIN
-	  OUTER_SPRINT s_Vigor ~%kit_access%~
-	END
-	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~Affliction~) BEGIN
-	  OUTER_SPRINT s_Affliction ~%kit_access%~
-	END
-	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~Animal~) BEGIN
-	  OUTER_SPRINT s_Animal ~%kit_access%~
-	END
-	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~Plant~) BEGIN
-	  OUTER_SPRINT s_Plant ~%kit_access%~
-	END
-	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~Earth~) BEGIN
-	  OUTER_SPRINT s_Earth ~%kit_access%~
-	END
-	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~Air~) BEGIN
-	  OUTER_SPRINT s_Air ~%kit_access%~
-	END
-	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~Water~) BEGIN
-	  OUTER_SPRINT s_Water ~%kit_access%~
-	END
-	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~Fire~) BEGIN
-	  OUTER_SPRINT s_Fire ~%kit_access%~
-	END
-	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~Light~) BEGIN
-	  OUTER_SPRINT s_Light ~%kit_access%~
-	END
-	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~Shadow~) BEGIN
-	  OUTER_SPRINT s_Shadow ~%kit_access%~
-	END
-	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~Magic~) BEGIN
-	  OUTER_SPRINT s_Magic ~%kit_access%~
-	END
-	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~Perdition~) BEGIN
-	  OUTER_SPRINT s_Perdition ~%kit_access%~
-	END
-	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~leather_armor_use~) BEGIN
-	  OUTER_SET u_leather_armor = %kit_access%
-	END
-	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~chain_armor_use~) BEGIN
-	  OUTER_SET u_chain_armor = %kit_access%
-	END
-	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~plate_armor_use~) BEGIN
-	  OUTER_SET u_plate_armor = %kit_access%
-	END
-	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~club_staff_prof~) BEGIN
-	  OUTER_SET u_club_staff = %kit_access%
-	END
-	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~hammers_prof~) BEGIN
-	  OUTER_SET u_hammers = %kit_access%
-	END
-	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~maces_prof~) BEGIN
-	  OUTER_SET u_maces = %kit_access%
-	END
-	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~flails_prof~) BEGIN
-	  OUTER_SET u_flails = %kit_access%
-	END
-	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~axes_prof~) BEGIN
-	  OUTER_SET u_axes = %kit_access%
-	END
-	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~daggers_prof~) BEGIN
-	  OUTER_SET u_daggers = %kit_access%
-	END
-	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~short_swords_prof~) BEGIN
-	  OUTER_SET u_short_swords = %kit_access%
-	END
-	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~long_swords_prof~) BEGIN
-	  OUTER_SET u_long_swords = %kit_access%
-	END
-	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~scimitars_prof~) BEGIN
-	  OUTER_SET u_scimitars = %kit_access%
-	END
-	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~katanas_prof~) BEGIN
-	  OUTER_SET u_katanas = %kit_access%
-	END
-	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~bastard_swords_prof~) BEGIN
-	  OUTER_SET u_bastard_swords = %kit_access%
-	END
-	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~2hand_swords_prof~) BEGIN
-	  OUTER_SET u_2hand_swords = %kit_access%
-	END
-	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~halberds_prof~) BEGIN
-	  OUTER_SET u_halberds = %kit_access%
-	END
-	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~spears_prof~) BEGIN
-	  OUTER_SET u_spears = %kit_access%
-	END
-	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~darts_prof~) BEGIN
-	  OUTER_SET u_darts = %kit_access%
-	END
-	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~slings_prof~) BEGIN
-	  OUTER_SET u_slings = %kit_access%
-	END
-	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~bows_prof~) BEGIN
-	  OUTER_SET u_bows = %kit_access%
-	END
-	ACTION_IF (~%variable%~ STRING_EQUAL_CASE ~crossbows_prof~) BEGIN
-	  OUTER_SET u_crossbows = %kit_access%
-	END
-   END
+	  ACTION_IF (~%new_variable%~ STRING_EQUAL_CASE ~Life~) BEGIN
+		OUTER_SPRINT s_Life ~%kit_access%~
+	  END
+	  ACTION_IF (~%new_variable%~ STRING_EQUAL_CASE ~Death~) BEGIN
+		OUTER_SPRINT s_Death ~%kit_access%~
+	  END
+	  ACTION_IF (~%new_variable%~ STRING_EQUAL_CASE ~Benediction~) BEGIN
+		OUTER_SPRINT s_Benediction ~%kit_access%~
+	  END
+	  ACTION_IF (~%new_variable%~ STRING_EQUAL_CASE ~Destruction~) BEGIN
+		OUTER_SPRINT s_Destruction ~%kit_access%~
+	  END
+	  ACTION_IF (~%new_variable%~ STRING_EQUAL_CASE ~Protection~) BEGIN
+		OUTER_SPRINT s_Protection ~%kit_access%~
+	  END
+	  ACTION_IF (~%new_variable%~ STRING_EQUAL_CASE ~War~) BEGIN
+		OUTER_SPRINT s_War ~%kit_access%~
+	  END
+	  ACTION_IF (~%new_variable%~ STRING_EQUAL_CASE ~Exploration~) BEGIN
+		OUTER_SPRINT s_Exploration ~%kit_access%~
+	  END
+	  ACTION_IF (~%new_variable%~ STRING_EQUAL_CASE ~Knowledge~) BEGIN
+		OUTER_SPRINT s_Knowledge ~%kit_access%~
+	  END
+	  ACTION_IF (~%new_variable%~ STRING_EQUAL_CASE ~Deception~) BEGIN
+		OUTER_SPRINT s_Deception ~%kit_access%~
+	  END
+	  ACTION_IF (~%new_variable%~ STRING_EQUAL_CASE ~Thought~) BEGIN
+		OUTER_SPRINT s_Thought ~%kit_access%~
+	  END
+	  ACTION_IF (~%new_variable%~ STRING_EQUAL_CASE ~Dread~) BEGIN
+		OUTER_SPRINT s_Dread ~%kit_access%~
+	  END
+	  ACTION_IF (~%new_variable%~ STRING_EQUAL_CASE ~Vigor~) BEGIN
+		OUTER_SPRINT s_Vigor ~%kit_access%~
+	  END
+	  ACTION_IF (~%new_variable%~ STRING_EQUAL_CASE ~Affliction~) BEGIN
+		OUTER_SPRINT s_Affliction ~%kit_access%~
+	  END
+	  ACTION_IF (~%new_variable%~ STRING_EQUAL_CASE ~Animal~) BEGIN
+		OUTER_SPRINT s_Animal ~%kit_access%~
+	  END
+	  ACTION_IF (~%new_variable%~ STRING_EQUAL_CASE ~Plant~) BEGIN
+		OUTER_SPRINT s_Plant ~%kit_access%~
+	  END
+	  ACTION_IF (~%new_variable%~ STRING_EQUAL_CASE ~Earth~) BEGIN
+		OUTER_SPRINT s_Earth ~%kit_access%~
+	  END
+	  ACTION_IF (~%new_variable%~ STRING_EQUAL_CASE ~Air~) BEGIN
+		OUTER_SPRINT s_Air ~%kit_access%~
+	  END
+	  ACTION_IF (~%new_variable%~ STRING_EQUAL_CASE ~Water~) BEGIN
+		OUTER_SPRINT s_Water ~%kit_access%~
+	  END
+	  ACTION_IF (~%new_variable%~ STRING_EQUAL_CASE ~Fire~) BEGIN
+		OUTER_SPRINT s_Fire ~%kit_access%~
+	  END
+	  ACTION_IF (~%new_variable%~ STRING_EQUAL_CASE ~Light~) BEGIN
+		OUTER_SPRINT s_Light ~%kit_access%~
+	  END
+	  ACTION_IF (~%new_variable%~ STRING_EQUAL_CASE ~Shadow~) BEGIN
+		OUTER_SPRINT s_Shadow ~%kit_access%~
+	  END
+	  ACTION_IF (~%new_variable%~ STRING_EQUAL_CASE ~Magic~) BEGIN
+		OUTER_SPRINT s_Magic ~%kit_access%~
+	  END
+	  ACTION_IF (~%new_variable%~ STRING_EQUAL_CASE ~Perdition~) BEGIN
+		OUTER_SPRINT s_Perdition ~%kit_access%~
+	  END
+    END
 
   // define the text that will be added to the 2da files
    OUTER_TEXT_SPRINT class_text ~%clab_name% %class%~
@@ -416,15 +362,16 @@ END
 // NECESSARY FUNCTIONS________________________________________________________________
 // Don't change this stuff
 //
-ACTION_IF FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~ BEGIN
+DEFINE_ACTION_FUNCTION ~USE_ALT_SPHERES~ BEGIN
+//ACTION_IF FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~ BEGIN
 //  INCLUDE ~override/fnp_sphere_list.tpa~
-  ACTION_PHP_EACH alt_spheres AS spell => sphere BEGIN
-	OUTER_INNER_PATCH_SAVE sphere_name ~%sphere%~ BEGIN
+  ACTION_PHP_EACH alt_spheres AS spell => alt_sphere BEGIN
+	OUTER_INNER_PATCH_SAVE fnp_sphere_name ~%alt_sphere%~ BEGIN
 	  PHP_EACH sphere_name_changes AS fnp_sphere => new_sphere BEGIN
 		REPLACE_TEXTUALLY CASE_INSENSITIVE EXACT_MATCH ~%new_sphere%~ ~%fnp_sphere%~
 	  END
 	END
-	OUTER_SPRINT $spellsphere(~%spell%~ ~%spell_1%~) ~%sphere_name%~
+	OUTER_SPRINT $spellsphere(~%spell%~ ~%spell_1%~) ~%fnp_sphere_name%~
   END
 END
 //____________________________________________________________________________________

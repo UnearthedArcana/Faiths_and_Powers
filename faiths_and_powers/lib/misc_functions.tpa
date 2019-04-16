@@ -1,0 +1,476 @@
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+//						MISCELLANEOUS FUNCTIONS
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+DEFINE_ACTION_FUNCTION multiclass_text BEGIN
+
+ACTION_IF (FILE_EXISTS_IN_GAME ~clastext.2da~) BEGIN
+  	COPY_EXISTING ~clastext.2da~ ~override~
+		COUNT_2DA_COLS cols
+		READ_2DA_ENTRIES_NOW rows cols  
+		FOR (row = 1; row < rows; ++row) BEGIN
+		  READ_2DA_ENTRY_FORMER rows row 0 ~text~
+		  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~CLERIC~ BEGIN
+		    SET c_row = %row%
+		  END
+		  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~FIGHTER_CLERIC~ BEGIN
+		    SET fc_row = %row%
+		  END
+		  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~CLERIC_MAGE~ BEGIN
+		    SET cm_row = %row%
+		  END
+		  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~CLERIC_THIEF~ BEGIN
+		    SET ct_row = %row%
+		  END
+		  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~CLERIC_RANGER~ BEGIN
+		    SET cr_row = %row%
+		  END
+		  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~FIGHTER_DRUID~ BEGIN
+		    SET fd_row = %row%
+		  END
+		END
+		SET_2DA_ENTRY %c_row% 3 cols RESOLVE_STR_REF (@10001)
+		SET_2DA_ENTRY %c_row% 5 cols RESOLVE_STR_REF (@10002)
+		SET_2DA_ENTRY %c_row% 4 cols RESOLVE_STR_REF (@10005)
+		SET_2DA_ENTRY %fc_row% 3 cols RESOLVE_STR_REF (@10011)
+		SET_2DA_ENTRY %fc_row% 5 cols RESOLVE_STR_REF (@10012)
+		SET_2DA_ENTRY %fc_row% 4 cols RESOLVE_STR_REF (@10015)
+		SET_2DA_ENTRY %cm_row% 3 cols RESOLVE_STR_REF (@10021)
+		SET_2DA_ENTRY %cm_row% 5 cols RESOLVE_STR_REF (@10022)
+		SET_2DA_ENTRY %cm_row% 4 cols RESOLVE_STR_REF (@10025)
+		SET_2DA_ENTRY %ct_row% 3 cols RESOLVE_STR_REF (@10031)
+		SET_2DA_ENTRY %ct_row% 5 cols RESOLVE_STR_REF (@10032)
+		SET_2DA_ENTRY %ct_row% 4 cols RESOLVE_STR_REF (@10035)
+		SET_2DA_ENTRY %cr_row% 3 cols RESOLVE_STR_REF (@10041)
+		SET_2DA_ENTRY %cr_row% 5 cols RESOLVE_STR_REF (@10042)
+		SET_2DA_ENTRY %cr_row% 4 cols RESOLVE_STR_REF (@10045)
+		SET_2DA_ENTRY %fd_row% 3 cols RESOLVE_STR_REF (@10051)
+		SET_2DA_ENTRY %fd_row% 5 cols RESOLVE_STR_REF (@10052)
+		SET_2DA_ENTRY %fd_row% 4 cols RESOLVE_STR_REF (@10055)
+  	BUT_ONLY
+END
+ACTION_IF (FILE_EXISTS_IN_GAME ~sodcltxt.2da~) BEGIN
+  	COPY_EXISTING ~sodcltxt.2da~ ~override~
+		COUNT_2DA_COLS cols // amount of columns
+		READ_2DA_ENTRIES_NOW rows cols // read all file into memory  
+		FOR (row = 1; row < rows; ++row) BEGIN // iterate over rows
+		  READ_2DA_ENTRY_FORMER rows row 0 ~text~ // read column value
+		  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~CLERIC~ BEGIN
+		    SET c_row = %row%
+		  END
+		  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~FIGHTER_CLERIC~ BEGIN
+		    SET fc_row = %row%
+		  END
+		  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~CLERIC_MAGE~ BEGIN
+		    SET cm_row = %row%
+		  END
+		  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~CLERIC_THIEF~ BEGIN
+		    SET ct_row = %row%
+		  END
+		  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~CLERIC_RANGER~ BEGIN
+		    SET cr_row = %row%
+		  END
+		  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~FIGHTER_DRUID~ BEGIN
+		    SET fd_row = %row%
+		  END
+		END
+		SET_2DA_ENTRY %c_row% 3 cols RESOLVE_STR_REF (@10001)
+		SET_2DA_ENTRY %c_row% 5 cols RESOLVE_STR_REF (@10002)
+		SET_2DA_ENTRY %c_row% 4 cols RESOLVE_STR_REF (@10005)
+		SET_2DA_ENTRY %fc_row% 3 cols RESOLVE_STR_REF (@10011)
+		SET_2DA_ENTRY %fc_row% 5 cols RESOLVE_STR_REF (@10012)
+		SET_2DA_ENTRY %fc_row% 4 cols RESOLVE_STR_REF (@10015)
+		SET_2DA_ENTRY %cm_row% 3 cols RESOLVE_STR_REF (@10021)
+		SET_2DA_ENTRY %cm_row% 5 cols RESOLVE_STR_REF (@10022)
+		SET_2DA_ENTRY %cm_row% 4 cols RESOLVE_STR_REF (@10025)
+		SET_2DA_ENTRY %ct_row% 3 cols RESOLVE_STR_REF (@10031)
+		SET_2DA_ENTRY %ct_row% 5 cols RESOLVE_STR_REF (@10032)
+		SET_2DA_ENTRY %ct_row% 4 cols RESOLVE_STR_REF (@10035)
+		SET_2DA_ENTRY %cr_row% 3 cols RESOLVE_STR_REF (@10041)
+		SET_2DA_ENTRY %cr_row% 5 cols RESOLVE_STR_REF (@10042)
+		SET_2DA_ENTRY %cr_row% 4 cols RESOLVE_STR_REF (@10045)
+		SET_2DA_ENTRY %fd_row% 3 cols RESOLVE_STR_REF (@10051)
+		SET_2DA_ENTRY %fd_row% 5 cols RESOLVE_STR_REF (@10052)
+		SET_2DA_ENTRY %fd_row% 4 cols RESOLVE_STR_REF (@10055)
+  	BUT_ONLY
+END
+
+END // end function
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+
+DEFINE_ACTION_FUNCTION enable_multiclasses BEGIN
+
+ACTION_IF FILE_EXISTS_IN_GAME ~CLSRCREQ.2da~ BEGIN
+ COPY_EXISTING ~clsrcreq.2da~ ~override~
+  COUNT_2DA_ROWS 8 rows
+  FOR (row = 0 ; row < rows ; ++row) BEGIN
+    READ_2DA_ENTRY row 0 8 entry
+    PATCH_IF (("%entry%" STRING_COMPARE_CASE "FIGHTER_CLERIC"      = 0) OR
+              ("%entry%" STRING_COMPARE_CASE "CLERIC_THIEF"        = 0)) BEGIN // cleric/thief, fighter/cleric
+      SET_2DA_ENTRY  row 1 8 1
+      SET_2DA_ENTRY  row 2 8 1
+      SET_2DA_ENTRY  row 3 8 1
+      SET_2DA_ENTRY  row 4 8 1
+      SET_2DA_ENTRY  row 5 8 1
+      SET_2DA_ENTRY  row 6 8 1
+      SET_2DA_ENTRY  row 7 8 1
+    END
+    PATCH_IF ("%entry%" STRING_COMPARE_CASE "CLERIC_MAGE"         = 0) BEGIN // cleric/mage
+      SET_2DA_ENTRY  row 1 8 1
+      SET_2DA_ENTRY  row 2 8 1
+      SET_2DA_ENTRY  row 3 8 1
+      SET_2DA_ENTRY  row 6 8 1
+    END
+    PATCH_IF ("%entry%" STRING_COMPARE_CASE "CLERIC_RANGER"       = 0) BEGIN // cleric/ranger
+      SET_2DA_ENTRY  row 1 8 1
+      SET_2DA_ENTRY  row 2 8 1
+      SET_2DA_ENTRY  row 3 8 1
+    END
+    PATCH_IF (("%entry%" STRING_COMPARE_CASE "FIGHTER_MAGE"        = 0) OR
+              ("%entry%" STRING_COMPARE_CASE "FIGHTER_THIEF"       = 0) OR
+              ("%entry%" STRING_COMPARE_CASE "FIGHTER_MAGE_THIEF"  = 0) OR
+              ("%entry%" STRING_COMPARE_CASE "MAGE_THIEF"          = 0)) BEGIN // other human multiclasses
+      SET_2DA_ENTRY  row 1 8 1
+    END
+    PATCH_IF (("%entry%" STRING_COMPARE_CASE "DRUID"               = 0) OR
+    		  ("%entry%" STRING_COMPARE_CASE "FIGHTER_DRUID"       = 0)) BEGIN // druids and mystics
+      SET_2DA_ENTRY  row 1 8 1
+      SET_2DA_ENTRY  row 2 8 1
+      SET_2DA_ENTRY  row 3 8 1
+      SET_2DA_ENTRY  row 4 8 1
+      SET_2DA_ENTRY  row 5 8 1
+      SET_2DA_ENTRY  row 6 8 1
+      SET_2DA_ENTRY  row 7 8 1
+    END
+    PATCH_IF ("%entry%" STRING_COMPARE_CASE "FIGHTER_MAGE_CLERIC" = 0) BEGIN // fighter/mage/cleric
+      SET_2DA_ENTRY  row 1 8 0
+      SET_2DA_ENTRY  row 2 8 0
+      SET_2DA_ENTRY  row 3 8 0
+      SET_2DA_ENTRY  row 4 8 0
+      SET_2DA_ENTRY  row 5 8 0
+      SET_2DA_ENTRY  row 6 8 0
+      SET_2DA_ENTRY  row 7 8 0
+    END
+  END
+  PRETTY_PRINT_2DA
+ BUT_ONLY
+END
+
+END // end function
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+
+DEFINE_ACTION_FUNCTION druid_class_text BEGIN
+
+ACTION_IF (FILE_EXISTS_IN_GAME ~clastext.2da~) BEGIN
+  COPY_EXISTING ~clastext.2da~ ~override~
+	COUNT_2DA_COLS cols // amount of columns
+	READ_2DA_ENTRIES_NOW rows cols // read all file into memory  
+	FOR (row = 1; row < rows; ++row) BEGIN // iterate over rows
+	  READ_2DA_ENTRY_FORMER rows row 0 ~text~ // read column value
+	  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~DRUID~ BEGIN
+	    SET patch_row = %row%
+	  END
+	END
+	SET_2DA_ENTRY %patch_row% 3 cols RESOLVE_STR_REF (@70001)
+	SET_2DA_ENTRY %patch_row% 5 cols RESOLVE_STR_REF (@70002)
+	SET_2DA_ENTRY %patch_row% 4 cols RESOLVE_STR_REF (@70003)
+  BUT_ONLY
+END
+ACTION_IF (FILE_EXISTS_IN_GAME ~sodcltxt.2da~) BEGIN
+  COPY_EXISTING ~sodcltxt.2da~ ~override~
+	COUNT_2DA_COLS cols // amount of columns
+	READ_2DA_ENTRIES_NOW rows cols // read all file into memory  
+	FOR (row = 1; row < rows; ++row) BEGIN // iterate over rows
+	  READ_2DA_ENTRY_FORMER rows row 0 ~text~ // read column value
+	  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~DRUID~ BEGIN
+	    SET patch_row = %row%
+	  END
+	END
+	SET_2DA_ENTRY %patch_row% 3 cols RESOLVE_STR_REF (@70001)
+	SET_2DA_ENTRY %patch_row% 5 cols RESOLVE_STR_REF (@70002)
+	SET_2DA_ENTRY %patch_row% 4 cols RESOLVE_STR_REF (@70003)
+  BUT_ONLY
+END
+
+END // end function
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+
+DEFINE_ACTION_FUNCTION druid_xp BEGIN
+
+// from BG2Tweaks
+
+COPY_EXISTING ~xplevel.2da~ ~override~
+REPLACE_TEXTUALLY
+~CLERIC \(.*\)
+DRUID \(.*\)~
+~CLERIC \1
+DRUID  \1~
+BUT_ONLY
+
+ACTION_IF FILE_EXISTS_IN_GAME ~lunumab.2da~ THEN BEGIN
+  COPY_EXISTING ~lunumab.2da~ ~override~
+    READ_2DA_ENTRY  2 1 5 "cleric"   // read trueclass cleric value for initial HLA level
+    SET_2DA_ENTRY   6 1 5 "%cleric%" // write trueclass cleric value for initial HLA level into druid slot
+    READ_2DA_ENTRY  9 1 5 "f_c"      // read dual f/c value for initial HLA level
+    SET_2DA_ENTRY  15 1 5 "%f_c%"    // write dual f/c cleric value for initial HLA level into dual f/d slot
+    READ_2DA_ENTRY 22 1 5 "multic"   // read multiclass cleric value for initial HLA level
+    SET_2DA_ENTRY  24 1 5 "%multic%" // write multiclass cleric value for initial HLA level into multiclass druid slot
+  BUT_ONLY
+END
+
+COPY_EXISTING ~mxsplprs.2da~ ~override/mxspldru.2da~
+
+END // end function
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+
+DEFINE_ACTION_FUNCTION spell_tables BEGIN
+
+COPY ~faiths_and_powers/spheres/mxsplpal.2da~ ~override~
+COPY ~faiths_and_powers/spheres/mxsplran.2da~ ~override~
+
+END // end function
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+
+DEFINE_ACTION_FUNCTION shaman_spells BEGIN
+
+// set up spell-learning UI here
+INCLUDE ~faiths_and_powers/lib/sequencer_menu_d5.tpa~
+
+LAF CREATE_SEQUENCER_MENU 
+  INT_VAR 
+	name = RESOLVE_STR_REF (~Spell Selection~)
+	tip = RESOLVE_STR_REF (~Spell Selection~)
+	desc = RESOLVE_STR_REF (~This ability allows you to learn new spells~)
+	class = 2
+	maxlevel = 7
+	exclude = 0x80000000 
+  STR_VAR 
+	resref = ~d5msham~
+	icon = ~spcl919b~
+	title = ~Spell Selection~
+	label = ~Select a spell to learn~
+	subspell = ~N~
+END
+
+APPEND ~clabsh01.2da~ ~SHMN_LRN    GA_D5MSHAM  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****    ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** ~
+APPEND ~clabshgs.2da~ ~SHMN_LRN    GA_D5MSHAM  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****    ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** ~
+
+COPY_EXISTING ~kitlist.2da~ ~override~
+  COUNT_2DA_ROWS 9 rows
+  FOR (row = 30 ; row < rows ; row = row + 1 ) BEGIN
+	READ_2DA_ENTRY row 5 9 kitclab
+	READ_2DA_ENTRY row 8 9 kitclass
+	PATCH_IF (kitclass = 21) BEGIN
+	  PATCH_IF (FILE_EXISTS_IN_GAME ~%kitclab%.2da~) BEGIN
+		INNER_ACTION BEGIN
+		  APPEND ~%kitclab%.2da~ ~SHMN_LRN    GA_D5MSHAM  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****    ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** ~
+		END
+	  END
+	END
+//	SPRINT $d5_shaman_clabs ("%modclab%") "%modclass%" END
+  END
+BUT_ONLY
+/*
+ACTION_PHP_EACH d5_shaman_clabs AS sho => me BEGIN
+  ACTION_IF (%me% = 21) AND (FILE_EXISTS_IN_GAME ~%sho%.2da~) BEGIN
+	APPEND ~%sho%.2da~ ~SHMN_LRN    GA_D5MSHAM  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****    ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** ~
+  END
+END
+*/
+
+// need to give d5msham to shamans
+// ...and the shambarb!
+
+COPY ~faiths_and_powers/kits/incarnates/splshmkn.2da~ ~override~
+
+END // end function
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+
+DEFINE_ACTION_FUNCTION remove_menu_kits BEGIN
+
+/*
+COPY_EXISTING ~kitlist.2da~ ~override~
+//	COUNT_2DA_COLS k_cols
+	READ_2DA_ENTRIES_NOW k_rows 9
+	FOR (k_row = 1; k_row < k_rows; ++k_row) BEGIN
+	  READ_2DA_ENTRY_FORMER k_rows k_row 1 ~k_kit~
+	  PATCH_IF ~%k_kit%~ STRING_EQUAL_CASE ~B_ACOLYTE~ BEGIN
+	    READ_2DA_ENTRY_FORMER k_rows k_row 0 acolyte_num
+	  END
+	  PATCH_IF ~%k_kit%~ STRING_EQUAL_CASE ~B_ZEALOT_1~ BEGIN
+	    READ_2DA_ENTRY_FORMER k_rows k_row 0 zealot_num
+	  END
+	END
+BUT_ONLY
+*/
+
+ACTION_FOR_EACH class IN ~C~ ~D~ ~P~ ~R~ ~FC~ ~FD~ ~CM~ ~CT~ ~CR~ BEGIN
+  ACTION_FOR_EACH race IN ~D~ ~E~ ~G~ ~H~ ~HE~ ~HL~ ~HO~ BEGIN
+	ACTION_IF FILE_EXISTS_IN_GAME ~K_%class%_%race%.2da~ BEGIN
+	  COPY_EXISTING ~K_%class%_%race%.2da~ ~override~
+		COUNT_2DA_COLS cols
+		READ_2DA_ENTRIES_NOW rows cols
+		SET rows_removed = 0
+		FOR (row = 1; row < rows; ++row) BEGIN
+		  READ_2DA_ENTRY_FORMER rows row 1 kit
+		  PATCH_IF 
+//		  			(%kit% = acolyte_num) OR 
+//		  			(%kit% = zealot_num) OR
+					(%kit% = 0) OR 
+		  			(%kit% = 17) OR 
+		  			(%kit% = 19) OR 
+		  			(%kit% = 20) OR 
+		  			(%kit% = 21) OR 
+		  			(%kit% = 4) OR 
+		  			(%kit% = 5) OR 
+		  			(%kit% = 6) BEGIN
+			REMOVE_2DA_ROW (row - rows_removed) cols
+			SET rows_removed += 1
+		  END
+		END
+	  BUT_ONLY
+	END
+  END
+END
+
+END // end function
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+
+DEFINE_ACTION_FUNCTION more_ranger_alignments BEGIN
+
+ACTION_PHP_EACH d5_fnp_kit_class_access AS kit => class BEGIN
+  ACTION_IF (~%class%~ STRING_EQUAL_CASE ~SCOUT~) BEGIN
+	COPY_EXISTING ~kitlist.2da~ ~override~
+//	  COUNT_2DA_COLS cols
+	  READ_2DA_ENTRIES_NOW rows 9
+	  FOR (row = 7; row < rows; ++row) BEGIN
+		READ_2DA_ENTRY_FORMER rows row 5 ~clab~
+		PATCH_IF ~%clab%~ STRING_EQUAL_CASE ~%kit%~ BEGIN
+		  SET kit_index = %row%
+		  READ_2DA_ENTRY_FORMER rows kit_index 1 kit_label
+		END
+	  END
+	BUT_ONLY
+	APPEND ~fallen.2da~ ~%kit_label%%TAB%0~
+	COPY_EXISTING ~alignmnt.2da~ ~override~
+	  COUNT_2DA_COLS num_cols
+	  READ_2DA_ENTRIES_NOW ~r2en_align~ num_cols
+	  FOR (row = 3; row < r2en_align; row += 1) BEGIN
+		READ_2DA_ENTRY_FORMER ~r2en_align~ row 0 align_name
+		PATCH_IF (~%align_name%~ STRING_EQUAL_CASE ~%kit_label%~) BEGIN
+		  FOR (col = 1; col < num_cols; col += 1) BEGIN
+			SET_2DA_ENTRY_LATER ~s2el_align~ row col 1 
+		  END
+		END
+	  END
+	  SET_2DA_ENTRIES_NOW ~s2el_align~ num_cols
+	BUT_ONLY
+  END
+END
+
+END // end function
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+
+DEFINE_ACTION_FUNCTION disable_dual_classing BEGIN
+
+LAM d5_dual_classing
+
+ACTION_IF (%d5_dual_class% = 0) BEGIN
+  COPY_EXISTING ~dualclas.2da~ ~override~
+	COUNT_2DA_COLS cols
+	COUNT_2DA_ROWS cols rows
+	FOR (row = 0; row < (rows - 1); ++row) BEGIN
+	  SET_2DA_ENTRY row 2 cols 0
+	  SET_2DA_ENTRY row 6 cols 0
+	END
+	PRETTY_PRINT_2DA
+  BUT_ONLY
+END
+
+END // end function
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+
+//REMOVE BLANK LINES MACRO_____________________________________________________________
+//
+DEFINE_PATCH_MACRO ~remove_blank_lines~ BEGIN
+	SET "size" = (SOURCE_SIZE - 1)
+	READ_BYTE ("%size%") "eof"
+	WHILE ((%size% > 0) AND (("%eof%" = 0x0a) OR ("%eof%" = 0x0d))) BEGIN // removes any empty lines at the end of the file
+		DELETE_BYTES "%size%" 0x01
+		SET "size" = ("%size%" - 1)
+		READ_BYTE ("%size%") "eof"
+	END
+END
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+
+// converts spell to innate and lowers casting time by two
+
+DEFINE_PATCH_MACRO ~spell_to_innate~ BEGIN
+
+  READ_LONG  0x64 abil_off ELSE 0
+  READ_SHORT 0x68 abil_num ELSE 0
+  READ_ASCII (abil_off + 0x04) bam (8) // reads the bam filename from ability
+  WRITE_SHORT 0x1C 4                         // sets spell type to innate (4)
+  WRITE_LONG  0x34 1                         // sets spell level to 1 to avoid scripting issues
+  WRITE_ASCIIE 0x3A "%bam%" #8      // writes the bam filename from abilities to spell icon
+  FOR (index = 0 ; index < abil_num ; ++index) BEGIN
+    WRITE_SHORT (abil_off + 0x02 + (0x28 * index)) 4 // changes ability icon location to innate (4)
+    READ_SHORT  (abil_off + 0x12 + (0x28 * index)) speed // reads casting speed
+    PATCH_IF (speed > 3) BEGIN
+      WRITE_SHORT  (abil_off + 0x12 + (0x28 * index)) (speed - 2) // reduces casting speed
+    END ELSE BEGIN
+      WRITE_SHORT  (abil_off + 0x12 + (0x28 * index)) 0 // makes instant
+    END
+  END
+
+END
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+

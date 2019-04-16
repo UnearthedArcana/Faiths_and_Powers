@@ -92,6 +92,7 @@ COPY ~faiths_and_powers/kits/occultists/762_beast_lord/d5_clbe.spl~ ~override~
 	SAY NAME1 @76211
 	SAY UNIDENTIFIED_DESC @76211
 COPY ~faiths_and_powers/kits/occultists/762_beast_lord/d5_clbe.itm~ ~override~
+	LPF DELETE_EFFECT INT_VAR match_opcode = 144 END // allow casting with beast claw
 COPY ~faiths_and_powers/kits/occultists/762_beast_lord/d5_clno.spl~ ~override~
 	SAY NAME1 @76212
 	SAY UNIDENTIFIED_DESC @76212

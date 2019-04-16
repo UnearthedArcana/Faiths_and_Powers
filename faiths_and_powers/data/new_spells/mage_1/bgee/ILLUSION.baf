@@ -1,0 +1,19 @@
+IF
+  Die()
+THEN
+  RESPONSE #100
+    DisplayString([INANIMATE.HUMANOID],25267)
+    ReallyForceSpellDead([INANIMATE.HUMANOID],ILLUSION_DEATH)
+    Wait(1)
+    DestroySelf()
+END
+
+IF
+  AttackedBy([GOODCUTOFF],DEFAULT)
+  Global("ILLUSIONARY","LOCALS",0)
+THEN
+  RESPONSE #100
+    SelectWeaponAbility(SLOT_WEAPON1,0)
+    SetGlobal("ILLUSIONARY","LOCALS",1)
+END
+

@@ -1,0 +1,639 @@
+STRING_SET ~23797~ @600100 //?
+
+//spls
+
+//spon harm
+COPY ~%mod_folder%/data/extra/spon_cast/rgspheal.spl~ ~override~
+  	SAY NAME1 @600101
+  	SAY UNIDENTIFIED_DESC @600102
+
+//spon harm
+COPY ~%mod_folder%/data/extra/spon_cast/rgspharm.spl~ ~override~
+  	SAY NAME1 @600103
+  	SAY UNIDENTIFIED_DESC @600104
+
+//Spon summoning
+COPY ~%mod_folder%/data/extra/spon_cast/rgspsumm.spl~ ~override~
+  	SAY NAME1 @600113
+  	SAY UNIDENTIFIED_DESC @600114
+
+//bams
+COPY ~%mod_folder%/data/extra/spon_cast/rgspa02b.bam~ ~override~
+COPY ~%mod_folder%/data/extra/spon_cast/rgspa02c.bam~ ~override~
+COPY ~%mod_folder%/data/extra/spon_cast/rgspb02b.bam~ ~override~
+COPY ~%mod_folder%/data/extra/spon_cast/rgspb02c.bam~ ~override~
+
+ACTION_IF GAME_IS ~bgee bg2ee eet~ THEN BEGIN
+COPY ~%mod_folder%/data/extra/spon_cast/rgspc01b.bam~ ~override~
+COPY ~%mod_folder%/data/extra/spon_cast/rgspc01c.bam~ ~override~
+COPY ~%mod_folder%/data/extra/spon_cast/rgspc02b.bam~ ~override~
+COPY ~%mod_folder%/data/extra/spon_cast/rgspc02c.bam~ ~override~
+COPY ~%mod_folder%/data/extra/spon_cast/rgspc03b.bam~ ~override~
+COPY ~%mod_folder%/data/extra/spon_cast/rgspc03c.bam~ ~override~
+COPY ~%mod_folder%/data/extra/spon_cast/rgspsumm.bam~ ~override~
+END
+
+ACTION_IF GAME_IS ~iwdee~ THEN BEGIN
+COPY ~Spontaneous_Casting/iwd_bam/rgspc01b.bam~ ~override~
+COPY ~Spontaneous_Casting/iwd_bam/rgspc01c.bam~ ~override~
+COPY ~Spontaneous_Casting/iwd_bam/rgspc02b.bam~ ~override~
+COPY ~Spontaneous_Casting/iwd_bam/rgspc02c.bam~ ~override~
+COPY ~Spontaneous_Casting/iwd_bam/rgspc03b.bam~ ~override~
+COPY ~Spontaneous_Casting/iwd_bam/rgspc03c.bam~ ~override~
+COPY ~Spontaneous_Casting/iwd_bam/rgspsumm.bam~ ~override~
+END
+
+COPY ~%mod_folder%/data/extra/spon_cast/rgspcast.bam~ ~override~
+COPY ~%mod_folder%/data/extra/spon_cast/rgspharm.bam~ ~override~
+COPY ~%mod_folder%/data/extra/spon_cast/rgspheal.bam~ ~override~
+COPY ~%mod_folder%/data/extra/spon_cast/rgsummon.bam~ ~override~
+
+//spell that applies innates by alignment for cle
+COPY ~%mod_folder%/data/extra/spon_cast/rgspcast.spl~ ~override~
+
+//spell that applies innates for druids
+COPY ~%mod_folder%/data/extra/spon_cast/rgspcast.spl~ ~override~
+
+//apply to clabs
+APPEND ~CLABPR01.2da~
+~ABILIRG1 AP_RGSPCAST **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** ****~
+
+APPEND ~CLABDR01.2da~
+~ABILIRG1 GA_RGSPSUMM **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** ****~
+
+
+COPY_EXISTING - ~KITLIST.2DA~ ~override~
+  PRETTY_PRINT_2DA
+  COUNT_2DA_ROWS 10 "cntrow"
+  FOR (cnt = 0; cnt < "%cntrow%"; cnt = cnt + 1) BEGIN
+    READ_2DA_ENTRY cnt 5 10 "clab"
+    READ_2DA_ENTRY cnt 8 10 "class"
+    PATCH_IF (IS_AN_INT ~%class%~) AND (FILE_EXISTS_IN_GAME ~%clab%.2DA~) BEGIN
+      INNER_ACTION BEGIN
+        ACTION_IF (class = 3) AND (NOT FILE_CONTAINS_EVALUATED (~%clab%.2DA~ ~RGSPCAST~)) BEGIN
+          PRINT ~Patching %clab%.2DA~
+          APPEND ~%clab%.2DA~
+          ~ABILIRG1 AP_RGSPCAST **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** ****~
+        END ELSE ACTION_IF (class = 11) AND (NOT FILE_CONTAINS_EVALUATED (~%clab%.2DA~ ~RGSPSUMM~)) BEGIN
+          PRINT ~Patching %clab%.2DA~
+          APPEND ~%clab%.2DA~
+          ~ABILIRG1 GA_RGSPSUMM **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** ****~
+	END
+      END
+    END
+  END
+
+
+//match spls with Pecca's file names (as vars)
+//cause light wounds
+LAF RES_NUM_OF_SPELL_NAME
+  STR_VAR spell_name = ~CLERIC_CAUSE_LIGHT_WOUNDS~
+  RET spell_res
+END
+        OUTER_SPRINT ~rgspb01~ ~%spell_res%~    //spl Var Cause Light Wounds
+
+LAF RES_NUM_OF_SPELL_NAME
+  STR_VAR spell_name = ~CLERIC_CAUSE_MODERATE_WOUNDS~
+  RET spell_res
+END
+        OUTER_SPRINT ~rgspb02~ ~%spell_res%~    //spl Var Cause Mod Wounds
+
+LAF RES_NUM_OF_SPELL_NAME
+  STR_VAR spell_name = ~CLERIC_CAUSE_MEDIUM_WOUNDS~
+  RET spell_res
+END
+        OUTER_SPRINT ~rgspb03~ ~%spell_res%~    //spl Var Cause Med Wounds
+
+LAF RES_NUM_OF_SPELL_NAME
+  STR_VAR spell_name = ~CLERIC_CURE_MODERATE_WOUNDS~
+  RET spell_res
+END
+        OUTER_SPRINT ~rgspa02~ ~%spell_res%~    //spl Var Cure Mod Wounds
+
+//1st lev animal if no SR
+ACTION_IF NOT FILE_EXISTS_IN_GAME ~dvimhere.mrk~ BEGIN
+
+LAF RES_NUM_OF_SPELL_NAME
+  STR_VAR spell_name = ~CLERIC_LESSER_ANIMAL_SUMMONING_I~
+  RET spell_res
+END
+        OUTER_SPRINT ~rgspc01~ ~%spell_res%~    //spl Var 1st level animal sum
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~dvimhere.mrk~ BEGIN
+
+LAF RES_NUM_OF_SPELL_NAME
+  STR_VAR spell_name = ~CLERIC_ANIMAL_SUMMONING_SR_LEVEL_1~
+  RET spell_res
+END
+        OUTER_SPRINT ~rgspc01~ ~%spell_res%~    //spl Var 1st level animal sum
+END
+
+//2nd lev animal if no SR
+ACTION_IF NOT FILE_EXISTS_IN_GAME ~dvimhere.mrk~ BEGIN
+
+LAF RES_NUM_OF_SPELL_NAME
+  STR_VAR spell_name = ~CLERIC_LESSER_ANIMAL_SUMMONING_II~
+  RET spell_res
+END
+        OUTER_SPRINT ~rgspc02~ ~%spell_res%~    //spl Var 2 level animal sum
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~dvimhere.mrk~ BEGIN
+
+LAF RES_NUM_OF_SPELL_NAME
+  STR_VAR spell_name = ~CLERIC_ANIMAL_SUMMONING_SR_LEVEL_2~
+  RET spell_res
+END
+        OUTER_SPRINT ~rgspc02~ ~%spell_res%~    //spl Var 2 level animal sum
+END
+
+//3rd lev animal if no SR
+ACTION_IF NOT FILE_EXISTS_IN_GAME ~dvimhere.mrk~ BEGIN
+
+LAF RES_NUM_OF_SPELL_NAME
+  STR_VAR spell_name = ~CLERIC_LESSER_ANIMAL_SUMMONING_III~
+  RET spell_res
+END
+        OUTER_SPRINT ~rgspc03~ ~%spell_res%~    //spl Var 3 level animal sum
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~dvimhere.mrk~ BEGIN
+
+LAF RES_NUM_OF_SPELL_NAME
+  STR_VAR spell_name = ~CLERIC_ANIMAL_SUMMONING_SR_LEVEL_3~
+  RET spell_res
+END
+        OUTER_SPRINT ~rgspc03~ ~%spell_res%~    //spl Var 3 level animal sum
+END
+
+
+
+//apply to spls
+ACTION_IF GAME_IS ~bgee bg2ee eet~ THEN BEGIN
+COPY_EXISTING_REGEXP GLOB ~.+\.spl~ ~override~
+  READ_SHORT 0x1c "spell_type"
+  READ_SHORT 0x34 "spell_level"
+  PATCH_IF spell_type = 2 AND spell_level = 1 BEGIN
+	PATCH_PRINT ~%SOURCE_FILE%~
+	LPF ADD_SPELL_HEADER  INT_VAR  type=11  END
+	LPF ADD_SPELL_HEADER  INT_VAR  type=12  END
+	LPF ADD_SPELL_HEADER  INT_VAR  type=13  END
+	LPF ADD_SPELL_EFFECT  INT_VAR  opcode = 1001  END
+	LPF ADD_SPELL_EFFECT  INT_VAR  opcode = 1002  END
+	LPF ADD_SPELL_EFFECT  INT_VAR  opcode = 1003  END
+	LPF ADD_SPELL_EFFECT  INT_VAR  opcode = 1004  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 11  match_opcode = 1001  new_opcode = 146  target = 2  parameter1 = 1  timing = 1  resist_dispel = 2  STR_VAR  resource = ~SPPR103~  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 11  match_opcode = 1002  new_opcode = 191  target = 1  parameter2 = 1  timing = 1  resist_dispel = 2  END		
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 11  match_opcode = 1003  new_opcode = 188  target = 1                  timing = 1  resist_dispel = 2  END	
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 11  match_opcode = 1004  new_opcode = 279  target = 1  parameter2 = 13 timing = 1  resist_dispel = 2  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 12  match_opcode = 1001  new_opcode = 146  target = 1  parameter1 = 1  timing = 1  resist_dispel = 2  STR_VAR  resource =  EVAL ~%RGSPB01%~  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 12  match_opcode = 1002  new_opcode = 191  target = 1  parameter2 = 1  timing = 1  resist_dispel = 2  END		
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 12  match_opcode = 1003  new_opcode = 188  target = 1                  timing = 1  resist_dispel = 2  END	
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 12  match_opcode = 1004  new_opcode = 279  target = 1  parameter2 = 13 timing = 1  resist_dispel = 2  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 13  match_opcode = 1001  new_opcode = 148  target = 1  parameter1 = 1  timing = 1  resist_dispel = 2  STR_VAR  resource =  EVAL ~%RGSPC01%~  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 13  match_opcode = 1002  new_opcode = 191  target = 1  parameter2 = 1  timing = 1  resist_dispel = 2  END		
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 13  match_opcode = 1003  new_opcode = 188  target = 1                  timing = 1  resist_dispel = 2  END	
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 13  match_opcode = 1004  new_opcode = 279  target = 1  parameter2 = 13 timing = 1  resist_dispel = 2  END
+	LPF DELETE_SPELL_EFFECT  INT_VAR  opcode_to_delete = 1001  END
+	LPF DELETE_SPELL_EFFECT  INT_VAR  opcode_to_delete = 1002  END
+	LPF DELETE_SPELL_EFFECT  INT_VAR  opcode_to_delete = 1003  END
+	LPF DELETE_SPELL_EFFECT  INT_VAR  opcode_to_delete = 1004  END	
+	LPF ALTER_SPELL_HEADER  INT_VAR  header_type = 11  new_header_type = 1  location=2  target=1  target_count=0  range=1  min_level=60  STR_VAR  icon = ~SPPR103B~  END
+	LPF ALTER_SPELL_HEADER  INT_VAR  header_type = 12  new_header_type = 1  location=2  target=5  target_count=0  range=1  min_level=120  STR_VAR  icon = ~1WDCLWB~  END
+	LPF ALTER_SPELL_HEADER  INT_VAR  header_type = 13  new_header_type = 1  location=2  target=4  target_count=0  range=30  min_level=180  STR_VAR  icon = ~RGSPC01B~  END
+	END  BUT_ONLY
+
+COPY_EXISTING_REGEXP GLOB ~.+\.spl~ ~override~
+  READ_SHORT 0x1c "spell_type"
+  READ_SHORT 0x34 "spell_level"
+  PATCH_IF spell_type = 2 AND spell_level = 2 BEGIN
+	PATCH_PRINT ~%SOURCE_FILE%~
+	LPF ADD_SPELL_HEADER  INT_VAR  type=11  END
+	LPF ADD_SPELL_HEADER  INT_VAR  type=12  END
+	LPF ADD_SPELL_HEADER  INT_VAR  type=13  END
+	LPF ADD_SPELL_EFFECT  INT_VAR  opcode = 1001  END
+	LPF ADD_SPELL_EFFECT  INT_VAR  opcode = 1002  END
+	LPF ADD_SPELL_EFFECT  INT_VAR  opcode = 1003  END
+	LPF ADD_SPELL_EFFECT  INT_VAR  opcode = 1004  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 11  match_opcode = 1001  new_opcode = 146  target = 2  parameter1 = 1  timing = 1  resist_dispel = 2  STR_VAR  resource =  EVAL ~%RGSPA02%~  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 11  match_opcode = 1002  new_opcode = 191  target = 1  parameter2 = 1  timing = 1  resist_dispel = 2  END		
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 11  match_opcode = 1003  new_opcode = 188  target = 1                  timing = 1  resist_dispel = 2  END	
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 11  match_opcode = 1004  new_opcode = 279  target = 1  parameter2 = 13 timing = 1  resist_dispel = 2  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 12  match_opcode = 1001  new_opcode = 146  target = 1  parameter1 = 1  timing = 1  resist_dispel = 2  STR_VAR  resource =  EVAL ~%RGSPB02%~  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 12  match_opcode = 1002  new_opcode = 191  target = 1  parameter2 = 1  timing = 1  resist_dispel = 2  END		
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 12  match_opcode = 1003  new_opcode = 188  target = 1                  timing = 1  resist_dispel = 2  END	
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 12  match_opcode = 1004  new_opcode = 279  target = 1  parameter2 = 13 timing = 1  resist_dispel = 2  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 13  match_opcode = 1001  new_opcode = 148  target = 1  parameter1 = 1  timing = 1  resist_dispel = 2  STR_VAR  resource =  EVAL ~%RGSPC02%~  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 13  match_opcode = 1002  new_opcode = 191  target = 1  parameter2 = 1  timing = 1  resist_dispel = 2  END		
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 13  match_opcode = 1003  new_opcode = 188  target = 1                  timing = 1  resist_dispel = 2  END	
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 13  match_opcode = 1004  new_opcode = 279  target = 1  parameter2 = 13 timing = 1  resist_dispel = 2  END	
+	LPF DELETE_SPELL_EFFECT  INT_VAR  opcode_to_delete = 1001  END
+	LPF DELETE_SPELL_EFFECT  INT_VAR  opcode_to_delete = 1002  END
+	LPF DELETE_SPELL_EFFECT  INT_VAR  opcode_to_delete = 1003  END
+	LPF DELETE_SPELL_EFFECT  INT_VAR  opcode_to_delete = 1004  END	
+	LPF ALTER_SPELL_HEADER  INT_VAR  header_type = 11  new_header_type = 1  location=2  target=1  target_count=0  range=1  min_level=60  STR_VAR  icon = ~RGSPA02B~  END
+	LPF ALTER_SPELL_HEADER  INT_VAR  header_type = 12  new_header_type = 1  location=2  target=5  target_count=0  range=1  min_level=120  STR_VAR  icon = ~RGSPB02B~  END
+	LPF ALTER_SPELL_HEADER  INT_VAR  header_type = 13  new_header_type = 1  location=2  target=4  target_count=0  range=30  min_level=180  STR_VAR  icon = ~RGSPC02B~  END
+	END  BUT_ONLY
+
+COPY_EXISTING_REGEXP GLOB ~.+\.spl~ ~override~
+  READ_SHORT 0x1c "spell_type"
+  READ_SHORT 0x34 "spell_level"
+  PATCH_IF spell_type = 2 AND spell_level = 3 BEGIN
+	PATCH_PRINT ~%SOURCE_FILE%~
+	LPF ADD_SPELL_HEADER  INT_VAR  type=11  END
+	LPF ADD_SPELL_HEADER  INT_VAR  type=12  END
+	LPF ADD_SPELL_HEADER  INT_VAR  type=13  END
+	LPF ADD_SPELL_EFFECT  INT_VAR  opcode = 1001  END
+	LPF ADD_SPELL_EFFECT  INT_VAR  opcode = 1002  END
+	LPF ADD_SPELL_EFFECT  INT_VAR  opcode = 1003  END
+	LPF ADD_SPELL_EFFECT  INT_VAR  opcode = 1004  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 11  match_opcode = 1001  new_opcode = 146  target = 2  parameter1 = 1  timing = 1  resist_dispel = 2  STR_VAR  resource =  EVAL ~%rgspa02%~  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 11  match_opcode = 1002  new_opcode = 191  target = 1  parameter2 = 1  timing = 1  resist_dispel = 2  END		
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 11  match_opcode = 1003  new_opcode = 188  target = 1                  timing = 1  resist_dispel = 2  END	
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 11  match_opcode = 1004  new_opcode = 279  target = 1  parameter2 = 13 timing = 1  resist_dispel = 2  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 12  match_opcode = 1001  new_opcode = 146  target = 1  parameter1 = 1  timing = 1  resist_dispel = 2  STR_VAR  resource =  EVAL ~%RGSPB03%~  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 12  match_opcode = 1002  new_opcode = 191  target = 1  parameter2 = 1  timing = 1  resist_dispel = 2  END		
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 12  match_opcode = 1003  new_opcode = 188  target = 1                  timing = 1  resist_dispel = 2  END	
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 12  match_opcode = 1004  new_opcode = 279  target = 1  parameter2 = 13 timing = 1  resist_dispel = 2  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 13  match_opcode = 1001  new_opcode = 148  target = 1  parameter1 = 1  timing = 1  resist_dispel = 2  STR_VAR  resource =  EVAL ~%RGSPC03%~  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 13  match_opcode = 1002  new_opcode = 191  target = 1  parameter2 = 1  timing = 1  resist_dispel = 2  END		
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 13  match_opcode = 1003  new_opcode = 188  target = 1                  timing = 1  resist_dispel = 2  END	
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 13  match_opcode = 1004  new_opcode = 279  target = 1  parameter2 = 13 timing = 1  resist_dispel = 2  END	
+	LPF DELETE_SPELL_EFFECT  INT_VAR  opcode_to_delete = 1001  END
+	LPF DELETE_SPELL_EFFECT  INT_VAR  opcode_to_delete = 1002  END
+	LPF DELETE_SPELL_EFFECT  INT_VAR  opcode_to_delete = 1003  END
+	LPF DELETE_SPELL_EFFECT  INT_VAR  opcode_to_delete = 1004  END	
+	LPF ALTER_SPELL_HEADER  INT_VAR  header_type = 11  new_header_type = 1  location=2  target=1  target_count=0  range=1  min_level=60  STR_VAR  icon = ~SPPR315B~  END
+	LPF ALTER_SPELL_HEADER  INT_VAR  header_type = 12  new_header_type = 1  location=2  target=5  target_count=0  range=1  min_level=120  STR_VAR  icon = ~1WDCMWB~  END
+	LPF ALTER_SPELL_HEADER  INT_VAR  header_type = 13  new_header_type = 1  location=2  target=4  target_count=0  range=30  min_level=180  STR_VAR  icon = ~RGSPC03B~  END
+	END  BUT_ONLY
+
+COPY_EXISTING_REGEXP GLOB ~.+\.spl~ ~override~
+  READ_SHORT 0x1c "spell_type"
+  READ_SHORT 0x34 "spell_level"
+  PATCH_IF spell_type = 2 AND spell_level = 4 BEGIN
+	PATCH_PRINT ~%SOURCE_FILE%~
+	LPF ADD_SPELL_HEADER  INT_VAR  type=11  END
+	LPF ADD_SPELL_HEADER  INT_VAR  type=12  END
+	LPF ADD_SPELL_HEADER  INT_VAR  type=13  END
+	LPF ADD_SPELL_EFFECT  INT_VAR  opcode = 1001  END
+	LPF ADD_SPELL_EFFECT  INT_VAR  opcode = 1002  END
+	LPF ADD_SPELL_EFFECT  INT_VAR  opcode = 1003  END
+	LPF ADD_SPELL_EFFECT  INT_VAR  opcode = 1004  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 11  match_opcode = 1001  new_opcode = 146  target = 2  parameter1 = 1  timing = 1  resist_dispel = 2  STR_VAR  resource =  ~SPPR401~  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 11  match_opcode = 1002  new_opcode = 191  target = 1  parameter2 = 1  timing = 1  resist_dispel = 2  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 11  match_opcode = 1003  new_opcode = 188  target = 1                  timing = 1  resist_dispel = 2  END	
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 11  match_opcode = 1004  new_opcode = 279  target = 1  parameter2 = 13 timing = 1  resist_dispel = 2  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 12  match_opcode = 1001  new_opcode = 146  target = 1  parameter1 = 1  timing = 1  resist_dispel = 2  STR_VAR  resource = ~SPPR414~  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 12  match_opcode = 1002  new_opcode = 191  target = 1  parameter2 = 1  timing = 1  resist_dispel = 2  END		
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 12  match_opcode = 1003  new_opcode = 188  target = 1                  timing = 1  resist_dispel = 2  END	
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 12  match_opcode = 1004  new_opcode = 279  target = 1  parameter2 = 13 timing = 1  resist_dispel = 2  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 13  match_opcode = 1001  new_opcode = 148  target = 1  parameter1 = 1  timing = 1  resist_dispel = 2  STR_VAR  resource = ~SPPR402~  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 13  match_opcode = 1002  new_opcode = 191  target = 1  parameter2 = 1  timing = 1  resist_dispel = 2  END		
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 13  match_opcode = 1003  new_opcode = 188  target = 1                  timing = 1  resist_dispel = 2  END	
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 13  match_opcode = 1004  new_opcode = 279  target = 1  parameter2 = 13 timing = 1  resist_dispel = 2  END	
+	LPF DELETE_SPELL_EFFECT  INT_VAR  opcode_to_delete = 1001  END
+	LPF DELETE_SPELL_EFFECT  INT_VAR  opcode_to_delete = 1002  END
+	LPF DELETE_SPELL_EFFECT  INT_VAR  opcode_to_delete = 1003  END
+	LPF DELETE_SPELL_EFFECT  INT_VAR  opcode_to_delete = 1004  END	
+	LPF ALTER_SPELL_HEADER  INT_VAR  header_type = 11  new_header_type = 1  location=2  target=1  target_count=0  range=1  min_level=60  STR_VAR  icon = ~SPPR401B~  END
+	LPF ALTER_SPELL_HEADER  INT_VAR  header_type = 12  new_header_type = 1  location=2  target=5  target_count=0  range=1  min_level=120  STR_VAR  icon = ~SPPR414B~  END
+	LPF ALTER_SPELL_HEADER  INT_VAR  header_type = 13  new_header_type = 1  location=2  target=4  target_count=0  range=30  min_level=180  STR_VAR  icon = ~SPPR402B~  END
+	END  BUT_ONLY
+
+COPY_EXISTING_REGEXP GLOB ~.+\.spl~ ~override~
+  READ_SHORT 0x1c "spell_type"
+  READ_SHORT 0x34 "spell_level"
+  PATCH_IF spell_type = 2 AND spell_level = 5 BEGIN
+	PATCH_PRINT ~%SOURCE_FILE%~
+	LPF ADD_SPELL_HEADER  INT_VAR  type=11  END
+	LPF ADD_SPELL_HEADER  INT_VAR  type=12  END
+	LPF ADD_SPELL_HEADER  INT_VAR  type=13  END
+	LPF ADD_SPELL_EFFECT  INT_VAR  opcode = 1001  END
+	LPF ADD_SPELL_EFFECT  INT_VAR  opcode = 1002  END
+	LPF ADD_SPELL_EFFECT  INT_VAR  opcode = 1003  END
+	LPF ADD_SPELL_EFFECT  INT_VAR  opcode = 1004  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 11  match_opcode = 1001  new_opcode = 146  target = 2  parameter1 = 1  timing = 1  resist_dispel = 2  STR_VAR  resource = ~SPPR502~  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 11  match_opcode = 1002  new_opcode = 191  target = 1  parameter2 = 1  timing = 1  resist_dispel = 2  END		
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 11  match_opcode = 1003  new_opcode = 188  target = 1                  timing = 1  resist_dispel = 2  END	
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 11  match_opcode = 1004  new_opcode = 279  target = 1  parameter2 = 13 timing = 1  resist_dispel = 2  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 12  match_opcode = 1001  new_opcode = 146  target = 1  parameter1 = 1  timing = 1  resist_dispel = 2  STR_VAR  resource = ~SPPR510~  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 12  match_opcode = 1002  new_opcode = 191  target = 1  parameter2 = 1  timing = 1  resist_dispel = 2  END		
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 12  match_opcode = 1003  new_opcode = 188  target = 1                  timing = 1  resist_dispel = 2  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 12  match_opcode = 1004  new_opcode = 279  target = 1  parameter2 = 13 timing = 1  resist_dispel = 2  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 13  match_opcode = 1001  new_opcode = 148  target = 1  parameter1 = 1  timing = 1  resist_dispel = 2  STR_VAR  resource = ~SPPR501~  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 13  match_opcode = 1002  new_opcode = 191  target = 1  parameter2 = 1  timing = 1  resist_dispel = 2  END		
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 13  match_opcode = 1003  new_opcode = 188  target = 1                  timing = 1  resist_dispel = 2  END	
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 13  match_opcode = 1004  new_opcode = 279  target = 1  parameter2 = 13 timing = 1  resist_dispel = 2  END	
+	LPF DELETE_SPELL_EFFECT  INT_VAR  opcode_to_delete = 1001  END
+	LPF DELETE_SPELL_EFFECT  INT_VAR  opcode_to_delete = 1002  END
+	LPF DELETE_SPELL_EFFECT  INT_VAR  opcode_to_delete = 1003  END
+	LPF DELETE_SPELL_EFFECT  INT_VAR  opcode_to_delete = 1004  END	
+	LPF ALTER_SPELL_HEADER  INT_VAR  header_type = 11  new_header_type = 1  location=2  target=1  target_count=0  range=1  min_level=60  STR_VAR  icon = ~SPPR502B~  END
+	LPF ALTER_SPELL_HEADER  INT_VAR  header_type = 12  new_header_type = 1  location=2  target=5  target_count=0  range=1  min_level=120  STR_VAR  icon = ~SPPR510B~  END
+	LPF ALTER_SPELL_HEADER  INT_VAR  header_type = 13  new_header_type = 1  location=2  target=4  target_count=0  range=30  min_level=180  STR_VAR  icon = ~SPPR501B~  END
+	END  BUT_ONLY
+
+COPY_EXISTING_REGEXP GLOB ~.+\.spl~ ~override~
+  READ_SHORT 0x1c "spell_type"
+  READ_SHORT 0x34 "spell_level"
+  PATCH_IF spell_type = 2 AND spell_level = 6 BEGIN
+	PATCH_PRINT ~%SOURCE_FILE%~
+	LPF ADD_SPELL_HEADER  INT_VAR  type=11  END
+	LPF ADD_SPELL_HEADER  INT_VAR  type=12  END
+	LPF ADD_SPELL_HEADER  INT_VAR  type=13  END
+	LPF ADD_SPELL_EFFECT  INT_VAR  opcode = 1001  END
+	LPF ADD_SPELL_EFFECT  INT_VAR  opcode = 1002  END
+	LPF ADD_SPELL_EFFECT  INT_VAR  opcode = 1003  END
+	LPF ADD_SPELL_EFFECT  INT_VAR  opcode = 1004  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 11  match_opcode = 1001  new_opcode = 146  target = 2  parameter1 = 1  timing = 1  resist_dispel = 2  STR_VAR  resource = ~SPPR607~  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 11  match_opcode = 1002  new_opcode = 191  target = 1  parameter2 = 1  timing = 1  resist_dispel = 2  END		
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 11  match_opcode = 1003  new_opcode = 188  target = 1                  timing = 1  resist_dispel = 2  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 11  match_opcode = 1004  new_opcode = 279  target = 1  parameter2 = 13 timing = 1  resist_dispel = 2  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 12  match_opcode = 1001  new_opcode = 146  target = 1  parameter1 = 1  timing = 1  resist_dispel = 2  STR_VAR  resource = ~SPPR608~  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 12  match_opcode = 1002  new_opcode = 191  target = 1  parameter2 = 1  timing = 1  resist_dispel = 2  END		
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 12  match_opcode = 1003  new_opcode = 188  target = 1                  timing = 1  resist_dispel = 2  END	
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 12  match_opcode = 1004  new_opcode = 279  target = 1  parameter2 = 13 timing = 1  resist_dispel = 2  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 13  match_opcode = 1001  new_opcode = 148  target = 1  parameter1 = 1  timing = 1  resist_dispel = 2  STR_VAR  resource = ~SPPR602~  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 13  match_opcode = 1002  new_opcode = 191  target = 1  parameter2 = 1  timing = 1  resist_dispel = 2  END		
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 13  match_opcode = 1003  new_opcode = 188  target = 1                  timing = 1  resist_dispel = 2  END	
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 13  match_opcode = 1004  new_opcode = 279  target = 1  parameter2 = 13 timing = 1  resist_dispel = 2  END
+	LPF DELETE_SPELL_EFFECT  INT_VAR  opcode_to_delete = 1001  END
+	LPF DELETE_SPELL_EFFECT  INT_VAR  opcode_to_delete = 1002  END
+	LPF DELETE_SPELL_EFFECT  INT_VAR  opcode_to_delete = 1003  END
+	LPF DELETE_SPELL_EFFECT  INT_VAR  opcode_to_delete = 1004  END	
+	LPF ALTER_SPELL_HEADER  INT_VAR  header_type = 11  new_header_type = 1  location=2  target=1  target_count=0  range=1  min_level=60  STR_VAR  icon = ~SPPR607B~  END
+	LPF ALTER_SPELL_HEADER  INT_VAR  header_type = 12  new_header_type = 1  location=2  target=5  target_count=0  range=1  min_level=120  STR_VAR  icon = ~SPPR608B~  END
+	LPF ALTER_SPELL_HEADER  INT_VAR  header_type = 13  new_header_type = 1  location=2  target=4  target_count=0  range=30  min_level=180  STR_VAR  icon = ~SPPR602B~  END
+	END  BUT_ONLY
+
+COPY_EXISTING_REGEXP GLOB ~.+\.spl~ ~override~
+  READ_SHORT 0x1c "spell_type"
+  READ_SHORT 0x34 "spell_level"
+  PATCH_IF spell_type = 2 AND spell_level = 7 BEGIN
+	PATCH_PRINT ~%SOURCE_FILE%~
+	LPF ADD_SPELL_HEADER  INT_VAR  type=11  END
+	LPF ADD_SPELL_HEADER  INT_VAR  type=12  END
+	LPF ADD_SPELL_HEADER  INT_VAR  type=13  END
+	LPF ADD_SPELL_EFFECT  INT_VAR  opcode = 1001  END
+	LPF ADD_SPELL_EFFECT  INT_VAR  opcode = 1002  END
+	LPF ADD_SPELL_EFFECT  INT_VAR  opcode = 1003  END
+	LPF ADD_SPELL_EFFECT  INT_VAR  opcode = 1004  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 11  match_opcode = 1001  new_opcode = 146  target = 2  parameter1 = 1  timing = 1  resist_dispel = 2  STR_VAR  resource = ~SPPR712~  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 11  match_opcode = 1002  new_opcode = 191  target = 1  parameter2 = 1  timing = 1  resist_dispel = 2  END		
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 11  match_opcode = 1003  new_opcode = 188  target = 1                  timing = 1  resist_dispel = 2  END	
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 11  match_opcode = 1004  new_opcode = 279  target = 1  parameter2 = 13 timing = 1  resist_dispel = 2  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 12  match_opcode = 1001  new_opcode = 146  target = 2  parameter1 = 1  timing = 1  resist_dispel = 2  STR_VAR  resource = ~SPPR708~  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 12  match_opcode = 1002  new_opcode = 191  target = 1  parameter2 = 1  timing = 1  resist_dispel = 2  END		
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 12  match_opcode = 1003  new_opcode = 188  target = 1                  timing = 1  resist_dispel = 2  END	
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 12  match_opcode = 1004  new_opcode = 279  target = 1  parameter2 = 13 timing = 1  resist_dispel = 2  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 13  match_opcode = 1001  new_opcode = 148  target = 1  parameter1 = 1  timing = 1  resist_dispel = 2  STR_VAR  resource = ~SPPR702~  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 13  match_opcode = 1002  new_opcode = 191  target = 1  parameter2 = 1  timing = 1  resist_dispel = 2  END		
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 13  match_opcode = 1003  new_opcode = 188  target = 1                  timing = 1  resist_dispel = 2  END	
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 13  match_opcode = 1004  new_opcode = 279  target = 1  parameter2 = 13 timing = 1  resist_dispel = 2  END	
+	LPF DELETE_SPELL_EFFECT  INT_VAR  opcode_to_delete = 1001  END
+	LPF DELETE_SPELL_EFFECT  INT_VAR  opcode_to_delete = 1002  END
+	LPF DELETE_SPELL_EFFECT  INT_VAR  opcode_to_delete = 1003  END
+	LPF DELETE_SPELL_EFFECT  INT_VAR  opcode_to_delete = 1004  END	
+	LPF ALTER_SPELL_HEADER  INT_VAR  header_type = 11  new_header_type = 1  location=2  target=3  target_count=0  range=30  min_level=60  STR_VAR  icon = ~SPPR712B~  END
+	LPF ALTER_SPELL_HEADER  INT_VAR  header_type = 12  new_header_type = 2  location=2  target=1  target_count=0  range=40  min_level=120  STR_VAR  icon = ~SPPR708B~  END
+	LPF ALTER_SPELL_HEADER  INT_VAR  header_type = 13  new_header_type = 1  location=2  target=4  target_count=0  range=30  min_level=180  STR_VAR  icon = ~SPPR702B~  END
+	END  BUT_ONLY
+END
+
+
+ACTION_IF GAME_IS ~iwdee~ THEN BEGIN
+COPY_EXISTING_REGEXP GLOB ~.+\.spl~ ~override~
+  READ_SHORT 0x1c "spell_type"
+  READ_SHORT 0x34 "spell_level"
+  PATCH_IF spell_type = 2 AND spell_level = 1 BEGIN
+	PATCH_PRINT ~%SOURCE_FILE%~
+	LPF ADD_SPELL_HEADER  INT_VAR  type=11  END
+	LPF ADD_SPELL_HEADER  INT_VAR  type=12  END
+	LPF ADD_SPELL_HEADER  INT_VAR  type=13  END
+	LPF ADD_SPELL_EFFECT  INT_VAR  opcode = 1001  END
+	LPF ADD_SPELL_EFFECT  INT_VAR  opcode = 1002  END
+	LPF ADD_SPELL_EFFECT  INT_VAR  opcode = 1003  END
+	LPF ADD_SPELL_EFFECT  INT_VAR  opcode = 1004  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 11  match_opcode = 1001  new_opcode = 146  target = 2  parameter1 = 1  timing = 1  resist_dispel = 2  STR_VAR  resource = ~SPPR103~  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 11  match_opcode = 1002  new_opcode = 191  target = 1  parameter2 = 1  timing = 1  resist_dispel = 2  END		
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 11  match_opcode = 1003  new_opcode = 188  target = 1                  timing = 1  resist_dispel = 2  END	
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 11  match_opcode = 1004  new_opcode = 279  target = 1  parameter2 = 13 timing = 1  resist_dispel = 2  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 12  match_opcode = 1001  new_opcode = 146  target = 2  parameter1 = 1  timing = 1  resist_dispel = 2  STR_VAR  resource = ~SPPR114~  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 12  match_opcode = 1002  new_opcode = 191  target = 1  parameter2 = 1  timing = 1  resist_dispel = 2  END		
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 12  match_opcode = 1003  new_opcode = 188  target = 1                  timing = 1  resist_dispel = 2  END	
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 12  match_opcode = 1004  new_opcode = 279  target = 1  parameter2 = 13 timing = 1  resist_dispel = 2  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 13  match_opcode = 1001  new_opcode = 148  target = 1  parameter1 = 1  timing = 1  resist_dispel = 2  STR_VAR  resource =  EVAL ~%RGSPC01%~  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 13  match_opcode = 1002  new_opcode = 191  target = 1  parameter2 = 1  timing = 1  resist_dispel = 2  END		
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 13  match_opcode = 1003  new_opcode = 188  target = 1                  timing = 1  resist_dispel = 2  END	
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 13  match_opcode = 1004  new_opcode = 279  target = 1  parameter2 = 13 timing = 1  resist_dispel = 2  END	
+	LPF DELETE_SPELL_EFFECT  INT_VAR  opcode_to_delete = 1001  END
+	LPF DELETE_SPELL_EFFECT  INT_VAR  opcode_to_delete = 1002  END
+	LPF DELETE_SPELL_EFFECT  INT_VAR  opcode_to_delete = 1003  END
+	LPF DELETE_SPELL_EFFECT  INT_VAR  opcode_to_delete = 1004  END	
+	LPF ALTER_SPELL_HEADER  INT_VAR  header_type = 11  new_header_type = 1  location=2  target=1  target_count=0  range=1  min_level=60  STR_VAR  icon = ~SPPR103B~  END
+	LPF ALTER_SPELL_HEADER  INT_VAR  header_type = 12  new_header_type = 1  location=2  target=1  target_count=0  range=1  min_level=120  STR_VAR  icon = ~SPPR114B~  END
+	LPF ALTER_SPELL_HEADER  INT_VAR  header_type = 13  new_header_type = 1  location=2  target=4  target_count=0  range=30  min_level=180  STR_VAR  icon = ~RGSPC01B~  END
+	END  BUT_ONLY
+
+COPY_EXISTING_REGEXP GLOB ~.+\.spl~ ~override~
+  READ_SHORT 0x1c "spell_type"
+  READ_SHORT 0x34 "spell_level"
+  PATCH_IF spell_type = 2 AND spell_level = 2 BEGIN
+	PATCH_PRINT ~%SOURCE_FILE%~
+	LPF ADD_SPELL_HEADER  INT_VAR  type=11  END
+	LPF ADD_SPELL_HEADER  INT_VAR  type=12  END
+	LPF ADD_SPELL_HEADER  INT_VAR  type=13  END
+	LPF ADD_SPELL_EFFECT  INT_VAR  opcode = 1001  END
+	LPF ADD_SPELL_EFFECT  INT_VAR  opcode = 1002  END
+	LPF ADD_SPELL_EFFECT  INT_VAR  opcode = 1003  END
+	LPF ADD_SPELL_EFFECT  INT_VAR  opcode = 1004  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 11  match_opcode = 1001  new_opcode = 146  target = 2  parameter1 = 1  timing = 1  resist_dispel = 2  STR_VAR  resource = ~SPPR217~  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 11  match_opcode = 1002  new_opcode = 191  target = 1  parameter2 = 1  timing = 1  resist_dispel = 2  END		
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 11  match_opcode = 1003  new_opcode = 188  target = 1                  timing = 1  resist_dispel = 2  END	
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 11  match_opcode = 1004  new_opcode = 279  target = 1  parameter2 = 13 timing = 1  resist_dispel = 2  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 12  match_opcode = 1001  new_opcode = 146  target = 2  parameter1 = 1  timing = 1  resist_dispel = 2  STR_VAR  resource = ~SPPR220~  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 12  match_opcode = 1002  new_opcode = 191  target = 1  parameter2 = 1  timing = 1  resist_dispel = 2  END		
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 12  match_opcode = 1003  new_opcode = 188  target = 1                  timing = 1  resist_dispel = 2  END	
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 12  match_opcode = 1004  new_opcode = 279  target = 1  parameter2 = 13 timing = 1  resist_dispel = 2  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 13  match_opcode = 1001  new_opcode = 148  target = 1  parameter1 = 1  timing = 1  resist_dispel = 2  STR_VAR  resource =  EVAL ~%RGSPC02%~  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 13  match_opcode = 1002  new_opcode = 191  target = 1  parameter2 = 1  timing = 1  resist_dispel = 2  END		
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 13  match_opcode = 1003  new_opcode = 188  target = 1                  timing = 1  resist_dispel = 2  END	
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 13  match_opcode = 1004  new_opcode = 279  target = 1  parameter2 = 13 timing = 1  resist_dispel = 2  END	
+	LPF DELETE_SPELL_EFFECT  INT_VAR  opcode_to_delete = 1001  END
+	LPF DELETE_SPELL_EFFECT  INT_VAR  opcode_to_delete = 1002  END
+	LPF DELETE_SPELL_EFFECT  INT_VAR  opcode_to_delete = 1003  END
+	LPF DELETE_SPELL_EFFECT  INT_VAR  opcode_to_delete = 1004  END	
+	LPF ALTER_SPELL_HEADER  INT_VAR  header_type = 11  new_header_type = 1  location=2  target=1  target_count=0  range=1  min_level=60  STR_VAR  icon = ~SPPR217B~  END
+	LPF ALTER_SPELL_HEADER  INT_VAR  header_type = 12  new_header_type = 1  location=2  target=1  target_count=0  range=1  min_level=120  STR_VAR  icon = ~SPPR220B~  END
+	LPF ALTER_SPELL_HEADER  INT_VAR  header_type = 13  new_header_type = 1  location=2  target=4  target_count=0  range=30  min_level=180  STR_VAR  icon = ~RGSPC02B~  END
+	END  BUT_ONLY
+
+COPY_EXISTING_REGEXP GLOB ~.+\.spl~ ~override~
+  READ_SHORT 0x1c "spell_type"
+  READ_SHORT 0x34 "spell_level"
+  PATCH_IF spell_type = 2 AND spell_level = 3 BEGIN
+	PATCH_PRINT ~%SOURCE_FILE%~
+	LPF ADD_SPELL_HEADER  INT_VAR  type=11  END
+	LPF ADD_SPELL_HEADER  INT_VAR  type=12  END
+	LPF ADD_SPELL_HEADER  INT_VAR  type=13  END
+	LPF ADD_SPELL_EFFECT  INT_VAR  opcode = 1001  END
+	LPF ADD_SPELL_EFFECT  INT_VAR  opcode = 1002  END
+	LPF ADD_SPELL_EFFECT  INT_VAR  opcode = 1003  END
+	LPF ADD_SPELL_EFFECT  INT_VAR  opcode = 1004  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 11  match_opcode = 1001  new_opcode = 146  target = 2  parameter1 = 1  timing = 1  resist_dispel = 2  STR_VAR  resource = ~SPPR315~  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 11  match_opcode = 1002  new_opcode = 191  target = 1  parameter2 = 1  timing = 1  resist_dispel = 2  END		
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 11  match_opcode = 1003  new_opcode = 188  target = 1                  timing = 1  resist_dispel = 2  END	
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 11  match_opcode = 1004  new_opcode = 279  target = 1  parameter2 = 13 timing = 1  resist_dispel = 2  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 12  match_opcode = 1001  new_opcode = 146  target = 2  parameter1 = 1  timing = 1  resist_dispel = 2  STR_VAR  resource = ~SPPR330~  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 12  match_opcode = 1002  new_opcode = 191  target = 1  parameter2 = 1  timing = 1  resist_dispel = 2  END		
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 12  match_opcode = 1003  new_opcode = 188  target = 1                  timing = 1  resist_dispel = 2  END	
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 12  match_opcode = 1004  new_opcode = 279  target = 1  parameter2 = 13 timing = 1  resist_dispel = 2  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 13  match_opcode = 1001  new_opcode = 148  target = 1  parameter1 = 1  timing = 1  resist_dispel = 2  STR_VAR  resource =  EVAL ~%RGSPC03%~  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 13  match_opcode = 1002  new_opcode = 191  target = 1  parameter2 = 1  timing = 1  resist_dispel = 2  END		
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 13  match_opcode = 1003  new_opcode = 188  target = 1                  timing = 1  resist_dispel = 2  END	
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 13  match_opcode = 1004  new_opcode = 279  target = 1  parameter2 = 13 timing = 1  resist_dispel = 2  END	
+	LPF DELETE_SPELL_EFFECT  INT_VAR  opcode_to_delete = 1001  END
+	LPF DELETE_SPELL_EFFECT  INT_VAR  opcode_to_delete = 1002  END
+	LPF DELETE_SPELL_EFFECT  INT_VAR  opcode_to_delete = 1003  END
+	LPF DELETE_SPELL_EFFECT  INT_VAR  opcode_to_delete = 1004  END	
+	LPF ALTER_SPELL_HEADER  INT_VAR  header_type = 11  new_header_type = 1  location=2  target=1  target_count=0  range=1  min_level=60  STR_VAR  icon = ~SPPR315B~  END
+	LPF ALTER_SPELL_HEADER  INT_VAR  header_type = 12  new_header_type = 1  location=2  target=1  target_count=0  range=1  min_level=120  STR_VAR  icon = ~SPPR330B~  END
+	LPF ALTER_SPELL_HEADER  INT_VAR  header_type = 13  new_header_type = 1  location=2  target=4  target_count=0  range=30  min_level=180  STR_VAR  icon = ~RGSPC03B~  END
+	END  BUT_ONLY
+
+COPY_EXISTING_REGEXP GLOB ~.+\.spl~ ~override~
+  READ_SHORT 0x1c "spell_type"
+  READ_SHORT 0x34 "spell_level"
+  PATCH_IF spell_type = 2 AND spell_level = 4 BEGIN
+	PATCH_PRINT ~%SOURCE_FILE%~
+	LPF ADD_SPELL_HEADER  INT_VAR  type=11  END
+	LPF ADD_SPELL_HEADER  INT_VAR  type=12  END
+	LPF ADD_SPELL_HEADER  INT_VAR  type=13  END
+	LPF ADD_SPELL_EFFECT  INT_VAR  opcode = 1001  END
+	LPF ADD_SPELL_EFFECT  INT_VAR  opcode = 1002  END
+	LPF ADD_SPELL_EFFECT  INT_VAR  opcode = 1003  END
+	LPF ADD_SPELL_EFFECT  INT_VAR  opcode = 1004  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 11  match_opcode = 1001  new_opcode = 146  target = 2  parameter1 = 1  timing = 1  resist_dispel = 2  STR_VAR  resource = ~SPPR401~  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 11  match_opcode = 1002  new_opcode = 191  target = 1  parameter2 = 1  timing = 1  resist_dispel = 2  END		
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 11  match_opcode = 1003  new_opcode = 188  target = 1                  timing = 1  resist_dispel = 2  END	
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 11  match_opcode = 1004  new_opcode = 279  target = 1  parameter2 = 13 timing = 1  resist_dispel = 2  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 12  match_opcode = 1001  new_opcode = 146  target = 2  parameter1 = 1  timing = 1  resist_dispel = 2  STR_VAR  resource = ~SPPR414~  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 12  match_opcode = 1002  new_opcode = 191  target = 1  parameter2 = 1  timing = 1  resist_dispel = 2  END		
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 12  match_opcode = 1003  new_opcode = 188  target = 1                  timing = 1  resist_dispel = 2  END	
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 12  match_opcode = 1004  new_opcode = 279  target = 1  parameter2 = 13 timing = 1  resist_dispel = 2  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 13  match_opcode = 1001  new_opcode = 148  target = 1  parameter1 = 1  timing = 1  resist_dispel = 2  STR_VAR  resource = ~SPPR402~  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 13  match_opcode = 1002  new_opcode = 191  target = 1  parameter2 = 1  timing = 1  resist_dispel = 2  END		
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 13  match_opcode = 1003  new_opcode = 188  target = 1                  timing = 1  resist_dispel = 2  END	
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 13  match_opcode = 1004  new_opcode = 279  target = 1  parameter2 = 13 timing = 1  resist_dispel = 2  END	
+	LPF DELETE_SPELL_EFFECT  INT_VAR  opcode_to_delete = 1001  END
+	LPF DELETE_SPELL_EFFECT  INT_VAR  opcode_to_delete = 1002  END
+	LPF DELETE_SPELL_EFFECT  INT_VAR  opcode_to_delete = 1003  END
+	LPF DELETE_SPELL_EFFECT  INT_VAR  opcode_to_delete = 1004  END	
+	LPF ALTER_SPELL_HEADER  INT_VAR  header_type = 11  new_header_type = 1  location=2  target=1  target_count=0  range=1  min_level=60  STR_VAR  icon = ~SPPR401B~  END
+	LPF ALTER_SPELL_HEADER  INT_VAR  header_type = 12  new_header_type = 1  location=2  target=1  target_count=0  range=1  min_level=120  STR_VAR  icon = ~SPPR414B~  END
+	LPF ALTER_SPELL_HEADER  INT_VAR  header_type = 13  new_header_type = 1  location=2  target=4  target_count=0  range=30  min_level=180  STR_VAR  icon = ~SPPR402B~  END
+	END  BUT_ONLY
+
+COPY_EXISTING_REGEXP GLOB ~.+\.spl~ ~override~
+  READ_SHORT 0x1c "spell_type"
+  READ_SHORT 0x34 "spell_level"
+  PATCH_IF spell_type = 2 AND spell_level = 5 BEGIN
+	PATCH_PRINT ~%SOURCE_FILE%~
+	LPF ADD_SPELL_HEADER  INT_VAR  type=11  END
+	LPF ADD_SPELL_HEADER  INT_VAR  type=12  END
+	LPF ADD_SPELL_HEADER  INT_VAR  type=13  END
+	LPF ADD_SPELL_EFFECT  INT_VAR  opcode = 1001  END
+	LPF ADD_SPELL_EFFECT  INT_VAR  opcode = 1002  END
+	LPF ADD_SPELL_EFFECT  INT_VAR  opcode = 1003  END
+	LPF ADD_SPELL_EFFECT  INT_VAR  opcode = 1004  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 11  match_opcode = 1001  new_opcode = 146  target = 2  parameter1 = 1  timing = 1  resist_dispel = 2  STR_VAR  resource = ~SPPR502~  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 11  match_opcode = 1002  new_opcode = 191  target = 1  parameter2 = 1  timing = 1  resist_dispel = 2  END		
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 11  match_opcode = 1003  new_opcode = 188  target = 1                  timing = 1  resist_dispel = 2  END	
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 11  match_opcode = 1004  new_opcode = 279  target = 1  parameter2 = 13 timing = 1  resist_dispel = 2  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 12  match_opcode = 1001  new_opcode = 146  target = 2  parameter1 = 1  timing = 1  resist_dispel = 2  STR_VAR  resource = ~SPPR510~  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 12  match_opcode = 1002  new_opcode = 191  target = 1  parameter2 = 1  timing = 1  resist_dispel = 2  END		
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 12  match_opcode = 1003  new_opcode = 188  target = 1                  timing = 1  resist_dispel = 2  END	
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 12  match_opcode = 1004  new_opcode = 279  target = 1  parameter2 = 13 timing = 1  resist_dispel = 2  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 13  match_opcode = 1001  new_opcode = 148  target = 1  parameter1 = 1  timing = 1  resist_dispel = 2  STR_VAR  resource = ~SPPR501~  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 13  match_opcode = 1002  new_opcode = 191  target = 1  parameter2 = 1  timing = 1  resist_dispel = 2  END		
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 13  match_opcode = 1003  new_opcode = 188  target = 1                  timing = 1  resist_dispel = 2  END	
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 13  match_opcode = 1004  new_opcode = 279  target = 1  parameter2 = 13 timing = 1  resist_dispel = 2  END	
+	LPF DELETE_SPELL_EFFECT  INT_VAR  opcode_to_delete = 1001  END
+	LPF DELETE_SPELL_EFFECT  INT_VAR  opcode_to_delete = 1002  END
+	LPF DELETE_SPELL_EFFECT  INT_VAR  opcode_to_delete = 1003  END
+	LPF DELETE_SPELL_EFFECT  INT_VAR  opcode_to_delete = 1004  END	
+	LPF ALTER_SPELL_HEADER  INT_VAR  header_type = 11  new_header_type = 1  location=2  target=1  target_count=0  range=1  min_level=60  STR_VAR  icon = ~SPPR502B~  END
+	LPF ALTER_SPELL_HEADER  INT_VAR  header_type = 12  new_header_type = 1  location=2  target=1  target_count=0  range=1  min_level=120  STR_VAR  icon = ~SPPR510B~  END
+	LPF ALTER_SPELL_HEADER  INT_VAR  header_type = 13  new_header_type = 1  location=2  target=4  target_count=0  range=30  min_level=180  STR_VAR  icon = ~SPPR501B~  END
+	END  BUT_ONLY
+
+COPY_EXISTING_REGEXP GLOB ~.+\.spl~ ~override~
+  READ_SHORT 0x1c "spell_type"
+  READ_SHORT 0x34 "spell_level"
+  PATCH_IF spell_type = 2 AND spell_level = 6 BEGIN
+	PATCH_PRINT ~%SOURCE_FILE%~
+	LPF ADD_SPELL_HEADER  INT_VAR  type=11  END
+	LPF ADD_SPELL_HEADER  INT_VAR  type=12  END
+	LPF ADD_SPELL_HEADER  INT_VAR  type=13  END
+	LPF ADD_SPELL_EFFECT  INT_VAR  opcode = 1001  END
+	LPF ADD_SPELL_EFFECT  INT_VAR  opcode = 1002  END
+	LPF ADD_SPELL_EFFECT  INT_VAR  opcode = 1003  END
+	LPF ADD_SPELL_EFFECT  INT_VAR  opcode = 1004  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 11  match_opcode = 1001  new_opcode = 146  target = 2  parameter1 = 1  timing = 1  resist_dispel = 2  STR_VAR  resource = ~SPPR607~  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 11  match_opcode = 1002  new_opcode = 191  target = 1  parameter2 = 1  timing = 1  resist_dispel = 2  END		
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 11  match_opcode = 1003  new_opcode = 188  target = 1                  timing = 1  resist_dispel = 2  END	
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 11  match_opcode = 1004  new_opcode = 279  target = 1  parameter2 = 13 timing = 1  resist_dispel = 2  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 12  match_opcode = 1001  new_opcode = 146  target = 2  parameter1 = 1  timing = 1  resist_dispel = 2  STR_VAR  resource = ~SPPR608~  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 12  match_opcode = 1002  new_opcode = 191  target = 1  parameter2 = 1  timing = 1  resist_dispel = 2  END		
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 12  match_opcode = 1003  new_opcode = 188  target = 1                  timing = 1  resist_dispel = 2  END	
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 12  match_opcode = 1004  new_opcode = 279  target = 1  parameter2 = 13 timing = 1  resist_dispel = 2  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 13  match_opcode = 1001  new_opcode = 148  target = 1  parameter1 = 1  timing = 1  resist_dispel = 2  STR_VAR  resource = ~SPPR602~  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 13  match_opcode = 1002  new_opcode = 191  target = 1  parameter2 = 1  timing = 1  resist_dispel = 2  END		
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 13  match_opcode = 1003  new_opcode = 188  target = 1                  timing = 1  resist_dispel = 2  END	
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 13  match_opcode = 1004  new_opcode = 279  target = 1  parameter2 = 13 timing = 1  resist_dispel = 2  END	
+	LPF DELETE_SPELL_EFFECT  INT_VAR  opcode_to_delete = 1001  END
+	LPF DELETE_SPELL_EFFECT  INT_VAR  opcode_to_delete = 1002  END
+	LPF DELETE_SPELL_EFFECT  INT_VAR  opcode_to_delete = 1003  END
+	LPF DELETE_SPELL_EFFECT  INT_VAR  opcode_to_delete = 1004  END	
+	LPF ALTER_SPELL_HEADER  INT_VAR  header_type = 11  new_header_type = 1  location=2  target=1  target_count=0  range=1  min_level=60  STR_VAR  icon = ~SPPR607B~  END
+	LPF ALTER_SPELL_HEADER  INT_VAR  header_type = 12  new_header_type = 1  location=2  target=1  target_count=0  range=1  min_level=120  STR_VAR  icon = ~SPPR608B~  END
+	LPF ALTER_SPELL_HEADER  INT_VAR  header_type = 13  new_header_type = 1  location=2  target=4  target_count=0  range=30  min_level=180  STR_VAR  icon = ~SPPR602B~  END
+	END  BUT_ONLY
+
+COPY_EXISTING_REGEXP GLOB ~.+\.spl~ ~override~
+  READ_SHORT 0x1c "spell_type"
+  READ_SHORT 0x34 "spell_level"
+  PATCH_IF spell_type = 2 AND spell_level = 7 BEGIN
+	PATCH_PRINT ~%SOURCE_FILE%~
+	LPF ADD_SPELL_HEADER  INT_VAR  type=11  END
+	LPF ADD_SPELL_HEADER  INT_VAR  type=12  END
+	LPF ADD_SPELL_HEADER  INT_VAR  type=13  END
+	LPF ADD_SPELL_EFFECT  INT_VAR  opcode = 1001  END
+	LPF ADD_SPELL_EFFECT  INT_VAR  opcode = 1002  END
+	LPF ADD_SPELL_EFFECT  INT_VAR  opcode = 1003  END
+	LPF ADD_SPELL_EFFECT  INT_VAR  opcode = 1004  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 11  match_opcode = 1001  new_opcode = 146  target = 2  parameter1 = 1  timing = 1  resist_dispel = 2  STR_VAR  resource = ~SPPR712~  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 11  match_opcode = 1002  new_opcode = 191  target = 1  parameter2 = 1  timing = 1  resist_dispel = 2  END		
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 11  match_opcode = 1003  new_opcode = 188  target = 1                  timing = 1  resist_dispel = 2  END	
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 11  match_opcode = 1004  new_opcode = 279  target = 1  parameter2 = 13 timing = 1  resist_dispel = 2  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 12  match_opcode = 1001  new_opcode = 146  target = 2  parameter1 = 1  timing = 1  resist_dispel = 2  STR_VAR  resource = ~SPPR708~  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 12  match_opcode = 1002  new_opcode = 191  target = 1  parameter2 = 1  timing = 1  resist_dispel = 2  END		
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 12  match_opcode = 1003  new_opcode = 188  target = 1                  timing = 1  resist_dispel = 2  END	
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 12  match_opcode = 1004  new_opcode = 279  target = 1  parameter2 = 13 timing = 1  resist_dispel = 2  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 13  match_opcode = 1001  new_opcode = 148  target = 1  parameter1 = 1  timing = 1  resist_dispel = 2  STR_VAR  resource = ~SPPR702~  END
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 13  match_opcode = 1002  new_opcode = 191  target = 1  parameter2 = 1  timing = 1  resist_dispel = 2  END		
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 13  match_opcode = 1003  new_opcode = 188  target = 1                  timing = 1  resist_dispel = 2  END	
+	LPF ALTER_SPELL_EFFECT  INT_VAR  header_type = 13  match_opcode = 1004  new_opcode = 279  target = 1  parameter2 = 13 timing = 1  resist_dispel = 2  END	
+	LPF DELETE_SPELL_EFFECT  INT_VAR  opcode_to_delete = 1001  END
+	LPF DELETE_SPELL_EFFECT  INT_VAR  opcode_to_delete = 1002  END
+	LPF DELETE_SPELL_EFFECT  INT_VAR  opcode_to_delete = 1003  END
+	LPF DELETE_SPELL_EFFECT  INT_VAR  opcode_to_delete = 1004  END	
+	LPF ALTER_SPELL_HEADER  INT_VAR  header_type = 11  new_header_type = 1  location=2  target=3  target_count=0  range=30  min_level=60  STR_VAR  icon = ~SPPR712B~  END
+	LPF ALTER_SPELL_HEADER  INT_VAR  header_type = 12  new_header_type = 1  location=2  target=1  target_count=0  range=40  min_level=120  STR_VAR  icon = ~SPPR708B~  END
+	LPF ALTER_SPELL_HEADER  INT_VAR  header_type = 13  new_header_type = 1  location=2  target=4  target_count=0  range=30  min_level=180  STR_VAR  icon = ~SPPR702B~  END
+	END  BUT_ONLY
+END
+
