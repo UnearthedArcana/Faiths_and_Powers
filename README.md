@@ -198,7 +198,7 @@ Advantages:
 
 STORM SHIELD: This spell lasts 1 round per level of the caster. It protects the caster completely from lightning, fire, cold, and normal missiles.
 
-- Can cast Lightning Bolt as a special ability once per day at 9th level.  The stormbringer gains an additional use at levels 20 and 30.  The abilty functions as the wizard spell of the same name.
+- Can cast Lightning Bolt as a special ability once per day at 9th level.  The stormbringer gains an additional use at levels 20 and 30.  The ability functions as the wizard spell of the same name.
 
 Restrictions:
 - Alignment: any evil or chaotic neutral
