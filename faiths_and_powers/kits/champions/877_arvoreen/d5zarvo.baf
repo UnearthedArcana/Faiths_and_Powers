@@ -1,0 +1,30 @@
+IF
+  OR(2)
+    Class(LastSummonerOf(Myself),PALADIN)
+    Class(LastSummonerOf(Myself),FIGHTER)
+  THEN
+    RESPONSE #100
+    ChangeClass(LastSummonerOf(Myself),RANGER)
+    ActionOverride(LastSummonerOf(Myself),MakeUnselectable(1))
+END
+
+IF
+    Class(LastSummonerOf(Myself),RANGER)
+    CheckStatLT(LastSummonerOf(Myself),10,27)
+  THEN
+    RESPONSE #100
+    ApplySpellRES("b_sneak", LastSummonerOf(Myself))
+    Wait(2)
+    ActionOverride(LastSummonerOf(Myself),AddKit(D5_CHAMP_ARVOREEN))
+	DestroySelf() 
+END
+
+IF
+    Class(LastSummonerOf(Myself),RANGER)
+    !CheckStatLT(LastSummonerOf(Myself),10,27)
+  THEN
+    RESPONSE #100
+    Wait(2)
+    ActionOverride(LastSummonerOf(Myself),AddKit(D5_CHAMP_ARVOREEN))
+	DestroySelf()
+END

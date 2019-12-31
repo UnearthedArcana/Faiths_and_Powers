@@ -1,0 +1,866 @@
+BACKUP ~faiths_and_powers/backup~
+AUTHOR ~SubtleD and Grammarsalad~
+
+
+VERSION ~0.79.4~
+
+
+//README ~faiths_and_powers/readme-pnp.html~
+
+
+ASK_EVERY_COMPONENT
+
+
+ALWAYS
+
+	ACTION_IF GAME_IS ~iwdee~ BEGIN
+	  ACTION_IF FILE_EXISTS_IN_GAME "#bonecir.spl" BEGIN
+		DISABLE_FROM_KEY "#bonecir.spl"
+	  END
+	  ACTION_IF FILE_EXISTS "override\#bonecir.spl" BEGIN
+		DELETE "override\#bonecir.spl"
+	  END
+	END
+
+  	OUTER_SPRINT ~mod_folder~ ~faiths_and_powers~
+
+	ACTION_IF NOT FILE_EXISTS ~override/d5_fnp_settings.ini~ BEGIN
+  	  COPY ~faiths_and_powers/d5_fnp_settings.ini~ ~override~
+	END
+ 
+  	INCLUDE ~override/d5_fnp_settings.ini~
+
+	INCLUDE ~faiths_and_powers/lib/nu_alter_effect.tpa~
+
+	INCLUDE ~faiths_and_powers/lib/qd_multiclass.tpa~
+
+	INCLUDE ~faiths_and_powers/lib/misc_fnp_functions.tpa~
+
+	INCLUDE ~faiths_and_powers/lib/fnp_spontaneous.tpa~
+
+	INCLUDE ~faiths_and_powers/lib/fnp_system.tpa~
+	
+	INCLUDE ~faiths_and_powers/lib/spell_evasion.tpa~
+	
+	INCLUDE ~faiths_and_powers/lib/bg2fp_effect_batches_fnp.tpa~
+
+	INCLUDE ~faiths_and_powers/lib/fl#add_kit_ee.tpa~
+
+//	INCLUDE ~faiths_and_powers/lib/spell_clone_effects.tpa~
+	
+	LAF fix_kitlist_missing_ids END
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~a#ooze.2da~ BEGIN
+	  COPY_EXISTING ~alignmnt.2da~ ~override~
+		REPLACE_TEXTUALLY ~DRUID.+$~ ~DRUID	0	1	0	1	1	1	0	1	0 ~
+		REPLACE_TEXTUALLY ~FIGHTER_DRUID.+$~ ~FIGHTER_DRUID	0	1	0	1	1	1	0	1	0 ~
+		REPLACE_TEXTUALLY ~TOTEMIC_DRUID.+$~ ~TOTEMIC_DRUID	0	1	0	1	1	1	0	1	0 ~
+		REPLACE_TEXTUALLY ~SHAPESHIFTER.+$~ ~SHAPESHIFTER	0	1	0	1	1	1	0	1	0 ~
+		REPLACE_TEXTUALLY ~BEAST_FRIEND.+$~ ~BEAST_FRIEND	0	1	0	1	1	1	0	1	0 ~
+	END
+
+	COPY ~faiths_and_powers/kits/clerics/B_LOR.spl~ ~override~
+
+// joinable NPC issues for tutu/bgt/eet:
+  ACTION_IF GAME_IS ~bgee~ BEGIN
+    OUTER_SPRINT tutu_var ~~
+    OUTER_SPRINT imoen6_var ~imoen6~
+    OUTER_SPRINT jaheir7_var ~jaheir7~
+    OUTER_SPRINT minsc7_var ~minsc7~
+    OUTER_SPRINT quayle_var ~quayle~
+    OUTER_SPRINT viconi6_var ~viconi6~
+    OUTER_SPRINT xan_var ~xan~
+    OUTER_SPRINT xzar_var ~xzar~
+  END ELSE ACTION_IF GAME_IS ~eet~ BEGIN
+    OUTER_SPRINT tutu_var ~~
+    OUTER_SPRINT imoen6_var ~imoen6_~
+    OUTER_SPRINT jaheir7_var ~jaheir7_~
+    OUTER_SPRINT minsc7_var ~minsc7_~
+    OUTER_SPRINT quayle_var ~quayle_~
+    OUTER_SPRINT viconi6_var ~viconi6_~
+    OUTER_SPRINT xan_var ~xan_~
+    OUTER_SPRINT xzar_var ~xzar_~
+  END ELSE ACTION_IF GAME_IS ~bgt~ BEGIN
+    OUTER_SPRINT tutu_var ~~
+    OUTER_SPRINT imoen6_var ~imoen61~
+    OUTER_SPRINT quayle_var ~bgquayle~
+    OUTER_SPRINT viconi6_var ~viconi61~
+    OUTER_SPRINT xan_var ~bgxan~
+    OUTER_SPRINT xzar_var ~bgxzar~
+  END ELSE ACTION_IF GAME_IS ~tutu tutu_totsc~ BEGIN
+    OUTER_SPRINT tutu_var ~_~
+    OUTER_SPRINT imoen6_var ~imoen6~
+    OUTER_SPRINT quayle_var ~quayle~
+    OUTER_SPRINT viconi6_var ~viconi6~
+    OUTER_SPRINT xan_var ~xan~
+    OUTER_SPRINT xzar_var ~xzar~
+  END
+
+END
+
+// ASK_EVERY_COMPONENT
+
+LANGUAGE
+  ~English~
+  ~english~
+  ~faiths_and_powers/language/english/setup.tra~
+  ~faiths_and_powers/language/english/IWD_spells.tra~
+  ~faiths_and_powers/language/english/new_spells.tra~
+  ~faiths_and_powers/language/english/HLA.tra~
+//___________________________________________________________________________________
+
+
+////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+//								CHOOSE SPHERE SYSTEM
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+BEGIN @21 // FnP original sphere system
+DESIGNATED 21
+SUBCOMPONENT @20 
+REQUIRE_PREDICATE (GAME_IS ~bgee bg2ee eet iwdee~) @8
+
+COPY ~faiths_and_powers/lib/markers/d5_marker.d5~ ~override/d5_spheres.d5~
+COPY ~faiths_and_powers/lib/markers/d5_marker.d5~ ~override/d5_fnp_spheres.d5~
+
+ACTION_IF (FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~) BEGIN
+  MOVE ~override/fnp_sphere_list.tpa~ ~weidu_external/faiths_and_powers/fnp_sphere_list_old.tpa~
+END
+
+//prep sphere system________________________________________________________________
+//
+COPY ~faiths_and_powers/lib/sphere_list_fnp.tpa~ ~override/fnp_sphere_list.tpa~
+
+//change shaman known spells________________________________________________________
+//
+//LAF shaman_spells END
+//... nope, fold this into the d5_spontaneous function
+
+//Add IWD spells if not already in game_____________________________________________
+//
+ACTION_CLEAR_ARRAY aoe_spell
+INCLUDE ~faiths_and_powers/lib/add_spells_v75.tpa~      	//includes spells from the 0.75 series  
+INCLUDE ~faiths_and_powers/lib/fnp_new_spells.tpa~   		//new spells from the 0.77 series 
+ACTION_IF !(GAME_IS ~iwdee~) BEGIN
+  LAM v75_add_iwd_arcane_spells
+  LAM v75_add_iwd_divine_spells
+END
+// LAM v75_add_fnP_new_spells
+ LAM v78_add_fnP_new_spells
+ACTION_IF (FILE_EXISTS_IN_GAME ~dvsrv4here.mrk~) BEGIN
+  LAM v75_apply_sr_aoe_deflection
+END  
+//INCLUDE ~%mod_folder%/lib/immunities.tpa~					//	DO AT THE VERY END OF ALL SPELL INSTALLS
+
+//create sphere system______________________________________________________________
+//
+INCLUDE ~override/fnp_sphere_list.tpa~
+ LAM d5_define_sphere_names
+ LAM d5_define_sphere_spells
+ LAM d5_deity_kit_sphere_lists
+
+INCLUDE ~faiths_and_powers/lib/sphere_system.tpa~
+ LAF create_spheres END
+//__________________________________________________________________________________
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+BEGIN @22 // 2E-style sphere system
+DESIGNATED 22
+SUBCOMPONENT @20
+
+COPY ~faiths_and_powers/lib/markers/d5_marker.d5~ ~override/d5_spheres.d5~
+COPY ~faiths_and_powers/lib/markers/d5_marker.d5~ ~override/d5_2e_spheres.d5~
+
+ACTION_IF (FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~) BEGIN
+  MOVE ~override/fnp_sphere_list.tpa~ ~override/fnp_sphere_list_old.tpa~
+END
+
+//prep sphere system________________________________________________________________
+//
+COPY ~faiths_and_powers/lib/sphere_list_2E.tpa~ ~override/fnp_sphere_list.tpa~
+
+//change shaman known spells________________________________________________________
+//
+//LAF shaman_spells END
+
+//Add IWD spells if not already in game_____________________________________________
+//
+ACTION_CLEAR_ARRAY aoe_spell
+INCLUDE ~faiths_and_powers/lib/add_spells_v75.tpa~      	//includes spells from the 0.75 series  
+INCLUDE ~faiths_and_powers/lib/fnp_new_spells.tpa~   		//new spells from the 0.77 series 
+ACTION_IF !(GAME_IS ~iwdee~) BEGIN
+  LAM v75_add_iwd_arcane_spells
+  LAM v75_add_iwd_divine_spells
+END
+// LAM v75_add_fnP_new_spells
+ LAM v78_add_fnP_new_spells
+ACTION_IF (FILE_EXISTS_IN_GAME ~dvsrv4here.mrk~) BEGIN
+  LAM v75_apply_sr_aoe_deflection
+END  
+//INCLUDE ~%mod_folder%/lib/immunities.tpa~					//	DO AT THE VERY END OF ALL SPELL INSTALLS
+
+//create sphere system______________________________________________________________
+//
+INCLUDE ~override/fnp_sphere_list.tpa~
+ LAM d5_define_sphere_names
+ LAM d5_define_sphere_spells
+ LAM d5_deity_kit_sphere_lists
+
+INCLUDE ~faiths_and_powers/lib/sphere_system.tpa~
+ LAF create_spheres END
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+BEGIN @23 // player-supplied custom sphere system
+DESIGNATED 23
+SUBCOMPONENT @20 ((FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~) && !(FILE_EXISTS_IN_GAME ~d5_spheres.d5~))
+
+COPY ~faiths_and_powers/lib/markers/d5_marker.d5~ ~override/d5_spheres.d5~
+COPY ~faiths_and_powers/lib/markers/d5_marker.d5~ ~override/d5_custom_spheres.d5~
+
+ACTION_IF !(FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~) BEGIN
+  PRINT ~There is no sphere system defined! Please put a version of "fnp_sphere_list.tpa" into the override directory and try again.~
+END
+
+ACTION_IF (FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~) BEGIN
+
+//change shaman known spells________________________________________________________
+//
+//LAF shaman_spells END
+
+//Add IWD spells if not already in game_____________________________________________
+//
+ACTION_CLEAR_ARRAY aoe_spell
+INCLUDE ~faiths_and_powers/lib/add_spells_v75.tpa~      	//includes spells from the 0.75 series  
+INCLUDE ~faiths_and_powers/lib/fnp_new_spells.tpa~   		//new spells from the 0.77 series 
+ACTION_IF !(GAME_IS ~iwdee~) BEGIN
+  LAM v75_add_iwd_arcane_spells
+  LAM v75_add_iwd_divine_spells
+END
+// LAM v75_add_fnP_new_spells
+ LAM v78_add_fnP_new_spells
+ACTION_IF (FILE_EXISTS_IN_GAME ~dvsrv4here.mrk~) BEGIN
+  LAM v75_apply_sr_aoe_deflection
+END  
+//INCLUDE ~%mod_folder%/lib/immunities.tpa~					//	DO AT THE VERY END OF ALL SPELL INSTALLS
+
+//create sphere system______________________________________________________________
+//
+INCLUDE ~override/fnp_sphere_list.tpa~
+ LAM d5_define_sphere_names
+ LAM d5_define_sphere_spells
+ LAM d5_deity_kit_sphere_lists
+
+INCLUDE ~faiths_and_powers/lib/sphere_system.tpa~
+ LAF create_spheres END
+
+END
+//__________________________________________________________________________________
+
+
+//__________________________________________________________________________________
+//
+BEGIN @24 // no sphere system at all
+DESIGNATED 24
+SUBCOMPONENT @20
+
+COPY ~faiths_and_powers/lib/markers/d5_marker.d5~ ~override/d5_no_spheres.d5~
+//__________________________________________________________________________________
+
+
+////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+//							INSTALL SINGLE-CLASS KITS
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+BEGIN @31 // install cleric kits
+DESIGNATED 31
+
+ACTION_IF (FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~) BEGIN
+  INCLUDE ~override/fnp_sphere_list.tpa~
+END
+INCLUDE ~faiths_and_powers/lib/add_cleric_kits.tpa~
+
+ACTION_IF !(MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~21~) && !(MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~22~) &&! (MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~23~) && !(MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~24~) BEGIN
+  COPY ~faiths_and_powers/lib/markers/d5_marker.d5~ ~override/d5_no_spheres.d5~
+END
+
+LAM d5_kit_choices
+
+ACTION_IF (GAME_IS ~iwdee~) BEGIN
+   OUTER_SET d5_cleric_kelemvor =	0
+   OUTER_SET d5_cleric_cyric 	=	0
+END
+
+ACTION_IF (ENGINE_IS ~tob bgt~) BEGIN
+   OUTER_SET d5_cleric_azuth	=	0
+   OUTER_SET d5_cleric_mystra	=	0
+   OUTER_SET d5_cleric_oghma	=	0
+   OUTER_SET d5_cleric_baervan 	=	0
+   OUTER_SET d5_cleric_arvoreen	=	0
+   OUTER_SET d5_ur_priest	 	=	0
+END
+
+OUTER_SET cleric_umd = 0
+
+// (clerics)
+ACTION_IF (%d5_cleric_moradin% = 1) BEGIN
+ LAF cleric_moradin END
+END
+ACTION_IF (%d5_cleric_clangeddin% = 1) BEGIN
+ LAF cleric_clangeddin END
+END
+ACTION_IF (%d5_cleric_marthammor% = 1) BEGIN
+ LAF cleric_marthammor END
+END
+ACTION_IF (%d5_cleric_baravar% = 1) BEGIN
+ LAF cleric_baravar END
+END
+ACTION_IF (%d5_cleric_baervan% = 1) BEGIN
+ LAF cleric_baervan END
+END
+ACTION_IF (%d5_cleric_urdlen% = 1) BEGIN
+ LAF cleric_urdlen END
+END
+ACTION_IF (%d5_cleric_yondalla% = 1) BEGIN
+ LAF cleric_yondalla END
+END
+ACTION_IF (%d5_cleric_arvoreen% = 1) BEGIN
+ LAF cleric_arvoreen END
+END
+ACTION_IF (%d5_cleric_azuth% = 1) BEGIN
+ LAF cleric_azuth END
+ OUTER_SET cleric_umd = 1
+END
+ACTION_IF (%d5_cleric_beshaba% = 1) BEGIN
+ LAF cleric_beshaba END
+END
+ACTION_IF (%d5_cleric_cyric% = 1) BEGIN
+  LAF cleric_cyric END
+END
+ACTION_IF (%d5_cleric_deneir% = 1) BEGIN
+ LAF cleric_deneir END
+END
+ACTION_IF (%d5_cleric_helm% = 1) BEGIN
+ LAF cleric_helm END
+END
+ACTION_IF (%d5_cleric_ilmater% = 1) BEGIN
+ LAF cleric_ilmater END
+END
+ACTION_IF (%d5_cleric_kelemvor% = 1) BEGIN
+  LAF cleric_kelemvor END
+END
+ACTION_IF (%d5_cleric_lathander% = 1) BEGIN
+ LAF cleric_lathander END
+END
+ACTION_IF (%d5_cleric_leira% = 1) BEGIN
+ LAF cleric_leira END
+END
+ACTION_IF (%d5_cleric_loviatar% = 1) BEGIN
+ LAF cleric_loviatar END
+END
+ACTION_IF (%d5_cleric_malar% = 1) BEGIN
+ LAF cleric_malar END
+END
+ACTION_IF (%d5_cleric_moander% = 1) BEGIN
+ LAF cleric_moander END
+END
+ACTION_IF (%d5_cleric_mystra% = 1) BEGIN
+ LAF cleric_mystra END
+ OUTER_SET cleric_umd = 1
+END
+ACTION_IF (%d5_cleric_oghma% = 1) BEGIN
+ LAF cleric_oghma END
+ OUTER_SET cleric_umd = 1
+END
+ACTION_IF (%d5_cleric_shar% = 1) BEGIN
+ LAF cleric_shar END
+END
+ACTION_IF (%d5_cleric_sune% = 1) BEGIN
+ LAF cleric_sune END
+END
+ACTION_IF (%d5_cleric_talos% = 1) BEGIN
+ LAF cleric_talos END
+END
+ACTION_IF (%d5_cleric_tempus% = 1) BEGIN
+ LAF cleric_tempus END
+END
+ACTION_IF (%d5_priest_tempus% = 1) BEGIN
+ LAF priest_tempus END
+END
+ACTION_IF (%d5_cleric_torm% = 1) BEGIN
+ LAF cleric_torm END
+END
+ACTION_IF (%d5_cleric_tymora% = 1) BEGIN
+ LAF cleric_tymora END
+END
+ACTION_IF (%d5_cleric_umberlee% = 1) BEGIN
+ LAF cleric_umberlee END
+END
+//
+
+// (ur-priest)
+ACTION_IF (%d5_ur_priest% = 1) BEGIN
+ LAF cleric_ur_priest END
+END
+
+LAF remove_sc_menu_kits STR_VAR class = ~C~ END
+
+ACTION_IF	(ENGINE_IS ~tob bgt~) &&
+			(MOD_IS_INSTALLED ~DIVINE_REMIX/SETUP-DIVINE_REMIX.TP2~ ~1000~) &&
+			(FILE_EXISTS ~divine_remix/lib/macros.tph~) BEGIN
+  INCLUDE ~faiths_and_powers/lib/dr_compat.tpa~
+  LAF cleric_dr_spheres END
+END
+
+ACTION_IF (cleric_umd = 1) BEGIN
+  LAF use_magical_devices END
+  LAF cleric_clabs_umd END
+END
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+BEGIN @33 // install druid kits
+DESIGNATED 33
+REQUIRE_PREDICATE (GAME_IS ~bgee bg2ee eet iwdee~) @8
+
+ACTION_IF (FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~) BEGIN
+  INCLUDE ~override/fnp_sphere_list.tpa~
+END
+INCLUDE ~faiths_and_powers/lib/add_druid_kits.tpa~
+
+ACTION_IF !(MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~21~) && !(MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~22~) &&! (MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~23~) && !(MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~24~) BEGIN
+  COPY ~faiths_and_powers/lib/markers/d5_marker.d5~ ~override/d5_no_spheres.d5~
+END
+
+//change druid class text____________________________________________________________
+//
+LAF druid_class_text END
+//__________________________________________________________________________________
+
+//druids on cleric spell/xp tables__________________________________________________
+//
+LAF druid_xp END
+//__________________________________________________________________________________
+
+/*
+//change shaman known spells________________________________________________________
+//
+ACTION_IF !(FILE_EXISTS_IN_GAME ~d5_no_spheres.d5)~) BEGIN
+  LAF shaman_spells END
+END
+//__________________________________________________________________________________
+*/
+
+LAM d5_kit_choices
+
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5_no_spheres.d5~) BEGIN
+   OUTER_SET d5_earth_mystic 	=	0
+   OUTER_SET d5_water_mystic 	=	0
+   OUTER_SET d5_air_mystic 		=	0
+   OUTER_SET d5_fire_mystic 	=	0
+   OUTER_SET d5_light_mystic 	=	0
+   OUTER_SET d5_shadow_mystic 	=	0
+   OUTER_SET d5_elementalist 	=	0
+END
+
+// (druids)
+ACTION_IF (%d5_forest_druid% = 1) BEGIN
+ LAF forest_druid END
+END
+ACTION_IF (%d5_totemic_druid% = 1) BEGIN
+ LAF totemic_druid END
+END
+ACTION_IF (%d5_hivekeeper_druid% = 1) BEGIN
+ LAF hivekeeper_druid END
+END
+ACTION_IF (%d5_northern_druid% = 1) BEGIN
+ LAF northern_druid END
+END
+ACTION_IF (%d5_lost_druid% = 1) BEGIN
+ LAF lost_druid END
+END
+ACTION_IF (%d5_forest_druid% + %d5_totemic_druid% + %d5_hivekeeper_druid% + %d5_northern_druid% + %d5_lost_druid% > 0) BEGIN
+ LAF druid_shapeshifting END
+END
+ACTION_IF (%d5_beast_lord% = 1) BEGIN
+ LAF beast_lord END
+END
+ACTION_IF (%d5_elementalist% = 1) BEGIN
+ LAF elementalist END
+END
+ACTION_IF (%d5_earth_mystic% = 1) BEGIN
+ LAF earth_mystic END
+END
+ACTION_IF (%d5_water_mystic% = 1) BEGIN
+ LAF water_mystic END
+END
+ACTION_IF (%d5_air_mystic% = 1) BEGIN
+ LAF air_mystic END
+END
+ACTION_IF (%d5_fire_mystic% = 1) BEGIN
+ LAF fire_mystic END
+END
+ACTION_IF (%d5_light_mystic% = 1) BEGIN
+ LAF light_mystic END
+END
+ACTION_IF (%d5_shadow_mystic% = 1) BEGIN
+ LAF shadow_mystic END
+END
+
+LAF remove_sc_menu_kits STR_VAR class = ~D~ END
+
+LAF clear_druid_clab END
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+BEGIN @35 // install paladin kits
+DESIGNATED 35
+REQUIRE_PREDICATE (GAME_IS ~bgee bg2ee eet iwdee~) @8
+
+ACTION_IF (FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~) BEGIN
+  INCLUDE ~override/fnp_sphere_list.tpa~
+END
+INCLUDE ~faiths_and_powers/lib/add_champion_kits.tpa~
+INCLUDE ~faiths_and_powers/lib/add_zealot_kits.tpa~
+
+ACTION_IF !(MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~21~) && !(MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~22~) &&! (MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~23~) && !(MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~24~) BEGIN
+  COPY ~faiths_and_powers/lib/markers/d5_marker.d5~ ~override/d5_no_spheres.d5~
+END
+
+//ranger/paladin spell tables_______________________________________________________
+//
+LAF paladin_spell_tables END
+//__________________________________________________________________________________
+
+LAM d5_kit_choices
+
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5_no_spheres.d5~) || (ENGINE_IS ~tob bgt~) BEGIN
+   OUTER_SET d5_zealot_ilmater 		=	0
+   OUTER_SET d5_zealot_corellon 	=	0
+   OUTER_SET d5_zealot_sune 		=	0
+   OUTER_SET d5_zealot_mystra 		=	0
+   OUTER_SET d5_zealot_eilistraee 	=	0
+   OUTER_SET d5_zealot_gruumsh 		=	0
+   OUTER_SET d5_zealot_talos 		=	0
+   OUTER_SET d5_zealot_kossuth 		=	0
+   OUTER_SET d5_zealot_garagos 		=	0
+END
+
+LAF enable_more_paladins END
+
+ACTION_IF (%d5_champion_moradin% = 1) BEGIN
+ LAF champion_moradin END
+END
+ACTION_IF (%d5_champion_arvoreen% = 1) BEGIN
+ LAF champion_arvoreen END
+END
+ACTION_IF (%d5_champion_azuth% = 1) BEGIN
+ LAF champion_azuth	 END	//azuth essentially replaces Inquisitor
+END
+ACTION_IF (%d5_champion_bane% = 1) BEGIN
+ ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No Evil nonfallable pallys in IWDEE as yet
+  LAF champion_bane END
+ END
+ ACTION_IF NOT FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No Evil nonfallable pallys in IWDEE as yet
+  LAF iwdee_champion_bane END
+ END
+END
+ACTION_IF (%d5_champion_helm% = 1) BEGIN
+ ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No Evil nonfallable pallys in IWDEE as yet
+  LAF champion_helm END
+ END
+ ACTION_IF NOT FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No Evil fallable pallys in IWDEE
+  LAF iwdee_champion_helm END
+ END
+END
+ACTION_IF (%d5_champion_kelemvor% = 1) BEGIN
+ //champ of Kele effectively replaces UHunter. In IWDEE, the champ of mykrul is merely added (they're different enough conceptually to be seperate)
+ ACTION_IF GAME_IS ~iwdee~ THEN BEGIN   //
+  LAF iwdee_champion_kelemvor END
+ END
+ //kelevmor undead hunter for non-iwdee
+ ACTION_IF GAME_IS ~bgee bg2ee eet~ THEN BEGIN   //
+  LAF champion_kelemvor END
+ END
+END
+ACTION_IF (%d5_champion_red% = 1) BEGIN
+ ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No feasible way to make them not fall in IWDEE without fallen.2da
+  LAF champion_red END
+ END
+END
+ACTION_IF (%d5_champion_talos% = 1) BEGIN
+ ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No Evil nonfallable pallys in IWDEE
+  LAF champion_talos END
+ END
+ ACTION_IF NOT FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No Evil nonfallable pallys in IWDEE
+  LAF iwdee_champion_talos END
+ END
+END
+ACTION_IF (%d5_champion_tempus% = 1) BEGIN
+ ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No feasible way to make them not fall in IWDEE as yet
+  LAF champion_tempus END
+ END
+END
+ACTION_IF (%d5_champion_tyr% = 1) BEGIN
+ LAF champion_tyr END
+END
+//
+// (other paladins)
+//
+// (zealot)
+ACTION_IF (%d5_zealot_ilmater% + %d5_zealot_sune% + %d5_zealot_mystra% + %d5_zealot_eilistraee% + %d5_zealot_gruumsh% + %d5_zealot_talos% + %d5_zealot_kossuth% + %d5_zealot_garagos% > 0) BEGIN
+ //sneaky sneaky
+ COPY ~faiths_and_powers/kits/zealots/b_sneak.spl~ ~override~
+ COPY ~faiths_and_powers/kits/zealots/b_snk02.spl~ ~override~
+ COPY ~faiths_and_powers/kits/zealots/b_snk03.spl~ ~override~
+ COPY ~faiths_and_powers/kits/zealots/b_snk04.spl~ ~override~
+ COPY ~faiths_and_powers/kits/zealots/b_snk05.spl~ ~override~
+ COPY ~faiths_and_powers/kits/zealots/b_snk06.spl~ ~override~
+ COPY ~faiths_and_powers/kits/zealots/b_snk07.spl~ ~override~
+ COPY ~faiths_and_powers/kits/zealots/b_snk08.spl~ ~override~
+ COPY ~faiths_and_powers/kits/zealots/b_snk09.spl~ ~override~
+ COPY ~faiths_and_powers/kits/zealots/b_snk10.spl~ ~override~
+ COPY ~faiths_and_powers/kits/zealots/b_snk11.spl~ ~override~
+ COPY ~faiths_and_powers/kits/zealots/b_snk12.spl~ ~override~
+ COPY ~faiths_and_powers/kits/zealots/b_snk13.spl~ ~override~
+END
+
+ACTION_IF (%d5_zealot_corellon% = 1) BEGIN
+ LAF zealot_corellon END
+END
+ACTION_IF (%d5_zealot_eilistraee% = 1) BEGIN
+ LAF zealot_eilistraee END
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No feasible way to make them not fall in IWDEE w/o fallen.2da
+ ACTION_IF (%d5_zealot_gruumsh% = 1) BEGIN
+  LAF zealot_gruumsh END
+ END
+END  //End grummsh
+ACTION_IF (%d5_zealot_ilmater% = 1) BEGIN
+ LAF zealot_ilmater END
+END
+ACTION_IF (%d5_zealot_mystra% = 1) BEGIN
+ LAF zealot_mystra END
+END
+ACTION_IF (%d5_zealot_sune% = 1) BEGIN
+ LAF zealot_sune END
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No feasible way to make them not fall in IWDEE w/o fallen.2da
+ ACTION_IF (%d5_zealot_garagos% = 1) BEGIN
+  LAF zealot_garagos END
+ END
+ ACTION_IF (%d5_zealot_kossuth% = 1) BEGIN
+  LAF zealot_kossuth END
+ END
+ ACTION_IF (%d5_zealot_talos% = 1) BEGIN
+  LAF zealot_talos END
+ END
+END  //End talos/kossuth/garagos
+
+LAF remove_sc_menu_kits STR_VAR class = ~P~ END
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+BEGIN @37 // install ranger kits
+DESIGNATED 37
+REQUIRE_PREDICATE (GAME_IS ~bgee bg2ee eet iwdee~) @8
+
+ACTION_IF (FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~) BEGIN
+  INCLUDE ~override/fnp_sphere_list.tpa~
+END
+INCLUDE ~faiths_and_powers/lib/add_ranger_kits.tpa~
+
+ACTION_IF !(MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~21~) && !(MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~22~) &&! (MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~23~) && !(MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~24~) BEGIN
+  COPY ~faiths_and_powers/lib/markers/d5_marker.d5~ ~override/d5_no_spheres.d5~
+END
+
+//ranger/paladin spell tables_______________________________________________________
+//
+LAF ranger_spell_tables END
+//__________________________________________________________________________________
+
+LAM d5_kit_choices
+
+ACTION_IF (%d5_forest_ranger% = 1) BEGIN
+ LAF forest_ranger END
+END
+ACTION_IF (%d5_mountain_ranger% = 1) BEGIN
+ LAF mountain_ranger END
+END
+ACTION_IF (%d5_jungle_ranger% = 1) BEGIN
+ LAF jungle_ranger END
+END
+ACTION_IF (%d5_desert_ranger% = 1) BEGIN
+ LAF desert_ranger END
+END
+ACTION_IF (%d5_arctic_ranger% = 1) BEGIN
+ LAF arctic_ranger END
+END
+ACTION_IF (%d5_beast_master% = 1) BEGIN
+ LAF beast_master END
+END
+//
+// (scouts)
+ACTION_IF (%d5_mage_hunter% = 1) BEGIN
+ LAF mage_hunter END
+END
+ACTION_IF (%d5_barbarian_ranger% = 1) BEGIN
+ LAF barbarian_ranger END
+END
+ACTION_IF (%d5_elven_archer% = 1) BEGIN
+ LAF elven_archer END
+END
+
+LAF remove_sc_menu_kits STR_VAR class = ~R~ END
+
+//more scout alignments_____________________________________________________________
+//
+LAF more_ranger_alignments END
+//__________________________________________________________________________________
+
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+//					CHOOSE WHETHER TO CHANGE USABILITY/PROFICIENCY
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+BEGIN @75 // item usability
+DESIGNATED 75
+REQUIRE_PREDICATE (GAME_IS ~bgee bg2ee eet iwdee~) @8
+
+COPY ~faiths_and_powers/lib/markers/d5_marker.d5~ ~override/d5_fnp_usability.d5~
+
+INCLUDE ~faiths_and_powers/lib/qd_multiclass.tpa~
+
+//read in kit functions_____________________________________________________________
+//
+ACTION_IF (FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~) BEGIN
+  INCLUDE ~override/fnp_sphere_list.tpa~
+  LAM d5_define_sphere_names
+  LAM d5_define_sphere_spells
+  LAM d5_deity_kit_sphere_lists
+END
+
+INCLUDE ~faiths_and_powers/lib/default_kit_spheres.tpa~
+ LAF vanilla_kit_spheres END
+ LAF mod_kit_spheres END
+ LAF default_kit_spheres END
+//__________________________________________________________________________________
+
+//read fnp_system info in order to apply sphere system/item usability_______________
+//
+LAM ~READ_FNP_KIT_INFO~
+//__________________________________________________________________________________
+
+//alter item usability______________________________________________________________
+//
+INCLUDE ~faiths_and_powers/lib/item_usability.tpa~
+ LAF change_usability END
+ LAF apply_usability END
+//__________________________________________________________________________________
+
+
+////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+//								SPHERE SYSTEM
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+BEGIN @80 // apply sphere systen
+DESIGNATED 80
+INSTALL_BY_DEFAULT
+REQUIRE_PREDICATE (GAME_IS ~bgee bg2ee eet iwdee~) @8
+REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~d5_spheres.d5~) @8
+FORBID_COMPONENT ~faiths_and_powers.tp2~ ~24~ @8
+
+
+//check sphere system_______________________________________________________________
+//
+ACTION_IF (FILE_EXISTS_IN_GAME ~clabpr01.2da~) && (FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~) BEGIN
+ INCLUDE ~override/fnp_sphere_list.tpa~
+  LAM d5_define_sphere_names
+  LAM d5_define_sphere_spells
+  LAM d5_deity_kit_sphere_lists
+END
+//__________________________________________________________________________________
+
+//read in kit functions_____________________________________________________________
+//
+INCLUDE ~faiths_and_powers/lib/default_kit_spheres.tpa~
+ LAF vanilla_kit_spheres END
+ LAF mod_kit_spheres END
+ LAF default_kit_spheres END
+//__________________________________________________________________________________
+
+//read fnp_system info in order to apply sphere system/item usability_______________
+//
+LAM ~READ_FNP_KIT_INFO~
+//__________________________________________________________________________________
+
+//Apply Sphere System_______________________________________________________________
+//
+INCLUDE ~faiths_and_powers/lib/sphere_system.tpa~
+ LAF apply_spheres END
+//__________________________________________________________________________________
+
+//universal spells available at CharGen_____________________________________________
+//
+LAF universal_spells END
+//__________________________________________________________________________________
+
+
+////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+//						CHOOSE WHETHER TO CHANGE NPC KITS
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+BEGIN @85 // apply kits to multiclass NPCS
+DESIGNATED 85
+
+
+//read in kit functions_____________________________________________________________
+//
+INCLUDE ~faiths_and_powers/lib/npc_kits.tpa~
+ LAF npc_sc_kits END
+//__________________________________________________________________________________
+

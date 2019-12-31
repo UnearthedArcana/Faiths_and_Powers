@@ -1,0 +1,13 @@
+IF
+  See(Nearestenemyof(Myself))
+THEN
+  RESPONSE #100
+    AttackReevaluate(Lastseenby(Myself),75)
+END
+
+IF
+  AttackedBy(Nearestenemyof(Myself),DEFAULT)
+THEN
+  RESPONSE #100
+    MoveToObject(Lastattackerof(Myself))
+END

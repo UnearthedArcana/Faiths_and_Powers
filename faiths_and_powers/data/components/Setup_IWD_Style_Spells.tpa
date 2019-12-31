@@ -1,0 +1,1515 @@
+// SD: eliminate #bonecir.spl from IWDEE
+ACTION_IF GAME_IS ~iwdee~ BEGIN
+  ACTION_IF FILE_EXISTS_IN_GAME "#bonecir.spl" BEGIN
+	DISABLE_FROM_KEY "#bonecir.spl"
+  END
+  ACTION_IF FILE_EXISTS "override\#bonecir.spl" BEGIN
+	DELETE "override\#bonecir.spl"
+  END
+END
+
+//SPELL IDEAS
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////                                         //////////////////////////////////////
+/////////////////////////////////////             MAGE SPELLS                 //////////////////////////////////////
+/////////////////////////////////////                                         //////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/////////////////////////////////////////////////////////
+///      1st level Spells
+/////////////////////////////////////////////////////////
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//___________________________________________________________Protection from Evil_______________________________________________________________________//
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//SPWI113  (SPCL212; SPCL213; SPCL233; SPIN121; SPPR107; 10' SPCL233; 10' SPPR408)
+
+         //------Effects-------\\     //--Duration--\\
+//IWDEE: Grants protection against
+//       charm/dominate effects;       2 rounds/level
+
+//BGEE:  cannot be targeted by demons; 2 rounds/level
+
+//SR:    +2 save vs. evil;             5 turns
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//_______________________________________________________________Shocking Grasp_________________________________________________________________________//
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//SPWI115
+         //------Effects-------\\     //--Duration--\\     //--Save--\\
+//IWDEE: Auto hit; 1d8 + 1/level
+//      (max 1d8+5 at 5th lev);       NA                   NA
+
+//BGEE:  Melee +0; 1d8 +1/lev,
+//       +1d2+str (fist), (Max +20);  1 round/lev          NA
+
+//SR:    Melee +4; 1d8/2 levels
+//       (max 5d6)Stun 1 rd (neg)                          -1 to save/2 lev (max -4)
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//_______________________________________________________________Chromatic Orb__________________________________________________________________________//
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//SPWI118 (SPDR101)
+
+//IWDEE: Range: 50'
+//1: Inflicts 1d4 magic damage and blinds the target for one round.
+//2: Inflicts 1d6 fire damage and inflicts pain upon the victim (-1 penalty to Armor Class and THAC0) for one round.
+//3: Inflicts 1d8 magic damage and burns the victim for 1d3 fire damage.
+//4: Inflicts 1d10 magic damage and blinds the target for 4 rounds.
+//5 to 6: Inflicts 1d12 magic damage and stuns the target for 3 rounds.
+//7 and up: Inflicts 2d8 magic damage and paralyzes the victim for 13 rounds.
+
+//BGEE: Range: 90'
+//1st Level: 1d4 damage and blinds the target for 1 round.
+//2nd Level: 1d4 damage and inflicts pain (-1 penalty to Strength, Dexterity, AC, and THAC0) upon the victim.
+//3rd Level: 1d6 damage and burns the victim for an additional 1d8 damage.
+//4th Level: 1d6 damage and blinds the target for 1 turn.
+//5th Level: 1d8 damage and stuns the target for 3 rounds.
+//6th Level: 1d8 damage and causes weakness (-4 penalty to THAC0) in the victim.
+//7th Level: 1d10 damage and paralyzes the victim for 2 turns.
+//10th Level: 1d12 acid damage and turns the victim to stone.
+//12th Level: 2d8 acid damage and instantly kills the victim.
+
+//SR: Range: 30'
+//1st level: 1d3 damage; White - Light (-4 penalty to saving throws)
+//2nd level: 1d4 damage; Aquamarine - Magnetism (-4 penalty to AC)
+//4th level: 1d6 damage; Red - Pain (-1 to strength and dexterity)
+//6th level: 1d8 damage; Green - Poison (2hp/round)
+//8th level: 1d10 damage; Yellow - Blindness
+//10th level: 2d6 damage; Violet - Slow
+//12th+ level:  2d8 damage; Blue - Paralysis
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//________________________________________________________________Blindness_____________________________________________________________________________//
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//SPWI106 (SPDM101; SPWM178?; SPWI226 IWDEE)
+         //-Level-\\    //--Range--\\     //--Duration--\\     
+//BGEE:    Level 1            30               2 hours
+
+//IWDEE:   Level 2           100               8 hours
+//(SPWI226)
+
+//SR: Obscuring Mist (SPWI106)
+
+
+
+/////////////////////////////////////////////////////////
+///      2nd level Spells
+/////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//______________________________________________________________________Web_____________________________________________________________________________//
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//SPWI215 (SPDR201; SPIN566?; SPIN575?; SPIN683?)
+         //--Range--\\     //--Duration--\\     //--Save--\\   //--Casting Time--\\   //------Effects-------\\
+//IWDEE:      30'               8 rounds             0                   2             Save spl or paralyze ea round
+//BGEE:       40'               10 rounds           -2                   2             Save spl or paralyze ea round
+//SR          30'               10 rounds            0                   5             Save bre or paralyze ea round or 1/2 speed
+
+
+
+///CONTINUE FROM HERE
+
+/* Below for reference only
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////                                         //////////////////////////////////////
+/////////////////////////////////////             GLOBAL CHANGES              //////////////////////////////////////
+/////////////////////////////////////                                         //////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////                                        ///////////////////////////////////////////////
+///////////////////////////////////////////////      CURE/CAUSE WOUND PERCENTAGES      ///////////////////////////////////////////////
+///////////////////////////////////////////////                                        ///////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/////////////////////////////////////////////////////////
+///      0 level cure/inflict
+/////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//___________________________________________________________Cure minor wounds__________________________________________________________________________//
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+ACTION_IF FILE_EXISTS_IN_GAME ~b_cant.itm~ BEGIN   //If Cure Minor Wounds is installed
+ COPY_EXISTING ~b_po010.spl~ ~override~      //description
+  SPRINT old @101000004//old text
+  SPRINT new @101000005//new text
+   READ_LONG 0x50 "valid"
+   PATCH_IF (%valid% >= 0) BEGIN // verify desc is valid
+   READ_STRREF 0x50 ~desc~
+	INNER_PATCH_SAVE new_desc ~%desc%~ BEGIN
+	REPLACE_TEXTUALLY ~%old%~ ~%new%~
+	END
+   SAY_EVALUATED 0x50 ~%new_desc%~
+   END  //Change to 10% +1 HP
+   LPF ALTER_EFFECT INT_VAR match_opcode = 17  parameter1 = 1 END
+   LPF CLONE_EFFECT INT_VAR match_opcode = 17 parameter1 = 10 parameter2 = 2 END
+END
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//___________________________________________________________cause/inflict minor wounds_______________________________________________________________________//
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+ACTION_IF FILE_EXISTS_IN_GAME ~b_cant.itm~ BEGIN
+COPY_EXISTING ~b_po050.spl~ ~override~
+ SPRINT old @105000003//old text
+ SPRINT new @105000004//new text
+  READ_LONG 0x50 "valid"
+  PATCH_IF (%valid% >= 0) BEGIN // verify desc is valid
+  READ_STRREF 0x50 ~desc~
+	INNER_PATCH_SAVE new_desc ~%desc%~ BEGIN
+	REPLACE_TEXTUALLY ~%old%~ ~%new%~        //replacing old with new (set damage to % of target's hp)
+	END
+  SAY_EVALUATED 0x50 ~%new_desc%~
+  END  //
+  LPF ALTER_EFFECT INT_VAR match_opcode = 12 parameter1 = 1 END
+  LPF CLONE_EFFECT INT_VAR match_opcode = 12 match_savingthrow = 0 parameter1 = 5 parameter2 = 4194307 END
+  LPF CLONE_EFFECT INT_VAR match_opcode = 12 match_savingthrow = 1 parameter1 = 5 parameter2 = 4194307 savingthrow = 4 END
+END
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//_______________________________________________________Cure Light Wound 20%___________________________________________________________________________//
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+//Find all versions, including 'innate' versions, of cure light wounds (sppr103/spin101 present in both bgee and bg2ee, no spin101 in IWDEE)
+//Maybe use Cam's macro...
+//Verified works with SR
+
+COPY_EXISTING ~sppr103.spl~ ~override~ //
+  LPF ALTER_EFFECT
+      INT_VAR match_opcode = 17            //
+            parameter1 = 4
+  END      //
+  LPF CLONE_EFFECT INT_VAR match_opcode = 17 parameter1 = 20 parameter2 = 2 END
+ SPRINT old @10100008//old text
+ SPRINT new @10100009//new text
+  READ_LONG 0x50 "valid"
+  PATCH_IF (%valid% >= 0) BEGIN // verify desc is valid
+  READ_STRREF 0x50 ~desc~
+	INNER_PATCH_SAVE new_desc ~%desc%~ BEGIN
+	REPLACE_TEXTUALLY ~%old%~ ~%new%~        //replacing old w new
+	END
+  SAY_EVALUATED 0x50 ~%new_desc%~
+  END  //
+
+ACTION_IF FILE_EXISTS_IN_GAME ~spin101.spl~ BEGIN
+COPY_EXISTING ~spin101.spl~ ~override~ //
+  LPF ALTER_EFFECT
+      INT_VAR match_opcode = 17            //
+            parameter1 = 4
+  END      //
+  LPF CLONE_EFFECT INT_VAR match_opcode = 17 parameter1 = 20 parameter2 = 2 END
+ SPRINT old @10100008//old text
+ SPRINT new @10100009//new text
+  READ_LONG 0x50 "valid"
+  PATCH_IF (%valid% >= 0) BEGIN // verify desc is valid
+  READ_STRREF 0x50 ~desc~
+	INNER_PATCH_SAVE new_desc ~%desc%~ BEGIN
+	REPLACE_TEXTUALLY ~%old%~ ~%new%~        //replacing old w new
+	END
+  SAY_EVALUATED 0x50 ~%new_desc%~
+  END  //
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~DW#FPPLO.spl~ BEGIN
+COPY_EXISTING ~DW#FPPLO.spl~ ~override~ //
+        SAY UNIDENTIFIED_DESC @10100010
+	SAY DESC @10100010
+  LPF ALTER_EFFECT
+      INT_VAR match_opcode = 17            //
+            parameter1 = 4
+  END      //
+  LPF CLONE_EFFECT INT_VAR match_opcode = 17 parameter1 = 20 parameter2 = 2 END
+END
+//Change to SR Text style--Can't seem to replace textually, so...
+ACTION_IF (FILE_EXISTS_IN_GAME ~dvimhere.mrk~) BEGIN
+COPY_EXISTING ~sppr103.spl~ ~override~ //
+              ~spin101.spl~ ~override~
+        SAY UNIDENTIFIED_DESC @10100010
+	SAY DESC @10100010
+  END  //
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//______________________________________________________Inflict Light Wounds 20%_________________________________________________________________________//
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//Only exists in IWDEE, or if IWD spells mod (or IWDIFICATION, presumably) is installed
+//If a version is installed w/o SR...
+ACTION_IF ((FILE_EXISTS_IN_GAME ~b_IWD.itm~) OR ((GAME_IS ~iwdee~) OR (MOD_IS_INSTALLED ~SETUP-IWDIFICATION.TP2~ ~40~))) AND (NOT FILE_EXISTS_IN_GAME ~dvimhere.mrk~) BEGIN
+LAF RES_NUM_OF_SPELL_NAME
+  STR_VAR spell_name = ~CLERIC_CAUSE_LIGHT_WOUNDS~
+  RET spell_res
+END
+COPY_EXISTING ~%spell_res%.spl~ ~override~
+  LPF ALTER_EFFECT
+      INT_VAR match_opcode = 12            //
+                  parameter1 = 3
+  END      //
+  LPF CLONE_EFFECT INT_VAR match_opcode = 12 parameter1 = 10 parameter2 = 4194307 END
+ SPRINT old @11400004//old text
+ SPRINT new @11400005//new text
+  READ_LONG 0x50 "valid"
+  PATCH_IF (%valid% >= 0) BEGIN // verify desc is valid
+  READ_STRREF 0x50 ~desc~
+	INNER_PATCH_SAVE new_desc ~%desc%~ BEGIN
+	REPLACE_TEXTUALLY ~%old%~ ~%new%~        //replacing old w new
+	END
+  SAY_EVALUATED 0x50 ~%new_desc%~
+  END  //
+END
+//SR
+ACTION_IF  FILE_EXISTS_IN_GAME ~dvimhere.mrk~ BEGIN
+ COPY_EXISTING ~SPPR119.spl~ ~override~
+        SAY UNIDENTIFIED_DESC @11400003
+	SAY DESC @11400003
+ COPY_EXISTING ~SPPR119D.spl~ ~override~
+  LPF DELETE_EFFECT INT_VAR match_opcode= 12 END//
+  LPF CLONE_EFFECT INT_VAR match_opcode = 215 opcode = 12 parameter1 = 3 parameter2 = 4194304 savingthrow = 0 STR_VAR resource = EVAL ~~  END
+  LPF CLONE_EFFECT INT_VAR match_opcode = 12 parameter1 = 1 savingthrow = 4 END
+  LPF CLONE_EFFECT INT_VAR match_opcode = 12 parameter1 = 10 parameter2 = 4194307 END
+END
+//END SR
+
+
+
+
+/////////////////////////////////////////////////////////
+///      2nd level cure/inflict
+/////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//_______________________________________________________cure moderate wound 30%________________________________________________________________________//
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//_____________________________________________________________________________________________
+//Only exists in IWDEE, or if IWD spells mod (or IWDIFICATION, presumably) is installed
+
+//Some other source, and NOT SR
+ACTION_IF ((FILE_EXISTS_IN_GAME ~b_IWD.itm~) OR ((GAME_IS ~iwdee~) OR (MOD_IS_INSTALLED ~SETUP-IWDIFICATION.TP2~ ~40~))) AND (NOT FILE_EXISTS_IN_GAME ~dvimhere.mrk~) BEGIN
+ LAF RES_NUM_OF_SPELL_NAME
+  STR_VAR spell_name = ~CLERIC_CURE_MODERATE_WOUNDS~
+  RET spell_res
+ END
+ COPY_EXISTING ~%spell_res%.spl~ ~override~
+  LPF ALTER_EFFECT
+      INT_VAR match_opcode = 17            //
+                  parameter1 = 6
+  END      //
+  LPF CLONE_EFFECT INT_VAR match_opcode = 17 parameter1 = 30 parameter2 = 2 END
+  SPRINT old @10100012//old text
+  SPRINT new @10100013//new text
+   READ_LONG 0x50 "valid"
+   PATCH_IF (%valid% >= 0) BEGIN // verify desc is valid
+   READ_STRREF 0x50 ~desc~
+	INNER_PATCH_SAVE new_desc ~%desc%~ BEGIN
+	REPLACE_TEXTUALLY ~%old%~ ~%new%~        //replacing old w new
+	END
+   SAY_EVALUATED 0x50 ~%new_desc%~
+   END  //
+END   //End non SR
+//SR version
+ACTION_IF  FILE_EXISTS_IN_GAME ~dvimhere.mrk~ BEGIN
+ COPY_EXISTING ~SPPR215.spl~ ~override~
+        SAY UNIDENTIFIED_DESC @10100014   //Don't trust that replace textually will work
+	SAY DESC @@10100014
+  LPF ALTER_EFFECT
+      INT_VAR match_opcode = 17            //
+                  parameter1 = 6
+  END      //
+  LPF CLONE_EFFECT INT_VAR match_opcode = 17 parameter1 = 30 parameter2 = 2 END
+END  //End SR
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//_______________________________________________________Inflict Mod Wounds 30%+6_______________________________________________________________________//
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//TO DO
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//_________________________________________________________________Goodberry____________________________________________________________________________//
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//Just brutin' away...
+  COPY ~Spells/data/revised_spells/goodberry/SPPR207.spl~ ~override~
+        SAY NAME1 @10100007
+        SAY NAME2 @10100007
+        SAY UNIDENTIFIED_DESC @10100005
+	SAY DESC @10100005
+  COPY ~Spells/data/revised_spells/goodberry/gberry.itm~ ~override~
+        SAY NAME1 @10100007
+        SAY NAME2 @10100007
+        SAY UNIDENTIFIED_DESC @10100006
+	SAY DESC @10100006
+
+/////////////////////////////////////////////////////////
+///      3rd level cure/inflict
+/////////////////////////////////////////////////////////
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//_______________________________________________________cure med wound 40%_____________________________________________________________________________//
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+
+COPY_EXISTING ~SPPR315.spl~ ~override~
+  LPF ALTER_EFFECT
+      INT_VAR match_opcode = 17            //
+                  parameter1 = 8
+  END      //
+  LPF CLONE_EFFECT INT_VAR match_opcode = 17 parameter1 = 40 parameter2 = 2 END
+ACTION_IF NOT FILE_EXISTS_IN_GAME ~dvimhere.mrk~ BEGIN
+COPY_EXISTING ~SPPR315.spl~ ~override~
+  SPRINT old @10100015//old text
+  SPRINT new @10100016//new text
+   READ_LONG 0x50 "valid"
+   PATCH_IF (%valid% >= 0) BEGIN // verify desc is valid
+   READ_STRREF 0x50 ~desc~
+	INNER_PATCH_SAVE new_desc ~%desc%~ BEGIN
+	REPLACE_TEXTUALLY ~%old%~ ~%new%~        //replacing old w new
+	END
+   SAY_EVALUATED 0x50 ~%new_desc%~
+   END  //
+END//Not SR
+ACTION_IF FILE_EXISTS_IN_GAME ~dvimhere.mrk~ BEGIN
+ COPY_EXISTING ~SPPR315.spl~ ~override~
+        SAY UNIDENTIFIED_DESC @10100017
+	SAY DESC @10100017
+END//SR
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//_______________________________________________________Inflict Med Wounds 40%+8_______________________________________________________________________//
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//TO DO
+
+/////////////////////////////////////////////////////////
+///      4th level cure/inflict
+/////////////////////////////////////////////////////////
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//_____________________________________________________cure serious wound 50%___________________________________________________________________________//
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+COPY_EXISTING ~SPPR401.spl~ ~override~
+  LPF ALTER_EFFECT
+      INT_VAR match_opcode = 17            //
+                  parameter1 = 10
+  END      //
+  LPF CLONE_EFFECT INT_VAR match_opcode = 17 parameter1 = 50 parameter2 = 2 END
+ACTION_IF NOT FILE_EXISTS_IN_GAME ~dvimhere.mrk~ BEGIN
+COPY_EXISTING ~SPPR401.spl~ ~override~
+  SPRINT old @10100021//old text
+  SPRINT new @10100022//new text
+   READ_LONG 0x50 "valid"
+   PATCH_IF (%valid% >= 0) BEGIN // verify desc is valid
+   READ_STRREF 0x50 ~desc~
+	INNER_PATCH_SAVE new_desc ~%desc%~ BEGIN
+	REPLACE_TEXTUALLY ~%old%~ ~%new%~        //replacing old w new
+	END
+   SAY_EVALUATED 0x50 ~%new_desc%~
+   END  //
+END//Not SR
+ACTION_IF FILE_EXISTS_IN_GAME ~dvimhere.mrk~ BEGIN
+ COPY_EXISTING ~SPPR401.spl~ ~override~
+        SAY UNIDENTIFIED_DESC @10100023
+	SAY DESC @10100023
+END//SR
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//_______________________________________________________Inflict Med Wounds 10%+10______________________________________________________________________//
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//TO DO
+
+/////////////////////////////////////////////////////////
+///      5th level cure/inflict
+/////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//_____________________________________________________cure critical wound 60%__________________________________________________________________________//
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+COPY_EXISTING ~SPPR502.spl~ ~override~
+  LPF ALTER_EFFECT
+      INT_VAR match_opcode = 17            //
+                  parameter1 = 12
+  END      //
+  LPF CLONE_EFFECT INT_VAR match_opcode = 17 parameter1 = 60 parameter2 = 2 END
+ACTION_IF NOT FILE_EXISTS_IN_GAME ~dvimhere.mrk~ BEGIN
+COPY_EXISTING ~SPPR502.spl~ ~override~
+  SPRINT old @10100027//old text
+  SPRINT new @10100028//new text
+   READ_LONG 0x50 "valid"
+   PATCH_IF (%valid% >= 0) BEGIN // verify desc is valid
+   READ_STRREF 0x50 ~desc~
+	INNER_PATCH_SAVE new_desc ~%desc%~ BEGIN
+	REPLACE_TEXTUALLY ~%old%~ ~%new%~        //replacing old w new
+	END
+   SAY_EVALUATED 0x50 ~%new_desc%~
+   END  //
+END//Not SR
+ACTION_IF FILE_EXISTS_IN_GAME ~dvimhere.mrk~ BEGIN
+ COPY_EXISTING ~SPPR502.spl~ ~override~
+        SAY UNIDENTIFIED_DESC @10100029
+	SAY DESC @10100029
+END//SR
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//_______________________________________________________mass cure 25% +6 hp____________________________________________________________________________//
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+COPY_EXISTING ~SPPR514.spl~ ~override~
+  LPF ALTER_EFFECT
+      INT_VAR match_opcode = 17            //
+                  parameter1 = 6
+  END      //
+  LPF CLONE_EFFECT INT_VAR match_opcode = 17 parameter1 = 25 parameter2 = 2 END
+ACTION_IF NOT FILE_EXISTS_IN_GAME ~dvimhere.mrk~ BEGIN
+COPY_EXISTING ~SPPR514.spl~ ~override~
+  SPRINT old @10100030//old text
+  SPRINT new @10100031//new text
+   READ_LONG 0x50 "valid"
+   PATCH_IF (%valid% >= 0) BEGIN // verify desc is valid
+   READ_STRREF 0x50 ~desc~
+	INNER_PATCH_SAVE new_desc ~%desc%~ BEGIN
+	REPLACE_TEXTUALLY ~%old%~ ~%new%~        //replacing old w new
+	END
+   SAY_EVALUATED 0x50 ~%new_desc%~
+   END  //
+END//Not SR
+ACTION_IF FILE_EXISTS_IN_GAME ~dvimhere.mrk~ BEGIN
+ COPY_EXISTING ~SPPR514.spl~ ~override~
+        SAY UNIDENTIFIED_DESC @10100032
+	SAY DESC @10100032
+END//SR
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//_______________________________________________________Inflict Med Wounds 60%+12______________________________________________________________________//
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//TO DO
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//_______________________________________________________Mass C.Light Wounds 25% +6_____________________________________________________________________//
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//TO DO
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////                                         //////////////////////////////////////
+///////////////////////////////                INDIVIDUAL SPELL CHANGES            /////////////////////////////////
+/////////////////////////////////////                                         //////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////                                         //////////////////////////////////////
+/////////////////////////////////////                ORISON STUFF             //////////////////////////////////////
+/////////////////////////////////////                                         //////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//SR Cause wounds spells summon a magic item that does the damage.  Account for this
+//Make compatible with sphere (if installed after them)
+
+//
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//____________________________________________________________________Infravision_______________________________________________________________________//
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//Infravision ---> Heat Vision
+ACTION_IF (FILE_EXISTS_IN_GAME ~dvimhere.mrk~) BEGIN   //any version of sr
+  ADD_SPELL ~Spells/data/revised_spells/heat_vision/spwi111.spl~ 2 1 ~WIZARD_HEAT_VISION~ //HEAT VISION
+        SAY NAME1 @106000004
+        SAY NAME2 @106000004
+        SAY UNIDENTIFIED_DESC @106000007
+	SAY DESC @106000007
+        LPF ALTER_EFFECT INT_VAR match_opcode = 139 parameter1 = RESOLVE_STR_REF (@106000004) END  //Notification: Heat Vision
+END//End SR
+
+//CHANGE TO DEVILS EYES!!!! AND STOP USING THE CANTRIP TRA...
+
+ACTION_IF (NOT FILE_EXISTS_IN_GAME ~dvimhere.mrk~) BEGIN    //otherwise...
+ COPY_EXISTING ~SPWI111.spl~ ~override~   //Copy over the original spell
+        SAY NAME1 @106000004  //Heat Vision
+        SAY NAME2 @106000004  //Heat Vision
+        LPF CLONE_EFFECT INT_VAR match_opcode = 63 opcode = 301 parameter1 = 2 END
+        LPF ALTER_EFFECT INT_VAR match_opcode = 139 parameter1 = RESOLVE_STR_REF (@106000004) END  //Notification: Heat Vision
+ SPRINT old1 @106000000//old text Infravision
+ SPRINT new1 @106000004//new text Heat Vision
+ SPRINT old2 @106000005//old text Infravision
+ SPRINT new2 @106000006//new text Heat Vision
+  READ_LONG 0x50 "valid"
+  PATCH_IF (%valid% >= 0) BEGIN // verify desc is valid
+  READ_STRREF 0x50 ~desc~
+	INNER_PATCH_SAVE new_desc ~%desc%~ BEGIN
+	REPLACE_TEXTUALLY ~%old1%~ ~%new1%~        //replacing old with new
+	END
+  SAY_EVALUATED 0x50 ~%new_desc%~
+  READ_STRREF 0x50 ~desc~
+	INNER_PATCH_SAVE new_desc ~%desc%~ BEGIN
+	REPLACE_TEXTUALLY ~%old2%~ ~%new2%~        //replacing old with new
+	END
+  SAY_EVALUATED 0x50 ~%new_desc%~
+  END  //
+END  //
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//_______________________________________________________Hold Animal ---> Hold Beast____________________________________________________________________//
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//FIND ALL VERSIONS OF THIS SPELL!
+//IN case they're needed...
+COPY ~Spells/data/spells/revised_spells/hold_animal/#GENENCH.vvc~ ~override~ // vvc
+COPY ~Spells/data/spells/revised_spells/hold_animal/ENCHANX.bam~ ~override~ // vvc bam
+COPY ~Spells/data/spells/revised_spells/hold_animal/#ARE_P21.WAV~ ~override~ // vvc sound
+COPY ~Spells/data/spells/revised_spells/hold_animal/#EFF_P04.WAV~ ~override~ // sound
+COPY ~Spells/data/spells/revised_spells/hold_animal/#EFF_E05.WAV~ ~override~ // sound
+ADD_PROJECTILE ~Spells/data/spells/revised_spells/hold_animal/b_beast.pro~   //pro
+//Can't replace if SR is installe
+//Cantrips disables it (though, not if SR is installed)
+//Add if SR installed, Replace hold animal otherwise.
+ACTION_IF (NOT FILE_EXISTS_IN_GAME ~dvimhere.mrk~) BEGIN   //not installed, disable spell
+  COPY ~Spells/data/spells/revised_spells/hold_animal/sppr305.spl~ ~override~ // Hold Beast
+        SAY NAME1 @51104
+        SAY NAME2 @51104
+        SAY UNIDENTIFIED_DESC @51105
+	SAY DESC @51105
+        LPF ALTER_SPELL_HEADER INT_VAR projectile = %b_beast% END
+END//End not SR
+
+ACTION_IF (FILE_EXISTS_IN_GAME ~dvimhere.mrk~) BEGIN   //if SR installed, add spell
+  ADD_SPELL ~Spells/data/revised_spells/hold_animal/sppr305.spl~ 1 3 ~CLERIC_HOLD_BEAST~ //HEAT VISION
+        SAY NAME1 @51104
+        SAY NAME2 @51104
+        SAY UNIDENTIFIED_DESC @51105
+	SAY DESC @51105
+        LPF ALTER_SPELL_HEADER INT_VAR projectile = %b_beast% END
+  LAF RES_NUM_OF_SPELL_NAME
+    STR_VAR spell_name = ~CLERIC_HOLD_BEAST~
+    RET spell_res
+  END
+  COPY_EXISTING ~%spell_res%.spl~ ~override~
+    LPF ALTER_EFFECT
+      INT_VAR match_opcode = 324            //
+      STR_VAR resource = EVAL ~%spell_res%~
+END//END SR
+
+//MAKING 'ALLIES' IMMUNE.  nOT SURE IF THAT MEANS 'ALLY TO PC' OR 'ALLY TO CASTER'.
+//I THIK IT'S 'ALLIES TO PC' SO MAY NEED A DIFFERENT VERSION FOR PCS VS NPCS.
+//ORIGINAL MAY NEED TO BE ADDED TO HIDESPL, AND MADE INTO A NPC VERSION, SCRIPTS SHOULD BE TWEAKED SO THEY USE VS. SUMMONED MONSTERS
+//THIS VERSION WOULD BE ADDSPELLED AND GIVEN TO PC'S, BUT NOT IF SPELL REVISONS IS INSTALLED
+
+//ALSO, DOUBLE CHECK THIS DOESN'T HOLD SPIRIT SUMMONS
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////                                         //////////////////////////////////////
+/////////////////////////////////////                1st level                //////////////////////////////////////
+/////////////////////////////////////                                         //////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+//CONTINUE FROM HERE
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////                                         //////////////////////////////////////
+/////////////////////////////////////                4th level                //////////////////////////////////////
+/////////////////////////////////////                                         //////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+//Unfailing Endurance --> Remove Fatigue
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//_______________________________________________________Remove Fatigue_________________________________________________________________________________//
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+ADD_SPELL ~Spells/data/revised_spells/unfailing_endurance/b_p101.spl~ 1 1 ~CLERIC_REMOVE_FATIGUE~ //
+        SAY NAME1 @10100000
+        SAY NAME2 @10100000
+        SAY UNIDENTIFIED_DESC @10100001
+	SAY DESC @10100001
+LAF RES_NUM_OF_SPELL_NAME
+  STR_VAR spell_name = ~CLERIC_REMOVE_FATIGUE~
+  RET spell_res
+END
+//icons
+COPY ~Spells/data/revised_spells/unfailing_endurance/SPPR424a.bam~ ~override/%spell_res%a.bam~
+COPY ~Spells/data/revised_spells/unfailing_endurance/SPPR424b.bam~ ~override/%spell_res%b.bam~
+COPY ~Spells/data/revised_spells/unfailing_endurance/SPPR424c.bam~ ~override/%spell_res%c.bam~
+//add bams to spl
+COPY_EXISTING ~%spell_res%.spl~ ~override~
+  WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
+  WRITE_EVALUATED_ASCII 0x0076 ~%spell_res%B~
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//_______________________________________________________Unfailing Endurance____________________________________________________________________________//
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+ACTION_IF FILE_EXISTS_IN_GAME ~b_IWD.itm~ BEGIN
+//should be able to use exact same code for iwdee and iwdification
+//spec ability
+COPY ~Spells/data/revised_spells/unfailing_endurance/b_fatig.spl~ ~override~
+        SAY NAME1 @10100000
+        SAY NAME2 @10100000
+        SAY UNIDENTIFIED_DESC @10100004
+	SAY DESC @10100004
+//heal notification
+COPY ~Spells/data/revised_spells/unfailing_endurance/B_HEALN.eff~ ~override~
+  SAY 0x1c ~Healed~ //healed (already in dialog.tlk so...)
+//animation
+COPY ~Spells/data/revised_spells/unfailing_endurance/ENCHAH.bam~ ~override~
+
+LAF RES_NUM_OF_SPELL_NAME
+  STR_VAR spell_name = ~CLERIC_UNFAILING_ENDURANCE~
+  RET spell_res
+END
+COPY_EXISTING ~%spell_res%.spl~ ~override~
+        SAY NAME1 @10100002
+        SAY NAME2 @10100002
+        SAY UNIDENTIFIED_DESC @10100003
+	SAY DESC @10100003
+	WRITE_BYTE 0x072 ~2~  //Projectile
+	WRITE_BYTE 0x07E ~5~  //Self
+	WRITE_SHORT 0x098 ~158~  //DH Projectile
+  LPF CLONE_EFFECT INT_VAR match_opcode = 93 opcode = 324 parameter1 = 0 parameter2 = 1 STR_VAR resource = EVAL ~%spell_res%~ END
+  LPF CLONE_EFFECT INT_VAR match_opcode = 93 opcode = 321 parameter1 = 0 parameter2 = 0 STR_VAR resource = EVAL ~%spell_res%~ END
+  LPF CLONE_EFFECT INT_VAR match_opcode = 93 opcode = 17 parameter1 = 25 parameter2 = 2 END
+  LPF CLONE_EFFECT INT_VAR match_opcode = 93 opcode = 171 timing = 0 parameter1 = 0 parameter2 = 0 duration = 2400 STR_VAR resource = EVAL ~b_fatig~  END
+  LPF CLONE_EFFECT INT_VAR match_opcode = 93 opcode = 172 timing = 4 parameter1 = 0 parameter2 = 0 duration = 2400 STR_VAR resource = EVAL ~b_fatig~  END
+  LPF CLONE_EFFECT INT_VAR match_opcode = 93 opcode = 177 parameter1 = 0 parameter2 = 2 STR_VAR resource = EVAL ~b_healn~ END
+  LPF ALTER_EFFECT INT_VAR match_opcode = 215 STR_VAR resource = EVAL ~ENCHAH~  END
+END  //End 'my version'
+
+//IWDEE
+
+ACTION_IF GAME_IS ~iwdee~ THEN BEGIN   //
+//should be able to use exact same code for iwdee and iwdification
+//spec ability
+COPY ~Spells/data/revised_spells/unfailing_endurance/b_fatig.spl~ ~override~
+        SAY NAME1 @10100000
+        SAY NAME2 @10100000
+        SAY UNIDENTIFIED_DESC @10100004
+	SAY DESC @10100004
+//heal notification
+COPY ~Spells/data/revised_spells/unfailing_endurance/B_HEALN.eff~ ~override~
+  SAY 0x1c ~Healed~ //healed (already in dialog.tlk so...)
+
+//animation
+COPY ~Spells/data/revised_spells/unfailing_endurance/ENCHAH.bam~ ~override~
+
+LAF RES_NUM_OF_SPELL_NAME
+  STR_VAR spell_name = ~CLERIC_UNFAILING_ENDURANCE~
+  RET spell_res
+END
+COPY_EXISTING ~%spell_res%.spl~ ~override~
+        SAY NAME1 @10100002
+        SAY NAME2 @10100002
+        SAY UNIDENTIFIED_DESC @10100003
+	SAY DESC @10100003
+	WRITE_BYTE 0x072 ~2~  //Projectile
+	WRITE_BYTE 0x07E ~5~  //Self
+	WRITE_SHORT 0x098 ~158~  //DH Projectile
+  LPF CLONE_EFFECT INT_VAR match_opcode = 93 opcode = 324 parameter1 = 0 parameter2 = 1 STR_VAR resource = EVAL ~%spell_res%~ END
+  LPF CLONE_EFFECT INT_VAR match_opcode = 93 opcode = 321 parameter1 = 0 parameter2 = 0 STR_VAR resource = EVAL ~%spell_res%~ END
+  LPF CLONE_EFFECT INT_VAR match_opcode = 93 opcode = 17 parameter1 = 25 parameter2 = 2 END
+  LPF CLONE_EFFECT INT_VAR match_opcode = 93 opcode = 171 timing = 0 parameter1 = 0 parameter2 = 0 duration = 2400 STR_VAR resource = EVAL ~b_fatig~  END
+  LPF CLONE_EFFECT INT_VAR match_opcode = 93 opcode = 172 timing = 4 parameter1 = 0 parameter2 = 0 duration = 2400 STR_VAR resource = EVAL ~b_fatig~  END
+  LPF CLONE_EFFECT INT_VAR match_opcode = 93 opcode = 177 parameter1 = 0 parameter2 = 2 STR_VAR resource = EVAL ~b_healn~ END
+  LPF ALTER_EFFECT INT_VAR match_opcode = 215 STR_VAR resource = EVAL ~ENCHAH~  END
+END
+//End iwdee version
+//IWDIfication
+ACTION_IF MOD_IS_INSTALLED ~SETUP-IWDIFICATION.TP2~ ~40~ THEN BEGIN//should be able to use exact same code for iwdee and iwdification
+//spec ability
+COPY ~Spells/data/revised_spells/unfailing_endurance/b_fatig.spl~ ~override~
+        SAY NAME1 @10100000
+        SAY NAME2 @10100000
+        SAY UNIDENTIFIED_DESC @10100004
+	SAY DESC @10100004
+//heal notification
+COPY ~Spells/data/revised_spells/unfailing_endurance/B_HEALN.eff~ ~override~
+  SAY 0x1c ~Healed~ //healed (already in dialog.tlk so...)
+
+//animation
+COPY ~Spells/data/revised_spells/unfailing_endurance/ENCHAH.bam~ ~override~
+
+LAF RES_NUM_OF_SPELL_NAME
+  STR_VAR spell_name = ~CLERIC_UNFAILING_ENDURANCE~
+  RET spell_res
+END
+COPY_EXISTING ~%spell_res%.spl~ ~override~
+        SAY NAME1 @10100002
+        SAY NAME2 @10100002
+        SAY UNIDENTIFIED_DESC @10100003
+	SAY DESC @10100003
+	WRITE_BYTE 0x072 ~2~  //Projectile
+	WRITE_BYTE 0x07E ~5~  //Self
+	WRITE_SHORT 0x098 ~158~  //DH Projectile
+  LPF CLONE_EFFECT INT_VAR match_opcode = 93 opcode = 324 parameter1 = 0 parameter2 = 1 STR_VAR resource = EVAL ~%spell_res%~ END
+  LPF CLONE_EFFECT INT_VAR match_opcode = 93 opcode = 321 parameter1 = 0 parameter2 = 0 STR_VAR resource = EVAL ~%spell_res%~ END
+  LPF CLONE_EFFECT INT_VAR match_opcode = 93 opcode = 17 parameter1 = 25 parameter2 = 2 END
+  LPF CLONE_EFFECT INT_VAR match_opcode = 93 opcode = 171 timing = 0 parameter1 = 0 parameter2 = 0 duration = 2400 STR_VAR resource = EVAL ~b_fatig~  END
+  LPF CLONE_EFFECT INT_VAR match_opcode = 93 opcode = 172 timing = 4 parameter1 = 0 parameter2 = 0 duration = 2400 STR_VAR resource = EVAL ~b_fatig~  END
+  LPF CLONE_EFFECT INT_VAR match_opcode = 93 opcode = 177 parameter1 = 0 parameter2 = 2 STR_VAR resource = EVAL ~b_healn~ END
+  LPF ALTER_EFFECT INT_VAR match_opcode = 215 STR_VAR resource = EVAL ~ENCHAH~  END
+END
+
+//ATTENTION: FIT REMOVE FATIGUE AND UNFAILING ENDURANCE IN SPHERE SYSTEM...
+//ALSO, MAYBE REMOVE FATIGUE SHOULD HEAL A BIT???
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//_________________________________________________________________Charm Person_________________________________________________________________________//
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//_________________________________________________________________Entropy Shield_______________________________________________________________________//
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//IWD version only (my version already does this).  Protects vs. sol's searing orb (et al if necessary)
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//_________________________________________________________________Charm person or mammal --> Charm Beast_______________________________________________//
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+
+opcode = 177
+target = 2
+power = 0
+timing = 4
+parameter1 = 5
+parameter2 = 160
+power = 0
+resist_dispel = 2
+duration = 1
+probability1 = 100
+probability2 = 0
+dicenumber = 0
+dicesize = 0
+savingthrow = 0
+savebonus = 0
+header =
+insert_point = 7
+resource = POOL1a10
+
+
+
+//////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////
+////////////////////////            //////////////////////////
+////////////////////////DESTRUCTION///////////////////////////
+////////////////////////            //////////////////////////
+//////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////
+
+//Smite_____________________________________________________________________________
+ADD_SPELL ~Spells/spheres/spells/Destruction/b_pr101.spl~ 1 1 ~CLERIC_SMITE~
+	SAY NAME1 @50401
+	SAY NAME2 @50401
+	SAY UNIDENTIFIED_DESC @50402
+	SAY DESC @50402
+COPY ~Spells/spheres/spells/Destruction/b_pr101.eff~ ~override~     //
+COPY ~Spells/spheres/spells/Destruction/SPUNHOLY.bam~ ~override~     //
+COPY ~Spells/spheres/spells/Destruction/EFF_E01.WAV~ ~override~     //
+
+//Shatter__________________________________________________________________________________
+//icons
+COPY ~Spells/spheres/spells/Destruction/b_c204b.bam~ ~override~  // Shatter
+COPY ~Spells/spheres/spells/Destruction/b_c204c.bam~ ~override~  // Shatter
+//spell etc
+ADD_SPELL ~Spells/spheres/spells/Destruction/b_pr201.spl~ 1 2 ~CLERIC_SHATTER~ //Curse Spell
+        SAY NAME1 @50408
+        SAY NAME2 @50408
+        SAY UNIDENTIFIED_DESC @50409
+	SAY DESC @50409
+COPY ~Spells/spheres/spells/Destruction/b_pr201A.spl~ ~override~ // Shatter 2nd
+COPY ~Spells/spheres/spells/Destruction/b_pr201B.spl~ ~override~ // Shatter   3rd
+COPY ~Spells/spheres/spells/Destruction/b_pr201A.eff~ ~override~ // Shatter  x dam golem
+COPY ~Spells/spheres/spells/Destruction/b_pr201B.eff~ ~override~ // Shatter  cast 2
+COPY ~Spells/spheres/spells/Destruction/b_pr201C.eff~ ~override~ // Shatter  x dam
+COPY ~Spells/spheres/spells/Destruction/b_pr201D.eff~ ~override~ // Shatter  cast 3
+COPY ~Spells/spheres/spells/Destruction/EFF_E01.WAV~ ~override~     //
+
+//Need to copy all elementals, and change their type to monster
+COPY_EXISTING_REGEXP GLOB ~.*\.cre~ ~override~ //copies all cre files
+	PATCH_IF (~%SOURCE_SIZE%~ > ~0x71~) BEGIN
+		READ_BYTE ~0x272~ ~type~ //reads the byte containing cre type
+		PATCH_IF (~%type%~ = ~145~) BEGIN
+	          WRITE_SHORT 0x271 255
+	          WRITE_BYTE  0x272 145   //I have no idea why I need to do this...
+                END
+         END
+BUT_ONLY_IF_IT_CHANGES
+
+//Shout__________________________________________________________________________________
+ADD_PROJECTILE ~Spells/spheres/spells/Destruction/b_sht01.pro~   //projectile
+COPY ~Spells/spheres/spells/Destruction/SHOUTT.bam~ ~override~     //
+COPY ~Spells/spheres/spells/Destruction/#FF_M101.WAV~ ~override~     //
+ADD_SPELL ~Spells/spheres/spells/Destruction/b_pr402.spl~ 1 4 ~CLERIC_SHOUT~ //
+        SAY NAME1 @50405
+        SAY NAME2 @50405
+        SAY UNIDENTIFIED_DESC @50406
+	SAY DESC @50406
+	WRITE_SHORT 0x098 ~%b_sht01%~  //Projectile
+
+//////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////
+////////////////////////            //////////////////////////
+//////////////////////// AFFLICTION //////////////////////////
+////////////////////////            //////////////////////////
+//////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////
+
+//Waves of Agony__________________________________________________________________________________
+ADD_SPELL ~Spells/spheres/spells/affliction/b_Pr501.spl~ 1 5 ~CLERIC_WAVES_OF_AGONY~ //
+        SAY NAME1 @51201
+        SAY NAME2 @51201
+        SAY UNIDENTIFIED_DESC @51202
+	SAY DESC @51202
+COPY ~Spells/spheres/spells/affliction/b_ILM04a.spl~ ~override~ // Wave of Agony spla
+COPY ~Spells/spheres/spells/affliction/b_ILM04b.spl~ ~override~ // etc.
+COPY ~Spells/spheres/spells/affliction/b_ILM04.eff~ ~override~ //
+  SAY 0x1c @51203 //Wracked in Agony
+COPY ~Spells/spheres/spells/affliction/EFF_E05.WAV~ ~override~ //
+
+//////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////
+////////////////////////            //////////////////////////
+////////////////////////   PLANT    //////////////////////////
+////////////////////////            //////////////////////////
+//////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////
+
+//Nature's Wrath_________________________________________________________________
+ADD_SPELL ~Spells/spheres/spells/plant/b_Pr601.spl~ 1 6 ~CLERIC_NATURES_WRATH~ //
+        SAY NAME1 @51401
+        SAY NAME2 @51401
+        SAY UNIDENTIFIED_DESC @51402
+	SAY DESC @51402
+ COPY ~Spells/spheres/spells/plant/SHMBLR.ITM~ ~override~ //
+ COPY ~Spells/spheres/spells/plant/SISHAPE06.bam~ ~override~ //  
+LAF RES_NUM_OF_SPELL_NAME
+  STR_VAR spell_name = ~CLERIC_NATURES_WRATH~
+  RET spell_res
+END
+COPY_EXISTING ~%spell_res%.spl~ ~override~
+  LPF ALTER_EFFECT
+      INT_VAR match_opcode = 321            //
+      STR_VAR resource = EVAL ~%spell_res%~
+  END      //
+COPY_EXISTING ~%spell_res%.spl~ ~override~
+  LPF CLONE_EFFECT INT_VAR match_opcode = 321 STR_VAR resource = EVAL ~B_FO601~ END
+ 
+//CONTINUE HERE
+
+//Assassin Vines_________________________________________________
+ACTION_IF GAME_IS ~bgee sod bg2ee eet iwdee~ THEN BEGIN    //Not sure why, but I originally limited this to IWDEE TEST!
+ COPY ~Spells/spheres/spells/plant/b_c601.spl~ ~override~ //Assassin Vines
+        SAY NAME1 @51404
+        SAY NAME2 @51404
+        SAY UNIDENTIFIED_DESC @51405
+	SAY DESC @51405
+ COPY_EXISTING ~d5phpla6.spl~ ~override~
+    LPF CLONE_EFFECT INT_VAR match_opcode=171 STR_VAR match_resource=~SPWI101~ resource = ~b_c601~ END
+
+COPY_EXISTING ~b_c601.spl~ ~override/b_Fo602.spl~ // Assassin Vines-FOCUS
+        SAY UNIDENTIFIED_DESC @51406
+	SAY DESC @51406
+  WRITE_LONG 0x34 5
+COPY_EXISTING ~d5ffpla6.spl~ ~override~
+         LPF CLONE_EFFECT INT_VAR match_opcode=171 STR_VAR match_resource=~SPWI101~ resource = ~b_Fo602~ END
+BUT_ONLY
+END
+
+//Stone Fist__________________________________________________________________________________
+//EARTH
+//icons
+COPY ~Spells/spheres/spells/earth/b_c303b.bam~ ~override~ // Stone Fist
+COPY ~Spells/spheres/spells/earth/b_c303c.bam~ ~override~ // Stone Fist
+//spell etc
+COPY ~Spells/spheres/spells/earth/b_pr301.spl~ ~override~ // Stone Fist
+        SAY NAME1 @51501
+        SAY NAME2 @51501
+        SAY UNIDENTIFIED_DESC @51503
+	SAY DESC @51503
+COPY ~Spells/spheres/spells/earth/b_pr301.itm~ ~override~ // Actual Fist
+        SAY NAME1 @51501
+        SAY NAME2 @51501
+        SAY UNIDENTIFIED_DESC @51504
+	SAY DESC @51504
+ COPY_EXISTING ~d5phear3.spl~ ~override~
+         LPF CLONE_EFFECT INT_VAR match_opcode=171 STR_VAR match_resource=~SPWI101~ resource = ~b_pr301~ END
+ BUT_ONLY
+//END
+COPY ~Spells/spheres/spells/earth/b_pr301.spl~ ~override/b_Fo301.spl~ // Stone Fist-FOCUS
+        SAY NAME1 @51501
+        SAY NAME2 @51501
+        SAY UNIDENTIFIED_DESC @51503
+	SAY DESC @51503
+  WRITE_LONG 0x34 2
+COPY_EXISTING ~d5ffear3.spl~ ~override~
+         LPF CLONE_EFFECT INT_VAR match_opcode=171 STR_VAR match_resource=~SPWI101~ resource = ~b_Fo301~ END
+BUT_ONLY
+
+//WATER
+//Summon Water Elemental______________________________________________________________________
+ACTION_IF GAME_IS ~iwdee~ THEN BEGIN    //IWDEE only animation
+ COPY ~Spells/spheres/spells/water/b_Pr602.spl~ ~override~ // Summon Water Elemental
+        SAY NAME1 @51701
+        SAY NAME2 @51701
+        SAY UNIDENTIFIED_DESC @51702
+	SAY DESC @51702
+ COPY ~Spells/spheres/spells/water/B_PRWA1.eff~ ~override~ // Summon Water Elemental
+ COPY ~Spells/spheres/spells/water/B_PRWA2.eff~ ~override~ // Summon Water Elemental
+ COPY ~Spells/spheres/spells/water/b_wele1.itm~ ~override~ // Summon Water Elemental
+ COPY ~Spells/spheres/spells/water/b_gensu.itm~ ~override~ // Summon Water Elemental
+ COPY_EXISTING ~cywatere.cre~ ~override/b_wele1.cre~
+  WRITE_BYTE 0x270 4  //Ally
+  ADD_CRE_ITEM ~b_gensu~ #0 #0 #0 ~IDENTIFIED~ ~amulet~ //Gender to summoned
+  ADD_CRE_ITEM ~b_wele1~ #0 #0 #0 ~IDENTIFIED~ ~weapon1~ EQUIP//Adds weapon
+ COPY ~Spells/spheres/spells/water/b_wele2.itm~ ~override~ // Summon Water Elemental
+ COPY_EXISTING ~cywatere.cre~ ~override/b_wele2.cre~
+  WRITE_BYTE 0x270 4  //Ally
+  WRITE_BYTE 0x234 16  //Level
+  WRITE_BYTE 0x238 22  //Strength
+  WRITE_BYTE 0x23c 15  //Dex
+  WRITE_BYTE 0x23d 16  //COn
+  WRITE_BYTE 0x52 3  //THAC0
+  WRITE_BYTE 0x54 3  //death
+  WRITE_BYTE 0x55 5  //Wands
+  WRITE_BYTE 0x56 4  //Poly
+  WRITE_BYTE 0x57 3  //Breath
+  WRITE_BYTE 0x58 6  //Spell
+  WRITE_SHORT 0x24 168 //
+  WRITE_SHORT 0x26 168 // Current and max hp
+  ADD_CRE_ITEM ~b_wele2~ #0 #0 #0 ~IDENTIFIED~ ~weapon1~ EQUIP//Adds weapon
+  ADD_CRE_ITEM ~b_gensu~ #0 #0 #0 ~IDENTIFIED~ ~amulet~ //Gender to summoned
+ COPY_EXISTING ~d5phwat6.spl~ ~override~
+    LPF CLONE_EFFECT INT_VAR match_opcode=171 STR_VAR match_resource=~SPWI101~ resource = ~b_Pr602~ END
+ BUT_ONLY
+ COPY_EXISTING ~b_Pr602.spl~ ~override/b_Fo602.spl~ // Conjure Water-FOCUS
+        SAY UNIDENTIFIED_DESC @51703
+	SAY DESC @51703
+  WRITE_LONG 0x34 5
+ COPY_EXISTING ~d5ffwat6.spl~ ~override~
+         LPF CLONE_EFFECT INT_VAR match_opcode=171 STR_VAR match_resource=~SPWI101~ resource = ~b_Fo602~ END
+ BUT_ONLY
+END
+
+ACTION_IF GAME_IS ~bg2ee eet~ THEN BEGIN    //BG2EE only creature
+ COPY ~Spells/spheres/spells/water/b_Pr602.spl~ ~override~ // Summon Water Elemental
+        SAY NAME1 @51701
+        SAY NAME2 @51701
+        SAY UNIDENTIFIED_DESC @51702
+	SAY DESC @51702
+ COPY ~Spells/spheres/spells/water/B_PRWA1.eff~ ~override~ // Summon Water Elemental
+ COPY ~Spells/spheres/spells/water/B_PRWA2.eff~ ~override~ // Summon Water Elemental
+ COPY ~Spells/spheres/spells/water/b_wele1.itm~ ~override~ // Summon Water Elemental
+ COPY ~Spells/spheres/spells/water/b_gensu.itm~ ~override~ // Summon Water Elemental
+ COPY_EXISTING ~elwatg01.cre~ ~override/b_wele1.cre~
+  WRITE_BYTE 0x270 4  //Ally
+  ADD_CRE_ITEM ~b_gensu~ #0 #0 #0 ~IDENTIFIED~ ~amulet~ //Gender to summoned
+  ADD_CRE_ITEM ~b_wele1~ #0 #0 #0 ~IDENTIFIED~ ~weapon1~ EQUIP//Adds weapon
+ COPY ~Spells/spheres/spells/water/b_wele2.itm~ ~override~ // Summon Water Elemental
+ COPY_EXISTING ~elwatg01.cre~ ~override/b_wele2.cre~
+  WRITE_BYTE 0x270 4  //Ally
+  WRITE_BYTE 0x234 16  //Level
+  WRITE_BYTE 0x238 22  //Strength
+  WRITE_BYTE 0x23c 15  //Dex
+  WRITE_BYTE 0x23d 16  //COn
+  WRITE_BYTE 0x52 3  //THAC0
+  WRITE_BYTE 0x54 3  //death
+  WRITE_BYTE 0x55 5  //Wands
+  WRITE_BYTE 0x56 4  //Poly
+  WRITE_BYTE 0x57 3  //Breath
+  WRITE_BYTE 0x58 6  //Spell
+  WRITE_SHORT 0x24 168 //
+  WRITE_SHORT 0x26 168 // Current and max hp
+  ADD_CRE_ITEM ~b_wele2~ #0 #0 #0 ~IDENTIFIED~ ~weapon1~ EQUIP//Adds weapon
+  ADD_CRE_ITEM ~b_gensu~ #0 #0 #0 ~IDENTIFIED~ ~amulet~ //Gender to summoned
+ COPY_EXISTING ~d5phwat6.spl~ ~override~
+    LPF CLONE_EFFECT INT_VAR match_opcode=171 STR_VAR match_resource=~SPWI101~ resource = ~b_Pr602~ END
+ BUT_ONLY
+ COPY_EXISTING ~b_Pr602.spl~ ~override/b_Fo602.spl~ // Conjure Water-FOCUS
+  SAY UNIDENTIFIED_DESC @51703
+  WRITE_LONG 0x34 5
+ COPY_EXISTING ~d5ffwat6.spl~ ~override~
+         LPF CLONE_EFFECT INT_VAR match_opcode=171 STR_VAR match_resource=~SPWI101~ resource = ~b_Fo602~ END
+ BUT_ONLY
+END
+
+//Ice Blade_________________________________________________________
+ACTION_IF GAME_IS ~bgee sod bg2ee eet iwdee~ THEN BEGIN    //Not sure why, but I originally limited these spells to IWDEE TEST!
+//Icons
+COPY ~Spells/spheres/spells/water/b_c203b.bam~ ~override~   //bam
+COPY ~Spells/spheres/spells/water/b_c203c.bam~ ~override~   //bam
+//blades
+COPY ~Spells/spheres/spells/water/moonbla.bam~ ~override~   //bam
+COPY ~Spells/spheres/spells/water/b_iceb1.itm~ ~override~   //blade
+        SAY NAME1 @51704
+        SAY NAME2 @51704
+        SAY UNIDENTIFIED_DESC @51710
+	SAY DESC @51710
+COPY ~Spells/spheres/spells/water/b_iceb2.itm~ ~override~   //blade
+        SAY NAME1 @51704
+        SAY NAME2 @51704
+        SAY UNIDENTIFIED_DESC @51711
+	SAY DESC @51711
+COPY ~Spells/spheres/spells/water/b_iceb3.itm~ ~override~   //blade
+        SAY NAME1 @51704
+        SAY NAME2 @51704
+        SAY UNIDENTIFIED_DESC @51712
+	SAY DESC @51712
+COPY ~Spells/spheres/spells/water/b_iceb4.itm~ ~override~   //blade
+        SAY NAME1 @51704
+        SAY NAME2 @51704
+        SAY UNIDENTIFIED_DESC @51713
+	SAY DESC @51713
+COPY ~Spells/spheres/spells/water/b_iceb5.itm~ ~override~   //blade
+        SAY NAME1 @51704
+        SAY NAME2 @51704
+        SAY UNIDENTIFIED_DESC @51714
+	SAY DESC @51714
+COPY ~Spells/spheres/spells/water/b_iceb6.itm~ ~override~   //blade
+        SAY NAME1 @51704
+        SAY NAME2 @51704
+        SAY UNIDENTIFIED_DESC @51715
+	SAY DESC @51715
+COPY ~Spells/spheres/spells/water/b_iceb7.itm~ ~override~   //blade
+        SAY NAME1 @51704
+        SAY NAME2 @51704
+        SAY UNIDENTIFIED_DESC @51716
+	SAY DESC @51716
+COPY ~Spells/spheres/spells/water/b_iceb8.itm~ ~override~   //blade
+        SAY NAME1 @51704
+        SAY NAME2 @51704
+        SAY UNIDENTIFIED_DESC @51717
+	SAY DESC @51717
+COPY ~Spells/spheres/spells/water/b_iceb9.itm~ ~override~   //blade
+        SAY NAME1 @51704
+        SAY NAME2 @51704
+        SAY UNIDENTIFIED_DESC @51718
+	SAY DESC @51718
+COPY ~Spells/spheres/spells/water/b_iceb10.itm~ ~override~   //blade
+        SAY NAME1 @51704
+        SAY NAME2 @51704
+        SAY UNIDENTIFIED_DESC @51719
+	SAY DESC @51719
+COPY ~Spells/spheres/spells/water/b_c203.spl~ ~override~ // Ice Blade
+        SAY NAME1 @51704
+        SAY NAME2 @51704
+        SAY UNIDENTIFIED_DESC @51705
+	SAY DESC @51705
+ COPY_EXISTING ~d5phwat2.spl~ ~override~
+    LPF CLONE_EFFECT INT_VAR match_opcode=171 STR_VAR match_resource=~SPWI101~ resource = ~b_c203~ END
+ BUT_ONLY
+ COPY_EXISTING ~b_c203.spl~ ~override/b_Fo202.spl~ // Ice Blade-FOCUS
+  SAY UNIDENTIFIED_DESC @51705
+  WRITE_LONG 0x34 1
+ COPY_EXISTING ~d5ffwat2.spl~ ~override~
+         LPF CLONE_EFFECT INT_VAR match_opcode=171 STR_VAR match_resource=~SPWI101~ resource = ~b_Fo202~ END
+ BUT_ONLY
+
+//Frost Fingers____________________________________________________________
+//icons
+COPY ~Spells/spheres/spells/water/b_c103b.bam~ ~override~ // Frost Fingers
+COPY ~Spells/spheres/spells/water/b_c103c.bam~ ~override~ // Frost Fingers
+//spell etc
+ADD_PROJECTILE ~Spells/spheres/spells/water/b_c103.pro~
+COPY ~Spells/spheres/spells/water/b_c103.spl~ ~override~ // Frost Fingers
+        SAY NAME1 @51707
+        SAY NAME2 @51707
+        SAY UNIDENTIFIED_DESC @51708
+	SAY DESC @51708
+	WRITE_SHORT 0x098 ~%b_c103%~
+ COPY_EXISTING ~d5phwat1.spl~ ~override~
+    LPF CLONE_EFFECT INT_VAR match_opcode=171 STR_VAR match_resource=~SPWI101~ resource = ~b_c103~ END
+ BUT_ONLY
+ COPY_EXISTING ~b_c103.spl~ ~override/b_Fo101.spl~ // Ice Blade-FOCUS
+        SAY UNIDENTIFIED_DESC @51709
+	SAY DESC @51709
+  WRITE_LONG 0x34 1
+ COPY_EXISTING ~d5ffwat1.spl~ ~override~
+         LPF CLONE_EFFECT INT_VAR match_opcode=171 STR_VAR match_resource=~SPWI101~ resource = ~b_Fo101~ END
+ BUT_ONLY
+
+END
+
+//__________________________________________________________________________________
+
+//SHADOW
+
+//Cloak of Darkness_________________________________________________________
+//icons
+COPY ~Spells/spheres/spells/shadow/b_c302b.bam~ ~override~ // Cloak of Darkness
+COPY ~Spells/spheres/spells/shadow/b_c302c.bam~ ~override~ // Cloak of Darkness
+//spell etc
+COPY ~Spells/spheres/spells/shadow/b_c302.spl~ ~override~ // Cloak of Darkness
+        SAY NAME1 @52003
+        SAY NAME2 @52003
+        SAY UNIDENTIFIED_DESC @52004
+	SAY DESC @52004
+	COPY_EXISTING ~d5phsha3.spl~ ~override~
+		LPF CLONE_EFFECT INT_VAR match_opcode=171 STR_VAR match_resource=~SPWI101~ resource = ~b_c302~ END // cloak of darkness
+	COPY_EXISTING ~b_c302.spl~ ~override/b_fo302.spl~
+        SAY UNIDENTIFIED_DESC @52005
+	SAY DESC @52005
+           WRITE_LONG 0x34 2
+	COPY_EXISTING ~d5ffsha3.spl~ ~override~
+		LPF CLONE_EFFECT INT_VAR match_opcode=171 STR_VAR match_resource=~SPWI101~ resource = ~b_fo302~ END // focus cloak of darkness
+	BUT_ONLY
+
+//special case: shadowstep__________________________________________________________
+//
+ACTION_IF NOT FILE_EXISTS_IN_GAME ~spsd02.spl~ BEGIN
+	COPY ~Spells/spheres/spells/shadow/spsd02.spl~ ~override~ // Shadowstep
+        SAY NAME1 @52001
+        SAY NAME2 @52001
+        SAY UNIDENTIFIED_DESC @52002
+	SAY DESC @52002
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~spsd02.spl~ BEGIN
+	COPY_EXISTING ~d5phsha5.spl~ ~override~
+		LPF CLONE_EFFECT INT_VAR match_opcode=171 STR_VAR match_resource=~SPWI101~ resource = ~spsd02~ END // skeleton warrior
+	COPY_EXISTING ~spsd02.spl~ ~override/d5fosd02.spl~
+        WRITE_LONG 0x34 4
+	COPY_EXISTING ~d5ffsha5.spl~ ~override~
+		LPF CLONE_EFFECT INT_VAR match_opcode=171 STR_VAR match_resource=~SPWI101~ resource = ~d5fosd02~ END // skeleton warrior
+	BUT_ONLY
+END
+
+
+//__________________________________________________________________________________
+
+//CHARM/THOUGHT
+//Forbiddance___________________________________________________________________
+ACTION_IF GAME_IS ~bgee sod bg2ee eet iwdee~ THEN BEGIN    //originally made iwdee only test
+//icons
+COPY ~Spells/spheres/spells/charm/b_c201b.bam~ ~override~ // Forbiddance
+COPY ~Spells/spheres/spells/charm/b_c201c.bam~ ~override~ // Forbiddance
+//spell etc
+COPY ~Spells/spheres/spells/charm/b_c201.spl~ ~override~ // Forbiddance
+        SAY NAME1 @50800
+        SAY NAME2 @50800
+        SAY UNIDENTIFIED_DESC @50801
+	SAY DESC @50801
+	COPY_EXISTING ~d5phtho2.spl~ ~override~
+		LPF CLONE_EFFECT INT_VAR match_opcode=171 STR_VAR match_resource=~SPWI101~ resource = ~b_c201~ END // Forbiddance
+	COPY_EXISTING ~b_c201.spl~ ~override/b_fo203.spl~
+        SAY UNIDENTIFIED_DESC @50802
+	SAY DESC @50802
+           WRITE_LONG 0x34 1
+             LPF ALTER_EFFECT
+              INT_VAR match_opcode = 324
+              STR_VAR resource = EVAL ~b_fo203~
+             END
+	COPY_EXISTING ~d5fftho2.spl~ ~override~
+		LPF CLONE_EFFECT INT_VAR match_opcode=171 STR_VAR match_resource=~SPWI101~ resource = ~b_fo203~ END // focus Forbiddance
+	BUT_ONLY
+
+//Murderous Command_____________________________________________________________
+//icons
+COPY ~Spells/spheres/spells/charm/b_c301b.bam~ ~override~ // Murderous Command
+COPY ~Spells/spheres/spells/charm/b_c301c.bam~ ~override~ // Murderous Command
+//spell etc
+COPY ~Spells/spheres/spells/charm/b_c301.spl~ ~override~ // Murderous Command
+        SAY NAME1 @50803
+        SAY NAME2 @50803
+        SAY UNIDENTIFIED_DESC @50804
+	SAY DESC @50804
+
+COPY_EXISTING ~d5phtho3.spl~ ~override~
+		LPF CLONE_EFFECT INT_VAR match_opcode=171 STR_VAR match_resource=~SPWI101~ resource = ~b_c301~ END // Murderous Command
+
+COPY_EXISTING ~b_c301.spl~ ~override/b_f301.spl~
+        SAY UNIDENTIFIED_DESC @50805
+	SAY DESC @50805
+           WRITE_LONG 0x34 2
+             LPF ALTER_EFFECT
+              INT_VAR match_opcode = 324
+              STR_VAR resource = EVAL ~b_f301~
+             END
+COPY_EXISTING ~d5fftho3.spl~ ~override~
+		LPF CLONE_EFFECT INT_VAR match_opcode=171 STR_VAR match_resource=~SPWI101~ resource = ~b_f301~ END // focus Murderous Command
+	BUT_ONLY
+END
+//end ee only
+//__________________________________________________________________________________
+
+//DEATH
+
+//Pacify the Dead______________________________________________________________
+//icons
+COPY ~Spells/spheres/spells/death/b_c202b.bam~ ~override~ // Pacify the Dead
+COPY ~Spells/spheres/spells/death/b_c202c.bam~ ~override~ // Pacify the Dead
+//spells etc
+COPY ~Spells/spheres/spells/death/b_c202.spl~ ~override~ // Pacify the Dead
+        SAY NAME1 @50301
+        SAY NAME2 @50301
+        SAY UNIDENTIFIED_DESC @50302
+	SAY DESC @50302
+  LPF ALTER_EFFECT
+      INT_VAR match_opcode = 324
+      parameter1 = 0
+      parameter2 = 2
+      STR_VAR resource = EVAL ~b_c202~
+     END
+  LPF CLONE_EFFECT INT_VAR match_opcode = 40 opcode = 321 parameter1 = 0 parameter2 = 0 timing = 0 STR_VAR resource = EVAL ~b_c202~ END
+  LPF CLONE_EFFECT INT_VAR match_opcode = 40 opcode = 321 parameter1 = 0 parameter2 = 0 timing = 0 STR_VAR resource = EVAL ~b_f201~ END
+COPY_EXISTING ~d5phdea2.spl~ ~override~
+		LPF CLONE_EFFECT INT_VAR match_opcode=171 STR_VAR match_resource=~SPWI101~ resource = ~b_c202~ END // Murderous Command
+COPY_EXISTING ~b_c202.spl~ ~override/b_f201.spl~
+        SAY UNIDENTIFIED_DESC @50303
+	SAY DESC @50303
+           WRITE_LONG 0x34 1
+COPY_EXISTING ~d5ffdea2.spl~ ~override~
+		LPF CLONE_EFFECT INT_VAR match_opcode=171 STR_VAR match_resource=~SPWI101~ resource = ~b_f201~ END // Murderous Command
+//add removal
+ACTION_IF FILE_EXISTS_IN_GAME ~.spl~ BEGIN
+ COPY_EXISTING ~spwi312.spl~ ~override~
+  LPF CLONE_EFFECT INT_VAR match_opcode = 40 opcode = 321 parameter1 = 0 parameter2 = 0 timing = 0 STR_VAR resource = EVAL ~b_c202~ END
+  LPF CLONE_EFFECT INT_VAR match_opcode = 40 opcode = 321 parameter1 = 0 parameter2 = 0 timing = 0 STR_VAR resource = EVAL ~b_f201~ END
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~.spl~ BEGIN
+ COPY_EXISTING ~spwish25.spl~ ~override~
+  LPF CLONE_EFFECT INT_VAR match_opcode = 40 opcode = 321 parameter1 = 0 parameter2 = 0 timing = 0 STR_VAR resource = EVAL ~b_c202~ END
+  LPF CLONE_EFFECT INT_VAR match_opcode = 40 opcode = 321 parameter1 = 0 parameter2 = 0 timing = 0 STR_VAR resource = EVAL ~b_f201~ END
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~.spl~ BEGIN
+ COPY_EXISTING ~spin146.spl~ ~override~
+  LPF CLONE_EFFECT INT_VAR match_opcode = 40 opcode = 321 parameter1 = 0 parameter2 = 0 timing = 0 STR_VAR resource = EVAL ~b_c202~ END
+  LPF CLONE_EFFECT INT_VAR match_opcode = 40 opcode = 321 parameter1 = 0 parameter2 = 0 timing = 0 STR_VAR resource = EVAL ~b_f201~ END
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~.spl~ BEGIN
+ COPY_EXISTING ~spin977.spl~ ~override~
+  LPF CLONE_EFFECT INT_VAR match_opcode = 40 opcode = 321 parameter1 = 0 parameter2 = 0 timing = 0 STR_VAR resource = EVAL ~b_c202~ END
+  LPF CLONE_EFFECT INT_VAR match_opcode = 40 opcode = 321 parameter1 = 0 parameter2 = 0 timing = 0 STR_VAR resource = EVAL ~b_f201~ END
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~.spl~ BEGIN
+ COPY_EXISTING ~spwm164.spl~ ~override~
+  LPF CLONE_EFFECT INT_VAR match_opcode = 40 opcode = 321 parameter1 = 0 parameter2 = 0 timing = 0 STR_VAR resource = EVAL ~b_c202~ END
+  LPF CLONE_EFFECT INT_VAR match_opcode = 40 opcode = 321 parameter1 = 0 parameter2 = 0 timing = 0 STR_VAR resource = EVAL ~b_f201~ END
+END
+
+  //Eyes of the Dead_________________________________________________________
+//Icons
+COPY ~Spells/spheres/spells/death/b_c104b.bam~ ~override~ //
+COPY ~Spells/spheres/spells/death/b_c104c.bam~ ~override~ //
+//spell etc
+COPY ~Spells/spheres/spells/death/b_c104.spl~ ~override~ //
+        SAY NAME1 @50304
+        SAY NAME2 @50304
+        SAY UNIDENTIFIED_DESC @50305
+	SAY DESC @50305
+COPY_EXISTING ~d5phdea1.spl~ ~override~
+		LPF CLONE_EFFECT INT_VAR match_opcode=171 STR_VAR match_resource=~SPWI101~ resource = ~b_c104~ END // Eyes of the Dead
+COPY_EXISTING ~b_c104.spl~ ~override/b_f102.spl~
+        SAY UNIDENTIFIED_DESC @50306
+	SAY DESC @50306
+           WRITE_LONG 0x34 1
+                LPF ALTER_EFFECT
+                  INT_VAR match_opcode = 324
+                  STR_VAR resource = EVAL ~b_f102~
+                END
+COPY_EXISTING ~d5ffdea1.spl~ ~override~
+		LPF CLONE_EFFECT INT_VAR match_opcode=171 STR_VAR match_resource=~SPWI101~ resource = ~b_f102~ END //
+		
+//Dusrupt Undead_________________________________________________________
+//Icons
+COPY ~Spells/spheres/spells/death/b_c105b.bam~ ~override~ //
+COPY ~Spells/spheres/spells/death/b_c105c.bam~ ~override~ //
+//spell etc
+COPY ~Spells/spheres/spells/death/b_c105.spl~ ~override~ //
+        SAY NAME1 @50307
+        SAY NAME2 @50307
+        SAY UNIDENTIFIED_DESC @50308
+	SAY DESC @50308
+COPY_EXISTING ~d5phdea1.spl~ ~override~
+		LPF CLONE_EFFECT INT_VAR match_opcode=171 STR_VAR match_resource=~SPWI101~ resource = ~b_c105~ END // Eyes of the Dead
+COPY_EXISTING ~b_c105.spl~ ~override/b_f103.spl~
+        SAY UNIDENTIFIED_DESC @50309
+	SAY DESC @50309
+           WRITE_LONG 0x34 1
+                LPF ALTER_EFFECT
+                  INT_VAR match_opcode = 324
+                  STR_VAR resource = EVAL ~b_f103~
+                END
+COPY_EXISTING ~d5ffdea1.spl~ ~override~
+		LPF CLONE_EFFECT INT_VAR match_opcode=171 STR_VAR match_resource=~SPWI101~ resource = ~b_f103~ END //
+//__________________________________________________________________________________
+
+//ANIMAL
+
+
+//Animal Eyes____________________________________________________________
+//icons
+COPY ~Spells/spheres/spells/animal/b_c102b.bam~ ~override~ // Animal eyes
+COPY ~Spells/spheres/spells/animal/b_c102c.bam~ ~override~ // Animal eyes
+//spell etc
+COPY ~Spells/spheres/spells/animal/b_c102.spl~ ~override~ // Animal eyes
+        SAY NAME1 @51101
+        SAY NAME2 @51101
+        SAY UNIDENTIFIED_DESC @51102
+	SAY DESC @51102
+COPY_EXISTING ~d5phani1.spl~ ~override~
+		LPF CLONE_EFFECT INT_VAR match_opcode=171 STR_VAR match_resource=~SPWI101~ resource = ~b_c102~ END //
+COPY_EXISTING ~b_c102.spl~ ~override/b_f101.spl~
+        SAY UNIDENTIFIED_DESC @51103
+	SAY DESC @51103
+           WRITE_LONG 0x34 1
+                LPF ALTER_EFFECT
+                  INT_VAR match_opcode = 324
+                  STR_VAR resource = EVAL ~b_f101~
+                END
+
+COPY_EXISTING ~d5ffani1.spl~ ~override~
+		LPF CLONE_EFFECT INT_VAR match_opcode=171 STR_VAR match_resource=~SPWI101~ resource = ~b_f101~ END //
+//__________________________________________________________________________________
+//DREAD
+
+//Misfire____________________________________________________________________
+//icons
+COPY ~Spells/spheres/spells/dread/b_c501b.bam~ ~override~ // Misfire
+COPY ~Spells/spheres/spells/dread/b_c501c.bam~ ~override~ // Misfire
+//spl etc
+COPY ~Spells/spheres/spells/dread/b_c501.eff~ ~override~ // Misfire
+  SAY 0x1c @50901     //Misfire
+
+COPY ~Spells/spheres/spells/dread/b_c501.spl~ ~override~ // Misfire
+        SAY NAME1 @50901
+        SAY NAME2 @50901
+        SAY UNIDENTIFIED_DESC @50902
+	SAY DESC @50902
+COPY_EXISTING ~d5phdre5.spl~ ~override~
+		LPF CLONE_EFFECT INT_VAR match_opcode=171 STR_VAR match_resource=~SPWI101~ resource = ~b_c501~ END //
+COPY_EXISTING ~b_c501.spl~ ~override/b_f501.spl~
+        SAY UNIDENTIFIED_DESC @50903
+	SAY DESC @50903
+           WRITE_LONG 0x34 4
+                LPF ALTER_EFFECT
+                  INT_VAR match_opcode = 321
+                  STR_VAR resource = EVAL ~b_f501~
+                END
+COPY_EXISTING ~d5ffdre5.spl~ ~override~
+		LPF CLONE_EFFECT INT_VAR match_opcode=171 STR_VAR match_resource=~SPWI101~ resource = ~b_f501~ END //
+
+
+//AIR
+
+//Storm Wall_________________________________________________________________
+COPY ~Spells/spheres/spells/air/b_elect1.bam~ ~override~ // 
+COPY ~Spells/spheres/spells/air/b_storm1.vvc~ ~override~ //
+COPY ~Spells/spheres/spells/air/b_c401a.spl~ ~override~ //sub-spell
+ADD_PROJECTILE ~Spells/spheres/spells/air/b_storm1.pro~   //pro
+COPY ~Spells/spheres/spells/air/b_c401.spl~ ~override~ //spell
+        SAY NAME1 @51601
+        SAY NAME2 @51601
+        SAY UNIDENTIFIED_DESC @51602
+	SAY DESC @51602
+	WRITE_SHORT 0x098 ~%b_storm1%~
+COPY_EXISTING ~d5phair4.spl~ ~override~
+		LPF CLONE_EFFECT INT_VAR match_opcode=171 STR_VAR match_resource=~SPWI101~ resource = ~b_c401~ END //
+COPY_EXISTING ~b_c401.spl~ ~override/b_f401.spl~
+        SAY UNIDENTIFIED_DESC @51603
+	SAY DESC @51603
+           WRITE_LONG 0x34 3
+                LPF ALTER_EFFECT
+                  INT_VAR match_opcode = 206
+                  STR_VAR resource = EVAL ~b_f401~
+                END
+COPY_EXISTING ~d5ffair4.spl~ ~override~
+		LPF CLONE_EFFECT INT_VAR match_opcode=171 STR_VAR match_resource=~SPWI101~ resource = ~b_f401~ END //
+
+     */

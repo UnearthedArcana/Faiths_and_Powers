@@ -1,0 +1,489 @@
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+//									KITS FOR NPCS
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+DEFINE_ACTION_FUNCTION npc_sc_kits BEGIN
+
+//remove NPC memorized spalls_______________________________________________________
+//
+//	IS THERE A BETTER WAY TO DO THIS??  CAN IT BE DONE IN-GAME??
+//
+LAM JOINABLE_NPC_ARRAYS
+
+ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS cre => dv BEGIN
+//  PRINT ~%cre% => %dv%~ 
+  COPY_EXISTING ~%cre%~ ~override~
+	PATCH_IF (SOURCE_SIZE > 0x2d3) BEGIN
+	  READ_BYTE 0x273 npc_class
+	  PATCH_IF (npc_class = 3) OR 
+	  			(npc_class = 6) OR 
+	  			(npc_class = 8) OR 
+	  			(npc_class = 11) OR 
+	  			(npc_class = 12) OR 
+	  			(npc_class = 14) OR 
+	  			(npc_class = 15) OR 
+	  			(npc_class = 16) OR 
+	  			(npc_class = 17) OR 
+	  			(npc_class = 18) OR 
+	  			(npc_class = 21) BEGIN 	// 	all divine casters who will be affected by the sphere system
+		REMOVE_MEMORIZED_SPELLS
+	  END
+	END
+  BUT_ONLY
+END
+//__________________________________________________________________________________
+
+
+//assign kits to particular NPCs____________________________________________________
+//
+ACTION_IF (FILE_CONTAINS_EVALUATED (~kit.ids~ ~[ %TAB%]B_CHAMP_HELM[ %TAB%%LNL%%MNL%%WNL%]~)) BEGIN
+  OUTER_SET keldorn_kit = (IDS_OF_SYMBOL (~kit~ ~B_CHAMP_HELM~))
+  ACTION_FOR_EACH char IN ~ajanti~ 
+					~ajanti4~ 
+					~ajanti6~
+					~keldor9~
+					~keldor10~
+					~keldor12~
+					~keldor14~   BEGIN
+	ACTION_IF FILE_EXISTS_IN_GAME ~%char%.cre~ BEGIN
+	  COPY_EXISTING ~%char%.cre~ ~override~
+		WRITE_SHORT 0x244 0
+		WRITE_SHORT 0x246 %keldorn_kit% 							// changes kit
+		REMOVE_MEMORIZED_SPELLS
+		REMOVE_KNOWN_SPELLS
+	  BUT_ONLY
+	END
+  END
+END
+
+ACTION_IF (FILE_CONTAINS_EVALUATED (~kit.ids~ ~[ %TAB%]B_CLERIC_HELM[ %TAB%%LNL%%MNL%%WNL%]~)) BEGIN
+  OUTER_SET anomen_kit_sc = (IDS_OF_SYMBOL (~kit~ ~B_CLERIC_HELM~))
+  ACTION_FOR_EACH char IN ~anomen6~
+					~anomen7~
+					~anomen8~
+					~anomen9~
+					~anomen10~
+					~anomen12~   BEGIN
+	ACTION_IF FILE_EXISTS_IN_GAME ~%char%.cre~ BEGIN
+	  COPY_EXISTING ~%char%.cre~ ~override~
+	    READ_BYTE 0x273 class
+	    PATCH_IF %class% = 3 BEGIN
+		  WRITE_SHORT 0x244 0
+		  WRITE_SHORT 0x246 %anomen_kit_sc%							 // changes kit
+		  REMOVE_MEMORIZED_SPELLS
+		  REMOVE_KNOWN_SPELLS
+		END
+	  BUT_ONLY
+	END
+  END
+END
+
+ACTION_IF (FILE_CONTAINS_EVALUATED (~kit.ids~ ~[ %TAB%]B_CLERIC_TEMPUS[ %TAB%%LNL%%MNL%%WNL%]~)) BEGIN
+  OUTER_SET branwen_kit_sc = (IDS_OF_SYMBOL (~kit~ ~B_CLERIC_TEMPUS~))
+  ACTION_FOR_EACH char IN ~branwe~ 
+					~branwe5~ 
+					~o#bran~ 
+					~o#bran25~  BEGIN
+	ACTION_IF FILE_EXISTS_IN_GAME ~%char%.cre~ BEGIN
+	  COPY_EXISTING ~%char%.cre~ ~override~
+	    READ_BYTE 0x273 class
+	    PATCH_IF %class% = 3 BEGIN
+		  WRITE_SHORT 0x244 0
+		  WRITE_SHORT 0x246 %branwen_kit_sc%						// changes kit
+		  REMOVE_MEMORIZED_SPELLS
+		  REMOVE_KNOWN_SPELLS
+		END
+	  BUT_ONLY
+	END
+  END
+END
+
+ACTION_IF (FILE_CONTAINS_EVALUATED (~kit.ids~ ~[ %TAB%]B_PRIEST_DENEIR[ %TAB%%LNL%%MNL%%WNL%]~)) BEGIN
+  OUTER_SET finch_kit = (IDS_OF_SYMBOL (~kit~ ~B_PRIEST_DENEIR~))
+  ACTION_FOR_EACH char IN ~sufinch1~
+					~sufinch2~
+					~sufinch4~   BEGIN
+	ACTION_IF FILE_EXISTS_IN_GAME ~%char%.cre~ BEGIN
+	  COPY_EXISTING ~%char%.cre~ ~override~
+		WRITE_SHORT 0x244 0
+		WRITE_SHORT 0x246 %finch_kit% 								// changes kit
+		REMOVE_MEMORIZED_SPELLS
+		REMOVE_KNOWN_SPELLS
+	  BUT_ONLY
+	END
+  END
+END
+
+ACTION_IF (FILE_CONTAINS_EVALUATED (~kit.ids~ ~[ %TAB%]B_CLERIC_UMBERLEE[ %TAB%%LNL%%MNL%%WNL%]~)) BEGIN
+  OUTER_SET tenya_kit = (IDS_OF_SYMBOL (~kit~ ~B_CLERIC_UMBERLEE~))
+  ACTION_FOR_EACH char IN ~tenya~   BEGIN
+	ACTION_IF FILE_EXISTS_IN_GAME ~%char%.cre~ BEGIN
+	  COPY_EXISTING ~%char%.cre~ ~override~
+		WRITE_SHORT 0x244 0
+		WRITE_SHORT 0x246 %tenya_kit% 								// changes kit
+		REMOVE_MEMORIZED_SPELLS
+		REMOVE_KNOWN_SPELLS
+	  BUT_ONLY
+	END
+  END
+END
+
+ACTION_IF (FILE_CONTAINS_EVALUATED (~kit.ids~ ~[ %TAB%]D5_AC_SHAR[ %TAB%%LNL%%MNL%%WNL%]~)) BEGIN
+  OUTER_SET viconia_kit = (IDS_OF_SYMBOL (~kit~ ~D5_AC_SHAR~))
+  ACTION_FOR_EACH char IN ~viconi~
+					~viconi4~ 
+					~viconi6~ 
+                    ~%viconi6_var%~
+					~viconi7~
+					~viconi8~ 
+					~viconi9~ 
+					~viconi11~ 
+					~viconi13~ 
+					~viconi16~  BEGIN
+	ACTION_IF FILE_EXISTS_IN_GAME ~%char%.cre~ BEGIN
+	  COPY_EXISTING ~%char%.cre~ ~override~
+		WRITE_SHORT 0x244 0
+		WRITE_SHORT 0x246 %viconia_kit% 							// changes kit
+		REMOVE_MEMORIZED_SPELLS
+		REMOVE_KNOWN_SPELLS
+	  BUT_ONLY
+	END
+  END
+END
+
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5zarvo.itm~) BEGIN
+  ACTION_FOR_EACH char IN ~mazzy8~ ~mazzy9~ ~mazzy11~ ~mazzy12~ ~mazzy15~ BEGIN
+	ACTION_IF FILE_EXISTS_IN_GAME ~%char%.cre~ BEGIN
+	  COPY_EXISTING ~%char%.cre~ ~override~
+		ADD_CRE_ITEM ~d5zarvo~ #1 #0 #0 ~IDENTIFIED~ ~Inv~
+	  BUT_ONLY
+	END
+  END
+END
+
+ACTION_FOR_EACH char IN ~b!gavin~ ~b!gav08~ ~b!gav13~ BEGIN
+  COPY_EXISTING ~%char%.cre~ ~override~
+	READ_BYTE 0x273 class
+	PATCH_IF %class% = 3 BEGIN
+	  PATCH_IF (FILE_CONTAINS_EVALUATED (~kit.ids~ ~[ %TAB%]B_CLERIC_LATHANDER[ %TAB%%LNL%%MNL%%WNL%]~)) BEGIN
+		SET gavin_kit = (IDS_OF_SYMBOL (~kit~ ~B_CLERIC_LATHANDER~))
+		WRITE_SHORT 0x244 0
+		WRITE_SHORT 0x246 %gavin_kit% 								// changes kit
+		REMOVE_MEMORIZED_SPELLS
+		REMOVE_KNOWN_SPELLS
+	  END
+	END
+  IF_EXISTS BUT_ONLY
+END
+/* oops, no Tyr kit.  He already has it! :P
+ACTION_FOR_EACH char IN ~c0drake~ ~c02drake~ BEGIN
+  COPY_EXISTING ~%char%.cre~ ~override~
+	READ_BYTE 0x273 class
+	PATCH_IF %class% = 3 BEGIN
+	  PATCH_IF (FILE_CONTAINS_EVALUATED (~kit.ids~ ~[ %TAB%]xxxxx[ %TAB%%LNL%%MNL%%WNL%]~)) BEGIN
+		SET xxxx = (IDS_OF_SYMBOL (~kit~ ~xxxxx~))
+		WRITE_SHORT 0x244 0
+		WRITE_SHORT 0x246 %xxxx% 								// changes kit
+		REMOVE_MEMORIZED_SPELLS
+		REMOVE_KNOWN_SPELLS
+	  END
+	END
+  IF_EXISTS BUT_ONLY
+END
+*/
+ACTION_FOR_EACH char IN ~gv#dave~ ~gv#dave2~ BEGIN
+  COPY_EXISTING ~%char%.cre~ ~override~
+	READ_BYTE 0x273 class
+	PATCH_IF %class% = 3 BEGIN
+	  PATCH_IF (FILE_CONTAINS_EVALUATED (~kit.ids~ ~[ %TAB%]B_CLERIC_TALOS[ %TAB%%LNL%%MNL%%WNL%]~)) BEGIN
+		SET dave_kit = (IDS_OF_SYMBOL (~kit~ ~B_CLERIC_TALOS~))
+		WRITE_SHORT 0x244 0
+		WRITE_SHORT 0x246 %dave_kit% 								// changes kit
+		REMOVE_MEMORIZED_SPELLS
+		REMOVE_KNOWN_SPELLS
+	  END
+	END
+  IF_EXISTS BUT_ONLY
+END
+//___________________________________________________________________________________
+
+
+
+//NPC innate abilities hotfix________________________________________________________
+//
+ACTION_FOR_EACH char IN ~dynahe~ ~dynahe2~ ~dynahe4~ ~dynahe6~ ~dynahe7~ BEGIN
+  ACTION_IF FILE_EXISTS_IN_GAME ~%char%.cre~ BEGIN
+	COPY_EXISTING ~%char%.cre~ ~override~
+	  LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~SPIN102~ END
+  END
+END
+
+ACTION_FOR_EACH char IN ~minsc~ ~minsc2~ ~minsc4~ ~minsc6~ ~minsc7_~ ~minsc7~ ~minsc8~ ~minsc9~ ~minsc10~ ~minsc12~ ~minsc14~ BEGIN
+  ACTION_IF FILE_EXISTS_IN_GAME ~%char%.cre~ BEGIN
+	COPY_EXISTING ~%char%.cre~ ~override~
+	  LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~SPIN117~ END
+  END
+END
+
+ACTION_FOR_EACH char IN ~faldor~ ~faldor5~ BEGIN
+  ACTION_IF FILE_EXISTS_IN_GAME ~%char%.cre~ BEGIN
+	COPY_EXISTING ~%char%.cre~ ~override~
+	  LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~SPIN114~ END
+  END
+END
+//___________________________________________________________________________________
+
+END // end sc function
+
+
+DEFINE_ACTION_FUNCTION npc_mc_kits BEGIN
+
+//assign kits to particular NPCs____________________________________________________
+//
+ACTION_IF (FILE_CONTAINS_EVALUATED (~kit.ids~ ~[ %TAB%]D5_DR_FIGHTER[ %TAB%%LNL%%MNL%%WNL%]~)) BEGIN
+  OUTER_SET jaheria_kit = (IDS_OF_SYMBOL (~kit~ ~D5_DR_FIGHTER~))
+  ACTION_FOR_EACH char IN ~jaheir~ 
+					~jaheir2~ 
+					~jaheir4~ 
+					~jaheir6~ 
+					~jaheir7~ 
+					~jaheir7_~ 
+					~jaheir8~ 
+					~jaheir11~ 
+					~jaheir12~ 
+					~jahei12b~ 
+					~jahei14~ BEGIN
+	ACTION_IF FILE_EXISTS_IN_GAME ~%char%.cre~ BEGIN
+	  COPY_EXISTING ~%char%.cre~ ~override~
+		WRITE_BYTE 0x273 8 // sets class
+		WRITE_SHORT 0x244 0
+		WRITE_SHORT 0x246 %jaheria_kit%										// changes kit
+		REMOVE_MEMORIZED_SPELLS
+		REMOVE_KNOWN_SPELLS
+	  BUT_ONLY
+	END
+  END
+END
+
+ACTION_IF (FILE_CONTAINS_EVALUATED (~kit.ids~ ~[ %TAB%]B_CLERIC_TEMPUS_FC[ %TAB%%LNL%%MNL%%WNL%]~)) BEGIN
+  OUTER_SET branwen_kit_mc = (IDS_OF_SYMBOL (~kit~ ~B_CLERIC_TEMPUS_FC~))
+  ACTION_FOR_EACH char IN ~branwe~ 
+					~branwe5~ 
+					~o#bran~ 
+					~o#bran25~  BEGIN
+	ACTION_IF FILE_EXISTS_IN_GAME ~%char%.cre~ BEGIN
+	  COPY_EXISTING ~%char%.cre~ ~override~
+	    READ_BYTE 0x273 class
+	    PATCH_IF %class% = 8 BEGIN
+		  WRITE_SHORT 0x244 0
+		  WRITE_SHORT 0x246 %branwen_kit_mc%								// changes kit
+		  REMOVE_MEMORIZED_SPELLS
+		  REMOVE_KNOWN_SPELLS
+		END
+	  BUT_ONLY
+	END
+  END
+END
+
+ACTION_IF (FILE_CONTAINS_EVALUATED (~kit.ids~ ~[ %TAB%]B_CLERIC_BARAVAR_CT[ %TAB%%LNL%%MNL%%WNL%]~)) BEGIN
+  OUTER_SET quayle_kit = (IDS_OF_SYMBOL (~kit~ ~B_CLERIC_BARAVAR_CT~))
+  ACTION_FOR_EACH char IN ~glint7~ 
+					~%quayle_var%~ 
+					~quayle4~ 
+					~quayle6~  BEGIN
+	ACTION_IF FILE_EXISTS_IN_GAME ~%char%.cre~ BEGIN
+	  COPY_EXISTING ~%char%.cre~ ~override~
+		WRITE_SHORT 0x244 0
+		WRITE_SHORT 0x246 %quayle_kit%										// changes kit
+		REMOVE_MEMORIZED_SPELLS
+		REMOVE_KNOWN_SPELLS
+	  BUT_ONLY
+	END
+  END
+END
+
+ACTION_IF (FILE_CONTAINS_EVALUATED (~kit.ids~ ~[ %TAB%]B_CLERIC_CYRIC_CT[ %TAB%%LNL%%MNL%%WNL%]~)) BEGIN
+  OUTER_SET tiax_kit = (IDS_OF_SYMBOL (~kit~ ~B_CLERIC_CYRIC_CT~))
+  ACTION_FOR_EACH char IN ~bdtiax~ 
+					~tiax~ 
+					~tiax4~ 
+					~tiax6~  
+                    ~tiaxd~ BEGIN
+	ACTION_IF FILE_EXISTS_IN_GAME ~%char%.cre~ BEGIN
+	  COPY_EXISTING ~%char%.cre~ ~override~
+		WRITE_SHORT 0x244 0
+		WRITE_SHORT 0x246 %tiax_kit%										// changes kit
+		REMOVE_MEMORIZED_SPELLS
+		REMOVE_KNOWN_SPELLS
+	  BUT_ONLY
+	END
+  END
+END
+
+ACTION_IF (FILE_CONTAINS_EVALUATED (~kit.ids~ ~[ %TAB%]D5_CLANGEDDIN_FC[ %TAB%%LNL%%MNL%%WNL%]~)) BEGIN
+  OUTER_SET yeslick_kit = (IDS_OF_SYMBOL (~kit~ ~D5_CLANGEDDIN_FC~))
+  ACTION_FOR_EACH char IN ~yeslic~
+					~yeslic5~  
+                    ~yeslid~ BEGIN
+	ACTION_IF FILE_EXISTS_IN_GAME ~%char%.cre~ BEGIN
+	  COPY_EXISTING ~%char%.cre~ ~override~
+		WRITE_SHORT 0x244 0
+		WRITE_SHORT 0x246 %yeslick_kit%									// changes kit
+		REMOVE_MEMORIZED_SPELLS
+		REMOVE_KNOWN_SPELLS
+	  BUT_ONLY
+	END
+  END
+END
+
+ACTION_IF (FILE_CONTAINS_EVALUATED (~kit.ids~ ~[ %TAB%]D5_CLERIC_BAERVAN_CM[ %TAB%%LNL%%MNL%%WNL%]~)) BEGIN
+  OUTER_SET aerie_kit = (IDS_OF_SYMBOL (~kit~ ~D5_CLERIC_BAERVAN_CM~))
+  ACTION_FOR_EACH char IN ~aerie6~
+					~aerie7~
+					~aerie9~
+					~aerie10~
+					~aerie11~
+					~aerie12~   BEGIN
+	ACTION_IF FILE_EXISTS_IN_GAME ~%char%.cre~ BEGIN
+	  COPY_EXISTING ~%char%.cre~ ~override~
+		WRITE_SHORT 0x244 0
+		WRITE_SHORT 0x246 %aerie_kit% 									// changes kit
+		REMOVE_MEMORIZED_SPELLS
+		REMOVE_KNOWN_SPELLS
+	  BUT_ONLY
+	END
+  END
+END
+
+ACTION_IF (FILE_CONTAINS_EVALUATED (~kit.ids~ ~[ %TAB%]B_CLERIC_HELM_FC[ %TAB%%LNL%%MNL%%WNL%]~)) BEGIN
+  OUTER_SET anomen_kit_mc = (IDS_OF_SYMBOL (~kit~ ~B_CLERIC_HELM_FC~))
+  ACTION_FOR_EACH char IN ~anomen6~
+					~anomen7~
+					~anomen8~
+					~anomen9~
+					~anomen10~
+					~anomen12~   BEGIN
+	ACTION_IF FILE_EXISTS_IN_GAME ~%char%.cre~ BEGIN
+	  COPY_EXISTING ~%char%.cre~ ~override~
+	    READ_BYTE 0x273 class
+	    PATCH_IF %class% = 8 BEGIN
+		  WRITE_SHORT 0x244 0
+		  WRITE_SHORT 0x246 %anomen_kit_mc%								// changes kit
+		  REMOVE_MEMORIZED_SPELLS
+		  REMOVE_KNOWN_SPELLS
+		END
+	  BUT_ONLY
+	END
+  END
+END
+
+ACTION_IF (FILE_CONTAINS_EVALUATED (~kit.ids~ ~[ %TAB%]D5_CT_MASK[ %TAB%%LNL%%MNL%%WNL%]~)) BEGIN
+  OUTER_SET dusky_kit = (IDS_OF_SYMBOL (~kit~ ~D5_CT_MASK~))
+  ACTION_FOR_EACH char IN ~l#dusky~ BEGIN
+	ACTION_IF FILE_EXISTS_IN_GAME ~%char%.cre~ BEGIN
+	  COPY_EXISTING ~%char%.cre~ ~override~
+		WRITE_SHORT 0x244 0
+		WRITE_SHORT 0x246 %dusky_kit%									// changes kit
+		REMOVE_MEMORIZED_SPELLS
+		REMOVE_KNOWN_SPELLS
+	  BUT_ONLY
+	END
+  END
+END
+
+ACTION_IF (FILE_CONTAINS_EVALUATED (~kit.ids~ ~[ %TAB%]D5_CR_MIELI[ %TAB%%LNL%%MNL%%WNL%]~)) BEGIN
+  OUTER_SET korin_kit = (IDS_OF_SYMBOL (~kit~ ~D5_CR_MIELI~))
+  ACTION_FOR_EACH char IN ~O#Korin~ BEGIN
+	ACTION_IF FILE_EXISTS_IN_GAME ~%char%.cre~ BEGIN
+	  COPY_EXISTING ~%char%.cre~ ~override~
+	    READ_BYTE 0x273 class
+	    PATCH_IF %class% = 18 BEGIN
+		  WRITE_SHORT 0x244 0
+		  WRITE_SHORT 0x246 %korin_kit%									// changes kit
+		  REMOVE_MEMORIZED_SPELLS
+		  REMOVE_KNOWN_SPELLS
+		END
+	  BUT_ONLY
+	END
+  END
+END
+
+ACTION_FOR_EACH char IN ~O#Nella~   BEGIN
+  COPY_EXISTING ~%char%.cre~ ~override~
+	READ_BYTE 0x273 class
+	PATCH_IF %class% = 8 BEGIN
+	  PATCH_IF (FILE_CONTAINS_EVALUATED (~kit.ids~ ~[ %TAB%]D5_DR_FIGHTER[ %TAB%%LNL%%MNL%%WNL%]~)) BEGIN
+		SET nella_kit = (IDS_OF_SYMBOL (~kit~ ~D5_DR_FIGHTER~))
+		WRITE_SHORT 0x244 0
+		WRITE_SHORT 0x246 %nella_kit% 									// changes kit
+		REMOVE_MEMORIZED_SPELLS
+		REMOVE_KNOWN_SPELLS
+	  END
+	END
+	PATCH_IF %class% = 16 BEGIN
+	  PATCH_IF (FILE_CONTAINS_EVALUATED (~kit.ids~ ~[ %TAB%]D5_MY_EARTH_FD[ %TAB%%LNL%%MNL%%WNL%]~)) BEGIN
+		SET nella_kit = (IDS_OF_SYMBOL (~kit~ ~D5_MY_EARTH_FD~))
+		WRITE_SHORT 0x244 0
+		WRITE_SHORT 0x246 %nella_kit% 									// changes kit
+		REMOVE_MEMORIZED_SPELLS
+		REMOVE_KNOWN_SPELLS
+	  END
+	END
+  IF_EXISTS BUT_ONLY
+END
+
+ACTION_FOR_EACH char IN ~yitur~   BEGIN
+  COPY_EXISTING ~%char%.cre~ ~override~
+	READ_BYTE 0x273 class
+	PATCH_IF %class% = 8 BEGIN
+	  PATCH_IF (FILE_CONTAINS_EVALUATED (~kit.ids~ ~[ %TAB%]D5_CL_MARTHAMMOR[ %TAB%%LNL%%MNL%%WNL%]~)) BEGIN
+		SET turald_kit = (IDS_OF_SYMBOL (~kit~ ~D5_CL_MARTHAMMOR~))
+		WRITE_SHORT 0x244 0
+		WRITE_SHORT 0x246 %turald_kit% 									// changes kit
+		REMOVE_MEMORIZED_SPELLS
+		REMOVE_KNOWN_SPELLS
+	  END
+	END
+  IF_EXISTS BUT_ONLY
+END
+//___________________________________________________________________________________
+
+//NPC innate abilities hotfix________________________________________________________
+//
+ACTION_FOR_EACH char IN ~branwe~ ~branwe5~ ~o#bran~ ~o#bran25~ BEGIN
+  ACTION_IF FILE_EXISTS_IN_GAME ~%char%.cre~ BEGIN
+	COPY_EXISTING ~%char%.cre~ ~override~
+	  LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~SPIN113~ END
+	  LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~SPIN113~ END
+	  LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~SPIN113~ END
+  END
+END
+
+ACTION_FOR_EACH char IN ~tiax~ ~tiax4~ ~tiax6~ BEGIN
+  ACTION_IF FILE_EXISTS_IN_GAME ~%char%.cre~ BEGIN
+	COPY_EXISTING ~%char%.cre~ ~override~
+	  LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~SPIN115~ END
+  END
+END
+	
+ACTION_FOR_EACH char IN ~quayle~ ~quayle4~ ~quayle6~ BEGIN
+  ACTION_IF FILE_EXISTS_IN_GAME ~%char%.cre~ BEGIN
+	COPY_EXISTING ~%char%.cre~ ~override~
+	  LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~SPIN118~ END
+  END
+END
+
+ACTION_FOR_EACH char IN ~yeslic~ ~yeslic5~ BEGIN
+  ACTION_IF FILE_EXISTS_IN_GAME ~%char%.cre~ BEGIN
+	COPY_EXISTING ~%char%.cre~ ~override~
+	  LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~SPIN112~ END
+  END
+END
+//___________________________________________________________________________________
+
+END // end mc function
+

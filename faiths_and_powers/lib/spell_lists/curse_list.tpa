@@ -1,0 +1,15 @@
+//special thanks to Subtledoctor and Aquadrizzt for this code
+
+ACTION_DEFINE_ASSOCIATIVE_ARRAY prot BEGIN
+
+~%spell_res%~ => curse
+b_po020 => curse  //canticle main spell (need to address extra ability which shoucl conditionally be removed and canticle readded...)
+b_po030 => curse  //maladiction (Special)
+b_po040 => curse  //meditation (Special) Spells that cancel cursss, cancel meditation
+CDID313B => curse  //IWDIFICATION BAD PRAYER
+//#PRAYERB => curse  //OTHER VERSION BAD PRAYER Doesn't like the "#" character...damn
+
+END
+
+// This code is copied from Mike1072's armor_list.tpa file. 
+// WeiDU is now on my hate list as well - Yaro, 7/26

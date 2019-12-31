@@ -1,0 +1,677 @@
+
+ACTION_DEFINE_ASSOCIATIVE_ARRAY d5_fnp_spheres BEGIN
+  Life => 0
+  Death => 0
+  Benediction => 0
+  Destruction => 0
+  Protection => 0
+  War => 0
+  Exploration => 0
+  Knowledge => 0
+  Deception => 0
+  Thought => 0
+  Dread => 0
+  Vigor => 0
+  Affliction => 0
+  Animal => 0
+  Plant => 0
+  Earth => 0
+  Water => 0
+  Air => 0
+  Fire => 0
+  Light => 0
+  Shadow => 0
+  Magic => 0
+  Astral => 0
+END
+
+ACTION_DEFINE_ASSOCIATIVE_ARRAY d5_fnp_usable BEGIN
+	LEATHER_ARMOR => 0
+	CHAIN_ARMOR => 0
+	PLATE_ARMOR => 0
+	CLUB_STAFF => 0
+	HAMMERS => 0
+	MACES => 0
+	FLAILS => 0
+	AXES => 0
+	DAGGERS => 0
+	SHORT_SWORDS => 0
+	LONG_SWORDS => 0
+	SCIMITARS => 0
+	KATANAS => 0
+	BASTARD_SWORDS => 0
+	2HAND_SWORDS => 0
+	HALBERDS => 0
+	SPEARS => 0
+	DARTS => 0
+	SLINGS => 0
+	BOWS => 0
+	CROSSBOWS => 0  
+END
+
+ACTION_DEFINE_ASSOCIATIVE_ARRAY d5_fnp_sphere_access BEGIN
+  X => 0
+  MAJOR => 0
+  MINOR => 0
+  FOCUS => 0
+  PALADIN => 0
+  RANGER => 0
+  INCARNATE => 0
+END
+
+ACTION_DEFINE_ASSOCIATIVE_ARRAY d5_fnp_class_access BEGIN
+  X => 0
+  CLERIC => 0
+  PRIEST => 0
+  FIGHTER_CLERIC => 0
+  CLERIC_MAGE => 0
+  CLERIC_THIEF => 0
+  RANGER_CLERIC => 0
+  DRUID => 0
+  MYSTIC => 0
+  OCCULTIST => 0
+  FIGHTER_MYSTIC => 0
+  RANGER => 0
+  SCOUT => 0
+  CHAMPION => 0
+  ZEALOT => 0
+  SHAMAN => 0
+END
+
+//___________________________________________________________________________________
+//___________________________________________________________________________________
+
+DEFINE_ACTION_FUNCTION ~DEFINE_FNP_KIT_INFO~
+  INT_VAR
+	u_leather_armor = 1
+	u_chain_armor = 1
+	u_plate_armor = 1
+	u_club_staff = 1
+	u_hammers = 1
+	u_maces = 1
+	u_flails = 1
+	u_axes = 0
+	u_daggers = 0
+	u_short_swords = 1
+	u_long_swords = 0
+	u_scimitars = 0
+	u_katanas = 0
+	u_bastard_swords = 0
+	u_2hand_swords = 0
+	u_halberds = 0
+	u_spears = 0
+	u_darts = 0
+	u_slings = 1
+	u_bows = 0
+	u_crossbows = 1  
+  STR_VAR
+    clab_name = ~d5clab~
+	sphere_list = ~custom~
+    class = ~x~
+    multiclass = ~x~
+    s_Life = ~x~
+    s_Death = ~x~
+    s_Benediction = ~x~
+    s_Destruction = ~x~
+    s_Protection = ~x~
+    s_War = ~x~
+	s_Exploration = ~x~
+    s_Knowledge = ~x~
+    s_Deception = ~x~
+    s_Thought = ~x~
+    s_Dread = ~x~
+    s_Vigor = ~x~
+    s_Affliction = ~x~
+    s_Animal = ~x~
+    s_Plant = ~x~
+    s_Earth = ~x~
+    s_Water = ~x~
+    s_Air = ~x~
+    s_Fire = ~x~
+    s_Light = ~x~
+    s_Shadow = ~x~
+    s_Magic = ~x~
+	s_Astral = ~x~
+BEGIN
+  PRINT ~Defining Faiths and Powers info for kit %clab_name% ...~ 
+  
+/*
+  // validate required files exist
+  ACTION_IF !(FILE_EXISTS ~%2da_folder%/d5_class.2da~
+               || NOT FILE_EXISTS ~%2da_folder%/d5_usabl.2da~
+               || NOT FILE_EXISTS ~%2da_folder%/d5_spher.2da~) BEGIN
+    FAIL ~DEFINE_FNP_KIT_INFO: The required d5_class.2da, d5_usabl.2da, and d5_spher.2da template files could not be found in the folder %2da_folder%.~
+  END
+*/
+  
+  // validate class
+  ACTION_TO_UPPER class
+  ACTION_IF !(VARIABLE_IS_SET $d5_fnp_class_access(~%class%~)) BEGIN
+    FAIL ~DEFINE_FNP_KIT_INFO: The specified class (%class%) does not match one of the valid options: ALL, HUMAN, ELF, DWARF, GNOME, HALFLING, or ORC.~
+  END
+  
+  // validate spheres
+  ACTION_PHP_EACH d5_fnp_spheres AS sphere => val BEGIN
+//    ACTION_TO_LOWER sphere
+    OUTER_TEXT_SPRINT sphere ~s_%sphere%~
+    OUTER_TEXT_SPRINT access EVAL ~%%sphere%%~
+    ACTION_TO_UPPER %access%
+    ACTION_IF !(VARIABLE_IS_SET $d5_fnp_sphere_access(~%access%~)) BEGIN
+      FAIL ~DEFINE_FNP_KIT_INFO: The access value (%access%) for the sphere %sphere% does not match one of the valid options: X, MAJOR, MINOR, FOCUS, PALADIN, or RANGER.~
+    END
+  END
+
+  // warn if CLAB could not be found
+  ACTION_IF !(FILE_EXISTS_IN_GAME ~%clab_name%.2da~) BEGIN
+    WARN ~DEFINE_FNP_KIT_INFO: The CLAB file (%clab_name%.2da) could not be found in the game.~
+  END
+  
+  // copy over template files if they aren't present yet
+  ACTION_IF !(FILE_EXISTS_IN_GAME ~d5_class.2da~) BEGIN
+<<<<<<<< d5/d5_class.2da
+2DA V1.0
+ALL
+         CLASS		SPHERE_LIST		MULTICLASS
+>>>>>>>> 
+	COPY ~d5/d5_class.2da~ ~override/d5_class.2da~ 
+  END
+  ACTION_IF !(FILE_EXISTS_IN_GAME ~d5_usabl.2da~) BEGIN
+<<<<<<<< d5/d5_usabl.2da
+2DA V1.0
+0
+				LEATHER_ARMOR	CHAIN_ARMOR		PLATE_ARMOR	CLUB_STAFF	HAMMERS		MACES		FLAILS		AXES	DAGGERS		SHORT_SWORDS	LONG_SWORDS		SCIMITARS	KATANAS		BASTARD_SWORDS	2HAND_SWORDS	HALBERDS	SPEARS	DARTS	SLINGS	BOWS	CROSSBOWS  
+>>>>>>>> 
+	COPY ~d5/d5_usabl.2da~ ~override/d5_usabl.2da~ 
+  END
+  ACTION_IF !(FILE_EXISTS_IN_GAME ~d5_spher.2da~) BEGIN
+<<<<<<<< d5/d5_spher.2da
+2DA V1.0
+0
+            Life        Death       Benediction Destruction Protection  War         Exploration Knowledge   Deception   Thought     Dread       Vigor       Affliction  Animal      Plant       Earth       Water       Air         Fire        Light       Shadow      Magic     Astral
+>>>>>>>> 
+	COPY ~d5/d5_spher.2da~ ~override/d5_spher.2da~ 
+  END
+
+  ACTION_IF !(FILE_CONTAINS_EVALUATED (~d5_class.2da~ ~%clab_name%~)) BEGIN
+//	ACTION_IF !(~%sphere_list%~ STRING_EQUAL_CASE ~custom~) BEGIN
+	  ACTION_IF (FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~) && (FILE_CONTAINS_EVALUATED (~fnp_sphere_list.tpa~ ~%sphere_list%~)) BEGIN
+		INCLUDE ~override/fnp_sphere_list.tpa~
+		LAM d5_define_sphere_names
+		LAM d5_deity_kit_sphere_lists
+		ACTION_TO_LOWER %sphere_list%
+		LAF ~%sphere_list%~ RET_ARRAY ~%clab_name%_spheres_array~ = EVAL ~%sphere_list%_array~ END
+		ACTION_PHP_EACH EVAL ~%clab_name%_spheres_array~ AS this_variable => kit_access BEGIN
+		  ACTION_IF FILE_EXISTS_IN_GAME ~d5altsph.2da~ BEGIN
+			COPY_EXISTING ~d5altsph.2da~ ~override~
+			  READ_2DA_ENTRIES_NOW rows 2
+			  FOR (row = 0; row < rows; ++row) BEGIN
+				READ_2DA_ENTRY_FORMER rows row 0 ~fnp_sphere~
+				READ_2DA_ENTRY_FORMER rows row 1 ~alt_sphere~
+				PATCH_IF ~%this_variable%~ STRING_EQUAL_CASE ~%alt_sphere%~ BEGIN
+				  SPRINT new_variable ~%fnp_sphere%~
+				END
+			  END
+			BUT_ONLY
+		  END ELSE BEGIN
+			OUTER_SPRINT new_variable ~%this_variable%~
+		  END
+		  ACTION_IF (~%new_variable%~ STRING_EQUAL_CASE ~Life~) BEGIN
+		    ACTION_IF (~%s_Life%~ STRING_EQUAL_CASE ~x~) BEGIN
+			  OUTER_SPRINT s_Life ~%kit_access%~
+			END
+		  END
+		  ACTION_IF (~%new_variable%~ STRING_EQUAL_CASE ~Death~) BEGIN
+		    ACTION_IF (~%s_Death%~ STRING_EQUAL_CASE ~x~) BEGIN
+			  OUTER_SPRINT s_Death ~%kit_access%~
+			END
+		  END
+		  ACTION_IF (~%new_variable%~ STRING_EQUAL_CASE ~Benediction~) BEGIN
+		    ACTION_IF (~%s_Benediction%~ STRING_EQUAL_CASE ~x~) BEGIN
+			  OUTER_SPRINT s_Benediction ~%kit_access%~
+			END
+		  END
+		  ACTION_IF (~%new_variable%~ STRING_EQUAL_CASE ~Destruction~) BEGIN
+		    ACTION_IF (~%s_Destruction%~ STRING_EQUAL_CASE ~x~) BEGIN
+			  OUTER_SPRINT s_Destruction ~%kit_access%~
+			END
+		  END
+		  ACTION_IF (~%new_variable%~ STRING_EQUAL_CASE ~Protection~) BEGIN
+		    ACTION_IF (~%s_Protection%~ STRING_EQUAL_CASE ~x~) BEGIN
+			  OUTER_SPRINT s_Protection ~%kit_access%~
+			END
+		  END
+		  ACTION_IF (~%new_variable%~ STRING_EQUAL_CASE ~War~) BEGIN
+		    ACTION_IF (~%s_War%~ STRING_EQUAL_CASE ~x~) BEGIN
+			  OUTER_SPRINT s_War ~%kit_access%~
+			END
+		  END
+		  ACTION_IF (~%new_variable%~ STRING_EQUAL_CASE ~Exploration~) BEGIN
+		    ACTION_IF (~%s_Exploration%~ STRING_EQUAL_CASE ~x~) BEGIN
+			  OUTER_SPRINT s_Exploration ~%kit_access%~
+			END
+		  END
+		  ACTION_IF (~%new_variable%~ STRING_EQUAL_CASE ~Knowledge~) BEGIN
+		    ACTION_IF (~%s_Knowledge%~ STRING_EQUAL_CASE ~x~) BEGIN
+			  OUTER_SPRINT s_Knowledge ~%kit_access%~
+			END
+		  END
+		  ACTION_IF (~%new_variable%~ STRING_EQUAL_CASE ~Deception~) BEGIN
+		    ACTION_IF (~%s_Deception%~ STRING_EQUAL_CASE ~x~) BEGIN
+			  OUTER_SPRINT s_Deception ~%kit_access%~
+			END
+		  END
+		  ACTION_IF (~%new_variable%~ STRING_EQUAL_CASE ~Thought~) BEGIN
+		    ACTION_IF (~%s_Thought%~ STRING_EQUAL_CASE ~x~) BEGIN
+			  OUTER_SPRINT s_Thought ~%kit_access%~
+			END
+		  END
+		  ACTION_IF (~%new_variable%~ STRING_EQUAL_CASE ~Dread~) BEGIN
+		    ACTION_IF (~%s_Dread%~ STRING_EQUAL_CASE ~x~) BEGIN
+			  OUTER_SPRINT s_Dread ~%kit_access%~
+			END
+		  END
+		  ACTION_IF (~%new_variable%~ STRING_EQUAL_CASE ~Vigor~) BEGIN
+		    ACTION_IF (~%s_Vigor%~ STRING_EQUAL_CASE ~x~) BEGIN
+			  OUTER_SPRINT s_Vigor ~%kit_access%~
+			END
+		  END
+		  ACTION_IF (~%new_variable%~ STRING_EQUAL_CASE ~Affliction~) BEGIN
+		    ACTION_IF (~%s_Affliction%~ STRING_EQUAL_CASE ~x~) BEGIN
+			  OUTER_SPRINT s_Affliction ~%kit_access%~
+			END
+		  END
+		  ACTION_IF (~%new_variable%~ STRING_EQUAL_CASE ~Animal~) BEGIN
+		    ACTION_IF (~%s_Animal%~ STRING_EQUAL_CASE ~x~) BEGIN
+			  OUTER_SPRINT s_Animal ~%kit_access%~
+			END
+		  END
+		  ACTION_IF (~%new_variable%~ STRING_EQUAL_CASE ~Plant~) BEGIN
+		    ACTION_IF (~%s_Plant%~ STRING_EQUAL_CASE ~x~) BEGIN
+			  OUTER_SPRINT s_Plant ~%kit_access%~
+			END
+		  END
+		  ACTION_IF (~%new_variable%~ STRING_EQUAL_CASE ~Earth~) BEGIN
+		    ACTION_IF (~%s_Earth%~ STRING_EQUAL_CASE ~x~) BEGIN
+			  OUTER_SPRINT s_Earth ~%kit_access%~
+			END
+		  END
+		  ACTION_IF (~%new_variable%~ STRING_EQUAL_CASE ~Air~) BEGIN
+		    ACTION_IF (~%s_Air%~ STRING_EQUAL_CASE ~x~) BEGIN
+			  OUTER_SPRINT s_Air ~%kit_access%~
+			END
+		  END
+		  ACTION_IF (~%new_variable%~ STRING_EQUAL_CASE ~Water~) BEGIN
+		    ACTION_IF (~%s_Water%~ STRING_EQUAL_CASE ~x~) BEGIN
+			  OUTER_SPRINT s_Water ~%kit_access%~
+			END
+		  END
+		  ACTION_IF (~%new_variable%~ STRING_EQUAL_CASE ~Fire~) BEGIN
+		    ACTION_IF (~%s_Fire%~ STRING_EQUAL_CASE ~x~) BEGIN
+			  OUTER_SPRINT s_Fire ~%kit_access%~
+			END
+		  END
+		  ACTION_IF (~%new_variable%~ STRING_EQUAL_CASE ~Light~) BEGIN
+		    ACTION_IF (~%s_Light%~ STRING_EQUAL_CASE ~x~) BEGIN
+			  OUTER_SPRINT s_Light ~%kit_access%~
+			END
+		  END
+		  ACTION_IF (~%new_variable%~ STRING_EQUAL_CASE ~Shadow~) BEGIN
+		    ACTION_IF (~%s_Shadow%~ STRING_EQUAL_CASE ~x~) BEGIN
+			  OUTER_SPRINT s_Shadow ~%kit_access%~
+			END
+		  END
+		  ACTION_IF (~%new_variable%~ STRING_EQUAL_CASE ~Magic~) BEGIN
+		    ACTION_IF (~%s_Magic%~ STRING_EQUAL_CASE ~x~) BEGIN
+			  OUTER_SPRINT s_Magic ~%kit_access%~
+			END
+		  END
+		  ACTION_IF (~%new_variable%~ STRING_EQUAL_CASE ~Astral~) BEGIN
+		    ACTION_IF (~%s_Astral%~ STRING_EQUAL_CASE ~x~) BEGIN
+			  OUTER_SPRINT s_Astral ~%kit_access%~
+			END
+		  END
+		END
+	  END
+//	END
+
+  // define the text that will be added to the 2da files
+    OUTER_TEXT_SPRINT class_text ~%clab_name%	%class%	%sphere_list%	%multiclass%~
+    OUTER_TEXT_SPRINT usable_text ~%clab_name% 	%u_leather_armor% %u_chain_armor% %u_plate_armor% %u_club_staff% %u_hammers% %u_maces% %u_flails% %u_axes% %u_daggers% %u_short_swords% %u_long_swords% %u_scimitars% %u_katanas% %u_bastard_swords% %u_2hand_swords% %u_halberds% %u_spears% %u_darts% %u_slings% %u_bows% %u_crossbows%~
+    OUTER_TEXT_SPRINT sphere_text ~%clab_name% %s_Life% %s_Death% %s_Benediction% %s_Destruction% %s_Protection% %s_War% %s_Exploration% %s_Knowledge% %s_Deception% %s_Thought% %s_Dread% %s_Vigor% %s_Affliction% %s_Animal% %s_Plant% %s_Earth% %s_Water% %s_Air% %s_Fire% %s_Light% %s_Shadow% %s_Magic% %s_Astral%~
+
+  // uppercase text
+    ACTION_TO_UPPER class_text
+    ACTION_TO_UPPER usable_text
+    ACTION_TO_UPPER sphere_text
+    
+  // append to the .2da files
+    APPEND ~d5_class.2da~ ~%class_text%~
+    APPEND ~d5_usabl.2da~ ~%usable_text%~
+    APPEND ~d5_spher.2da~ ~%sphere_text%~
+  
+  // clean up the .2da files
+    COPY_EXISTING ~d5_usabl.2da~ ~override~
+                ~d5_class.2da~ ~override~
+                ~d5_spher.2da~ ~override~
+	  PRETTY_PRINT_2DA
+  END
+END
+
+//___________________________________________________________________________________
+//___________________________________________________________________________________
+
+DEFINE_ACTION_MACRO ~READ_FNP_KIT_INFO~ BEGIN
+
+//  CLEAR_ARRAYS
+
+  ACTION_IF (FILE_EXISTS_IN_GAME ~d5_class.2da~
+               && FILE_EXISTS_IN_GAME ~d5_usabl.2da~
+               && FILE_EXISTS_IN_GAME ~d5_spher.2da~) BEGIN
+    
+    // read kits and class access
+    COPY_EXISTING ~d5_class.2da~ ~override~
+      READ_2DA_ENTRIES_NOW ~r2en_d5_class~ 2
+      FOR (row = 1; row < r2en_d5_class; row += 1) BEGIN
+        READ_2DA_ENTRY_FORMER ~r2en_d5_class~ row 0 kit
+        READ_2DA_ENTRY_FORMER ~r2en_d5_class~ row 1 class
+        TEXT_SPRINT $d5_fnp_kits(~%row%~) ~%kit%~
+        TEXT_SPRINT $d5_fnp_kit_class_access(~%kit%~) ~%class%~
+      END
+    
+    // read usability access
+    COPY_EXISTING ~d5_usabl.2da~ ~override~
+      COUNT_2DA_COLS num_cols
+      READ_2DA_ENTRIES_NOW ~r2en_d5_usable~ (num_cols - 1)
+      FOR (row = 1; row < r2en_d5_usable; row += 1) BEGIN
+        READ_2DA_ENTRY_FORMER ~r2en_d5_usable~ row 0 kit
+        FOR (col = 0; col < (num_cols - 1); col += 1) BEGIN
+          READ_2DA_ENTRY_FORMER ~r2en_d5_usable~ 0 col usable
+          READ_2DA_ENTRY_FORMER ~r2en_d5_usable~ row (col + 1) access
+          TEXT_SPRINT $d5_fnp_kit_usable_access(~%kit%~ ~%usable%~) ~%access%~
+        END
+      END
+    
+    // read sphere access
+    COPY_EXISTING ~d5_spher.2da~ ~override~
+      COUNT_2DA_COLS num_cols
+      READ_2DA_ENTRIES_NOW ~r2en_d5_sphere~ (num_cols - 1)
+      FOR (row = 1; row < r2en_d5_sphere; row += 1) BEGIN
+        READ_2DA_ENTRY_FORMER ~r2en_d5_sphere~ row 0 kit
+        FOR (col = 0; col < (num_cols - 1); col += 1) BEGIN
+          READ_2DA_ENTRY_FORMER ~r2en_d5_sphere~ 0 col sphere
+          READ_2DA_ENTRY_FORMER ~r2en_d5_sphere~ row (col + 1) access
+          TEXT_SPRINT $d5_fnp_kit_sphere_access(~%sphere%~ ~%kit%~) ~%access%~
+        END
+      END
+  END
+END
+
+//___________________________________________________________________________________
+//___________________________________________________________________________________
+
+DEFINE_ACTION_MACRO ~BACKFILL_FNP_KIT_INFO~ BEGIN
+
+  ACTION_IF (FILE_EXISTS_IN_GAME ~d5_class.2da~
+               && FILE_EXISTS_IN_GAME ~d5_usabl.2da~
+               && FILE_EXISTS_IN_GAME ~d5_spher.2da~) BEGIN
+
+	INCLUDE ~override/fnp_sphere_list.tpa~
+	LAM d5_define_sphere_names
+	LAM d5_deity_kit_sphere_lists
+
+	ACTION_IF !(FILE_EXISTS_IN_GAME ~d5altsph.2da~) BEGIN
+	  COPY ~d5/d5altsph.2da~ ~override~
+	END
+	
+    COPY_EXISTING ~d5altsph.2da~ ~override~
+      READ_2DA_ENTRIES_NOW ~r2en_sphere_names~ 2
+      FOR (row = 0; row < r2en_sphere_names; row += 1) BEGIN
+		READ_2DA_ENTRY_FORMER ~r2en_sphere_names~ row 0 orig_sphere
+		READ_2DA_ENTRY_FORMER ~r2en_sphere_names~ row 1 renamed_sphere
+        TEXT_SPRINT $d5_fnp_sphere_names(~%orig_sphere%~) ~%renamed_sphere%~
+      END
+    IF_EXISTS BUT_ONLY
+    
+	COPY_EXISTING ~d5_class.2da~ ~override~
+	  READ_2DA_ENTRIES_NOW ~r2en_d5_class~ 4
+	  FOR (row = 0; row < r2en_d5_class; row += 1) BEGIN
+    	READ_2DA_ENTRY_FORMER ~r2en_d5_class~ row 0 d5_class_kit
+    	READ_2DA_ENTRY_FORMER ~r2en_d5_class~ row 2 d5_class_list
+		PATCH_IF !(~%d5_class_list%~ STRING_EQUAL_CASE ~custom~) BEGIN
+	        TEXT_SPRINT $d5_fnp_clab_sphere_lists(~%d5_class_kit%~) ~%d5_class_list%~
+	    END
+	  END
+	BUT_ONLY
+
+	ACTION_PHP_EACH d5_fnp_clab_sphere_lists AS kit => list BEGIN
+		ACTION_IF (FILE_CONTAINS_EVALUATED (~fnp_sphere_list.tpa~ ~%list%~)) BEGIN
+		  ACTION_TO_LOWER %list%
+		  LAF ~%list%~ RET_ARRAY ~%kit%_spheres_array~ = EVAL ~%list%_array~ END
+		  ACTION_PHP_EACH EVAL ~%kit%_spheres_array~ AS this_sphere => deity_access BEGIN
+		    ACTION_PHP_EACH d5_fnp_sphere_names AS fnp_sphere => alt_sphere BEGIN
+			  ACTION_IF (~%this_sphere%~ STRING_EQUAL_CASE ~%alt_sphere%~) BEGIN
+				  ACTION_IF (~%fnp_sphere%~ STRING_EQUAL_CASE ~Life~) BEGIN
+					OUTER_SPRINT access_Life ~%deity_access%~
+					ACTION_TO_UPPER %access_Life%
+				  END
+				  ACTION_IF (~%fnp_sphere%~ STRING_EQUAL_CASE ~Death~) BEGIN
+					OUTER_SPRINT access_Death ~%deity_access%~
+					ACTION_TO_UPPER %access_Death%
+				  END
+				  ACTION_IF (~%fnp_sphere%~ STRING_EQUAL_CASE ~Benediction~) BEGIN
+					OUTER_SPRINT access_Benediction ~%deity_access%~
+					ACTION_TO_UPPER %access_Benediction%
+				  END
+				  ACTION_IF (~%fnp_sphere%~ STRING_EQUAL_CASE ~Destruction~) BEGIN
+					OUTER_SPRINT access_Destruction ~%deity_access%~
+					ACTION_TO_UPPER %access_Destruction%
+				  END
+				  ACTION_IF (~%fnp_sphere%~ STRING_EQUAL_CASE ~Protection~) BEGIN
+					OUTER_SPRINT access_Protection ~%deity_access%~
+					ACTION_TO_UPPER %access_Protection%
+				  END
+				  ACTION_IF (~%fnp_sphere%~ STRING_EQUAL_CASE ~War~) BEGIN
+					OUTER_SPRINT access_War ~%deity_access%~
+					ACTION_TO_UPPER %access_War%
+				  END
+				  ACTION_IF (~%fnp_sphere%~ STRING_EQUAL_CASE ~Exploration~) BEGIN
+					OUTER_SPRINT access_Exploration ~%deity_access%~
+					ACTION_TO_UPPER %access_Exploration%
+				  END
+				  ACTION_IF (~%fnp_sphere%~ STRING_EQUAL_CASE ~Knowledge~) BEGIN
+					OUTER_SPRINT access_Knowledge ~%deity_access%~
+					ACTION_TO_UPPER %access_Knowledge%
+				  END
+				  ACTION_IF (~%fnp_sphere%~ STRING_EQUAL_CASE ~Deception~) BEGIN
+					OUTER_SPRINT access_Deception ~%deity_access%~
+					ACTION_TO_UPPER %access_Deception%
+				  END
+				  ACTION_IF (~%fnp_sphere%~ STRING_EQUAL_CASE ~Thought~) BEGIN
+					OUTER_SPRINT access_Thought ~%deity_access%~
+					ACTION_TO_UPPER %access_Thought%
+				  END
+				  ACTION_IF (~%fnp_sphere%~ STRING_EQUAL_CASE ~Dread~) BEGIN
+					OUTER_SPRINT access_Dread ~%deity_access%~
+					ACTION_TO_UPPER %access_Dread%
+				  END
+				  ACTION_IF (~%fnp_sphere%~ STRING_EQUAL_CASE ~Vigor~) BEGIN
+					OUTER_SPRINT access_Vigor ~%deity_access%~
+					ACTION_TO_UPPER %access_Vigor%
+				  END
+				  ACTION_IF (~%fnp_sphere%~ STRING_EQUAL_CASE ~Affliction~) BEGIN
+					OUTER_SPRINT access_Affliction ~%deity_access%~
+					ACTION_TO_UPPER %access_Affliction%
+				  END
+				  ACTION_IF (~%fnp_sphere%~ STRING_EQUAL_CASE ~Animal~) BEGIN
+					OUTER_SPRINT access_Animal ~%deity_access%~
+					ACTION_TO_UPPER %access_Animal%
+				  END
+				  ACTION_IF (~%fnp_sphere%~ STRING_EQUAL_CASE ~Plant~) BEGIN
+					OUTER_SPRINT access_Plant ~%deity_access%~
+					ACTION_TO_UPPER %access_Plant%
+				  END
+				  ACTION_IF (~%fnp_sphere%~ STRING_EQUAL_CASE ~Earth~) BEGIN
+					OUTER_SPRINT access_Earth ~%deity_access%~
+					ACTION_TO_UPPER %access_Earth%
+				  END
+				  ACTION_IF (~%fnp_sphere%~ STRING_EQUAL_CASE ~Air~) BEGIN
+					OUTER_SPRINT access_Air ~%deity_access%~
+					ACTION_TO_UPPER %access_Air%
+				  END
+				  ACTION_IF (~%fnp_sphere%~ STRING_EQUAL_CASE ~Water~) BEGIN
+					OUTER_SPRINT access_Water ~%deity_access%~
+					ACTION_TO_UPPER %access_Water%
+				  END
+				  ACTION_IF (~%fnp_sphere%~ STRING_EQUAL_CASE ~Fire~) BEGIN
+					OUTER_SPRINT access_Fire ~%deity_access%~
+					ACTION_TO_UPPER %access_Fire%
+				  END
+				  ACTION_IF (~%fnp_sphere%~ STRING_EQUAL_CASE ~Light~) BEGIN
+					OUTER_SPRINT access_Light ~%deity_access%~
+					ACTION_TO_UPPER %access_Light%
+				  END
+				  ACTION_IF (~%fnp_sphere%~ STRING_EQUAL_CASE ~Shadow~) BEGIN
+					OUTER_SPRINT access_Shadow ~%deity_access%~
+					ACTION_TO_UPPER %access_Shadow%
+				  END
+				  ACTION_IF (~%fnp_sphere%~ STRING_EQUAL_CASE ~Magic~) BEGIN
+					OUTER_SPRINT access_Magic ~%deity_access%~
+					ACTION_TO_UPPER %access_Magic%
+				  END
+				  ACTION_IF (~%fnp_sphere%~ STRING_EQUAL_CASE ~Astral~) BEGIN
+					OUTER_SPRINT access_Astral ~%deity_access%~
+					ACTION_TO_UPPER %access_Astral%
+				  END
+			  END
+			END
+		  END
+		  COPY_EXISTING ~d5_spher.2da~ ~override~
+			COUNT_2DA_COLS cols
+			READ_2DA_ENTRIES_NOW rows cols
+			FOR (row = 0; row < rows; ++row) BEGIN
+			  READ_2DA_ENTRY_FORMER rows row 0 line
+			  READ_2DA_ENTRY_FORMER rows row 1 already_life
+			  READ_2DA_ENTRY_FORMER rows row 2 already_death
+			  READ_2DA_ENTRY_FORMER rows row 3 already_benediction
+			  READ_2DA_ENTRY_FORMER rows row 4 already_destruction
+			  READ_2DA_ENTRY_FORMER rows row 5 already_protection
+			  READ_2DA_ENTRY_FORMER rows row 6 already_war
+			  READ_2DA_ENTRY_FORMER rows row 7 already_exploration
+			  READ_2DA_ENTRY_FORMER rows row 8 already_knowledge
+			  READ_2DA_ENTRY_FORMER rows row 9 already_deception
+			  READ_2DA_ENTRY_FORMER rows row 10 already_thought
+			  READ_2DA_ENTRY_FORMER rows row 11 already_dread
+			  READ_2DA_ENTRY_FORMER rows row 12 already_vigor
+			  READ_2DA_ENTRY_FORMER rows row 13 already_affliction
+			  READ_2DA_ENTRY_FORMER rows row 14 already_animal
+			  READ_2DA_ENTRY_FORMER rows row 15 already_plant
+			  READ_2DA_ENTRY_FORMER rows row 16 already_earth
+			  READ_2DA_ENTRY_FORMER rows row 17 already_air
+			  READ_2DA_ENTRY_FORMER rows row 18 already_water
+			  READ_2DA_ENTRY_FORMER rows row 19 already_fire
+			  READ_2DA_ENTRY_FORMER rows row 20 already_light
+			  READ_2DA_ENTRY_FORMER rows row 21 already_shadow
+			  READ_2DA_ENTRY_FORMER rows row 22 already_magic
+			  READ_2DA_ENTRY_FORMER rows row 23 already_astral
+			  PATCH_IF (~%line%~ STRING_EQUAL_CASE ~%kit%~) BEGIN
+				PATCH_IF (~%already_life%~ STRING_EQUAL_CASE ~x~) BEGIN
+				  SET_2DA_ENTRY row 1 cols ~%access_Life%~
+				END
+				PATCH_IF (~%already_death%~ STRING_EQUAL_CASE ~x~) BEGIN
+				  SET_2DA_ENTRY row 2 cols ~%access_Death%~
+				END
+				PATCH_IF (~%already_benediction%~ STRING_EQUAL_CASE ~x~) BEGIN
+				  SET_2DA_ENTRY row 3 cols ~%access_Benediction%~
+				END
+				PATCH_IF (~%already_destruction%~ STRING_EQUAL_CASE ~x~) BEGIN
+				  SET_2DA_ENTRY row 4 cols ~%access_Destruction%~
+				END
+				PATCH_IF (~%already_protection%~ STRING_EQUAL_CASE ~x~) BEGIN
+				  SET_2DA_ENTRY row 5 cols ~%access_Protection%~
+				END
+				PATCH_IF (~%already_war%~ STRING_EQUAL_CASE ~x~) BEGIN
+				  SET_2DA_ENTRY row 6 cols ~%access_War%~
+				END
+				PATCH_IF (~%already_exploration%~ STRING_EQUAL_CASE ~x~) BEGIN
+				  SET_2DA_ENTRY row 7 cols ~%access_Exploration%~
+				END
+				PATCH_IF (~%already_knowledge%~ STRING_EQUAL_CASE ~x~) BEGIN
+				  SET_2DA_ENTRY row 8 cols ~%access_Knowledge%~
+				END
+				PATCH_IF (~%already_deception%~ STRING_EQUAL_CASE ~x~) BEGIN
+				  SET_2DA_ENTRY row 9 cols ~%access_Deception%~
+				END
+				PATCH_IF (~%already_thought%~ STRING_EQUAL_CASE ~x~) BEGIN
+				  SET_2DA_ENTRY row 10 cols ~%access_Thought%~
+				END
+				PATCH_IF (~%already_dread%~ STRING_EQUAL_CASE ~x~) BEGIN
+				  SET_2DA_ENTRY row 11 cols ~%access_Dread%~
+				END
+				PATCH_IF (~%already_vigor%~ STRING_EQUAL_CASE ~x~) BEGIN
+				  SET_2DA_ENTRY row 12 cols ~%access_Vigor%~
+				END
+				PATCH_IF (~%already_affliction%~ STRING_EQUAL_CASE ~x~) BEGIN
+				  SET_2DA_ENTRY row 13 cols ~%access_Affliction%~
+				END
+				PATCH_IF (~%already_animal%~ STRING_EQUAL_CASE ~x~) BEGIN
+				  SET_2DA_ENTRY row 14 cols ~%access_Animal%~
+				END
+				PATCH_IF (~%already_plant%~ STRING_EQUAL_CASE ~x~) BEGIN
+				  SET_2DA_ENTRY row 15 cols ~%access_Plant%~
+				END
+				PATCH_IF (~%already_earth%~ STRING_EQUAL_CASE ~x~) BEGIN
+				  SET_2DA_ENTRY row 16 cols ~%access_Earth%~
+				END
+				PATCH_IF (~%already_air%~ STRING_EQUAL_CASE ~x~) BEGIN
+				  SET_2DA_ENTRY row 17 cols ~%access_Air%~
+				END
+				PATCH_IF (~%already_water%~ STRING_EQUAL_CASE ~x~) BEGIN
+				  SET_2DA_ENTRY row 18 cols ~%access_Water%~
+				END
+				PATCH_IF (~%already_fire%~ STRING_EQUAL_CASE ~x~) BEGIN
+				  SET_2DA_ENTRY row 19 cols ~%access_Fire%~
+				END
+				PATCH_IF (~%already_light%~ STRING_EQUAL_CASE ~x~) BEGIN
+				  SET_2DA_ENTRY row 20 cols ~%access_Light%~
+				END
+				PATCH_IF (~%already_shadow%~ STRING_EQUAL_CASE ~x~) BEGIN
+				  SET_2DA_ENTRY row 21 cols ~%access_Shadow%~
+				END
+				PATCH_IF (~%already_magic%~ STRING_EQUAL_CASE ~x~) BEGIN
+				  SET_2DA_ENTRY row 22 cols ~%access_Magic%~
+				END
+				PATCH_IF (~%already_astral%~ STRING_EQUAL_CASE ~x~) BEGIN
+				  SET_2DA_ENTRY row 23 cols ~%access_Astral%~
+				END
+			  END
+			END
+			PRETTY_PRINT_2DA
+		  BUT_ONLY
+		END
+	END
+  END
+END
+
+//___________________________________________________________________________________
+//___________________________________________________________________________________
+
+
+/*
+// NECESSARY FUNCTIONS________________________________________________________________
+// Don't change this stuff
+//
+DEFINE_ACTION_FUNCTION ~USE_ALT_SPHERES~ BEGIN
+//ACTION_IF FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~ BEGIN
+//  INCLUDE ~override/fnp_sphere_list.tpa~
+  ACTION_PHP_EACH alt_spheres AS spell => alt_sphere BEGIN
+	OUTER_INNER_PATCH_SAVE fnp_sphere_name ~%alt_sphere%~ BEGIN
+	  PHP_EACH sphere_name_changes AS fnp_sphere => new_sphere BEGIN
+		REPLACE_TEXTUALLY CASE_INSENSITIVE EXACT_MATCH ~%new_sphere%~ ~%fnp_sphere%~
+	  END
+	END
+	OUTER_SPRINT $spellsphere(~%spell%~ ~%spell_1%~) ~%fnp_sphere_name%~
+  END
+END
+//____________________________________________________________________________________
+*/
+

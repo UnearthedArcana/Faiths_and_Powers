@@ -1,0 +1,82 @@
+
+	ACTION_IF	!FILE_EXISTS_IN_GAME ~M_IDENT.LUA~ BEGIN
+		COPY_EXISTING	~UI.MENU~	override
+			REPLACE_TEXTUALLY	~\(Infinity_CheckItemIdentify(characters\[id\]\.equipment\[slotName\]\.id)\)~
+~			e:GetActiveEngine():OnLeftPanelButtonClick(5)
+			e:GetActiveEngine():OnLeftPanelButtonClick(6)
+			e:GetActiveEngine():OnLeftPanelButtonClick(3)
+	\1~
+			REPLACE_TEXTUALLY	~\(Infinity_OnSpellIdentify(characters\[id\]\.equipment\[selectedSlot\]\.id);*\)~
+~identifyCustom(1);
+			\1~
+			REPLACE_TEXTUALLY	~"Infinity_GetSpellIdentifyEnabled(characters\[id\]\.equipment\[selectedSlot\]\.id)"~
+~"identifyCustom(0)"~
+		COPY_EXISTING	~SPWI101.SPL~	~override\M_IDENT.LUA~
+			DELETE_BYTES	0	SOURCE_SIZE
+			TEXT_SPRINT text
+~	function	identifyCustom(num)
+		for k,v in pairs(characters[id].mageSpells[1]) do
+			if v.resref == 'SPWI110' then
+				if v.castableCount > 0 then
+					return true
+				end
+			end
+		end
+		for	IDspellLevel = 1, 9, 1 do
+			for k,v in pairs(characters[id].mageSpells[IDspellLevel]) do
+				for l,m in pairs(identifyCustomList[IDspellLevel]) do
+					if m == v.resref then
+						if v.castableCount > 0 then
+							if num == 1 then
+								for	i = 1, 1 + v.memorizedCount - v.castableCount,1 do
+									for x,y in pairs(characters[id].mageSpells[IDspellLevel]) do
+										if  y.resref == m then
+											mageScreen:UnmemorizeSpell( IDspellLevel - 1, y.memorizedIndex );
+										end
+									end
+								end
+								for	i = 1, 1 + v.memorizedCount - v.castableCount,1 do
+									mageScreen:MemorizeSpell( IDspellLevel - 1, v.index );
+								end
+								return
+							else
+								return true
+							end
+						end
+					end
+				end
+			end
+			if IDspellLevel < 8 then
+				for k,v in pairs(characters[id].priestSpells[IDspellLevel]) do
+					for l,m in pairs(identifyCustomList[IDspellLevel]) do
+						if m == v.resref then
+							if v.castableCount > 0 then
+								if num == 1 then
+									for	i = 1, 1 + v.memorizedCount - v.castableCount,1 do
+										for x,y in pairs(characters[id].priestSpells[IDspellLevel]) do
+											if  y.resref == m then
+												priestScreen:UnmemorizeSpell( IDspellLevel - 1, y.memorizedIndex );
+											end
+										end
+									end
+									for	i = 1, 1 + v.memorizedCount - v.castableCount,1 do
+										priestScreen:MemorizeSpell( IDspellLevel - 1, v.index );
+									end
+									return
+								else
+									return true
+								end
+							end
+						end
+					end
+				end
+			end
+		end
+		return false
+	end
+	identifyCustomList = { [1] = {}, [2] = {}, [3] = {}, [4] = {}, [5] = {}, [6] = {}, [7] = {}, [8] = {}, [9] = {}, }~
+			SET length = STRING_LENGTH ~%text%~
+			INSERT_BYTES	0	length
+			WRITE_EVALUATED_ASCII	0	~%text%~
+	END
+			

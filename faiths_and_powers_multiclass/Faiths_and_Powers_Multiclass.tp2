@@ -1,0 +1,244 @@
+BACKUP ~faiths_and_powers/backup~
+AUTHOR ~SubtleD and Grammarsalad~
+
+
+VERSION ~0.79.4~
+
+
+ALWAYS
+
+	ACTION_IF NOT FILE_EXISTS ~override/d5_fnp_settings.ini~ BEGIN
+  	  COPY ~faiths_and_powers/d5_fnp_settings.ini~ ~override~
+	END
+ 
+  	INCLUDE ~override/d5_fnp_settings.ini~
+
+	INCLUDE ~faiths_and_powers/lib/fl#add_kit_ee.tpa~
+
+	INCLUDE ~faiths_and_powers/lib/qd_multiclass.tpa~
+
+	INCLUDE ~faiths_and_powers/lib/misc_fnp_functions.tpa~
+
+	INCLUDE ~faiths_and_powers/lib/spell_evasion.tpa~
+	
+	INCLUDE ~faiths_and_powers/lib/fnp_spontaneous.tpa~
+
+	INCLUDE ~faiths_and_powers/lib/fnp_system.tpa~
+	
+	LAF fix_kitlist_missing_ids END
+
+END
+	
+// ASK_EVERY_COMPONENT
+
+LANGUAGE
+  ~English~
+  ~english~
+  ~faiths_and_powers/language/english/setup.tra~
+  ~faiths_and_powers/language/english/IWD_spells.tra~
+  ~faiths_and_powers/language/english/new_spells.tra~
+  ~faiths_and_powers/language/english/HLA.tra~
+//___________________________________________________________________________________
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+//							INSTALL MULTICLASS DRUIDS
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+BEGIN @91 // install multiclass druids
+DESIGNATED 91
+REQUIRE_PREDICATE (GAME_IS ~bgee bg2ee eet iwdee~) @8
+
+INCLUDE ~faiths_and_powers/lib/fnp_compat.tpa~
+ACTION_IF (FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~) BEGIN
+  INCLUDE ~override/fnp_sphere_list.tpa~
+  LAM d5_define_sphere_names
+  LAM d5_define_sphere_spells
+  LAM d5_deity_kit_sphere_lists
+END
+
+LAF multiclass_text END
+
+LAF enable_multiclasses END
+
+LAM d5_kit_choices
+
+INCLUDE ~faiths_and_powers/lib/multi_druids_shamans.tpa~
+
+//ACTION_IF (%d5_multiclass_druids% = 1) BEGIN
+  LAF fighter_druid END
+  LAF druid_ranger END
+  LAF druid_thief END
+  LAF druid_mage END
+  ACTION_IF (MOD_IS_INSTALLED ~tomeandblood.tp2~ ~80~) BEGIN
+	LAF sorcerer_druid END
+  END
+  ACTION_IF (FILE_EXISTS_IN_GAME ~qd_monk_multi.qd~) BEGIN
+	LAF druid_monk END
+  END  
+  LAF multi_druid_strongholds END
+/*
+  ACTION_IF (FILE_EXISTS_IN_GAME ~d5dfor.2da~) BEGIN
+    LAF multi_druid_shapeshifting END
+  END
+*/
+/*
+  ACTION_IF !(MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~80~) BEGIN
+    LAF no_spheres_druid_spells END
+  END
+*/
+  ACTION_IF !(MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~75~) BEGIN
+    LAF no_spheres_druid_usability END
+  END
+//END
+
+LAF remove_mc_menu_kits END
+
+//__________________________________________________________________________________
+
+
+////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+//							INSTALL MULTICLASS SHAMANS
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+BEGIN @92 // install multiclass shamans
+DESIGNATED 92
+REQUIRE_PREDICATE (GAME_IS ~bgee bg2ee eet iwdee~) @8
+
+INCLUDE ~faiths_and_powers/lib/fnp_compat.tpa~
+ACTION_IF (FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~) BEGIN
+  INCLUDE ~override/fnp_sphere_list.tpa~
+  LAM d5_define_sphere_names
+  LAM d5_define_sphere_spells
+  LAM d5_deity_kit_sphere_lists
+END
+
+LAF multiclass_text END
+
+LAF enable_multiclasses END
+
+LAM d5_kit_choices
+
+INCLUDE ~faiths_and_powers/lib/multi_druids_shamans.tpa~
+
+//ACTION_IF (%d5_multiclass_shamans% = 1) BEGIN
+  LAF sham_barb END
+  LAF ranger_shaman END
+  LAF shaman_thief END
+  LAF shaman_mage END
+  ACTION_IF (FILE_EXISTS_IN_GAME ~qd_monk_multi.qd~) BEGIN
+	LAF shaman_monk END
+  END  
+  ACTION_IF !(FILE_EXISTS_IN_GAME ~d5_spheres.d5~) BEGIN
+	LAF multiclass_shaman_system END
+  END
+  LAF multi_shaman_strongholds END
+  ACTION_IF !(MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~75~) BEGIN
+   ACTION_IF !(FILE_EXISTS_IN_GAME ~d5drth.2da~) BEGIN
+    LAF no_spheres_druid_usability END
+   END
+  END
+//END
+
+LAF remove_mc_menu_kits END
+
+//__________________________________________________________________________________
+
+
+////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+//							INSTALL MULTICLASS KITS
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+BEGIN @95 // install multiclass kits
+DESIGNATED 95
+REQUIRE_PREDICATE (GAME_IS ~bgee bg2ee eet iwdee~) @8
+
+INCLUDE ~faiths_and_powers/lib/a7#add_kit_ex.tpa~
+INCLUDE ~faiths_and_powers/lib/fnp_compat.tpa~
+ACTION_IF (FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~) BEGIN
+  INCLUDE ~override/fnp_sphere_list.tpa~
+   LAM d5_define_sphere_names
+   LAM d5_define_sphere_spells
+   LAM d5_deity_kit_sphere_lists
+END
+
+INCLUDE ~faiths_and_powers/lib/default_kit_spheres.tpa~
+ LAF vanilla_kit_spheres END
+ LAF mod_kit_spheres END
+ LAF default_kit_spheres END
+
+LAF multiclass_text END
+
+LAF enable_multiclasses END
+
+LAM d5_kit_choices
+
+INCLUDE ~faiths_and_powers/lib/add_multiclass_kits.tpa~
+
+ACTION_IF (%d5_cm_mystra% = 1) BEGIN
+  LAF cm_mystra END
+END
+ACTION_IF (%d5_cm_azuth% = 1) BEGIN
+  LAF cm_azuth END
+END
+ACTION_IF (%d5_cr_mielikki% = 1) BEGIN
+  LAF cr_mielikki END
+END
+ACTION_IF (%d5_cr_shaundakul% = 1) BEGIN
+  LAF cr_shaundakul END
+END
+ACTION_IF (%d5_ct_mask% = 1) BEGIN
+  LAF ct_mask END
+END
+ACTION_IF (%d5_ct_brandobaris% = 1) BEGIN
+  LAF ct_brandobaris END
+END
+
+ACTION_IF (%d5_multiclass_clerics% = 1) BEGIN
+  LAF multiclass_kit_clones END
+END
+
+LAF remove_mc_menu_kits END
+
+//__________________________________________________________________________________
+
+
+////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+//						CHOOSE WHETHER TO CHANGE NPC KITS
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+BEGIN @99 // apply kits to multiclass NPCS
+DESIGNATED 99
+
+
+//read in kit functions_____________________________________________________________
+//
+INCLUDE ~faiths_and_powers/lib/npc_kits.tpa~
+
+LAF npc_mc_kits END
+//__________________________________________________________________________________
+

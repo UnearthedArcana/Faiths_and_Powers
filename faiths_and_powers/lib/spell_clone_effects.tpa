@@ -1,0 +1,142 @@
+DEFINE_PATCH_FUNCTION SPELL_CLONE_EFFECTS
+
+  // defines what we're going to check
+  INT_VAR check_globals       = 1
+          check_headers       = 1     
+          header              = "-1"   
+          header_type         = "-1"
+          multi_match         = 999
+          debug               = 0
+
+  // variables for finding the effect to match
+          match_opcode        = "-1"   
+
+  // same for match and new STR_VAR
+  STR_VAR match_resource      = "SAME"
+          resource            = "SAME"
+          insert              = "above"
+
+BEGIN
+
+  // set variables and offsets based on the file type
+  SET new_fx = 0
+  PATCH_IF ("%SOURCE_FILE%" STRING_COMPARE_REGEXP "^.+\.spl" = 0) BEGIN
+    READ_LONG   0x6a fx_off   ELSE 0
+    SET counter_offset = 0x70
+    SET abil_length    = 0x28
+    SET fx_type        = 0
+    SET min_size       = 0x72
+    PATCH_IF (check_headers = 0) BEGIN
+      SET abil_num = 0
+    END ELSE BEGIN
+      READ_LONG   0x64 abil_off ELSE 0
+      READ_SHORT  0x68 abil_num ELSE 0
+    END
+  END ELSE
+  PATCH_IF ("%SOURCE_FILE%" STRING_COMPARE_REGEXP "^.+\.itm" = 0) BEGIN
+    READ_LONG   0x6a fx_off   ELSE 0
+    SET counter_offset = 0x70
+    SET abil_length    = 0x38
+    SET fx_type        = 0
+    SET min_size       = 0x72
+    PATCH_IF (check_headers = 0) BEGIN
+      SET abil_num = 0
+    END ELSE BEGIN
+      READ_LONG   0x64 abil_off ELSE 0
+      READ_SHORT  0x68 abil_num ELSE 0
+    END
+  END ELSE BEGIN
+    SET min_size = "-1" // kill macro as the file type is not recognized
+  END
+  PATCH_IF (SOURCE_SIZE >= min_size) BEGIN // sanity check
+      FOR (index = (0 - check_globals) ; index < abil_num ; ++index) BEGIN // we start at -1 for global effects
+      PATCH_IF (index < 0) BEGIN // if loop through globals needed
+        SET abil_fx_idx = 0  // start with effect 0 since we're in the global loop
+        SET abil_type = "-1" // basically, ignore header type checks for global loop
+      END ELSE BEGIN // otherwise normal ability
+        READ_SHORT  (abil_off +        (abil_length * index)) abil_type
+        SET counter_offset = (abil_off + 0x1e + (abil_length * index))
+        WRITE_SHORT (abil_off + 0x20 + (abil_length * index)) (THIS + new_fx) // update index with previously added effects
+        READ_SHORT  (abil_off + 0x20 + (abil_length * index)) abil_fx_idx
+      END
+      READ_SHORT counter_offset counter // fx_num on global loop, otherwise abil_fx_num
+      PATCH_IF (((abil_type = header_type) OR (abil_type < 0) OR (header_type < 0)) AND // only look on the right header types, if specified...
+                ((header = index) OR (header < 0))) BEGIN                               // and only on the right # header, if specified
+        SET last = 0                              // and only on the right # header, if specified
+        SET local_multi = multi_match
+        FOR (index2 = 0 ; index2 < (counter - last) ; ++index2) BEGIN
+
+          // read the variables from the current effect
+          READ_SHORT (fx_off        + (0x08 * fx_type) + ((abil_fx_idx + index2) * (0x30 + (0xd8 * fx_type)))) o_opcode
+          READ_ASCII (fx_off + 0x14 + (0x14 * fx_type) + ((abil_fx_idx + index2) * (0x30 + (0xd8 * fx_type)))) o_resource
+
+          // match ALL these variables, if specified
+          PATCH_IF (((match_opcode        = o_opcode)        OR (match_opcode < 0))        AND
+                   (("%match_resource%" STRING_COMPARE_CASE "%o_resource%" = 0) OR ("%match_resource%" STRING_COMPARE_CASE "SAME" = 0))) BEGIN
+
+			//try to get the 
+			INNER_PATCH_SAVE new_resource ~%o_resource%~ BEGIN 
+				REPLACE_TEXTUALLY EXACT_MATCH ~SPPR~ ~1~
+				REPLACE_TEXTUALLY EXACT_MATCH ~SPWI~ ~2~
+			END
+
+            // now that we've got a match, read-and-clone it:
+            READ_ASCII   (fx_off        + ((abil_fx_idx + index2) * (0x30 + (0xd8 * fx_type)))) clone (0x30 + (0xd8 * fx_type))
+            PATCH_IF ("%insert%" STRING_COMPARE_CASE "below" = 0) BEGIN
+              SET base = (fx_off        + ((abil_fx_idx + index2 + 1) * (0x30 + (0xd8 * fx_type))))
+            END ELSE
+            PATCH_IF ("%insert%" STRING_COMPARE_CASE "first" = 0) BEGIN
+              SET base = (fx_off        + (abil_fx_idx * (0x30 + (0xd8 * fx_type))))
+            END ELSE
+            PATCH_IF ("%insert%" STRING_COMPARE_CASE "last" = 0) BEGIN
+              SET base = (fx_off        + ((abil_fx_idx + counter) * (0x30 + (0xd8 * fx_type))))
+            END ELSE BEGIN
+              SET base = (fx_off        + ((abil_fx_idx + index2) * (0x30 + (0xd8 * fx_type))))
+            END
+            INSERT_BYTES base (0x30 + (0xd8 * fx_type))
+            WRITE_ASCIIE base "%clone%"
+
+            PATCH_IF ("%resource%" STRING_COMPARE_CASE "sphere" = 0) BEGIN
+              WRITE_ASCIIE (base + 0x14 + (0x14 * fx_type)) "d5_%new_resource%" #8
+            END
+            PATCH_IF ("%resource%" STRING_COMPARE_CASE "fsphere" = 0) BEGIN
+              WRITE_ASCIIE (base + 0x14 + (0x14 * fx_type)) "d5f%new_resource%" #8
+            END
+
+            // update the tracking vars
+            SET new_fx += 1
+            SET counter += 1
+            PATCH_IF (local_multi < 2) BEGIN  // kill loop if we only want one match
+              SET index2 = counter
+            END ELSE BEGIN // otherwise bump vars and keep going
+              SET local_multi  -= 1
+              PATCH_IF ("%insert%" STRING_COMPARE_CASE "last" = 0) BEGIN
+                SET last += 1
+              END ELSE BEGIN
+                SET index2 += 1
+              END
+            END
+
+          END // end patch_if for a matched effect
+        END // end of the for loop through effects
+      END // end patch_if for matched/specified headers
+      WRITE_SHORT counter_offset counter // fx_num on global loop, otherwise abil_fx_num
+    END // end loop through effects on ability
+  END // end ability loop
+
+  // spit out some info if debug is set
+  PATCH_IF (debug = 1) BEGIN
+    READ_LONG 0x0c strref
+    PATCH_IF ((strref > 0) AND (strref < 200000)) BEGIN
+      READ_STRREF 0x0c name
+    END ELSE BEGIN
+      READ_STRREF 0x08 name
+    END
+    PATCH_IF (new_fx = 0) BEGIN
+      PATCH_PRINT "  Warning: No effects added to %SOURCE_FILE% (%name%)"
+    END ELSE BEGIN
+      PATCH_PRINT "              ~%SOURCE_FILE%~   ~override~ // %name%, %new_fx% effect(s) added"
+    END
+  END
+
+END

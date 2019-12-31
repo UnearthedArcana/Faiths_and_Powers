@@ -1,0 +1,68 @@
+IF
+	OR(4)
+        Class(LastSummonerOf(Myself),FIGHTER_MAGE)
+        Class(LastSummonerOf(Myself),CLERIC_MAGE)
+        Class(LastSummonerOf(Myself),FIGHTER_MAGE_CLERIC)
+        Class(LastSummonerOf(Myself),FIGHTER_MAGE_THIEF)
+        CheckStatLT(LastSummonerOf(Myself),4,LEVEL2)
+        Kit(LastSummonerOf(Myself),TRUECLASS)
+        !Global("B_Lev","GLOBAL",1)
+
+THEN
+	RESPONSE #100
+		SetGlobal("B_Lev","GLOBAL",1)
+		SetGlobal("B_NCAN","GLOBAL",0)         //Next level (ie level 4, when new cantrip can be selected) set higher to be checked in dialog...
+                ActionOverride(LastSummonerOf(Myself),StartDialogOverride("b_csel1",Myself))
+END
+
+
+IF
+        Class(LastSummonerOf(Myself),SORCERER)
+        CheckStatLT(LastSummonerOf(Myself),4,LEVEL)
+        Kit(LastSummonerOf(Myself),TRUECLASS)
+        !Global("B_Lev","GLOBAL",1)
+
+THEN
+	RESPONSE #100
+		SetGlobal("B_Lev","GLOBAL",1)
+		SetGlobal("B_NCAN","GLOBAL",0)
+                ActionOverride(LastSummonerOf(Myself),StartDialogOverride("b_csel1",Myself))
+END
+
+
+IF
+	OR(2)
+        Class(LastSummonerOf(Myself),MAGE)
+        Class(LastSummonerOf(Myself),MAGE_THIEF)
+        Kit(LastSummonerOf(Myself),TRUECLASS)
+        CheckStatLT(LastSummonerOf(Myself),4,LEVEL)
+        !Global("B_Lev","GLOBAL",1)
+
+THEN
+	RESPONSE #100
+		SetGlobal("B_Lev","GLOBAL",1)
+		SetGlobal("B_NCAN","GLOBAL",0)
+                ActionOverride(LastSummonerOf(Myself),StartDialogOverride("b_csel1",Myself))
+END
+
+
+
+IF
+        !Global("B_Die","GLOBAL",1)
+
+THEN
+	RESPONSE #100
+                ActionOverride(LastSummonerOf(Myself),StartDialogOverride("b_csel1",Myself))
+END  
+
+IF
+	Global("B_Die","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetGlobal("B_Lev","GLOBAL",0)
+                SetGlobal("B_Die","GLOBAL",0)
+                SetGlobal("B_NCAN","GLOBAL",0)
+		DestroySelf()               //reset all global variables, then destroy self
+END
+
+

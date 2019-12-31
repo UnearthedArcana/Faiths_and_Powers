@@ -1,0 +1,13 @@
+BEGIN ~B_Sor01~
+
+IF ~~ THEN BEGIN Sor000
+SAY @115003
+IF ~~ THEN GOTO Sor101
+END
+
+
+IF ~!HaveSpell(2101)~ THEN BEGIN Sor101
+SAY @115004
+IF ~~ THEN REPLY "Grease" DO ~AddSpecialAbility("SPWI101")~ EXIT
+END
+

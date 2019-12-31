@@ -1,0 +1,347 @@
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+//						IWD-style Spell Evasion +
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+// Version: 3.4
+
+/*
+SAVES:
+0 = none (can use with % chance to evade)
+1 = spells
+2 = breath
+4 = death
+8 = rod/wand
+16 = petrify
+*/
+
+//patch spells for evasion__________________________________________________________
+//
+DEFINE_ACTION_FUNCTION add_evade_spell 
+  INT_VAR 
+	evasion_spellstate = 252 
+	evasion_class = 0 
+	evasion_kit = 0 
+	evasion_save = 2 
+	evasion_chance = 100
+  STR_VAR 
+    evade_ext = ~spl~
+	evade_condition = ~spellstate~ 
+	evade_res = ~this_spell~ 
+	evade_prefix = ~prefix~ 
+ BEGIN
+  ACTION_TO_UPPER %evade_prefix%
+  APPEND ~splprot.2da~ ~D5_KIT_IS%TAB%152%TAB%-1%TAB%1~ UNLESS ~D5_KIT_IS~
+  APPEND ~splprot.2da~ ~D5_KIT_NOT%TAB%152%TAB%-1%TAB%5~ UNLESS ~D5_KIT_NOT~
+  COPY_EXISTING ~splprot.2da~ ~override~
+	COUNT_2DA_COLS cols
+	READ_2DA_ENTRIES_NOW rows cols
+	FOR (row = 1; row < rows; ++row) BEGIN
+	  READ_2DA_ENTRY_FORMER rows row 0 ~stat~
+	  PATCH_IF ~%stat%~ STRING_EQUAL_CASE ~D5_KIT_IS~ BEGIN
+	    SET kit_is_row = %row%
+	  END
+	  PATCH_IF ~%stat%~ STRING_EQUAL_CASE ~D5_KIT_NOT~ BEGIN
+	    SET kit_not_row = %row%
+	  END
+	END
+  BUT_ONLY
+  ACTION_IF (%evasion_save% = 0) BEGIN
+	OUTER_SET evade_prob_1 = (100 - %evasion_chance%)
+	OUTER_SET evade_prob_2 = 100
+  END
+  ACTION_IF (%evasion_save% > 0) BEGIN
+	OUTER_SET evade_prob_1 = 100
+	OUTER_SET evade_prob_2 = %evasion_chance%
+  END
+  ACTION_IF (~%evade_condition%~ STRING_EQUAL_CASE ~spellstate~) BEGIN
+	OUTER_SPRINT evade_suffix ~s~
+	OUTER_SET evade_list = %evasion_spellstate%
+	OUTER_SET evade_cond = %evasion_spellstate%
+	OUTER_SET evade_type = 110
+	OUTER_SET not_evade = 111
+  END
+  ACTION_IF (~%evade_condition%~ STRING_EQUAL_CASE ~class~) BEGIN
+	OUTER_SPRINT evade_suffix ~c~
+	OUTER_SET evade_list = %evasion_class%
+	OUTER_SET evade_cond = %evasion_class%
+	OUTER_SET evade_type = 105
+	OUTER_SET not_evade = 115
+  END
+  ACTION_IF (~%evade_condition%~ STRING_EQUAL_CASE ~kit~) BEGIN
+	OUTER_SPRINT evade_suffix ~k~
+	OUTER_SET evade_list = %evasion_kit%
+	OUTER_SET evade_cond = %evasion_kit%
+	OUTER_SET evade_type = %kit_is_row%
+	OUTER_SET not_evade = %kit_not_row%
+  END
+  ACTION_IF FILE_EXISTS_IN_GAME ~evad%evade_suffix%%evade_list%.2da~ BEGIN
+	COPY_EXISTING ~evad%evade_suffix%%evade_list%.2da~ ~override~
+	  COUNT_2DA_ROWS 2 rows
+	  READ_2DA_ENTRY (rows - 1) 0 2 last_entry
+	BUT_ONLY
+	OUTER_SET evasion_ind = %last_entry%
+  END
+  ACTION_IF NOT FILE_EXISTS_IN_GAME ~evad%evade_suffix%%evade_list%.2da~ BEGIN
+<<<<<<<< d5/evasion.2da
+2DA V1.0
+0
+
+>>>>>>>> 
+	COPY ~d5/evasion.2da~ ~override/evad%evade_suffix%%evade_list%.2da~
+	OUTER_SET evasion_ind = 0
+  END
+  COPY_EXISTING ~splprot.2da~ ~override~
+	COUNT_2DA_COLS cols
+	READ_2DA_ENTRIES_NOW rows cols
+	FOR (row = 1; row < rows; ++row) BEGIN
+	  READ_2DA_ENTRY_FORMER rows row 0 ~stat~
+	  PATCH_IF ~%stat%~ STRING_EQUAL_CASE ~STATE~ BEGIN
+	    SET state_row = %row%
+	  END
+	END
+  BUT_ONLY
+  ACTION_IF (FILE_EXISTS_IN_GAME ~%evade_res%.%evade_ext%~) BEGIN
+	ACTION_IF !(FILE_CONTAINS_EVALUATED (~evad%evade_suffix%%evade_list%.2da~ ~%evade_res%~)) BEGIN
+	  OUTER_SET evasion_ind = (evasion_ind + 1)
+	  COPY_EXISTING ~%evade_res%.%evade_ext%~ ~override~
+		LPF DELETE_EFFECT INT_VAR match_opcode = 324 match_parameter2 = 63 END
+		LPF DELETE_EFFECT INT_VAR match_opcode = 177 STR_VAR match_resource = EVAL ~%evade_prefix%B%evasion_ind%~ END
+		LPF DELETE_EFFECT INT_VAR match_opcode = 177 STR_VAR match_resource = EVAL ~%evade_prefix%A%evasion_ind%~ END
+		LPF DELETE_EFFECT INT_VAR match_opcode = 318 STR_VAR match_resource = EVAL ~%evade_prefix%B%evasion_ind%~ END
+		LPF DELETE_EFFECT INT_VAR match_opcode = 318 STR_VAR match_resource = EVAL ~%evade_prefix%A%evasion_ind%~ END
+		PATCH_IF (~%evade_ext%~ STRING_EQUAL_CASE ~spl~) BEGIN
+		  LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 2 parameter1 = 0 parameter2 = 2 timing = 0 duration = 1 STR_VAR resource = EVAL ~%evade_prefix%B%evasion_ind%~ END
+		  LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 2 parameter1 = 0 parameter2 = 2 timing = 0 duration = 1 STR_VAR resource = EVAL ~%evade_prefix%A%evasion_ind%~ END
+		  LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 318 target = 2 duration = 1 timing = 0 parameter1 = %evade_cond% parameter2 = %not_evade% STR_VAR resource = EVAL ~%evade_prefix%A%evasion_ind%~ END
+		  LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 318 target = 2 duration = 1 timing = 0 parameter1 = %evade_cond% parameter2 = %not_evade% STR_VAR resource = EVAL ~%evade_prefix%B%evasion_ind%~ END
+		END
+		PATCH_IF (~%evade_ext%~ STRING_EQUAL_CASE ~itm~) BEGIN
+		  LPF ADD_ITEM_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 2 parameter1 = 0 parameter2 = 2 timing = 0 duration = 1 STR_VAR resource = EVAL ~%evade_prefix%B%evasion_ind%~ END
+		  LPF ADD_ITEM_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 2 parameter1 = 0 parameter2 = 2 timing = 0 duration = 1 STR_VAR resource = EVAL ~%evade_prefix%A%evasion_ind%~ END
+		  LPF ADD_ITEM_EFFECT INT_VAR insert_point = 0 opcode = 318 target = 2 duration = 1 timing = 0 parameter1 = %evade_cond% parameter2 = %not_evade% STR_VAR resource = EVAL ~%evade_prefix%A%evasion_ind%~ END
+		  LPF ADD_ITEM_EFFECT INT_VAR insert_point = 0 opcode = 318 target = 2 duration = 1 timing = 0 parameter1 = %evade_cond% parameter2 = %not_evade% STR_VAR resource = EVAL ~%evade_prefix%B%evasion_ind%~ END
+		END
+// 	if traditional evasion, do not evade when helpless
+		PATCH_IF %evade_cond% = 252 BEGIN	
+		  LPF DELETE_EFFECT INT_VAR match_opcode = 318 match_parameter2 = 136 END
+		  LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 318 target = 2 duration = 1 timing = 0 parameter1 = 0x8015602f parameter2 = %state_row% STR_VAR resource = EVAL ~%evade_prefix%A%evasion_ind%~ END
+		  LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 318 target = 2 duration = 1 timing = 0 parameter1 = 0x8015602f parameter2 = %state_row% STR_VAR resource = EVAL ~%evade_prefix%B%evasion_ind%~ END
+		END
+	  CREATE EFF ~%evade_prefix%A%evasion_ind%~
+		WRITE_LONG 0x10 318
+		WRITE_LONG 0x14 2
+		WRITE_LONG 0x1c %evade_cond%
+		WRITE_LONG 0x20 %evade_type%
+		WRITE_LONG 0x24 0
+		WRITE_LONG 0x28 1
+		WRITE_BYTE 0x40 %evasion_save%
+		WRITE_SHORT 0x2c %evade_prob_1%
+		WRITE_EVALUATED_ASCII 0x30 ~%evade_prefix%B%evasion_ind%~ #8
+		WRITE_LONG 0x90 1
+		WRITE_EVALUATED_ASCII 0x94 ~%evade_prefix%A%evasion_ind%~ #8
+	  CREATE EFF ~%evade_prefix%B%evasion_ind%~
+		WRITE_LONG 0x10 324
+		WRITE_LONG 0x14 2
+		WRITE_LONG 0x1c %evade_cond%
+		WRITE_LONG 0x20 %evade_type%
+		WRITE_LONG 0x24 0
+		WRITE_LONG 0x28 1
+		WRITE_SHORT 0x2c %evade_prob_2%
+		WRITE_EVALUATED_ASCII 0x30 ~%evade_res%~ #8
+		WRITE_LONG 0x90 1
+		WRITE_EVALUATED_ASCII 0x94 ~%evade_prefix%B%evasion_ind%~ #8
+	  APPEND ~evad%evade_suffix%%evade_list%.2da~ ~%evasion_ind%%TAB%%evade_res%%TAB%%evade_prefix%_%evasion_ind%~
+	END
+  END
+END
+//__________________________________________________________________________________
+
+
+//list of spells to patch___________________________________________________________
+//
+ACTION_DEFINE_ASSOCIATIVE_ARRAY evade_spells BEGIN		
+	spcl722 		=> 1
+	spdr301 		=> 1
+	spin132 		=> 1
+	spin169 		=> 1
+	sppr302 		=> 1
+	sppr304 		=> 1
+	sppr313 		=> 1
+	sppr314 		=> 1
+	sppr323d 		=> 1
+	sppr324 		=> 1
+	sppr325 		=> 1
+	sppr419 		=> 1
+	sppr420b 		=> 1
+	sppr426 		=> 1
+	sppr427 		=> 1
+	sppr503 		=> 1
+	sppr519 		=> 1
+	sppr603d 		=> 1
+	sppr616 		=> 1
+	sppr617 		=> 1
+	sppr618 		=> 1
+	sppr619 		=> 1
+	sppr705 		=> 1
+	sppr738 		=> 1
+	spwi103 		=> 1
+	spwi105 		=> 1
+	spwi204 		=> 1
+	spwi304 		=> 1
+	spwi308 		=> 1
+	spwi327 		=> 1
+	spwi328 		=> 1
+	spwi404 		=> 1
+	spwi431 		=> 1
+	spwi503 		=> 1
+	spwi523 		=> 1
+	spwi709 		=> 1
+	spwi714 		=> 1
+	spwi724 		=> 1
+	spwi806 		=> 1
+	spwi812 		=> 1
+	spwish32 		=> 1
+END
+ACTION_IF !(VARIABLE_IS_SET %optional_evade%) BEGIN
+  OUTER_SET optional_evade = 0
+END
+ACTION_IF (optional_evade = 1) BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY evade_spells BEGIN		
+	abzaway 		=> 1
+	balshld2 		=> 1
+	bdbarbde 		=> 1
+	bdbelblz 		=> 1
+	bdbelinf 		=> 1
+	bdbow05 		=> 1
+	bdcaela4 		=> 1
+	bddagg05 		=> 1
+	bdmepwat 		=> 1
+	bdpflame 		=> 1
+	bdsha12a 		=> 1
+	bdspl01 		=> 1
+	bdunslgu 		=> 1
+	bdvenoms 		=> 1
+	bdwyrmb 		=> 1
+	ohbdrag1 		=> 1
+	ohbeflam 		=> 1
+	ohbicew 		=> 1
+	ohbwi304 		=> 1
+	ohbwi308 		=> 1
+	ohdmask 		=> 1
+	spblun29 		=> 1
+	spcl237d 		=> 1
+	spcl911b 		=> 1
+	spctmd01 		=> 1
+	spdd03  		=> 1
+	spdr201 		=> 1
+	spdr601 		=> 1
+	spimix01 		=> 1
+	spin134 		=> 1
+	spin160 		=> 1
+	spin175 		=> 1
+	spin191 		=> 1
+	firau3d6 		=> 1
+	spin935 		=> 1
+	spogre01 		=> 1
+	sppr105 		=> 1
+	sppr698d 		=> 1
+	sppr720 		=> 1
+	sppr725d 		=> 1
+	sppr901 		=> 1
+	sppr984 		=> 1
+	sppr985 		=> 1
+	sppr987 		=> 1
+	spwi001 		=> 1
+	spwi002 		=> 1
+	spwi003 		=> 1
+	spwi005 		=> 1
+	spwi006 		=> 1
+	spwi007 		=> 1
+	spwi008 		=> 1
+	spwi009 		=> 1
+	spwi010 		=> 1
+	spwi011 		=> 1
+	spwi012 		=> 1
+	spwi013 		=> 1
+	spwi015 		=> 1
+	spwi017 		=> 1
+	spwi021 		=> 1
+	spwi024 		=> 1
+	spwi025 		=> 1
+	spwi026 		=> 1
+	spwi027 		=> 1
+	spwi033 		=> 1
+	spwi034 		=> 1
+	spwi101 		=> 1
+	spwi112 		=> 1
+	spwi211 		=> 1
+	spwi215 		=> 1
+	spwi299 		=> 1
+	spwi303 		=> 1
+	spwi308 		=> 1
+	spwi313 		=> 1
+	spwi327 		=> 1
+	spwi399 		=> 1
+	sppr951d 		=> 1
+	sppr952d 		=> 1
+	spwi430 		=> 1
+	spwi524 		=> 1
+	spwi615 		=> 1
+	spwi628 		=> 1
+	spwi712 		=> 1
+	spwi818 		=> 1
+	spwi911 		=> 1
+	spwi918 		=> 1
+	spwi922 		=> 1
+	spwi925 		=> 1
+	cdstaf12		=> 1
+// add all beholder abilities???
+  END
+  ACTION_IF (MOD_IS_INSTALLED ~item_rev.tp2~ ~0~) BEGIN
+	ACTION_DEFINE_ASSOCIATIVE_ARRAY evade_spells BEGIN
+	  potn26			=> 1
+	  potn27			=> 1
+	  sppr606d			=> 1
+	  wand03			=> 1
+	  wand04			=> 1
+	  wand05a			=> 1
+	  wand05b			=> 1
+	  wand06			=> 1
+	  wand07			=> 1
+	  wand11			=> 1
+	END
+  END
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY evade_items BEGIN		
+	amul01 			=> 1
+	arow06 			=> 1
+	frag01 			=> 1
+	fragsap 		=> 1
+	frosty 			=> 1
+	mdk2mtov 		=> 1
+	melfmet 		=> 1
+	ohbshld1 		=> 1
+	prox01 			=> 1
+	ring20 			=> 1
+	ttwand 			=> 1
+  END
+  ACTION_IF !(MOD_IS_INSTALLED ~item_rev.tp2~ ~0~) BEGIN
+    ACTION_DEFINE_ASSOCIATIVE_ARRAY evade_items BEGIN		
+	  fireseed			=> 1
+	  potn13 			=> 1
+	  potn26 			=> 1
+	  potn27 			=> 1
+	  wand03 			=> 1
+	  wand04 			=> 1
+	  wand05 			=> 1
+	  wand06 			=> 1
+	  wand07 			=> 1
+	  wand11 			=> 1
+	  wand99 			=> 1
+    END
+  END
+END
+//__________________________________________________________________________________

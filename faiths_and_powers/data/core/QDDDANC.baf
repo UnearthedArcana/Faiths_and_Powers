@@ -1,0 +1,9 @@
+//------------------\
+// START DIALOGUE  |
+//------------------/
+IF
+	True()
+THEN
+	RESPONSE #100
+		StartDialog("QDDDANC",LastSummonerOf(Myself))
+END

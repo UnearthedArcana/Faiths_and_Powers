@@ -1,0 +1,808 @@
+
+//REMOVE BLANK LINES MACRO___________________________________________________________
+//
+DEFINE_PATCH_MACRO ~remove_blank_lines~ BEGIN
+	SET "size" = (SOURCE_SIZE - 1)
+	READ_BYTE ("%size%") "eof"
+	WHILE ((%size% > 0) AND (("%eof%" = 0x0a) OR ("%eof%" = 0x0d))) BEGIN // removes any empty lines at the end of the file
+		DELETE_BYTES "%size%" 0x01
+		SET "size" = ("%size%" - 1)
+		READ_BYTE ("%size%") "eof"
+	END
+END
+//___________________________________________________________________________________
+
+
+//ADD FnP SPHERES TO EXTRA KIT_______________________________________________________
+//
+DEFINE_ACTION_FUNCTION apply_fnp_spheres_to_kit STR_VAR mod_clab = ~x~ BEGIN
+
+  LAM ~READ_FNP_KIT_INFO~
+
+  OUTER_SPRINT sphere_access ~- Access to the spheres of:~
+  OUTER_SPRINT focus_access ~- Focus access to the spheres of:~
+  OUTER_SPRINT major_access ~- Major access to the spheres of:~
+  OUTER_SPRINT minor_access ~- Minor access to the spheres of:~
+  OUTER_SPRINT advantages ~Advantages:~
+  OUTER_SPRINT abilities ~Abilities:~
+  OUTER_SPRINT disadvantages ~Disadvantages:~
+  OUTER_SPRINT restrictions ~Restrictions:~
+  OUTER_TEXT_SPRINT focus_sphere_list ~~
+  OUTER_TEXT_SPRINT major_sphere_list ~~
+  OUTER_TEXT_SPRINT minor_sphere_list ~~
+  OUTER_TEXT_SPRINT paladin_sphere_list ~~
+  OUTER_TEXT_SPRINT ranger_sphere_list ~~
+  OUTER_TEXT_SPRINT total_sphere_list ~~
+  
+  OUTER_SPRINT $d5_kit_spheres_array (~0~ ~0~ ~0~ ~0~ ~0~) ~0~
+  
+//  ACTION_IF !(VARIABLE_IS_SET ~mod_clab~) BEGIN
+  ACTION_IF (~%mod_clab%~ STRING_EQUAL_CASE ~x~) BEGIN
+	COPY_EXISTING ~d5_class.2da~ ~override~
+	  COUNT_2DA_ROWS 2 rows
+	  READ_2DA_ENTRY (rows - 1) 0 2 last_clab
+	BUT_ONLY
+	OUTER_TEXT_SPRINT mod_clab ~%last_clab%~
+  END
+
+COPY_EXISTING ~d5_class.2da~ ~override~
+  READ_2DA_ENTRIES_NOW ~r2en_d5_class~ 2
+  FOR (row = 1; row < r2en_d5_class; row += 1) BEGIN
+	READ_2DA_ENTRY_FORMER ~r2en_d5_class~ row 0 kit
+	READ_2DA_ENTRY_FORMER ~r2en_d5_class~ row 1 type
+	TEXT_SPRINT $d5_fnp_kit_caster_type(~%kit%~) ~%type%~
+  END
+BUT_ONLY
+
+  COPY_EXISTING ~kitlist.2da~ ~override~
+//  COUNT_2DA_COLS cols
+	READ_2DA_ENTRIES_NOW ~r2en_kitlist~ 10
+	FOR (row = 3; row < r2en_kitlist; row += 1) BEGIN
+	  READ_2DA_ENTRY_FORMER ~r2en_kitlist~ row 5 kit_clab
+	  PATCH_IF (~%kit_clab%~ STRING_EQUAL_CASE ~%mod_clab%~) BEGIN
+		READ_2DA_ENTRY_FORMER ~r2en_kitlist~ row 0 kit_index
+		READ_2DA_ENTRY_FORMER ~r2en_kitlist~ row 1 kit_label
+		READ_2DA_ENTRY_FORMER ~r2en_kitlist~ row 4 kit_desc
+		READ_2DA_ENTRY_FORMER ~r2en_kitlist~ row 9 kit_code
+		READ_2DA_ENTRY_FORMER ~r2en_kitlist~ row 8 kit_class
+		SPRINT $d5_kit_spheres_array (~%kit_clab%~ ~%kit_index%~ ~%kit_label%~ ~%kit_desc%~ ~%kit_code%~) ~%kit_class%~
+	  END
+	END
+  BUT_ONLY
+
+  ACTION_PHP_EACH d5_kit_spheres_array AS goo => roo BEGIN
+	ACTION_IF (%roo% = 3) OR  
+ 			(%roo% = 11) OR  
+ 			(%roo% = 8) OR  
+ 			(%roo% = 14) OR  
+ 			(%roo% = 15) OR  
+ 			(%roo% = 18) OR
+ 			(%roo% = 21) BEGIN
+	  COPY_EXISTING ~luabbr.2da~ ~override~
+		REPLACE_TEXTUALLY ~^\(%goo_2%[ %TAB%]+\).+$~ ~\1b_%goo_1%~
+	  BUT_ONLY
+	END
+	COPY ~faiths_and_powers/spheres/hlas/luclxyz.2da~ ~override/lub_%goo_1%.2da~
+	ACTION_IF (%roo% = 11) BEGIN 	// druid
+	  COPY ~faiths_and_powers/spheres/hlas/ludrxyz.2da~ ~override/lub_%goo_1%.2da~
+	END
+	ACTION_IF (%roo% = 8) BEGIN 	// f/c
+	  COPY ~faiths_and_powers/spheres/hlas/lufcxyz.2da~ ~override/lub_%goo_1%.2da~
+	END
+	ACTION_IF (%roo% = 18) BEGIN 	// c/r
+	  COPY ~faiths_and_powers/spheres/hlas/lucrxyz.2da~ ~override/lub_%goo_1%.2da~
+	END
+	ACTION_IF (%roo% = 15) BEGIN 	// c/t
+	  COPY ~faiths_and_powers/spheres/hlas/luctxyz.2da~ ~override/lub_%goo_1%.2da~
+	END
+	ACTION_IF (%roo% = 14) BEGIN 	// c/m
+	  COPY ~faiths_and_powers/spheres/hlas/lucmxyz.2da~ ~override/lub_%goo_1%.2da~
+	END
+	ACTION_PHP_EACH d5_fnp_spheres AS sphere => val BEGIN
+	  COPY_EXISTING ~d5altsph.2da~ ~override~
+		READ_2DA_ENTRIES_NOW rows 2
+		FOR (row = 0; row < rows; ++row) BEGIN
+		  READ_2DA_ENTRY_FORMER rows row 0 ~fnp_sphere~
+		  READ_2DA_ENTRY_FORMER rows row 1 ~alt_sphere~
+		  PATCH_IF (~%sphere%~ STRING_EQUAL_CASE ~%fnp_sphere%~) BEGIN
+			SPRINT ~text_sphere~ ~%alt_sphere%~
+		  END
+		END
+	  BUT_ONLY
+	  ACTION_IF (VARIABLE_IS_SET $d5_fnp_kit_sphere_access(~%sphere%~ ~%goo%~)) BEGIN
+		OUTER_TEXT_SPRINT access $d5_fnp_kit_sphere_access(~%sphere%~ ~%goo%~)
+		OUTER_INNER_PATCH ~%sphere%~ BEGIN
+		  SNPRINT 3 ~shortsphere~ ~%sphere%~
+		END
+		ACTION_IF (VARIABLE_IS_SET $d5_fnp_sphere_access(~%access%~) && ~%access%~ STRING_EQUAL_CASE ~FOCUS~) BEGIN
+		  COPY_EXISTING ~lub_%goo_1%.2da~ ~override~
+			LPM remove_blank_lines
+			APPEND_FILE ~faiths_and_powers/spheres/hlas/%sphere%/hlas_%sphere%.txt~
+		  BUT_ONLY
+		  COPY_EXISTING ~lub_%goo_1%.2da~ ~override~
+			REPLACE_TEXTUALLY ~[%LNL%%MNL%%WNL%]zzz~ ~~
+		  BUT_ONLY
+		  ACTION_PHP_EACH d5_fnp_kit_caster_type AS this_kit => caster_type BEGIN
+			ACTION_IF (~%this_kit%~ STRING_EQUAL_CASE ~%goo%~) && !(~%caster_type%~ STRING_EQUAL_CASE ~mystic~) BEGIN
+			  APPEND ~%goo%.2da~ ~SPHERES     AP_D5SF%shortsphere%  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** ~ 
+			END
+		  END
+		  ACTION_PHP_EACH d5_fnp_kit_caster_type AS this_kit => caster_type BEGIN
+			ACTION_IF (~%this_kit%~ STRING_EQUAL_CASE ~%goo%~) && (~%caster_type%~ STRING_EQUAL_CASE ~mystic~) BEGIN
+			  APPEND ~%goo%.2da~ ~SPHERES     AP_D5SP%shortsphere%  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** ~ 
+			END
+		  END
+		  OUTER_TEXT_SPRINT focus_sphere_list ~%focus_sphere_list% %text_sphere%~
+		END
+		ACTION_IF (VARIABLE_IS_SET $d5_fnp_sphere_access(~%access%~) && ~%access%~ STRING_EQUAL_CASE ~MAJOR~) BEGIN
+		  COPY_EXISTING ~lub_%goo_1%.2da~ ~override~
+			LPM remove_blank_lines
+			APPEND_FILE ~faiths_and_powers/spheres/hlas/%sphere%/hlas_%sphere%.txt~
+		  BUT_ONLY
+		  COPY_EXISTING ~lub_%goo_1%.2da~ ~override~
+			REPLACE_TEXTUALLY ~[%LNL%%MNL%%WNL%]zzz~ ~~
+		  BUT_ONLY
+		  ACTION_PHP_EACH d5_fnp_kit_caster_type AS this_kit => caster_type BEGIN
+			ACTION_IF (~%this_kit%~ STRING_EQUAL_CASE ~%goo%~) && !(~%caster_type%~ STRING_EQUAL_CASE ~mystic~) BEGIN
+			  APPEND ~%goo%.2da~ ~SPHERES     AP_D5SP%shortsphere%  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** ~ 
+			END
+		  END
+		  OUTER_TEXT_SPRINT major_sphere_list ~%major_sphere_list% %text_sphere%,~
+		END
+		ACTION_IF (VARIABLE_IS_SET $d5_fnp_sphere_access(~%access%~) && ~%access%~ STRING_EQUAL_CASE ~MINOR~) BEGIN
+		  ACTION_PHP_EACH d5_fnp_kit_caster_type AS this_kit => caster_type BEGIN
+			ACTION_IF (~%this_kit%~ STRING_EQUAL_CASE ~%goo%~) && !(~%caster_type%~ STRING_EQUAL_CASE ~mystic~) BEGIN
+			  APPEND ~%goo%.2da~ ~SPHERES     AP_D5SM%shortsphere%  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** ~ 
+			END
+		  END
+		  OUTER_TEXT_SPRINT minor_sphere_list ~%minor_sphere_list% %text_sphere%,~
+		END
+		ACTION_IF (VARIABLE_IS_SET $d5_fnp_sphere_access(~%access%~) && ~%access%~ STRING_EQUAL_CASE ~PALADIN~) BEGIN
+		  ACTION_PHP_EACH d5_fnp_kit_caster_type AS this_kit => caster_type BEGIN
+			ACTION_IF (~%this_kit%~ STRING_EQUAL_CASE ~%goo%~) && !(~%caster_type%~ STRING_EQUAL_CASE ~mystic~) BEGIN
+			  APPEND ~%goo%.2da~ ~SPHERES     AP_D5SP%shortsphere%  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** ~ 
+			END
+		  END
+		  OUTER_TEXT_SPRINT minor_sphere_list ~%minor_sphere_list% %text_sphere%,~
+		END
+		ACTION_IF (VARIABLE_IS_SET $d5_fnp_sphere_access(~%access%~) && ~%access%~ STRING_EQUAL_CASE ~RANGER~) BEGIN
+		  ACTION_PHP_EACH d5_fnp_kit_caster_type AS this_kit => caster_type BEGIN
+			ACTION_IF (~%this_kit%~ STRING_EQUAL_CASE ~%goo%~) && !(~%caster_type%~ STRING_EQUAL_CASE ~mystic~) BEGIN
+			  APPEND ~%goo%.2da~ ~SPHERES     AP_D5SP%shortsphere%  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** ~ 
+			END
+		  END
+		  OUTER_TEXT_SPRINT minor_sphere_list ~%minor_sphere_list% %text_sphere%,~
+		END
+	  END
+	END
+	ACTION_IF NOT (~%focus_sphere_list%~ STRING_EQUAL_CASE ~~) BEGIN
+		OUTER_TEXT_SPRINT focus_sphere_list ~%WNL%%focus_access%%focus_sphere_list%~
+	END
+	OUTER_TEXT_SPRINT total_sphere_list ~%total_sphere_list%%focus_sphere_list%~
+	ACTION_IF NOT (~%major_sphere_list%~ STRING_EQUAL_CASE ~~) BEGIN
+		OUTER_TEXT_SPRINT major_sphere_list ~%WNL%%major_access%%major_sphere_list%~
+	END
+	OUTER_TEXT_SPRINT total_sphere_list ~%total_sphere_list%%major_sphere_list%~
+	ACTION_IF NOT (~%minor_sphere_list%~ STRING_EQUAL_CASE ~~) BEGIN
+		OUTER_TEXT_SPRINT minor_sphere_list ~%WNL%%minor_access%%minor_sphere_list%~
+	END
+	OUTER_TEXT_SPRINT total_sphere_list ~%total_sphere_list%%minor_sphere_list%~
+	OUTER_TEXT_SPRINT kit_sphere_list ~Abilities: %total_sphere_list%~
+	ACTION_IF IS_AN_INT ~%goo_3%~ BEGIN
+		ACTION_GET_STRREF %goo_3% kit_description 
+		OUTER_PATCH_SAVE kit_description ~%kit_description%~ BEGIN
+			REPLACE_TEXTUALLY ~%disadvantages%~ ~%restrictions%~
+//			REPLACE_TEXTUALLY ~%abilities%~ ~%kit_sphere_list%~
+			REPLACE_TEXTUALLY ~%advantages%~ ~%kit_sphere_list%~
+		END
+		STRING_SET_EVALUATE %goo_3% ~%kit_description%~
+	END
+	OUTER_TEXT_SPRINT focus_sphere_list ~~
+	OUTER_TEXT_SPRINT major_sphere_list ~~
+	OUTER_TEXT_SPRINT minor_sphere_list ~~
+	OUTER_TEXT_SPRINT total_sphere_list ~~
+	ACTION_IF (%roo% = 3) OR  
+ 			(%roo% = 11) OR  
+ 			(%roo% = 6) OR  
+ 			(%roo% = 12) BEGIN
+	  APPEND ~%goo%.2da~ ~SPHERES     AP_D5SPMEM  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** ~
+	    UNLESS ~AP_D5SPMEM~
+ 	END
+	ACTION_IF (%roo% = 8) OR  
+ 			(%roo% = 14) OR  
+ 			(%roo% = 15) OR  
+ 			(%roo% = 18) OR
+ 			(%roo% = 16) BEGIN
+	  ACTION_IF (%roo% = 8) OR  
+ 				(%roo% = 14) OR  
+ 				(%roo% = 15) OR  
+ 				(%roo% = 18) BEGIN
+ 	 	OUTER_TEXT_SPRINT class_letter ~P~
+ 	  END
+	  ACTION_IF (%roo% = 16) BEGIN
+ 	 	OUTER_TEXT_SPRINT class_letter ~D~
+ 	  END
+	  ACTION_IF IS_AN_INT ~%goo_4%~ BEGIN
+		COPY_EXISTING ~%goo%.2da~ ~override~ 
+		  COUNT_2DA_COLS cols 
+		  READ_2DA_ENTRIES_NOW rows cols  
+		  FOR (row = 1; row < rows; ++row) BEGIN 
+			READ_2DA_ENTRY_FORMER rows row 0 sphere
+			PATCH_IF (~%sphere%~ STRING_EQUAL_CASE ~SPHERES~) BEGIN	
+			  FOR (col = 1; col < cols; ++col) BEGIN 
+				READ_2DA_ENTRY_FORMER rows row col ability
+				PATCH_IF (NOT ~%ability%~ STRING_EQUAL ~****~) BEGIN 
+				  SET string_length = (STRING_LENGTH ~%ability%~) - 3
+				  LPF SUBSTRING INT_VAR start = 3 length = EVAL %string_length% STR_VAR string = EVAL ~%ability%~ RET abil_new = substring END
+				  INNER_ACTION BEGIN 
+					ACTION_IF !(FILE_EXISTS_IN_GAME ~QD_MC_AP.eff~) BEGIN
+					  CREATE EFF ~QD_MC_AP~ 
+						WRITE_LONG   0x10 146 //cast spell
+						WRITE_LONG   0x14 2   //preset target 
+						WRITE_LONG   0x20 1   //cast instantly (ignore level) 
+						WRITE_SHORT  0x24 1   //permament until death
+						WRITE_SHORT  0x2c 100 //probability 100% 
+					END
+					COPY_EXISTING ~QD_MC_AP.eff~ ~override/%abil_new%#.eff~
+					  WRITE_EVALUATED_ASCII 0x30 ~%abil_new%~
+					  SET col_length = STRING_LENGTH ~%col%~
+					LAF QD_ENSURE_QDMC_SPL STR_VAR base_class = EVAL ~%class_letter%~ END
+					ACTION_IF (%col_length% = 1) BEGIN 
+					  COPY_EXISTING ~override/QD_MC%class_letter%0%col%.spl~ ~override~ 
+						LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 timing = 9 resist_dispel = 0 power = 0 parameter1 = %goo_4% parameter2 = 9 STR_VAR resource = EVAL ~%abil_new%#~ END  
+					END 
+					ACTION_IF (%col_length% = 2) BEGIN
+					  COPY_EXISTING ~override/QD_MC%class_letter%%col%.spl~ ~override~ 
+						LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 timing = 9 resist_dispel = 0 power = 0 parameter1 = %goo_4% parameter2 = 9 STR_VAR resource = EVAL ~%abil_new%#~ END  
+					END 
+				  END 
+				END
+			  END 
+			END 
+		  END
+		BUT_ONLY
+	  END
+	END
+  END
+/*
+  COPY_EXISTING ~QD_MCP01.spl~ ~override~
+	LPF DELETE_EFFECT INT_VAR match_opcode = 146 STR_VAR match_resource = EVAL ~QD#MCP01~ END
+	LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 9 STR_VAR resource = EVAL ~QD#MCP01~ END
+  IF_EXISTS BUT_ONLY
+  COPY_EXISTING ~QD_MCD01.spl~ ~override~
+	LPF DELETE_EFFECT INT_VAR match_opcode = 146 STR_VAR match_resource = EVAL ~QD#MCD01~ END
+	LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 9 STR_VAR resource = EVAL ~QD#MCD01~ END
+  IF_EXISTS BUT_ONLY
+*/
+  
+  CLEAR_ARRAYS
+  
+END	//	end define apply function
+//___________________________________________________________________________________
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+
+//APPLY FnP USABILITY TO EXTRA KIT___________________________________________________
+//
+DEFINE_ACTION_FUNCTION apply_fnp_usability_to_kit STR_VAR mod_clab = ~x~ BEGIN
+
+ OUTER_TEXT_SPRINT hex_lat 			~04000000~
+ OUTER_TEXT_SPRINT hex_helm 		~02000000~
+ OUTER_TEXT_SPRINT hex_talos 		~01000000~
+ OUTER_TEXT_SPRINT hex_totemic 		~08000000~
+ OUTER_TEXT_SPRINT hex_shapeshifter ~10000000~
+ OUTER_TEXT_SPRINT hex_avenger		~20000000~
+
+//  ACTION_IF !(VARIABLE_IS_SET ~mod_clab~) BEGIN
+  ACTION_IF (~%mod_clab%~ STRING_EQUAL_CASE ~x~) BEGIN
+	COPY_EXISTING ~d5_class.2da~ ~override~
+	  COUNT_2DA_ROWS 2 rows
+	  READ_2DA_ENTRY (rows - 1) 0 2 last_clab
+	BUT_ONLY
+	PRINT ~%last_clab%~
+	OUTER_TEXT_SPRINT mod_clab ~%last_clab%~
+ END
+
+ COPY_EXISTING ~d5_usabl.2da~ ~override~
+  COUNT_2DA_COLS cols
+  READ_2DA_ENTRIES_NOW ~r2en_d5_usable~ (cols - 1)
+  FOR (row = 1; row < r2en_d5_usable; ++row) BEGIN
+	READ_2DA_ENTRY_FORMER ~r2en_d5_usable~ row 0 kit
+	PATCH_IF (~%kit%~ STRING_EQUAL_CASE ~%mod_clab%~) BEGIN
+	  FOR (col = 0; col < (cols - 1); ++col) BEGIN
+		READ_2DA_ENTRY_FORMER ~r2en_d5_usable~ 0 col usable
+		READ_2DA_ENTRY_FORMER ~r2en_d5_usable~ row (col + 1) access
+		TEXT_SPRINT $d5_fnp_kit_use_access(~%kit%~ ~%usable%~) ~%access%~
+	  END
+	END
+  END
+
+ ACTION_PHP_EACH d5_fnp_kit_use_access AS clab => val BEGIN
+  ACTION_IF (~%clab_1%~ STRING_EQUAL_CASE ~CHAIN_ARMOR~) BEGIN
+	ACTION_IF (%val% = 1) BEGIN
+//	  PRINT ~    %clab% : %clab_1% : %val%~
+	  COPY_EXISTING ~kitlist.2da~ ~override~
+//		COUNT_2DA_COLS cols
+		READ_2DA_ENTRIES_NOW ~r2en_kitlist~ 10
+		FOR (row = 3; row < r2en_kitlist; row += 1) BEGIN
+		  READ_2DA_ENTRY_FORMER ~r2en_kitlist~ row 5 kit_clab
+		  READ_2DA_ENTRY_FORMER ~r2en_kitlist~ row 8 kit_class
+		  PATCH_IF (~%kit_clab%~ STRING_EQUAL_CASE ~%clab%~) BEGIN
+			PATCH_IF (%kit_class% = 3 || %kit_class% = 11 || %kit_class% = 21 || %kit_class% = 8 || %kit_class% = 14 || %kit_class% = 15 || %kit_class% = 18 || %kit_class% = 16) BEGIN
+			  SET_2DA_ENTRY row 7 10 ~0x%hex_helm%~
+			END
+		  END
+		END
+	  BUT_ONLY
+	END
+	ELSE BEGIN
+//	  PRINT ~    %clab% : %clab_1% : %val%~
+	  COPY_EXISTING ~kitlist.2da~ ~override~
+//		COUNT_2DA_COLS cols
+		READ_2DA_ENTRIES_NOW ~r2en_kitlist~ 10
+		FOR (row = 3; row < r2en_kitlist; row += 1) BEGIN
+		  READ_2DA_ENTRY_FORMER ~r2en_kitlist~ row 5 kit_clab
+		  READ_2DA_ENTRY_FORMER ~r2en_kitlist~ row 8 kit_class
+		  PATCH_IF (~%kit_clab%~ STRING_EQUAL_CASE ~%clab%~) BEGIN
+			PATCH_IF (%kit_class% = 3 || %kit_class% = 11 || %kit_class% = 21 || %kit_class% = 8 || %kit_class% = 14 || %kit_class% = 15 || %kit_class% = 18 || %kit_class% = 16) BEGIN
+			  SET_2DA_ENTRY row 7 10 ~0x%hex_lat%~
+			END
+		  END
+		END
+	  BUT_ONLY
+	END
+  END
+  ACTION_IF (~%clab_1%~ STRING_EQUAL_CASE ~PLATE_ARMOR~) BEGIN
+	ACTION_IF (%val% = 1) BEGIN
+//	  PRINT ~    %clab% : %clab_1% : %val%~
+	  COPY_EXISTING ~kitlist.2da~ ~override~
+//		COUNT_2DA_COLS cols
+		READ_2DA_ENTRIES_NOW ~r2en_kitlist~ 10
+		FOR (row = 3; row < r2en_kitlist; row += 1) BEGIN
+		  READ_2DA_ENTRY_FORMER ~r2en_kitlist~ row 5 kit_clab
+		  READ_2DA_ENTRY_FORMER ~r2en_kitlist~ row 8 kit_class
+		  PATCH_IF (~%kit_clab%~ STRING_EQUAL_CASE ~%clab%~) BEGIN
+			PATCH_IF (%kit_class% = 3 || %kit_class% = 11 || %kit_class% = 21 || %kit_class% = 8 || %kit_class% = 14 || %kit_class% = 15 || %kit_class% = 18 || %kit_class% = 16) BEGIN
+			  SET_2DA_ENTRY row 7 10 ~0x%hex_talos%~
+			END
+		  END
+		END
+	  BUT_ONLY
+	END
+  END
+ END
+
+ COPY_EXISTING ~kitlist.2da~ ~override~
+//  COUNT_2DA_COLS cols
+  READ_2DA_ENTRIES_NOW ~r2en_kitlist~ 10
+  FOR (row = 3; row < r2en_kitlist; row += 1) BEGIN
+	READ_2DA_ENTRY_FORMER ~r2en_kitlist~ row 5 kit_clab
+	PATCH_IF (~%kit_clab%~ STRING_EQUAL_CASE ~%mod_clab%~) BEGIN
+	  SET patch_row = %row%
+	  READ_2DA_ENTRY_FORMER ~r2en_kitlist~ patch_row 0 kit_index
+	  READ_2DA_ENTRY_FORMER ~r2en_kitlist~ patch_row 1 kit_label
+	  READ_2DA_ENTRY_FORMER ~r2en_kitlist~ patch_row 8 kit_class
+	  READ_2DA_ENTRY_FORMER ~r2en_kitlist~ patch_row 9 kit_code
+	  PATCH_IF (%kit_class% = 3 || %kit_class% = 11 || %kit_class% = 21 || %kit_class% = 8 || %kit_class% = 14 || %kit_class% = 15 || %kit_class% = 18 || %kit_class% = 16) BEGIN
+		INNER_ACTION BEGIN
+		  COPY ~faiths_and_powers/kits/misc/d5fnpuse.spl~ ~override/d5_u%kit_index%.spl~
+		END
+		PHP_EACH d5_fnp_usable AS usable => ind BEGIN
+		  PATCH_IF (VARIABLE_IS_SET $d5_fnp_kit_usable_access(~%mod_clab%~ ~%usable%~)) BEGIN
+			SPRINT access $d5_fnp_kit_usable_access(~%mod_clab%~ ~%usable%~)
+			PATCH_IF (~%usable%~ STRING_EQUAL_CASE ~CLUB_STAFF~) BEGIN			// club, staff
+			  INNER_ACTION BEGIN
+				COPY_EXISTING ~weapprof.2da~ override
+				  READ_2DA_ENTRIES_NOW weapprof 3
+				  COUNT_2DA_COLS cols
+				  FOR (col = 0; col < cols - 1; ++col) BEGIN
+					READ_2DA_ENTRY_FORMER weapprof 0 col column_name
+					PATCH_IF "%column_name%" STRING_EQUAL_CASE "%kit_label%" BEGIN
+					  SET_2DA_ENTRY 18 (col + 1) 3 %access%						//	club
+					  SET_2DA_ENTRY 23 (col + 1) 3 %access%						//	quarterstaff
+					END
+				  END
+				BUT_ONLY
+			  END
+			END
+			PATCH_IF (~%usable%~ STRING_EQUAL_CASE ~HAMMERS~) BEGIN				// war hammers
+			  INNER_ACTION BEGIN
+				COPY_EXISTING ~weapprof.2da~ override
+				  READ_2DA_ENTRIES_NOW weapprof 3
+				  COUNT_2DA_COLS cols
+				  FOR (col = 0; col < cols - 1; ++col) BEGIN
+					READ_2DA_ENTRY_FORMER weapprof 0 col column_name
+					PATCH_IF "%column_name%" STRING_EQUAL_CASE "%kit_label%" BEGIN
+					  SET_2DA_ENTRY 17 (col + 1) 3 %access%						// war hammer
+					END
+				  END
+				BUT_ONLY
+			  END
+			  PATCH_IF (access = 0) BEGIN
+				INNER_ACTION BEGIN
+				  COPY_EXISTING ~d5_u%kit_index%.spl~ ~override~
+					LPF ADD_SPELL_EFFECT INT_VAR opcode = 181 target = 1 parameter1 = 21 parameter2 = 0 timing = 9 END
+				  BUT_ONLY
+				END
+			  END
+			END
+			PATCH_IF (~%usable%~ STRING_EQUAL_CASE ~MACES~) BEGIN				// maces
+			  INNER_ACTION BEGIN
+				COPY_EXISTING ~weapprof.2da~ override
+				  READ_2DA_ENTRIES_NOW weapprof 3
+				  COUNT_2DA_COLS cols
+				  FOR (col = 0; col < cols - 1; ++col) BEGIN
+					READ_2DA_ENTRY_FORMER weapprof 0 col column_name
+					PATCH_IF "%column_name%" STRING_EQUAL_CASE "%kit_label%" BEGIN
+					  SET_2DA_ENTRY 22 (col + 1) 3 %access%						// mace
+					END
+				  END
+				BUT_ONLY
+			  END
+			  PATCH_IF (access = 0) BEGIN
+				INNER_ACTION BEGIN
+				  COPY_EXISTING ~d5_u%kit_index%.spl~ ~override~
+					LPF ADD_SPELL_EFFECT INT_VAR opcode = 181 target = 1 parameter1 = 17 parameter2 = 0 timing = 9 END
+				  BUT_ONLY
+				END
+			  END
+			END
+			PATCH_IF (~%usable%~ STRING_EQUAL_CASE ~FLAILS~) BEGIN				// flails
+			  INNER_ACTION BEGIN
+				COPY_EXISTING ~weapprof.2da~ override
+				  READ_2DA_ENTRIES_NOW weapprof 3
+				  COUNT_2DA_COLS cols
+				  FOR (col = 0; col < cols - 1; ++col) BEGIN
+					READ_2DA_ENTRY_FORMER weapprof 0 col column_name
+					PATCH_IF "%column_name%" STRING_EQUAL_CASE "%kit_label%" BEGIN
+					  SET_2DA_ENTRY 21 (col + 1) 3 %access%						// flail
+					END
+				  END
+				BUT_ONLY
+			  END
+			  PATCH_IF (access = 0) BEGIN
+				INNER_ACTION BEGIN
+				  COPY_EXISTING ~d5_u%kit_index%.spl~ ~override~
+					LPF ADD_SPELL_EFFECT INT_VAR opcode = 181 target = 1 parameter1 = 23 parameter2 = 0 timing = 9 END
+				  BUT_ONLY
+				END
+			  END
+			END
+			PATCH_IF (~%usable%~ STRING_EQUAL_CASE ~AXES~) BEGIN				// axes
+			  INNER_ACTION BEGIN
+				COPY_EXISTING ~weapprof.2da~ override
+				  READ_2DA_ENTRIES_NOW weapprof 3
+				  COUNT_2DA_COLS cols
+				  FOR (col = 0; col < cols - 1; ++col) BEGIN
+					READ_2DA_ENTRY_FORMER weapprof 0 col column_name
+					PATCH_IF "%column_name%" STRING_EQUAL_CASE "%kit_label%" BEGIN
+					  SET_2DA_ENTRY 12 (col + 1) 3 %access%						// axe
+					END
+				  END
+				BUT_ONLY
+			  END
+			  PATCH_IF (access = 0) BEGIN
+				INNER_ACTION BEGIN
+				  COPY_EXISTING ~d5_u%kit_index%.spl~ ~override~
+					LPF ADD_SPELL_EFFECT INT_VAR opcode = 181 target = 1 parameter1 = 25 parameter2 = 0 timing = 9 END
+				  BUT_ONLY
+				END
+			  END
+			END
+			PATCH_IF (~%usable%~ STRING_EQUAL_CASE ~DAGGERS~) BEGIN				// daggers
+			  INNER_ACTION BEGIN
+				COPY_EXISTING ~weapprof.2da~ override
+				  READ_2DA_ENTRIES_NOW weapprof 3
+				  COUNT_2DA_COLS cols
+				  FOR (col = 0; col < cols - 1; ++col) BEGIN
+					READ_2DA_ENTRY_FORMER weapprof 0 col column_name
+					PATCH_IF "%column_name%" STRING_EQUAL_CASE "%kit_label%" BEGIN
+					  SET_2DA_ENTRY 16 (col + 1) 3 %access%						//	dagger
+					END
+				  END
+				BUT_ONLY
+			  END
+			  PATCH_IF (access = 0) BEGIN
+				INNER_ACTION BEGIN
+				  COPY_EXISTING ~d5_u%kit_index%.spl~ ~override~
+					LPF ADD_SPELL_EFFECT INT_VAR opcode = 181 target = 1 parameter1 = 16 parameter2 = 0 timing = 9 END
+				  BUT_ONLY
+				END
+			  END
+			END
+			PATCH_IF (~%usable%~ STRING_EQUAL_CASE ~SHORT_SWORDS~) BEGIN		// short swords
+			  INNER_ACTION BEGIN
+				COPY_EXISTING ~weapprof.2da~ override
+				  READ_2DA_ENTRIES_NOW weapprof 3
+				  COUNT_2DA_COLS cols
+				  FOR (col = 0; col < cols - 1; ++col) BEGIN
+					READ_2DA_ENTRY_FORMER weapprof 0 col column_name
+					PATCH_IF "%column_name%" STRING_EQUAL_CASE "%kit_label%" BEGIN
+					  SET_2DA_ENTRY 11 (col + 1) 3 %access%						//	short sword
+					END
+				  END
+				BUT_ONLY
+			  END
+			  PATCH_IF (access = 0) BEGIN
+				INNER_ACTION BEGIN
+				  COPY_EXISTING ~d5_u%kit_index%.spl~ ~override~
+					LPF ADD_SPELL_EFFECT INT_VAR opcode = 181 target = 1 parameter1 = 19 parameter2 = 0 timing = 9 END
+				  BUT_ONLY
+				END
+			  END
+			END
+			PATCH_IF (~%usable%~ STRING_EQUAL_CASE ~LONG_SWORDS~) BEGIN			// long swords
+			  INNER_ACTION BEGIN
+				COPY_EXISTING ~weapprof.2da~ override
+				  READ_2DA_ENTRIES_NOW weapprof 3
+				  COUNT_2DA_COLS cols
+				  FOR (col = 0; col < cols - 1; ++col) BEGIN
+					READ_2DA_ENTRY_FORMER weapprof 0 col column_name
+					PATCH_IF "%column_name%" STRING_EQUAL_CASE "%kit_label%" BEGIN
+					  SET_2DA_ENTRY 10 (col + 1) 3 %access%						//	long sword
+					END
+				  END
+				BUT_ONLY
+			  END
+			  PATCH_IF (access = 0) BEGIN
+				INNER_ACTION BEGIN
+				  COPY_EXISTING ~d5_u%kit_index%.spl~ ~override~
+					LPF ADD_SPELL_EFFECT INT_VAR opcode = 181 target = 1 parameter1 = 20 parameter2 = 0 timing = 9 END
+				  BUT_ONLY
+				END
+			  END
+			END
+			PATCH_IF (~%usable%~ STRING_EQUAL_CASE ~SCIMITARS~) BEGIN			// scimitars
+			  INNER_ACTION BEGIN
+				COPY_EXISTING ~weapprof.2da~ override
+				  READ_2DA_ENTRIES_NOW weapprof 3
+				  COUNT_2DA_COLS cols
+				  FOR (col = 0; col < cols - 1; ++col) BEGIN
+					READ_2DA_ENTRY_FORMER weapprof 0 col column_name
+					PATCH_IF "%column_name%" STRING_EQUAL_CASE "%kit_label%" BEGIN
+					  SET_2DA_ENTRY 15 (col + 1) 3 %access%						//	scimitar
+					END
+				  END
+				BUT_ONLY
+			  END
+			  PATCH_IF (access = 0) BEGIN
+				INNER_ACTION BEGIN
+				  COPY_EXISTING ~d5_u%kit_index%.spl~ ~override~
+					LPF ADD_SPELL_EFFECT INT_VAR opcode = 181 target = 1 parameter1 = 29 parameter2 = 0 timing = 9 END
+				  BUT_ONLY
+				END
+			  END
+			END
+			PATCH_IF (~%usable%~ STRING_EQUAL_CASE ~KATANAS~) BEGIN				// katanas
+			  INNER_ACTION BEGIN
+				COPY_EXISTING ~weapprof.2da~ override
+				  READ_2DA_ENTRIES_NOW weapprof 3
+				  COUNT_2DA_COLS cols
+				  FOR (col = 0; col < cols - 1; ++col) BEGIN
+					READ_2DA_ENTRY_FORMER weapprof 0 col column_name
+					PATCH_IF "%column_name%" STRING_EQUAL_CASE "%kit_label%" BEGIN
+					  SET_2DA_ENTRY 14 (col + 1) 3 %access%						//	katana
+					END
+				  END
+				BUT_ONLY
+			  END
+			  PATCH_IF (access = 0) BEGIN
+				INNER_ACTION BEGIN
+				  COPY_EXISTING ~d5_u%kit_index%.spl~ ~override~
+					LPF ADD_SPELL_EFFECT INT_VAR opcode = 181 target = 1 parameter1 = 30 parameter2 = 0 timing = 9 END
+				  BUT_ONLY
+				END
+			  END
+			END
+			PATCH_IF (~%usable%~ STRING_EQUAL_CASE ~BASTARD_SWORDS~) BEGIN		// bastard swords
+			  INNER_ACTION BEGIN
+				COPY_EXISTING ~weapprof.2da~ override
+				  READ_2DA_ENTRIES_NOW weapprof 3
+				  COUNT_2DA_COLS cols
+				  FOR (col = 0; col < cols - 1; ++col) BEGIN
+					READ_2DA_ENTRY_FORMER weapprof 0 col column_name
+					PATCH_IF "%column_name%" STRING_EQUAL_CASE "%kit_label%" BEGIN
+					  SET_2DA_ENTRY 9 (col + 1) 3 %access%						//	bastard sword
+					END
+				  END
+				BUT_ONLY
+			  END
+			  PATCH_IF (access = 0) BEGIN
+				INNER_ACTION BEGIN
+				  COPY_EXISTING ~d5_u%kit_index%.spl~ ~override~
+					LPF ADD_SPELL_EFFECT INT_VAR opcode = 181 target = 1 parameter1 = 22 parameter2 = 0 timing = 9 END
+				  BUT_ONLY
+				END
+			  END
+			END
+			PATCH_IF (~%usable%~ STRING_EQUAL_CASE ~2HAND_SWORDS~) BEGIN		// 2-hand swords
+			  INNER_ACTION BEGIN
+				COPY_EXISTING ~weapprof.2da~ override
+				  READ_2DA_ENTRIES_NOW weapprof 3
+				  COUNT_2DA_COLS cols
+				  FOR (col = 0; col < cols - 1; ++col) BEGIN
+					READ_2DA_ENTRY_FORMER weapprof 0 col column_name
+					PATCH_IF "%column_name%" STRING_EQUAL_CASE "%kit_label%" BEGIN
+					  SET_2DA_ENTRY 13 (col + 1) 3 %access%						//	2-hand sword
+					END
+				  END
+				BUT_ONLY
+			  END
+			  PATCH_IF (access = 0) BEGIN
+				INNER_ACTION BEGIN
+				  COPY_EXISTING ~d5_u%kit_index%.spl~ ~override~
+					LPF ADD_SPELL_EFFECT INT_VAR opcode = 181 target = 1 parameter1 = 57 parameter2 = 0 timing = 9 END
+				  BUT_ONLY
+				END
+			  END
+			END
+			PATCH_IF (~%usable%~ STRING_EQUAL_CASE ~HALBERDS~) BEGIN			// halberds
+			  INNER_ACTION BEGIN
+				COPY_EXISTING ~weapprof.2da~ override
+				  READ_2DA_ENTRIES_NOW weapprof 3
+				  COUNT_2DA_COLS cols
+				  FOR (col = 0; col < cols - 1; ++col) BEGIN
+					READ_2DA_ENTRY_FORMER weapprof 0 col column_name
+					PATCH_IF "%column_name%" STRING_EQUAL_CASE "%kit_label%" BEGIN
+					  SET_2DA_ENTRY 20 (col + 1) 3 %access%						//	halberd
+					END
+				  END
+				BUT_ONLY
+			  END
+			  PATCH_IF (access = 0) BEGIN
+				INNER_ACTION BEGIN
+				  COPY_EXISTING ~d5_u%kit_index%.spl~ ~override~
+					LPF ADD_SPELL_EFFECT INT_VAR opcode = 181 target = 1 parameter1 = 69 parameter2 = 0 timing = 9 END
+				  BUT_ONLY
+				END
+			  END
+			END
+			PATCH_IF (~%usable%~ STRING_EQUAL_CASE ~SPEARS~) BEGIN				// spears
+			  INNER_ACTION BEGIN
+				COPY_EXISTING ~weapprof.2da~ override
+				  READ_2DA_ENTRIES_NOW weapprof 3
+				  COUNT_2DA_COLS cols
+				  FOR (col = 0; col < cols - 1; ++col) BEGIN
+					READ_2DA_ENTRY_FORMER weapprof 0 col column_name
+					PATCH_IF "%column_name%" STRING_EQUAL_CASE "%kit_label%" BEGIN
+					  SET_2DA_ENTRY 19 (col + 1) 3 %access%						//	spear
+					END
+				  END
+				BUT_ONLY
+			  END
+			  PATCH_IF (access = 0) BEGIN
+				INNER_ACTION BEGIN
+				  COPY_EXISTING ~d5_u%kit_index%.spl~ ~override~
+					LPF ADD_SPELL_EFFECT INT_VAR opcode = 181 target = 1 parameter1 = 44 parameter2 = 0 timing = 9 END
+				  BUT_ONLY
+				END
+			  END
+			END
+			PATCH_IF (~%usable%~ STRING_EQUAL_CASE ~DARTS~) BEGIN				// darts
+			  INNER_ACTION BEGIN
+				COPY_EXISTING ~weapprof.2da~ override
+				  READ_2DA_ENTRIES_NOW weapprof 3
+				  COUNT_2DA_COLS cols
+				  FOR (col = 0; col < cols - 1; ++col) BEGIN
+					READ_2DA_ENTRY_FORMER weapprof 0 col column_name
+					PATCH_IF "%column_name%" STRING_EQUAL_CASE "%kit_label%" BEGIN
+					  SET_2DA_ENTRY 26 (col + 1) 3 %access%						//	darts
+					END
+				  END
+				BUT_ONLY
+			  END
+			  PATCH_IF (access = 0) BEGIN
+				INNER_ACTION BEGIN
+				  COPY_EXISTING ~d5_u%kit_index%.spl~ ~override~
+					LPF ADD_SPELL_EFFECT INT_VAR opcode = 181 target = 1 parameter1 = 24 parameter2 = 0 timing = 9 END
+				  BUT_ONLY
+				END
+			  END
+			END
+			PATCH_IF (~%usable%~ STRING_EQUAL_CASE ~SLINGS~) BEGIN				// slings, bullets
+			  INNER_ACTION BEGIN
+				COPY_EXISTING ~weapprof.2da~ override
+				  READ_2DA_ENTRIES_NOW weapprof 3
+				  COUNT_2DA_COLS cols
+				  FOR (col = 0; col < cols - 1; ++col) BEGIN
+					READ_2DA_ENTRY_FORMER weapprof 0 col column_name
+					PATCH_IF "%column_name%" STRING_EQUAL_CASE "%kit_label%" BEGIN
+					  SET_2DA_ENTRY 28 (col + 1) 3 %access%						//	sling
+					END
+				  END
+				BUT_ONLY
+			  END
+			  PATCH_IF (access = 0) BEGIN
+				INNER_ACTION BEGIN
+				  COPY_EXISTING ~d5_u%kit_index%.spl~ ~override~
+					LPF ADD_SPELL_EFFECT INT_VAR opcode = 181 target = 1 parameter1 = 18 parameter2 = 0 timing = 9 END
+//					LPF ADD_SPELL_EFFECT INT_VAR opcode = 181 target = 1 parameter1 = 14 parameter2 = 0 timing = 9 END
+				  BUT_ONLY
+				END
+			  END
+			END
+			PATCH_IF (~%usable%~ STRING_EQUAL_CASE ~BOWS~) BEGIN				// long bows, short bows, arrows
+			  INNER_ACTION BEGIN
+				COPY_EXISTING ~weapprof.2da~ override
+				  READ_2DA_ENTRIES_NOW weapprof 3
+				  COUNT_2DA_COLS cols
+				  FOR (col = 0; col < cols - 1; ++col) BEGIN
+					READ_2DA_ENTRY_FORMER weapprof 0 col column_name
+					PATCH_IF "%column_name%" STRING_EQUAL_CASE "%kit_label%" BEGIN
+					  SET_2DA_ENTRY 25 (col + 1) 3 %access%						// long bow
+					  SET_2DA_ENTRY 26 (col + 1) 3 %access%						// short bow
+					END
+				  END
+				BUT_ONLY
+			  END
+			  PATCH_IF (access = 0) BEGIN
+				INNER_ACTION BEGIN
+				  COPY_EXISTING ~d5_u%kit_index%.spl~ ~override~
+					LPF ADD_SPELL_EFFECT INT_VAR opcode = 181 target = 1 parameter1 = 15 parameter2 = 0 timing = 9 END
+//					LPF ADD_SPELL_EFFECT INT_VAR opcode = 181 target = 1 parameter1 = 5 parameter2 = 0 timing = 9 END
+				  BUT_ONLY
+				END
+			  END
+			END
+			PATCH_IF (~%usable%~ STRING_EQUAL_CASE ~CROSSBOWS~) BEGIN			// crossbows, bolts
+			  INNER_ACTION BEGIN
+				COPY_EXISTING ~weapprof.2da~ override
+				  READ_2DA_ENTRIES_NOW weapprof 3
+				  COUNT_2DA_COLS cols
+				  FOR (col = 0; col < cols - 1; ++col) BEGIN
+					READ_2DA_ENTRY_FORMER weapprof 0 col column_name
+					PATCH_IF "%column_name%" STRING_EQUAL_CASE "%kit_label%" BEGIN
+					  SET_2DA_ENTRY 24 (col + 1) 3 %access%						// crossbow
+					END
+				  END
+				BUT_ONLY
+			  END
+			  PATCH_IF (access = 0) BEGIN
+				INNER_ACTION BEGIN
+				  COPY_EXISTING ~d5_u%kit_index%.spl~ ~override~
+					LPF ADD_SPELL_EFFECT INT_VAR opcode = 181 target = 1 parameter1 = 27 parameter2 = 0 timing = 9 END
+//					LPF ADD_SPELL_EFFECT INT_VAR opcode = 181 target = 1 parameter1 = 31 parameter2 = 0 timing = 9 END
+				  BUT_ONLY
+				END
+			  END
+			END
+		  END
+		END
+/*
+		INNER_ACTION BEGIN
+		  ACTION_IF FILE_EXISTS_IN_GAME ~%mod_clab%.2da~ BEGIN
+			APPEND ~%mod_clab%.2da~ ~FNP_USABLE   AP_D5_U%kit_index%   ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** ~
+			ACTION_IF (%kit_class% = 8 || %kit_class% = 14 || %kit_class% = 15 || %kit_class% = 18 || %kit_class% = 16) BEGIN
+			  ACTION_IF (%kit_class% = 8 || %kit_class% = 14 || %kit_class% = 15 || %kit_class% = 18) BEGIN
+				OUTER_TEXT_SPRINT class_letter ~P~
+			  END
+			  ACTION_IF (%kit_class% = 16) BEGIN
+				OUTER_TEXT_SPRINT class_letter ~D~
+			  END
+			  ACTION_IF !(FILE_EXISTS_IN_GAME ~QD_MC_AP.eff~) BEGIN
+				CREATE EFF ~QD_MC_AP~ 
+				  WRITE_LONG   0x10 146 //cast spell
+				  WRITE_LONG   0x14 2   //preset target 
+				  WRITE_LONG   0x20 1   //cast instantly (ignore level) 
+				  WRITE_SHORT  0x24 1   //permament until death
+				  WRITE_SHORT  0x2c 100 //probability 100% 
+			  END
+			  COPY_EXISTING ~QD_MC_AP.eff~ ~override/d5_u%kit_index%#.eff~
+				WRITE_EVALUATED_ASCII 0x30 ~d5_u%kit_index%~
+			  LAF QD_ENSURE_QDMC_SPL STR_VAR base_class = EVAL ~%class_letter%~ END
+			  COPY_EXISTING ~QD_MC%class_letter%01.spl~ ~override~ 
+				LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 timing = 9 resist_dispel = 0 power = 0 parameter1 = %kit_code% parameter2 = 9 STR_VAR resource = EVAL ~d5_u%kit_index%#~ END  
+			END 
+		  END
+		END
+*/
+	  END
+	END
+  END
+ BUT_ONLY
+ CLEAR_ARRAYS
+END
+//___________________________________________________________________________________

@@ -1,0 +1,8 @@
+IF
+        NextTriggerObject(LastSummonerOf(Myself))
+        ActionListEmpty()
+THEN
+	RESPONSE #100
+		ActionOverride(LastSummonerOf(Myself),FindTraps())
+		Wait(6)
+END

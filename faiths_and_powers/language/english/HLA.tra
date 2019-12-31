@@ -1,0 +1,360 @@
+//
+// HLAs..........................................................................
+//  
+
+//@60001 to @65000
+
+@60001  = ~AI off.~
+@60002  = ~AI on.~
+@60011  = ~Purity of Body~
+@60012  = ~Purity of Body
+
+The strength of soul exhibited by priests and mystics can grow to the point where it will prevent toxins and other impurities from affecting the body. After choosing this ability, they will be immune to all poisons and disease.
+~
+@60021  = ~Negative Plane Protection~
+@60022  = ~Negative Plane Protection
+
+By choosing this ability, the priest or mystic renders his body and mind immune to the effects of energy from the Negative Material Plane. From this point forward they cannot be affected by any level drain ability.
+
+Requires: Purity of Body
+~
+@60031  = ~One with the Weave~
+@60032  = ~One with the Weave
+
+This ability synchronizes the spellcaster's body with the flow of the Weave that powers all magic, making spells easier and quicker to cast. The result is a permanent -1 adjustment to casting speed for all spells and spell-like abilities.
+
+Requires: Purity of Body
+~
+@60041  = ~Free Action~
+@60042  = ~Free Action
+
+By choosing this ability, the druid joins his or her physical form with the timestream itself. Any attempts to Slow, Hold, Entangle, or otherwise affect the druid's movement will fail. This effect is permanent.
+
+Requires: Purity of Body
+~
+@60051  = ~Enlightenment~
+@60052  = ~Enlightenment
+
+Whether devoted to a deity or to nature, spiritual spellcasters may meditate to focus their mind and gain deeper insight. When choosing this ability, their Wisdom score increases by 1 and they receive a +1 bonus to all saving throws.~
+@60061  = ~Tranquil Heart~
+@60062  = ~Tranquil Heart
+
+In choosing this ability, a priest purges his or her soul of doubt and fear. They become permanently immune to any fear- and panic-based effects, and permanently subject to the effects of a Bless spell.
+
+Requires: Enlightenment
+~
+@60063  = ~Tranquil Heart
+
+In choosing this ability, a priest purges his or her soul of doubt and fear, becoming permanently immune to any fear- and panic-based effects, and permanently subject to the effects of a Bless spell. Additionally, the faintest echo of a rhythmic prayer seems to follow the priest at all times, causing all creatures within 20 feet to be affected by the Chant spell.
+
+Requires: Enlightenment
+~
+@60064  = ~Bless~
+@60071  = ~Spiritual Attunement~
+@60072  = ~Spiritual Attunement
+
+Exceptionally enlightened priests and mystics are able to create a much stronger connection between their soul and their magical abilities. By choosing this ability, they can cast more high level spells without resting. Spiritual Attunrment will allow an additional 6th and 7th level spell to be cast each day.
+
+Requires: Enlightenment
+~
+@60081  = ~Ancestral Spirit~
+@60082  = ~Ancestral Spirit
+Level: Quest
+Range: 10 Yards
+Duration: 2 rounds + 1 round/8 levels
+Casting Time: 1
+Area of Effect: Special
+Saving Throw: None
+
+Drawing upon the bond between druids past and present, the caster can summon an ancestral spirit to fight by his side. The ancestral spirit is a Great Druid, retaining his full druidic powers - including spellcasting - as well as the bonuses granted to a spirit creature.
+
+Requires: Enlightenment
+~
+@60111  = ~Panacea~
+@60112  = ~Panacea
+Level: Quest
+Sphere: Life
+Range: Party
+Duration: Instant
+Casting Time: 9
+Area of Effect: The entire party
+Saving Throw: None
+
+This is the ultimate healing spell.  Not only does it heal all party members of any damage suffered, it also wipes away almost any negative affliction that may be affecting them as well.  It cures blindness, disease, poison, intoxication, feeblemind, charm, domination, stun, blindness, deafness, petrification, silence, fear, level drain, and confusion effects, and restores the targets to maximum Hit Points if they have been injured or impaired. This spell has no effect on undead, constructs, or extraplanar creatures.
+~
+@60201 = ~Steal Soul~
+@60202 = ~Steal Soul
+(Conjuration)
+
+Level: Quest
+Sphere: Death
+Range: Medium
+Duration: Instant; 8 hours
+Casting Time: 5
+Area of Effect: Special
+Saving Throw: Death -3
+
+Much like the finger of death spell, this spell attempts to snuff the life out of it's target.  The caster utters the incantation, points <PRO_HISHER> index finger at the creature to be slain, and unless the victim makes a Save vs. Death -3, the victim dies instantly. Even if the save is successful, however, the brush with death still inflicts 15d6 points of magic damage. Characters slain by Extract Soul find that their soul is trapped by the spell, and they are bound to this world for a time as a ghost under the command of the caster.
+~
+@60203 = ~Constitution Drain~
+@60211  = ~Undead Plague~
+@60212  = ~Undead Plague
+Level: Quest
+Sphere: Death
+Range: Medium
+Duration: 8 hours
+Casting Time: 9
+Area of Effect: Special
+Saving Throw: None
+
+This spell creates a horde of as many as 6 skeleton warriors to defend the caster.  These creatures do not count against the normal limit of summoned creatures.
+~
+@60511  = ~Divine Aura~
+@60512  = ~Divine Aura
+Level: Quest
+Sphere: Protection
+Range: Party
+Duration: 1 turn
+Casting Time: 1
+Area of Effect: The entire party
+Saving Throw: Special
+
+When the spell is cast, a brilliant divine radiance surrounds the party, clinging to their skin and protecting them from attacks, granting them resistance to spells, and causing attacking creatures to become blinded when they strike the subjects. This abjuration has four effects.
+
+- First, each warded creature gains a +4 bonus to AC and a +4 bonus on saves. 
+- Second, each warded creature gains spell resistance 50%.
+- Third, the abjuration protects the recipient from all charm and domination effects.
+- Finally, if a creature succeeds on a melee attack against a creature warded by a divine aura, the offending attacker is blinded unless a save vs spell is made, lasting 3 rounds.~
+
+@60701  = ~Foresight~
+@60702  = ~Foresight
+Level: Quest
+Sphere: Knowledge
+Range: Self
+Duration: 2 turns
+Casting Time: 6
+Area of Effect: Caster
+Saving Throw: None
+
+This spell grants the recipient a powerful sixth sense about imminent events involving himself. Once the spell is cast, the character receives instantaneous warnings of impending danger or harm to the subject of the spell. The character will never be surprised. In addition, the spell gives the caster a general idea of what action the character might take to best protect himself - duck, jump right, close the eyes, and so on.
+Whenever a saving throw is allowed, the character will always succeed and the character's armor class is lowered by 15 points.
+~
+@60712 = ~Chain Contingency
+Level: Quest
+Sphere: Knowledge
+Range: 0
+Duration: Permanent until triggered
+Casting Time: 9
+Area of Effect: The caster
+Saving Throw: None
+
+Chain Contingency channels some of the magical energy of the priest and releases it only under certain circumstances. Basically, the priest chooses three spells to be released under a certain condition, such as seeing an enemy or being hit. When this condition occurs, all three spells are cast immediately. Unlike the 7th-level Contingency spell, the priest can set the target to be <PRO_HIMHER>self, the last creature to hit <PRO_HIMHER>, or the nearest enemy. Spells of 7th level or lower can be used in the contingency.
+~
+@60801  = ~Mirrored Clones~
+@60802  = ~Mirrored Clones 
+Level: Quest
+Sphere: Deception
+Range: 0
+Duration: 1 turn
+Casting Time: 9
+Area of Effect: Special
+Saving Throw: None
+
+Mirrored Clones creates two copies of the caster, perfect duplicates except for the fact that they have just 60% of the levels and hit points of the original individual. These duplicates are able to cast spells and attack under the control of the caster, who is also placed under a mislead-like effect for the entire duration of the spell.
+~
+@60901  = ~Divine Presence~
+@60902  = ~Divine Presence
+Level: Quest
+Sphere: Thought
+Range: Self
+Duration: 1 turn
+Casting Time: 1
+Area of Effect: Special
+Saving Throw: Spells -2
+
+When this spell is cast, the priest channels the presence of <PRO_HISHER> god.  <PRO_HISHER> charisma increases to 25, and all enemies within 20 feet of <PRO_HIMHER> must make a save vs. spells -2 or are overwhelmed by the presence, and fall to the ground, doing nothing, even if attacked for 15 seconds.  This effect is repeated every 15 seconds until the spell ends.
+~
+@60903  = ~Overwhelmed by Divine Presence~
+@61101  = ~Divine Might~
+@61102  = ~Divine Might
+Level: Quest
+Sphere: Vigor
+Range: Party
+Duration: 5 Rounds
+Casting Time: 2
+Area of Effect: The caster's party
+Saving Throw: None
+
+Upon casting this spell, the priest infuses <PRO_HIMHER>self and <PRO_HISHER> party with the sheer brute power of the gods, raising Strength, Constitution, and Dexterity to 24, and granting regeneration as per the regeneration spell for 5 rounds.
+~
+@61201  = ~Nature's Wrath~
+@61202  = ~Nature's Wrath
+Level: Quest
+Sphere: Affliction
+Range: Visual range of caster
+Duration: 1 Turn
+Casting Time: 7
+Area of Effect: 40' radius
+Saving Throw: Neg.
+
+This spell is destructive and irreversible. When invoked, it enrages the land, so it will attempt to destroy all creatures in its area of effect. Every creature takes 1D10 points of Poison and 1D10 points of Acid damage each round it is exposed to the deadly vapors. If someone fails a saving throw vs. poison at -2, he becomes poisoned. Another failed save vs. poison results in disease, and the victim will lose one point of Constitution for 5 rounds. This spell destroys all summoned creatures. Besides its destructive powers, Nature's Wrath has a more vicious characteristic: it attempts to stop, or at least slow, creatures fleeing the area of effect. Any target must save vs. spells at -4, or becomes entangled for a short time. Entangled creatures can still attack.
+~
+@61301  = ~Animal Horde~
+@61302  = ~Animal Horde
+Level: Quest
+Sphere: Animal
+Range: Visual range of the caster
+Duration: 9 hours
+Casting Time: 10
+Area of Effect: Special
+Saving Throw: None
+
+This spell initially summons a horde of enchanted animals ready to fight for the caster.  These creatures have 50% more hit die than normal, they are immune to all sleep, feeblemind, confusion, fear, hold, stun and beserk effects, they move twice as fast as normal, and their movement is unimpeded by any magical effects.  Additionally, the caster is able to see through their eyes, and can send them ahead to scout or fight.  These special summons do not count against the normal limit of summoned creatures.
+~
+@61401  = ~Shapechange Shambling Mound~
+@61402  = ~Shambling Mound Transformation
+Level: Quest
+Range: 0
+Duration: 5 turns
+Casting Time: 1
+Area of Effect: Caster
+Saving Throw: None 
+
+Harnessing the power of nature, this powerful shapechange ability allows the druid to become a Shambling Mound of immense strength. The Shapechanged form has an AC of -5, a THAC0 of 2 and attacks twice per round with powerful fists. These attacks do 3D6 crushing damage plus 2d4 poison damage. In this form the druid is immune to entanglement, web and hold effects, and poisons. Upon reassuming human form, the druid is healed 3D10 damage.
+
+Additionally, 2 lesser shambling mounds spring up from the earth to assist the druid in combat, just as in the Stalker spell.
+~
+@61403  = ~Shambling Mound~
+@61404  = ~Fist~
+@61405  = ~Resume Natural Form~
+@61501  = ~Earth Elemental Transformation~
+@61502  = ~Earth Elemental Transformation
+Level: Quest
+Range: 0
+Duration: 5 turns
+Casting Time: 1 round
+Area of Effect: self
+Saving Throw: None
+
+Harnessing the power of the elemental planes, this powerful shapechange ability allows the druid to become a 24HD elemental of immense strength. The different elemental forms have different strengths and weaknesses according to their nature. When the druid returns to human form, he is also healed 3D10 damage. The ability lasts 5 turns, or until the druid decides during the duration of the ability.
+~
+@61511  = ~Elemental Summoning: Earth~
+@61512  = ~Elemental Summoning: Earth
+Level: Quest
+Range: 10 yards
+Duration: 10 rounds
+Casting Time: 1 round
+Area of Effect: Special
+Saving Throw: None
+
+Drawing power from the environment, this spell summons two 16HD elementals. The elementals stay for 10 rounds and will obey the caster as long as they remain summoned. If the caster is higher than 25th level, an Elemental Princess will be summoned instead. The Elemental Princess of Earth is Sunnis.
+~
+@61513  = ~Who calls Sunnis, Princess of Earth!~
+@61601  = ~Water Elemental Transformation~
+@61602  = ~Water Elemental Transformation
+Level: Quest
+Range: 0
+Duration: 5 turns
+Casting Time: 1 round
+Area of Effect: self
+Saving Throw: None
+
+Harnessing the power of the elemental planes, this powerful shapechange ability allows the druid to become a 24HD elemental of immense strength. The different elemental forms have different strengths and weaknesses according to their nature. When the druid returns to human form, he is also healed 3D10 damage. The ability lasts 5 turns, or until the druid decides during the duration of the ability.
+~
+@61611  = ~Elemental Summoning: Water~
+@61612  = ~Elemental Summoning: Water
+Level: Quest
+Range: 10 yards
+Duration: 10 rounds
+Casting Time: 1 round
+Area of Effect: Special
+Saving Throw: None
+
+Drawing power from the environment, this spell summons two 16HD elementals. The elementals stay for 10 rounds and will obey the caster as long as they remain summoned. If the caster is higher than 25th level, an Elemental Princess will be summoned instead. The Elemental Prince of Water is Ben-Hadar.
+~
+@61613  = ~Who calls Ben-Hadar, Prince of Water!~
+@61701  = ~Air Elemental Transformation~
+@61702  = ~Air Elemental Transformation
+Level: Quest
+Range: 0
+Duration: 5 turns
+Casting Time: 1 round
+Area of Effect: self
+Saving Throw: None
+
+Harnessing the power of the elemental planes, this powerful shapechange ability allows the druid to become a 24HD elemental of immense strength. The different elemental forms have different strengths and weaknesses according to their nature. When the druid returns to human form, he is also healed 3D10 damage. The ability lasts 5 turns, or until the druid decides during the duration of the ability.
+~
+@61711  = ~Elemental Summoning: Air~
+@61712  = ~Elemental Summoning: Air
+Level: Quest
+Range: 10 yards
+Duration: 10 rounds
+Casting Time: 1 round
+Area of Effect: Special
+Saving Throw: None
+
+Drawing power from the environment, this spell summons two 16HD elementals. The elementals stay for 10 rounds and will obey the caster as long as they remain summoned. If the caster is higher than 25th level, an Elemental Princess will be summoned instead. The Elemental Princess of Air is Chan.
+~
+@61713  = ~Who calls Chan, Princess of Air!~
+@61721  = ~Warding Winds~
+@61722  = ~Warding Winds
+(Alteration)
+
+Level: Quest
+Sphere: Air
+Range: Self
+Duration: 1 Turn
+Casting Time: 3
+Area of Effect: Self
+Saving Throw: special
+
+This spell surrounds the caster with protective winds that deflect all incoming missiles, filter out gasses, and lash out at, and knock back any melee attackers.  These winds deflect any missiles aimed at the caster, and filters out any toxic gasses, protecting <PRO_HIMHER> from gaseous spells such as Cloudkill.
+
+Additionally, whenever an opponent hits the caster in melee combat, the winds lash out at <PRO_HIMHER>, doing 3d8 points of crushing damage, and knocks any creature medium size or smaller back 10' if they fail a save vs. wands.~
+
+@61723  = ~Protected by Warding Winds~
+@61801  = ~Fire Elemental Transformation~
+@61802  = ~Fire Elemental Transformation
+Level: Quest
+Range: 0
+Duration: 5 turns
+Casting Time: 1 round
+Area of Effect: self
+Saving Throw: None
+
+Harnessing the power of the elemental planes, this powerful shapechange ability allows the druid to become a 24HD elemental of immense strength. The different elemental forms have different strengths and weaknesses according to their nature. When the druid returns to human form, he is also healed 3D10 damage. The ability lasts 5 turns, or until the druid decides during the duration of the ability.
+~
+@61811  = ~Elemental Summoning: Fire~
+@61812  = ~Elemental Summoning: Fire
+Level: Quest
+Range: 10 yards
+Duration: 10 rounds
+Casting Time: 1 round
+Area of Effect: Special
+Saving Throw: None
+
+Drawing power from the environment, this spell summons two 16HD elementals. The elementals stay for 10 rounds and will obey the caster as long as they remain summoned. If the caster is higher than 25th level, an Elemental Princess will be summoned instead. The Elemental Prince of Fire is Zamaan Rul.
+~
+@61813  = ~Who calls Zaaman Rul, Prince of Fire!~
+@61901  = ~Inner Radiance~
+@61902  = ~Inner Radiance
+Level: Quest
+Sphere: Light
+Range: 0
+Duration: 1 Turn
+Casting Time: 5
+Area of Effect: 40' radius
+Saving Throw: n/a
+
+When this spell is cast, all of the caster's companions begin to radiate pure energy from the Positive Material Plane. This energy adds 2d4 magic damage to all melee attacks. Additionally, some of this radiance coalesces into small discs of light that swirl around the affected individuals. These discs will dart in front of aggressors, harmlessly absorbing up to seven physical blows. These effects last for 10 rounds.
+~
+@62001  = ~Greater Shades~
+@62002  = ~Greater Shades
+Level: Quest
+Range: Visual range of the caster
+Duration: 1 turn
+Casting Time: 9
+Area of Effect: Special
+Saving Throw: None
+
+Greater Shades is similar to the Shadow Monsters spell in that it allows the caster to shape material from the Demiplane of Shadow into illusionary creatures. These shadows are tougher than the shadows summoned by Shades, and they will obey the caster until the spell expires or they are slain.~
