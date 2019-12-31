@@ -1,8 +1,0 @@
-IF
-        NextTriggerObject(LastSummonerOf(Myself))
-        ActionListEmpty()
-THEN
-	RESPONSE #100
-		ActionOverride(LastSummonerOf(Myself),Hide())
-		Wait(6)
-END
