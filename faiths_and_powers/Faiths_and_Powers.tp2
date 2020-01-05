@@ -2,7 +2,7 @@ BACKUP ~faiths_and_powers/backup~
 AUTHOR ~SubtleD and Grammarsalad~
 
 
-VERSION ~0.79.4~
+VERSION ~0.79.6~
 
 
 //README ~faiths_and_powers/readme-pnp.html~
@@ -306,10 +306,12 @@ END
 
 LAM d5_kit_choices
 
-ACTION_IF (GAME_IS ~iwdee~) BEGIN
-   OUTER_SET d5_cleric_kelemvor =	0
-   OUTER_SET d5_cleric_cyric 	=	0
-END
+ACTION_IF (GAME_IS ~iwdee~) && (d5_cleric_kelemvor < 2) BEGIN
+	  OUTER_SET d5_cleric_kelemvor = 0
+	END
+ACTION_IF (GAME_IS ~iwdee~) && (d5_cleric_cyric < 2) BEGIN
+	  OUTER_SET d5_cleric_cyric = 0
+	END
 
 ACTION_IF (ENGINE_IS ~tob bgt~) BEGIN
    OUTER_SET d5_cleric_azuth	=	0
@@ -317,7 +319,7 @@ ACTION_IF (ENGINE_IS ~tob bgt~) BEGIN
    OUTER_SET d5_cleric_oghma	=	0
    OUTER_SET d5_cleric_baervan 	=	0
    OUTER_SET d5_cleric_arvoreen	=	0
-   OUTER_SET d5_ur_priest	 	=	0
+   OUTER_SET d5_ur_priest	=	0
 END
 
 OUTER_SET cleric_umd = 0
@@ -354,7 +356,7 @@ END
 ACTION_IF (%d5_cleric_beshaba% = 1) BEGIN
  LAF cleric_beshaba END
 END
-ACTION_IF (%d5_cleric_cyric% = 1) BEGIN
+ACTION_IF (%d5_cleric_cyric% > 0) BEGIN
   LAF cleric_cyric END
 END
 ACTION_IF (%d5_cleric_deneir% = 1) BEGIN
@@ -366,7 +368,7 @@ END
 ACTION_IF (%d5_cleric_ilmater% = 1) BEGIN
  LAF cleric_ilmater END
 END
-ACTION_IF (%d5_cleric_kelemvor% = 1) BEGIN
+ACTION_IF (%d5_cleric_kelemvor% > 0) BEGIN
   LAF cleric_kelemvor END
 END
 ACTION_IF (%d5_cleric_lathander% = 1) BEGIN
@@ -478,7 +480,7 @@ LAM d5_kit_choices
 ACTION_IF (FILE_EXISTS_IN_GAME ~d5_no_spheres.d5~) BEGIN
    OUTER_SET d5_earth_mystic 	=	0
    OUTER_SET d5_water_mystic 	=	0
-   OUTER_SET d5_air_mystic 		=	0
+   OUTER_SET d5_air_mystic 	=	0
    OUTER_SET d5_fire_mystic 	=	0
    OUTER_SET d5_light_mystic 	=	0
    OUTER_SET d5_shadow_mystic 	=	0

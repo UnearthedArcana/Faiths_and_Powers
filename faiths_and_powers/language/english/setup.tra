@@ -2162,12 +2162,12 @@ Restrictions:
 @80111  = ~UNDEAD HUNTER OF TYR: This holy avenger has honed <PRO_HISHER> abilities toward the destruction of the undead and other unnatural creatures and is immune to many of their most devastating abilities.
 
 Abilities: 
-Â– +3 bonus to hit and damage rolls against undead creatures.
-Â– Immune to hold and level drain.
+– +3 bonus to hit and damage rolls against undead creatures.
+– Immune to hold and level drain.
 
 Restrictions:
-Â– May not use Lay On Hands ability.
-Â– May not use Cure Disease ability.
+– May not use Lay On Hands ability.
+– May not use Cure Disease ability.
 ~
 @80201  = ~champion of kelemvor~
 @80202  = ~Knight of Eternal Order~
@@ -2176,19 +2176,26 @@ Restrictions:
 Thus, Kelemvor created the Knights of Eternal Order.
 
 Advantages:
-- Disrupting Smite: As smite, but does double damage to undead.  In addition, weaker undead can be destroyed outright if they fail a save vs. death, much like a mace of disruption.
 - Knights of Eternal Order are immune to hold and level drain effects.
 - Knights of Eternal Order turn undead as a priest of their champion level once they reach level 3.
+- May use the final rest ability at 1st level, level 4, and every four levels after that. 
+
+FINAL REST
+When the Champion uses this ability, <PRO_HISHER> melee attacks inflict an additional 1d6 points of magic damage, (+1d6 points of damage at levels 4, 10 and 18) levels over the next 2 rounds.  This ability lasts an additional round at level 2, 8 and 14.
+
+Additionally, undead creatures take double damage, and undead with fewer than 15 hit die must save vs. death or be instantly destroyed.  This save receives a -1 penalty at levels 4, 10 and 18
+
+An opponent can only be affected by Final Rest once per round.
 
 Restrictions:
 - Alignment: Cannot be Neutral Evil or Chaotic Evil.
 ~
-@80204  = ~Disrupting Smite~
-@80205  = ~Disrupting Smite
+@80204  = ~Final Rest~
+@80205  = ~Final Rest
 
 When the Champion uses this ability, <PRO_HISHER> melee attacks inflict an additional 1d6 points of magic damage, (+1d6 points of damage at levels 4, 10 and 18) levels over the next 2 rounds.  This ability lasts an additional round at level 2, 8 and 14.
 
-Additionally, undead creatures take double damage, and undead with fewer than 15 hit die must save vs. death or be instantly destroyed.  This save recieves a -1 penalty at levels 4, 10 and 18
+Additionally, undead creatures take double damage, and undead with fewer than 15 hit die must save vs. death or be instantly destroyed.  This save receives a -1 penalty at levels 4, 10 and 18
 
 An opponent can only be affected by Disrupting Smite once per round.~
 
@@ -2234,27 +2241,39 @@ An opponent can only be affected by Smite Foe once per round.~
 @80403  = ~KNIGHT OF THE BLACK GAUNTLET: Bane's knights are quintessential black knights, a twisted mockery of the shining example of what a knight should be.  They spread fear in the name of their god, and silence anybody that suggests that Bane is dead.
 
 Advantages:
-- Smite of Dread: The smite of a Black Gauntlet instills fear in any opponent for one round if they do not save vs. death.
-- Knights of the Black Gauntlet are completely fearless.  Or rather, they fear only Bane's wrath.  As such, they are not affected either by magical fear nor moral failure.
+- Knights of the Black Gauntlet are completely fearless.  As such, they are not affected either by magical fear nor moral failure.
+- May use the tyrant's rule ability at 1st level, level 4, and every four levels after that.
 
+TYRANT'S RULE    
+When the Champion uses this ability, <PRO_HISHER> melee attacks inflict an additional 1d6 points of magic damage, (+1d6 points of damage at levels 4, 10 and 18) levels over the next 2 rounds.  This ability lasts an additional round at level 2, 8 and 14.
+
+Additionally, creatures are struck with fear for 1 round if they do not save vs. death.  This save receives a -1 penalty at levels 4, 10 and 18
+
+An opponent can only be affected by tyrant's rule once per round.
 Restrictions:
 - Alignment: can be any Evil or Lawful Neutral
 ~
-@80404  = ~Smite of Dread~
+@80404  = ~Tyrant's Rule~
 @80405  = ~Smite of Dread
 
 When the Champion uses this ability, <PRO_HISHER> melee attacks inflict an additional 1d6 points of magic damage, (+1d6 points of damage at levels 4, 10 and 18) levels over the next 2 rounds.  This ability lasts an additional round at level 2, 8 and 14.
 
-Additionally, creatures are struck with fear for 1 round if they do not save vs. death.  This save recieves a -1 penalty at levels 4, 10 and 18
+Additionally, creatures are struck with fear for 1 round if they do not save vs. death.  This save receives a -1 penalty at levels 4, 10 and 18
 
-An opponent can only be affected by smite of dread once per round.~
+An opponent can only be affected by tyrant's rule once per round.~
 
 @80406  = ~KNIGHT OF THE BLACK GAUNTLET: Bane's knights are quintessential black knights, a twisted mockery of the shining example of what a knight should be.  They spread fear in the name of their god, and silence anybody that dares to oppose the Dread Lord.
 
 Advantages:
-- Smite of Dread: The smite of a Black Gauntlet instills fear in any opponent for one round if they do not save vs. death.
-- Knights of the Black Gauntlet are completely fearless.  Or rather, they fear only Bane's wrath.  As such, they are not affected either by magical fear nor moral failure.
+- Knights of the Black Gauntlet are completely fearless.  As such, they are not affected either by magical fear nor moral failure.
+- May use the tyrant's rule ability at 1st level, level 4, and every four levels after that.
 
+TYRANT'S RULE    
+When the Champion uses this ability, <PRO_HISHER> melee attacks inflict an additional 1d6 points of magic damage, (+1d6 points of damage at levels 4, 10 and 18) levels over the next 2 rounds.  This ability lasts an additional round at level 2, 8 and 14.
+
+Additionally, creatures are struck with fear for 1 round if they do not save vs. death.  This save receives a -1 penalty at levels 4, 10 and 18
+
+An opponent can only be affected by tyrant's rule once per round.
 Restrictions:
 - Alignment: can be any Evil
 ~
@@ -2354,7 +2373,14 @@ The hammer is enchanted as a +4 weapon and deals 1d6 points of blunt damage as w
 
 Advantages:
 - Immune to Hold and Charm spells
-- Wizard's Bane: The Inquisitor's smite does double damage to wizards, and any wizards hit by the Inquisitor's smite are affected by an dispel magic effect of a caster level equal to twice the Inquisitor's class level.
+- May use the wizard bane ability at 1st level, level 4, and every four levels after that. 
+
+WIZARD'S BANE  
+When the Champion uses this ability, <PRO_HISHER> melee attacks inflict an additional 1d6 points of magic damage, (+1d6 points of damage at levels 4, 10 and 18) levels over the next 2 rounds.  This ability lasts an additional round at level 2, 8 and 14.
+
+In addition, arcane spellcasters suffer double damage, and are affected by a double strength dispel magic.
+
+An opponent can only be affected by Wizard's Bane once per round. 
 
 Disadvantages:
 - Inquisitors do not turn undead
@@ -2883,7 +2909,7 @@ Advantages:
 - May use a special vocalization that can deafen anyone nearby and impose a 40% chance of spell failure upon a failed a saving throw vs. Petrification.
 - Can cast Minor Spell Deflection and Breach as innate abilities once per day at 1st level, and one additional time each five levels after that.
 
-Restrictions:
+Disadvantages:
 - Suffers a -1 penalty to Strength and Constitution.
 ~
 @95311  = ~Vocal Disruption~
@@ -2901,10 +2927,12 @@ Advantages:
 - May Charm animals once per day per five levels.
 - Gains 5% physical damage resistance at 11th level, and again at 15th and 19th levels.
 
-Restrictions:
+Disadvantages*:
 - -2 penalty to Charisma.
 - May not wear armor heavier than studded leather or hide armor
-- May not dual-class.~
+
+**Restrictions**:
+- May not dual-class~
 //
 @95501  = ~elven archer~
 @95502  = ~Elven Archer~
@@ -2921,10 +2949,15 @@ CALLED SHOT: All successful ranged attacks within the next 10 seconds have the f
  12th level: -1 penalty to the target's Strength score.
  16th level: +2 bonus to damage roll.
 
-Restrictions:
+Disadvantages:
 - May only wear leather, studded leather, and hide armor.
 - May only become Proficient (one slot) with melee weapons.
-- May not use the Charm Animal ability.~
+- May not use the Charm Animal ability.
+
+Restrictions:
+- Race: Only Elves can become Elven Archers~
+
+
 //
 @95601  = ~halfling slinger~
 @95602  = ~Halfling Slinger~
@@ -2941,10 +2974,14 @@ CALLED SHOT: All successful ranged attacks within the next 10 seconds have the f
  12th level: -1 penalty to the target's Strength score.
  16th level: +2 bonus to damage roll.
 
-Restrictions:
+Disadvantages
 - May only wear leather, studded leather, and hide armor.
 - May only become Proficient (one slot) with melee weapons.
-- May not use the Charm Animal ability.~
+- May not use the Charm Animal ability.
+
+Restrictions:
+- Race: Only halflings can be halfling slingers  
+~
 //
 
 
