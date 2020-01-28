@@ -51,8 +51,8 @@ ACTION_IF (FILE_CONTAINS_EVALUATED (~kit.ids~ ~[ %TAB%]B_CHAMP_HELM[ %TAB%%LNL%%
 					~keldor14~   BEGIN
 	ACTION_IF FILE_EXISTS_IN_GAME ~%char%.cre~ BEGIN
 	  COPY_EXISTING ~%char%.cre~ ~override~
-		WRITE_SHORT 0x244 0
-		WRITE_SHORT 0x246 %keldorn_kit% 							// changes kit
+		WRITE_SHORT 0x244 (%keldorn_kit% >> 16) & 0xffff
+		WRITE_SHORT 0x246 %keldorn_kit% & 0xffff
 		REMOVE_MEMORIZED_SPELLS
 		REMOVE_KNOWN_SPELLS
 	  BUT_ONLY
@@ -72,8 +72,8 @@ ACTION_IF (FILE_CONTAINS_EVALUATED (~kit.ids~ ~[ %TAB%]B_CLERIC_HELM[ %TAB%%LNL%
 	  COPY_EXISTING ~%char%.cre~ ~override~
 	    READ_BYTE 0x273 class
 	    PATCH_IF %class% = 3 BEGIN
-		  WRITE_SHORT 0x244 0
-		  WRITE_SHORT 0x246 %anomen_kit_sc%							 // changes kit
+		  WRITE_SHORT 0x244 (%anomen_kit_sc% >> 16) & 0xffff
+		  WRITE_SHORT 0x246 %anomen_kit_sc% & 0xffff
 		  REMOVE_MEMORIZED_SPELLS
 		  REMOVE_KNOWN_SPELLS
 		END
@@ -92,8 +92,8 @@ ACTION_IF (FILE_CONTAINS_EVALUATED (~kit.ids~ ~[ %TAB%]B_CLERIC_TEMPUS[ %TAB%%LN
 	  COPY_EXISTING ~%char%.cre~ ~override~
 	    READ_BYTE 0x273 class
 	    PATCH_IF %class% = 3 BEGIN
-		  WRITE_SHORT 0x244 0
-		  WRITE_SHORT 0x246 %branwen_kit_sc%						// changes kit
+		  WRITE_SHORT 0x244 (%branwen_kit_sc% >> 16) & 0xffff
+		  WRITE_SHORT 0x246 %branwen_kit_sc% & 0xffff
 		  REMOVE_MEMORIZED_SPELLS
 		  REMOVE_KNOWN_SPELLS
 		END
@@ -109,8 +109,8 @@ ACTION_IF (FILE_CONTAINS_EVALUATED (~kit.ids~ ~[ %TAB%]B_PRIEST_DENEIR[ %TAB%%LN
 					~sufinch4~   BEGIN
 	ACTION_IF FILE_EXISTS_IN_GAME ~%char%.cre~ BEGIN
 	  COPY_EXISTING ~%char%.cre~ ~override~
-		WRITE_SHORT 0x244 0
-		WRITE_SHORT 0x246 %finch_kit% 								// changes kit
+		WRITE_SHORT 0x244 (%finch_kit% >> 16) & 0xffff
+		WRITE_SHORT 0x246 %finch_kit% & 0xffff
 		REMOVE_MEMORIZED_SPELLS
 		REMOVE_KNOWN_SPELLS
 	  BUT_ONLY
@@ -123,8 +123,8 @@ ACTION_IF (FILE_CONTAINS_EVALUATED (~kit.ids~ ~[ %TAB%]B_CLERIC_UMBERLEE[ %TAB%%
   ACTION_FOR_EACH char IN ~tenya~   BEGIN
 	ACTION_IF FILE_EXISTS_IN_GAME ~%char%.cre~ BEGIN
 	  COPY_EXISTING ~%char%.cre~ ~override~
-		WRITE_SHORT 0x244 0
-		WRITE_SHORT 0x246 %tenya_kit% 								// changes kit
+		WRITE_SHORT 0x244 (%tenya_kit% >> 16) & 0xffff
+		WRITE_SHORT 0x246 %tenya_kit% & 0xffff
 		REMOVE_MEMORIZED_SPELLS
 		REMOVE_KNOWN_SPELLS
 	  BUT_ONLY
@@ -146,8 +146,8 @@ ACTION_IF (FILE_CONTAINS_EVALUATED (~kit.ids~ ~[ %TAB%]D5_AC_SHAR[ %TAB%%LNL%%MN
 					~viconi16~  BEGIN
 	ACTION_IF FILE_EXISTS_IN_GAME ~%char%.cre~ BEGIN
 	  COPY_EXISTING ~%char%.cre~ ~override~
-		WRITE_SHORT 0x244 0
-		WRITE_SHORT 0x246 %viconia_kit% 							// changes kit
+		WRITE_SHORT 0x244 (%viconia_kit% >> 16) & 0xffff
+		WRITE_SHORT 0x246 %viconia_kit% & 0xffff
 		REMOVE_MEMORIZED_SPELLS
 		REMOVE_KNOWN_SPELLS
 	  BUT_ONLY
@@ -171,8 +171,8 @@ ACTION_FOR_EACH char IN ~b!gavin~ ~b!gav08~ ~b!gav13~ BEGIN
 	PATCH_IF %class% = 3 BEGIN
 	  PATCH_IF (FILE_CONTAINS_EVALUATED (~kit.ids~ ~[ %TAB%]B_CLERIC_LATHANDER[ %TAB%%LNL%%MNL%%WNL%]~)) BEGIN
 		SET gavin_kit = (IDS_OF_SYMBOL (~kit~ ~B_CLERIC_LATHANDER~))
-		WRITE_SHORT 0x244 0
-		WRITE_SHORT 0x246 %gavin_kit% 								// changes kit
+		WRITE_SHORT 0x244 (%gavin_kit% >> 16) & 0xffff
+		WRITE_SHORT 0x246 %gavin_kit% & 0xffff
 		REMOVE_MEMORIZED_SPELLS
 		REMOVE_KNOWN_SPELLS
 	  END
@@ -186,8 +186,8 @@ ACTION_FOR_EACH char IN ~c0drake~ ~c02drake~ BEGIN
 	PATCH_IF %class% = 3 BEGIN
 	  PATCH_IF (FILE_CONTAINS_EVALUATED (~kit.ids~ ~[ %TAB%]xxxxx[ %TAB%%LNL%%MNL%%WNL%]~)) BEGIN
 		SET xxxx = (IDS_OF_SYMBOL (~kit~ ~xxxxx~))
-		WRITE_SHORT 0x244 0
-		WRITE_SHORT 0x246 %xxxx% 								// changes kit
+		WRITE_SHORT 0x244 (%xxxx% >> 16) & 0xffff
+		WRITE_SHORT 0x246 %xxxx% & 0xffff
 		REMOVE_MEMORIZED_SPELLS
 		REMOVE_KNOWN_SPELLS
 	  END
@@ -201,13 +201,98 @@ ACTION_FOR_EACH char IN ~gv#dave~ ~gv#dave2~ BEGIN
 	PATCH_IF %class% = 3 BEGIN
 	  PATCH_IF (FILE_CONTAINS_EVALUATED (~kit.ids~ ~[ %TAB%]B_CLERIC_TALOS[ %TAB%%LNL%%MNL%%WNL%]~)) BEGIN
 		SET dave_kit = (IDS_OF_SYMBOL (~kit~ ~B_CLERIC_TALOS~))
-		WRITE_SHORT 0x244 0
-		WRITE_SHORT 0x246 %dave_kit% 								// changes kit
+		WRITE_SHORT 0x244 (%dave_kit% >> 16) & 0xffff
+		WRITE_SHORT 0x246 %dave_kit% & 0xffff
 		REMOVE_MEMORIZED_SPELLS
 		REMOVE_KNOWN_SPELLS
 	  END
 	END
   IF_EXISTS BUT_ONLY
+END
+
+// multiclass NPCs if no multiclass kits
+
+ACTION_IF (FILE_CONTAINS_EVALUATED (~kit.ids~ ~[ %TAB%]B_CLERIC_BARAVAR[ %TAB%%LNL%%MNL%%WNL%]~)) BEGIN
+  OUTER_SET quayle_kit_sc = (IDS_OF_SYMBOL (~kit~ ~B_CLERIC_BARAVAR~))
+  ACTION_FOR_EACH char IN ~%quayle_var%~ 
+					~quayle4~ 
+					~quayle6~  BEGIN
+	ACTION_IF FILE_EXISTS_IN_GAME ~%char%.cre~ BEGIN
+	  COPY_EXISTING ~%char%.cre~ ~override~
+		WRITE_SHORT 0x244 (%quayle_kit_sc% >> 16) & 0xffff
+		WRITE_SHORT 0x246 %quayle_kit_sc% & 0xffff
+		REMOVE_MEMORIZED_SPELLS
+		REMOVE_KNOWN_SPELLS
+	  BUT_ONLY
+	END
+  END
+END
+
+ACTION_IF (FILE_CONTAINS_EVALUATED (~kit.ids~ ~[ %TAB%]B_CLERIC_BARAVAR[ %TAB%%LNL%%MNL%%WNL%]~)) BEGIN
+  OUTER_SET glint_kit_sc = (IDS_OF_SYMBOL (~kit~ ~B_CLERIC_BARAVAR~))
+  ACTION_FOR_EACH char IN ~glint7~ BEGIN
+	ACTION_IF FILE_EXISTS_IN_GAME ~%char%.cre~ BEGIN
+	  COPY_EXISTING ~%char%.cre~ ~override~
+		WRITE_SHORT 0x244 (%glint_kit_sc% >> 16) & 0xffff
+		WRITE_SHORT 0x246 %glint_kit_sc% & 0xffff
+		REMOVE_MEMORIZED_SPELLS
+		REMOVE_KNOWN_SPELLS
+	  BUT_ONLY
+	END
+  END
+END
+
+ACTION_IF (FILE_CONTAINS_EVALUATED (~kit.ids~ ~[ %TAB%]B_CLERIC_CYRIC[ %TAB%%LNL%%MNL%%WNL%]~)) BEGIN
+  OUTER_SET tiax_kit_sc = (IDS_OF_SYMBOL (~kit~ ~B_CLERIC_CYRIC~))
+  ACTION_FOR_EACH char IN ~bdtiax~ 
+					~tiax~ 
+					~tiax4~ 
+					~tiax6~  
+                    ~tiaxd~ BEGIN
+	ACTION_IF FILE_EXISTS_IN_GAME ~%char%.cre~ BEGIN
+	  COPY_EXISTING ~%char%.cre~ ~override~
+		WRITE_SHORT 0x244 (%tiax_kit_sc% >> 16) & 0xffff
+		WRITE_SHORT 0x246 %tiax_kit_sc% & 0xffff
+		REMOVE_MEMORIZED_SPELLS
+		REMOVE_KNOWN_SPELLS
+	  BUT_ONLY
+	END
+  END
+END
+
+ACTION_IF (FILE_CONTAINS_EVALUATED (~kit.ids~ ~[ %TAB%]D5_CLANGEDDIN[ %TAB%%LNL%%MNL%%WNL%]~)) BEGIN
+  OUTER_SET yeslick_kit_sc = (IDS_OF_SYMBOL (~kit~ ~D5_CLANGEDDIN~))
+  ACTION_FOR_EACH char IN ~yeslic~
+					~yeslic5~  
+                    ~yeslid~ BEGIN
+	ACTION_IF FILE_EXISTS_IN_GAME ~%char%.cre~ BEGIN
+	  COPY_EXISTING ~%char%.cre~ ~override~
+		WRITE_SHORT 0x244 (%yeslick_kit_sc% >> 16) & 0xffff
+		WRITE_SHORT 0x246 %yeslick_kit_sc% & 0xffff
+		REMOVE_MEMORIZED_SPELLS
+		REMOVE_KNOWN_SPELLS
+	  BUT_ONLY
+	END
+  END
+END
+
+ACTION_IF (FILE_CONTAINS_EVALUATED (~kit.ids~ ~[ %TAB%]D5_CLERIC_BAERVAN[ %TAB%%LNL%%MNL%%WNL%]~)) BEGIN
+  OUTER_SET aerie_kit_sc = (IDS_OF_SYMBOL (~kit~ ~D5_CLERIC_BAERVAN~))
+  ACTION_FOR_EACH char IN ~aerie6~
+					~aerie7~
+					~aerie9~
+					~aerie10~
+					~aerie11~
+					~aerie12~   BEGIN
+	ACTION_IF FILE_EXISTS_IN_GAME ~%char%.cre~ BEGIN
+	  COPY_EXISTING ~%char%.cre~ ~override~
+		WRITE_SHORT 0x244 (%aerie_kit_sc% >> 16) & 0xffff
+		WRITE_SHORT 0x246 %aerie_kit_sc% & 0xffff
+		REMOVE_MEMORIZED_SPELLS
+		REMOVE_KNOWN_SPELLS
+	  BUT_ONLY
+	END
+  END
 END
 //___________________________________________________________________________________
 
@@ -259,9 +344,9 @@ ACTION_IF (FILE_CONTAINS_EVALUATED (~kit.ids~ ~[ %TAB%]D5_DR_FIGHTER[ %TAB%%LNL%
 					~jahei14~ BEGIN
 	ACTION_IF FILE_EXISTS_IN_GAME ~%char%.cre~ BEGIN
 	  COPY_EXISTING ~%char%.cre~ ~override~
-		WRITE_BYTE 0x273 8 // sets class
-		WRITE_SHORT 0x244 0
-		WRITE_SHORT 0x246 %jaheria_kit%										// changes kit
+		WRITE_BYTE 0x273 8 													// sets class
+		WRITE_SHORT 0x244 (%jaheria_kit% >> 16) & 0xffff
+		WRITE_SHORT 0x246 %jaheria_kit% & 0xffff
 		REMOVE_MEMORIZED_SPELLS
 		REMOVE_KNOWN_SPELLS
 	  BUT_ONLY
@@ -279,8 +364,8 @@ ACTION_IF (FILE_CONTAINS_EVALUATED (~kit.ids~ ~[ %TAB%]B_CLERIC_TEMPUS_FC[ %TAB%
 	  COPY_EXISTING ~%char%.cre~ ~override~
 	    READ_BYTE 0x273 class
 	    PATCH_IF %class% = 8 BEGIN
-		  WRITE_SHORT 0x244 0
-		  WRITE_SHORT 0x246 %branwen_kit_mc%								// changes kit
+		  WRITE_SHORT 0x244 (%branwen_kit_mc% >> 16) & 0xffff
+		  WRITE_SHORT 0x246 %branwen_kit_mc% & 0xffff
 		  REMOVE_MEMORIZED_SPELLS
 		  REMOVE_KNOWN_SPELLS
 		END
@@ -289,16 +374,29 @@ ACTION_IF (FILE_CONTAINS_EVALUATED (~kit.ids~ ~[ %TAB%]B_CLERIC_TEMPUS_FC[ %TAB%
   END
 END
 
-ACTION_IF (FILE_CONTAINS_EVALUATED (~kit.ids~ ~[ %TAB%]B_CLERIC_BARAVAR_CT[ %TAB%%LNL%%MNL%%WNL%]~)) BEGIN
-  OUTER_SET quayle_kit = (IDS_OF_SYMBOL (~kit~ ~B_CLERIC_BARAVAR_CT~))
-  ACTION_FOR_EACH char IN ~glint7~ 
-					~%quayle_var%~ 
+ACTION_IF (FILE_CONTAINS_EVALUATED (~kit.ids~ ~[ %TAB%]B_CLERIC_BARAVAR_CM[ %TAB%%LNL%%MNL%%WNL%]~)) BEGIN
+  OUTER_SET quayle_kit = (IDS_OF_SYMBOL (~kit~ ~B_CLERIC_BARAVAR_M~))
+  ACTION_FOR_EACH char IN ~%quayle_var%~ 
 					~quayle4~ 
 					~quayle6~  BEGIN
 	ACTION_IF FILE_EXISTS_IN_GAME ~%char%.cre~ BEGIN
 	  COPY_EXISTING ~%char%.cre~ ~override~
-		WRITE_SHORT 0x244 0
-		WRITE_SHORT 0x246 %quayle_kit%										// changes kit
+		WRITE_SHORT 0x244 (%quayle_kit% >> 16) & 0xffff
+		WRITE_SHORT 0x246 %quayle_kit% & 0xffff
+		REMOVE_MEMORIZED_SPELLS
+		REMOVE_KNOWN_SPELLS
+	  BUT_ONLY
+	END
+  END
+END
+
+ACTION_IF (FILE_CONTAINS_EVALUATED (~kit.ids~ ~[ %TAB%]B_CLERIC_BARAVAR_CT[ %TAB%%LNL%%MNL%%WNL%]~)) BEGIN
+  OUTER_SET glint_kit = (IDS_OF_SYMBOL (~kit~ ~B_CLERIC_BARAVAR_CT~))
+  ACTION_FOR_EACH char IN ~glint7~ BEGIN
+	ACTION_IF FILE_EXISTS_IN_GAME ~%char%.cre~ BEGIN
+	  COPY_EXISTING ~%char%.cre~ ~override~
+		WRITE_SHORT 0x244 (%glint_kit% >> 16) & 0xffff
+		WRITE_SHORT 0x246 %glint_kit% & 0xffff
 		REMOVE_MEMORIZED_SPELLS
 		REMOVE_KNOWN_SPELLS
 	  BUT_ONLY
@@ -315,8 +413,8 @@ ACTION_IF (FILE_CONTAINS_EVALUATED (~kit.ids~ ~[ %TAB%]B_CLERIC_CYRIC_CT[ %TAB%%
                     ~tiaxd~ BEGIN
 	ACTION_IF FILE_EXISTS_IN_GAME ~%char%.cre~ BEGIN
 	  COPY_EXISTING ~%char%.cre~ ~override~
-		WRITE_SHORT 0x244 0
-		WRITE_SHORT 0x246 %tiax_kit%										// changes kit
+		WRITE_SHORT 0x244 (%tiax_kit% >> 16) & 0xffff
+		WRITE_SHORT 0x246 %tiax_kit% & 0xffff
 		REMOVE_MEMORIZED_SPELLS
 		REMOVE_KNOWN_SPELLS
 	  BUT_ONLY
@@ -331,8 +429,8 @@ ACTION_IF (FILE_CONTAINS_EVALUATED (~kit.ids~ ~[ %TAB%]D5_CLANGEDDIN_FC[ %TAB%%L
                     ~yeslid~ BEGIN
 	ACTION_IF FILE_EXISTS_IN_GAME ~%char%.cre~ BEGIN
 	  COPY_EXISTING ~%char%.cre~ ~override~
-		WRITE_SHORT 0x244 0
-		WRITE_SHORT 0x246 %yeslick_kit%									// changes kit
+		WRITE_SHORT 0x244 (%yeslick_kit% >> 16) & 0xffff
+		WRITE_SHORT 0x246 %yeslick_kit% & 0xffff
 		REMOVE_MEMORIZED_SPELLS
 		REMOVE_KNOWN_SPELLS
 	  BUT_ONLY
@@ -350,8 +448,8 @@ ACTION_IF (FILE_CONTAINS_EVALUATED (~kit.ids~ ~[ %TAB%]D5_CLERIC_BAERVAN_CM[ %TA
 					~aerie12~   BEGIN
 	ACTION_IF FILE_EXISTS_IN_GAME ~%char%.cre~ BEGIN
 	  COPY_EXISTING ~%char%.cre~ ~override~
-		WRITE_SHORT 0x244 0
-		WRITE_SHORT 0x246 %aerie_kit% 									// changes kit
+		WRITE_SHORT 0x244 (%aerie_kit% >> 16) & 0xffff
+		WRITE_SHORT 0x246 %aerie_kit% & 0xffff
 		REMOVE_MEMORIZED_SPELLS
 		REMOVE_KNOWN_SPELLS
 	  BUT_ONLY
@@ -371,8 +469,8 @@ ACTION_IF (FILE_CONTAINS_EVALUATED (~kit.ids~ ~[ %TAB%]B_CLERIC_HELM_FC[ %TAB%%L
 	  COPY_EXISTING ~%char%.cre~ ~override~
 	    READ_BYTE 0x273 class
 	    PATCH_IF %class% = 8 BEGIN
-		  WRITE_SHORT 0x244 0
-		  WRITE_SHORT 0x246 %anomen_kit_mc%								// changes kit
+		  WRITE_SHORT 0x244 (%anomen_kit_mc% >> 16) & 0xffff
+		  WRITE_SHORT 0x246 %anomen_kit_mc% & 0xffff
 		  REMOVE_MEMORIZED_SPELLS
 		  REMOVE_KNOWN_SPELLS
 		END
@@ -386,8 +484,8 @@ ACTION_IF (FILE_CONTAINS_EVALUATED (~kit.ids~ ~[ %TAB%]D5_CT_MASK[ %TAB%%LNL%%MN
   ACTION_FOR_EACH char IN ~l#dusky~ BEGIN
 	ACTION_IF FILE_EXISTS_IN_GAME ~%char%.cre~ BEGIN
 	  COPY_EXISTING ~%char%.cre~ ~override~
-		WRITE_SHORT 0x244 0
-		WRITE_SHORT 0x246 %dusky_kit%									// changes kit
+		WRITE_SHORT 0x244 (%dusky_kit% >> 16) & 0xffff
+		WRITE_SHORT 0x246 %dusky_kit% & 0xffff
 		REMOVE_MEMORIZED_SPELLS
 		REMOVE_KNOWN_SPELLS
 	  BUT_ONLY
@@ -402,8 +500,8 @@ ACTION_IF (FILE_CONTAINS_EVALUATED (~kit.ids~ ~[ %TAB%]D5_CR_MIELI[ %TAB%%LNL%%M
 	  COPY_EXISTING ~%char%.cre~ ~override~
 	    READ_BYTE 0x273 class
 	    PATCH_IF %class% = 18 BEGIN
-		  WRITE_SHORT 0x244 0
-		  WRITE_SHORT 0x246 %korin_kit%									// changes kit
+		  WRITE_SHORT 0x244 (%korin_kit% >> 16) & 0xffff
+		  WRITE_SHORT 0x246 %korin_kit% & 0xffff
 		  REMOVE_MEMORIZED_SPELLS
 		  REMOVE_KNOWN_SPELLS
 		END
@@ -418,8 +516,8 @@ ACTION_FOR_EACH char IN ~O#Nella~   BEGIN
 	PATCH_IF %class% = 8 BEGIN
 	  PATCH_IF (FILE_CONTAINS_EVALUATED (~kit.ids~ ~[ %TAB%]D5_DR_FIGHTER[ %TAB%%LNL%%MNL%%WNL%]~)) BEGIN
 		SET nella_kit = (IDS_OF_SYMBOL (~kit~ ~D5_DR_FIGHTER~))
-		WRITE_SHORT 0x244 0
-		WRITE_SHORT 0x246 %nella_kit% 									// changes kit
+		WRITE_SHORT 0x244 (%nella_kit% >> 16) & 0xffff
+		WRITE_SHORT 0x246 %nella_kit% & 0xffff
 		REMOVE_MEMORIZED_SPELLS
 		REMOVE_KNOWN_SPELLS
 	  END
@@ -427,8 +525,8 @@ ACTION_FOR_EACH char IN ~O#Nella~   BEGIN
 	PATCH_IF %class% = 16 BEGIN
 	  PATCH_IF (FILE_CONTAINS_EVALUATED (~kit.ids~ ~[ %TAB%]D5_MY_EARTH_FD[ %TAB%%LNL%%MNL%%WNL%]~)) BEGIN
 		SET nella_kit = (IDS_OF_SYMBOL (~kit~ ~D5_MY_EARTH_FD~))
-		WRITE_SHORT 0x244 0
-		WRITE_SHORT 0x246 %nella_kit% 									// changes kit
+		WRITE_SHORT 0x244 (%nella_kit% >> 16) & 0xffff
+		WRITE_SHORT 0x246 %nella_kit% & 0xffff
 		REMOVE_MEMORIZED_SPELLS
 		REMOVE_KNOWN_SPELLS
 	  END
@@ -442,8 +540,8 @@ ACTION_FOR_EACH char IN ~yitur~   BEGIN
 	PATCH_IF %class% = 8 BEGIN
 	  PATCH_IF (FILE_CONTAINS_EVALUATED (~kit.ids~ ~[ %TAB%]D5_CL_MARTHAMMOR[ %TAB%%LNL%%MNL%%WNL%]~)) BEGIN
 		SET turald_kit = (IDS_OF_SYMBOL (~kit~ ~D5_CL_MARTHAMMOR~))
-		WRITE_SHORT 0x244 0
-		WRITE_SHORT 0x246 %turald_kit% 									// changes kit
+		WRITE_SHORT 0x244 (%turald_kit% >> 16) & 0xffff
+		WRITE_SHORT 0x246 %turald_kit% & 0xffff
 		REMOVE_MEMORIZED_SPELLS
 		REMOVE_KNOWN_SPELLS
 	  END
