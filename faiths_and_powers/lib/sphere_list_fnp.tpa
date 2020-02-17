@@ -2802,33 +2802,33 @@ DEFINE_ACTION_MACRO vanilla_cleric_spheres BEGIN
   LAF QD_ENSURE_BASE_CLAB STR_VAR base_class = ~P~ END 
   COPY_EXISTING ~QD_MCP01.spl~ ~override~ // trueclass spheres via .eff
     LPF DELETE_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 0x4000 match_parameter2 = 9 STR_VAR match_resource = ~d5splif#~ END
-	LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5splif#~ END
+	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5splif#~ END
     LPF DELETE_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 0x4000 match_parameter2 = 9 STR_VAR match_resource = ~d5smdea#~ END
-	LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5smdea#~ END
+	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5smdea#~ END
     LPF DELETE_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 0x4000 match_parameter2 = 9 STR_VAR match_resource = ~d5spben#~ END
-	LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5spben#~ END
+	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5spben#~ END
     LPF DELETE_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 0x4000 match_parameter2 = 9 STR_VAR match_resource = ~d5spdes#~ END
-	LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5spdes#~ END
+	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5spdes#~ END
     LPF DELETE_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 0x4000 match_parameter2 = 9 STR_VAR match_resource = ~d5sppro#~ END
-	LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5sppro#~ END
+	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5sppro#~ END
     LPF DELETE_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 0x4000 match_parameter2 = 9 STR_VAR match_resource = ~d5smwar#~ END
-	LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5smwar#~ END
+	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5smwar#~ END
     LPF DELETE_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 0x4000 match_parameter2 = 9 STR_VAR match_resource = ~d5smexp#~ END
-	LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5smexp#~ END
+	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5smexp#~ END
     LPF DELETE_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 0x4000 match_parameter2 = 9 STR_VAR match_resource = ~d5spkno#~ END
-	LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5spkno#~ END
+	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5spkno#~ END
     LPF DELETE_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 0x4000 match_parameter2 = 9 STR_VAR match_resource = ~d5smtho#~ END
-	LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5smtho#~ END
+	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5smtho#~ END
     LPF DELETE_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 0x4000 match_parameter2 = 9 STR_VAR match_resource = ~d5spdre#~ END
-	LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5spdre#~ END
+	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5spdre#~ END
     LPF DELETE_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 0x4000 match_parameter2 = 9 STR_VAR match_resource = ~d5smvig#~ END
-	LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5smvig#~ END
+	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5smvig#~ END
     LPF DELETE_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 0x4000 match_parameter2 = 9 STR_VAR match_resource = ~d5smfir#~ END
-	LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5smfir#~ END
+	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5smfir#~ END
     LPF DELETE_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 0x4000 match_parameter2 = 9 STR_VAR match_resource = ~d5splig#~ END
-	LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5splig#~ END
+	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5splig#~ END
     LPF DELETE_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 0x4000 match_parameter2 = 9 STR_VAR match_resource = ~d5smmag#~ END
-	LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5smmag#~ END
+	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5smmag#~ END
   IF_EXISTS BUT_ONLY
   ACTION_DEFINE_ASSOCIATIVE_ARRAY clabpr01_spheres BEGIN
 	Life 			=> x
@@ -2865,35 +2865,35 @@ DEFINE_ACTION_MACRO vanilla_druid_spheres BEGIN
   LAF QD_ENSURE_BASE_CLAB STR_VAR base_class = ~D~ END 
   COPY_EXISTING ~QD_MCD01.spl~ ~override~ // trueclass spheres via .eff
     LPF DELETE_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 0x4000 match_parameter2 = 9 STR_VAR match_resource = ~d5spexp#~ END
-	LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5spexp#~ END
+	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5spexp#~ END
     LPF DELETE_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 0x4000 match_parameter2 = 9 STR_VAR match_resource = ~d5spvig#~ END
-	LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5spvig#~ END
+	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5spvig#~ END
     LPF DELETE_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 0x4000 match_parameter2 = 9 STR_VAR match_resource = ~d5spani#~ END
-	LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5spani#~ END
+	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5spani#~ END
     LPF DELETE_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 0x4000 match_parameter2 = 9 STR_VAR match_resource = ~d5sppla#~ END
-	LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5sppla#~ END
+	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5sppla#~ END
     LPF DELETE_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 0x4000 match_parameter2 = 9 STR_VAR match_resource = ~d5spear#~ END
-	LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5spear#~ END
+	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5spear#~ END
     LPF DELETE_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 0x4000 match_parameter2 = 9 STR_VAR match_resource = ~d5spwat#~ END
-	LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5spwat#~ END
+	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5spwat#~ END
     LPF DELETE_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 0x4000 match_parameter2 = 9 STR_VAR match_resource = ~d5spair#~ END
-	LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5spair#~ END
+	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5spair#~ END
     LPF DELETE_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 0x4000 match_parameter2 = 9 STR_VAR match_resource = ~d5splig#~ END
-	LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5splig#~ END
+	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5splig#~ END
     LPF DELETE_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 0x4000 match_parameter2 = 9 STR_VAR match_resource = ~d5smlif#~ END
-	LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5smlif#~ END
+	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5smlif#~ END
     LPF DELETE_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 0x4000 match_parameter2 = 9 STR_VAR match_resource = ~d5smkno#~ END
-	LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5smkno#~ END
+	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5smkno#~ END
     LPF DELETE_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 0x4000 match_parameter2 = 9 STR_VAR match_resource = ~d5smtho#~ END
-	LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5smtho#~ END
+	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5smtho#~ END
     LPF DELETE_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 0x4000 match_parameter2 = 9 STR_VAR match_resource = ~d5smaff#~ END
-	LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5smaff#~ END
+	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5smaff#~ END
     LPF DELETE_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 0x4000 match_parameter2 = 9 STR_VAR match_resource = ~d5smfir#~ END
-	LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5smfir#~ END
+	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5smfir#~ END
     LPF DELETE_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 0x4000 match_parameter2 = 9 STR_VAR match_resource = ~d5smsha#~ END
-	LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5smsha#~ END
+	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5smsha#~ END
     LPF DELETE_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 0x4000 match_parameter2 = 9 STR_VAR match_resource = ~d5smast#~ END
-	LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5smast#~ END
+	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5smast#~ END
   IF_EXISTS BUT_ONLY
   ACTION_DEFINE_ASSOCIATIVE_ARRAY clabdr01_spheres BEGIN
 	Life 			=> x
@@ -2930,21 +2930,21 @@ DEFINE_ACTION_MACRO vanilla_ranger_spheres BEGIN
   LAF QD_ENSURE_BASE_CLAB STR_VAR base_class = ~R~ END 
   COPY_EXISTING ~QD_MCR01.spl~ ~override~ // trueclass spheres via .eff
     LPF DELETE_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 0x4000 match_parameter2 = 9 STR_VAR match_resource = ~d5spexp#~ END
-	LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5spexp#~ END
+	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5spexp#~ END
     LPF DELETE_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 0x4000 match_parameter2 = 9 STR_VAR match_resource = ~d5spvig#~ END
-	LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5spvig#~ END
+	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5spvig#~ END
     LPF DELETE_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 0x4000 match_parameter2 = 9 STR_VAR match_resource = ~d5spani#~ END
-	LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5spani#~ END
+	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5spani#~ END
     LPF DELETE_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 0x4000 match_parameter2 = 9 STR_VAR match_resource = ~d5sppla#~ END
-	LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5sppla#~ END
+	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5sppla#~ END
     LPF DELETE_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 0x4000 match_parameter2 = 9 STR_VAR match_resource = ~d5sppro#~ END
-	LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5sppro#~ END
+	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5sppro#~ END
     LPF DELETE_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 0x4000 match_parameter2 = 9 STR_VAR match_resource = ~d5splig#~ END
-	LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5splig#~ END
+	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5splig#~ END
     LPF DELETE_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 0x4000 match_parameter2 = 9 STR_VAR match_resource = ~d5splif#~ END
-	LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5smlif#~ END
+	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5smlif#~ END
     LPF DELETE_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 0x4000 match_parameter2 = 9 STR_VAR match_resource = ~d5spkno#~ END
-	LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5smkno#~ END
+	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5smkno#~ END
   IF_EXISTS BUT_ONLY
   ACTION_DEFINE_ASSOCIATIVE_ARRAY clabrn01_spheres BEGIN
 	Life 			=> x

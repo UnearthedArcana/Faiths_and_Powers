@@ -1165,6 +1165,7 @@ DEFINE_ACTION_MACRO apply_fnp_usability BEGIN
 			  END
 			  COPY_EXISTING ~QD_MC_AP.eff~ ~override/d5_u%kit_index%#.eff~
 				WRITE_EVALUATED_ASCII 0x30 ~d5_u%kit_index%~
+			  LAF QD_ENSURE_QDMC_SPL STR_VAR base_class = EVAL ~%class_letter%~ END
 			  COPY_EXISTING ~QD_MC%class_letter%01.spl~ ~override~ 
 				LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 1 timing = 9 resist_dispel = 0 power = 0 parameter1 = %kit_code% parameter2 = 9 STR_VAR resource = EVAL ~d5_u%kit_index%#~ END  
 			END 

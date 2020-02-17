@@ -911,7 +911,11 @@ COPY_EXISTING ~sppr211.spl~ ~override/d5bran1.spl~
   LPM spell_to_innate
 COPY_EXISTING ~spwi206.spl~ ~override/d5bran2.spl~
   LPM spell_to_innate
-// hold evasion: 109 Hold, 175 Hold2, 45 Stun, 210 PW Stun, 157 Web effect, 154 Entangle overlay
+LAF d5_resolve_state STR_VAR new_state_id = ~D5_HOLDS_BARRED~ RET new_state_ind END
+OUTER_SET hold_evasion_state = %new_state_ind%
+COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5bran3.spl~ // evade Hold etc.
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 328 target = 1 parameter2 = %hold_evasion_state% timing = 9 special = 1 END
+// hold evasion: 109 Hold, 175 Hold2, 45 Stun, 210 PW Stun, 157 Web effect, 154 Entangle overlay, 40 Slow
 <<<<<<<< d5/d5holdev.2da
 2DA V1.0 
 RES
@@ -923,9 +927,9 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.spl$~ ~override~
 	GET_OFFSET_ARRAY2 fx_array ab_off SPL_V10_HEAD_EFFECTS
 	PHP_EACH fx_array AS int => fx_off BEGIN
 	  READ_SHORT fx_off fx_type
-	  PATCH_IF (fx_type = 109) || (fx_type = 175) || (fx_type = 45) || (fx_type = 210) || (fx_type = 157) || (fx_type = 154) BEGIN
+	  PATCH_IF (fx_type = 109) || (fx_type = 175) || (fx_type = 45) || (fx_type = 210) || (fx_type = 157) || (fx_type = 154) || (fx_type = 40) BEGIN
 		  INNER_ACTION BEGIN
-			APPEND ~d5holdev.2da~ ~%SOURCE_RES% 	1~ UNLESS ~%SOURCE_RES%~
+			APPEND ~d5holdev.2da~ ~%SOURCE_RES% 	SPL~ UNLESS ~%SOURCE_RES%~
 		  END
 	  END
 	END
@@ -937,9 +941,9 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
 	GET_OFFSET_ARRAY2 fx_array ab_off ITM_V10_HEAD_EFFECTS
 	PHP_EACH fx_array AS int => fx_off BEGIN
 	  READ_SHORT fx_off fx_type
-	  PATCH_IF (fx_type = 109) || (fx_type = 175) || (fx_type = 45) || (fx_type = 210) || (fx_type = 157) || (fx_type = 154) BEGIN
+	  PATCH_IF (fx_type = 109) || (fx_type = 175) || (fx_type = 45) || (fx_type = 210) || (fx_type = 157) || (fx_type = 154) || (fx_type = 40) BEGIN
 		  INNER_ACTION BEGIN
-			APPEND ~d5holdev.2da~ ~%SOURCE_RES% 	1~ UNLESS ~%SOURCE_RES%~
+			APPEND ~d5holdev.2da~ ~%SOURCE_RES% 	ITM~ UNLESS ~%SOURCE_RES%~
 		  END
 	  END
 	END
@@ -950,14 +954,19 @@ COPY_EXISTING ~d5holdev.2da~ ~override~
   COUNT_2DA_ROWS cols rows
   FOR (row = 1; row < rows; ++row) BEGIN
 	READ_2DA_ENTRY row 0 cols hold_evade_res
-	PATCH_IF FILE_EXISTS_IN_GAME ~%hold_evade_res%.spl~ BEGIN
-	  INNER_ACTION BEGIN
-		LAF add_evade_spell INT_VAR evasion_kit = (0x4000 + %D5_CT_BRANDOBARIS%) evasion_save = 0 evasion_chance = 50 STR_VAR evade_ext = ~spl~ evade_condition = ~kit~ evade_res = EVAL ~%hold_evade_res%~ evade_prefix = ~D5VH~ END
+	READ_2DA_ENTRY row 1 cols hold_evade_type
+	PATCH_IF (~%hold_evade_type%~ STRING_EQUAL_CASE ~%spl%~) BEGIN 
+	  PATCH_IF (FILE_EXISTS_IN_GAME ~%hold_evade_res%.spl~) BEGIN
+		INNER_ACTION BEGIN
+		  LAF add_evade_spell INT_VAR evasion_spellstate = %hold_evasion_state% evasion_save = 0 evasion_chance = 60 STR_VAR evade_ext = ~spl~ evade_condition = ~spellstate~ evade_res = EVAL ~%hold_evade_res%~ evade_prefix = ~D5VH~ END
+		END
 	  END
 	END
-	PATCH_IF FILE_EXISTS_IN_GAME ~%hold_evade_res%.itm~ BEGIN
-	  INNER_ACTION BEGIN
-		LAF add_evade_spell INT_VAR evasion_kit = (0x4000 + %D5_CT_BRANDOBARIS%) evasion_save = 0 evasion_chance = 50 STR_VAR evade_ext = ~itm~ evade_condition = ~kit~ evade_res = EVAL ~%hold_evade_res%~ evade_prefix = ~D5VH~ END
+	PATCH_IF (~%hold_evade_type%~ STRING_EQUAL_CASE ~%itm%~) BEGIN 
+	  PATCH_IF (FILE_EXISTS_IN_GAME ~%hold_evade_res%.itm~) BEGIN
+		INNER_ACTION BEGIN
+		  LAF add_evade_spell INT_VAR evasion_spellstate = %hold_evasion_state% evasion_save = 0 evasion_chance = 60 STR_VAR evade_ext = ~itm~ evade_condition = ~spellstate~ evade_res = EVAL ~%hold_evade_res%~ evade_prefix = ~D5VH~ END
+		END
 	  END
 	END
   END
