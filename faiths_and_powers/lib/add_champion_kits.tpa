@@ -1676,7 +1676,7 @@ END
  END
 
  ACTION_IF (champion_red_spontaneous > 0) && (FILE_EXISTS_IN_GAME ~d5_spheres.d5~) BEGIN
-  LAF fnp_spontaneous STR_VAR kit_clab = ~~ learn_res = ~~ END
+  LAF fnp_spontaneous STR_VAR kit_clab = ~b_ch09~ learn_res = ~b_ch09z~ END
  END
 
 END

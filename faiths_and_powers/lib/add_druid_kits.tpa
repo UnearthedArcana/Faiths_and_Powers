@@ -1564,7 +1564,7 @@ COPY ~faiths_and_powers/kits/druids/shapechange/d5drnf.spl~ ~override~
   							~d5drremz~ 
   							~d5drcarc~ 
   							~d5drbask~ BEGIN
-	LPF ADD_SPELL_EFFECT INT_VAR opcode = 112 STR_VAR resource = ~%animal%~  END 
+	LPF ADD_SPELL_EFFECT INT_VAR opcode = 112 STR_VAR resource = EVAL ~%animal%~  END 
   END
   LPF ALTER_EFFECT INT_VAR match_opcode = 177 match_target = 1 match_parameter2 = 9 STR_VAR resource = ~d5drsc4~ END
   PATCH_IF VARIABLE_IS_SET %forest_druid_code% BEGIN
