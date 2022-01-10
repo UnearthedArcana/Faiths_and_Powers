@@ -1053,6 +1053,39 @@ END
 
 //___________________________________________________________________________________
 //
+DEFINE_ACTION_FUNCTION milil_spheres 
+  RET_ARRAY milil_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY milil_spheres_array BEGIN
+	Healing 			=> major
+	Necromantic 		=> x
+	Creation 			=> minor
+	Decay 				=> minor
+	Protection 			=> major
+	Combat 				=> x
+	Travelers 			=> minor
+	Divination 			=> major
+	Wards 				=> minor
+	Thought 			=> major
+	Charm 				=> major
+	Law 				=> minor
+	Chaos 				=> x
+	Animal 				=> x
+	Plant 				=> x
+	Earth 				=> x
+	Water 				=> x
+	Air 				=> major
+	Fire 				=> x
+	Sun 				=> major
+	Shadow 				=> x
+	Weather 			=> x
+	Astral   			=> x
+ END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
 DEFINE_ACTION_FUNCTION moander_spheres 
   RET_ARRAY moander_spheres_array
  BEGIN
@@ -1749,6 +1782,39 @@ END
 
 //___________________________________________________________________________________
 //
+DEFINE_ACTION_FUNCTION haela_spheres 
+  RET_ARRAY haela_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY haela_spheres_array BEGIN
+	Healing		 		=> major
+	Necromantic		 	=> x
+	Creation			=> major
+	Decay				=> major
+	Protection		 	=> major
+	Combat		 		=> major
+	Travelers			=> minor
+	Divination		 	=> major
+	Wards		 		=> x
+	Thought		 		=> minor
+	Charm		 		=> x
+	Law			 		=> x
+	Chaos			 	=> x
+	Animal		 		=> x
+	Plant		 		=> x
+	Earth		 		=> minor
+	Water		 		=> x
+	Air		 			=> minor
+	Fire		 		=> minor
+	Sun		 			=> x
+	Shadow		 		=> x
+	Weather		 		=> major
+	Astral			    => x
+ END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
 DEFINE_ACTION_FUNCTION baravar_spheres 
   RET_ARRAY baravar_spheres_array
  BEGIN
@@ -2152,27 +2218,27 @@ DEFINE_ACTION_FUNCTION druid_shadow_spheres
   RET_ARRAY druid_shadow_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY druid_shadow_spheres_array BEGIN
-	Healing 			=> major
+	Healing 			=> minor
 	Necromantic			=> x
 	Creation	 		=> x
 	Decay		 		=> x
 	Protection 			=> x
 	Combat 				=> x
 	Travelers	  		=> minor
-	Divination 			=> minor
+	Divination 			=> x
 	Wards	 			=> x
-	Thought 			=> minor
+	Thought 			=> x
 	Charm 				=> x
 	Law	 				=> x
 	Chaos	 			=> major
 	Animal 				=> major
 	Plant 				=> major
 	Earth 				=> major
-	Water 				=> major
-	Air 				=> major
-	Fire 				=> minor
+	Water 				=> minor
+	Air 				=> minor
+	Fire 				=> major
 	Sun	 				=> minor
-	Shadow 				=> major
+	Shadow 				=> minor
 	Weather 			=> major
 	Astral	    		=> x
  END

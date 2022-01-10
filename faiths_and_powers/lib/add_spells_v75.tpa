@@ -1480,7 +1480,7 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
       STR_VAR resource = EVAL ~%spell_res%~
   END      //
 //compatibility spheres (ours) sphere: life
-ACTION_IF FILE_EXISTS_IN_GAME ~d5_spheres.d5~ BEGIN
+ACTION_IF FILE_EXISTS_IN_GAME ~d5__spheres.d5~ BEGIN
 COPY_EXISTING ~b_po050.spl~ ~override~
         SAY UNIDENTIFIED_DESC @11400002
 	SAY DESC @11400002
@@ -1499,7 +1499,7 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
   LPF CLONE_EFFECT INT_VAR match_opcode = 12 parameter1 = 1 savingthrow = 4 END
   LPF CLONE_EFFECT INT_VAR match_opcode = 12 parameter1 = 10 parameter2 = 4194307 END
 //spheres installed, change sphere to 'life'
-ACTION_IF FILE_EXISTS_IN_GAME ~d5_spheres.d5~ BEGIN
+ACTION_IF FILE_EXISTS_IN_GAME ~d5__spheres.d5~ BEGIN
 COPY_EXISTING ~b_po050.spl~ ~override~
         SAY UNIDENTIFIED_DESC @11400004
 	SAY DESC @11400004
@@ -1921,7 +1921,7 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
   LPF CLONE_EFFECT INT_VAR match_opcode = 12 parameter1 = 1 savingthrow = 4 END
   LPF CLONE_EFFECT INT_VAR match_opcode = 12 parameter1 = 10 parameter2 = 4194307 END
 //spheres installed, change sphere to 'life'
-ACTION_IF FILE_EXISTS_IN_GAME ~d5_spheres.d5~ BEGIN
+ACTION_IF FILE_EXISTS_IN_GAME ~d5__spheres.d5~ BEGIN
 COPY_EXISTING ~b_po050.spl~ ~override~
         SAY UNIDENTIFIED_DESC @11400004
 	SAY DESC @11400004
@@ -2020,7 +2020,7 @@ COPY_EXISTING ~b_po040.spl~ ~override~
         SAY UNIDENTIFIED_DESC @104000003
 	SAY DESC @104000003
 //sphere description
-ACTION_IF FILE_EXISTS_IN_GAME ~d5_spheres.d5~ BEGIN
+ACTION_IF FILE_EXISTS_IN_GAME ~d5__spheres.d5~ BEGIN
 COPY_EXISTING ~b_po020.spl~ ~override~
         SAY UNIDENTIFIED_DESC @102000005
 	SAY DESC @102000005

@@ -1804,10 +1804,12 @@ BEGIN
                   DELETE_BYTES 0 1
                 END
               END
-              LPF SUBSTRING INT_VAR start = 0 length = 3 STR_VAR string = EVAL ~%ability%~ RET abil_type = substring END
-              SET length = (STRING_LENGTH ~%ability%~) - 3
-              LPF SUBSTRING INT_VAR start = 3 length STR_VAR string = EVAL ~%ability%~ RET abil_new = substring END
-              PATCH_IF (length < 8) BEGIN
+              SET abil_length = (STRING_LENGTH ~%ability%~)
+              PATCH_IF (abil_length > 3) BEGIN
+               LPF SUBSTRING INT_VAR start = 0 length = 3 STR_VAR string = EVAL ~%ability%~ RET abil_type = substring END
+               SET length = (STRING_LENGTH ~%ability%~) - 3
+               LPF SUBSTRING INT_VAR start = 3 length STR_VAR string = EVAL ~%ability%~ RET abil_new = substring END
+               PATCH_IF (length < 8) BEGIN
                 DEFINE_ASSOCIATIVE_ARRAY abil_types BEGIN
                   ~AP_~ => ~QD_MC_AP~
                   ~GA_~ => ~QD_MC_GA~
@@ -1837,8 +1839,9 @@ BEGIN
                 END ELSE BEGIN
                   PATCH_WARN ~WARNING: Could not evaluate kit ability entry [%ability%]. Skipping.~
                 END
-              END ELSE BEGIN
+               END ELSE BEGIN
                 PATCH_WARN ~WARNING: Internal ability name too long [%abil_new%]. Skipping.~
+               END
               END
             END
           END

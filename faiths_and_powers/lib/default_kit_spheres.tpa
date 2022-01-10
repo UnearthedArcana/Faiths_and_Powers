@@ -7,6 +7,8 @@
 
 DEFINE_ACTION_FUNCTION vanilla_kit_spheres BEGIN
 
+LAM d5_kit_choices 
+
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
 ACTION_IF FILE_EXISTS_IN_GAME ~clabshgs.2da~ BEGIN
@@ -44,6 +46,8 @@ END
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+// base shaman
+//
 ACTION_IF FILE_EXISTS_IN_GAME ~clabsh01.2da~ BEGIN
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
@@ -73,13 +77,23 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabsh01.2da~ BEGIN
 	sphere_list		= ~vanilla_shaman_spheres~
 	class 			= ~shaman~
  END
- LAF fnp_spontaneous STR_VAR kit_clab = ~clabsh01~ learn_res = ~d5sh01z~ free_universal = ~no~ END
+
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+// ACTION_IF (d5_spell_spontaneous = 0) BEGIN
+    LAF fnp_spell_choice STR_VAR this_kit_clab = ~clabsh01~ learn_itm_res = ~d5sh01z~ free_universal_spells = ~yes~ END
+// END
+// ACTION_IF (d5_spell_spontaneous > 0) BEGIN
+//    LAF fnp_spontaneous STR_VAR kit_clab = ~clabsh01~ learn_res = ~d5sh01z~ free_universal = ~no~ END
+// END
+ END
 END
 //__________________________________________________________________________________
 
-//ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5_deity.d5~ BEGIN
+//ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5__deity.d5~ BEGIN
 
 //DEFINE SPHERE ACCESS______________________________________________________________
+//
+// base trueclass cleric
 //
 ACTION_IF (FILE_EXISTS_IN_GAME ~clabpr01.2da~) && (FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~) BEGIN
  LAM vanilla_cleric_spheres
@@ -115,6 +129,8 @@ END
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+// base cleric of talos
+//
 ACTION_IF FILE_EXISTS_IN_GAME ~clabpr02.2da~ BEGIN
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
@@ -148,6 +164,8 @@ END
 //__________________________________________________________________________________
 
 //DEFINE SPHERE ACCESS______________________________________________________________
+//
+// base cleric of helm
 //
 ACTION_IF FILE_EXISTS_IN_GAME ~clabpr03.2da~ BEGIN
  LAF ~DEFINE_FNP_KIT_INFO~
@@ -183,6 +201,8 @@ END
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+// base cleric of lathander
+//
 ACTION_IF FILE_EXISTS_IN_GAME ~clabpr04.2da~ BEGIN
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
@@ -217,6 +237,8 @@ END
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+// base cleric of tyr
+//
 ACTION_IF FILE_EXISTS_IN_GAME ~ohtyr.2da~ BEGIN
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
@@ -247,12 +269,22 @@ ACTION_IF FILE_EXISTS_IN_GAME ~ohtyr.2da~ BEGIN
 	class 			= ~cleric~
 	multiclass 		= ~fc~
  END
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+ ACTION_IF (cleric_tyr_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
+  LAF fnp_spontaneous STR_VAR kit_clab = ~ohtyr~ learn_res = ~ohtyrz~ END
+ END
+ END
 END
 //__________________________________________________________________________________
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+// base cleric of tempus
+//
 ACTION_IF FILE_EXISTS_IN_GAME ~ohtempus.2da~ BEGIN
+ COPY_EXISTING ~ohtempus.2da~ ~override/d5tmpus.2da~
+ COPY_EXISTING ~kitlist.2da~ ~override~
+   REPLACE_TEXTUALLY ~ohtempus~ ~d5tmpus~
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -277,14 +309,21 @@ ACTION_IF FILE_EXISTS_IN_GAME ~ohtempus.2da~ BEGIN
 	u_bows 				= 0
 	u_crossbows 		= 1
   STR_VAR
-    clab_name 		= ~ohtempus~
+    clab_name 		= ~d5tmpus~
 	sphere_list		= ~tempus_spheres~
 	class 			= ~cleric~
+ END
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+ ACTION_IF (cleric_tempus_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
+  LAF fnp_spontaneous STR_VAR kit_clab = ~d5tmpus~ learn_res = ~d5tmpuz~ END
+ END
  END
 END
 //__________________________________________________________________________________
 
 //DEFINE SPHERE ACCESS______________________________________________________________
+//
+// base trueclass druid
 //
 ACTION_IF (FILE_EXISTS_IN_GAME ~clabdr01.2da~) && (FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~) BEGIN
  LAM vanilla_druid_spheres
@@ -296,7 +335,7 @@ ACTION_IF (FILE_EXISTS_IN_GAME ~clabdr01.2da~) && (FILE_EXISTS_IN_GAME ~fnp_sphe
 	u_club_staff	 	= 1
 	u_hammers	 		= 0
 	u_maces 	 		= 0
-	u_flails 			= 0
+	u_flails 			= 1
 	u_axes 				= 0
 	u_daggers 			= 1
 	u_short_swords		= 0
@@ -320,6 +359,8 @@ END
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+// base totemic druid
+//
 ACTION_IF FILE_EXISTS_IN_GAME ~clabdr02.2da~ BEGIN
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
@@ -329,7 +370,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabdr02.2da~ BEGIN
 	u_club_staff	 	= 1
 	u_hammers	 		= 0
 	u_maces 	 		= 0
-	u_flails 			= 0
+	u_flails 			= 1
 	u_axes 				= 0
 	u_daggers 			= 1
 	u_short_swords		= 0
@@ -354,6 +395,8 @@ END
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+// base shapeshifter
+//
 ACTION_IF FILE_EXISTS_IN_GAME ~clabdr03.2da~ BEGIN
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
@@ -363,7 +406,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabdr03.2da~ BEGIN
 	u_club_staff	 	= 1
 	u_hammers	 		= 0
 	u_maces 	 		= 0
-	u_flails 			= 0
+	u_flails 			= 1
 	u_axes 				= 0
 	u_daggers 			= 1
 	u_short_swords		= 0
@@ -388,6 +431,8 @@ END
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+// base avenger
+//
 ACTION_IF FILE_EXISTS_IN_GAME ~clabdr04.2da~ BEGIN
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
@@ -397,7 +442,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabdr04.2da~ BEGIN
 	u_club_staff	 	= 1
 	u_hammers	 		= 0
 	u_maces 	 		= 0
-	u_flails 			= 0
+	u_flails 			= 1
 	u_axes 				= 0
 	u_daggers 			= 1
 	u_short_swords		= 0
@@ -421,6 +466,8 @@ END
 //__________________________________________________________________________________
 
 //DEFINE SPHERE ACCESS______________________________________________________________
+//
+// base trueclass paladin
 //
 ACTION_IF FILE_EXISTS_IN_GAME ~clabpa01.2da~ BEGIN
  LAF ~DEFINE_FNP_KIT_INFO~
@@ -456,6 +503,8 @@ END
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+// base cavalier
+//
 ACTION_IF FILE_EXISTS_IN_GAME ~clabpa02.2da~ BEGIN
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
@@ -490,6 +539,8 @@ END
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+// base inquisitor
+//
 ACTION_IF FILE_EXISTS_IN_GAME ~clabpa03.2da~ BEGIN
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
@@ -523,6 +574,8 @@ END
 //__________________________________________________________________________________
 
 //DEFINE SPHERE ACCESS______________________________________________________________
+//
+// base undead hunter
 //
 ACTION_IF FILE_EXISTS_IN_GAME ~clabpa04.2da~ BEGIN
  LAF ~DEFINE_FNP_KIT_INFO~
@@ -592,6 +645,8 @@ END
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+// base blackguard
+//
 ACTION_IF FILE_EXISTS_IN_GAME ~clabpa06.2da~ BEGIN
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
@@ -624,9 +679,11 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabpa06.2da~ BEGIN
 END
 //__________________________________________________________________________________
 
-//END		// end if not exists d5_deity.d5
+//END		// end if not exists d5__deity.d5
 
 //DEFINE SPHERE ACCESS______________________________________________________________
+//
+// base trueclass ranger
 //
 ACTION_IF FILE_EXISTS_IN_GAME ~clabrn01.2da~ && (FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~) BEGIN
  LAM vanilla_ranger_spheres
@@ -662,6 +719,8 @@ END
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+// base archer
+//
 ACTION_IF FILE_EXISTS_IN_GAME ~clabrn02.2da~ BEGIN
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
@@ -696,6 +755,8 @@ END
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
+// base stalker
+//
 ACTION_IF FILE_EXISTS_IN_GAME ~clabrn03.2da~ BEGIN
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
@@ -729,6 +790,8 @@ END
 //__________________________________________________________________________________
 
 //DEFINE SPHERE ACCESS______________________________________________________________
+//
+// base beastmaster
 //
 ACTION_IF FILE_EXISTS_IN_GAME ~clabrn04.2da~ BEGIN
  LAF ~DEFINE_FNP_KIT_INFO~
@@ -2240,6 +2303,78 @@ END
 //__________________________________________________________________________________
 END
 
+// HELGA - CLERIC OF HAELA
+
+ACTION_IF FILE_EXISTS_IN_GAME ~x3helcl.2da~ BEGIN
+//DEFINE SPHERE ACCESS______________________________________________________________
+//
+LAF ~DEFINE_FNP_KIT_INFO~
+  INT_VAR
+	u_leather_armor 	= 1
+	u_chain_armor 		= 1
+	u_plate_armor 		= 1
+	u_club_staff	 	= 1
+	u_hammers	 		= 2
+	u_maces 	 		= 1
+	u_flails 			= 1
+	u_axes 				= 2
+	u_daggers 			= 1
+	u_short_swords		= 1
+	u_long_swords		= 1
+	u_scimitars 		= 1
+	u_katanas 			= 1
+	u_bastard_swords 	= 1
+	u_2hand_swords 		= 1
+	u_halberds 			= 1
+	u_spears 	 		= 1
+	u_darts 			= 0
+	u_slings	 		= 1
+	u_bows 				= 0
+	u_crossbows 		= 1
+  STR_VAR
+    clab_name 		= ~x3helcl~
+	class 			= ~cleric~
+	sphere_list		= ~haela_spheres~
+END
+//__________________________________________________________________________________
+END
+
+// FALDORN - SHADOW DRUID
+
+ACTION_IF FILE_EXISTS_IN_GAME ~L#FALDSD.2da~ BEGIN
+//DEFINE SPHERE ACCESS______________________________________________________________
+//
+LAF ~DEFINE_FNP_KIT_INFO~
+  INT_VAR
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_club_staff	 	= 2
+	u_hammers	 		= 0
+	u_maces 	 		= 0
+	u_flails 			= 2
+	u_axes 				= 0
+	u_daggers 			= 2
+	u_short_swords		= 0
+	u_long_swords		= 0
+	u_scimitars 		= 2
+	u_katanas 			= 0
+	u_bastard_swords 	= 0
+	u_2hand_swords 		= 0
+	u_halberds 			= 0
+	u_spears 	 		= 2
+	u_darts 			= 2
+	u_slings	 		= 2
+	u_bows 				= 2
+	u_crossbows 		= 0
+  STR_VAR
+    clab_name 		= ~L#FALDSD~
+	class 			= ~occultist~
+	sphere_list		= ~druid_shadow_spheres~
+END
+//__________________________________________________________________________________
+END
+
 
 END // end mod_kit_spheres function
 
@@ -2299,14 +2434,14 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	class 			= ~cleric~
 	s_Life 			= ~major~
 	s_Death 		= ~minor~
-	s_Benediction 	= ~major~
+	s_Benediction 	= ~x~
 	s_Destruction 	= ~major~
 	s_Protection 	= ~major~
 	s_War 			= ~minor~
 	s_Exploration   = ~minor~
 	s_Knowledge 	= ~major~
 	s_Deception 	= ~x~
-	s_Thought 		= ~minor~
+	s_Thought 		= ~major~
 	s_Dread 		= ~major~
 	s_Vigor 		= ~minor~
 	s_Affliction 	= ~x~
@@ -2350,8 +2485,8 @@ LAF ~DEFINE_FNP_KIT_INFO~
     clab_name 		= EVAL ~%green%~
 	class 			= ~druid~
 	s_Life 			= ~major~
-	s_Death 		= ~minor~
-	s_Benediction 	= ~x~
+	s_Death 		= ~x~
+	s_Benediction 	= ~minor~
 	s_Destruction 	= ~x~
 	s_Protection 	= ~x~
 	s_War 			= ~x~
@@ -2359,19 +2494,19 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	s_Knowledge 	= ~x~
 	s_Deception 	= ~x~
 	s_Thought 		= ~minor~
-	s_Dread 		= ~minor~
+	s_Dread 		= ~x~
 	s_Vigor 		= ~major~
 	s_Affliction 	= ~major~
-	s_Animal 		= ~focus~
+	s_Animal 		= ~major~
 	s_Plant 		= ~major~
-	s_Earth 		= ~minor~
+	s_Earth 		= ~major~
 	s_Water 		= ~minor~
-	s_Air 			= ~minor~
-	s_Fire 			= ~x~
-	s_Light 		= ~x~
-	s_Shadow 		= ~minor~
+	s_Air 			= ~major~
+	s_Fire 			= ~minor~
+	s_Light 		= ~minor~
+	s_Shadow 		= ~x~
 	s_Magic 		= ~x~
-	s_Astral	     = ~x~
+	s_Astral	     = ~minor~
    END
   END
   ACTION_IF (%eggs% = 21) BEGIN //..................................................shamans
@@ -2407,8 +2542,8 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	s_Destruction 	= ~x~
 	s_Protection 	= ~x~
 	s_War 			= ~x~
-	s_Exploration   = ~x~
-	s_Knowledge 	= ~x~
+	s_Exploration   = ~minor~
+	s_Knowledge 	= ~major~
 	s_Deception 	= ~x~
 	s_Thought 		= ~x~
 	s_Dread 		= ~x~
@@ -2420,7 +2555,7 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	s_Water 		= ~x~
 	s_Air 			= ~x~
 	s_Fire 			= ~x~
-	s_Light 		= ~x~
+	s_Light 		= ~minor~
 	s_Shadow 		= ~major~
 	s_Magic 		= ~x~
 	s_Astral	     = ~major~
@@ -2455,7 +2590,7 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	class 			= ~champion~
 	s_Life 			= ~paladin~
 	s_Death 		= ~x~
-	s_Benediction 	= ~paladin~
+	s_Benediction 	= ~x~
 	s_Destruction 	= ~paladin~
 	s_Protection 	= ~paladin~
 	s_War 			= ~paladin~

@@ -8,6 +8,8 @@
 
 DEFINE_ACTION_FUNCTION cleric_ur_priest BEGIN
 
+LAF check_kit_conflict END
+
 ADD_KIT ~B_CLERIC_UR_PRIEST~
 
 //WEAPON PROFICIENCIES________________________________________________________________
@@ -94,7 +96,7 @@ COPY ~faiths_and_powers/kits/clerics/200_Ur_Priest/b_ur01.spl~     ~override~  /
 	SAY DESC @20005
 
 COPY ~faiths_and_powers/kits/clerics/200_Ur_Priest/b_ur01a.spl~     ~override~  // sap the spirit
-    LPF ALTER_EFFECT INT_VAR match_opcode = 177 STR_VAR resource = ~b_ur01a~ END //+1 casting level notifier
+    LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 177 STR_VAR resource = ~b_ur01a~ END //+1 casting level notifier
 
 COPY ~faiths_and_powers/kits/clerics/200_Ur_Priest/b_ur01a.eff~     ~override~  // +1 casting level notifier
   SAY 0x1c @20006    //+1 casting level notifier
@@ -120,7 +122,7 @@ COPY ~faiths_and_powers/kits/clerics/200_Ur_Priest/b_ur02.spl~     ~override~  /
 
 //REPLACE VANILLA KIT WITH THIS KIT__________________________________________________
 //
-ACTION_IF FILE_EXISTS_IN_GAME ~d5_clerics.d5~ BEGIN
+ACTION_IF FILE_EXISTS_IN_GAME ~d5__clerics.d5~ BEGIN
   ACTION_FOR_EACH race IN ~D~ ~E~ ~G~ ~H~ ~HE~ ~HL~ ~HO~ BEGIN
 	ACTION_IF FILE_EXISTS_IN_GAME ~K_C_%race%.2da~ BEGIN
 	  COPY_EXISTING ~K_C_%race%.2da~ ~override~
@@ -141,7 +143,7 @@ END
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
-//ACTION_IF (FILE_EXISTS_IN_GAME ~d5_spheres.d5~) BEGIN	//	not needed anymore, fnP_system.tpa handles it
+//ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN	//	not needed anymore, fnP_system.tpa handles it
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -172,10 +174,12 @@ END
  END
 // END
 
- ACTION_IF (ur_priest_spontaneous > 0) && (FILE_EXISTS_IN_GAME ~d5_spheres.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+ ACTION_IF (ur_priest_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~b_clur~ learn_res = ~b_clurz~ END
  END
-
+ END
+ 
 END
 //__________________________________________________________________________________
 
@@ -189,6 +193,8 @@ END
 //__________________________________________________________________________________
 
 DEFINE_ACTION_FUNCTION cleric_azuth BEGIN
+
+LAF check_kit_conflict END
 
 ADD_KIT ~D5_PRIEST_AZUTH~
 
@@ -266,17 +272,40 @@ ACTION_IF GAME_IS ~bgee bg2ee eet iwdee~ THEN BEGIN
 	END
 END
 
-//MYSTRA ABILITY FILES___________________________________________________________
+//AZUTH ABILITY FILES_______________________________________________________________
 //
 COPY ~faiths_and_powers/kits/clerics/325_azuth/d5clazu.2da~ ~override~
+/*
 COPY ~faiths_and_powers/kits/misc/d5llore.spl~ ~override~
 	SAY NAME1 @32505
 	SAY UNIDENTIFIED_DESC @32506
-	LPF ALTER_EFFECT INT_VAR match_opcode = 206 STR_VAR resource = ~d5llore~ END
+	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 206 STR_VAR resource = ~d5llore~ END
+*/
 //APPEND ~d5clazu.2da~ ~UMD         AP_D5_UMD   ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****    ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** ~
 COPY ~faiths_and_powers/kits/misc/d5_cllv1.spl~ ~override~
 //	SAY NAME1 @6
 //	SAY UNIDENTIFIED_DESC @6
+
+INCLUDE ~faiths_and_powers/lib/b3identify.tph~
+LAF B3_IDENTIFY_INSTALL END
+ACTION_IF !(FILE_EXISTS_IN_GAME ~d5tb110a.spl~) BEGIN
+  COPY ~faiths_and_powers/kits/clerics/325_azuth/d5tb110a.spl~ ~override~
+  COPY ~faiths_and_powers/kits/clerics/325_azuth/d5tb110b.spl~ ~override~
+  COPY ~faiths_and_powers/kits/clerics/325_azuth/d5tb110c.spl~ ~override~
+  COPY ~faiths_and_powers/kits/clerics/325_azuth/d5tb110d.spl~ ~override~
+  LAF B3_IDENTIFY_REGISTER INT_VAR uses = 1 STR_VAR resref = ~d5tb110a~ END
+  LAF B3_IDENTIFY_REGISTER INT_VAR uses = 2 STR_VAR resref = ~d5tb110b~ END
+  LAF B3_IDENTIFY_REGISTER INT_VAR uses = 3 STR_VAR resref = ~d5tb110c~ END
+  LAF B3_IDENTIFY_REGISTER INT_VAR uses = 4 STR_VAR resref = ~d5tb110d~ END
+END
+COPY ~faiths_and_powers/kits/clerics/325_azuth/d5tb110.spl~ ~override/d5llore.spl~
+  WRITE_SHORT 0x1c 4
+  LPF ALTER_SPELL_HEADER INT_VAR location = 4 END
+  SAY NAME1 @32505
+  SAY UNIDENTIFIED_DESC @32506
+APPEND ~d5clazu.2da~ ~LLORE       ****        ****        ****        ****        GA_D5LLORE  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****    ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** ~
+
+/*
 COPY ~faiths_and_powers/kits/multiclass/466_cm_bender/d5arcm1.spl~ ~override~
 	SAY NAME1 @46605
 	SAY UNIDENTIFIED_DESC @46606
@@ -314,8 +343,9 @@ COPY ~faiths_and_powers/kits/multiclass/466_cm_bender/d5_arcm6.2da~ ~override~
 COPY ~faiths_and_powers/kits/multiclass/466_cm_bender/d5_arc6b.bam~ ~override~
 COPY ~faiths_and_powers/kits/multiclass/466_cm_bender/d5_arc6c.bam~ ~override~
 //Huge thanks to DreamSlaveOne at forums.gibberlings3.net for providing the .BAMs for these abilities!
+*/
 /*
-ACTION_IF FILE_EXISTS_IN_GAME ~d5_wiz.d5~ THEN BEGIN
+ACTION_IF FILE_EXISTS_IN_GAME ~d5__wiz.d5~ THEN BEGIN
 	COPY_EXISTING ~d5_inmys.2da~ ~override~
 		LPM remove_blank_lines
 		APPEND_FILE ~faiths_and_powers/kits/clerics/325_azuth/mystracant.txt~
@@ -354,8 +384,10 @@ END
 	multiclass 		= ~ck~
  END
 
- ACTION_IF (cleric_azuth_spontaneous > 0) && (FILE_EXISTS_IN_GAME ~d5_spheres.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+ ACTION_IF (cleric_azuth_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~d5clazu~ learn_res = ~d5cazuz~ END
+ END
  END
 
 END
@@ -371,6 +403,8 @@ END
 //__________________________________________________________________________________
 
 DEFINE_ACTION_FUNCTION cleric_beshaba BEGIN
+
+LAF check_kit_conflict END
 
 ADD_KIT ~B_PRIEST_BESHABA~
 //___________________________________________________________________________________
@@ -534,7 +568,7 @@ COPY ~faiths_and_powers/spheres/spells/dread/b_c501.spl~ ~override/b_bes03.spl~ 
   WRITE_BYTE 0x22C 4//Location  +28
   WRITE_BYTE 0x254 4//Location  +28
              LPF ALTER_EFFECT
-              INT_VAR match_opcode = 321
+              INT_VAR silent = 1 match_opcode = 321
               STR_VAR resource = EVAL ~b_bes03~
              END
 COPY ~faiths_and_powers/kits/clerics/332_beshaba/b_bes04.spl~ ~override~
@@ -578,8 +612,10 @@ COPY ~faiths_and_powers/spheres/spells/dread/b_c501.eff~ ~override/b_bes04.eff~ 
 	multiclass 		= ~ct_cm~
  END
 
- ACTION_IF (cleric_beshaba_spontaneous > 0) && (FILE_EXISTS_IN_GAME ~d5_spheres.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+ ACTION_IF (cleric_beshaba_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~b_abes~ learn_res = ~b_abesz~ END
+ END
  END
 
 END
@@ -595,6 +631,8 @@ END
 //__________________________________________________________________________________
 
 DEFINE_ACTION_FUNCTION cleric_cyric BEGIN
+
+LAF check_kit_conflict END
 
 ADD_KIT ~B_CLERIC_CYRIC~
 //___________________________________________________________________________________
@@ -693,18 +731,18 @@ COPY_EXISTING ~SPWI509.spl~ ~override/B_CYR04.spl~ // feeblemind
 //protection from fear  (using the tempus spl.  It's basically the same...)
 ACTION_IF GAME_IS ~bgee~ THEN BEGIN   //other text
   COPY ~faiths_and_powers/kits/champions/803_tempus/B_TEM10.spl~ ~override/B_CYR01.spl~
-  LPF ALTER_EFFECT INT_VAR match_opcode = 267 STR_VAR resource = EVAL ~20568~ END
-  LPF CLONE_EFFECT INT_VAR match_opcode = 267 STR_VAR resource = EVAL ~25818~ END     //text block
+  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 267 STR_VAR resource = EVAL ~20568~ END
+  LPF CLONE_EFFECT INT_VAR silent = 1 match_opcode = 267 STR_VAR resource = EVAL ~25818~ END     //text block
 END
 ACTION_IF GAME_IS ~bg2ee eet~ THEN BEGIN   //other text
   COPY ~faiths_and_powers/kits/champions/803_tempus/B_TEM10.spl~ ~override/B_CYR01.spl~
-  LPF ALTER_EFFECT INT_VAR match_opcode = 267 STR_VAR resource = EVAL ~17427~ END
-  LPF CLONE_EFFECT INT_VAR match_opcode = 267 STR_VAR resource = EVAL ~14007~ END     //text block
+  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 267 STR_VAR resource = EVAL ~17427~ END
+  LPF CLONE_EFFECT INT_VAR silent = 1 match_opcode = 267 STR_VAR resource = EVAL ~14007~ END     //text block
 END
 ACTION_IF GAME_IS ~iwdee~ THEN BEGIN   //other text
   COPY ~faiths_and_powers/kits/champions/803_tempus/B_TEM10.spl~ ~override/B_CYR01.spl~
-  LPF ALTER_EFFECT INT_VAR match_opcode = 267 STR_VAR resource = EVAL ~20568~ END
-  LPF CLONE_EFFECT INT_VAR match_opcode = 267 STR_VAR resource = EVAL ~35484~ END     //text block
+  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 267 STR_VAR resource = EVAL ~20568~ END
+  LPF CLONE_EFFECT INT_VAR silent = 1 match_opcode = 267 STR_VAR resource = EVAL ~35484~ END     //text block
 END
 
 //DEFINE SPHERE ACCESS______________________________________________________________
@@ -739,8 +777,10 @@ END
 	multiclass 		= ~fc_ct~
  END
 
- ACTION_IF (cleric_cyric_spontaneous > 0) && (FILE_EXISTS_IN_GAME ~d5_spheres.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+ ACTION_IF (cleric_cyric_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~b_ccyr~ learn_res = ~b_ccyrz~ END
+ END
  END
 
 END
@@ -756,6 +796,8 @@ END
 //__________________________________________________________________________________
 
 DEFINE_ACTION_FUNCTION cleric_deneir BEGIN
+
+LAF check_kit_conflict END
 
 ADD_KIT ~B_PRIEST_DENEIR~
 
@@ -890,8 +932,10 @@ COPY_EXISTING ~SPPR303.spl~ ~override/b_den04.spl~ // dispel magic
 	multiclass 		= ~ct_cm_ck~
  END
 
- ACTION_IF (cleric_deneir_spontaneous > 0) && (FILE_EXISTS_IN_GAME ~d5_spheres.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+ ACTION_IF (cleric_deneir_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~b_aden~ learn_res = ~b_adenz~ END
+ END
  END
 
 END
@@ -907,6 +951,8 @@ END
 //__________________________________________________________________________________
 
 DEFINE_ACTION_FUNCTION cleric_helm BEGIN
+
+LAF check_kit_conflict END
 
 ADD_KIT ~B_CLERIC_HELM~
 
@@ -1009,7 +1055,7 @@ COPY ~faiths_and_powers/kits/clerics/208_helm/b_hsp02.spl~     ~override~  // He
 
 //REPLACE VANILLA KIT WITH THIS KIT__________________________________________________
 //
-ACTION_IF FILE_EXISTS_IN_GAME ~d5_clerics.d5~ BEGIN
+ACTION_IF FILE_EXISTS_IN_GAME ~d5__clerics.d5~ BEGIN
   ACTION_FOR_EACH race IN ~D~ ~E~ ~G~ ~H~ ~HE~ ~HL~ ~HO~ BEGIN
 	ACTION_IF FILE_EXISTS_IN_GAME ~K_C_%race%.2da~ BEGIN
 	  COPY_EXISTING ~K_C_%race%.2da~ ~override~
@@ -1060,8 +1106,10 @@ END
 	multiclass 		= ~fc_ck~
  END
 
- ACTION_IF (cleric_helm_spontaneous > 0) && (FILE_EXISTS_IN_GAME ~d5_spheres.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+ ACTION_IF (cleric_helm_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~b_chel~ learn_res = ~b_chelz~ END
+ END
  END
 
 END
@@ -1077,6 +1125,8 @@ END
 //__________________________________________________________________________________
 
 DEFINE_ACTION_FUNCTION cleric_ilmater BEGIN
+
+LAF check_kit_conflict END
 
 ADD_KIT ~B_PRIEST_ILMATER~
 
@@ -1208,8 +1258,10 @@ COPY ~faiths_and_powers/kits/clerics/314_ilmater/b_ilm03.spl~ ~override~  // End
 	multiclass 		= ~ct_ck~
  END
 
- ACTION_IF (cleric_ilmater_spontaneous > 0) && (FILE_EXISTS_IN_GAME ~d5_spheres.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+ ACTION_IF (cleric_ilmater_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~b_ailm~ learn_res = ~b_ailmz~ END
+ END
  END
 
 END
@@ -1225,6 +1277,8 @@ END
 //__________________________________________________________________________________
 
 DEFINE_ACTION_FUNCTION cleric_kelemvor BEGIN
+
+LAF check_kit_conflict END
 
 ADD_KIT ~B_CLERIC_KELEMVOR~
 
@@ -1314,37 +1368,37 @@ COPY_EXISTING ~SPPR409.spl~ ~override/b_kel01.spl~ // Works?
 //  WRITE_BYTE 0x1c 4//Innate
 //  WRITE_BYTE 0x74 4//Location
   LPF ALTER_EFFECT
-      INT_VAR match_opcode = 206
+      INT_VAR silent = 1 match_opcode = 206
       timing = 9
       resist_dispel = 0
   END
   LPF ALTER_EFFECT
-      INT_VAR match_opcode = 169
+      INT_VAR silent = 1 match_opcode = 169
       timing = 9
       resist_dispel = 0
   END
   LPF ALTER_EFFECT
-      INT_VAR match_opcode = 267
+      INT_VAR silent = 1 match_opcode = 267
       timing = 9
       resist_dispel = 0
   END
   LPF ALTER_EFFECT
-      INT_VAR match_opcode = 101
+      INT_VAR silent = 1 match_opcode = 101
       timing = 9
       resist_dispel = 0
   END
   LPF ALTER_EFFECT
-      INT_VAR match_opcode = 142
+      INT_VAR silent = 1 match_opcode = 142
       timing = 9
       resist_dispel = 0
   END
   LPF ALTER_EFFECT
-      INT_VAR match_opcode = 328
+      INT_VAR silent = 1 match_opcode = 328
       timing = 9
       resist_dispel = 0
   END
   LPF ALTER_EFFECT
-      INT_VAR match_opcode = 282
+      INT_VAR silent = 1 match_opcode = 282
       timing = 9
       resist_dispel = 0
   END
@@ -1355,27 +1409,27 @@ COPY_EXISTING ~SPPR413.spl~ ~override/b_kel02.spl~ // Works?
 //  WRITE_BYTE 0x1c 4//Innate
 //  WRITE_BYTE 0x74 4//Location
   LPF ALTER_EFFECT
-      INT_VAR match_opcode = 267
+      INT_VAR silent = 1 match_opcode = 267
       timing = 9
       resist_dispel = 0
   END
   LPF ALTER_EFFECT
-      INT_VAR match_opcode = 169
+      INT_VAR silent = 1 match_opcode = 169
       timing = 9
       resist_dispel = 0
   END
   LPF ALTER_EFFECT
-      INT_VAR match_opcode = 101
+      INT_VAR silent = 1 match_opcode = 101
       timing = 9
       resist_dispel = 0
   END
   LPF ALTER_EFFECT
-      INT_VAR match_opcode = 142
+      INT_VAR silent = 1 match_opcode = 142
       timing = 9
       resist_dispel = 0
   END
   LPF ALTER_EFFECT
-      INT_VAR match_opcode = 282
+      INT_VAR silent = 1 match_opcode = 282
       timing = 9
       resist_dispel = 0
   END
@@ -1412,8 +1466,10 @@ COPY_EXISTING ~SPPR413.spl~ ~override/b_kel02.spl~ // Works?
 	multiclass 		= ~fc_cm_ck~
  END
 
- ACTION_IF (cleric_kelemvor_spontaneous > 0) && (FILE_EXISTS_IN_GAME ~d5_spheres.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+ ACTION_IF (cleric_kelemvor_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~b_ckel~ learn_res = ~b_ckelz~ END
+ END
  END
 
 END
@@ -1429,6 +1485,8 @@ END
 //__________________________________________________________________________________
 
 DEFINE_ACTION_FUNCTION cleric_lathander BEGIN
+
+LAF check_kit_conflict END
 
 ADD_KIT ~B_CLERIC_LATHANDER~
 
@@ -1533,7 +1591,7 @@ COPY ~faiths_and_powers/kits/clerics/201_lathander/b_cla04.spl~     ~override~  
 
 //REPLACE VANILLA KIT WITH THIS KIT__________________________________________________
 //
-ACTION_IF FILE_EXISTS_IN_GAME ~d5_clerics.d5~ BEGIN
+ACTION_IF FILE_EXISTS_IN_GAME ~d5__clerics.d5~ BEGIN
   ACTION_FOR_EACH race IN ~D~ ~E~ ~G~ ~H~ ~HE~ ~HL~ ~HO~ BEGIN
 	ACTION_IF FILE_EXISTS_IN_GAME ~K_C_%race%.2da~ BEGIN
 	  COPY_EXISTING ~K_C_%race%.2da~ ~override~
@@ -1584,8 +1642,10 @@ END
 	multiclass 		= ~fc_cm_ck~
   END
 
- ACTION_IF (cleric_lathander_spontaneous > 0) && (FILE_EXISTS_IN_GAME ~d5_spheres.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+ ACTION_IF (cleric_lathander_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~b_clat~ learn_res = ~b_clatz~ END
+ END
  END
 
 END
@@ -1602,8 +1662,9 @@ END
 
 DEFINE_ACTION_FUNCTION cleric_leira BEGIN
 
+LAF check_kit_conflict END
+
 ADD_KIT ~D5_CL_LEIRA~
-//___________________________________________________________________________________
 
 //WEAPON PROFICIENCIES_______________________________________________________________
 //11        	                           T   S           F   Q             S S
@@ -1718,8 +1779,10 @@ COPY ~faiths_and_powers/kits/clerics/212_leira/d5_lei1.spl~ ~override~
 	multiclass 		= ~ct_cm~
  END
 
- ACTION_IF (cleric_leira_spontaneous > 0) && (FILE_EXISTS_IN_GAME ~d5_spheres.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+ ACTION_IF (cleric_leira_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~d5clei~ learn_res = ~d5cleiz~ END
+ END
  END
 
 END
@@ -1735,6 +1798,8 @@ END
 //__________________________________________________________________________________
 
 DEFINE_ACTION_FUNCTION cleric_loviatar BEGIN
+
+LAF check_kit_conflict END
 
 ADD_KIT ~B_CLERIC_LOVIATAR~
 
@@ -1873,8 +1938,10 @@ COPY ~faiths_and_powers/kits/clerics/219_loviatar/b_lov04.spl~     ~override~  /
 	multiclass 		= ~fc_ct_cm_ck~
  END
 
- ACTION_IF (cleric_loviatar_spontaneous > 0) && (FILE_EXISTS_IN_GAME ~d5_spheres.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+ ACTION_IF (cleric_loviatar_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~b_clov~ learn_res = ~b_clovz~ END
+ END
  END
 
 END
@@ -1890,6 +1957,8 @@ END
 //__________________________________________________________________________________
 
 DEFINE_ACTION_FUNCTION cleric_malar BEGIN
+
+LAF check_kit_conflict END
 
 ADD_KIT ~D5_CLERIC_MALAR~
 
@@ -2157,8 +2226,10 @@ END
 	multiclass 		= ~fc_ct~
  END
 
- ACTION_IF (cleric_malar_spontaneous > 0) && (FILE_EXISTS_IN_GAME ~d5_spheres.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+ ACTION_IF (cleric_malar_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~d5clmal~ learn_res = ~d5cmalz~ END
+ END
  END
 
 END
@@ -2174,6 +2245,8 @@ END
 //__________________________________________________________________________________
 
 DEFINE_ACTION_FUNCTION cleric_moander BEGIN
+
+LAF check_kit_conflict END
 
 ADD_KIT ~B_CLERIC_MOANDER~
 
@@ -2261,7 +2334,7 @@ COPY_EXISTING ~sppr105.spl~ ~override/B_moa1.spl~ // innate
 //  WRITE_SHORT 0x1c 4//Innate
 //  WRITE_SHORT 0x74 4//Innate
   LPF ALTER_EFFECT
-      INT_VAR match_opcode = 324            //
+      INT_VAR silent = 1 match_opcode = 324            //
       STR_VAR resource = EVAL ~B_moa1~
   END
 COPY ~faiths_and_powers/kits/clerics/331_moander/b_moa2.spl~ ~override~    //Assassin vines
@@ -2304,8 +2377,10 @@ COPY ~faiths_and_powers/kits/clerics/331_moander/b_moa3.spl~ ~override~    //Imm
 	multiclass 		= ~fc_ct~
  END
 
- ACTION_IF (cleric_moander_spontaneous > 0) && (FILE_EXISTS_IN_GAME ~d5_spheres.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+ ACTION_IF (cleric_moander_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~b_cmoa~ learn_res = ~b_cmoaz~ END
+ END
  END
 
 END
@@ -2321,6 +2396,8 @@ END
 //__________________________________________________________________________________
 
 DEFINE_ACTION_FUNCTION cleric_mystra BEGIN
+
+LAF check_kit_conflict END
 
 ADD_KIT ~D5_CLERIC_MYSTRA~
 
@@ -2464,10 +2541,12 @@ COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5myscw.spl~
 	class 			= ~cleric~
  END
 
- ACTION_IF (cleric_mystra_spontaneous > 0) && (FILE_EXISTS_IN_GAME ~d5_spheres.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+ ACTION_IF (cleric_mystra_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~d5clmys~ learn_res = ~d5cmysz~ END
  END
-
+ END
+ 
 END
 //__________________________________________________________________________________
 
@@ -2481,6 +2560,8 @@ END
 //__________________________________________________________________________________
 
 DEFINE_ACTION_FUNCTION cleric_oghma BEGIN
+
+LAF check_kit_conflict END
 
 ADD_KIT ~D5_CLERIC_OGHMA~
 
@@ -2568,7 +2649,7 @@ COPY ~faiths_and_powers/kits/clerics/310_oghma/d5oghm1.spl~ ~override~
 COPY ~faiths_and_powers/kits/misc/d5llore.spl~ ~override~
 	SAY NAME1 @32505
 	SAY UNIDENTIFIED_DESC @32506
-	LPF ALTER_EFFECT INT_VAR match_opcode = 206 STR_VAR resource = ~d5llore~ END
+	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 206 STR_VAR resource = ~d5llore~ END
 //APPEND ~d5clogh.2da~ ~UMD         AP_D5_UMD   ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****    ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** ~
 COPY_EXISTING ~spwi509.spl~ ~override/d5oghm2.spl~
 	LPM spell_to_innate
@@ -2606,10 +2687,12 @@ COPY_EXISTING ~spwi509.spl~ ~override/d5oghm2.spl~
 	multiclass 		= ~cm_ck~
  END
 
- ACTION_IF (cleric_oghma_spontaneous > 0) && (FILE_EXISTS_IN_GAME ~d5_spheres.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+ ACTION_IF (cleric_oghma_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~d5clogh~ learn_res = ~d5coghz~ END
  END
-
+ END
+ 
 END
 //__________________________________________________________________________________
 
@@ -2623,6 +2706,8 @@ END
 //__________________________________________________________________________________
 
 DEFINE_ACTION_FUNCTION cleric_shar BEGIN
+
+LAF check_kit_conflict END
 
 ADD_KIT ~D5_AC_SHAR~
 
@@ -2745,10 +2830,12 @@ COPY_EXISTING ~spwi815.spl~ ~override/d5shabl.spl~
 	multiclass 		= ~ct_cm_ck~
  END
 
- ACTION_IF (cleric_shar_spontaneous > 0) && (FILE_EXISTS_IN_GAME ~d5_spheres.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+ ACTION_IF (cleric_shar_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~d5asha~ learn_res = ~d5ashaz~ END
  END
-
+ END
+ 
 END
 //__________________________________________________________________________________
 
@@ -2762,6 +2849,8 @@ END
 //__________________________________________________________________________________
 
 DEFINE_ACTION_FUNCTION cleric_sune BEGIN
+
+LAF check_kit_conflict END
 
 ADD_KIT ~B_PRIEST_SUNE~
 
@@ -2856,7 +2945,7 @@ COPY_EXISTING ~SPWI429.spl~ ~override/b_sun03.spl~ // Emotion: hope
   WRITE_BYTE 0x1c 4//Innate
   WRITE_BYTE 0x74 4//Location
   LPF ALTER_EFFECT
-      INT_VAR match_opcode = 321
+      INT_VAR silent = 1 match_opcode = 321
       STR_VAR resource = EVAL ~b_sun03~
      END
 END
@@ -2869,11 +2958,11 @@ COPY_EXISTING ~SPWI104.spl~ ~override/b_sun01.spl~ // Charm person
   WRITE_BYTE 0x1c 4//Innate
   WRITE_BYTE 0x74 4//Location
   LPF ALTER_EFFECT
-      INT_VAR match_opcode = 324
+      INT_VAR silent = 1 match_opcode = 324
       STR_VAR resource = EVAL ~b_sun01~
      END
   LPF ALTER_EFFECT
-      INT_VAR match_opcode = 5
+      INT_VAR silent = 1 match_opcode = 5
       savebonus = 0
      END
 */
@@ -2910,10 +2999,12 @@ COPY_EXISTING ~SPWI104.spl~ ~override/b_sun01.spl~ // Charm person
 	multiclass 		= ~ct_cm_ck~
  END
 
- ACTION_IF (cleric_sune_spontaneous > 0) && (FILE_EXISTS_IN_GAME ~d5_spheres.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+ ACTION_IF (cleric_sune_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~b_asun~ learn_res = ~b_asunz~ END
  END
-
+ END
+ 
 END
 //__________________________________________________________________________________
 
@@ -2927,6 +3018,8 @@ END
 //__________________________________________________________________________________
 
 DEFINE_ACTION_FUNCTION cleric_talos BEGIN
+
+LAF check_kit_conflict END
 
 ADD_KIT ~B_CLERIC_TALOS~
 
@@ -3014,7 +3107,7 @@ COPY ~faiths_and_powers/kits/clerics/224_talos/b_Tal10.spl~     ~override~  //  
 
 //REPLACE VANILLA KIT WITH THIS KIT__________________________________________________
 //
-ACTION_IF FILE_EXISTS_IN_GAME ~d5_clerics.d5~ BEGIN
+ACTION_IF FILE_EXISTS_IN_GAME ~d5__clerics.d5~ BEGIN
   ACTION_FOR_EACH race IN ~D~ ~E~ ~G~ ~H~ ~HE~ ~HL~ ~HO~ BEGIN
 	ACTION_IF FILE_EXISTS_IN_GAME ~K_C_%race%.2da~ BEGIN
 	  COPY_EXISTING ~K_C_%race%.2da~ ~override~
@@ -3065,10 +3158,12 @@ END
 	multiclass 		= ~fc_cm~
  END
 
- ACTION_IF (cleric_talos_spontaneous > 0) && (FILE_EXISTS_IN_GAME ~d5_spheres.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+ ACTION_IF (cleric_talos_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~b_ctal~ learn_res = ~b_ctalz~ END
  END
-
+ END
+ 
 END
 //__________________________________________________________________________________
 
@@ -3082,6 +3177,8 @@ END
 //__________________________________________________________________________________
 
 DEFINE_ACTION_FUNCTION cleric_tempus BEGIN
+
+LAF check_kit_conflict END
 
 ADD_KIT ~B_CLERIC_TEMPUS~
 
@@ -3160,6 +3257,8 @@ ACTION_IF GAME_IS ~bgee bg2ee eet iwdee~ THEN BEGIN
 END
 
 //TEMPUS ABILITY FILES______________________________________________________________
+//
+COPY ~faiths_and_powers/kits/clerics/210_tempus/b_ctem.2da~ ~override~
 // Incite Rage
 ACTION_IF FILE_EXISTS_IN_GAME ~spcl321.spl~ BEGIN
 COPY_EXISTING ~spcl321.spl~ ~override/B_TEM03.spl~ // Incite Rage
@@ -3176,7 +3275,7 @@ COPY ~faiths_and_powers/kits/clerics/210_tempus/b_ctem.2da~ ~override~
 
 //REPLACE VANILLA KIT_________________________________________________________________
 //... should do this for IWD
-ACTION_IF FILE_EXISTS_IN_GAME ~d5_menu.d5~ BEGIN
+ACTION_IF FILE_EXISTS_IN_GAME ~d5__menu.d5~ BEGIN
 	COPY_EXISTING ~kitlist.2da~ ~override~
 		COUNT_2DA_ROWS ~7~ "kit_row"
 	OUTER_SET kit_row -= 2
@@ -3223,10 +3322,12 @@ END
 	multiclass 		= ~fc~
  END
 
- ACTION_IF (cleric_tempus_spontaneous > 0) && (FILE_EXISTS_IN_GAME ~d5_spheres.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+ ACTION_IF (cleric_tempus_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~b_ctem~ learn_res = ~b_ctemz~ END
  END
-
+ END
+ 
 END
 //__________________________________________________________________________________
 
@@ -3240,6 +3341,8 @@ END
 //__________________________________________________________________________________
 
 DEFINE_ACTION_FUNCTION priest_tempus BEGIN
+
+LAF check_kit_conflict END
 
 ADD_KIT ~B_PRIEST_TEMPUS~
 
@@ -3319,6 +3422,7 @@ END
 
 //TEMPUS ABILITY FILES_______________________________________________________________
 //
+COPY ~faiths_and_powers/kits/clerics/322_tempus/b_atem.2da~ ~override~
 COPY_EXISTING ~SPPR203.spl~ ~override/B_TEM01.spl~ // Chant
   WRITE_LONG 0x34 1 //level
   WRITE_BYTE 0x1c 4//Innate
@@ -3360,10 +3464,12 @@ COPY ~faiths_and_powers/kits/clerics/322_tempus/b_tem02.spl~ ~override~  // WP A
 	class 			= ~cleric~
  END
 
- ACTION_IF (priest_tempus_spontaneous > 0) && (FILE_EXISTS_IN_GAME ~d5_spheres.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+ ACTION_IF (priest_tempus_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~b_atem~ learn_res = ~b_atemz~ END
  END
-
+ END
+ 
 END
 //__________________________________________________________________________________
 
@@ -3377,6 +3483,8 @@ END
 //__________________________________________________________________________________
 
 DEFINE_ACTION_FUNCTION cleric_torm BEGIN
+
+LAF check_kit_conflict END
 
 ADD_KIT ~B_CLERIC_TORM~
 
@@ -3462,7 +3570,7 @@ COPY_EXISTING ~SPPR102.spl~ ~override/b_tor01.spl~ // dispel magic
   WRITE_BYTE 0x1c 4//Innate
   WRITE_BYTE 0x74 4//Location
   LPF ALTER_EFFECT
-      INT_VAR match_opcode = 324
+      INT_VAR silent = 1 match_opcode = 324
       STR_VAR resource = EVAL ~b_tor01~
   END
 
@@ -3498,10 +3606,12 @@ COPY_EXISTING ~SPPR102.spl~ ~override/b_tor01.spl~ // dispel magic
 	multiclass 		= ~fc~
  END
 
- ACTION_IF (cleric_torm_spontaneous > 0) && (FILE_EXISTS_IN_GAME ~d5_spheres.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+ ACTION_IF (cleric_torm_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~b_ctor~ learn_res = ~b_ctorz~ END
  END
-
+ END
+ 
 END
 //____________________________________________________________________________________
 
@@ -3515,6 +3625,8 @@ END
 //__________________________________________________________________________________
 
 DEFINE_ACTION_FUNCTION cleric_tymora BEGIN
+
+LAF check_kit_conflict END
 
 ADD_KIT ~D5_CL_TYMORA~
 
@@ -3638,10 +3750,12 @@ COPY ~faiths_and_powers/kits/clerics/205_tymora/d5_tym1b.spl~ ~override~
 	multiclass 		= ~ct_cm~
  END
 
- ACTION_IF (cleric_tymora_spontaneous > 0) && (FILE_EXISTS_IN_GAME ~d5_spheres.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+ ACTION_IF (cleric_tymora_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~d5ctym~ learn_res = ~d5ctymz~ END
  END
-
+ END
+ 
 END
 //__________________________________________________________________________________
 
@@ -3655,6 +3769,8 @@ END
 //__________________________________________________________________________________
 
 DEFINE_ACTION_FUNCTION cleric_umberlee BEGIN
+
+LAF check_kit_conflict END
 
 ADD_KIT ~B_CLERIC_UMBERLEE~
 
@@ -3775,10 +3891,12 @@ COPY ~faiths_and_powers/kits/clerics/226_umberlee/b_umb.2da~ ~override~
 	multiclass 		= ~fc_cm~
  END
 
- ACTION_IF (cleric_umberlee_spontaneous > 0) && (FILE_EXISTS_IN_GAME ~d5_spheres.d5~) BEGIN
-  LAF fnp_spontaneous STR_VAR kit_clab = ~b_umb~ learn_res = ~b_umb~ END
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+ ACTION_IF (cleric_umberlee_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
+  LAF fnp_spontaneous STR_VAR kit_clab = ~b_umb~ learn_res = ~b_umbz~ END
  END
-
+ END
+ 
 END
 //__________________________________________________________________________________
 
@@ -3792,6 +3910,8 @@ END
 //__________________________________________________________________________________
 
 DEFINE_ACTION_FUNCTION cleric_moradin BEGIN
+
+LAF check_kit_conflict END
 
 ADD_KIT ~D5_CL_MORADIN~
 
@@ -3870,6 +3990,7 @@ END
 
 //MORADIN ABILITY FILES_______________________________________________________________
 //
+COPY ~faiths_and_powers/kits/clerics/371_moradin/d5clmor.2da~ ~override~
 COPY ~faiths_and_powers/kits/clerics/371_moradin/d5morh1.spl~ ~override~
 	SAY NAME1 @37113
 	SAY UNIDENTIFIED_DESC @37114
@@ -3894,7 +4015,7 @@ COPY_EXISTING ~sppr203.spl~ ~override/d5morh3.spl~
 ACTION_IF (GAME_IS ~bgee bg2ee eet iwdee~) BEGIN
   OUTER_SET cl_moradin_code = (0x4000 + %D5_CL_MORADIN%)
   COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
-	PATCH_IF (~%SOURCE_SIZE%~ > ~0x71~) BEGIN
+	PATCH_IF (%SOURCE_SIZE% > 0x71) BEGIN
 	  READ_BYTE 0x31 prof
 	  READ_SHORT 0x1c type
 	  PATCH_IF (%prof% = 97) BEGIN // hammers
@@ -3954,10 +4075,12 @@ END
 	multiclass 		= ~fc~
  END
 
- ACTION_IF (cleric_moradin_spontaneous > 0) && (FILE_EXISTS_IN_GAME ~d5_spheres.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+ ACTION_IF (cleric_moradin_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~d5clmor~ learn_res = ~d5cmorz~ END
  END
-
+ END
+ 
 END
 //__________________________________________________________________________________
 
@@ -3971,6 +4094,8 @@ END
 //__________________________________________________________________________________
 
 DEFINE_ACTION_FUNCTION cleric_clangeddin BEGIN
+
+LAF check_kit_conflict END
 
 ADD_KIT ~D5_CL_CLANGEDDIN~
 
@@ -4095,10 +4220,12 @@ COPY ~faiths_and_powers/kits/clerics/372_clangeddin/d5clan3b.bam~ ~override~
 	multiclass 		= ~fc~
  END
 
- ACTION_IF (cleric_clangeddin_spontaneous > 0) && (FILE_EXISTS_IN_GAME ~d5_spheres.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+ ACTION_IF (cleric_clangeddin_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~d5clcla~ learn_res = ~d5cclaz~ END
  END
-
+ END
+ 
 END
 //__________________________________________________________________________________
 
@@ -4112,6 +4239,8 @@ END
 //__________________________________________________________________________________
 
 DEFINE_ACTION_FUNCTION cleric_marthammor BEGIN
+
+LAF check_kit_conflict END
 
 ADD_KIT ~D5_CL_MARTHAMMOR~
 
@@ -4234,10 +4363,157 @@ COPY_EXISTING ~spwi305.spl~ ~override/d5mart4.spl~
 	multiclass 		= ~fc~
  END
 
- ACTION_IF (cleric_marthammor_spontaneous > 0) && (FILE_EXISTS_IN_GAME ~d5_spheres.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+ ACTION_IF (cleric_marthammor_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~d5clmar~ learn_res = ~d5cmarz~ END
  END
+ END
+ 
+END
+//__________________________________________________________________________________
 
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+//								KAXANAR OF HAELA
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+DEFINE_ACTION_FUNCTION cleric_haela BEGIN
+
+LAF check_kit_conflict END
+
+ADD_KIT ~B_CLERIC_HAELA~
+
+//WEAPON PROFICIENCIES________________________________________________________________
+//11                                   		T   S           F   Q             S S
+//10           		L S                     W   C           L   U             W I
+//9            		A M             B L S   O   I   W       A   A             O N
+//8            		R A             A O H   H   M   A       I   R C   S       R G
+//7            		G L           M S N O   A   I   R     H L   T R L H     2 D L 2                 E E E E E E E E E E E
+//6            		E L       S   I T G R   N K T D H     A M   E O O O     H A E W E E E E E E E E X X X X X X X X X X X
+//5            		S S   S B P   S A S T   D A A A A   S L O   R S N R   S A N W E X X X X X X X X T T T T T T T T T T T
+//4            		W W   P L I   S R W S   E T R G M C P B R M S S G T D L N D E A T T T T T T T T R R R R R R R R R R R
+//3            		O O B E U K A I D O W A D A W G M L E E N A T B B B A I D S A P R R R R R R R R A A A A A A A A A A A
+//2            		R R O A N E X L S R O X S N A E E U A R I C A O O O R N E H P O A A A A A A A A 1 1 1 1 1 1 1 1 1 1 2
+//1            		D D W R T D E E W D R E W A K R R B R D N E F W W W T G D I O N 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0
+~B_CLERIC_HAELA     0 0 0 0 0 0 0 0~
+~B_CLERIC_HAELA     0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 1 1 1 0 0 0 0 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
+
+//MINIMUM KIT STATS_________________________________________________________________
+//                  STR DEX CON INT WIS CHR
+~B_CLERIC_HAELA     13   0   12  0   9  0~
+
+//KIT STAT MODIFIERS________________________________________________________________
+//                  STR DEX CON INT WIS CHR
+~B_CLERIC_HAELA     0   0   0   0   0   0~
+
+//REQUIREMENTS TO DUAL TO THIS KIT_________________________________________________
+//                  STR DEX CON INT WIS CHR
+~B_CLERIC_HAELA     15  0   0   0   15  0~
+
+//REQUIREMENTS TO DUAL FROM THIS KIT________________________________________________
+//                  STR DEX CON INT WIS CHR
+~B_CLERIC_HAELA     15  0   0   0   15  0~
+
+//ALIGNMENT RESTRICTIONS____________________________________________________________
+//                  LG LN LE NG TN NE CG CN CE
+~B_CLERIC_HAELA     0  0  0  1  1  0  1  1  1~
+
+//DUAL CLASS OPTIONS________________________________________________________________
+//                  FT CL MA TH DR RA
+~B_CLERIC_HAELA     1  0  0  0  0  0~
+
+//KIT ABILITIES 2DA FILE______________________________________________________________
+~faiths_and_powers/kits/clerics/374_haela/b_chae.2da~
+
+//RACIAL KIT AVAILABILITY_____________________________________________________________
+~K_C_D~
+
+//UNUSABLE FLAGS AND KIT BASE CLASS_________________________________________________
+//CLASSES: Mage = 1, Fighter = 2, Cleric=3, Thief = 4, Bard = 5
+//         Paladin 6, Druid = 11, Ranger = 12, Sorcerer = 19
+//         Monk = 20
+~0x00004000 3~
+
+//HIGH LEVEL ABILITIES ABBREVIATION_________________________________________________
+~Cl0~
+
+//TOB STARTING EQUIPMENT_____________________________________________________________
+~CHAN09	* HELM07 BAG26 RING06 RING31 * BOOT01 AMUL20 BRAC10 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 HAMM07 SW1H27 STAF08~
+
+//CHARACTER CREATION KIT DESCRIPTION________________________________________________
+SAY @37401 //lower
+SAY @37402 //Mixed
+SAY @37403 //Help
+
+//EE KIT EXTRAS_____________________________________________________________________
+// 
+ACTION_IF GAME_IS ~bgee bg2ee eet iwdee~ THEN BEGIN
+	LAF fl#add_kit_ee
+		INT_VAR
+			briefdesc = RESOLVE_STR_REF (@37403)
+		STR_VAR
+			kit_name = B_CLERIC_HAELA 
+			clswpbon = ~0 0 3~
+	END
+END
+
+//TEMPUS ABILITY FILES______________________________________________________________
+//
+COPY ~faiths_and_powers/kits/clerics/374_haela/b_chae.2da~ ~override~
+// Incite Rage
+ACTION_IF FILE_EXISTS_IN_GAME ~spcl321.spl~ BEGIN
+COPY_EXISTING ~spcl321.spl~ ~override/B_TEM03.spl~ // Incite Rage
+	SAY NAME1 @21004
+	SAY NAME2 @21004
+	SAY UNIDENTIFIED_DESC @21006 
+	SAY IDENTIFIED_DESC @21006 
+  WRITE_BYTE 0x7e 1//Target 1 cre
+END
+
+COPY ~faiths_and_powers/kits/clerics/210_tempus/b_tem05.spl~ ~override~    //+1 damage
+
+//DEFINE SPHERE ACCESS______________________________________________________________
+//
+ LAF ~DEFINE_FNP_KIT_INFO~
+  INT_VAR
+	u_leather_armor 	= 1
+	u_chain_armor 		= 1
+	u_plate_armor 		= 1
+	u_club_staff	 	= 1
+	u_hammers	 		= 2
+	u_maces 	 		= 1
+	u_flails 			= 1
+	u_axes 				= 2
+	u_daggers 			= 1
+	u_short_swords		= 1
+	u_long_swords		= 1
+	u_scimitars 		= 1
+	u_katanas 			= 1
+	u_bastard_swords 	= 1
+	u_2hand_swords 		= 1
+	u_halberds 			= 1
+	u_spears 	 		= 1
+	u_darts 			= 0
+	u_slings	 		= 1
+	u_bows 				= 0
+	u_crossbows 		= 1
+  STR_VAR
+    clab_name 		= ~b_chae~
+	sphere_list		= ~haela_spheres~
+	class 			= ~cleric~
+	multiclass 		= ~fc~
+ END
+
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+ ACTION_IF (cleric_haela_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
+  LAF fnp_spontaneous STR_VAR kit_clab = ~b_chae~ learn_res = ~b_chaez~ END
+ END
+ END
+ 
 END
 //__________________________________________________________________________________
 
@@ -4251,6 +4527,8 @@ END
 //__________________________________________________________________________________
 
 DEFINE_ACTION_FUNCTION cleric_baravar BEGIN
+
+LAF check_kit_conflict END
 
 ADD_KIT ~B_CLERIC_BARAVAR~
 
@@ -4374,10 +4652,12 @@ COPY_EXISTING ~spwi401.spl~ ~override/d5bara3.spl~
 	multiclass 		= ~ct_cm~
  END
 
- ACTION_IF (cleric_baravar_spontaneous > 0) && (FILE_EXISTS_IN_GAME ~d5_spheres.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+ ACTION_IF (cleric_baravar_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~b_bara~ learn_res = ~b_baraz~ END
  END
-
+ END
+ 
 END
 //__________________________________________________________________________________
 
@@ -4391,6 +4671,8 @@ END
 //__________________________________________________________________________________
 
 DEFINE_ACTION_FUNCTION cleric_baervan BEGIN
+
+LAF check_kit_conflict END
 
 ADD_KIT ~D5_CLERIC_BAERVAN~
 
@@ -4488,7 +4770,10 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.spl$~ ~override~
 	END
   END
 BUT_ONLY
+/* this vv fails on Grey the Dog's items for some reason
+*/
 COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
+ PATCH_IF (%SOURCE_SIZE% > 0x71) BEGIN
   GET_OFFSET_ARRAY ab_array ITM_V10_HEADERS
   PHP_EACH ab_array AS int => ab_off BEGIN
 	READ_SHORT ab_off + 0x2a ab_proj
@@ -4500,6 +4785,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
 	  END
 	END
   END
+ END
 BUT_ONLY
 COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5baer2.spl~	// entangle immunity
 //  PHP_EACH entangling_array AS res => num BEGIN
@@ -4677,10 +4963,12 @@ END
 	multiclass 		= ~ct_cm~
  END
 
- ACTION_IF (cleric_baervan_spontaneous > 0) && (FILE_EXISTS_IN_GAME ~d5_spheres.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+ ACTION_IF (cleric_baervan_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~d5clbae~ learn_res = ~d5cbaez~ END
  END
-
+ END
+ 
 END
 //__________________________________________________________________________________
 
@@ -4694,6 +4982,8 @@ END
 //__________________________________________________________________________________
 
 DEFINE_ACTION_FUNCTION cleric_urdlen BEGIN
+
+LAF check_kit_conflict END
 
 ADD_KIT ~D5_URDLEN~
 
@@ -4814,10 +5104,12 @@ COPY_EXISTING ~spwi502.spl~ ~override/d5urdl4.spl~
 	multiclass 		= ~ct_cm~
  END
 
- ACTION_IF (cleric_urdlen_spontaneous > 0) && (FILE_EXISTS_IN_GAME ~d5_spheres.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+ ACTION_IF (cleric_urdlen_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~d5curdl~ learn_res = ~d5curdz~ END
  END
-
+ END
+ 
 END
 //__________________________________________________________________________________
 
@@ -4831,6 +5123,8 @@ END
 //__________________________________________________________________________________
 
 DEFINE_ACTION_FUNCTION cleric_yondalla BEGIN
+
+LAF check_kit_conflict END
 
 ADD_KIT ~D5_CLERIC_YONDALLA~
 
@@ -4914,25 +5208,25 @@ COPY ~faiths_and_powers/kits/clerics/391_yondalla/d5clyon.2da~ ~override~
 //COPY ~faiths_and_powers/kits/clerics/391_yondalla/d5yond1.spl~ ~override~	// shield
 COPY_EXISTING ~spwi114.spl~ ~override/d5yond1.spl~
   LPF ALTER_SPELL_HEADER INT_VAR target = 1 END
-  LPF ALTER_EFFECT INT_VAR target = 2 END  
+  LPF ALTER_EFFECT INT_VAR silent = 1 target = 2 END  
   LPM spell_to_innate
 COPY_EXISTING ~sppr108.spl~ ~override/d5yond2.spl~
   LPF ALTER_SPELL_HEADER INT_VAR target = 1 END
-  LPF ALTER_EFFECT INT_VAR match_opcode = 296 timing = 9 END
-  LPF ALTER_EFFECT INT_VAR match_opcode = 101 timing = 9 END
-  LPF ALTER_EFFECT INT_VAR match_opcode = 142 timing = 9 END
-  LPF ALTER_EFFECT INT_VAR match_opcode = 267 timing = 9 END
-  LPF ALTER_EFFECT INT_VAR match_opcode = 169 timing = 9 END
-  LPF ALTER_EFFECT INT_VAR match_opcode = 106 timing = 9 END
+  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 296 timing = 9 END
+  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 101 timing = 9 END
+  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 142 timing = 9 END
+  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 267 timing = 9 END
+  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 169 timing = 9 END
+  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 106 timing = 9 END
 COPY_EXISTING ~sppr406.spl~ ~override/d5yond3.spl~
   LPM spell_to_innate
 //COPY ~faiths_and_powers/kits/clerics/391_yondalla/d5yond4.spl~ ~override~	// NPP
 COPY_EXISTING ~sppr413.spl~ ~override/d5yond4.spl~
-  LPF ALTER_EFFECT INT_VAR match_opcode = 169 timing = 9 END
-  LPF ALTER_EFFECT INT_VAR match_opcode = 101 timing = 9 END
-  LPF ALTER_EFFECT INT_VAR match_opcode = 142 timing = 9 END
-  LPF ALTER_EFFECT INT_VAR match_opcode = 267 timing = 9 END
-  LPF ALTER_EFFECT INT_VAR match_opcode = 282 timing = 9 END
+  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 169 timing = 9 END
+  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 101 timing = 9 END
+  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 142 timing = 9 END
+  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 267 timing = 9 END
+  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 282 timing = 9 END
   LPM spell_to_innate
 
 //DEFINE SPHERE ACCESS________________________________________________________________
@@ -4967,10 +5261,12 @@ COPY_EXISTING ~sppr413.spl~ ~override/d5yond4.spl~
 	multiclass 		= ~fc_ck~
  END
 
- ACTION_IF (cleric_yondalla_spontaneous > 0) && (FILE_EXISTS_IN_GAME ~d5_spheres.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+ ACTION_IF (cleric_yondalla_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~d5clyon~ learn_res = ~d5cyonz~ END
  END
-
+ END
+ 
 END
 //__________________________________________________________________________________
 
@@ -4984,6 +5280,8 @@ END
 //__________________________________________________________________________________
 
 DEFINE_ACTION_FUNCTION cleric_arvoreen BEGIN
+
+LAF check_kit_conflict END
 
 ADD_KIT ~D5_CLERIC_ARVOREEN~
 
@@ -5126,10 +5424,12 @@ COPY ~faiths_and_powers/kits/clerics/392_arvoreen/d5arvo2.spl~ ~override~	// has
 	multiclass 		= ~cr~
  END
 
- ACTION_IF (cleric_arvoreen_spontaneous > 0) && (FILE_EXISTS_IN_GAME ~d5_spheres.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+ ACTION_IF (cleric_arvoreen_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~d5clarv~ learn_res = ~d5carvz~ END
  END
-
+ END
+ 
 END
 //__________________________________________________________________________________
 

@@ -67,6 +67,8 @@ COPY ~faiths_and_powers/kits/rangers/901_forest_ranger/haterace.2da~ ~override~
 
 //____________________________________________________________________________________
 //
+LAF check_kit_conflict END
+
 ADD_KIT ~D5_RA_FOR~
 
 //WEAPON PROFICIENCIES________________________________________________________________
@@ -167,7 +169,7 @@ COPY ~faiths_and_powers/kits/rangers/901_forest_ranger/d5enemfn.eff~ ~override~
 
 //REPLACE VANILLA KIT WITH THIS KIT__________________________________________________
 //
-ACTION_IF FILE_EXISTS_IN_GAME ~d5_rangers.d5~ BEGIN
+ACTION_IF FILE_EXISTS_IN_GAME ~d5__rangers.d5~ BEGIN
   ACTION_FOR_EACH race IN ~D~ ~E~ ~G~ ~H~ ~HE~ ~HL~ ~HO~ BEGIN
 	ACTION_IF FILE_EXISTS_IN_GAME ~K_R_%race%.2da~ BEGIN
 	  COPY_EXISTING ~K_R_%race%.2da~ ~override~
@@ -234,8 +236,10 @@ END
 	class 			= ~ranger~
  END
 
- ACTION_IF (forest_ranger_spontaneous > 0) && (FILE_EXISTS_IN_GAME ~d5_spheres.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+ ACTION_IF (forest_ranger_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~d5rfor~ learn_res = ~d5rforz~ END
+ END
  END
 
 END
@@ -252,6 +256,8 @@ END
 //__________________________________________________________________________________
 
 DEFINE_ACTION_FUNCTION mountain_ranger BEGIN
+
+LAF check_kit_conflict END
 
 ADD_KIT ~D5_RA_MOU~
 
@@ -385,8 +391,10 @@ COPY ~faiths_and_powers/kits/rangers/902_mountain_ranger/d5enemmp.eff~ ~override
 	class 			= ~ranger~
  END
 
- ACTION_IF (mountain_ranger_spontaneous > 0) && (FILE_EXISTS_IN_GAME ~d5_spheres.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+ ACTION_IF (mountain_ranger_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~d5rmou~ learn_res = ~d5rmouz~ END
+ END
  END
 
 END
@@ -404,6 +412,8 @@ END
 
 
 DEFINE_ACTION_FUNCTION desert_ranger BEGIN
+
+LAF check_kit_conflict END
 
 ADD_KIT ~D5_RA_DES~
 
@@ -533,8 +543,10 @@ COPY ~faiths_and_powers/kits/rangers/904_desert_ranger/d5enemdl.eff~ ~override~
 	class 			= ~ranger~
  END
 
- ACTION_IF (desert_ranger_spontaneous > 0) && (FILE_EXISTS_IN_GAME ~d5_spheres.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+ ACTION_IF (desert_ranger_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~d5rdes~ learn_res = ~d5rdesz~ END
+ END
  END
 
 END
@@ -551,6 +563,8 @@ END
 //__________________________________________________________________________________
 
 DEFINE_ACTION_FUNCTION jungle_ranger BEGIN
+
+LAF check_kit_conflict END
 
 ADD_KIT ~D5_RA_JUN~
 
@@ -678,8 +692,10 @@ COPY ~faiths_and_powers/kits/rangers/903_jungle_ranger/d5enemjj.eff~ ~override~
 	class 			= ~ranger~
  END
 
- ACTION_IF (jungle_ranger_spontaneous > 0) && (FILE_EXISTS_IN_GAME ~d5_spheres.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+ ACTION_IF (jungle_ranger_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~d5rjun~ learn_res = ~d5rjunz~ END
+ END
  END
 
 END
@@ -696,6 +712,8 @@ END
 //__________________________________________________________________________________
 
 DEFINE_ACTION_FUNCTION arctic_ranger BEGIN
+
+LAF check_kit_conflict END
 
 ADD_KIT ~D5_RA_ARC~
 
@@ -823,8 +841,10 @@ COPY ~faiths_and_powers/kits/rangers/905_arctic_ranger/d5enemaj.eff~ ~override~
 	class 			= ~ranger~
  END
 
- ACTION_IF (arctic_ranger_spontaneous > 0) && (FILE_EXISTS_IN_GAME ~d5_spheres.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+ ACTION_IF (arctic_ranger_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~d5rarc~ learn_res = ~d5rarcz~ END
+ END
  END
 
 END
@@ -843,7 +863,7 @@ DEFINE_ACTION_FUNCTION beast_master BEGIN
 
 //copy marker file__________________________________________________________________
 //
-COPY ~faiths_and_powers/lib/markers/d5_beastmaster.d5~ ~override~
+COPY ~faiths_and_powers/lib/markers/d5_marker.d5~ ~override/d5__beastmaster.d5~
 //__________________________________________________________________________________
 
 //ADD TO KIT MENUS__________________________________________________________________
@@ -1046,8 +1066,10 @@ END
  END
 
 /* can't do spontaneous with 8-character CLAB
- ACTION_IF (beast_master_spontaneous > 0) && (FILE_EXISTS_IN_GAME ~d5_spheres.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+ ACTION_IF (beast_master_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~CLABRN04~ learn_res = ~d5rn04~ END
+ END
  END
 */
 
@@ -1064,6 +1086,8 @@ END
 //__________________________________________________________________________________
 
 DEFINE_ACTION_FUNCTION barbarian_ranger BEGIN
+
+LAF check_kit_conflict END
 
 ADD_KIT ~D5RBARB~
 
@@ -1178,8 +1202,10 @@ COPY ~faiths_and_powers/kits/rangers/954_barbarian_ranger/d5_rback.spl~ ~overrid
 	class 			= ~scout~
  END
 
- ACTION_IF (barbarian_ranger_spontaneous > 0) && (FILE_EXISTS_IN_GAME ~d5_spheres.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+ ACTION_IF (barbarian_ranger_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~d5rbarb~ learn_res = ~d5rbarz~ END
+ END
  END
 
 //FIX BARB USABILITY__________________________________________________________________
@@ -1210,6 +1236,8 @@ END//___________________________________________________________________________
 //__________________________________________________________________________________
 
 DEFINE_ACTION_FUNCTION mage_hunter BEGIN
+
+LAF check_kit_conflict END
 
 ADD_KIT ~D5MAGEH~
 
@@ -1336,8 +1364,10 @@ COPY ~faiths_and_powers/kits/rangers/953_mage_hunter/d5_mghs2.eff~ ~override~
 	class 			= ~scout~
  END
 
- ACTION_IF (mage_hunter_spontaneous > 0) && (FILE_EXISTS_IN_GAME ~d5_spheres.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+ ACTION_IF (mage_hunter_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~d5mageh~ learn_res = ~d5magez~ END
+ END
  END
 
 END
@@ -1353,6 +1383,8 @@ END
 //__________________________________________________________________________________
 
 DEFINE_ACTION_FUNCTION elven_archer BEGIN
+
+LAF check_kit_conflict END
 
 ADD_KIT ~D5EARCH~
 
@@ -1465,8 +1497,10 @@ COPY ~faiths_and_powers/kits/rangers/955_elven_archer/d5earch.2da~ ~override~
 	class 			= ~scout~
  END
 
- ACTION_IF (elven_archer_spontaneous > 0) && (FILE_EXISTS_IN_GAME ~d5_spheres.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+ ACTION_IF (elven_archer_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~d5earch~ learn_res = ~d5earcz~ END
+ END
  END
 
 //ADD ELVEN ARCHER TO MENUS__________________________________________________________
@@ -1568,6 +1602,8 @@ END
 //__________________________________________________________________________________
 
 DEFINE_ACTION_FUNCTION halfling_slinger BEGIN
+
+LAF check_kit_conflict END
 
 ADD_KIT ~D5SLING~
 

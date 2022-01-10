@@ -6,32 +6,34 @@
 
 DEFINE_ACTION_MACRO d5_define_sphere_names BEGIN
 
+// system designation.....sphere name
+
 <<<<<<<< d5/d5altsph.2da
 2DA
-Universal			Universal
-Life 				Life
-Death 				Death
-Benediction 		Creation
-Destruction 		Destruction
-Protection 			Protection
-War 				War
-Exploration     	Exploration
-Knowledge 			Knowledge
-Deception 			Deception
-Thought 			Thought
-Dread 				Dread
-Vigor 				Vigor
-Affliction 			Affliction
-Animal 				Animal
-Plant 				Plant
-Earth 				Earth
-Air 				Air
-Water 				Water
-Fire 				Fire
-Light 				Light
-Shadow 				Shadow
-Magic 				Magic
-Astral	 			Astral
+Universal				Universal
+Life 					Life
+Death 					Death
+Benediction 			Vermin	
+Destruction 			Destruction
+Protection 				Protection
+War 					War
+Exploration     		Exploration
+Knowledge 				Knowledge
+Deception 				Deception
+Thought 				Thought
+Dread 					Dread
+Vigor 					Vigor
+Affliction 				Affliction
+Animal 					Animal
+Plant 					Plant
+Earth 					Earth
+Air 					Air
+Water 					Water
+Fire 					Fire
+Light 					Light
+Shadow 					Shadow
+Magic 					Magic
+Astral	 				Astral
 >>>>>>>> 
 
 END	//	end sphere names macro
@@ -77,7 +79,6 @@ CLERIC_CURE_MEDIUM_WOUNDS               3	=	Life
 CLERIC_CURE_SERIOUS_WOUNDS              4	=	Life
 NOSR_CLERIC_CURE_CRITICAL_WOUNDS        5	=	Life
 CLERIC_MASS_CURE                        5	=	Life
-CLERIC_RAISE_DEAD                       6	=	Life
 CLERIC_HEAL                             6	=	Life
 CLERIC_RESURRECTION                     7	=	Life
 CLERIC_EYES_OF_THE_DEAD                 1	=	Death
@@ -89,21 +90,21 @@ CLERIC_CIRCLE_OF_BONES                  3	=	Death
 CLERIC_ANIMATE_DEAD                     4	=	Death
 CLERIC_UNDEAD_WARD                      4	=	Death
 CLERIC_SLAY_LIVING                      5	=	Death
-CLERIC_RECALL_SPIRIT                    6	=	Death
+CLERIC_RAISE_DEAD                       6	=	Death
 B_W631                                  6	=	Death // Soul Eater
 CLERIC_SYMBOL_DEATH                     7	=	Death
 CLERIC_FINGER_OF_DEATH                  7	=	Death
-CLERIC_ABUNDANT_AMMO                    1	=	Creation
-WIZARD_GREASE                           1	=	Creation 
-CLERIC_MAGIC_STONE                      1	=	Creation
-WIZARD_GLITTERDUST                      2	=	Creation 
-WIZARD_WEB                              3	=	Creation
-CLERIC_STAR_METAL_CUDGEL                4	=	Creation
-d5clgol                                 5	=	Creation // animate clay construct
-CLERIC_BLADE_BARRIER                    6	=	Creation
-d5stgol                                 6	=	Creation // animate stone construct
-WIZARD_PRISMATIC_SPRAY                  7	=	Creation
-d5jugol                                 7	=	Creation // animate juggernaut construct
+NO_WIZARD_GREASE                           1	=	Vermin 
+d5btswm                                 1	=	Vermin // liddle beetle swarm
+d5spswm                                 2	=	Vermin // liddle spider swarm
+spdr201                                 3	=	Vermin // druid version of web
+CLERIC_SUMMON_INSECTS                   3	=	Vermin
+CLERIC_GIANT_INSECT                     4	=	Vermin
+d5spspn                                 4	=	Vermin // wizard spider summon
+CLERIC_INSECT_PLAGUE                    5	=	Vermin
+d5carsm                                 6	=	Vermin // wizard carrion crawler summon
+CLERIC_CREEPING_DOOM                    7	=	Vermin
+d5rhbtl                                 7	=	Vermin // summon rhino beetle
 CLERIC_HAND_OF_CARNAGE                  1	=	Destruction
 CLERIC_CAUSE_LIGHT_WOUNDS               1	=	Destruction
 WIZARD_BATTERING_RAM                    1	=	Destruction // sr battering ram... make level 2?
@@ -142,7 +143,9 @@ CLERIC_DEFENSIVE_HARMONY                4	=	War
 CLERIC_STAR_METAL_CUDGEL                4	=	War
 CLERIC_RIGHTEOUS_MAGIC                  5	=	War
 CLERIC_BLADE_BARRIER                    6	=	War
+d5fnp11                                 6	=	War // animate clay construct
 CLERIC_SYMBOL_FEAR                      7	=	War
+d5fnp12                                 7	=	War // animate stone construct
 SR_WIZARD_EXPEDITIOUS_RETREAT           1	=	Exploration // SR exped. retreat
 NOSR_b_w101                             1	=	Exploration // FnP Expeditious Retreat
 CLERIC_FIND_TRAPS                       1	=	Exploration
@@ -158,17 +161,15 @@ WIZARD_TELEPORT_FIELD                   6	=	Exploration
 WIZARD_IMPROVED_HASTE                   6	=	Exploration
 WIZARD_FREEDOM                          7	=	Exploration
 WIZARD_MAZE                             7	=	Exploration
-d5fnp03                                 0	=	knowledge // identify
 CLERIC_DETECT_EVIL                      1	=	Knowledge
 CLERIC_KNOW_ALIGNMENT                   1	=	Knowledge
-WIZARD_INFRAVISION                      2	=	Knowledge
-WIZARD_TRUE_STRIKE                      2	=	Knowledge // sr true strike
+d5fnp03                                 2	=	knowledge // new identify
+SR_WIZARD_TRUE_STRIKE                   2	=	Knowledge // sr true strike
 WIZARD_CLAIRVOYANCE                     2	=	Knowledge
 CLERIC_INVISIBILITY_PURGE               3	=	Knowledge
 CLERIC_SPIRITUAL_CLARITY                3	=	Knowledge
-WIZARD_DETECT_ILLUSION                  4	=	Knowledge
-WIZARD_ORACLE                           5	=	Knowledge
-CLERIC_TRUE_SIGHT                       6	=	Knowledge
+WIZARD_ORACLE                           4	=	Knowledge
+CLERIC_TRUE_SIGHT                       5	=	Knowledge
 WIZARD_CONTINGENCY                      7	=	Knowledge
 CLERIC_CAMOUFLAGE                       1	=	Deception
 NOSR_WIZARD_REFLECTED_IMAGE             1	=	Deception
@@ -185,10 +186,10 @@ CLERIC_COMMAND                          1	=	Thought
 CLERIC_CHARM_PERSON                     1	=	Thought
 CLERIC_ENTHRALL                         2	=	Thought
 CLERIC_FORBID 						    2	=	Thought
+CLERIC_RIGID_THINKING                   2	=	Thought
 CLERIC_MURDEROUS_COMMAND                3	=	Thought
 CLERIC_DICTATE                          3	=	Thought
 CLERIC_EXALTATION                       3	=	Thought
-CLERIC_RIGID_THINKING                   3	=	Thought
 CLERIC_MENTAL_DOMINATION                4	=	Thought
 CLERIC_BLOOD_RAGE                       4	=	Thought
 b_w428                                  4	=	Thought // Emotion: Fear
@@ -244,22 +245,18 @@ CLERIC_HOLD_ANIMAL                      1	=	Animal
 CLERIC_ANIMAL_SUMMONING_LEVEL_1         1	=	Animal // SR Animal Summon 1
 CLERIC_BEAST_CLAW                       2	=	Animal
 CLERIC_ANIMAL_SUMMONING_LEVEL_2         2	=	Animal // SR Animal Summon 2
-CLERIC_SUMMON_INSECTS                   3	=	Animal
 CLERIC_FERAL_INSTINCT                   3	=	Animal
 CLERIC_ANIMAL_SUMMONING_LEVEL_3         3	=	Animal // SR Animal Summon 3
 d5fnp04                                 3	=	Animal // Magic Fang
 SR_CLERIC_ANIMAL_SUMMONING_LEVEL_4      4	=	Animal // SR Animal Summon 4
 NOSR_CLERIC_ANIMAL_SUMMONING_1          4	=	Animal
-CLERIC_GIANT_INSECT                     4	=	Animal
 SR_CLERIC_ANIMAL_SUMMONING_LEVEL_5      5	=	Animal // SR Animal Summon 5
 NOSR_CLERIC_ANIMAL_SUMMONING_2          5	=	Animal
-CLERIC_INSECT_PLAGUE                    5	=	Animal
 d5fnp05                                 5	=	Animal // Animal Growth
 SR_CLERIC_ANIMAL_SUMMONING_LEVEL_6      6	=	Animal // SR Animal Summon 6
 NOSR_CLERIC_ANIMAL_SUMMONING_3          6	=	Animal
 SR_CLERIC_ANIMAL_SUMMONING_LEVEL_7      7	=	Animal // SR Animal Summon 7
 NOSR_CLERIC_CONJURE_ANIMALS             7	=	Animal
-CLERIC_CREEPING_DOOM                    7	=	Animal
 CLERIC_ENTANGLE                         1	=	Plant
 CLERIC_GOOD_BERRIES                     1	=	Plant
 CLERIC_GOODBERRY                        1	=	Plant
@@ -273,11 +270,10 @@ CLERIC_NATURES_WRATH                    6	=	Plant
 CLERIC_ASSASSIN_VINES                   6	=	Plant
 CLERIC_STALKER                          7	=	Plant
 CLERIC_MAGIC_STONE                      1	=	Earth
-CLERIC_PROTECTION_FROM_LIGHTNING        2	=	Earth
-CLERIC_STONE_FIST                       3	=	Earth
+CLERIC_STONE_FIST                       2	=	Earth
+WIZARD_STONE_TO_FLESH                   3	=	Earth
 CLERIC_SPIKE_STONES                     4	=	Earth
 CLERIC_IRONSKIN                         5	=	Earth
-WIZARD_STONE_TO_FLESH                   5	=	Earth
 CLERIC_CONJURE_EARTH_ELEMENTAL          6	=	Earth
 WIZARD_FLESH_TO_STONE                   6	=	Earth
 CLERIC_EARTHQUAKE                       7	=	Earth
@@ -314,8 +310,8 @@ WIZARD_VITRIOLIC_SPHERE                 4	=	Water
 b_w432                                  4	=	Water // vitriolic sphere
 WIZARD_CONE_OF_COLD                     4	=	Water
 WIZARD_ICE_STORM                        5	=	Water
-sppr520                                 5	=	Water // SR pro. acid
-sppr521                                 5	=	Water // SR pro. cold
+CLERIC_PROTECTION_FROM_ACID             5	=	Water // SR pro. acid
+CLERIC_PROTECTION_FROM_COLD             5	=	Water // SR pro. cold
 CLERIC_MIST_OF_ELDATH                   6	=	Water
 CLERIC_CONJURE_WATER_ELEMENTAL          6	=	Water
 b_pr602                                 6	=	Water // water elemental
@@ -324,10 +320,11 @@ b_w724                                  7	=	Water // acid storm
 WIZARD_BURNING_HANDS                    1	=	Fire
 CLERIC_RESIST_FIRE                      1	=	Fire
 CLERIC_FLAME_BLADE                      2	=	Fire
-WIZARD_AGANNAZAR_SCORCHER               2	=	Fire
+CLERIC_FIRE_TRAP                        2	=	Fire
 NOSR_CLERIC_PROTECTION_FROM_FIRE        3	=	Fire
-WIZARD_FLAME_ARROW                      3	=	Fire
-CLERIC_PRODUCE_FIRE                     4	=	Fire
+CLERIC_PRODUCE_FIRE                     3	=	Fire
+WIZARD_FLAME_ARROW                      4	=	Fire
+SR_CLERIC_PROTECTION_FROM_FIRE          4	=	Fire
 WIZARD_FIRE_SHIELD_RED                  5	=	Fire
 CLERIC_FLAME_STRIKE                     5	=	Fire
 CLERIC_CONJURE_FIRE_ELEMENTAL           6	=	Fire
@@ -335,6 +332,7 @@ CLERIC_FIRE_SEEDS                       6	=	Fire
 CLERIC_FIRE_STORM                       7	=	Fire
 CLERIC_SUNSCORCH                        1	=	Light
 CLERIC_ALICORN_LANCE                    2	=	Light
+WIZARD_GLITTERDUST                      2	=	Light
 NOSR_CLERIC_REPULSE_UNDEAD              3	=	Light
 CLERIC_MOONBLADE                        3	=	Light
 CLERIC_WALL_OF_MOONLIGHT                4	=	Light
@@ -355,16 +353,17 @@ WIZARD_SHADES                           6	=	Shadow
 B_W629                                  6	=	Shadow // Shades
 WIZARD_WRAITH_FORM                      7	=	Shadow
 WIZARD_POWER_WORD_BLIND                 7	=	Shadow
-CLERIC_SILENCE_15_FOOT                  1	=	Magic
-CLERIC_MISCAST_MAGIC                    2	=	Magic
+CLERIC_MISCAST_MAGIC                    1	=	Magic
+CLERIC_SILENCE_15_FOOT                  2	=	Magic
 CLERIC_DISPEL_MAGIC                     3	=	Magic
 WIZARD_MINOR_SPELL_DEFLECTION           3	=	Magic
 WIZARD_SECRET_WORD                      4	=	Magic
-WIZARD_MINOR_SPELL_TURNING              5	=	Magic
+WIZARD_MINOR_GLOBE_OF_INVULNERABILITY   5	=	Magic
 WIZARD_BREACH                           5	=	Magic
 CLERIC_MAGIC_RESISTANCE                 6	=	Magic
-WIZARD_GLOBE_OF_INVULNERABILITY         6	=	Magic
-WIZARD_PIERCE_SHIELD                    7	=	Magic
+CLERIC_SHIELD_OF_THE_ARCHONS            7	=	Magic
+WIZARD_RUBY_RAY_OF_REVERSAL             7	=	Magic
+CLERIC_FAERIE_FIRE                      1	=	Astral
 CLERIC_SPIRIT_WARD                      1	=	Astral // modify to work against all planar creatures
 CLERIC_WRITHING_FOG                     2	=	Astral
 CLERIC_SPIRITUAL_CLARITY                3	=	Astral
@@ -415,7 +414,7 @@ DEFINE_ACTION_FUNCTION ur_priest_spheres
   ACTION_DEFINE_ASSOCIATIVE_ARRAY ur_priest_spheres_array BEGIN
 	Life		 		=> x
 	Death		 		=> major
-	Creation			=> x
+	Vermin				=> x
 	Destruction		 	=> major
 	Protection		 	=> major
 	War		 			=> major
@@ -451,7 +450,7 @@ DEFINE_ACTION_FUNCTION auril_spheres
   ACTION_DEFINE_ASSOCIATIVE_ARRAY auril_spheres_array BEGIN
 	Life 				=> minor
 	Death 				=> minor
-	Creation 			=> x
+	Vermin	 			=> x
 	Destruction 		=> major
 	Protection 			=> major
 	War 				=> minor
@@ -484,7 +483,7 @@ DEFINE_ACTION_FUNCTION azuth_spheres
   ACTION_DEFINE_ASSOCIATIVE_ARRAY azuth_spheres_array BEGIN
 	Life 				=> major
 	Death 				=> x
-	Creation 			=> major
+	Vermin	 			=> x
 	Destruction 		=> major
 	Protection 			=> major
 	War 				=> x
@@ -517,8 +516,8 @@ DEFINE_ACTION_FUNCTION bane_spheres
   ACTION_DEFINE_ASSOCIATIVE_ARRAY bane_spheres_array BEGIN
 	Life				=> minor
 	Death 				=> major
-	Creation 			=> x
-	Destruction 		=> major
+	Vermin	 			=> x
+	Destruction 		=> minor
 	Protection 			=> minor
 	War 				=> major
 	Exploration			=> minor
@@ -550,7 +549,7 @@ DEFINE_ACTION_FUNCTION beshaba_spheres
   ACTION_DEFINE_ASSOCIATIVE_ARRAY beshaba_spheres_array BEGIN
 	Life		 		=> major
 	Death		 		=> major
-	Creation			=> x
+	Vermin				=> x
 	Destruction		 	=> minor
 	Protection		 	=> major
 	War		 			=> x
@@ -583,7 +582,7 @@ DEFINE_ACTION_FUNCTION cyric_spheres
   ACTION_DEFINE_ASSOCIATIVE_ARRAY cyric_spheres_array BEGIN
 	Life		 		=> minor
 	Death		 		=> major
-	Creation			=> x
+	Vermin				=> x
 	Destruction		 	=> major
 	Protection		 	=> x
 	War		 			=> x
@@ -616,7 +615,7 @@ DEFINE_ACTION_FUNCTION deneir_spheres
   ACTION_DEFINE_ASSOCIATIVE_ARRAY deneir_spheres_array BEGIN
 	Life		 		=> minor
 	Death		 		=> x
-	Creation			=> minor
+	Vermin				=> x
 	Destruction		 	=> x
 	Protection		 	=> major
 	War		 			=> x
@@ -649,7 +648,7 @@ DEFINE_ACTION_FUNCTION garagos_spheres
   ACTION_DEFINE_ASSOCIATIVE_ARRAY garagos_spheres_array BEGIN
 	Life 				=> minor
 	Death 				=> x
-	Creation 			=> x
+	Vermin	 			=> x
 	Destruction 		=> major
 	Protection 			=> minor
 	War 				=> major
@@ -681,7 +680,7 @@ DEFINE_ACTION_FUNCTION helm_spheres
   ACTION_DEFINE_ASSOCIATIVE_ARRAY helm_spheres_array BEGIN
 	Life		 		=> major
 	Death		 		=> minor
-	Creation			=> major
+	Vermin				=> x
 	Destruction		 	=> major
 	Protection		 	=> major
 	War		 			=> major
@@ -714,7 +713,7 @@ DEFINE_ACTION_FUNCTION ilmater_spheres
   ACTION_DEFINE_ASSOCIATIVE_ARRAY ilmater_spheres_array BEGIN
 	Life		 		=> major
 	Death		 		=> x
-	Creation			=> x
+	Vermin				=> x
 	Destruction		 	=> minor
 	Protection		 	=> major
 	War		 			=> x
@@ -747,7 +746,7 @@ DEFINE_ACTION_FUNCTION kelemvor_spheres
   ACTION_DEFINE_ASSOCIATIVE_ARRAY kelemvor_spheres_array BEGIN
 	Life		 		=> major
 	Death		 		=> major
-	Creation			=> x
+	Vermin				=> x
 	Destruction		 	=> x
 	Protection		 	=> major
 	War		 			=> major
@@ -780,7 +779,7 @@ DEFINE_ACTION_FUNCTION kossuth_spheres
   ACTION_DEFINE_ASSOCIATIVE_ARRAY kossuth_spheres_array BEGIN
 	Life 				=> major
 	Death 				=> minor
-	Creation 			=> x
+	Vermin	 			=> x
 	Destruction 		=> major
 	Protection 			=> major
 	War 				=> minor
@@ -813,7 +812,7 @@ DEFINE_ACTION_FUNCTION lathander_spheres
   ACTION_DEFINE_ASSOCIATIVE_ARRAY lathander_spheres_array BEGIN
 	Life		 		=> major
 	Death		 		=> x
-	Creation			=> minor
+	Vermin				=> x
 	Destruction		 	=> x
 	Protection		 	=> major
 	War		 			=> minor
@@ -846,7 +845,7 @@ DEFINE_ACTION_FUNCTION leira_spheres
   ACTION_DEFINE_ASSOCIATIVE_ARRAY leira_spheres_array BEGIN
 	Life		 		=> major
 	Death		 		=> x
-	Creation			=> x
+	Vermin				=> x
 	Destruction		 	=> x
 	Protection		 	=> minor
 	War		 			=> x
@@ -879,7 +878,7 @@ DEFINE_ACTION_FUNCTION loviatar_spheres
   ACTION_DEFINE_ASSOCIATIVE_ARRAY loviatar_spheres_array BEGIN
 	Life		 		=> major
 	Death		 		=> major
-	Creation			=> minor
+	Vermin				=> minor
 	Destruction		 	=> minor
 	Protection		 	=> x
 	War		 			=> minor
@@ -912,7 +911,7 @@ DEFINE_ACTION_FUNCTION malar_spheres
   ACTION_DEFINE_ASSOCIATIVE_ARRAY malar_spheres_array BEGIN
 	Life 			=> minor
 	Death 			=> minor
-	Creation 		=> x
+	Vermin	 		=> x
 	Destruction 	=> major
 	Protection 		=> x
 	War 			=> x
@@ -945,7 +944,7 @@ DEFINE_ACTION_FUNCTION mask_spheres
   ACTION_DEFINE_ASSOCIATIVE_ARRAY mask_spheres_array BEGIN
 	Life		 		=> major
 	Death		 		=> minor
-	Creation			=> x
+	Vermin				=> x
 	Destruction		 	=> major
 	Protection		 	=> minor
 	War		 			=> x
@@ -978,7 +977,7 @@ DEFINE_ACTION_FUNCTION mielikki_spheres
   ACTION_DEFINE_ASSOCIATIVE_ARRAY mielikki_spheres_array BEGIN
 	Life 				=> major
 	Death 				=> x
-	Creation 			=> minor
+	Vermin	 			=> x
 	Destruction 		=> x
 	Protection 			=> minor
 	War 				=> x
@@ -1005,19 +1004,52 @@ END
 
 //___________________________________________________________________________________
 //
+DEFINE_ACTION_FUNCTION milil_spheres 
+  RET_ARRAY milil_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY milil_spheres_array BEGIN
+	Life 				=> major
+	Death 				=> x
+	Vermin	 			=> x
+	Destruction 		=> minor
+	Protection 			=> major
+	War 				=> x
+	Exploration 		=> major
+	Knowledge 			=> major
+	Deception 			=> x
+	Thought 			=> major
+	Dread 				=> minor
+	Vigor 				=> minor
+	Affliction 			=> x
+	Animal 				=> x
+	Plant 				=> x
+	Earth 				=> x
+	Water 				=> x
+	Air 				=> major
+	Fire 				=> x
+	Light 				=> major
+	Shadow 				=> x
+	Magic 				=> minor
+	Astral   			=> x
+ END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
 DEFINE_ACTION_FUNCTION moander_spheres 
   RET_ARRAY moander_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY moander_spheres_array BEGIN
 	Life		 		=> x
 	Death		 		=> major
-	Creation			=> x
+	Vermin				=> minor
 	Destruction		 	=> major
 	Protection		 	=> x
 	War		 			=> x
 	Exploration		  	=> minor
 	Knowledge		 	=> x
-	Deception	 		=> minor
+	Deception	 		=> x
 	Thought		 		=> x
 	Dread		 		=> major
 	Vigor		 		=> minor
@@ -1044,7 +1076,7 @@ DEFINE_ACTION_FUNCTION mystra_spheres
   ACTION_DEFINE_ASSOCIATIVE_ARRAY mystra_spheres_array BEGIN
 	Life		 		=> major
 	Death		 		=> x
-	Creation			=> major
+	Vermin				=> x
 	Destruction		 	=> major
 	Protection		 	=> major
 	War		 			=> x
@@ -1077,7 +1109,7 @@ DEFINE_ACTION_FUNCTION oghma_spheres
   ACTION_DEFINE_ASSOCIATIVE_ARRAY oghma_spheres_array BEGIN
 	Life 				=> major
 	Death 				=> minor
-	Creation 			=> major
+	Vermin	 			=> x
 	Destruction 		=> minor
 	Protection 			=> major
 	War 				=> x
@@ -1110,7 +1142,7 @@ DEFINE_ACTION_FUNCTION redknight_spheres
   ACTION_DEFINE_ASSOCIATIVE_ARRAY redknight_spheres_array BEGIN
 	Life 				=> minor
 	Death 				=> minor
-	Creation 			=> minor
+	Vermin	 			=> x
 	Destruction 		=> major
 	Protection 			=> major
 	War 				=> major
@@ -1143,7 +1175,7 @@ DEFINE_ACTION_FUNCTION selune_spheres
   ACTION_DEFINE_ASSOCIATIVE_ARRAY selune_spheres_array BEGIN
 	Life 				=> major
 	Death 				=> x
-	Creation 			=> x
+	Vermin	 			=> x
 	Destruction 		=> x
 	Protection 			=> major
 	War 				=> minor
@@ -1176,7 +1208,7 @@ DEFINE_ACTION_FUNCTION shar_spheres
   ACTION_DEFINE_ASSOCIATIVE_ARRAY shar_spheres_array BEGIN
 	Life		 		=> minor
 	Death		 		=> major
-	Creation			=> x
+	Vermin				=> x
 	Destruction		 	=> major
 	Protection		 	=> minor
 	War		 			=> x
@@ -1209,7 +1241,7 @@ DEFINE_ACTION_FUNCTION shaundakul_spheres
   ACTION_DEFINE_ASSOCIATIVE_ARRAY shaundakul_spheres_array BEGIN
 	Life 				=> major
 	Death 				=> x
-	Creation 			=> minor
+	Vermin	 			=> x
 	Destruction 		=> x
 	Protection 			=> major
 	War 				=> x
@@ -1242,7 +1274,7 @@ DEFINE_ACTION_FUNCTION sune_spheres
   ACTION_DEFINE_ASSOCIATIVE_ARRAY sune_spheres_array BEGIN
 	Life		 		=> major
 	Death		 		=> x
-	Creation			=> x
+	Vermin				=> x
 	Destruction		 	=> x
 	Protection		 	=> minor
 	War		 			=> x
@@ -1275,7 +1307,7 @@ DEFINE_ACTION_FUNCTION talos_spheres
   ACTION_DEFINE_ASSOCIATIVE_ARRAY talos_spheres_array BEGIN
 	Life		 		=> major
 	Death		 		=> x
-	Creation			=> x
+	Vermin				=> x
 	Destruction		 	=> major
 	Protection		 	=> major
 	War		 			=> minor
@@ -1308,7 +1340,7 @@ DEFINE_ACTION_FUNCTION tempus_spheres
   ACTION_DEFINE_ASSOCIATIVE_ARRAY tempus_spheres_array BEGIN
 	Life		 		=> major
 	Death		 		=> x
-	Creation			=> major
+	Vermin				=> x
 	Destruction		 	=> major
 	Protection		 	=> major
 	War		 			=> major
@@ -1341,7 +1373,7 @@ DEFINE_ACTION_FUNCTION torm_spheres
   ACTION_DEFINE_ASSOCIATIVE_ARRAY torm_spheres_array BEGIN
 	Life		 		=> major
 	Death		 		=> major
-	Creation			=> major
+	Vermin				=> x
 	Destruction		 	=> minor
 	Protection		 	=> focus
 	War		 			=> major
@@ -1374,7 +1406,7 @@ DEFINE_ACTION_FUNCTION tymora_spheres
   ACTION_DEFINE_ASSOCIATIVE_ARRAY tymora_spheres_array BEGIN
 	Life		 		=> major
 	Death		 		=> x
-	Creation			=> x
+	Vermin				=> x
 	Destruction		 	=> minor
 	Protection		 	=> major
 	War		 			=> x
@@ -1407,9 +1439,9 @@ DEFINE_ACTION_FUNCTION tyr_spheres
   ACTION_DEFINE_ASSOCIATIVE_ARRAY tyr_spheres_array BEGIN
 	Life				=> major
 	Death				=> minor
-	Creation			=> major
+	Vermin				=> x
 	Destruction			=> minor
-	Protection			=> major
+	Protection			=> focus
 	War					=> major
 	Exploration			=> x
 	Knowledge			=> major
@@ -1440,7 +1472,7 @@ DEFINE_ACTION_FUNCTION ulutiu_spheres
   ACTION_DEFINE_ASSOCIATIVE_ARRAY ulutiu_spheres_array BEGIN
 	Life 				=> major
 	Death 				=> x
-	Creation 			=> x
+	Vermin	 			=> x
 	Destruction 		=> x
 	Protection 			=> major
 	War 				=> minor
@@ -1473,7 +1505,7 @@ DEFINE_ACTION_FUNCTION umberlee_spheres
   ACTION_DEFINE_ASSOCIATIVE_ARRAY umberlee_spheres_array BEGIN
 	Life		 		=> major
 	Death		 		=> x
-	Creation			=> x
+	Vermin				=> x
 	Destruction		 	=> major
 	Protection		 	=> major
 	War		 			=> minor
@@ -1506,7 +1538,7 @@ DEFINE_ACTION_FUNCTION xvim_spheres
   ACTION_DEFINE_ASSOCIATIVE_ARRAY xvim_spheres_array BEGIN
 	Life 				=> minor
 	Death 				=> major
-	Creation 			=> minor
+	Vermin	 			=> minor
 	Destruction 		=> major
 	Protection 			=> x
 	War 				=> major
@@ -1542,7 +1574,7 @@ DEFINE_ACTION_FUNCTION corellon_spheres
   ACTION_DEFINE_ASSOCIATIVE_ARRAY corellon_spheres_array BEGIN
 	Life 				=> major
 	Death 				=> x
-	Creation 			=> major
+	Vermin	 			=> x
 	Destruction 		=> minor
 	Protection 			=> major
 	War 				=> major
@@ -1575,13 +1607,13 @@ DEFINE_ACTION_FUNCTION eilistraee_spheres
   ACTION_DEFINE_ASSOCIATIVE_ARRAY eilistraee_spheres_array BEGIN
 	Life 				=> major
 	Death 				=> x
-	Creation 			=> major
+	Vermin	 			=> x
 	Destruction 		=> x
 	Protection 			=> major
 	War 				=> x
 	Exploration  		=> minor
 	Knowledge 			=> minor
-	Deception 			=> minor
+	Deception 			=> major
 	Thought 			=> minor
 	Dread 				=> x
 	Vigor 				=> major
@@ -1595,7 +1627,7 @@ DEFINE_ACTION_FUNCTION eilistraee_spheres
 	Light 				=> major
 	Shadow 				=> major
 	Magic 				=> x
-	Astral   			=> x
+	Astral   			=> minor
  END
 END
 //___________________________________________________________________________________
@@ -1608,7 +1640,7 @@ DEFINE_ACTION_FUNCTION moradin_spheres
   ACTION_DEFINE_ASSOCIATIVE_ARRAY moradin_spheres_array BEGIN
 	Life 				=> major
 	Death 				=> x
-	Creation 			=> major
+	Vermin	 			=> x
 	Destruction 		=> major
 	Protection 			=> major
 	War 				=> minor
@@ -1641,7 +1673,7 @@ DEFINE_ACTION_FUNCTION clangeddin_spheres
   ACTION_DEFINE_ASSOCIATIVE_ARRAY clangeddin_spheres_array BEGIN
 	Life 				=> major
 	Death 				=> x
-	Creation 			=> minor
+	Vermin	 			=> x
 	Destruction 		=> major
 	Protection 			=> major
 	War 				=> major
@@ -1674,7 +1706,7 @@ DEFINE_ACTION_FUNCTION marthammor_spheres
   ACTION_DEFINE_ASSOCIATIVE_ARRAY marthammor_spheres_array BEGIN
 	Life 				=> major
 	Death 				=> x
-	Creation 			=> minor
+	Vermin	 			=> x
 	Destruction 		=> major
 	Protection 			=> major
 	War 				=> major
@@ -1701,13 +1733,46 @@ END
 
 //___________________________________________________________________________________
 //
+DEFINE_ACTION_FUNCTION haela_spheres 
+  RET_ARRAY haela_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY haela_spheres_array BEGIN
+	Life		 		=> major
+	Death		 		=> x
+	Vermin				=> x
+	Destruction		 	=> major
+	Protection		 	=> major
+	War		 			=> major
+	Exploration		  	=> minor
+	Knowledge		 	=> minor
+	Deception	 		=> x
+	Thought		 		=> minor
+	Dread		 		=> x
+	Vigor		 		=> major
+	Affliction		 	=> x
+	Animal		 		=> x
+	Plant		 		=> x
+	Earth		 		=> minor
+	Water		 		=> x
+	Air		 			=> minor
+	Fire		 		=> x
+	Light	 			=> minor
+	Shadow		 		=> x
+	Magic		 		=> minor
+	Astral		    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
 DEFINE_ACTION_FUNCTION baravar_spheres 
   RET_ARRAY baravar_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY baravar_spheres_array BEGIN
 	Life		 		=> major
 	Death		 		=> x
-	Creation			=> x
+	Vermin				=> x
 	Destruction		 	=> x
 	Protection		 	=> minor
 	War		 			=> x
@@ -1740,7 +1805,7 @@ DEFINE_ACTION_FUNCTION baervan_spheres
   ACTION_DEFINE_ASSOCIATIVE_ARRAY baervan_spheres_array BEGIN
 	Life		 		=> major
 	Death		 		=> x
-	Creation			=> x
+	Vermin				=> x
 	Destruction		 	=> x
 	Protection		 	=> major
 	War		 			=> x
@@ -1773,7 +1838,7 @@ DEFINE_ACTION_FUNCTION urdlen_spheres
   ACTION_DEFINE_ASSOCIATIVE_ARRAY urdlen_spheres_array BEGIN
 	Life		 		=> minor
 	Death		 		=> major
-	Creation			=> x
+	Vermin				=> minor
 	Destruction		 	=> major
 	Protection		 	=> x
 	War		 			=> x
@@ -1806,7 +1871,7 @@ DEFINE_ACTION_FUNCTION yondalla_spheres
   ACTION_DEFINE_ASSOCIATIVE_ARRAY yondalla_spheres_array BEGIN
 	Life		 		=> major
 	Death		 		=> x
-	Creation			=> minor
+	Vermin				=> x
 	Destruction		 	=> major
 	Protection		 	=> major
 	War		 			=> x
@@ -1839,7 +1904,7 @@ DEFINE_ACTION_FUNCTION arvoreen_spheres
   ACTION_DEFINE_ASSOCIATIVE_ARRAY arvoreen_spheres_array BEGIN
 	Life		 		=> minor
 	Death		 		=> x
-	Creation			=> x
+	Vermin				=> x
 	Destruction		 	=> major
 	Protection		 	=> major
 	War		 			=> major
@@ -1872,7 +1937,7 @@ DEFINE_ACTION_FUNCTION brandobaris_spheres
   ACTION_DEFINE_ASSOCIATIVE_ARRAY brandobaris_spheres_array BEGIN
 	Life		 		=> major
 	Death		 		=> x
-	Creation			=> x
+	Vermin				=> x
 	Destruction		 	=> x
 	Protection		 	=> major
 	War		 			=> minor
@@ -1905,7 +1970,7 @@ DEFINE_ACTION_FUNCTION gruumsh_spheres
   ACTION_DEFINE_ASSOCIATIVE_ARRAY gruumsh_spheres_array BEGIN
 	Life 				=> minor
 	Death 				=> minor
-	Creation 			=> minor
+	Vermin	 			=> minor
 	Destruction 		=> major
 	Protection 			=> minor
 	War 				=> major
@@ -1938,7 +2003,7 @@ DEFINE_ACTION_FUNCTION luthic_spheres
   ACTION_DEFINE_ASSOCIATIVE_ARRAY luthic_spheres_array BEGIN
 	Life 				=> major
 	Death 				=> major
-	Creation 			=> minor
+	Vermin	 			=> minor
 	Destruction 		=> major
 	Protection 			=> major
 	War 				=> minor
@@ -1974,7 +2039,7 @@ DEFINE_ACTION_FUNCTION druid_forest_spheres
   ACTION_DEFINE_ASSOCIATIVE_ARRAY druid_forest_spheres_array BEGIN
 	Life 			=> minor
 	Death 			=> x
-	Creation 		=> x
+	Vermin	 		=> minor
 	Destruction 	=> x
 	Protection 		=> x
 	War 			=> x
@@ -2007,7 +2072,7 @@ DEFINE_ACTION_FUNCTION druid_totemic_spheres
   ACTION_DEFINE_ASSOCIATIVE_ARRAY druid_totemic_spheres_array BEGIN
 	Life 			=> minor
 	Death 			=> x
-	Creation 		=> x
+	Vermin	 		=> minor
 	Destruction 	=> x
 	Protection 		=> x
 	War 			=> x
@@ -2040,7 +2105,7 @@ DEFINE_ACTION_FUNCTION druid_hivekeeper_spheres
   ACTION_DEFINE_ASSOCIATIVE_ARRAY druid_hivekeeper_spheres_array BEGIN
 	Life 			=> minor
 	Death 			=> x
-	Creation 		=> x
+	Vermin	 		=> focus
 	Destruction 	=> x
 	Protection 		=> x
 	War 			=> x
@@ -2073,7 +2138,7 @@ DEFINE_ACTION_FUNCTION druid_northern_spheres
   ACTION_DEFINE_ASSOCIATIVE_ARRAY druid_northern_spheres_array BEGIN
 	Life 			=> minor
 	Death 			=> x
-	Creation 		=> x
+	Vermin	 		=> x
 	Destruction 	=> x
 	Protection 		=> x
 	War 			=> x
@@ -2106,25 +2171,25 @@ DEFINE_ACTION_FUNCTION druid_shadow_spheres
   ACTION_DEFINE_ASSOCIATIVE_ARRAY druid_shadow_spheres_array BEGIN
 	Life 			=> minor
 	Death 			=> x
-	Creation 		=> x
+	Vermin	 		=> major
 	Destruction 	=> x
 	Protection 		=> x
-	War 			=> x
+	War 			=> major
 	Exploration   	=> minor
-	Knowledge 		=> minor
+	Knowledge 		=> x
 	Deception 		=> x
-	Thought 		=> minor
-	Dread 			=> minor
-	Vigor 			=> major
-	Affliction 		=> minor
-	Animal 			=> major
+	Thought 		=> x
+	Dread 			=> x
+	Vigor 			=> minor
+	Affliction 		=> major
+	Animal 			=> minor
 	Plant 			=> major
 	Earth 			=> major
-	Water 			=> major
-	Air 			=> major
-	Fire 			=> x
+	Water 			=> minor
+	Air 			=> minor
+	Fire 			=> major
 	Light 			=> x
-	Shadow 			=> major
+	Shadow 			=> minor
 	Magic 			=> x
 	Astral		 	=> x
  END
@@ -2139,7 +2204,7 @@ DEFINE_ACTION_FUNCTION druid_gray_spheres
   ACTION_DEFINE_ASSOCIATIVE_ARRAY druid_gray_spheres_array BEGIN
 	Life 			=> minor
 	Death 			=> x
-	Creation 		=> x
+	Vermin	 		=> major
 	Destruction 	=> x
 	Protection 		=> x
 	War 			=> x
@@ -2150,7 +2215,7 @@ DEFINE_ACTION_FUNCTION druid_gray_spheres
 	Dread 			=> minor
 	Vigor 			=> major
 	Affliction 		=> minor
-	Animal 			=> major
+	Animal 			=> minor
 	Plant 			=> major
 	Earth 			=> major
 	Water 			=> major
@@ -2172,7 +2237,7 @@ DEFINE_ACTION_FUNCTION druid_lost_spheres
   ACTION_DEFINE_ASSOCIATIVE_ARRAY druid_lost_spheres_array BEGIN
 	Life 			=> minor
 	Death 			=> major
-	Creation 		=> x
+	Vermin	 		=> x
 	Destruction 	=> x
 	Protection 		=> x
 	War 			=> x
@@ -2183,7 +2248,7 @@ DEFINE_ACTION_FUNCTION druid_lost_spheres
 	Dread 			=> x
 	Vigor 			=> major
 	Affliction 		=> minor
-	Animal 			=> major
+	Animal 			=> minor
 	Plant 			=> major
 	Earth 			=> major
 	Water 			=> major
@@ -2203,9 +2268,9 @@ DEFINE_ACTION_FUNCTION beast_lord_spheres
   RET_ARRAY beast_lord_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY beast_lord_spheres_array BEGIN
-	Life 			=> minor
+	Life 			=> major
 	Death 			=> minor
-	Creation 		=> x
+	Vermin	 		=> x
 	Destruction 	=> x
 	Protection 		=> x
 	War 			=> x
@@ -2220,7 +2285,7 @@ DEFINE_ACTION_FUNCTION beast_lord_spheres
 	Plant 			=> x
 	Earth 			=> x
 	Water 			=> minor
-	Air 			=> x
+	Air 			=> minor
 	Fire 			=> x
 	Light 			=> x
 	Shadow 			=> minor
@@ -2238,7 +2303,7 @@ DEFINE_ACTION_FUNCTION elementalist_spheres
   ACTION_DEFINE_ASSOCIATIVE_ARRAY elementalist_spheres_array BEGIN
 	Life 			=> minor
 	Death 			=> x
-	Creation 		=> x
+	Vermin	 		=> x
 	Destruction 	=> minor
 	Protection 		=> minor
 	War 			=> x
@@ -2271,7 +2336,7 @@ DEFINE_ACTION_FUNCTION mystic_earth_spheres
   ACTION_DEFINE_ASSOCIATIVE_ARRAY mystic_earth_spheres_array BEGIN
 	Life 			=> major
 	Death 			=> x
-	Creation 		=> x
+	Vermin	 		=> x
 	Destruction 	=> x
 	Protection 		=> major
 	War 			=> x
@@ -2290,8 +2355,8 @@ DEFINE_ACTION_FUNCTION mystic_earth_spheres
 	Fire 			=> x
 	Light 			=> x
 	Shadow 			=> x
-	Magic 			=> major
-	Astral			=> minor
+	Magic 			=> minor
+	Astral			=> major
  END
 END
 //___________________________________________________________________________________
@@ -2304,7 +2369,7 @@ DEFINE_ACTION_FUNCTION mystic_water_spheres
   ACTION_DEFINE_ASSOCIATIVE_ARRAY mystic_water_spheres_array BEGIN
 	Life 			=> major
 	Death 			=> x
-	Creation 		=> x
+	Vermin	 		=> x
 	Destruction 	=> x
 	Protection 		=> x
 	War 			=> x
@@ -2323,8 +2388,8 @@ DEFINE_ACTION_FUNCTION mystic_water_spheres
 	Fire 			=> x
 	Light 			=> x
 	Shadow 			=> x
-	Magic 			=> major
-	Astral			=> minor
+	Magic 			=> minor
+	Astral			=> major
  END
 END
 //___________________________________________________________________________________
@@ -2337,7 +2402,7 @@ DEFINE_ACTION_FUNCTION mystic_air_spheres
   ACTION_DEFINE_ASSOCIATIVE_ARRAY mystic_air_spheres_array BEGIN
 	Life 			=> major
 	Death 			=> x
-	Creation 		=> x
+	Vermin	 		=> x
 	Destruction 	=> x
 	Protection 		=> minor
 	War 			=> x
@@ -2356,8 +2421,8 @@ DEFINE_ACTION_FUNCTION mystic_air_spheres
 	Fire 			=> x
 	Light 			=> minor
 	Shadow 			=> x
-	Magic 			=> major
-	Astral			=> minor
+	Magic 			=> minor
+	Astral			=> major
  END
 END
 //___________________________________________________________________________________
@@ -2370,7 +2435,7 @@ DEFINE_ACTION_FUNCTION mystic_fire_spheres
   ACTION_DEFINE_ASSOCIATIVE_ARRAY mystic_fire_spheres_array BEGIN
 	Life 			=> major
 	Death 			=> x
-	Creation 		=> x
+	Vermin	 		=> x
 	Destruction 	=> minor
 	Protection 		=> major
 	War 			=> x
@@ -2389,8 +2454,8 @@ DEFINE_ACTION_FUNCTION mystic_fire_spheres
 	Fire 			=> focus
 	Light 			=> major
 	Shadow 			=> x
-	Magic 			=> major
-	Astral			=> minor
+	Magic 			=> minor
+	Astral			=> major
  END
 END
 //___________________________________________________________________________________
@@ -2403,7 +2468,7 @@ DEFINE_ACTION_FUNCTION mystic_light_spheres
   ACTION_DEFINE_ASSOCIATIVE_ARRAY mystic_light_spheres_array BEGIN
 	Life 			=> major
 	Death 			=> x
-	Creation 		=> x
+	Vermin	 		=> x
 	Destruction 	=> x
 	Protection 		=> major
 	War 			=> x
@@ -2422,8 +2487,8 @@ DEFINE_ACTION_FUNCTION mystic_light_spheres
 	Fire 			=> minor
 	Light 			=> focus
 	Shadow 			=> x
-	Magic 			=> major
-	Astral			=> minor
+	Magic 			=> minor
+	Astral			=> major
  END
 END
 //___________________________________________________________________________________
@@ -2436,7 +2501,7 @@ DEFINE_ACTION_FUNCTION mystic_shadow_spheres
   ACTION_DEFINE_ASSOCIATIVE_ARRAY mystic_shadow_spheres_array BEGIN
 	Life 			=> minor
 	Death 			=> x
-	Creation 		=> x
+	Vermin	 		=> x
 	Destruction 	=> x
 	Protection 		=> x
 	War 			=> x
@@ -2455,8 +2520,8 @@ DEFINE_ACTION_FUNCTION mystic_shadow_spheres
 	Fire 			=> x
 	Light 			=> x
 	Shadow 			=> focus
-	Magic 			=> major
-	Astral			=> minor
+	Magic 			=> minor
+	Astral			=> major
  END
 END
 //___________________________________________________________________________________
@@ -2469,7 +2534,7 @@ DEFINE_ACTION_FUNCTION ranger_forest_spheres
   ACTION_DEFINE_ASSOCIATIVE_ARRAY ranger_forest_spheres_array BEGIN
 	Life 			=> ranger
 	Death 			=> x
-	Creation 		=> x
+	Vermin	 		=> x
 	Destruction 	=> x
 	Protection 		=> ranger
 	War 			=> x
@@ -2502,7 +2567,7 @@ DEFINE_ACTION_FUNCTION ranger_mountain_spheres
   ACTION_DEFINE_ASSOCIATIVE_ARRAY ranger_mountain_spheres_array BEGIN
 	Life 			=> ranger
 	Death 			=> x
-	Creation 		=> x
+	Vermin	 		=> x
 	Destruction 	=> x
 	Protection 		=> ranger
 	War 			=> x
@@ -2535,7 +2600,7 @@ DEFINE_ACTION_FUNCTION ranger_desert_spheres
   ACTION_DEFINE_ASSOCIATIVE_ARRAY ranger_desert_spheres_array BEGIN
 	Life 			=> ranger
 	Death 			=> x
-	Creation 		=> x
+	Vermin	 		=> x
 	Destruction 	=> x
 	Protection 		=> ranger
 	War 			=> x
@@ -2568,7 +2633,7 @@ DEFINE_ACTION_FUNCTION ranger_jungle_spheres
   ACTION_DEFINE_ASSOCIATIVE_ARRAY ranger_jungle_spheres_array BEGIN
 	Life 			=> ranger
 	Death 			=> x
-	Creation 		=> x
+	Vermin	 		=> ranger
 	Destruction 	=> x
 	Protection 		=> ranger
 	War 			=> x
@@ -2601,7 +2666,7 @@ DEFINE_ACTION_FUNCTION ranger_arctic_spheres
   ACTION_DEFINE_ASSOCIATIVE_ARRAY ranger_arctic_spheres_array BEGIN
 	Life 			=> ranger
 	Death 			=> x
-	Creation 		=> x
+	Vermin	 		=> x
 	Destruction 	=> x
 	Protection 		=> ranger
 	War 			=> x
@@ -2635,7 +2700,7 @@ DEFINE_ACTION_FUNCTION ranger_beastmaster_spheres
   ACTION_DEFINE_ASSOCIATIVE_ARRAY ranger_beastmaster_spheres_array BEGIN
 	Life 			=> ranger
 	Death 			=> x
-	Creation 		=> x
+	Vermin	 		=> x
 	Destruction 	=> x
 	Protection 		=> ranger
 	War 			=> x
@@ -2668,7 +2733,7 @@ DEFINE_ACTION_FUNCTION barbarian_ranger_spheres
   ACTION_DEFINE_ASSOCIATIVE_ARRAY barbarian_ranger_spheres_array BEGIN
 	Life 			=> x
 	Death 			=> x
-	Creation 		=> x
+	Vermin	 		=> x
 	Destruction 	=> x
 	Protection 		=> ranger
 	War 			=> x
@@ -2701,7 +2766,7 @@ DEFINE_ACTION_FUNCTION mage_hunter_spheres
   ACTION_DEFINE_ASSOCIATIVE_ARRAY mage_hunter_spheres_array BEGIN
 	Life 			=> ranger
 	Death 			=> x
-	Creation 		=> x
+	Vermin	 		=> x
 	Destruction 	=> x
 	Protection 		=> ranger
 	War 			=> x
@@ -2734,7 +2799,7 @@ DEFINE_ACTION_FUNCTION elven_archer_spheres
   ACTION_DEFINE_ASSOCIATIVE_ARRAY elven_archer_spheres_array BEGIN
 	Life 			=> ranger
 	Death 			=> x
-	Creation 		=> x
+	Vermin	 		=> x
 	Destruction 	=> x
 	Protection 		=> ranger
 	War 			=> x
@@ -2770,7 +2835,7 @@ DEFINE_ACTION_FUNCTION vanilla_shaman_spheres
   ACTION_DEFINE_ASSOCIATIVE_ARRAY vanilla_shaman_spheres_array BEGIN
 	Life 			=> minor
 	Death 			=> x
-	Creation 		=> x
+	Vermin	 		=> minor
 	Destruction 	=> x
 	Protection 		=> major
 	War 			=> x
@@ -2833,7 +2898,7 @@ DEFINE_ACTION_MACRO vanilla_cleric_spheres BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY clabpr01_spheres BEGIN
 	Life 			=> x
 	Death 			=> x
-	Creation 		=> x
+	Vermin	 		=> x
 	Destruction 	=> x
 	Protection 		=> x
 	War 			=> x
@@ -2888,6 +2953,8 @@ DEFINE_ACTION_MACRO vanilla_druid_spheres BEGIN
 	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5smtho#~ END
     LPF DELETE_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 0x4000 match_parameter2 = 9 STR_VAR match_resource = ~d5smaff#~ END
 	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5smaff#~ END
+    LPF DELETE_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 0x4000 match_parameter2 = 9 STR_VAR match_resource = ~d5smaff#~ END
+	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5smben#~ END
     LPF DELETE_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 0x4000 match_parameter2 = 9 STR_VAR match_resource = ~d5smfir#~ END
 	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5smfir#~ END
     LPF DELETE_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 0x4000 match_parameter2 = 9 STR_VAR match_resource = ~d5smsha#~ END
@@ -2898,7 +2965,7 @@ DEFINE_ACTION_MACRO vanilla_druid_spheres BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY clabdr01_spheres BEGIN
 	Life 			=> x
 	Death 			=> x
-	Creation 		=> x
+	Vermin	 		=> x
 	Destruction 	=> x
 	Protection 		=> x
 	War 			=> x
@@ -2949,7 +3016,7 @@ DEFINE_ACTION_MACRO vanilla_ranger_spheres BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY clabrn01_spheres BEGIN
 	Life 			=> x
 	Death 			=> x
-	Creation 		=> x
+	Vermin	 		=> x
 	Destruction 	=> x
 	Protection 		=> x
 	War 			=> x
@@ -2982,7 +3049,7 @@ DEFINE_ACTION_FUNCTION vanilla_avenger_spheres
   ACTION_DEFINE_ASSOCIATIVE_ARRAY vanilla_avenger_spheres_array BEGIN
 	Life 			=> minor
 	Death 			=> x
-	Creation 		=> x
+	Vermin	 		=> major
 	Destruction 	=> x
 	Protection 		=> x
 	War 			=> x
@@ -3015,7 +3082,7 @@ DEFINE_ACTION_FUNCTION vanilla_paladin_spheres
   ACTION_DEFINE_ASSOCIATIVE_ARRAY vanilla_paladin_spheres_array BEGIN
 	Life 			=> paladin
 	Death 			=> x
-	Creation 		=> paladin
+	Vermin	 		=> x
 	Destruction 	=> paladin
 	Protection 		=> paladin
 	War 			=> paladin
@@ -3048,7 +3115,7 @@ DEFINE_ACTION_FUNCTION vanilla_cavalier_spheres
   ACTION_DEFINE_ASSOCIATIVE_ARRAY vanilla_cavalier_spheres_array BEGIN
 	Life 			=> paladin
 	Death 			=> x
-	Creation 		=> paladin
+	Vermin	 		=> x
 	Destruction 	=> paladin
 	Protection 		=> paladin
 	War 			=> paladin
@@ -3081,8 +3148,8 @@ DEFINE_ACTION_FUNCTION vanilla_inquisitor_spheres
   ACTION_DEFINE_ASSOCIATIVE_ARRAY vanilla_inquisitor_spheres_array BEGIN
 	Life 			=> paladin
 	Death 			=> x
-	Creation 		=> paladin
-	Destruction 	=> x
+	Vermin	 		=> x
+	Destruction 	=> paladin
 	Protection 		=> paladin
 	War 			=> x
 	Exploration 	=> x
@@ -3114,7 +3181,7 @@ DEFINE_ACTION_FUNCTION vanilla_undead_hunter_spheres
   ACTION_DEFINE_ASSOCIATIVE_ARRAY vanilla_undead_hunter_spheres_array BEGIN
 	Life 			=> paladin
 	Death 			=> paladin
-	Creation 		=> paladin
+	Vermin	 		=> x
 	Destruction 	=> x
 	Protection 		=> paladin
 	War 			=> paladin
@@ -3147,8 +3214,8 @@ DEFINE_ACTION_FUNCTION vanilla_blackguard_spheres
   ACTION_DEFINE_ASSOCIATIVE_ARRAY vanilla_blackguard_spheres_array BEGIN
 	Life 			=> x
 	Death 			=> paladin
-	Creation 		=> x
-	Destruction 	=> paladin
+	Vermin	 		=> paladin
+	Destruction 	=> x
 	Protection 		=> x
 	War 			=> paladin
 	Exploration 	=> x
@@ -3167,7 +3234,7 @@ DEFINE_ACTION_FUNCTION vanilla_blackguard_spheres
 	Light 			=> x
 	Shadow 			=> paladin
 	Magic 			=> x
-	Astral			=> paladin
+	Astral			=> x
  END
 END
 //___________________________________________________________________________________
@@ -3181,7 +3248,7 @@ DEFINE_ACTION_MACRO DR_oozemaster_spheres BEGIN
  ACTION_DEFINE_ASSOCIATIVE_ARRAY a#ooze_spheres BEGIN
 	Life 			=> major
 	Death 			=> minor
-	Creation 		=> x
+	Vermin	 		=> minor
 	Destruction 	=> x
 	Protection 		=> x
 	War 			=> x
@@ -3196,7 +3263,7 @@ DEFINE_ACTION_MACRO DR_oozemaster_spheres BEGIN
 	Plant 			=> major
 	Earth 			=> major
 	Water 			=> major
-	Air 			=> minor
+	Air 			=> x
 	Fire 			=> x
 	Light 			=> x
 	Shadow 			=> minor
@@ -3212,7 +3279,7 @@ DEFINE_ACTION_MACRO DR_justifier_spheres BEGIN
  ACTION_DEFINE_ASSOCIATIVE_ARRAY a#justif_spheres BEGIN
 	Life 			=> ranger
 	Death 			=> x
-	Creation 		=> x
+	Vermin	 		=> x
 	Destruction 	=> x
 	Protection 		=> x
 	War 			=> x
@@ -3249,7 +3316,7 @@ DEFINE_ACTION_FUNCTION _spheres
   ACTION_DEFINE_ASSOCIATIVE_ARRAY _spheres_array BEGIN
 	Life		 		=> x
 	Death		 		=> x
-	Creation			=> x
+	Vermin				=> x
 	Destruction		 	=> x
 	Protection		 	=> x
 	War		 			=> x

@@ -8,7 +8,7 @@
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
-//ACTION_IF (FILE_EXISTS_IN_GAME ~d5_spheres.d5~) BEGIN	//	not needed anymore, fnP_system.tpa handles it
+//ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN	//	not needed anymore, fnP_system.tpa handles it
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -204,7 +204,7 @@ COPY ~faiths_and_powers/kits/multiclass/466_cm_bender/d5_arc6b.bam~ ~override~
 COPY ~faiths_and_powers/kits/multiclass/466_cm_bender/d5_arc6c.bam~ ~override~
 //Huge thanks to DreamSlaveOne at forums.gibberlings3.net for providing the .BAMs for these abilities!
 /*
-ACTION_IF FILE_EXISTS_IN_GAME ~d5_wiz.d5~ THEN BEGIN
+ACTION_IF FILE_EXISTS_IN_GAME ~d5__wiz.d5~ THEN BEGIN
 	COPY_EXISTING ~d5_inmys.2da~ ~override~
 		LPM remove_blank_lines
 		APPEND_FILE ~faiths_and_powers/kits/clerics/325_azuth/mystracant.txt~
@@ -877,7 +877,7 @@ COPY ~faiths_and_powers/kits/clerics/208_helm/b_hsp02.spl~     ~override~  // He
 
 //REPLACE VANILLA KIT WITH THIS KIT__________________________________________________
 //
-ACTION_IF FILE_EXISTS_IN_GAME ~d5_clerics.d5~ BEGIN
+ACTION_IF FILE_EXISTS_IN_GAME ~d5__clerics.d5~ BEGIN
   ACTION_FOR_EACH race IN ~D~ ~E~ ~G~ ~H~ ~HE~ ~HL~ ~HO~ BEGIN
 	ACTION_IF FILE_EXISTS_IN_GAME ~K_C_%race%.2da~ BEGIN
 	  COPY_EXISTING ~K_C_%race%.2da~ ~override~
@@ -1388,7 +1388,7 @@ COPY ~faiths_and_powers/kits/clerics/201_lathander/b_cla04.spl~     ~override~  
 
 //REPLACE VANILLA KIT WITH THIS KIT__________________________________________________
 //
-ACTION_IF FILE_EXISTS_IN_GAME ~d5_clerics.d5~ BEGIN
+ACTION_IF FILE_EXISTS_IN_GAME ~d5__clerics.d5~ BEGIN
   ACTION_FOR_EACH race IN ~D~ ~E~ ~G~ ~H~ ~HE~ ~HL~ ~HO~ BEGIN
 	ACTION_IF FILE_EXISTS_IN_GAME ~K_C_%race%.2da~ BEGIN
 	  COPY_EXISTING ~K_C_%race%.2da~ ~override~
@@ -2265,7 +2265,7 @@ COPY ~faiths_and_powers/kits/clerics/224_talos/b_Tal10.spl~     ~override~  //  
 
 //REPLACE VANILLA KIT WITH THIS KIT__________________________________________________
 //
-ACTION_IF FILE_EXISTS_IN_GAME ~d5_clerics.d5~ BEGIN
+ACTION_IF FILE_EXISTS_IN_GAME ~d5__clerics.d5~ BEGIN
   ACTION_FOR_EACH race IN ~D~ ~E~ ~G~ ~H~ ~HE~ ~HL~ ~HO~ BEGIN
 	ACTION_IF FILE_EXISTS_IN_GAME ~K_C_%race%.2da~ BEGIN
 	  COPY_EXISTING ~K_C_%race%.2da~ ~override~
@@ -2423,7 +2423,7 @@ COPY ~faiths_and_powers/kits/clerics/210_tempus/b_ctem.2da~ ~override~
 
 //REPLACE VANILLA KIT_________________________________________________________________
 //... should do this for IWD
-ACTION_IF FILE_EXISTS_IN_GAME ~d5_menu.d5~ BEGIN
+ACTION_IF FILE_EXISTS_IN_GAME ~d5__menu.d5~ BEGIN
 	COPY_EXISTING ~kitlist.2da~ ~override~
 		COUNT_2DA_ROWS ~7~ "kit_row"
 	OUTER_SET kit_row -= 2

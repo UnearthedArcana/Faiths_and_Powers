@@ -8,6 +8,8 @@
 
 DEFINE_ACTION_FUNCTION cm_mystra BEGIN
 
+LAF check_kit_conflict END
+
 ADD_KIT ~D5_CM_MYSTRA~
 
 //WEAPON PROFICIENCIES________________________________________________________________
@@ -115,7 +117,7 @@ ACTION_FOR_EACH shield_spell IN ~spwi318~ ~spwi618~ ~spwi522~ ~spwi701~ ~spwi902
 END
 
 /*
-ACTION_IF FILE_EXISTS_IN_GAME ~d5_wiz.d5~ THEN BEGIN
+ACTION_IF FILE_EXISTS_IN_GAME ~d5__wiz.d5~ THEN BEGIN
 	COPY_EXISTING ~d5_inmys.2da~ ~override~
 		LPM remove_blank_lines
 		APPEND_FILE ~faiths_and_powers/kits/acolytes/325_mystra/mystracant.txt~
@@ -153,10 +155,16 @@ END
 	class 			= ~cleric_mage~
  END
 
- ACTION_IF (cm_mystra_spontaneous > 0) && (FILE_EXISTS_IN_GAME ~d5_spheres.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+ ACTION_IF (cm_mystra_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~d5cmmys~ learn_res = ~d5cmmyz~ END
  END
+ END
 
+ ACTION_IF (MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~75~) BEGIN
+	LAF apply_fnp_usability STR_VAR clab_name = ~d5cmmys~ END
+ END
+  
 //MULTICLASS KIT______________________________________________________________________
 //
  ACTION_IF FILE_EXISTS_IN_GAME ~d5cmmys.2da~ BEGIN
@@ -169,13 +177,9 @@ END
  END 
 
  ACTION_IF (MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~80~) BEGIN
-	LAF apply_fnp_spheres_to_kit STR_VAR mod_clab = ~d5cmmys~ END
+	LAF apply_fnp_spheres_to_kit STR_VAR clab_name = ~d5cmmys~ END
  END
 
- ACTION_IF (MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~75~) BEGIN
-	LAF apply_fnp_usability_to_kit STR_VAR mod_clab = ~d5cmmys~ END
- END
-  
 END
 //__________________________________________________________________________________
 
@@ -190,6 +194,8 @@ END
 //__________________________________________________________________________________
 
 DEFINE_ACTION_FUNCTION cm_azuth BEGIN
+
+LAF check_kit_conflict END
 
 ADD_KIT ~D5_CM_AZUTH~
 
@@ -320,10 +326,16 @@ END
 	class 			= ~cleric_mage~
  END
 
- ACTION_IF (cm_azuth_spontaneous > 0) && (FILE_EXISTS_IN_GAME ~d5_spheres.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+ ACTION_IF (cm_azuth_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~d5cmazu~ learn_res = ~d5cmazz~ END
  END
+ END
 
+ ACTION_IF (MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~75~) BEGIN
+	LAF apply_fnp_usability STR_VAR clab_name = ~d5cmazu~ END
+ END
+  
 //MULTICLASS KIT______________________________________________________________________
 //
  ACTION_IF FILE_EXISTS_IN_GAME ~d5cmazu.2da~ BEGIN
@@ -336,13 +348,9 @@ END
  END 
 
  ACTION_IF (MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~80~) BEGIN
-	LAF apply_fnp_spheres_to_kit STR_VAR mod_clab = ~d5cmazu~ END
+	LAF apply_fnp_spheres_to_kit STR_VAR clab_name = ~d5cmazu~ END
  END
 
- ACTION_IF (MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~75~) BEGIN
-	LAF apply_fnp_usability_to_kit STR_VAR mod_clab = ~d5cmazu~ END
- END
-  
 END
 //__________________________________________________________________________________
 
@@ -357,6 +365,8 @@ END
 //__________________________________________________________________________________
 
 DEFINE_ACTION_FUNCTION cr_mielikki BEGIN
+
+LAF check_kit_conflict END
 
 ADD_KIT ~D5_CR_MIELI~
 
@@ -469,10 +479,16 @@ COPY ~faiths_and_powers/kits/multiclass/491_cr_mielikki/d5crmie.2da~ ~override~
 	class 			= ~ranger_cleric~
  END
 
- ACTION_IF (cr_mielikki_spontaneous > 0) && (FILE_EXISTS_IN_GAME ~d5_spheres.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+ ACTION_IF (cr_mielikki_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~d5crmie~ learn_res = ~d5crmiz~ END
  END
+ END
 
+ ACTION_IF (MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~75~) BEGIN
+	LAF apply_fnp_usability STR_VAR clab_name = ~d5crmie~ END
+ END
+  
 //MULTICLASS KIT______________________________________________________________________
 //
  ACTION_IF FILE_EXISTS_IN_GAME ~d5crmie.2da~ BEGIN
@@ -485,13 +501,9 @@ COPY ~faiths_and_powers/kits/multiclass/491_cr_mielikki/d5crmie.2da~ ~override~
  END 
 
  ACTION_IF (MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~80~) BEGIN
-	LAF apply_fnp_spheres_to_kit STR_VAR mod_clab = ~d5crmie~ END
+	LAF apply_fnp_spheres_to_kit STR_VAR clab_name = ~d5crmie~ END
  END
 
- ACTION_IF (MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~75~) BEGIN
-	LAF apply_fnp_usability_to_kit STR_VAR mod_clab = ~d5crmie~ END
- END
-  
 END
 //__________________________________________________________________________________
 
@@ -506,6 +518,8 @@ END
 //__________________________________________________________________________________
 
 DEFINE_ACTION_FUNCTION cr_shaundakul BEGIN
+
+LAF check_kit_conflict END
 
 ADD_KIT ~D5_CR_SHAUNDAKUL~
 
@@ -622,10 +636,16 @@ COPY_EXISTING ~spwi402.spl~ ~override/d5crsh1.spl~
 	class 			= ~ranger_cleric~
  END
 
- ACTION_IF (cr_shaundakul_spontaneous > 0) && (FILE_EXISTS_IN_GAME ~d5_spheres.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+ ACTION_IF (cr_shaundakul_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~d5crshn~ learn_res = ~d5crshz~ END
  END
+ END
 
+ ACTION_IF (MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~75~) BEGIN
+	LAF apply_fnp_usability STR_VAR clab_name = ~d5crshn~ END
+ END
+  
 //MULTICLASS KIT______________________________________________________________________
 //
  ACTION_IF FILE_EXISTS_IN_GAME ~d5crshn.2da~ BEGIN
@@ -638,13 +658,9 @@ COPY_EXISTING ~spwi402.spl~ ~override/d5crsh1.spl~
  END 
 
  ACTION_IF (MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~80~) BEGIN
-	LAF apply_fnp_spheres_to_kit STR_VAR mod_clab = ~d5crshn~ END
+	LAF apply_fnp_spheres_to_kit STR_VAR clab_name = ~d5crshn~ END
  END
 
- ACTION_IF (MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~75~) BEGIN
-	LAF apply_fnp_usability_to_kit STR_VAR mod_clab = ~d5crshn~ END
- END
-  
 END
 //__________________________________________________________________________________
 
@@ -659,6 +675,8 @@ END
 //__________________________________________________________________________________
 
 DEFINE_ACTION_FUNCTION ct_mask BEGIN
+
+LAF check_kit_conflict END
 
 ADD_KIT ~D5_CT_MASK~
 
@@ -786,10 +804,16 @@ COPY ~faiths_and_powers/kits/multiclass/469_mask/d5_mask3.cre~ ~override~
 	class 			= ~cleric_thief~
  END
 
- ACTION_IF (ct_mask_spontaneous > 0) && (FILE_EXISTS_IN_GAME ~d5_spheres.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+ ACTION_IF (ct_mask_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~d5ctmas~ learn_res = ~d5ctmaz~ END
  END
+ END
 
+ ACTION_IF (MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~75~) BEGIN
+	LAF apply_fnp_usability STR_VAR clab_name = ~d5ctmas~ END
+ END
+  
 //MULTICLASS KIT______________________________________________________________________
 //
  ACTION_IF FILE_EXISTS_IN_GAME ~d5ctmas.2da~ BEGIN
@@ -802,13 +826,9 @@ COPY ~faiths_and_powers/kits/multiclass/469_mask/d5_mask3.cre~ ~override~
  END 
 
  ACTION_IF (MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~80~) BEGIN
-	LAF apply_fnp_spheres_to_kit STR_VAR mod_clab = ~d5ctmas~ END
+	LAF apply_fnp_spheres_to_kit STR_VAR clab_name = ~d5ctmas~ END
  END
 
- ACTION_IF (MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~75~) BEGIN
-	LAF apply_fnp_usability_to_kit STR_VAR mod_clab = ~d5ctmas~ END
- END
-  
 END
 //__________________________________________________________________________________
 
@@ -823,6 +843,8 @@ END
 //__________________________________________________________________________________
 
 DEFINE_ACTION_FUNCTION ct_brandobaris BEGIN
+
+LAF check_kit_conflict END
 
 ADD_KIT ~D5_CT_BRANDOBARIS~
 
@@ -1003,10 +1025,16 @@ BUT_ONLY
 	class 			= ~cleric_thief~
  END
 
- ACTION_IF (ct_brandobaris_spontaneous > 0) && (FILE_EXISTS_IN_GAME ~d5_spheres.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+ ACTION_IF (ct_brandobaris_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~d5ctbra~ learn_res = ~d5ctbrz~ END
  END
+ END
 
+ ACTION_IF (MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~75~) BEGIN
+	LAF apply_fnp_usability STR_VAR clab_name = ~d5ctbra~ END
+ END
+  
 //MULTICLASS KIT_____________________________________________________________________
 //
  ACTION_IF FILE_EXISTS_IN_GAME ~d5ctbra.2da~ BEGIN
@@ -1019,13 +1047,9 @@ BUT_ONLY
  END 
 
  ACTION_IF (MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~80~) BEGIN
-	LAF apply_fnp_spheres_to_kit STR_VAR mod_clab = ~d5ctbra~ END
+	LAF apply_fnp_spheres_to_kit STR_VAR clab_name = ~d5ctbra~ END
  END
 
- ACTION_IF (MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~75~) BEGIN
-	LAF apply_fnp_usability_to_kit STR_VAR mod_clab = ~d5ctbra~ END
- END
-  
 END
 //__________________________________________________________________________________
 
@@ -1575,6 +1599,10 @@ ACTION_PHP_EACH d5_fnp_multiclass_kits AS ind => mc_kit BEGIN
 	OUTER_SPRINT new_clab ~%clab_res%f~
 	COPY_EXISTING ~%clab_res%.2da~ ~override/%new_clab%.2da~
 	  REPLACE_TEXTUALLY ~AP_D5SPMEM~ ~****      ~
+	  REPLACE_TEXTUALLY ~AP_D5ZZ000~ ~****      ~
+	  REPLACE_TEXTUALLY ~AP_D5ZLTCL~ ~****      ~
+	  REPLACE_TEXTUALLY ~AP_D5NFEATS~ ~****      ~
+	  REPLACE_TEXTUALLY ~AP_D5FEATX~ ~****      ~
 	OUTER_SET new_class = 16
 	OUTER_SPRINT new_mixed ~%orig_mixed% Warrior~
 	OUTER_INNER_PATCH_SAVE new_kittable ~%this_kittable%~ BEGIN
@@ -1805,6 +1833,10 @@ ACTION_PHP_EACH d5_fnp_multiclass_kits AS ind => mc_kit BEGIN
 	OUTER_SPRINT new_clab ~%clab_res%f~
 	COPY_EXISTING ~%clab_res%.2da~ ~override/%new_clab%.2da~
 	  REPLACE_TEXTUALLY ~AP_D5SPMEM~ ~****      ~
+	  REPLACE_TEXTUALLY ~AP_D5ZZ000~ ~****      ~
+	  REPLACE_TEXTUALLY ~AP_D5ZLTCL~ ~****      ~
+	  REPLACE_TEXTUALLY ~AP_D5NFEATS~ ~****      ~
+	  REPLACE_TEXTUALLY ~AP_D5FEATX~ ~****      ~
 	OUTER_SET new_class = 8
 	OUTER_SPRINT new_mixed ~Fighter/%orig_mixed%~
 	OUTER_INNER_PATCH_SAVE new_kittable ~%this_kittable%~ BEGIN
@@ -2033,6 +2065,10 @@ ACTION_PHP_EACH d5_fnp_multiclass_kits AS ind => mc_kit BEGIN
 	OUTER_SPRINT new_clab ~%clab_res%r~
 	COPY_EXISTING ~%clab_res%.2da~ ~override/%new_clab%.2da~
 	  REPLACE_TEXTUALLY ~AP_D5SPMEM~ ~****      ~
+	  REPLACE_TEXTUALLY ~AP_D5ZZ000~ ~****      ~
+	  REPLACE_TEXTUALLY ~AP_D5ZLTCL~ ~****      ~
+	  REPLACE_TEXTUALLY ~AP_D5NFEATS~ ~****      ~
+	  REPLACE_TEXTUALLY ~AP_D5FEATX~ ~****      ~
 	OUTER_SET new_class = 18
 	OUTER_SPRINT new_mixed ~Ranger/%orig_mixed%~
 	OUTER_INNER_PATCH_SAVE new_kittable ~%this_kittable%~ BEGIN
@@ -2261,6 +2297,10 @@ ACTION_PHP_EACH d5_fnp_multiclass_kits AS ind => mc_kit BEGIN
 	OUTER_SPRINT new_clab ~%clab_res%t~
 	COPY_EXISTING ~%clab_res%.2da~ ~override/%new_clab%.2da~
 	  REPLACE_TEXTUALLY ~AP_D5SPMEM~ ~****      ~
+	  REPLACE_TEXTUALLY ~AP_D5ZZ000~ ~****      ~
+	  REPLACE_TEXTUALLY ~AP_D5ZLTCL~ ~****      ~
+	  REPLACE_TEXTUALLY ~AP_D5NFEATS~ ~****      ~
+	  REPLACE_TEXTUALLY ~AP_D5FEATX~ ~****      ~
 	OUTER_SET new_class = 15
 	OUTER_SPRINT new_mixed ~Thief/%orig_mixed%~
 	OUTER_INNER_PATCH_SAVE new_kittable ~%this_kittable%~ BEGIN
@@ -2327,6 +2367,10 @@ ACTION_PHP_EACH d5_fnp_multiclass_kits AS ind => mc_kit BEGIN
 	OUTER_SPRINT new_clab ~%clab_res%m~
 	COPY_EXISTING ~%clab_res%.2da~ ~override/%new_clab%.2da~
 	  REPLACE_TEXTUALLY ~AP_D5SPMEM~ ~****      ~
+	  REPLACE_TEXTUALLY ~AP_D5ZZ000~ ~****      ~
+	  REPLACE_TEXTUALLY ~AP_D5ZLTCL~ ~****      ~
+	  REPLACE_TEXTUALLY ~AP_D5NFEATS~ ~****      ~
+	  REPLACE_TEXTUALLY ~AP_D5FEATX~ ~****      ~
 	OUTER_SET new_class = 14
 	OUTER_SPRINT new_mixed ~Mage/%orig_mixed%~
 	OUTER_INNER_PATCH_SAVE new_kittable ~%this_kittable%~ BEGIN
@@ -2387,6 +2431,10 @@ ACTION_PHP_EACH d5_fnp_multiclass_kits AS ind => mc_kit BEGIN
 	OUTER_SPRINT new_clab ~%clab_res%s~
 	COPY_EXISTING ~%clab_res%.2da~ ~override/%new_clab%.2da~
 	  REPLACE_TEXTUALLY ~AP_D5SPMEM~ ~****      ~
+	  REPLACE_TEXTUALLY ~AP_D5ZZ000~ ~****      ~
+	  REPLACE_TEXTUALLY ~AP_D5ZLTCL~ ~****      ~
+	  REPLACE_TEXTUALLY ~AP_D5NFEATS~ ~****      ~
+	  REPLACE_TEXTUALLY ~AP_D5FEATX~ ~****      ~
 	OUTER_SET new_class = 14
 	OUTER_SPRINT new_mixed ~Sorcerer/%orig_mixed%~
 	OUTER_INNER_PATCH_SAVE new_kittable ~%this_kittable%~ BEGIN
@@ -2447,6 +2495,10 @@ ACTION_PHP_EACH d5_fnp_multiclass_kits AS ind => mc_kit BEGIN
 	OUTER_SPRINT new_clab ~%clab_res%k~
 	COPY_EXISTING ~%clab_res%.2da~ ~override/%new_clab%.2da~
 	  REPLACE_TEXTUALLY ~AP_D5SPMEM~ ~****      ~
+	  REPLACE_TEXTUALLY ~AP_D5ZZ000~ ~****      ~
+	  REPLACE_TEXTUALLY ~AP_D5ZLTCL~ ~****      ~
+	  REPLACE_TEXTUALLY ~AP_D5NFEATS~ ~****      ~
+	  REPLACE_TEXTUALLY ~AP_D5FEATX~ ~****      ~
 	OUTER_SET new_class = 15
 	OUTER_SPRINT new_mixed ~Monk/%orig_mixed%~
 	OUTER_INNER_PATCH_SAVE new_kittable ~%this_kittable%~ BEGIN
@@ -2506,6 +2558,7 @@ ACTION_PHP_EACH d5_fnp_multiclass_kits AS ind => mc_kit BEGIN
 	OUTER_SPRINT crippstr ~%orig_crippstr%~
    END
   END
+  LAF check_kit_conflict END
   ACTION_IF (new_class = 15) BEGIN
    LAF ADD_KIT_EX
     INT_VAR
@@ -2808,25 +2861,284 @@ ACTION_PHP_EACH d5_fnp_multiclass_kits AS ind => mc_kit BEGIN
 	s_Perdition     = EVAL ~%orig_perdition%~
   END
 //  ACTION_IF (MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~80~) BEGIN
-//    LAF apply_fnp_spheres_to_kit STR_VAR mod_clab = EVAL ~%new_clab%~ END
+//    LAF apply_fnp_spheres_to_kit STR_VAR clab_name = EVAL ~%new_clab%~ END
 //  END
   ACTION_IF (MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~75~) BEGIN
-	LAF apply_fnp_usability_to_kit STR_VAR mod_clab = EVAL ~%new_clab%~ END
+	LAF apply_fnp_usability STR_VAR clab_name = EVAL ~%new_clab%~ END
   END
-  ACTION_IF (~%caster_type%~ STRING_EQUAL_CASE ~MYSTIC~) && (FILE_EXISTS_IN_GAME ~d5_spheres.d5~) BEGIN
+  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+   ACTION_IF (~%caster_type%~ STRING_EQUAL_CASE ~MYSTIC~) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
 	COPY_EXISTING ~kitlist.2da~ ~override~
 	  COUNT_2DA_ROWS 10 rows
 	  READ_2DA_ENTRY (rows - 1) 0 10 kit_ind
 	BUT_ONLY
 	LAF fnp_spontaneous STR_VAR kit_clab = EVAL ~%new_clab%~ learn_res = EVAL ~d5mt%kit_ind%~ END
+   END
   END
 
+/*
+  ACTION_IF (new_class = 14) && (~%mc_kit%~ STRING_CONTAINS_REGEXP ~s~ = 0) /*&& (FILE_EXISTS_IN_GAME ~d5sorc.2da~)*/ BEGIN
+   OUTER_SPRINT sorc_name ~%sc_kit%_SC~
+   OUTER_SPRINT sorc_clab ~%clab_res%s~
+   COPY_EXISTING ~%clab_res%.2da~ ~override/%sorc_clab%.2da~
+//    APPEND_FILE ~override/d5sorc.2da~
+   OUTER_SPRINT sorc_mixed ~Sorcerer/%orig_mixed%~
+   LAF ADD_KIT_EX
+    INT_VAR
+     kit_class   = %new_class%
+	 mixed       = RESOLVE_STR_REF (~%sorc_mixed%~)
+    STR_VAR
+	 source_kit  = EVAL ~%sc_kit%~
+	 kit_name    = EVAL ~%sorc_name%~
+	 base_class  = EVAL ~%new_base_class%~
+	 clab_path   = EVAL ~override/%sorc_clab%.2da~
+	 dualclas    = ~0 0 0 0 0 0~
+	 kittable    = EVAL ~%new_kittable%~
+	 hpclass	 = EVAL ~%hit_dice%~
+	 weapprof    = EVAL ~%new_weapprof%~
+	 luabbr      = EVAL ~%hla_table%~
+   END
+   LAF DEFINE_FNP_KIT_INFO
+    INT_VAR
+	 u_leather_armor 	= %new_fnp_leather%
+	 u_chain_armor 		= %new_fnp_chain%
+	 u_plate_armor 		= %new_fnp_plate%
+	 u_club_staff	 	= %new_fnp_clubstaff%
+	 u_hammers	 		= %new_fnp_hammer%
+	 u_maces 	 		= %new_fnp_mace%
+	 u_flails 			= %new_fnp_flail%
+	 u_axes 			= %new_fnp_axe%
+	 u_daggers 			= %new_fnp_dagger%
+	 u_short_swords		= %new_fnp_shortsword%
+	 u_long_swords		= %new_fnp_longsword%
+	 u_scimitars 		= %new_fnp_scimitar%
+	 u_katanas 			= %new_fnp_katana%
+	 u_bastard_swords 	= %new_fnp_bastardsword%
+	 u_2hand_swords 	= %new_fnp_2handsword%
+	 u_halberds 		= %new_fnp_halberd%
+	 u_spears 	 		= %new_fnp_spear%
+	 u_darts 			= %new_fnp_dart%
+	 u_slings	 		= %new_fnp_sling%
+	 u_bows 			= %new_fnp_bow%
+	 u_crossbows 		= %new_fnp_xbow%
+    STR_VAR
+     clab_name 			= EVAL ~%sorc_clab%~
+	 sphere_list		= EVAL ~%orig_sphere_list%~
+	 class 				= EVAL ~%fnp_spheres_class%~
+	 s_Life 		    = EVAL ~%orig_life%~
+	 s_Death 			= EVAL ~%orig_death%~
+	 s_Benediction 		= EVAL ~%orig_benediction%~
+	 s_Destruction 		= EVAL ~%orig_destruction%~
+	 s_Protection 		= EVAL ~%orig_protection%~
+	 s_War 				= EVAL ~%orig_war%~
+	 s_Exploration  	= EVAL ~%orig_exploration%~
+	 s_Knowledge 		= EVAL ~%orig_knowledge%~
+	 s_Deception 		= EVAL ~%orig_deception%~
+	 s_Thought 	    	= EVAL ~%orig_thought%~
+	 s_Dread 			= EVAL ~%orig_dread%~
+	 s_Vigor 			= EVAL ~%orig_vigor%~
+	 s_Affliction 		= EVAL ~%orig_affliction%~
+	 s_Animal 			= EVAL ~%orig_animal%~
+	 s_Plant 			= EVAL ~%orig_plant%~
+	 s_Earth 			= EVAL ~%orig_earth%~
+	 s_Water 			= EVAL ~%orig_water%~
+	 s_Air 				= EVAL ~%orig_air%~
+	 s_Fire 			= EVAL ~%orig_fire%~
+	 s_Light 			= EVAL ~%orig_light%~
+	 s_Shadow 			= EVAL ~%orig_shadow%~
+	 s_Magic 			= EVAL ~%orig_magic%~
+	 s_Perdition    	= EVAL ~%orig_perdition%~
+   END
+/*
+   ACTION_IF (FILE_EXISTS_IN_GAME ~QD_MCM01.spl~) BEGIN
+	OUTER_SET sorc_cleric_code = IDS_OF_SYMBOL (~kit~ ~D5_SORCERER_CLERIC~)
+	OUTER_SET this_kit_code = IDS_OF_SYMBOL (~kit~ ~%sorc_name%~)
+	COPY_EXISTING ~QD_MCM01.spl~ ~override~
+	  LPF CLONE_EFFECT INT_VAR silent = 1 /*multi_match = 1*/ match_parameter1 = %sorc_cleric_code% match_parameter2 = 9 parameter1 = %this_kit_code% END
+   END
+*/
+//   ACTION_IF (MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~80~) BEGIN
+//    LAF apply_fnp_spheres_to_kit STR_VAR clab_name = EVAL ~%sorc_clab%~ END
+//   END
+   ACTION_IF (MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~75~) BEGIN
+	LAF apply_fnp_usability STR_VAR clab_name = EVAL ~%sorc_clab%~ END
+   END 
+   COPY_EXISTING ~LUSO0.2da~ ~override~
+	  COUNT_2DA_ROWS 10 rows
+	  FOR (row = 0; row < rows; ++row) BEGIN
+		READ_2DA_ENTRY row 1 10 sorcerer_ability
+		PATCH_IF !(~%sorcerer_ability%~ STRING_EQUAL_CASE ~*~) BEGIN
+		  SNPRINT 3 hla_type ~%sorcerer_ability%~
+		  PATCH_IF (~%hla_type%~ STRING_EQUAL_CASE ~GA_~) || (~%hla_type%~ STRING_EQUAL_CASE ~AP_~) BEGIN
+			READ_2DA_ENTRY row 2 10 sorcerer_icon
+			READ_2DA_ENTRY row 3 10 sorcerer_strref
+			READ_2DA_ENTRY row 4 10 sorcerer_min_lev
+			READ_2DA_ENTRY row 5 10 sorcerer_max_level
+			READ_2DA_ENTRY row 6 10 sorcerer_num_allowed
+			READ_2DA_ENTRY row 7 10 sorcerer_prerequisite
+			READ_2DA_ENTRY row 8 10 sorcerer_excluded_by
+			READ_2DA_ENTRY row 9 10 sorcerer_alignment_restrict
+			INNER_ACTION BEGIN
+			  LAF action_add_hla STR_VAR kit_name = EVAL ~%sorc_name%~ ability = EVAL ~%sorcerer_ability%~ icon = EVAL ~%sorcerer_icon%~ strref = EVAL ~%sorcerer_strref%~ min_lev = EVAL ~%sorcerer_min_lev%~ max_level = EVAL ~%sorcerer_max_level%~ num_allowed = EVAL ~%sorcerer_num_allowed%~ prerequisite = EVAL ~%sorcerer_prerequisite%~ excluded_by = EVAL ~%sorcerer_excluded_by%~ alignment_restrict = EVAL ~%sorcerer_alignment_restrict%~ END
+			END
+		  END
+		END
+	  END
+   IF_EXISTS BUT_ONLY
+  END
+*/
+/*
+  ACTION_IF (new_class = 15) && (~%mc_kit%~ STRING_CONTAINS_REGEXP ~k~ = 0) /*&& (FILE_CONTAINS_EVALUATED (~kit.ids~ ~[ %TAB%]QDMONK_C[ %TAB%%LNL%%MNL%%WNL%]~))*/ BEGIN
+   LAF ADD_KIT_EX
+    INT_VAR
+     kit_class   = %new_class%
+	 mixed       = RESOLVE_STR_REF (~%new_mixed%~)
+    STR_VAR
+	 source_kit  = EVAL ~%sc_kit%~
+	 kit_name    = EVAL ~%new_name%~
+	 base_class  = EVAL ~%new_base_class%~
+	 clab_path   = EVAL ~override/%new_clab%.2da~
+	 dualclas    = ~0 0 0 0 0 0~
+	 kittable    = EVAL ~%new_kittable%~
+	 hpclass	 = EVAL ~%hit_dice%~
+	 weapprof    = EVAL ~%new_weapprof%~
+	 luabbr      = EVAL ~%hla_table%~
+	 thiefscl
+	 traplimt
+	 thiefskl
+	 backstab
+	 sneakatt
+	 crippstr
+//   RET kit_id
+   END
+   LAF DEFINE_FNP_KIT_INFO
+    INT_VAR
+	 u_leather_armor 	= %new_fnp_leather%
+	 u_chain_armor 		= %new_fnp_chain%
+	 u_plate_armor 		= %new_fnp_plate%
+	 u_club_staff	 	= %new_fnp_clubstaff%
+	 u_hammers	 		= %new_fnp_hammer%
+	 u_maces 	 		= %new_fnp_mace%
+	 u_flails 			= %new_fnp_flail%
+	 u_axes 			= %new_fnp_axe%
+	 u_daggers 			= %new_fnp_dagger%
+	 u_short_swords		= %new_fnp_shortsword%
+	 u_long_swords		= %new_fnp_longsword%
+	 u_scimitars 		= %new_fnp_scimitar%
+	 u_katanas 			= %new_fnp_katana%
+	 u_bastard_swords 	= %new_fnp_bastardsword%
+	 u_2hand_swords 	= %new_fnp_2handsword%
+	 u_halberds 		= %new_fnp_halberd%
+	 u_spears 	 		= %new_fnp_spear%
+	 u_darts 			= %new_fnp_dart%
+	 u_slings	 		= %new_fnp_sling%
+	 u_bows 			= %new_fnp_bow%
+	 u_crossbows 		= %new_fnp_xbow%
+    STR_VAR
+     clab_name 			= EVAL ~%new_clab%~
+	 sphere_list		= EVAL ~%orig_sphere_list%~
+	 class 				= EVAL ~%fnp_spheres_class%~
+	 s_Life 			= EVAL ~%orig_life%~
+	 s_Death 			= EVAL ~%orig_death%~
+	 s_Benediction 		= EVAL ~%orig_benediction%~
+	 s_Destruction 		= EVAL ~%orig_destruction%~
+	 s_Protection 		= EVAL ~%orig_protection%~
+	 s_War 				= EVAL ~%orig_war%~
+	 s_Exploration  	= EVAL ~%orig_exploration%~
+	 s_Knowledge 		= EVAL ~%orig_knowledge%~
+	 s_Deception 		= EVAL ~%orig_deception%~
+	 s_Thought 	    	= EVAL ~%orig_thought%~
+	 s_Dread 			= EVAL ~%orig_dread%~
+	 s_Vigor 			= EVAL ~%orig_vigor%~
+	 s_Affliction 		= EVAL ~%orig_affliction%~
+	 s_Animal 			= EVAL ~%orig_animal%~
+	 s_Plant 			= EVAL ~%orig_plant%~
+	 s_Earth 			= EVAL ~%orig_earth%~
+	 s_Water 			= EVAL ~%orig_water%~
+	 s_Air 				= EVAL ~%orig_air%~
+	 s_Fire 			= EVAL ~%orig_fire%~
+	 s_Light 			= EVAL ~%orig_light%~
+	 s_Shadow 			= EVAL ~%orig_shadow%~
+	 s_Magic 			= EVAL ~%orig_magic%~
+	 s_Perdition    	= EVAL ~%orig_perdition%~
+   END
+//   ACTION_IF (new_class = 15) && (~%mc_kit%~ STRING_CONTAINS_REGEXP ~k~ = 0) BEGIN
+   ACTION_IF (FILE_EXISTS_IN_GAME ~QD_MCT01.spl~) BEGIN
+	  ACTION_IF (FILE_CONTAINS_EVALUATED (~kit.ids~ ~[ %TAB%]QDMONKSS_C[ %TAB%%LNL%%MNL%%WNL%]~)) BEGIN
+		ACTION_IF (~%sc_kit%~ STRING_EQUAL_CASE ~B_CLERIC_LATHANDER~) BEGIN
+		  OUTER_SET monk_cleric_code = IDS_OF_SYMBOL (~kit~ ~QDMONKSS_C~)
+		END
+	  END
+	  ACTION_IF (FILE_CONTAINS_EVALUATED (~kit.ids~ ~[ %TAB%]QDMONKHF_F[ %TAB%%LNL%%MNL%%WNL%]~)) BEGIN
+		ACTION_IF (~%sc_kit%~ STRING_EQUAL_CASE ~D5_CLERIC_YONDALLA~) BEGIN
+		  OUTER_SET monk_cleric_code = IDS_OF_SYMBOL (~kit~ ~QDMONKHF_F~)
+		END
+	  END
+	  ACTION_IF (FILE_CONTAINS_EVALUATED (~kit.ids~ ~[ %TAB%]QDMONKSH_M[ %TAB%%LNL%%MNL%%WNL%]~)) BEGIN
+		ACTION_IF (~%sc_kit%~ STRING_EQUAL_CASE ~D5_PRIEST_AZUTH~) BEGIN
+		  OUTER_SET monk_cleric_code = IDS_OF_SYMBOL (~kit~ ~QDMONKSH_M~)
+		END
+	  END
+	  ACTION_IF (FILE_CONTAINS_EVALUATED (~kit.ids~ ~[ %TAB%]QDMONKDM_M[ %TAB%%LNL%%MNL%%WNL%]~)) BEGIN
+		ACTION_IF (~%sc_kit%~ STRING_EQUAL_CASE ~D5_AC_SHAR~) || (~%sc_kit%~ STRING_EQUAL_CASE ~A#SHAR~) BEGIN
+		  OUTER_SET monk_cleric_code = IDS_OF_SYMBOL (~kit~ ~QDMONKDM_M~)
+		END
+	  END
+	  ACTION_IF (FILE_CONTAINS_EVALUATED (~kit.ids~ ~[ %TAB%]QDMONKBO_C[ %TAB%%LNL%%MNL%%WNL%]~)) BEGIN
+		ACTION_IF (~%sc_kit%~ STRING_EQUAL_CASE ~B_PRIEST_ILMATER~) || (~%sc_kit%~ STRING_EQUAL_CASE ~CDILMATR~) BEGIN
+		  OUTER_SET monk_cleric_code = IDS_OF_SYMBOL (~kit~ ~QDMONKBO_C~)
+		END
+	  END
+	  ELSE BEGIN
+		OUTER_SET monk_cleric_code = IDS_OF_SYMBOL (~kit~ ~QDMONK_C~)
+	  END
+	  OUTER_SET this_kit_code = IDS_OF_SYMBOL (~kit~ ~%new_name%~)
+	  COPY_EXISTING ~QD_MCT01.spl~ ~override~
+		LPF CLONE_EFFECT INT_VAR silent = 1 /*multi_match = 1*/ match_parameter1 = %monk_cleric_code% match_parameter2 = 9 parameter1 = %this_kit_code% END
+   END
+//   END
+//   ACTION_IF (MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~80~) BEGIN
+//    LAF apply_fnp_spheres_to_kit STR_VAR clab_name = EVAL ~%new_clab%~ END
+//   END
+   ACTION_IF (MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~75~) BEGIN
+	LAF apply_fnp_usability STR_VAR clab_name = EVAL ~%new_clab%~ END
+   END 
+   COPY_EXISTING ~LUMO0.2da~ ~override~
+	  COUNT_2DA_ROWS 10 rows
+	  FOR (row = 0; row < rows; ++row) BEGIN
+		READ_2DA_ENTRY row 1 10 monk_ability
+		PATCH_IF !(~%monk_ability%~ STRING_EQUAL_CASE ~*~) BEGIN
+		  SNPRINT 3 hla_type ~%monk_ability%~
+		  PATCH_IF (~%hla_type%~ STRING_EQUAL_CASE ~GA_~) || (~%hla_type%~ STRING_EQUAL_CASE ~AP_~) BEGIN
+			READ_2DA_ENTRY row 2 10 monk_icon
+			READ_2DA_ENTRY row 3 10 monk_strref
+			READ_2DA_ENTRY row 4 10 monk_min_lev
+			READ_2DA_ENTRY row 5 10 monk_max_level
+			READ_2DA_ENTRY row 6 10 monk_num_allowed
+			READ_2DA_ENTRY row 7 10 monk_prerequisite
+			READ_2DA_ENTRY row 8 10 monk_excluded_by
+			READ_2DA_ENTRY row 9 10 monk_alignment_restrict
+			INNER_ACTION BEGIN
+			  LAF action_add_hla STR_VAR kit_name = EVAL ~%new_name%~ ability = EVAL ~%monk_ability%~ icon = EVAL ~%monk_icon%~ strref = EVAL ~%monk_strref%~ min_lev = EVAL ~%monk_min_lev%~ max_level = EVAL ~%monk_max_level%~ num_allowed = EVAL ~%monk_num_allowed%~ prerequisite = EVAL ~%monk_prerequisite%~ excluded_by = EVAL ~%monk_excluded_by%~ alignment_restrict = EVAL ~%monk_alignment_restrict%~ END
+			END
+		  END
+		END
+	  END
+   IF_EXISTS BUT_ONLY
+  END
+*/
  WITH
   DEFAULT
     PRINT ~kit skipped~
  END
 END
 
+/*
+ACTION_PHP_EACH d5_fnp_multiclass_kits AS ind => mc_kit BEGIN
+  OUTER_SPRINT sc_kit ~%ind_1%~  
+  PRINT ~%sc_kit% : %mc_kit%~
+END
+*/
 
 END	//	end kit-cloning function
 

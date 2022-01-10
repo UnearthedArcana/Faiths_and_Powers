@@ -1,6 +1,6 @@
 
 	//	UI-based Spell Learning tool for Sorcerers/Shamans
-	//	v0.58
+	//	v0.59
 	
 	//	This function is designed to implement a UI-based Spell selection system, as an alternative to dialog-based Spell Selection, utilizing
 	//		the Sequencer/Contingency spell selection menu to learn arcane or divine spells.  Innate abilities "can" be learned this way as well,
@@ -173,13 +173,12 @@
 	SequencerMenu['DEFAULT'] = function()
 		local temp = {}
 		for k,v in pairs (bookSpells) do
-			if v.level == currentSpellLevel - 1 then
+			if v.level == %currentLevel% - 1 then
 				table.insert(temp, v)
 			end
 		end
 		bookSpells = temp
 	end~~~~~
-			ACTION_IF	GAME_IS	~iwdee~	BEGIN	OUTER_SPRINT	currentLevel ~contingencySpellLevel~	END	ELSE	BEGIN	OUTER_SPRINT	currentLevel ~currentSpellLevel~	END
 			APPEND	~M_SQTOOL.LUA~	~~~~~
 	function SequencerMenuSpellsKnown(multi,spelltable,abilFunc,abil,alignment,postfix,global)
 		if postfix == nil then
@@ -322,7 +321,7 @@
 					TEXT_SPRINT	else1	~~
 					TEXT_SPRINT	text	~local abilVal = %abilVal%%WNL%%TAB%%TAB%abilVal = tonumber(abilVal)%WNL%%TAB%%TAB%~
 					FOR	(i = 1; i < cols; ++i)	BEGIN
-						TEXT_SPRINT	text	~~~~~%text%%else1%if currentSpellLevel == %i% and abilVal >~~~~~
+						TEXT_SPRINT	text	~~~~~%text%%else1%if %currentLevel% == %i% and abilVal >~~~~~
 						FOR	(j = 0; j < READ; ++j)	BEGIN
 							READ_2DA_ENTRY_FORMER	~READ~	j i value
 					//		PATCH_IF	value > 0	BEGIN
@@ -373,7 +372,7 @@
 			TEXT_SPRINT	else1	~~	TEXT_SPRINT	text	~~
 			FOR	(i = 1; i < cols; ++i)	BEGIN
 				SET	old = 0
-				TEXT_SPRINT	text	~~~~~%text%%else1%if currentSpellLevel == %i% and level >~~~~~
+				TEXT_SPRINT	text	~~~~~%text%%else1%if %currentLevel% == %i% and level >~~~~~
 				FOR	(j = 0; j < READ; ++j)	BEGIN
 					READ_2DA_ENTRY_FORMER	~READ~	j i value
 					PATCH_IF	value > 0	BEGIN
@@ -414,6 +413,7 @@
 		INT_VAR	class = 1	exclude = 0	maxlevel = ~-1~	multilist = 0	tip = ~-1~	name = ~-1~	desc = ~-1~	column = 1	alignment = 0	global = 0
 		STR_VAR	resref = ~~	icon = ~~	title = ~~	action = ~~	spelltable = ~~	spelllist = ~~	attribute = ~~	attrtable = ~~	custom = ~~	subspell = ~L~	blacklist = ~~
 	BEGIN
+		ACTION_IF	GAME_IS	~iwdee~	BEGIN	OUTER_SPRINT	currentLevel ~contingencySpellLevel~	END	ELSE	BEGIN	OUTER_SPRINT	currentLevel ~currentSpellLevel~	END
 		OUTER_SPRINT $ EVAL ~%blacklist%~(~-1~) ~DEFAULT~
 		ACTION_TO_UPPER resref	ACTION_TO_UPPER spelltable	ACTION_TO_UPPER spelllist	ACTION_TO_UPPER attribute	ACTION_TO_UPPER attrtable	ACTION_TO_UPPER subspell
 		LAF	SETUP_SEQUENCER_MENU	END

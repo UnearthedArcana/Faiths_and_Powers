@@ -8,6 +8,8 @@
 
 DEFINE_ACTION_FUNCTION zealot_corellon BEGIN
 
+LAF check_kit_conflict END
+
 ADD_KIT ~B_ZEALOT_CORELLON~
 
 //WEAPON PROFICIENCIES________________________________________________________________
@@ -153,11 +155,15 @@ END
 	class 			= ~zealot~
  END
 
- ACTION_IF (zealot_corellon_spontaneous > 0) && (FILE_EXISTS_IN_GAME ~d5_spheres.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+ ACTION_IF (zealot_corellon_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~b_ze07~ learn_res = ~b_ze07z~ END
+ END
  END
 
 //___________________________________________________________________________________
+
+LAF check_kit_conflict END
 
 ADD_KIT ~B_ZEALOT_CORELLON_2~
 
@@ -299,6 +305,8 @@ END
 //__________________________________________________________________________________
 
 DEFINE_ACTION_FUNCTION zealot_eilistraee BEGIN
+
+LAF check_kit_conflict END
 
 ADD_KIT ~B_ZEALOT_EILISTRAEE~
 
@@ -445,11 +453,15 @@ END
 	class 			= ~zealot~
  END
 
- ACTION_IF (zealot_eilistraee_spontaneous > 0) && (FILE_EXISTS_IN_GAME ~d5_spheres.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+ ACTION_IF (zealot_eilistraee_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~b_ze10~ learn_res = ~b_ze10z~ END
+ END
  END
 
 //___________________________________________________________________________________
+
+LAF check_kit_conflict END
 
 ADD_KIT ~B_ZEALOT_EILISTRAEE_2~
 
@@ -589,6 +601,8 @@ END
 //__________________________________________________________________________________
 
 DEFINE_ACTION_FUNCTION zealot_garagos BEGIN
+
+LAF check_kit_conflict END
 
 ADD_KIT ~B_ZEALOT_GARAGOS~
 
@@ -737,11 +751,15 @@ END
 	class 			= ~zealot~
  END
 
- ACTION_IF (zealot_garagos_spontaneous > 0) && (FILE_EXISTS_IN_GAME ~d5_spheres.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+ ACTION_IF (zealot_garagos_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~b_ze06~ learn_res = ~b_ze06z~ END
+ END
  END
 
 //___________________________________________________________________________________
+
+LAF check_kit_conflict END
 
 ADD_KIT ~B_ZEALOT_GARAGOS_2~
 
@@ -885,6 +903,8 @@ END
 //__________________________________________________________________________________
 
 DEFINE_ACTION_FUNCTION zealot_gruumsh BEGIN
+
+LAF check_kit_conflict END
 
 ADD_KIT ~B_ZEALOT_GRUU~
 
@@ -1033,11 +1053,15 @@ END
 	class 			= ~zealot~
  END
 
- ACTION_IF (zealot_gruumsh_spontaneous > 0) && (FILE_EXISTS_IN_GAME ~d5_spheres.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+ ACTION_IF (zealot_gruumsh_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~b_ze02~ learn_res = ~b_ze02z~ END
+ END
  END
 
 //___________________________________________________________________________________
+
+LAF check_kit_conflict END
 
 ADD_KIT ~B_ZEALOT_GRUU_2~
 
@@ -1179,6 +1203,8 @@ END
 //__________________________________________________________________________________
 
 DEFINE_ACTION_FUNCTION zealot_ilmater BEGIN
+
+LAF check_kit_conflict END
 
 ADD_KIT ~B_ZEALOT_ILMATER~
 
@@ -1325,11 +1351,15 @@ END
 	class 			= ~zealot~
  END
 
- ACTION_IF (zealot_ilmater_spontaneous > 0) && (FILE_EXISTS_IN_GAME ~d5_spheres.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+ ACTION_IF (zealot_ilmater_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~b_ze05~ learn_res = ~b_ze05z~ END
+ END
  END
 
 //___________________________________________________________________________________
+
+LAF check_kit_conflict END
 
 ADD_KIT ~B_ZEALOT_ILMATER_2~
 
@@ -1471,6 +1501,8 @@ END
 //__________________________________________________________________________________
 
 DEFINE_ACTION_FUNCTION zealot_kossuth BEGIN
+
+LAF check_kit_conflict END
 
 ADD_KIT ~B_ZEALOT_KOSS~
 
@@ -1633,11 +1665,15 @@ END
 	class 			= ~zealot~
  END
 
- ACTION_IF (zealot_kossuth_spontaneous > 0) && (FILE_EXISTS_IN_GAME ~d5_spheres.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+ ACTION_IF (zealot_kossuth_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~b_ze04~ learn_res = ~b_ze04z~ END
+ END
  END
 
 //___________________________________________________________________________________
+
+LAF check_kit_conflict END
 
 ADD_KIT ~B_ZEALOT_KOSS_2~
 
@@ -1779,6 +1815,8 @@ END
 //__________________________________________________________________________________
 
 DEFINE_ACTION_FUNCTION zealot_mystra BEGIN
+
+LAF check_kit_conflict END
 
 ADD_KIT ~B_ZEALOT_MYSTRA~
 
@@ -1943,11 +1981,15 @@ END
 	class 			= ~zealot~
  END
  
- ACTION_IF (zealot_mystra_spontaneous > 0) && (FILE_EXISTS_IN_GAME ~d5_spheres.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+ ACTION_IF (zealot_mystra_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~b_ze09~ learn_res = ~b_ze09z~ END
+ END
  END
 
 //___________________________________________________________________________________
+
+LAF check_kit_conflict END
 
 ADD_KIT ~B_ZEALOT_MYSTRA_2~
 
@@ -2087,6 +2129,8 @@ END
 //__________________________________________________________________________________
 
 DEFINE_ACTION_FUNCTION zealot_sune BEGIN
+
+LAF check_kit_conflict END
 
 ADD_KIT ~B_ZEALOT_SUNE~
 
@@ -2235,11 +2279,15 @@ END
 	class 			= ~zealot~
  END
 
- ACTION_IF (zealot_sune_spontaneous > 0) && (FILE_EXISTS_IN_GAME ~d5_spheres.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+ ACTION_IF (zealot_sune_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~b_ze08~ learn_res = ~b_ze08z~ END
+ END
  END
 
 //___________________________________________________________________________________
+
+LAF check_kit_conflict END
 
 ADD_KIT ~B_ZEALOT_SUNE_2~
 
@@ -2379,6 +2427,8 @@ END
 //__________________________________________________________________________________
 
 DEFINE_ACTION_FUNCTION zealot_talos BEGIN
+
+LAF check_kit_conflict END
 
 ADD_KIT ~B_ZEALOT_TALOS~
 
@@ -2538,11 +2588,15 @@ END
 	class 			= ~zealot~
  END
 
- ACTION_IF (zealot_talos_spontaneous > 0) && (FILE_EXISTS_IN_GAME ~d5_spheres.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+ ACTION_IF (zealot_talos_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~b_ze03~ learn_res = ~b_ze03z~ END
+ END
  END
 
 //___________________________________________________________________________________
+
+LAF check_kit_conflict END
 
 ADD_KIT ~B_ZEALOT_TALOS_2~
 

@@ -1,3 +1,4 @@
+// 0.79.9
 
 //
 //  THE EASY WAY
@@ -8,21 +9,21 @@
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
-INCLUDE ~%MOD_FOLDER%/lib/fnp_compat.tpa~
+INCLUDE ~%MOD_FOLDER%/lib/fnp_compatibility.tpa~
 ACTION_IF (FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~) BEGIN
   INCLUDE ~override/fnp_sphere_list.tpa~
-  LAF [deity]_spheres RET_ARRAY ~[clab file]_spheres~ = [deity]_spheres_array END
   LAF ~DEFINE_FNP_KIT_INFO~
 	STR_VAR
       clab_name 	= ~[clab file]~
       class 		= ~cleric~
+      sphere_list 	= ~[deity]_spheres~
   END
   LAM ~READ_FNP_KIT_INFO~
   ACTION_IF FILE_EXISTS_IN_GAME ~d5_spheres.d5~ BEGIN
-    LAM apply_fnp_spheres
+    LAF apply_fnp_spheres STR_VAR clab_name = ~[clab file]~ END
   END
   ACTION_IF FILE_EXISTS_IN_GAME ~d5_fnp_usability.d5~ BEGIN
-    LAM apply_fnp_usability
+    LAF apply_fnp_usability STR_VAR clab_name = ~[clab file]~ END
   END
 END
 //__________________________________________________________________________________
@@ -42,12 +43,13 @@ END
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
-INCLUDE ~%MOD_FOLDER%/lib/fnp_compat.tpa~
+INCLUDE ~%MOD_FOLDER%/lib/fnp_compatibility.tpa~
 
 ACTION_IF (FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~) BEGIN
+  INCLUDE ~override/fnp_sphere_list.tpa~
+END
 
- INCLUDE ~override/fnp_sphere_list.tpa~
- LAF ~DEFINE_FNP_KIT_INFO~
+LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 //
 // put a '1' next to the types of armor usable by the kit
@@ -79,17 +81,17 @@ ACTION_IF (FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~) BEGIN
   STR_VAR
 //
 // The "class" variable tells the mod what class or archetype your kit is
-// Enter 'cleric' 'druid' 'mystic' 'shaman' 'paladin' 'zealot' or 'ranger'
+// Enter 'cleric' 'druid' 'shaman' 'paladin' 'zealot' or 'ranger'
 // If multiclass, enter 'fighter_cleric' 'cleric_mage' 'cleric_thief' 'ranger_cleric' or 'fighter_mystic'
 //
-// The "multiclass" variable tells the mod that this kit can be cloned as a multiclass kit
-// If a cleric, you can enter some combination of "fc_cr_ct_cm" (can be just "fc" or "cr_cm" or whatever)
-// If a druid, you can enter "fd" to create a fighter/druid version
+// The "multiclass" variable tells the mod that this (single-class) kit can be cloned as a multiclass kit
+// If a cleric, you can enter some combination of "fc_cr_ct_cm" (can be just "fc" or "cr_cm" or whatever).
+// If a druid, you can enter "fd" to create a fighter/druid version.
 //
-// The "sphere_list" variable lets you link your kit to a particular deity or other kit already in the sphere system
-// See /faiths_and_powers/lib/sphere_list_fnp.tpa for a list
+// The "sphere_list" variable lets you link your kit to a particular deity or other kit already in the sphere system.
+// See /faiths_and_powers/lib/sphere_list_fnp.tpa for a list.
 // If you enter a deity here, e.g. "helm_spheres", then you can omit the rest of the sphere variables.
-// If you also include some sphere variables, they will override that sphere in the deity's sphere list
+// You can still include *some* sphere variables; they will override that sphere in the deity's sphere list.
 // 
 // For selected sphere variables, enter 'focus' 'major' 'minor' 'paladin' or 'ranger'
 //
@@ -125,8 +127,9 @@ END
 LAM ~READ_FNP_KIT_INFO~
 
 ACTION_IF FILE_EXISTS_IN_GAME ~d5_spheres.d5~ BEGIN
+	LAF apply_fnp_spheres STR_VAR clab_name = ~[your kit's clab.2da]~ END
 //
-// 	if this is an NPC mod, put your divine-class .cre file(s) here and uncomment the following 3 lines
+// 	if this is an NPC mod, put your divine-class .cre file(s) here and uncomment the following 5 lines
 /*
   ACTION_FOR_EACH cre_file IN ~this_npc~ ~this_npc25~ BEGIN
 	COPY_EXISTING  ~%cre_file%.cre~ ~override~
@@ -134,11 +137,21 @@ ACTION_IF FILE_EXISTS_IN_GAME ~d5_spheres.d5~ BEGIN
 	BUT_ONLY
   END
 */
-//
-	LAM apply_fnp_spheres
 END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~d5_fnp_usability.d5~ BEGIN
-	LAM apply_fnp_usability
+	LAF apply_fnp_usability STR_VAR clab_name = ~[your kit's clab.2da]~ END
+END
+
+ACTION_IF (FILE_EXISTS ~override/d5_fnp_settings.ini~) BEGIN
+  INCLUDE ~override/d5_fnp_settings.ini~
+  LAM d5_spont_option
+  ACTION_IF (d5_spell_spontaneous > 0) BEGIN
+	APPEND ~[your kit's clab.2da]~ ~SPNT_SPLS    GA_D5FPSP2  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** ~
+  END
+END
+
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5_cleric_umd.d5~) BEGIN
+  APPEND ~[your kit's clab.2da]~ ~NO_UMD      AP_D5_NUMD  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** ~
 END
 //__________________________________________________________________________________

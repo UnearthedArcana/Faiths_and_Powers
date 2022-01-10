@@ -10,11 +10,12 @@
 @23  = ~Custom: a player-supplied custom sphere system~
 @24  = ~None: no sphere system, just vanilla-style kits~
 //
+@29  = ~Give Option to Cast Like Sorcerers (do not install if planning to use 5E casting)~
 @31  = ~Install Cleric kits~
 @33  = ~Install Druid kits~
 @35  = ~Install Paladin kits~
 @37  = ~Install Ranger kits~
-@75  = ~Alter weapon usability and proficiency~
+@75  = ~Alter priests' weapon usability and proficiency~
 @80  = ~Apply sphere system~
 @85  = ~Apply FnP kits to NPCs~
 @91  = ~Multiclass Druids~
@@ -22,12 +23,25 @@
 @95  = ~Multiclass Cleric kits (install AFTER all other kit mods!!)~
 @99  = ~Apply FnP multiclass kits to NPCs~
 //
-//@100  = ~Select an installation method below:~
+//
+@100  = ~Select an installation method below:~
 @101  = ~ALL the new kits, the kit selection dialogue, and the sphere system ('radical version')~
 @102  = ~install everything (as designated in settings.ini)~
 @103  = ~choose components individually~
 @105  = ~no new kits - JUST install the sphere system~
 @110  = ~Change item usability for priests~
+@121  = ~Choose how to learn and cast spells~
+@122  = ~Cast priest spells spontaneously~
+@123  = ~No change, cast priest spells normally~
+@124  = ~Cast priest spells spontaneously?~
+@125  = ~Confirmed, cast spontaneously.~
+@126  = ~Cast priest spells normally?~
+@127  = ~Confirmed, no change, cast spells normally.~
+@128  = ~Reconsider~
+@141  = ~Change known spell~
+@142  = ~Do not change any spells~
+@143  = ~Change this spell~
+@144  = ~Change a different spell~
 //
 @200  = ~new and revised cleric kits~
 // 
@@ -218,6 +232,7 @@
 @10005 = ~CLERIC: The basic Cleric is an adventuring priest who promotes the principles and philosophy dear to <PRO_HISHER> deity. Though <PRO_HESHE> is both protector and healer, <PRO_HESHE> is not purely defensive-when enemies threaten, the Cleric is well suited to challenge them on their own ground and destroy them.
 
 CLASS FEATURES:
+
 - May wear helmets.
 - May wear up to Chain Mail armor.
 - Deity Selection: All clerics must select a deity.  Deity selection determines sphere access, granted powers, and other bonuses.
@@ -255,6 +270,7 @@ Gnomes can choose this multi-class, but become Cleric/Illusionists by default. G
 @10100 = ~CLERIC: The Cleric is an adventuring priest who promotes the principles and philosophy dear to <PRO_HISHER> deity. Though <PRO_HESHE> is both protector and healer, <PRO_HESHE> is not purely defensive-when enemies threaten, the Cleric is well suited to challenge them on their own ground and destroy them.
 
 CLASS FEATURES:
+
 - May wear helmets.
 - May wear up to Chain Mail armor.
 - Deity Selection: All clerics must select a deity.  Deity selection determines sphere access, granted powers, and other bonuses.
@@ -268,6 +284,7 @@ CLASS FEATURES:
 
 Advantages:
 - Divine Favor: Incarnates gain special unique abilities that are not available to other clerics, including specialized priests of the same deity.
+
 Disadvantages:
 - Is not proficient with armor, shields or helmets.~
 
@@ -329,14 +346,16 @@ At 10th level, if the Ur-Priest kills a target with this ability, <PRO_HESHE> al
 
 @20006 = ~+1 casting level~
 
-@20101 = ~cleric of lathander~
+@20101 = ~dawnbringer of lathander~
 @20102 = ~Dawnbringer of Lathander~
 @20103 = ~DAWNBRINGER OF LATHANDER: Dawnbringers are the representatives of Lathander, a widely worshiped deity of birth, renewal, health, and the dawn. Dawnbringers are especially vigilant foes of the undead, which they see as a plague upon the living, corrupting the life that is the gift of Lathander. They look to cleanse the world with Lathander's light, eradicating any undead with its purifying rays.
 
 Advantages:
 - Turns undead as a cleric four levels higher than their current level.
 - Can cast Boon of Lathander as a special ability once per day. The Dawnbringer gains an additional use at levels 4, 8, 12, 16 and 20.
+
 BOON OF LATHANDER: This spell lasts 1 round per level of the caster. It gives the caster a +1 bonus to attack and damage rolls, a +1 bonus to all Saving Throws, and 1 extra attack per round. It also protects the caster from level drain.
+
 - Can cast False Dawn as a special ability once per day at 9th level. The Dawnbringer gains an additional use at levels 20 and 30. The ability functions as the cleric spell of the same name.
 
 Restrictions:
@@ -368,7 +387,7 @@ False Dawn calls into existence a bright reddish light, as if a sunrise were occ
 //
 //    CLERIC OF TORM
 //
-@20201 = ~cleric of torm~
+@20201 = ~hand of torm~
 @20202 = ~Hand of Torm~
 @20203 = ~HAND OF TORM: Hands seek to emulate their deity Torm, who is known for his steadfast loyalty and dedication to all that is good.  While a great many of his worshipers are Champions (known as Paladins or Holy Champions of Torm), as Torm is the patron of Paladinhood, Hands are no less fierce and loyal to the cause of their god (if slightly less martial).
 
@@ -383,7 +402,7 @@ Restrictions:
 - Alignment: Lawful good, lawful neutral, or neutral good only.
 ~
 
-@20501  = ~cleric of tymora~
+@20501  = ~luckrider of tymora~
 @20502  = ~Luckrider of Tymora~
 @20503  = ~LUCKRIDER OF TYMORA: Also known as Lady Luck, Tymora is the goddess of good fortune. The sect of her clerics known as Luckriders eat, drink, and sleep luck. Confident to the point of cockiness, they enter battle recklessly, throwing caution to the wind and trusting in fate. Considering how many adventurers perish despite crafting meticulous strategies and plans, this is not a ridiculous position.
  
@@ -391,7 +410,7 @@ Advantages:
 - Luckriders are innately lucky, receiving the effects of the Luck spell permanently.
 - May cast an area-of-effect "Tymora's Luck" spell innately once per day, and once more for each 5 levels of experience gained.
 
-TYMORA'S LUCK:  The allies of this spellcaster gain extraordinary luck for the next 1 turn, receiving a +1 bonus to their saving throws, attack rolls, and minimum damage/healing rolls as well as +5% to all thieving skills. Furthermore, damage dice for all effects outside a weapon's base damage is reduced by 1. Finally, spells that offer saving throws to enemies are more likely to be effective: a spell that usually offers a saving throw with no penalty will instead offer a saving throw with a -2 penalty.
+TYMORA'S LUCK: The allies of this spellcaster gain extraordinary luck for the next 1 turn, receiving a +1 bonus to their saving throws, attack rolls, and minimum damage/healing rolls as well as +5% to all thieving skills. Furthermore, damage dice for all effects outside a weapon's base damage is reduced by 1. Finally, spells that offer saving throws to enemies are more likely to be effective: a spell that usually offers a saving throw with no penalty will instead offer a saving throw with a -2 penalty.
 
 Restrictions:
 - Alignment: may not Lawful or Evil.
@@ -408,7 +427,7 @@ The allies of this spellcaster gain extraordinary luck for the next 1 turn, rece
 //
 // ... cleric of helm:
 //
-@20801 = ~cleric of helm~
+@20801 = ~watcher of helm~
 @20802 = ~Watcher of Helm~
 @20803 = ~WATCHER OF HELM: Like their deity, Watchers of Helm are stern, dedicated, and loyal, perhaps to a fault.  Helm teaches that the right path is not always obvious, but the surest way to the right path is through the execution of duty.  As such, watchers of helm strive to do what they must despite the consequences, to themselves or even to others.  While othes may suggest that this supposed 'dedication' is nothing more than a fetish, the watcher has no time for such nonsense. They do not have the idle time to question; it is their duty to be ever alert for possible threats to cosmic order.   
 
@@ -438,7 +457,7 @@ When this spell is employed, the priest creates an invisible sensory organ that 
 //
 // ... cleric of KELEMVOR:
 //
-@20901 = ~cleric of kelemvor~
+@20901 = ~doomguide of kelemvor~
 @20902 = ~Doomguide of Kelemvor~
 @20903 = ~DOOMGUIDE OF KELEMVOR: Kelemvor is the most recent god of death.  He has proven to be quite different from Mykrul, the former god of death.  In particular, while the latter encouraged the creation of undead monstrosities, Kelevmor charges his clergy to actively destroy undead, seeing their existance as an unnatural perversion of the order of life and death.  As such, his clergy have become particularly talented undead slayers.
 
@@ -454,18 +473,17 @@ Restrictions:
 //
 // ... cleric of tempus:
 //
-@21001 = ~cleric of tempus~
+@21001 = ~battleguard of tempus~
 @21002 = ~Battleguard of Tempus~
 @21003 = ~BATTLEGUARD OF TEMPUS:  Tempus, also known as the Lord of Battles or the Foehammer, is random in his favors, yet his chaotic nature favors all sides equally. Lord Tempus may be on an army's side one day and against them the next; such is the nature of war. Tempuran clergy can be found on both sides of a conflict, as none can ever truly know whom the war god will favor.
 
 Advantages:
 - Battleguards can be proficient with any weapon
 - Battleguards gain a +1 bonus to damage with any melee weapon.
-- Incite Rage: Battleguards can incite a berserker rage beginning at level 5, and again at levels 10, 15 and 20.  
+- Incite Rage: Battleguards can incite a berserker rage beginning at level 5, and again at levels 10, 15 and 20.  This ability is like the berserkers enrage, except that <PRO_HESHE> can incite this rage in <PRO_HIMHER>self or in others.
 
-INCITE RAGE: This ability is like the berserkers enrage, except that <PRO_HESHE> can incite this rage in <PRO_HIMHER>self or in others. While enraged, the character gains a bonus of +2 to <PRO_HISHER> attack and damage rolls as well as to <PRO_HISHER> Armor Class, and becomes immune to charm, confusion, fear, feeblemind, hold, imprisonment, level drain, maze, stun, and sleep. The character also gains 15 temporary Hit Points, which are taken away at the end of the berserk spree (possibly knocking the character unconscious).
-
-After the effects end, the character becomes winded, suffering a -2 penalty to Armor Class, to-hit rolls, and damage rolls.
+Restrictions:
+- Alignment: No alignment restrictions.
 ~
 @21004 = ~Incite Rage~
 @21005 = ~~
@@ -477,14 +495,12 @@ After the effects end, the character becomes winded, suffering a -2 penalty to A
 //
 // ... cleric of leira:
 //
-@21201  = ~cleric of leira~
+@21201  = ~mistwalker of leira~
 @21202  = ~Mistwalker of Leira~
-@21203  = ~MISTWALKER OF LEIRA: Leira is the goddess of deception and illusion. She was supposedly slain under mysterious circumstances during the Avatar crisis, but at least one sect of her worshipers, the Mistwalkers, continue to receive divine power. Lies are their currency, illusion is their tool.  
-
+@21203  = ~MISTWALKER OF LEIRA: Leira is the goddess of deception and illusion. She was supposedly slain under mysterious circumstances during the Avatar crisis, but at least one sect of her worshippers, the Mistwalkers, continue to receive divine power. Lies are their currency, illusion is their tool.
+ 
 Advantages:
-- May use the "Leira's Double" ability once every 5 rounds. 
-
-LEIRA'S DOUBLE:  Often used in emergencies, this causes an illusory double of the cleric to spring into existence. If the cleric is being attacked, the double will absorb the first blow that lands, and disappear. At 6th level two doubles are created, and at 12th level one of the two doubles can actually wander away from the cleric to distract enemies. Mistwalkers may use this ability once per turn.
+- May use the "Leira's Double" ability once every 5 rounds. Often used in emergencies, this causes an illusionary double of the cleric to spring into existence. If the cleric is being attacked, the double will absorb the first blow that lands, and disappear. At 6th level two doubles are created, and at 12th level one of the two doubles can actually wander away from the cleric to distract enemies. Mistwalkers may use this ability once per turn.
 
 Restrictions:
 - May not dual-class to fighter.
@@ -497,18 +513,22 @@ Restrictions:
 //
 // ... cleric of loviatar:
 //
-@21901  = ~cleric of loviatar~
+@21901  = ~paingiver of loviatar~
 @21902  = ~Paingiver of Loviatar~
-@21903  = ~PAINGIVER OF LOVIATAR: Known as The Maiden of Pain and The Willing Whip, Loviatar is the evil goddess of agony. She is often seen as a cold-hearted bully, calculating and despotic; she revels in inflicting physical and psychological suffering. Her priests, known simply as "Paingivers" find freedom and power in such pain, and they seek to spread that gospel to others... regardless whether their victims are actually seeking such enlightenment.
+@21903  = ~PAINGIVER OF LOVIATAR: Known as The Maiden of Pain and The Willing Whip, loviatar is the evil goddess of agony. She is often seen as a cold-hearted bully, calculating and despotic; she revels in inflicting physical and psychological suffering. Her priests, known simply as "Paingivers" find freedom and power in such pain, and they seek to spread that gospel to others... regardless whether their victims are actually seeking such enlightenment.
 
 Advantages:
 - Can use the Pain Touch ability at will.
-PAIN TOUCH:
-When the priest of Lovitar activates this ability, her mere touch creates waves of pain for any creature with a nervous system.  When she touches any creature, they must save vs death or suffer a -2 penalty to their dexterity and -4 to thac0 as they writhe in agony and will suffer 1 point of non-lethal damage every 12 seconds.
+
+PAIN TOUCH: When the priest of Lovitar activates this ability, her mere touch creates waves of pain for any creature with a nervous system.  When she touches any creature, they must save vs death or suffer a -2 penalty to their dexterity and -4 to thac0 as they writhe in agony and will suffer 1 point of non-lethal damage every 12 seconds.
 The penalties and damage occurs over an excruciating period of 10 rounds.
-Paingivers have have this touch indefinitely, but they can suppress it as needed.
+Pain touch remains activated indefinitely, but the Paingiver may suppress it as needed.
+
 - At 3rd level, Paingivers can use Loviatar's Caress once per day.  <PRO_HESHE> can use this ability one more time at levels 6, 9, 12, 15 and 18.
-LOVIATAR'S CARESS:  When the cleric uses this ability, <PRO_HISHER> hands become instruments of Lovitar for four rounds.  <PRO_HESHE> can strike with uncanny accuracy with <PRO_HISHER> hands (+10 to hit) and <PRO_HESHE> inflicts an additional +2 points of damage per level to a maximum of +20 points at 10th level.  This spell stacks with other unarmed attacks, such as the priest's pain touch.
+
+LOVIATAR'S CARESS:
+
+When the cleric uses this ability, <PRO_HISHER> hands become instruments of Lovitar for four rounds.  <PRO_HESHE> can strike with uncanny accuracy with <PRO_HISHER> hands (+10 to hit) and <PRO_HESHE> inflicts an additional +2 points of damage per level to a maximum of +20 points at 10th level.  This spell stacks with other unarmed attacks, such as the priest's pain touch.
 
 Restrictions:
 - May not be Good.
@@ -533,17 +553,17 @@ When the cleric uses this ability, <PRO_HISHER> hands become instruments of Lovi
 //
 // ... cleric of Talos:
 //
-@22401 = ~cleric of talos~
+@22401 = ~stormbringer of talos~
 @22402 = ~Stormbringer of Talos~
-@22403 = ~STORMBRINGER OF TALOS: Talos is the evil god of storms, destruction, and rebellion. Clerics of the Stormlord warn that Talos must be appeased or he will rain destruction upon the land.
+@22403 = ~STORMBRINGER OF TALOS: Stormbringers are clerics of Talos, the Destroyer, the Raging One, the Stormstar, the Storm Lord.  Talos is the dark side of nature, the uncaring and destructive force that lies waiting to strike at any time.  Stormbringers strive to make all fear Talos by showing the destruction that he and all his servants can cause.  As examples to all, Stormbringers tend to indulge in acts of random or spiteful destruction as they travel and to make examples of all folk who stand up to them.
 
 Advantages:
 - Talos' Favor: Stormbringers are 50% resistant to electricity damage.
-- Can cast Storm Shield as a special ability once per day.  The Stormbringer gains an additional use at levels 4, 8, 12, 16 and 20.
+- Can cast Storm Shield as a special ablity once per day.  The Stormbringer gains an additional use at levels 4, 8, 12, 16 and 20.
 
 STORM SHIELD: This spell lasts 1 round per level of the caster. It protects the caster completely from lightning, fire, cold, and normal missiles.
 
-- Can cast Lightning Bolt as a special ability once per day at 9th level.  The Stormbringer gains an additional use at levels 20 and 30.  The ability functions as the wizard spell of the same name.
+- Can cast Lightning Bolt as a special ability once per day at 9th level.  The stormbringer gains an additional use at levels 20 and 30.  The abilty functions as the wizard spell of the same name.
 
 Restrictions:
 - Alignment: any evil or chaotic neutral
@@ -559,13 +579,13 @@ Casting Time: 3
 Area of Effect: Path of bolt
 Saving Throw: 1/2
 
-Upon casting this spell, the cleric releases a powerful stroke of energy that inflicts 1d6 points of electrical damage per level of the spellcaster to each creature within its area of effect (maximum damage of 10d6). A successful Save vs. Spell reduces this damage to half (round fractions down). When the lightning bolt intersects with a wall, it will rebound until it reaches its full lengthâhitting the same enemy multiple times, or even members of the caster's own party.~
+Upon casting this spell, the cleric releases a powerful stroke of energy that inflicts 1d6 points of electrical damage per level of the spellcaster to each creature within its area of effect (maximum damage of 10d6). A successful Save vs. Spell reduces this damage to half (round fractions down). When the lightning bolt intersects with a wall, it will rebound until it reaches its full length - hitting the same enemy multiple times, or even members of the caster's own party.~
 
 //
 // ... cleric of Cyric:
 //
-@22501 = ~cleric of cyric~
-@22502 = ~the Sworn of Cyric~
+@22501 = ~sworn of cyric~
+@22502 = ~Sworn of Cyric~
 @22503 = ~THE SWORN OF CYRIC: The sworn of Cyric do what they can to appease their mad, fickle god.  In the meantime, they try to take what they can, when they can, before being smited either by their god, or one of their many victims.  
 
 Advantages:
@@ -573,22 +593,23 @@ Advantages:
 - Sworn are completely fearless.  As such, they are not affected either by magical fear or moral failure.
 - At 5th level, the Sworn can cast Confusion as the 4th level wizard spell once per day.  They can cast this spell an additional time per day at levels 10, 15 and 20.
 - At 10th level, the Sworn can cast Feeblemind once per day as the wizard spell.  They gain an additional use of this ability at 20th and 30th level.
+
 Restrictions:
 - Alignment: any evil or chaotic neutral
 ~
 //
 // ... cleric of Umberlee:
 //
-@22601 = ~cleric of umberlee~
+@22601 = ~waverservant of umberlee~
 @22602 = ~Waveservant of Umberlee~
 @22603 = ~WAVESERVANT OF UMBERLEE: Umberlee is a fickle goddess who claims the sea as her sole domain.  Like many evil gods, she is more often feared than revered, though there are notable exceptions.  Umberlee has something of an...affection for lost souls, and so she has been known to take them under her wing from time to time.  
 
 Advantages:
-
+- Mistress of the Waves: Unlike most clerics, waveservants have focus access in the elemental water sphere.
 - Can cast Smashing Wave as the cleric spell as a special ability once per day.  The Waveservant can use this ability an additional time per day at levels 4, 8, 12, 16 and 20.
-Disadvantages:
-- The Waveservant cannot turn undead.
 
+Disadvantages: 
+- The Waveservant cannot turn undead.
 Restrictions:
 - Alignment: any evil or chaotic neutral
 ~
@@ -596,7 +617,7 @@ Restrictions:
 // ... priest of oghma:
 //
 
-@31001  = ~priest of oghma~
+@31001  = ~seeker of oghma~
 @31002  = ~Seeker of Oghma~
 @31003  = ~SEEKER OF OGHMA:  Oghma is a greater god of knowledge, sagecraft, learning, and wisdom. He is venerated by those seeking information - particularly lost or hidden information. When a Seeker demonstrates solid service or true loyalty in Oghma's cause, <PRO_HESHE> is bestowed with the title of Loremaster. This is a great honor; while outsiders may perceive the god of sages as belonging in dusty libraries, the fact is that many Oghmanite priests are of an adventuresome bent.
 
@@ -605,7 +626,6 @@ Advantages:
 - From 3rd level, a Seeker can innately cast Know Opponent, making it easier for <PRO_HIMHER>self and <PRO_HISHER> allies to strike the target creature.
 - From 9th level, a Seeker can innately cast Feeblemind.
 - Seekers can understand and use scrolls and wands normally restricted to wizards.
-
 
 Restrictions:
 - Alignment: May not be Evil
@@ -618,9 +638,9 @@ When this spell is cast, the caster is enabled to read the aura of a target crea
 //
 // ... priest of ilmater:
 //
-@31401  = ~priest of ilmater~
+@31401  = ~painbearer of ilmater~
 @31402  = ~Painbearer of Ilmater~
-@31403  = ~PAINBEARER OF ILMATER:  Priests of Ilmater are often itinerant, traveling the land looking to assuage suffering wherever it may exist. Painbearers believe that there is a finite amount of pain in the world.  As such, they seek to take on as much of that pain as possible in order to spare the innocent.  They will also take up arms as needed, and even bring pain to those who would hurt others.
+@31403  = ~PAINBEARER OF ILMATER:  Ilmater offers succor and calming words to those who are in pain, oppressed, or in great need.  He is the willing sufferer, the one who takes the place of another to bear their burden and take their pain.  Painbearers are often itinerant, traveling the land looking to assuage suffering wherever it may exist. They stick to their cause if they believe it is right, whatever the pain and peril, and strive to stand up to all tyrants.
 
 Advantages:
 - Can cast remove fear at will.
@@ -645,7 +665,7 @@ When the priest casts this spell, <PRO_HESHE> doubles the hit points of any crea
 // ... priest of deneir:
 //
 
-@31501  = ~priest of deneir~
+@31501  = ~glyphscribe of deneir~
 @31502  = ~Glyphscribe of Deneir~
 @31503  = ~GLYPHSCRIBE OF DENEIR:  Deneir is the patron of artists, scribes and cartographers.  He values the written word, and the information that that word carries, and so do his priests.
 
@@ -662,14 +682,14 @@ Restrictions:
 //
 // ... priest of sune:
 //
-@31601  = ~priest of sune~
+@31601  = ~heartwarder of sune~
 @31602  = ~Heartwarder of Sune~
 @31603  = ~HEARTWARDER OF SUNE:  Sune teaches that external beauty ultimately reflects ones internal worth.  Thus, her followers strive to preserve beauty, both in themselves and in others, whether those othere be individuals or objects, such as works of art.
 
 Advantages:
 - Heartwarders are especially resistant to the influence of mind altering magic.  They recieve a +2 bonus to their save vs. spell.
 - Heartwarders may charm person as a special ability once per day.  This ability is especially potent, and opponents suffer a -2 to their save.  Otherwise, this ability functions as the wizard spell of the same name.  The Heartwarder can use this ability an additional time per day at levels 3, 6, 9, 12, 15, 18 and 20.  
-- Heartwarders may cast emotion: Hope as a special ability once per day at level 5.  The heartwarder can use this ability an additional time at levels 10, 15 and 20.  This spell functions as the wizard spell of the same name.
+- Heartwarders may cast emotion: Hope as a special ability once per day at level 5.  The heartwarder can use this ability an additional time at levels 10, 15 and 20.  This spell functions as the wizard spell of the same name.  
 - At 11th level, the Heartwarder gains a permenant +1 bonus to charisma.
 
 Restrictions:
@@ -685,13 +705,13 @@ If the caster harms, or attempts to harm, the charmed person by some overt actio
 //
 // ... Broken Blades of Tempus
 //
-@32201 = ~priest of tempus~
+@32201 = ~broken blade of tempus~
 @32202 = ~Broken Blade of Tempus~
-@32203 = ~BROKEN BLADE OF TEMPUS:  Broken Blades honor Tempus by treating those wounded in battle.  Unlike Battleguards and Glorybloods, who are most frequently found on the front lines, it is more common to find a Broken Blades at the rear, treating and protecting the wounded.  Broken Blades are particularly militant for priests, often wielding battle axes, and will be found defending any of Tempus's holy sites. 
+@32203 = ~BROKEN BLADE OF TEMPUS:  Broken Blades honor Tempus by treating those wounded in battle.  Unlike Battleguards and Glorybloods, who are most frequently found on the front lines, it is more common to find a Broken Blades at the rear, treating and protecting the wounded.  Broken Blades are particulary millitant for priests, often weilding battle axes, and will be found defending any of Tempus's holy sites.
 
 Advantages:
 - Broken Blades automatically gain proficiency with the axe.  
-- Can cast Chant as a spell like ability one time per day but with a casting time of 1 at first level.  The Broken BLade gains an additional use every 5 levels.
+- Can cast Chant as a spell like ability one time per day but with a casting time of 1 at first level.  The Broken Blade gains an additional use every 5 levels.
 
 Restrictions:
 - Alignment: No alignment restrictions
@@ -715,7 +735,7 @@ Multiple chants are not cumulative.
 //
 // ... priest of mystra:
 //
-@32401  = ~priest of mystra~
+@32401  = ~weavekeeper of mystra~
 @32402  = ~Weavekeeper of Mystra~
 @32403  = ~WEAVEKEEPR OF MYSTRA: Mystra is known as the Lady of Spells and the Mother of Magic. She tends to the Weave, which enables mortals to cast spells. All wielders of magic and seekers after arcane lore are welcome in the service of Mystra. One sect of Mystra's clerics, known as Weavekeepers, is focused on investigating and controlling sources of powerful magic which, in the wrong hands, might harm the reputation and perception of magic use.
 
@@ -743,12 +763,11 @@ Restrictions:
 //
 // ... priest of azuth:
 //
-@32501  = ~priest of azuth~
+@32501  = ~magistrati of azuth~
 @32502  = ~Magistrati of Azuth~
 @32503  = ~MAGISTRATI OF AZUTH: Azuth is a lesser deity who assists Mystra, the Mother of Magic, in tending to 'the Weave' that enables all magic in Faerun to exist. Azuthan clergy tend to love magic for its own sake. They have a natural familiarity with and access to wizard spells. Specialty priests of Azuth are known as Magistrati.
 
 Advantages:
-- May use the 'Arcane Weaving' abilities in place of memorizing priest spells. This ability allows the priest to spontaneously cast one of several wizard spells of one level lower than the sacrificed priest spell. 
 - From 5th level, once per day, a Magistrati can concentrate and briefly increase <PRO_HISHER> ability to understand and identify the workings of magical items.
 - Magistrati can use scrolls and wands normally restricted to wizards.
 
@@ -763,11 +782,11 @@ School: Divination
 Duration: 3 rounds
 Casting Time: 2
 
-The caster of this spell gains a temporary insight into the history and nature of magical objects. This translates into a temporary Lore bonus of 20 points, plus an additional 20 points for each five levels of experience the caster has attained. If the resulting score is high enough, the spell can identify the name, nature, and function of any magical items in the caster's possession.~
+The caster of this spell gains a temporary insight into the history and nature of one or more magical objects in <PRO_HISHER> inventory.~
 //
 // ... priest of shar:
 //
-@33001  = ~priest of shar~
+@33001  = ~darkcloak of shar~
 @33002  = ~Darkcloak of Shar~
 @33003  = ~DARKCLOAK OF SHAR: Shar is known as the Mistress of the Night. She is the goddess of darkness, presiding over caverns, dungeons, forgetfulness, loss, night, and secrets. The Darkcloaks are an unusual sect, who use Shar's influence to give care and comfort to those who are lost or emotionally damaged. While some other followers of Shar spurn these priests for failing to be militant enough, Darkcloaks still possess powerful abilities to strive against their enemies.
  
@@ -786,7 +805,7 @@ Restrictions:
 //
 // ... priest of moander:
 //
-@33101 = ~priest of moander~
+@33101 = ~minion of moander~
 @33102 = ~Minion of Moander~
 @33103 = ~MINION OF MOANDER:  Moander, is thought to be dead.  However, cults dedicated to the lord of rot continue to exist.  Minions of the darkbringer seek to spread rot and decay wherever they go.
 
@@ -801,9 +820,9 @@ Restrictions:
 //
 // ... priest of besheba:
 //
-@33201 = ~priest of beshaba~
+@33201 = ~doommaster of beshaba~
 @33202 = ~Doommaster of Beshaba~
-@33203 = ~DOOMMASTER OF BESHABA:  Beshaba, the maid of misfortune, is the jealous goddess of ill-fate.  Not worshiped so much as feared, she demands tribute, or at least lip service, else she is likey to doom those that offend her to a life of failure.  Her priests work to ensure that she her ego is adequately sated.
+@33203 = ~DOOM<PRO_MASTERMISTRESS> OF BESHABA:  Beshaba, the maid of misfortune, is the jealous goddess of ill-fate.  Not worshiped so much as feared, she demands tribute, or at least lip service, else she is likey to doom those that offend her to a life of failure.  Her priests work to ensure that she her ego is adequately sated.
 
 Advantages:
 -  Doommasters can cast a special version of the doom spell at will.  It can be used once, and only once, on a given opponent.
@@ -811,8 +830,7 @@ Advantages:
 -  At 7th level, the doommaster can cast misfire as a special ability once per day.  Misfire works as the spell of the same name.  The doommaster can use this abilty an additional time per day at levels 10, 13, 16 and 19.
 -  At 10th level, the doommaster can cast misfortune. <PRO_HESHE> can use this abilty one additional time at levels 15, and 20.
 
-MISFORTUNE:
-This abilty curses the target, causing them a penalty of -10 penalty to THAC0, saves and AC for one round/level if they fail a save vs. spell.
+MISFORTUNE: This abilty curses the target, causing them a penalty of -10 penalty to THAC0, saves and AC for one round/level if they fail a save vs. spell.
 
 Restrictions:
 - Alignment: Any evil or chaotic neutral
@@ -824,15 +842,12 @@ This abilty curses the target, causing them a penalty of -10 penalty to THAC0, s
 //
 // ... talon of malar 
 //
-@33401 = ~cleric of malar~
+@33401 = ~talon of malar~
 @33402 = ~Talon of malar~
 @33403 = ~TALON OF MALAR: Malar, god of the savage wild, is not a popular god with many devoted followers. Like Umberlee, he is invoked usually to prevent his intercession (usually heralded by wild beasts) as opposed to beseeching it. Malarite clergy members preach the joys and the bountiful yields of the hunt and work to thwart the expansion of farms and settlements, so as to preserve as much wilderness as possible.
 
 Advantages:
-- Talons may cast Claws of Malar as an innate ability, at will. 
-
-CLAWS OF MALAR:  When this ability is active, 20% of all attacks with the cause infection upon a failed save vs. Death, weakening the target and causing a 10% chance of spell failure.  
-  
+- Talons may cast "Claws of malar" as an innate ability, at will. 20% of all attacks with the Claws of Malar cause infection upon a failed save vs. Death, weakening the target and causing a 10% chance of spell failure.
 - Talons may use the Tracking ability at will.
 - Whenever a Talon casts an Animal Summoning spell, the creatures so summoned automatically benefit from application of the Animal Growth spell (2-point bonus to hit, damage, armor class and saving throws, and a 50% increase in hit points).
 - At 7th level, Talons may cast the spell Blood Rage once per day as an innate ability.
@@ -850,16 +865,16 @@ With an intimate knowledge of <PRO_HISHER> surroundings and the creatures that l
 //
 // ... hammer of moradin 
 //
-@37101  = ~cleric of moradin~
+@37101  = ~sonnlinor of moradin~
 @37102  = ~Sonnlinor of Moradin~
-@37103  = ~SONNLINOR OF MORADIN: Sonnlinors of Moradin seek to emulate the all-father in word and deed, seeking to become masters of both battle and craft.  Sonnlinors can be found wherever dwarves can be found in any substantial numbers.  Like their deity, they seek to instill stern, but benevolent discipline in their flock and promote harmony with other races, where possible.
+@37103  = ~SONNLINOR OF MORADIN: Sonnlinor are the specialty priests of Moradin, the Soul Forger, the chief deity or the dwarven pantheon.  A harsh but fair judge, he is strength and force of will embodied.  His priests strive to restore the dwarven races to strong numbers and a position of influence in Faerun.  They believe that wisdom is derived from life tempered with experience and that they have an important role to lead the stout folk in the traditional ways laid down by the Soul Forger. 
 
 Advantages: 
-- Priests of Moradin are unparalleled in the use and maintenance of war hammers. They have a +2 bonus to hit when attacking with a war hammer, and any war hammer they wield is considered to be of +3 enchantment for purposes of what enemies it can strike.
-- From 1st level, priests of Moradin may cast an innate form of the Command spell once per day.
-- From 3rd level, priests of Moradin may cast an innate form of the Chant spells once per day.
-- From 5th level, priests of Moradin may create a Spiritual Hammer of Moradin once every five turns. This weapon of magical force does 1d4+1 blunt damage and 1d4 magic damage to foes, and has a chance to briefly Hold any undead struck by it. The damage and expertise with which the hammer is wielded increases as the Alaghor gains experience. The hammer remains in existence for ten rounds.
-- From 7th level, priests of Moradin may innately cast Command twice per day.
+- Sonnlinor are unparalleled in the use and maintenance of war hammers. They have a +2 bonus to hit when attacking with a war hammer, and any war hammer they wield is considered to be of +3 enchantment for purposes of what enemies it can strike.
+- From 1st level, Sonnlinor may cast an innate form of the Command spell once per day.
+- From 3rd level, Sonnlinor may cast an innate form of the Chant spells once per day.
+- From 5th level, Sonnlinor may create a Spiritual Hammer of Moradin once every five turns. This weapon of magical force does 1d4+1 blunt damage and 1d4 magic damage to foes, and has a chance to briefly Hold any undead struck by it. The damage and expertise with which the hammer is wielded increases as the Sonnlinor gains experience. The hammer remains in existence for ten rounds.
+- From 7th level, Sonnlinor may innately cast Command twice per day.
 
 Restrictions:
 - Must be a dwarf.
@@ -870,7 +885,7 @@ Restrictions:
 //
 // ... alaghor of clangeddin 
 //
-@37201  = ~cleric of clangeddin~
+@37201  = ~alaghor of clangeddin~
 @37202  = ~Alaghor of Clangeddin~
 @37203  = ~ALAGHOR OF CLANGEDDIN: Alaghors are an elite order of fighter/clerics devoted to the dwarven god of war, Clangeddin. They are powerful warriors as well as wise ministers, protecting dwarven communities from threats both physical and spiritual. 
 
@@ -892,9 +907,9 @@ Restrictions:
 
 A warrior's intimate knowledge of vital spots on opponents allows <PRO_HIMHER> to, once per day, concentrate all of the attacks in one round to strike a vital area every time. With this ability, every attack roll made in the next round is a natural 20, resulting in a critical hit.~
 //
-// ... priest of baravar:
+// ... priest of marthammor:
 //
-@37301  = ~cleric of marthammor~
+@37301  = ~volamtar of marthammor~
 @37302  = ~Volamtar of Marthammor Duin~
 @37303  = ~VOLAMTAR OF MARTHAMMOR DUIN: Known as the Finder of Trails, Marthammor is the dwarven patron of exploration, adventurers, and expatriate dwarves traveling outside dwarven lands.  
 
@@ -911,18 +926,38 @@ Restrictions:
 
 With an intimate knowledge of <PRO_HISHER> surroundings and the creatures that live within them, a Volamtar of Marthammor Duin can use the Tracking ability to give <PRO_HIMHER>self a general idea of what creatures are in an area and which direction they are. Red arrows at the edge of the screen will point in the general direction of the creatures in the area.~
 //
+// ... priest of haela:
+//
+@37401  = ~kaxanar of haela brightaxe~
+@37402  = ~Kaxanar of Haela Brightaxe~
+@37403  = ~KAXANAR OF HAELA BRIGHTAXE: fluff
+
+Advantages:
+- Kaxanar can be proficient with any weapon.
+- Kaxanar gain a +1 bonus to damage with any melee weapon.
+- Incite Rage: Kaxanar can incite a berserker rage beginning at level 5, and again at levels 10, 15 and 20.  This ability is like the berserkers enrage, except that <PRO_HESHE> can incite this rage in <PRO_HIMHER>self or in others.
+
+Restrictions:
+- Alignment: may not be Lawful.
+~
+@37323  = ~Tracking~
+@37334  = ~Tracking
+
+With an intimate knowledge of <PRO_HISHER> surroundings and the creatures that live within them, a Volamtar of Marthammor Duin can use the Tracking ability to give <PRO_HIMHER>self a general idea of what creatures are in an area and which direction they are. Red arrows at the edge of the screen will point in the general direction of the creatures in the area.~
+//
 // ... priest of baravar:
 //
-@38201  = ~cleric of baravar~
+@38201  = ~hoodwinker of baravar~
 @38202  = ~Hoodwinker of Baravar Cloakshadow~
-@38203  = ~HOODWINKER OF BARAVAR CLOAKSHADOW: 
+@38203  = ~HOODWINKER OF BARAVAR CLOAKSHADOW: Baravar Cloakshadow, the Sly One, is the gnomish deity of deception and illusions. Clerics of Baravar are known as Hoodwinkers and tend to be the sneakiest of gnomes, who serve their communities by instructing them in disguise and camoflage.
 
 Advantages:
 - Hoodwinkers can innately cast Mirror Image once per day.
 - From 4th level, Hoodwinkers can innately cast Improved Invisibility once per day.
 - May use the Shadowstep ability at 6th level. The Hoodwinker gains an additional use at levels 12 and 18.
-SHADOWSTEP: 
-The character steps into the Shadow Plane and may move for 7 seconds while others are frozen in time. The caster cannot attack or cast spells while in the Shadow Plane.
+
+SHADOWSTEP: The character steps into the Shadow Plane and may move for 7 seconds while others are frozen in time. The caster cannot attack or cast spells while in the Shadow Plane.
+
 - From 9th level, Hoodwinkers can invoke wild and confusing images in the minds of <PRO_HISHER> enemies, mimicking the effect of the Confusion spell.
 
 Restrictions:
@@ -935,9 +970,9 @@ Restrictions:
 //
 // ... priest of baervan:
 //
-@38301 = ~cleric of baervan~ 
+@38301 = ~fastpaws of baervan~ 
 @38302 = ~Fastpaws of Baervan~ 
-@38303 = ~FASTPAWS OF BAERVAN: Usually found far afield from urban areas, followers of Baervan Wildwanderer seek to protect nature from evil creatures. They have a particular affinity for forest plants and creatures - especially raccoons!
+@38303 = ~FASTPAWS OF BAERVAN WILDWANDERER: Usually found far afield from urban areas, followers of Baervan Wildwanderer seek to protect nature from evil creatures. They have a particular affinity for forest plants and creatures - especially raccoons!
 
 Advantages:
 - May summon a spirit animal ally for protection once per day. This being is similar to a bear, and increases in power at 3rd, 5th, 7th, and 10th levels.
@@ -950,13 +985,13 @@ Restrictions:
 - Race restricted to gnome.
 - Alignment restricted to good.
 ~
-@38304 = ~PRIEST OF BAERVAN: Usually found far abreast from heavily urban areas, followers of Baervan Wildwanderer seek to protect nature from evil creatures. They have a particular affinity for forest plants and creatures, especially raccoons.
+@38304 = ~FASTPAWS OF BAERVAN WILDWANDERER: Usually found far abreast from heavily urban areas, followers of Baervan Wildwanderer seek to protect nature from evil creatures. They have a particular affinity for forest plants and creatures, especially raccoons.
 ~
 //
 // ... cleric of baervan:
 //
-@22301 = ~cleric of baervan~ //Lower Case Kit Name: No Divine Remix
-@22302 = ~Priest of Baervan~ //Mixed Case Kit Name: No Divine Remix
+@22301 = ~fastpaws of baervan~ //Lower Case Kit Name: No Divine Remix
+@22302 = ~Fastpaws of Baervan~ //Mixed Case Kit Name: No Divine Remix
 @22303 = ~PRIEST OF BAERVAN: Usually found far abreast from heavily urban areas, followers of Baervan Wildwanderer seek to protect nature from evil creatures. They have a particular affinity for forest plants and creatures, especially raccoons.
 
 Advantages:
@@ -978,7 +1013,7 @@ This spell grants one person protection from ground and nature based movement im
 //
 // ... priest of urdlen:
 //
-@38501  = ~cleric of urdlen~
+@38501  = ~bloodstalker of urdlen~
 @38502  = ~Bloodstalker of Urdlen~
 @38503  = ~BLOODSTALKER OF URDLEN: Urdlen's priests wage an unending war on communities of the Forgotten Folk, particularly the clergies of the other gnome gods. When not hunting other creatures, members of the priesthood work to steal, deface, or destroy objects of value, particularly gems and works of art. They share their lord's love for evil pranks, especially those directed against other gnomes. Priests must satisfy Urdlen first, so that he does not come for them, but then they may do what they want. Bloodstalkers believe that existence is a cosmic joke before death comes via Urdlen's claws. Sharing the cruel ironies and harsh humor of existence with others is only kind, for it helps to toughen them for what is coming in the end.
 
@@ -994,7 +1029,7 @@ Restrictions:
 //
 // ... priest of yondalla:
 //
-@39101  = ~cleric of yondalla~
+@39101  = ~horn guard of yondalla~
 @39102  = ~Horn Guard of Yondalla~
 @39103  = ~HORN GUARD OF YONDALLA: Yondalla is the leader of the halfling pantheon, protector and provider for both the deities in her fold and the halfling race in general.  She represents life, creativity, fertility, community.  Her priests generally play important roles in halfling affairs; they officiate over weddings, births, funerals, and other civil ceremonies, and trusted advisors to community leaders.  In times of crisis and when under attack, they generally hang back, supporting the defenders in front of them and establishing the last line of defense for the weak and helpless.
 
@@ -1010,7 +1045,7 @@ Restrictions:
 //
 // ... priest of arvoreen:
 //
-@39201  = ~cleric of arvoreen~
+@39201  = ~defender of arvoreen~
 @39202  = ~Defender of Arvoreen~
 @39203  = ~DEFENDER OF ARVOREEN: Arvoreen represents the military might of the halfling race.  His followers general focus on reaction and defense.  They cultivate tactical skills, supporting fighting prowess with stealth and guerilla maneuvering, advanced signalling systems, and the use of traps and wards to control enemy movement.
 
@@ -1030,7 +1065,6 @@ When necessary, a Defender can draw upon a great well of strength for brief peri
 @39214  = ~Swiftness of Action
 
 When circumstances demand it, a Defender can move at incredible speeds for brief periods of time. Using this ability, <PRO_HESHE> resembles nothing so much as a body imbued with a Haste spell; <PRO_HESHE> can run twice her normal distance in the same amount of time and receives an additional attack in each round of combat. Such a pace cannot be maintained indefinitely, however; the effect lasts for 3 rounds + 1 round per level.~
-
 //
 // ... incarnate of mystra 
 //
@@ -1300,7 +1334,7 @@ This magic will allow the Spellbender to cast one of the following spells:
 //
 // ... cleric/thief of mask:
 //
-@46901  = ~priest of mask~
+@46901  = ~nightrunner of mask~
 @46902  = ~Nightrunner of Mask~
 @46903  = ~NIGHTRUNNER OF MASK: Mask is the god of shadow and intrigue. His goals are always hidden, and his actions are motivated by many layers of schemes and plans. His sect of Nightrunners includes both priests and cleric/thieves who travel the land advancing Mask's agenda.
 
@@ -1324,9 +1358,9 @@ Restrictions:
 //
 // ... cleric/thief of brandobaris:
 //
-@47701  = ~cleric of brandobaris~
+@47701  = ~misadventurer of brandobaris~
 @47702  = ~Misadventurer of Brandobaris~
-@47703  = ~MISADVENTURER OF BRANDOBARIS: generally portrayed as a friendly rascal, Brandobaris is the halfling embodiment of adventure and mischief. Fond of novel risks and challenges, he pairs a tendency to fall into trouble with an uncanny knack for escaping it in daring and dramatic ways. His priests spend a substantial portion of their time cultivating roguish talents.
+@47703  = ~MISADVENTURER OF BRANDOBARIS: Generally portrayed as a friendly rascal, Brandobaris is the halfling embodiment of adventure and mischief. Fond of novel risks and challenges, he pairs a tendency to fall into trouble with an uncanny knack for escaping it in daring and dramatic ways. His priests spend a substantial portion of their time cultivating roguish talents.
 
 Advantages:
 - Blessing of Tymora: due to Brandobaris' close friendship with Tymora, Misadventurers have a permanent +1 bonus to Luck.
@@ -1371,7 +1405,7 @@ Restrictions:
 @49211  = ~Wind Walk~
 @49212  = ~Wind Walk
 
-Dimension Door Fluff~
+The Windrider alters the substance of their body to a cloudlike vapor and then summons a magical wind to rapidly blow their intangible form where they wish to go.~
 //
 // ... spells for sphere system: 2nd+3rd digits = sphere # 
 //
@@ -1383,6 +1417,7 @@ Advantages:
 - Heightened Awareness: +1 bonus to AC and +2 bonus to save vs breath
 - Can cast Helm's eye as a special ability once per day at 9th level.  The watcher gains an additional use at levels 11, 13, 15, 17 and 19. Helm's eye is equivalent to the wizard spell, wizard eye.
 - Can cast Seeking Sword as a special ablity once per day.  The Watcher gains an additional use at levels 4, 8, 12, 16 and 20.
+
 SEEKING SWORD: This spell creates a sword in the Cleric's hand that cannot be dropped or unequipped. The sword is enchanted as a +4 weapon and provides a +4 THAC0 bonus, but no damage bonus. It deals 2d4 damage to any target it hits. The weapon sets the Cleric's number of attacks per round to 3 and lasts for 1 round per level. While it is equipped, the wielder cannot cast further spells.
 
 Restrictions:
@@ -1441,10 +1476,22 @@ Advantages:
 Restrictions: 
 - Alignment: must be Neutral
 ~
-@49911  = ~Spell Knowledge~
-@49912  = ~Spell Knowledge
+@49911  = ~Divine Spell Knowledge~
+@49912  = ~Divine Spell Knowledge
+
+This ability allows you to select your priest spells known for each spell level.~
+@49913  = ~Arcane Spell Knowledge~
+@49914  = ~Arcane Spell Knowledge
+
+This ability allows you to select your wizard spells known for each spell level.~
+@49915  = ~Spell Knowledge~
+@49916  = ~Spell Knowledge
 
 This ability allows you to select your spells known for each spell level.~
+@49917  = ~Choose divine spellcasting style~
+@49918  = ~Choose divine spellcasting style
+
+This ability allows you to choose whether to learn and cast spells intuitively, like a sorcerer/shaman, or by the normal mechanism.~
 @49921  = ~Shamanic Dance~
 @49922  = ~Shamanic Dance: ~
 @49923  = ~Stop Shamanic Dance~
@@ -1733,7 +1780,7 @@ Upon using this ability, the Mystic is allowed to choose a spell from his repert
 // ... druids:
 //
 @73101  = ~forest druid~
-@73102  = ~Druid~
+@73102  = ~Forest Druid~
 @73103  = ~DRUID: Most druids reside in the regions where soil is nutritious, plant life is abundant and animals thrive.  These regions are in many ways the epitome of harmonious ecosystems, and druids often charge themselves with nurturing and defending them.  Tall forests are a paradise in many ways: they provide shade from the sun, food and homes for animals and people, and wood for tools.  Forests are incessantly under threat of being torn down and subjugated by careless humans and demihumans. Forest druids therefore often live with a constant low-grade paranoia, which informs the stereotype of druids being hostile to civilization.
 
 Advantages:
@@ -1889,7 +1936,7 @@ Advantages:
 - At 13th level, may shapeshift into a remorhaz.
 - At 15th level, gains 10% resistance to damage from cold, fire, electricity, and acid.  These resistances increase by another 10% at levels 18 and 21.
 
-WOLF: in this form the druid can detect hidden enemies. He can attack 1.5 times per round for 2d4 piercing damage. Successful attacks have a chance to grapple the target, briefly Slowing them; they must make a saving throw to avoid this.
+WOLF: in this form the druid can detect hidden enemies. <PRO_HESHE> can attack 1.5 times per round for 2d4 piercing damage. Successful attacks have a chance to grapple the target, briefly Slowing them; they must make a saving throw to avoid this.
 
 BLACK BEAR: in this form, the druid has 19 strength. <PRO_HESHE> can attack twice per round with claws that cause 2d6 slashing damage.
 
@@ -1910,7 +1957,7 @@ REMORHAZ: in this powerful form, the druid has 21 strength and 100% resistance t
 //
 @73801  = ~shadow druid~
 @73802  = ~Shadow Druid~
-@73803  = ~SHADOW DRUID: ... .
+@73803  = ~SHADOW DRUID: Shadow druids are a militant sect of druids who believe that there is a long and endless struggle between civilization and nature and that their role is to even the odds for nature.  They have been known to use extreme methods and violence to drive away civilization, using the ferocious powers of nature they are capable of summoning.
 
 Advantages:
 - At 1st level, may summon a Shadow Wolf. The HD of the spirit animal increases to match the druid's level at 3rd, 5th, 7th and 10th level.
@@ -2040,8 +2087,10 @@ CLASS FEATURES:
 - May Turn Undead as a Cleric two levels lower, starting at level 3.
 - May cast priest spells beginning at level 6.
 - May use SMITE once per day at level 1.  The Champion can use this abiltiy an additional time per day every 4 levels.
+
 SMITE:  When the Champion uses this ability, <PRO_HISHER> melee attacks inflict an additional 1d6 points of magic damage, (+1d6 points of damage at levels 4, 10 and 18) levels over the next 2 rounds.  This ability lasts an additional round at level 2, 8 and 14.
 Typically, smite inflicts additional damage or effects on certain kinds of creatures depending on the Champion's patron deity
+
 - Other abilities based on patron deity.
 - Hit Die: d10~
 
@@ -2070,6 +2119,7 @@ Advantages:
 - Moves 2 points faster than other characters
 - Zealots Hide in Shadows as Rangers of the same level
 - May use the frenzy ability once per day.  The zealot gains an additional use of this ability at levels 10, 15 and 20.
+
 FRENZY: The character becomes frenzied for 1 turn. While in this state, the character gains a +2 bonus to <PRO_HISHER> melee attack rolls and saves, as well as to <PRO_HISHER> Armor Class, and becomes immune to charm, confusion, fear, feeblemind, hold, imprisonment, level drain, maze, stun, and sleep. The character also gains an additional attack per round.
 Frenzy is further modified depending upon the patron deity of the zealot.
 
@@ -2083,13 +2133,13 @@ Disadvantages:
 @80011 = ~INQUISITOR: The Inquisitor has dedicated <PRO_HISHER> life to finding and eliminating infiltrators of <PRO_HISHER> faith; <PRO_HISHER> god has provided <PRO_HIMHER> with special abilities toward that end.
 
 Advantages:
- May cast Dispel Magic once per day. Gains one use at level 1 and an additional use every 4 levels thereafter. The spell is cast at Speed Factor 1 and acts at twice the Inquisitor's character level. 
- May cast True Sight once per day. Gains one use at level 1 and an additional use every 4 levels thereafter.
+- May cast Dispel Magic once per day. Gains one use at level 1 and an additional use every 4 levels thereafter. The spell is cast at Speed Factor 1 and acts at twice the Inquisitor's character level. 
+- May cast True Sight once per day. Gains one use at level 1 and an additional use every 4 levels thereafter.
 
 Disadvantages:
- May not turn undead.
- May not use the Lay On Hands ability. 
- May not cast priest spells.~
+- May not turn undead.
+- May not use the Lay On Hands ability. 
+- May not cast priest spells.~
 
 @80012  = ~Frenzy~
 @80013  = ~Frenzy
@@ -2106,6 +2156,7 @@ Advantages:
 - Moves 2 points faster than other characters
 - Zealots Hide in Shadows as Rangers of the same level
 - May use the frenzy ability once per day.  The zealot gains an additional use of this ability at levels 10, 15 and 20.
+
 FRENZY: The character becomes frenzied for 1 turn. While in this state, the character gains a +2 bonus to <PRO_HISHER> melee attack rolls and saves, as well as to <PRO_HISHER> Armor Class, and becomes immune to charm, confusion, fear, feeblemind, hold, imprisonment, level drain, maze, stun, and sleep. The character also gains an additional attack per round.
 Frenzy is further modified depending upon the patron deity of the zealot.
 
@@ -2113,14 +2164,13 @@ Frenzy does not stack with haste or similar effects.
 
 After the effects end, the character becomes winded, suffering a -2 penalty to Armor Class, to-hit rolls, and damage rolls.
 
-Disadvantages:
-- May only wear leather or studded leather armor.
 Restrictions:
+- May only wear leather or studded leather armor.
 - Alignment: Cannot be evil
 ~
 //CHAMPION KITS
 //Paladin of Tyr
-@80101  = ~champion of tyr~
+@80101  = ~paladin of tyr~
 @80102  = ~Paladin of Tyr~
 @80103  = ~PALADIN OF TYR: Paladins of Tyr are the quintessential champions of light.  They must hold themselves to a high standard, but in exchange for their dedication, they are empowered to destroy the enemies of light.  
 
@@ -2147,60 +2197,52 @@ An opponent can only be affected by smite evil once per round.~
 @80108  = ~CAVALIER OF TYR: This class represents the most common picture of the knight: the chivalrous warrior who epitomizes honor, courage, and loyalty. The cavalier is specialized in battling "classical" evil monsters such as demons and dragons.
 
 Abilities: 
- +3 bonus to hit and damage rolls against demons, devils, dragons and wyverns.
- May cast Remove Fear 1 time per day per level.
- Immune to charm, fear, poison, and morale failure.
- 20% resistance to fire and acid.
+- +3 bonus to hit and damage rolls against demons, devils, dragons and wyverns.
+- May cast Remove Fear 1 time per day per level.
+- Immune to charm, fear, poison, and morale failure.
+- 20% resistance to fire and acid.
 
 Restrictions:
- May not use ranged weapons (both missile and thrown).
+- May not use ranged weapons (both missile and thrown).
 ~
 @80109  = ~undead hunter of tyr~
 @80110  = ~Undead Hunter of Tyr~
 @80111  = ~UNDEAD HUNTER OF TYR: This holy avenger has honed <PRO_HISHER> abilities toward the destruction of the undead and other unnatural creatures and is immune to many of their most devastating abilities.
 
 Abilities: 
-� +3 bonus to hit and damage rolls against undead creatures.
-� Immune to hold and level drain.
+- +3 bonus to hit and damage rolls against undead creatures.
+- Immune to hold and level drain.
 
 Restrictions:
-� May not use Lay On Hands ability.
-� May not use Cure Disease ability.
+- May not use Lay On Hands ability.
+- May not use Cure Disease ability.
 ~
-@80201  = ~champion of kelemvor~
+@80201  = ~knight of eternal order~
 @80202  = ~Knight of Eternal Order~
 @80203  = ~KNIGHT OF ETERNAL ORDER: Undead creatures are anathema to Kelemvor.  Death is a natural part of life, and undead creatures try to escape that cycle.  They are abominations, and must be put to rest.
 
 Thus, Kelemvor created the Knights of Eternal Order.
 
 Advantages:
+- Disrupting Smite: As smite, but does double damage to undead.  In addition, weaker undead can be destroyed outright if they fail a save vs. death, much like a mace of disruption.
 - Knights of Eternal Order are immune to hold and level drain effects.
 - Knights of Eternal Order turn undead as a priest of their champion level once they reach level 3.
-- May use the final rest ability at 1st level, level 4, and every four levels after that. 
-
-FINAL REST
-When the Champion uses this ability, <PRO_HISHER> melee attacks inflict an additional 1d6 points of magic damage, (+1d6 points of damage at levels 4, 10 and 18) levels over the next 2 rounds.  This ability lasts an additional round at level 2, 8 and 14.
-
-Additionally, undead creatures take double damage, and undead with fewer than 15 hit die must save vs. death or be instantly destroyed.  This save receives a -1 penalty at levels 4, 10 and 18
-
-An opponent can only be affected by Final Rest once per round.
 
 Restrictions:
 - Alignment: Cannot be Neutral Evil or Chaotic Evil.
 ~
-@80204  = ~Final Rest~
-@80205  = ~Final Rest
+@80204  = ~Disrupting Smite~
+@80205  = ~Disrupting Smite
 
 When the Champion uses this ability, <PRO_HISHER> melee attacks inflict an additional 1d6 points of magic damage, (+1d6 points of damage at levels 4, 10 and 18) levels over the next 2 rounds.  This ability lasts an additional round at level 2, 8 and 14.
 
-Additionally, undead creatures take double damage, and undead with fewer than 15 hit die must save vs. death or be instantly destroyed.  This save receives a -1 penalty at levels 4, 10 and 18
+Additionally, undead creatures take double damage, and undead with fewer than 15 hit die must save vs. death or be instantly destroyed.  This save recieves a -1 penalty at levels 4, 10 and 18
 
 An opponent can only be affected by Disrupting Smite once per round.~
 
-@80206  = ~champion of myrkul~
+@80206  = ~harvester of myrkul~
 @80207  = ~Harvester of Myrkul~
 @80208  = ~HARVESTER OF MYRKUL: While his priests are fond of creating undead minions, Myrkul still finds it necessary to sponsor a contingent of undead slayers.  After all, it shouldn't be thought that undeath can be an escape from Myrkul's icy grasp. Enter the Harvester: Unholy warriors empowered to destroy undead creatures that dare subvert Mykrul's will.  
-
 
 Advantages:
 - Disrupting Smite: As smite, but does double damage to undead.  In addition, weaker undead can be destroyed outright if they fail a save vs. death, much like a mace of disruption.
@@ -2210,10 +2252,9 @@ Advantages:
 Restrictions:
 - Alignment: Any Evil
 ~
-@80301  = ~champion of tempus~
+@80301  = ~gloryblood of tempus~
 @80302  = ~Gloryblood of Tempus~
 @80303  = ~GLORYBLOOD OF TEMPUS: The lord of battles has a special fondness for his champions, who are sponsored no matter what cause they fight for.
-
 
 Advantages:
 - Mastery: Glorybloods can attain mastery in any melee weapon.
@@ -2234,48 +2275,36 @@ When the Champion uses this ability, <PRO_HISHER> melee attacks inflict an addit
 
 An opponent can only be affected by Smite Foe once per round.~
 
-@80401  = ~champion of bane~
+@80401  = ~knight of the black gauntlet~
 @80402  = ~Knight of the Black Gauntlet~
 @80403  = ~KNIGHT OF THE BLACK GAUNTLET: Bane's knights are quintessential black knights, a twisted mockery of the shining example of what a knight should be.  They spread fear in the name of their god, and silence anybody that suggests that Bane is dead.
 
 Advantages:
-- Knights of the Black Gauntlet are completely fearless.  As such, they are not affected either by magical fear nor moral failure.
-- May use the tyrant's rule ability at 1st level, level 4, and every four levels after that.
+- Smite of Dread: The smite of a Black Gauntlet instills fear in any opponent for one round if they do not save vs. death.
+- Knights of the Black Gauntlet are completely fearless.  Or rather, they fear only Bane's wrath.  As such, they are not affected either by magical fear nor moral failure.
 
-TYRANT'S RULE    
-When the Champion uses this ability, <PRO_HISHER> melee attacks inflict an additional 1d6 points of magic damage, (+1d6 points of damage at levels 4, 10 and 18) levels over the next 2 rounds.  This ability lasts an additional round at level 2, 8 and 14.
-
-Additionally, creatures are struck with fear for 1 round if they do not save vs. death.  This save receives a -1 penalty at levels 4, 10 and 18
-
-An opponent can only be affected by tyrant's rule once per round.
 Restrictions:
 - Alignment: can be any Evil or Lawful Neutral
 ~
-@80404  = ~Tyrant's Rule~
-@80405  = ~Tyrant's Rule
+@80404  = ~Smite of Dread~
+@80405  = ~Smite of Dread
 
 When the Champion uses this ability, <PRO_HISHER> melee attacks inflict an additional 1d6 points of magic damage, (+1d6 points of damage at levels 4, 10 and 18) levels over the next 2 rounds.  This ability lasts an additional round at level 2, 8 and 14.
 
-Additionally, creatures are struck with fear for 1 round if they do not save vs. death.  This save receives a -1 penalty at levels 4, 10 and 18
+Additionally, creatures are struck with fear for 1 round if they do not save vs. death.  This save recieves a -1 penalty at levels 4, 10 and 18
 
-An opponent can only be affected by tyrant's rule once per round.~
+An opponent can only be affected by smite of dread once per round.~
 
 @80406  = ~KNIGHT OF THE BLACK GAUNTLET: Bane's knights are quintessential black knights, a twisted mockery of the shining example of what a knight should be.  They spread fear in the name of their god, and silence anybody that dares to oppose the Dread Lord.
 
 Advantages:
-- Knights of the Black Gauntlet are completely fearless.  As such, they are not affected either by magical fear nor moral failure.
-- May use the tyrant's rule ability at 1st level, level 4, and every four levels after that.
+- Smite of Dread: The smite of a Black Gauntlet instills fear in any opponent for one round if they do not save vs. death.
+- Knights of the Black Gauntlet are completely fearless.  Or rather, they fear only Bane's wrath.  As such, they are not affected either by magical fear nor moral failure.
 
-TYRANT'S RULE    
-When the Champion uses this ability, <PRO_HISHER> melee attacks inflict an additional 1d6 points of magic damage, (+1d6 points of damage at levels 4, 10 and 18) levels over the next 2 rounds.  This ability lasts an additional round at level 2, 8 and 14.
-
-Additionally, creatures are struck with fear for 1 round if they do not save vs. death.  This save receives a -1 penalty at levels 4, 10 and 18
-
-An opponent can only be affected by tyrant's rule once per round.
 Restrictions:
 - Alignment: can be any Evil
 ~
-@80501 = ~champion of helm~
+@80501 = ~everwatch knight~
 @80502 = ~Everwatch Knight~
 @80503 = ~EVERWATCH KNIGHT: Everwatch knights act as the elite shock troops for the church of Helm.  Also, they are often sent on the most difficult missions for the church.  
 
@@ -2315,13 +2344,13 @@ Restrictions:
 - Alignment: May be Lawful Good, Lawful Neutral, or True Neutral.
 - The Everwatch Knight of Helm must maintain a reputation of 8 or fall.
 ~
-@80601  = ~champion of talos~
+@80601  = ~stormward of talos~
 @80602  = ~Stormward of Talos~
 @80603  = ~STORMWARD OF TALOS: Stormwards are the elite guard of Talos.  They exist to spread destruction through the world, and thus, the fear of Talos.
 
 Advantages:
 - Storm Smite: The smite of a Stormward inflicts double electrical damage rather than magic damage.
-- Talos' Favor: Stormbringers are 50% resistant to electricity damage.
+- Talos' Favor: Stormwards are 50% resistant to electricity damage.
 
 Restrictions:
 - Alignment: Can only be Evil or Chaotic Neutral alignment
@@ -2337,17 +2366,17 @@ An opponent can only be affected by Storm Smite once per round.~
 
 Advantages:
 - Storm Smite: The smite of a Stormward inflects double electrical damage rather than magic damage.
-- Talos' Favor: Stormbringers are 50% resistant to electricity damage.
+- Talos' Favor: Stormwards are 50% resistant to electricity damage.
 
 Restrictions:
 - Alignment: Can only be Evil
 ~
-@80701  = ~champion of moradin~
+@80701  = ~hammer of moradin~
 @80702  = ~Hammer of Moradin~
-@80703  = ~HAMMER OF MORADIN:
+@80703  = ~HAMMER OF MORADIN: Moradin is the chief deity or the dwarven pantheon; a harsh but fair judge, he is strength and force of will embodied. The Hammers of Moradin are a military order dedicated to the defense dwarven holdings and the carving out of new dwarven territories. 
 
 Advantages:
-- Forged Flesh: The hammer of Moradin is tough in body and mind.  <PRO_HESHE> recieves a +2 bonus to AC and saves against magic.
+- Forged Flesh: The Hammer of Moradin is tough in body and mind.  <PRO_HESHE> recieves a +2 bonus to AC and saves against magic.
 - Can cast Moradin's Hammer as a special ability once per day.  The Hammer gains an additional use at levels 4, 8, 12, 16 and 20.
 
 MORADIN'S HAMMER: This spell creates a hammer in the Champion's hand that cannot be dropped or unequipped. The hammer is enchanted as a +4 weapon and deals 1d6 points of blunt damage as well as 1d6 magic damage. 
@@ -2365,20 +2394,13 @@ Restrictions:
 @80705  = ~Hammer of Moradin
 The hammer is enchanted as a +4 weapon and deals 1d6 points of blunt damage as well as 1d6 magic damage.~
 
-@80801  = ~champion of azuth~
+@80801  = ~inquisitor of azuth~
 @80802  = ~Inquisitor of Azuth~
-@80803  = ~INQUISITOR OF AZUTH: As the patron of wizards, and conscious of the potential destruction that magic can visit on the world, Azuth ... Controlly control
+@80803  = ~INQUISITOR OF AZUTH: Inquisitors of Azuth feel that reason is the best way to approach magic, and that it may be examined and reduced to its component parts through study and meditation.  Unfortunately, not all practitioners of the art take such care or approach magical power with responsibility and that is where Inquistors of Azuth fit in.  This holy order of the Lord of Spells strive to curb the use of overly destructive magic that harms the Weave and provide martial might where it is needed to destroy threats to wizardry. 
 
 Advantages:
 - Immune to Hold and Charm spells
-- May use the wizard bane ability at 1st level, level 4, and every four levels after that. 
-
-WIZARD'S BANE  
-When the Champion uses this ability, <PRO_HISHER> melee attacks inflict an additional 1d6 points of magic damage, (+1d6 points of damage at levels 4, 10 and 18) levels over the next 2 rounds.  This ability lasts an additional round at level 2, 8 and 14.
-
-In addition, arcane spellcasters suffer double damage, and are affected by a double strength dispel magic.
-
-An opponent can only be affected by Wizard's Bane once per round. 
+- Wizard's Bane: The Inquisitor's smite does double damage to wizards, and any wizards hit by the Inquisitor's smite are affected by an dispel magic effect of a caster level equal to twice the Inquisitor's class level.
 
 Disadvantages:
 - Inquisitors do not turn undead
@@ -2396,9 +2418,9 @@ In addition, arcane spellcasters suffer double damage, and are affected by a dou
 
 An opponent can only be affected by Wizard's Bane once per round.~
 
-@80901 = ~champion of the red knight~
+@80901 = ~knight of the red falcon~
 @80902 = ~Knight of the Red Falcon~
-@80903 = ~KNIGHT OF THE RED FALCON: 
+@80903 = ~KNIGHT OF THE RED FALCON: The Red Knight, or the Lady of Strategy, is the deity of strategy and tactics. Sponsored into godhood by Tempus, Her dogma dictates the use of careful tactics in battle to achieve the most favourable victories. During the Time of Troubles, Lady Kaitlin Tindall Bloodhawk became the avatar of the Red Knight and defended Tethyr from a horde of monsters. Bloodhawk is now head of the Order of the Red Falcon, a martial order that trains officers and others in tactics and military history. 
 
 Advantages:
 - Mastery: Knights of the Red Falcon can attain mastery in any melee weapon.
@@ -2406,7 +2428,7 @@ Advantages:
 - Knight's Move: The smite of a Knight of the Red Falcon instills confusion in any opponent for one round if they do not save vs. spell.
 
 Disadvantages:
-- Everwatch Knights do not have a special smite ability.
+- Knights of the Red Falcon do not have a special smite ability.
 
 Restrictions:
 - Alignment: Any non-chaotic.
@@ -2422,12 +2444,13 @@ An opponent can only be affected by smite of dread once per round.~
 
 //ZEALOT KITS
 
-@86201  = ~zealot of gruumsh~
+@86201  = ~eye of gruumsh~
 @86202  = ~Eye of Gruumsh~
 @86203  = ~EYE OF GRUUMSH: The eye of Gruumsh's devotion is such that they pluck out their eye in honor of their deity.  
 
 Advantages:
 - May use the frenzy ability once per day.  The zealot gains an additional use of this ability at levels 10, 15 and 20.
+
 FRENZY: The character becomes frenzied for 1 turn. While in this state, the character gains a +2 bonus to <PRO_HISHER> melee attack rolls and saves, as well as to <PRO_HISHER> Armor Class, and becomes immune to charm, confusion, fear, feeblemind, hold, imprisonment, level drain, maze, stun, and sleep. The character also gains an additional attack per round.
 
 Frenzy does not stack with haste or similar effects
@@ -2449,12 +2472,13 @@ Eye of Gruumsh does not stack with haste or similar effects
 
 After the effect ends, the character becomes winded, suffering a -2 penalty to Armor Class, to-hit rolls, and damage rolls.~
 
-@86301  = ~zealot of talos~
+@86301  = ~initiate of rust and worm~
 @86302  = ~Initiate of Rust and Worm~
 @86303  = ~INITIATE OF RUST AND WORM: Dedicated to destruction, intitiates are instinctively drawn to Talos, lord of destruction.
 
 Advantages:
 - May use the frenzy ability once per day.  The zealot gains an additional use of this ability at levels 10, 15 and 20.
+
 FRENZY: The character becomes frenzied for 1 turn. While in this state, the character gains a +2 bonus to <PRO_HISHER> melee attack rolls and saves, as well as to <PRO_HISHER> Armor Class, and becomes immune to charm, confusion, fear, feeblemind, hold, imprisonment, level drain, maze, stun, and sleep. The character also gains an additional attack per round.
 Frenzy is further modified depending upon the patron deity of the zealot.
 
@@ -2476,12 +2500,13 @@ Eye of the Storm does not stack with haste or similar effects
 
 After the effect ends, the character becomes winded, suffering a -2 penalty to Armor Class, to-hit rolls, and damage rolls.~
 
-@86401  = ~zealot of kossuth~
+@86401  = ~disciple of the flame~
 @86402  = ~Disciple of the Flame~
 @86403  = ~DISCIPLE OF THE FLAME: Disciples are dedicated to Kossuth, the Firelord.  
 
 Advantages:
 - May use the frenzy ability once per day.  The zealot gains an additional use of this ability at levels 10, 15 and 20.
+
 FRENZY: The character becomes frenzied for 1 turn. While in this state, the character gains a +2 bonus to <PRO_HISHER> melee attack rolls and saves, as well as to <PRO_HISHER> Armor Class, and becomes immune to charm, confusion, fear, feeblemind, hold, imprisonment, level drain, maze, stun, and sleep. The character also gains an additional attack per round.
 Frenzy is further modified depending upon the patron deity of the zealot.
 
@@ -2503,12 +2528,13 @@ Burning Frenzy does not stack with haste or similar effects
 
 After the effect ends, the character becomes winded, suffering a -2 penalty to Armor Class, to-hit rolls, and damage rolls.~
 
-@86501  = ~zealot of ilmater~
+@86501  = ~companion of the noble heart~
 @86502  = ~Companion of the Noble Heart~
 @86503  = ~COMPANION OF THE NOBLE HEART: Zealots of Ilmater are steadfast defenders of the weak and vulnerable.  Drawn to Ilmater almost by instinct, they seek to eliminate suffering in the world, even at the expense of their own lives.
 
 Advantages:
 - May use the frenzy ability once per day.  The zealot gains an additional use of this ability at levels 10, 15 and 20.
+
 FRENZY: The character becomes frenzied for 1 turn. While in this state, the character gains a +2 bonus to <PRO_HISHER> melee attack rolls and saves, as well as to <PRO_HISHER> Armor Class, and becomes immune to charm, confusion, fear, feeblemind, hold, imprisonment, level drain, maze, stun, and sleep. The character also gains an additional attack per round.
 Frenzy is further modified depending upon the patron deity of the zealot.
 
@@ -2531,13 +2557,14 @@ Martyr's Acceptance does not stack with haste or similar effects
 
 After the effect ends, the character becomes winded, suffering a -2 penalty to Armor Class, to-hit rolls, and damage rolls.~
 
-@86601  = ~zealot of garagos~
+@86601  = ~child of blood~
 @86602  = ~Child of Blood~
 @86603  = ~CHILD OF BLOOD: Zealots of Garagos are fierce warriors, drawn to the frenzy of battle.  Too undiciplined even to serve under Tempus, they are prone to rush into battle against any opponent without a second thought or even much of a plan.  Needless to say, they often die young.
 
 Advantages:
 - May use the Fury ability twice per day at first level.  The Children of Blood are unique in that they can enter their frenzy much more often than normal.
 At first level, they can use the ability twice per day.  They gain an additional use of this ability at levels 4, 10, 15 and 20.
+
 FURY: The character becomes frenzied for 1 turn. While in this state, the character gains a +2 bonus to <PRO_HISHER> melee attack rolls and saves, as well as to <PRO_HISHER> Armor Class, and becomes immune to charm, confusion, fear, feeblemind, hold, imprisonment, level drain, maze, stun, and sleep. The character also gains an additional attack per round.
 Frenzy is further modified depending upon the patron deity of the zealot.
 
@@ -2558,12 +2585,13 @@ Fury does not stack with haste or similar effects
 
 After the effect ends, the character becomes winded, suffering a -2 penalty to Armor Class, to-hit rolls, and damage rolls.~
 
-@86701  = ~zealot of corellon larethian~
+@86701  = ~vassal of the reverend one~
 @86702  = ~Vassal of the Reverend One~
 @86703  = ~VASSAL OF THE REVEREND ONE: Zealots of Corelion Larethian are steadfast defenders of elven values.  Often orphaned elves or half-elves, non-evil elves still feel the call to Corellon, often serving him in their own way as zealots.
 
 Advantages:
 - May use the frenzy ability once per day.  The zealot gains an additional use of this ability at levels 10, 15 and 20.
+
 FRENZY: The character becomes frenzied for 1 turn. While in this state, the character gains a +2 bonus to <PRO_HISHER> melee attack rolls and saves, as well as to <PRO_HISHER> Armor Class, and becomes immune to charm, confusion, fear, feeblemind, hold, imprisonment, level drain, maze, stun, and sleep. The character also gains an additional attack per round.
 Frenzy is further modified depending upon the patron deity of the zealot.
 
@@ -2587,12 +2615,13 @@ Corellon's Arrow does not stack with haste or similar effects
 
 After the effect ends, the character becomes winded, suffering a -2 penalty to Armor Class, to-hit rolls, and damage rolls.~
 
-@86801  = ~zealot of sune~
+@86801  = ~cherub of the ruby rose~
 @86802  = ~Cherub of the Ruby Rose~
 @86803  = ~CHERUB OF THE RUBY ROSE: Zealots dedicated to the service of Sune, cherubs of the ruby rose exude passion and fury.  
 
 Advantages:
 - May use the frenzy ability once per day.  The zealot gains an additional use of this ability at levels 10, 15 and 20.
+
 FRENZY: The character becomes frenzied for 1 turn. While in this state, the character gains a +2 bonus to <PRO_HISHER> melee attack rolls and saves, as well as to <PRO_HISHER> Armor Class, and becomes immune to charm, confusion, fear, feeblemind, hold, imprisonment, level drain, maze, stun, and sleep. The character also gains an additional attack per round.
 Frenzy is further modified depending upon the patron deity of the zealot.
 
@@ -2615,12 +2644,13 @@ Passionate Resonance does not stack with haste or similar effects
 
 After the effect ends, the character becomes winded, suffering a -2 penalty to Armor Class, to-hit rolls, and damage rolls.~
 
-@86901  = ~zealot of mystra~
+@86901  = ~weaverager of mystra~
 @86902  = ~Weaverager of Mystra~
-@86903  = ~WEAVERAGER OF MYSTRA: ...
+@86903  = ~WEAVERAGER OF MYSTRA: Zealots dedicated to the service of Mystra, weaveragers seek out evil magic users and seek to bring about their downfall. 
 
 Advantages:
 - May use the frenzy ability once per day.  The zealot gains an additional use of this ability at levels 10, 15 and 20.
+
 FRENZY: The character becomes frenzied for 1 turn. While in this state, the character gains a +2 bonus to <PRO_HISHER> melee attack rolls and saves, as well as to <PRO_HISHER> Armor Class, and becomes immune to charm, confusion, fear, feeblemind, hold, imprisonment, level drain, maze, stun, and sleep. The character also gains an additional attack per round.
 Frenzy is further modified depending upon the patron deity of the zealot.
 
@@ -2643,12 +2673,14 @@ Weaverage does not stack with haste or similar effects
 
 After the effect ends, the character becomes winded, suffering a -2 penalty to Armor Class, to-hit rolls, and damage rolls.~
 
-@87001  = ~zealot of eilistraee~
+@87001  = ~darksong knight~
 @87002  = ~Darksong Knight~
-@87003  = ~DARKSONG KNIGHT: ...
+@87003  = ~DARKSONG KNIGHT: Eilistraee is the Drow goddess of beauty, song, dance, freedom, moonlight, swordwork, and hunting. Notably she is patroness and protector of those few dark elves who long to return to the surface and live at peace with other races.
+Darksong Knights are dedicated to spreading the ethos of Eilistraee, advancing her causes, and especially to slaying the yochlol, the demons who served as the handmaidens of Lolth. Almost universally female, they utilise a wild and complex dancing fighting style. 
 
 Advantages:
 - May use the frenzy ability once per day.  The zealot gains an additional use of this ability at levels 10, 15 and 20.
+
 FRENZY: The character becomes frenzied for 1 turn. While in this state, the character gains a +2 bonus to <PRO_HISHER> melee attack rolls and saves, as well as to <PRO_HISHER> Armor Class, and becomes immune to charm, confusion, fear, feeblemind, hold, imprisonment, level drain, maze, stun, and sleep. The character also gains an additional attack per round.
 Frenzy is further modified depending upon the patron deity of the zealot.
 
@@ -2670,11 +2702,13 @@ Bladesong does not stack with haste or similar effects
 
 After the effect ends, the character becomes winded, suffering a -2 penalty to Armor Class, to-hit rolls, and damage rolls.~
 //
-// ... priest of arvoreen:
+// ... champion of arvoreen:
 //
-@87701  = ~cleric of arvoreen~
+@87701  = ~truesword of arvoreen~
 @87702  = ~Truesword of Arvoreen~
-@87703  = ~TRUESWORD OF ARVOREEN: blah fluff
+@87703  = ~TRUESWORD OF ARVOREEN: Arvoreen the Defender, fiery guardian of the home, is the nearest thing to a halfling war god. He is a god of stern defense and aggressive watchfulness, who is always preparing for incursions into halfling lands and making ready to repulse hostile creatures at the first sign of trouble.
+
+Trueswords of Arvoreen are the protectors and defenders of halfling communities. They spend their days constructing defensive barriers, signaling systems, beacons, and traps, and reviewing defenses already in place.  While many Trueswords stay close to their communities, some will adventure to gain allies they can call on as well as magical weapons and defensive items of all kinds.
 
 Advantages:
 - Trueswords can use the Move Silently and Hide In Shadows abilities, as a ranger of the same level.
@@ -2691,7 +2725,9 @@ Restrictions:
 
 Use this scroll to change Mazzy to a Truesword - a Champion of Arvoreen.
 
-TRUESWORD OF ARVOREEN: blah fluff
+TRUESWORD OF ARVOREEN: Arvoreen the Defender, fiery guardian of the home, is the nearest thing to a halfling war god. He is a god of stern defense and aggressive watchfulness, who is always preparing for incursions into halfling lands and making ready to repulse hostile creatures at the first sign of trouble.
+
+Trueswords of Arvoreen are the protectors and defenders of halfling communities. They spend their days constructing defensive barriers, signaling systems, beacons, and traps, and reviewing defenses already in place.  While many Trueswords stay close to their communities, some will adventure to gain allies they can call on as well as magical weapons and defensive items of all kinds.
 
 Advantages:
 - Trueswords can use the Move Silently and Hide In Shadows abilities, as a ranger of the same level.
@@ -2736,7 +2772,7 @@ Advantages:
 Restrictions:
 - Alignment must be Good.
 ~
-@90104  = ~FOREST RANGER: fluff~
+@90104  = ~FOREST RANGER: the most common, or at least commonly visible, type of ranger, forest rangers are knowledgeable woodsmen and able warriors. Fiercely protective by nature, they are often called upon to fulfill a dual role: sometimes guiding travelers through areas with hostile wildlife, and at other times protecting that very wildlife from those who would carelessly exploit Toril's resource-rich woodlands.~
 //
 @90201  = ~mountain ranger~
 @90202  = ~Mountain ranger~
@@ -2818,7 +2854,7 @@ Disadvantages:
 //
 @93301  = ~earth dervish~
 @93302  = ~Earth Dervish~
-@93303  = ~EARTH DERVISH: fluff text
+@93303  = ~EARTH DERVISH: Earth Dervishes are the earth element imbued ranger counterpart to the druidic earth mystic.  They are capable of calling on their chosen element to bolster their defenses and empower their attacks. 
 
 Advantages:
 - 2% crushing damage resistance per level, up to a maximum of 40% at 20th level.
@@ -2827,11 +2863,11 @@ Advantages:
 Restrictions:
 - May not be Chaotic
 ~
-@93304  = ~EARTH DERVISH: fluff~
+@93304  = ~EARTH DERVISH: Earth Dervishes are the earth element imbued ranger counterpart to the druidic earth mystic.  They are capable of calling on their chosen element to bolster their defenses and empower their attacks. ~
 //
 @93401  = ~water dervish~
 @93402  = ~Water Dervish~
-@93403  = ~WATER DERVISH: fluff text
+@93403  = ~WATER DERVISH: Water Dervishes are the water element imbued ranger counterpart to the druidic water mystic.  They are capable of calling on their chosen element to bolster their defenses and empower their attacks. 
 
 Advantages:
 - 2% acid and cold damage resistance per level, up to a maximum of 40% at 20th level.
@@ -2840,11 +2876,11 @@ Advantages:
 Restrictions:
 - May not be Lawful
 ~
-@93404  = ~WATER DERVISH: fluff~
+@93404  = ~WATER DERVISH: Water Dervishes are the water element imbued ranger counterpart to the druidic water mystic.  They are capable of calling on their chosen element to bolster their defenses and empower their attacks.~
 //
 @93501  = ~air dervish~
 @93502  = ~Air Dervish~
-@93503  = ~AIR DERVISH: fluff text
+@93503  = ~AIR DERVISH: Air Dervishes are the air element imbued ranger counterpart to the druidic air mystic.  They are capable of calling on their chosen element to bolster their defenses and empower their attacks. 
 
 Advantages:
 - 2% electric damage resistance per level, up to a maximum of 40% at 20th level.
@@ -2854,11 +2890,11 @@ Advantages:
 Restrictions:
 - May not be Lawful
 ~
-@93504  = ~AIR DERVISH: fluff~
+@93504  = ~AIR DERVISH: Air Dervishes are the air element imbued ranger counterpart to the druidic air mystic.  They are capable of calling on their chosen element to bolster their defenses and empower their attacks.~
 //
 @93601  = ~fire dervish~
 @93602  = ~Fire Dervish~
-@93603  = ~FIRE DERVISH: fluff text
+@93603  = ~FIRE DERVISH: Fire Dervishes are the fire element imbued ranger counterpart to the druidic fire mystic.  They are capable of calling on their chosen element to bolster their defenses and empower their attacks. 
 
 Advantages:
 - 2% fire damage resistance per level, up to a maximum of 40% at 20th level.
@@ -2867,11 +2903,11 @@ Advantages:
 Restrictions:
 - May not be Lawful
 ~
-@93604  = ~FIRE DERVISH: fluff~
+@93604  = ~FIRE DERVISH: Fire Dervishes are the fire element imbued ranger counterpart to the druidic fire mystic.  They are capable of calling on their chosen element to bolster their defenses and empower their attacks.~
 //
 @93701  = ~light dervish~
 @93702  = ~Light Dervish~
-@93703  = ~LIGHT DERVISH: fluff text
+@93703  = ~LIGHT DERVISH: Light Dervishes are the light empowered ranger counterpart to the druidic light mystic.  They are capable of calling on their chosen specialty to bolster their defenses and empower their attacks.
 
 Advantages:
 - Immune to blindness, and may dispel low-level illusions (up to 3rd level) 3 times per day.
@@ -2880,11 +2916,11 @@ Advantages:
 Restrictions:
 - May not be Evil
 ~
-@93704  = ~LIGHT DERVISH: fluff~
+@93704  = ~LIGHT DERVISH: Light Dervishes are the light empowered ranger counterpart to the druidic light mystic.  They are capable of calling on their chosen specialty to bolster their defenses and empower their attacks.~
 //
 @93801  = ~shadow dervish~
 @93802  = ~Shadow Dervish~
-@93803  = ~SHADOW DERVISH: fluff text
+@93803  = ~SHADOW DERVISH: Shadow Dervishes are the shadow empowered ranger counterpart to the druidic shadow mystic.  They are capable of calling on their chosen specialty to bolster their defenses and empower their attacks. 
 
 Advantages:
 - Immune to blindness.
@@ -2893,7 +2929,7 @@ Advantages:
 Restrictions:
 - Must be Neutral
 ~
-@93804  = ~SHADOW DERVISH: fluff~
+@93804  = ~SHADOW DERVISH: Shadow Dervishes are the shadow empowered ranger counterpart to the druidic shadow mystic.  They are capable of calling on their chosen specialty to bolster their defenses and empower their attacks.~
 //
 // ... scouts:
 //
@@ -2907,7 +2943,7 @@ Advantages:
 - May use a special vocalization that can deafen anyone nearby and impose a 40% chance of spell failure upon a failed a saving throw vs. Petrification.
 - Can cast Minor Spell Deflection and Breach as innate abilities once per day at 1st level, and one additional time each five levels after that.
 
-Disadvantages:
+Restrictions:
 - Suffers a -1 penalty to Strength and Constitution.
 ~
 @95311  = ~Vocal Disruption~
@@ -2925,12 +2961,10 @@ Advantages:
 - May Charm animals once per day per five levels.
 - Gains 5% physical damage resistance at 11th level, and again at 15th and 19th levels.
 
-Disadvantages*:
+Restrictions:
 - -2 penalty to Charisma.
 - May not wear armor heavier than studded leather or hide armor
-
-**Restrictions**:
-- May not dual-class~
+- May not dual-class.~
 //
 @95501  = ~elven archer~
 @95502  = ~Elven Archer~
@@ -2947,15 +2981,10 @@ CALLED SHOT: All successful ranged attacks within the next 10 seconds have the f
  12th level: -1 penalty to the target's Strength score.
  16th level: +2 bonus to damage roll.
 
-Disadvantages:
+Restrictions:
 - May only wear leather, studded leather, and hide armor.
 - May only become Proficient (one slot) with melee weapons.
-- May not use the Charm Animal ability.
-
-Restrictions:
-- Race: Only Elves can become Elven Archers~
-
-
+- May not use the Charm Animal ability.~
 //
 @95601  = ~halfling slinger~
 @95602  = ~Halfling Slinger~
@@ -2972,14 +3001,10 @@ CALLED SHOT: All successful ranged attacks within the next 10 seconds have the f
  12th level: -1 penalty to the target's Strength score.
  16th level: +2 bonus to damage roll.
 
-Disadvantages
+Restrictions:
 - May only wear leather, studded leather, and hide armor.
 - May only become Proficient (one slot) with melee weapons.
-- May not use the Charm Animal ability.
-
-Restrictions:
-- Race: Only halflings can be halfling slingers  
-~
+- May not use the Charm Animal ability.~
 //
 
 
@@ -3366,7 +3391,7 @@ Casting Time: 6
 Area of Effect: Special
 Saving Throw: None
 
-Shades is similar to Shadow Monsters and Demi-Shadow Monstersâit allows the caster to shape material from the Demiplane of Shadow into illusionary creatures. These shadows are tougher than the shadows summoned by Shadow Monsters and Demi-Shadow Monsters, and they will obey the caster until the spell expires or they are slain.~
+Shades is similar to Shadow Monsters and Demi-Shadow Monsters - it allows the caster to shape material from the Demiplane of Shadow into illusionary creatures. These shadows are tougher than the shadows summoned by Shadow Monsters and Demi-Shadow Monsters, and they will obey the caster until the spell expires or they are slain.~
 
 @6310000 = ~Soul Eater~
 @6310001 = ~Soul Eater
@@ -3393,7 +3418,7 @@ Casting Time: 7
 Area of Effect: 24-ft. radius
 Saving Throw: 1/2
 
-This spell unleashes an acidic downpour on the area of effect, doing 1d4 points of acid damage each round for the first three rounds, 1d6 points for the next three rounds, and 1d8 points for each round thereafter. Moving out of the area of effect does not stop the damageâthe acid adheres to the skin, and any creatures in the area of effect when Acid Storm is cast continue to suffer acid damage as long as the spell duration lasts. Creatures make a Save vs. Spell every round after they have been hit by the cloudâif successful, they only take half damage (for that round only).~
+This spell unleashes an acidic downpour on the area of effect, doing 1d4 points of acid damage each round for the first three rounds, 1d6 points for the next three rounds, and 1d8 points for each round thereafter. Moving out of the area of effect does not stop the damage - the acid adheres to the skin, and any creatures in the area of effect when Acid Storm is cast continue to suffer acid damage as long as the spell duration lasts. Creatures make a Save vs. Spell every round after they have been hit by the cloud - if successful, they only take half damage (for that round only).~
 
 //DIVINE SPELLS
 @50101 = ~Cure Light Wounds
@@ -3409,7 +3434,7 @@ Saving Throw: None
 
 By casting this spell and laying <PRO_HISHER> hand upon a creature, the priest heals the touched creature of 4 points, plus 20% of that creature's hit point total, of damage . This healing cannot affect creatures without corporeal bodies, nor can it cure wounds of creatures not living or of extraplanar origin.
 
-Curing is permanent only insofar as the creature does not sustain further damage; caused wounds will healâor can be curedâjust as any normal injury.~
+Curing is permanent only insofar as the creature does not sustain further damage; caused wounds will heal - or can be cured - just as any normal injury.~
 
 @50102 = ~Cure Moderate Wounds
 (Necromancy)
@@ -3435,7 +3460,7 @@ Casting Time: 5
 Area of Effect: 1 creature 
 Saving Throw: None 
 
-By casting this spell and laying <PRO_HISHER> hand upon a creature, the priest heals 8, plus 40% of the recipients total hit points of wound or other injury damage from the creature's body. This healing cannot affect creatures without corporeal bodies, nor can it cure wounds of creatures not living or of extraplanar origin. Curing is permanent only insofar as the creature does not sustain further damage; caused wounds will healâor can be curedâjust as any normal injury.~
+By casting this spell and laying <PRO_HISHER> hand upon a creature, the priest heals 8, plus 40% of the recipients total hit points of wound or other injury damage from the creature's body. This healing cannot affect creatures without corporeal bodies, nor can it cure wounds of creatures not living or of extraplanar origin. Curing is permanent only insofar as the creature does not sustain further damage; caused wounds will heal - or can be cured - just as any normal injury.~
 
 @50104 = ~Cure Serious Wounds
 (Necromancy)
@@ -3665,7 +3690,6 @@ Area of Effect: 35-ft. cone with 15-deg. arc
 Saving Throw: Special
 
 Shout grants the priest tremendous vocal powers, allowing <PRO_HIMHER> to emit an earsplitting roar from <PRO_HISHER> mouth in a cone-shaped area of effect. Any creature within this area is deafened for 9 rounds and suffers 4d6 points of magic damage. A successful Save vs. Spell negates the deafness and reduces the damage by half.~
-
 
 @50407  = ~Shout (Focus)
 (Invocation)
@@ -4247,8 +4271,24 @@ Casting Time: 6
 Area of Effect: 1 creature
 Saving Throw: None
 
-This spell shrouds the recipient in darkness, protecting <PRO_HIMHER> from both attacks and spells.  They gain a +1 bonus to AC per four levels (maximum of +5), +2 bonus to save vs. spells, and infravision for the duration of this spell.  Additionally, if the recipeient can hide in shadows, they gain a +15% bonus to that ability.~
+This spell shrouds the recipient in darkness, protecting <PRO_HIMHER> from both attacks and spells.  They gain a +1 bonus to AC per four levels (maximum of +5), +2 bonus to save vs. spells, and infravision for the duration of this spell.  Additionally, if the recipeient can hide in shadows, they gain a +15% bonus to that ability.
+~
+@52501  = ~Legend Lore~
+@52502  = ~Legend Lore
+(Divination)
 
+Level: 2
+Sphere: Knowledge
+Range: 0
+Duration: instantaneous
+Casting Time: 2
+Area of Effect: caster
+Saving Throw: None
+
+When this spell is cast, name and enchantments (including curses) of one item or weapon subsequently touched by the caster are revealed without fail. This gives the caster insight into the history, nature, enchantments, and use of the item.
+
+At 5th, 9th, and 13th level, the number of items that can be identified by this spell increases by 1 (to a maximum of 4 items at 13th level).
+~
 @10100000 = ~Remove Fatigue~
 @10100001 = ~Remove Fatigue
 (Necromancy)
@@ -4683,7 +4723,7 @@ Casting Time: 7
 Area of Effect: 60-ft. radius
 Saving Throw: None
 
-By reciting a sacred passage or declaration, the priest invokes <PRO_HISHER> deity's blessing upon <PRO_HIMHER>self and <PRO_HISHER> allies while sowing confusion and weakness among <PRO_HISHER> enemies. The priest's allies gain a +2 bonus to their attack rolls and Saving Throws, and the priest's enemies receive a -2 penalty to the same. Recitation does not nullify a Prayer spellâthe two can be cast in tandem, and the effects are cumulative.~
+By reciting a sacred passage or declaration, the priest invokes <PRO_HISHER> deity's blessing upon <PRO_HIMHER>self and <PRO_HISHER> allies while sowing confusion and weakness among <PRO_HISHER> enemies. The priest's allies gain a +2 bonus to their attack rolls and Saving Throws, and the priest's enemies receive a -2 penalty to the same. Recitation does not nullify a Prayer spell - the two can be cast in tandem, and the effects are cumulative.~
 
 //BLOOD RAGE
 @42200000= ~Blood Rage~
@@ -5002,7 +5042,7 @@ Casting Time: 9
 Area of Effect: 14-ft. radius
 Saving Throw: None
 
-This spell blankets the area of effect with a silver-blue mistâany creature within the mist will be cured of disease and poison and healed 25 Hit Points.~
+This spell blankets the area of effect with a silver-blue mist - any creature within the mist will be cured of disease and poison and healed 25 Hit Points.~
 
 @73700000 = ~Stalker~
 @73700001 = ~Stalker
@@ -5061,7 +5101,7 @@ Saving Throw: None
 
 By casting this spell and laying <PRO_HISHER> hand upon a creature, the priest causes 3 points of wound or other injury damage to the creature's body to be healed. This healing cannot affect creatures without corporeal bodies, nor can it cure wounds of creatures not living or of extraplanar origin.
 
-Curing is permanent only insofar as the creature does not sustain further damage; caused wounds will healâor can be curedâjust as any normal injury.
+Curing is permanent only insofar as the creature does not sustain further damage; caused wounds will heal - or can be cured - just as any normal injury.
 
 This spell will only affect a given creature once per 8 hours.~
 
@@ -5078,7 +5118,7 @@ Saving Throw: None
 
 By casting this spell and laying <PRO_HISHER> hand upon a creature, the priest causes 1 point, plus 10% of that creature's hit point total, of wound or other injury damage to the creature's body to be healed. This healing cannot affect creatures without corporeal bodies, nor can it cure wounds of creatures not living or of extraplanar origin.
 
-Curing is permanent only insofar as the creature does not sustain further damage; caused wounds will healâor can be curedâjust as any normal injury.
+Curing is permanent only insofar as the creature does not sustain further damage; caused wounds will heal - or can be cured - just as any normal injury.
 
 A creature can only be affected by Cure Minor Wounds once per 8 hours.~
 
@@ -5095,7 +5135,7 @@ Saving Throw: None
 
 By casting this spell and laying <PRO_HISHER> hand upon a creature, the priest causes 4 points of wound or other injury damage to the creature's body to be healed. This healing cannot affect creatures without corporeal bodies, nor can it cure wounds of creatures not living or of extraplanar origin.
 
-Curing is permanent only insofar as the creature does not sustain further damage; caused wounds will healâor can be curedâjust as any normal injury.
+Curing is permanent only insofar as the creature does not sustain further damage; caused wounds will heal - or can be cured - just as any normal injury.
 
 This spell will only affect a given creature once per 8 hours.~
 
@@ -5112,7 +5152,7 @@ Saving Throw: None
 
 By casting this spell and laying <PRO_HISHER> hand upon a creature, the priest causes 2 points, plus 10% of that creature's hit point total, of wound or other injury damage to the creature's body to be healed. This healing cannot affect creatures without corporeal bodies, nor can it cure wounds of creatures not living or of extraplanar origin.
 
-Curing is permanent only insofar as the creature does not sustain further damage; caused wounds will healâor can be curedâjust as any normal injury.
+Curing is permanent only insofar as the creature does not sustain further damage; caused wounds will heal - or can be cured - just as any normal injury.
 
 A creature can only be affected by Cure Minor Wounds once per 8 hours.~
 

@@ -191,6 +191,11 @@ ALL
 >>>>>>>> 
 	COPY ~d5/d5_spher.2da~ ~override/d5_spher.2da~ 
   END
+  ACTION_IF (FILE_EXISTS_IN_GAME ~d5_spher.2da~) BEGIN
+	COPY_EXISTING ~d5_spher.2da~ ~override~
+	  REPLACE_TEXTUALLY ~[ %TAB%]Perdition~ ~%TAB%Astral~
+	BUT_ONLY
+  END
 
   ACTION_IF !(FILE_CONTAINS_EVALUATED (~d5_class.2da~ ~%clab_name%~)) BEGIN
 //	ACTION_IF !(~%sphere_list%~ STRING_EQUAL_CASE ~custom~) BEGIN
@@ -361,9 +366,6 @@ END
 //___________________________________________________________________________________
 
 DEFINE_ACTION_MACRO ~READ_FNP_KIT_INFO~ BEGIN
-
-//  CLEAR_ARRAYS
-
   ACTION_IF (FILE_EXISTS_IN_GAME ~d5_class.2da~
                && FILE_EXISTS_IN_GAME ~d5_usabl.2da~
                && FILE_EXISTS_IN_GAME ~d5_spher.2da~) BEGIN

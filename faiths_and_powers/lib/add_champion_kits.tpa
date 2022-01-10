@@ -8,6 +8,8 @@
 
 DEFINE_ACTION_FUNCTION champion_arvoreen BEGIN
 
+LAF check_kit_conflict END
+
 ADD_KIT ~D5_CHAMP_ARVOREEN~
 //___________________________________________________________________________________
 
@@ -156,8 +158,10 @@ COPY_EXISTING ~faiths_and_powers/kits/clerics/392_arvoreen/d5arvo2.spl~ ~overrid
 	class 			= ~ranger~
  END
 
- ACTION_IF (champion_arvoreen_spontaneous > 0) && (FILE_EXISTS_IN_GAME ~d5_spheres.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+ ACTION_IF (champion_arvoreen_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~d5rnarv~ learn_res = ~d5rnarz~ END
+ END
  END
 
 //__________________________________________________________________________________
@@ -223,9 +227,9 @@ ADD_KIT ~D5_ZCHAMP_ARVOREEN~
 ~CHAN09	* HELM07 BAG26 RING06 RING31 * BOOT01 AMUL20 BRAC10 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 HAMM07 SW1H27 STAF08~
 
 //CHARACTER CREATION KIT DESCRIPTION________________________________________________
-SAY @87701
-SAY @87702
-SAY @87703
+SAY @86201 //lower
+SAY @86202 //Mixed
+SAY @86203 //Help
 
 //EE KIT EXTRAS_____________________________________________________________________
 // 
@@ -236,7 +240,7 @@ ACTION_IF GAME_IS ~bgee bg2ee eet iwdee~ THEN BEGIN
 		STR_VAR
 			kit_name = D5_ZCHAMP_ARVOREEN
 			// HUMAN, ELF, HALF_ELF, DWARF, HALFLING, GNOME and HALFORC.
-		clsrcreq = ~0 0 0 0 1 0 0~
+			clsrcreq = ~0 0 0 0 1 0 0~
 	END
 END
 
@@ -297,6 +301,8 @@ END
 //__________________________________________________________________________________
 
 DEFINE_ACTION_FUNCTION champion_azuth BEGIN
+
+LAF check_kit_conflict END
 
 ADD_KIT ~B_CHAMP_AZUTH~
 
@@ -392,7 +398,7 @@ COPY ~faiths_and_powers/kits/champions/808_Azuth/b_ch108b.spl~ ~override~
 
 //REPLACE VANILLA KIT WITH THIS KIT__________________________________________________
 //
-ACTION_IF FILE_EXISTS_IN_GAME ~d5_paladins.d5~ BEGIN
+ACTION_IF FILE_EXISTS_IN_GAME ~d5__paladins.d5~ BEGIN
   ACTION_FOR_EACH race IN ~D~ ~E~ ~G~ ~H~ ~HE~ ~HL~ ~HO~ BEGIN
 	ACTION_IF FILE_EXISTS_IN_GAME ~K_D_%race%.2da~ BEGIN
 	  COPY_EXISTING ~K_P_%race%.2da~ ~override~
@@ -442,8 +448,10 @@ END
 	class 			= ~champion~
  END
 
- ACTION_IF (champion_azuth_spontaneous > 0) && (FILE_EXISTS_IN_GAME ~d5_spheres.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+ ACTION_IF (champion_azuth_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~b_ch08~ learn_res = ~b_ch08z~ END
+ END
  END
 
 END
@@ -460,6 +468,8 @@ END
 //__________________________________________________________________________________
 
 DEFINE_ACTION_FUNCTION champion_bane BEGIN
+
+LAF check_kit_conflict END
 
 ADD_KIT ~B_CHAMP_BANE~
 
@@ -556,18 +566,18 @@ COPY ~faiths_and_powers/kits/champions/804_bane/b_ch104b.spl~ ~override~
 //protection from fear  (using the tempus spl.  It's basically the same...)
 ACTION_IF GAME_IS ~bgee~ THEN BEGIN   //other text
   COPY ~faiths_and_powers/kits/champions/803_tempus/B_TEM10.spl~ ~override/B_BAN01.spl~
-  LPF ALTER_EFFECT INT_VAR match_opcode = 267 STR_VAR resource = EVAL ~20568~ END
-  LPF CLONE_EFFECT INT_VAR match_opcode = 267 STR_VAR resource = EVAL ~25818~ END     //text block
+  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 267 STR_VAR resource = EVAL ~20568~ END
+  LPF CLONE_EFFECT INT_VAR silent = 1 match_opcode = 267 STR_VAR resource = EVAL ~25818~ END     //text block
 END
 ACTION_IF GAME_IS ~bg2ee eet~ THEN BEGIN   //other text
   COPY ~faiths_and_powers/kits/champions/803_tempus/B_TEM10.spl~ ~override/B_BAN01.spl~
-  LPF ALTER_EFFECT INT_VAR match_opcode = 267 STR_VAR resource = EVAL ~17427~ END
-  LPF CLONE_EFFECT INT_VAR match_opcode = 267 STR_VAR resource = EVAL ~14007~ END     //text block
+  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 267 STR_VAR resource = EVAL ~17427~ END
+  LPF CLONE_EFFECT INT_VAR silent = 1 match_opcode = 267 STR_VAR resource = EVAL ~14007~ END     //text block
 END
 ACTION_IF GAME_IS ~iwdee~ THEN BEGIN   //other text
   COPY ~faiths_and_powers/kits/champions/803_tempus/B_TEM10.spl~ ~override/B_BAN01.spl~
-  LPF ALTER_EFFECT INT_VAR match_opcode = 267 STR_VAR resource = EVAL ~20568~ END
-  LPF CLONE_EFFECT INT_VAR match_opcode = 267 STR_VAR resource = EVAL ~35484~ END     //text block
+  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 267 STR_VAR resource = EVAL ~20568~ END
+  LPF CLONE_EFFECT INT_VAR silent = 1 match_opcode = 267 STR_VAR resource = EVAL ~35484~ END     //text block
 END
 
 //nO FALL
@@ -608,14 +618,18 @@ END
 	class 			= ~champion~
  END
 
- ACTION_IF (champion_bane_spontaneous > 0) && (FILE_EXISTS_IN_GAME ~d5_spheres.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+ ACTION_IF (champion_bane_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~b_ch04~ learn_res = ~b_ch04z~ END
+ END
  END
 
 END
 //__________________________________________________________________________________
 
 DEFINE_ACTION_FUNCTION iwdee_champion_bane BEGIN
+
+LAF check_kit_conflict END
 
 ADD_KIT ~B_CHAMP_BANE~
 
@@ -712,18 +726,18 @@ COPY ~faiths_and_powers/kits/champions/804_bane/b_ch104b.spl~ ~override~
 //protection from fear  (using the tempus spl.  It's basically the same...)
 ACTION_IF GAME_IS ~bgee~ THEN BEGIN   //other text
   COPY ~faiths_and_powers/kits/champions/803_tempus/B_TEM10.spl~ ~override/B_BAN01.spl~
-  LPF ALTER_EFFECT INT_VAR match_opcode = 267 STR_VAR resource = EVAL ~20568~ END
-  LPF CLONE_EFFECT INT_VAR match_opcode = 267 STR_VAR resource = EVAL ~25818~ END     //text block
+  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 267 STR_VAR resource = EVAL ~20568~ END
+  LPF CLONE_EFFECT INT_VAR silent = 1 match_opcode = 267 STR_VAR resource = EVAL ~25818~ END     //text block
 END
 ACTION_IF GAME_IS ~bg2ee eet~ THEN BEGIN   //other text
   COPY ~faiths_and_powers/kits/champions/803_tempus/B_TEM10.spl~ ~override/B_BAN01.spl~
-  LPF ALTER_EFFECT INT_VAR match_opcode = 267 STR_VAR resource = EVAL ~17427~ END
-  LPF CLONE_EFFECT INT_VAR match_opcode = 267 STR_VAR resource = EVAL ~14007~ END     //text block
+  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 267 STR_VAR resource = EVAL ~17427~ END
+  LPF CLONE_EFFECT INT_VAR silent = 1 match_opcode = 267 STR_VAR resource = EVAL ~14007~ END     //text block
 END
 ACTION_IF GAME_IS ~iwdee~ THEN BEGIN   //other text
   COPY ~faiths_and_powers/kits/champions/803_tempus/B_TEM10.spl~ ~override/B_BAN01.spl~
-  LPF ALTER_EFFECT INT_VAR match_opcode = 267 STR_VAR resource = EVAL ~20568~ END
-  LPF CLONE_EFFECT INT_VAR match_opcode = 267 STR_VAR resource = EVAL ~35484~ END     //text block
+  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 267 STR_VAR resource = EVAL ~20568~ END
+  LPF CLONE_EFFECT INT_VAR silent = 1 match_opcode = 267 STR_VAR resource = EVAL ~35484~ END     //text block
 END
 
 //nO FALL
@@ -778,6 +792,8 @@ END
 //__________________________________________________________________________________
 
 DEFINE_ACTION_FUNCTION champion_helm BEGIN
+
+LAF check_kit_conflict END
 
 ADD_KIT ~B_CHAMP_HELM~
 
@@ -867,7 +883,7 @@ COPY_EXISTING ~spcl731.spl~ ~override/B_hel01.spl~ // sword spl
    SAY NAME2 @80504
    SAY UNIDENTIFIED_DESC @80505
    SAY DESC @80505
-   LPF ALTER_EFFECT INT_VAR match_opcode = 111 STR_VAR resource = EVAL ~B_hel01~ END
+   LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 111 STR_VAR resource = EVAL ~B_hel01~ END
 COPY ~faiths_and_powers/kits/champions/805_helm/B_hel01.itm~ ~override~
    SAY NAME1 @80504
    SAY NAME2 @80504
@@ -912,14 +928,18 @@ END
 	class 			= ~champion~
  END
 
- ACTION_IF (champion_helm_spontaneous > 0) && (FILE_EXISTS_IN_GAME ~d5_spheres.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+ ACTION_IF (champion_helm_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~b_ch05~ learn_res = ~b_ch05z~ END
+ END
  END
 
 END
 //__________________________________________________________________________________
 
 DEFINE_ACTION_FUNCTION iwdee_champion_helm BEGIN
+
+LAF check_kit_conflict END
 
 ADD_KIT ~B_CHAMP_HELM~
 
@@ -1009,7 +1029,7 @@ COPY_EXISTING ~spcl731.spl~ ~override/B_hel01.spl~ // sword spl
    SAY NAME2 @80504
    SAY UNIDENTIFIED_DESC @80505
    SAY DESC @80505
-   LPF ALTER_EFFECT INT_VAR match_opcode = 111 STR_VAR resource = EVAL ~B_hel01~ END
+   LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 111 STR_VAR resource = EVAL ~B_hel01~ END
 COPY ~faiths_and_powers/kits/champions/805_helm/B_hel01.itm~ ~override~
    SAY NAME1 @80504
    SAY NAME2 @80504
@@ -1068,6 +1088,8 @@ END
 //__________________________________________________________________________________
 
 DEFINE_ACTION_FUNCTION champion_kelemvor BEGIN
+
+LAF check_kit_conflict END
 
 ADD_KIT ~B_CHAMP_KELE~
 
@@ -1178,7 +1200,7 @@ END
 
 //REPLACE VANILLA KIT WITH THIS KIT__________________________________________________
 //
-ACTION_IF FILE_EXISTS_IN_GAME ~d5_paladins.d5~ BEGIN
+ACTION_IF FILE_EXISTS_IN_GAME ~d5__paladins.d5~ BEGIN
   ACTION_FOR_EACH race IN ~D~ ~E~ ~G~ ~H~ ~HE~ ~HL~ ~HO~ BEGIN
 	ACTION_IF FILE_EXISTS_IN_GAME ~K_D_%race%.2da~ BEGIN
 	  COPY_EXISTING ~K_P_%race%.2da~ ~override~
@@ -1228,14 +1250,18 @@ END
 	class 			= ~champion~
  END
 
- ACTION_IF (champion_kelemvor_spontaneous > 0) && (FILE_EXISTS_IN_GAME ~d5_spheres.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+ ACTION_IF (champion_kelemvor_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~b_ch02~ learn_res = ~b_ch02z~ END
+ END
  END
 
 END
 //__________________________________________________________________________________
 
 DEFINE_ACTION_FUNCTION iwdee_champion_kelemvor BEGIN
+
+LAF check_kit_conflict END
 
 ADD_KIT ~B_CHAMP_KELE~
 
@@ -1390,6 +1416,8 @@ END
 
 DEFINE_ACTION_FUNCTION champion_moradin BEGIN
 
+LAF check_kit_conflict END
+
 ADD_KIT ~B_CHAMP_MOR~
 
 //WEAPON PROFICIENCIES________________________________________________________________
@@ -1477,7 +1505,7 @@ COPY ~faiths_and_powers/kits/champions/807_Moradin/b_mor02.spl~ ~override~
         SAY NAME2 @80704
         SAY UNIDENTIFIED_DESC @80705
 	SAY DESC @80705
-   LPF ALTER_EFFECT INT_VAR match_opcode = 111 STR_VAR resource = EVAL ~B_mor02~ END
+   LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 111 STR_VAR resource = EVAL ~B_mor02~ END
 //actual hammer
 COPY ~faiths_and_powers/kits/champions/807_Moradin/b_mor02.itm~ ~override~
         SAY NAME1 @80704
@@ -1522,8 +1550,10 @@ COPY ~faiths_and_powers/kits/champions/807_Moradin/b_mor02.itm~ ~override~
 	class 			= ~champion~
  END
 
- ACTION_IF (champion_moradin_spontaneous > 0) && (FILE_EXISTS_IN_GAME ~d5_spheres.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+ ACTION_IF (champion_moradin_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~b_ch07~ learn_res = ~b_ch07z~ END
+ END
  END
 
 END
@@ -1540,6 +1570,8 @@ END
 //__________________________________________________________________________________
 
 DEFINE_ACTION_FUNCTION champion_red BEGIN
+
+LAF check_kit_conflict END
 
 ADD_KIT ~B_CHAMP_RED~
 
@@ -1675,8 +1707,10 @@ END
 	class 			= ~champion~
  END
 
- ACTION_IF (champion_red_spontaneous > 0) && (FILE_EXISTS_IN_GAME ~d5_spheres.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+ ACTION_IF (champion_red_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~b_ch09~ learn_res = ~b_ch09z~ END
+ END
  END
 
 END
@@ -1693,6 +1727,8 @@ END
 //__________________________________________________________________________________
 
 DEFINE_ACTION_FUNCTION champion_talos BEGIN
+
+LAF check_kit_conflict END
 
 ADD_KIT ~B_CHAMP_TALOS~
 
@@ -1824,14 +1860,18 @@ END
 	class 			= ~champion~
  END
 
- ACTION_IF (champion_talos_spontaneous > 0) && (FILE_EXISTS_IN_GAME ~d5_spheres.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+ ACTION_IF (champion_talos_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~b_ch06~ learn_res = ~b_ch06z~ END
+ END
  END
 
 END
 //__________________________________________________________________________________
 
 DEFINE_ACTION_FUNCTION iwdee_champion_talos BEGIN
+
+LAF check_kit_conflict END
 
 ADD_KIT ~B_CHAMP_TALOS~
 
@@ -1978,6 +2018,8 @@ END
 
 DEFINE_ACTION_FUNCTION champion_tempus BEGIN
 
+LAF check_kit_conflict END
+
 ADD_KIT ~B_CHAMP_TEMP~
 
 //WEAPON PROFICIENCIES________________________________________________________________
@@ -2075,18 +2117,18 @@ COPY ~faiths_and_powers/kits/champions/803_tempus/b_ch103a.eff~ ~override~
 //protection from fear
 ACTION_IF GAME_IS ~bgee~ THEN BEGIN   //other text
   COPY ~faiths_and_powers/kits/champions/803_tempus/B_TEM10.spl~ ~override~
-  LPF ALTER_EFFECT INT_VAR match_opcode = 267 STR_VAR resource = EVAL ~20568~ END
-  LPF CLONE_EFFECT INT_VAR match_opcode = 267 STR_VAR resource = EVAL ~25818~ END     //text block
+  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 267 STR_VAR resource = EVAL ~20568~ END
+  LPF CLONE_EFFECT INT_VAR silent = 1 match_opcode = 267 STR_VAR resource = EVAL ~25818~ END     //text block
 END
 ACTION_IF GAME_IS ~bg2ee eet~ THEN BEGIN   //other text
   COPY ~faiths_and_powers/kits/champions/803_tempus/B_TEM10.spl~ ~override~
-  LPF ALTER_EFFECT INT_VAR match_opcode = 267 STR_VAR resource = EVAL ~17427~ END
-  LPF CLONE_EFFECT INT_VAR match_opcode = 267 STR_VAR resource = EVAL ~14007~ END     //text block
+  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 267 STR_VAR resource = EVAL ~17427~ END
+  LPF CLONE_EFFECT INT_VAR silent = 1 match_opcode = 267 STR_VAR resource = EVAL ~14007~ END     //text block
 END
 ACTION_IF GAME_IS ~iwdee~ THEN BEGIN   //other text
   COPY ~faiths_and_powers/kits/champions/803_tempus/B_TEM10.spl~ ~override~
-  LPF ALTER_EFFECT INT_VAR match_opcode = 267 STR_VAR resource = EVAL ~20568~ END
-  LPF CLONE_EFFECT INT_VAR match_opcode = 267 STR_VAR resource = EVAL ~35484~ END     //text block
+  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 267 STR_VAR resource = EVAL ~20568~ END
+  LPF CLONE_EFFECT INT_VAR silent = 1 match_opcode = 267 STR_VAR resource = EVAL ~35484~ END     //text block
 END
 
 //nO FALL
@@ -2127,8 +2169,10 @@ END
 	class 			= ~champion~
  END
 
- ACTION_IF (champion_tempus_spontaneous > 0) && (FILE_EXISTS_IN_GAME ~d5_spheres.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+ ACTION_IF (champion_tempus_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~b_ch03~ learn_res = ~b_ch03z~ END
+ END
  END
 
 END
@@ -2145,6 +2189,8 @@ END
 //__________________________________________________________________________________
 
 DEFINE_ACTION_FUNCTION champion_tyr BEGIN
+
+LAF check_kit_conflict END
 
 ADD_KIT ~B_CHAMP_TYR~
 
@@ -2243,7 +2289,7 @@ COPY ~faiths_and_powers/kits/champions/801_tyr/b_tyr01.spl~ ~override~
 
 //REPLACE VANILLA KIT WITH THIS KIT__________________________________________________
 //
-ACTION_IF FILE_EXISTS_IN_GAME ~d5_paladins.d5~ BEGIN
+ACTION_IF FILE_EXISTS_IN_GAME ~d5__paladins.d5~ BEGIN
   ACTION_FOR_EACH race IN ~D~ ~E~ ~G~ ~H~ ~HE~ ~HL~ ~HO~ BEGIN
 	ACTION_IF FILE_EXISTS_IN_GAME ~K_P_%race%.2da~ BEGIN
 	  COPY_EXISTING ~K_P_%race%.2da~ ~override~
@@ -2293,8 +2339,10 @@ END
 	class 			= ~champion~
  END
 
- ACTION_IF (champion_tyr_spontaneous > 0) && (FILE_EXISTS_IN_GAME ~d5_spheres.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+ ACTION_IF (champion_tyr_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~b_ch01~ learn_res = ~b_ch01z~ END
+ END
  END
 
 END
