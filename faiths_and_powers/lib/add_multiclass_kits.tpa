@@ -1263,63 +1263,68 @@ OUTER_SPRINT orig_thiefskl ~%start_thiefskl%	%level_thiefskl%~
 OUTER_SET skill_2da_cols = 40
 COPY_EXISTING ~backstab.2da~ ~override~
   COUNT_2DA_COLS cols
-  READ_2DA_ENTRY 0 1 1 backstab_0
-  READ_2DA_ENTRY 0 1 2 backstab_1
-  READ_2DA_ENTRY 0 1 3 backstab_2
-  READ_2DA_ENTRY 0 1 4 backstab_3
-  READ_2DA_ENTRY 0 1 5 backstab_4
-  READ_2DA_ENTRY 0 1 6 backstab_5
-  READ_2DA_ENTRY 0 1 7 backstab_6
-  READ_2DA_ENTRY 0 1 8 backstab_7
-  READ_2DA_ENTRY 0 1 9 backstab_8
-  READ_2DA_ENTRY 0 1 10 backstab_9
-  READ_2DA_ENTRY 0 1 11 backstab_10
-  READ_2DA_ENTRY 0 1 12 backstab_11
-  READ_2DA_ENTRY 0 1 13 backstab_12
-  READ_2DA_ENTRY 0 1 14 backstab_13
-  READ_2DA_ENTRY 0 1 15 backstab_14
-  READ_2DA_ENTRY 0 1 16 backstab_15
-  READ_2DA_ENTRY 0 1 17 backstab_16
-  READ_2DA_ENTRY 0 1 18 backstab_17
-  READ_2DA_ENTRY 0 1 19 backstab_18
-  READ_2DA_ENTRY 0 1 20 backstab_19
-  READ_2DA_ENTRY 0 1 21 backstab_20
-  READ_2DA_ENTRY 0 1 22 backstab_21
-  READ_2DA_ENTRY 0 1 23 backstab_22
-  READ_2DA_ENTRY 0 1 24 backstab_23
-  READ_2DA_ENTRY 0 1 25 backstab_24
-  READ_2DA_ENTRY 0 1 26 backstab_25
-  READ_2DA_ENTRY 0 1 27 backstab_26
-  READ_2DA_ENTRY 0 1 28 backstab_27
-  READ_2DA_ENTRY 0 1 29 backstab_28
-  READ_2DA_ENTRY 0 1 30 backstab_29
-  READ_2DA_ENTRY 0 1 31 backstab_30
-  READ_2DA_ENTRY 0 1 32 backstab_31
-  READ_2DA_ENTRY 0 1 33 backstab_32
-  READ_2DA_ENTRY 0 1 34 backstab_33
-  READ_2DA_ENTRY 0 1 35 backstab_34
-  READ_2DA_ENTRY 0 1 36 backstab_35
-  READ_2DA_ENTRY 0 1 37 backstab_36
-  READ_2DA_ENTRY 0 1 38 backstab_37
-  READ_2DA_ENTRY 0 1 39 backstab_38
-  READ_2DA_ENTRY 0 1 40 backstab_39
-  READ_2DA_ENTRY 0 1 41 backstab_40
-  SPRINT orig_backstab ~%backstab_0%~ //  %backstab_1% %backstab_2% %backstab_3% %backstab_4% %backstab_5% %backstab_6% %backstab_7% %backstab_8% %backstab_9% %backstab_10% %backstab_11% %backstab_12% %backstab_13% %backstab_14% %backstab_15% %backstab_16% %backstab_17% %backstab_18% %backstab_19% %backstab_20% %backstab_21% %backstab_22% %backstab_23% %backstab_24% %backstab_25% %backstab_26% %backstab_27% %backstab_28% %backstab_29% %backstab_30% %backstab_31% %backstab_32% %backstab_33% %backstab_34% %backstab_35% %backstab_36% %backstab_37% %backstab_38% %backstab_39% %backstab_40%~
-  FOR (lvl = 1; lvl < 40; ++lvl) BEGIN
-	SPRINT orig_backstab ~%orig_backstab% %backstab_%lvl%%~ 
+  PATCH_IF (cols < 42) BEGIN
+    SPRINT orig_backstab ~1                    2                    2                    2                    2                    2                    2                    2                    2                    3                    3                    3                    3                    3                    3                    3                    3                    3                    4                    4                    4                    4                    4                    4                    4                    4                    4                    4                    4                    4                    4                    4                    4                    4                    4                    4                    4                    4                    4                    4                    4~ 
+  END
+  PATCH_IF (cols > 41) BEGIN
+    READ_2DA_ENTRY 0 1 cols backstab_0
+    READ_2DA_ENTRY 0 2 cols backstab_1
+    READ_2DA_ENTRY 0 3 cols backstab_2
+    READ_2DA_ENTRY 0 4 cols backstab_3
+    READ_2DA_ENTRY 0 5 cols backstab_4
+    READ_2DA_ENTRY 0 6 cols backstab_5
+    READ_2DA_ENTRY 0 7 cols backstab_6
+    READ_2DA_ENTRY 0 8 cols backstab_7
+    READ_2DA_ENTRY 0 9 cols backstab_8
+    READ_2DA_ENTRY 0 10 cols backstab_9
+    READ_2DA_ENTRY 0 11 cols backstab_10
+    READ_2DA_ENTRY 0 12 cols backstab_11
+    READ_2DA_ENTRY 0 13 cols backstab_12
+    READ_2DA_ENTRY 0 14 cols backstab_13
+    READ_2DA_ENTRY 0 15 cols backstab_14
+    READ_2DA_ENTRY 0 16 cols backstab_15
+    READ_2DA_ENTRY 0 17 cols backstab_16
+    READ_2DA_ENTRY 0 18 cols backstab_17
+    READ_2DA_ENTRY 0 19 cols backstab_18
+    READ_2DA_ENTRY 0 20 cols backstab_19
+    READ_2DA_ENTRY 0 21 cols backstab_20
+    READ_2DA_ENTRY 0 22 cols backstab_21
+    READ_2DA_ENTRY 0 23 cols backstab_22
+    READ_2DA_ENTRY 0 24 cols backstab_23
+    READ_2DA_ENTRY 0 25 cols backstab_24
+    READ_2DA_ENTRY 0 26 cols backstab_25
+    READ_2DA_ENTRY 0 27 cols backstab_26
+    READ_2DA_ENTRY 0 28 cols backstab_27
+    READ_2DA_ENTRY 0 29 cols backstab_28
+    READ_2DA_ENTRY 0 30 cols backstab_29
+    READ_2DA_ENTRY 0 31 cols backstab_30
+    READ_2DA_ENTRY 0 32 cols backstab_31
+    READ_2DA_ENTRY 0 33 cols backstab_32
+    READ_2DA_ENTRY 0 34 cols backstab_33
+    READ_2DA_ENTRY 0 35 cols backstab_34
+    READ_2DA_ENTRY 0 36 cols backstab_35
+    READ_2DA_ENTRY 0 37 cols backstab_36
+    READ_2DA_ENTRY 0 38 cols backstab_37
+    READ_2DA_ENTRY 0 39 cols backstab_38
+    READ_2DA_ENTRY 0 40 cols backstab_39
+    READ_2DA_ENTRY 0 41 cols backstab_40
+    SPRINT orig_backstab ~%backstab_0%~ //  %backstab_1% %backstab_2% %backstab_3% %backstab_4% %backstab_5% %backstab_6% %backstab_7% %backstab_8% %backstab_9% %backstab_10% %backstab_11% %backstab_12% %backstab_13% %backstab_14% %backstab_15% %backstab_16% %backstab_17% %backstab_18% %backstab_19% %backstab_20% %backstab_21% %backstab_22% %backstab_23% %backstab_24% %backstab_25% %backstab_26% %backstab_27% %backstab_28% %backstab_29% %backstab_30% %backstab_31% %backstab_32% %backstab_33% %backstab_34% %backstab_35% %backstab_36% %backstab_37% %backstab_38% %backstab_39% %backstab_40%~
+    FOR (lvl = 1; lvl < 40; ++lvl) BEGIN
+	  SPRINT orig_backstab ~%orig_backstab% %backstab_%lvl%%~ 
+    END
   END
   PATCH_IF (cols > 51) BEGIN
 	SET skill_2da_cols = 50
-	READ_2DA_ENTRY 0 1 42 backstab_41
-	READ_2DA_ENTRY 0 1 43 backstab_42
-	READ_2DA_ENTRY 0 1 44 backstab_43
-	READ_2DA_ENTRY 0 1 45 backstab_44
-	READ_2DA_ENTRY 0 1 46 backstab_45
-	READ_2DA_ENTRY 0 1 47 backstab_46
-	READ_2DA_ENTRY 0 1 48 backstab_47
-	READ_2DA_ENTRY 0 1 49 backstab_48
-	READ_2DA_ENTRY 0 1 50 backstab_49
-	READ_2DA_ENTRY 0 1 51 backstab_50
+	READ_2DA_ENTRY 0 42 cols backstab_41
+	READ_2DA_ENTRY 0 43 cols backstab_42
+	READ_2DA_ENTRY 0 44 cols backstab_43
+	READ_2DA_ENTRY 0 45 cols backstab_44
+	READ_2DA_ENTRY 0 46 cols backstab_45
+	READ_2DA_ENTRY 0 47 cols backstab_46
+	READ_2DA_ENTRY 0 48 cols backstab_47
+	READ_2DA_ENTRY 0 49 cols backstab_48
+	READ_2DA_ENTRY 0 50 cols backstab_49
+	READ_2DA_ENTRY 0 51 cols backstab_50
 //	SPRINT orig_backstab ~%orig_backstab% %backstab_41% %backstab_42% %backstab_43% %backstab_44% %backstab_45% %backstab_46% %backstab_47% %backstab_48% %backstab_49% %backstab_50%~
   	FOR (lvl = 41; lvl < 50; ++lvl) BEGIN
 	  SPRINT orig_backstab ~%orig_backstab% %backstab_%lvl%%~ 
@@ -1328,62 +1333,67 @@ COPY_EXISTING ~backstab.2da~ ~override~
 BUT_ONLY
 COPY_EXISTING ~sneakatt.2da~ ~override~
   COUNT_2DA_COLS cols
-  READ_2DA_ENTRY 0 1 1 sneakatt_0
-  READ_2DA_ENTRY 0 1 2 sneakatt_1
-  READ_2DA_ENTRY 0 1 3 sneakatt_2
-  READ_2DA_ENTRY 0 1 4 sneakatt_3
-  READ_2DA_ENTRY 0 1 5 sneakatt_4
-  READ_2DA_ENTRY 0 1 6 sneakatt_5
-  READ_2DA_ENTRY 0 1 7 sneakatt_6
-  READ_2DA_ENTRY 0 1 8 sneakatt_7
-  READ_2DA_ENTRY 0 1 9 sneakatt_8
-  READ_2DA_ENTRY 0 1 10 sneakatt_9
-  READ_2DA_ENTRY 0 1 11 sneakatt_10
-  READ_2DA_ENTRY 0 1 12 sneakatt_11
-  READ_2DA_ENTRY 0 1 13 sneakatt_12
-  READ_2DA_ENTRY 0 1 14 sneakatt_13
-  READ_2DA_ENTRY 0 1 15 sneakatt_14
-  READ_2DA_ENTRY 0 1 16 sneakatt_15
-  READ_2DA_ENTRY 0 1 17 sneakatt_16
-  READ_2DA_ENTRY 0 1 18 sneakatt_17
-  READ_2DA_ENTRY 0 1 19 sneakatt_18
-  READ_2DA_ENTRY 0 1 20 sneakatt_19
-  READ_2DA_ENTRY 0 1 21 sneakatt_20
-  READ_2DA_ENTRY 0 1 22 sneakatt_21
-  READ_2DA_ENTRY 0 1 23 sneakatt_22
-  READ_2DA_ENTRY 0 1 24 sneakatt_23
-  READ_2DA_ENTRY 0 1 25 sneakatt_24
-  READ_2DA_ENTRY 0 1 26 sneakatt_25
-  READ_2DA_ENTRY 0 1 27 sneakatt_26
-  READ_2DA_ENTRY 0 1 28 sneakatt_27
-  READ_2DA_ENTRY 0 1 29 sneakatt_28
-  READ_2DA_ENTRY 0 1 30 sneakatt_29
-  READ_2DA_ENTRY 0 1 31 sneakatt_30
-  READ_2DA_ENTRY 0 1 32 sneakatt_31
-  READ_2DA_ENTRY 0 1 33 sneakatt_32
-  READ_2DA_ENTRY 0 1 34 sneakatt_33
-  READ_2DA_ENTRY 0 1 35 sneakatt_34
-  READ_2DA_ENTRY 0 1 36 sneakatt_35
-  READ_2DA_ENTRY 0 1 37 sneakatt_36
-  READ_2DA_ENTRY 0 1 38 sneakatt_37
-  READ_2DA_ENTRY 0 1 39 sneakatt_38
-  READ_2DA_ENTRY 0 1 40 sneakatt_39
-  READ_2DA_ENTRY 0 1 41 sneakatt_40
-  SPRINT orig_sneakatt ~%sneakatt_0%~ //  %sneakatt_1% %sneakatt_2% %sneakatt_3% %sneakatt_4% %sneakatt_5% %sneakatt_6% %sneakatt_7% %sneakatt_8% %sneakatt_9% %sneakatt_10% %sneakatt_11% %sneakatt_12% %sneakatt_13% %sneakatt_14% %sneakatt_15% %sneakatt_16% %sneakatt_17% %sneakatt_18% %sneakatt_19% %sneakatt_20% %sneakatt_21% %sneakatt_22% %sneakatt_23% %sneakatt_24% %sneakatt_25% %sneakatt_26% %sneakatt_27% %sneakatt_28% %sneakatt_29% %sneakatt_30% %sneakatt_31% %sneakatt_32% %sneakatt_33% %sneakatt_34% %sneakatt_35% %sneakatt_36% %sneakatt_37% %sneakatt_38% %sneakatt_39% %sneakatt_40%~
-  FOR (lvl = 1; lvl < 40; ++lvl) BEGIN
-	SPRINT EVAL orig_sneakatt ~%orig_sneakatt% %sneakatt_%lvl%%~ 
+  PATCH_IF (cols < 42) BEGIN
+    SPRINT orig_sneakatt ~1                    1                    1                    1                    2                    2                    2                    2                    3                    3                    3                    3                    4                    4                    4                    4                    5                    5                    5                    5                    6                    6                    6                    6                    7                    7                    7                    7                    8                    8                    8                    8                    9                    9                    9                    9                    10                   10                   10                   10                   11~ 
+  END
+  PATCH_IF (cols > 41) BEGIN
+    READ_2DA_ENTRY 0 1 cols sneakatt_0
+    READ_2DA_ENTRY 0 2 cols sneakatt_1
+    READ_2DA_ENTRY 0 3 cols sneakatt_2
+    READ_2DA_ENTRY 0 4 cols sneakatt_3
+    READ_2DA_ENTRY 0 5 cols sneakatt_4
+    READ_2DA_ENTRY 0 6 cols sneakatt_5
+    READ_2DA_ENTRY 0 7 cols sneakatt_6
+    READ_2DA_ENTRY 0 8 cols sneakatt_7
+    READ_2DA_ENTRY 0 9 cols sneakatt_8
+    READ_2DA_ENTRY 0 10 cols sneakatt_9
+    READ_2DA_ENTRY 0 11 cols sneakatt_10
+    READ_2DA_ENTRY 0 12 cols sneakatt_11
+    READ_2DA_ENTRY 0 13 cols sneakatt_12
+    READ_2DA_ENTRY 0 14 cols sneakatt_13
+    READ_2DA_ENTRY 0 15 cols sneakatt_14
+    READ_2DA_ENTRY 0 16 cols sneakatt_15
+    READ_2DA_ENTRY 0 17 cols sneakatt_16
+    READ_2DA_ENTRY 0 18 cols sneakatt_17
+    READ_2DA_ENTRY 0 19 cols sneakatt_18
+    READ_2DA_ENTRY 0 20 cols sneakatt_19
+    READ_2DA_ENTRY 0 21 cols sneakatt_20
+    READ_2DA_ENTRY 0 22 cols sneakatt_21
+    READ_2DA_ENTRY 0 23 cols sneakatt_22
+    READ_2DA_ENTRY 0 24 cols sneakatt_23
+    READ_2DA_ENTRY 0 25 cols sneakatt_24
+    READ_2DA_ENTRY 0 26 cols sneakatt_25
+    READ_2DA_ENTRY 0 27 cols sneakatt_26
+    READ_2DA_ENTRY 0 28 cols sneakatt_27
+    READ_2DA_ENTRY 0 29 cols sneakatt_28
+    READ_2DA_ENTRY 0 30 cols sneakatt_29
+    READ_2DA_ENTRY 0 31 cols sneakatt_30
+    READ_2DA_ENTRY 0 32 cols sneakatt_31
+    READ_2DA_ENTRY 0 33 cols sneakatt_32
+    READ_2DA_ENTRY 0 34 cols sneakatt_33
+    READ_2DA_ENTRY 0 35 cols sneakatt_34
+    READ_2DA_ENTRY 0 36 cols sneakatt_35
+    READ_2DA_ENTRY 0 37 cols sneakatt_36
+    READ_2DA_ENTRY 0 38 cols sneakatt_37
+    READ_2DA_ENTRY 0 39 cols sneakatt_38
+    READ_2DA_ENTRY 0 40 cols sneakatt_39
+    READ_2DA_ENTRY 0 41 cols sneakatt_40
+    SPRINT orig_sneakatt ~%sneakatt_0%~ //  %sneakatt_1% %sneakatt_2% %sneakatt_3% %sneakatt_4% %sneakatt_5% %sneakatt_6% %sneakatt_7% %sneakatt_8% %sneakatt_9% %sneakatt_10% %sneakatt_11% %sneakatt_12% %sneakatt_13% %sneakatt_14% %sneakatt_15% %sneakatt_16% %sneakatt_17% %sneakatt_18% %sneakatt_19% %sneakatt_20% %sneakatt_21% %sneakatt_22% %sneakatt_23% %sneakatt_24% %sneakatt_25% %sneakatt_26% %sneakatt_27% %sneakatt_28% %sneakatt_29% %sneakatt_30% %sneakatt_31% %sneakatt_32% %sneakatt_33% %sneakatt_34% %sneakatt_35% %sneakatt_36% %sneakatt_37% %sneakatt_38% %sneakatt_39% %sneakatt_40%~
+    FOR (lvl = 1; lvl < 40; ++lvl) BEGIN
+	  SPRINT EVAL orig_sneakatt ~%orig_sneakatt% %sneakatt_%lvl%%~ 
+    END
   END
   PATCH_IF (cols > 51) BEGIN
-	READ_2DA_ENTRY 0 1 42 sneakatt_41
-	READ_2DA_ENTRY 0 1 43 sneakatt_42
-	READ_2DA_ENTRY 0 1 44 sneakatt_43
-	READ_2DA_ENTRY 0 1 45 sneakatt_44
-	READ_2DA_ENTRY 0 1 46 sneakatt_45
-	READ_2DA_ENTRY 0 1 47 sneakatt_46
-	READ_2DA_ENTRY 0 1 48 sneakatt_47
-	READ_2DA_ENTRY 0 1 49 sneakatt_48
-	READ_2DA_ENTRY 0 1 50 sneakatt_49
-	READ_2DA_ENTRY 0 1 51 sneakatt_50
+	READ_2DA_ENTRY 0 42 cols sneakatt_41
+	READ_2DA_ENTRY 0 43 cols sneakatt_42
+	READ_2DA_ENTRY 0 44 cols sneakatt_43
+	READ_2DA_ENTRY 0 45 cols sneakatt_44
+	READ_2DA_ENTRY 0 46 cols sneakatt_45
+	READ_2DA_ENTRY 0 47 cols sneakatt_46
+	READ_2DA_ENTRY 0 48 cols sneakatt_47
+	READ_2DA_ENTRY 0 49 cols sneakatt_48
+	READ_2DA_ENTRY 0 50 cols sneakatt_49
+	READ_2DA_ENTRY 0 51 cols sneakatt_50
 //	SPRINT orig_sneakatt ~%orig_sneakatt% %sneakatt_41% %sneakatt_42% %sneakatt_43% %sneakatt_44% %sneakatt_45% %sneakatt_46% %sneakatt_47% %sneakatt_48% %sneakatt_49% %sneakatt_50%~
   	FOR (lvl = 41; lvl < 50; ++lvl) BEGIN
 	  SPRINT orig_sneakatt ~%orig_sneakatt% %sneakatt_%lvl%%~ 
@@ -1392,62 +1402,67 @@ COPY_EXISTING ~sneakatt.2da~ ~override~
 BUT_ONLY
 COPY_EXISTING ~crippstr.2da~ ~override~
   COUNT_2DA_COLS cols
-  READ_2DA_ENTRY 0 1 1 crippstr_0
-  READ_2DA_ENTRY 0 1 2 crippstr_1
-  READ_2DA_ENTRY 0 1 3 crippstr_2
-  READ_2DA_ENTRY 0 1 4 crippstr_3
-  READ_2DA_ENTRY 0 1 5 crippstr_4
-  READ_2DA_ENTRY 0 1 6 crippstr_5
-  READ_2DA_ENTRY 0 1 7 crippstr_6
-  READ_2DA_ENTRY 0 1 8 crippstr_7
-  READ_2DA_ENTRY 0 1 9 crippstr_8
-  READ_2DA_ENTRY 0 1 10 crippstr_9
-  READ_2DA_ENTRY 0 1 11 crippstr_10
-  READ_2DA_ENTRY 0 1 12 crippstr_11
-  READ_2DA_ENTRY 0 1 13 crippstr_12
-  READ_2DA_ENTRY 0 1 14 crippstr_13
-  READ_2DA_ENTRY 0 1 15 crippstr_14
-  READ_2DA_ENTRY 0 1 16 crippstr_15
-  READ_2DA_ENTRY 0 1 17 crippstr_16
-  READ_2DA_ENTRY 0 1 18 crippstr_17
-  READ_2DA_ENTRY 0 1 19 crippstr_18
-  READ_2DA_ENTRY 0 1 20 crippstr_19
-  READ_2DA_ENTRY 0 1 21 crippstr_20
-  READ_2DA_ENTRY 0 1 22 crippstr_21
-  READ_2DA_ENTRY 0 1 23 crippstr_22
-  READ_2DA_ENTRY 0 1 24 crippstr_23
-  READ_2DA_ENTRY 0 1 25 crippstr_24
-  READ_2DA_ENTRY 0 1 26 crippstr_25
-  READ_2DA_ENTRY 0 1 27 crippstr_26
-  READ_2DA_ENTRY 0 1 28 crippstr_27
-  READ_2DA_ENTRY 0 1 29 crippstr_28
-  READ_2DA_ENTRY 0 1 30 crippstr_29
-  READ_2DA_ENTRY 0 1 31 crippstr_30
-  READ_2DA_ENTRY 0 1 32 crippstr_31
-  READ_2DA_ENTRY 0 1 33 crippstr_32
-  READ_2DA_ENTRY 0 1 34 crippstr_33
-  READ_2DA_ENTRY 0 1 35 crippstr_34
-  READ_2DA_ENTRY 0 1 36 crippstr_35
-  READ_2DA_ENTRY 0 1 37 crippstr_36
-  READ_2DA_ENTRY 0 1 38 crippstr_37
-  READ_2DA_ENTRY 0 1 39 crippstr_38
-  READ_2DA_ENTRY 0 1 40 crippstr_39
-  READ_2DA_ENTRY 0 1 41 crippstr_40
-  SPRINT orig_crippstr ~%crippstr_0%~ //  %crippstr_1% %crippstr_2% %crippstr_3% %crippstr_4% %crippstr_5% %crippstr_6% %crippstr_7% %crippstr_8% %crippstr_9% %crippstr_10% %crippstr_11% %crippstr_12% %crippstr_13% %crippstr_14% %crippstr_15% %crippstr_16% %crippstr_17% %crippstr_18% %crippstr_19% %crippstr_20% %crippstr_21% %crippstr_22% %crippstr_23% %crippstr_24% %crippstr_25% %crippstr_26% %crippstr_27% %crippstr_28% %crippstr_29% %crippstr_30% %crippstr_31% %crippstr_32% %crippstr_33% %crippstr_34% %crippstr_35% %crippstr_36% %crippstr_37% %crippstr_38% %crippstr_39% %crippstr_40%~
-  FOR (lvl = 1; lvl < 40; ++lvl) BEGIN
-	SPRINT orig_crippstr ~%orig_crippstr% %crippstr_%lvl%%~ 
+  PATCH_IF (cols < 42) BEGIN
+    SPRINT orig_crippstr ~0                    0                    0                    0                    0                    1                    1                    1                    1                    2                    2                    2                    2                    3                    3                    3                    3                    4                    4                    4                    4                    5                    5                    5                    5                    6                    6                    6                    6                    7                    7                    7                    7                    8                    8                    8                    8                    9                    9                    9                    9~ 
+  END
+  PATCH_IF (cols > 41) BEGIN
+    READ_2DA_ENTRY 0 1 cols crippstr_0
+    READ_2DA_ENTRY 0 2 cols crippstr_1
+    READ_2DA_ENTRY 0 3 cols crippstr_2
+    READ_2DA_ENTRY 0 4 cols crippstr_3
+    READ_2DA_ENTRY 0 5 cols crippstr_4
+    READ_2DA_ENTRY 0 6 cols crippstr_5
+    READ_2DA_ENTRY 0 7 cols crippstr_6
+    READ_2DA_ENTRY 0 8 cols crippstr_7
+    READ_2DA_ENTRY 0 9 cols crippstr_8
+    READ_2DA_ENTRY 0 10 cols crippstr_9
+    READ_2DA_ENTRY 0 11 cols crippstr_10
+    READ_2DA_ENTRY 0 12 cols crippstr_11
+    READ_2DA_ENTRY 0 13 cols crippstr_12
+    READ_2DA_ENTRY 0 14 cols crippstr_13
+    READ_2DA_ENTRY 0 15 cols crippstr_14
+    READ_2DA_ENTRY 0 16 cols crippstr_15
+    READ_2DA_ENTRY 0 17 cols crippstr_16
+    READ_2DA_ENTRY 0 18 cols crippstr_17
+    READ_2DA_ENTRY 0 19 cols crippstr_18
+    READ_2DA_ENTRY 0 20 cols crippstr_19
+    READ_2DA_ENTRY 0 21 cols crippstr_20
+    READ_2DA_ENTRY 0 22 cols crippstr_21
+    READ_2DA_ENTRY 0 23 cols crippstr_22
+    READ_2DA_ENTRY 0 24 cols crippstr_23
+    READ_2DA_ENTRY 0 25 cols crippstr_24
+    READ_2DA_ENTRY 0 26 cols crippstr_25
+    READ_2DA_ENTRY 0 27 cols crippstr_26
+    READ_2DA_ENTRY 0 28 cols crippstr_27
+    READ_2DA_ENTRY 0 29 cols crippstr_28
+    READ_2DA_ENTRY 0 30 cols crippstr_29
+    READ_2DA_ENTRY 0 31 cols crippstr_30
+    READ_2DA_ENTRY 0 32 cols crippstr_31
+    READ_2DA_ENTRY 0 33 cols crippstr_32
+    READ_2DA_ENTRY 0 34 cols crippstr_33
+    READ_2DA_ENTRY 0 35 cols crippstr_34
+    READ_2DA_ENTRY 0 36 cols crippstr_35
+    READ_2DA_ENTRY 0 37 cols crippstr_36
+    READ_2DA_ENTRY 0 38 cols crippstr_37
+    READ_2DA_ENTRY 0 39 cols crippstr_38
+    READ_2DA_ENTRY 0 40 cols crippstr_39
+    READ_2DA_ENTRY 0 41 cols crippstr_40
+    SPRINT orig_crippstr ~%crippstr_0%~ //  %crippstr_1% %crippstr_2% %crippstr_3% %crippstr_4% %crippstr_5% %crippstr_6% %crippstr_7% %crippstr_8% %crippstr_9% %crippstr_10% %crippstr_11% %crippstr_12% %crippstr_13% %crippstr_14% %crippstr_15% %crippstr_16% %crippstr_17% %crippstr_18% %crippstr_19% %crippstr_20% %crippstr_21% %crippstr_22% %crippstr_23% %crippstr_24% %crippstr_25% %crippstr_26% %crippstr_27% %crippstr_28% %crippstr_29% %crippstr_30% %crippstr_31% %crippstr_32% %crippstr_33% %crippstr_34% %crippstr_35% %crippstr_36% %crippstr_37% %crippstr_38% %crippstr_39% %crippstr_40%~
+    FOR (lvl = 1; lvl < 40; ++lvl) BEGIN
+	  SPRINT orig_crippstr ~%orig_crippstr% %crippstr_%lvl%%~ 
+    END
   END
   PATCH_IF (cols > 51) BEGIN
-	READ_2DA_ENTRY 0 1 42 crippstr_41
-	READ_2DA_ENTRY 0 1 43 crippstr_42
-	READ_2DA_ENTRY 0 1 44 crippstr_43
-	READ_2DA_ENTRY 0 1 45 crippstr_44
-	READ_2DA_ENTRY 0 1 46 crippstr_45
-	READ_2DA_ENTRY 0 1 47 crippstr_46
-	READ_2DA_ENTRY 0 1 48 crippstr_47
-	READ_2DA_ENTRY 0 1 49 crippstr_48
-	READ_2DA_ENTRY 0 1 50 crippstr_49
-	READ_2DA_ENTRY 0 1 51 crippstr_50
+	READ_2DA_ENTRY 0 42 cols crippstr_41
+	READ_2DA_ENTRY 0 43 cols crippstr_42
+	READ_2DA_ENTRY 0 44 cols crippstr_43
+	READ_2DA_ENTRY 0 45 cols crippstr_44
+	READ_2DA_ENTRY 0 46 cols crippstr_45
+	READ_2DA_ENTRY 0 47 cols crippstr_46
+	READ_2DA_ENTRY 0 48 cols crippstr_47
+	READ_2DA_ENTRY 0 49 cols crippstr_48
+	READ_2DA_ENTRY 0 50 cols crippstr_49
+	READ_2DA_ENTRY 0 51 cols crippstr_50
 //	SPRINT orig_crippstr ~%orig_crippstr% %crippstr_41% %crippstr_42% %crippstr_43% %crippstr_44% %crippstr_45% %crippstr_46% %crippstr_47% %crippstr_48% %crippstr_49% %crippstr_50%~
   	FOR (lvl = 41; lvl < 50; ++lvl) BEGIN
 	  SPRINT orig_crippstr ~%orig_crippstr% %crippstr_%lvl%%~ 
