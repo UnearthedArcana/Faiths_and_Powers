@@ -12,17 +12,6 @@ COPY_EXISTING ~clabrn01.2da~ ~override/d5rfor.2da~
 	LPM remove_blank_lines
 	APPEND_FILE ~faiths_and_powers/kits/rangers/901_forest_ranger/ranger_goodberry.txt~
 	APPEND_FILE ~faiths_and_powers/kits/rangers/901_forest_ranger/ranger_enemies.txt~
-/*
-	COUNT_2DA_COLS cols
-	READ_2DA_ENTRIES_NOW rows cols
-	FOR (row = 3; row < rows; ++row) BEGIN
-	  READ_2DA_ENTRY row cols 0 ~row_name~
-	  PATCH_IF ~%row_name%~ STRING_EQUAL_CASE ~QD_MULTI~ BEGIN
-	    SET patch_row = %row%
-	  END
-	  REMOVE_2DA_ROW patch_row cols
-	END
-*/
 
 //change ranger class text___________________________________________________________
 //
@@ -961,33 +950,7 @@ ACTION_IF (FILE_EXISTS_IN_GAME ~kitlist.2da~) BEGIN
 	SET_2DA_ENTRY (%patch_row%) 4 cols RESOLVE_STR_REF (@93200)
   BUT_ONLY
 END
-//ACTION_IF ENGINE_IS ~tob~ BEGIN
-//	STRING_SET 25212 @93200
-//END
 
-/*	this is now done for scouts (not rangers) in the main .tp2 file
-//NO FALLING/MORE ALIGNMENTS________________________________________________________
-//
-ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN
-	APPEND ~fallen.2da~ ~BEASTMASTER  0~
-END
-
-ACTION_IF FILE_EXISTS_IN_GAME ~alignmnt.2da~ BEGIN
-  COPY_EXISTING ~alignmnt.2da~ ~override~
-	COUNT_2DA_COLS cols // amount of columns
-	READ_2DA_ENTRIES_NOW rows cols // read all file into memory  
-	FOR (row = 1; row < rows; ++row) BEGIN // iterate over rows
-	  READ_2DA_ENTRY_FORMER rows row 0 ~text~ // read column value
-	  PATCH_IF ~%text%~ STRING_EQUAL_CASE ~BEASTMASTER~ BEGIN
-	    SET patch_row = %row%
-	  END
-	END
-	FOR (col = 1; col < cols; ++col) BEGIN // iterate over columns
-		SET_2DA_ENTRY %patch_row% col cols 1
-	END
-  BUT_ONLY
-END
-*/
 
 //BEASTMASTER SHAPECHANGING + SPIRIT WOLF____________________________________________
 //
@@ -1064,14 +1027,6 @@ END
 	sphere_list		= ~ranger_beastmaster_spheres~
 	class 			= ~ranger~
  END
-
-/* can't do spontaneous with 8-character CLAB
- ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
- ACTION_IF (beast_master_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
-  LAF fnp_spontaneous STR_VAR kit_clab = ~CLABRN04~ learn_res = ~d5rn04~ END
- END
- END
-*/
 
 END
 //__________________________________________________________________________________
