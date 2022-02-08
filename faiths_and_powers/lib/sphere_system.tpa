@@ -9,322 +9,104 @@
 
 DEFINE_ACTION_FUNCTION create_spheres BEGIN
 
-//copy marker file___________________________________________________________________
-//
-//COPY ~faiths_and_powers/lib/markers/d5_marker.d5~ ~override/d5__spheres.d5~ 
-
-// already did this in the .tp2
-//___________________________________________________________________________________
-
-
-//game check_________________________________________________________________________
-//
-ACTION_IF GAME_IS ~iwdee~ BEGIN
-	OUTER_SPRINT game ~iwd~
-END
-ELSE BEGIN
-	OUTER_SPRINT game ~bg2~
-END
-//___________________________________________________________________________________
-
-/* not needed with 4b17+
-//handle SR spells___________________________________________________________________
-//
-ACTION_IF ((!FILE_CONTAINS_EVALUATED(~spell.ids~ ~CLERIC_OBSCURING_MIST~)) AND (FILE_EXISTS_IN_GAME ~dvsrv4here.mrk~)) BEGIN
-   INCLUDE ~faiths_and_powers/lib/add_ids.tpa~
-END
-//___________________________________________________________________________________
-*/
-
 //create sphere spells______________________________________________________________
 //
 //all/universal
 COPY ~faiths_and_powers/spheres/d5sxyz.spl~ ~override/d5spuni.spl~
 //life
 COPY ~faiths_and_powers/spheres/d5sxyz.spl~ ~override/d5splif.spl~
-//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5splifx~ END
 COPY ~faiths_and_powers/spheres/d5sxyz.spl~ ~override/d5sflif.spl~
-//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5sflifx~ END
 COPY ~faiths_and_powers/spheres/d5sxyz.spl~ ~override/d5smlif.spl~
-//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5smlifx~ END
 //death
 COPY ~faiths_and_powers/spheres/d5sxyz.spl~ ~override/d5spdea.spl~
-//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5spdeax~ END
 COPY ~faiths_and_powers/spheres/d5sxyz.spl~ ~override/d5sfdea.spl~
-//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5sfdeax~ END
 COPY ~faiths_and_powers/spheres/d5sxyz.spl~ ~override/d5smdea.spl~
-//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5smdeax~ END
 //benediction
 COPY ~faiths_and_powers/spheres/d5sxyz.spl~ ~override/d5spben.spl~
-//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5spbenx~ END
 COPY ~faiths_and_powers/spheres/d5sxyz.spl~ ~override/d5sfben.spl~
-//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5sfbenx~ END
 COPY ~faiths_and_powers/spheres/d5sxyz.spl~ ~override/d5smben.spl~
-//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5smbenx~ END
 //Destruction
 COPY ~faiths_and_powers/spheres/d5sxyz.spl~ ~override/d5spdes.spl~
-//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5spdesx~ END
 COPY ~faiths_and_powers/spheres/d5sxyz.spl~ ~override/d5sfdes.spl~
-//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5sfdesx~ END
 COPY ~faiths_and_powers/spheres/d5sxyz.spl~ ~override/d5smdes.spl~
-//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5smdesx~ END
 //Protection
 COPY ~faiths_and_powers/spheres/d5sxyz.spl~ ~override/d5sppro.spl~
-//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5spprox~ END
 COPY ~faiths_and_powers/spheres/d5sxyz.spl~ ~override/d5sfpro.spl~
-//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5sfprox~ END
 COPY ~faiths_and_powers/spheres/d5sxyz.spl~ ~override/d5smpro.spl~
-//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5smprox~ END
 //war
 COPY ~faiths_and_powers/spheres/d5sxyz.spl~ ~override/d5spwar.spl~
-//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5spwarx~ END
 COPY ~faiths_and_powers/spheres/d5sxyz.spl~ ~override/d5sfwar.spl~
-//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5sfwarx~ END
 COPY ~faiths_and_powers/spheres/d5sxyz.spl~ ~override/d5smwar.spl~
-//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5smwarx~ END
 //exploration
 COPY ~faiths_and_powers/spheres/d5sxyz.spl~ ~override/d5spexp.spl~
-//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5spexpx~ END
 COPY ~faiths_and_powers/spheres/d5sxyz.spl~ ~override/d5sfexp.spl~
-//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5sfexpx~ END
 COPY ~faiths_and_powers/spheres/d5sxyz.spl~ ~override/d5smexp.spl~
-//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5smexpx~ END
 //knowledge
 COPY ~faiths_and_powers/spheres/d5sxyz.spl~ ~override/d5spkno.spl~
-//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5spknox~ END
 COPY ~faiths_and_powers/spheres/d5sxyz.spl~ ~override/d5sfkno.spl~
-//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5sfknox~ END
 COPY ~faiths_and_powers/spheres/d5sxyz.spl~ ~override/d5smkno.spl~
-//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5smknox~ END
 //deception
 COPY ~faiths_and_powers/spheres/d5sxyz.spl~ ~override/d5spdec.spl~
-//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5spdecx~ END
 COPY ~faiths_and_powers/spheres/d5sxyz.spl~ ~override/d5sfdec.spl~
-//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5sfdecx~ END
 COPY ~faiths_and_powers/spheres/d5sxyz.spl~ ~override/d5smdec.spl~
-//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5smdecx~ END
 //thought
 COPY ~faiths_and_powers/spheres/d5sxyz.spl~ ~override/d5sptho.spl~
-//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5spthox~ END
 COPY ~faiths_and_powers/spheres/d5sxyz.spl~ ~override/d5sftho.spl~
-//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5sfthox~ END
 COPY ~faiths_and_powers/spheres/d5sxyz.spl~ ~override/d5smtho.spl~
-//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5smthox~ END
 //dread
 COPY ~faiths_and_powers/spheres/d5sxyz.spl~ ~override/d5spdre.spl~
-//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5spdrex~ END
 COPY ~faiths_and_powers/spheres/d5sxyz.spl~ ~override/d5sfdre.spl~
-//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5sfdrex~ END
 COPY ~faiths_and_powers/spheres/d5sxyz.spl~ ~override/d5smdre.spl~
-//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5smdrex~ END
 //Vigor
 COPY ~faiths_and_powers/spheres/d5sxyz.spl~ ~override/d5spvig.spl~
-//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5spvigx~ END
 COPY ~faiths_and_powers/spheres/d5sxyz.spl~ ~override/d5sfvig.spl~
-//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5sfvigx~ END
 COPY ~faiths_and_powers/spheres/d5sxyz.spl~ ~override/d5smvig.spl~
-//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5smvigx~ END
 //affliction
 COPY ~faiths_and_powers/spheres/d5sxyz.spl~ ~override/d5spaff.spl~
-//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5spaffx~ END
 COPY ~faiths_and_powers/spheres/d5sxyz.spl~ ~override/d5sfaff.spl~
-//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5sfaffx~ END
 COPY ~faiths_and_powers/spheres/d5sxyz.spl~ ~override/d5smaff.spl~
-//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5smaffx~ END
 //animal
 COPY ~faiths_and_powers/spheres/d5sxyz.spl~ ~override/d5spani.spl~
-//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5spanix~ END
 COPY ~faiths_and_powers/spheres/d5sxyz.spl~ ~override/d5sfani.spl~
-//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5sfanix~ END
 COPY ~faiths_and_powers/spheres/d5sxyz.spl~ ~override/d5smani.spl~
-//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5smanix~ END
 //plant
 COPY ~faiths_and_powers/spheres/d5sxyz.spl~ ~override/d5sppla.spl~
-//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5spplax~ END
 COPY ~faiths_and_powers/spheres/d5sxyz.spl~ ~override/d5sfpla.spl~
-//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5sfplax~ END
 COPY ~faiths_and_powers/spheres/d5sxyz.spl~ ~override/d5smpla.spl~
-//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5smplax~ END
 //earth
 COPY ~faiths_and_powers/spheres/d5sxyz.spl~ ~override/d5spear.spl~
-//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5spearx~ END
 COPY ~faiths_and_powers/spheres/d5sxyz.spl~ ~override/d5sfear.spl~
-//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5sfearx~ END
 COPY ~faiths_and_powers/spheres/d5sxyz.spl~ ~override/d5smear.spl~
-//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5smearx~ END
 //air
 COPY ~faiths_and_powers/spheres/d5sxyz.spl~ ~override/d5spair.spl~
-//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5spairx~ END
 COPY ~faiths_and_powers/spheres/d5sxyz.spl~ ~override/d5sfair.spl~
-//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5sfairx~ END
 COPY ~faiths_and_powers/spheres/d5sxyz.spl~ ~override/d5smair.spl~
-//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5smairx~ END
 //water
 COPY ~faiths_and_powers/spheres/d5sxyz.spl~ ~override/d5spwat.spl~
-//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5spwatx~ END
 COPY ~faiths_and_powers/spheres/d5sxyz.spl~ ~override/d5sfwat.spl~
-//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5sfwatx~ END
 COPY ~faiths_and_powers/spheres/d5sxyz.spl~ ~override/d5smwat.spl~
-//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5smwatx~ END
 //fire
 COPY ~faiths_and_powers/spheres/d5sxyz.spl~ ~override/d5spfir.spl~
-//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5spfirx~ END
 COPY ~faiths_and_powers/spheres/d5sxyz.spl~ ~override/d5sffir.spl~
-//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5sffirx~ END
 COPY ~faiths_and_powers/spheres/d5sxyz.spl~ ~override/d5smfir.spl~
-//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5smfirx~ END
 //light
 COPY ~faiths_and_powers/spheres/d5sxyz.spl~ ~override/d5splig.spl~
-//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5spligx~ END
 COPY ~faiths_and_powers/spheres/d5sxyz.spl~ ~override/d5sflig.spl~
-//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5sfligx~ END
 COPY ~faiths_and_powers/spheres/d5sxyz.spl~ ~override/d5smlig.spl~
-//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5smligx~ END
 //shadow
 COPY ~faiths_and_powers/spheres/d5sxyz.spl~ ~override/d5spsha.spl~
-//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5spshax~ END
 COPY ~faiths_and_powers/spheres/d5sxyz.spl~ ~override/d5sfsha.spl~
-//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5sfshax~ END
 COPY ~faiths_and_powers/spheres/d5sxyz.spl~ ~override/d5smsha.spl~
-//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5smshax~ END
 //magic
 COPY ~faiths_and_powers/spheres/d5sxyz.spl~ ~override/d5spmag.spl~
-//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5spmagx~ END
 COPY ~faiths_and_powers/spheres/d5sxyz.spl~ ~override/d5sfmag.spl~
-//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5sfmagx~ END
 COPY ~faiths_and_powers/spheres/d5sxyz.spl~ ~override/d5smmag.spl~
-//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5smmagx~ END
 //astral
 COPY ~faiths_and_powers/spheres/d5sxyz.spl~ ~override/d5spast.spl~
-//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5spastx~ END
 COPY ~faiths_and_powers/spheres/d5sxyz.spl~ ~override/d5sfast.spl~
-//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5sfastx~ END
 COPY ~faiths_and_powers/spheres/d5sxyz.spl~ ~override/d5smast.spl~
-//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5smastx~ END
 //__________________________________________________________________________________
 
-
-/*
-//add duplication prevention________________________________________________________
-//
-COPY_EXISTING 
-			 ~d5splif.spl~ ~override/d5splifx.spl~
-			 ~d5sflif.spl~ ~override/d5sflifx.spl~
-			 ~d5smlif.spl~ ~override/d5smlifx.spl~
-			 ~d5spdea.spl~ ~override/d5spdeax.spl~
-			 ~d5sfdea.spl~ ~override/d5sfdeax.spl~
-			 ~d5smdea.spl~ ~override/d5smdeax.spl~
-			 ~d5spben.spl~ ~override/d5spbenx.spl~
-			 ~d5sfben.spl~ ~override/d5sfbenx.spl~
-			 ~d5smben.spl~ ~override/d5smbenx.spl~
-			 ~d5spdes.spl~ ~override/d5spdesx.spl~
-			 ~d5sfdes.spl~ ~override/d5sfdesx.spl~
-			 ~d5smdes.spl~ ~override/d5smdesx.spl~
-			 ~d5sppro.spl~ ~override/d5spprox.spl~
-			 ~d5sfpro.spl~ ~override/d5sfprox.spl~
-			 ~d5smpro.spl~ ~override/d5smprox.spl~
-			 ~d5spwar.spl~ ~override/d5spwarx.spl~
-			 ~d5sfwar.spl~ ~override/d5sfwarx.spl~
-			 ~d5smwar.spl~ ~override/d5smwarx.spl~
-			 ~d5spexp.spl~ ~override/d5spexpx.spl~
-			 ~d5sfexp.spl~ ~override/d5sfexpx.spl~
-			 ~d5smexp.spl~ ~override/d5smexpx.spl~
-			 ~d5spkno.spl~ ~override/d5spknox.spl~
-			 ~d5sfkno.spl~ ~override/d5sfknox.spl~
-			 ~d5smkno.spl~ ~override/d5smknox.spl~
-			 ~d5spdec.spl~ ~override/d5spdecx.spl~
-			 ~d5sfdec.spl~ ~override/d5sfdecx.spl~
-			 ~d5smdec.spl~ ~override/d5smdecx.spl~
-			 ~d5sptho.spl~ ~override/d5spthox.spl~
-			 ~d5sftho.spl~ ~override/d5sfthox.spl~
-			 ~d5smtho.spl~ ~override/d5smthox.spl~
-			 ~d5spdre.spl~ ~override/d5spdrex.spl~
-			 ~d5sfdre.spl~ ~override/d5sfdrex.spl~
-			 ~d5smdre.spl~ ~override/d5smdrex.spl~
-			 ~d5spvig.spl~ ~override/d5spvigx.spl~
-			 ~d5sfvig.spl~ ~override/d5sfvigx.spl~
-			 ~d5smvig.spl~ ~override/d5smvigx.spl~
-			 ~d5spaff.spl~ ~override/d5spaffx.spl~
-			 ~d5sfaff.spl~ ~override/d5sfaffx.spl~
-			 ~d5smaff.spl~ ~override/d5smaffx.spl~
-			 ~d5spani.spl~ ~override/d5spanix.spl~
-			 ~d5sfani.spl~ ~override/d5sfanix.spl~
-			 ~d5smani.spl~ ~override/d5smanix.spl~
-			 ~d5sppla.spl~ ~override/d5spplax.spl~
-			 ~d5sfpla.spl~ ~override/d5sfplax.spl~
-			 ~d5smpla.spl~ ~override/d5smplax.spl~
-			 ~d5spear.spl~ ~override/d5spearx.spl~
-			 ~d5sfear.spl~ ~override/d5sfearx.spl~
-			 ~d5smear.spl~ ~override/d5smearx.spl~
-			 ~d5spair.spl~ ~override/d5spairx.spl~
-			 ~d5sfair.spl~ ~override/d5sfairx.spl~
-			 ~d5smair.spl~ ~override/d5smairx.spl~
-			 ~d5spwat.spl~ ~override/d5spwatx.spl~
-			 ~d5sfwat.spl~ ~override/d5sfwatx.spl~
-			 ~d5smwat.spl~ ~override/d5smwatx.spl~
-			 ~d5spfir.spl~ ~override/d5spfirx.spl~
-			 ~d5sffir.spl~ ~override/d5sffirx.spl~
-			 ~d5smfir.spl~ ~override/d5smfirx.spl~
-			 ~d5splig.spl~ ~override/d5spligx.spl~
-			 ~d5sflig.spl~ ~override/d5sfligx.spl~
-			 ~d5smlig.spl~ ~override/d5smligx.spl~
-			 ~d5spsha.spl~ ~override/d5spshax.spl~
-			 ~d5sfsha.spl~ ~override/d5sfshax.spl~
-			 ~d5smsha.spl~ ~override/d5smshax.spl~
-			 ~d5spmag.spl~ ~override/d5spmagx.spl~
-			 ~d5sfmag.spl~ ~override/d5sfmagx.spl~
-			 ~d5smmag.spl~ ~override/d5smmagx.spl~
-			 ~d5spast.spl~ ~override/d5spastx.spl~
-			 ~d5sfast.spl~ ~override/d5sfastx.spl~
-			 ~d5smast.spl~ ~override/d5smastx.spl~
-	LPF DELETE_EFFECT END
-	LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 STR_VAR resource = EVAL ~%SOURCE_RES%~ END
-//__________________________________________________________________________________
-*/
-
-
-//prepare spell conversions_________________________________________________________
-//
-/*
-ACTION_IF FILE_EXISTS_IN_GAME ~smcudge.itm~ BEGIN
-COPY_EXISTING ~smcudge.itm~ ~override~
-	WRITE_BYTE 0x8a 2
-END                         
-*/
-
-/*
-COPY_EXISTING ~sppr737.spl~ ~override/d5_1stal.spl~
-	LPF DELETE_EFFECT INT_VAR header=1 END
-
-COPY_EXISTING ~sppr108.spl~ ~override~
-	SAY NAME1 ~Courage~
-	SAY UNIDENTIFIED_DESC ~Courage: the artist formerly known as remove fear~
-COPY_EXISTING ~sppr313.spl~ ~override~
-	SAY NAME1 ~Divine Wrath~
-	SAY UNIDENTIFIED_DESC ~Divine Wrath: the artist formerly known as holy smite~
-COPY_EXISTING ~sppr314.spl~ ~override~
-	SAY NAME1 ~Infernal Wrath~
-	SAY UNIDENTIFIED_DESC ~Infernal Wrath: the artist formerly known as unholy blight~
-COPY_EXISTING ~sppr201.spl~ ~override~
-	SAY NAME1 ~Invigorate~
-	SAY UNIDENTIFIED_DESC ~Invigorate: the artist formerly known as aid~
-COPY_EXISTING ~sppr208.spl~ ~override~
-	SAY NAME1 ~Paralyze~
-	SAY UNIDENTIFIED_DESC ~Paralyze: the artist formerly known as hold person~
-*/
-//__________________________________________________________________________________
-
-
-/*
-//add new SR spells_________________________________________________________________
-//
-ACTION_IF FILE_EXISTS_IN_GAME ~dvsrv4here.mrk~ THEN BEGIN
-
-  INCLUDE ~faiths_and_powers/lib/spell_revisions/sr_%game%.tpa~
-
-END
-//__________________________________________________________________________________
-*/
 
 //remove priest spells from joinable NPCs____________________________________________
 //
@@ -868,27 +650,7 @@ BUT_ONLY
 
 //UI work for contingency___________________________________________________________
 //
-/*
-// read d5fnplst.2da
-// find row with spwi617 in 1st col
-// find value in 2nd/3rd/4th cols
-// perform UI stuff on them
-// OR... just do it manually:
 
-// this isn't working anymore...
-ACTION_FOR_EACH cont_spl IN ~d5p2617~ ~d5m2617~ ~d5f2617~ BEGIN
-  ACTION_IF (FILE_EXISTS_IN_GAME ~%cont_spl%.spl~) BEGIN
-	APPEND	~BGEE.LUA~	~mageBookStrings['%cont_spl%'] = mageBookStrings['SPWI617']~
-  END
-END
-
-COPY_EXISTING ~UI.menu~ ~override~
-	REPLACE_TEXTUALLY	~mageBookEnabled[ %TAB%]+==[ %TAB%]+true~	~((mageBookEnabled == true) or (bookMode == 1))~
-	REPLACE_TEXTUALLY	~mageBookEnabled[ %TAB%]+==[ %TAB%]+false~	~mageBookEnabled == false and bookMode == 0~
-BUT_ONLY
-*/
-
-// try this instead
 COPY_EXISTING ~ui.menu~ ~override~
 	REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~contingencyDescription = mageBookStrings[contingencyResRef].tip~ ~			if not pcall(me_problem) then
 				contingencyDescription = 0
@@ -899,95 +661,6 @@ end
 --reload language~
 //__________________________________________________________________________________
 
-
-/*
-//add new spells to 206/318/321/324 effects_________________________________________
-//
-PRINT ~*Please be patient, this should take 1-2 minutes...*~
-COPY_EXISTING_REGEXP GLOB ~^.+\.spl$~ ~override~
-	LPF SPELL_CLONE_EFFECTS INT_VAR match_opcode=206 STR_VAR resource=~sphere~ END
-	LPF SPELL_CLONE_EFFECTS INT_VAR match_opcode=206 STR_VAR resource=~fsphere~ END
-	LPF SPELL_CLONE_EFFECTS INT_VAR match_opcode=318 STR_VAR resource=~sphere~ END
-	LPF SPELL_CLONE_EFFECTS INT_VAR match_opcode=318 STR_VAR resource=~fsphere~ END
-	LPF SPELL_CLONE_EFFECTS INT_VAR match_opcode=321 STR_VAR resource=~sphere~ END
-	LPF SPELL_CLONE_EFFECTS INT_VAR match_opcode=321 STR_VAR resource=~fsphere~ END
-	LPF SPELL_CLONE_EFFECTS INT_VAR match_opcode=324 STR_VAR resource=~sphere~ END
-	LPF SPELL_CLONE_EFFECTS INT_VAR match_opcode=324 STR_VAR resource=~fsphere~ END
-BUT_ONLY
-COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
-	LPF SPELL_CLONE_EFFECTS INT_VAR match_opcode=206 STR_VAR resource=~sphere~ END
-	LPF SPELL_CLONE_EFFECTS INT_VAR match_opcode=206 STR_VAR resource=~fsphere~ END
-	LPF SPELL_CLONE_EFFECTS INT_VAR match_opcode=318 STR_VAR resource=~sphere~ END
-	LPF SPELL_CLONE_EFFECTS INT_VAR match_opcode=318 STR_VAR resource=~fsphere~ END
-	LPF SPELL_CLONE_EFFECTS INT_VAR match_opcode=321 STR_VAR resource=~sphere~ END
-	LPF SPELL_CLONE_EFFECTS INT_VAR match_opcode=321 STR_VAR resource=~fsphere~ END
-	LPF SPELL_CLONE_EFFECTS INT_VAR match_opcode=324 STR_VAR resource=~sphere~ END
-	LPF SPELL_CLONE_EFFECTS INT_VAR match_opcode=324 STR_VAR resource=~fsphere~ END
-BUT_ONLY
-//__________________________________________________________________________________
-*/
-
-/*
-//set spell alignment restrictions__________________________________________________
-//
-ACTION_IF FILE_EXISTS_IN_GAME ~sppr601.spl~ BEGIN  //  aerial servant = good
-	COPY_EXISTING ~sppr601.spl~ ~override~
-		READ_BYTE 0x1e align
-		WRITE_BYTE 0x1e (align BOR 0b00000010)
-	BUT_ONLY
-END
-ACTION_IF FILE_EXISTS_IN_GAME ~d5f1601.spl~ BEGIN  //  aerial servant = good
-	COPY_EXISTING ~d5f1601.spl~ ~override~
-		READ_BYTE 0x1e align
-		WRITE_BYTE 0x1e (align BOR 0b00000010)
-	BUT_ONLY
-END
-ACTION_IF FILE_EXISTS_IN_GAME ~d5s2707.spl~ BEGIN  //  cacofiend = evil
-	COPY_EXISTING ~d5s2707.spl~ ~override~
-		READ_BYTE 0x1e align
-		WRITE_BYTE 0x1e (align BOR 0b00000100)
-	BUT_ONLY
-END
-ACTION_IF FILE_EXISTS_IN_GAME ~d5f2707.spl~ BEGIN  //  cacofiend = evil
-	COPY_EXISTING ~d5f2707.spl~ ~override~
-		READ_BYTE 0x1e align
-		WRITE_BYTE 0x1e (align BOR 0b00000100)
-	BUT_ONLY
-END
-ACTION_IF FILE_EXISTS_IN_GAME ~sppr710.spl~ BEGIN  //  holy word = good
-	COPY_EXISTING ~sppr710.spl~ ~override~
-		READ_BYTE 0x1e align
-		WRITE_BYTE 0x1e (align BOR 0b00000010)
-	BUT_ONLY
-END
-ACTION_IF FILE_EXISTS_IN_GAME ~d5f1710.spl~ BEGIN  //  holy word = good
-	COPY_EXISTING ~d5f1710.spl~ ~override~
-		READ_BYTE 0x1e align
-		WRITE_BYTE 0x1e (align BOR 0b00000010)
-	BUT_ONLY
-END
-ACTION_IF FILE_EXISTS_IN_GAME ~sppr715.spl~ BEGIN  //  unholy word = evil
-	COPY_EXISTING ~sppr715.spl~ ~override~
-		READ_BYTE 0x1e align
-		WRITE_BYTE 0x1e (align BOR 0b00000100)
-	BUT_ONLY
-END
-ACTION_IF FILE_EXISTS_IN_GAME ~d5f1715.spl~ BEGIN  //  unholy word = evil
-	COPY_EXISTING ~d5f1715.spl~ ~override~
-		READ_BYTE 0x1e align
-		WRITE_BYTE 0x1e (align BOR 0b00000100)
-	BUT_ONLY
-END
-//__________________________________________________________________________________
-*/
-
-/*
-//clean up sphere-spell .2da_________________________________________________________
-//
-COPY_EXISTING ~d5spsph.2da~ ~override~
-  PRETTY_PRINT_2DA
-//__________________________________________________________________________________
-*/
 
 //set up HLA tables_________________________________________________________________
 //
@@ -1137,20 +810,13 @@ ACTION_IF (FILE_EXISTS_IN_GAME ~clastext.2da~) BEGIN
   ACTION_IF (FILE_CONTAINS_EVALUATED (~d5_class.2da~ ~CLABSH01~)) BEGIN
 	OUTER_SPRINT $d5_kitlist_spheres (~CLABSH01~ ~sh1~ ~SHAMAN~ ~%shaman_desc%~ ~0x00004000~) ~21~
   END
-/*
-  ACTION_IF (FILE_CONTAINS_EVALUATED (~d5_class.2da~ ~CLABSHGS~)) BEGIN
-	OUTER_SPRINT $d5_kitlist_spheres (~CLABSHGS~ ~sh2~ ~SHAMAN~ ~%shaman_desc%~ ~0x00004000~) ~21~
-  END
-*/
+
 END
 ACTION_FOR_EACH base_kit IN ~clabpr01~ ~clabdr01~ BEGIN
   APPEND ~%base_kit%.2da~ ~SPHERES     AP_D5SPMEM  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** ~ 
 	UNLESS ~AP_D5SPMEM~
 END
 ACTION_PHP_EACH d5_kitlist_spheres AS goo => roo BEGIN
-//OUTER_TEXT_SPRINT focus_sphere_list ~~
-//OUTER_TEXT_SPRINT major_sphere_list ~~
-//OUTER_TEXT_SPRINT minor_sphere_list ~~
 	ACTION_IF (%roo% = 3) OR  
  			(%roo% = 11) OR  
  			(%roo% = 8) OR  
