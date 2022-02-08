@@ -139,7 +139,7 @@ INCLUDE ~faiths_and_powers/lib/multi_druids_shamans.tpa~
   LAF ranger_shaman END
   LAF shaman_thief END
   LAF shaman_mage END
-  ACTION_IF (FILE_EXISTS_IN_GAME ~qd_monk_multi.qd~) BEGIN
+  ACTION_IF (FILE_EXISTS_IN_GAME ~qd_monk_multi.qd~) BEGIN // monasticorders marker
 	LAF shaman_monk END
   END  
   ACTION_IF !(FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
