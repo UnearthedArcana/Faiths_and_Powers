@@ -943,15 +943,14 @@ ACTION_PHP_EACH d5_kitlist_spheres AS goo => roo BEGIN
 		OUTER_TEXT_SPRINT minor_sphere_list ~%WNL%%minor_access%%minor_sphere_list%~
 	END
 	OUTER_TEXT_SPRINT total_sphere_list ~%total_sphere_list%%minor_sphere_list%~
-    OUTER_INNER_PATCH_SAVE total_sphere_list ~%total_sphere_list%~ BEGIN
-	  REPLACE_TEXTUALLY ~:,~ ~:~
-    END
-	OUTER_TEXT_SPRINT kit_sphere_list ~Abilities: %total_sphere_list%~
+	OUTER_INNER_PATCH_SAVE total_sphere_list ~%total_sphere_list%~ BEGIN
+		REPLACE_TEXTUALLY ~:,~ ~:~
+	END
+	OUTER_TEXT_SPRINT kit_sphere_list ~%abilities% %total_sphere_list%~
 	ACTION_IF IS_AN_INT ~%goo_3%~ BEGIN
 		ACTION_GET_STRREF %goo_3% kit_description 
 		OUTER_PATCH_SAVE kit_description ~%kit_description%~ BEGIN
 			REPLACE_TEXTUALLY ~%disadvantages%~ ~%restrictions%~
-//			REPLACE_TEXTUALLY ~%abilities%~ ~%kit_sphere_list%~
 			REPLACE_TEXTUALLY ~%advantages%~ ~%kit_sphere_list%~
 		END
 		STRING_SET_EVALUATE %goo_3% ~%kit_description%~
