@@ -326,27 +326,6 @@ END
 //__________________________________________________________________________________
 */
 
-//no spells for anyone!______________________________________________________________
-//
-COPY_EXISTING_REGEXP GLOB ~^.+\.spl$~ ~override~
-	READ_SHORT 0x1c ~spelltype~
-	PATCH_IF (~spelltype~ = 2) BEGIN
-		WRITE_BYTE 0x21 (THIS | 0b11000000)
-	END
-BUT_ONLY
-
-
-//erase spell alignment restrictions_________________________________________________
-
-COPY_EXISTING_REGEXP GLOB ~^.+\.spl$~ ~override~
-	PATCH_IF (~%SOURCE_SIZE%~ > ~0x71~) BEGIN
-		READ_BYTE 0x1e align
-		WRITE_BYTE 0x1e (align BAND 0b11111001)
-	END
-BUT_ONLY
-//___________________________________________________________________________________
-
-
 //remove priest spells from joinable NPCs____________________________________________
 //
 OUTER_FOR (level = 1; level <= 7; level += 1) BEGIN
@@ -484,7 +463,11 @@ END
 //
 COPY ~d5/d5altsph.2da~ ~override~
 
-COPY ~d5/d5spsph.2da~ ~override~
+ACTION_IF !(FILE_EXISTS_IN_GAME ~d5spsph.2da~) BEGIN
+  COPY ~d5/d5spsph.2da~ ~override~
+END
+
+COPY_EXISTING ~d5spsph.2da~ ~override~
   REPLACE_TEXTUALLY ~//.*$~ ~~
   PATCH_IF !(FILE_EXISTS_IN_GAME ~dvsrv4here.mrk~) BEGIN
 	REPLACE_TEXTUALLY ~NOSR_~ ~~
@@ -1006,11 +989,54 @@ COPY_EXISTING ~d5spsph.2da~ ~override~
 //__________________________________________________________________________________
 */
 
+//set up HLA tables_________________________________________________________________
+//
+COPY_EXISTING ~faiths_and_powers/spheres/hlas/luclxyz.2da~ ~override~
+COPY_EXISTING ~faiths_and_powers/spheres/hlas/ludrxyz.2da~ ~override~
+COPY_EXISTING ~faiths_and_powers/spheres/hlas/lufcxyz.2da~ ~override~
+COPY_EXISTING ~faiths_and_powers/spheres/hlas/lucrxyz.2da~ ~override~
+COPY_EXISTING ~faiths_and_powers/spheres/hlas/luctxyz.2da~ ~override~
+COPY_EXISTING ~faiths_and_powers/spheres/hlas/lucmxyz.2da~ ~override~
+//__________________________________________________________________________________
+
 
 LAM ~BACKFILL_FNP_KIT_INFO~
 
 
 END // end create spheres function
+//__________________________________________________________________________________
+
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+
+DEFINE_ACTION_FUNCTION prep_vanilla_spells BEGIN
+
+//no spells for anyone!______________________________________________________________
+//
+COPY_EXISTING_REGEXP GLOB ~^.+\.spl$~ ~override~
+  PATCH_IF (%SOURCE_SIZE% > 0x71) BEGIN
+	READ_SHORT 0x1c ~spelltype~
+	PATCH_IF (~spelltype~ = 2) BEGIN
+		WRITE_BYTE 0x21 (THIS | 0b11000000)
+	END
+  END
+BUT_ONLY
+
+//erase spell alignment restrictions_________________________________________________
+
+COPY_EXISTING_REGEXP GLOB ~^.+\.spl$~ ~override~
+	PATCH_IF (%SOURCE_SIZE% > 0x71) BEGIN
+		READ_BYTE 0x1e align
+		WRITE_BYTE 0x1e (align BAND 0b11111001)
+	END
+BUT_ONLY
+
+END // end prep vanilla spells function
+//___________________________________________________________________________________
+
 
 
 //__________________________________________________________________________________
@@ -1136,21 +1162,21 @@ ACTION_PHP_EACH d5_kitlist_spheres AS goo => roo BEGIN
 		REPLACE_TEXTUALLY ~^\(%goo_2%[ %TAB%]+\).+$~ ~\1b_%goo_1%~
 	  BUT_ONLY
 	END
-	COPY ~faiths_and_powers/spheres/hlas/luclxyz.2da~ ~override/lub_%goo_1%.2da~
+	COPY_EXISTING ~luclxyz.2da~ ~override/lub_%goo_1%.2da~
 	ACTION_IF (%roo% = 11) BEGIN 	// druid
-	  COPY ~faiths_and_powers/spheres/hlas/ludrxyz.2da~ ~override/lub_%goo_1%.2da~
+	  COPY_EXISTING ~ludrxyz.2da~ ~override/lub_%goo_1%.2da~
 	END
 	ACTION_IF (%roo% = 8) BEGIN 	// f/c
-	  COPY ~faiths_and_powers/spheres/hlas/lufcxyz.2da~ ~override/lub_%goo_1%.2da~
+	  COPY_EXISTING ~lufcxyz.2da~ ~override/lub_%goo_1%.2da~
 	END
 	ACTION_IF (%roo% = 18) BEGIN 	// c/r
-	  COPY ~faiths_and_powers/spheres/hlas/lucrxyz.2da~ ~override/lub_%goo_1%.2da~
+	  COPY_EXISTING ~lucrxyz.2da~ ~override/lub_%goo_1%.2da~
 	END
 	ACTION_IF (%roo% = 15) BEGIN 	// c/t
-	  COPY ~faiths_and_powers/spheres/hlas/luctxyz.2da~ ~override/lub_%goo_1%.2da~
+	  COPY_EXISTING ~luctxyz.2da~ ~override/lub_%goo_1%.2da~
 	END
 	ACTION_IF (%roo% = 14) BEGIN 	// c/m
-	  COPY ~faiths_and_powers/spheres/hlas/lucmxyz.2da~ ~override/lub_%goo_1%.2da~
+	  COPY_EXISTING ~lucmxyz.2da~ ~override/lub_%goo_1%.2da~
 	END
 	APPEND ~%goo%.2da~ ~SPHERES     AP_D5SPUNI  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** ~ 
 	ACTION_PHP_EACH d5_fnp_spheres AS sphere => val BEGIN
@@ -1170,10 +1196,12 @@ ACTION_PHP_EACH d5_kitlist_spheres AS goo => roo BEGIN
 		  SNPRINT 3 ~shortsphere~ ~%sphere%~
 		END
 		ACTION_IF (VARIABLE_IS_SET $d5_fnp_sphere_access(~%access%~)) && (~%access%~ STRING_EQUAL_CASE ~FOCUS~) BEGIN
-		  COPY_EXISTING ~lub_%goo_1%.2da~ ~override~
+		  ACTION_IF !(FILE_EXISTS_IN_GAME ~d5__v_plus_spheres.d5~) BEGIN
+		   COPY_EXISTING ~lub_%goo_1%.2da~ ~override~
 			LPM remove_blank_lines
 			APPEND_FILE ~faiths_and_powers/spheres/hlas/%sphere%/hlas_%sphere%.txt~
-		  BUT_ONLY
+		   BUT_ONLY
+		  END
 		  COPY_EXISTING ~lub_%goo_1%.2da~ ~override~
 			REPLACE_TEXTUALLY ~[%LNL%%MNL%%WNL%]zzz~ ~~
 		  BUT_ONLY
@@ -1192,13 +1220,15 @@ ACTION_PHP_EACH d5_kitlist_spheres AS goo => roo BEGIN
 			  APPEND ~%goo%.2da~ ~SPHERES     AP_D5SP%shortsphere%  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** ~ 
 			END
 		  END
-		  OUTER_TEXT_SPRINT focus_sphere_list ~%focus_sphere_list% %text_sphere%~
+		  OUTER_TEXT_SPRINT focus_sphere_list ~%focus_sphere_list%, %text_sphere%~
 		END
 		ACTION_IF (VARIABLE_IS_SET $d5_fnp_sphere_access(~%access%~)) && (~%access%~ STRING_EQUAL_CASE ~MAJOR~) BEGIN
-		  COPY_EXISTING ~lub_%goo_1%.2da~ ~override~
+		  ACTION_IF !(FILE_EXISTS_IN_GAME ~d5__v_plus_spheres.d5~) BEGIN
+		   COPY_EXISTING ~lub_%goo_1%.2da~ ~override~
 			LPM remove_blank_lines
 			APPEND_FILE ~faiths_and_powers/spheres/hlas/%sphere%/hlas_%sphere%.txt~
-		  BUT_ONLY
+		   BUT_ONLY
+		  END
 		  COPY_EXISTING ~lub_%goo_1%.2da~ ~override~
 			REPLACE_TEXTUALLY ~[%LNL%%MNL%%WNL%]zzz~ ~~
 		  BUT_ONLY
@@ -1207,7 +1237,7 @@ ACTION_PHP_EACH d5_kitlist_spheres AS goo => roo BEGIN
 			  APPEND ~%goo%.2da~ ~SPHERES     AP_D5SP%shortsphere%  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** ~ 
 			END
 		  END
-		  OUTER_TEXT_SPRINT major_sphere_list ~%major_sphere_list% %text_sphere%,~
+		  OUTER_TEXT_SPRINT major_sphere_list ~%major_sphere_list%, %text_sphere%~
 		END
 		ACTION_IF (VARIABLE_IS_SET $d5_fnp_sphere_access(~%access%~)) && (~%access%~ STRING_EQUAL_CASE ~MINOR~) BEGIN
 		  ACTION_PHP_EACH d5_fnp_kit_caster_type AS this_kit => caster_type BEGIN
@@ -1215,7 +1245,7 @@ ACTION_PHP_EACH d5_kitlist_spheres AS goo => roo BEGIN
 			  APPEND ~%goo%.2da~ ~SPHERES     AP_D5SM%shortsphere%  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** ~ 
 			END
 		  END
-		  OUTER_TEXT_SPRINT minor_sphere_list ~%minor_sphere_list% %text_sphere%,~
+		  OUTER_TEXT_SPRINT minor_sphere_list ~%minor_sphere_list%, %text_sphere%~
 		END
 		ACTION_IF (VARIABLE_IS_SET $d5_fnp_sphere_access(~%access%~)) && (~%access%~ STRING_EQUAL_CASE ~PALADIN~) BEGIN
 		  ACTION_PHP_EACH d5_fnp_kit_caster_type AS this_kit => caster_type BEGIN
@@ -1223,7 +1253,7 @@ ACTION_PHP_EACH d5_kitlist_spheres AS goo => roo BEGIN
 			  APPEND ~%goo%.2da~ ~SPHERES     AP_D5SP%shortsphere%  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** ~ 
 			END
 		  END
-		  OUTER_TEXT_SPRINT minor_sphere_list ~%minor_sphere_list% %text_sphere%,~
+		  OUTER_TEXT_SPRINT minor_sphere_list ~%minor_sphere_list%, %text_sphere%~
 		END
 		ACTION_IF (VARIABLE_IS_SET $d5_fnp_sphere_access(~%access%~)) && (~%access%~ STRING_EQUAL_CASE ~RANGER~) BEGIN
 		  ACTION_PHP_EACH d5_fnp_kit_caster_type AS this_kit => caster_type BEGIN
@@ -1231,22 +1261,25 @@ ACTION_PHP_EACH d5_kitlist_spheres AS goo => roo BEGIN
 			  APPEND ~%goo%.2da~ ~SPHERES     AP_D5SP%shortsphere%  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** ~ 
 			END
 		  END
-		  OUTER_TEXT_SPRINT minor_sphere_list ~%minor_sphere_list% %text_sphere%,~
+		  OUTER_TEXT_SPRINT minor_sphere_list ~%minor_sphere_list%, %text_sphere%~
 		END
 	  END
 	END
-	ACTION_IF NOT (~%focus_sphere_list%~ STRING_EQUAL_CASE ~~) BEGIN
+	ACTION_IF !(~%focus_sphere_list%~ STRING_EQUAL_CASE ~~) BEGIN
 		OUTER_TEXT_SPRINT focus_sphere_list ~%WNL%%focus_access%%focus_sphere_list%~
 	END
 	OUTER_TEXT_SPRINT total_sphere_list ~%total_sphere_list%%focus_sphere_list%~
-	ACTION_IF NOT (~%major_sphere_list%~ STRING_EQUAL_CASE ~~) BEGIN
+	ACTION_IF !(~%major_sphere_list%~ STRING_EQUAL_CASE ~~) BEGIN
 		OUTER_TEXT_SPRINT major_sphere_list ~%WNL%%major_access%%major_sphere_list%~
 	END
 	OUTER_TEXT_SPRINT total_sphere_list ~%total_sphere_list%%major_sphere_list%~
-	ACTION_IF NOT (~%minor_sphere_list%~ STRING_EQUAL_CASE ~~) BEGIN
+	ACTION_IF !(~%minor_sphere_list%~ STRING_EQUAL_CASE ~~) BEGIN
 		OUTER_TEXT_SPRINT minor_sphere_list ~%WNL%%minor_access%%minor_sphere_list%~
 	END
 	OUTER_TEXT_SPRINT total_sphere_list ~%total_sphere_list%%minor_sphere_list%~
+    OUTER_INNER_PATCH_SAVE total_sphere_list ~%total_sphere_list%~ BEGIN
+	  REPLACE_TEXTUALLY ~:,~ ~:~
+    END
 	OUTER_TEXT_SPRINT kit_sphere_list ~Abilities: %total_sphere_list%~
 	ACTION_IF IS_AN_INT ~%goo_3%~ BEGIN
 		ACTION_GET_STRREF %goo_3% kit_description 
