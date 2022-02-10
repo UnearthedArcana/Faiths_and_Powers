@@ -2,7 +2,7 @@ BACKUP ~faiths_and_powers/backup~
 AUTHOR ~SubtleD and Grammarsalad~
 
 
-VERSION ~0.81.7~
+VERSION ~0.81.8~
 
 
 //README ~faiths_and_powers/readme-pnp.html~
@@ -151,15 +151,21 @@ COPY ~faiths_and_powers/lib/sphere_list_fnp.tpa~ ~override/fnp_sphere_list.tpa~
 ACTION_CLEAR_ARRAY aoe_spell
 INCLUDE ~faiths_and_powers/lib/add_spells_v75.tpa~      	//includes spells from the 0.75 series  
 INCLUDE ~faiths_and_powers/lib/fnp_new_spells.tpa~   		//new spells from the 0.77 series 
+
 ACTION_IF !(GAME_IS ~iwdee~) BEGIN
   LAM v75_add_iwd_arcane_spells
   LAM v75_add_iwd_divine_spells
 END
+
 // LAM v75_add_fnP_new_spells
 LAM v78_add_fnP_new_spells
+
 ACTION_IF (FILE_EXISTS_IN_GAME ~dvsrv4here.mrk~) BEGIN
   LAM v75_apply_sr_aoe_deflection
 END  
+
+LAF fix_spell_bams END
+
 //INCLUDE ~%mod_folder%/lib/immunities.tpa~					//	DO AT THE VERY END OF ALL SPELL INSTALLS
 
 INCLUDE ~faiths_and_powers/lib/sphere_system.tpa~
@@ -202,15 +208,21 @@ COPY ~faiths_and_powers/lib/sphere_list_2E.tpa~ ~override/fnp_sphere_list.tpa~
 ACTION_CLEAR_ARRAY aoe_spell
 INCLUDE ~faiths_and_powers/lib/add_spells_v75.tpa~      	//includes spells from the 0.75 series  
 INCLUDE ~faiths_and_powers/lib/fnp_new_spells.tpa~   		//new spells from the 0.77 series 
+
 ACTION_IF !(GAME_IS ~iwdee~) BEGIN
   LAM v75_add_iwd_arcane_spells
   LAM v75_add_iwd_divine_spells
 END
+
 // LAM v75_add_fnP_new_spells
  LAM v78_add_fnP_new_spells
+
 ACTION_IF (FILE_EXISTS_IN_GAME ~dvsrv4here.mrk~) BEGIN
   LAM v75_apply_sr_aoe_deflection
 END  
+
+LAF fix_spell_bams END
+
 //INCLUDE ~%mod_folder%/lib/immunities.tpa~					//	DO AT THE VERY END OF ALL SPELL INSTALLS
 
 //create sphere system______________________________________________________________
@@ -256,15 +268,21 @@ COPY ~faiths_and_powers/lib/sphere_list_vplus.tpa~ ~override/fnp_sphere_list.tpa
 ACTION_CLEAR_ARRAY aoe_spell
 INCLUDE ~faiths_and_powers/lib/add_spells_v75.tpa~      	//includes spells from the 0.75 series  
 INCLUDE ~faiths_and_powers/lib/fnp_new_spells.tpa~   		//new spells from the 0.77 series 
+
 ACTION_IF !(GAME_IS ~iwdee~) BEGIN
   LAM v75_add_iwd_arcane_spells
   LAM v75_add_iwd_divine_spells
 END
+
 // LAM v75_add_fnP_new_spells
 LAM v78_add_fnP_new_spells
+
 ACTION_IF (FILE_EXISTS_IN_GAME ~dvsrv4here.mrk~) BEGIN
   LAM v75_apply_sr_aoe_deflection
 END  
+
+LAF fix_spell_bams END
+
 //INCLUDE ~%mod_folder%/lib/immunities.tpa~					//	DO AT THE VERY END OF ALL SPELL INSTALLS
 
 //create sphere system______________________________________________________________
@@ -356,15 +374,21 @@ ACTION_IF (FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~) BEGIN
 ACTION_CLEAR_ARRAY aoe_spell
 INCLUDE ~faiths_and_powers/lib/add_spells_v75.tpa~      	//includes spells from the 0.75 series  
 INCLUDE ~faiths_and_powers/lib/fnp_new_spells.tpa~   		//new spells from the 0.77 series 
+
 ACTION_IF !(GAME_IS ~iwdee~) BEGIN
   LAM v75_add_iwd_arcane_spells
   LAM v75_add_iwd_divine_spells
 END
+
 // LAM v75_add_fnP_new_spells
  LAM v78_add_fnP_new_spells
+
 ACTION_IF (FILE_EXISTS_IN_GAME ~dvsrv4here.mrk~) BEGIN
   LAM v75_apply_sr_aoe_deflection
 END  
+
+LAF fix_spell_bams END
+
 //INCLUDE ~%mod_folder%/lib/immunities.tpa~					//	DO AT THE VERY END OF ALL SPELL INSTALLS
 
 //create sphere system______________________________________________________________
