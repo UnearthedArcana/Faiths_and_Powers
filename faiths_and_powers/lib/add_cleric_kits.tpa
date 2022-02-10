@@ -105,21 +105,6 @@ COPY ~faiths_and_powers/kits/clerics/200_Ur_Priest/b_ur01b.spl~     ~override~  
 
 COPY ~faiths_and_powers/kits/clerics/200_Ur_Priest/b_ur02.spl~     ~override~  // save penalty
 
-//COPY ~faiths_and_powers/kits/clerics/201_lathander/b_lo101.spl~     ~override~  // Infravision Orison
-//  SAY NAME1 @98504 //Infravision
-//  SAY UNIDENTIFIED_DESC @98505   //Infravision
-
-//COPY ~faiths_and_powers/kits/clerics/201_lathander/b_lo102.spl~     ~override~  // Fire bolt Orison
-//  SAY NAME1 @98506 //Fire bolt
-//  SAY UNIDENTIFIED_DESC @98507   //Fire bolt desc
-
-//COPY ~faiths_and_powers/kits/clerics/201_lathander/b_cla02.spl~     ~override~  // Boon of Lathander
-//  SAY UNIDENTIFIED_DESC @98534//
-
-//COPY ~faiths_and_powers/kits/clerics/201_lathander/b_cla03.spl~     ~override~  // Hold Undead
-//  SAY NAME1 @20107
-//  SAY UNIDENTIFIED_DESC @20104//
-
 //REPLACE VANILLA KIT WITH THIS KIT__________________________________________________
 //
 ACTION_IF FILE_EXISTS_IN_GAME ~d5__clerics.d5~ BEGIN
@@ -143,7 +128,6 @@ END
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
-//ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN	//	not needed anymore, fnP_system.tpa handles it
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -172,7 +156,6 @@ END
 	sphere_list		= ~ur_priest_spheres~
 	class 			= ~cleric~
  END
-// END
 
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
  ACTION_IF (ur_priest_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
@@ -275,16 +258,9 @@ END
 //AZUTH ABILITY FILES_______________________________________________________________
 //
 COPY ~faiths_and_powers/kits/clerics/325_azuth/d5clazu.2da~ ~override~
-/*
-COPY ~faiths_and_powers/kits/misc/d5llore.spl~ ~override~
-	SAY NAME1 @32505
-	SAY UNIDENTIFIED_DESC @32506
-	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 206 STR_VAR resource = ~d5llore~ END
-*/
-//APPEND ~d5clazu.2da~ ~UMD         AP_D5_UMD   ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****    ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** ~
+
 COPY ~faiths_and_powers/kits/misc/d5_cllv1.spl~ ~override~
-//	SAY NAME1 @6
-//	SAY UNIDENTIFIED_DESC @6
+
 
 INCLUDE ~faiths_and_powers/lib/b3identify.tph~
 LAF B3_IDENTIFY_INSTALL END
@@ -304,53 +280,6 @@ COPY ~faiths_and_powers/kits/clerics/325_azuth/d5tb110.spl~ ~override/d5llore.sp
   SAY NAME1 @32505
   SAY UNIDENTIFIED_DESC @32506
 APPEND ~d5clazu.2da~ ~LLORE       ****        ****        ****        ****        GA_D5LLORE  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****    ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** ~
-
-/*
-COPY ~faiths_and_powers/kits/multiclass/466_cm_bender/d5arcm1.spl~ ~override~
-	SAY NAME1 @46605
-	SAY UNIDENTIFIED_DESC @46606
-COPY ~faiths_and_powers/kits/multiclass/466_cm_bender/d5_arcm1.2da~ ~override~
-COPY ~faiths_and_powers/kits/multiclass/466_cm_bender/d5_arc1b.bam~ ~override~
-COPY ~faiths_and_powers/kits/multiclass/466_cm_bender/d5_arc1c.bam~ ~override~
-COPY ~faiths_and_powers/kits/multiclass/466_cm_bender/d5arcm2.spl~ ~override~
-	SAY NAME1 @46607
-	SAY UNIDENTIFIED_DESC @46608
-COPY ~faiths_and_powers/kits/multiclass/466_cm_bender/d5_arcm2.2da~ ~override~
-COPY ~faiths_and_powers/kits/multiclass/466_cm_bender/d5_arc2b.bam~ ~override~
-COPY ~faiths_and_powers/kits/multiclass/466_cm_bender/d5_arc2c.bam~ ~override~
-COPY ~faiths_and_powers/kits/multiclass/466_cm_bender/d5arcm3.spl~ ~override~
-	SAY NAME1 @46609
-	SAY UNIDENTIFIED_DESC @46610
-COPY ~faiths_and_powers/kits/multiclass/466_cm_bender/d5_arcm3.2da~ ~override~
-COPY ~faiths_and_powers/kits/multiclass/466_cm_bender/d5_arc3b.bam~ ~override~
-COPY ~faiths_and_powers/kits/multiclass/466_cm_bender/d5_arc3c.bam~ ~override~
-COPY ~faiths_and_powers/kits/multiclass/466_cm_bender/d5arcm4.spl~ ~override~
-	SAY NAME1 @46611
-	SAY UNIDENTIFIED_DESC @46612
-COPY ~faiths_and_powers/kits/multiclass/466_cm_bender/d5_arcm4.2da~ ~override~
-COPY ~faiths_and_powers/kits/multiclass/466_cm_bender/d5_arc4b.bam~ ~override~
-COPY ~faiths_and_powers/kits/multiclass/466_cm_bender/d5_arc4c.bam~ ~override~
-COPY ~faiths_and_powers/kits/multiclass/466_cm_bender/d5arcm5.spl~ ~override~
-	SAY NAME1 @46613
-	SAY UNIDENTIFIED_DESC @46614
-COPY ~faiths_and_powers/kits/multiclass/466_cm_bender/d5_arcm5.2da~ ~override~
-COPY ~faiths_and_powers/kits/multiclass/466_cm_bender/d5_arc5b.bam~ ~override~
-COPY ~faiths_and_powers/kits/multiclass/466_cm_bender/d5_arc5c.bam~ ~override~
-COPY ~faiths_and_powers/kits/multiclass/466_cm_bender/d5arcm6.spl~ ~override~
-	SAY NAME1 @46615
-	SAY UNIDENTIFIED_DESC @46616
-COPY ~faiths_and_powers/kits/multiclass/466_cm_bender/d5_arcm6.2da~ ~override~
-COPY ~faiths_and_powers/kits/multiclass/466_cm_bender/d5_arc6b.bam~ ~override~
-COPY ~faiths_and_powers/kits/multiclass/466_cm_bender/d5_arc6c.bam~ ~override~
-//Huge thanks to DreamSlaveOne at forums.gibberlings3.net for providing the .BAMs for these abilities!
-*/
-/*
-ACTION_IF FILE_EXISTS_IN_GAME ~d5__wiz.d5~ THEN BEGIN
-	COPY_EXISTING ~d5_inmys.2da~ ~override~
-		LPM remove_blank_lines
-		APPEND_FILE ~faiths_and_powers/kits/clerics/325_azuth/mystracant.txt~
-END
-*/
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
@@ -490,8 +419,6 @@ COPY ~faiths_and_powers/kits/clerics/332_beshaba/b_abes.2da~ ~override~
 
 COPY_EXISTING ~SPPR113.spl~ ~override/B_BES01.spl~ // Doom
   LPM spell_to_innate
-//  WRITE_BYTE 0x1c 4//Innate
-//  LPF ALTER_SPELL_HEADER INT_VAR location = 4 END //innate
   LPF ADD_SPELL_EFFECT INT_VAR insert_point = 999 opcode = 206 target = 2 timing = 0 duration = 2400 STR_VAR resource = EVAL ~B_BES01~ END
 
 COPY_EXISTING ~B_BES01.spl~ ~override~
@@ -718,15 +645,9 @@ COPY ~faiths_and_powers/kits/clerics/225_cyric/b_ccyr.2da~ ~override~
 COPY ~faiths_and_powers/kits/clerics/225_cyric/B_CYR02.spl~ ~override~
 COPY_EXISTING ~SPWI401.spl~ ~override/B_CYR03.spl~ // Confusion
   LPM spell_to_innate
-//  WRITE_LONG 0x34 1 //level
-//  WRITE_BYTE 0x1c 4//Innate
-//  LPF ALTER_SPELL_HEADER INT_VAR location = 4 END
 
 COPY_EXISTING ~SPWI509.spl~ ~override/B_CYR04.spl~ // feeblemind
   LPM spell_to_innate
-//  WRITE_LONG 0x34 1 //level
-//  WRITE_BYTE 0x1c 4//Innate
-//  LPF ALTER_SPELL_HEADER INT_VAR location = 4 END
 
 //protection from fear  (using the tempus spl.  It's basically the same...)
 ACTION_IF GAME_IS ~bgee~ THEN BEGIN   //other text
@@ -883,22 +804,13 @@ COPY ~faiths_and_powers/kits/clerics/315_deneir/b_den01.spl~ ~override~  //immun
 
 COPY_EXISTING ~SPPR205.spl~ ~override/b_den02.spl~ // detect traps
   LPM spell_to_innate
-//  WRITE_LONG 0x34 1 //level
-//  WRITE_BYTE 0x1c 4//Innate
   WRITE_BYTE 0x84 1//Casting time
-//  WRITE_BYTE 0x74 4//Location
 
 COPY_EXISTING ~SPPR304.spl~ ~override/b_den03.spl~ // glyph of warding
   LPM spell_to_innate
-//  WRITE_LONG 0x34 1 //level
-//  WRITE_BYTE 0x1c 4//Innate
-// LPF ALTER_SPELL_HEADER INT_VAR location = 4 END
 
 COPY_EXISTING ~SPPR303.spl~ ~override/b_den04.spl~ // dispel magic
   LPM spell_to_innate
-//  WRITE_LONG 0x34 1 //level
-//  WRITE_BYTE 0x1c 4//Innate
-// LPF ALTER_SPELL_HEADER INT_VAR location = 4 END
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
@@ -1034,9 +946,6 @@ END
 //
 COPY ~faiths_and_powers/kits/clerics/208_helm/b_chel.2da~ ~override~
 
-//COPY ~faiths_and_powers/kits/clerics/208_helm/b_hsp01.spl~     ~override~  // Seeking Sword
-//  SAY NAME1 @98518
-//  SAY UNIDENTIFIED_DESC @98519
 COPY ~faiths_and_powers/kits/clerics/208_helm/SW1HSEEK.itm~     ~override~  // Seeking Sword
 //For the champions, but that's fine
 COPY ~faiths_and_powers/kits/clerics/208_helm/b_hab01.spl~     ~override~  // AC/Save Bonus/wp longsword
@@ -1044,14 +953,6 @@ COPY ~faiths_and_powers/kits/clerics/208_helm/b_hab01.spl~     ~override~  // AC
 COPY ~faiths_and_powers/kits/clerics/208_helm/b_hsp02.spl~     ~override~  // Helm's Eye
   SAY NAME1 @20806
   SAY UNIDENTIFIED_DESC @20807
-
-//COPY ~faiths_and_powers/kits/clerics/208_helm/b_hsp03.spl~     ~override~  // Farsight
-//  SAY NAME1 @98522
-//  SAY UNIDENTIFIED_DESC @98523
-
-//COPY ~faiths_and_powers/kits/clerics/208_helm/b_hab02.spl~     ~override~  // Glyph of warding
-//  SAY NAME1 @98532
-//  SAY UNIDENTIFIED_DESC @98533
 
 //REPLACE VANILLA KIT WITH THIS KIT__________________________________________________
 //
@@ -1220,11 +1121,6 @@ COPY ~faiths_and_powers/kits/clerics/314_ilmater/b_ilm03.spl~ ~override~  // End
 	SAY NAME2 @31413
 	SAY UNIDENTIFIED_DESC @31414  //
 	SAY IDENTIFIED_DESC @31414  //
-
-//COPY_EXISTING ~spwi102.spl~ ~override/b_ilm04.spl~          // Armor
-//	WRITE_SHORT 0x1c 2
-//COPY_EXISTING ~spwi317.spl~ ~override/b_ilm05.spl~          // Ghost Armor
-//	WRITE_SHORT 0x1c 2
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
@@ -1405,9 +1301,6 @@ COPY_EXISTING ~SPPR409.spl~ ~override/b_kel01.spl~ // Works?
 //CHECK COMPATIBILITY WITH IWDEE AND SR
 COPY_EXISTING ~SPPR413.spl~ ~override/b_kel02.spl~ // Works?
   LPM spell_to_innate
-//  WRITE_LONG 0x34 1 //level
-//  WRITE_BYTE 0x1c 4//Innate
-//  WRITE_BYTE 0x74 4//Location
   LPF ALTER_EFFECT
       INT_VAR silent = 1 match_opcode = 267
       timing = 9
@@ -1568,22 +1461,6 @@ END
 //
 COPY ~faiths_and_powers/kits/clerics/201_lathander/b_clat.2da~ ~override~
 COPY ~faiths_and_powers/kits/clerics/201_lathander/b_turn.spl~     ~override~  // Turn Undead +4 Levels
-//  SAY NAME1 @#####
-//  SAY UNIDENTIFIED_DESC @#####
-//COPY ~faiths_and_powers/kits/clerics/201_lathander/b_lo101.spl~     ~override~  // Infravision Orison
-//  SAY NAME1 @98504 //Infravision
-//  SAY UNIDENTIFIED_DESC @98505   //Infravision
-
-//COPY ~faiths_and_powers/kits/clerics/201_lathander/b_lo102.spl~     ~override~  // Fire bolt Orison
-//  SAY NAME1 @98506 //Fire bolt
-//  SAY UNIDENTIFIED_DESC @98507   //Fire bolt desc
-
-//COPY ~faiths_and_powers/kits/clerics/201_lathander/b_cla02.spl~     ~override~  // Boon of Lathander
-//  SAY UNIDENTIFIED_DESC @98534//
-
-//COPY ~faiths_and_powers/kits/clerics/201_lathander/b_cla03.spl~     ~override~  // Hold Undead
-//  SAY NAME1 @20107
-//  SAY UNIDENTIFIED_DESC @20104//
 
 COPY ~faiths_and_powers/kits/clerics/201_lathander/b_cla04.spl~     ~override~  // False Dawn
   SAY NAME1 @20108
@@ -2486,7 +2363,6 @@ COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5myst1.spl~ // wild/de
 	LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = 0 parameter2 = (0 - 1) STR_VAR resource = EVAL ~%immunity%~ END
   END
 COPY ~faiths_and_powers/kits/misc/d5_cstbo.spl~ ~override~ // casting speed bonus
-//APPEND ~d5clmys.2da~ ~UMD         AP_D5_UMD   ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****    ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** ~
 
 // add TnB innate cantrips - uh, I mean, cantrip wand
 COPY ~faiths_and_powers/kits/clerics/324_mystra/cantrip_wand/d5myscw.itm~ ~override~
@@ -2933,8 +2809,6 @@ END
 //
 COPY ~faiths_and_powers/kits/clerics/316_sune/b_asun.2da~ ~override~
 COPY ~faiths_and_powers/kits/clerics/316_sune/b_sun01.spl~ ~override~  // potent charm
-//	SAY NAME1 @31411
-//	SAY NAME2 @31411
 	SAY UNIDENTIFIED_DESC @31606 //
 	SAY IDENTIFIED_DESC @31606  //
 COPY ~faiths_and_powers/kits/clerics/316_sune/b_sun02.spl~ ~override~  // spell save
@@ -2952,20 +2826,6 @@ END
 
 COPY ~faiths_and_powers/kits/clerics/316_sune/b_sun04.spl~ ~override~  // cha bonus
 
-/*
-COPY_EXISTING ~SPWI104.spl~ ~override/b_sun01.spl~ // Charm person
-  WRITE_LONG 0x34 1 //level
-  WRITE_BYTE 0x1c 4//Innate
-  WRITE_BYTE 0x74 4//Location
-  LPF ALTER_EFFECT
-      INT_VAR silent = 1 match_opcode = 324
-      STR_VAR resource = EVAL ~b_sun01~
-     END
-  LPF ALTER_EFFECT
-      INT_VAR silent = 1 match_opcode = 5
-      savebonus = 0
-     END
-*/
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
@@ -3852,13 +3712,6 @@ END
 //
 COPY ~faiths_and_powers/kits/clerics/226_umberlee/b_umb.2da~ ~override~
 
-//Smashing Wave______________________________________________________________________//
-//Install it if it isn't already installed
-//ACTION_IF (GAME_IS ~bgee bg2ee eet~) AND (NOT FILE_EXISTS_IN_GAME ~b_IWD.itm~) THEN BEGIN   //
-//Go over this spell head to toe first...
-
-// END //end smashing wave
-
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
  LAF ~DEFINE_FNP_KIT_INFO~
@@ -4609,9 +4462,7 @@ END
 //KIT ABILITY FILES__________________________________________________________________
 //
 COPY ~faiths_and_powers/kits/clerics/382_baravar/b_bara.2da~ ~override~
-//COPY ~faiths_and_powers/kits/clerics/212_leira/d5_lei1.spl~ ~override/b_bar01~ //it's the same ability with a different name, so...
-//	SAY NAME1 @38211
-//	SAY UNIDENTIFIED_DESC @38212
+
 COPY_EXISTING ~spwi212.spl~ ~override/d5bara1.spl~
   LPM spell_to_innate
 COPY_EXISTING ~spwi405.spl~ ~override/d5bara2.spl~
@@ -4788,14 +4639,11 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
  END
 BUT_ONLY
 COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5baer2.spl~	// entangle immunity
-//  PHP_EACH entangling_array AS res => num BEGIN
-//	LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 STR_VAR resource = EVAL ~%res%~ END
 	LPF ADD_SPELL_EFFECT INT_VAR opcode = 83 target = 1 parameter2 = %spike_proj% timing = 9 END	// spike growth projectile
 	LPF ADD_SPELL_EFFECT INT_VAR opcode = 83 target = 1 parameter2 = 242 timing = 9 END			// entangle proj
 	LPF ADD_SPELL_EFFECT INT_VAR opcode = 83 target = 1 parameter2 = 100 timing = 9 END			// grease proj
 	LPF ADD_SPELL_EFFECT INT_VAR opcode = 83 target = 1 parameter2 = 319 timing = 9 END			// webtrav proj
-//	LPF ADD_SPELL_EFFECT INT_VAR opcode = 83 target = 1 parameter2 = 63 timing = 9 END			// web proj
-//  END
+
 // and add magic fang effect to summoning spells
 APPEND ~splprot.2da~ ~D5_KIT_IS%TAB%152%TAB%-1%TAB%1~ UNLESS ~D5_KIT_IS~
 COPY_EXISTING ~splprot.2da~ ~override~

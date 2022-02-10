@@ -112,18 +112,6 @@ ACTION_IF GAME_IS ~iwdee~ THEN BEGIN   //copy revised rage to be altered
 	SAY DESC @86705
 END
 
-//effect
-//COPY ~faiths_and_powers/kits/champions/803_tempus/b_ch101a.eff~ ~override~
-//sec spell
-//COPY ~faiths_and_powers/kits/champions/803_tempus/b_ch101a.spl~ ~override~
-//3rd spell
-//COPY ~faiths_and_powers/kits/champions/803_tempus/b_ch101b.spl~ ~override~
-
-//nO FALL
-//COPY_EXISTING ~fallen.2da~ ~override~ //Remove possibility to fall
-//	              INSERT_2DA_ROW 3 0 ~B_ZEALOT_CORELLON 0~
-//BUT_ONLY_IF_IT_CHANGES
-
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
  LAF ~DEFINE_FNP_KIT_INFO~
@@ -255,11 +243,6 @@ COPY ~faiths_and_powers/kits/zealots/867_corellon/component_2/b_zcor.cre~ ~overr
 COPY ~faiths_and_powers/kits/zealots/867_corellon/component_2/b_zcor.eff~ ~override~
 //zealot spl
 COPY ~faiths_and_powers/kits/zealots/867_corellon/component_2/b_zcor.spl~ ~override~
-
-//nO FALL
-//COPY_EXISTING ~fallen.2da~ ~override~ //Remove possibility to fall
-//	              INSERT_2DA_ROW 3 0 ~B_ZEALOT_CORELLON_2 0~
-//BUT_ONLY_IF_IT_CHANGES
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
@@ -410,18 +393,6 @@ ACTION_IF GAME_IS ~iwdee~ THEN BEGIN   //copy revised rage to be altered
 	SAY DESC @87005
 END
 
-//effect
-//COPY ~faiths_and_powers/kits/champions/803_tempus/b_ch101a.eff~ ~override~
-//sec spell
-//COPY ~faiths_and_powers/kits/champions/803_tempus/b_ch101a.spl~ ~override~
-//3rd spell
-//COPY ~faiths_and_powers/kits/champions/803_tempus/b_ch101b.spl~ ~override~
-
-//nO FALL
-//COPY_EXISTING ~fallen.2da~ ~override~ //Remove possibility to fall
-//	              INSERT_2DA_ROW 3 0 ~B_ZEALOT_EILISTRAEE 0~
-//BUT_ONLY_IF_IT_CHANGES
-
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
  LAF ~DEFINE_FNP_KIT_INFO~
@@ -551,11 +522,6 @@ COPY ~faiths_and_powers/kits/zealots/870_eilistraee/component_2/b_zeil.cre~ ~ove
 COPY ~faiths_and_powers/kits/zealots/870_eilistraee/component_2/b_zeil.eff~ ~override~
 //zealot spl
 COPY ~faiths_and_powers/kits/zealots/870_eilistraee/component_2/b_zeil.spl~ ~override~
-
-//nO FALL
-//COPY_EXISTING ~fallen.2da~ ~override~ //Remove possibility to fall
-//	              INSERT_2DA_ROW 3 0 ~B_ZEALOT_EILISTRAEE_2 0~
-//BUT_ONLY_IF_IT_CHANGES
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
@@ -706,14 +672,6 @@ ACTION_IF GAME_IS ~iwdee~ THEN BEGIN   //copy revised rage to be altered
 	SAY DESC @86605
 END
 
-//effect
-//COPY ~faiths_and_powers/kits/champions/803_tempus/b_ch101a.eff~ ~override~
-//sec spell
-//COPY ~faiths_and_powers/kits/champions/803_tempus/b_ch101a.spl~ ~override~
-//3rd spell
-//COPY ~faiths_and_powers/kits/champions/803_tempus/b_ch101b.spl~ ~override~
-
-//nO FALL
 ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN
   COPY_EXISTING ~fallen.2da~ ~override~ //Remove possibility to fall
 	              INSERT_2DA_ROW 3 0 ~B_ZEALOT_GARAGOS 0~
@@ -1008,13 +966,6 @@ ACTION_IF GAME_IS ~iwdee~ THEN BEGIN   //copy revised rage to be altered
 	SAY DESC @86205
 END
 
-//effect
-//COPY ~faiths_and_powers/kits/champions/803_tempus/b_ch101a.eff~ ~override~
-//sec spell
-//COPY ~faiths_and_powers/kits/champions/803_tempus/b_ch101a.spl~ ~override~
-//3rd spell
-//COPY ~faiths_and_powers/kits/champions/803_tempus/b_ch101b.spl~ ~override~
-
 //nO FALL
 ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN
   COPY_EXISTING ~fallen.2da~ ~override~ //Remove possibility to fall
@@ -1308,18 +1259,6 @@ ACTION_IF GAME_IS ~iwdee~ THEN BEGIN   //copy revised rage to be altered
 	SAY DESC @86505
 END
 
-//effect
-//COPY ~faiths_and_powers/kits/champions/803_tempus/b_ch101a.eff~ ~override~
-//sec spell
-//COPY ~faiths_and_powers/kits/champions/803_tempus/b_ch101a.spl~ ~override~
-//3rd spell
-//COPY ~faiths_and_powers/kits/champions/803_tempus/b_ch101b.spl~ ~override~
-
-//nO FALL
-//COPY_EXISTING ~fallen.2da~ ~override~ //Remove possibility to fall
-//	              INSERT_2DA_ROW 3 0 ~B_ZEALOT_ILMATER 0~
-//BUT_ONLY_IF_IT_CHANGES
-
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
  LAF ~DEFINE_FNP_KIT_INFO~
@@ -1451,11 +1390,6 @@ COPY ~faiths_and_powers/kits/zealots/865_ilmater/component_2/b_zilm.cre~ ~overri
 COPY ~faiths_and_powers/kits/zealots/865_ilmater/component_2/b_zilm.eff~ ~override~
 //zealot spl
 COPY ~faiths_and_powers/kits/zealots/865_ilmater/component_2/b_zilm.spl~ ~override~
-
-//nO FALL
-//COPY_EXISTING ~fallen.2da~ ~override~ //Remove possibility to fall
-//	              INSERT_2DA_ROW 3 0 ~B_ZEALOT_ILMATER_2 0~
-//BUT_ONLY_IF_IT_CHANGES
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
@@ -1619,13 +1553,6 @@ ACTION_IF GAME_IS ~iwdee~ THEN BEGIN   //copy revised rage to be altered
         SAY UNIDENTIFIED_DESC @86405
 	SAY DESC @86405
 END
-
-//effect
-//COPY ~faiths_and_powers/kits/champions/803_tempus/b_ch101a.eff~ ~override~
-//sec spell
-//COPY ~faiths_and_powers/kits/champions/803_tempus/b_ch101a.spl~ ~override~
-//3rd spell
-//COPY ~faiths_and_powers/kits/champions/803_tempus/b_ch101b.spl~ ~override~
 
 //nO FALL
 ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN
@@ -1938,18 +1865,6 @@ ACTION_IF GAME_IS ~iwdee~ THEN BEGIN   //copy revised rage to be altered
 	SAY DESC @86905
 END
 
-//effect
-//COPY ~faiths_and_powers/kits/champions/803_tempus/b_ch101a.eff~ ~override~
-//sec spell
-//COPY ~faiths_and_powers/kits/champions/803_tempus/b_ch101a.spl~ ~override~
-//3rd spell
-//COPY ~faiths_and_powers/kits/champions/803_tempus/b_ch101b.spl~ ~override~
-
-//nO FALL
-//COPY_EXISTING ~fallen.2da~ ~override~ //Remove possibility to fall
-//	              INSERT_2DA_ROW 3 0 ~B_ZEALOT_MYSTRA 0~
-//BUT_ONLY_IF_IT_CHANGES
-
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
  LAF ~DEFINE_FNP_KIT_INFO~
@@ -2079,11 +1994,6 @@ COPY ~faiths_and_powers/kits/zealots/869_mystra/component_2/b_zmys.cre~ ~overrid
 COPY ~faiths_and_powers/kits/zealots/869_mystra/component_2/b_zmys.eff~ ~override~
 //zealot spl
 COPY ~faiths_and_powers/kits/zealots/869_mystra/component_2/b_zmys.spl~ ~override~
-
-//nO FALL
-//COPY_EXISTING ~fallen.2da~ ~override~ //Remove possibility to fall
-//	              INSERT_2DA_ROW 3 0 ~B_ZEALOT_MYSTRA_2 0~
-//BUT_ONLY_IF_IT_CHANGES
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
@@ -2236,18 +2146,6 @@ ACTION_IF GAME_IS ~iwdee~ THEN BEGIN   //copy revised rage to be altered
 	SAY DESC @86805
 END
 
-//effect
-//COPY ~faiths_and_powers/kits/champions/803_tempus/b_ch101a.eff~ ~override~
-//sec spell
-//COPY ~faiths_and_powers/kits/champions/803_tempus/b_ch101a.spl~ ~override~
-//3rd spell
-//COPY ~faiths_and_powers/kits/champions/803_tempus/b_ch101b.spl~ ~override~
-
-//nO FALL
-//COPY_EXISTING ~fallen.2da~ ~override~ //Remove possibility to fall
-//	              INSERT_2DA_ROW 3 0 ~B_ZEALOT_SUNE 0~
-//BUT_ONLY_IF_IT_CHANGES
-
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
  LAF ~DEFINE_FNP_KIT_INFO~
@@ -2377,11 +2275,6 @@ COPY ~faiths_and_powers/kits/zealots/868_sune/component_2/b_zsun.cre~ ~override~
 COPY ~faiths_and_powers/kits/zealots/868_sune/component_2/b_zsun.eff~ ~override~
 //zealot spl
 COPY ~faiths_and_powers/kits/zealots/868_sune/component_2/b_zsun.spl~ ~override~
-
-//nO FALL
-//COPY_EXISTING ~fallen.2da~ ~override~ //Remove possibility to fall
-//	              INSERT_2DA_ROW 3 0 ~B_ZEALOT_SUNE_2 0~
-//BUT_ONLY_IF_IT_CHANGES
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
@@ -2542,13 +2435,6 @@ ACTION_IF GAME_IS ~iwdee~ THEN BEGIN   //copy revised rage to be altered
         SAY UNIDENTIFIED_DESC @86305
 	SAY DESC @86305
 END
-
-//effect
-//COPY ~faiths_and_powers/kits/champions/803_tempus/b_ch101a.eff~ ~override~
-//sec spell
-//COPY ~faiths_and_powers/kits/champions/803_tempus/b_ch101a.spl~ ~override~
-//3rd spell
-//COPY ~faiths_and_powers/kits/champions/803_tempus/b_ch101b.spl~ ~override~
 
 //nO FALL
 ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN
