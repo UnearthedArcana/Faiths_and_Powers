@@ -2,7 +2,7 @@ BACKUP ~faiths_and_powers/backup~
 AUTHOR ~SubtleD and Grammarsalad~
 
 
-VERSION ~0.81.9~
+VERSION ~0.81.10~
 
 
 //README ~faiths_and_powers/readme-pnp.html~
@@ -1016,6 +1016,19 @@ INCLUDE ~faiths_and_powers/lib/sphere_system.tpa~
 //END
 //__________________________________________________________________________________
 
+//universal spells available at CharGen_____________________________________________
+//
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
+  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spont_items_mem.d5~) BEGIN
+    INCLUDE ~%MOD_FOLDER%/lib/semi_spontaneous.tpa~
+    LAF divine_spont_items INT_VAR 5e_plus_mem = 1 END
+  END
+  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spont_items_no_mem.d5~) BEGIN
+    INCLUDE ~%MOD_FOLDER%/lib/semi_spontaneous.tpa~
+    LAF divine_spont_items INT_VAR 5e_plus_mem = 0 END
+  END
+END
+//__________________________________________________________________________________
 
 ////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////
