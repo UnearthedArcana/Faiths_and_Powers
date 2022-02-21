@@ -3136,6 +3136,7 @@ END
 	  END
 	END
  BUT_ONLY
+/*
  ACTION_FOR_EACH 5e_spl IN ~d5zz000~ ~d5zzini~ /*~d5zlots~*/ ~d5zltcl~ BEGIN
   ACTION_IF (FILE_EXISTS_IN_GAME ~%5e_spl%.spl~) BEGIN
     COPY_EXISTING ~%5e_spl%.spl~ ~override~
@@ -3143,6 +3144,7 @@ END
     BUT_ONLY
   END
  END
+*/
 
 END
 //__________________________________________________________________________________
