@@ -351,7 +351,7 @@ COPY ~faiths_and_powers/kits/druids/734_hivekeeper/d5drsc4.eff~ ~override~
 // make array of any animal summons spells and their FnP variants
 // make a spell with 172 effects for each of them
 // apply that spell to the hivekeeper... once?  every level?
-COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5hive0.spl~
+COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5hive0.spl~
 ACTION_FOR_EACH animal_summon IN ~CLERIC_ANIMAL_SUMMONING_LEVEL_1~
 								~CLERIC_ANIMAL_SUMMONING_LEVEL_2~
 								~CLERIC_ANIMAL_SUMMONING_LEVEL_3~
@@ -393,7 +393,7 @@ ACTION_IF !(GAME_IS ~iwdee~) BEGIN
   COPY ~faiths_and_powers/kits/druids/734_hivekeeper/d5smbtl.cre~ ~override~
 	LPF make_summon END
 END
-COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5btswm.spl~
+COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5btswm.spl~
   SAY NAME1 @73421
   SAY UNIDENTIFIED_DESC @73422
   WRITE_SHORT 0x1c 2
@@ -430,7 +430,7 @@ CREATE EFF ~d5btswm1~
 // and give it an appropriate weapon, like spidhu1.itm
 // ***** or make a new weapon for it!
 // ...not too much poison
-COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5spswm.spl~
+COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5spswm.spl~
   SAY NAME1 @73423
   SAY UNIDENTIFIED_DESC @73424
   WRITE_SHORT 0x1c 2
@@ -473,7 +473,7 @@ IF_EXISTS
 // make summon rhino beetle spell
   COPY ~faiths_and_powers/kits/druids/734_hivekeeper/d5rhbtl.cre~ ~override~
 	LPF make_summon END
-COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5rhbtl.spl~
+COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5rhbtl.spl~
   SAY NAME1 @73425
   SAY UNIDENTIFIED_DESC @73426
   WRITE_SHORT 0x1c 2
@@ -1663,6 +1663,7 @@ COPY ~faiths_and_powers/kits/druids/shapechange/d5drscb.spl~ ~override/d5drfer.s
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 parameter1 = 0 parameter2 = 1 timing = 9 STR_VAR resource = ~d5drnf~ END
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 20 target = 1 parameter1 = 0 parameter2 = 0 timing = 0 duration = 12 END
 COPY ~faiths_and_powers/kits/druids/shapechange/d5drscb.itm~ ~override/d5drfer.itm~
+  WRITE_LONG 0x60 2
   LPF ALTER_EFFECT INT_VAR match_opcode = 53 parameter1 = %ferret_animation% END 
   LPF ALTER_EFFECT INT_VAR match_opcode = 1 parameter1 = 1 END 	//	set base APR
   LPF ALTER_EFFECT INT_VAR match_opcode = 0 parameter1 = 2 END 	//	set base AC
@@ -1687,6 +1688,7 @@ COPY ~faiths_and_powers/kits/druids/shapechange/d5drscb.spl~ ~override/d5drwlf1.
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 parameter1 = 0 parameter2 = 1 timing = 9 STR_VAR resource = ~d5drsc9~ END
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 parameter1 = 0 parameter2 = 1 timing = 9 STR_VAR resource = ~d5drnf~ END
 COPY ~faiths_and_powers/kits/druids/shapechange/d5drscb.itm~ ~override/d5drwlf1.itm~
+  WRITE_LONG 0x60 2
   LPF ALTER_EFFECT INT_VAR match_opcode = 53 parameter1 = %wolf_animation% END 
   LPF ALTER_EFFECT INT_VAR match_opcode = 1 parameter1 = 7 END 	//	set base APR
   LPF ALTER_EFFECT INT_VAR match_opcode = 0 parameter1 = 5 END 	//	set base AC
@@ -1711,6 +1713,7 @@ COPY ~faiths_and_powers/kits/druids/shapechange/d5drscb.spl~ ~override/d5drwlf2.
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 parameter1 = 0 parameter2 = 1 timing = 9 STR_VAR resource = ~d5drsc9~ END
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 parameter1 = 0 parameter2 = 1 timing = 9 STR_VAR resource = ~d5drnf~ END
 COPY ~faiths_and_powers/kits/druids/shapechange/d5drscb.itm~ ~override/d5drwlf2.itm~
+  WRITE_LONG 0x60 2
   LPF ALTER_EFFECT INT_VAR match_opcode = 53 parameter1 = %dire_wolf_animation% END 
   LPF ALTER_EFFECT INT_VAR match_opcode = 1 parameter1 = 7 END 	//	set base APR
   LPF ALTER_EFFECT INT_VAR match_opcode = 0 parameter1 = 3 END 	//	set base AC
@@ -1737,6 +1740,7 @@ COPY ~faiths_and_powers/kits/druids/shapechange/d5drscb.spl~ ~override/d5drwlf3.
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 parameter1 = 0 parameter2 = 1 timing = 9 STR_VAR resource = ~d5drnf~ END
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 parameter1 = 0 parameter2 = 1 timing = 9 STR_VAR resource = ~d5drwwf~ END
 COPY ~faiths_and_powers/kits/druids/shapechange/d5drscb.itm~ ~override/d5drwlf3.itm~
+  WRITE_LONG 0x60 2
   LPF ALTER_EFFECT INT_VAR match_opcode = 53 parameter1 = %winter_wolf_animation% END 
   LPF ALTER_EFFECT INT_VAR match_opcode = 1 parameter1 = 7 END 	//	set base APR
   LPF ALTER_EFFECT INT_VAR match_opcode = 0 parameter1 = 3 END 	//	set base AC
@@ -1768,6 +1772,7 @@ COPY ~faiths_and_powers/kits/druids/shapechange/d5drscb.spl~ ~override/d5drwlf4.
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 parameter1 = 0 parameter2 = 1 timing = 9 STR_VAR resource = ~d5drsc9~ END
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 parameter1 = 0 parameter2 = 1 timing = 9 STR_VAR resource = ~d5drnf~ END
 COPY ~faiths_and_powers/kits/druids/shapechange/d5drscb.itm~ ~override/d5drwlf4.itm~
+  WRITE_LONG 0x60 2
   LPF ALTER_EFFECT INT_VAR match_opcode = 53 parameter1 = %dread_wolf_animation% END 
   LPF ALTER_EFFECT INT_VAR match_opcode = 1 parameter1 = 7 END 	//	set base APR
   LPF ALTER_EFFECT INT_VAR match_opcode = 0 parameter1 = 2 END 	//	set base AC
@@ -1795,6 +1800,7 @@ COPY ~faiths_and_powers/kits/druids/shapechange/d5drscb.spl~ ~override/d5drwlf5.
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 parameter1 = 0 parameter2 = 1 timing = 9 STR_VAR resource = ~d5drsc9~ END
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 parameter1 = 0 parameter2 = 1 timing = 9 STR_VAR resource = ~d5drnf~ END
 COPY ~faiths_and_powers/kits/druids/shapechange/d5drscb.itm~ ~override/d5drwlf5.itm~
+  WRITE_LONG 0x60 2
   LPF ALTER_EFFECT INT_VAR match_opcode = 53 parameter1 = %vampiric_wolf_animation% END 
   LPF ALTER_EFFECT INT_VAR match_opcode = 1 parameter1 = 7 END 	//	set base APR
   LPF ALTER_EFFECT INT_VAR match_opcode = 0 parameter1 = 0 END 	//	set base AC
@@ -1821,6 +1827,7 @@ COPY ~faiths_and_powers/kits/druids/shapechange/d5drscb.spl~ ~override/d5drwlf6.
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 parameter1 = 0 parameter2 = 1 timing = 9 STR_VAR resource = ~d5drsc9~ END
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 parameter1 = 0 parameter2 = 1 timing = 9 STR_VAR resource = ~d5drnf~ END
 COPY ~faiths_and_powers/kits/druids/shapechange/d5drscb.itm~ ~override/d5drwlf6.itm~
+  WRITE_LONG 0x60 2
   LPF ALTER_EFFECT INT_VAR match_opcode = 53 parameter1 = %shadow_wolf_animation% END 
   LPF ALTER_EFFECT INT_VAR match_opcode = 1 parameter1 = 7 END 	//	set base APR
   LPF ALTER_EFFECT INT_VAR match_opcode = 0 parameter1 = 0 END 	//	set base AC
@@ -1848,6 +1855,7 @@ COPY ~faiths_and_powers/kits/druids/shapechange/d5drscb.spl~ ~override/d5drber1.
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 parameter1 = 0 parameter2 = 1 timing = 9 STR_VAR resource = ~d5drsc9~ END
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 parameter1 = 0 parameter2 = 1 timing = 9 STR_VAR resource = ~d5drnf~ END
 COPY ~faiths_and_powers/kits/druids/shapechange/d5drscb.itm~ ~override/d5drber1.itm~
+  WRITE_LONG 0x60 2
   LPF ALTER_EFFECT INT_VAR match_opcode = 53 parameter1 = %black_bear_animation% END 
   LPF ALTER_EFFECT INT_VAR match_opcode = 1 parameter1 = 2 END 	//	set base APR
   LPF ALTER_EFFECT INT_VAR match_opcode = 0 parameter1 = 4 END 	//	set base AC
@@ -1871,6 +1879,7 @@ COPY ~faiths_and_powers/kits/druids/shapechange/d5drscb.spl~ ~override/d5drber2.
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 parameter1 = 0 parameter2 = 1 timing = 9 STR_VAR resource = ~d5drsc9~ END
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 parameter1 = 0 parameter2 = 1 timing = 9 STR_VAR resource = ~d5drnf~ END
 COPY ~faiths_and_powers/kits/druids/shapechange/d5drscb.itm~ ~override/d5drber2.itm~
+  WRITE_LONG 0x60 2
   LPF ALTER_EFFECT INT_VAR match_opcode = 53 parameter1 = %grizzly_bear_animation% END 
   LPF ALTER_EFFECT INT_VAR match_opcode = 1 parameter1 = 2 END 	//	set base APR
   LPF ALTER_EFFECT INT_VAR match_opcode = 0 parameter1 = 2 END 	//	set base AC
@@ -1895,6 +1904,7 @@ COPY ~faiths_and_powers/kits/druids/shapechange/d5drscb.spl~ ~override/d5drber3.
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 parameter1 = 0 parameter2 = 1 timing = 9 STR_VAR resource = ~d5drsc9~ END
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 parameter1 = 0 parameter2 = 1 timing = 9 STR_VAR resource = ~d5drnf~ END
 COPY ~faiths_and_powers/kits/druids/shapechange/d5drscb.itm~ ~override/d5drber3.itm~
+  WRITE_LONG 0x60 2
   LPF ALTER_EFFECT INT_VAR match_opcode = 53 parameter1 = %polar_bear_animation% END 
   LPF ALTER_EFFECT INT_VAR match_opcode = 1 parameter1 = 2 END 	//	set base APR
   LPF ALTER_EFFECT INT_VAR match_opcode = 0 parameter1 = 1 END 	//	set base AC
@@ -1919,6 +1929,7 @@ COPY ~faiths_and_powers/kits/druids/shapechange/d5drscb.spl~ ~override/d5drcat1.
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 parameter1 = 0 parameter2 = 1 timing = 9 STR_VAR resource = ~d5drsc9~ END
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 parameter1 = 0 parameter2 = 1 timing = 9 STR_VAR resource = ~d5drnf~ END
 COPY ~faiths_and_powers/kits/druids/shapechange/d5drscb.itm~ ~override/d5drcat1.itm~
+  WRITE_LONG 0x60 2
   LPF ALTER_EFFECT INT_VAR match_opcode = 53 parameter1 = %mountain_lion_animation% END 
   LPF ALTER_EFFECT INT_VAR match_opcode = 1 parameter1 = 2 END 	//	set base APR
   LPF ALTER_EFFECT INT_VAR match_opcode = 0 parameter1 = 2 END 	//	set base AC
@@ -1942,6 +1953,7 @@ COPY ~faiths_and_powers/kits/druids/shapechange/d5drscb.spl~ ~override/d5drcat2.
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 parameter1 = 0 parameter2 = 1 timing = 9 STR_VAR resource = ~d5drsc9~ END
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 parameter1 = 0 parameter2 = 1 timing = 9 STR_VAR resource = ~d5drnf~ END
 COPY ~faiths_and_powers/kits/druids/shapechange/d5drscb.itm~ ~override/d5drcat2.itm~
+  WRITE_LONG 0x60 2
   LPF ALTER_EFFECT INT_VAR match_opcode = 53 parameter1 = %panther_animation% END 
   LPF ALTER_EFFECT INT_VAR match_opcode = 1 parameter1 = 2 END 	//	set base APR
   LPF ALTER_EFFECT INT_VAR match_opcode = 0 parameter1 = 2 END 	//	set base AC
@@ -1967,6 +1979,7 @@ COPY ~faiths_and_powers/kits/druids/shapechange/d5drscb.spl~ ~override/d5dryeti.
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 parameter1 = 0 parameter2 = 1 timing = 9 STR_VAR resource = ~d5drsc9~ END
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 parameter1 = 0 parameter2 = 1 timing = 9 STR_VAR resource = ~d5drnf~ END
 COPY ~faiths_and_powers/kits/druids/shapechange/d5drscb.itm~ ~override/d5dryeti.itm~
+  WRITE_LONG 0x60 2
   LPF ALTER_EFFECT INT_VAR match_opcode = 53 parameter1 = %yeti_animation% END 
   LPF ALTER_EFFECT INT_VAR match_opcode = 1 parameter1 = 2 END 	//	set base APR
   LPF ALTER_EFFECT INT_VAR match_opcode = 0 parameter1 = 3 END 	//	set base AC
@@ -1991,6 +2004,7 @@ COPY ~faiths_and_powers/kits/druids/shapechange/d5drscb.spl~ ~override/d5drsnak.
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 parameter1 = 0 parameter2 = 1 timing = 9 STR_VAR resource = ~d5drsc9~ END
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 parameter1 = 0 parameter2 = 1 timing = 9 STR_VAR resource = ~d5drnf~ END
 COPY ~faiths_and_powers/kits/druids/shapechange/d5drscb.itm~ ~override/d5drsnak.itm~
+  WRITE_LONG 0x60 2
   LPF ALTER_EFFECT INT_VAR match_opcode = 53 parameter1 = %snake_animation% END 
   LPF ALTER_EFFECT INT_VAR match_opcode = 1 parameter1 = 1 END 	//	set base APR
   LPF ALTER_EFFECT INT_VAR match_opcode = 0 parameter1 = 1 END 	//	set base AC
@@ -2016,6 +2030,7 @@ COPY ~faiths_and_powers/kits/druids/shapechange/d5drscb.spl~ ~override/d5drwyv2.
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 parameter1 = 0 parameter2 = 1 timing = 9 STR_VAR resource = ~d5drsc9~ END
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 parameter1 = 0 parameter2 = 1 timing = 9 STR_VAR resource = ~d5drnf~ END
 COPY ~faiths_and_powers/kits/druids/shapechange/d5drscb.itm~ ~override/d5drwyv2.itm~
+  WRITE_LONG 0x60 2
   LPF ALTER_EFFECT INT_VAR match_opcode = 53 parameter1 = %large_wyvern_animation% END 
   LPF ALTER_EFFECT INT_VAR match_opcode = 1 parameter1 = 2 END 	//	set base APR
   LPF ALTER_EFFECT INT_VAR match_opcode = 0 parameter1 = 0 END 	//	set base AC
@@ -2045,6 +2060,7 @@ COPY ~faiths_and_powers/kits/druids/shapechange/d5drscb.spl~ ~override/d5drspd1.
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 parameter1 = 0 parameter2 = 1 timing = 9 STR_VAR resource = ~d5drsc9~ END
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 parameter1 = 0 parameter2 = 1 timing = 9 STR_VAR resource = ~d5drnf~ END
 COPY ~faiths_and_powers/kits/druids/shapechange/d5drscb.itm~ ~override/d5drspd1.itm~
+  WRITE_LONG 0x60 2
   LPF ALTER_EFFECT INT_VAR match_opcode = 53 parameter1 = %giant_spider_animation% END 
   LPF ALTER_EFFECT INT_VAR match_opcode = 1 parameter1 = 7 END 	//	set base APR
   LPF ALTER_EFFECT INT_VAR match_opcode = 0 parameter1 = 3 END 	//	set base AC
@@ -2073,6 +2089,7 @@ COPY ~faiths_and_powers/kits/druids/shapechange/d5drscb.spl~ ~override/d5drspd2.
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 parameter1 = 0 parameter2 = 1 timing = 9 STR_VAR resource = ~d5drsc9~ END
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 parameter1 = 0 parameter2 = 1 timing = 9 STR_VAR resource = ~d5drnf~ END
 COPY ~faiths_and_powers/kits/druids/shapechange/d5drscb.itm~ ~override/d5drspd2.itm~
+  WRITE_LONG 0x60 2
   LPF ALTER_EFFECT INT_VAR match_opcode = 53 parameter1 = %sword_spider_animation% END 
   LPF ALTER_EFFECT INT_VAR match_opcode = 1 parameter1 = 3 END 	//	set base APR
   LPF ALTER_EFFECT INT_VAR match_opcode = 0 parameter1 = 2 END 	//	set base AC
@@ -2097,6 +2114,7 @@ COPY ~faiths_and_powers/kits/druids/shapechange/d5drscb.spl~ ~override/d5drbtl1.
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 parameter1 = 0 parameter2 = 1 timing = 9 STR_VAR resource = ~d5drsc9~ END
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 parameter1 = 0 parameter2 = 1 timing = 9 STR_VAR resource = ~d5drnf~ END
 COPY ~faiths_and_powers/kits/druids/shapechange/d5drscb.itm~ ~override/d5drbtl1.itm~
+  WRITE_LONG 0x60 2
   LPF ALTER_EFFECT INT_VAR match_opcode = 53 parameter1 = %boring_beetle_animation% END 
   LPF ALTER_EFFECT INT_VAR match_opcode = 1 parameter1 = 1 END 	//	set base APR
   LPF ALTER_EFFECT INT_VAR match_opcode = 0 parameter1 = 1 END 	//	set base AC
@@ -2123,6 +2141,7 @@ COPY ~faiths_and_powers/kits/druids/shapechange/d5drscb.spl~ ~override/d5drbtl2.
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 parameter1 = 0 parameter2 = 1 timing = 9 STR_VAR resource = ~d5drsc9~ END
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 parameter1 = 0 parameter2 = 1 timing = 9 STR_VAR resource = ~d5drnf~ END
 COPY ~faiths_and_powers/kits/druids/shapechange/d5drscb.itm~ ~override/d5drbtl2.itm~
+  WRITE_LONG 0x60 2
   LPF ALTER_EFFECT INT_VAR match_opcode = 53 parameter1 = %fire_beetle_animation% END 
   LPF ALTER_EFFECT INT_VAR match_opcode = 1 parameter1 = 1 END 	//	set base APR
   LPF ALTER_EFFECT INT_VAR match_opcode = 0 parameter1 = 1 END 	//	set base AC
@@ -2147,6 +2166,7 @@ COPY ~faiths_and_powers/kits/druids/shapechange/d5drscb.spl~ ~override/d5drbtl3.
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 parameter1 = 0 parameter2 = 1 timing = 9 STR_VAR resource = ~d5drsc9~ END
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 parameter1 = 0 parameter2 = 1 timing = 9 STR_VAR resource = ~d5drnf~ END
 COPY ~faiths_and_powers/kits/druids/shapechange/d5drscb.itm~ ~override/d5drbtl3.itm~
+  WRITE_LONG 0x60 2
   LPF ALTER_EFFECT INT_VAR match_opcode = 53 parameter1 = %boring_beetle_animation% END 
   LPF ALTER_EFFECT INT_VAR match_opcode = 1 parameter1 = 1 END 	//	set base APR
   LPF ALTER_EFFECT INT_VAR match_opcode = 0 parameter1 = 1 END 	//	set base AC
@@ -2171,6 +2191,7 @@ COPY ~faiths_and_powers/kits/druids/shapechange/d5drscb.spl~ ~override/d5drbtl4.
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 parameter1 = 0 parameter2 = 1 timing = 9 STR_VAR resource = ~d5drsc9~ END
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 parameter1 = 0 parameter2 = 1 timing = 9 STR_VAR resource = ~d5drnf~ END
 COPY ~faiths_and_powers/kits/druids/shapechange/d5drscb.itm~ ~override/d5drbtl4.itm~
+  WRITE_LONG 0x60 2
   LPF ALTER_EFFECT INT_VAR match_opcode = 53 parameter1 = %rhino_beetle_animation% END 
   LPF ALTER_EFFECT INT_VAR match_opcode = 1 parameter1 = 2 END 	//	set base APR
   LPF ALTER_EFFECT INT_VAR match_opcode = 0 parameter1 = 0 END 	//	set base AC
@@ -2199,6 +2220,7 @@ COPY ~faiths_and_powers/kits/druids/shapechange/d5drscb.spl~ ~override/d5drcarc.
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 parameter1 = 0 parameter2 = 1 timing = 9 STR_VAR resource = ~d5drsc9~ END
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 parameter1 = 0 parameter2 = 1 timing = 9 STR_VAR resource = ~d5drnf~ END
 COPY ~faiths_and_powers/kits/druids/shapechange/d5drscb.itm~ ~override/d5drcarc.itm~
+  WRITE_LONG 0x60 2
   LPF ALTER_EFFECT INT_VAR match_opcode = 53 parameter1 = %carrion_crawler_animation% END 
   LPF ALTER_EFFECT INT_VAR match_opcode = 1 parameter1 = 2 END 	//	set base APR
   LPF ALTER_EFFECT INT_VAR match_opcode = 0 parameter1 = 3 END 	//	set base AC
@@ -2223,6 +2245,7 @@ COPY ~faiths_and_powers/kits/druids/shapechange/d5drscb.spl~ ~override/d5drremz.
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 parameter1 = 0 parameter2 = 1 timing = 9 STR_VAR resource = ~d5drsc9~ END
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 parameter1 = 0 parameter2 = 1 timing = 9 STR_VAR resource = ~d5drnf~ END
 COPY ~faiths_and_powers/kits/druids/shapechange/d5drscb.itm~ ~override/d5drremz.itm~
+  WRITE_LONG 0x60 2
   LPF ALTER_EFFECT INT_VAR match_opcode = 53 parameter1 = %remorhaz_animation% END 
   LPF ALTER_EFFECT INT_VAR match_opcode = 1 parameter1 = 3 END 	//	set base APR
   LPF ALTER_EFFECT INT_VAR match_opcode = 0 parameter1 = 0 END 	//	set base AC
@@ -2254,6 +2277,7 @@ COPY ~faiths_and_powers/kits/druids/shapechange/d5drscb.spl~ ~override/d5dr.spl~
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 parameter1 = 0 parameter2 = 1 timing = 9 STR_VAR resource = ~d5drsc9~ END
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 parameter1 = 0 parameter2 = 1 timing = 9 STR_VAR resource = ~d5drnf~ END
 COPY ~faiths_and_powers/kits/druids/shapechange/d5drscb.itm~ ~override/d5dr.itm~
+  WRITE_LONG 0x60 2
   LPF ALTER_EFFECT INT_VAR match_opcode = 53 parameter1 = %_animation% END 
   LPF ALTER_EFFECT INT_VAR match_opcode = 1 parameter1 =  END 	//	set base APR
   LPF ALTER_EFFECT INT_VAR match_opcode = 0 parameter1 =  END 	//	set base AC
@@ -2275,6 +2299,7 @@ COPY ~faiths_and_powers/kits/druids/shapechange/d5drscb.spl~ ~override/d5dr.spl~
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 parameter1 = 0 parameter2 = 1 timing = 9 STR_VAR resource = ~d5drsc9~ END
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 parameter1 = 0 parameter2 = 1 timing = 9 STR_VAR resource = ~d5drnf~ END
 COPY ~faiths_and_powers/kits/druids/shapechange/d5drscb.itm~ ~override/d5dr.itm~
+  WRITE_LONG 0x60 2
   LPF ALTER_EFFECT INT_VAR match_opcode = 53 parameter1 = %_animation% END 
   LPF ALTER_EFFECT INT_VAR match_opcode = 1 parameter1 =  END 	//	set base APR
   LPF ALTER_EFFECT INT_VAR match_opcode = 0 parameter1 =  END 	//	set base AC
@@ -2296,6 +2321,7 @@ COPY ~faiths_and_powers/kits/druids/shapechange/d5drscb.spl~ ~override/d5dr.spl~
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 parameter1 = 0 parameter2 = 1 timing = 9 STR_VAR resource = ~d5drsc9~ END
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 parameter1 = 0 parameter2 = 1 timing = 9 STR_VAR resource = ~d5drnf~ END
 COPY ~faiths_and_powers/kits/druids/shapechange/d5drscb.itm~ ~override/d5dr.itm~
+  WRITE_LONG 0x60 2
   LPF ALTER_EFFECT INT_VAR match_opcode = 53 parameter1 = %_animation% END 
   LPF ALTER_EFFECT INT_VAR match_opcode = 1 parameter1 =  END 	//	set base APR
   LPF ALTER_EFFECT INT_VAR match_opcode = 0 parameter1 =  END 	//	set base AC
@@ -2317,6 +2343,7 @@ COPY ~faiths_and_powers/kits/druids/shapechange/d5drscb.spl~ ~override/d5dr.spl~
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 parameter1 = 0 parameter2 = 1 timing = 9 STR_VAR resource = ~d5drsc9~ END
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 parameter1 = 0 parameter2 = 1 timing = 9 STR_VAR resource = ~d5drnf~ END
 COPY ~faiths_and_powers/kits/druids/shapechange/d5drscb.itm~ ~override/d5dr.itm~
+  WRITE_LONG 0x60 2
   LPF ALTER_EFFECT INT_VAR match_opcode = 53 parameter1 = %_animation% END 
   LPF ALTER_EFFECT INT_VAR match_opcode = 1 parameter1 =  END 	//	set base APR
   LPF ALTER_EFFECT INT_VAR match_opcode = 0 parameter1 =  END 	//	set base AC
@@ -2524,31 +2551,31 @@ COPY ~faiths_and_powers/kits/druids/762_beast_lord/d5_ww02.cre~ ~override~
 	SAY NAME1 @76217
 COPY ~faiths_and_powers/kits/druids/762_beast_lord/d5_ww03.cre~ ~override~
 	SAY NAME1 @76218
-COPY ~faiths_and_powers/kits/misc/d5cllv1.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5cllv1.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5cstbo.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5cstbo.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5disp1.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5disp1.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5disp2.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5disp2.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5disp3.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5disp3.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5disp4.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5disp4.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5disp5.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5disp5.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5disp6.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5disp6.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5disp7.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5disp7.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
 
@@ -2909,38 +2936,38 @@ END
 // ABILITY FILES_____________________________________________________________
 //
 COPY ~faiths_and_powers/kits/druids/703_earth_mystic/d5mear.2da~ ~override~
-COPY ~faiths_and_powers/kits/misc/d5bres2.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5bres2.spl~ ~override~
 	SAY NAME1 @70311
 	SAY UNIDENTIFIED_DESC @70311
 COPY ~faiths_and_powers/kits/druids/703_earth_mystic/d5myea1.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
 COPY ~faiths_and_powers/kits/druids/703_earth_mystic/d5myea1.eff~ ~override~
-COPY ~faiths_and_powers/kits/misc/d5cllv1.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5cllv1.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5cstbo.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5cstbo.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5disp1.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5disp1.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5disp2.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5disp2.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5disp3.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5disp3.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5disp4.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5disp4.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5disp5.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5disp5.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5disp6.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5disp6.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5disp7.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5disp7.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
 ACTION_IF MOD_IS_INSTALLED "TOBEX.TP2" "100" THEN BEGIN
@@ -3090,41 +3117,41 @@ END
 // ABILITY FILES_____________________________________________________________
 //
 COPY ~faiths_and_powers/kits/druids/704_water_mystic/d5mwat.2da~ ~override~
-COPY ~faiths_and_powers/kits/misc/d5ares2.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5ares2.spl~ ~override~
 	SAY NAME1 @70411
 	SAY UNIDENTIFIED_DESC @70411
-COPY ~faiths_and_powers/kits/misc/d5cres2.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5cres2.spl~ ~override~
 	SAY NAME1 @70412
 	SAY UNIDENTIFIED_DESC @70412
 COPY ~faiths_and_powers/kits/druids/704_water_mystic/d5mywa1.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
 COPY ~faiths_and_powers/kits/druids/704_water_mystic/d5mywa1.eff~ ~override~
-COPY ~faiths_and_powers/kits/misc/d5cllv1.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5cllv1.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5cstbo.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5cstbo.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5disp1.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5disp1.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5disp2.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5disp2.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5disp3.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5disp3.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5disp4.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5disp4.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5disp5.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5disp5.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5disp6.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5disp6.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5disp7.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5disp7.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
 
@@ -3262,7 +3289,7 @@ END
 // ABILITY FILES_____________________________________________________________
 //
 COPY ~faiths_and_powers/kits/druids/705_air_mystic/d5mair.2da~ ~override~
-COPY ~faiths_and_powers/kits/misc/d5eres2.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5eres2.spl~ ~override~
 	SAY NAME1 @70511
 	SAY UNIDENTIFIED_DESC @70511
 COPY  ~faiths_and_powers/kits/druids/705_air_mystic/d5myai1.spl~ ~override~
@@ -3272,31 +3299,31 @@ COPY  ~faiths_and_powers/kits/druids/705_air_mystic/d5myai1.eff~ ~override~
 COPY  ~faiths_and_powers/kits/druids/705_air_mystic/d5myai2.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5cllv1.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5cllv1.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5cstbo.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5cstbo.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5disp1.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5disp1.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5disp2.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5disp2.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5disp3.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5disp3.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5disp4.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5disp4.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5disp5.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5disp5.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5disp6.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5disp6.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5disp7.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5disp7.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
 
@@ -3434,38 +3461,38 @@ END
 // ABILITY FILES_____________________________________________________________
 //
 COPY ~faiths_and_powers/kits/druids/706_fire_mystic/d5mfir.2da~ ~override~
-COPY ~faiths_and_powers/kits/misc/d5fres2.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5fres2.spl~ ~override~
 	SAY NAME1 @70611
 	SAY UNIDENTIFIED_DESC @70611
 COPY ~faiths_and_powers/kits/druids/706_fire_mystic/d5myfi1.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
 COPY ~faiths_and_powers/kits/druids/706_fire_mystic/d5myfi1.eff~ ~override~
-COPY ~faiths_and_powers/kits/misc/d5cllv1.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5cllv1.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5cstbo.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5cstbo.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5disp1.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5disp1.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5disp2.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5disp2.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5disp3.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5disp3.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5disp4.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5disp4.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5disp5.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5disp5.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5disp6.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5disp6.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5disp7.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5disp7.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
 COPY ~faiths_and_powers/kits/druids/706_fire_mystic/d5myfi2.spl~ ~override~
@@ -3606,7 +3633,7 @@ END
 // ABILITY FILES_____________________________________________________________
 //
 COPY ~faiths_and_powers/kits/druids/707_light_mystic/d5mlig.2da~ ~override~
-COPY ~faiths_and_powers/kits/misc/d5blres.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5blres.spl~ ~override~
 	SAY NAME1 @70711
 	SAY UNIDENTIFIED_DESC @70711
 COPY ~faiths_and_powers/kits/druids/707_light_mystic/d5myli1.spl~ ~override~
@@ -3619,31 +3646,31 @@ COPY ~faiths_and_powers/kits/druids/707_light_mystic/d5myli4.eff~ ~override~
 COPY ~faiths_and_powers/kits/druids/707_light_mystic/d5_ffire.vvc~ ~override~
 COPY_EXISTING ~spwi322.spl~ ~override/d5myli2.spl~
 	LPM spell_to_innate
-COPY ~faiths_and_powers/kits/misc/d5cllv1.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5cllv1.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5cstbo.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5cstbo.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5disp1.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5disp1.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5disp2.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5disp2.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5disp3.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5disp3.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5disp4.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5disp4.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5disp5.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5disp5.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5disp6.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5disp6.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5disp7.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5disp7.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
 
@@ -3781,7 +3808,7 @@ END
 // ABILITY FILES_____________________________________________________________
 //
 COPY ~faiths_and_powers/kits/druids/708_shadow_mystic/d5mshd.2da~ ~override~
-COPY ~faiths_and_powers/kits/misc/d5blres.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5blres.spl~ ~override~
 	SAY NAME1 @70711
 	SAY UNIDENTIFIED_DESC @70711
 COPY ~faiths_and_powers/kits/druids/708_shadow_mystic/d5mysh1.spl~ ~override~
@@ -3790,31 +3817,31 @@ COPY ~faiths_and_powers/kits/druids/708_shadow_mystic/d5mysh1.spl~ ~override~
 COPY ~faiths_and_powers/kits/druids/708_shadow_mystic/d5mysh1.eff~ ~override~
 COPY_EXISTING ~spwi322.spl~ ~override/d5myli2.spl~
 	LPM spell_to_innate
-COPY ~faiths_and_powers/kits/misc/d5cllv1.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5cllv1.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5cstbo.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5cstbo.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5disp1.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5disp1.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5disp2.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5disp2.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5disp3.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5disp3.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5disp4.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5disp4.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5disp5.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5disp5.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5disp6.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5disp6.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
-COPY ~faiths_and_powers/kits/misc/d5disp7.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5disp7.spl~ ~override~
 	SAY NAME1 @6
 	SAY UNIDENTIFIED_DESC @6
 

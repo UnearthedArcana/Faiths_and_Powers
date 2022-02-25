@@ -362,7 +362,7 @@ ACTION_IF !(GAME_IS ~iwdee~) BEGIN
 	LPF make_summon END
 	WRITE_BYTE 0x270 5
 END
-COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5btswm.spl~
+COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5btswm.spl~
   SAY NAME1 @73421
   SAY UNIDENTIFIED_DESC @73422
   WRITE_SHORT 0x1c 2
@@ -405,7 +405,7 @@ COPY ~faiths_and_powers/kits/druids/734_hivekeeper/d5smspid.cre~ ~override~
 // and give it an appropriate weapon, like spidhu1.itm
 // ***** or make a new weapon for it!
 // ...not too much poison
-COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5spswm.spl~
+COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5spswm.spl~
   SAY NAME1 @73423
   SAY UNIDENTIFIED_DESC @73424
   WRITE_SHORT 0x1c 2
@@ -441,6 +441,7 @@ CREATE EFF ~d5spswm1~
 // add spider spawn - spwi423 - at spell level 5
 //
 COPY_EXISTING ~spwi423.spl~ ~override/d5spspn.spl~
+  SAY NAME1 @73425
   WRITE_SHORT 0x1c 2
   WRITE_LONG 0x34 5
 IF_EXISTS
@@ -461,9 +462,9 @@ COPY ~faiths_and_powers/data/new_spells/bams/d5rhbtlc.bam~ ~override~
 COPY ~faiths_and_powers/kits/druids/734_hivekeeper/d5rhbtl.cre~ ~override~
 	LPF make_summon END
 	WRITE_BYTE 0x270 5
-COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5rhbtl.spl~
-  SAY NAME1 @73425
-  SAY UNIDENTIFIED_DESC @73426
+COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5rhbtl.spl~
+  SAY NAME1 @73427
+  SAY UNIDENTIFIED_DESC @73428
   WRITE_SHORT 0x1c 2
   WRITE_LONG 0x34 7
   WRITE_ASCII 0x3a ~d5rhbtlc~ #8

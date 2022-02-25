@@ -2,7 +2,7 @@ BACKUP ~faiths_and_powers/backup~
 AUTHOR ~SubtleD and Grammarsalad~
 
 
-VERSION ~0.81.11~
+VERSION ~0.82.0~
 
 
 //README ~faiths_and_powers/readme-pnp.html~
@@ -139,7 +139,7 @@ END
 
 //prep sphere system________________________________________________________________
 //
-COPY ~faiths_and_powers/lib/sphere_list_fnp.tpa~ ~override/fnp_sphere_list.tpa~
+COPY ~faiths_and_powers/data/sphere_systems/sphere_list_fnp.tpa~ ~override/fnp_sphere_list.tpa~
 
 //change shaman known spells________________________________________________________
 //
@@ -165,6 +165,9 @@ ACTION_IF (FILE_EXISTS_IN_GAME ~dvsrv4here.mrk~) BEGIN
 END  
 
 LAF fix_spell_bams END
+// ***** ^^ make this fix summoning spells if IWD+SR installed
+
+COPY ~faiths_and_powers/data/hlas/system_FnP/~ ~weidu_external/faiths_and_powers/hlas~
 
 //INCLUDE ~%mod_folder%/lib/immunities.tpa~					//	DO AT THE VERY END OF ALL SPELL INSTALLS
 
@@ -177,13 +180,15 @@ INCLUDE ~override/fnp_sphere_list.tpa~
  LAM d5_define_sphere_spells
  LAM d5_deity_kit_sphere_lists
 
- LAF create_spheres END
+LAF create_spheres END
+
 //__________________________________________________________________________________
 
 
+
 //__________________________________________________________________________________
 //__________________________________________________________________________________
-//
+
 BEGIN @22 // 2E-style sphere system
 DESIGNATED 22
 SUBCOMPONENT @20
@@ -197,7 +202,7 @@ END
 
 //prep sphere system________________________________________________________________
 //
-COPY ~faiths_and_powers/lib/sphere_list_2E.tpa~ ~override/fnp_sphere_list.tpa~
+COPY ~faiths_and_powers/data/sphere_systems/sphere_list_2E.tpa~ ~override/fnp_sphere_list.tpa~
 
 //change shaman known spells________________________________________________________
 //
@@ -223,6 +228,8 @@ END
 
 LAF fix_spell_bams END
 
+COPY ~faiths_and_powers/data/hlas/system_2E/~ ~weidu_external/faiths_and_powers/hlas~
+
 //INCLUDE ~%mod_folder%/lib/immunities.tpa~					//	DO AT THE VERY END OF ALL SPELL INSTALLS
 
 //create sphere system______________________________________________________________
@@ -236,13 +243,15 @@ INCLUDE ~override/fnp_sphere_list.tpa~
  LAM d5_define_sphere_spells
  LAM d5_deity_kit_sphere_lists
 
- LAF create_spheres END
+LAF create_spheres END
 //__________________________________________________________________________________
 
 
+
 //__________________________________________________________________________________
-//
-BEGIN @23 // variant: vanilla plus
+//__________________________________________________________________________________
+
+BEGIN @23 // vanilla plus - same as unmodded game, but kits gets focus access to two spheres
 DESIGNATED 23
 SUBCOMPONENT @20 
 REQUIRE_PREDICATE (GAME_IS ~bgee bg2ee eet iwdee~) @8
@@ -256,7 +265,7 @@ END
 
 //prep sphere system________________________________________________________________
 //
-COPY ~faiths_and_powers/lib/sphere_list_vplus.tpa~ ~override/fnp_sphere_list.tpa~
+COPY ~faiths_and_powers/data/sphere_systems/sphere_list_vplus.tpa~ ~override/fnp_sphere_list.tpa~
 
 //change shaman known spells________________________________________________________
 //
@@ -282,6 +291,8 @@ ACTION_IF (FILE_EXISTS_IN_GAME ~dvsrv4here.mrk~) BEGIN
 END  
 
 LAF fix_spell_bams END
+
+COPY ~faiths_and_powers/data/hlas/system_vplus/~ ~weidu_external/faiths_and_powers/hlas~
 
 //INCLUDE ~%mod_folder%/lib/immunities.tpa~					//	DO AT THE VERY END OF ALL SPELL INSTALLS
 
@@ -335,19 +346,81 @@ END
 LAF prep_vanilla_spells END
 
 LAF create_spheres END
-//__________________________________________________________________________________
 
 //all HLAs for everyone_____________________________________________________________
 //
-COPY_EXISTING ~faiths_and_powers/spheres/hlas/vanillaplus/luclxyz.2da~ ~override~
-COPY_EXISTING ~faiths_and_powers/spheres/hlas/vanillaplus/ludrxyz.2da~ ~override~
-COPY_EXISTING ~faiths_and_powers/spheres/hlas/vanillaplus/lufcxyz.2da~ ~override~
-COPY_EXISTING ~faiths_and_powers/spheres/hlas/vanillaplus/lucrxyz.2da~ ~override~
-COPY_EXISTING ~faiths_and_powers/spheres/hlas/vanillaplus/luctxyz.2da~ ~override~
-COPY_EXISTING ~faiths_and_powers/spheres/hlas/vanillaplus/lucmxyz.2da~ ~override~
+COPY_EXISTING ~faiths_and_powers/data/hlas/system_vplus/luclxyz.2da~ ~override~
+COPY_EXISTING ~faiths_and_powers/data/hlas/system_vplus/ludrxyz.2da~ ~override~
+COPY_EXISTING ~faiths_and_powers/data/hlas/system_vplus/lufcxyz.2da~ ~override~
+COPY_EXISTING ~faiths_and_powers/data/hlas/system_vplus/lucrxyz.2da~ ~override~
+COPY_EXISTING ~faiths_and_powers/data/hlas/system_vplus/luctxyz.2da~ ~override~
+COPY_EXISTING ~faiths_and_powers/data/hlas/system_vplus/lucmxyz.2da~ ~override~
+//__________________________________________________________________________________
+
+
+
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 
+BEGIN @24 // new FnP sphere system - fewer spheres, more broadly balanced
+DESIGNATED 24
+SUBCOMPONENT @20 
+REQUIRE_PREDICATE (GAME_IS ~bgee bg2ee eet iwdee~) @8
+
+COPY ~faiths_and_powers/lib/markers/d5_marker.d5~ ~override/d5__spheres.d5~
+COPY ~faiths_and_powers/lib/markers/d5_marker.d5~ ~override/d5__fnp_spheres.d5~
+
+ACTION_IF (FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~) BEGIN
+  MOVE ~override/fnp_sphere_list.tpa~ ~weidu_external/faiths_and_powers/fnp_sphere_list_old.tpa~
+END
+
+//prep sphere system________________________________________________________________
+//
+COPY ~faiths_and_powers/data/sphere_systems/sphere_list_new_fnp.tpa~ ~override/fnp_sphere_list.tpa~
+
+//change shaman known spells________________________________________________________
+//
+//LAF shaman_spells END
+//... nope, fold this into the d5_spontaneous function
+
+//Add IWD spells if not already in game_____________________________________________
+//
+ACTION_CLEAR_ARRAY aoe_spell
+INCLUDE ~faiths_and_powers/lib/add_spells_v75.tpa~      	//includes spells from the 0.75 series  
+INCLUDE ~faiths_and_powers/lib/fnp_new_spells.tpa~   		//new spells from the 0.77 series 
+
+ACTION_IF !(GAME_IS ~iwdee~) BEGIN
+  LAM v75_add_iwd_arcane_spells
+  LAM v75_add_iwd_divine_spells
+END
+
+// LAM v75_add_fnP_new_spells
+LAM v78_add_fnP_new_spells
+
+ACTION_IF (FILE_EXISTS_IN_GAME ~dvsrv4here.mrk~) BEGIN
+  LAM v75_apply_sr_aoe_deflection
+END  
+
+LAF fix_spell_bams END
+
+COPY ~faiths_and_powers/data/hlas/system_FnP_2/~ ~weidu_external/faiths_and_powers/hlas~
+
+//INCLUDE ~%mod_folder%/lib/immunities.tpa~					//	DO AT THE VERY END OF ALL SPELL INSTALLS
+
+INCLUDE ~faiths_and_powers/lib/sphere_system.tpa~
+
+ LAF prep_vanilla_spells END
+
+INCLUDE ~override/fnp_sphere_list.tpa~
+ LAM d5_define_sphere_names
+ LAM d5_define_sphere_spells
+ LAM d5_deity_kit_sphere_lists
+
+LAF create_spheres END
+//__________________________________________________________________________________
+
+
+/*
 
 //__________________________________________________________________________________
 //__________________________________________________________________________________
@@ -408,6 +481,8 @@ END
 //__________________________________________________________________________________
 
 
+
+//__________________________________________________________________________________
 //__________________________________________________________________________________
 //
 BEGIN @29 // no sphere system at all
@@ -416,6 +491,8 @@ SUBCOMPONENT @20
 
 COPY ~faiths_and_powers/lib/markers/d5_marker.d5~ ~override/d5__no_spheres.d5~
 //__________________________________________________________________________________
+
+*/
 
 
 ////////////////////////////////////////////////////////////////////////////////////////
@@ -974,10 +1051,10 @@ INCLUDE ~faiths_and_powers/lib/item_usability.tpa~
 
 BEGIN @80 // apply sphere systen
 DESIGNATED 80
-INSTALL_BY_DEFAULT
+//INSTALL_BY_DEFAULT
 REQUIRE_PREDICATE (GAME_IS ~bgee bg2ee eet iwdee~) @8
 REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) @8
-FORBID_COMPONENT ~faiths_and_powers.tp2~ ~24~ @8
+FORBID_COMPONENT ~faiths_and_powers.tp2~ ~29~ @8
 
 
 //check sphere system_______________________________________________________________

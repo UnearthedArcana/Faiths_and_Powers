@@ -276,13 +276,13 @@ END
 //
 COPY ~faiths_and_powers/kits/clerics/325_azuth/d5clazu.2da~ ~override~
 /*
-COPY ~faiths_and_powers/kits/misc/d5llore.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5llore.spl~ ~override~
 	SAY NAME1 @32505
 	SAY UNIDENTIFIED_DESC @32506
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 206 STR_VAR resource = ~d5llore~ END
 */
 //APPEND ~d5clazu.2da~ ~UMD         AP_D5_UMD   ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****    ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** ~
-COPY ~faiths_and_powers/kits/misc/d5_cllv1.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5_cllv1.spl~ ~override~
 //	SAY NAME1 @6
 //	SAY UNIDENTIFIED_DESC @6
 
@@ -2479,13 +2479,13 @@ END
 // ABILITY FILES_______________________________________________________________
 //
 COPY ~faiths_and_powers/kits/clerics/324_mystra/d5clmys.2da~ ~override~
-COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5myst1.spl~ // wild/dead magic immunity
+COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5myst1.spl~ // wild/dead magic immunity
   SAY NAME1 @32411
   SAY UNIDENTIFIED_DESC @32411
   PATCH_FOR_EACH immunity IN ~3645~ ~3646~ ~3778~ ~3779~ ~3550~ ~3992~ ~3137~ BEGIN
 	LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = 0 parameter2 = (0 - 1) STR_VAR resource = EVAL ~%immunity%~ END
   END
-COPY ~faiths_and_powers/kits/misc/d5_cstbo.spl~ ~override~ // casting speed bonus
+COPY ~faiths_and_powers/data/misc/d5_cstbo.spl~ ~override~ // casting speed bonus
 //APPEND ~d5clmys.2da~ ~UMD         AP_D5_UMD   ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****    ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** ~
 
 // add TnB innate cantrips - uh, I mean, cantrip wand
@@ -2507,7 +2507,7 @@ COPY ~faiths_and_powers/kits/clerics/324_mystra/cantrip_wand/d5_rabb.cre~ ~overr
 COPY_EXISTING ~spwi114.spl~ ~override~
 	LPF CLONE_EFFECT INT_VAR silent = 1 multi_match = 1 match_opcode = 206 STR_VAR resource = ~d5myscw~ END
 BUT_ONLY
-COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5myscw.spl~
+COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5myscw.spl~
 	LPF ADD_SPELL_EFFECT INT_VAR opcode = 122 target = 1 parameter1 = 1 timing = 9 STR_VAR resource = ~d5myscw~ END
 
 //DEFINE SPHERE ACCESS______________________________________________________________
@@ -2646,7 +2646,7 @@ COPY ~faiths_and_powers/kits/clerics/310_oghma/d5clogh.2da~ ~override~
 COPY ~faiths_and_powers/kits/clerics/310_oghma/d5oghm1.spl~ ~override~
   SAY NAME1 @31011
   SAY UNIDENTIFIED_DESC @31012
-COPY ~faiths_and_powers/kits/misc/d5llore.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5llore.spl~ ~override~
 	SAY NAME1 @32505
 	SAY UNIDENTIFIED_DESC @32506
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 206 STR_VAR resource = ~d5llore~ END
@@ -3707,7 +3707,7 @@ END
 //TYMORA ABILITY FILES________________________________________________________________
 //
 COPY ~faiths_and_powers/kits/clerics/205_tymora/d5ctym.2da~ ~override~
-COPY ~faiths_and_powers/kits/misc/d5luckp.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5luckp.spl~ ~override~
 	SAY NAME1 @20511
 	SAY UNIDENTIFIED_DESC @20511
 COPY ~faiths_and_powers/kits/clerics/205_tymora/d5_tym1.spl~ ~override~
@@ -4787,7 +4787,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
   END
  END
 BUT_ONLY
-COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5baer2.spl~	// entangle immunity
+COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5baer2.spl~	// entangle immunity
 //  PHP_EACH entangling_array AS res => num BEGIN
 //	LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 STR_VAR resource = EVAL ~%res%~ END
 	LPF ADD_SPELL_EFFECT INT_VAR opcode = 83 target = 1 parameter2 = %spike_proj% timing = 9 END	// spike growth projectile

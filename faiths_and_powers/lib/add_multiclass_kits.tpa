@@ -89,9 +89,9 @@ END
 //MYSTRA ABILITY FILES___________________________________________________________
 //
 COPY ~faiths_and_powers/kits/multiclass/464_cm_mystra/d5cmmys.2da~ ~override~
-COPY ~faiths_and_powers/kits/misc/d5cllv1.spl~ ~override~
-COPY ~faiths_and_powers/kits/misc/d5cllv2.spl~ ~override~
-COPY ~faiths_and_powers/kits/misc/d5cstbo.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5cllv1.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5cllv2.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5cstbo.spl~ ~override~
 COPY ~faiths_and_powers/kits/multiclass/464_cm_mystra/d5+abj.spl~ ~override~
 COPY ~faiths_and_powers/kits/multiclass/464_cm_mystra/d5_abju.eff~ ~override~
 COPY_EXISTING ~kitlist.2da~ ~override~
@@ -276,17 +276,17 @@ END
 //MONITOR ABILITY FILES_______________________________________________________________
 //
 COPY ~faiths_and_powers/kits/multiclass/465_cm_azuth/d5cmazu.2da~ ~override~
-COPY ~faiths_and_powers/kits/misc/d5cstbo.spl~ ~override~
-COPY ~faiths_and_powers/kits/misc/d5cllv1.spl~ ~override~
-COPY ~faiths_and_powers/kits/misc/d5cllv2.spl~ ~override~
-COPY ~faiths_and_powers/kits/misc/d5cllv3.spl~ ~override~
-COPY ~faiths_and_powers/kits/misc/d5cllv4.spl~ ~override~
-COPY ~faiths_and_powers/kits/misc/d5cllv5.spl~ ~override~
-COPY ~faiths_and_powers/kits/misc/d5mglv1.spl~ ~override~
-COPY ~faiths_and_powers/kits/misc/d5mglv2.spl~ ~override~
-COPY ~faiths_and_powers/kits/misc/d5mglv3.spl~ ~override~
-COPY ~faiths_and_powers/kits/misc/d5mglv4.spl~ ~override~
-COPY ~faiths_and_powers/kits/misc/d5mglv5.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5cstbo.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5cllv1.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5cllv2.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5cllv3.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5cllv4.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5cllv5.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5mglv1.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5mglv2.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5mglv3.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5mglv4.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5mglv5.spl~ ~override~
 /*
 ACTION_IF FILE_EXISTS_IN_GAME ~d5cmazu.2da~ THEN BEGIN
 	COPY_EXISTING ~d5cmazu.2da~ ~override~
@@ -926,7 +926,7 @@ END
 //BRANDOBARIS ABILITY FILES__________________________________________________________
 //
 COPY ~faiths_and_powers/kits/multiclass/477_brandobaris/d5ctbra.2da~ ~override~
-COPY ~faiths_and_powers/kits/misc/d5luckp.spl~ ~override~
+COPY ~faiths_and_powers/data/misc/d5luckp.spl~ ~override~
 	SAY NAME1 @20511
 	SAY UNIDENTIFIED_DESC @20511
 COPY_EXISTING ~sppr211.spl~ ~override/d5bran1.spl~
@@ -935,7 +935,7 @@ COPY_EXISTING ~spwi206.spl~ ~override/d5bran2.spl~
   LPM spell_to_innate
 LAF d5_resolve_state STR_VAR new_state_id = ~D5_HOLDS_BARRED~ RET new_state_ind END
 OUTER_SET hold_evasion_state = %new_state_ind%
-COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5bran3.spl~ // evade Hold etc.
+COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5bran3.spl~ // evade Hold etc.
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 328 target = 1 parameter2 = %hold_evasion_state% timing = 9 special = 1 END
 // hold evasion: 109 Hold, 175 Hold2, 45 Stun, 210 PW Stun, 157 Web effect, 154 Entangle overlay, 40 Slow
 <<<<<<<< d5/d5holdev.2da

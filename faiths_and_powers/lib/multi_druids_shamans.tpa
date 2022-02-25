@@ -15,28 +15,28 @@ DEFINE_ACTION_FUNCTION no_spheres_druid_spells STR_VAR clab_table = ~x~ BEGIN
   END
  BUT_ONLY
  
- COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5druys.spl~
+ COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5druys.spl~
   PHP_EACH druid_valid_spells AS dru_res => type BEGIN
 	LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = EVAL ~%dru_res%~ END
   END
 
- COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5druno.spl~
+ COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5druno.spl~
   PHP_EACH cleric_only_spells AS cle_res => type BEGIN
 	LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 timing = 4 duration = 1 STR_VAR resource = EVAL ~%cle_res%~ END
   END
 
- COPY ~faiths_and_powers/spheres/d5spmem.spl~ ~override~
+ COPY ~faiths_and_powers/data/misc/d5spmem.spl~ ~override~
 	SAY NAME1 @1100
 	SAY UNIDENTIFIED_DESC @1101
 	WRITE_ASCII 0x3a ~d5spm3mb~ #8
 	LPF ALTER_SPELL_HEADER STR_VAR icon = ~d5spm3mb~ END
- COPY ~faiths_and_powers/spheres/d5spm3m.spl~ ~override~
+ COPY ~faiths_and_powers/data/misc/d5spm3m.spl~ ~override~
 	SAY NAME1 @1100
 	SAY UNIDENTIFIED_DESC @1101
 	WRITE_ASCII 0x3a ~d5spm3mb~ #8
 	LPF ALTER_SPELL_HEADER STR_VAR icon = ~d5spm3mb~ END
 	LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 timing = 9 STR_VAR resource = ~d5spm3m~ END
- COPY ~faiths_and_powers/spheres/d5spm3mb.bam~ ~override~
+ COPY ~faiths_and_powers/data/misc/d5spm3mb.bam~ ~override~
 
   ACTION_IF (FILE_EXISTS_IN_GAME ~%clab_table%.2da~) BEGIN
 	APPEND ~%clab_table%.2da~ ~NO_SPELLS   AP_D5DRUNO  AP_D5DRUNO  AP_D5DRUNO  AP_D5DRUNO  AP_D5DRUNO  AP_D5DRUNO  AP_D5DRUNO  AP_D5DRUNO  AP_D5DRUNO  AP_D5DRUNO  AP_D5DRUNO  AP_D5DRUNO  AP_D5DRUNO  AP_D5DRUNO  AP_D5DRUNO  AP_D5DRUNO  AP_D5DRUNO  AP_D5DRUNO  AP_D5DRUNO  AP_D5DRUNO  AP_D5DRUNO  AP_D5DRUNO  AP_D5DRUNO  AP_D5DRUNO  AP_D5DRUNO  AP_D5DRUNO  AP_D5DRUNO  AP_D5DRUNO  AP_D5DRUNO  AP_D5DRUNO  AP_D5DRUNO  AP_D5DRUNO  AP_D5DRUNO  AP_D5DRUNO  AP_D5DRUNO  AP_D5DRUNO  AP_D5DRUNO  AP_D5DRUNO  AP_D5DRUNO  AP_D5DRUNO  AP_D5DRUNO  AP_D5DRUNO  AP_D5DRUNO  AP_D5DRUNO  AP_D5DRUNO  AP_D5DRUNO  AP_D5DRUNO  AP_D5DRUNO  AP_D5DRUNO  AP_D5DRUNO 
@@ -407,7 +407,7 @@ END
 	REPLACE_TEXTUALLY ~ AP_QD_MCD[0123456789][0123456789] ~ ~ ****      ~
  END
  ACTION_IF !(FILE_EXISTS_IN_GAME ~d5_notu.spl~) BEGIN
-  COPY ~faiths_and_powers/kits/misc/d5_notu.spl~ ~override~
+  COPY ~faiths_and_powers/data/misc/d5_notu.spl~ ~override~
  END
  APPEND ~d5drfi.2da~ ~NO_TURN     AP_D5_NOTU  AP_D5_NOTU  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** ~
 
@@ -682,7 +682,7 @@ ACTION_IF !(FILE_EXISTS_IN_GAME ~d5dfor.2da~) BEGIN
 	REPLACE_TEXTUALLY ~ AP_QD_MCD[0123456789][0123456789] ~ ~ ****      ~
 END
 ACTION_IF !(FILE_EXISTS_IN_GAME ~d5_notu.spl~) BEGIN
-  COPY ~faiths_and_powers/kits/misc/d5_notu.spl~ ~override~
+  COPY ~faiths_and_powers/data/misc/d5_notu.spl~ ~override~
 END
 APPEND ~d5drra.2da~ ~NO_TURN     AP_D5_NOTU  AP_D5_NOTU  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****         ****        ****        ****        ****        ****        ****  ~
 
@@ -947,7 +947,7 @@ ACTION_IF !(FILE_EXISTS_IN_GAME ~d5dfor.2da~) BEGIN
 	REPLACE_TEXTUALLY ~ AP_QD_MCD[0123456789][0123456789] ~ ~ ****      ~
 END
 ACTION_IF !(FILE_EXISTS_IN_GAME ~d5_notu.spl~) BEGIN
-  COPY ~faiths_and_powers/kits/misc/d5_notu.spl~ ~override~
+  COPY ~faiths_and_powers/data/misc/d5_notu.spl~ ~override~
 END
 APPEND ~d5drth.2da~ ~NO_TURN     AP_D5_NOTU  AP_D5_NOTU  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** ~
 
@@ -1209,7 +1209,7 @@ ACTION_IF !(FILE_EXISTS_IN_GAME ~d5dfor.2da~) BEGIN
 	REPLACE_TEXTUALLY ~ AP_QD_MCD[0123456789][0123456789] ~ ~ ****      ~
 END
 ACTION_IF !(FILE_EXISTS_IN_GAME ~d5_notu.spl~) BEGIN
-  COPY ~faiths_and_powers/kits/misc/d5_notu.spl~ ~override~
+  COPY ~faiths_and_powers/data/misc/d5_notu.spl~ ~override~
 END
 APPEND ~d5drma.2da~ ~NO_TURN     AP_D5_NOTU  AP_D5_NOTU  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** ~
 
@@ -1459,7 +1459,7 @@ ACTION_IF !(FILE_EXISTS_IN_GAME ~d5dfor.2da~) BEGIN
 	REPLACE_TEXTUALLY ~ AP_QD_MCD[0123456789][0123456789] ~ ~ ****      ~
 END
 ACTION_IF !(FILE_EXISTS_IN_GAME ~d5_notu.spl~) BEGIN
-  COPY ~faiths_and_powers/kits/misc/d5_notu.spl~ ~override~
+  COPY ~faiths_and_powers/data/misc/d5_notu.spl~ ~override~
 END
 APPEND ~d5drsrc.2da~ ~NO_TURN     AP_D5_NOTU  AP_D5_NOTU  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** ~
 //ACTION_IF (FILE_EXISTS_IN_GAME ~d5sorc.2da~) BEGIN
@@ -1728,7 +1728,7 @@ ACTION_IF !(FILE_EXISTS_IN_GAME ~d5dfor.2da~) BEGIN
 	REPLACE_TEXTUALLY ~ AP_QD_MCD[0123456789][0123456789] ~ ~ ****      ~
 END
 ACTION_IF !(FILE_EXISTS_IN_GAME ~d5_notu.spl~) BEGIN
-  COPY ~faiths_and_powers/kits/misc/d5_notu.spl~ ~override~
+  COPY ~faiths_and_powers/data/misc/d5_notu.spl~ ~override~
 END
 APPEND ~d5drth.2da~ ~NO_TURN     AP_D5_NOTU  AP_D5_NOTU  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** ~
 
@@ -2284,7 +2284,7 @@ ACTION_IF !(FILE_EXISTS_IN_GAME ~d5shmdn.spl~) BEGIN
   COPY ~faiths_and_powers/kits/multiclass/499_shambarb/d5shmdnb.spl~ ~override~		//	aura triggered by 232 eff
   COPY ~faiths_and_powers/kits/multiclass/499_shambarb/d5nshdn.bam~ ~override~		//	stop dance icon
 /*
-  COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5nshdn.spl~				//	stop dance abil
+  COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5nshdn.spl~				//	stop dance abil
     SAY NAME1 @49923 // Stop Shamanic Dance
     SAY UNIDENTIFIED_DESC @49923 
     LPF ALTER_SPELL_HEADER INT_VAR target = 7 STR_VAR icon = ~d5nshdn~ END
@@ -2321,7 +2321,7 @@ ACTION_IF !(FILE_EXISTS_IN_GAME ~d5shmdi.spl~) BEGIN
   COPY ~faiths_and_powers/kits/multiclass/499_shambarb/d5shmdib.spl~ ~override~							//	aura triggered by 232 eff
   COPY ~faiths_and_powers/kits/multiclass/499_shambarb/d5nshdi.bam~ ~override~		//	stop detect icon
 /*
-  COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5nshdi.spl~				//	stop detect abil
+  COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5nshdi.spl~				//	stop detect abil
     SAY NAME1 @49926 // Stop detecting illusions
     SAY UNIDENTIFIED_DESC @49926 
     LPF ALTER_SPELL_HEADER INT_VAR target = 7 STR_VAR icon = ~d5nshdi~ END
@@ -2505,7 +2505,7 @@ END
 //
 COPY ~faiths_and_powers/kits/multiclass/499_shambarb/d5shmbb.2da~ ~override~
 ACTION_IF !(FILE_EXISTS_IN_GAME ~d5_notu.spl~) BEGIN
-  COPY ~faiths_and_powers/kits/misc/d5_notu.spl~ ~override~
+  COPY ~faiths_and_powers/data/misc/d5_notu.spl~ ~override~
 END
 
 // ***** give access to vanilla_shaman_spheres
@@ -2688,7 +2688,7 @@ COPY ~faiths_and_powers/kits/multiclass/496_shamranger/d5shmrn.2da~ ~override~
 	APPEND_FILE ~faiths_and_powers/kits/rangers/901_forest_ranger/ranger_enemies.txt~
   END
 ACTION_IF !(FILE_EXISTS_IN_GAME ~d5_notu.spl~) BEGIN
-  COPY ~faiths_and_powers/kits/misc/d5_notu.spl~ ~override~
+  COPY ~faiths_and_powers/data/misc/d5_notu.spl~ ~override~
 END
 
 ACTION_IF (FILE_EXISTS_IN_GAME ~d5__imp_rangers.d5~) BEGIN
@@ -2880,13 +2880,13 @@ END
 //
 COPY ~faiths_and_powers/kits/multiclass/497_shamthief/d5shmth.2da~ ~override~
 ACTION_IF !(FILE_EXISTS_IN_GAME ~d5_notu.spl~) BEGIN
-  COPY ~faiths_and_powers/kits/misc/d5_notu.spl~ ~override~
+  COPY ~faiths_and_powers/data/misc/d5_notu.spl~ ~override~
 END
-COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5dil10.spl~
+COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5dil10.spl~
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 276 target = 1 parameter1 = 10 parameter2 = 0 timing = 9 END
-COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5dil04.spl~
+COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5dil04.spl~
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 276 target = 1 parameter1 = 4 parameter2 = 0 timing = 9 END
-COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5tshdi.spl~
+COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5tshdi.spl~
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 STR_VAR resource = ~d5shmdi~ END
 
 
@@ -3064,7 +3064,7 @@ END
 //
 COPY ~faiths_and_powers/kits/multiclass/498_shammage/d5shmma.2da~ ~override~
 ACTION_IF !(FILE_EXISTS_IN_GAME ~d5_notu.spl~) BEGIN
-  COPY ~faiths_and_powers/kits/misc/d5_notu.spl~ ~override~
+  COPY ~faiths_and_powers/data/misc/d5_notu.spl~ ~override~
 END
 
 //DEFINE SPHERE ACCESS______________________________________________________________
@@ -3243,13 +3243,13 @@ END
 //
 COPY ~faiths_and_powers/kits/multiclass/495_shammonk/d5shmnk.2da~ ~override~
 ACTION_IF !(FILE_EXISTS_IN_GAME ~d5_notu.spl~) BEGIN
-  COPY ~faiths_and_powers/kits/misc/d5_notu.spl~ ~override~
+  COPY ~faiths_and_powers/data/misc/d5_notu.spl~ ~override~
 END
-COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5dil10.spl~
+COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5dil10.spl~
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 276 target = 1 parameter1 = 10 parameter2 = 0 timing = 9 END
-COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5dil04.spl~
+COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5dil04.spl~
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 276 target = 1 parameter1 = 4 parameter2 = 0 timing = 9 END
-COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5tshdi.spl~
+COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5tshdi.spl~
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 STR_VAR resource = ~d5shmdi~ END
 
 
@@ -3429,7 +3429,7 @@ BUT_ONLY
 
 //remove all cleric spell slots_______________________________________________________
 //
-COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d50cslt.spl~
+COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d50cslt.spl~
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 62 target = 1 parameter1 = (0 - 1) parameter2 = 127 timing = 9 END
 BUT_ONLY
 
@@ -3453,69 +3453,69 @@ NOSLOTS     AP_D50CSLT  ****        ****        ****        ****        ****    
 
 //create advance copies of some spells________________________________________________
 //
-COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5sh206.spl~
-COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5sh172.spl~
+COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5sh206.spl~
+COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5sh172.spl~
 
-COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5shot1a.spl~
-COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5shot1b.spl~
-COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5shot1c.spl~
-COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5shot1d.spl~
-COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5shot2a.spl~
-COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5shot2b.spl~
-COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5shot2c.spl~
-COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5shot2d.spl~
-COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5shot3a.spl~
-COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5shot3b.spl~
-COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5shot3c.spl~
-COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5shot3d.spl~
-COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5shot4a.spl~
-COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5shot4b.spl~
-COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5shot4c.spl~
-COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5shot4d.spl~
-COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5shot5a.spl~
-COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5shot5b.spl~
-COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5shot5c.spl~
-COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5shot5d.spl~
-COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5shot6a.spl~
-COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5shot6b.spl~
-COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5shot6c.spl~
-COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5shot6d.spl~
-COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5shot7a.spl~
-COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5shot7b.spl~
-COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5shot7c.spl~
-COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5shot7d.spl~
+COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5shot1a.spl~
+COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5shot1b.spl~
+COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5shot1c.spl~
+COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5shot1d.spl~
+COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5shot2a.spl~
+COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5shot2b.spl~
+COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5shot2c.spl~
+COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5shot2d.spl~
+COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5shot3a.spl~
+COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5shot3b.spl~
+COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5shot3c.spl~
+COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5shot3d.spl~
+COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5shot4a.spl~
+COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5shot4b.spl~
+COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5shot4c.spl~
+COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5shot4d.spl~
+COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5shot5a.spl~
+COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5shot5b.spl~
+COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5shot5c.spl~
+COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5shot5d.spl~
+COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5shot6a.spl~
+COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5shot6b.spl~
+COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5shot6c.spl~
+COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5shot6d.spl~
+COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5shot7a.spl~
+COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5shot7b.spl~
+COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5shot7c.spl~
+COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5shot7d.spl~
 
-COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5shplz.spl~
+COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5shplz.spl~
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (1 << 4) parameter2 = %fake_sham_slots_1_7% timing = 1 STR_VAR resource = ~d5shot1a~ END
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (2 << 4) parameter2 = %fake_sham_slots_1_7% timing = 1 STR_VAR resource = ~d5shot1b~ END
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (4 << 4) parameter2 = %fake_sham_slots_1_7% timing = 1 STR_VAR resource = ~d5shot1c~ END
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (8 << 4) parameter2 = %fake_sham_slots_1_7% timing = 1 STR_VAR resource = ~d5shot1d~ END
-//COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5shplz2.spl~
+//COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5shplz2.spl~
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (1 << 8) parameter2 = %fake_sham_slots_1_7% timing = 1 STR_VAR resource = ~d5shot2a~ END
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (2 << 8) parameter2 = %fake_sham_slots_1_7% timing = 1 STR_VAR resource = ~d5shot2b~ END
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (4 << 8) parameter2 = %fake_sham_slots_1_7% timing = 1 STR_VAR resource = ~d5shot2c~ END
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (8 << 8) parameter2 = %fake_sham_slots_1_7% timing = 1 STR_VAR resource = ~d5shot2d~ END
-//COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5shplz3.spl~
+//COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5shplz3.spl~
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (1 << 12) parameter2 = %fake_sham_slots_1_7% timing = 1 STR_VAR resource = ~d5shot3a~ END
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (2 << 12) parameter2 = %fake_sham_slots_1_7% timing = 1 STR_VAR resource = ~d5shot3b~ END
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (4 << 12) parameter2 = %fake_sham_slots_1_7% timing = 1 STR_VAR resource = ~d5shot3c~ END
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (8 << 12) parameter2 = %fake_sham_slots_1_7% timing = 1 STR_VAR resource = ~d5shot3d~ END
-//COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5shplz4.spl~
+//COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5shplz4.spl~
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (1 << 16) parameter2 = %fake_sham_slots_1_7% timing = 1 STR_VAR resource = ~d5shot4a~ END
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (2 << 16) parameter2 = %fake_sham_slots_1_7% timing = 1 STR_VAR resource = ~d5shot4b~ END
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (4 << 16) parameter2 = %fake_sham_slots_1_7% timing = 1 STR_VAR resource = ~d5shot4c~ END
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (8 << 16) parameter2 = %fake_sham_slots_1_7% timing = 1 STR_VAR resource = ~d5shot4d~ END
-//COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5shplz5.spl~
+//COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5shplz5.spl~
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (1 << 20) parameter2 = %fake_sham_slots_1_7% timing = 1 STR_VAR resource = ~d5shot5a~ END
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (2 << 20) parameter2 = %fake_sham_slots_1_7% timing = 1 STR_VAR resource = ~d5shot5b~ END
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (4 << 20) parameter2 = %fake_sham_slots_1_7% timing = 1 STR_VAR resource = ~d5shot5c~ END
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (8 << 20) parameter2 = %fake_sham_slots_1_7% timing = 1 STR_VAR resource = ~d5shot5d~ END
-//COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5shplz6.spl~
+//COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5shplz6.spl~
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (1 << 24) parameter2 = %fake_sham_slots_1_7% timing = 1 STR_VAR resource = ~d5shot6a~ END
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (2 << 24) parameter2 = %fake_sham_slots_1_7% timing = 1 STR_VAR resource = ~d5shot6b~ END
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (4 << 24) parameter2 = %fake_sham_slots_1_7% timing = 1 STR_VAR resource = ~d5shot6c~ END
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (8 << 24) parameter2 = %fake_sham_slots_1_7% timing = 1 STR_VAR resource = ~d5shot6d~ END
-//COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5shplz7.spl~
+//COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5shplz7.spl~
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (1 << 28) parameter2 = %fake_sham_slots_1_7% timing = 1 STR_VAR resource = ~d5shot7a~ END
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (2 << 28) parameter2 = %fake_sham_slots_1_7% timing = 1 STR_VAR resource = ~d5shot7b~ END
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (4 << 28) parameter2 = %fake_sham_slots_1_7% timing = 1 STR_VAR resource = ~d5shot7c~ END
@@ -3534,80 +3534,80 @@ COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5shplz.spl~
 
 ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5shm1a.spl~ BEGIN
   ACTION_FOR_EACH let IN ~a~ /*~b~ ~c~ ~d~ ~e~ ~f~ ~g~ ~h~ ~i~ ~j~ ~k~ ~l~ ~m~ ~n~ ~o~ ~p~ ~q~ ~r~ ~s~ ~t~*/ BEGIN
-	COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5shm1%let%.spl~
+	COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5shm1%let%.spl~
 	  LPF ADD_SPELL_EFFECT INT_VAR opcode = 233 target = 1 parameter1 = (1 << 4) parameter2 = (134 + (0x10000 * 1)) timing = 9 END
 	  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 STR_VAR resource = EVAL ~d5shm1%let%~ END
   END
 END
 ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5shm2a.spl~ BEGIN
   ACTION_FOR_EACH let IN ~a~ /*~b~ ~c~ ~d~ ~e~ ~f~ ~g~ ~h~ ~i~ ~j~ ~k~ ~l~ ~m~ ~n~ ~o~ ~p~ ~q~ ~r~ ~s~ ~t~*/ BEGIN
-	COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5shm2%let%.spl~
+	COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5shm2%let%.spl~
 	  LPF ADD_SPELL_EFFECT INT_VAR opcode = 233 target = 1 parameter1 = (1 << 8) parameter2 = (134 + (0x10000 * 1)) timing = 9 END
 	  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 STR_VAR resource = EVAL ~d5shm2%let%~ END
   END
 END
 ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5shm3a.spl~ BEGIN
   ACTION_FOR_EACH let IN ~a~ /*~b~ ~c~ ~d~ ~e~ ~f~ ~g~ ~h~ ~i~ ~j~ ~k~ ~l~ ~m~ ~n~ ~o~ ~p~ ~q~ ~r~ ~s~ ~t~*/ BEGIN
-	COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5shm3%let%.spl~
+	COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5shm3%let%.spl~
 	  LPF ADD_SPELL_EFFECT INT_VAR opcode = 233 target = 1 parameter1 = (1 << 12) parameter2 = (134 + (0x10000 * 1)) timing = 9 END
 	  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 STR_VAR resource = EVAL ~d5shm3%let%~ END
   END
 END
 ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5shm4a.spl~ BEGIN
   ACTION_FOR_EACH let IN ~a~ /*~b~ ~c~ ~d~ ~e~ ~f~ ~g~ ~h~ ~i~ ~j~ ~k~ ~l~ ~m~ ~n~ ~o~ ~p~ ~q~ ~r~ ~s~ ~t~*/ BEGIN
-	COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5shm4%let%.spl~
+	COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5shm4%let%.spl~
 	  LPF ADD_SPELL_EFFECT INT_VAR opcode = 233 target = 1 parameter1 = (1 << 16) parameter2 = (134 + (0x10000 * 1)) timing = 9 END
 	  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 STR_VAR resource = EVAL ~d5shm4%let%~ END
   END
 END
 ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5shm5a.spl~ BEGIN
   ACTION_FOR_EACH let IN ~a~ /*~b~ ~c~ ~d~ ~e~ ~f~ ~g~ ~h~ ~i~ ~j~ ~k~ ~l~ ~m~ ~n~ ~o~ ~p~ ~q~ ~r~ ~s~ ~t~*/ BEGIN
-	COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5shm5%let%.spl~
+	COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5shm5%let%.spl~
 	  LPF ADD_SPELL_EFFECT INT_VAR opcode = 233 target = 1 parameter1 = (1 << 20) parameter2 = (134 + (0x10000 * 1)) timing = 9 END
 	  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 STR_VAR resource = EVAL ~d5shm5%let%~ END
   END
 END
 ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5shm6a.spl~ BEGIN
   ACTION_FOR_EACH let IN ~a~ /*~b~ ~c~ ~d~ ~e~ ~f~ ~g~ ~h~ ~i~ ~j~ ~k~ ~l~ ~m~ ~n~ ~o~ ~p~ ~q~ ~r~ ~s~ ~t~*/ BEGIN
-	COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5shm6%let%.spl~
+	COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5shm6%let%.spl~
 	  LPF ADD_SPELL_EFFECT INT_VAR opcode = 233 target = 1 parameter1 = (1 << 24) parameter2 = (134 + (0x10000 * 1)) timing = 9 END
 	  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 STR_VAR resource = EVAL ~d5shm6%let%~ END
   END
 END
 ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5shm7a.spl~ BEGIN
   ACTION_FOR_EACH let IN ~a~ /*~b~ ~c~ ~d~ ~e~ ~f~ ~g~ ~h~ ~i~ ~j~ ~k~ ~l~ ~m~ ~n~ ~o~ ~p~ ~q~ ~r~ ~s~ ~t~*/ BEGIN
-	COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5shm7%let%.spl~
+	COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5shm7%let%.spl~
 	  LPF ADD_SPELL_EFFECT INT_VAR opcode = 233 target = 1 parameter1 = (1 << 28) parameter2 = (134 + (0x10000 * 1)) timing = 9 END
 	  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 STR_VAR resource = EVAL ~d5shm7%let%~ END
   END
 END
 
 ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5shm-1.spl~ BEGIN
- COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5shm-1.spl~
+ COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5shm-1.spl~
    LPF ADD_SPELL_EFFECT INT_VAR opcode = 233 target = 1 parameter1 = ((0 - 1) << 4) parameter2 = (134 + (0x10000 * 1)) timing = 1 END
 END
 ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5shm-2.spl~ BEGIN
- COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5shm-2.spl~
+ COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5shm-2.spl~
    LPF ADD_SPELL_EFFECT INT_VAR opcode = 233 target = 1 parameter1 = ((0 - 1) << 8) parameter2 = (134 + (0x10000 * 1)) timing = 1 END
 END
 ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5shm-3.spl~ BEGIN
- COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5shm-3.spl~
+ COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5shm-3.spl~
    LPF ADD_SPELL_EFFECT INT_VAR opcode = 233 target = 1 parameter1 = ((0 - 1) << 12) parameter2 = (134 + (0x10000 * 1)) timing = 1 END
 END
 ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5shm-4.spl~ BEGIN
- COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5shm-4.spl~
+ COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5shm-4.spl~
    LPF ADD_SPELL_EFFECT INT_VAR opcode = 233 target = 1 parameter1 = ((0 - 1) << 16) parameter2 = (134 + (0x10000 * 1)) timing = 1 END
 END
 ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5shm-5.spl~ BEGIN
- COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5shm-5.spl~
+ COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5shm-5.spl~
    LPF ADD_SPELL_EFFECT INT_VAR opcode = 233 target = 1 parameter1 = ((0 - 1) << 20) parameter2 = (134 + (0x10000 * 1)) timing = 1 END
 END
 ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5shm-6.spl~ BEGIN
- COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5shm-6.spl~
+ COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5shm-6.spl~
    LPF ADD_SPELL_EFFECT INT_VAR opcode = 233 target = 1 parameter1 = ((0 - 1) << 24) parameter2 = (134 + (0x10000 * 1)) timing = 1 END
 END
 ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5shm-7.spl~ BEGIN
- COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5shm-7.spl~
+ COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5shm-7.spl~
    LPF ADD_SPELL_EFFECT INT_VAR opcode = 233 target = 1 parameter1 = ((0 - 1) << 28) parameter2 = (134 + (0x10000 * 1)) timing = 1 END
 END
 
@@ -3757,7 +3757,7 @@ COPY_EXISTING ~d5msham.2da~ ~override~
   END
 BUT_ONLY
 
-COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5shfre.spl~
+COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5shfre.spl~
   PATCH_FOR_EACH lv IN ~1~ ~2~ ~3~ ~4~ ~5~ ~6~ ~7~ BEGIN
 	LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = EVAL ~sppr%lv%50~ END
   END
@@ -3852,14 +3852,14 @@ COPY_EXISTING ~d5shclon.2da~ ~override~
 			WRITE_LONG 0x90 1
 			WRITE_EVALUATED_ASCII 0x94 ~%spl_eff%~ #8
 // make 206 spells preventing the .EFF
-		COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/%206_spl%.spl~
+		COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/%206_spl%.spl~
 			WRITE_SHORT 0x1c 4
 		  	LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 STR_VAR resource = EVAL ~%spl_eff%~ END
 // add 206 spells to CLAB spell
 		COPY_EXISTING ~d5sh206.spl~ ~override~
 			LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 9 STR_VAR resource = EVAL ~%206_spl%~ END
 // make learn spells canceling the 206
-		COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/%learn_spl%.spl~
+		COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/%learn_spl%.spl~
 			WRITE_EVALUATED_ASCII 0x3a ~%spell_icon%~ #8
 		  	LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 9 STR_VAR resource = EVAL ~%206_spl%~ END
 			LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 STR_VAR resource = EVAL ~%206_spl%~ END
@@ -3920,7 +3920,7 @@ APPEND ~d5sham.2da~ ~NO_SPLS     AP_D5SH206 ****        ****        ****        
 
 //daily spell slot refresh____________________________________________________________
 //
-COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5shotz.spl~
+COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5shotz.spl~
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 1 parameter2 = 2 timing = 9 STR_VAR resource = ~d5shots~ END
 
 //APPEND ~d5sham.2da~ ~SPLSLOTS    AP_D5SHOTZ  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** ~
@@ -3935,13 +3935,13 @@ CREATE EFF ~d5shots~
   WRITE_ASCII 0x30 ~d5shlot~ #8
   WRITE_LONG 0x48 102
 
-COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5shlot.spl~
+COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5shlot.spl~
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = 0 parameter2 = %fatigue_value% timing = 1 STR_VAR resource = ~d5shfrsh~ END
 
 
 // spell to refresh spell slots_______________________________________________________
 ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5shfrsh.spl~ BEGIN
- COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5shfrsh.spl~
+ COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5shfrsh.spl~
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 93 target = 1 parameter1 = 1 parameter2 = 1 timing = 1 END
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 9 STR_VAR resource = ~d5shm-1~ END
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 9 STR_VAR resource = ~d5shm-2~ END
@@ -3962,7 +3962,7 @@ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
 // ***** use the d5_spontaneous function instead of this
 // and ALTER_EFFECT d5shnit.spl to give multisham .itm instead of 
 
- COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5xpuni.spl~
+ COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5xpuni.spl~
 
  COPY_EXISTING ~d5spsph.2da~ ~override~
   READ_2DA_ENTRIES_NOW rows 4
@@ -4030,7 +4030,7 @@ END
 //
 ACTION_IF !(FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
 
- COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5xpall.spl~
+ COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5xpall.spl~
 
  COPY_EXISTING_REGEXP GLOB ~^SPPR[1-7]\(0[1-9]\|[1-4][0-9]\|50\)\.spl$~ ~override~
   READ_BYTE 0x21 exclusion
@@ -4089,7 +4089,7 @@ END
 //don't need initial memorizer________________________________________________________
 //
 ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
- COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5spmxm.spl~
+ COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5spmxm.spl~
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 STR_VAR resource = ~d5spmem~ END
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 timing = 4 duration = 1 STR_VAR resource = ~d5spm3m~ END
 
@@ -4125,7 +4125,7 @@ LAF action_add_hla STR_VAR kit_name = ~D5_SHAMAN_MONK~ ability = ~GA_SPCL941~ nu
 //disable quickspell buttons and scroll learning______________________________________
 //
 ACTION_IF !(FILE_EXISTS_IN_GAME ~d5shmnq.spl~) BEGIN
-  COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5shmnq.spl~
+  COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5shmnq.spl~
 	LPF ADD_SPELL_EFFECT INT_VAR opcode = 144 target = 1 parameter2 = 3 timing = 9 END
 	LPF ADD_SPELL_EFFECT INT_VAR opcode = 144 target = 1 parameter2 = 4 timing = 9 END
 	LPF ADD_SPELL_EFFECT INT_VAR opcode = 144 target = 1 parameter2 = 5 timing = 9 END
@@ -4156,7 +4156,7 @@ COPY ~faiths_and_powers/kits/multiclass/499_shambarb/d5shmdnb.eff~ ~override~		/
 COPY ~faiths_and_powers/kits/multiclass/499_shambarb/d5shmdnb.spl~ ~override~		//	aura triggered by 232 eff
 COPY ~faiths_and_powers/kits/multiclass/499_shambarb/d5nshdn.bam~ ~override~		//	stop dance icon
 /*
-COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5nshdn.spl~				//	stop dance abil
+COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5nshdn.spl~				//	stop dance abil
   SAY NAME1 @49923 // Stop Shamanic Dance
   SAY UNIDENTIFIED_DESC @49923 
   LPF ALTER_SPELL_HEADER INT_VAR target = 7 STR_VAR icon = ~d5nshdn~ END
@@ -4192,7 +4192,7 @@ COPY ~faiths_and_powers/kits/multiclass/499_shambarb/d5shmdib.eff~ ~override~			
 COPY ~faiths_and_powers/kits/multiclass/499_shambarb/d5shmdib.spl~ ~override~							//	aura triggered by 232 eff
 COPY ~faiths_and_powers/kits/multiclass/499_shambarb/d5nshdi.bam~ ~override~		//	stop detect icon
 /*
-COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5nshdi.spl~				//	stop detect abil
+COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5nshdi.spl~				//	stop detect abil
   SAY NAME1 @49926 // Stop detecting illusions
   SAY UNIDENTIFIED_DESC @49926 
   LPF ALTER_SPELL_HEADER INT_VAR target = 7 STR_VAR icon = ~d5nshdi~ END
@@ -4235,7 +4235,7 @@ END
 LAF ~ADD_ITEM_TOOLTIPS~ STR_VAR item = ~d5shamb~ tooltips = ~@49921 @49924 @49911~ END
 
 ACTION_IF !(FILE_EXISTS_IN_GAME ~d5shba1.spl~) BEGIN
- COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5shba1.spl~				//	initialize shaman abilities
+ COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5shba1.spl~				//	initialize shaman abilities
   SAY NAME1 @49950
   SAY UNIDENTIFIED_DESC @49950
   WRITE_SHORT 0x1c 4
@@ -4254,7 +4254,7 @@ ACTION_IF (FILE_EXISTS_IN_GAME ~d5shba1.spl~) BEGIN
 	LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = %shaman_thief_code% parameter2 = %kit_is_row% timing = 1 STR_VAR resource = ~d5shba1b~ END
 	LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = %shaman_mage_code% parameter2 = %kit_is_row% timing = 1 STR_VAR resource = ~d5shba1b~ END
 	LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = %shaman_monk_code% parameter2 = %kit_is_row% timing = 1 STR_VAR resource = ~d5shba1b~ END
-  COPY ~faiths_and_powers/kits/misc/d5_base.spl~ ~override/d5shba1b.spl~			//	initialize shaman abilities
+  COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5shba1b.spl~			//	initialize shaman abilities
 	LPF ADD_SPELL_EFFECT INT_VAR opcode = 143 target = 1 parameter1 = 14 timing = 9 STR_VAR resource = ~d5shamb~ END
 	LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5shotz~ END
 	LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5shfre~ END
