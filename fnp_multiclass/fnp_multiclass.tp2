@@ -2,7 +2,7 @@ BACKUP ~faiths_and_powers/backup~
 AUTHOR ~SubtleD and Grammarsalad~
 
 
-VERSION ~0.82.0~
+VERSION ~0.82.1~
 
 
 ALWAYS
@@ -20,13 +20,13 @@ ALWAYS
 
 	INCLUDE ~faiths_and_powers/lib/qd_multiclass.tpa~
 
-	INCLUDE ~faiths_and_powers/lib/misc_fnp_functions.tpa~
+	INCLUDE ~faiths_and_powers/lib/system_misc_functions.tpa~
 
 	INCLUDE ~faiths_and_powers/lib/spell_evasion.tpa~
 	
-	INCLUDE ~faiths_and_powers/lib/fnp_spontaneous.tpa~
+	INCLUDE ~faiths_and_powers/lib/system_fnp_spontaneous.tpa~
 
-	INCLUDE ~faiths_and_powers/lib/fnp_system.tpa~
+	INCLUDE ~faiths_and_powers/lib/system_base.tpa~
 	
 	LAF fix_kitlist_missing_ids END
 
@@ -55,7 +55,7 @@ BEGIN @91 // install multiclass druids
 DESIGNATED 91
 REQUIRE_PREDICATE (GAME_IS ~bgee bg2ee eet iwdee~) @8
 
-INCLUDE ~faiths_and_powers/lib/fnp_compat.tpa~
+INCLUDE ~faiths_and_powers/lib/system_compat.tpa~
 ACTION_IF (FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~) BEGIN
   INCLUDE ~override/fnp_sphere_list.tpa~
   LAM d5_define_sphere_names
@@ -69,7 +69,7 @@ LAF enable_multiclasses END
 
 LAM d5_kit_choices
 
-INCLUDE ~faiths_and_powers/lib/multi_druids_shamans.tpa~
+INCLUDE ~faiths_and_powers/lib/kits_multi_druids_shamans.tpa~
 
 //ACTION_IF (%d5_multiclass_druids% = 1) BEGIN
   LAF fighter_druid END
@@ -118,7 +118,7 @@ BEGIN @92 // install multiclass shamans
 DESIGNATED 92
 REQUIRE_PREDICATE (GAME_IS ~bgee bg2ee eet iwdee~) @8
 
-INCLUDE ~faiths_and_powers/lib/fnp_compat.tpa~
+INCLUDE ~faiths_and_powers/lib/system_compat.tpa~
 ACTION_IF (FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~) BEGIN
   INCLUDE ~override/fnp_sphere_list.tpa~
   LAM d5_define_sphere_names
@@ -132,7 +132,7 @@ LAF enable_multiclasses END
 
 LAM d5_kit_choices
 
-INCLUDE ~faiths_and_powers/lib/multi_druids_shamans.tpa~
+INCLUDE ~faiths_and_powers/lib/kits_multi_druids_shamans.tpa~
 
 //ACTION_IF (%d5_multiclass_shamans% = 1) BEGIN
   LAF sham_barb END
@@ -174,7 +174,7 @@ DESIGNATED 95
 REQUIRE_PREDICATE (GAME_IS ~bgee bg2ee eet iwdee~) @8
 
 INCLUDE ~faiths_and_powers/lib/a7#add_kit_ex.tpa~
-INCLUDE ~faiths_and_powers/lib/fnp_compat.tpa~
+INCLUDE ~faiths_and_powers/lib/system_compat.tpa~
 ACTION_IF (FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~) BEGIN
   INCLUDE ~override/fnp_sphere_list.tpa~
    LAM d5_define_sphere_names
@@ -182,7 +182,7 @@ ACTION_IF (FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~) BEGIN
    LAM d5_deity_kit_sphere_lists
 END
 
-INCLUDE ~faiths_and_powers/lib/default_kit_spheres.tpa~
+INCLUDE ~faiths_and_powers/lib/kits_default_handling.tpa~
  LAF vanilla_kit_spheres END
  LAF mod_kit_spheres END
  LAF default_kit_spheres END
@@ -193,7 +193,7 @@ LAF enable_multiclasses END
 
 LAM d5_kit_choices
 
-INCLUDE ~faiths_and_powers/lib/add_multiclass_kits.tpa~
+INCLUDE ~faiths_and_powers/lib/kits_new_multiclass.tpa~
 
 ACTION_IF (%d5_cm_mystra% = 1) BEGIN
   LAF cm_mystra END
@@ -242,7 +242,7 @@ REQUIRE_PREDICATE (MOD_IS_INSTALLED ~fnp_multiclass.tp2~ ~91~) OR (MOD_IS_INSTAL
 
 //read in kit functions_____________________________________________________________
 //
-INCLUDE ~faiths_and_powers/lib/npc_kits.tpa~
+INCLUDE ~faiths_and_powers/lib/system_npc_kits.tpa~
 
 LAF npc_mc_kits END
 //__________________________________________________________________________________

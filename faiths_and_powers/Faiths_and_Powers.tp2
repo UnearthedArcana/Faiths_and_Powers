@@ -2,7 +2,7 @@ BACKUP ~faiths_and_powers/backup~
 AUTHOR ~SubtleD and Grammarsalad~
 
 
-VERSION ~0.82.0~
+VERSION ~0.82.1~
 
 
 //README ~faiths_and_powers/readme-pnp.html~
@@ -34,11 +34,11 @@ ALWAYS
 
 	INCLUDE ~faiths_and_powers/lib/qd_multiclass.tpa~
 
-	INCLUDE ~faiths_and_powers/lib/misc_fnp_functions.tpa~
+	INCLUDE ~faiths_and_powers/lib/system_misc_functions.tpa~
 
-	INCLUDE ~faiths_and_powers/lib/fnp_spontaneous.tpa~
+	INCLUDE ~faiths_and_powers/lib/system_fnp_spontaneous.tpa~
 
-	INCLUDE ~faiths_and_powers/lib/fnp_system.tpa~
+	INCLUDE ~faiths_and_powers/lib/system_base.tpa~
 	
 	INCLUDE ~faiths_and_powers/lib/spell_evasion.tpa~
 	
@@ -149,8 +149,8 @@ COPY ~faiths_and_powers/data/sphere_systems/sphere_list_fnp.tpa~ ~override/fnp_s
 //Add IWD spells if not already in game_____________________________________________
 //
 ACTION_CLEAR_ARRAY aoe_spell
-INCLUDE ~faiths_and_powers/lib/add_spells_v75.tpa~      	//includes spells from the 0.75 series  
-INCLUDE ~faiths_and_powers/lib/fnp_new_spells.tpa~   		//new spells from the 0.77 series 
+INCLUDE ~faiths_and_powers/lib/spells_new_v75.tpa~      	//includes spells from the 0.75 series  
+INCLUDE ~faiths_and_powers/lib/spells_new_fnp.tpa~   		//new spells from the 0.77 series 
 
 ACTION_IF !(GAME_IS ~iwdee~) BEGIN
   LAM v75_add_iwd_arcane_spells
@@ -171,7 +171,7 @@ COPY ~faiths_and_powers/data/hlas/system_FnP/~ ~weidu_external/faiths_and_powers
 
 //INCLUDE ~%mod_folder%/lib/immunities.tpa~					//	DO AT THE VERY END OF ALL SPELL INSTALLS
 
-INCLUDE ~faiths_and_powers/lib/sphere_system.tpa~
+INCLUDE ~faiths_and_powers/lib/system_spheres.tpa~
 
  LAF prep_vanilla_spells END
 
@@ -211,8 +211,8 @@ COPY ~faiths_and_powers/data/sphere_systems/sphere_list_2E.tpa~ ~override/fnp_sp
 //Add IWD spells if not already in game_____________________________________________
 //
 ACTION_CLEAR_ARRAY aoe_spell
-INCLUDE ~faiths_and_powers/lib/add_spells_v75.tpa~      	//includes spells from the 0.75 series  
-INCLUDE ~faiths_and_powers/lib/fnp_new_spells.tpa~   		//new spells from the 0.77 series 
+INCLUDE ~faiths_and_powers/lib/spells_new_v75.tpa~      	//includes spells from the 0.75 series  
+INCLUDE ~faiths_and_powers/lib/spells_new_fnp.tpa~   		//new spells from the 0.77 series 
 
 ACTION_IF !(GAME_IS ~iwdee~) BEGIN
   LAM v75_add_iwd_arcane_spells
@@ -234,7 +234,7 @@ COPY ~faiths_and_powers/data/hlas/system_2E/~ ~weidu_external/faiths_and_powers/
 
 //create sphere system______________________________________________________________
 //
-INCLUDE ~faiths_and_powers/lib/sphere_system.tpa~
+INCLUDE ~faiths_and_powers/lib/system_spheres.tpa~
 
  LAF prep_vanilla_spells END
 
@@ -275,8 +275,8 @@ COPY ~faiths_and_powers/data/sphere_systems/sphere_list_vplus.tpa~ ~override/fnp
 //Add IWD spells if not already in game_____________________________________________
 //
 ACTION_CLEAR_ARRAY aoe_spell
-INCLUDE ~faiths_and_powers/lib/add_spells_v75.tpa~      	//includes spells from the 0.75 series  
-INCLUDE ~faiths_and_powers/lib/fnp_new_spells.tpa~   		//new spells from the 0.77 series 
+INCLUDE ~faiths_and_powers/lib/spells_new_v75.tpa~      	//includes spells from the 0.75 series  
+INCLUDE ~faiths_and_powers/lib/spells_new_fnp.tpa~   		//new spells from the 0.77 series 
 
 ACTION_IF !(GAME_IS ~iwdee~) BEGIN
   LAM v75_add_iwd_arcane_spells
@@ -298,7 +298,7 @@ COPY ~faiths_and_powers/data/hlas/system_vplus/~ ~weidu_external/faiths_and_powe
 
 //create sphere system______________________________________________________________
 //
-INCLUDE ~faiths_and_powers/lib/sphere_system.tpa~
+INCLUDE ~faiths_and_powers/lib/system_spheres.tpa~
 
 INCLUDE ~override/fnp_sphere_list.tpa~
  LAM d5_define_sphere_names
@@ -386,8 +386,8 @@ COPY ~faiths_and_powers/data/sphere_systems/sphere_list_new_fnp.tpa~ ~override/f
 //Add IWD spells if not already in game_____________________________________________
 //
 ACTION_CLEAR_ARRAY aoe_spell
-INCLUDE ~faiths_and_powers/lib/add_spells_v75.tpa~      	//includes spells from the 0.75 series  
-INCLUDE ~faiths_and_powers/lib/fnp_new_spells.tpa~   		//new spells from the 0.77 series 
+INCLUDE ~faiths_and_powers/lib/spells_new_v75.tpa~      	//includes spells from the 0.75 series  
+INCLUDE ~faiths_and_powers/lib/spells_new_fnp.tpa~   		//new spells from the 0.77 series 
 
 ACTION_IF !(GAME_IS ~iwdee~) BEGIN
   LAM v75_add_iwd_arcane_spells
@@ -407,7 +407,7 @@ COPY ~faiths_and_powers/data/hlas/system_FnP_2/~ ~weidu_external/faiths_and_powe
 
 //INCLUDE ~%mod_folder%/lib/immunities.tpa~					//	DO AT THE VERY END OF ALL SPELL INSTALLS
 
-INCLUDE ~faiths_and_powers/lib/sphere_system.tpa~
+INCLUDE ~faiths_and_powers/lib/system_spheres.tpa~
 
  LAF prep_vanilla_spells END
 
@@ -445,8 +445,8 @@ ACTION_IF (FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~) BEGIN
 //Add IWD spells if not already in game_____________________________________________
 //
 ACTION_CLEAR_ARRAY aoe_spell
-INCLUDE ~faiths_and_powers/lib/add_spells_v75.tpa~      	//includes spells from the 0.75 series  
-INCLUDE ~faiths_and_powers/lib/fnp_new_spells.tpa~   		//new spells from the 0.77 series 
+INCLUDE ~faiths_and_powers/lib/spells_new_v75.tpa~      	//includes spells from the 0.75 series  
+INCLUDE ~faiths_and_powers/lib/spells_new_fnp.tpa~   		//new spells from the 0.77 series 
 
 ACTION_IF !(GAME_IS ~iwdee~) BEGIN
   LAM v75_add_iwd_arcane_spells
@@ -466,7 +466,7 @@ LAF fix_spell_bams END
 
 //create sphere system______________________________________________________________
 //
-INCLUDE ~faiths_and_powers/lib/sphere_system.tpa~
+INCLUDE ~faiths_and_powers/lib/system_spheres.tpa~
 
  LAF prep_vanilla_spells END
 
@@ -536,7 +536,7 @@ DESIGNATED 31
 ACTION_IF (FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~) BEGIN
   INCLUDE ~override/fnp_sphere_list.tpa~
 END
-INCLUDE ~faiths_and_powers/lib/add_cleric_kits.tpa~
+INCLUDE ~faiths_and_powers/lib/kits_new_clerics.tpa~
 
 ACTION_IF !(MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~21~) && !(MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~22~) &&! (MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~23~) && !(MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~24~) BEGIN
   COPY ~faiths_and_powers/lib/markers/d5_marker.d5~ ~override/d5__no_spheres.d5~
@@ -670,7 +670,7 @@ LAF remove_sc_menu_kits STR_VAR class = ~C~ END
 ACTION_IF	(ENGINE_IS ~tob bgt~) &&
 			(MOD_IS_INSTALLED ~DIVINE_REMIX/SETUP-DIVINE_REMIX.TP2~ ~1000~) &&
 			(FILE_EXISTS ~divine_remix/lib/macros.tph~) BEGIN
-  INCLUDE ~faiths_and_powers/lib/dr_compat.tpa~
+  INCLUDE ~faiths_and_powers/lib/kits_dr_compatibility.tpa~
   LAF cleric_dr_spheres END
 END
 
@@ -690,7 +690,7 @@ REQUIRE_PREDICATE (GAME_IS ~bgee bg2ee eet iwdee~) @8
 ACTION_IF (FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~) BEGIN
   INCLUDE ~override/fnp_sphere_list.tpa~
 END
-INCLUDE ~faiths_and_powers/lib/add_druid_kits.tpa~
+INCLUDE ~faiths_and_powers/lib/kits_new_druids.tpa~
 
 ACTION_IF !(MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~21~) && !(MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~22~) &&! (MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~23~) && !(MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~24~) BEGIN
   COPY ~faiths_and_powers/lib/markers/d5_marker.d5~ ~override/d5__no_spheres.d5~
@@ -789,8 +789,8 @@ REQUIRE_PREDICATE (GAME_IS ~bgee bg2ee eet iwdee~) @8
 ACTION_IF (FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~) BEGIN
   INCLUDE ~override/fnp_sphere_list.tpa~
 END
-INCLUDE ~faiths_and_powers/lib/add_champion_kits.tpa~
-INCLUDE ~faiths_and_powers/lib/add_zealot_kits.tpa~
+INCLUDE ~faiths_and_powers/lib/kits_new_pladins.tpa~
+INCLUDE ~faiths_and_powers/lib/kits_new_zealots.tpa~
 
 ACTION_IF !(MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~21~) && !(MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~22~) &&! (MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~23~) && !(MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~24~) BEGIN
   COPY ~faiths_and_powers/lib/markers/d5_marker.d5~ ~override/d5__no_spheres.d5~
@@ -941,7 +941,7 @@ REQUIRE_PREDICATE (GAME_IS ~bgee bg2ee eet iwdee~) @8
 ACTION_IF (FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~) BEGIN
   INCLUDE ~override/fnp_sphere_list.tpa~
 END
-INCLUDE ~faiths_and_powers/lib/add_ranger_kits.tpa~
+INCLUDE ~faiths_and_powers/lib/kits_new_rangers.tpa~
 
 ACTION_IF !(MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~21~) && !(MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~22~) &&! (MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~23~) && !(MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~24~) BEGIN
   COPY ~faiths_and_powers/lib/markers/d5_marker.d5~ ~override/d5__no_spheres.d5~
@@ -1019,20 +1019,20 @@ ACTION_IF (FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~) BEGIN
   LAM d5_deity_kit_sphere_lists
 END
 
-INCLUDE ~faiths_and_powers/lib/default_kit_spheres.tpa~
+INCLUDE ~faiths_and_powers/lib/kits_default_handling.tpa~
  LAF vanilla_kit_spheres END
  LAF mod_kit_spheres END
  LAF default_kit_spheres END
 //__________________________________________________________________________________
 
-//read fnp_system info in order to apply sphere system/item usability_______________
+//read system_base info in order to apply sphere system/item usability_______________
 //
 LAM ~READ_FNP_KIT_INFO~
 //__________________________________________________________________________________
 
 //alter item usability______________________________________________________________
 //
-INCLUDE ~faiths_and_powers/lib/item_usability.tpa~
+INCLUDE ~faiths_and_powers/lib/system_item_use.tpa~
  LAF change_usability END
  LAF apply_usability END
 //__________________________________________________________________________________
@@ -1069,20 +1069,20 @@ END
 
 //read in kit functions_____________________________________________________________
 //
-INCLUDE ~faiths_and_powers/lib/default_kit_spheres.tpa~
+INCLUDE ~faiths_and_powers/lib/kits_default_handling.tpa~
  LAF vanilla_kit_spheres END
  LAF mod_kit_spheres END
  LAF default_kit_spheres END
 //__________________________________________________________________________________
 
-//read fnp_system info in order to apply sphere system/item usability_______________
+//read system_base info in order to apply sphere system/item usability_______________
 //
 LAM ~READ_FNP_KIT_INFO~
 //__________________________________________________________________________________
 
 //Apply Sphere System_______________________________________________________________
 //
-INCLUDE ~faiths_and_powers/lib/sphere_system.tpa~
+INCLUDE ~faiths_and_powers/lib/system_spheres.tpa~
  LAF apply_spheres END
 //__________________________________________________________________________________
 
@@ -1126,7 +1126,7 @@ REQUIRE_PREDICATE (MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~31~) OR (MOD_IS_INS
 
 //read in kit functions_____________________________________________________________
 //
-INCLUDE ~faiths_and_powers/lib/npc_kits.tpa~
+INCLUDE ~faiths_and_powers/lib/system_npc_kits.tpa~
  LAF npc_sc_kits END
 //__________________________________________________________________________________
 
