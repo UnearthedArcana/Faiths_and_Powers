@@ -175,11 +175,152 @@ END
 // END
 
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
- ACTION_IF (ur_priest_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~b_clur~ learn_res = ~b_clurz~ END
  END
  END
  
+END
+//__________________________________________________________________________________
+
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+//								SCION OF BHAAL
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+DEFINE_ACTION_FUNCTION scion_bhaal BEGIN
+
+LAF check_kit_conflict END
+
+ADD_KIT ~D5_SCION_BHAAL~
+
+//WEAPON PROFICIENCIES________________________________________________________________
+//11     		                              T   S           F   Q             S S
+//10     		      L S                     W   C           L   U             W I
+//9      		      A M             B L S   O   I   W       A   A             O N
+//8      		      R A             A O H   H   M   A       I   R C   S       R G
+//7      		      G L           M S N O   A   I   R     H L   T R L H     2 D L 2                 E E E E E E E E E E E
+//6      		      E L       S   I T G R   N K T D H     A M   E O O O     H A E W E E E E E E E E X X X X X X X X X X X
+//5      		      S S   S B P   S A S T   D A A A A   S L O   R S N R   S A N W E X X X X X X X X T T T T T T T T T T T
+//4      		      W W   P L I   S R W S   E T R G M C P B R M S S G T D L N D E A T T T T T T T T R R R R R R R R R R R
+//3      		      O O B E U K A I D O W A D A W G M L E E N A T B B B A I D S A P R R R R R R R R A A A A A A A A A A A
+//2      		      R R O A N E X L S R O X S N A E E U A R I C A O O O R N E H P O A A A A A A A A 1 1 1 1 1 1 1 1 1 1 2
+//1      		      D D W R T D E E W D R E W A K R R B R D N E F W W W T G D I O N 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0
+~D5_SCION_BHAAL       0 0 0 0 0 0 0 0~
+~D5_SCION_BHAAL       0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 1 1 1 0 0 0 0 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
+
+//MINIMUM KIT STATS_________________________________________________________________
+//                 		STR DEX CON INT WIS CHR
+~D5_SCION_BHAAL         0   0   0   13  13  12~
+
+//KIT STAT MODIFIERS________________________________________________________________
+//                 		STR DEX CON INT WIS CHR
+~D5_SCION_BHAAL         0   0   0   0   0   0~
+
+//REQUIREMENTS TO DUAL TO THIS KIT_________________________________________________
+//                 		STR DEX CON INT WIS CHR
+~D5_SCION_BHAAL         0   0   0   0   0   0~
+
+//REQUIREMENTS TO DUAL FROM THIS KIT________________________________________________
+//                 		STR DEX CON INT WIS CHR
+~D5_SCION_BHAAL         0   0   0   0   0   0~
+
+//ALIGNMENT RESTRICTIONS____________________________________________________________
+//                 		LG LN LE NG TN NE CG CN CE
+~D5_SCION_BHAAL         1  1  1  1  1  1  1  1  1~
+
+//DUAL CLASS OPTIONS________________________________________________________________
+//                 		FT CL MA TH DR RA
+~D5_SCION_BHAAL         0  0  0  0  0  0~
+
+//KIT ABILITIES 2DA FILE______________________________________________________________
+~faiths_and_powers/kits/clerics/220_bhaal/d5clbha.2da~
+
+//RACIAL KIT AVAILABILITY_____________________________________________________________
+~K_D_E  K_C_E  K_C_G  K_C_H  K_C_HE  K_C_HL  K_C_HO~
+
+//UNUSABLE FLAGS AND KIT BASE CLASS_________________________________________________
+//CLASSES: Mage = 1, Fighter = 2, Cleric=3, Thief = 4, Bard = 5
+//         Paladin 6, Druid = 11, Ranger = 12, Sorcerer = 19
+//         Monk = 20
+~0x00004000 3~
+
+//HIGH LEVEL ABILITIES ABBREVIATION_________________________________________________
+~Ma0~
+
+//TOB STARTING EQUIPMENT_____________________________________________________________
+~LEAT14	* HELM07 BAG25 RING06 RING31 CLCK02 BOOT01 AMUL19 BRAC16 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 BOW18 SW1H39 STAF08~
+
+//CHARACTER CREATION KIT DESCRIPTION________________________________________________
+SAY @22001
+SAY @22002
+SAY @22003
+
+//EE KIT EXTRAS_____________________________________________________________________
+//
+ACTION_IF GAME_IS ~bgee bg2ee eet iwdee~ THEN BEGIN
+	LAF fl#add_kit_ee
+		INT_VAR
+			briefdesc = RESOLVE_STR_REF (@22003)
+		STR_VAR
+			kit_name = D5_SCION_BHAAL
+			clswpbon = ~0 0 3~
+	END
+END
+
+//BHAAL ABILITY FILES_______________________________________________________________
+//
+COPY ~faiths_and_powers/kits/clerics/220_bhaal/d5clbha.2da~ ~override~
+COPY_EXISTING ~spwi205.spl~ ~override/d5bhal1.spl~ // Horror
+  LPM spell_to_innate
+COPY_EXISTING ~sppr511.spl~ ~override/d5bhal2.spl~ // Slay Living
+  LPM spell_to_innate
+COPY_EXISTING ~sppr601.spl~ ~override/d5bhal3.spl~ // Aerial Servaant
+  LPM spell_to_innate
+
+
+//DEFINE SPHERE ACCESS______________________________________________________________
+//
+ LAF ~DEFINE_FNP_KIT_INFO~
+  INT_VAR
+	u_leather_armor 	= 1
+	u_chain_armor 		= 1
+	u_plate_armor 		= 1
+	u_club_staff	 	= 1
+	u_hammers	 		= 1
+	u_maces 	 		= 1
+	u_flails 			= 1
+	u_axes 				= 0
+	u_daggers 			= 1
+	u_short_swords		= 1
+	u_long_swords		= 0
+	u_scimitars 		= 0
+	u_katanas 			= 0
+	u_bastard_swords 	= 0
+	u_2hand_swords 		= 0
+	u_halberds 			= 1
+	u_spears 	 		= 1
+	u_darts 			= 0
+	u_slings		 	= 0
+	u_bows 				= 0
+	u_crossbows 		= 1
+  STR_VAR
+    clab_name 		= ~d5clbha~
+	sphere_list		= ~bhaal_spheres~
+	class 			= ~cleric~
+	multiclass 		= ~fc_ct~
+ END
+
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
+  LAF fnp_spontaneous STR_VAR kit_clab = ~d5clbha~ learn_res = ~d5cbhaz~ END
+ END
+ END
+
 END
 //__________________________________________________________________________________
 
@@ -385,7 +526,7 @@ END
  END
 
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
- ACTION_IF (cleric_azuth_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~d5clazu~ learn_res = ~d5cazuz~ END
  END
  END
@@ -613,7 +754,7 @@ COPY ~faiths_and_powers/spheres/spells/dread/b_c501.eff~ ~override/b_bes04.eff~ 
  END
 
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
- ACTION_IF (cleric_beshaba_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~b_abes~ learn_res = ~b_abesz~ END
  END
  END
@@ -778,7 +919,7 @@ END
  END
 
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
- ACTION_IF (cleric_cyric_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~b_ccyr~ learn_res = ~b_ccyrz~ END
  END
  END
@@ -933,7 +1074,7 @@ COPY_EXISTING ~SPPR303.spl~ ~override/b_den04.spl~ // dispel magic
  END
 
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
- ACTION_IF (cleric_deneir_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~b_aden~ learn_res = ~b_adenz~ END
  END
  END
@@ -1107,7 +1248,7 @@ END
  END
 
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
- ACTION_IF (cleric_helm_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~b_chel~ learn_res = ~b_chelz~ END
  END
  END
@@ -1259,7 +1400,7 @@ COPY ~faiths_and_powers/kits/clerics/314_ilmater/b_ilm03.spl~ ~override~  // End
  END
 
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
- ACTION_IF (cleric_ilmater_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~b_ailm~ learn_res = ~b_ailmz~ END
  END
  END
@@ -1467,7 +1608,7 @@ COPY_EXISTING ~SPPR413.spl~ ~override/b_kel02.spl~ // Works?
  END
 
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
- ACTION_IF (cleric_kelemvor_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~b_ckel~ learn_res = ~b_ckelz~ END
  END
  END
@@ -1643,7 +1784,7 @@ END
   END
 
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
- ACTION_IF (cleric_lathander_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~b_clat~ learn_res = ~b_clatz~ END
  END
  END
@@ -1780,7 +1921,7 @@ COPY ~faiths_and_powers/kits/clerics/212_leira/d5_lei1.spl~ ~override~
  END
 
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
- ACTION_IF (cleric_leira_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~d5clei~ learn_res = ~d5cleiz~ END
  END
  END
@@ -1939,7 +2080,7 @@ COPY ~faiths_and_powers/kits/clerics/219_loviatar/b_lov04.spl~     ~override~  /
  END
 
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
- ACTION_IF (cleric_loviatar_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~b_clov~ learn_res = ~b_clovz~ END
  END
  END
@@ -2227,7 +2368,7 @@ END
  END
 
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
- ACTION_IF (cleric_malar_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~d5clmal~ learn_res = ~d5cmalz~ END
  END
  END
@@ -2378,7 +2519,7 @@ COPY ~faiths_and_powers/kits/clerics/331_moander/b_moa3.spl~ ~override~    //Imm
  END
 
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
- ACTION_IF (cleric_moander_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~b_cmoa~ learn_res = ~b_cmoaz~ END
  END
  END
@@ -2542,7 +2683,7 @@ COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5myscw.spl~
  END
 
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
- ACTION_IF (cleric_mystra_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~d5clmys~ learn_res = ~d5cmysz~ END
  END
  END
@@ -2688,7 +2829,7 @@ COPY_EXISTING ~spwi509.spl~ ~override/d5oghm2.spl~
  END
 
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
- ACTION_IF (cleric_oghma_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~d5clogh~ learn_res = ~d5coghz~ END
  END
  END
@@ -2831,7 +2972,7 @@ COPY_EXISTING ~spwi815.spl~ ~override/d5shabl.spl~
  END
 
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
- ACTION_IF (cleric_shar_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~d5asha~ learn_res = ~d5ashaz~ END
  END
  END
@@ -3000,7 +3141,7 @@ COPY_EXISTING ~SPWI104.spl~ ~override/b_sun01.spl~ // Charm person
  END
 
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
- ACTION_IF (cleric_sune_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~b_asun~ learn_res = ~b_asunz~ END
  END
  END
@@ -3159,7 +3300,7 @@ END
  END
 
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
- ACTION_IF (cleric_talos_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~b_ctal~ learn_res = ~b_ctalz~ END
  END
  END
@@ -3323,7 +3464,7 @@ END
  END
 
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
- ACTION_IF (cleric_tempus_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~b_ctem~ learn_res = ~b_ctemz~ END
  END
  END
@@ -3465,7 +3606,7 @@ COPY ~faiths_and_powers/kits/clerics/322_tempus/b_tem02.spl~ ~override~  // WP A
  END
 
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
- ACTION_IF (priest_tempus_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~b_atem~ learn_res = ~b_atemz~ END
  END
  END
@@ -3607,7 +3748,7 @@ COPY_EXISTING ~SPPR102.spl~ ~override/b_tor01.spl~ // dispel magic
  END
 
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
- ACTION_IF (cleric_torm_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~b_ctor~ learn_res = ~b_ctorz~ END
  END
  END
@@ -3751,7 +3892,7 @@ COPY ~faiths_and_powers/kits/clerics/205_tymora/d5_tym1b.spl~ ~override~
  END
 
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
- ACTION_IF (cleric_tymora_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~d5ctym~ learn_res = ~d5ctymz~ END
  END
  END
@@ -3892,7 +4033,7 @@ COPY ~faiths_and_powers/kits/clerics/226_umberlee/b_umb.2da~ ~override~
  END
 
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
- ACTION_IF (cleric_umberlee_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~b_umb~ learn_res = ~b_umbz~ END
  END
  END
@@ -4076,7 +4217,7 @@ END
  END
 
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
- ACTION_IF (cleric_moradin_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~d5clmor~ learn_res = ~d5cmorz~ END
  END
  END
@@ -4221,7 +4362,7 @@ COPY ~faiths_and_powers/kits/clerics/372_clangeddin/d5clan3b.bam~ ~override~
  END
 
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
- ACTION_IF (cleric_clangeddin_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~d5clcla~ learn_res = ~d5cclaz~ END
  END
  END
@@ -4364,7 +4505,7 @@ COPY_EXISTING ~spwi305.spl~ ~override/d5mart4.spl~
  END
 
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
- ACTION_IF (cleric_marthammor_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~d5clmar~ learn_res = ~d5cmarz~ END
  END
  END
@@ -4509,7 +4650,7 @@ COPY ~faiths_and_powers/kits/clerics/210_tempus/b_tem05.spl~ ~override~    //+1 
  END
 
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
- ACTION_IF (cleric_haela_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~b_chae~ learn_res = ~b_chaez~ END
  END
  END
@@ -4653,7 +4794,7 @@ COPY_EXISTING ~spwi401.spl~ ~override/d5bara3.spl~
  END
 
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
- ACTION_IF (cleric_baravar_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~b_bara~ learn_res = ~b_baraz~ END
  END
  END
@@ -4964,7 +5105,7 @@ END
  END
 
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
- ACTION_IF (cleric_baervan_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~d5clbae~ learn_res = ~d5cbaez~ END
  END
  END
@@ -5105,7 +5246,7 @@ COPY_EXISTING ~spwi502.spl~ ~override/d5urdl4.spl~
  END
 
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
- ACTION_IF (cleric_urdlen_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~d5curdl~ learn_res = ~d5curdz~ END
  END
  END
@@ -5262,7 +5403,7 @@ COPY_EXISTING ~sppr413.spl~ ~override/d5yond4.spl~
  END
 
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
- ACTION_IF (cleric_yondalla_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~d5clyon~ learn_res = ~d5cyonz~ END
  END
  END
@@ -5425,7 +5566,7 @@ COPY ~faiths_and_powers/kits/clerics/392_arvoreen/d5arvo2.spl~ ~override~	// has
  END
 
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
- ACTION_IF (cleric_arvoreen_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~d5clarv~ learn_res = ~d5carvz~ END
  END
  END

@@ -270,7 +270,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~ohtyr.2da~ BEGIN
 	multiclass 		= ~fc~
  END
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
- ACTION_IF (cleric_tyr_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~ohtyr~ learn_res = ~ohtyrz~ END
  END
  END
@@ -314,7 +314,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~ohtempus.2da~ BEGIN
 	class 			= ~cleric~
  END
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
- ACTION_IF (cleric_tempus_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~d5tmpus~ learn_res = ~d5tmpuz~ END
  END
  END

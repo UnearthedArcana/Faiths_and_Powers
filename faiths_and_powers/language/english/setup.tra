@@ -7,8 +7,9 @@
 @20  = ~Create a sphere system~
 @21  = ~oFnP: the original Faiths & Powers sphere system~
 @22  = ~AD&D: a more traditional PnP-style sphere system (experimental/unfinished)~
-@23  = ~Vanilla Plus: everyone gets base spells, and kits get focus access to two spheres~
-@24  = ~nuFnP: a new custom sphere system (fewer spheres, more broadly balanced)~
+@23  = ~Vanilla: traditional spell lists, kits can cross the cleric/druid divide~
+@24  = ~VPlus: traditional spell lists, kits get focus access to two FnP spheres~
+@25  = ~nuFnP: a new custom sphere system (fewer spheres, more broadly balanced)~
 @28  = ~Custom: a player-supplied custom sphere system~
 @29  = ~None: no sphere system, just vanilla-style kits~
 //
@@ -581,8 +582,23 @@ Casting Time: 3
 Area of Effect: Path of bolt
 Saving Throw: 1/2
 
-Upon casting this spell, the cleric releases a powerful stroke of energy that inflicts 1d6 points of electrical damage per level of the spellcaster to each creature within its area of effect (maximum damage of 10d6). A successful Save vs. Spell reduces this damage to half (round fractions down). When the lightning bolt intersects with a wall, it will rebound until it reaches its full length - hitting the same enemy multiple times, or even members of the caster's own party.~
+Upon casting this spell, the cleric releases a powerful stroke of energy that inflicts 1d6 points of electrical damage per level of the spellcaster to each creature within its area of effect (maximum damage of 10d6). A successful Save vs. Spell reduces this damage to half (round fractions down). When the lightning bolt intersects with a wall, it will rebound until it reaches its full length - hitting the same enemy multiple times, or even members of the caster's own party.
+~
+//
+// ... scion of Bhaal:
+//
+@22001 = ~scion of bhaal~
+@22002 = ~Scion of Bhaal~
+@22003 = ~SCION OF BHAAL: It is said that before Bhaal was killed by Cyric during the Timme of Troubles, he foresaw his own demise and took steps to circumvent it. After all the power of a god - especially the god of death - does not fade away so quickly. While many Bhaalist priests lose their access to magic, it is said that some individuals have managed to hold on to a portion of his power. Whether this is through worship - as some priest of other missing deities like Leira have continued to receive blessings - or some other mechanism, is unknown. As to what might be done with such power and where it may lead, that too is unknown.
 
+Advantages:
+- At 3rd level, Scions of Bhaal may cast Horror as an innate ability once per day.
+- At 7th level, Scions of Bhaal may cast Slay Living as an innate ability once per day.
+- At 12th level, Scions of Bhaal may summon an Aerial Servant once per day.
+
+Restrictions:
+- none
+~
 //
 // ... cleric of Cyric:
 //

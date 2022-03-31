@@ -421,7 +421,7 @@ DEFINE_ACTION_FUNCTION auril_spheres
 	Cleric 				=> major
 	Death 				=> x
 	Vermin	 			=> x
-	Destruction 		=> focus
+	Destruction 		=> x
 	Protection 			=> x
 	War 				=> x
 	Exploration 		=> x
@@ -434,7 +434,7 @@ DEFINE_ACTION_FUNCTION auril_spheres
 	Animal 				=> x
 	Plant 				=> x
 	Earth 				=> x
-	Water 				=> focus
+	Water 				=> x
 	Air 				=> x
 	Fire 				=> x
 	Light 				=> x
@@ -458,7 +458,7 @@ DEFINE_ACTION_FUNCTION azuth_spheres
 	Protection 			=> x
 	War 				=> x
 	Exploration  		=> x
-	Knowledge 			=> focus
+	Knowledge 			=> x
 	Deception 			=> x
 	Thought 			=> x
 	Dread 				=> x
@@ -472,7 +472,7 @@ DEFINE_ACTION_FUNCTION azuth_spheres
 	Fire 				=> x
 	Light 				=> x
 	Shadow 				=> x
-	Magic 				=> focus
+	Magic 				=> x
 	Astral		 		=> x
  END
 END
@@ -487,9 +487,9 @@ DEFINE_ACTION_FUNCTION bane_spheres
 	Cleric				=> major
 	Death 				=> x
 	Vermin	 			=> x
-	Destruction 		=> focus
+	Destruction 		=> x
 	Protection 			=> x
-	War 				=> focus
+	War 				=> x
 	Exploration			=> x
 	Knowledge			=> x
 	Deception			=> x
@@ -525,9 +525,9 @@ DEFINE_ACTION_FUNCTION beshaba_spheres
 	War		 			=> x
 	Exploration		  	=> x
 	Knowledge		 	=> x
-	Deception	 		=> focus
+	Deception	 		=> x
 	Thought		 		=> x
-	Dread		 		=> focus
+	Dread		 		=> x
 	Druid		 		=> x
 	Affliction		 	=> x
 	Animal		 		=> x
@@ -553,9 +553,9 @@ DEFINE_ACTION_FUNCTION bhaal_spheres
 	Cleric				=> major
 	Death 				=> x
 	Vermin	 			=> x
-	Destruction 		=> focus
+	Destruction 		=> x
 	Protection 			=> x
-	War 				=> focus
+	War 				=> x
 	Exploration			=> x
 	Knowledge			=> x
 	Deception			=> x
@@ -584,9 +584,9 @@ DEFINE_ACTION_FUNCTION cyric_spheres
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY cyric_spheres_array BEGIN
 	Cleric		 		=> major
-	Death		 		=> focus
+	Death		 		=> x
 	Vermin				=> x
-	Destruction		 	=> focus
+	Destruction		 	=> x
 	Protection		 	=> x
 	War		 			=> x
 	Exploration		  	=> x
@@ -623,9 +623,9 @@ DEFINE_ACTION_FUNCTION deneir_spheres
 	Protection		 	=> x
 	War		 			=> x
 	Exploration		  	=> x
-	Knowledge		 	=> focus
+	Knowledge		 	=> x
 	Deception	 		=> x
-	Thought		 		=> focus
+	Thought		 		=> x
 	Dread		 		=> x
 	Druid		 		=> x
 	Affliction		 	=> x
@@ -652,9 +652,9 @@ DEFINE_ACTION_FUNCTION garagos_spheres
 	Cleric 				=> major
 	Death 				=> x
 	Vermin	 			=> x
-	Destruction 		=> focus
+	Destruction 		=> x
 	Protection 			=> x
-	War 				=> focus
+	War 				=> x
 	Exploration 		=> x
 	Knowledge 			=> x
 	Deception 			=> x
@@ -686,9 +686,9 @@ DEFINE_ACTION_FUNCTION helm_spheres
 	Vermin				=> x
 	Destruction		 	=> x
 	Protection		 	=> x
-	War		 			=> focus
+	War		 			=> x
 	Exploration		  	=> x
-	Knowledge		 	=> focus
+	Knowledge		 	=> x
 	Deception	 		=> x
 	Thought		 		=> x
 	Dread		 		=> x
@@ -718,7 +718,7 @@ DEFINE_ACTION_FUNCTION ilmater_spheres
 	Death		 		=> x
 	Vermin				=> x
 	Destruction		 	=> x
-	Protection		 	=> focus
+	Protection		 	=> x
 	War		 			=> x
 	Exploration		  	=> x
 	Knowledge		 	=> x
@@ -726,7 +726,7 @@ DEFINE_ACTION_FUNCTION ilmater_spheres
 	Thought		 		=> x
 	Dread		 		=> x
 	Druid		 		=> x
-	Affliction		 	=> focus
+	Affliction		 	=> x
 	Animal		 		=> x
 	Plant		 		=> x
 	Earth		 		=> x
@@ -748,10 +748,10 @@ DEFINE_ACTION_FUNCTION kelemvor_spheres
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY kelemvor_spheres_array BEGIN
 	Cleric		 		=> major
-	Death		 		=> focus
+	Death		 		=> x
 	Vermin				=> x
 	Destruction		 	=> x
-	Protection		 	=> focus
+	Protection		 	=> x
 	War		 			=> x
 	Exploration		  	=> x
 	Knowledge		 	=> x
@@ -798,7 +798,7 @@ DEFINE_ACTION_FUNCTION kossuth_spheres
 	Earth 				=> x
 	Water 				=> x
 	Air 				=> x
-	Fire 				=> focus
+	Fire 				=> x
 	Light 				=> x
 	Shadow 				=> x
 	Magic 				=> x
@@ -817,7 +817,7 @@ DEFINE_ACTION_FUNCTION lathander_spheres
 	Death		 		=> x
 	Vermin				=> x
 	Destruction		 	=> x
-	Protection		 	=> focus
+	Protection		 	=> x
 	War		 			=> x
 	Exploration		  	=> x
 	Knowledge		 	=> x
@@ -832,7 +832,7 @@ DEFINE_ACTION_FUNCTION lathander_spheres
 	Water		 		=> x
 	Air		 			=> x
 	Fire		 		=> x
-	Light	 			=> focus
+	Light	 			=> x
 	Shadow		 		=> x
 	Magic		 		=> x
 	Astral		    	=> x
@@ -852,9 +852,9 @@ DEFINE_ACTION_FUNCTION leira_spheres
 	Destruction		 	=> x
 	Protection		 	=> x
 	War		 			=> x
-	Exploration		  	=> focus
+	Exploration		  	=> x
 	Knowledge		 	=> x
-	Deception	 		=> focus
+	Deception	 		=> x
 	Thought		 		=> x
 	Dread		 		=> x
 	Druid		 		=> x
@@ -889,9 +889,9 @@ DEFINE_ACTION_FUNCTION loviatar_spheres
 	Knowledge		 	=> x
 	Deception	 		=> x
 	Thought		 		=> x
-	Dread		 		=> focus
+	Dread		 		=> x
 	Druid		 		=> x
-	Affliction		 	=> focus
+	Affliction		 	=> x
 	Animal		 		=> x
 	Plant		 		=> x
 	Earth		 		=> x
@@ -915,7 +915,7 @@ DEFINE_ACTION_FUNCTION malar_spheres
 	Cleric 				=> major
 	Death 				=> x
 	Vermin	 			=> x
-	Destruction 		=> focus
+	Destruction 		=> x
 	Protection 			=> x
 	War 				=> x
 	Exploration 		=> x
@@ -925,7 +925,7 @@ DEFINE_ACTION_FUNCTION malar_spheres
 	Dread 				=> x
 	Druid 				=> x
 	Affliction 			=> x
-	Animal 				=> focus
+	Animal 				=> x
 	Plant 				=> x
 	Earth 				=> x
 	Water 				=> x
@@ -951,9 +951,9 @@ DEFINE_ACTION_FUNCTION mask_spheres
 	Destruction		 	=> x
 	Protection		 	=> x
 	War		 			=> x
-	Exploration		  	=> focus
+	Exploration		  	=> x
 	Knowledge		 	=> x
-	Deception	 		=> focus
+	Deception	 		=> x
 	Thought		 		=> x
 	Dread		 		=> x
 	Druid		 		=> x
@@ -984,14 +984,14 @@ DEFINE_ACTION_FUNCTION mielikki_spheres
 	Destruction 		=> x
 	Protection 			=> x
 	War 				=> x
-	Exploration 		=> focus
+	Exploration 		=> x
 	Knowledge 			=> x
 	Deception 			=> x
 	Thought 			=> x
 	Dread 				=> x
 	Druid 				=> x
 	Affliction 			=> x
-	Animal 				=> focus
+	Animal 				=> x
 	Plant 				=> x
 	Earth 				=> x
 	Water 				=> x
@@ -1019,8 +1019,8 @@ DEFINE_ACTION_FUNCTION milil_spheres
 	War 				=> x
 	Exploration 		=> x
 	Knowledge 			=> x
-	Deception 			=> focus
-	Thought 			=> focus
+	Deception 			=> x
+	Thought 			=> x
 	Dread 				=> x
 	Druid 				=> x
 	Affliction 			=> x
@@ -1054,9 +1054,9 @@ DEFINE_ACTION_FUNCTION moander_spheres
 	Knowledge		 	=> x
 	Deception	 		=> x
 	Thought		 		=> x
-	Dread		 		=> focus
+	Dread		 		=> x
 	Druid		 		=> x
-	Affliction		 	=> focus
+	Affliction		 	=> x
 	Animal		 		=> x
 	Plant		 		=> x
 	Earth		 		=> x
@@ -1096,9 +1096,9 @@ DEFINE_ACTION_FUNCTION mystra_spheres
 	Water		 		=> x
 	Air		 			=> x
 	Fire		 		=> x
-	Light	 			=> focus
+	Light	 			=> x
 	Shadow		 		=> x
-	Magic		 		=> focus
+	Magic		 		=> x
 	Astral		    	=> x
  END
 END
@@ -1117,7 +1117,7 @@ DEFINE_ACTION_FUNCTION oghma_spheres
 	Protection 			=> x
 	War 				=> x
 	Exploration 		=> x
-	Knowledge 			=> focus
+	Knowledge 			=> x
 	Deception 			=> x
 	Thought 			=> x
 	Dread 				=> x
@@ -1131,7 +1131,7 @@ DEFINE_ACTION_FUNCTION oghma_spheres
 	Fire 				=> x
 	Light 				=> x
 	Shadow 				=> x
-	Magic 				=> focus
+	Magic 				=> x
 	Astral		    	=> x
  END
 END
@@ -1147,8 +1147,8 @@ DEFINE_ACTION_FUNCTION redknight_spheres
 	Death 				=> x
 	Vermin	 			=> x
 	Destruction 		=> x
-	Protection 			=> focus
-	War 				=> focus
+	Protection 			=> x
+	War 				=> x
 	Exploration 		=> x
 	Knowledge 			=> x
 	Deception 			=> x
@@ -1195,8 +1195,8 @@ DEFINE_ACTION_FUNCTION selune_spheres
 	Water 				=> x
 	Air 				=> x
 	Fire 				=> x
-	Light 				=> focus
-	Shadow 				=> focus
+	Light 				=> x
+	Shadow 				=> x
 	Magic 				=> x
 	Astral		    	=> x
  END
@@ -1229,8 +1229,8 @@ DEFINE_ACTION_FUNCTION shar_spheres
 	Air		 			=> x
 	Fire		 		=> x
 	Light	 			=> x
-	Shadow		 		=> focus
-	Magic		 		=> focus
+	Shadow		 		=> x
+	Magic		 		=> x
 	Astral		 	   => x
  END
 END
@@ -1248,7 +1248,7 @@ DEFINE_ACTION_FUNCTION shaundakul_spheres
 	Destruction 		=> x
 	Protection 			=> x
 	War 				=> x
-	Exploration 		=> focus
+	Exploration 		=> x
 	Knowledge 			=> x
 	Deception 			=> x
 	Thought 			=> x
@@ -1259,7 +1259,7 @@ DEFINE_ACTION_FUNCTION shaundakul_spheres
 	Plant 				=> x
 	Earth 				=> x
 	Water 				=> x
-	Air 				=> focus
+	Air 				=> x
 	Fire 				=> x
 	Light 				=> x
 	Shadow 				=> x
@@ -1284,7 +1284,7 @@ DEFINE_ACTION_FUNCTION sune_spheres
 	Exploration		  	=> x
 	Knowledge		 	=> x
 	Deception	 		=> x
-	Thought		 		=> focus
+	Thought		 		=> x
 	Dread		 		=> x
 	Druid		 		=> x
 	Affliction		 	=> x
@@ -1294,7 +1294,7 @@ DEFINE_ACTION_FUNCTION sune_spheres
 	Water		 		=> x
 	Air		 			=> x
 	Fire		 		=> x
-	Light	 			=> focus
+	Light	 			=> x
 	Shadow		 		=> x
 	Magic		 		=> x
 	Astral		    	=> x
@@ -1318,14 +1318,14 @@ DEFINE_ACTION_FUNCTION talos_spheres
 	Knowledge		 	=> x
 	Deception	 		=> x
 	Thought		 		=> x
-	Dread		 		=> focus
+	Dread		 		=> x
 	Druid		 		=> x
 	Affliction		 	=> x
 	Animal		 		=> x
 	Plant		 		=> x
 	Earth		 		=> x
 	Water		 		=> x
-	Air		 			=> focus
+	Air		 			=> x
 	Fire		 		=> x
 	Light	 			=> x
 	Shadow		 		=> x
@@ -1344,9 +1344,9 @@ DEFINE_ACTION_FUNCTION tempus_spheres
 	Cleric		 		=> major
 	Death		 		=> x
 	Vermin				=> x
-	Destruction		 	=> focus
+	Destruction		 	=> x
 	Protection		 	=> x
-	War		 			=> focus
+	War		 			=> x
 	Exploration		  	=> x
 	Knowledge		 	=> x
 	Deception	 		=> x
@@ -1378,8 +1378,8 @@ DEFINE_ACTION_FUNCTION torm_spheres
 	Death		 		=> x
 	Vermin				=> x
 	Destruction		 	=> x
-	Protection		 	=> focus
-	War		 			=> focus
+	Protection		 	=> x
+	War		 			=> x
 	Exploration		  	=> x
 	Knowledge		 	=> x
 	Deception	 		=> x
@@ -1413,10 +1413,10 @@ DEFINE_ACTION_FUNCTION tymora_spheres
 	Destruction		 	=> x
 	Protection		 	=> x
 	War		 			=> x
-	Exploration		  	=> focus
+	Exploration		  	=> x
 	Knowledge		 	=> x
 	Deception	 		=> x
-	Thought		 		=> focus
+	Thought		 		=> x
 	Dread		 		=> x
 	Druid		 		=> x
 	Affliction		 	=> x
@@ -1444,8 +1444,8 @@ DEFINE_ACTION_FUNCTION tyr_spheres
 	Death				=> x
 	Vermin				=> x
 	Destruction			=> x
-	Protection			=> focus
-	War					=> focus
+	Protection			=> x
+	War					=> x
 	Exploration			=> x
 	Knowledge			=> x
 	Deception			=> x
@@ -1489,13 +1489,13 @@ DEFINE_ACTION_FUNCTION ulutiu_spheres
 	Animal 				=> x
 	Plant 				=> x
 	Earth 				=> x
-	Water 				=> focus
-	Air 				=> focus
+	Water 				=> x
+	Air 				=> x
 	Fire 				=> x
 	Light 				=> x
 	Shadow 				=> x
 	Magic 				=> x
-	Astral		    	=> focus
+	Astral		    	=> x
  END
 END
 //___________________________________________________________________________________
@@ -1516,13 +1516,13 @@ DEFINE_ACTION_FUNCTION umberlee_spheres
 	Knowledge		 	=> x
 	Deception	 		=> x
 	Thought		 		=> x
-	Dread		 		=> focus
+	Dread		 		=> x
 	Druid		 		=> x
 	Affliction		 	=> x
 	Animal		 		=> x
 	Plant		 		=> x
 	Earth		 		=> x
-	Water		 		=> focus
+	Water		 		=> x
 	Air		 			=> x
 	Fire		 		=> x
 	Light	 			=> x
@@ -1542,14 +1542,14 @@ DEFINE_ACTION_FUNCTION xvim_spheres
 	Cleric 				=> major
 	Death 				=> x
 	Vermin	 			=> x
-	Destruction 		=> focus
+	Destruction 		=> x
 	Protection 			=> x
 	War 				=> x
 	Exploration 		=> x
 	Knowledge 			=> x
 	Deception 			=> x
 	Thought 			=> x
-	Dread 				=> focus
+	Dread 				=> x
 	Druid 				=> x
 	Affliction 			=> x
 	Animal 				=> x
@@ -1589,14 +1589,14 @@ DEFINE_ACTION_FUNCTION corellon_spheres
 	Druid 				=> x
 	Affliction 			=> x
 	Animal 				=> x
-	Plant 				=> focus
+	Plant 				=> x
 	Earth 				=> x
 	Water 				=> x
 	Air 				=> x
 	Fire 				=> x
 	Light 				=> x
 	Shadow 				=> x
-	Magic 				=> focus
+	Magic 				=> x
 	Astral		    	=> x
  END
 END
@@ -1614,7 +1614,7 @@ DEFINE_ACTION_FUNCTION eilistraee_spheres
 	Destruction 		=> x
 	Protection 			=> x
 	War 				=> x
-	Exploration  		=> focus
+	Exploration  		=> x
 	Knowledge 			=> x
 	Deception 			=> x
 	Thought 			=> x
@@ -1628,7 +1628,7 @@ DEFINE_ACTION_FUNCTION eilistraee_spheres
 	Air 				=> x
 	Fire 				=> x
 	Light 				=> x
-	Shadow 				=> focus
+	Shadow 				=> x
 	Magic 				=> x
 	Astral   			=> x
  END
@@ -1656,9 +1656,9 @@ DEFINE_ACTION_FUNCTION moradin_spheres
 	Affliction 			=> x
 	Animal 				=> x
 	Plant 				=> x
-	Earth 				=> focus
+	Earth 				=> x
 	Water 				=> x
-	Air 				=> focus
+	Air 				=> x
 	Fire 				=> x
 	Light 				=> x
 	Shadow 				=> x
@@ -1679,7 +1679,7 @@ DEFINE_ACTION_FUNCTION clangeddin_spheres
 	Vermin	 			=> x
 	Destruction 		=> x
 	Protection 			=> x
-	War 				=> focus
+	War 				=> x
 	Exploration 		=> x
 	Knowledge 			=> x
 	Deception 			=> x
@@ -1689,7 +1689,7 @@ DEFINE_ACTION_FUNCTION clangeddin_spheres
 	Affliction 			=> x
 	Animal 				=> x
 	Plant 				=> x
-	Earth 				=> focus
+	Earth 				=> x
 	Water 				=> x
 	Air 				=> x
 	Fire 				=> x
@@ -1713,7 +1713,7 @@ DEFINE_ACTION_FUNCTION marthammor_spheres
 	Destruction 		=> x
 	Protection 			=> x
 	War 				=> x
-	Exploration 		=> focus
+	Exploration 		=> x
 	Knowledge 			=> x
 	Deception 			=> x
 	Thought 			=> x
@@ -1722,7 +1722,7 @@ DEFINE_ACTION_FUNCTION marthammor_spheres
 	Affliction 			=> x
 	Animal 				=> x
 	Plant 				=> x
-	Earth 				=> focus
+	Earth 				=> x
 	Water 				=> x
 	Air 				=> x
 	Fire 				=> x
@@ -1746,7 +1746,7 @@ DEFINE_ACTION_FUNCTION haela_spheres
 	Destruction		 	=> x
 	Protection		 	=> x
 	War		 			=> x
-	Exploration		  	=> focus
+	Exploration		  	=> x
 	Knowledge		 	=> x
 	Deception	 		=> x
 	Thought		 		=> x
@@ -1755,7 +1755,7 @@ DEFINE_ACTION_FUNCTION haela_spheres
 	Affliction		 	=> x
 	Animal		 		=> x
 	Plant		 		=> x
-	Earth		 		=> focus
+	Earth		 		=> x
 	Water		 		=> x
 	Air		 			=> x
 	Fire		 		=> x
@@ -1781,7 +1781,7 @@ DEFINE_ACTION_FUNCTION baravar_spheres
 	War		 			=> x
 	Exploration		  	=> x
 	Knowledge		 	=> x
-	Deception	 		=> focus
+	Deception	 		=> x
 	Thought		 		=> x
 	Dread		 		=> x
 	Druid		 		=> x
@@ -1793,7 +1793,7 @@ DEFINE_ACTION_FUNCTION baravar_spheres
 	Air		 			=> x
 	Fire		 		=> x
 	Light	 			=> x
-	Shadow		 		=> focus
+	Shadow		 		=> x
 	Magic		 		=> x
 	Astral		    	=> x
  END
@@ -1819,8 +1819,8 @@ DEFINE_ACTION_FUNCTION baervan_spheres
 	Dread		 		=> x
 	Druid		 		=> x
 	Affliction		 	=> x
-	Animal		 		=> focus
-	Plant		 		=> focus
+	Animal		 		=> x
+	Plant		 		=> x
 	Earth		 		=> x
 	Water		 		=> x
 	Air		 			=> x
@@ -1849,9 +1849,9 @@ DEFINE_ACTION_FUNCTION urdlen_spheres
 	Knowledge		 	=> x
 	Deception	 		=> x
 	Thought		 		=> x
-	Dread		 		=> focus
+	Dread		 		=> x
 	Druid		 		=> x
-	Affliction		 	=> focus
+	Affliction		 	=> x
 	Animal		 		=> x
 	Plant		 		=> x
 	Earth		 		=> x
@@ -1876,7 +1876,7 @@ DEFINE_ACTION_FUNCTION yondalla_spheres
 	Death		 		=> x
 	Vermin				=> x
 	Destruction		 	=> x
-	Protection		 	=> focus
+	Protection		 	=> x
 	War		 			=> x
 	Exploration		  	=> x
 	Knowledge		 	=> x
@@ -1887,7 +1887,7 @@ DEFINE_ACTION_FUNCTION yondalla_spheres
 	Affliction		 	=> x
 	Animal		 		=> x
 	Plant		 		=> x
-	Earth		 		=> focus
+	Earth		 		=> x
 	Water		 		=> x
 	Air		 			=> x
 	Fire		 		=> x
@@ -1909,8 +1909,8 @@ DEFINE_ACTION_FUNCTION arvoreen_spheres
 	Death		 		=> x
 	Vermin				=> x
 	Destruction		 	=> x
-	Protection		 	=> focus
-	War		 			=> focus
+	Protection		 	=> x
+	War		 			=> x
 	Exploration		  	=> x
 	Knowledge		 	=> x
 	Deception	 		=> x
@@ -1944,9 +1944,9 @@ DEFINE_ACTION_FUNCTION brandobaris_spheres
 	Destruction		 	=> x
 	Protection		 	=> x
 	War		 			=> x
-	Exploration		  	=> focus
+	Exploration		  	=> x
 	Knowledge		 	=> x
-	Deception	 		=> focus
+	Deception	 		=> x
 	Thought		 		=> x
 	Dread		 		=> x
 	Druid		 		=> x
@@ -1974,9 +1974,9 @@ DEFINE_ACTION_FUNCTION gruumsh_spheres
 	Cleric 				=> major
 	Death 				=> x
 	Vermin	 			=> x
-	Destruction 		=> focus
+	Destruction 		=> x
 	Protection 			=> x
-	War 				=> focus
+	War 				=> x
 	Exploration 		=> x
 	Knowledge 			=> x
 	Deception 			=> x
@@ -2004,11 +2004,11 @@ DEFINE_ACTION_FUNCTION luthic_spheres
   RET_ARRAY luthic_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY luthic_spheres_array BEGIN
-	Cleric 				=> focus
+	Cleric 				=> x
 	Death 				=> x
 	Vermin	 			=> x
 	Destruction 		=> x
-	Protection 			=> focus
+	Protection 			=> x
 	War 				=> x
 	Exploration 		=> x
 	Knowledge 			=> x
@@ -2054,8 +2054,8 @@ DEFINE_ACTION_FUNCTION druid_forest_spheres
 	Druid 			=> major
 	Affliction 		=> x
 	Animal 			=> x
-	Plant 			=> focus
-	Earth 			=> focus
+	Plant 			=> x
+	Earth 			=> x
 	Water 			=> x
 	Air 			=> x
 	Fire 			=> x
@@ -2086,7 +2086,7 @@ DEFINE_ACTION_FUNCTION druid_totemic_spheres
 	Dread 			=> x
 	Druid 			=> major
 	Affliction 		=> x
-	Animal 			=> focus
+	Animal 			=> x
 	Plant 			=> x
 	Earth 			=> x
 	Water 			=> x
@@ -2095,7 +2095,7 @@ DEFINE_ACTION_FUNCTION druid_totemic_spheres
 	Light 			=> x
 	Shadow 			=> x
 	Magic 			=> x
-	Astral		 	=> focus
+	Astral		 	=> x
  END
 END
 //___________________________________________________________________________________
@@ -2108,7 +2108,7 @@ DEFINE_ACTION_FUNCTION druid_hivekeeper_spheres
   ACTION_DEFINE_ASSOCIATIVE_ARRAY druid_hivekeeper_spheres_array BEGIN
 	Cleric 			=> x
 	Death 			=> x
-	Vermin	 		=> focus
+	Vermin	 		=> x
 	Destruction 	=> x
 	Protection 		=> x
 	War 			=> x
@@ -2123,7 +2123,7 @@ DEFINE_ACTION_FUNCTION druid_hivekeeper_spheres
 	Plant 			=> x
 	Earth 			=> x
 	Water 			=> x
-	Air 			=> focus
+	Air 			=> x
 	Fire 			=> x
 	Light 			=> x
 	Shadow 			=> x
@@ -2154,8 +2154,8 @@ DEFINE_ACTION_FUNCTION druid_northern_spheres
 	Affliction 		=> x
 	Animal 			=> x
 	Plant 			=> x
-	Earth 			=> focus
-	Water 			=> focus
+	Earth 			=> x
+	Water 			=> x
 	Air 			=> x
 	Fire 			=> x
 	Light 			=> x
@@ -2186,13 +2186,13 @@ DEFINE_ACTION_FUNCTION druid_shadow_spheres
 	Druid 			=> major
 	Affliction 		=> x
 	Animal 			=> x
-	Plant 			=> focus
+	Plant 			=> x
 	Earth 			=> x
 	Water 			=> x
 	Air 			=> x
 	Fire 			=> x
 	Light 			=> x
-	Shadow 			=> focus
+	Shadow 			=> x
 	Magic 			=> x
 	Astral		 	=> x
  END
@@ -2207,7 +2207,7 @@ DEFINE_ACTION_FUNCTION druid_gray_spheres
   ACTION_DEFINE_ASSOCIATIVE_ARRAY druid_gray_spheres_array BEGIN
 	Cleric 			=> x
 	Death 			=> x
-	Vermin	 		=> focus
+	Vermin	 		=> x
 	Destruction 	=> x
 	Protection 		=> x
 	War 			=> x
@@ -2220,7 +2220,7 @@ DEFINE_ACTION_FUNCTION druid_gray_spheres
 	Affliction 		=> x
 	Animal 			=> x
 	Plant 			=> x
-	Earth 			=> focus
+	Earth 			=> x
 	Water 			=> x
 	Air 			=> x
 	Fire 			=> x
@@ -2239,7 +2239,7 @@ DEFINE_ACTION_FUNCTION druid_lost_spheres
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY druid_lost_spheres_array BEGIN
 	Cleric 			=> x
-	Death 			=> focus
+	Death 			=> x
 	Vermin	 		=> x
 	Destruction 	=> x
 	Protection 		=> x
@@ -2253,7 +2253,7 @@ DEFINE_ACTION_FUNCTION druid_lost_spheres
 	Affliction 		=> x
 	Animal 			=> x
 	Plant 			=> x
-	Earth 			=> focus
+	Earth 			=> x
 	Water 			=> x
 	Air 			=> x
 	Fire 			=> x
@@ -2277,7 +2277,7 @@ DEFINE_ACTION_FUNCTION beast_lord_spheres
 	Destruction 	=> x
 	Protection 		=> x
 	War 			=> x
-	Exploration 	=> focus
+	Exploration 	=> x
 	Knowledge 		=> x
 	Deception 		=> x
 	Thought 		=> x
@@ -2359,7 +2359,7 @@ DEFINE_ACTION_FUNCTION mystic_earth_spheres
 	Light 			=> x
 	Shadow 			=> x
 	Magic 			=> x
-	Astral			=> focus
+	Astral			=> major
  END
 END
 //___________________________________________________________________________________
@@ -2392,7 +2392,7 @@ DEFINE_ACTION_FUNCTION mystic_water_spheres
 	Light 			=> x
 	Shadow 			=> x
 	Magic 			=> x
-	Astral			=> focus
+	Astral			=> major
  END
 END
 //___________________________________________________________________________________
@@ -2425,7 +2425,7 @@ DEFINE_ACTION_FUNCTION mystic_air_spheres
 	Light 			=> x
 	Shadow 			=> x
 	Magic 			=> x
-	Astral			=> focus
+	Astral			=> major
  END
 END
 //___________________________________________________________________________________
@@ -2458,7 +2458,7 @@ DEFINE_ACTION_FUNCTION mystic_fire_spheres
 	Light 			=> x
 	Shadow 			=> x
 	Magic 			=> x
-	Astral			=> focus
+	Astral			=> major
  END
 END
 //___________________________________________________________________________________
@@ -2491,7 +2491,7 @@ DEFINE_ACTION_FUNCTION mystic_light_spheres
 	Light 			=> focus
 	Shadow 			=> x
 	Magic 			=> x
-	Astral			=> focus
+	Astral			=> major
  END
 END
 //___________________________________________________________________________________
@@ -2524,7 +2524,7 @@ DEFINE_ACTION_FUNCTION mystic_shadow_spheres
 	Light 			=> x
 	Shadow 			=> focus
 	Magic 			=> x
-	Astral			=> focus
+	Astral			=> major
  END
 END
 //___________________________________________________________________________________
@@ -2851,14 +2851,14 @@ DEFINE_ACTION_FUNCTION vanilla_shaman_spheres
 	Affliction 		=> x
 	Animal 			=> x
 	Plant 			=> x
-	Earth 			=> focus
+	Earth 			=> x
 	Water 			=> x
 	Air 			=> x
 	Fire 			=> x
 	Light 			=> x
 	Shadow 			=> x
 	Magic 			=> x
-	Astral			=> focus
+	Astral			=> major
  END
 END
 //___________________________________________________________________________________

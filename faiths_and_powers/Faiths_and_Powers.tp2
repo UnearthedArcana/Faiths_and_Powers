@@ -2,7 +2,7 @@ BACKUP ~faiths_and_powers/backup~
 AUTHOR ~SubtleD and Grammarsalad~
 
 
-VERSION ~0.82.4~
+VERSION ~0.82.5~
 
 
 //README ~faiths_and_powers/readme-pnp.html~
@@ -251,8 +251,119 @@ LAF create_spheres END
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 
-BEGIN @23 // vanilla plus - same as unmodded game, but kits gets focus access to two spheres
+BEGIN @23 // mostly vanilla - same as unmodded game, but kits can cross the cleric/druid divide
 DESIGNATED 23
+SUBCOMPONENT @20 
+REQUIRE_PREDICATE (GAME_IS ~bgee bg2ee eet iwdee~) @8
+
+COPY ~faiths_and_powers/lib/markers/d5_marker.d5~ ~override/d5__spheres.d5~
+COPY ~faiths_and_powers/lib/markers/d5_marker.d5~ ~override/d5__vanilla_spheres.d5~
+
+ACTION_IF (FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~) BEGIN
+  MOVE ~override/fnp_sphere_list.tpa~ ~weidu_external/faiths_and_powers/fnp_sphere_list_old.tpa~
+END
+
+//prep sphere system________________________________________________________________
+//
+COPY ~faiths_and_powers/data/sphere_systems/sphere_list_vanilla.tpa~ ~override/fnp_sphere_list.tpa~
+
+//change shaman known spells________________________________________________________
+//
+//LAF shaman_spells END
+//... nope, fold this into the d5_spontaneous function
+
+//Add IWD spells if not already in game_____________________________________________
+//
+ACTION_CLEAR_ARRAY aoe_spell
+INCLUDE ~faiths_and_powers/lib/spells_new_v75.tpa~      	//includes spells from the 0.75 series  
+INCLUDE ~faiths_and_powers/lib/spells_new_fnp.tpa~   		//new spells from the 0.77 series 
+
+ACTION_IF !(GAME_IS ~iwdee~) BEGIN
+  LAM v75_add_iwd_arcane_spells
+  LAM v75_add_iwd_divine_spells
+END
+
+// LAM v75_add_fnP_new_spells
+LAM v78_add_fnP_new_spells
+
+ACTION_IF (FILE_EXISTS_IN_GAME ~dvsrv4here.mrk~) BEGIN
+  LAM v75_apply_sr_aoe_deflection
+END  
+
+LAF fix_spell_bams END
+
+COPY ~faiths_and_powers/data/hlas/system_vplus/~ ~weidu_external/faiths_and_powers/hlas~
+
+//INCLUDE ~%mod_folder%/lib/immunities.tpa~					//	DO AT THE VERY END OF ALL SPELL INSTALLS
+
+//create sphere system______________________________________________________________
+//
+INCLUDE ~faiths_and_powers/lib/system_spheres.tpa~
+
+INCLUDE ~override/fnp_sphere_list.tpa~
+ LAM d5_define_sphere_names
+ LAM d5_define_sphere_spells
+ LAM d5_deity_kit_sphere_lists
+
+COPY ~d5/d5spsph.2da~ ~override~
+
+COPY_EXISTING_REGEXP ~^[Ss][Pp][Pp][Rr][1-7]\([0-4][0-9]\|50\)\.spl$~ ~override~
+  PATCH_IF (%SOURCE_SIZE% > 0x71) BEGIN
+    PATCH_IF !(~%SOURCE_RES%~ STRING_EQUAL_CASE ~SPPR721~) AND !(~%SOURCE_RES%~ STRING_EQUAL_CASE ~SPPR722~) AND !(~%SOURCE_RES%~ STRING_EQUAL_CASE ~SPPR723~) AND !(~%SOURCE_RES%~ STRING_EQUAL_CASE ~SPPR724~) AND !(~%SOURCE_RES%~ STRING_EQUAL_CASE ~SPPR725~) AND !(~%SOURCE_RES%~ STRING_EQUAL_CASE ~SPPR726~) AND !(~%SOURCE_RES%~ STRING_EQUAL_CASE ~SPPR727~) AND !(~%SOURCE_RES%~ STRING_EQUAL_CASE ~SPPR728~) AND !(~%SOURCE_RES%~ STRING_EQUAL_CASE ~SPPR729~) AND !(~%SOURCE_RES%~ STRING_EQUAL_CASE ~SPPR730~) AND !(~%SOURCE_RES%~ STRING_EQUAL_CASE ~SPPR731~) AND !(~%SOURCE_RES%~ STRING_EQUAL_CASE ~SPPR732~) BEGIN
+	  PATCH_IF !(FILE_CONTAINS_EVALUATED (~hidespl.2da~ ~%SOURCE_RES%~)) BEGIN
+	    READ_SHORT 0x1c ~spelltype~
+	    PATCH_IF (~spelltype~ = 2) BEGIN
+	      READ_BYTE 0x21 exclude
+	      PATCH_IF ((exclude BAND 0b11000000) = 0b10000000) BEGIN // valid for clerics
+	        SPRINT $cleric_only_spells(~%SOURCE_RES%~)~1~
+	      END
+	      PATCH_IF ((exclude BAND 0b11000000) = 0b01000000) BEGIN // valid for druids
+	        SPRINT $druid_only_spells(~%SOURCE_RES%~)~1~
+	      END
+	      PATCH_IF ((exclude BAND 0b11000000) = 0b00000000) BEGIN // valid for both
+	        SPRINT $cleric_druid_spells(~%SOURCE_RES%~)~1~
+	      END
+	      PATCH_IF ((exclude BAND 0b11000000) = 0b11000000) BEGIN // valid for neither
+	        SPRINT $shaman_only_spells(~%SOURCE_RES%~)~1~
+	      END
+	    END
+	  END
+	END
+  END
+BUT_ONLY
+
+ACTION_PHP_EACH cleric_only_spells AS res => ind BEGIN
+  APPEND ~d5spsph.2da~ ~%res%                 0	=	Cleric~
+END
+ACTION_PHP_EACH druid_only_spells AS res => ind BEGIN
+  APPEND ~d5spsph.2da~ ~%res%                 0	=	Druid~
+END
+ACTION_PHP_EACH cleric_druid_spells AS res => ind BEGIN
+  APPEND ~d5spsph.2da~ ~%res%                 0	=	Cleric~
+  APPEND ~d5spsph.2da~ ~%res%                 0	=	Druid~
+END
+
+LAF prep_vanilla_spells END
+
+LAF create_spheres END
+
+//all HLAs for everyone_____________________________________________________________
+//
+COPY_EXISTING ~faiths_and_powers/data/hlas/system_vplus/luclxyz.2da~ ~override~
+COPY_EXISTING ~faiths_and_powers/data/hlas/system_vplus/ludrxyz.2da~ ~override~
+COPY_EXISTING ~faiths_and_powers/data/hlas/system_vplus/lufcxyz.2da~ ~override~
+COPY_EXISTING ~faiths_and_powers/data/hlas/system_vplus/lucrxyz.2da~ ~override~
+COPY_EXISTING ~faiths_and_powers/data/hlas/system_vplus/luctxyz.2da~ ~override~
+COPY_EXISTING ~faiths_and_powers/data/hlas/system_vplus/lucmxyz.2da~ ~override~
+//__________________________________________________________________________________
+
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+BEGIN @24 // vanilla plus - same as unmodded game, but kits gets focus access to two spheres
+DESIGNATED 24
 SUBCOMPONENT @20 
 REQUIRE_PREDICATE (GAME_IS ~bgee bg2ee eet iwdee~) @8
 
@@ -362,8 +473,8 @@ COPY_EXISTING ~faiths_and_powers/data/hlas/system_vplus/lucmxyz.2da~ ~override~
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 
-BEGIN @24 // new FnP sphere system - fewer spheres, more broadly balanced
-DESIGNATED 24
+BEGIN @25 // new FnP sphere system - fewer spheres, more broadly balanced
+DESIGNATED 25
 SUBCOMPONENT @20 
 REQUIRE_PREDICATE (GAME_IS ~bgee bg2ee eet iwdee~) @8
 
@@ -588,6 +699,10 @@ ACTION_IF (%d5_cleric_yondalla% = 1) BEGIN
 END
 ACTION_IF (%d5_cleric_arvoreen% = 1) BEGIN
  LAF cleric_arvoreen END
+END
+ACTION_IF (%d5_scion_bhaal% = 1) BEGIN
+ LAF scion_bhaal END
+ OUTER_SET cleric_umd = 1
 END
 ACTION_IF (%d5_cleric_azuth% = 1) BEGIN
  LAF cleric_azuth END

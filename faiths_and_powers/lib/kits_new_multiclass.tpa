@@ -156,7 +156,7 @@ END
  END
 
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
- ACTION_IF (cm_mystra_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~d5cmmys~ learn_res = ~d5cmmyz~ END
  END
  END
@@ -327,7 +327,7 @@ END
  END
 
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
- ACTION_IF (cm_azuth_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~d5cmazu~ learn_res = ~d5cmazz~ END
  END
  END
@@ -480,7 +480,7 @@ COPY ~faiths_and_powers/kits/multiclass/491_cr_mielikki/d5crmie.2da~ ~override~
  END
 
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
- ACTION_IF (cr_mielikki_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~d5crmie~ learn_res = ~d5crmiz~ END
  END
  END
@@ -637,7 +637,7 @@ COPY_EXISTING ~spwi402.spl~ ~override/d5crsh1.spl~
  END
 
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
- ACTION_IF (cr_shaundakul_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~d5crshn~ learn_res = ~d5crshz~ END
  END
  END
@@ -805,7 +805,7 @@ COPY ~faiths_and_powers/kits/multiclass/469_mask/d5_mask3.cre~ ~override~
  END
 
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
- ACTION_IF (ct_mask_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~d5ctmas~ learn_res = ~d5ctmaz~ END
  END
  END
@@ -1026,7 +1026,7 @@ BUT_ONLY
  END
 
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
- ACTION_IF (ct_brandobaris_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~d5ctbra~ learn_res = ~d5ctbrz~ END
  END
  END

@@ -576,6 +576,39 @@ END
 
 //___________________________________________________________________________________
 //
+DEFINE_ACTION_FUNCTION bhaal_spheres 
+  RET_ARRAY bhaal_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY bhaal_spheres_array BEGIN
+	Life				=> minor
+	Death 				=> major
+	Vermin	 			=> x
+	Destruction 		=> focus
+	Protection 			=> minor
+	War 				=> major
+	Exploration			=> minor
+	Knowledge			=> minor
+	Deception			=> x
+	Thought 			=> x
+	Dread 				=> major
+	Vigor 				=> major
+	Affliction			=> major
+	Animal 				=> x
+	Plant 				=> x
+	Earth 				=> x
+	Water 				=> x
+	Air 				=> x
+	Fire 				=> x
+	Light 				=> x
+	Shadow 				=> minor
+	Magic 				=> x
+	Astral				=> major
+ END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
 DEFINE_ACTION_FUNCTION cyric_spheres 
   RET_ARRAY cyric_spheres_array
  BEGIN

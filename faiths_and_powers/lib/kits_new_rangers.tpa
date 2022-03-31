@@ -237,7 +237,7 @@ END
  END
 
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
- ACTION_IF (forest_ranger_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~d5rfor~ learn_res = ~d5rforz~ END
  END
  END
@@ -392,7 +392,7 @@ COPY ~faiths_and_powers/kits/rangers/902_mountain_ranger/d5enemmp.eff~ ~override
  END
 
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
- ACTION_IF (mountain_ranger_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~d5rmou~ learn_res = ~d5rmouz~ END
  END
  END
@@ -544,7 +544,7 @@ COPY ~faiths_and_powers/kits/rangers/904_desert_ranger/d5enemdl.eff~ ~override~
  END
 
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
- ACTION_IF (desert_ranger_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~d5rdes~ learn_res = ~d5rdesz~ END
  END
  END
@@ -693,7 +693,7 @@ COPY ~faiths_and_powers/kits/rangers/903_jungle_ranger/d5enemjj.eff~ ~override~
  END
 
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
- ACTION_IF (jungle_ranger_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~d5rjun~ learn_res = ~d5rjunz~ END
  END
  END
@@ -842,7 +842,7 @@ COPY ~faiths_and_powers/kits/rangers/905_arctic_ranger/d5enemaj.eff~ ~override~
  END
 
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
- ACTION_IF (arctic_ranger_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~d5rarc~ learn_res = ~d5rarcz~ END
  END
  END
@@ -1067,7 +1067,7 @@ END
 
 /* can't do spontaneous with 8-character CLAB
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
- ACTION_IF (beast_master_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~CLABRN04~ learn_res = ~d5rn04~ END
  END
  END
@@ -1203,7 +1203,7 @@ COPY ~faiths_and_powers/kits/rangers/954_barbarian_ranger/d5_rback.spl~ ~overrid
  END
 
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
- ACTION_IF (barbarian_ranger_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~d5rbarb~ learn_res = ~d5rbarz~ END
  END
  END
@@ -1365,7 +1365,7 @@ COPY ~faiths_and_powers/kits/rangers/953_mage_hunter/d5_mghs2.eff~ ~override~
  END
 
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
- ACTION_IF (mage_hunter_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~d5mageh~ learn_res = ~d5magez~ END
  END
  END
@@ -1498,7 +1498,7 @@ COPY ~faiths_and_powers/kits/rangers/955_elven_archer/d5earch.2da~ ~override~
  END
 
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
- ACTION_IF (elven_archer_spontaneous > 0) OR (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
   LAF fnp_spontaneous STR_VAR kit_clab = ~d5earch~ learn_res = ~d5earcz~ END
  END
  END

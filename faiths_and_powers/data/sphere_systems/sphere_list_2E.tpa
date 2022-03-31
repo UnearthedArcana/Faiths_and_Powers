@@ -558,6 +558,39 @@ END
 
 //___________________________________________________________________________________
 //
+DEFINE_ACTION_FUNCTION bhaal_spheres 
+  RET_ARRAY bhaal_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY bhaal_spheres_array BEGIN
+	Healing		 		=> minor
+	Necromantic		 	=> major
+	Creation			=> x
+	Decay				=> major
+	Protection		 	=> x
+	Combat		 		=> major
+	Travelers		  	=> x
+	Divination		 	=> minor
+	Wards		 		=> major
+	Thought		 		=> x
+	Charm		 		=> x
+	Law			 		=> major
+	Chaos			 	=> x
+	Animal		 		=> x
+	Plant		 		=> x
+	Earth		 		=> major
+	Water		 		=> x
+	Air		 			=> x
+	Fire		 		=> minor
+	Sun		 			=> x
+	Shadow		 		=> minor
+	Weather		 		=> x
+	Astral			    => minor
+ END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
 DEFINE_ACTION_FUNCTION cyric_spheres 
   RET_ARRAY cyric_spheres_array
  BEGIN
