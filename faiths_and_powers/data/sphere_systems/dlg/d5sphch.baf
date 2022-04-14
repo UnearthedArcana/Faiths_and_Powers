@@ -1,0 +1,17 @@
+IF
+	NumTimesTalkedTo(0)
+THEN
+	RESPONSE #100
+	SetNumTimesTalkedTo(1)
+	SetGlobal("D5_SPHCH","GLOBAL",1)
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5sphch",Myself))
+END
+
+IF
+	True()
+THEN
+	RESPONSE #100
+	SetGlobal("D5_SPHCH","GLOBAL",0)
+	SetNumTimesTalkedTo(0)
+	DestroySelf() 
+END

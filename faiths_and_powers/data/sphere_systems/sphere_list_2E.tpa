@@ -1,38 +1,115 @@
 // SPHERE NAMES___________________________________________________________________
 //
-// You can define the names of your spheres in the right-hand column
-// There can be 23 spheres at most; they must correspond to the FnP spheres
-// So DO NOT change anything in the left column.
 
 DEFINE_ACTION_MACRO d5_define_sphere_names BEGIN
 
-<<<<<<<< d5/d5altsph.2da
-2DA
-Universal		Universal
-Life 			Healing
-Death 			Necromantic
-Benediction 	Creation
-Destruction 	Decay
-Protection 		Protection
-War 			Combat
-Exploration     Travelers
-Knowledge 		Divination
-Deception 		Wards
-Thought 		Thought
-Dread 			Charm
-Vigor 			Law
-Affliction 		Chaos
-Animal 			Animal
-Plant 			Plant
-Earth 			Earth
-Air 			Air
-Water 			Water
-Fire 			Fire
-Light 			Sun
-Shadow 			Shadow
-Magic 			Weather
-Astral	 		Astral
->>>>>>>> 
+COPY ~faiths_and_powers/data/sphere_systems/d5altsph.2da~ ~override~
+
+OUTER_SPRINT new_Universal	 @12201	// Universal
+OUTER_SPRINT new_Life		 @12202	// Healing
+OUTER_SPRINT new_Death		 @12203	// Necromantic
+OUTER_SPRINT new_Benediction @12204	// Law
+OUTER_SPRINT new_Destruction @12205	// Chaos
+OUTER_SPRINT new_Protection  @12206	// Protection
+OUTER_SPRINT new_War		 @12207	// Combat
+OUTER_SPRINT new_Exploration @12208	// Travelers
+OUTER_SPRINT new_Knowledge 	 @12209	// Divination
+OUTER_SPRINT new_Deception 	 @12210	// Wards
+OUTER_SPRINT new_Thought 	 @12211	// Thought
+OUTER_SPRINT new_Dread		 @12212	// Charm
+OUTER_SPRINT new_Vigor		 @12213	// Creation
+OUTER_SPRINT new_Affliction  @12214	// Summoning
+OUTER_SPRINT new_Animal 	 @12215	// Animal
+OUTER_SPRINT new_Plant		 @12216	// Plant
+OUTER_SPRINT new_Earth		 @12217	// Earth
+OUTER_SPRINT new_Air		 @12218	// Air
+OUTER_SPRINT new_Water		 @12219	// Water
+OUTER_SPRINT new_Fire		 @12220	// Fire
+OUTER_SPRINT new_Light		 @12221	// Sun
+OUTER_SPRINT new_Shadow 	 @12222	// Weather
+OUTER_SPRINT new_Magic		 @12223	// Numbers
+OUTER_SPRINT new_Astral		 @12224	// Astral
+
+COPY_EXISTING ~d5altsph.2da~ ~override~
+  REPLACE_TEXTUALLY ~new_Universal~ ~%new_Universal%~
+  REPLACE_TEXTUALLY ~new_Life~ ~%new_Life%~
+  REPLACE_TEXTUALLY ~new_Death~ ~%new_Death%~
+  REPLACE_TEXTUALLY ~new_Benediction~ ~%new_Benediction%~
+  REPLACE_TEXTUALLY ~new_Destruction~ ~%new_Destruction%~
+  REPLACE_TEXTUALLY ~new_Protection~ ~%new_Protection%~
+  REPLACE_TEXTUALLY ~new_War~ ~%new_War%~
+  REPLACE_TEXTUALLY ~new_Exploration~ ~%new_Exploration%~
+  REPLACE_TEXTUALLY ~new_Knowledge~ ~%new_Knowledge%~
+  REPLACE_TEXTUALLY ~new_Deception~ ~%new_Deception%~
+  REPLACE_TEXTUALLY ~new_Thought~ ~%new_Thought%~
+  REPLACE_TEXTUALLY ~new_Dread~ ~%new_Dread%~
+  REPLACE_TEXTUALLY ~new_Vigor~ ~%new_Vigor%~
+  REPLACE_TEXTUALLY ~new_Affliction~ ~%new_Affliction%~
+  REPLACE_TEXTUALLY ~new_Animal~ ~%new_Animal%~
+  REPLACE_TEXTUALLY ~new_Plant~ ~%new_Plant%~
+  REPLACE_TEXTUALLY ~new_Earth~ ~%new_Earth%~
+  REPLACE_TEXTUALLY ~new_Air~ ~%new_Air%~
+  REPLACE_TEXTUALLY ~new_Water~ ~%new_Water%~
+  REPLACE_TEXTUALLY ~new_Fire~ ~%new_Fire%~
+  REPLACE_TEXTUALLY ~new_Light~ ~%new_Light%~
+  REPLACE_TEXTUALLY ~new_Shadow~ ~%new_Shadow%~
+  REPLACE_TEXTUALLY ~new_Magic~ ~%new_Magic%~
+  REPLACE_TEXTUALLY ~new_Astral~ ~%new_Astral%~
+
+WITH_TRA ~faiths_and_powers/language/english/setup.tra~ BEGIN
+
+OUTER_SPRINT eng_Universal	 @12201	// Universal
+OUTER_SPRINT eng_Life		 @12202	// Healing
+OUTER_SPRINT eng_Death		 @12203	// Necromantic
+OUTER_SPRINT eng_Benediction @12204	// Law
+OUTER_SPRINT eng_Destruction @12205	// Chaos
+OUTER_SPRINT eng_Protection  @12206	// Protection
+OUTER_SPRINT eng_War		 @12207	// Combat
+OUTER_SPRINT eng_Exploration @12208	// Travelers
+OUTER_SPRINT eng_Knowledge 	 @12209	// Divination
+OUTER_SPRINT eng_Deception 	 @12210	// Wards
+OUTER_SPRINT eng_Thought 	 @12211	// Thought
+OUTER_SPRINT eng_Dread		 @12212	// Charm
+OUTER_SPRINT eng_Vigor		 @12213	// Creation
+OUTER_SPRINT eng_Affliction  @12214	// Summoning
+OUTER_SPRINT eng_Animal 	 @12215	// Animal
+OUTER_SPRINT eng_Plant		 @12216	// Plant
+OUTER_SPRINT eng_Earth		 @12217	// Earth
+OUTER_SPRINT eng_Air		 @12218	// Air
+OUTER_SPRINT eng_Water		 @12219	// Water
+OUTER_SPRINT eng_Fire		 @12220	// Fire
+OUTER_SPRINT eng_Light		 @12221	// Sun
+OUTER_SPRINT eng_Shadow 	 @12222	// Weather
+OUTER_SPRINT eng_Magic		 @12223	// Numbers
+OUTER_SPRINT eng_Astral		 @12224	// Astral
+
+COPY_EXISTING ~d5altsph.2da~ ~override~
+  REPLACE_TEXTUALLY ~eng_Universal~ ~%eng_Universal%~
+  REPLACE_TEXTUALLY ~eng_Life~ ~%eng_Life%~
+  REPLACE_TEXTUALLY ~eng_Death~ ~%eng_Death%~
+  REPLACE_TEXTUALLY ~eng_Benediction~ ~%eng_Benediction%~
+  REPLACE_TEXTUALLY ~eng_Destruction~ ~%eng_Destruction%~
+  REPLACE_TEXTUALLY ~eng_Protection~ ~%eng_Protection%~
+  REPLACE_TEXTUALLY ~eng_War~ ~%eng_War%~
+  REPLACE_TEXTUALLY ~eng_Exploration~ ~%eng_Exploration%~
+  REPLACE_TEXTUALLY ~eng_Knowledge~ ~%eng_Knowledge%~
+  REPLACE_TEXTUALLY ~eng_Deception~ ~%eng_Deception%~
+  REPLACE_TEXTUALLY ~eng_Thought~ ~%eng_Thought%~
+  REPLACE_TEXTUALLY ~eng_Dread~ ~%eng_Dread%~
+  REPLACE_TEXTUALLY ~eng_Vigor~ ~%eng_Vigor%~
+  REPLACE_TEXTUALLY ~eng_Affliction~ ~%eng_Affliction%~
+  REPLACE_TEXTUALLY ~eng_Animal~ ~%eng_Animal%~
+  REPLACE_TEXTUALLY ~eng_Plant~ ~%eng_Plant%~
+  REPLACE_TEXTUALLY ~eng_Earth~ ~%eng_Earth%~
+  REPLACE_TEXTUALLY ~eng_Air~ ~%eng_Air%~
+  REPLACE_TEXTUALLY ~eng_Water~ ~%eng_Water%~
+  REPLACE_TEXTUALLY ~eng_Fire~ ~%eng_Fire%~
+  REPLACE_TEXTUALLY ~eng_Light~ ~%eng_Light%~
+  REPLACE_TEXTUALLY ~eng_Shadow~ ~%eng_Shadow%~
+  REPLACE_TEXTUALLY ~eng_Magic~ ~%eng_Magic%~
+  REPLACE_TEXTUALLY ~eng_Astral~ ~%eng_Astral%~
+
+END // end with_tra
 
 END	//	end sphere names macro
 //____________________________________________________________________________________
@@ -68,316 +145,181 @@ CLERIC_DISPEL_MAGIC                    	0	=	Universal // level 3
 CLERIC_REMOVE_CURSE                    	0	=	Universal // level 3
 CLERIC_LESSER_RESTORATION              	0	=	Universal // level 4
 CLERIC_RECITATION                      	0	=	Universal // level 4
-CLERIC_RIGHTEOUS_WRATH_OF_THE_FAITHFUL 	0	=	Universal // level 5
+CLERIC_CHAOTIC_COMMANDS                 0	=	Universal // level 5
 CLERIC_WONDROUS_RECALL                 	0	=	Universal // level 6
 CLERIC_HOLY_WORD                       	0	=	Universal // level 7
 CLERIC_UNHOLY_WORD                     	0	=	Universal // level 7
-CLERIC_CURE_LIGHT_WOUNDS               	1	=	Healing 
-CLERIC_SLOW_POISON                     	1	=	Healing  //B_Spells protection from  - 2nd level protection
-CLERIC_CURE_MODERATE_WOUNDS            	2	=	Healing  //SR accounted for
-CLERIC_CURE_MEDIUM_WOUNDS              	3	=	Healing
-CLERIC_EXALTATION                      	3	=	Healing
-CLERIC_CURE_DISEASE                    	3	=	Healing
-CLERIC_CURE_SERIOUS_WOUNDS             	4	=	Healing
-CLERIC_NEUTRALIZE_POISON               	4	=	Healing
-CLERIC_CURE_CRITICAL_WOUNDS            	5	=	Healing
-CLERIC_MASS_CURE                       	5	=	Healing
-CLERIC_HEAL                            	6	=	Healing
-CLERIC_REGENERATE                      	6	=	Healing
-CLERIC_RESTORATION                     	7	=	Healing
-CLERIC_RESURRECTION                    	7	=	Healing
-CLERIC_EYES_OF_THE_DEAD                	1	=	Necromantic
-CLERIC_DISRUPT_UNDEAD                  	1	=	Necromantic
-CLERIC_PACIFY_DEAD                     	2	=	Necromantic
-CLERIC_CIRCLE_OF_BONES                 	3	=	Necromantic  //Sr accounted for
-CLERIC_FAVOR_OF_ILMATER                	3	=	Necromantic
-CLERIC_ANIMATE_DEAD                    	3	=	Necromantic
-CLERIC_DEATH_WARD                      	4	=	Necromantic
-CLERIC_NEGATIVE_PLANE_PROTECTION       	4	=	Necromantic
-CLERIC_LESSER_RESTORATION              	4	=	Necromantic
-CLERIC_RAISE_DEAD                      	5	=	Necromantic
-CLERIC_REPULSE_UNDEAD                  	5	=	Necromantic  // SR repulsion
-B_W631                                 	6	=	Necromantic  //soul eater (needed???)
-CLERIC_FINGER_OF_DEATH                 	7	=	Necromantic
-CLERIC_BLESS_WATER                     	1	=	Creation
-CLERIC_BINDING                         	1	=	Creation
-CLERIC_ABUNDANT_AMMO                   	1	=	Creation
-WIZARD_GREASE                          	2	=	Creation 
-WIZARD_GLITTERDUST                     	2	=	Creation 
-WIZARD_WEB                             	3	=	Creation
-CLERIC_STAR_METAL_CUDGEL               	4	=	Creation
-WIZARD_PRISMATIC_SPRAY                 	7	=	Creation
-CLERIC_CAUSE_LIGHT_WOUNDS              	1	=	Decay
-CLERIC_CAUSE_DISEASE                   	1	=	Decay  //SR accounted for
-CLERIC_CAUSE_MODERATE_WOUNDS           	2	=	Decay  //SR accounted for
-WIZARD_BLINDNESS                       	2	=	Decay
-WIZARD_RAY_OF_ENFEEBLEMENT             	2	=	Decay
-CLERIC_MOLD_TOUCH                      	3	=	Decay
-CLERIC_CAUSE_MEDIUM_WOUNDS             	3	=	Decay
-CLERIC_CAUSE_SERIOUS_WOUNDS            	4	=	Decay
-CLERIC_POISON                          	4	=	Decay
-CLERIC_CAUSE_CRITICAL_WOUNDS           	5	=	Decay
-CLERIC_MASS_CAUSE_LIGHT_WOUNDS         	5	=	Decay  //SR accounted for
-CLERIC_SLAY_LIVING                     	5	=	Decay
-CLERIC_HARM                            	6	=	Decay
-CLERIC_DOLOROUS_DECAY                  	6	=	Decay
-CLERIC_WITHER                          	7	=	Decay
-CLERIC_DESTRUCTION                     	7	=	Decay
-CLERIC_PROTECT_FROM_EVIL               	1	=	Protection
-CLERIC_ARMOR_OF_FAITH                  	1	=	Protection
-CLERIC_SANCTUARY                       	1	=	Protection
-CLERIC_RESIST_FIRE_AND_COLD            	2	=	Protection
-CLERIC_SPIRITUAL_CLARITY               	3	=	Protection
-CLERIC_FAVOR_OF_ILMATER                	3	=	Protection
-CLERIC_PROTECTION_FROM_EVIL_10_FOOT    	4	=	Protection
-CLERIC_WALL_OF_MOONLIGHT               	4	=	Protection
-SR_CLERIC_REPULSE_UNDEAD             	5	=	Protection // SR repulsion
-CLERIC_MAGIC_RESISTANCE                	5	=	Protection
-CLERIC_PHYSICAL_MIRROR                 	6	=	Protection
-CLERIC_SHIELD_OF_THE_ARCHONS           	7	=	Protection
-CLERIC_GREATER_SHIELD_OF_LATHANDER     	7	=	Protection
-CLERIC_HAND_OF_CARNAGE                 	1	=	Combat
-CLERIC_MAGIC_WEAPON                    	1	=	Combat
-CLERIC_SPIRITUAL_HAMMER                	2	=	Combat
-CLERIC_DRAW_UPON_HOLY_MIGHT            	3	=	Combat
-CLERIC_HOLY_SMITE                      	3	=	Combat
-CLERIC_UNHOLY_BLIGHT                   	3	=	Combat
-CLERIC_HOLY_POWER                      	3	=	Combat
-CLERIC_RIGHTEOUS_MAGIC                 	5	=	Combat
-CLERIC_BLADE_BARRIER                   	6	=	Combat
-CLERIC_BOLT_OF_GLORY                   	6	=	Combat
-CLERIC_SPIRITUAL_WRATH                 	6	=	Combat
-b_w101                                 	1	=	Travelers // NEW SPELL  Expeditious Retreat
-CLERIC_REMOVE_PARALYSIS                	2	=	Travelers
-CLERIC_FREE_ACTION                     	3	=	Travelers
-WIZARD_KNOCK                           	3	=	Travelers
-CLERIC_UNFAILING_ENDURANCE             	4	=	Travelers
-WIZARD_TELEPORT_FIELD                  	6	=	Travelers // appropriate???
-WIZARD_INFRAVISION                     	1	=	Divination // SR true strike no need to change
-CLERIC_DETECT_EVIL                     	1	=	Divination
-CLERIC_FIND_TRAPS                      	2	=	Divination
-CLERIC_KNOW_ALIGNMENT                  	2	=	Divination // SR know opponent no need to change
-WIZARD_CLAIRVOYANCE                    	2	=	Divination
-CLERIC_FAR_SIGHT                       	4	=	Divination
-WIZARD_DETECT_ILLUSION                 	4	=	Divination
-WIZARD_ORACLE                          	5	=	Divination
-CLERIC_TRUE_SIGHT                      	6	=	Divination
-WIZARD_CONTINGENCY                     	7	=	Divination
-CLERIC_SPIRIT_WARD                     	1	=	Wards     // modify to work against all planar creatures	maybe undead too?
-CLERIC_SILENCE_15_FOOT                 	2	=	Wards
-CLERIC_GLYPH_OF_WARDING                	3	=	Wards
-CLERIC_INVISIBILITY_PURGE              	3	=	Wards
-CLERIC_SHIELD_OF_LATHANDER             	5	=	Wards
-CLERIC_UNDEAD_WARD                     	5	=	Wards
-CLERIC_SPIRITUAL_LOCK                  	6	=	Wards
-CLERIC_SYMBOL_FEAR                     	6	=	Wards // SR symbol weakness no need to change
-CLERIC_SYMBOL_OF_HOPELESSNESS          	6	=	Wards
-CLERIC_SYMBOL_DEATH                    	7	=	Wards
-CLERIC_SYMBOL_OF_PAIN                  	7	=	Wards
-CLERIC_SYMBOL_STUN                     	7	=	Wards
-CLERIC_COMMAND                         	1	=	Thought
-CLERIC_FORBID                          	2	=	Thought
-CLERIC_DICTATE                         	3	=	Thought
-CLERIC_MENTAL_DOMINATION               	4	=	Thought
-CLERIC_GREATER_COMMAND                 	5	=	Thought
-WIZARD_FEEBLEMIND                      	6	=	Thought
-CLERIC_IMPERVIOUS_SANCTITY_OF_MIND     	7	=	Thought
-CLERIC_DOOM                            	1	=	Charm
-CLERIC_REMOVE_FEAR                     	1	=	Charm
-CLERIC_ENTHRALL                        	2	=	Charm
-CLERIC_CHARM_PERSON                    	2	=	Charm
-CLERIC_HOLD_PERSON                     	3	=	Charm
-CLERIC_CLOAK_OF_FEAR                   	3	=	Charm
-b_w427                                 	4	=	Charm  //Emotion: Courage
-b_w428                                 	4	=	Charm  //Emotion: Fear
-b_w429                                 	4	=	Charm  //Emotion: Hope
-CLERIC_NATURE_BEAUTY                   	7	=	Charm
-CLERIC_COMMAND                         	1	=	Law
-CLERIC_CASTIGATE                       	2	=	Law    // NEW SPELL http://www.d20pfsrd.com/magic/all-spells/c/castigate single target fear
-CLERIC_STRENGTH_OF_ONE                 	3	=	Law
-CLERIC_RIGID_THINKING                  	3	=	Law  // sr accounted for
-CLERIC_DEFENSIVE_HARMONY               	4	=	Law
-CLERIC_CHAMPIONS_STRENGTH              	5	=	Law
-CLERIC_PHYSICAL_MIRROR                 	6	=	Law
-CLERIC_SHATTER                         	2	=	Chaos
-CLERIC_MISCAST_MAGIC                   	3	=	Chaos
-CLERIC_BLOOD_RAGE                      	4	=	Chaos
-CLERIC_CHAOTIC_COMMANDS                	5	=	Chaos
-CLERIC_ENTROPY_SHIELD                  	6	=	Chaos
-CLERIC_CONFUSION                       	6	=	Chaos
-CLERIC_ANIMAL_EYES                     	1	=	Animal
-CLERIC_HOLD_ANIMAL                     	1	=	Animal
-CLERIC_ANIMAL_SUMMONING_SR_LEVEL_1     	1	=	Animal // SR (present and future versions) accounted for
-CLERIC_BEAST_CLAW                      	2	=	Animal // SR accounted for
-CLERIC_ANIMAL_SUMMONING_SR_LEVEL_2     	2	=	Animal // SR (present and future versions) accounted for
-CLERIC_MAGIC_FANG                      	3	=	Animal // SR (present and future versions) accounted for
-CLERIC_SUMMON_INSECTS                  	3	=	Animal
-CLERIC_FERAL_INSTINCT                  	3	=	Animal
-CLERIC_ANIMAL_SUMMONING_SR_LEVEL_3     	3	=	Animal // SR (present and future versions) accounted for
-CLERIC_ANIMAL_SUMMONING_1              	4	=	Animal
-CLERIC_GIANT_INSECT                    	4	=	Animal
-CLERIC_ANIMAL_SUMMONING_2              	5	=	Animal
-CLERIC_INSECT_PLAGUE                   	5	=	Animal
-CLERIC_ANIMAL_RAGE                     	5	=	Animal
-CLERIC_ANIMAL_SUMMONING_3              	6	=	Animal
-CLERIC_CONJURE_ANIMALS                 	6	=	Animal
-CLERIC_CREEPING_DOOM                   	7	=	Animal
-CLERIC_ENTANGLE                        	1	=	Plant
-CLERIC_SHILLELAGH                      	1	=	Plant
-CLERIC_GOODBERRY                       	1	=	Plant // Disable if SR installed
-SR_CLERIC_GOODBERRY_DRUID_VERSION      	2	=	Plant // SR version- Enable if SR installed
-CLERIC_BARKSKIN                        	2	=	Plant
-CLERIC_THORN_SPRAY                     	3	=	Plant
-CLERIC_MOLD_TOUCH                      	3	=	Plant
-CLERIC_SNARE                           	3	=	Plant
-CLERIC_SPIKE_GROWTH                    	4	=	Plant // SR accounted for
-CLERIC_CALL_WOODLAND_BEINGS            	5	=	Plant
-CLERIC_NATURES_WRATH                   	6	=	Plant
-d5pr601                                	6	=	Plant // nature's wrath
-CLERIC_ASSASSIN_VINES                  	6	=	Plant
-CLERIC_STALKER                         	7	=	Plant
-CLERIC_MAGIC_STONE                     	1	=	Earth
-CLERIC_CAMOUFLAGE                      	1	=	Earth
-CLERIC_STONE_FIST                      	2	=	Earth
-CLERIC_SPIKE_STONES                    	3	=	Earth
-CLERIC_STAR_METAL_CUDGEL               	4	=	Earth
-CLERIC_IRONSKIN                        	5	=	Earth
-WIZARD_STONE_TO_FLESH                  	5	=	Earth
-CLERIC_CONJURE_EARTH_ELEMENTAL         	6	=	Earth
-WIZARD_FLESH_TO_STONE                  	6	=	Earth
-CLERIC_EARTHQUAKE                      	7	=	Earth
-WIZARD_IRON_BODY                     	7	=	Earth
-SR_CLERIC_OBSCURING_MIST               	1	=	Air // Sr SPELL
-CLERIC_ZONE_OF_SWEET_AIR                1	=	Air
-WIZARD_STINKING_CLOUD                  	2	=	Air
-CLERIC_CLOUD_OF_PESTILENCE             	4	=	Air
-WIZARD_CLOUDKILL                     	5	=	Air
-CLERIC_WHIRLWIND                       	5	=	Air
-CLERIC_AERIAL_SERVANT                  	6	=	Air
-CLERIC_FROST_FINGERS                   	1	=	Water
-CLERIC_WATERY_FIST                     	2	=	Water
-CLERIC_ICE_BLADE                       	2	=	Water
-b_w204                                 	2	=	Water // Snowball Swarm
-CLERIC_CLOUDBURST                      	3	=	Water
-b_w327                                 	3	=	Water // icelance
-CLERIC_SMASHING_WAVE                   	4	=	Water
-b_w432                                 	4	=	Water // vitriolic sphere
-WIZARD_ICE_STORM                       	5	=	Water
-CLERIC_MIST_OF_ELDATH                  	6	=	Water
-CLERIC_CONJURE_WATER_ELEMENTAL         	6	=	Water
-b_w724                                 	7	=	Water // acid storm
-WIZARD_BURNING_HANDS                   	1	=	Fire
-CLERIC_FLAME_BLADE                     	2	=	Fire
-CLERIC_PROTECTION_FROM_FIRE            	3	=	Fire
-CLERIC_PRODUCE_FIRE                    	4	=	Fire // SR accounted for
-CLERIC_FLAME_STRIKE                    	5	=	Fire
-WIZARD_FIRE_SHIELD_RED                 	5	=	Fire
-CLERIC_CONJURE_FIRE_ELEMENTAL          	6	=	Fire
-CLERIC_FIRE_SEEDS                      	6	=	Fire
-CLERIC_FIRE_STORM                      	7	=	Fire
-CLERIC_SUNSCORCH                       	1	=	Sun
-SR_CLERIC_FAERIE_FIRE                  	1	=	Sun // Enable in SR
-CLERIC_ALICORN_LANCE                    2	=	Sun
-CLERIC_MOONBLADE                       	3	=	Sun
-CLERIC_WALL_OF_MOONLIGHT               	4	=	Sun
-WIZARD_SUN_FIRE                        	5	=	Sun
-CLERIC_FALSE_DAWN                      	6	=	Sun
-CLERIC_SOL_SEARING_ORB                 	6	=	Sun
-CLERIC_SUNRAY                          	7	=	Sun
-b_w206                                 	2	=	Shadow // Blindness (and no conflicts with SR)
-CLERIC_CLOAK_DARKNESS                  	3	=	Shadow
-b_w426                                 	4	=	Shadow // Shadow Monsters
-WIZARD_PHANTOM_BLADE                   	4	=	Shadow
-WIZARD_SHADOW_DOOR                     	4	=	Shadow
-d5sh501                                	5	=	Shadow // summon shadows
-B_SSTEP                                	5	=	Shadow // shadowstep
-B_W629                                 	6	=	Shadow // Shades
-CLERIC_PIXIE_DUST                      	6	=	Shadow
-WIZARD_POWER_WORD_BLIND                	7	=	Shadow
-CLERIC_STORM_SHELL                     	3	=	Weather
-CLERIC_CALL_LIGHTNING                  	3	=	Weather
-CLERIC_PROTECTION_FROM_LIGHTNING       	4	=	Weather
-CLERIC_STATIC_CHARGE                   	4	=	Weather
-CLERIC_STORMWALL                       	4	=	Weather
-WIZARD_ICE_STORM                       	5	=	Weather
-WIZARD_CHAIN_LIGHTNING                 	6	=	Weather
-CLERIC_SPIRIT_WARD                     	1	=	Astral // modify to work against all planar creatures	maybe undead too?
-CLERIC_WRITHING_FOG                    	2	=	Astral
-CLERIC_SPIRIT_FIRE                     	3	=	Astral
-CLERIC_SPIRITUAL_LOCK                  	4	=	Astral // modify to work against all planar creatures
-CLERIC_RECALL_SPIRIT                   	5	=	Astral
-SR_WIZARD_DEATH_SPELL                  	6	=	Astral // sr banishment
-CLERIC_GATE                             7	=	Astral
+CLERIC_CHARM_PERSON                    	0	=	Animal
+CLERIC_HOLD_ANIMAL                     	0	=	Animal
+CLERIC_ANIMAL_SUMMONING_1	            0	=	Animal
+CLERIC_CALL_WOODLAND_BEINGS            	0	=	Animal
+CLERIC_ANIMAL_SUMMONING_2               0	=	Animal
+CLERIC_INSECT_PLAGUE                   	0	=	Animal
+CLERIC_ANIMAL_SUMMONING_3               0	=	Animal
+CLERIC_CREEPING_DOOM                   	0	=	Animal
+CLERIC_ALICORN_LANCE                   	0	=	Animal
+CLERIC_GIANT_INSECT                    	0	=	Animal
+CLERIC_SUMMON_INSECTS                  	0	=	Animal
+CLERIC_BEAST_CLAW                       0	=	Animal
+CLERIC_COMMAND                         	0	=	Charm
+CLERIC_DOOM                            	0	=	Charm
+CLERIC_REMOVE_FEAR                     	0	=	Charm
+CLERIC_SANCTUARY                       	0	=	Charm
+CLERIC_HOLD_PERSON                     	0	=	Charm
+CLERIC_FREE_ACTION                     	0	=	Charm
+CLERIC_CLOAK_OF_FEAR                   	0	=	Charm
+CLERIC_GREATER_COMMAND                 	0	=	Charm
+CLERIC_NATURE_BEAUTY                   	0	=	Charm
+CLERIC_CONFUSION                       	0	=	Charm
+CLERIC_MAGIC_STONE                     	0	=	Combat
+CLERIC_SHILLELAGH                      	0	=	Combat
+CLERIC_AID                             	0	=	Combat
+CLERIC_SPIRITUAL_HAMMER                	0	=	Combat
+CLERIC_HOLY_POWER                      	0	=	Combat
+CLERIC_FLAME_STRIKE                    	0	=	Combat
+CLERIC_RIGHTEOUS_MAGIC                 	0	=	Combat
+CLERIC_PIXIE_DUST                      	0	=	Combat
+CLERIC_DOLOROUS_DECAY                  	0	=	Combat
+CLERIC_BOLT_OF_GLORY                   	0	=	Combat
+CLERIC_FINGER_OF_DEATH                 	0	=	Combat
+CLERIC_ANIMAL_RAGE                     	0	=	Combat
+CLERIC_BEAST_CLAW                      	0	=	Combat
+CLERIC_BLOOD_RAGE                      	0	=	Combat
+CLERIC_CLOUD_OF_PESTILENCE             	0	=	Combat
+CLERIC_MOONBLADE                       	0	=	Combat
+CLERIC_SPIRITUAL_WRATH                 	0	=	Combat
+CLERIC_STAR_METAL_CUDGEL               	0	=	Combat
+CLERIC_DETECT_EVIL                     	0	=	Divination
+CLERIC_FIND_TRAPS                      	0	=	Divination
+CLERIC_KNOW_ALIGNMENT                  	0	=	Divination
+CLERIC_FAR_SIGHT                       	0	=	Divination
+CLERIC_TRUE_SIGHT                      	0	=	Divination
+CLERIC_IRONSKIN                        	0	=	Earth
+CLERIC_CONJURE_EARTH_ELEMENTAL         	0	=	Earth
+CLERIC_EARTHQUAKE                      	0	=	Earth
+CLERIC_SPIKE_GROWTH                    	0	=	Earth
+CLERIC_SPIKE_STONES                    	0	=	Earth
+CLERIC_FLAME_BLADE                     	0	=	Fire
+CLERIC_PROTECTION_FROM_FIRE            	0	=	Fire
+CLERIC_CONJURE_FIRE_ELEMENTAL          	0	=	Fire
+CLERIC_FIRE_SEEDS                      	0	=	Fire
+CLERIC_FIRE_STORM                      	0	=	Fire
+CLERIC_PRODUCE_FIRE                    	0	=	Fire
+CLERIC_CURE_LIGHT_WOUNDS               	0	=	Healing
+CLERIC_SLOW_POISON                     	0	=	Healing
+CLERIC_CURE_MEDIUM_WOUNDS              	0	=	Healing
+CLERIC_CURE_DISEASE                    	0	=	Healing
+CLERIC_CURE_SERIOUS_WOUNDS             	0	=	Healing
+CLERIC_NEUTRALIZE_POISON               	0	=	Healing
+CLERIC_POISON                          	0	=	Healing
+CLERIC_CAUSE_SERIOUS_WOUNDS            	0	=	Healing
+CLERIC_CURE_CRITICAL_WOUNDS            	0	=	Healing
+CLERIC_CAUSE_CRITICAL_WOUNDS           	0	=	Healing
+CLERIC_MASS_CURE                       	0	=	Healing
+CLERIC_HEAL                            	0	=	Healing
+CLERIC_HARM                            	0	=	Healing
+CLERIC_CAUSE_DISEASE                   	0	=	Healing
+CLERIC_CAUSE_LIGHT_WOUNDS              	0	=	Healing
+CLERIC_CAUSE_MODERATE_WOUNDS           	0	=	Healing
+CLERIC_CURE_MODERATE_WOUNDS            	0	=	Healing
+CLERIC_DESTRUCTION                     	0	=	Healing
+CLERIC_EXALTATION                      	0	=	Healing
+CLERIC_MASS_CAUSE_LIGHT_WOUNDS         	0	=	Healing
+CLERIC_WITHER                          	0	=	Healing
+CLERIC_RIGID_THINKING                  	0	=	Law
+CLERIC_STRENGTH_OF_ONE                 	0	=	Law
+CLERIC_DEFENSIVE_HARMONY               	0	=	Law
+CLERIC_CHAMPIONS_STRENGTH              	0	=	Law
+CLERIC_COMMAND                          0	=	Law
+CLERIC_HOLD_PERSON                      0	=	Law
+CLERIC_GREATER_COMMAND                  0	=	Law
+CLERIC_ANIMATE_DEAD                    	0	=	Necromantic
+CLERIC_REMOVE_PARALYSIS                	0	=	Necromantic
+CLERIC_HOLY_SMITE                      	0	=	Necromantic
+CLERIC_UNHOLY_BLIGHT                   	0	=	Necromantic
+CLERIC_DEATH_WARD                      	0	=	Necromantic
+CLERIC_NEGATIVE_PLANE_PROTECTION       	0	=	Necromantic
+CLERIC_RAISE_DEAD                      	0	=	Necromantic
+CLERIC_SLAY_LIVING                     	0	=	Necromantic
+CLERIC_REPULSE_UNDEAD                  	0	=	Necromantic
+CLERIC_REGENERATE                      	0	=	Necromantic
+CLERIC_RESURRECTION                    	0	=	Necromantic
+CLERIC_RESTORATION                     	0	=	Necromantic
+CLERIC_ENERGY_DRAIN                    	0	=	Necromantic
+CLERIC_FAVOR_OF_ILMATER                	0	=	Necromantic
+CLERIC_UNFAILING_ENDURANCE             	0	=	Necromantic
+CLERIC_AID                              0	=	Necromantic
+CLERIC_DOLOROUS_DECAY                   0	=	Necromantic
+CLERIC_ENTANGLE                        	0	=	Plant
+CLERIC_BARKSKIN                        	0	=	Plant
+CLERIC_GOOD_BERRIES                    	0	=	Plant
+CLERIC_GOODBERRY                       	0	=	Plant
+CLERIC_MOLD_TOUCH                      	0	=	Plant
+CLERIC_STALKER                         	0	=	Plant
+CLERIC_THORN_SPRAY                     	0	=	Plant
+CLERIC_SHILLELAGH                       0	=	Plant
+CLERIC_ARMOR_OF_FAITH                  	0	=	Protection
+CLERIC_PROTECT_FROM_EVIL               	0	=	Protection
+CLERIC_RESIST_FIRE                     	0	=	Protection
+CLERIC_PROTECTION_FROM_EVIL_10_FOOT	    0	=	Protection
+CLERIC_MAGIC_RESISTANCE                	0	=	Protection
+CLERIC_SHIELD_OF_THE_ARCHONS           	0	=	Protection
+CLERIC_ENTROPY_SHIELD                  	0	=	Protection
+CLERIC_IMPERVIOUS_SANCTITY_OF_MIND     	0	=	Protection
+CLERIC_RESIST_FIRE_AND_COLD            	0	=	Protection
+CLERIC_STORM_SHELL                     	0	=	Protection
+CLERIC_WALL_OF_MOONLIGHT               	0	=	Protection
+CLERIC_SANCTUARY                        0	=	Protection
+CLERIC_REMOVE_PARALYSIS                 0	=	Protection
+CLERIC_NEGATIVE_PLANE_PROTECTION        0	=	Protection
+CLERIC_FAVOR_OF_ILMATER                 0	=	Protection
+CLERIC_FALSE_DAWN                      	0	=	Sun
+CLERIC_SOL_SEARING_ORB                 	0	=	Sun
+CLERIC_SUNRAY                          	0	=	Sun
+CLERIC_SUNSCORCH                       	0	=	Sun
+CLERIC_MOONBLADE                        0	=	Sun
+CLERIC_WALL_OF_MOONLIGHT                0	=	Sun
+CLERIC_SILENCE_15_FOOT	                0	=	Wards
+CLERIC_GLYPH_OF_WARDING                	0	=	Wards
+CLERIC_INVISIBILITY_PURGE              	0	=	Wards
+CLERIC_SYMBOL_FEAR                     	0	=	Wards
+CLERIC_SYMBOL_STUN                     	0	=	Wards
+CLERIC_SYMBOL_DEATH                    	0	=	Wards
+CLERIC_GREATER_SHIELD_OF_LATHANDER     	0	=	Wards
+CLERIC_SHIELD_OF_LATHANDER             	0	=	Wards
+CLERIC_SYMBOL_OF_HOPELESSNESS          	0	=	Wards
+CLERIC_SYMBOL_OF_PAIN                  	0	=	Wards
+CLERIC_UNDEAD_WARD                     	0	=	Wards
+CLERIC_ZONE_OF_SWEET_AIR                0	=	Wards
+CLERIC_BLADE_BARRIER                    0	=	Wards
+CLERIC_CIRCLE_OF_BONES                  0	=	Wards
+CLERIC_ZONE_OF_SWEET_AIR               	0	=	Air
+CLERIC_WHIRLWIND                       	0	=	Air
+CLERIC_CLOUD_OF_PESTILENCE              0	=	Air
+CLERIC_GATE                            	0	=	Astral
+CLERIC_MISCAST_MAGIC                   	0	=	Chaos
+CLERIC_CHAOTIC_COMMANDS                	0	=	Chaos
+CLERIC_BLADE_BARRIER                   	0	=	Creation
+CLERIC_CIRCLE_OF_BONES                 	0	=	Creation
+CLERIC_WONDROUS_RECALL                  0	=	Creation
+CLERIC_PHYSICAL_MIRROR                 	0	=	Numbers
+CLERIC_DRAW_UPON_HOLY_MIGHT            	0	=	Summoning
+CLERIC_AERIAL_SERVANT                  	0	=	Summoning
+CLERIC_CONJURE_ANIMALS                 	0	=	Summoning
+CLERIC_BOLT_OF_GLORY                    0	=	Summoning
+CLERIC_MENTAL_DOMINATION               	0	=	Thought
+CLERIC_IMPERVIOUS_SANCTITY_OF_MIND      0	=	Thought
+CLERIC_IMPREGNABLE_MIND                 0	=	Thought
+CLERIC_CLOUDBURST                      	0	=	Water
+CLERIC_MIST_OF_ELDATH                  	0	=	Water
+CLERIC_SMASHING_WAVE                   	0	=	Water
+CLERIC_CALL_LIGHTNING                  	0	=	Weather
+CLERIC_PROTECTION_FROM_LIGHTNING       	0	=	Weather
+CLERIC_STATIC_CHARGE                   	0	=	Weather
+CLERIC_STORM_SHELL                      0	=	Weather
 >>>>>>>>
 
 END	//	end sphere spells macro
-
-/*
-
-NOTES:
-//B_CLERIC_SLOW_POISON                 , 2 => Protection  //B_Spells protection from poison/disease
-//WIZARD_INCENDIARY_CLOUD                , 7 => Fire //QUEST???
-
-ADD:
-//Divine Symbol                        , 2 => Creation //NEW SPELL
-//Minor Creation                       , 2 => Creation // NEW SPELL http://pathfinder.d20srd.org/coreRulebook/spells/minorCreation.html#minor-creation //create norm objects 10 mins/level
-//Amanuensis                           , 4 => Creation // NEW SPELL Creates temporary scrolls p 22
-//Disable Construct                    , 4 => Creation // NEW SPELL http://www.d20pfsrd.com/magic/all-spells/d/disable-construct no save 1st round. Save each round after
-//Vesting                              , 5 => Creation // NEW SPELL Create magic potions or wands
-//Heroes' feast                        , 6 => Creation // NEW SPELL
-//Animate Weapon                       , 7 => Creation // NEW SPELL p37, but 7th lev, so mordy like
-//d5clgol /*clay golem*/                 , 5
-//d5stgol /*stone golem*/                , 6
-//d5jugol /*juggernaut golem*/           , 7 // or make this the HLA...?
-//WIZARD_MORDENKAINENS_SWORD             , 7 // or 6
-//Forced match                         , 2 => Combat //NEW SPELL
-//Liberation                           , 1 => Travelers // NEW SPELL  (save to remove hold/charm like effects)
-//Lighten Load                         , 2 => Travelers //Creates a temporary bag of holding that lasts for 8 hours.  Warning! Empty before duration ends.  Only 1 spell of this kind can be active at any given time.  (MAYBE dup objects and replacing with 1/2 weight replacements p375) 
-//Longstrider                          , 3 => Travelers // NEW SPELL  (2x move 8 hr; not in combat)
-//Priest Wiz eye type thing            , 4 => Travelers // NEW SPELL (as wiz)
-//Dimensional Jump                     , 4 => Travelers // NEW SPELL (as wiz)
-//Clear the Path                       , 5 => Travelers // NEW SPELL p122 Constantly Dispel spells like web and entangle over a period of time (remove traps possible???) 
-//Helping Hand                         , 5 => Travelers // NEW SPELL Creates a 'hand' that can perform thief duties or carry load (by opening a store).  Cannot fight or do anything combat related.                     
-//Foresight                            , 5 => Divination //NEW SPELL 1 round cast, lasts 1 hour, +2 AC, saves, immune to backstab, +2 bonus to weapon and casting speed caster only
-//Thief's Lament                       , 4 => Wards //NEW SPELL (creates an 'imaginary' trap, doing 1d8 non-lethal dam/2 lev
-//Impart knowledge                     , 2 => Thought //Give a proficiency p347
-//Iron Mind                            , 2 => Thought  //NEW SPELL As wiz spell
-//Agonizing rebuke                     , 3 => Thought //NEW SPELL Source???? Cre that hits caster suffers magic damage if no save
-//Forget                               , 4 => Thought //NEW SPELL Target forgets a spell or 2
-//Impgrenatable Mind                   , 4 => Thought //NEW SPELL +4 saves vs. spell, save where no save allowed (doable? relevant?) 2 turn duration p349
-//Mind Sight                           , 5 => Thought //NEW SPELL as wiz spell
-//Disbelief                            , 6 => Thought //NEW SPELL p208.  Caster gains prot vs. all creatures, but cannot target other creatues with spells/abilities (??)
-//Vigil                                , 1 => Charm // NEW SPELL p.20 no Exhaustion 1 hour, immune to sleep effects
-//Compassion                           , 2 => Charm // NEW SPELL
-//Bliss                                , 2 => Charm // NEW SPELL p76 sim to waves of pain
-//Attraction                           , 2 => Charm // NEW SPELL p 44 Like Friends
-//Bad Medicine                         , 4 => Charm //NEW SPELL p52
-//Calm                                 , 1 => Law //NEW SPELL Target saves to have fear and other emotion spells removed
-//Uncertainty                          , 2 => Law    // NEW SPELL p22 Speed/weapon/casting/movement penalty
-//Still Mind                           , 5 => Law  // NEW SPELL Remove and protect against Fear, other emotion spells and charm/dominate effects
-//Rebuke                               , 5 => Law // NEW SPELL http://www.d20pfsrd.com/magic/all-spells/r/rebuke
-//Dispel Chaos                         , 5 => Law // NEW SPELL Dispels chaos inducing spells (confusion, etc.)
-//Shield of Law                        , 5 => Law // NEW SPELL http://pathfinder.d20srd.org/coreRulebook/spells/shieldOfLaw.html#shield-of-law Not just effective vs. chaotic creatures
-//Berserk                              , 1 => Chaos // NEW SPELL Touch a creature to instill a berserker rage,like the berserk ability
-//Chaos Ward                           , 1 => Chaos // NEW SPELL p111
-//Hideous Laughter                     , 2 => Chaos // NEW SPELL wiz p918
-//Havoc                                , 7 => Chaos //NEW SPELL Creates a vortex around the caster.  Enemies are damaged and can be knocked back p74 pfrpg
-//Chain Madness                        , 7 => Chaos //NEW SPELL Confusion but like chain lightning p108
-//Heat Metal                           , 2 => Earth // NEW SPELL p328
-//Animate Rock                         , 7 => Earth //NEW SPELL 'creature' rock that can attack for caster) P36
-// Whispering wind                     , 1 => Air // NEW SPELL as aud glammer
-//Gaseous form                         , 4 => Air // NEW SPELL http://www.d20pfsrd.com/magic/all-spells/g/gaseous-form no attack, slow move, almost invulnerable, wind spells push
-//Adaption                             , 4 => Air //NEW SPELL immune to poison/clouds p
-//winds of vengeance                   , 7 => Air  // NEW SPELL http://www.d20pfsrd.com/magic/all-spells/w/winds-of-vengeance
-//CLERIC_FLAME_SPHERE                  , 2 => Fire // NEW SPELL  Summons a 'creature' with fire elem anim, any creature within 5' save vs. breath or take x dam
-//CLERIC_WALL_Of_FIRE                  , 4 => Fire   //NEW SPELL   AMIM IN IWD2
-//Blinding Ray                         , 2 => Sun // NEW SPELL
-//Heat Exhaustion                      , 3 => Sun //NEW SPELL p327
-//CLERIC_BLESSED_WARMTH                 , 4 => Sun  //NEW SPELL Protections vs. cold and heat p75
-//CLERIC_SUNBEAM                       , 7 => Sun // NEW SPELL like MMM but 1x/level http://pathfinder.d20srd.org/coreRulebook/spells/sunbeam.html#sunbeam
-//Storm of Vengeance                    , 7 => Weather //NEW SPELL  http://www.d20srd.org/srd/spells/stormOfVengeance.htm
-
-*/
 
 //___________________________________________________________________________________
 
@@ -394,29 +336,29 @@ DEFINE_ACTION_FUNCTION ur_priest_spheres
   RET_ARRAY ur_priest_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY ur_priest_spheres_array BEGIN
-	Healing		 		=> x
-	Necromantic		 	=> major
-	Creation			=> x
-	Decay			 	=> major
-	Protection		 	=> major
-	Combat		 		=> major
-	Travelers			=> major
-	Divination		 	=> major
-	Wards		 		=> x
-	Thought		 		=> major
-	Charm		 		=> major
-	Law			 		=> major
-	Chaos			 	=> major
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> minor
-	Water		 		=> minor
-	Air		 			=> minor
-	Fire		 		=> minor
-	Sun		 			=> major
-	Shadow		 		=> major
-	Weather		 		=> major
-	Astral			    => x
+	Healing			=> x
+	Necromantic		=> major
+	Law				=> x
+	Chaos			=> major
+	Protection		=> major
+	Combat			=> x
+	Travelers		=> x
+	Divination		=> major
+	Wards			=> x
+	Thought			=> major
+	Charm			=> x
+	Creation		=> major
+	Summoning		=> major
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Sun				=> major
+	Weather			=> major
+	Numbers			=> x
+	Astral			=> x
  END
 END
 //___________________________________________________________________________________
@@ -430,29 +372,29 @@ DEFINE_ACTION_FUNCTION auril_spheres
   RET_ARRAY auril_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY auril_spheres_array BEGIN
-	Healing 			=> minor
-	Necromantic			=> minor
-	Creation	 		=> major
-	Decay				=> major
-	Protection 			=> major
-	Combat 				=> minor
-	Travelers	 		=> major
-	Divination 			=> major
-	Wards	 			=> x
-	Thought 			=> major
-	Charm 				=> x
-	Law	 				=> x
-	Chaos	 			=> x
-	Animal 				=> x
-	Plant 				=> x
-	Earth 				=> x
-	Water 				=> major
-	Air 				=> x
-	Fire 				=> x
-	Sun	 				=> x
-	Shadow 				=> minor
-	Weather 			=> minor
-	Astral	 			=> x
+	Healing			=> minor
+	Necromantic		=> minor
+	Law				=> major
+	Chaos			=> major
+	Protection		=> major
+	Combat			=> minor
+	Travelers		=> major
+	Divination		=> major
+	Wards			=> x
+	Thought			=> major
+	Charm			=> x
+	Creation		=> x
+	Summoning		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> major
+	Air				=> x
+	Fire			=> x
+	Sun				=> x
+	Weather			=> minor
+	Numbers			=> minor
+	Astral			=> x
  END
 END
 //___________________________________________________________________________________
@@ -463,29 +405,29 @@ DEFINE_ACTION_FUNCTION azuth_spheres
   RET_ARRAY azuth_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY azuth_spheres_array BEGIN
-	Healing 			=> major
-	Necromantic			=> x
-	Creation	 		=> major
-	Decay		 		=> major
-	Protection 			=> major
-	Combat 				=> x
-	Travelers	  		=> minor
-	Divination 			=> major
-	Wards	 			=> minor
-	Thought 			=> minor
-	Charm 				=> minor
-	Law	 				=> minor
-	Chaos	 			=> x
-	Animal 				=> x
-	Plant 				=> x
-	Earth 				=> x
-	Water 				=> x
-	Air 				=> x
-	Fire 				=> minor
-	Sun	 				=> major
-	Shadow 				=> x
-	Weather 			=> minor
-	Astral	   			=> major
+	Healing			=> major
+	Necromantic		=> x
+	Law				=> major
+	Chaos			=> major
+	Protection		=> major
+	Combat			=> x
+	Travelers		=> minor
+	Divination		=> major
+	Wards			=> minor
+	Thought			=> minor
+	Charm			=> minor
+	Creation		=> minor
+	Summoning		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> minor
+	Sun				=> major
+	Weather			=> x
+	Numbers			=> minor
+	Astral			=> major
  END
 END
 //___________________________________________________________________________________
@@ -496,29 +438,29 @@ DEFINE_ACTION_FUNCTION bane_spheres
   RET_ARRAY bane_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY bane_spheres_array BEGIN
-	Healing				=> major
-	Necromantic			=> major
-	Creation	 		=> minor
-	Decay		 		=> major
-	Protection 			=> major
-	Combat 				=> major
-	Travelers			=> minor
-	Divination			=> minor
-	Wards				=> x
-	Thought 			=> major
-	Charm 				=> x
-	Law	 				=> major
-	Chaos				=> x
-	Animal 				=> x
-	Plant 				=> x
-	Earth 				=> x
-	Water 				=> x
-	Air 				=> x
-	Fire 				=> x
-	Sun	 				=> x
-	Shadow 				=> minor
-	Weather 			=> x
-	Astral				=> x
+	Healing			=> major
+	Necromantic		=> major
+	Law				=> minor
+	Chaos			=> major
+	Protection		=> major
+	Combat			=> major
+	Travelers		=> minor
+	Divination		=> minor
+	Wards			=> x
+	Thought			=> major
+	Charm			=> x
+	Creation		=> major
+	Summoning		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Sun				=> x
+	Weather			=> minor
+	Numbers			=> x
+	Astral			=> x
  END
 END
 //___________________________________________________________________________________
@@ -529,29 +471,29 @@ DEFINE_ACTION_FUNCTION beshaba_spheres
   RET_ARRAY beshaba_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY beshaba_spheres_array BEGIN
-	Healing		 		=> major
-	Necromantic		 	=> minor
-	Creation			=> minor
-	Decay			 	=> minor
-	Protection		 	=> major
-	Combat		 		=> major
-	Travelers		  	=> x
-	Divination		 	=> minor
-	Wards		 		=> major
-	Thought		 		=> major
-	Charm		 		=> major
-	Law			 		=> x
-	Chaos			 	=> major
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> x
-	Water		 		=> x
-	Air		 			=> x
-	Fire		 		=> x
-	Sun		 			=> x
-	Shadow		 		=> x
-	Weather		 		=> minor
-	Astral			    => major
+	Healing			=> major
+	Necromantic		=> minor
+	Law				=> minor
+	Chaos			=> minor
+	Protection		=> major
+	Combat			=> major
+	Travelers		=> x
+	Divination		=> minor
+	Wards			=> major
+	Thought			=> major
+	Charm			=> major
+	Creation		=> x
+	Summoning		=> major
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Sun				=> x
+	Weather			=> x
+	Numbers			=> minor
+	Astral			=> major
  END
 END
 //___________________________________________________________________________________
@@ -562,29 +504,29 @@ DEFINE_ACTION_FUNCTION bhaal_spheres
   RET_ARRAY bhaal_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY bhaal_spheres_array BEGIN
-	Healing		 		=> minor
-	Necromantic		 	=> major
-	Creation			=> x
-	Decay				=> major
-	Protection		 	=> x
-	Combat		 		=> major
-	Travelers		  	=> x
-	Divination		 	=> minor
-	Wards		 		=> major
-	Thought		 		=> x
-	Charm		 		=> x
-	Law			 		=> major
-	Chaos			 	=> x
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> major
-	Water		 		=> x
-	Air		 			=> x
-	Fire		 		=> minor
-	Sun		 			=> x
-	Shadow		 		=> minor
-	Weather		 		=> x
-	Astral			    => minor
+	Healing			=> minor
+	Necromantic		=> major
+	Law				=> major
+	Chaos			=> x
+	Protection		=> x
+	Combat			=> major
+	Travelers		=> x
+	Divination		=> minor
+	Wards			=> major
+	Thought			=> x
+	Charm			=> x
+	Creation		=> major
+	Summoning		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> minor
+	Sun				=> x
+	Weather			=> minor
+	Numbers			=> x
+	Astral			=> minor
  END
 END
 //___________________________________________________________________________________
@@ -595,29 +537,29 @@ DEFINE_ACTION_FUNCTION cyric_spheres
   RET_ARRAY cyric_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY cyric_spheres_array BEGIN
-	Healing		 		=> major
-	Necromantic		 	=> major
-	Creation			=> x
-	Decay				=> major
-	Protection		 	=> minor
-	Combat		 		=> major
-	Travelers		  	=> x
-	Divination		 	=> minor
-	Wards		 		=> x
-	Thought		 		=> x
-	Charm		 		=> major
-	Law			 		=> minor
-	Chaos			 	=> x
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> x
-	Water		 		=> x
-	Air		 			=> x
-	Fire		 		=> x
-	Sun		 			=> x
-	Shadow		 		=> major
-	Weather		 		=> minor
-	Astral			    => major
+	Healing			=> major
+	Necromantic		=> major
+	Law				=> x
+	Chaos			=> major
+	Protection		=> minor
+	Combat			=> major
+	Travelers		=> x
+	Divination		=> minor
+	Wards			=> x
+	Thought			=> x
+	Charm			=> major
+	Creation		=> minor
+	Summoning		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Sun				=> x
+	Weather			=> major
+	Numbers			=> minor
+	Astral			=> major
  END
 END
 //___________________________________________________________________________________
@@ -628,29 +570,29 @@ DEFINE_ACTION_FUNCTION deneir_spheres
   RET_ARRAY deneir_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY deneir_spheres_array BEGIN
-	Healing		 		=> major
-	Necromantic		 	=> x
-	Creation			=> major
-	Decay				=> x
-	Protection		 	=> major
-	Combat		 		=> x
-	Travelers		  	=> minor
-	Divination		 	=> major
-	Wards		 		=> major
-	Thought		 		=> major
-	Charm		 		=> x
-	Law			 		=> minor
-	Chaos			 	=> x
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> x
-	Water		 		=> x
-	Air		 			=> minor
-	Fire		 		=> x
-	Sun		 			=> minor
-	Shadow		 		=> x
-	Weather		 		=> minor
-	Astral			    => major
+	Healing			=> major
+	Necromantic		=> x
+	Law				=> major
+	Chaos			=> x
+	Protection		=> major
+	Combat			=> x
+	Travelers		=> minor
+	Divination		=> major
+	Wards			=> major
+	Thought			=> major
+	Charm			=> x
+	Creation		=> minor
+	Summoning		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> minor
+	Fire			=> x
+	Sun				=> minor
+	Weather			=> x
+	Numbers			=> minor
+	Astral			=> major
  END
 END
 //___________________________________________________________________________________
@@ -661,29 +603,29 @@ DEFINE_ACTION_FUNCTION eldath_spheres
   RET_ARRAY eldath_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY eldath_spheres_array BEGIN
-	Healing 			=> major
-	Necromantic			=> minor
-	Creation	 		=> major
-	Decay		 		=> x
-	Protection 			=> major
-	Combat 				=> x
-	Travelers	 		=> minor
-	Divination 			=> major
-	Wards	 			=> major
-	Thought 			=> x
-	Charm 				=> major
-	Law	 				=> x
-	Chaos	 			=> major
-	Animal 				=> minor
-	Plant 				=> minor
-	Earth 				=> x
-	Water 				=> major
-	Air 				=> x
-	Fire 				=> x
-	Sun	 				=> major
-	Shadow 				=> x
-	Weather 			=> x
-	Astral	   			=> major
+	Healing			=> major
+	Necromantic		=> minor
+	Law				=> major
+	Chaos			=> x
+	Protection		=> major
+	Combat			=> x
+	Travelers		=> minor
+	Divination		=> major
+	Wards			=> major
+	Thought			=> x
+	Charm			=> major
+	Creation		=> x
+	Summoning		=> major
+	Animal			=> minor
+	Plant			=> minor
+	Earth			=> x
+	Water			=> major
+	Air				=> x
+	Fire			=> x
+	Sun				=> major
+	Weather			=> x
+	Numbers			=> x
+	Astral			=> major
  END
 END
 //___________________________________________________________________________________
@@ -694,29 +636,29 @@ DEFINE_ACTION_FUNCTION garagos_spheres
   RET_ARRAY garagos_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY garagos_spheres_array BEGIN
-	Healing 			=> minor
-	Necromantic			=> x
-	Creation	 		=> major
-	Decay		 		=> major
-	Protection 			=> minor
-	Combat 				=> major
-	Travelers	 		=> minor
-	Divination 			=> minor
-	Wards	 			=> x
-	Thought 			=> x
-	Charm 				=> x
-	Law	 				=> x
-	Chaos	 			=> major
-	Animal 				=> x
-	Plant 				=> x
-	Earth 				=> x
-	Water 				=> x
-	Air 				=> x
-	Fire 				=> major
-	Sun	 				=> x
-	Shadow 				=> x
-	Weather 			=> x
-	Astral	   			=> x
+	Healing			=> minor
+	Necromantic		=> x
+	Law				=> major
+	Chaos			=> major
+	Protection		=> minor
+	Combat			=> major
+	Travelers		=> minor
+	Divination		=> minor
+	Wards			=> x
+	Thought			=> x
+	Charm			=> x
+	Creation		=> x
+	Summoning		=> major
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> major
+	Sun				=> x
+	Weather			=> x
+	Numbers			=> x
+	Astral			=> x
  END
 END
 //___________________________________________________________________________________
@@ -727,29 +669,29 @@ DEFINE_ACTION_FUNCTION grumbar_spheres
   RET_ARRAY grumbar_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY grumbar_spheres_array BEGIN
-	Healing 			=> major
-	Necromantic			=> minor
-	Creation	 		=> x
-	Decay		 		=> x
-	Protection 			=> major
-	Combat 				=> major
-	Travelers	 		=> x
-	Divination 			=> minor
-	Wards	 			=> minor
-	Thought 			=> x
-	Charm 				=> x
-	Law	 				=> x
-	Chaos	 			=> x
-	Animal 				=> x
-	Plant 				=> minor
-	Earth 				=> major
-	Water 				=> minor
-	Air 				=> x
-	Fire 				=> x
-	Sun	 				=> x
-	Shadow 				=> x
-	Weather 			=> x
-	Astral	   			=> x
+	Healing			=> major
+	Necromantic		=> minor
+	Law				=> x
+	Chaos			=> x
+	Protection		=> major
+	Combat			=> major
+	Travelers		=> x
+	Divination		=> minor
+	Wards			=> minor
+	Thought			=> x
+	Charm			=> x
+	Creation		=> x
+	Summoning		=> x
+	Animal			=> x
+	Plant			=> minor
+	Earth			=> major
+	Water			=> minor
+	Air				=> x
+	Fire			=> x
+	Sun				=> x
+	Weather			=> x
+	Numbers			=> x
+	Astral			=> x
  END
 END
 //___________________________________________________________________________________
@@ -760,29 +702,29 @@ DEFINE_ACTION_FUNCTION helm_spheres
   RET_ARRAY helm_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY helm_spheres_array BEGIN
-	Healing		 		=> minor
-	Necromantic		 	=> x
-	Creation			=> minor
-	Decay				=> x
-	Protection		 	=> major
-	Combat		 		=> major
-	Travelers		 	=> minor
-	Divination		 	=> major
-	Wards		 		=> major
-	Thought		 		=> minor
-	Charm		 		=> x
-	Law			 		=> major
-	Chaos			 	=> x
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> x
-	Water		 		=> x
-	Air		 			=> x
-	Fire		 		=> x
-	Sun		 			=> major
-	Shadow		 		=> x
-	Weather		 		=> x
-	Astral			    => x
+	Healing			=> minor
+	Necromantic		=> x
+	Law				=> minor
+	Chaos			=> x
+	Protection		=> major
+	Combat			=> major
+	Travelers		=> minor
+	Divination		=> major
+	Wards			=> major
+	Thought			=> minor
+	Charm			=> x
+	Creation		=> major
+	Summoning		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Sun				=> major
+	Weather			=> x
+	Numbers			=> x
+	Astral			=> x
  END
 END
 //___________________________________________________________________________________
@@ -793,29 +735,29 @@ DEFINE_ACTION_FUNCTION ilmater_spheres
   RET_ARRAY ilmater_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY ilmater_spheres_array BEGIN
-	Healing		 		=> major
-	Necromantic		 	=> minor
-	Creation			=> major
-	Decay				=> x
-	Protection		 	=> major
-	Combat		 		=> x
-	Travelers		 	=> major
-	Divination			=> major
-	Wards		 		=> minor
-	Thought		 		=> x
-	Charm		 		=> major
-	Law			 		=> major
-	Chaos			 	=> x
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> x
-	Water		 		=> minor
-	Air		 			=> x
-	Fire		 		=> minor
-	Sun		 			=> minor
-	Shadow		 		=> x
-	Weather		 		=> minor
-	Astral			    => x
+	Healing			=> major
+	Necromantic		=> minor
+	Law				=> major
+	Chaos			=> x
+	Protection		=> major
+	Combat			=> x
+	Travelers		=> major
+	Divination		=> major
+	Wards			=> minor
+	Thought			=> x
+	Charm			=> major
+	Creation		=> major
+	Summoning		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> minor
+	Air				=> x
+	Fire			=> minor
+	Sun				=> minor
+	Weather			=> x
+	Numbers			=> minor
+	Astral			=> x
  END
 END
 //___________________________________________________________________________________
@@ -826,29 +768,29 @@ DEFINE_ACTION_FUNCTION kelemvor_spheres
   RET_ARRAY kelemvor_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY kelemvor_spheres_array BEGIN
-	Healing		 		=> major
-	Necromantic		 	=> major
-	Creation			=> x
-	Decay				=> x
-	Protection		 	=> minor
-	Combat		 		=> major
-	Travelers		  	=> minor
-	Divination		 	=> minor
-	Wards		 		=> major
-	Thought		 		=> minor
-	Charm		 		=> major
-	Law			 		=> major
-	Chaos			 	=> x
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> minor
-	Water		 		=> minor
-	Air		 			=> minor
-	Fire		 		=> minor
-	Sun		 			=> x
-	Shadow		 		=> x
-	Weather		 		=> x
-	Astral			    => major
+	Healing			=> major
+	Necromantic		=> major
+	Law				=> x
+	Chaos			=> x
+	Protection		=> minor
+	Combat			=> major
+	Travelers		=> minor
+	Divination		=> minor
+	Wards			=> major
+	Thought			=> minor
+	Charm			=> major
+	Creation		=> major
+	Summoning		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> minor
+	Water			=> minor
+	Air				=> minor
+	Fire			=> minor
+	Sun				=> x
+	Weather			=> x
+	Numbers			=> x
+	Astral			=> major
  END
 END
 //___________________________________________________________________________________
@@ -859,29 +801,29 @@ DEFINE_ACTION_FUNCTION kossuth_spheres
   RET_ARRAY kossuth_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY kossuth_spheres_array BEGIN
-	Healing 			=> major
-	Necromantic			=> x
-	Creation	 		=> x
-	Decay		 		=> x
-	Protection 			=> minor
-	Combat 				=> major
-	Travelers	 		=> x
-	Divination 			=> minor
-	Wards	 			=> x
-	Thought 			=> x
-	Charm 				=> minor
-	Law	 				=> minor
-	Chaos	 			=> x
-	Animal 				=> x
-	Plant 				=> x
-	Earth 				=> x
-	Water 				=> x
-	Air 				=> minor
-	Fire 				=> major
-	Sun	 				=> major
-	Shadow 				=> x
-	Weather 			=> minor
-	Astral	 			=> major
+	Healing			=> major
+	Necromantic		=> x
+	Law				=> x
+	Chaos			=> x
+	Protection		=> minor
+	Combat			=> major
+	Travelers		=> x
+	Divination		=> minor
+	Wards			=> x
+	Thought			=> x
+	Charm			=> minor
+	Creation		=> minor
+	Summoning		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> minor
+	Fire			=> major
+	Sun				=> major
+	Weather			=> x
+	Numbers			=> minor
+	Astral			=> major
  END
 END
 //___________________________________________________________________________________
@@ -892,29 +834,29 @@ DEFINE_ACTION_FUNCTION lathander_spheres
   RET_ARRAY lathander_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY lathander_spheres_array BEGIN
-	Healing		 		=> major
-	Necromantic		 	=> x
-	Creation			=> major
-	Decay				=> x
-	Protection		 	=> minor
-	Combat		 		=> minor
-	Travelers		  	=> minor
-	Divination		 	=> minor
-	Wards		 		=> major
-	Thought		 		=> major
-	Charm		 		=> major
-	Law			 		=> x
-	Chaos			 	=> x
-	Animal		 		=> x
-	Plant		 		=> minor
-	Earth		 		=> x
-	Water		 		=> x
-	Air		 			=> minor
-	Fire		 		=> minor
-	Sun		 			=> major
-	Shadow		 		=> x
-	Weather		 		=> major
-	Astral			    => major
+	Healing			=> major
+	Necromantic		=> x
+	Law				=> major
+	Chaos			=> x
+	Protection		=> minor
+	Combat			=> minor
+	Travelers		=> minor
+	Divination		=> minor
+	Wards			=> major
+	Thought			=> major
+	Charm			=> major
+	Creation		=> x
+	Summoning		=> x
+	Animal			=> x
+	Plant			=> minor
+	Earth			=> x
+	Water			=> x
+	Air				=> minor
+	Fire			=> minor
+	Sun				=> major
+	Weather			=> x
+	Numbers			=> major
+	Astral			=> major
   END
 END
 //___________________________________________________________________________________
@@ -925,29 +867,29 @@ DEFINE_ACTION_FUNCTION leira_spheres
   RET_ARRAY leira_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY leira_spheres_array BEGIN
-	Healing		 		=> major
-	Necromantic		 	=> x
-	Creation			=> major
-	Decay			 	=> x
-	Protection		 	=> minor
-	Combat		 		=> x
-	Travelers		  	=> major
-	Divination		 	=> major
-	Wards		 		=> major
-	Thought		 		=> major
-	Charm		 		=> minor
-	Law			 		=> minor
-	Chaos			 	=> x
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> x
-	Water		 		=> minor
-	Air		 			=> x
-	Fire		 		=> x
-	Sun		 			=> major
-	Shadow		 		=> minor
-	Weather		 		=> minor
-	Astral			    => major
+	Healing			=> major
+	Necromantic		=> x
+	Law				=> major
+	Chaos			=> x
+	Protection		=> minor
+	Combat			=> x
+	Travelers		=> major
+	Divination		=> major
+	Wards			=> major
+	Thought			=> major
+	Charm			=> minor
+	Creation		=> minor
+	Summoning		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> minor
+	Air				=> x
+	Fire			=> x
+	Sun				=> major
+	Weather			=> minor
+	Numbers			=> minor
+	Astral			=> major
  END
 END
 //___________________________________________________________________________________
@@ -958,29 +900,29 @@ DEFINE_ACTION_FUNCTION loviatar_spheres
   RET_ARRAY loviatar_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY loviatar_spheres_array BEGIN
-	Healing		 		=> major
-	Necromantic		 	=> major
-	Creation			=> x
-	Decay				=> major
-	Protection		 	=> x
-	Combat		 		=> major
-	Travelers		  	=> x
-	Divination		 	=> minor
-	Wards		 		=> x
-	Thought		 		=> x
-	Charm		 		=> major
-	Law			 		=> major
-	Chaos			 	=> x
-	Animal		 		=> minor
-	Plant		 		=> x
-	Earth		 		=> x
-	Water		 		=> minor
-	Air		 			=> x
-	Fire		 		=> minor
-	Sun		 			=> x
-	Shadow		 		=> minor
-	Weather		 		=> minor
-	Astral			    => x
+	Healing			=> major
+	Necromantic		=> major
+	Law				=> x
+	Chaos			=> major
+	Protection		=> x
+	Combat			=> major
+	Travelers		=> x
+	Divination		=> minor
+	Wards			=> x
+	Thought			=> x
+	Charm			=> major
+	Creation		=> major
+	Summoning		=> x
+	Animal			=> minor
+	Plant			=> x
+	Earth			=> x
+	Water			=> minor
+	Air				=> x
+	Fire			=> minor
+	Sun				=> x
+	Weather			=> minor
+	Numbers			=> minor
+	Astral			=> x
  END
 END
 //___________________________________________________________________________________
@@ -991,29 +933,29 @@ DEFINE_ACTION_FUNCTION malar_spheres
   RET_ARRAY malar_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY malar_spheres_array BEGIN
-	Healing 		=> minor
+	Healing			=> minor
 	Necromantic		=> minor
-	Creation	 	=> x
-	Decay		 	=> x
-	Protection 		=> x
-	Combat 			=> major
-	Travelers	 	=> major
-	Divination 		=> x
-	Wards	 		=> x
-	Thought 		=> major
-	Charm 			=> minor
-	Law	 			=> x
-	Chaos	 		=> major
-	Animal 			=> major
-	Plant 			=> x
-	Earth 			=> minor
-	Water 			=> x
-	Air 			=> minor
-	Fire 			=> x
-	Sun	 			=> x
-	Shadow 			=> minor
-	Weather 		=> x
-	Astral	   		=> x
+	Law				=> x
+	Chaos			=> x
+	Protection		=> x
+	Combat			=> major
+	Travelers		=> major
+	Divination		=> x
+	Wards			=> x
+	Thought			=> major
+	Charm			=> minor
+	Creation		=> x
+	Summoning		=> major
+	Animal			=> major
+	Plant			=> x
+	Earth			=> minor
+	Water			=> x
+	Air				=> minor
+	Fire			=> x
+	Sun				=> x
+	Weather			=> minor
+	Numbers			=> x
+	Astral			=> x
  END
 END
 //___________________________________________________________________________________
@@ -1024,29 +966,29 @@ DEFINE_ACTION_FUNCTION mask_spheres
   RET_ARRAY mask_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY mask_spheres_array BEGIN
-	Healing		 		=> minor
-	Necromantic		 	=> minor
-	Creation			=> minor
-	Decay				=> major
-	Protection		 	=> major
-	Combat		 		=> minor
-	Travelers		  	=> x
-	Divination		 	=> major
-	Wards		 		=> major
-	Thought		 		=> major
-	Charm		 		=> major
-	Law			 		=> x
-	Chaos			 	=> x
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> x
-	Water		 		=> x
-	Air		 			=> minor
-	Fire		 		=> x
-	Sun		 			=> x
-	Shadow		 		=> major
-	Weather		 		=> minor
-	Astral			    => x
+	Healing			=> minor
+	Necromantic		=> minor
+	Law				=> minor
+	Chaos			=> major
+	Protection		=> major
+	Combat			=> minor
+	Travelers		=> x
+	Divination		=> major
+	Wards			=> major
+	Thought			=> major
+	Charm			=> major
+	Creation		=> x
+	Summoning		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> minor
+	Fire			=> x
+	Sun				=> x
+	Weather			=> major
+	Numbers			=> minor
+	Astral			=> x
  END
 END
 //___________________________________________________________________________________
@@ -1057,29 +999,29 @@ DEFINE_ACTION_FUNCTION mielikki_spheres
   RET_ARRAY mielikki_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY mielikki_spheres_array BEGIN
-	Healing 			=> major
-	Necromantic			=> x
-	Creation	 		=> x
-	Decay		 		=> x
-	Protection 			=> major
-	Combat 				=> major
-	Travelers	 		=> major
-	Divination 			=> minor
-	Wards	 			=> x
-	Thought 			=> x
-	Charm 				=> x
-	Law	 				=> x
-	Chaos	 			=> x
-	Animal 				=> minor
-	Plant 				=> major
-	Earth 				=> minor
-	Water 				=> minor
-	Air 				=> minor
-	Fire 				=> x
-	Sun	 				=> minor
-	Shadow 				=> x
-	Weather 			=> major
-	Astral	   			=> x
+	Healing			=> major
+	Necromantic		=> x
+	Law				=> x
+	Chaos			=> x
+	Protection		=> major
+	Combat			=> major
+	Travelers		=> major
+	Divination		=> minor
+	Wards			=> x
+	Thought			=> x
+	Charm			=> x
+	Creation		=> x
+	Summoning		=> x
+	Animal			=> minor
+	Plant			=> major
+	Earth			=> minor
+	Water			=> minor
+	Air				=> minor
+	Fire			=> x
+	Sun				=> minor
+	Weather			=> x
+	Numbers			=> major
+	Astral			=> x
  END
 END
 //___________________________________________________________________________________
@@ -1090,29 +1032,29 @@ DEFINE_ACTION_FUNCTION milil_spheres
   RET_ARRAY milil_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY milil_spheres_array BEGIN
-	Healing 			=> major
-	Necromantic 		=> x
-	Creation 			=> minor
-	Decay 				=> minor
-	Protection 			=> major
-	Combat 				=> x
-	Travelers 			=> minor
-	Divination 			=> major
-	Wards 				=> minor
-	Thought 			=> major
-	Charm 				=> major
-	Law 				=> minor
-	Chaos 				=> x
-	Animal 				=> x
-	Plant 				=> x
-	Earth 				=> x
-	Water 				=> x
-	Air 				=> major
-	Fire 				=> x
-	Sun 				=> major
-	Shadow 				=> x
-	Weather 			=> x
-	Astral   			=> x
+	Healing			=> major
+	Necromantic		=> x
+	Law				=> minor
+	Chaos			=> minor
+	Protection		=> major
+	Combat			=> x
+	Travelers		=> minor
+	Divination		=> major
+	Wards			=> minor
+	Thought			=> major
+	Charm			=> major
+	Creation		=> minor
+	Summoning		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> major
+	Fire			=> x
+	Sun				=> major
+	Weather			=> x
+	Numbers			=> x
+	Astral 			=> x
  END
 END
 //___________________________________________________________________________________
@@ -1123,29 +1065,29 @@ DEFINE_ACTION_FUNCTION moander_spheres
   RET_ARRAY moander_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY moander_spheres_array BEGIN
-	Healing		 		=> minor
-	Necromantic		 	=> major
-	Creation			=> x
-	Decay				=> major
-	Protection		 	=> x
-	Combat		 		=> x
-	Travelers		  	=> minor
-	Divination		 	=> x
-	Wards		 		=> minor
-	Thought		 		=> x
-	Charm		 		=> x
-	Law			 		=> x
-	Chaos			 	=> major
-	Animal		 		=> minor
-	Plant		 		=> major
-	Earth		 		=> major
-	Water		 		=> major
-	Air		 			=> x
-	Fire		 		=> x
-	Sun		 			=> x
-	Shadow		 		=> x
-	Weather		 		=> minor
-	Astral			    => x
+	Healing			=> minor
+	Necromantic		=> major
+	Law				=> x
+	Chaos			=> major
+	Protection		=> x
+	Combat			=> x
+	Travelers		=> minor
+	Divination		=> x
+	Wards			=> minor
+	Thought			=> x
+	Charm			=> x
+	Creation		=> x
+	Summoning		=> major
+	Animal			=> minor
+	Plant			=> major
+	Earth			=> major
+	Water			=> major
+	Air				=> x
+	Fire			=> x
+	Sun				=> x
+	Weather			=> x
+	Numbers			=> minor
+	Astral			=> x
  END
 END
 //___________________________________________________________________________________
@@ -1156,29 +1098,29 @@ DEFINE_ACTION_FUNCTION mystra_spheres
   RET_ARRAY mystra_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY mystra_spheres_array BEGIN
-	Healing		 		=> major
-	Necromantic		 	=> x
-	Creation			=> major
-	Decay				=> major
-	Protection		 	=> major
-	Combat		 		=> x
-	Travelers		  	=> minor
-	Divination		 	=> major
-	Wards		 		=> x
-	Thought		 		=> minor
-	Charm		 		=> x
-	Law			 		=> minor
-	Chaos			 	=> major
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> minor
-	Water		 		=> minor
-	Air		 			=> minor
-	Fire		 		=> major
-	Sun		 			=> major
-	Shadow		 		=> x
-	Weather		 		=> major
-	Astral			    => major
+	Healing			=> major
+	Necromantic		=> x
+	Law				=> major
+	Chaos			=> major
+	Protection		=> major
+	Combat			=> x
+	Travelers		=> minor
+	Divination		=> major
+	Wards			=> x
+	Thought			=> minor
+	Charm			=> x
+	Creation		=> minor
+	Summoning		=> major
+	Animal			=> x
+	Plant			=> x
+	Earth			=> minor
+	Water			=> minor
+	Air				=> minor
+	Fire			=> major
+	Sun				=> major
+	Weather			=> x
+	Numbers			=> major
+	Astral			=> major
  END
 END
 //___________________________________________________________________________________
@@ -1189,29 +1131,29 @@ DEFINE_ACTION_FUNCTION oghma_spheres
   RET_ARRAY oghma_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY oghma_spheres_array BEGIN
-	Healing 			=> major
-	Necromantic			=> minor
-	Creation	 		=> minor
-	Decay		 		=> x
-	Protection 			=> major
-	Combat 				=> x
-	Travelers	 		=> major
-	Divination 			=> major
-	Wards	 			=> major
-	Thought 			=> major
-	Charm 				=> x
-	Law	 				=> minor
-	Chaos	 			=> minor
-	Animal 				=> x
-	Plant 				=> x
-	Earth 				=> x
-	Water 				=> x
-	Air 				=> x
-	Fire 				=> x
-	Sun	 				=> minor
-	Shadow 				=> x
-	Weather 			=> x
-	Astral	 			=> major
+	Healing			=> major
+	Necromantic		=> minor
+	Law				=> minor
+	Chaos			=> x
+	Protection		=> major
+	Combat			=> x
+	Travelers		=> major
+	Divination		=> major
+	Wards			=> major
+	Thought			=> major
+	Charm			=> x
+	Creation		=> minor
+	Summoning		=> minor
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Sun				=> minor
+	Weather			=> x
+	Numbers			=> x
+	Astral			=> major
  END
 END
 //___________________________________________________________________________________
@@ -1222,29 +1164,29 @@ DEFINE_ACTION_FUNCTION redknight_spheres
   RET_ARRAY redknight_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY redknight_spheres_array BEGIN
-	Healing 			=> major
-	Necromantic			=> x
-	Creation	 		=> major
-	Decay		 		=> minor
-	Protection 			=> major
-	Combat 				=> major
-	Travelers	 		=> major
-	Divination 			=> minor
-	Wards	 			=> major
-	Thought 			=> minor
-	Charm 				=> x
-	Law	 				=> minor
-	Chaos	 			=> x
-	Animal 				=> x
-	Plant 				=> x
-	Earth 				=> x
-	Water 				=> x
-	Air 				=> x
-	Fire 				=> x
-	Sun	 				=> minor
-	Shadow 				=> x
-	Weather 			=> x
-	Astral	 			=> x
+	Healing			=> major
+	Necromantic		=> x
+	Law				=> major
+	Chaos			=> minor
+	Protection		=> major
+	Combat			=> major
+	Travelers		=> major
+	Divination		=> minor
+	Wards			=> major
+	Thought			=> minor
+	Charm			=> x
+	Creation		=> minor
+	Summoning		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Sun				=> minor
+	Weather			=> x
+	Numbers			=> x
+	Astral			=> x
  END
 END
 //___________________________________________________________________________________
@@ -1255,29 +1197,29 @@ DEFINE_ACTION_FUNCTION selune_spheres
   RET_ARRAY selune_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY selune_spheres_array BEGIN
-	Healing 			=> major
-	Necromantic			=> x
-	Creation	 		=> x
-	Decay		 		=> x
-	Protection 			=> major
-	Combat 				=> x
-	Travelers	 		=> minor
-	Divination 			=> major
-	Wards	 			=> minor
-	Thought 			=> major
-	Charm 				=> major
-	Law	 				=> x
-	Chaos	 			=> x
-	Animal 				=> minor
-	Plant 				=> x
-	Earth 				=> x
-	Water 				=> x
-	Air 				=> x
-	Fire 				=> x
-	Sun	 				=> minor
-	Shadow 				=> minor
-	Weather 			=> major
-	Astral	 			=> major
+	Healing			=> major
+	Necromantic		=> x
+	Law				=> x
+	Chaos			=> x
+	Protection		=> major
+	Combat			=> x
+	Travelers		=> minor
+	Divination		=> major
+	Wards			=> minor
+	Thought			=> major
+	Charm			=> major
+	Creation		=> x
+	Summoning		=> x
+	Animal			=> minor
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Sun				=> minor
+	Weather			=> minor
+	Numbers			=> major
+	Astral			=> major
  END
 END
 //___________________________________________________________________________________
@@ -1288,29 +1230,29 @@ DEFINE_ACTION_FUNCTION shar_spheres
   RET_ARRAY shar_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY shar_spheres_array BEGIN
-	Healing		 		=> minor
-	Necromantic		 	=> major
-	Creation			=> minor
-	Decay				=> major
-	Protection		 	=> major
-	Combat		 		=> major
-	Travelers		 	=> x
-	Divination		 	=> major
-	Wards		 		=> minor
-	Thought		 		=> major
-	Charm		 		=> x
-	Law			 		=> x
-	Chaos			 	=> minor
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> x
-	Water		 		=> x
-	Air		 			=> x
-	Fire		 		=> x
-	Sun		 			=> x
-	Shadow		 		=> major
-	Weather		 		=> x
-	Astral			    => major
+	Healing			=> minor
+	Necromantic		=> major
+	Law				=> minor
+	Chaos			=> major
+	Protection		=> major
+	Combat			=> major
+	Travelers		=> x
+	Divination		=> major
+	Wards			=> minor
+	Thought			=> major
+	Charm			=> x
+	Creation		=> x
+	Summoning		=> minor
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Sun				=> x
+	Weather			=> major
+	Numbers			=> x
+	Astral			=> major
  END
 END
 //___________________________________________________________________________________
@@ -1321,29 +1263,29 @@ DEFINE_ACTION_FUNCTION shaundakul_spheres
   RET_ARRAY shaundakul_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY shaundakul_spheres_array BEGIN
-	Healing 			=> major
-	Necromantic			=> x
-	Creation	 		=> minor
-	Decay		 		=> x
-	Protection 			=> major
-	Combat 				=> major
-	Travelers	 		=> major
-	Divination 			=> minor
-	Wards	 			=> minor
-	Thought 			=> x
-	Charm 				=> x
-	Law	 				=> x
-	Chaos	 			=> x
-	Animal 				=> minor
-	Plant 				=> minor
-	Earth 				=> x
-	Water 				=> x
-	Air 				=> major
-	Fire 				=> x
-	Sun	 				=> major
-	Shadow 				=> x
-	Weather 			=> major
-	Astral	   			=> major
+	Healing			=> major
+	Necromantic		=> x
+	Law				=> minor
+	Chaos			=> x
+	Protection		=> major
+	Combat			=> major
+	Travelers		=> major
+	Divination		=> minor
+	Wards			=> minor
+	Thought			=> x
+	Charm			=> x
+	Creation		=> x
+	Summoning		=> x
+	Animal			=> minor
+	Plant			=> minor
+	Earth			=> x
+	Water			=> x
+	Air				=> major
+	Fire			=> x
+	Sun				=> major
+	Weather			=> x
+	Numbers			=> major
+	Astral			=> major
  END
 END
 //___________________________________________________________________________________
@@ -1354,29 +1296,29 @@ DEFINE_ACTION_FUNCTION sune_spheres
   RET_ARRAY sune_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY sune_spheres_array BEGIN
-	Healing		 		=> major
-	Necromantic		 	=> x
-	Creation			=> minor
-	Decay				=> x
-	Protection		 	=> major
-	Combat		 		=> x
-	Travelers			=> minor
-	Divination		 	=> major
-	Wards		 		=> minor
-	Thought		 		=> major
-	Charm		 		=> major
-	Law			 		=> x
-	Chaos			 	=> x
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> x
-	Water		 		=> x
-	Air		 			=> x
-	Fire		 		=> x
-	Sun		 			=> major
-	Shadow		 		=> minor
-	Weather		 		=> minor
-	Astral			    => x
+	Healing			=> major
+	Necromantic		=> x
+	Law				=> minor
+	Chaos			=> x
+	Protection		=> major
+	Combat			=> x
+	Travelers		=> minor
+	Divination		=> major
+	Wards			=> minor
+	Thought			=> major
+	Charm			=> major
+	Creation		=> x
+	Summoning		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Sun				=> major
+	Weather			=> minor
+	Numbers			=> minor
+	Astral			=> x
  END
 END
 //___________________________________________________________________________________
@@ -1387,29 +1329,29 @@ DEFINE_ACTION_FUNCTION talos_spheres
   RET_ARRAY talos_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY talos_spheres_array BEGIN
-	Healing		 		=> major
-	Necromantic		 	=> x
-	Creation			=> x
-	Decay				=> major
-	Protection		 	=> major
-	Combat		 		=> minor
-	Travelers			=> minor
-	Divination		 	=> minor
-	Wards		 		=> x
-	Thought		 		=> x
-	Charm		 		=> x
-	Law			 		=> x
-	Chaos			 	=> major
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> x
-	Water		 		=> minor
-	Air		 			=> major
-	Fire		 		=> x
-	Sun		 			=> minor
-	Shadow		 		=> x
-	Weather		 		=> major
-	Astral			    => x
+	Healing			=> major
+	Necromantic		=> x
+	Law				=> x
+	Chaos			=> major
+	Protection		=> major
+	Combat			=> minor
+	Travelers		=> minor
+	Divination		=> minor
+	Wards			=> x
+	Thought			=> x
+	Charm			=> x
+	Creation		=> x
+	Summoning		=> major
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> minor
+	Air				=> major
+	Fire			=> x
+	Sun				=> minor
+	Weather			=> x
+	Numbers			=> major
+	Astral			=> x
  END
 END
 //___________________________________________________________________________________
@@ -1420,29 +1362,29 @@ DEFINE_ACTION_FUNCTION tempus_spheres
   RET_ARRAY tempus_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY tempus_spheres_array BEGIN
-	Healing		 		=> major
-	Necromantic		 	=> x
-	Creation			=> major
-	Decay				=> major
-	Protection		 	=> major
-	Combat		 		=> major
-	Travelers			=> minor
-	Divination		 	=> major
-	Wards		 		=> x
-	Thought		 		=> minor
-	Charm		 		=> x
-	Law			 		=> x
-	Chaos			 	=> x
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> minor
-	Water		 		=> x
-	Air		 			=> minor
-	Fire		 		=> minor
-	Sun		 			=> x
-	Shadow		 		=> x
-	Weather		 		=> major
-	Astral			    => x
+	Healing			=> major
+	Necromantic		=> x
+	Law				=> major
+	Chaos			=> major
+	Protection		=> major
+	Combat			=> major
+	Travelers		=> minor
+	Divination		=> major
+	Wards			=> x
+	Thought			=> minor
+	Charm			=> x
+	Creation		=> x
+	Summoning		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> minor
+	Water			=> x
+	Air				=> minor
+	Fire			=> minor
+	Sun				=> x
+	Weather			=> x
+	Numbers			=> major
+	Astral			=> x
  END
 END
 //___________________________________________________________________________________
@@ -1453,29 +1395,29 @@ DEFINE_ACTION_FUNCTION torm_spheres
   RET_ARRAY torm_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY torm_spheres_array BEGIN
-	Healing		 		=> major
-	Necromantic		 	=> x
-	Creation			=> major
-	Decay				=> minor
-	Protection		 	=> major
-	Combat		 		=> major
-	Travelers			=> minor
-	Divination		 	=> minor
-	Wards		 		=> minor
-	Thought		 		=> major
-	Charm		 		=> x
-	Law			 		=> major
-	Chaos			 	=> x
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> x
-	Water		 		=> x
-	Air		 			=> x
-	Fire		 		=> x
-	Sun		 			=> major
-	Shadow		 		=> x
-	Weather		 		=> x
-	Astral			    => x
+	Healing			=> major
+	Necromantic		=> x
+	Law				=> major
+	Chaos			=> minor
+	Protection		=> major
+	Combat			=> major
+	Travelers		=> minor
+	Divination		=> minor
+	Wards			=> minor
+	Thought			=> major
+	Charm			=> x
+	Creation		=> major
+	Summoning		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Sun				=> major
+	Weather			=> x
+	Numbers			=> x
+	Astral			=> x
  END
 END
 //___________________________________________________________________________________
@@ -1486,29 +1428,29 @@ DEFINE_ACTION_FUNCTION tymora_spheres
   RET_ARRAY tymora_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY tymora_spheres_array BEGIN
-	Healing		 		=> major
-	Necromantic		 	=> x
-	Creation			=> minor
-	Decay				=> minor
-	Protection		 	=> major
-	Combat		 		=> x
-	Travelers			=> major
-	Divination		 	=> minor
-	Wards		 		=> minor
-	Thought		 		=> x
-	Charm		 		=> minor
-	Law			 		=> x
-	Chaos			 	=> major
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> x
-	Water		 		=> x
-	Air		 			=> major
-	Fire		 		=> x
-	Sun		 			=> minor
-	Shadow		 		=> x
-	Weather				=> major
-	Astral			    => x
+	Healing			=> major
+	Necromantic		=> x
+	Law				=> minor
+	Chaos			=> minor
+	Protection		=> major
+	Combat			=> x
+	Travelers		=> major
+	Divination		=> minor
+	Wards			=> minor
+	Thought			=> x
+	Charm			=> minor
+	Creation		=> x
+	Summoning		=> major
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> major
+	Fire			=> x
+	Sun				=> minor
+	Weather			=> x
+	Numbers			=> major
+	Astral			=> x
  END
 END
 //___________________________________________________________________________________
@@ -1519,29 +1461,29 @@ DEFINE_ACTION_FUNCTION tyr_spheres
   RET_ARRAY tyr_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY tyr_spheres_array BEGIN
-	Healing				=> major
-	Necromantic			=> x
-	Creation			=> major
-	Decay				=> minor
-	Protection			=> major
-	Combat				=> major
-	Travelers			=> minor
-	Divination			=> minor
-	Wards				=> major
-	Thought				=> minor
-	Charm				=> x
-	Law					=> major
-	Chaos				=> x
-	Animal				=> x
-	Plant				=> x
-	Earth				=> x
-	Water				=> x
-	Air					=> x
-	Fire				=> x
-	Sun					=> major
-	Shadow				=> x
-	Weather				=> x
-	Astral				=> x
+	Healing			=> major
+	Necromantic		=> x
+	Law				=> major
+	Chaos			=> minor
+	Protection		=> major
+	Combat			=> major
+	Travelers		=> minor
+	Divination		=> minor
+	Wards			=> major
+	Thought			=> minor
+	Charm			=> x
+	Creation		=> major
+	Summoning		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Sun				=> major
+	Weather			=> x
+	Numbers			=> x
+	Astral			=> x
  END
 END
 //___________________________________________________________________________________
@@ -1552,29 +1494,29 @@ DEFINE_ACTION_FUNCTION ulutiu_spheres
   RET_ARRAY ulutiu_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY ulutiu_spheres_array BEGIN
-	Healing 			=> major
-	Necromantic			=> x
-	Creation	 		=> x
-	Decay		 		=> x
-	Protection 			=> major
-	Combat 				=> minor
-	Travelers	 		=> major
-	Divination 			=> minor
-	Wards	 			=> x
-	Thought 			=> minor
-	Charm 				=> x
-	Law	 				=> x
-	Chaos	 			=> major
-	Animal 				=> x
-	Plant 				=> minor
-	Earth 				=> minor
-	Water 				=> major
-	Air 				=> minor
-	Fire 				=> x
-	Sun	 				=> x
-	Shadow 				=> x
-	Weather 			=> major
-	Astral	 			=> x
+	Healing			=> major
+	Necromantic		=> x
+	Law				=> x
+	Chaos			=> x
+	Protection		=> major
+	Combat			=> minor
+	Travelers		=> major
+	Divination		=> minor
+	Wards			=> x
+	Thought			=> minor
+	Charm			=> x
+	Creation		=> x
+	Summoning		=> major
+	Animal			=> x
+	Plant			=> minor
+	Earth			=> minor
+	Water			=> major
+	Air				=> minor
+	Fire			=> x
+	Sun				=> x
+	Weather			=> x
+	Numbers			=> major
+	Astral			=> x
  END
 END
 //___________________________________________________________________________________
@@ -1585,29 +1527,29 @@ DEFINE_ACTION_FUNCTION umberlee_spheres
   RET_ARRAY umberlee_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY umberlee_spheres_array BEGIN
-	Healing		 		=> major
-	Necromantic		 	=> x
-	Creation			=> x
-	Decay				=> x
-	Protection		 	=> minor
-	Combat		 		=> major
-	Travelers			=> major
-	Divination		 	=> x
-	Wards		 		=> x
-	Thought		 		=> minor
-	Charm		 		=> x
-	Law			 		=> x
-	Chaos			 	=> major
-	Animal		 		=> minor
-	Plant		 		=> x
-	Earth		 		=> x
-	Water		 		=> major
-	Air		 			=> minor
-	Fire		 		=> x
-	Sun		 			=> x
-	Shadow		 		=> x
-	Weather		 		=> major
-	Astral			    => x
+	Healing			=> major
+	Necromantic		=> x
+	Law				=> x
+	Chaos			=> x
+	Protection		=> minor
+	Combat			=> major
+	Travelers		=> major
+	Divination		=> x
+	Wards			=> x
+	Thought			=> minor
+	Charm			=> x
+	Creation		=> x
+	Summoning		=> major
+	Animal			=> minor
+	Plant			=> x
+	Earth			=> x
+	Water			=> major
+	Air				=> minor
+	Fire			=> x
+	Sun				=> x
+	Weather			=> x
+	Numbers			=> major
+	Astral			=> x
  END
 END
 //___________________________________________________________________________________
@@ -1618,29 +1560,29 @@ DEFINE_ACTION_FUNCTION xvim_spheres
   RET_ARRAY xvim_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY xvim_spheres_array BEGIN
-	Healing				=> minor
-	Necromantic			=> major
-	Creation	 		=> minor
-	Decay		 		=> major
-	Protection 			=> major
-	Combat 				=> major
-	Travelers			=> minor
-	Divination			=> minor
-	Wards				=> x
-	Thought 			=> major
-	Charm 				=> x
-	Law	 				=> x
-	Chaos				=> major
-	Animal 				=> x
-	Plant 				=> x
-	Earth 				=> x
-	Water 				=> x
-	Air 				=> x
-	Fire 				=> x
-	Sun	 				=> x
-	Shadow 				=> minor
-	Weather 			=> x
-	Astral				=> x
+	Healing			=> minor
+	Necromantic		=> major
+	Law				=> minor
+	Chaos			=> major
+	Protection		=> major
+	Combat			=> major
+	Travelers		=> minor
+	Divination		=> minor
+	Wards			=> x
+	Thought			=> major
+	Charm			=> x
+	Creation		=> x
+	Summoning		=> major
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Sun				=> x
+	Weather			=> minor
+	Numbers			=> x
+	Astral			=> x
  END
 END
 //___________________________________________________________________________________
@@ -1654,29 +1596,29 @@ DEFINE_ACTION_FUNCTION corellon_spheres
   RET_ARRAY corellon_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY corellon_spheres_array BEGIN
-	Healing 			=> major
-	Necromantic			=> x
-	Creation	 		=> major
-	Decay		 		=> minor
-	Protection 			=> major
-	Combat 				=> major
-	Travelers	 		=> major
-	Divination 			=> major
-	Wards	 			=> x
-	Thought 			=> minor
-	Charm 				=> x
-	Law	 				=> x
-	Chaos	 			=> x
-	Animal 				=> x
-	Plant 				=> minor
-	Earth 				=> x
-	Water 				=> minor
-	Air 				=> minor
-	Fire 				=> x
-	Sun	 				=> major
-	Shadow 				=> x
-	Weather 			=> minor
-	Astral	 			=> x
+	Healing			=> major
+	Necromantic		=> x
+	Law				=> major
+	Chaos			=> minor
+	Protection		=> major
+	Combat			=> major
+	Travelers		=> major
+	Divination		=> major
+	Wards			=> x
+	Thought			=> minor
+	Charm			=> x
+	Creation		=> x
+	Summoning		=> x
+	Animal			=> x
+	Plant			=> minor
+	Earth			=> x
+	Water			=> minor
+	Air				=> minor
+	Fire			=> x
+	Sun				=> major
+	Weather			=> x
+	Numbers			=> minor
+	Astral			=> x
  END
 END
 //___________________________________________________________________________________
@@ -1687,29 +1629,29 @@ DEFINE_ACTION_FUNCTION eilistraee_spheres
   RET_ARRAY eilistraee_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY eilistraee_spheres_array BEGIN
-	Healing 			=> major
-	Necromantic			=> x
-	Creation	 		=> minor
-	Decay		 		=> x
-	Protection 			=> major
-	Combat 				=> x
-	Travelers	  		=> major
-	Divination 			=> minor
-	Wards	 			=> minor
-	Thought 			=> minor
-	Charm 				=> x
-	Law	 				=> major
-	Chaos	 			=> x
-	Animal 				=> x
-	Plant 				=> x
-	Earth 				=> x
-	Water 				=> x
-	Air 				=> minor
-	Fire 				=> x
-	Sun	 				=> major
-	Shadow 				=> major
-	Weather 			=> x
-	Astral	   			=> x
+	Healing			=> major
+	Necromantic		=> x
+	Law				=> minor
+	Chaos			=> x
+	Protection		=> major
+	Combat			=> x
+	Travelers		=> major
+	Divination		=> minor
+	Wards			=> minor
+	Thought			=> minor
+	Charm			=> x
+	Creation		=> major
+	Summoning		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> minor
+	Fire			=> x
+	Sun				=> major
+	Weather			=> major
+	Numbers			=> x
+	Astral			=> x
  END
 END
 //___________________________________________________________________________________
@@ -1720,29 +1662,29 @@ DEFINE_ACTION_FUNCTION moradin_spheres
   RET_ARRAY moradin_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY moradin_spheres_array BEGIN
-	Healing 			=> major
-	Necromantic			=> x
-	Creation	 		=> major
-	Decay		 		=> major
-	Protection 			=> major
-	Combat 				=> minor
-	Travelers	 		=> minor
-	Divination 			=> major
-	Wards	 			=> major
-	Thought 			=> minor
-	Charm 				=> x
-	Law	 				=> major
-	Chaos	 			=> x
-	Animal 				=> x
-	Plant 				=> x
-	Earth 				=> major
-	Water 				=> minor
-	Air 				=> x
-	Fire 				=> x
-	Sun	 				=> x
-	Shadow 				=> x
-	Weather 			=> x
-	Astral	  			=> minor
+	Healing			=> major
+	Necromantic		=> x
+	Law				=> major
+	Chaos			=> major
+	Protection		=> major
+	Combat			=> minor
+	Travelers		=> minor
+	Divination		=> major
+	Wards			=> major
+	Thought			=> minor
+	Charm			=> x
+	Creation		=> major
+	Summoning		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> major
+	Water			=> minor
+	Air				=> x
+	Fire			=> x
+	Sun				=> x
+	Weather			=> x
+	Numbers			=> x
+	Astral			=> minor
  END
 END
 //___________________________________________________________________________________
@@ -1753,29 +1695,29 @@ DEFINE_ACTION_FUNCTION clangeddin_spheres
   RET_ARRAY clangeddin_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY clangeddin_spheres_array BEGIN
-	Healing				=> major
-	Necromantic			=> x
-	Creation	 		=> major
-	Decay		 		=> major
-	Protection 			=> major
-	Combat 				=> major
-	Travelers	 		=> minor
-	Divination 			=> minor
-	Wards	 			=> minor
-	Thought 			=> x
-	Charm 				=> x
-	Law	 				=> major
-	Chaos	 			=> x
-	Animal 				=> x
-	Plant 				=> x
-	Earth 				=> major
-	Water 				=> x
-	Air 				=> x
-	Fire 				=> x
-	Sun	 				=> minor
-	Shadow 				=> x
-	Weather 			=> x
-	Astral	   			=> x
+	Healing			=> major
+	Necromantic		=> x
+	Law				=> major
+	Chaos			=> major
+	Protection		=> major
+	Combat			=> major
+	Travelers		=> minor
+	Divination		=> minor
+	Wards			=> minor
+	Thought			=> x
+	Charm			=> x
+	Creation		=> major
+	Summoning		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> major
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Sun				=> minor
+	Weather			=> x
+	Numbers			=> x
+	Astral			=> x
  END
 END
 //___________________________________________________________________________________
@@ -1786,29 +1728,29 @@ DEFINE_ACTION_FUNCTION marthammor_spheres
   RET_ARRAY marthammor_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY marthammor_spheres_array BEGIN
-	Healing				=> major
-	Necromantic			=> x
-	Creation	 		=> minor
-	Decay		 		=> x
-	Protection 			=> major
-	Combat 				=> minor
-	Travelers	 		=> major
-	Divination 			=> minor
-	Wards	 			=> minor
-	Thought 			=> x
-	Charm 				=> minor
-	Law	 				=> major
-	Chaos	 			=> x
-	Animal 				=> x
-	Plant 				=> x
-	Earth 				=> major
-	Water 				=> x
-	Air 				=> x
-	Fire 				=> x
-	Sun	 				=> minor
-	Shadow 				=> x
-	Weather 			=> major
-	Astral	   			=> x
+	Healing			=> major
+	Necromantic		=> x
+	Law				=> minor
+	Chaos			=> x
+	Protection		=> major
+	Combat			=> minor
+	Travelers		=> major
+	Divination		=> minor
+	Wards			=> minor
+	Thought			=> x
+	Charm			=> minor
+	Creation		=> major
+	Summoning		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> major
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Sun				=> minor
+	Weather			=> x
+	Numbers			=> major
+	Astral			=> x
  END
 END
 //___________________________________________________________________________________
@@ -1819,29 +1761,29 @@ DEFINE_ACTION_FUNCTION haela_spheres
   RET_ARRAY haela_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY haela_spheres_array BEGIN
-	Healing		 		=> major
-	Necromantic		 	=> x
-	Creation			=> major
-	Decay				=> major
-	Protection		 	=> major
-	Combat		 		=> major
-	Travelers			=> minor
-	Divination		 	=> major
-	Wards		 		=> x
-	Thought		 		=> minor
-	Charm		 		=> x
-	Law			 		=> x
-	Chaos			 	=> x
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> minor
-	Water		 		=> x
-	Air		 			=> minor
-	Fire		 		=> minor
-	Sun		 			=> x
-	Shadow		 		=> x
-	Weather		 		=> major
-	Astral			    => x
+	Healing			=> major
+	Necromantic		=> x
+	Law				=> major
+	Chaos			=> major
+	Protection		=> major
+	Combat			=> major
+	Travelers		=> minor
+	Divination		=> major
+	Wards			=> x
+	Thought			=> minor
+	Charm			=> x
+	Creation		=> x
+	Summoning		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> minor
+	Water			=> x
+	Air				=> minor
+	Fire			=> minor
+	Sun				=> x
+	Weather			=> x
+	Numbers			=> major
+	Astral			=> x
  END
 END
 //___________________________________________________________________________________
@@ -1852,29 +1794,29 @@ DEFINE_ACTION_FUNCTION baravar_spheres
   RET_ARRAY baravar_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY baravar_spheres_array BEGIN
-	Healing		 		=> major
-	Necromantic		 	=> x
-	Creation			=> minor
-	Decay				=> x
-	Protection		 	=> major
-	Combat		 		=> x
-	Travelers			=> major
-	Divination		 	=> major
-	Wards		 		=> major
-	Thought		 		=> minor
-	Charm		 		=> major
-	Law			 		=> x
-	Chaos			 	=> x
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> x
-	Water		 		=> x
-	Air		 			=> minor
-	Fire		 		=> x
-	Sun		 			=> x
-	Shadow		 		=> minor
-	Weather		 		=> x
-	Astral			    => x
+	Healing			=> major
+	Necromantic		=> x
+	Law				=> minor
+	Chaos			=> x
+	Protection		=> major
+	Combat			=> x
+	Travelers		=> major
+	Divination		=> major
+	Wards			=> major
+	Thought			=> minor
+	Charm			=> major
+	Creation		=> x
+	Summoning		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> minor
+	Fire			=> x
+	Sun				=> x
+	Weather			=> minor
+	Numbers			=> x
+	Astral			=> x
  END
 END
 //___________________________________________________________________________________
@@ -1885,29 +1827,29 @@ DEFINE_ACTION_FUNCTION baervan_spheres
   RET_ARRAY baervan_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY baervan_spheres_array BEGIN
-	Healing		 		=> major
-	Necromantic		 	=> x
-	Creation			=> minor
-	Decay				=> x
-	Protection		 	=> major
-	Combat		 		=> x
-	Travelers			=> major
-	Divination		 	=> minor
-	Wards		 		=> x
-	Thought		 		=> x
-	Charm		 		=> minor
-	Law			 		=> x
-	Chaos			 	=> x
-	Animal		 		=> major
-	Plant		 		=> major
-	Earth		 		=> major
-	Water		 		=> minor
-	Air		 			=> x
-	Fire		 		=> x
-	Sun		 			=> minor
-	Shadow		 		=> x
-	Weather		 		=> minor
-	Astral			    => x
+	Healing			=> major
+	Necromantic		=> x
+	Law				=> minor
+	Chaos			=> x
+	Protection		=> major
+	Combat			=> x
+	Travelers		=> major
+	Divination		=> minor
+	Wards			=> x
+	Thought			=> x
+	Charm			=> minor
+	Creation		=> x
+	Summoning		=> x
+	Animal			=> major
+	Plant			=> major
+	Earth			=> major
+	Water			=> minor
+	Air				=> x
+	Fire			=> x
+	Sun				=> minor
+	Weather			=> x
+	Numbers			=> minor
+	Astral			=> x
  END
 END
 //___________________________________________________________________________________
@@ -1918,29 +1860,29 @@ DEFINE_ACTION_FUNCTION urdlen_spheres
   RET_ARRAY urdlen_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY urdlen_spheres_array BEGIN
-	Healing 		=> minor
+	Healing			=> minor
 	Necromantic		=> major
-	Creation	 	=> x
-	Decay		 	=> major
-	Protection 		=> x
-	Combat 			=> major
-	Travelers	 	=> x
-	Divination 		=> minor
-	Wards	 		=> minor
-	Thought 		=> major
-	Charm 			=> minor
-	Law	 			=> x
-	Chaos	 		=> major
-	Animal 			=> x
-	Plant 			=> x
-	Earth 			=> major
-	Water 			=> x
-	Air 			=> x
-	Fire 			=> minor
-	Sun	 			=> x
-	Shadow 			=> major
-	Weather 		=> x
-	Astral	   		=> x
+	Law				=> x
+	Chaos			=> major
+	Protection		=> x
+	Combat			=> major
+	Travelers		=> x
+	Divination		=> minor
+	Wards			=> minor
+	Thought			=> major
+	Charm			=> minor
+	Creation		=> x
+	Summoning		=> major
+	Animal			=> x
+	Plant			=> x
+	Earth			=> major
+	Water			=> x
+	Air				=> x
+	Fire			=> minor
+	Sun				=> x
+	Weather			=> major
+	Numbers			=> x
+	Astral	  		=> x
  END
 END
 //___________________________________________________________________________________
@@ -1951,29 +1893,29 @@ DEFINE_ACTION_FUNCTION yondalla_spheres
   RET_ARRAY yondalla_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY yondalla_spheres_array BEGIN
-	Healing 			=> major
-	Necromantic			=> x
-	Creation	 		=> major
-	Decay		 		=> x
-	Protection 			=> major
-	Combat 				=> x
-	Travelers	 		=> minor
-	Divination 			=> major
-	Wards	 			=> major
-	Thought 			=> x
-	Charm 				=> major
-	Law	 				=> x
-	Chaos	 			=> x
-	Animal 				=> x
-	Plant 				=> minor
-	Earth 				=> minor
-	Water 				=> x
-	Air 				=> minor
-	Fire 				=> x
-	Sun	 				=> major
-	Shadow 				=> x
-	Weather 			=> minor
-	Astral	   			=> x
+	Healing			=> major
+	Necromantic		=> x
+	Law				=> major
+	Chaos			=> x
+	Protection		=> major
+	Combat			=> x
+	Travelers		=> minor
+	Divination		=> major
+	Wards			=> major
+	Thought			=> x
+	Charm			=> major
+	Creation		=> x
+	Summoning		=> x
+	Animal			=> x
+	Plant			=> minor
+	Earth			=> minor
+	Water			=> x
+	Air				=> minor
+	Fire			=> x
+	Sun				=> major
+	Weather			=> x
+	Numbers			=> minor
+	Astral			=> x
  END
 END
 //___________________________________________________________________________________
@@ -1984,29 +1926,29 @@ DEFINE_ACTION_FUNCTION arvoreen_spheres
   RET_ARRAY arvoreen_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY arvoreen_spheres_array BEGIN
-	Healing 			=> minor
-	Necromantic			=> x
-	Creation	 		=> minor
-	Decay		 		=> x
-	Protection 			=> major
-	Combat 				=> major
-	Travelers	 		=> major
-	Divination 			=> minor
-	Wards	 			=> major
-	Thought 			=> minor
-	Charm 				=> x
-	Law	 				=> major
-	Chaos	 			=> x
-	Animal 				=> minor
-	Plant 				=> x
-	Earth 				=> major
-	Water 				=> x
-	Air 				=> x
-	Fire 				=> x
-	Sun	 				=> major
-	Shadow 				=> x
-	Weather 			=> x
-	Astral	   			=> x
+	Healing			=> minor
+	Necromantic		=> x
+	Law				=> minor
+	Chaos			=> x
+	Protection		=> major
+	Combat			=> major
+	Travelers		=> major
+	Divination		=> minor
+	Wards			=> major
+	Thought			=> minor
+	Charm			=> x
+	Creation		=> major
+	Summoning		=> x
+	Animal			=> minor
+	Plant			=> x
+	Earth			=> major
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Sun				=> major
+	Weather			=> x
+	Numbers			=> x
+	Astral			=> x
  END
 END
 //___________________________________________________________________________________
@@ -2017,29 +1959,29 @@ DEFINE_ACTION_FUNCTION brandobaris_spheres
   RET_ARRAY brandobaris_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY brandobaris_spheres_array BEGIN
-	Healing 			=> minor
-	Necromantic			=> x
-	Creation	 		=> x
-	Decay		 		=> x
-	Protection 			=> major
-	Combat 				=> x
-	Travelers	 		=> major
-	Divination 			=> minor
-	Wards	 			=> x
-	Thought 			=> minor
-	Charm 				=> major
-	Law	 				=> x
-	Chaos	 			=> major
-	Animal 				=> x
-	Plant 				=> minor
-	Earth 				=> x
-	Water 				=> x
-	Air 				=> major
-	Fire 				=> x
-	Sun	 				=> minor
-	Shadow 				=> minor
-	Weather 			=> major
-	Astral	   			=> x
+	Healing			=> minor
+	Necromantic		=> x
+	Law				=> x
+	Chaos			=> x
+	Protection		=> major
+	Combat			=> x
+	Travelers		=> major
+	Divination		=> minor
+	Wards			=> x
+	Thought			=> minor
+	Charm			=> major
+	Creation		=> x
+	Summoning		=> major
+	Animal			=> x
+	Plant			=> minor
+	Earth			=> x
+	Water			=> x
+	Air				=> major
+	Fire			=> x
+	Sun				=> minor
+	Weather			=> minor
+	Numbers			=> major
+	Astral			=> x
  END
 END
 //___________________________________________________________________________________
@@ -2050,29 +1992,29 @@ DEFINE_ACTION_FUNCTION gruumsh_spheres
   RET_ARRAY gruumsh_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY gruumsh_spheres_array BEGIN
-	Healing 			=> minor
-	Necromantic			=> minor
-	Creation	 		=> minor
-	Decay		 		=> major
-	Protection 			=> minor
-	Combat 				=> major
-	Travelers	 		=> x
-	Divination 			=> x
-	Wards	 			=> x
-	Thought 			=> x
-	Charm 				=> major
-	Law	 				=> x
-	Chaos	 			=> major
-	Animal 				=> minor
-	Plant 				=> x
-	Earth 				=> major
-	Water 				=> x
-	Air 				=> x
-	Fire 				=> minor
-	Sun	 				=> x
-	Shadow 				=> x
-	Weather 			=> x
-	Astral	 			=> major
+	Healing			=> minor
+	Necromantic		=> minor
+	Law				=> minor
+	Chaos			=> major
+	Protection		=> minor
+	Combat			=> major
+	Travelers		=> x
+	Divination		=> x
+	Wards			=> x
+	Thought			=> x
+	Charm			=> major
+	Creation		=> x
+	Summoning		=> major
+	Animal			=> minor
+	Plant			=> x
+	Earth			=> major
+	Water			=> x
+	Air				=> x
+	Fire			=> minor
+	Sun				=> x
+	Weather			=> x
+	Numbers			=> x
+	Astral			=> major
  END
 END
 //___________________________________________________________________________________
@@ -2083,29 +2025,29 @@ DEFINE_ACTION_FUNCTION luthic_spheres
   RET_ARRAY luthic_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY luthic_spheres_array BEGIN
-	Healing 			=> major
-	Necromantic			=> major
-	Creation	 		=> minor
-	Decay		 		=> major
-	Protection 			=> major
-	Combat 				=> minor
-	Travelers	 		=> x
-	Divination 			=> major
-	Wards	 			=> x
-	Thought 			=> minor
-	Charm 				=> major
-	Law	 				=> minor
-	Chaos	 			=> minor
-	Animal 				=> x
-	Plant 				=> x
-	Earth 				=> x
-	Water 				=> x
-	Air 				=> x
-	Fire 				=> x
-	Sun	 				=> x
-	Shadow 				=> x
-	Weather 			=> minor
-	Astral	 			=> x
+	Healing			=> major
+	Necromantic		=> major
+	Law				=> minor
+	Chaos			=> major
+	Protection		=> major
+	Combat			=> minor
+	Travelers		=> x
+	Divination		=> major
+	Wards			=> x
+	Thought			=> minor
+	Charm			=> major
+	Creation		=> minor
+	Summoning		=> minor
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Sun				=> x
+	Weather			=> x
+	Numbers			=> minor
+	Astral			=> x
  END
 END
 //___________________________________________________________________________________
@@ -2119,29 +2061,29 @@ DEFINE_ACTION_FUNCTION druid_forest_spheres
   RET_ARRAY druid_forest_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY druid_forest_spheres_array BEGIN
-	Healing 			=> major
-	Necromantic			=> x
-	Creation	 		=> x
-	Decay		 		=> x
-	Protection 			=> x
-	Combat 				=> x
-	Travelers	  		=> minor
-	Divination 			=> minor
-	Wards	 			=> x
-	Thought 			=> minor
-	Charm 				=> x
-	Law	 				=> x
-	Chaos	 			=> major
-	Animal 				=> major
-	Plant 				=> major
-	Earth 				=> major
-	Water 				=> major
-	Air 				=> major
-	Fire 				=> minor
-	Sun	 				=> major
-	Shadow 				=> minor
-	Weather 			=> major
-	Astral	    		=> x
+	Healing			=> major
+	Necromantic		=> x
+	Law				=> x
+	Chaos			=> x
+	Protection		=> x
+	Combat			=> x
+	Travelers		=> minor
+	Divination		=> minor
+	Wards			=> x
+	Thought			=> minor
+	Charm			=> x
+	Creation		=> x
+	Summoning		=> major
+	Animal			=> major
+	Plant			=> major
+	Earth			=> major
+	Water			=> major
+	Air				=> major
+	Fire			=> minor
+	Sun				=> major
+	Weather			=> minor
+	Numbers			=> major
+	Astral	   		=> x
  END
 END
 //___________________________________________________________________________________
@@ -2152,29 +2094,29 @@ DEFINE_ACTION_FUNCTION druid_totemic_spheres
   RET_ARRAY druid_totemic_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY druid_totemic_spheres_array BEGIN
-	Healing 			=> major
-	Necromantic			=> x
-	Creation	 		=> x
-	Decay		 		=> x
-	Protection 			=> x
-	Combat 				=> x
-	Travelers	  		=> minor
-	Divination 			=> minor
-	Wards	 			=> x
-	Thought 			=> minor
-	Charm 				=> x
-	Law	 				=> x
-	Chaos	 			=> major
-	Animal 				=> major
-	Plant 				=> major
-	Earth 				=> major
-	Water 				=> major
-	Air 				=> major
-	Fire 				=> minor
-	Sun	 				=> major
-	Shadow 				=> minor
-	Weather 			=> major
-	Astral	    		=> x
+	Healing			=> major
+	Necromantic		=> x
+	Law				=> x
+	Chaos			=> x
+	Protection		=> x
+	Combat			=> x
+	Travelers		=> minor
+	Divination		=> minor
+	Wards			=> x
+	Thought			=> minor
+	Charm			=> x
+	Creation		=> x
+	Summoning		=> major
+	Animal			=> major
+	Plant			=> major
+	Earth			=> major
+	Water			=> major
+	Air				=> major
+	Fire			=> minor
+	Sun				=> major
+	Weather			=> minor
+	Numbers			=> major
+	Astral	   		=> x
  END
 END
 //___________________________________________________________________________________
@@ -2185,29 +2127,29 @@ DEFINE_ACTION_FUNCTION druid_hivekeeper_spheres
   RET_ARRAY druid_hivekeeper_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY druid_hivekeeper_spheres_array BEGIN
-	Healing 			=> major
-	Necromantic			=> x
-	Creation	 		=> x
-	Decay		 		=> x
-	Protection 			=> x
-	Combat 				=> x
-	Travelers	  		=> minor
-	Divination 			=> minor
-	Wards	 			=> x
-	Thought 			=> minor
-	Charm 				=> x
-	Law	 				=> x
-	Chaos	 			=> major
-	Animal 				=> major
-	Plant 				=> major
-	Earth 				=> major
-	Water 				=> minor
-	Air 				=> major
-	Fire 				=> minor
-	Sun	 				=> major
-	Shadow 				=> minor
-	Weather 			=> major
-	Astral	    		=> x
+	Healing			=> major
+	Necromantic		=> x
+	Law				=> x
+	Chaos			=> x
+	Protection		=> x
+	Combat			=> x
+	Travelers		=> minor
+	Divination		=> minor
+	Wards			=> x
+	Thought			=> minor
+	Charm			=> x
+	Creation		=> x
+	Summoning		=> major
+	Animal			=> major
+	Plant			=> major
+	Earth			=> major
+	Water			=> minor
+	Air				=> major
+	Fire			=> minor
+	Sun				=> major
+	Weather			=> minor
+	Numbers			=> major
+	Astral	   		=> x
  END
 END
 //___________________________________________________________________________________
@@ -2218,29 +2160,29 @@ DEFINE_ACTION_FUNCTION druid_northern_spheres
   RET_ARRAY druid_northern_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY druid_northern_spheres_array BEGIN
-	Healing 			=> major
-	Necromantic			=> x
-	Creation	 		=> x
-	Decay		 		=> x
-	Protection 			=> x
-	Combat 				=> x
-	Travelers	  		=> minor
-	Divination 			=> minor
-	Wards	 			=> x
-	Thought 			=> minor
-	Charm 				=> x
-	Law	 				=> x
-	Chaos	 			=> major
-	Animal 				=> major
-	Plant 				=> major
-	Earth 				=> major
-	Water 				=> major
-	Air 				=> major
-	Fire 				=> minor
-	Sun	 				=> major
-	Shadow 				=> minor
-	Weather 			=> major
-	Astral	    		=> x
+	Healing			=> major
+	Necromantic		=> x
+	Law				=> x
+	Chaos			=> x
+	Protection		=> x
+	Combat			=> x
+	Travelers		=> minor
+	Divination		=> minor
+	Wards			=> x
+	Thought			=> minor
+	Charm			=> x
+	Creation		=> x
+	Summoning		=> major
+	Animal			=> major
+	Plant			=> major
+	Earth			=> major
+	Water			=> major
+	Air				=> major
+	Fire			=> minor
+	Sun				=> major
+	Weather			=> minor
+	Numbers			=> major
+	Astral	   		=> x
  END
 END
 //___________________________________________________________________________________
@@ -2251,29 +2193,29 @@ DEFINE_ACTION_FUNCTION druid_shadow_spheres
   RET_ARRAY druid_shadow_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY druid_shadow_spheres_array BEGIN
-	Healing 			=> minor
-	Necromantic			=> x
-	Creation	 		=> x
-	Decay		 		=> x
-	Protection 			=> x
-	Combat 				=> x
-	Travelers	  		=> minor
-	Divination 			=> x
-	Wards	 			=> x
-	Thought 			=> x
-	Charm 				=> x
-	Law	 				=> x
-	Chaos	 			=> major
-	Animal 				=> major
-	Plant 				=> major
-	Earth 				=> major
-	Water 				=> minor
-	Air 				=> minor
-	Fire 				=> major
-	Sun	 				=> minor
-	Shadow 				=> minor
-	Weather 			=> major
-	Astral	    		=> x
+	Healing			=> minor
+	Necromantic		=> x
+	Law				=> x
+	Chaos			=> x
+	Protection		=> x
+	Combat			=> x
+	Travelers		=> minor
+	Divination		=> x
+	Wards			=> x
+	Thought			=> x
+	Charm			=> x
+	Creation		=> x
+	Summoning		=> major
+	Animal			=> major
+	Plant			=> major
+	Earth			=> major
+	Water			=> minor
+	Air				=> minor
+	Fire			=> major
+	Sun				=> minor
+	Weather			=> minor
+	Numbers			=> major
+	Astral	   		=> x
  END
 END
 //___________________________________________________________________________________
@@ -2284,29 +2226,29 @@ DEFINE_ACTION_FUNCTION druid_gray_spheres
   RET_ARRAY druid_gray_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY druid_gray_spheres_array BEGIN
-	Healing 			=> major
-	Necromantic			=> x
-	Creation	 		=> x
-	Decay		 		=> x
-	Protection 			=> x
-	Combat 				=> x
-	Travelers	  		=> major
-	Divination 			=> minor
-	Wards	 			=> x
-	Thought 			=> minor
-	Charm 				=> x
-	Law	 				=> x
-	Chaos	 			=> major
-	Animal 				=> major
-	Plant 				=> major
-	Earth 				=> major
-	Water 				=> major
-	Air 				=> major
-	Fire 				=> minor
-	Sun	 				=> x
-	Shadow 				=> major
-	Weather 			=> major
-	Astral	    		=> x
+	Healing			=> major
+	Necromantic		=> x
+	Law				=> x
+	Chaos			=> x
+	Protection		=> x
+	Combat			=> x
+	Travelers		=> major
+	Divination		=> minor
+	Wards			=> x
+	Thought			=> minor
+	Charm			=> x
+	Creation		=> x
+	Summoning		=> major
+	Animal			=> major
+	Plant			=> major
+	Earth			=> major
+	Water			=> major
+	Air				=> major
+	Fire			=> minor
+	Sun				=> x
+	Weather			=> major
+	Numbers			=> major
+	Astral	   		=> x
  END
 END
 //___________________________________________________________________________________
@@ -2317,29 +2259,29 @@ DEFINE_ACTION_FUNCTION druid_lost_spheres
   RET_ARRAY druid_lost_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY druid_lost_spheres_array BEGIN
-	Healing 			=> minor
-	Necromantic			=> major
-	Creation	 		=> x
-	Decay		 		=> x
-	Protection 			=> x
-	Combat 				=> x
-	Travelers	  		=> minor
-	Divination 			=> minor
-	Wards	 			=> x
-	Thought 			=> minor
-	Charm 				=> x
-	Law	 				=> x
-	Chaos	 			=> major
-	Animal 				=> major
-	Plant 				=> major
-	Earth 				=> major
-	Water 				=> major
-	Air 				=> major
-	Fire 				=> minor
-	Sun	 				=> x
-	Shadow 				=> minor
-	Weather 			=> major
-	Astral	    		=> x
+	Healing			=> minor
+	Necromantic		=> major
+	Law				=> x
+	Chaos			=> x
+	Protection		=> x
+	Combat			=> x
+	Travelers		=> minor
+	Divination		=> minor
+	Wards			=> x
+	Thought			=> minor
+	Charm			=> x
+	Creation		=> x
+	Summoning		=> major
+	Animal			=> major
+	Plant			=> major
+	Earth			=> major
+	Water			=> major
+	Air				=> major
+	Fire			=> minor
+	Sun				=> x
+	Weather			=> minor
+	Numbers			=> major
+	Astral	   		=> x
  END
 END
 //___________________________________________________________________________________
@@ -2350,28 +2292,28 @@ DEFINE_ACTION_FUNCTION mystic_earth_spheres
   RET_ARRAY mystic_earth_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY mystic_earth_spheres_array BEGIN
-	Healing 		=> major
+	Healing			=> major
 	Necromantic		=> x
-	Creation	 	=> x
-	Decay		 	=> x
-	Protection 		=> major
-	Combat 			=> x
-	Travelers	 	=> minor
-	Divination 		=> minor
-	Wards	 		=> minor
-	Thought 		=> x
-	Charm 			=> x
-	Law	 			=> x
-	Chaos	 		=> major
-	Animal 			=> x
-	Plant 			=> major
-	Earth 			=> focus
-	Water 			=> x
-	Air 			=> x
-	Fire 			=> x
-	Sun	 			=> x
-	Shadow 			=> x
-	Weather 		=> x
+	Law				=> x
+	Chaos			=> x
+	Protection		=> major
+	Combat			=> x
+	Travelers		=> minor
+	Divination		=> minor
+	Wards			=> minor
+	Thought			=> x
+	Charm			=> x
+	Creation		=> x
+	Summoning		=> major
+	Animal			=> x
+	Plant			=> major
+	Earth			=> focus
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Sun				=> x
+	Weather			=> x
+	Numbers			=> x
 	Astral	    	=> minor
  END
 END
@@ -2383,28 +2325,28 @@ DEFINE_ACTION_FUNCTION mystic_water_spheres
   RET_ARRAY mystic_water_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY mystic_water_spheres_array BEGIN
-	Healing 		=> major
+	Healing			=> major
 	Necromantic		=> x
-	Creation	 	=> x
-	Decay		 	=> x
-	Protection 		=> x
-	Combat 			=> x
-	Travelers	 	=> major
-	Divination 		=> major
-	Wards	 		=> x
-	Thought 		=> x
-	Charm 			=> x
-	Law	 			=> x
-	Chaos	 		=> major
-	Animal 			=> minor
-	Plant 			=> minor
-	Earth 			=> x
-	Water 			=> focus
-	Air 			=> x
-	Fire 			=> x
-	Sun	 			=> x
-	Shadow 			=> x
-	Weather 		=> minor
+	Law				=> x
+	Chaos			=> x
+	Protection		=> x
+	Combat			=> x
+	Travelers		=> major
+	Divination		=> major
+	Wards			=> x
+	Thought			=> x
+	Charm			=> x
+	Creation		=> x
+	Summoning		=> major
+	Animal			=> minor
+	Plant			=> minor
+	Earth			=> x
+	Water			=> focus
+	Air				=> x
+	Fire			=> x
+	Sun				=> x
+	Weather			=> x
+	Numbers			=> minor
 	Astral	    	=> minor
  END
 END
@@ -2416,28 +2358,28 @@ DEFINE_ACTION_FUNCTION mystic_air_spheres
   RET_ARRAY mystic_air_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY mystic_air_spheres_array BEGIN
-	Healing 		=> major
+	Healing			=> major
 	Necromantic		=> x
-	Creation	 	=> x
-	Decay		 	=> x
-	Protection 		=> minor
-	Combat 			=> x
-	Travelers	 	=> major
-	Divination 		=> minor
-	Wards	 		=> x
-	Thought 		=> minor
-	Charm 			=> x
-	Law	 			=> x
-	Chaos	 		=> major
-	Animal 			=> x
-	Plant 			=> x
-	Earth 			=> x
-	Water 			=> x
-	Air 			=> focus
-	Fire 			=> x
-	Sun	 			=> minor
-	Shadow 			=> x
-	Weather 		=> major
+	Law				=> x
+	Chaos			=> x
+	Protection		=> minor
+	Combat			=> x
+	Travelers		=> major
+	Divination		=> minor
+	Wards			=> x
+	Thought			=> minor
+	Charm			=> x
+	Creation		=> x
+	Summoning		=> major
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> focus
+	Fire			=> x
+	Sun				=> minor
+	Weather			=> x
+	Numbers			=> major
 	Astral	    	=> minor
  END
 END
@@ -2449,28 +2391,28 @@ DEFINE_ACTION_FUNCTION mystic_fire_spheres
   RET_ARRAY mystic_fire_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY mystic_fire_spheres_array BEGIN
-	Healing 		=> major
+	Healing			=> major
 	Necromantic		=> x
-	Creation	 	=> x
-	Decay		 	=> x
-	Protection 		=> major
-	Combat 			=> x
-	Travelers	 	=> minor
-	Divination 		=> minor
-	Wards	 		=> x
-	Thought 		=> x
-	Charm 			=> minor
-	Law	 			=> x
-	Chaos	 		=> major
-	Animal 			=> x
-	Plant 			=> x
-	Earth 			=> x
-	Water 			=> x
-	Air 			=> x
-	Fire 			=> focus
-	Sun	 			=> major
-	Shadow 			=> x
-	Weather 		=> x
+	Law				=> x
+	Chaos			=> x
+	Protection		=> major
+	Combat			=> x
+	Travelers		=> minor
+	Divination		=> minor
+	Wards			=> x
+	Thought			=> x
+	Charm			=> minor
+	Creation		=> x
+	Summoning		=> major
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> focus
+	Sun				=> major
+	Weather			=> x
+	Numbers			=> x
 	Astral	    	=> minor
  END
 END
@@ -2482,28 +2424,28 @@ DEFINE_ACTION_FUNCTION mystic_light_spheres
   RET_ARRAY mystic_light_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY mystic_light_spheres_array BEGIN
-	Healing 		=> major
+	Healing			=> major
 	Necromantic		=> x
-	Creation	 	=> x
-	Decay		 	=> x
-	Protection 		=> major
-	Combat 			=> x
-	Travelers	 	=> minor
-	Divination 		=> minor
-	Wards	 		=> major
-	Thought 		=> x
-	Charm 			=> x
-	Law	 			=> x
-	Chaos	 		=> x
-	Animal 			=> x
-	Plant 			=> x
-	Earth 			=> x
-	Water 			=> x
-	Air 			=> minor
-	Fire 			=> minor
-	Sun	 			=> focus
-	Shadow 			=> x
-	Weather 		=> x
+	Law				=> x
+	Chaos			=> x
+	Protection		=> major
+	Combat			=> x
+	Travelers		=> minor
+	Divination		=> minor
+	Wards			=> major
+	Thought			=> x
+	Charm			=> x
+	Creation		=> x
+	Summoning		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> minor
+	Fire			=> minor
+	Sun				=> focus
+	Weather			=> x
+	Numbers			=> x
 	Astral	    	=> minor
  END
 END
@@ -2515,28 +2457,28 @@ DEFINE_ACTION_FUNCTION mystic_shadow_spheres
   RET_ARRAY mystic_shadow_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY mystic_shadow_spheres_array BEGIN
-	Healing 		=> minor
+	Healing			=> minor
 	Necromantic		=> x
-	Creation	 	=> x
-	Decay		 	=> major
-	Protection 		=> x
-	Combat 			=> x
-	Travelers	 	=> minor
-	Divination 		=> major
-	Wards	 		=> minor
-	Thought 		=> major
-	Charm 			=> x
-	Law	 			=> x
-	Chaos	 		=> major
-	Animal 			=> x
-	Plant 			=> x
-	Earth 			=> x
-	Water 			=> x
-	Air 			=> x
-	Fire 			=> x
-	Sun	 			=> x
-	Shadow 			=> focus
-	Weather 		=> x
+	Law				=> x
+	Chaos			=> major
+	Protection		=> x
+	Combat			=> x
+	Travelers		=> minor
+	Divination		=> major
+	Wards			=> minor
+	Thought			=> major
+	Charm			=> x
+	Creation		=> x
+	Summoning		=> major
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Sun				=> x
+	Weather			=> focus
+	Numbers			=> x
 	Astral	    	=> minor
  END
 END
@@ -2548,29 +2490,29 @@ DEFINE_ACTION_FUNCTION beast_lord_spheres
   RET_ARRAY beast_lord_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY beast_lord_spheres_array BEGIN
-	Healing 		=> minor
+	Healing			=> minor
 	Necromantic		=> minor
-	Creation	 	=> x
-	Decay		 	=> x
-	Protection 		=> x
-	Combat 			=> major
-	Travelers	 	=> major
-	Divination 		=> x
-	Wards	 		=> x
-	Thought 		=> major
-	Charm 			=> minor
-	Law	 			=> x
-	Chaos	 		=> major
-	Animal 			=> focus
-	Plant 			=> x
-	Earth 			=> x
-	Water 			=> minor
-	Air 			=> x
-	Fire 			=> x
-	Sun	 			=> x
-	Shadow 			=> minor
-	Weather 		=> x
-	Astral	   		=> x
+	Law				=> x
+	Chaos			=> x
+	Protection		=> x
+	Combat			=> major
+	Travelers		=> major
+	Divination		=> x
+	Wards			=> x
+	Thought			=> major
+	Charm			=> minor
+	Creation		=> x
+	Summoning		=> major
+	Animal			=> focus
+	Plant			=> x
+	Earth			=> x
+	Water			=> minor
+	Air				=> x
+	Fire			=> x
+	Sun				=> x
+	Weather			=> minor
+	Numbers			=> x
+	Astral	  		=> x
  END
 END
 //___________________________________________________________________________________
@@ -2581,29 +2523,29 @@ DEFINE_ACTION_FUNCTION elementalist_spheres
   RET_ARRAY elementalist_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY elementalist_spheres_array BEGIN
-	Healing 		=> minor
+	Healing			=> minor
 	Necromantic		=> x
-	Creation	 	=> x
-	Decay		 	=> x
-	Protection 		=> minor
-	Combat 			=> x
-	Travelers	 	=> minor
-	Divination 		=> minor
-	Wards	 		=> x
-	Thought 		=> x
-	Charm 			=> x
-	Law	 			=> x
-	Chaos	 		=> minor
-	Animal 			=> x
-	Plant 			=> x
-	Earth 			=> major
-	Water 			=> major
-	Air 			=> major
-	Fire 			=> major
-	Sun	 			=> major
-	Shadow 			=> minor
-	Weather 		=> major
-	Astral	   		=> x
+	Law				=> x
+	Chaos			=> x
+	Protection		=> minor
+	Combat			=> x
+	Travelers		=> minor
+	Divination		=> minor
+	Wards			=> x
+	Thought			=> x
+	Charm			=> x
+	Creation		=> x
+	Summoning		=> minor
+	Animal			=> x
+	Plant			=> x
+	Earth			=> major
+	Water			=> major
+	Air				=> major
+	Fire			=> major
+	Sun				=> major
+	Weather			=> minor
+	Numbers			=> major
+	Astral	  		=> x
  END
 END
 //___________________________________________________________________________________
@@ -2614,29 +2556,29 @@ DEFINE_ACTION_FUNCTION ranger_forest_spheres
   RET_ARRAY ranger_forest_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY ranger_forest_spheres_array BEGIN
-	Healing 		=> ranger
+	Healing			=> ranger
 	Necromantic		=> x
-	Creation	 	=> x
-	Decay		 	=> x
-	Protection 		=> ranger
-	Combat 			=> x
-	Travelers	 	=> ranger
-	Divination 		=> ranger
-	Wards	 		=> x
-	Thought 		=> x
-	Charm 			=> x
-	Law	 			=> x
-	Chaos	 		=> x
-	Animal 			=> ranger
-	Plant 			=> ranger
-	Earth 			=> x
-	Water 			=> x
-	Air 			=> x
-	Fire 			=> x
-	Sun	 			=> ranger
-	Shadow 			=> x
-	Weather 		=> x
-	Astral	   		=> x
+	Law				=> x
+	Chaos			=> x
+	Protection		=> ranger
+	Combat			=> x
+	Travelers		=> ranger
+	Divination		=> ranger
+	Wards			=> x
+	Thought			=> x
+	Charm			=> x
+	Creation		=> x
+	Summoning		=> x
+	Animal			=> ranger
+	Plant			=> ranger
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Sun				=> ranger
+	Weather			=> x
+	Numbers			=> x
+	Astral	  		=> x
  END
 END
 //___________________________________________________________________________________
@@ -2647,29 +2589,29 @@ DEFINE_ACTION_FUNCTION ranger_mountain_spheres
   RET_ARRAY ranger_mountain_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY ranger_mountain_spheres_array BEGIN
-	Healing 		=> ranger
+	Healing			=> ranger
 	Necromantic		=> x
-	Creation	 	=> x
-	Decay		 	=> x
-	Protection 		=> ranger
-	Combat 			=> x
+	Law				=> x
+	Chaos			=> x
+	Protection		=> ranger
+	Combat			=> x
 	Travelers	  	=> ranger
-	Divination 		=> ranger
-	Wards	 		=> x
-	Thought 		=> x
-	Charm 			=> x
-	Law	 			=> x
-	Chaos	 		=> x
-	Animal 			=> ranger
-	Plant 			=> x
-	Earth 			=> ranger
-	Water 			=> x
-	Air 			=> x
-	Fire 			=> x
-	Sun	 			=> x
-	Shadow 			=> ranger
-	Weather 		=> x
-	Astral	   		=> x
+	Divination		=> ranger
+	Wards			=> x
+	Thought			=> x
+	Charm			=> x
+	Creation		=> x
+	Summoning		=> x
+	Animal			=> ranger
+	Plant			=> x
+	Earth			=> ranger
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Sun				=> x
+	Weather			=> ranger
+	Numbers			=> x
+	Astral	  		=> x
  END
 END
 //___________________________________________________________________________________
@@ -2680,29 +2622,29 @@ DEFINE_ACTION_FUNCTION ranger_desert_spheres
   RET_ARRAY ranger_desert_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY ranger_desert_spheres_array BEGIN
-	Healing 		=> ranger
+	Healing			=> ranger
 	Necromantic		=> x
-	Creation	 	=> x
-	Decay		 	=> x
-	Protection 		=> ranger
-	Combat 			=> x
+	Law				=> x
+	Chaos			=> x
+	Protection		=> ranger
+	Combat			=> x
 	Travelers	  	=> ranger
-	Divination 		=> ranger
-	Wards	 		=> x
-	Thought 		=> x
-	Charm 			=> x
-	Law	 			=> x
-	Chaos	 		=> x
-	Animal 			=> ranger
-	Plant 			=> x
-	Earth 			=> x
-	Water 			=> x
-	Air 			=> ranger
-	Fire 			=> x
-	Sun	 			=> ranger
-	Shadow 			=> x
-	Weather 		=> x
-	Astral	   		=> x
+	Divination		=> ranger
+	Wards			=> x
+	Thought			=> x
+	Charm			=> x
+	Creation		=> x
+	Summoning		=> x
+	Animal			=> ranger
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> ranger
+	Fire			=> x
+	Sun				=> ranger
+	Weather			=> x
+	Numbers			=> x
+	Astral	  		=> x
  END
 END
 //___________________________________________________________________________________
@@ -2713,29 +2655,29 @@ DEFINE_ACTION_FUNCTION ranger_jungle_spheres
   RET_ARRAY ranger_jungle_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY ranger_jungle_spheres_array BEGIN
-	Healing 		=> ranger
+	Healing			=> ranger
 	Necromantic		=> x
-	Creation	 	=> x
-	Decay		 	=> x
-	Protection 		=> ranger
-	Combat 			=> x
+	Law				=> x
+	Chaos			=> x
+	Protection		=> ranger
+	Combat			=> x
 	Travelers	  	=> ranger
-	Divination 		=> ranger
-	Wards	 		=> x
-	Thought 		=> x
-	Charm 			=> x
-	Law	 			=> x
-	Chaos	 		=> ranger
-	Animal 			=> x
-	Plant 			=> ranger
-	Earth 			=> x
-	Water 			=> ranger
-	Air 			=> x
-	Fire 			=> x
-	Sun	 			=> x
-	Shadow 			=> ranger
-	Weather 		=> x
-	Astral	   		=> x
+	Divination		=> ranger
+	Wards			=> x
+	Thought			=> x
+	Charm			=> x
+	Creation		=> x
+	Summoning		=> ranger
+	Animal			=> x
+	Plant			=> ranger
+	Earth			=> x
+	Water			=> ranger
+	Air				=> x
+	Fire			=> x
+	Sun				=> x
+	Weather			=> ranger
+	Numbers			=> x
+	Astral	  		=> x
  END
 END
 //___________________________________________________________________________________
@@ -2746,29 +2688,29 @@ DEFINE_ACTION_FUNCTION ranger_arctic_spheres
   RET_ARRAY ranger_arctic_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY ranger_arctic_spheres_array BEGIN
-	Healing 		=> ranger
+	Healing			=> ranger
 	Necromantic		=> x
-	Creation	 	=> x
-	Decay		 	=> x
-	Protection 		=> ranger
-	Combat 			=> x
+	Law				=> x
+	Chaos			=> x
+	Protection		=> ranger
+	Combat			=> x
 	Travelers	  	=> ranger
-	Divination 		=> ranger
-	Wards	 		=> x
-	Thought 		=> x
-	Charm 			=> x
-	Law	 			=> x
-	Chaos	 		=> x
-	Animal 			=> ranger
-	Plant 			=> x
-	Earth 			=> x
-	Water 			=> ranger
-	Air 			=> ranger
-	Fire 			=> x
-	Sun	 			=> x
-	Shadow 			=> x
-	Weather 		=> x
-	Astral	   		=> x
+	Divination		=> ranger
+	Wards			=> x
+	Thought			=> x
+	Charm			=> x
+	Creation		=> x
+	Summoning		=> x
+	Animal			=> ranger
+	Plant			=> x
+	Earth			=> x
+	Water			=> ranger
+	Air				=> ranger
+	Fire			=> x
+	Sun				=> x
+	Weather			=> x
+	Numbers			=> x
+	Astral	  		=> x
  END
 END
 //___________________________________________________________________________________
@@ -2780,29 +2722,29 @@ DEFINE_ACTION_FUNCTION ranger_beastmaster_spheres
   RET_ARRAY ranger_beastmaster_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY ranger_beastmaster_spheres_array BEGIN
-	Healing 			=> ranger
-	Necromantic			=> x
-	Creation	 	=> x
-	Decay		 	=> x
-	Protection 		=> ranger
-	Combat 			=> x
+	Healing			=> ranger
+	Necromantic		=> x
+	Law				=> x
+	Chaos			=> x
+	Protection		=> ranger
+	Combat			=> x
 	Travelers	  	=> ranger
-	Divination 		=> ranger
-	Wards	 		=> x
-	Thought 		=> x
-	Charm 			=> x
-	Law	 			=> x
-	Chaos	 		=> x
-	Animal 			=> ranger
-	Plant 			=> x
-	Earth 			=> x
-	Water 			=> x
-	Air 			=> x
-	Fire 			=> x
-	Sun	 			=> x
-	Shadow 			=> x
-	Weather 		=> x
-	Astral	   		=> x
+	Divination		=> ranger
+	Wards			=> x
+	Thought			=> x
+	Charm			=> x
+	Creation		=> x
+	Summoning		=> x
+	Animal			=> ranger
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Sun				=> x
+	Weather			=> x
+	Numbers			=> x
+	Astral	  		=> x
  END
 END
 //___________________________________________________________________________________
@@ -2813,29 +2755,29 @@ DEFINE_ACTION_FUNCTION barbarian_ranger_spheres
   RET_ARRAY barbarian_ranger_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY barbarian_ranger_spheres_array BEGIN
-	Healing 			=> x
-	Necromantic			=> x
-	Creation	 	=> x
-	Decay		 	=> x
-	Protection 		=> ranger
-	Combat 			=> x
+	Healing			=> x
+	Necromantic		=> x
+	Law				=> x
+	Chaos			=> x
+	Protection		=> ranger
+	Combat			=> x
 	Travelers	  	=> ranger
-	Divination 		=> ranger
-	Wards	 		=> x
-	Thought 		=> x
-	Charm 			=> x
-	Law	 			=> x
-	Chaos	 		=> x
-	Animal 			=> ranger
-	Plant 			=> x
-	Earth 			=> x
-	Water 			=> x
-	Air 			=> x
-	Fire 			=> x
-	Sun	 			=> x
-	Shadow 			=> x
-	Weather 		=> x
-	Astral	   		=> x
+	Divination		=> ranger
+	Wards			=> x
+	Thought			=> x
+	Charm			=> x
+	Creation		=> x
+	Summoning		=> x
+	Animal			=> ranger
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Sun				=> x
+	Weather			=> x
+	Numbers			=> x
+	Astral	  		=> x
  END
 END
 //___________________________________________________________________________________
@@ -2846,29 +2788,29 @@ DEFINE_ACTION_FUNCTION mage_hunter_spheres
   RET_ARRAY mage_hunter_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY mage_hunter_spheres_array BEGIN
-	Healing 			=> ranger
-	Necromantic			=> x
-	Creation	 	=> x
-	Decay		 	=> x
-	Protection 		=> ranger
-	Combat 			=> x
+	Healing			=> ranger
+	Necromantic		=> x
+	Law				=> x
+	Chaos			=> x
+	Protection		=> ranger
+	Combat			=> x
 	Travelers	  	=> ranger
-	Divination 		=> ranger
-	Wards	 		=> x
-	Thought 		=> x
-	Charm 			=> x
-	Law	 			=> ranger
-	Chaos	 		=> ranger
-	Animal 			=> x
-	Plant 			=> x
-	Earth 			=> x
-	Water 			=> x
-	Air 			=> x
-	Fire 			=> x
-	Sun	 			=> ranger
-	Shadow 			=> x
-	Weather 		=> x
-	Astral	   		=> x
+	Divination		=> ranger
+	Wards			=> x
+	Thought			=> x
+	Charm			=> x
+	Creation		=> ranger
+	Summoning		=> ranger
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Sun				=> ranger
+	Weather			=> x
+	Numbers			=> x
+	Astral	  		=> x
  END
 END
 //___________________________________________________________________________________
@@ -2879,29 +2821,29 @@ DEFINE_ACTION_FUNCTION elven_archer_spheres
   RET_ARRAY elven_archer_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY elven_archer_spheres_array BEGIN
-	Healing 			=> ranger
-	Necromantic			=> x
-	Creation	 	=> x
-	Decay		 	=> x
-	Protection 		=> ranger
-	Combat 			=> x
+	Healing			=> ranger
+	Necromantic		=> x
+	Law				=> x
+	Chaos			=> x
+	Protection		=> ranger
+	Combat			=> x
 	Travelers	  	=> ranger
-	Divination 		=> ranger
-	Wards	 		=> x
-	Thought 		=> x
-	Charm 			=> x
-	Law	 			=> x
-	Chaos	 		=> ranger
-	Animal 			=> x
-	Plant 			=> ranger
-	Earth 			=> x
-	Water 			=> x
-	Air 			=> x
-	Fire 			=> x
-	Sun	 			=> ranger
-	Shadow 			=> x
-	Weather 		=> ranger
-	Astral	   		=> x
+	Divination		=> ranger
+	Wards			=> x
+	Thought			=> x
+	Charm			=> x
+	Creation		=> x
+	Summoning		=> ranger
+	Animal			=> x
+	Plant			=> ranger
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Sun				=> ranger
+	Weather			=> x
+	Numbers			=> ranger
+	Astral	  		=> x
  END
 END
 //___________________________________________________________________________________
@@ -2915,28 +2857,28 @@ DEFINE_ACTION_FUNCTION vanilla_shaman_spheres
   RET_ARRAY vanilla_shaman_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY vanilla_shaman_spheres_array BEGIN
-	Healing 			=> minor
-	Necromantic			=> x
-	Creation	 	=> x
-	Decay		 	=> x
-	Protection 		=> minor
-	Combat 			=> x
+	Healing			=> minor
+	Necromantic		=> x
+	Law				=> x
+	Chaos			=> x
+	Protection		=> minor
+	Combat			=> x
 	Travelers	  	=> major
-	Divination 		=> major	
-	Wards	 		=> x
-	Thought 		=> x
-	Charm 			=> x
-	Law	 			=> x
-	Chaos	 		=> x
-	Animal 			=> major
-	Plant 			=> major
-	Earth 			=> x
-	Water 			=> x
-	Air 			=> x
-	Fire 			=> x
-	Sun	 			=> x
-	Shadow 			=> major
-	Weather 		=> x
+	Divination		=> major	
+	Wards			=> x
+	Thought			=> x
+	Charm			=> x
+	Creation		=> x
+	Summoning		=> x
+	Animal			=> major
+	Plant			=> major
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Sun				=> x
+	Weather			=> major
+	Numbers			=> x
 	Astral	     	=> major
  END
 END
@@ -2978,29 +2920,29 @@ DEFINE_ACTION_MACRO vanilla_cleric_spheres BEGIN
 	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5smmag#~ END
   IF_EXISTS BUT_ONLY
   ACTION_DEFINE_ASSOCIATIVE_ARRAY clabpr01_spheres BEGIN
-	Healing 		=> x
+	Healing			=> x
 	Necromantic		=> x
-	Creation	 	=> x
-	Decay		 	=> x
-	Protection 		=> x
-	Combat 			=> x
-	Travelers	 	=> x
-	Divination 		=> x
-	Wards	 		=> x
-	Thought 		=> x
-	Charm 			=> x
-	Law	 			=> x
-	Chaos	 		=> x
-	Animal 			=> x
-	Plant 			=> x
-	Earth 			=> x
-	Water 			=> x
-	Air 			=> x
-	Fire 			=> x
-	Sun	 			=> x
-	Shadow 			=> x
-	Weather 		=> x
-	Astral	 		=> x
+	Law				=> x
+	Chaos			=> x
+	Protection		=> x
+	Combat			=> x
+	Travelers		=> x
+	Divination		=> x
+	Wards			=> x
+	Thought			=> x
+	Charm			=> x
+	Creation		=> x
+	Summoning		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Sun				=> x
+	Weather			=> x
+	Numbers			=> x
+	Astral			=> x
   END
 END
 //___________________________________________________________________________________
@@ -3043,29 +2985,29 @@ DEFINE_ACTION_MACRO vanilla_druid_spheres BEGIN
 	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5smast#~ END
   IF_EXISTS BUT_ONLY
   ACTION_DEFINE_ASSOCIATIVE_ARRAY clabdr01_spheres BEGIN
-	Healing 		=> x
+	Healing			=> x
 	Necromantic		=> x
-	Creation	 	=> x
-	Decay		 	=> x
-	Protection 		=> x
-	Combat 			=> x
-	Travelers	 	=> x
-	Divination 		=> x
-	Wards	 		=> x
-	Thought 		=> x
-	Charm 			=> x
-	Law	 			=> x
-	Chaos	 		=> x
-	Animal 			=> x
-	Plant 			=> x
-	Earth 			=> x
-	Water 			=> x
-	Air 			=> x
-	Fire 			=> x
-	Sun	 			=> x
-	Shadow 			=> x
-	Weather 		=> x
-	Astral	 		=> x
+	Law				=> x
+	Chaos			=> x
+	Protection		=> x
+	Combat			=> x
+	Travelers		=> x
+	Divination		=> x
+	Wards			=> x
+	Thought			=> x
+	Charm			=> x
+	Creation		=> x
+	Summoning		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Sun				=> x
+	Weather			=> x
+	Numbers			=> x
+	Astral			=> x
   END
 END
 //___________________________________________________________________________________
@@ -3094,29 +3036,29 @@ DEFINE_ACTION_MACRO vanilla_ranger_spheres BEGIN
 	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5smkno#~ END
   IF_EXISTS BUT_ONLY
   ACTION_DEFINE_ASSOCIATIVE_ARRAY clabrn01_spheres BEGIN
-	Healing 		=> x
+	Healing			=> x
 	Necromantic		=> x
-	Creation	 	=> x
-	Decay		 	=> x
-	Protection 		=> x
-	Combat 			=> x
-	Travelers	 	=> x
-	Divination 		=> x
-	Wards	 		=> x
-	Thought 		=> x
-	Charm 			=> x
-	Law	 			=> x
-	Chaos	 		=> x
-	Animal 			=> x
-	Plant 			=> x
-	Earth 			=> x
-	Water 			=> x
-	Air 			=> x
-	Fire 			=> x
-	Sun	 			=> x
-	Shadow 			=> x
-	Weather 		=> x
-	Astral	 		=> x
+	Law				=> x
+	Chaos			=> x
+	Protection		=> x
+	Combat			=> x
+	Travelers		=> x
+	Divination		=> x
+	Wards			=> x
+	Thought			=> x
+	Charm			=> x
+	Creation		=> x
+	Summoning		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Sun				=> x
+	Weather			=> x
+	Numbers			=> x
+	Astral			=> x
   END
 END
 //___________________________________________________________________________________
@@ -3127,29 +3069,29 @@ DEFINE_ACTION_FUNCTION vanilla_avenger_spheres
   RET_ARRAY vanilla_avenger_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY vanilla_avenger_spheres_array BEGIN
-	Healing 			=> minor
-	Necromantic			=> x
-	Creation	 	=> x
-	Decay		 	=> x
-	Protection 		=> x
-	Combat 			=> x
+	Healing			=> minor
+	Necromantic		=> x
+	Law				=> x
+	Chaos			=> x
+	Protection		=> x
+	Combat			=> x
 	Travelers	  	=> minor
-	Divination 		=> minor
-	Wards	 		=> x
-	Thought 		=> x
-	Charm 			=> x
-	Law	 			=> major
-	Chaos	 		=> major
-	Animal 			=> minor
-	Plant 			=> major
-	Earth 			=> major
-	Water 			=> major
-	Air 			=> major
-	Fire 			=> minor
-	Sun	 			=> major
-	Shadow 			=> minor
-	Weather 			=> minor
-	Astral	   		=> x
+	Divination		=> minor
+	Wards			=> x
+	Thought			=> x
+	Charm			=> x
+	Creation		=> major
+	Summoning		=> major
+	Animal			=> minor
+	Plant			=> major
+	Earth			=> major
+	Water			=> major
+	Air				=> major
+	Fire			=> minor
+	Sun				=> major
+	Weather			=> minor
+	Numbers			=> minor
+	Astral	  		=> x
  END
 END
 //___________________________________________________________________________________
@@ -3160,29 +3102,29 @@ DEFINE_ACTION_FUNCTION vanilla_paladin_spheres
   RET_ARRAY vanilla_paladin_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY vanilla_paladin_spheres_array BEGIN
-	Healing 			=> paladin
-	Necromantic			=> x
-	Creation	 	=> paladin
-	Decay		 	=> paladin
-	Protection 		=> paladin
-	Combat 			=> paladin
-	Travelers	 	=> x
-	Divination 		=> paladin
-	Wards	 		=> x
-	Thought 		=> x
-	Charm 			=> x
-	Law	 			=> x
-	Chaos	 		=> x
-	Animal 			=> x
-	Plant 			=> x
-	Earth 			=> x
-	Water 			=> x
-	Air 			=> x
-	Fire 			=> x
-	Sun	 			=> paladin
-	Shadow 			=> x
-	Weather 			=> x
-	Astral	   		=> x
+	Healing			=> paladin
+	Necromantic		=> x
+	Law				=> paladin
+	Chaos			=> paladin
+	Protection		=> paladin
+	Combat			=> paladin
+	Travelers		=> x
+	Divination		=> paladin
+	Wards			=> x
+	Thought			=> x
+	Charm			=> x
+	Creation		=> x
+	Summoning		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Sun				=> paladin
+	Weather			=> x
+	Numbers			=> x
+	Astral	  		=> x
  END
 END
 //___________________________________________________________________________________
@@ -3193,29 +3135,29 @@ DEFINE_ACTION_FUNCTION vanilla_cavalier_spheres
   RET_ARRAY vanilla_cavalier_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY vanilla_cavalier_spheres_array BEGIN
-	Healing 			=> paladin
-	Necromantic			=> x
-	Creation	 	=> paladin
-	Decay		 	=> paladin
-	Protection 		=> paladin
-	Combat 			=> paladin
+	Healing			=> paladin
+	Necromantic		=> x
+	Law				=> paladin
+	Chaos			=> paladin
+	Protection		=> paladin
+	Combat			=> paladin
 	Travelers	  	=> x
-	Divination 		=> paladin
-	Wards	 		=> x
-	Thought 		=> x
-	Charm 			=> x
-	Law	 			=> x
-	Chaos	 		=> x
-	Animal 			=> x
-	Plant 			=> x
-	Earth 			=> x
-	Water 			=> x
-	Air 			=> x
-	Fire 			=> x
-	Sun	 			=> paladin
-	Shadow 			=> x
-	Weather 			=> x
-	Astral	   		=> x
+	Divination		=> paladin
+	Wards			=> x
+	Thought			=> x
+	Charm			=> x
+	Creation		=> x
+	Summoning		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Sun				=> paladin
+	Weather			=> x
+	Numbers			=> x
+	Astral	  		=> x
  END
 END
 //___________________________________________________________________________________
@@ -3226,28 +3168,28 @@ DEFINE_ACTION_FUNCTION vanilla_inquisitor_spheres
   RET_ARRAY vanilla_inquisitor_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY vanilla_inquisitor_spheres_array BEGIN
-	Healing 			=> paladin
-	Necromantic			=> x
-	Creation	 	=> paladin
-	Decay		 	=> x
-	Protection 		=> paladin
-	Combat 			=> x
-	Travelers	 	=> x
-	Divination 		=> paladin
-	Wards	 		=> x
-	Thought 		=> paladin
-	Charm 			=> x
-	Law	 			=> x
-	Chaos	 		=> x
-	Animal 			=> x
-	Plant 			=> x
-	Earth 			=> x
-	Water 			=> x
-	Air 			=> x
-	Fire 			=> x
-	Sun	 			=> x
-	Shadow 			=> x
-	Weather 			=> paladin
+	Healing			=> paladin
+	Necromantic		=> x
+	Law				=> paladin
+	Chaos			=> x
+	Protection		=> paladin
+	Combat			=> x
+	Travelers		=> x
+	Divination		=> paladin
+	Wards			=> x
+	Thought			=> paladin
+	Charm			=> x
+	Creation		=> x
+	Summoning		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Sun				=> x
+	Weather			=> x
+	Numbers			=> paladin
 	Astral	    	=> x
  END
 END
@@ -3259,29 +3201,29 @@ DEFINE_ACTION_FUNCTION vanilla_undead_hunter_spheres
   RET_ARRAY vanilla_undead_hunter_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY vanilla_undead_hunter_spheres_array BEGIN
-	Healing 			=> paladin
-	Necromantic			=> paladin
-	Creation	 	=> paladin
-	Decay		 	=> x
-	Protection 		=> paladin
-	Combat 			=> paladin
-	Travelers	 	=> x
-	Divination 		=> paladin
-	Wards	 		=> x
-	Thought 		=> x
-	Charm 			=> x
-	Law	 			=> x
-	Chaos	 		=> x
-	Animal 			=> x
-	Plant 			=> x
-	Earth 			=> x
-	Water 			=> x
-	Air 			=> x
-	Fire 			=> x
-	Sun	 			=> paladin
-	Shadow 			=> x
-	Weather 			=> x
-	Astral	   		=> x
+	Healing			=> paladin
+	Necromantic		=> paladin
+	Law				=> paladin
+	Chaos			=> x
+	Protection		=> paladin
+	Combat			=> paladin
+	Travelers		=> x
+	Divination		=> paladin
+	Wards			=> x
+	Thought			=> x
+	Charm			=> x
+	Creation		=> x
+	Summoning		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Sun				=> paladin
+	Weather			=> x
+	Numbers			=> x
+	Astral	  		=> x
  END
 END
 //___________________________________________________________________________________
@@ -3292,29 +3234,29 @@ DEFINE_ACTION_FUNCTION vanilla_blackguard_spheres
   RET_ARRAY vanilla_blackguard_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY vanilla_blackguard_spheres_array BEGIN
-	Healing 			=> x
-	Necromantic			=> paladin
-	Creation	 	=> x
-	Decay		 	=> paladin
-	Protection 		=> x
-	Combat 			=> paladin
-	Travelers	 	=> x
-	Divination 		=> x
-	Wards	 		=> x
-	Thought 		=> x
-	Charm 			=> paladin
-	Law	 			=> paladin
-	Chaos	 		=> paladin
-	Animal 			=> x
-	Plant 			=> x
-	Earth 			=> x
-	Water 			=> x
-	Air 			=> x
-	Fire 			=> x
-	Sun	 			=> x
-	Shadow 			=> paladin
-	Weather 			=> x
-	Astral	   		=> paladin
+	Healing			=> x
+	Necromantic		=> paladin
+	Law				=> x
+	Chaos			=> paladin
+	Protection		=> x
+	Combat			=> paladin
+	Travelers		=> x
+	Divination		=> x
+	Wards			=> x
+	Thought			=> x
+	Charm			=> paladin
+	Creation		=> paladin
+	Summoning		=> paladin
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Sun				=> x
+	Weather			=> paladin
+	Numbers			=> x
+	Astral	  		=> paladin
  END
 END
 //___________________________________________________________________________________
@@ -3326,29 +3268,29 @@ END
 //
 DEFINE_ACTION_MACRO DR_oozemaster_spheres BEGIN
  ACTION_DEFINE_ASSOCIATIVE_ARRAY a#ooze_spheres BEGIN
-	Healing 			=> major
-	Necromantic			=> minor
-	Creation	 	=> x
-	Decay		 	=> x
-	Protection 		=> x
-	Combat 			=> x
-	Travelers	 	=> minor
-	Divination 		=> minor
-	Wards	 		=> x
-	Thought 		=> minor
-	Charm 			=> minor
-	Law	 			=> x
-	Chaos	 		=> major
-	Animal 			=> x
-	Plant 			=> major
-	Earth 			=> major
-	Water 			=> major
-	Air 			=> minor
-	Fire 			=> x
-	Sun	 			=> x
-	Shadow 			=> minor
-	Weather 			=> x
-	Astral	 		=> x
+	Healing			=> major
+	Necromantic		=> minor
+	Law				=> x
+	Chaos			=> x
+	Protection		=> x
+	Combat			=> x
+	Travelers		=> minor
+	Divination		=> minor
+	Wards			=> x
+	Thought			=> minor
+	Charm			=> minor
+	Creation		=> x
+	Summoning		=> major
+	Animal			=> x
+	Plant			=> major
+	Earth			=> major
+	Water			=> major
+	Air				=> minor
+	Fire			=> x
+	Sun				=> x
+	Weather			=> minor
+	Numbers			=> x
+	Astral			=> x
  END
 END
 //___________________________________________________________________________________
@@ -3357,29 +3299,29 @@ END
 //
 DEFINE_ACTION_MACRO DR_justifier_spheres BEGIN
  ACTION_DEFINE_ASSOCIATIVE_ARRAY a#justif_spheres BEGIN
-	Healing 			=> ranger
-	Necromantic			=> x
-	Creation	 	=> x
-	Decay		 	=> x
-	Protection 		=> x
-	Combat 			=> ranger
-	Travelers	 	=> x
-	Divination 		=> x
-	Wards	 		=> x
-	Thought 		=> x
-	Charm 			=> x
-	Law	 			=> x
-	Chaos	 		=> x
-	Animal 			=> x
-	Plant 			=> x
-	Earth 			=> x
-	Water 			=> x
-	Air 			=> x
-	Fire 			=> x
-	Sun	 			=> ranger
-	Shadow 			=> x
-	Weather 			=> x
-	Astral	 		=> x
+	Healing			=> ranger
+	Necromantic		=> x
+	Law				=> x
+	Chaos			=> x
+	Protection		=> x
+	Combat			=> ranger
+	Travelers		=> x
+	Divination		=> x
+	Wards			=> x
+	Thought			=> x
+	Charm			=> x
+	Creation		=> x
+	Summoning		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Sun				=> ranger
+	Weather			=> x
+	Numbers			=> x
+	Astral			=> x
  END
 END
 //___________________________________________________________________________________
@@ -3393,29 +3335,29 @@ DEFINE_ACTION_FUNCTION _spheres
   RET_ARRAY _spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY _spheres_array BEGIN
-	Healing 			=> x
-	Necromantic			=> x
-	Creation	 		=> x
-	Decay		 		=> x
-	Protection 			=> x
-	Combat 				=> x
-	Travelers	 		=> x
-	Divination 			=> x
-	Wards	 			=> x
-	Thought 			=> x
-	Charm 				=> x
-	Law	 				=> x
-	Chaos	 			=> x
-	Animal 				=> x
-	Plant 				=> x
-	Earth 				=> x
-	Water 				=> x
-	Air 				=> x
-	Fire 				=> x
-	Sun	 				=> x
-	Shadow 				=> x
-	Weather 			=> x
-	Astral	   			=> x
+	Healing			=> x
+	Necromantic		=> x
+	Law				=> x
+	Chaos			=> x
+	Protection		=> x
+	Combat			=> x
+	Travelers		=> x
+	Divination		=> x
+	Wards			=> x
+	Thought			=> x
+	Charm			=> x
+	Creation		=> x
+	Summoning		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Sun				=> x
+	Weather			=> x
+	Numbers			=> x
+	Astral			=> x
  END
 END
 //___________________________________________________________________________________

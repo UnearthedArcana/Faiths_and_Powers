@@ -1,40 +1,115 @@
 // SPHERE NAMES___________________________________________________________________
 //
-// You can define the names of your spheres in the right-hand column
-// There can be 23 spheres at most; they must correspond to the FnP spheres
-// So DO NOT change anything in the left column.
 
 DEFINE_ACTION_MACRO d5_define_sphere_names BEGIN
 
-// system designation.....sphere name
+COPY ~faiths_and_powers/data/sphere_systems/d5altsph.2da~ ~override~
 
-<<<<<<<< d5/d5altsph.2da
-2DA
-Universal				Universal
-Life 					Life
-Death 					Death
-Benediction 			Vermin	
-Destruction 			Destruction
-Protection 				Protection
-War 					War
-Exploration     		Exploration
-Knowledge 				Knowledge
-Deception 				Deception
-Thought 				Thought
-Dread 					Dread
-Vigor 					Vigor
-Affliction 				Affliction
-Animal 					Animal
-Plant 					Plant
-Earth 					Earth
-Air 					Air
-Water 					Water
-Fire 					Fire
-Light 					Light
-Shadow 					Shadow
-Magic 					Magic
-Astral	 				Astral
->>>>>>>> 
+OUTER_SPRINT new_Universal	 @12101	// Universal
+OUTER_SPRINT new_Life		 @12102	// Life
+OUTER_SPRINT new_Death		 @12103	// Death
+OUTER_SPRINT new_Benediction @12104	// Vermin
+OUTER_SPRINT new_Destruction @12105	// Destruction
+OUTER_SPRINT new_Protection  @12106	// Protection
+OUTER_SPRINT new_War		 @12107	// War
+OUTER_SPRINT new_Exploration @12108	// Exploration
+OUTER_SPRINT new_Knowledge 	 @12109	// Knowledge
+OUTER_SPRINT new_Deception 	 @12110	// Deception
+OUTER_SPRINT new_Thought 	 @12111	// Thought
+OUTER_SPRINT new_Dread		 @12112	// Dread
+OUTER_SPRINT new_Vigor		 @12113	// Vigor
+OUTER_SPRINT new_Affliction  @12114	// Affliction
+OUTER_SPRINT new_Animal 	 @12115	// Animal
+OUTER_SPRINT new_Plant		 @12116	// Plant
+OUTER_SPRINT new_Earth		 @12117	// Earth
+OUTER_SPRINT new_Air		 @12118	// Air
+OUTER_SPRINT new_Water		 @12119	// Water
+OUTER_SPRINT new_Fire		 @12120	// Fire
+OUTER_SPRINT new_Light		 @12121	// Light
+OUTER_SPRINT new_Shadow 	 @12122	// Shadow
+OUTER_SPRINT new_Magic		 @12123	// Magic
+OUTER_SPRINT new_Astral		 @12124	// Astral
+
+COPY_EXISTING ~d5altsph.2da~ ~override~
+  REPLACE_TEXTUALLY ~new_Universal~ ~%new_Universal%~
+  REPLACE_TEXTUALLY ~new_Life~ ~%new_Life%~
+  REPLACE_TEXTUALLY ~new_Death~ ~%new_Death%~
+  REPLACE_TEXTUALLY ~new_Benediction~ ~%new_Benediction%~
+  REPLACE_TEXTUALLY ~new_Destruction~ ~%new_Destruction%~
+  REPLACE_TEXTUALLY ~new_Protection~ ~%new_Protection%~
+  REPLACE_TEXTUALLY ~new_War~ ~%new_War%~
+  REPLACE_TEXTUALLY ~new_Exploration~ ~%new_Exploration%~
+  REPLACE_TEXTUALLY ~new_Knowledge~ ~%new_Knowledge%~
+  REPLACE_TEXTUALLY ~new_Deception~ ~%new_Deception%~
+  REPLACE_TEXTUALLY ~new_Thought~ ~%new_Thought%~
+  REPLACE_TEXTUALLY ~new_Dread~ ~%new_Dread%~
+  REPLACE_TEXTUALLY ~new_Vigor~ ~%new_Vigor%~
+  REPLACE_TEXTUALLY ~new_Affliction~ ~%new_Affliction%~
+  REPLACE_TEXTUALLY ~new_Animal~ ~%new_Animal%~
+  REPLACE_TEXTUALLY ~new_Plant~ ~%new_Plant%~
+  REPLACE_TEXTUALLY ~new_Earth~ ~%new_Earth%~
+  REPLACE_TEXTUALLY ~new_Air~ ~%new_Air%~
+  REPLACE_TEXTUALLY ~new_Water~ ~%new_Water%~
+  REPLACE_TEXTUALLY ~new_Fire~ ~%new_Fire%~
+  REPLACE_TEXTUALLY ~new_Light~ ~%new_Light%~
+  REPLACE_TEXTUALLY ~new_Shadow~ ~%new_Shadow%~
+  REPLACE_TEXTUALLY ~new_Magic~ ~%new_Magic%~
+  REPLACE_TEXTUALLY ~new_Astral~ ~%new_Astral%~
+
+WITH_TRA ~faiths_and_powers/language/english/setup.tra~ BEGIN
+
+OUTER_SPRINT eng_Universal	 @12101	// Universal
+OUTER_SPRINT eng_Life		 @12102	// Life
+OUTER_SPRINT eng_Death		 @12103	// Death
+OUTER_SPRINT eng_Benediction @12104	// Vermin
+OUTER_SPRINT eng_Destruction @12105	// Destruction
+OUTER_SPRINT eng_Protection  @12106	// Protection
+OUTER_SPRINT eng_War		 @12107	// War
+OUTER_SPRINT eng_Exploration @12108	// Exploration
+OUTER_SPRINT eng_Knowledge 	 @12109	// Knowledge
+OUTER_SPRINT eng_Deception 	 @12110	// Deception
+OUTER_SPRINT eng_Thought 	 @12111	// Thought
+OUTER_SPRINT eng_Dread		 @12112	// Dread
+OUTER_SPRINT eng_Vigor		 @12113	// Vigor
+OUTER_SPRINT eng_Affliction  @12114	// Affliction
+OUTER_SPRINT eng_Animal 	 @12115	// Animal
+OUTER_SPRINT eng_Plant		 @12116	// Plant
+OUTER_SPRINT eng_Earth		 @12117	// Earth
+OUTER_SPRINT eng_Air		 @12118	// Air
+OUTER_SPRINT eng_Water		 @12119	// Water
+OUTER_SPRINT eng_Fire		 @12120	// Fire
+OUTER_SPRINT eng_Light		 @12121	// Light
+OUTER_SPRINT eng_Shadow 	 @12122	// Shadow
+OUTER_SPRINT eng_Magic		 @12123	// Magic
+OUTER_SPRINT eng_Astral		 @12124	// Astral
+
+COPY_EXISTING ~d5altsph.2da~ ~override~
+  REPLACE_TEXTUALLY ~eng_Universal~ ~%eng_Universal%~
+  REPLACE_TEXTUALLY ~eng_Life~ ~%eng_Life%~
+  REPLACE_TEXTUALLY ~eng_Death~ ~%eng_Death%~
+  REPLACE_TEXTUALLY ~eng_Benediction~ ~%eng_Benediction%~
+  REPLACE_TEXTUALLY ~eng_Destruction~ ~%eng_Destruction%~
+  REPLACE_TEXTUALLY ~eng_Protection~ ~%eng_Protection%~
+  REPLACE_TEXTUALLY ~eng_War~ ~%eng_War%~
+  REPLACE_TEXTUALLY ~eng_Exploration~ ~%eng_Exploration%~
+  REPLACE_TEXTUALLY ~eng_Knowledge~ ~%eng_Knowledge%~
+  REPLACE_TEXTUALLY ~eng_Deception~ ~%eng_Deception%~
+  REPLACE_TEXTUALLY ~eng_Thought~ ~%eng_Thought%~
+  REPLACE_TEXTUALLY ~eng_Dread~ ~%eng_Dread%~
+  REPLACE_TEXTUALLY ~eng_Vigor~ ~%eng_Vigor%~
+  REPLACE_TEXTUALLY ~eng_Affliction~ ~%eng_Affliction%~
+  REPLACE_TEXTUALLY ~eng_Animal~ ~%eng_Animal%~
+  REPLACE_TEXTUALLY ~eng_Plant~ ~%eng_Plant%~
+  REPLACE_TEXTUALLY ~eng_Earth~ ~%eng_Earth%~
+  REPLACE_TEXTUALLY ~eng_Air~ ~%eng_Air%~
+  REPLACE_TEXTUALLY ~eng_Water~ ~%eng_Water%~
+  REPLACE_TEXTUALLY ~eng_Fire~ ~%eng_Fire%~
+  REPLACE_TEXTUALLY ~eng_Light~ ~%eng_Light%~
+  REPLACE_TEXTUALLY ~eng_Shadow~ ~%eng_Shadow%~
+  REPLACE_TEXTUALLY ~eng_Magic~ ~%eng_Magic%~
+  REPLACE_TEXTUALLY ~eng_Astral~ ~%eng_Astral%~
+
+END // end with_tra
 
 END	//	end sphere names macro
 //____________________________________________________________________________________
@@ -185,7 +260,7 @@ WIZARD_SIMULACRUM                       7	=	Deception
 CLERIC_COMMAND                          1	=	Thought
 CLERIC_CHARM_PERSON                     1	=	Thought
 CLERIC_ENTHRALL                         2	=	Thought
-CLERIC_FORBID 						    2	=	Thought
+CLERIC_FORBID						    2	=	Thought
 CLERIC_RIGID_THINKING                   2	=	Thought
 CLERIC_MURDEROUS_COMMAND                3	=	Thought
 CLERIC_DICTATE                          3	=	Thought
@@ -330,6 +405,7 @@ CLERIC_FLAME_STRIKE                     5	=	Fire
 CLERIC_CONJURE_FIRE_ELEMENTAL           6	=	Fire
 CLERIC_FIRE_SEEDS                       6	=	Fire
 CLERIC_FIRE_STORM                       7	=	Fire
+d5fnp06                                 1	=	Light
 CLERIC_SUNSCORCH                        1	=	Light
 CLERIC_ALICORN_LANCE                    2	=	Light
 WIZARD_GLITTERDUST                      2	=	Light
@@ -412,28 +488,28 @@ DEFINE_ACTION_FUNCTION ur_priest_spheres
   RET_ARRAY ur_priest_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY ur_priest_spheres_array BEGIN
-	Life		 		=> x
-	Death		 		=> major
+	Life				=> x
+	Death				=> major
 	Vermin				=> x
-	Destruction		 	=> major
-	Protection		 	=> major
-	War		 			=> major
+	Destruction			=> major
+	Protection			=> major
+	War					=> x
 	Exploration		  	=> major
-	Knowledge		 	=> major
-	Deception	 		=> x
-	Thought		 		=> major
-	Dread		 		=> major
-	Vigor		 		=> major
-	Affliction		 	=> major
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> minor
-	Water		 		=> minor
-	Air		 			=> minor
-	Fire		 		=> minor
-	Light	 			=> major
-	Shadow		 		=> major
-	Magic		 		=> major
+	Knowledge			=> major
+	Deception			=> x
+	Thought				=> major
+	Dread				=> major
+	Vigor				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air					=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
 	Astral		    	=> x
  END
 END
@@ -448,28 +524,28 @@ DEFINE_ACTION_FUNCTION auril_spheres
   RET_ARRAY auril_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY auril_spheres_array BEGIN
-	Life 				=> minor
-	Death 				=> minor
-	Vermin	 			=> x
-	Destruction 		=> major
-	Protection 			=> major
-	War 				=> minor
-	Exploration 		=> x
-	Knowledge 			=> major
-	Deception 			=> x
-	Thought 			=> minor
-	Dread 				=> major
-	Vigor 				=> x
-	Affliction 			=> x
-	Animal 				=> x
-	Plant 				=> x
-	Earth 				=> x
-	Water 				=> major
-	Air 				=> x
-	Fire 				=> x
-	Light 				=> x
-	Shadow 				=> minor
-	Magic 				=> minor
+	Life				=> minor
+	Death				=> minor
+	Vermin				=> x
+	Destruction			=> major
+	Protection			=> major
+	War					=> minor
+	Exploration			=> x
+	Knowledge			=> major
+	Deception			=> x
+	Thought				=> minor
+	Dread				=> major
+	Vigor				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> major
+	Air					=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> minor
+	Magic				=> minor
 	Astral		    	=> x
  END
 END
@@ -481,29 +557,29 @@ DEFINE_ACTION_FUNCTION azuth_spheres
   RET_ARRAY azuth_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY azuth_spheres_array BEGIN
-	Life 				=> major
-	Death 				=> x
-	Vermin	 			=> x
-	Destruction 		=> major
-	Protection 			=> major
-	War 				=> x
-	Exploration  		=> minor
-	Knowledge 			=> major
-	Deception 			=> minor
-	Thought 			=> minor
-	Dread 				=> minor
-	Vigor 				=> minor
-	Affliction 			=> x
-	Animal 				=> x
-	Plant 				=> x
-	Earth 				=> x
-	Water 				=> x
-	Air 				=> x
-	Fire 				=> minor
-	Light 				=> major
-	Shadow 				=> minor
-	Magic 				=> major
-	Astral		 		=> x
+	Life				=> major
+	Death				=> x
+	Vermin				=> x
+	Destruction			=> major
+	Protection			=> major
+	War					=> x
+	Exploration 		=> minor
+	Knowledge			=> major
+	Deception			=> minor
+	Thought				=> minor
+	Dread				=> minor
+	Vigor				=> minor
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air					=> x
+	Fire				=> minor
+	Light				=> major
+	Shadow				=> minor
+	Magic				=> major
+	Astral				=> x
  END
 END
 //___________________________________________________________________________________
@@ -515,27 +591,27 @@ DEFINE_ACTION_FUNCTION bane_spheres
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY bane_spheres_array BEGIN
 	Life				=> minor
-	Death 				=> major
-	Vermin	 			=> x
-	Destruction 		=> minor
-	Protection 			=> minor
-	War 				=> major
+	Death				=> major
+	Vermin				=> x
+	Destruction			=> minor
+	Protection			=> minor
+	War					=> major
 	Exploration			=> minor
 	Knowledge			=> minor
 	Deception			=> x
-	Thought 			=> x
-	Dread 				=> major
-	Vigor 				=> major
+	Thought				=> x
+	Dread				=> major
+	Vigor				=> major
 	Affliction			=> major
-	Animal 				=> x
-	Plant 				=> x
-	Earth 				=> x
-	Water 				=> x
-	Air 				=> x
-	Fire 				=> x
-	Light 				=> x
-	Shadow 				=> minor
-	Magic 				=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air					=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> minor
+	Magic				=> x
 	Astral				=> major
  END
 END
@@ -547,28 +623,28 @@ DEFINE_ACTION_FUNCTION beshaba_spheres
   RET_ARRAY beshaba_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY beshaba_spheres_array BEGIN
-	Life		 		=> major
-	Death		 		=> major
+	Life				=> major
+	Death				=> major
 	Vermin				=> x
-	Destruction		 	=> minor
-	Protection		 	=> major
-	War		 			=> x
+	Destruction			=> minor
+	Protection			=> major
+	War					=> x
 	Exploration		  	=> x
-	Knowledge		 	=> minor
-	Deception	 		=> minor
-	Thought		 		=> major
-	Dread		 		=> major
-	Vigor		 		=> minor
-	Affliction		 	=> minor
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> x
-	Water		 		=> x
-	Air		 			=> x
-	Fire		 		=> x
-	Light	 			=> x
-	Shadow		 		=> x
-	Magic		 		=> minor
+	Knowledge			=> minor
+	Deception			=> minor
+	Thought				=> major
+	Dread				=> major
+	Vigor				=> minor
+	Affliction			=> minor
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air					=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> minor
 	Astral		    	=> x
  END
 END
@@ -581,27 +657,27 @@ DEFINE_ACTION_FUNCTION bhaal_spheres
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY bhaal_spheres_array BEGIN
 	Life				=> minor
-	Death 				=> major
-	Vermin	 			=> x
-	Destruction 		=> focus
-	Protection 			=> minor
-	War 				=> major
-	Exploration			=> minor
+	Death				=> major
+	Vermin				=> x
+	Destruction			=> focus
+	Protection			=> minor
+	War					=> major
+	Exploration			=> x
 	Knowledge			=> minor
 	Deception			=> x
-	Thought 			=> x
-	Dread 				=> major
-	Vigor 				=> major
-	Affliction			=> major
-	Animal 				=> x
-	Plant 				=> x
-	Earth 				=> x
-	Water 				=> x
-	Air 				=> x
-	Fire 				=> x
-	Light 				=> x
-	Shadow 				=> minor
-	Magic 				=> x
+	Thought				=> x
+	Dread				=> major
+	Vigor				=> major
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air					=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> minor
+	Magic				=> x
 	Astral				=> major
  END
 END
@@ -613,28 +689,28 @@ DEFINE_ACTION_FUNCTION cyric_spheres
   RET_ARRAY cyric_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY cyric_spheres_array BEGIN
-	Life		 		=> minor
-	Death		 		=> major
+	Life				=> minor
+	Death				=> major
 	Vermin				=> x
-	Destruction		 	=> major
-	Protection		 	=> x
-	War		 			=> x
+	Destruction			=> major
+	Protection			=> x
+	War					=> x
 	Exploration		  	=> minor
-	Knowledge		 	=> x
-	Deception	 		=> major
-	Thought		 		=> minor
-	Dread		 		=> major
-	Vigor		 		=> minor
-	Affliction		 	=> major
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> x
-	Water		 		=> x
-	Air		 			=> x
-	Fire		 		=> x
-	Light	 			=> x
-	Shadow		 		=> major
-	Magic		 		=> minor
+	Knowledge			=> x
+	Deception			=> major
+	Thought				=> minor
+	Dread				=> major
+	Vigor				=> minor
+	Affliction			=> major
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air					=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> major
+	Magic				=> minor
 	Astral			    => major
  END
 END
@@ -646,28 +722,28 @@ DEFINE_ACTION_FUNCTION deneir_spheres
   RET_ARRAY deneir_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY deneir_spheres_array BEGIN
-	Life		 		=> minor
-	Death		 		=> x
+	Life				=> minor
+	Death				=> x
 	Vermin				=> x
-	Destruction		 	=> x
-	Protection		 	=> major
-	War		 			=> x
+	Destruction			=> x
+	Protection			=> major
+	War					=> x
 	Exploration		  	=> minor
-	Knowledge		 	=> major
-	Deception	 		=> minor
-	Thought		 		=> major
-	Dread		 		=> minor
-	Vigor		 		=> minor
-	Affliction		 	=> x
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> x
-	Water		 		=> x
-	Air		 			=> x
-	Fire		 		=> x
-	Light	 			=> major
-	Shadow		 		=> x
-	Magic		 		=> major
+	Knowledge			=> major
+	Deception			=> minor
+	Thought				=> major
+	Dread				=> minor
+	Vigor				=> minor
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air					=> x
+	Fire				=> x
+	Light				=> major
+	Shadow				=> x
+	Magic				=> major
 	Astral		    	=> x
  END
 END
@@ -679,29 +755,29 @@ DEFINE_ACTION_FUNCTION garagos_spheres
   RET_ARRAY garagos_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY garagos_spheres_array BEGIN
-	Life 				=> minor
-	Death 				=> x
-	Vermin	 			=> x
-	Destruction 		=> major
-	Protection 			=> minor
-	War 				=> major
-	Exploration 		=> minor
-	Knowledge 			=> minor
-	Deception 			=> x
-	Thought 			=> x
-	Dread 				=> major
-	Vigor 				=> major
-	Affliction 			=> minor
-	Animal 				=> x
-	Plant 				=> x
-	Earth 				=> x
-	Water 				=> x
-	Air 				=> x
-	Fire 				=> major
-	Light 				=> x
-	Shadow 				=> x
-	Magic 				=> x
-	Astral    			=> x
+	Life				=> minor
+	Death				=> x
+	Vermin				=> x
+	Destruction			=> major
+	Protection			=> minor
+	War					=> major
+	Exploration			=> minor
+	Knowledge			=> minor
+	Deception			=> x
+	Thought				=> x
+	Dread				=> major
+	Vigor				=> major
+	Affliction			=> minor
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air					=> x
+	Fire				=> major
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
+	Astral   			=> x
  END
 END
 //___________________________________________________________________________________
@@ -711,28 +787,28 @@ DEFINE_ACTION_FUNCTION helm_spheres
   RET_ARRAY helm_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY helm_spheres_array BEGIN
-	Life		 		=> major
-	Death		 		=> minor
+	Life				=> major
+	Death				=> minor
 	Vermin				=> x
-	Destruction		 	=> major
-	Protection		 	=> major
-	War		 			=> major
+	Destruction			=> major
+	Protection			=> major
+	War					=> major
 	Exploration		  	=> minor
-	Knowledge		 	=> major
-	Deception	 		=> x
-	Thought		 		=> minor
-	Dread		 		=> minor
-	Vigor		 		=> major
-	Affliction		 	=> x
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> x
-	Water		 		=> x
-	Air		 			=> x
-	Fire		 		=> x
-	Light	 			=> minor
-	Shadow		 		=> x
-	Magic		 		=> minor
+	Knowledge			=> major
+	Deception			=> x
+	Thought				=> minor
+	Dread				=> minor
+	Vigor				=> major
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air					=> x
+	Fire				=> x
+	Light				=> minor
+	Shadow				=> x
+	Magic				=> minor
 	Astral		    	=> x
  END
 END
@@ -744,28 +820,28 @@ DEFINE_ACTION_FUNCTION ilmater_spheres
   RET_ARRAY ilmater_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY ilmater_spheres_array BEGIN
-	Life		 		=> major
-	Death		 		=> x
+	Life				=> major
+	Death				=> x
 	Vermin				=> x
-	Destruction		 	=> minor
-	Protection		 	=> major
-	War		 			=> x
+	Destruction			=> minor
+	Protection			=> major
+	War					=> x
 	Exploration		  	=> minor
-	Knowledge		 	=> major
-	Deception	 		=> x
-	Thought		 		=> minor
-	Dread		 		=> major
-	Vigor		 		=> major
-	Affliction		 	=> major
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> x
-	Water		 		=> x
-	Air		 			=> x
-	Fire		 		=> x
-	Light	 			=> minor
-	Shadow		 		=> x
-	Magic		 		=> minor
+	Knowledge			=> major
+	Deception			=> x
+	Thought				=> minor
+	Dread				=> major
+	Vigor				=> major
+	Affliction			=> major
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air					=> x
+	Fire				=> x
+	Light				=> minor
+	Shadow				=> x
+	Magic				=> minor
 	Astral		    	=> major
  END
 END
@@ -777,28 +853,28 @@ DEFINE_ACTION_FUNCTION kelemvor_spheres
   RET_ARRAY kelemvor_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY kelemvor_spheres_array BEGIN
-	Life		 		=> major
-	Death		 		=> major
+	Life				=> major
+	Death				=> major
 	Vermin				=> x
-	Destruction		 	=> x
-	Protection		 	=> major
-	War		 			=> major
+	Destruction			=> x
+	Protection			=> major
+	War					=> major
 	Exploration		  	=> minor
-	Knowledge		 	=> major
-	Deception	 		=> x
-	Thought		 		=> minor
-	Dread		 		=> major
-	Vigor		 		=> x
-	Affliction		 	=> x
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> minor
-	Water		 		=> minor
-	Air		 			=> x
-	Fire		 		=> minor
-	Light	 			=> x
-	Shadow		 		=> x
-	Magic		 		=> minor
+	Knowledge			=> major
+	Deception			=> x
+	Thought				=> minor
+	Dread				=> major
+	Vigor				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> minor
+	Water				=> minor
+	Air					=> x
+	Fire				=> minor
+	Light				=> x
+	Shadow				=> x
+	Magic				=> minor
 	Astral			    => major
  END
 END
@@ -810,28 +886,28 @@ DEFINE_ACTION_FUNCTION kossuth_spheres
   RET_ARRAY kossuth_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY kossuth_spheres_array BEGIN
-	Life 				=> major
-	Death 				=> minor
-	Vermin	 			=> x
-	Destruction 		=> major
-	Protection 			=> major
-	War 				=> minor
-	Exploration 		=> x
-	Knowledge 			=> major
-	Deception 			=> x
-	Thought 			=> x
-	Dread 				=> minor
-	Vigor 				=> minor
-	Affliction 			=> x
-	Animal 				=> x
-	Plant 				=> x
-	Earth 				=> x
-	Water 				=> x
-	Air 				=> x
-	Fire 				=> focus
-	Light 				=> major
-	Shadow 				=> x
-	Magic 				=> minor
+	Life				=> major
+	Death				=> minor
+	Vermin				=> x
+	Destruction			=> major
+	Protection			=> major
+	War					=> minor
+	Exploration			=> x
+	Knowledge			=> major
+	Deception			=> x
+	Thought				=> x
+	Dread				=> minor
+	Vigor				=> minor
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air					=> x
+	Fire				=> focus
+	Light				=> major
+	Shadow				=> x
+	Magic				=> minor
 	Astral		    	=> x
  END
 END
@@ -843,28 +919,28 @@ DEFINE_ACTION_FUNCTION lathander_spheres
   RET_ARRAY lathander_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY lathander_spheres_array BEGIN
-	Life		 		=> major
-	Death		 		=> x
+	Life				=> major
+	Death				=> x
 	Vermin				=> x
-	Destruction		 	=> x
-	Protection		 	=> major
-	War		 			=> minor
+	Destruction			=> x
+	Protection			=> major
+	War					=> minor
 	Exploration		  	=> minor
-	Knowledge		 	=> minor
-	Deception	 		=> x
-	Thought		 		=> minor
-	Dread		 		=> x
-	Vigor		 		=> major
-	Affliction		 	=> x
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> x
-	Water		 		=> x
-	Air		 			=> minor
-	Fire		 		=> major
-	Light	 			=> major
-	Shadow		 		=> x
-	Magic		 		=> minor
+	Knowledge			=> minor
+	Deception			=> x
+	Thought				=> minor
+	Dread				=> x
+	Vigor				=> major
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air					=> minor
+	Fire				=> major
+	Light				=> major
+	Shadow				=> x
+	Magic				=> minor
 	Astral		    	=> x
   END
 END
@@ -876,28 +952,28 @@ DEFINE_ACTION_FUNCTION leira_spheres
   RET_ARRAY leira_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY leira_spheres_array BEGIN
-	Life		 		=> major
-	Death		 		=> x
+	Life				=> major
+	Death				=> x
 	Vermin				=> x
-	Destruction		 	=> x
-	Protection		 	=> minor
-	War		 			=> x
+	Destruction			=> x
+	Protection			=> minor
+	War					=> x
 	Exploration		  	=> major
-	Knowledge		 	=> major
-	Deception	 		=> major
-	Thought		 		=> major
-	Dread		 		=> minor
-	Vigor		 		=> minor
-	Affliction		 	=> x
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> x
-	Water		 		=> minor
-	Air		 			=> x
-	Fire		 		=> x
-	Light	 			=> major
-	Shadow		 		=> major
-	Magic		 		=> minor
+	Knowledge			=> major
+	Deception			=> major
+	Thought				=> major
+	Dread				=> minor
+	Vigor				=> minor
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> minor
+	Air					=> x
+	Fire				=> x
+	Light				=> major
+	Shadow				=> major
+	Magic				=> minor
 	Astral		    	=> x
  END
 END
@@ -909,28 +985,28 @@ DEFINE_ACTION_FUNCTION loviatar_spheres
   RET_ARRAY loviatar_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY loviatar_spheres_array BEGIN
-	Life		 		=> major
-	Death		 		=> major
+	Life				=> major
+	Death				=> major
 	Vermin				=> minor
-	Destruction		 	=> minor
-	Protection		 	=> x
-	War		 			=> minor
+	Destruction			=> minor
+	Protection			=> x
+	War					=> minor
 	Exploration		  	=> minor
-	Knowledge		 	=> major
-	Deception	 		=> minor
-	Thought		 		=> major
-	Dread		 		=> major
-	Vigor		 		=> minor
-	Affliction		 	=> major
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> x
-	Water		 		=> x
-	Air		 			=> x
-	Fire		 		=> x
-	Light	 			=> x
-	Shadow		 		=> minor
-	Magic		 		=> x
+	Knowledge			=> major
+	Deception			=> minor
+	Thought				=> major
+	Dread				=> major
+	Vigor				=> minor
+	Affliction			=> major
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air					=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> minor
+	Magic				=> x
 	Astral		    	=> x
  END
 END
@@ -942,29 +1018,29 @@ DEFINE_ACTION_FUNCTION malar_spheres
   RET_ARRAY malar_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY malar_spheres_array BEGIN
-	Life 			=> minor
-	Death 			=> minor
-	Vermin	 		=> x
-	Destruction 	=> major
-	Protection 		=> x
-	War 			=> x
-	Exploration 	=> major
-	Knowledge 		=> x
-	Deception 		=> x
-	Thought 		=> major
-	Dread 			=> minor
-	Vigor 			=> major
-	Affliction 		=> major
-	Animal 			=> major
-	Plant 			=> x
-	Earth 			=> minor
-	Water 			=> x
-	Air 			=> minor
-	Fire 			=> x
-	Light 			=> x
-	Shadow 			=> minor
-	Magic 			=> x
-	Astral    		=> x
+	Life				=> minor
+	Death				=> minor
+	Vermin				=> x
+	Destruction			=> major
+	Protection			=> x
+	War					=> x
+	Exploration			=> major
+	Knowledge			=> x
+	Deception			=> x
+	Thought				=> major
+	Dread				=> minor
+	Vigor				=> major
+	Affliction			=> major
+	Animal				=> major
+	Plant				=> x
+	Earth				=> minor
+	Water				=> x
+	Air					=> minor
+	Fire				=> x
+	Light				=> x
+	Shadow				=> minor
+	Magic				=> x
+	Astral   			=> x
  END
 END
 //___________________________________________________________________________________
@@ -975,28 +1051,28 @@ DEFINE_ACTION_FUNCTION mask_spheres
   RET_ARRAY mask_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY mask_spheres_array BEGIN
-	Life		 		=> major
-	Death		 		=> minor
+	Life				=> major
+	Death				=> minor
 	Vermin				=> x
-	Destruction		 	=> major
-	Protection		 	=> minor
-	War		 			=> x
+	Destruction			=> major
+	Protection			=> minor
+	War					=> x
 	Exploration		  	=> x
-	Knowledge		 	=> major
-	Deception	 		=> major
-	Thought		 		=> minor
-	Dread		 		=> major
-	Vigor		 		=> minor
-	Affliction		 	=> minor
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> x
-	Water		 		=> x
-	Air		 			=> x
-	Fire		 		=> x
-	Light	 			=> x
-	Shadow		 		=> major
-	Magic		 		=> minor
+	Knowledge			=> major
+	Deception			=> major
+	Thought				=> minor
+	Dread				=> major
+	Vigor				=> minor
+	Affliction			=> minor
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air					=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> major
+	Magic				=> minor
 	Astral		    	=> x
  END
 END
@@ -1008,29 +1084,29 @@ DEFINE_ACTION_FUNCTION mielikki_spheres
   RET_ARRAY mielikki_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY mielikki_spheres_array BEGIN
-	Life 				=> major
-	Death 				=> x
-	Vermin	 			=> x
-	Destruction 		=> x
-	Protection 			=> minor
-	War 				=> x
-	Exploration 		=> minor
-	Knowledge 			=> minor
-	Deception 			=> x
-	Thought 			=> x
-	Dread 				=> x
-	Vigor 				=> major
-	Affliction 			=> minor
-	Animal 				=> major
-	Plant 				=> major
-	Earth 				=> major
-	Water 				=> minor
-	Air 				=> minor
-	Fire 				=> x
-	Light 				=> minor
-	Shadow 				=> x
-	Magic 				=> x
-	Astral   			=> x
+	Life				=> major
+	Death				=> x
+	Vermin				=> x
+	Destruction			=> x
+	Protection			=> minor
+	War					=> x
+	Exploration			=> minor
+	Knowledge			=> minor
+	Deception			=> x
+	Thought				=> x
+	Dread				=> x
+	Vigor				=> major
+	Affliction			=> minor
+	Animal				=> major
+	Plant				=> major
+	Earth				=> major
+	Water				=> minor
+	Air					=> minor
+	Fire				=> x
+	Light				=> minor
+	Shadow				=> x
+	Magic				=> x
+	Astral  			=> x
  END
 END
 //___________________________________________________________________________________
@@ -1041,29 +1117,29 @@ DEFINE_ACTION_FUNCTION milil_spheres
   RET_ARRAY milil_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY milil_spheres_array BEGIN
-	Life 				=> major
-	Death 				=> x
-	Vermin	 			=> x
-	Destruction 		=> minor
-	Protection 			=> major
-	War 				=> x
-	Exploration 		=> major
-	Knowledge 			=> major
-	Deception 			=> x
-	Thought 			=> major
-	Dread 				=> minor
-	Vigor 				=> minor
-	Affliction 			=> x
-	Animal 				=> x
-	Plant 				=> x
-	Earth 				=> x
-	Water 				=> x
-	Air 				=> major
-	Fire 				=> x
-	Light 				=> major
-	Shadow 				=> x
-	Magic 				=> minor
-	Astral   			=> x
+	Life				=> major
+	Death				=> x
+	Vermin				=> x
+	Destruction			=> minor
+	Protection			=> major
+	War					=> x
+	Exploration			=> major
+	Knowledge			=> major
+	Deception			=> x
+	Thought				=> major
+	Dread				=> minor
+	Vigor				=> minor
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air					=> major
+	Fire				=> x
+	Light				=> major
+	Shadow				=> x
+	Magic				=> minor
+	Astral  			=> x
  END
 END
 //___________________________________________________________________________________
@@ -1074,28 +1150,28 @@ DEFINE_ACTION_FUNCTION moander_spheres
   RET_ARRAY moander_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY moander_spheres_array BEGIN
-	Life		 		=> x
-	Death		 		=> major
+	Life				=> x
+	Death				=> major
 	Vermin				=> minor
-	Destruction		 	=> major
-	Protection		 	=> x
-	War		 			=> x
+	Destruction			=> major
+	Protection			=> x
+	War					=> x
 	Exploration		  	=> minor
-	Knowledge		 	=> x
-	Deception	 		=> x
-	Thought		 		=> x
-	Dread		 		=> major
-	Vigor		 		=> minor
-	Affliction		 	=> major
-	Animal		 		=> minor
-	Plant		 		=> major
-	Earth		 		=> major
-	Water		 		=> minor
-	Air		 			=> minor
-	Fire		 		=> x
-	Light	 			=> x
-	Shadow		 		=> major
-	Magic		 		=> x
+	Knowledge			=> x
+	Deception			=> x
+	Thought				=> x
+	Dread				=> major
+	Vigor				=> minor
+	Affliction			=> major
+	Animal				=> minor
+	Plant				=> major
+	Earth				=> major
+	Water				=> minor
+	Air					=> minor
+	Fire				=> x
+	Light				=> x
+	Shadow				=> major
+	Magic				=> x
 	Astral		    	=> x
  END
 END
@@ -1107,28 +1183,28 @@ DEFINE_ACTION_FUNCTION mystra_spheres
   RET_ARRAY mystra_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY mystra_spheres_array BEGIN
-	Life		 		=> major
-	Death		 		=> x
+	Life				=> major
+	Death				=> x
 	Vermin				=> x
-	Destruction		 	=> major
-	Protection		 	=> major
-	War		 			=> x
+	Destruction			=> major
+	Protection			=> major
+	War					=> x
 	Exploration		  	=> minor
-	Knowledge		 	=> major
-	Deception	 		=> x
-	Thought		 		=> minor
-	Dread		 		=> minor
-	Vigor		 		=> minor
-	Affliction		 	=> x
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> x
-	Water		 		=> x
-	Air		 			=> x
-	Fire		 		=> minor
-	Light	 			=> major
-	Shadow		 		=> minor
-	Magic		 		=> major
+	Knowledge			=> major
+	Deception			=> x
+	Thought				=> minor
+	Dread				=> minor
+	Vigor				=> minor
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air					=> x
+	Fire				=> minor
+	Light				=> major
+	Shadow				=> minor
+	Magic				=> major
 	Astral		    	=> major
  END
 END
@@ -1140,28 +1216,28 @@ DEFINE_ACTION_FUNCTION oghma_spheres
   RET_ARRAY oghma_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY oghma_spheres_array BEGIN
-	Life 				=> major
-	Death 				=> minor
-	Vermin	 			=> x
-	Destruction 		=> minor
-	Protection 			=> major
-	War 				=> x
-	Exploration 		=> minor
-	Knowledge 			=> focus
-	Deception 			=> minor
-	Thought 			=> major
-	Dread 				=> minor
-	Vigor 				=> x
-	Affliction 			=> x
-	Animal 				=> x
-	Plant 				=> x
-	Earth 				=> x
-	Water 				=> x
-	Air 				=> x
-	Fire 				=> x
-	Light 				=> minor
-	Shadow 				=> minor
-	Magic 				=> major
+	Life				=> major
+	Death				=> minor
+	Vermin				=> x
+	Destruction			=> minor
+	Protection			=> major
+	War					=> x
+	Exploration			=> minor
+	Knowledge			=> focus
+	Deception			=> minor
+	Thought				=> major
+	Dread				=> minor
+	Vigor				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air					=> x
+	Fire				=> x
+	Light				=> minor
+	Shadow				=> minor
+	Magic				=> major
 	Astral		    	=> x
  END
 END
@@ -1173,28 +1249,28 @@ DEFINE_ACTION_FUNCTION redknight_spheres
   RET_ARRAY redknight_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY redknight_spheres_array BEGIN
-	Life 				=> minor
-	Death 				=> minor
-	Vermin	 			=> x
-	Destruction 		=> major
-	Protection 			=> major
-	War 				=> major
-	Exploration 		=> minor
-	Knowledge 			=> minor
-	Deception 			=> x
-	Thought 			=> minor
-	Dread 				=> major
-	Vigor 				=> major
-	Affliction 			=> x
-	Animal 				=> x
-	Plant 				=> x
-	Earth 				=> x
-	Water 				=> x
-	Air 				=> x
-	Fire 				=> minor
-	Light 				=> minor
-	Shadow 				=> x
-	Magic 				=> x
+	Life				=> minor
+	Death				=> minor
+	Vermin				=> x
+	Destruction			=> major
+	Protection			=> major
+	War					=> major
+	Exploration			=> minor
+	Knowledge			=> minor
+	Deception			=> x
+	Thought				=> minor
+	Dread				=> major
+	Vigor				=> major
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air					=> x
+	Fire				=> minor
+	Light				=> minor
+	Shadow				=> x
+	Magic				=> x
 	Astral		    	=> x
  END
 END
@@ -1206,28 +1282,28 @@ DEFINE_ACTION_FUNCTION selune_spheres
   RET_ARRAY selune_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY selune_spheres_array BEGIN
-	Life 				=> major
-	Death 				=> x
-	Vermin	 			=> x
-	Destruction 		=> x
-	Protection 			=> major
-	War 				=> minor
-	Exploration 		=> major
-	Knowledge 			=> major
-	Deception 			=> minor
-	Thought 			=> major
-	Dread 				=> x
-	Vigor 				=> major
-	Affliction 			=> minor
-	Animal 				=> x
-	Plant 				=> x
-	Earth 				=> x
-	Water 				=> x
-	Air 				=> major
-	Fire 				=> x
-	Light 				=> major
-	Shadow 				=> minor
-	Magic 				=> minor
+	Life				=> major
+	Death				=> x
+	Vermin				=> x
+	Destruction			=> x
+	Protection			=> major
+	War					=> minor
+	Exploration			=> major
+	Knowledge			=> major
+	Deception			=> minor
+	Thought				=> major
+	Dread				=> x
+	Vigor				=> major
+	Affliction			=> minor
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air					=> major
+	Fire				=> x
+	Light				=> major
+	Shadow				=> minor
+	Magic				=> minor
 	Astral		    	=> x
  END
 END
@@ -1239,29 +1315,29 @@ DEFINE_ACTION_FUNCTION shar_spheres
   RET_ARRAY shar_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY shar_spheres_array BEGIN
-	Life		 		=> minor
-	Death		 		=> major
+	Life				=> minor
+	Death				=> major
 	Vermin				=> x
-	Destruction		 	=> major
-	Protection		 	=> minor
-	War		 			=> x
+	Destruction			=> major
+	Protection			=> minor
+	War					=> x
 	Exploration		  	=> x
-	Knowledge		 	=> minor
-	Deception	 		=> minor
-	Thought		 		=> minor
-	Dread		 		=> major
-	Vigor		 		=> x
-	Affliction		 	=> minor
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> x
-	Water		 		=> x
-	Air		 			=> x
-	Fire		 		=> x
-	Light	 			=> x
-	Shadow		 		=> major
-	Magic		 		=> major
-	Astral		 	   => major
+	Knowledge			=> minor
+	Deception			=> minor
+	Thought				=> minor
+	Dread				=> major
+	Vigor				=> x
+	Affliction			=> minor
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air					=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> major
+	Magic				=> major
+	Astral				=> major
  END
 END
 //___________________________________________________________________________________
@@ -1272,29 +1348,29 @@ DEFINE_ACTION_FUNCTION shaundakul_spheres
   RET_ARRAY shaundakul_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY shaundakul_spheres_array BEGIN
-	Life 				=> major
-	Death 				=> x
-	Vermin	 			=> x
-	Destruction 		=> x
-	Protection 			=> major
-	War 				=> x
-	Exploration 		=> focus
-	Knowledge 			=> major
-	Deception 			=> minor
-	Thought 			=> x
-	Dread 				=> x
-	Vigor 				=> major
-	Affliction 			=> x
-	Animal 				=> minor
-	Plant 				=> minor
-	Earth 				=> x
-	Water 				=> minor
-	Air 				=> major
-	Fire 				=> x
-	Light 				=> major
-	Shadow 				=> x
-	Magic 				=> minor
-	Astral   			=> x
+	Life				=> major
+	Death				=> x
+	Vermin				=> x
+	Destruction			=> x
+	Protection			=> major
+	War					=> x
+	Exploration			=> focus
+	Knowledge			=> major
+	Deception			=> minor
+	Thought				=> x
+	Dread				=> x
+	Vigor				=> major
+	Affliction			=> x
+	Animal				=> minor
+	Plant				=> minor
+	Earth				=> x
+	Water				=> minor
+	Air					=> major
+	Fire				=> x
+	Light				=> major
+	Shadow				=> x
+	Magic				=> minor
+	Astral  			=> x
  END
 END
 //___________________________________________________________________________________
@@ -1305,28 +1381,28 @@ DEFINE_ACTION_FUNCTION sune_spheres
   RET_ARRAY sune_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY sune_spheres_array BEGIN
-	Life		 		=> major
-	Death		 		=> x
+	Life				=> major
+	Death				=> x
 	Vermin				=> x
-	Destruction		 	=> x
-	Protection		 	=> minor
-	War		 			=> x
+	Destruction			=> x
+	Protection			=> minor
+	War					=> x
 	Exploration		  	=> minor
-	Knowledge		 	=> major
-	Deception	 		=> major
-	Thought		 		=> major
-	Dread		 		=> major
-	Vigor		 		=> major
-	Affliction		 	=> x
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> x
-	Water		 		=> x
-	Air		 			=> x
-	Fire		 		=> x
-	Light	 			=> minor
-	Shadow		 		=> minor
-	Magic		 		=> minor
+	Knowledge			=> major
+	Deception			=> major
+	Thought				=> major
+	Dread				=> major
+	Vigor				=> major
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air					=> x
+	Fire				=> x
+	Light				=> minor
+	Shadow				=> minor
+	Magic				=> minor
 	Astral		    	=> x
  END
 END
@@ -1338,28 +1414,28 @@ DEFINE_ACTION_FUNCTION talos_spheres
   RET_ARRAY talos_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY talos_spheres_array BEGIN
-	Life		 		=> major
-	Death		 		=> x
+	Life				=> major
+	Death				=> x
 	Vermin				=> x
-	Destruction		 	=> major
-	Protection		 	=> major
-	War		 			=> minor
+	Destruction			=> major
+	Protection			=> major
+	War					=> minor
 	Exploration		  	=> major
-	Knowledge		 	=> x
-	Deception	 		=> x
-	Thought		 		=> x
-	Dread		 		=> minor
-	Vigor		 		=> major
-	Affliction		 	=> minor
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> x
-	Water		 		=> x
-	Air		 			=> major
-	Fire		 		=> major
-	Light	 			=> minor
-	Shadow		 		=> x
-	Magic		 		=> minor
+	Knowledge			=> x
+	Deception			=> x
+	Thought				=> x
+	Dread				=> minor
+	Vigor				=> major
+	Affliction			=> minor
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air					=> major
+	Fire				=> major
+	Light				=> minor
+	Shadow				=> x
+	Magic				=> minor
 	Astral		    	=> x
  END
 END
@@ -1371,28 +1447,28 @@ DEFINE_ACTION_FUNCTION tempus_spheres
   RET_ARRAY tempus_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY tempus_spheres_array BEGIN
-	Life		 		=> major
-	Death		 		=> x
+	Life				=> major
+	Death				=> x
 	Vermin				=> x
-	Destruction		 	=> major
-	Protection		 	=> major
-	War		 			=> major
+	Destruction			=> major
+	Protection			=> major
+	War					=> major
 	Exploration		  	=> minor
-	Knowledge		 	=> minor
-	Deception	 		=> x
-	Thought		 		=> minor
-	Dread		 		=> x
-	Vigor		 		=> major
-	Affliction		 	=> x
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> minor
-	Water		 		=> x
-	Air		 			=> minor
-	Fire		 		=> x
-	Light	 			=> minor
-	Shadow		 		=> x
-	Magic		 		=> minor
+	Knowledge			=> minor
+	Deception			=> x
+	Thought				=> minor
+	Dread				=> x
+	Vigor				=> major
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> minor
+	Water				=> x
+	Air					=> minor
+	Fire				=> x
+	Light				=> minor
+	Shadow				=> x
+	Magic				=> minor
 	Astral		    	=> x
  END
 END
@@ -1404,28 +1480,28 @@ DEFINE_ACTION_FUNCTION torm_spheres
   RET_ARRAY torm_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY torm_spheres_array BEGIN
-	Life		 		=> major
-	Death		 		=> major
+	Life				=> major
+	Death				=> major
 	Vermin				=> x
-	Destruction		 	=> minor
-	Protection		 	=> focus
-	War		 			=> major
+	Destruction			=> minor
+	Protection			=> focus
+	War					=> major
 	Exploration		  	=> minor
-	Knowledge		 	=> minor
-	Deception	 		=> x
-	Thought		 		=> major
-	Dread		 		=> minor
-	Vigor		 		=> major
-	Affliction		 	=> x
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> x
-	Water		 		=> x
-	Air		 			=> x
-	Fire		 		=> x
-	Light	 			=> minor
-	Shadow		 		=> x
-	Magic		 		=> x
+	Knowledge			=> minor
+	Deception			=> x
+	Thought				=> major
+	Dread				=> minor
+	Vigor				=> major
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air					=> x
+	Fire				=> x
+	Light				=> minor
+	Shadow				=> x
+	Magic				=> x
 	Astral		    	=> x
  END
 END
@@ -1437,27 +1513,27 @@ DEFINE_ACTION_FUNCTION tymora_spheres
   RET_ARRAY tymora_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY tymora_spheres_array BEGIN
-	Life		 		=> major
-	Death		 		=> x
+	Life				=> major
+	Death				=> x
 	Vermin				=> x
-	Destruction		 	=> minor
-	Protection		 	=> major
-	War		 			=> x
+	Destruction			=> minor
+	Protection			=> major
+	War					=> x
 	Exploration		  	=> major
-	Knowledge		 	=> minor
-	Deception	 		=> minor
-	Thought		 		=> major
-	Dread		 		=> minor
-	Vigor		 		=> major
-	Affliction		 	=> x
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> x
-	Water		 		=> x
-	Air		 			=> major
-	Fire		 		=> x
-	Light	 			=> major
-	Shadow		 		=> x
+	Knowledge			=> minor
+	Deception			=> minor
+	Thought				=> major
+	Dread				=> minor
+	Vigor				=> major
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air					=> major
+	Fire				=> x
+	Light				=> major
+	Shadow				=> x
 	Magic				=> minor
 	Astral		    	=> x
  END
@@ -1503,28 +1579,28 @@ DEFINE_ACTION_FUNCTION ulutiu_spheres
   RET_ARRAY ulutiu_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY ulutiu_spheres_array BEGIN
-	Life 				=> major
-	Death 				=> x
-	Vermin	 			=> x
-	Destruction 		=> x
-	Protection 			=> major
-	War 				=> minor
-	Exploration 		=> major
-	Knowledge 			=> minor
-	Deception 			=> x
-	Thought 			=> minor
-	Dread 				=> x
-	Vigor 				=> major
-	Affliction 			=> x
-	Animal 				=> major
-	Plant 				=> x
-	Earth 				=> x
-	Water 				=> major
-	Air 				=> minor
-	Fire 				=> x
-	Light 				=> minor
-	Shadow 				=> minor
-	Magic 				=> x
+	Life				=> major
+	Death				=> x
+	Vermin				=> x
+	Destruction			=> x
+	Protection			=> major
+	War					=> minor
+	Exploration			=> major
+	Knowledge			=> minor
+	Deception			=> x
+	Thought				=> minor
+	Dread				=> x
+	Vigor				=> major
+	Affliction			=> x
+	Animal				=> major
+	Plant				=> x
+	Earth				=> x
+	Water				=> major
+	Air					=> minor
+	Fire				=> x
+	Light				=> minor
+	Shadow				=> minor
+	Magic				=> x
 	Astral		    	=> x
  END
 END
@@ -1536,28 +1612,28 @@ DEFINE_ACTION_FUNCTION umberlee_spheres
   RET_ARRAY umberlee_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY umberlee_spheres_array BEGIN
-	Life		 		=> major
-	Death		 		=> x
+	Life				=> major
+	Death				=> x
 	Vermin				=> x
-	Destruction		 	=> major
-	Protection		 	=> major
-	War		 			=> minor
+	Destruction			=> major
+	Protection			=> major
+	War					=> minor
 	Exploration		  	=> major
-	Knowledge		 	=> minor
-	Deception	 		=> x
-	Thought		 		=> x
-	Dread		 		=> major
-	Vigor		 		=> minor
-	Affliction		 	=> minor
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> x
-	Water		 		=> focus
-	Air		 			=> major
-	Fire		 		=> x
-	Light	 			=> x
-	Shadow		 		=> x
-	Magic		 		=> minor
+	Knowledge			=> minor
+	Deception			=> x
+	Thought				=> x
+	Dread				=> major
+	Vigor				=> minor
+	Affliction			=> minor
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> focus
+	Air					=> major
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> minor
 	Astral		    	=> x
  END
 END
@@ -1569,29 +1645,29 @@ DEFINE_ACTION_FUNCTION xvim_spheres
   RET_ARRAY xvim_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY xvim_spheres_array BEGIN
-	Life 				=> minor
-	Death 				=> major
-	Vermin	 			=> minor
-	Destruction 		=> major
-	Protection 			=> x
-	War 				=> major
-	Exploration 		=> x
-	Knowledge 			=> minor
-	Deception 			=> x
-	Thought 			=> minor
-	Dread 				=> major
-	Vigor 				=> minor
-	Affliction 			=> major
-	Animal 				=> x
-	Plant 				=> x
-	Earth 				=> x
-	Water 				=> x
-	Air 				=> x
-	Fire 				=> x
-	Light 				=> x
-	Shadow 				=> minor
-	Magic 				=> minor
-	Astral 				=> major
+	Life				=> minor
+	Death				=> major
+	Vermin				=> minor
+	Destruction			=> major
+	Protection			=> x
+	War					=> major
+	Exploration			=> x
+	Knowledge			=> minor
+	Deception			=> x
+	Thought				=> minor
+	Dread				=> major
+	Vigor				=> minor
+	Affliction			=> major
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air					=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> minor
+	Magic				=> minor
+	Astral				=> major
  END
 END
 //___________________________________________________________________________________
@@ -1605,28 +1681,28 @@ DEFINE_ACTION_FUNCTION corellon_spheres
   RET_ARRAY corellon_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY corellon_spheres_array BEGIN
-	Life 				=> major
-	Death 				=> x
-	Vermin	 			=> x
-	Destruction 		=> minor
-	Protection 			=> major
-	War 				=> major
-	Exploration 		=> minor
-	Knowledge 			=> major
-	Deception 			=> x
-	Thought 			=> minor
-	Dread 				=> x
-	Vigor 				=> major
-	Affliction 			=> x
-	Animal 				=> x
-	Plant 				=> minor
-	Earth 				=> x
-	Water 				=> minor
-	Air 				=> minor
-	Fire 				=> x
-	Light 				=> major
-	Shadow 				=> x
-	Magic 				=> major
+	Life				=> major
+	Death				=> x
+	Vermin				=> x
+	Destruction			=> minor
+	Protection			=> major
+	War					=> major
+	Exploration			=> minor
+	Knowledge			=> major
+	Deception			=> x
+	Thought				=> minor
+	Dread				=> x
+	Vigor				=> major
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> minor
+	Earth				=> x
+	Water				=> minor
+	Air					=> minor
+	Fire				=> x
+	Light				=> major
+	Shadow				=> x
+	Magic				=> major
 	Astral		    	=> x
  END
 END
@@ -1638,29 +1714,29 @@ DEFINE_ACTION_FUNCTION eilistraee_spheres
   RET_ARRAY eilistraee_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY eilistraee_spheres_array BEGIN
-	Life 				=> major
-	Death 				=> x
-	Vermin	 			=> x
-	Destruction 		=> x
-	Protection 			=> major
-	War 				=> x
-	Exploration  		=> minor
-	Knowledge 			=> minor
-	Deception 			=> major
-	Thought 			=> minor
-	Dread 				=> x
-	Vigor 				=> major
-	Affliction 			=> x
-	Animal 				=> x
-	Plant 				=> x
-	Earth 				=> x
-	Water 				=> x
-	Air 				=> minor
-	Fire 				=> x
-	Light 				=> major
-	Shadow 				=> major
-	Magic 				=> x
-	Astral   			=> minor
+	Life				=> major
+	Death				=> x
+	Vermin				=> x
+	Destruction			=> x
+	Protection			=> major
+	War					=> x
+	Exploration 		=> minor
+	Knowledge			=> minor
+	Deception			=> major
+	Thought				=> minor
+	Dread				=> x
+	Vigor				=> major
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air					=> minor
+	Fire				=> x
+	Light				=> major
+	Shadow				=> major
+	Magic				=> x
+	Astral  			=> minor
  END
 END
 //___________________________________________________________________________________
@@ -1671,29 +1747,29 @@ DEFINE_ACTION_FUNCTION moradin_spheres
   RET_ARRAY moradin_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY moradin_spheres_array BEGIN
-	Life 				=> major
-	Death 				=> x
-	Vermin	 			=> x
-	Destruction 		=> major
-	Protection 			=> major
-	War 				=> minor
-	Exploration 		=> x
-	Knowledge 			=> minor
-	Deception 			=> x
-	Thought 			=> x
-	Dread 				=> major
-	Vigor 				=> minor
-	Affliction 			=> x
-	Animal 				=> x
-	Plant 				=> x
-	Earth 				=> major
-	Water 				=> x
-	Air 				=> major
-	Fire 				=> x
-	Light 				=> minor
-	Shadow 				=> x
-	Magic 				=> minor
-	Astral  			=> major
+	Life				=> major
+	Death				=> x
+	Vermin				=> x
+	Destruction			=> major
+	Protection			=> major
+	War					=> minor
+	Exploration			=> x
+	Knowledge			=> minor
+	Deception			=> x
+	Thought				=> x
+	Dread				=> major
+	Vigor				=> minor
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> major
+	Water				=> x
+	Air					=> major
+	Fire				=> x
+	Light				=> minor
+	Shadow				=> x
+	Magic				=> minor
+	Astral 				=> major
  END
 END
 //___________________________________________________________________________________
@@ -1704,29 +1780,29 @@ DEFINE_ACTION_FUNCTION clangeddin_spheres
   RET_ARRAY clangeddin_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY clangeddin_spheres_array BEGIN
-	Life 				=> major
-	Death 				=> x
-	Vermin	 			=> x
-	Destruction 		=> major
-	Protection 			=> major
-	War 				=> major
-	Exploration 		=> x
-	Knowledge 			=> minor
-	Deception 			=> x
-	Thought 			=> x
-	Dread 				=> minor
-	Vigor 				=> major
-	Affliction 			=> x
-	Animal 				=> x
-	Plant 				=> x
-	Earth 				=> major
-	Water 				=> x
-	Air 				=> x
-	Fire 				=> x
-	Light 				=> minor
-	Shadow 				=> x
-	Magic 				=> minor
-	Astral   			=> x
+	Life				=> major
+	Death				=> x
+	Vermin				=> x
+	Destruction			=> major
+	Protection			=> major
+	War					=> major
+	Exploration			=> x
+	Knowledge			=> minor
+	Deception			=> x
+	Thought				=> x
+	Dread				=> minor
+	Vigor				=> major
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> major
+	Water				=> x
+	Air					=> x
+	Fire				=> x
+	Light				=> minor
+	Shadow				=> x
+	Magic				=> minor
+	Astral  			=> x
  END
 END
 //___________________________________________________________________________________
@@ -1737,29 +1813,29 @@ DEFINE_ACTION_FUNCTION marthammor_spheres
   RET_ARRAY marthammor_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY marthammor_spheres_array BEGIN
-	Life 				=> major
-	Death 				=> x
-	Vermin	 			=> x
-	Destruction 		=> major
-	Protection 			=> major
-	War 				=> major
-	Exploration 		=> major
-	Knowledge 			=> minor
-	Deception 			=> x
-	Thought 			=> x
-	Dread 				=> x
-	Vigor 				=> major
-	Affliction 			=> x
-	Animal 				=> minor
-	Plant 				=> x
-	Earth 				=> major
-	Water 				=> x
-	Air 				=> x
-	Fire 				=> x
-	Light 				=> minor
-	Shadow 				=> x
-	Magic 				=> minor
-	Astral   			=> x
+	Life				=> major
+	Death				=> x
+	Vermin				=> x
+	Destruction			=> major
+	Protection			=> major
+	War					=> major
+	Exploration			=> major
+	Knowledge			=> minor
+	Deception			=> x
+	Thought				=> x
+	Dread				=> x
+	Vigor				=> major
+	Affliction			=> x
+	Animal				=> minor
+	Plant				=> x
+	Earth				=> major
+	Water				=> x
+	Air					=> x
+	Fire				=> x
+	Light				=> minor
+	Shadow				=> x
+	Magic				=> minor
+	Astral  			=> x
  END
 END
 //___________________________________________________________________________________
@@ -1770,28 +1846,28 @@ DEFINE_ACTION_FUNCTION haela_spheres
   RET_ARRAY haela_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY haela_spheres_array BEGIN
-	Life		 		=> major
-	Death		 		=> x
+	Life				=> major
+	Death				=> x
 	Vermin				=> x
-	Destruction		 	=> major
-	Protection		 	=> major
-	War		 			=> major
+	Destruction			=> major
+	Protection			=> major
+	War					=> major
 	Exploration		  	=> minor
-	Knowledge		 	=> minor
-	Deception	 		=> x
-	Thought		 		=> minor
-	Dread		 		=> x
-	Vigor		 		=> major
-	Affliction		 	=> x
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> minor
-	Water		 		=> x
-	Air		 			=> minor
-	Fire		 		=> x
-	Light	 			=> minor
-	Shadow		 		=> x
-	Magic		 		=> minor
+	Knowledge			=> minor
+	Deception			=> x
+	Thought				=> minor
+	Dread				=> x
+	Vigor				=> major
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> minor
+	Water				=> x
+	Air					=> minor
+	Fire				=> x
+	Light				=> minor
+	Shadow				=> x
+	Magic				=> minor
 	Astral		    	=> x
  END
 END
@@ -1803,28 +1879,28 @@ DEFINE_ACTION_FUNCTION baravar_spheres
   RET_ARRAY baravar_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY baravar_spheres_array BEGIN
-	Life		 		=> major
-	Death		 		=> x
+	Life				=> major
+	Death				=> x
 	Vermin				=> x
-	Destruction		 	=> x
-	Protection		 	=> minor
-	War		 			=> x
+	Destruction			=> x
+	Protection			=> minor
+	War					=> x
 	Exploration		  	=> major
-	Knowledge		 	=> major
-	Deception	 		=> major
-	Thought		 		=> major
-	Dread		 		=> minor
-	Vigor		 		=> minor
-	Affliction		 	=> x
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> x
-	Water		 		=> minor
-	Air		 			=> x
-	Fire		 		=> x
-	Light	 			=> major
-	Shadow		 		=> minor
-	Magic		 		=> minor
+	Knowledge			=> major
+	Deception			=> major
+	Thought				=> major
+	Dread				=> minor
+	Vigor				=> minor
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> minor
+	Air					=> x
+	Fire				=> x
+	Light				=> major
+	Shadow				=> minor
+	Magic				=> minor
 	Astral		    	=> x
  END
 END
@@ -1836,28 +1912,28 @@ DEFINE_ACTION_FUNCTION baervan_spheres
   RET_ARRAY baervan_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY baervan_spheres_array BEGIN
-	Life		 		=> major
-	Death		 		=> x
+	Life				=> major
+	Death				=> x
 	Vermin				=> x
-	Destruction		 	=> x
-	Protection		 	=> major
-	War		 			=> x
+	Destruction			=> x
+	Protection			=> major
+	War					=> x
 	Exploration		  	=> major
-	Knowledge		 	=> minor
-	Deception	 		=> x
-	Thought		 		=> minor
-	Dread		 		=> x
-	Vigor		 		=> minor
-	Affliction		 	=> x
-	Animal		 		=> major
-	Plant		 		=> major
-	Earth		 		=> major
-	Water		 		=> minor
-	Air		 			=> x
-	Fire		 		=> x
-	Light	 			=> minor
-	Shadow		 		=> x
-	Magic		 		=> x
+	Knowledge			=> minor
+	Deception			=> x
+	Thought				=> minor
+	Dread				=> x
+	Vigor				=> minor
+	Affliction			=> x
+	Animal				=> major
+	Plant				=> major
+	Earth				=> major
+	Water				=> minor
+	Air					=> x
+	Fire				=> x
+	Light				=> minor
+	Shadow				=> x
+	Magic				=> x
 	Astral		    	=> x
  END
 END
@@ -1869,28 +1945,28 @@ DEFINE_ACTION_FUNCTION urdlen_spheres
   RET_ARRAY urdlen_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY urdlen_spheres_array BEGIN
-	Life		 		=> minor
-	Death		 		=> major
+	Life				=> minor
+	Death				=> major
 	Vermin				=> minor
-	Destruction		 	=> major
-	Protection		 	=> x
-	War		 			=> x
+	Destruction			=> major
+	Protection			=> x
+	War					=> x
 	Exploration		  	=> minor
-	Knowledge		 	=> minor
-	Deception	 		=> major
-	Thought		 		=> minor
-	Dread		 		=> major
-	Vigor		 		=> x
-	Affliction		 	=> major
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> major
-	Water		 		=> x
-	Air		 			=> x
-	Fire		 		=> x
-	Light	 			=> x
-	Shadow		 		=> major
-	Magic		 		=> minor
+	Knowledge			=> minor
+	Deception			=> major
+	Thought				=> minor
+	Dread				=> major
+	Vigor				=> x
+	Affliction			=> major
+	Animal				=> x
+	Plant				=> x
+	Earth				=> major
+	Water				=> x
+	Air					=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> major
+	Magic				=> minor
 	Astral			    => x
  END
 END
@@ -1902,28 +1978,28 @@ DEFINE_ACTION_FUNCTION yondalla_spheres
   RET_ARRAY yondalla_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY yondalla_spheres_array BEGIN
-	Life		 		=> major
-	Death		 		=> x
+	Life				=> major
+	Death				=> x
 	Vermin				=> x
-	Destruction		 	=> major
-	Protection		 	=> major
-	War		 			=> x
+	Destruction			=> major
+	Protection			=> major
+	War					=> x
 	Exploration		  	=> minor
-	Knowledge		 	=> major
-	Deception	 		=> x
-	Thought		 		=> major
-	Dread		 		=> x
-	Vigor		 		=> minor
-	Affliction		 	=> x
-	Animal		 		=> minor
-	Plant		 		=> minor
-	Earth		 		=> major
-	Water		 		=> x
-	Air		 			=> x
-	Fire		 		=> x
-	Light	 			=> major
-	Shadow		 		=> x
-	Magic		 		=> x
+	Knowledge			=> major
+	Deception			=> x
+	Thought				=> major
+	Dread				=> x
+	Vigor				=> minor
+	Affliction			=> x
+	Animal				=> minor
+	Plant				=> minor
+	Earth				=> major
+	Water				=> x
+	Air					=> x
+	Fire				=> x
+	Light				=> major
+	Shadow				=> x
+	Magic				=> x
 	Astral		    	=> minor
  END
 END
@@ -1935,28 +2011,28 @@ DEFINE_ACTION_FUNCTION arvoreen_spheres
   RET_ARRAY arvoreen_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY arvoreen_spheres_array BEGIN
-	Life		 		=> minor
-	Death		 		=> x
+	Life				=> minor
+	Death				=> x
 	Vermin				=> x
-	Destruction		 	=> major
-	Protection		 	=> major
-	War		 			=> major
+	Destruction			=> major
+	Protection			=> major
+	War					=> major
 	Exploration		  	=> major
-	Knowledge		 	=> minor
-	Deception	 		=> x
-	Thought		 		=> x
-	Dread		 		=> minor
-	Vigor		 		=> major
-	Affliction		 	=> x
-	Animal		 		=> minor
-	Plant		 		=> minor
-	Earth		 		=> major
-	Water		 		=> x
-	Air		 			=> x
-	Fire		 		=> x
-	Light	 			=> major
-	Shadow		 		=> x
-	Magic		 		=> x
+	Knowledge			=> minor
+	Deception			=> x
+	Thought				=> x
+	Dread				=> minor
+	Vigor				=> major
+	Affliction			=> x
+	Animal				=> minor
+	Plant				=> minor
+	Earth				=> major
+	Water				=> x
+	Air					=> x
+	Fire				=> x
+	Light				=> major
+	Shadow				=> x
+	Magic				=> x
 	Astral		    	=> x
  END
 END
@@ -1968,28 +2044,28 @@ DEFINE_ACTION_FUNCTION brandobaris_spheres
   RET_ARRAY brandobaris_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY brandobaris_spheres_array BEGIN
-	Life		 		=> major
-	Death		 		=> x
+	Life				=> major
+	Death				=> x
 	Vermin				=> x
-	Destruction		 	=> x
-	Protection		 	=> major
-	War		 			=> minor
+	Destruction			=> x
+	Protection			=> major
+	War					=> minor
 	Exploration		  	=> major
-	Knowledge		 	=> minor
-	Deception	 		=> minor
-	Thought		 		=> major
-	Dread		 		=> x
-	Vigor		 		=> major
-	Affliction		 	=> x
-	Animal		 		=> minor
-	Plant		 		=> major
-	Earth		 		=> x
-	Water		 		=> x
-	Air		 			=> major
-	Fire		 		=> x
-	Light	 			=> x
-	Shadow		 		=> minor
-	Magic		 		=> x
+	Knowledge			=> minor
+	Deception			=> minor
+	Thought				=> major
+	Dread				=> x
+	Vigor				=> major
+	Affliction			=> x
+	Animal				=> minor
+	Plant				=> major
+	Earth				=> x
+	Water				=> x
+	Air					=> major
+	Fire				=> x
+	Light				=> x
+	Shadow				=> minor
+	Magic				=> x
 	Astral		    	=> x
  END
 END
@@ -2001,29 +2077,29 @@ DEFINE_ACTION_FUNCTION gruumsh_spheres
   RET_ARRAY gruumsh_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY gruumsh_spheres_array BEGIN
-	Life 				=> minor
-	Death 				=> minor
-	Vermin	 			=> minor
-	Destruction 		=> major
-	Protection 			=> minor
-	War 				=> major
-	Exploration 		=> x
-	Knowledge 			=> x
-	Deception 			=> x
-	Thought 			=> x
-	Dread 				=> major
-	Vigor 				=> major
-	Affliction 			=> major
-	Animal 				=> minor
-	Plant 				=> x
-	Earth 				=> major
-	Water 				=> x
-	Air 				=> x
-	Fire 				=> minor
-	Light 				=> x
-	Shadow 				=> x
-	Magic 				=> x
-	Astral 				=> major
+	Life				=> minor
+	Death				=> minor
+	Vermin				=> minor
+	Destruction			=> major
+	Protection			=> minor
+	War					=> major
+	Exploration			=> x
+	Knowledge			=> x
+	Deception			=> x
+	Thought				=> x
+	Dread				=> major
+	Vigor				=> major
+	Affliction			=> major
+	Animal				=> minor
+	Plant				=> x
+	Earth				=> major
+	Water				=> x
+	Air					=> x
+	Fire				=> minor
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
+	Astral				=> major
  END
 END
 //___________________________________________________________________________________
@@ -2034,28 +2110,28 @@ DEFINE_ACTION_FUNCTION luthic_spheres
   RET_ARRAY luthic_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY luthic_spheres_array BEGIN
-	Life 				=> major
-	Death 				=> major
-	Vermin	 			=> minor
-	Destruction 		=> major
-	Protection 			=> major
-	War 				=> minor
-	Exploration 		=> x
-	Knowledge 			=> major
-	Deception 			=> x
-	Thought 			=> minor
-	Dread 				=> major
-	Vigor 				=> minor
-	Affliction 			=> minor
-	Animal 				=> x
-	Plant 				=> x
-	Earth 				=> x
-	Water 				=> x
-	Air 				=> x
-	Fire 				=> x
-	Light 				=> x
-	Shadow 				=> x
-	Magic 				=> minor
+	Life				=> major
+	Death				=> major
+	Vermin				=> minor
+	Destruction			=> major
+	Protection			=> major
+	War					=> minor
+	Exploration			=> x
+	Knowledge			=> major
+	Deception			=> x
+	Thought				=> minor
+	Dread				=> major
+	Vigor				=> minor
+	Affliction			=> minor
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air					=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> minor
 	Astral		    	=> x
  END
 END
@@ -2070,29 +2146,29 @@ DEFINE_ACTION_FUNCTION druid_forest_spheres
   RET_ARRAY druid_forest_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY druid_forest_spheres_array BEGIN
-	Life 			=> minor
-	Death 			=> x
-	Vermin	 		=> minor
+	Life			=> minor
+	Death			=> x
+	Vermin			=> minor
 	Destruction 	=> x
-	Protection 		=> x
-	War 			=> x
+	Protection		=> x
+	War				=> x
 	Exploration  	=> major
-	Knowledge 		=> minor
-	Deception 		=> x
-	Thought 		=> minor
-	Dread 			=> x
-	Vigor 			=> major
-	Affliction 		=> minor
-	Animal 			=> major
-	Plant 			=> major
-	Earth 			=> major
-	Water 			=> major
-	Air 			=> major
-	Fire 			=> minor
-	Light 			=> major
-	Shadow 			=> minor
-	Magic 			=> x
-	Astral    		=> minor
+	Knowledge		=> minor
+	Deception		=> x
+	Thought			=> minor
+	Dread			=> x
+	Vigor			=> major
+	Affliction		=> minor
+	Animal			=> major
+	Plant			=> major
+	Earth			=> major
+	Water			=> major
+	Air				=> major
+	Fire			=> minor
+	Light			=> major
+	Shadow			=> minor
+	Magic			=> x
+	Astral   		=> minor
  END
 END
 //___________________________________________________________________________________
@@ -2103,29 +2179,29 @@ DEFINE_ACTION_FUNCTION druid_totemic_spheres
   RET_ARRAY druid_totemic_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY druid_totemic_spheres_array BEGIN
-	Life 			=> minor
-	Death 			=> x
-	Vermin	 		=> minor
+	Life			=> minor
+	Death			=> x
+	Vermin			=> minor
 	Destruction 	=> x
-	Protection 		=> x
-	War 			=> x
+	Protection		=> x
+	War				=> x
 	Exploration   	=> minor
-	Knowledge 		=> minor
-	Deception 		=> x
-	Thought 		=> minor
-	Dread 			=> x
-	Vigor 			=> major
-	Affliction 		=> minor
-	Animal 			=> major
-	Plant 			=> major
-	Earth 			=> major
-	Water 			=> major
-	Air 			=> major
-	Fire 			=> minor
-	Light 			=> major
-	Shadow 			=> minor
-	Magic 			=> x
-	Astral		 	=> major
+	Knowledge		=> minor
+	Deception		=> x
+	Thought			=> minor
+	Dread			=> x
+	Vigor			=> major
+	Affliction		=> minor
+	Animal			=> major
+	Plant			=> major
+	Earth			=> major
+	Water			=> major
+	Air				=> major
+	Fire			=> minor
+	Light			=> major
+	Shadow			=> minor
+	Magic			=> x
+	Astral			=> major
  END
 END
 //___________________________________________________________________________________
@@ -2136,28 +2212,28 @@ DEFINE_ACTION_FUNCTION druid_hivekeeper_spheres
   RET_ARRAY druid_hivekeeper_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY druid_hivekeeper_spheres_array BEGIN
-	Life 			=> minor
-	Death 			=> x
-	Vermin	 		=> focus
+	Life			=> minor
+	Death			=> x
+	Vermin			=> focus
 	Destruction 	=> x
-	Protection 		=> x
-	War 			=> x
+	Protection		=> x
+	War				=> x
 	Exploration   	=> minor
-	Knowledge 		=> minor
-	Deception 		=> x
-	Thought 		=> x
-	Dread 			=> x
-	Vigor 			=> major
-	Affliction 		=> major
-	Animal 			=> major
-	Plant 			=> major
-	Earth 			=> major
-	Water 			=> minor
-	Air 			=> major
-	Fire 			=> minor
-	Light 			=> major
-	Shadow 			=> minor
-	Magic 			=> minor
+	Knowledge		=> minor
+	Deception		=> x
+	Thought			=> x
+	Dread			=> x
+	Vigor			=> major
+	Affliction		=> major
+	Animal			=> major
+	Plant			=> major
+	Earth			=> major
+	Water			=> minor
+	Air				=> major
+	Fire			=> minor
+	Light			=> major
+	Shadow			=> minor
+	Magic			=> minor
 	Astral			=> x
  END
 END
@@ -2169,28 +2245,28 @@ DEFINE_ACTION_FUNCTION druid_northern_spheres
   RET_ARRAY druid_northern_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY druid_northern_spheres_array BEGIN
-	Life 			=> minor
-	Death 			=> x
-	Vermin	 		=> x
+	Life			=> minor
+	Death			=> x
+	Vermin			=> x
 	Destruction 	=> x
-	Protection 		=> x
-	War 			=> x
+	Protection		=> x
+	War				=> x
 	Exploration   	=> major
-	Knowledge 		=> minor
-	Deception 		=> x
-	Thought 		=> minor
-	Dread 			=> x
-	Vigor 			=> major
-	Affliction 		=> minor
-	Animal 			=> major
-	Plant 			=> minor
-	Earth 			=> major
-	Water 			=> major
-	Air 			=> major
-	Fire 			=> minor
-	Light 			=> major
-	Shadow 			=> minor
-	Magic 			=> x
+	Knowledge		=> minor
+	Deception		=> x
+	Thought			=> minor
+	Dread			=> x
+	Vigor			=> major
+	Affliction		=> minor
+	Animal			=> major
+	Plant			=> minor
+	Earth			=> major
+	Water			=> major
+	Air				=> major
+	Fire			=> minor
+	Light			=> major
+	Shadow			=> minor
+	Magic			=> x
 	Astral		  	=> minor
  END
 END
@@ -2202,29 +2278,29 @@ DEFINE_ACTION_FUNCTION druid_shadow_spheres
   RET_ARRAY druid_shadow_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY druid_shadow_spheres_array BEGIN
-	Life 			=> minor
-	Death 			=> x
-	Vermin	 		=> major
+	Life			=> minor
+	Death			=> x
+	Vermin			=> major
 	Destruction 	=> x
-	Protection 		=> x
-	War 			=> major
+	Protection		=> x
+	War				=> major
 	Exploration   	=> minor
-	Knowledge 		=> x
-	Deception 		=> x
-	Thought 		=> x
-	Dread 			=> x
-	Vigor 			=> minor
-	Affliction 		=> major
-	Animal 			=> minor
-	Plant 			=> major
-	Earth 			=> major
-	Water 			=> minor
-	Air 			=> minor
-	Fire 			=> major
-	Light 			=> x
-	Shadow 			=> minor
-	Magic 			=> x
-	Astral		 	=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought			=> x
+	Dread			=> x
+	Vigor			=> minor
+	Affliction		=> major
+	Animal			=> minor
+	Plant			=> major
+	Earth			=> major
+	Water			=> minor
+	Air				=> minor
+	Fire			=> major
+	Light			=> x
+	Shadow			=> minor
+	Magic			=> x
+	Astral			=> x
  END
 END
 //___________________________________________________________________________________
@@ -2235,29 +2311,29 @@ DEFINE_ACTION_FUNCTION druid_gray_spheres
   RET_ARRAY druid_gray_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY druid_gray_spheres_array BEGIN
-	Life 			=> minor
-	Death 			=> x
-	Vermin	 		=> major
+	Life			=> minor
+	Death			=> x
+	Vermin			=> major
 	Destruction 	=> x
-	Protection 		=> x
-	War 			=> x
+	Protection		=> x
+	War				=> x
 	Exploration   	=> minor
-	Knowledge 		=> minor
-	Deception 		=> x
-	Thought 		=> minor
-	Dread 			=> minor
-	Vigor 			=> major
-	Affliction 		=> minor
-	Animal 			=> minor
-	Plant 			=> major
-	Earth 			=> major
-	Water 			=> major
-	Air 			=> major
-	Fire 			=> x
-	Light 			=> x
-	Shadow 			=> major
-	Magic 			=> x
-	Astral		 	=> x
+	Knowledge		=> minor
+	Deception		=> x
+	Thought			=> minor
+	Dread			=> minor
+	Vigor			=> major
+	Affliction		=> minor
+	Animal			=> minor
+	Plant			=> major
+	Earth			=> major
+	Water			=> major
+	Air				=> major
+	Fire			=> x
+	Light			=> x
+	Shadow			=> major
+	Magic			=> x
+	Astral			=> x
  END
 END
 //___________________________________________________________________________________
@@ -2268,29 +2344,29 @@ DEFINE_ACTION_FUNCTION druid_lost_spheres
   RET_ARRAY druid_lost_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY druid_lost_spheres_array BEGIN
-	Life 			=> minor
-	Death 			=> major
-	Vermin	 		=> x
+	Life			=> minor
+	Death			=> major
+	Vermin			=> x
 	Destruction 	=> x
-	Protection 		=> x
-	War 			=> x
+	Protection		=> x
+	War				=> x
 	Exploration   	=> minor
-	Knowledge 		=> minor
-	Deception 		=> x
-	Thought 		=> minor
-	Dread 			=> x
-	Vigor 			=> major
-	Affliction 		=> minor
-	Animal 			=> minor
-	Plant 			=> major
-	Earth 			=> major
-	Water 			=> major
-	Air 			=> major
-	Fire 			=> minor
-	Light 			=> x
-	Shadow 			=> minor
-	Magic 			=> x
-	Astral		 	=> major
+	Knowledge		=> minor
+	Deception		=> x
+	Thought			=> minor
+	Dread			=> x
+	Vigor			=> major
+	Affliction		=> minor
+	Animal			=> minor
+	Plant			=> major
+	Earth			=> major
+	Water			=> major
+	Air				=> major
+	Fire			=> minor
+	Light			=> x
+	Shadow			=> minor
+	Magic			=> x
+	Astral			=> major
  END
 END
 //___________________________________________________________________________________
@@ -2301,29 +2377,29 @@ DEFINE_ACTION_FUNCTION beast_lord_spheres
   RET_ARRAY beast_lord_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY beast_lord_spheres_array BEGIN
-	Life 			=> major
-	Death 			=> minor
-	Vermin	 		=> x
+	Life			=> major
+	Death			=> minor
+	Vermin			=> x
 	Destruction 	=> x
-	Protection 		=> x
-	War 			=> x
+	Protection		=> x
+	War				=> x
 	Exploration 	=> major
-	Knowledge 		=> x
-	Deception 		=> x
-	Thought 		=> major
-	Dread 			=> minor
-	Vigor 			=> major
-	Affliction 		=> major
-	Animal 			=> focus
-	Plant 			=> x
-	Earth 			=> x
-	Water 			=> minor
-	Air 			=> minor
-	Fire 			=> x
-	Light 			=> x
-	Shadow 			=> minor
-	Magic 			=> x
-	Astral    		=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought			=> major
+	Dread			=> minor
+	Vigor			=> major
+	Affliction		=> major
+	Animal			=> focus
+	Plant			=> x
+	Earth			=> x
+	Water			=> minor
+	Air				=> minor
+	Fire			=> x
+	Light			=> x
+	Shadow			=> minor
+	Magic			=> x
+	Astral   		=> x
  END
 END
 //___________________________________________________________________________________
@@ -2334,29 +2410,29 @@ DEFINE_ACTION_FUNCTION elementalist_spheres
   RET_ARRAY elementalist_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY elementalist_spheres_array BEGIN
-	Life 			=> minor
-	Death 			=> x
-	Vermin	 		=> x
+	Life			=> minor
+	Death			=> x
+	Vermin			=> x
 	Destruction 	=> minor
-	Protection 		=> minor
-	War 			=> x
+	Protection		=> minor
+	War				=> x
 	Exploration 	=> x
-	Knowledge 		=> x
-	Deception 		=> x
-	Thought 		=> x
-	Dread 			=> minor
-	Vigor 			=> minor
-	Affliction 		=> x
-	Animal 			=> x
-	Plant 			=> x
-	Earth 			=> major
-	Water 			=> major
-	Air 			=> major
-	Fire 			=> major
-	Light 			=> major
-	Shadow 			=> minor
-	Magic 			=> minor
-	Astral    		=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought			=> x
+	Dread			=> minor
+	Vigor			=> minor
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> major
+	Water			=> major
+	Air				=> major
+	Fire			=> major
+	Light			=> major
+	Shadow			=> minor
+	Magic			=> minor
+	Astral   		=> x
  END
 END
 //___________________________________________________________________________________
@@ -2367,28 +2443,28 @@ DEFINE_ACTION_FUNCTION mystic_earth_spheres
   RET_ARRAY mystic_earth_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY mystic_earth_spheres_array BEGIN
-	Life 			=> major
-	Death 			=> x
-	Vermin	 		=> x
+	Life			=> major
+	Death			=> x
+	Vermin			=> x
 	Destruction 	=> x
-	Protection 		=> major
-	War 			=> x
+	Protection		=> major
+	War				=> x
 	Exploration 	=> minor
-	Knowledge 		=> minor
-	Deception 		=> x
-	Thought 		=> x
-	Dread 			=> x
-	Vigor 			=> major
-	Affliction 		=> minor
-	Animal 			=> x
-	Plant 			=> major
-	Earth 			=> focus
-	Water 			=> x
-	Air 			=> x
-	Fire 			=> x
-	Light 			=> x
-	Shadow 			=> x
-	Magic 			=> minor
+	Knowledge		=> minor
+	Deception		=> x
+	Thought			=> x
+	Dread			=> x
+	Vigor			=> major
+	Affliction		=> minor
+	Animal			=> x
+	Plant			=> major
+	Earth			=> focus
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Light			=> x
+	Shadow			=> x
+	Magic			=> minor
 	Astral			=> major
  END
 END
@@ -2400,28 +2476,28 @@ DEFINE_ACTION_FUNCTION mystic_water_spheres
   RET_ARRAY mystic_water_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY mystic_water_spheres_array BEGIN
-	Life 			=> major
-	Death 			=> x
-	Vermin	 		=> x
+	Life			=> major
+	Death			=> x
+	Vermin			=> x
 	Destruction 	=> x
-	Protection 		=> x
-	War 			=> x
+	Protection		=> x
+	War				=> x
 	Exploration 	=> minor
-	Knowledge 		=> x
-	Deception 		=> minor
-	Thought 		=> x
-	Dread 			=> x
-	Vigor 			=> major
-	Affliction 		=> major
-	Animal 			=> minor
-	Plant 			=> minor
-	Earth 			=> x
-	Water 			=> focus
-	Air 			=> x
-	Fire 			=> x
-	Light 			=> x
-	Shadow 			=> x
-	Magic 			=> minor
+	Knowledge		=> x
+	Deception		=> minor
+	Thought			=> x
+	Dread			=> x
+	Vigor			=> major
+	Affliction		=> major
+	Animal			=> minor
+	Plant			=> minor
+	Earth			=> x
+	Water			=> focus
+	Air				=> x
+	Fire			=> x
+	Light			=> x
+	Shadow			=> x
+	Magic			=> minor
 	Astral			=> major
  END
 END
@@ -2433,28 +2509,28 @@ DEFINE_ACTION_FUNCTION mystic_air_spheres
   RET_ARRAY mystic_air_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY mystic_air_spheres_array BEGIN
-	Life 			=> major
-	Death 			=> x
-	Vermin	 		=> x
+	Life			=> major
+	Death			=> x
+	Vermin			=> x
 	Destruction 	=> x
-	Protection 		=> minor
-	War 			=> x
+	Protection		=> minor
+	War				=> x
 	Exploration 	=> major
-	Knowledge 		=> major
-	Deception 		=> x
-	Thought 		=> minor
-	Dread 			=> x
-	Vigor 			=> major
-	Affliction 		=> x
-	Animal 			=> x
-	Plant 			=> x
-	Earth 			=> x
-	Water 			=> x
-	Air 			=> focus
-	Fire 			=> x
-	Light 			=> minor
-	Shadow 			=> x
-	Magic 			=> minor
+	Knowledge		=> major
+	Deception		=> x
+	Thought			=> minor
+	Dread			=> x
+	Vigor			=> major
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> focus
+	Fire			=> x
+	Light			=> minor
+	Shadow			=> x
+	Magic			=> minor
 	Astral			=> major
  END
 END
@@ -2466,28 +2542,28 @@ DEFINE_ACTION_FUNCTION mystic_fire_spheres
   RET_ARRAY mystic_fire_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY mystic_fire_spheres_array BEGIN
-	Life 			=> major
-	Death 			=> x
-	Vermin	 		=> x
+	Life			=> major
+	Death			=> x
+	Vermin			=> x
 	Destruction 	=> minor
-	Protection 		=> major
-	War 			=> x
+	Protection		=> major
+	War				=> x
 	Exploration 	=> minor
-	Knowledge 		=> x
-	Deception 		=> x
-	Thought 		=> x
-	Dread 			=> minor
-	Vigor 			=> minor
-	Affliction 		=> x
-	Animal 			=> x
-	Plant 			=> x
-	Earth 			=> x
-	Water 			=> x
-	Air 			=> x
-	Fire 			=> focus
-	Light 			=> major
-	Shadow 			=> x
-	Magic 			=> minor
+	Knowledge		=> x
+	Deception		=> x
+	Thought			=> x
+	Dread			=> minor
+	Vigor			=> minor
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> focus
+	Light			=> major
+	Shadow			=> x
+	Magic			=> minor
 	Astral			=> major
  END
 END
@@ -2499,28 +2575,28 @@ DEFINE_ACTION_FUNCTION mystic_light_spheres
   RET_ARRAY mystic_light_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY mystic_light_spheres_array BEGIN
-	Life 			=> major
-	Death 			=> x
-	Vermin	 		=> x
+	Life			=> major
+	Death			=> x
+	Vermin			=> x
 	Destruction 	=> x
-	Protection 		=> major
-	War 			=> x
+	Protection		=> major
+	War				=> x
 	Exploration 	=> minor
-	Knowledge 		=> minor
-	Deception 		=> major
-	Thought 		=> x
-	Dread 			=> x
-	Vigor 			=> minor
-	Affliction 		=> x
-	Animal 			=> x
-	Plant 			=> x
-	Earth 			=> x
-	Water 			=> x
-	Air 			=> minor
-	Fire 			=> minor
-	Light 			=> focus
-	Shadow 			=> x
-	Magic 			=> minor
+	Knowledge		=> minor
+	Deception		=> major
+	Thought			=> x
+	Dread			=> x
+	Vigor			=> minor
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> minor
+	Fire			=> minor
+	Light			=> focus
+	Shadow			=> x
+	Magic			=> minor
 	Astral			=> major
  END
 END
@@ -2532,28 +2608,28 @@ DEFINE_ACTION_FUNCTION mystic_shadow_spheres
   RET_ARRAY mystic_shadow_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY mystic_shadow_spheres_array BEGIN
-	Life 			=> minor
-	Death 			=> x
-	Vermin	 		=> x
+	Life			=> minor
+	Death			=> x
+	Vermin			=> x
 	Destruction 	=> x
-	Protection 		=> x
-	War 			=> x
+	Protection		=> x
+	War				=> x
 	Exploration 	=> minor
-	Knowledge 		=> minor
-	Deception 		=> minor
-	Thought 		=> major
-	Dread 			=> major
-	Vigor 			=> major
-	Affliction 		=> x
-	Animal 			=> x
-	Plant 			=> x
-	Earth 			=> x
-	Water 			=> x
-	Air 			=> x
-	Fire 			=> x
-	Light 			=> x
-	Shadow 			=> focus
-	Magic 			=> minor
+	Knowledge		=> minor
+	Deception		=> minor
+	Thought			=> major
+	Dread			=> major
+	Vigor			=> major
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Light			=> x
+	Shadow			=> focus
+	Magic			=> minor
 	Astral			=> major
  END
 END
@@ -2565,29 +2641,29 @@ DEFINE_ACTION_FUNCTION ranger_forest_spheres
   RET_ARRAY ranger_forest_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY ranger_forest_spheres_array BEGIN
-	Life 			=> ranger
-	Death 			=> x
-	Vermin	 		=> x
+	Life			=> ranger
+	Death			=> x
+	Vermin			=> x
 	Destruction 	=> x
-	Protection 		=> ranger
-	War 			=> x
+	Protection		=> ranger
+	War				=> x
 	Exploration 	=> ranger
-	Knowledge 		=> ranger
-	Deception 		=> x
-	Thought 		=> x
-	Dread 			=> x
-	Vigor 			=> ranger
-	Affliction 		=> x
-	Animal 			=> ranger
-	Plant 			=> ranger
-	Earth 			=> x
-	Water 			=> x
-	Air 			=> x
-	Fire 			=> x
-	Light 			=> ranger
-	Shadow 			=> x
-	Magic 			=> x
-	Astral    		=> x
+	Knowledge		=> ranger
+	Deception		=> x
+	Thought			=> x
+	Dread			=> x
+	Vigor			=> ranger
+	Affliction		=> x
+	Animal			=> ranger
+	Plant			=> ranger
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Light			=> ranger
+	Shadow			=> x
+	Magic			=> x
+	Astral   		=> x
  END
 END
 //___________________________________________________________________________________
@@ -2598,29 +2674,29 @@ DEFINE_ACTION_FUNCTION ranger_mountain_spheres
   RET_ARRAY ranger_mountain_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY ranger_mountain_spheres_array BEGIN
-	Life 			=> ranger
-	Death 			=> x
-	Vermin	 		=> x
+	Life			=> ranger
+	Death			=> x
+	Vermin			=> x
 	Destruction 	=> x
-	Protection 		=> ranger
-	War 			=> x
+	Protection		=> ranger
+	War				=> x
 	Exploration  	=> ranger
-	Knowledge 		=> ranger
-	Deception 		=> x
-	Thought 		=> x
-	Dread 			=> x
-	Vigor 			=> ranger
-	Affliction 		=> x
-	Animal 			=> ranger
-	Plant 			=> x
-	Earth 			=> ranger
-	Water 			=> x
-	Air 			=> x
-	Fire 			=> x
-	Light 			=> x
-	Shadow 			=> ranger
-	Magic 			=> x
-	Astral    		=> x
+	Knowledge		=> ranger
+	Deception		=> x
+	Thought			=> x
+	Dread			=> x
+	Vigor			=> ranger
+	Affliction		=> x
+	Animal			=> ranger
+	Plant			=> x
+	Earth			=> ranger
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Light			=> x
+	Shadow			=> ranger
+	Magic			=> x
+	Astral   		=> x
  END
 END
 //___________________________________________________________________________________
@@ -2631,29 +2707,29 @@ DEFINE_ACTION_FUNCTION ranger_desert_spheres
   RET_ARRAY ranger_desert_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY ranger_desert_spheres_array BEGIN
-	Life 			=> ranger
-	Death 			=> x
-	Vermin	 		=> x
+	Life			=> ranger
+	Death			=> x
+	Vermin			=> x
 	Destruction 	=> x
-	Protection 		=> ranger
-	War 			=> x
+	Protection		=> ranger
+	War				=> x
 	Exploration  	=> ranger
-	Knowledge 		=> ranger
-	Deception 		=> x
-	Thought 		=> x
-	Dread 			=> x
-	Vigor 			=> ranger
-	Affliction 		=> x
-	Animal 			=> ranger
-	Plant 			=> x
-	Earth 			=> x
-	Water 			=> x
-	Air 			=> ranger
-	Fire 			=> x
-	Light 			=> ranger
-	Shadow 			=> x
-	Magic 			=> x
-	Astral    		=> x
+	Knowledge		=> ranger
+	Deception		=> x
+	Thought			=> x
+	Dread			=> x
+	Vigor			=> ranger
+	Affliction		=> x
+	Animal			=> ranger
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> ranger
+	Fire			=> x
+	Light			=> ranger
+	Shadow			=> x
+	Magic			=> x
+	Astral   		=> x
  END
 END
 //___________________________________________________________________________________
@@ -2664,29 +2740,29 @@ DEFINE_ACTION_FUNCTION ranger_jungle_spheres
   RET_ARRAY ranger_jungle_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY ranger_jungle_spheres_array BEGIN
-	Life 			=> ranger
-	Death 			=> x
-	Vermin	 		=> ranger
+	Life			=> ranger
+	Death			=> x
+	Vermin			=> ranger
 	Destruction 	=> x
-	Protection 		=> ranger
-	War 			=> x
+	Protection		=> ranger
+	War				=> x
 	Exploration  	=> ranger
-	Knowledge 		=> ranger
-	Deception 		=> x
-	Thought 		=> x
-	Dread 			=> x
-	Vigor 			=> ranger
-	Affliction 		=> ranger
-	Animal 			=> x
-	Plant 			=> ranger
-	Earth 			=> x
-	Water 			=> ranger
-	Air 			=> x
-	Fire 			=> x
-	Light 			=> x
-	Shadow 			=> ranger
-	Magic 			=> x
-	Astral    		=> x
+	Knowledge		=> ranger
+	Deception		=> x
+	Thought			=> x
+	Dread			=> x
+	Vigor			=> ranger
+	Affliction		=> ranger
+	Animal			=> x
+	Plant			=> ranger
+	Earth			=> x
+	Water			=> ranger
+	Air				=> x
+	Fire			=> x
+	Light			=> x
+	Shadow			=> ranger
+	Magic			=> x
+	Astral   		=> x
  END
 END
 //___________________________________________________________________________________
@@ -2697,29 +2773,29 @@ DEFINE_ACTION_FUNCTION ranger_arctic_spheres
   RET_ARRAY ranger_arctic_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY ranger_arctic_spheres_array BEGIN
-	Life 			=> ranger
-	Death 			=> x
-	Vermin	 		=> x
+	Life			=> ranger
+	Death			=> x
+	Vermin			=> x
 	Destruction 	=> x
-	Protection 		=> ranger
-	War 			=> x
+	Protection		=> ranger
+	War				=> x
 	Exploration  	=> ranger
-	Knowledge 		=> ranger
-	Deception 		=> x
-	Thought 		=> x
-	Dread 			=> x
-	Vigor 			=> ranger
-	Affliction 		=> x
-	Animal 			=> ranger
-	Plant 			=> x
-	Earth 			=> x
-	Water 			=> ranger
-	Air 			=> ranger
-	Fire 			=> x
-	Light 			=> x
-	Shadow 			=> x
-	Magic 			=> x
-	Astral    		=> x
+	Knowledge		=> ranger
+	Deception		=> x
+	Thought			=> x
+	Dread			=> x
+	Vigor			=> ranger
+	Affliction		=> x
+	Animal			=> ranger
+	Plant			=> x
+	Earth			=> x
+	Water			=> ranger
+	Air				=> ranger
+	Fire			=> x
+	Light			=> x
+	Shadow			=> x
+	Magic			=> x
+	Astral   		=> x
  END
 END
 //___________________________________________________________________________________
@@ -2731,29 +2807,29 @@ DEFINE_ACTION_FUNCTION ranger_beastmaster_spheres
   RET_ARRAY ranger_beastmaster_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY ranger_beastmaster_spheres_array BEGIN
-	Life 			=> ranger
-	Death 			=> x
-	Vermin	 		=> x
+	Life			=> ranger
+	Death			=> x
+	Vermin			=> x
 	Destruction 	=> x
-	Protection 		=> ranger
-	War 			=> x
+	Protection		=> ranger
+	War				=> x
 	Exploration  	=> ranger
-	Knowledge 		=> ranger
-	Deception 		=> x
-	Thought 		=> x
-	Dread 			=> x
-	Vigor 			=> ranger
-	Affliction 		=> x
-	Animal 			=> ranger
-	Plant 			=> x
-	Earth 			=> x
-	Water 			=> x
-	Air 			=> x
-	Fire 			=> x
-	Light 			=> x
-	Shadow 			=> x
-	Magic 			=> x
-	Astral    		=> x
+	Knowledge		=> ranger
+	Deception		=> x
+	Thought			=> x
+	Dread			=> x
+	Vigor			=> ranger
+	Affliction		=> x
+	Animal			=> ranger
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Light			=> x
+	Shadow			=> x
+	Magic			=> x
+	Astral   		=> x
  END
 END
 //___________________________________________________________________________________
@@ -2764,29 +2840,29 @@ DEFINE_ACTION_FUNCTION barbarian_ranger_spheres
   RET_ARRAY barbarian_ranger_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY barbarian_ranger_spheres_array BEGIN
-	Life 			=> x
-	Death 			=> x
-	Vermin	 		=> x
+	Life			=> x
+	Death			=> x
+	Vermin			=> x
 	Destruction 	=> x
-	Protection 		=> ranger
-	War 			=> x
+	Protection		=> ranger
+	War				=> x
 	Exploration  	=> ranger
-	Knowledge 		=> ranger
-	Deception 		=> x
-	Thought 		=> x
-	Dread 			=> x
-	Vigor 			=> ranger
-	Affliction 		=> x
-	Animal 			=> ranger
-	Plant 			=> x
-	Earth 			=> x
-	Water 			=> x
-	Air 			=> x
-	Fire 			=> x
-	Light 			=> x
-	Shadow 			=> x
-	Magic 			=> x
-	Astral    		=> x
+	Knowledge		=> ranger
+	Deception		=> x
+	Thought			=> x
+	Dread			=> x
+	Vigor			=> ranger
+	Affliction		=> x
+	Animal			=> ranger
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Light			=> x
+	Shadow			=> x
+	Magic			=> x
+	Astral   		=> x
  END
 END
 //___________________________________________________________________________________
@@ -2797,29 +2873,29 @@ DEFINE_ACTION_FUNCTION mage_hunter_spheres
   RET_ARRAY mage_hunter_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY mage_hunter_spheres_array BEGIN
-	Life 			=> ranger
-	Death 			=> x
-	Vermin	 		=> x
+	Life			=> ranger
+	Death			=> x
+	Vermin			=> x
 	Destruction 	=> x
-	Protection 		=> ranger
-	War 			=> x
+	Protection		=> ranger
+	War				=> x
 	Exploration  	=> ranger
-	Knowledge 		=> ranger
-	Deception 		=> x
-	Thought 		=> x
-	Dread 			=> x
-	Vigor 			=> ranger
-	Affliction 		=> x
-	Animal 			=> x
-	Plant 			=> x
-	Earth 			=> x
-	Water 			=> x
-	Air 			=> x
-	Fire 			=> x
-	Light 			=> ranger
-	Shadow 			=> x
-	Magic 			=> ranger
-	Astral    		=> x
+	Knowledge		=> ranger
+	Deception		=> x
+	Thought			=> x
+	Dread			=> x
+	Vigor			=> ranger
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Light			=> ranger
+	Shadow			=> x
+	Magic			=> ranger
+	Astral   		=> x
  END
 END
 //___________________________________________________________________________________
@@ -2830,29 +2906,29 @@ DEFINE_ACTION_FUNCTION elven_archer_spheres
   RET_ARRAY elven_archer_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY elven_archer_spheres_array BEGIN
-	Life 			=> ranger
-	Death 			=> x
-	Vermin	 		=> x
+	Life			=> ranger
+	Death			=> x
+	Vermin			=> x
 	Destruction 	=> x
-	Protection 		=> ranger
-	War 			=> x
+	Protection		=> ranger
+	War				=> x
 	Exploration  	=> ranger
-	Knowledge 		=> ranger
-	Deception 		=> x
-	Thought 		=> x
-	Dread 			=> x
-	Vigor 			=> ranger
-	Affliction 		=> x
-	Animal 			=> x
-	Plant 			=> ranger
-	Earth 			=> x
-	Water 			=> x
-	Air 			=> x
-	Fire 			=> x
-	Light 			=> ranger
-	Shadow 			=> x
-	Magic 			=> ranger
-	Astral    		=> x
+	Knowledge		=> ranger
+	Deception		=> x
+	Thought			=> x
+	Dread			=> x
+	Vigor			=> ranger
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> ranger
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Light			=> ranger
+	Shadow			=> x
+	Magic			=> ranger
+	Astral   		=> x
  END
 END
 //___________________________________________________________________________________
@@ -2866,28 +2942,28 @@ DEFINE_ACTION_FUNCTION vanilla_shaman_spheres
   RET_ARRAY vanilla_shaman_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY vanilla_shaman_spheres_array BEGIN
-	Life 			=> minor
-	Death 			=> x
-	Vermin	 		=> minor
+	Life			=> minor
+	Death			=> x
+	Vermin			=> minor
 	Destruction 	=> x
-	Protection 		=> major
-	War 			=> x
+	Protection		=> major
+	War				=> x
 	Exploration  	=> x
-	Knowledge 		=> major
-	Deception 		=> x
-	Thought 		=> x
-	Dread 			=> x
-	Vigor 			=> major
-	Affliction 		=> x
-	Animal 			=> major
-	Plant 			=> major
-	Earth 			=> x
-	Water 			=> x
-	Air 			=> x
-	Fire 			=> x
-	Light 			=> x
-	Shadow 			=> x
-	Magic 			=> minor
+	Knowledge		=> major
+	Deception		=> x
+	Thought			=> x
+	Dread			=> x
+	Vigor			=> major
+	Affliction		=> x
+	Animal			=> major
+	Plant			=> major
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Light			=> x
+	Shadow			=> x
+	Magic			=> minor
 	Astral			=> focus
  END
 END
@@ -2929,28 +3005,28 @@ DEFINE_ACTION_MACRO vanilla_cleric_spheres BEGIN
 	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5smmag#~ END
   IF_EXISTS BUT_ONLY
   ACTION_DEFINE_ASSOCIATIVE_ARRAY clabpr01_spheres BEGIN
-	Life 			=> x
-	Death 			=> x
-	Vermin	 		=> x
+	Life			=> x
+	Death			=> x
+	Vermin			=> x
 	Destruction 	=> x
-	Protection 		=> x
-	War 			=> x
+	Protection		=> x
+	War				=> x
 	Exploration 	=> x
-	Knowledge 		=> x
-	Deception 		=> x
-	Thought 		=> x
-	Dread 			=> x
-	Vigor 			=> x
-	Affliction 		=> x
-	Animal 			=> x
-	Plant 			=> x
-	Earth 			=> x
-	Water 			=> x
-	Air 			=> x
-	Fire 			=> x
-	Light 			=> x
-	Shadow 			=> x
-	Magic 			=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought			=> x
+	Dread			=> x
+	Vigor			=> x
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Light			=> x
+	Shadow			=> x
+	Magic			=> x
 	Astral			=> x
   END
 END
@@ -2996,28 +3072,28 @@ DEFINE_ACTION_MACRO vanilla_druid_spheres BEGIN
 	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5smast#~ END
   IF_EXISTS BUT_ONLY
   ACTION_DEFINE_ASSOCIATIVE_ARRAY clabdr01_spheres BEGIN
-	Life 			=> x
-	Death 			=> x
-	Vermin	 		=> x
+	Life			=> x
+	Death			=> x
+	Vermin			=> x
 	Destruction 	=> x
-	Protection 		=> x
-	War 			=> x
+	Protection		=> x
+	War				=> x
 	Exploration 	=> x
-	Knowledge 		=> x
-	Deception 		=> x
-	Thought 		=> x
-	Dread 			=> x
-	Vigor 			=> x
-	Affliction 		=> x
-	Animal 			=> x
-	Plant 			=> x
-	Earth 			=> x
-	Water 			=> x
-	Air 			=> x
-	Fire 			=> x
-	Light 			=> x
-	Shadow 			=> x
-	Magic 			=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought			=> x
+	Dread			=> x
+	Vigor			=> x
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Light			=> x
+	Shadow			=> x
+	Magic			=> x
 	Astral			=> x
   END
 END
@@ -3047,28 +3123,28 @@ DEFINE_ACTION_MACRO vanilla_ranger_spheres BEGIN
 	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5smkno#~ END
   IF_EXISTS BUT_ONLY
   ACTION_DEFINE_ASSOCIATIVE_ARRAY clabrn01_spheres BEGIN
-	Life 			=> x
-	Death 			=> x
-	Vermin	 		=> x
+	Life			=> x
+	Death			=> x
+	Vermin			=> x
 	Destruction 	=> x
-	Protection 		=> x
-	War 			=> x
+	Protection		=> x
+	War				=> x
 	Exploration 	=> x
-	Knowledge 		=> x
-	Deception 		=> x
-	Thought 		=> x
-	Dread 			=> x
-	Vigor 			=> x
-	Affliction 		=> x
-	Animal 			=> x
-	Plant 			=> x
-	Earth 			=> x
-	Water 			=> x
-	Air 			=> x
-	Fire 			=> x
-	Light 			=> x
-	Shadow 			=> x
-	Magic 			=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought			=> x
+	Dread			=> x
+	Vigor			=> x
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Light			=> x
+	Shadow			=> x
+	Magic			=> x
 	Astral			=> x
   END
 END
@@ -3080,29 +3156,29 @@ DEFINE_ACTION_FUNCTION vanilla_avenger_spheres
   RET_ARRAY vanilla_avenger_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY vanilla_avenger_spheres_array BEGIN
-	Life 			=> minor
-	Death 			=> x
-	Vermin	 		=> major
+	Life			=> minor
+	Death			=> x
+	Vermin			=> major
 	Destruction 	=> x
-	Protection 		=> x
-	War 			=> x
+	Protection		=> x
+	War				=> x
 	Exploration  	=> minor
-	Knowledge 		=> minor
-	Deception 		=> x
-	Thought 		=> x
-	Dread 			=> x
-	Vigor 			=> major
-	Affliction 		=> major
-	Animal 			=> minor
-	Plant 			=> major
-	Earth 			=> major
-	Water 			=> major
-	Air 			=> major
-	Fire 			=> minor
-	Light 			=> major
-	Shadow 			=> minor
-	Magic 			=> minor
-	Astral    		=> x
+	Knowledge		=> minor
+	Deception		=> x
+	Thought			=> x
+	Dread			=> x
+	Vigor			=> major
+	Affliction		=> major
+	Animal			=> minor
+	Plant			=> major
+	Earth			=> major
+	Water			=> major
+	Air				=> major
+	Fire			=> minor
+	Light			=> major
+	Shadow			=> minor
+	Magic			=> minor
+	Astral   		=> x
  END
 END
 //___________________________________________________________________________________
@@ -3113,29 +3189,29 @@ DEFINE_ACTION_FUNCTION vanilla_paladin_spheres
   RET_ARRAY vanilla_paladin_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY vanilla_paladin_spheres_array BEGIN
-	Life 			=> paladin
-	Death 			=> x
-	Vermin	 		=> x
+	Life			=> paladin
+	Death			=> x
+	Vermin			=> x
 	Destruction 	=> paladin
-	Protection 		=> paladin
-	War 			=> paladin
+	Protection		=> paladin
+	War				=> paladin
 	Exploration 	=> x
-	Knowledge 		=> paladin
-	Deception 		=> x
-	Thought 		=> x
-	Dread 			=> x
-	Vigor 			=> x
-	Affliction 		=> x
-	Animal 			=> x
-	Plant 			=> x
-	Earth 			=> x
-	Water 			=> x
-	Air 			=> x
-	Fire 			=> x
-	Light 			=> paladin
-	Shadow 			=> x
-	Magic 			=> x
-	Astral    		=> x
+	Knowledge		=> paladin
+	Deception		=> x
+	Thought			=> x
+	Dread			=> x
+	Vigor			=> x
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Light			=> paladin
+	Shadow			=> x
+	Magic			=> x
+	Astral   		=> x
  END
 END
 //___________________________________________________________________________________
@@ -3146,29 +3222,29 @@ DEFINE_ACTION_FUNCTION vanilla_cavalier_spheres
   RET_ARRAY vanilla_cavalier_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY vanilla_cavalier_spheres_array BEGIN
-	Life 			=> paladin
-	Death 			=> x
-	Vermin	 		=> x
+	Life			=> paladin
+	Death			=> x
+	Vermin			=> x
 	Destruction 	=> paladin
-	Protection 		=> paladin
-	War 			=> paladin
+	Protection		=> paladin
+	War				=> paladin
 	Exploration  	=> x
-	Knowledge 		=> paladin
-	Deception 		=> x
-	Thought 		=> x
-	Dread 			=> x
-	Vigor 			=> x
-	Affliction 		=> x
-	Animal 			=> x
-	Plant 			=> x
-	Earth 			=> x
-	Water 			=> x
-	Air 			=> x
-	Fire 			=> x
-	Light 			=> paladin
-	Shadow 			=> x
-	Magic 			=> x
-	Astral    		=> x
+	Knowledge		=> paladin
+	Deception		=> x
+	Thought			=> x
+	Dread			=> x
+	Vigor			=> x
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Light			=> paladin
+	Shadow			=> x
+	Magic			=> x
+	Astral   		=> x
  END
 END
 //___________________________________________________________________________________
@@ -3179,29 +3255,29 @@ DEFINE_ACTION_FUNCTION vanilla_inquisitor_spheres
   RET_ARRAY vanilla_inquisitor_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY vanilla_inquisitor_spheres_array BEGIN
-	Life 			=> paladin
-	Death 			=> x
-	Vermin	 		=> x
+	Life			=> paladin
+	Death			=> x
+	Vermin			=> x
 	Destruction 	=> paladin
-	Protection 		=> paladin
-	War 			=> x
+	Protection		=> paladin
+	War				=> x
 	Exploration 	=> x
-	Knowledge 		=> paladin
-	Deception 		=> x
-	Thought 		=> paladin
-	Dread 			=> x
-	Vigor 			=> x
-	Affliction 		=> x
-	Animal 			=> x
-	Plant 			=> x
-	Earth 			=> x
-	Water 			=> x
-	Air 			=> x
-	Fire 			=> x
-	Light 			=> x
-	Shadow 			=> x
-	Magic 			=> paladin
-	Astral    		=> x
+	Knowledge		=> paladin
+	Deception		=> x
+	Thought			=> paladin
+	Dread			=> x
+	Vigor			=> x
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Light			=> x
+	Shadow			=> x
+	Magic			=> paladin
+	Astral   		=> x
  END
 END
 //___________________________________________________________________________________
@@ -3212,29 +3288,29 @@ DEFINE_ACTION_FUNCTION vanilla_undead_hunter_spheres
   RET_ARRAY vanilla_undead_hunter_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY vanilla_undead_hunter_spheres_array BEGIN
-	Life 			=> paladin
-	Death 			=> paladin
-	Vermin	 		=> x
+	Life			=> paladin
+	Death			=> paladin
+	Vermin			=> x
 	Destruction 	=> x
-	Protection 		=> paladin
-	War 			=> paladin
+	Protection		=> paladin
+	War				=> paladin
 	Exploration 	=> x
-	Knowledge 		=> paladin
-	Deception 		=> x
-	Thought 		=> x
-	Dread 			=> x
-	Vigor 			=> x
-	Affliction 		=> x
-	Animal 			=> x
-	Plant 			=> x
-	Earth 			=> x
-	Water 			=> x
-	Air 			=> x
-	Fire 			=> x
-	Light 			=> paladin
-	Shadow 			=> x
-	Magic 			=> x
-	Astral    		=> x
+	Knowledge		=> paladin
+	Deception		=> x
+	Thought			=> x
+	Dread			=> x
+	Vigor			=> x
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Light			=> paladin
+	Shadow			=> x
+	Magic			=> x
+	Astral   		=> x
  END
 END
 //___________________________________________________________________________________
@@ -3245,28 +3321,28 @@ DEFINE_ACTION_FUNCTION vanilla_blackguard_spheres
   RET_ARRAY vanilla_blackguard_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY vanilla_blackguard_spheres_array BEGIN
-	Life 			=> x
-	Death 			=> paladin
-	Vermin	 		=> paladin
+	Life			=> x
+	Death			=> paladin
+	Vermin			=> paladin
 	Destruction 	=> x
-	Protection 		=> x
-	War 			=> paladin
+	Protection		=> x
+	War				=> paladin
 	Exploration 	=> x
-	Knowledge 		=> x
-	Deception 		=> x
-	Thought 		=> x
-	Dread 			=> paladin
-	Vigor 			=> paladin
-	Affliction 		=> paladin
-	Animal 			=> x
-	Plant 			=> x
-	Earth 			=> x
-	Water 			=> x
-	Air 			=> x
-	Fire 			=> x
-	Light 			=> x
-	Shadow 			=> paladin
-	Magic 			=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought			=> x
+	Dread			=> paladin
+	Vigor			=> paladin
+	Affliction		=> paladin
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Light			=> x
+	Shadow			=> paladin
+	Magic			=> x
 	Astral			=> x
  END
 END
@@ -3279,28 +3355,28 @@ END
 //
 DEFINE_ACTION_MACRO DR_oozemaster_spheres BEGIN
  ACTION_DEFINE_ASSOCIATIVE_ARRAY a#ooze_spheres BEGIN
-	Life 			=> major
-	Death 			=> minor
-	Vermin	 		=> minor
+	Life			=> major
+	Death			=> minor
+	Vermin			=> minor
 	Destruction 	=> x
-	Protection 		=> x
-	War 			=> x
+	Protection		=> x
+	War				=> x
 	Exploration 	=> minor
-	Knowledge 		=> minor
-	Deception 		=> x
-	Thought 		=> minor
-	Dread 			=> minor
-	Vigor 			=> major
-	Affliction 		=> major
-	Animal 			=> x
-	Plant 			=> major
-	Earth 			=> major
-	Water 			=> major
-	Air 			=> x
-	Fire 			=> x
-	Light 			=> x
-	Shadow 			=> minor
-	Magic 			=> x
+	Knowledge		=> minor
+	Deception		=> x
+	Thought			=> minor
+	Dread			=> minor
+	Vigor			=> major
+	Affliction		=> major
+	Animal			=> x
+	Plant			=> major
+	Earth			=> major
+	Water			=> major
+	Air				=> x
+	Fire			=> x
+	Light			=> x
+	Shadow			=> minor
+	Magic			=> x
 	Astral			=> x
  END
 END
@@ -3310,28 +3386,28 @@ END
 //
 DEFINE_ACTION_MACRO DR_justifier_spheres BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY a#justif_spheres BEGIN
-	Life 			=> ranger
-	Death 			=> x
-	Vermin	 		=> x
+	Life			=> ranger
+	Death			=> x
+	Vermin			=> x
 	Destruction 	=> x
-	Protection 		=> x
-	War 			=> x
+	Protection		=> x
+	War				=> x
 	Exploration 	=> x
-	Knowledge 		=> x
-	Deception 		=> x
-	Thought 		=> x
-	Dread 			=> x
-	Vigor 			=> ranger
-	Affliction 		=> x
-	Animal 			=> x
-	Plant 			=> x
-	Earth 			=> x
-	Water 			=> x
-	Air 			=> x
-	Fire 			=> x
-	Light 			=> ranger
-	Shadow 			=> x
-	Magic 			=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought			=> x
+	Dread			=> x
+	Vigor			=> ranger
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Light			=> ranger
+	Shadow			=> x
+	Magic			=> x
 	Astral			=> x
  END
 END
@@ -3347,28 +3423,28 @@ DEFINE_ACTION_FUNCTION _spheres
   RET_ARRAY _spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY _spheres_array BEGIN
-	Life		 		=> x
-	Death		 		=> x
+	Life				=> x
+	Death				=> x
 	Vermin				=> x
-	Destruction		 	=> x
-	Protection		 	=> x
-	War		 			=> x
+	Destruction			=> x
+	Protection			=> x
+	War					=> x
 	Exploration		  	=> x
-	Knowledge		 	=> x
-	Deception	 		=> x
-	Thought		 		=> x
-	Dread		 		=> x
-	Vigor		 		=> x
-	Affliction		 	=> x
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> x
-	Water		 		=> x
-	Air		 			=> x
-	Fire		 		=> x
-	Light	 			=> x
-	Shadow		 		=> x
-	Magic		 		=> x
+	Knowledge			=> x
+	Deception			=> x
+	Thought				=> x
+	Dread				=> x
+	Vigor				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air					=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
 	Astral		    	=> x
  END
 END

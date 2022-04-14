@@ -391,10 +391,63 @@ need to add non-b_spells versions of the IWD stuff
 
 
 ADD:
-
-//WIZARD_MORDENKAINENS_SWORD              7 // or 6
-//WIZARD_IDENTIFY                         1	Knowledge // make cleric version
-CLERIC_GATE                             7	=	Astral // ....??
+//Divine Symbol                        , 2 => Creation //NEW SPELL
+//Minor Creation                       , 2 => Creation // NEW SPELL http://pathfinder.d20srd.org/coreRulebook/spells/minorCreation.html#minor-creation //create norm objects 10 mins/level
+//Amanuensis                           , 4 => Creation // NEW SPELL Creates temporary scrolls p 22
+//Disable Construct                    , 4 => Creation // NEW SPELL http://www.d20pfsrd.com/magic/all-spells/d/disable-construct no save 1st round. Save each round after
+//Vesting                              , 5 => Creation // NEW SPELL Create magic potions or wands
+//Heroes' feast                        , 6 => Creation // NEW SPELL
+//Animate Weapon                       , 7 => Creation // NEW SPELL p37, but 7th lev, so mordy like
+//d5clgol /*clay golem*/                 , 5
+//d5stgol /*stone golem*/                , 6
+//d5jugol /*juggernaut golem*/           , 7 // or make this the HLA...?
+//WIZARD_MORDENKAINENS_SWORD             , 7 // or 6
+//Forced match                         , 2 => Combat //NEW SPELL
+//Liberation                           , 1 => Travelers // NEW SPELL  (save to remove hold/charm like effects)
+//Lighten Load                         , 2 => Travelers //Creates a temporary bag of holding that lasts for 8 hours.  Warning! Empty before duration ends.  Only 1 spell of this kind can be active at any given time.  (MAYBE dup objects and replacing with 1/2 weight replacements p375) 
+//Longstrider                          , 3 => Travelers // NEW SPELL  (2x move 8 hr; not in combat)
+//Priest Wiz eye type thing            , 4 => Travelers // NEW SPELL (as wiz)
+//Dimensional Jump                     , 4 => Travelers // NEW SPELL (as wiz)
+//Clear the Path                       , 5 => Travelers // NEW SPELL p122 Constantly Dispel spells like web and entangle over a period of time (remove traps possible???) 
+//Helping Hand                         , 5 => Travelers // NEW SPELL Creates a 'hand' that can perform thief duties or carry load (by opening a store).  Cannot fight or do anything combat related.                     
+//Foresight                            , 5 => Divination //NEW SPELL 1 round cast, lasts 1 hour, +2 AC, saves, immune to backstab, +2 bonus to weapon and casting speed caster only
+//Thief's Lament                       , 4 => Wards //NEW SPELL (creates an 'imaginary' trap, doing 1d8 non-lethal dam/2 lev
+//Impart knowledge                     , 2 => Thought //Give a proficiency p347
+//Iron Mind                            , 2 => Thought  //NEW SPELL As wiz spell
+//Agonizing rebuke                     , 3 => Thought //NEW SPELL Source???? Cre that hits caster suffers magic damage if no save
+//Forget                               , 4 => Thought //NEW SPELL Target forgets a spell or 2
+//Impgrenatable Mind                   , 4 => Thought //NEW SPELL +4 saves vs. spell, save where no save allowed (doable? relevant?) 2 turn duration p349
+//Mind Sight                           , 5 => Thought //NEW SPELL as wiz spell
+//Disbelief                            , 6 => Thought //NEW SPELL p208.  Caster gains prot vs. all creatures, but cannot target other creatues with spells/abilities (??)
+//Vigil                                , 1 => Charm // NEW SPELL p.20 no Exhaustion 1 hour, immune to sleep effects
+//Compassion                           , 2 => Charm // NEW SPELL
+//Bliss                                , 2 => Charm // NEW SPELL p76 sim to waves of pain
+//Attraction                           , 2 => Charm // NEW SPELL p 44 Like Friends
+//Bad Medicine                         , 4 => Charm //NEW SPELL p52
+//Calm                                 , 1 => Law //NEW SPELL Target saves to have fear and other emotion spells removed
+//Uncertainty                          , 2 => Law    // NEW SPELL p22 Speed/weapon/casting/movement penalty
+//Still Mind                           , 5 => Law  // NEW SPELL Remove and protect against Fear, other emotion spells and charm/dominate effects
+//Rebuke                               , 5 => Law // NEW SPELL http://www.d20pfsrd.com/magic/all-spells/r/rebuke
+//Dispel Chaos                         , 5 => Law // NEW SPELL Dispels chaos inducing spells (confusion, etc.)
+//Shield of Law                        , 5 => Law // NEW SPELL http://pathfinder.d20srd.org/coreRulebook/spells/shieldOfLaw.html#shield-of-law Not just effective vs. chaotic creatures
+//Berserk                              , 1 => Chaos // NEW SPELL Touch a creature to instill a berserker rage,like the berserk ability
+//Chaos Ward                           , 1 => Chaos // NEW SPELL p111
+//Hideous Laughter                     , 2 => Chaos // NEW SPELL wiz p918
+//Havoc                                , 7 => Chaos //NEW SPELL Creates a vortex around the caster.  Enemies are damaged and can be knocked back p74 pfrpg
+//Chain Madness                        , 7 => Chaos //NEW SPELL Confusion but like chain lightning p108
+//Heat Metal                           , 2 => Earth // NEW SPELL p328
+//Animate Rock                         , 7 => Earth //NEW SPELL 'creature' rock that can attack for caster) P36
+// Whispering wind                     , 1 => Air // NEW SPELL as aud glammer
+//Gaseous form                         , 4 => Air // NEW SPELL http://www.d20pfsrd.com/magic/all-spells/g/gaseous-form no attack, slow move, almost invulnerable, wind spells push
+//Adaption                             , 4 => Air //NEW SPELL immune to poison/clouds p
+//winds of vengeance                   , 7 => Air  // NEW SPELL http://www.d20pfsrd.com/magic/all-spells/w/winds-of-vengeance
+//CLERIC_FLAME_SPHERE                  , 2 => Fire // NEW SPELL  Summons a 'creature' with fire elem anim, any creature within 5' save vs. breath or take x dam
+//CLERIC_WALL_Of_FIRE                  , 4 => Fire   //NEW SPELL   AMIM IN IWD2
+//Blinding Ray                         , 2 => Sun // NEW SPELL
+//Heat Exhaustion                      , 3 => Sun //NEW SPELL p327
+//CLERIC_BLESSED_WARMTH                 , 4 => Sun  //NEW SPELL Protections vs. cold and heat p75
+//CLERIC_SUNBEAM                       , 7 => Sun // NEW SPELL like MMM but 1x/level http://pathfinder.d20srd.org/coreRulebook/spells/sunbeam.html#sunbeam
+//Storm of Vengeance                    , 7 => Weather //NEW SPELL  http://www.d20srd.org/srd/spells/stormOfVengeance.htm
 
 */
 //___________________________________________________________________________________

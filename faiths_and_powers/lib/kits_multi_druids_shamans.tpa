@@ -2277,11 +2277,23 @@ ACTION_IF !(FILE_EXISTS_IN_GAME ~d5shmdn.spl~) BEGIN
     LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 timing = 9 STR_VAR resource = ~d5shmdi~ END
     LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5shmdn~ END
     LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5shmdi~ END
+    LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 177 match_timing = 1 timing = 0 duration = 126144000 STR_VAR match_resource = ~d5shmdnb~ END
     PATCH_IF (MOD_IS_INSTALLED ~A7#ImprovedShamanicDance.tp2~ ~0~) BEGIN
  	  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 176 match_parameter1 = 0 parameter1 = 50 parameter2 = 2 END
     END
   COPY ~faiths_and_powers/kits/multiclass/499_shambarb/d5shmdnb.eff~ ~override~		//	232 eff triggered by song
+/*
   COPY ~faiths_and_powers/kits/multiclass/499_shambarb/d5shmdnb.spl~ ~override~		//	aura triggered by 232 eff
+    LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 318 STR_VAR match_resource = ~spsh004~ resource = ~d5shmdnb~ END
+*/
+  COPY_EXISTING ~spsh004.spl~ ~override/d5shmdnb.spl~
+    SAY NAME1 @49921// Shamanic Dance
+    SAY UNIDENTIFIED_DESC @49921 
+    LPF ALTER_SPELL_HEADER INT_VAR location = 4 STR_VAR icon = ~d5shmdn~ END
+    LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 318 STR_VAR match_resource = ~spsh004~ resource = ~d5shmdnb~ END
+    LPF DELETE_EFFECT INT_VAR check_globals = 0 match_opcode = 363 END
+    LPF DELETE_EFFECT INT_VAR check_globals = 0 match_opcode = 146 STR_VAR match_resource = ~spsh003~ END
+    
   COPY ~faiths_and_powers/kits/multiclass/499_shambarb/d5nshdn.bam~ ~override~		//	stop dance icon
 /*
   COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5nshdn.spl~				//	stop dance abil
@@ -2392,6 +2404,7 @@ ACTION_IF !(FILE_EXISTS_IN_GAME ~d5shamb.eff~) BEGIN
 	WRITE_EVALUATED_ASCII 0x94 ~d5shamb~ #8
 */
 
+/* do this in d5shami instead
 ACTION_IF (FILE_EXISTS_IN_GAME ~d5fpspt.spl~) BEGIN
   COPY_EXISTING ~d5fpspt.spl~ ~override~
 	LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 1 parameter1 = 0 parameter2 = 2 timing = 9 STR_VAR resource = ~d5shmdn~ END
@@ -2399,6 +2412,7 @@ ACTION_IF (FILE_EXISTS_IN_GAME ~d5fpspt.spl~) BEGIN
 	  LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 1 parameter1 = 0 parameter2 = 2 timing = 9 STR_VAR resource = ~d5shmdi~ END
 	END
 END
+*/
 
 ACTION_IF (FILE_EXISTS_IN_GAME ~d5shmsp.spl~) BEGIN
   COPY_EXISTING ~d5shmsp.spl~ ~override~
@@ -2504,6 +2518,7 @@ END
 //MULTICLASS SHAMAN FILES______________________________________________________________
 //
 COPY ~faiths_and_powers/kits/multiclass/499_shambarb/d5shmbb.2da~ ~override~
+APPEND ~d5shmbb.2da~ ~CAST_INIT   AP_D5FPSPT  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** ~ UNLESS ~AP_D5FPSPT~
 ACTION_IF !(FILE_EXISTS_IN_GAME ~d5_notu.spl~) BEGIN
   COPY ~faiths_and_powers/data/misc/d5_notu.spl~ ~override~
 END
@@ -2687,6 +2702,8 @@ COPY ~faiths_and_powers/kits/multiclass/496_shamranger/d5shmrn.2da~ ~override~
 	APPEND_FILE ~faiths_and_powers/kits/rangers/901_forest_ranger/ranger_goodberry.txt~
 	APPEND_FILE ~faiths_and_powers/kits/rangers/901_forest_ranger/ranger_enemies.txt~
   END
+// cast this vv in d5yinit
+// APPEND ~d5shmrn.2da~ ~CAST_INIT   AP_D5FPSPT  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** ~ UNLESS ~AP_D5FPSPT~
 ACTION_IF !(FILE_EXISTS_IN_GAME ~d5_notu.spl~) BEGIN
   COPY ~faiths_and_powers/data/misc/d5_notu.spl~ ~override~
 END
@@ -2879,6 +2896,7 @@ END
 //MULTICLASS SHAMAN FILES____________________________________________________________
 //
 COPY ~faiths_and_powers/kits/multiclass/497_shamthief/d5shmth.2da~ ~override~
+// APPEND ~d5shmth.2da~ ~CAST_INIT   AP_D5FPSPT  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** ~ UNLESS ~AP_D5FPSPT~
 ACTION_IF !(FILE_EXISTS_IN_GAME ~d5_notu.spl~) BEGIN
   COPY ~faiths_and_powers/data/misc/d5_notu.spl~ ~override~
 END
@@ -3063,6 +3081,7 @@ END
 //MULTICLASS SHAMAN FILES____________________________________________________________
 //
 COPY ~faiths_and_powers/kits/multiclass/498_shammage/d5shmma.2da~ ~override~
+// APPEND ~d5shmma.2da~ ~CAST_INIT   AP_D5FPSPT  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** ~ UNLESS ~AP_D5FPSPT~
 ACTION_IF !(FILE_EXISTS_IN_GAME ~d5_notu.spl~) BEGIN
   COPY ~faiths_and_powers/data/misc/d5_notu.spl~ ~override~
 END
@@ -3242,6 +3261,7 @@ END
 //MULTICLASS SHAMAN FILES____________________________________________________________
 //
 COPY ~faiths_and_powers/kits/multiclass/495_shammonk/d5shmnk.2da~ ~override~
+//  APPEND ~d5shmnk.2da~ ~CAST_INIT   AP_D5FPSPT  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** ~ UNLESS ~AP_D5FPSPT~
 ACTION_IF !(FILE_EXISTS_IN_GAME ~d5_notu.spl~) BEGIN
   COPY ~faiths_and_powers/data/misc/d5_notu.spl~ ~override~
 END

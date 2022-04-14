@@ -562,6 +562,29 @@ COPY_EXISTING ~spin978.spl~ ~override~
   LPF ALTER_EFFECT INT_VAR match_duration = 84 duration = 12 END
   LPF ALTER_EFFECT INT_VAR match_duration = 90 duration = 12 END
 IF_EXISTS BUT_ONLY
+//__________________________________________________________________________________
+
+
+// add Dancing Lights from SoD
+//
+/* actually don't add_spell, just copy it in
+OUTER_SET spell_ios = IDS_OF_SYMBOL (~spell~ ~CLERIC_DANCING_LIGHTS~)
+ACTION_IF !(spell_ios = 0 - 1) BEGIN
+*/
+COPY ~faiths_and_powers/spheres/spells/light/d5dancl.spl~     ~override/d5fnp06.spl~ 
+    SAY NAME1 @52009
+    SAY NAME2 @52009
+    SAY UNIDENTIFIED_DESC @52010
+	WRITE_SHORT 0x1c 2
+ACTION_IF !(FILE_EXISTS_IN_GAME ~bddanc01.cre~) BEGIN
+  COPY ~faiths_and_powers/spheres/spells/light/bddanc01.cre~     ~override~
+END
+ACTION_IF !(FILE_EXISTS_IN_GAME ~bddanc01.eff~) BEGIN
+  COPY ~faiths_and_powers/spheres/spells/light/bddanc01.eff~     ~override~
+END
+ACTION_IF !(FILE_EXISTS_IN_GAME ~bddanc01.bcs~) BEGIN
+  COPY ~faiths_and_powers/spheres/spells/light/bddanc01.bcs~     ~override~
+END
 
 //__________________________________________________________________________________
 

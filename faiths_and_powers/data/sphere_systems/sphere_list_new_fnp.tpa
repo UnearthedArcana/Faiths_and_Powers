@@ -1,38 +1,115 @@
 // SPHERE NAMES___________________________________________________________________
 //
-// You can define the names of your spheres in the right-hand column
-// There can be 23 spheres at most; they must correspond to the FnP spheres
-// So DO NOT change anything in the left column.
 
 DEFINE_ACTION_MACRO d5_define_sphere_names BEGIN
 
-<<<<<<<< d5/d5altsph.2da
-2DA
-Universal		Universal
-Life 			All
-Death 			Death
-Benediction 	Law
-Destruction 	Chaos
-Protection 		Protection
-War 			War
-Exploration     no_sphere_1
-Knowledge 		Perception
-Deception 		no_sphere_2
-Thought 		Thought
-Dread 			Insects
-Vigor 			Vigor
-Affliction 		Decay
-Animal 			Animal
-Plant 			Plant
-Earth 			Earth
-Air 			Air
-Water 			Water
-Fire 			Fire
-Light 			Radiance
-Shadow 			Shadow
-Magic 			no_sphere_3
-Astral	 		Spirit
->>>>>>>> 
+COPY ~faiths_and_powers/data/sphere_systems/d5altsph.2da~ ~override~
+
+OUTER_SPRINT new_Universal	 @12501	// Universal
+OUTER_SPRINT new_Life		 @12502	// All
+OUTER_SPRINT new_Death		 @12503	// Death
+OUTER_SPRINT new_Benediction @12504	// Law
+OUTER_SPRINT new_Destruction @12505	// Chaos
+OUTER_SPRINT new_Protection  @12506	// Protection
+OUTER_SPRINT new_War		 @12507	// War
+OUTER_SPRINT new_Exploration @12508	// no_sphere_1
+OUTER_SPRINT new_Knowledge 	 @12509	// Perception
+OUTER_SPRINT new_Deception 	 @12510	// Deceit
+OUTER_SPRINT new_Thought 	 @12511	// Thought
+OUTER_SPRINT new_Dread		 @12512	// Insects
+OUTER_SPRINT new_Vigor		 @12513	// Vigor
+OUTER_SPRINT new_Affliction  @12514	// Decay
+OUTER_SPRINT new_Animal 	 @12515	// Animal
+OUTER_SPRINT new_Plant		 @12516	// Plant
+OUTER_SPRINT new_Earth		 @12517	// Earth
+OUTER_SPRINT new_Air		 @12518	// Air
+OUTER_SPRINT new_Water		 @12519	// Water
+OUTER_SPRINT new_Fire		 @12520	// Fire
+OUTER_SPRINT new_Light		 @12521	// Radiance
+OUTER_SPRINT new_Shadow 	 @12522	// Shadow
+OUTER_SPRINT new_Magic		 @12523	// no_sphere_2
+OUTER_SPRINT new_Astral		 @12524	// Spirit
+
+COPY_EXISTING ~d5altsph.2da~ ~override~
+  REPLACE_TEXTUALLY ~new_Universal~ ~%new_Universal%~
+  REPLACE_TEXTUALLY ~new_Life~ ~%new_Life%~
+  REPLACE_TEXTUALLY ~new_Death~ ~%new_Death%~
+  REPLACE_TEXTUALLY ~new_Benediction~ ~%new_Benediction%~
+  REPLACE_TEXTUALLY ~new_Destruction~ ~%new_Destruction%~
+  REPLACE_TEXTUALLY ~new_Protection~ ~%new_Protection%~
+  REPLACE_TEXTUALLY ~new_War~ ~%new_War%~
+  REPLACE_TEXTUALLY ~new_Exploration~ ~%new_Exploration%~
+  REPLACE_TEXTUALLY ~new_Knowledge~ ~%new_Knowledge%~
+  REPLACE_TEXTUALLY ~new_Deception~ ~%new_Deception%~
+  REPLACE_TEXTUALLY ~new_Thought~ ~%new_Thought%~
+  REPLACE_TEXTUALLY ~new_Dread~ ~%new_Dread%~
+  REPLACE_TEXTUALLY ~new_Vigor~ ~%new_Vigor%~
+  REPLACE_TEXTUALLY ~new_Affliction~ ~%new_Affliction%~
+  REPLACE_TEXTUALLY ~new_Animal~ ~%new_Animal%~
+  REPLACE_TEXTUALLY ~new_Plant~ ~%new_Plant%~
+  REPLACE_TEXTUALLY ~new_Earth~ ~%new_Earth%~
+  REPLACE_TEXTUALLY ~new_Air~ ~%new_Air%~
+  REPLACE_TEXTUALLY ~new_Water~ ~%new_Water%~
+  REPLACE_TEXTUALLY ~new_Fire~ ~%new_Fire%~
+  REPLACE_TEXTUALLY ~new_Light~ ~%new_Light%~
+  REPLACE_TEXTUALLY ~new_Shadow~ ~%new_Shadow%~
+  REPLACE_TEXTUALLY ~new_Magic~ ~%new_Magic%~
+  REPLACE_TEXTUALLY ~new_Astral~ ~%new_Astral%~
+
+WITH_TRA ~faiths_and_powers/language/english/setup.tra~ BEGIN
+
+OUTER_SPRINT eng_Universal	 @12501	// Universal
+OUTER_SPRINT eng_Life		 @12502	// All
+OUTER_SPRINT eng_Death		 @12503	// Death
+OUTER_SPRINT eng_Benediction @12504	// Law
+OUTER_SPRINT eng_Destruction @12505	// Chaos
+OUTER_SPRINT eng_Protection  @12506	// Protection
+OUTER_SPRINT eng_War		 @12507	// War
+OUTER_SPRINT eng_Exploration @12508	// no_sphere_1
+OUTER_SPRINT eng_Knowledge 	 @12509	// Perception
+OUTER_SPRINT eng_Deception 	 @12510	// no_sphere_2
+OUTER_SPRINT eng_Thought 	 @12511	// Thought
+OUTER_SPRINT eng_Dread		 @12512	// Insects
+OUTER_SPRINT eng_Vigor		 @12513	// Vigor
+OUTER_SPRINT eng_Affliction  @12514	// Decay
+OUTER_SPRINT eng_Animal 	 @12515	// Animal
+OUTER_SPRINT eng_Plant		 @12516	// Plant
+OUTER_SPRINT eng_Earth		 @12517	// Earth
+OUTER_SPRINT eng_Air		 @12518	// Air
+OUTER_SPRINT eng_Water		 @12519	// Water
+OUTER_SPRINT eng_Fire		 @12520	// Fire
+OUTER_SPRINT eng_Light		 @12521	// Radiance
+OUTER_SPRINT eng_Shadow 	 @12522	// Shadow
+OUTER_SPRINT eng_Magic		 @12523	// no_sphere_3
+OUTER_SPRINT eng_Astral		 @12524	// Spirit
+
+COPY_EXISTING ~d5altsph.2da~ ~override~
+  REPLACE_TEXTUALLY ~eng_Universal~ ~%eng_Universal%~
+  REPLACE_TEXTUALLY ~eng_Life~ ~%eng_Life%~
+  REPLACE_TEXTUALLY ~eng_Death~ ~%eng_Death%~
+  REPLACE_TEXTUALLY ~eng_Benediction~ ~%eng_Benediction%~
+  REPLACE_TEXTUALLY ~eng_Destruction~ ~%eng_Destruction%~
+  REPLACE_TEXTUALLY ~eng_Protection~ ~%eng_Protection%~
+  REPLACE_TEXTUALLY ~eng_War~ ~%eng_War%~
+  REPLACE_TEXTUALLY ~eng_Exploration~ ~%eng_Exploration%~
+  REPLACE_TEXTUALLY ~eng_Knowledge~ ~%eng_Knowledge%~
+  REPLACE_TEXTUALLY ~eng_Deception~ ~%eng_Deception%~
+  REPLACE_TEXTUALLY ~eng_Thought~ ~%eng_Thought%~
+  REPLACE_TEXTUALLY ~eng_Dread~ ~%eng_Dread%~
+  REPLACE_TEXTUALLY ~eng_Vigor~ ~%eng_Vigor%~
+  REPLACE_TEXTUALLY ~eng_Affliction~ ~%eng_Affliction%~
+  REPLACE_TEXTUALLY ~eng_Animal~ ~%eng_Animal%~
+  REPLACE_TEXTUALLY ~eng_Plant~ ~%eng_Plant%~
+  REPLACE_TEXTUALLY ~eng_Earth~ ~%eng_Earth%~
+  REPLACE_TEXTUALLY ~eng_Air~ ~%eng_Air%~
+  REPLACE_TEXTUALLY ~eng_Water~ ~%eng_Water%~
+  REPLACE_TEXTUALLY ~eng_Fire~ ~%eng_Fire%~
+  REPLACE_TEXTUALLY ~eng_Light~ ~%eng_Light%~
+  REPLACE_TEXTUALLY ~eng_Shadow~ ~%eng_Shadow%~
+  REPLACE_TEXTUALLY ~eng_Magic~ ~%eng_Magic%~
+  REPLACE_TEXTUALLY ~eng_Astral~ ~%eng_Astral%~
+
+END // end with_tra
 
 END	//	end sphere names macro
 //____________________________________________________________________________________
@@ -162,6 +239,17 @@ CLERIC_INVISIBILITY_PURGE               4	=	Perception
 WIZARD_ORACLE                           5	=	Perception
 CLERIC_TRUE_SIGHT                       6	=	Perception
 WIZARD_MOMENT_OF_PRESCIENCE             7	=	Perception
+CLERIC_CAMOUFLAGE                       1	=	Deceiti
+NOSR_WIZARD_REFLECTED_IMAGE             1	=	Deceit
+SR_WIZARD_REFLECTED_IMAGE               2	=	Deceit
+WIZARD_BLUR                             2	=	Deceit
+WIZARD_INVISIBILITY                     3	=	Deceit
+WIZARD_NON_DETECTION                    3	=	Deceit
+WIZARD_MIRROR_IMAGE                     4	=	Deceit
+WIZARD_SHADOW_DOOR                      5	=	Deceit
+WIZARD_MISLEAD                          6	=	Deceit
+CLERIC_PIXIE_DUST                       6	=	Deceit
+WIZARD_SIMULACRUM                       7	=	Deceit
 CLERIC_CHARM_PERSON                     1	=	Thought
 CLERIC_REMOVE_FEAR                      2	=	Thought
 CLERIC_ENTHRALL                         2	=	Thought
@@ -175,8 +263,8 @@ WIZARD_EMOTION_HOPELESSNESS             4	=	Thought
 CLERIC_MENTAL_DOMINATION                5	=	Thought
 CLERIC_GREATER_COMMAND                  5	=	Thought
 CLERIC_CONFUSION                        6	=	Thought
+CLERIC_IMPERVIOUS_SANCTITY_OF_MIND      6	=	Thought
 CLERIC_NATURE_BEAUTY                    7	=	Thought
-CLERIC_IMPERVIOUS_SANCTITY_OF_MIND      7	=	Thought
 CLERIC_UNFAILING_ENDURANCE              1	=	Vigor
 CLERIC_CURE_DISEASE                    	2	=	Vigor
 CLERIC_DRAW_UPON_HOLY_MIGHT             2	=	Vigor
@@ -299,6 +387,7 @@ WIZARD_CONJURE_LESSER_FIRE_ELEMENTAL    5	=	Fire
 CLERIC_CONJURE_FIRE_ELEMENTAL           6	=	Fire
 CLERIC_FIRE_SEEDS                       6	=	Fire
 CLERIC_FIRE_STORM                       7	=	Fire
+d5fnp06                                 1	=	Radiance
 CLERIC_SUNSCORCH                        1	=	Radiance
 CLERIC_ALICORN_LANCE                    2	=	Radiance
 WIZARD_GLITTERDUST                      2	=	Radiance
@@ -350,29 +439,29 @@ DEFINE_ACTION_FUNCTION ur_priest_spheres
   RET_ARRAY ur_priest_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY ur_priest_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All			 		=> x
-	Death		 		=> major
-	Law					=> major
-	Chaos			 	=> major
-	Protection		 	=> major
-	War		 			=> major
-	Perception		 	=> major
-	Thought		 		=> major
-	Decay		 		=> major
-	Vigor		 		=> major
-	Insects			 	=> x
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> minor
-	Water		 		=> minor
-	Air		 			=> minor
-	Fire		 		=> minor
-	Radiance 			=> major
-	Shadow		 		=> major
-	Spirit		    	=> x
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> x
+	Death			=> x
+	Law				=> major
+	Chaos			=> major
+	Protection		=> major
+	War				=> major
+	Perception		=> major
+	Deceit			=> x
+	Thought			=> major
+	Decay			=> x
+	Vigor			=> major
+	Insects			=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Radiance		=> x
+	Shadow			=> x
+	Spirit		    => x
  END
 END
 //___________________________________________________________________________________
@@ -386,29 +475,29 @@ DEFINE_ACTION_FUNCTION auril_spheres
   RET_ARRAY auril_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY auril_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All	 				=> major
-	Death 				=> major
-	Law		 			=> x
-	Chaos		 		=> major
-	Protection 			=> major
-	War 				=> minor
-	Perception 			=> major
-	Thought 			=> minor
-	Decay	 			=> major
-	Vigor				=> x
-	Insects	 			=> x
-	Animal				=> x
-	Plant				=> x
-	Earth 				=> x
-	Water 				=> major
-	Air 				=> major
-	Fire 				=> x
-	Radiance			=> x
-	Shadow 				=> minor
-	Spirit		    	=> x
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> major
+	Death			=> major
+	Law				=> x
+	Chaos			=> major
+	Protection		=> major
+	War				=> minor
+	Perception		=> major
+	Deceit			=> x
+	Thought			=> minor
+	Decay			=> major
+	Vigor			=> x
+	Insects			=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> major
+	Air				=> major
+	Fire			=> x
+	Radiance		=> x
+	Shadow			=> minor
+	Spirit		    => x
  END
 END
 //___________________________________________________________________________________
@@ -419,29 +508,29 @@ DEFINE_ACTION_FUNCTION azuth_spheres
   RET_ARRAY azuth_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY azuth_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All	 				=> major
-	Death 				=> x
-	Law		 			=> major
-	Chaos		 		=> x
-	Protection 			=> major
-	War 				=> x
-	Perception 			=> major
-	Thought 			=> major
-	Decay 				=> x
-	Vigor				=> minor
-	Insects	 			=> x
-	Animal				=> x
-	Plant				=> x
-	Earth 				=> x
-	Water 				=> x
-	Air 				=> minor
-	Fire 				=> minor
-	Radiance			=> major
-	Shadow 				=> minor
-	Spirit		 		=> major
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> major
+	Death			=> x
+	Law				=> major
+	Chaos			=> x
+	Protection		=> major
+	War				=> x
+	Perception		=> major
+	Deceit			=> x
+	Thought			=> major
+	Decay			=> x
+	Vigor			=> minor
+	Insects			=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> minor
+	Fire			=> minor
+	Radiance		=> major
+	Shadow			=> minor
+	Spirit			=> major
  END
 END
 //___________________________________________________________________________________
@@ -452,29 +541,29 @@ DEFINE_ACTION_FUNCTION bane_spheres
   RET_ARRAY bane_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY bane_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All					=> minor
-	Death 				=> major
-	Law		 			=> major
-	Chaos		 		=> x
-	Protection 			=> minor
-	War 				=> major
-	Perception			=> major
-	Thought 			=> x
-	Decay				=> major
-	Vigor				=> major
-	Insects				=> x
-	Animal				=> x
-	Plant				=> x
-	Earth 				=> x
-	Water 				=> x
-	Air 				=> x
-	Fire 				=> x
-	Radiance			=> x
-	Shadow 				=> minor
-	Spirit				=> x
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> minor
+	Death			=> major
+	Law				=> major
+	Chaos			=> x
+	Protection		=> minor
+	War				=> major
+	Perception		=> major
+	Deceit			=> x
+	Thought			=> x
+	Decay			=> major
+	Vigor			=> major
+	Insects			=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Radiance		=> x
+	Shadow			=> minor
+	Spirit			=> x
  END
 END
 //___________________________________________________________________________________
@@ -485,29 +574,29 @@ DEFINE_ACTION_FUNCTION beshaba_spheres
   RET_ARRAY beshaba_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY beshaba_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All			 		=> major
-	Death		 		=> minor
-	Law					=> x
-	Chaos		 		=> major
-	Protection		 	=> major
-	War		 			=> x
-	Perception		 	=> major
-	Thought		 		=> major
-	Decay		 		=> major
-	Vigor		 		=> minor
-	Insects			 	=> x
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> x
-	Water		 		=> x
-	Air		 			=> minor
-	Fire		 		=> major
-	Radiance 			=> x
-	Shadow		 		=> x
-	Spirit		    	=> x
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> major
+	Death			=> minor
+	Law				=> x
+	Chaos			=> major
+	Protection		=> major
+	War				=> x
+	Perception		=> major
+	Deceit			=> minor
+	Thought			=> major
+	Decay			=> major
+	Vigor			=> minor
+	Insects			=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> minor
+	Fire			=> major
+	Radiance		=> x
+	Shadow			=> x
+	Spirit		    => x
  END
 END
 //___________________________________________________________________________________
@@ -518,29 +607,29 @@ DEFINE_ACTION_FUNCTION bhaal_spheres
   RET_ARRAY bhaal_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY bhaal_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All					=> minor
-	Death 				=> major
-	Law		 			=> major
-	Chaos		 		=> x
-	Protection 			=> x
-	War 				=> major
-	Perception			=> major
-	Thought 			=> x
-	Decay				=> major
-	Vigor				=> major
-	Insects				=> x
-	Animal				=> x
-	Plant				=> x
-	Earth 				=> x
-	Water 				=> x
-	Air 				=> x
-	Fire 				=> x
-	Radiance			=> x
-	Shadow 				=> minor
-	Spirit				=> major
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> minor
+	Death			=> major
+	Law				=> major
+	Chaos			=> x
+	Protection		=> x
+	War				=> major
+	Perception		=> major
+	Deceit			=> x
+	Thought			=> x
+	Decay			=> major
+	Vigor			=> major
+	Insects			=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Radiance		=> x
+	Shadow			=> minor
+	Spirit			=> major
  END
 END
 //___________________________________________________________________________________
@@ -551,29 +640,29 @@ DEFINE_ACTION_FUNCTION cyric_spheres
   RET_ARRAY cyric_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY cyric_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All			 		=> minor
-	Death		 		=> focus
-	Law					=> x
-	Chaos		 		=> major
-	Protection		 	=> x
-	War		 			=> major
-	Perception		 	=> major
-	Thought		 		=> minor
-	Decay		 		=> major
-	Vigor		 		=> minor
-	Insects			 	=> x
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> x
-	Water		 		=> x
-	Air		 			=> x
-	Fire		 		=> x
-	Radiance 			=> x
-	Shadow		 		=> major
-	Spirit			    => major
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> minor
+	Death			=> major
+	Law				=> x
+	Chaos			=> major
+	Protection		=> x
+	War				=> major
+	Perception		=> major
+	Deceit			=> major
+	Thought			=> minor
+	Decay			=> major
+	Vigor			=> x
+	Insects			=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Radiance		=> x
+	Shadow			=> major
+	Spirit			=> minor
  END
 END
 //___________________________________________________________________________________
@@ -584,29 +673,29 @@ DEFINE_ACTION_FUNCTION deneir_spheres
   RET_ARRAY deneir_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY deneir_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All			 		=> major
-	Death		 		=> x
-	Law					=> major
-	Chaos		 		=> major
-	Protection		 	=> major
-	War		 			=> minor
-	Perception		 	=> major
-	Thought		 		=> major
-	Decay		 		=> x
-	Vigor		 		=> minor
-	Insects			 	=> x
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> x
-	Water		 		=> x
-	Air		 			=> minor
-	Fire		 		=> x
-	Radiance 			=> major
-	Shadow		 		=> minor
-	Spirit		    	=> x
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> major
+	Death			=> x
+	Law				=> major
+	Chaos			=> major
+	Protection		=> major
+	War				=> x
+	Perception		=> major
+	Deceit			=> minor
+	Thought			=> major
+	Decay			=> x
+	Vigor			=> minor
+	Insects			=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> minor
+	Fire			=> x
+	Radiance		=> major
+	Shadow			=> minor
+	Spirit		    => x
  END
 END
 //___________________________________________________________________________________
@@ -617,29 +706,29 @@ DEFINE_ACTION_FUNCTION garagos_spheres
   RET_ARRAY garagos_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY garagos_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All	 				=> minor
-	Death 				=> major
-	Law		 			=> x
-	Chaos		 		=> major
-	Protection 			=> minor
-	War 				=> major
-	Perception 			=> minor
-	Thought 			=> x
-	Decay				=> major
-	Vigor				=> major
-	Insects			 	=> x
-	Animal				=> major
-	Plant				=> x
-	Earth 				=> x
-	Water 				=> x
-	Air 				=> x
-	Fire 				=> major
-	Radiance			=> x
-	Shadow 				=> x
-	Spirit	  			=> x
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> minor
+	Death			=> major
+	Law				=> x
+	Chaos			=> major
+	Protection		=> minor
+	War				=> major
+	Perception		=> minor
+	Deceit			=> x
+	Thought			=> x
+	Decay			=> major
+	Vigor			=> major
+	Insects			=> x
+	Animal			=> major
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> major
+	Radiance		=> x
+	Shadow			=> x
+	Spirit		    => x
  END
 END
 //___________________________________________________________________________________
@@ -649,29 +738,29 @@ DEFINE_ACTION_FUNCTION helm_spheres
   RET_ARRAY helm_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY helm_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All			 		=> major
-	Death		 		=> x
-	Law					=> major
-	Chaos		 		=> x
-	Protection		 	=> major
-	War		 			=> major
-	Perception		 	=> major
-	Thought		 		=> minor
-	Decay		 		=> x
-	Vigor		 		=> major
-	Insects			 	=> x
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> x
-	Water		 		=> x
-	Air		 			=> x
-	Fire		 		=> minor
-	Radiance 			=> major
-	Shadow		 		=> x
-	Spirit		    	=> minor
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> major
+	Death			=> x
+	Law				=> major
+	Chaos			=> x
+	Protection		=> major
+	War				=> major
+	Perception		=> major
+	Deceit			=> x
+	Thought			=> minor
+	Decay			=> x
+	Vigor			=> major
+	Insects			=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> minor
+	Radiance		=> major
+	Shadow			=> x
+	Spirit		    => minor
  END
 END
 //___________________________________________________________________________________
@@ -682,29 +771,29 @@ DEFINE_ACTION_FUNCTION ilmater_spheres
   RET_ARRAY ilmater_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY ilmater_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All			 		=> major
-	Death		 		=> minor
-	Law					=> major
-	Chaos		 		=> x
-	Protection		 	=> major
-	War		 			=> x
-	Perception		 	=> major
-	Thought		 		=> major
-	Decay		 		=> minor
-	Vigor		 		=> major
-	Insects			 	=> x
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> x
-	Water		 		=> x
-	Air		 			=> x
-	Fire		 		=> x
-	Radiance 			=> minor
-	Shadow		 		=> x
-	Spirit		    	=> major
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> major
+	Death			=> minor
+	Law				=> major
+	Chaos			=> x
+	Protection		=> major
+	War				=> x
+	Perception		=> major
+	Deceit			=> minor
+	Thought			=> major
+	Decay			=> minor
+	Vigor			=> major
+	Insects			=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Radiance		=> minor
+	Shadow			=> x
+	Spirit		    => major
  END
 END
 //___________________________________________________________________________________
@@ -715,29 +804,29 @@ DEFINE_ACTION_FUNCTION kelemvor_spheres
   RET_ARRAY kelemvor_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY kelemvor_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All			 		=> major
-	Death		 		=> focus
-	Law					=> major
-	Chaos		 		=> x
-	Protection		 	=> major
-	War		 			=> major
-	Perception		 	=> major
-	Thought		 		=> minor
-	Decay		 		=> minor
-	Vigor		 		=> x
-	Insects			 	=> x
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> minor
-	Water		 		=> x
-	Air		 			=> x
-	Fire		 		=> x
-	Radiance 			=> x
-	Shadow		 		=> x
-	Spirit			    => major
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> major
+	Death			=> focus
+	Law				=> major
+	Chaos			=> x
+	Protection		=> major
+	War				=> major
+	Perception		=> major
+	Deceit			=> x
+	Thought			=> minor
+	Decay			=> minor
+	Vigor			=> x
+	Insects			=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> minor
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Radiance		=> x
+	Shadow			=> x
+	Spirit		    => major
  END
 END
 //___________________________________________________________________________________
@@ -748,29 +837,29 @@ DEFINE_ACTION_FUNCTION kossuth_spheres
   RET_ARRAY kossuth_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY kossuth_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All	 				=> major
-	Death 				=> x
-	Law		 			=> x
-	Chaos		 		=> major
-	Protection 			=> major
-	War 				=> minor
-	Perception 			=> major
-	Thought 			=> x
-	Decay				=> minor
-	Vigor				=> major
-	Insects	 			=> x
-	Animal				=> x
-	Plant				=> x
-	Earth 				=> x
-	Water 				=> x
-	Air 				=> x
-	Fire 				=> focus
-	Radiance			=> major
-	Shadow 				=> x
-	Spirit		    	=> minor
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> major
+	Death			=> x
+	Law				=> x
+	Chaos			=> major
+	Protection		=> major
+	War				=> minor
+	Perception		=> major
+	Deceit			=> x
+	Thought			=> x
+	Decay			=> minor
+	Vigor			=> major
+	Insects			=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> focus
+	Radiance		=> major
+	Shadow			=> x
+	Spirit		    => minor
  END
 END
 //___________________________________________________________________________________
@@ -781,29 +870,29 @@ DEFINE_ACTION_FUNCTION lathander_spheres
   RET_ARRAY lathander_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY lathander_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All			 		=> major
-	Death		 		=> x
-	Law					=> minor
-	Chaos		 		=> x
-	Protection		 	=> major
-	War		 			=> minor
-	Perception		 	=> major
-	Thought		 		=> major
-	Decay		 		=> x
-	Vigor		 		=> major
-	Insects			 	=> x
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> x
-	Water		 		=> x
-	Air		 			=> minor
-	Fire		 		=> major
-	Radiance 			=> focus
-	Shadow		 		=> x
-	Spirit		    	=> x
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> major
+	Death			=> x
+	Law				=> minor
+	Chaos			=> x
+	Protection		=> major
+	War				=> minor
+	Perception		=> major
+	Deceit			=> x
+	Thought			=> major
+	Decay			=> x
+	Vigor			=> major
+	Insects			=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> minor
+	Fire			=> major
+	Radiance		=> focus
+	Shadow			=> x
+	Spirit		    => x
   END
 END
 //___________________________________________________________________________________
@@ -814,29 +903,29 @@ DEFINE_ACTION_FUNCTION leira_spheres
   RET_ARRAY leira_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY leira_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All			 		=> major
-	Death		 		=> x
-	Law					=> x
-	Chaos		 		=> major
-	Protection		 	=> minor
-	War		 			=> x
-	Perception		 	=> major
-	Thought		 		=> major
-	Decay		 		=> minor
-	Vigor		 		=> major
-	Insects			 	=> x
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> x
-	Water		 		=> x
-	Air		 			=> minor
-	Fire		 		=> x
-	Radiance 			=> major
-	Shadow		 		=> major
-	Spirit		    	=> x
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> major
+	Death			=> x
+	Law				=> x
+	Chaos			=> major
+	Protection		=> minor
+	War				=> x
+	Perception		=> major
+	Deceit			=> major
+	Thought			=> major
+	Decay			=> minor
+	Vigor			=> major
+	Insects			=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> minor
+	Fire			=> x
+	Radiance		=> major
+	Shadow			=> minor
+	Spirit		    => x
  END
 END
 //___________________________________________________________________________________
@@ -847,29 +936,29 @@ DEFINE_ACTION_FUNCTION loviatar_spheres
   RET_ARRAY loviatar_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY loviatar_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All			 		=> major
-	Death		 		=> major
-	Law					=> major
-	Chaos		 		=> x
-	Protection		 	=> x
-	War		 			=> minor
-	Perception		 	=> major
-	Thought		 		=> major
-	Decay		 		=> major
-	Vigor		 		=> minor
-	Insects			 	=> x
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> x
-	Water		 		=> x
-	Air		 			=> x
-	Fire		 		=> x
-	Radiance 			=> x
-	Shadow		 		=> minor
-	Spirit		    	=> major
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> major
+	Death			=> major
+	Law				=> major
+	Chaos			=> x
+	Protection		=> x
+	War				=> minor
+	Perception		=> major
+	Deceit			=> minor
+	Thought			=> major
+	Decay			=> major
+	Vigor			=> minor
+	Insects			=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Radiance		=> x
+	Shadow			=> minor
+	Spirit		    => major
  END
 END
 //___________________________________________________________________________________
@@ -880,29 +969,29 @@ DEFINE_ACTION_FUNCTION malar_spheres
   RET_ARRAY malar_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY malar_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All			 		=> minor
-	Death		 		=> major
-	Law					=> x
-	Chaos			 	=> major
-	Protection 			=> x
-	War 				=> x
-	Perception 			=> minor
-	Thought 			=> major
-	Decay				=> major
-	Vigor				=> major
-	Insects	 			=> minor
-	Animal				=> focus
-	Plant				=> x
-	Earth 				=> minor
-	Water 				=> x
-	Air 				=> x
-	Fire 				=> x
-	Radiance			=> x
-	Shadow 				=> major
-	Spirit	  			=> x
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> minor
+	Death			=> major
+	Law				=> x
+	Chaos			=> major
+	Protection		=> x
+	War				=> x
+	Perception		=> minor
+	Deceit			=> x
+	Thought			=> major
+	Decay			=> major
+	Vigor			=> major
+	Insects			=> minor
+	Animal			=> focus
+	Plant			=> x
+	Earth			=> minor
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Radiance		=> x
+	Shadow			=> major
+	Spirit		    => x
  END
 END
 //___________________________________________________________________________________
@@ -913,29 +1002,29 @@ DEFINE_ACTION_FUNCTION mask_spheres
   RET_ARRAY mask_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY mask_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All			 		=> major
-	Death		 		=> minor
-	Law					=> minor
-	Chaos		 		=> major
-	Protection		 	=> minor
-	War		 			=> x
-	Perception		 	=> major
-	Thought		 		=> major
-	Decay		 		=> major
-	Vigor		 		=> major
-	Insects			 	=> x
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> x
-	Water		 		=> x
-	Air		 			=> minor
-	Fire		 		=> x
-	Radiance 			=> x
-	Shadow		 		=> major
-	Spirit		    	=> x
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> major
+	Death			=> minor
+	Law				=> minor
+	Chaos			=> major
+	Protection		=> minor
+	War				=> x
+	Perception		=> major
+	Deceit			=> major
+	Thought			=> major
+	Decay			=> x
+	Vigor			=> major
+	Insects			=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> minor
+	Fire			=> x
+	Radiance		=> x
+	Shadow			=> major
+	Spirit		    => x
  END
 END
 //___________________________________________________________________________________
@@ -946,29 +1035,29 @@ DEFINE_ACTION_FUNCTION mielikki_spheres
   RET_ARRAY mielikki_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY mielikki_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All	 				=> major
-	Death 				=> x
-	Law		 			=> x
-	Chaos		 		=> x
-	Protection 			=> major
-	War 				=> x
-	Perception 			=> major
-	Thought 			=> x
-	Decay				=> x
-	Vigor				=> major
-	Insects	 			=> minor
-	Animal				=> major
-	Plant				=> major
-	Earth 				=> major
-	Water 				=> minor
-	Air 				=> minor
-	Fire 				=> x
-	Radiance			=> major
-	Shadow 				=> minor
-	Spirit	 			=> x
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> major
+	Death			=> x
+	Law				=> x
+	Chaos			=> x
+	Protection		=> major
+	War				=> x
+	Perception		=> major
+	Deceit			=> x
+	Thought			=> x
+	Decay			=> x
+	Vigor			=> major
+	Insects			=> minor
+	Animal			=> major
+	Plant			=> major
+	Earth			=> major
+	Water			=> minor
+	Air				=> minor
+	Fire			=> x
+	Radiance		=> major
+	Shadow			=> minor
+	Spirit			=> x
  END
 END
 //___________________________________________________________________________________
@@ -979,29 +1068,29 @@ DEFINE_ACTION_FUNCTION milil_spheres
   RET_ARRAY milil_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY milil_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All	 				=> major
-	Death 				=> minor
-	Law		 			=> major
-	Chaos		 		=> minor
-	Protection 			=> major
-	War 				=> x
-	Perception 			=> major
-	Thought 			=> major
-	Decay				=> x
-	Vigor				=> minor
-	Insects	 			=> x
-	Animal				=> x
-	Plant				=> x
-	Earth 				=> x
-	Water 				=> x
-	Air 				=> major
-	Fire 				=> x
-	Radiance			=> major
-	Shadow 				=> x
-	Spirit	 			=> minor
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> major
+	Death			=> x
+	Law				=> major
+	Chaos			=> minor
+	Protection		=> major
+	War				=> x
+	Perception		=> major
+	Deceit			=> minor
+	Thought			=> major
+	Decay			=> x
+	Vigor			=> minor
+	Insects			=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> major
+	Fire			=> x
+	Radiance		=> major
+	Shadow			=> x
+	Spirit			=> minor
  END
 END
 //___________________________________________________________________________________
@@ -1012,29 +1101,29 @@ DEFINE_ACTION_FUNCTION moander_spheres
   RET_ARRAY moander_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY moander_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All			 		=> x
-	Death		 		=> major
-	Law					=> x
-	Chaos		 		=> minor
-	Protection		 	=> x
-	War		 			=> x
-	Perception		 	=> x
-	Thought		 		=> x
-	Decay		 		=> focus
-	Vigor		 		=> major
-	Insects			 	=> x
-	Animal		 		=> major
-	Plant		 		=> major
-	Earth		 		=> major
-	Water		 		=> minor
-	Air		 			=> minor
-	Fire		 		=> x
-	Radiance 			=> x
-	Shadow		 		=> major
-	Spirit		    	=> x
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> x
+	Death			=> major
+	Law				=> x
+	Chaos			=> minor
+	Protection		=> x
+	War				=> x
+	Perception		=> x
+	Deceit			=> x
+	Thought			=> x
+	Decay			=> focus
+	Vigor			=> major
+	Insects			=> x
+	Animal			=> major
+	Plant			=> major
+	Earth			=> major
+	Water			=> minor
+	Air				=> minor
+	Fire			=> x
+	Radiance		=> x
+	Shadow			=> major
+	Spirit		    => x
  END
 END
 //___________________________________________________________________________________
@@ -1045,29 +1134,29 @@ DEFINE_ACTION_FUNCTION mystra_spheres
   RET_ARRAY mystra_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY mystra_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All			 		=> major
-	Death		 		=> x
-	Law					=> major
-	Chaos		 		=> major
-	Protection		 	=> major
-	War		 			=> x
-	Perception		 	=> major
-	Thought		 		=> minor
-	Decay		 		=> x
-	Vigor		 		=> minor
-	Insects			 	=> x
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> x
-	Water		 		=> x
-	Air		 			=> x
-	Fire		 		=> minor
-	Radiance 			=> major
-	Shadow		 		=> minor
-	Spirit		    	=> major
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> major
+	Death			=> x
+	Law				=> major
+	Chaos			=> major
+	Protection		=> major
+	War				=> x
+	Perception		=> major
+	Deceit			=> major
+	Thought			=> minor
+	Decay			=> x
+	Vigor			=> minor
+	Insects			=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> minor
+	Radiance		=> major
+	Shadow			=> minor
+	Spirit		    => major
  END
 END
 //___________________________________________________________________________________
@@ -1078,29 +1167,29 @@ DEFINE_ACTION_FUNCTION oghma_spheres
   RET_ARRAY oghma_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY oghma_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All	 				=> major
-	Death 				=> minor
-	Law		 			=> major
-	Chaos		 		=> x
-	Protection 			=> major
-	War 				=> x
-	Perception 			=> focus
-	Thought 			=> major
-	Decay				=> x
-	Vigor				=> minor
-	Insects	 			=> x
-	Animal				=> x
-	Plant				=> x
-	Earth 				=> x
-	Water 				=> x
-	Air 				=> x
-	Fire 				=> x
-	Radiance			=> major
-	Shadow 				=> minor
-	Spirit		    	=> x
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> major
+	Death			=> minor
+	Law				=> major
+	Chaos			=> x
+	Protection		=> major
+	War				=> x
+	Perception		=> focus
+	Deceit			=> minor
+	Thought			=> major
+	Decay			=> x
+	Vigor			=> minor
+	Insects			=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Radiance		=> major
+	Shadow			=> minor
+	Spirit		    => x
  END
 END
 //___________________________________________________________________________________
@@ -1111,29 +1200,29 @@ DEFINE_ACTION_FUNCTION redknight_spheres
   RET_ARRAY redknight_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY redknight_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All	 				=> major
-	Death 				=> minor
-	Law		 			=> x
-	Chaos		 		=> major
-	Protection 			=> major
-	War 				=> major
-	Perception 			=> minor
-	Thought 			=> minor
-	Decay				=> minor
-	Vigor				=> major
-	Insects	 			=> x
-	Animal				=> x
-	Plant				=> x
-	Earth 				=> major
-	Water 				=> x
-	Air 				=> x
-	Fire 				=> major
-	Radiance			=> minor
-	Shadow 				=> x
-	Spirit		    	=> x
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> major
+	Death			=> minor
+	Law				=> x
+	Chaos			=> major
+	Protection		=> major
+	War				=> major
+	Perception		=> minor
+	Deceit			=> x
+	Thought			=> minor
+	Decay			=> minor
+	Vigor			=> major
+	Insects			=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> major
+	Water			=> x
+	Air				=> x
+	Fire			=> major
+	Radiance		=> minor
+	Shadow			=> x
+	Spirit		    => x
  END
 END
 //___________________________________________________________________________________
@@ -1144,29 +1233,29 @@ DEFINE_ACTION_FUNCTION selune_spheres
   RET_ARRAY selune_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY selune_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All	 				=> major
-	Death 				=> x
-	Law		 			=> x
-	Chaos		 		=> minor
-	Protection 			=> major
-	War 				=> minor
-	Perception 			=> major
-	Thought 			=> major
-	Decay				=> x
-	Vigor				=> major
-	Insects			 	=> x
-	Animal				=> minor
-	Plant				=> x
-	Earth 				=> x
-	Water 				=> x
-	Air 				=> major
-	Fire 				=> x
-	Radiance			=> major
-	Shadow 				=> minor
-	Spirit		    	=> major
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> major
+	Death			=> x
+	Law				=> x
+	Chaos			=> minor
+	Protection		=> major
+	War				=> minor
+	Perception		=> major
+	Deceit			=> x
+	Thought			=> major
+	Decay			=> x
+	Vigor			=> major
+	Insects			=> x
+	Animal			=> minor
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> major
+	Fire			=> x
+	Radiance		=> major
+	Shadow			=> minor
+	Spirit		    => major
  END
 END
 //___________________________________________________________________________________
@@ -1177,29 +1266,29 @@ DEFINE_ACTION_FUNCTION shar_spheres
   RET_ARRAY shar_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY shar_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All			 		=> minor
-	Death		 		=> major
-	Law					=> minor
-	Chaos		 		=> major
-	Protection		 	=> minor
-	War		 			=> x
-	Perception		 	=> major
-	Thought		 		=> major
-	Decay		 		=> major
-	Vigor		 		=> x
-	Insects			 	=> x
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> x
-	Water		 		=> x
-	Air		 			=> minor
-	Fire		 		=> x
-	Radiance 			=> x
-	Shadow		 		=> major
-	Spirit		    	=> major
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> minor
+	Death			=> major
+	Law				=> minor
+	Chaos			=> major
+	Protection		=> minor
+	War				=> x
+	Perception		=> major
+	Deceit			=> x
+	Thought			=> major
+	Decay			=> major
+	Vigor			=> x
+	Insects			=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> minor
+	Fire			=> x
+	Radiance		=> x
+	Shadow			=> major
+	Spirit		    => major
  END
 END
 //___________________________________________________________________________________
@@ -1210,29 +1299,29 @@ DEFINE_ACTION_FUNCTION shaundakul_spheres
   RET_ARRAY shaundakul_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY shaundakul_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All	 				=> major
-	Death 				=> x
-	Law		 			=> x
-	Chaos		 		=> x
-	Protection 			=> major
-	War 				=> x
-	Perception 			=> major
-	Thought 			=> x
-	Decay				=> x
-	Vigor				=> major
-	Insects	 			=> x
-	Animal				=> major
-	Plant				=> minor
-	Earth 				=> minor
-	Water 				=> minor
-	Air 				=> major
-	Fire 				=> x
-	Radiance			=> major
-	Shadow 				=> x
-	Spirit	 			=> x
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> major
+	Death			=> x
+	Law				=> x
+	Chaos			=> x
+	Protection		=> major
+	War				=> x
+	Perception		=> major
+	Deceit			=> minor
+	Thought			=> x
+	Decay			=> x
+	Vigor			=> major
+	Insects			=> x
+	Animal			=> major
+	Plant			=> minor
+	Earth			=> minor
+	Water			=> minor
+	Air				=> major
+	Fire			=> x
+	Radiance		=> major
+	Shadow			=> x
+	Spirit			=> x
  END
 END
 //___________________________________________________________________________________
@@ -1243,29 +1332,29 @@ DEFINE_ACTION_FUNCTION sune_spheres
   RET_ARRAY sune_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY sune_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All			 		=> major
-	Death		 		=> x
-	Law					=> minor
-	Chaos		 		=> major
-	Protection		 	=> major
-	War		 			=> x
-	Perception		 	=> major
-	Thought		 		=> focus
-	Decay		 		=> minor
-	Vigor		 		=> major
-	Insects			 	=> x
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> x
-	Water		 		=> x
-	Air		 			=> x
-	Fire		 		=> x
-	Radiance 			=> major
-	Shadow		 		=> minor
-	Spirit		    	=> x
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> major
+	Death			=> x
+	Law				=> minor
+	Chaos			=> major
+	Protection		=> major
+	War				=> x
+	Perception		=> major
+	Deceit			=> minor
+	Thought			=> focus
+	Decay			=> minor
+	Vigor			=> major
+	Insects			=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Radiance		=> major
+	Shadow			=> minor
+	Spirit		    => x
  END
 END
 //___________________________________________________________________________________
@@ -1276,29 +1365,29 @@ DEFINE_ACTION_FUNCTION talos_spheres
   RET_ARRAY talos_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY talos_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All			 		=> major
-	Death		 		=> x
-	Law					=> x
-	Chaos		 		=> major
-	Protection		 	=> major
-	War		 			=> minor
-	Perception		 	=> minor
-	Thought		 		=> x
-	Decay		 		=> minor
-	Vigor		 		=> major
-	Insects			 	=> x
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> x
-	Water		 		=> x
-	Air		 			=> focus
-	Fire		 		=> major
-	Radiance 			=> major
-	Shadow		 		=> x
-	Spirit		    	=> x
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> major
+	Death			=> x
+	Law				=> x
+	Chaos			=> major
+	Protection		=> major
+	War				=> minor
+	Perception		=> minor
+	Deceit			=> x
+	Thought			=> x
+	Decay			=> minor
+	Vigor			=> major
+	Insects			=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> focus
+	Fire			=> major
+	Radiance		=> major
+	Shadow			=> x
+	Spirit		    => x
  END
 END
 //___________________________________________________________________________________
@@ -1309,29 +1398,29 @@ DEFINE_ACTION_FUNCTION tempus_spheres
   RET_ARRAY tempus_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY tempus_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All			 		=> major
-	Death		 		=> x
-	Law					=> x
-	Chaos		 		=> major
-	Protection		 	=> major
-	War		 			=> focus
-	Perception		 	=> minor
-	Thought		 		=> x
-	Decay		 		=> x
-	Vigor		 		=> major
-	Insects			 	=> x
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> major
-	Water		 		=> x
-	Air		 			=> minor
-	Fire		 		=> x
-	Radiance 			=> minor
-	Shadow		 		=> x
-	Spirit		    	=> x
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> major
+	Death			=> x
+	Law				=> x
+	Chaos			=> major
+	Protection		=> major
+	War				=> focus
+	Perception		=> minor
+	Deceit			=> x
+	Thought			=> x
+	Decay			=> x
+	Vigor			=> major
+	Insects			=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> major
+	Water			=> x
+	Air				=> minor
+	Fire			=> x
+	Radiance		=> minor
+	Shadow			=> x
+	Spirit		    => x
  END
 END
 //___________________________________________________________________________________
@@ -1342,29 +1431,29 @@ DEFINE_ACTION_FUNCTION torm_spheres
   RET_ARRAY torm_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY torm_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All			 		=> major
-	Death		 		=> x
-	Law					=> major
-	Chaos		 		=> x
-	Protection		 	=> focus
-	War		 			=> major
-	Perception		 	=> major
-	Thought		 		=> minor
-	Decay		 		=> x
-	Vigor		 		=> major
-	Insects			 	=> x
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> minor
-	Water		 		=> x
-	Air		 			=> x
-	Fire		 		=> minor
-	Radiance 			=> major
-	Shadow		 		=> x
-	Spirit		    	=> x
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> major
+	Death			=> x
+	Law				=> major
+	Chaos			=> x
+	Protection		=> focus
+	War				=> major
+	Perception		=> major
+	Deceit			=> x
+	Thought			=> minor
+	Decay			=> x
+	Vigor			=> major
+	Insects			=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> minor
+	Water			=> x
+	Air				=> x
+	Fire			=> minor
+	Radiance		=> major
+	Shadow			=> x
+	Spirit		    => x
  END
 END
 //___________________________________________________________________________________
@@ -1375,29 +1464,29 @@ DEFINE_ACTION_FUNCTION tymora_spheres
   RET_ARRAY tymora_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY tymora_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All			 		=> major
-	Death		 		=> x
-	Law					=> x
-	Chaos		 		=> major
-	Protection		 	=> major
-	War		 			=> x
-	Perception		 	=> minor
-	Thought		 		=> major
-	Decay		 		=> x
-	Vigor		 		=> major
-	Insects			 	=> x
-	Animal		 		=> minor
-	Plant		 		=> x
-	Earth		 		=> x
-	Water		 		=> x
-	Air		 			=> major
-	Fire		 		=> minor
-	Radiance 			=> major
-	Shadow		 		=> x
-	Spirit		    	=> x
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> major
+	Death			=> x
+	Law				=> x
+	Chaos			=> major
+	Protection		=> major
+	War				=> x
+	Perception		=> minor
+	Deceit			=> minor
+	Thought			=> major
+	Decay			=> x
+	Vigor			=> major
+	Insects			=> x
+	Animal			=> minor
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> major
+	Fire			=> x
+	Radiance		=> major
+	Shadow			=> x
+	Spirit		    => x
  END
 END
 //___________________________________________________________________________________
@@ -1408,29 +1497,29 @@ DEFINE_ACTION_FUNCTION tyr_spheres
   RET_ARRAY tyr_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY tyr_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All					=> major
-	Death				=> minor
-	Law					=> major
-	Chaos				=> x
-	Protection			=> major
-	War					=> major
-	Perception			=> major
-	Thought				=> minor
-	Decay				=> x
-	Vigor				=> major
-	Insects				=> x
-	Animal				=> x
-	Plant				=> x
-	Earth				=> x
-	Water				=> x
-	Air					=> x
-	Fire				=> minor
-	Radiance			=> major
-	Shadow				=> x
-	Spirit				=> x
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> major
+	Death			=> minor
+	Law				=> major
+	Chaos			=> x
+	Protection		=> major
+	War				=> major
+	Perception		=> major
+	Deceit			=> x
+	Thought			=> minor
+	Decay			=> x
+	Vigor			=> major
+	Insects			=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> minor
+	Radiance		=> major
+	Shadow			=> x
+	Spirit			=> x
  END
 END
 //___________________________________________________________________________________
@@ -1441,29 +1530,29 @@ DEFINE_ACTION_FUNCTION ulutiu_spheres
   RET_ARRAY ulutiu_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY ulutiu_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All	 				=> major
-	Death 				=> x
-	Law		 			=> x
-	Chaos		 		=> x
-	Protection 			=> major
-	War 				=> minor
-	Perception 			=> minor
-	Thought 			=> x
-	Decay				=> x
-	Vigor				=> major
-	Insects	 			=> x
-	Animal				=> major
-	Plant				=> x
-	Earth 				=> x
-	Water 				=> focus
-	Air 				=> major
-	Fire 				=> x
-	Radiance			=> major
-	Shadow 				=> minor
-	Spirit		    	=> x
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> major
+	Death			=> x
+	Law				=> x
+	Chaos			=> x
+	Protection		=> major
+	War				=> minor
+	Perception		=> minor
+	Deceit			=> x
+	Thought			=> x
+	Decay			=> x
+	Vigor			=> major
+	Insects			=> x
+	Animal			=> major
+	Plant			=> x
+	Earth			=> x
+	Water			=> focus
+	Air				=> major
+	Fire			=> x
+	Radiance		=> major
+	Shadow			=> minor
+	Spirit		    => x
  END
 END
 //___________________________________________________________________________________
@@ -1474,29 +1563,29 @@ DEFINE_ACTION_FUNCTION umberlee_spheres
   RET_ARRAY umberlee_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY umberlee_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All			 		=> major
-	Death		 		=> x
-	Law					=> x
-	Chaos		 		=> major
-	Protection		 	=> major
-	War		 			=> major
-	Perception		 	=> minor
-	Thought		 		=> x
-	Decay		 		=> major
-	Vigor		 		=> minor
-	Insects			 	=> x
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> x
-	Water		 		=> focus
-	Air		 			=> major
-	Fire		 		=> x
-	Radiance 			=> x
-	Shadow		 		=> minor
-	Spirit		    	=> x
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> major
+	Death			=> x
+	Law				=> x
+	Chaos			=> major
+	Protection		=> major
+	War				=> major
+	Perception		=> minor
+	Deceit			=> x
+	Thought			=> x
+	Decay			=> major
+	Vigor			=> minor
+	Insects			=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> focus
+	Air				=> major
+	Fire			=> x
+	Radiance		=> x
+	Shadow			=> minor
+	Spirit		    => x
  END
 END
 //___________________________________________________________________________________
@@ -1507,29 +1596,29 @@ DEFINE_ACTION_FUNCTION xvim_spheres
   RET_ARRAY xvim_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY xvim_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All	 				=> minor
-	Death 				=> major
-	Law		 			=> minor
-	Chaos		 		=> major
-	Protection 			=> x
-	War 				=> major
-	Perception 			=> major
-	Thought 			=> minor
-	Decay				=> major
-	Vigor				=> major
-	Insects	 			=> x
-	Animal				=> x
-	Plant				=> x
-	Earth 				=> x
-	Water 				=> x
-	Air 				=> x
-	Fire 				=> x
-	Radiance			=> x
-	Shadow 				=> major
-	Spirit				=> x
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> minor
+	Death			=> major
+	Law				=> x
+	Chaos			=> major
+	Protection		=> x
+	War				=> major
+	Perception		=> major
+	Deceit			=> minor
+	Thought			=> minor
+	Decay			=> major
+	Vigor			=> major
+	Insects			=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Radiance		=> x
+	Shadow			=> major
+	Spirit			=> x
  END
 END
 //___________________________________________________________________________________
@@ -1543,29 +1632,29 @@ DEFINE_ACTION_FUNCTION corellon_spheres
   RET_ARRAY corellon_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY corellon_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All	 				=> major
-	Death 				=> x
-	Law		 			=> major
-	Chaos		 		=> minor
-	Protection 			=> major
-	War 				=> major
-	Perception 			=> major
-	Thought 			=> minor
-	Decay				=> x
-	Vigor				=> major
-	Insects	 			=> x
-	Animal				=> x
-	Plant				=> minor
-	Earth 				=> x
-	Water 				=> x
-	Air 				=> minor
-	Fire 				=> x
-	Radiance			=> major
-	Shadow 				=> x
-	Spirit		    	=> x
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> major
+	Death			=> x
+	Law				=> major
+	Chaos			=> minor
+	Protection		=> major
+	War				=> major
+	Perception		=> major
+	Deceit			=> x
+	Thought			=> minor
+	Decay			=> x
+	Vigor			=> major
+	Insects			=> x
+	Animal			=> x
+	Plant			=> minor
+	Earth			=> x
+	Water			=> x
+	Air				=> minor
+	Fire			=> x
+	Radiance		=> major
+	Shadow			=> x
+	Spirit		    => x
  END
 END
 //___________________________________________________________________________________
@@ -1576,29 +1665,29 @@ DEFINE_ACTION_FUNCTION eilistraee_spheres
   RET_ARRAY eilistraee_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY eilistraee_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All	 				=> major
-	Death 				=> x
-	Law		 			=> x
-	Chaos		 		=> x
-	Protection 			=> major
-	War 				=> x
-	Perception 			=> major
-	Thought 			=> major
-	Decay				=> x
-	Vigor				=> major
-	Insects	 			=> x
-	Animal				=> x
-	Plant				=> x
-	Earth 				=> minor
-	Water 				=> x
-	Air 				=> minor
-	Fire 				=> x
-	Radiance			=> minor
-	Shadow 				=> major
-	Spirit	 			=> major
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> major
+	Death			=> x
+	Law				=> x
+	Chaos			=> x
+	Protection		=> major
+	War				=> x
+	Perception		=> major
+	Deceit			=> minor
+	Thought			=> major
+	Decay			=> x
+	Vigor			=> major
+	Insects			=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> minor
+	Water			=> x
+	Air				=> minor
+	Fire			=> x
+	Radiance		=> minor
+	Shadow			=> major
+	Spirit			=> major
  END
 END
 //___________________________________________________________________________________
@@ -1609,29 +1698,29 @@ DEFINE_ACTION_FUNCTION moradin_spheres
   RET_ARRAY moradin_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY moradin_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All	 				=> major
-	Death 				=> x
-	Law		 			=> major
-	Chaos		 		=> x
-	Protection 			=> major
-	War 				=> minor
-	Perception 			=> major
-	Thought 			=> x
-	Decay				=> x
-	Vigor				=> major
-	Insects	 			=> x
-	Animal				=> x
-	Plant				=> x
-	Earth 				=> major
-	Water 				=> x
-	Air 				=> major
-	Fire 				=> x
-	Radiance			=> minor
-	Shadow 				=> x
-	Spirit				=> major
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> major
+	Death			=> x
+	Law				=> major
+	Chaos			=> x
+	Protection		=> major
+	War				=> minor
+	Perception		=> major
+	Deceit			=> x
+	Thought			=> x
+	Decay			=> x
+	Vigor			=> major
+	Insects			=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> major
+	Water			=> x
+	Air				=> major
+	Fire			=> x
+	Radiance		=> minor
+	Shadow			=> x
+	Spirit			=> major
  END
 END
 //___________________________________________________________________________________
@@ -1642,29 +1731,29 @@ DEFINE_ACTION_FUNCTION clangeddin_spheres
   RET_ARRAY clangeddin_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY clangeddin_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All	 				=> major
-	Death 				=> minor
-	Law		 			=> major
-	Chaos		 		=> minor
-	Protection 			=> major
-	War 				=> major
-	Perception 			=> minor
-	Thought 			=> x
-	Decay				=> x
-	Vigor				=> major
-	Insects	 			=> x
-	Animal				=> x
-	Plant				=> x
-	Earth 				=> major
-	Water 				=> x
-	Air 				=> x
-	Fire 				=> x
-	Radiance			=> major
-	Shadow 				=> x
-	Spirit	 			=> x
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> major
+	Death			=> minor
+	Law				=> major
+	Chaos			=> minor
+	Protection		=> major
+	War				=> major
+	Perception		=> minor
+	Deceit			=> x
+	Thought			=> x
+	Decay			=> x
+	Vigor			=> major
+	Insects			=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> major
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Radiance		=> major
+	Shadow			=> x
+	Spirit			=> x
  END
 END
 //___________________________________________________________________________________
@@ -1675,29 +1764,29 @@ DEFINE_ACTION_FUNCTION marthammor_spheres
   RET_ARRAY marthammor_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY marthammor_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All	 				=> major
-	Death 				=> x
-	Law		 			=> x
-	Chaos		 		=> major
-	Protection 			=> major
-	War 				=> minor
-	Perception 			=> major
-	Thought 			=> minor
-	Decay				=> x
-	Vigor				=> major
-	Insects	 			=> x
-	Animal				=> minor
-	Plant				=> x
-	Earth 				=> major
-	Water 				=> x
-	Air 				=> x
-	Fire 				=> x
-	Radiance			=> major
-	Shadow 				=> x
-	Spirit	 			=> x
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> major
+	Death			=> x
+	Law				=> x
+	Chaos			=> major
+	Protection		=> major
+	War				=> minor
+	Perception		=> major
+	Deceit			=> x
+	Thought			=> minor
+	Decay			=> x
+	Vigor			=> major
+	Insects			=> x
+	Animal			=> minor
+	Plant			=> x
+	Earth			=> major
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Radiance		=> major
+	Shadow			=> x
+	Spirit			=> x
  END
 END
 //___________________________________________________________________________________
@@ -1708,29 +1797,29 @@ DEFINE_ACTION_FUNCTION haela_spheres
   RET_ARRAY haela_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY haela_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All			 		=> major
-	Death		 		=> x
-	Law					=> minor
-	Chaos		 		=> major
-	Protection		 	=> major
-	War		 			=> major
-	Perception		 	=> minor
-	Thought		 		=> minor
-	Decay		 		=> x
-	Vigor		 		=> major
-	Insects			 	=> x
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> major
-	Water		 		=> x
-	Air		 			=> x
-	Fire		 		=> x
-	Radiance 			=> major
-	Shadow		 		=> x
-	Spirit		    	=> x
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> major
+	Death			=> x
+	Law				=> minor
+	Chaos			=> major
+	Protection		=> major
+	War				=> major
+	Perception		=> minor
+	Deceit			=> x
+	Thought			=> minor
+	Decay			=> x
+	Vigor			=> major
+	Insects			=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> major
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Radiance		=> major
+	Shadow			=> x
+	Spirit		    => x
  END
 END
 //___________________________________________________________________________________
@@ -1741,29 +1830,29 @@ DEFINE_ACTION_FUNCTION baravar_spheres
   RET_ARRAY baravar_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY baravar_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All			 		=> major
-	Death		 		=> x
-	Law					=> x
-	Chaos		 		=> major
-	Protection		 	=> major
-	War		 			=> x
-	Perception		 	=> major
-	Thought		 		=> major
-	Decay		 		=> x
-	Vigor		 		=> minor
-	Insects			 	=> x
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> minor
-	Water		 		=> x
-	Air		 			=> major
-	Fire		 		=> x
-	Radiance 			=> minor
-	Shadow		 		=> major
-	Spirit		    	=> x
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> major
+	Death			=> x
+	Law				=> x
+	Chaos			=> major
+	Protection		=> major
+	War				=> x
+	Perception		=> major
+	Deceit			=> minor
+	Thought			=> major
+	Decay			=> x
+	Vigor			=> minor
+	Insects			=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> minor
+	Water			=> x
+	Air				=> major
+	Fire			=> x
+	Radiance		=> x
+	Shadow			=> major
+	Spirit		    => x
  END
 END
 //___________________________________________________________________________________
@@ -1774,29 +1863,29 @@ DEFINE_ACTION_FUNCTION baervan_spheres
   RET_ARRAY baervan_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY baervan_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All			 		=> major
-	Death		 		=> x
-	Law					=> x
-	Chaos		 		=> x
-	Protection		 	=> major
-	War		 			=> x
-	Perception		 	=> minor
-	Thought		 		=> minor
-	Decay		 		=> x
-	Vigor		 		=> major
-	Insects			 	=> minor
-	Animal		 		=> major
-	Plant		 		=> major
-	Earth		 		=> major
-	Water		 		=> x
-	Air		 			=> x
-	Fire		 		=> x
-	Radiance 			=> major
-	Shadow		 		=> x
-	Spirit		    	=> x
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> major
+	Death			=> x
+	Law				=> x
+	Chaos			=> x
+	Protection		=> major
+	War				=> x
+	Perception		=> minor
+	Deceit			=> x
+	Thought			=> minor
+	Decay			=> x
+	Vigor			=> major
+	Insects			=> minor
+	Animal			=> major
+	Plant			=> major
+	Earth			=> major
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Radiance		=> major
+	Shadow			=> x
+	Spirit		    => x
  END
 END
 //___________________________________________________________________________________
@@ -1807,29 +1896,29 @@ DEFINE_ACTION_FUNCTION urdlen_spheres
   RET_ARRAY urdlen_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY urdlen_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All			 		=> minor
-	Death		 		=> major
-	Law					=> minor
-	Chaos		 		=> major
-	Protection		 	=> x
-	War		 			=> major
-	Perception		 	=> minor
-	Thought		 		=> minor
-	Decay		 		=> major
-	Vigor		 		=> x
-	Insects			 	=> x
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> major
-	Water		 		=> x
-	Air		 			=> x
-	Fire		 		=> x
-	Radiance 			=> x
-	Shadow		 		=> major
-	Spirit			    => major
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> minor
+	Death			=> major
+	Law				=> minor
+	Chaos			=> major
+	Protection		=> x
+	War				=> major
+	Perception		=> minor
+	Deceit			=> major
+	Thought			=> minor
+	Decay			=> major
+	Vigor			=> x
+	Insects			=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> major
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Radiance		=> x
+	Shadow			=> major
+	Spirit		    => x
  END
 END
 //___________________________________________________________________________________
@@ -1840,29 +1929,29 @@ DEFINE_ACTION_FUNCTION yondalla_spheres
   RET_ARRAY yondalla_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY yondalla_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All			 		=> major
-	Death		 		=> x
-	Law					=> major
-	Chaos		 		=> x
-	Protection		 	=> major
-	War		 			=> x
-	Perception		 	=> major
-	Thought		 		=> major
-	Decay		 		=> x
-	Vigor		 		=> minor
-	Insects			 	=> x
-	Animal		 		=> minor
-	Plant		 		=> minor
-	Earth		 		=> minor
-	Water		 		=> x
-	Air		 			=> major
-	Fire		 		=> x
-	Radiance 			=> major
-	Shadow		 		=> x
-	Spirit		    	=> minor
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> major
+	Death			=> x
+	Law				=> major
+	Chaos			=> x
+	Protection		=> major
+	War				=> x
+	Perception		=> major
+	Deceit			=> minor
+	Thought			=> major
+	Decay			=> x
+	Vigor			=> major
+	Insects			=> x
+	Animal			=> minor
+	Plant			=> minor
+	Earth			=> minor
+	Water			=> x
+	Air				=> major
+	Fire			=> x
+	Radiance		=> major
+	Shadow			=> x
+	Spirit		    => minor
  END
 END
 //___________________________________________________________________________________
@@ -1873,29 +1962,29 @@ DEFINE_ACTION_FUNCTION arvoreen_spheres
   RET_ARRAY arvoreen_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY arvoreen_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All			 		=> major
-	Death		 		=> x
-	Law					=> major
-	Chaos		 		=> x
-	Protection		 	=> major
-	War		 			=> major
-	Perception		 	=> minor
-	Thought		 		=> x
-	Decay		 		=> x
-	Vigor		 		=> major
-	Insects			 	=> x
-	Animal		 		=> minor
-	Plant		 		=> x
-	Earth		 		=> minor
-	Water		 		=> x
-	Air		 			=> x
-	Fire		 		=> x
-	Radiance 			=> major
-	Shadow		 		=> x
-	Spirit		    	=> x
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> major
+	Death			=> x
+	Law				=> major
+	Chaos			=> x
+	Protection		=> major
+	War				=> major
+	Perception		=> major
+	Deceit			=> x
+	Thought			=> x
+	Decay			=> x
+	Vigor			=> major
+	Insects			=> x
+	Animal			=> minor
+	Plant			=> x
+	Earth			=> minor
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Radiance		=> major
+	Shadow			=> x
+	Spirit		    => x
  END
 END
 //___________________________________________________________________________________
@@ -1906,29 +1995,29 @@ DEFINE_ACTION_FUNCTION brandobaris_spheres
   RET_ARRAY brandobaris_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY brandobaris_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All			 		=> major
-	Death		 		=> x
-	Law					=> x
-	Chaos		 		=> major
-	Protection		 	=> major
-	War		 			=> minor
-	Perception		 	=> major
-	Thought		 		=> minor
-	Decay		 		=> x
-	Vigor		 		=> major
-	Insects			 	=> x
-	Animal		 		=> minor
-	Plant		 		=> x
-	Earth		 		=> x
-	Water		 		=> x
-	Air		 			=> minor
-	Fire		 		=> x
-	Radiance 			=> major
-	Shadow		 		=> major
-	Spirit		    	=> x
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> major
+	Death			=> x
+	Law				=> x
+	Chaos			=> major
+	Protection		=> major
+	War				=> minor
+	Perception		=> major
+	Deceit			=> minor
+	Thought			=> minor
+	Decay			=> x
+	Vigor			=> major
+	Insects			=> x
+	Animal			=> minor
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> major
+	Fire			=> x
+	Radiance		=> major
+	Shadow			=> x
+	Spirit		    => x
  END
 END
 //___________________________________________________________________________________
@@ -1939,29 +2028,29 @@ DEFINE_ACTION_FUNCTION gruumsh_spheres
   RET_ARRAY gruumsh_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY gruumsh_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All	 				=> minor
-	Death 				=> minor
-	Law		 			=> x
-	Chaos		 		=> major
-	Protection 			=> minor
-	War 				=> major
-	Perception 			=> x
-	Thought 			=> x
-	Decay				=> major
-	Vigor				=> major
-	Insects	 			=> x
-	Animal				=> x
-	Plant				=> x
-	Earth 				=> major
-	Water 				=> x
-	Air 				=> x
-	Fire 				=> major
-	Radiance			=> x
-	Shadow 				=> x
-	Spirit				=> x
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> minor
+	Death			=> minor
+	Law				=> x
+	Chaos			=> major
+	Protection		=> minor
+	War				=> major
+	Perception		=> x
+	Deceit			=> x
+	Thought			=> x
+	Decay			=> major
+	Vigor			=> major
+	Insects			=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> major
+	Water			=> x
+	Air				=> x
+	Fire			=> major
+	Radiance		=> x
+	Shadow			=> x
+	Spirit			=> x
  END
 END
 //___________________________________________________________________________________
@@ -1972,29 +2061,29 @@ DEFINE_ACTION_FUNCTION luthic_spheres
   RET_ARRAY luthic_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY luthic_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All	 				=> major
-	Death 				=> x
-	Law		 			=> minor
-	Chaos		 		=> x
-	Protection 			=> major
-	War 				=> minor
-	Perception 			=> major
-	Thought 			=> major
-	Decay				=> major
-	Vigor				=> major
-	Insects	 			=> minor
-	Animal				=> x
-	Plant				=> x
-	Earth 				=> x
-	Water 				=> x
-	Air 				=> x
-	Fire 				=> x
-	Radiance			=> x
-	Shadow 				=> x
-	Spirit		    	=> minor
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> major
+	Death			=> x
+	Law				=> minor
+	Chaos			=> x
+	Protection		=> major
+	War				=> minor
+	Perception		=> major
+	Deceit			=> minor
+	Thought			=> major
+	Decay			=> major
+	Vigor			=> major
+	Insects			=> minor
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Radiance		=> x
+	Shadow			=> x
+	Spirit		    => major
  END
 END
 //___________________________________________________________________________________
@@ -2008,29 +2097,29 @@ DEFINE_ACTION_FUNCTION druid_forest_spheres
   RET_ARRAY druid_forest_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY druid_forest_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All			 		=> minor
-	Death		 		=> x
-	Law					=> x
-	Chaos			 	=> x
-	Protection 			=> x
-	War 				=> x
-	Perception 			=> minor
-	Thought 			=> x
-	Decay				=> minor
-	Vigor				=> major
-	Insects	 			=> major
-	Animal				=> major
-	Plant				=> major
-	Earth 				=> major
-	Water 				=> minor
-	Air 				=> major
-	Fire 				=> minor
-	Radiance			=> major
-	Shadow 				=> minor
-	Spirit	  			=> x
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> minor
+	Death			=> x
+	Law				=> x
+	Chaos			=> x
+	Protection		=> x
+	War				=> x
+	Perception		=> minor
+	Deceit			=> x
+	Thought			=> x
+	Decay			=> minor
+	Vigor			=> major
+	Insects			=> major
+	Animal			=> major
+	Plant			=> major
+	Earth			=> major
+	Water			=> minor
+	Air				=> major
+	Fire			=> minor
+	Radiance		=> major
+	Shadow			=> minor
+	Spirit		    => x
  END
 END
 //___________________________________________________________________________________
@@ -2041,29 +2130,29 @@ DEFINE_ACTION_FUNCTION druid_totemic_spheres
   RET_ARRAY druid_totemic_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY druid_totemic_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All			 		=> minor
-	Death		 		=> x
-	Law					=> x
-	Chaos			 	=> x
-	Protection 			=> x
-	War 				=> x
-	Perception 			=> minor
-	Thought 			=> x
-	Decay				=> minor
-	Vigor				=> major
-	Insects	 			=> x
-	Animal				=> major
-	Plant				=> major
-	Earth 				=> major
-	Water 				=> minor
-	Air 				=> major
-	Fire 				=> minor
-	Radiance			=> major
-	Shadow 				=> minor
-	Spirit	  			=> major
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> minor
+	Death			=> x
+	Law				=> x
+	Chaos			=> x
+	Protection		=> x
+	War				=> x
+	Perception		=> minor
+	Deceit			=> x
+	Thought			=> x
+	Decay			=> minor
+	Vigor			=> major
+	Insects			=> x
+	Animal			=> major
+	Plant			=> major
+	Earth			=> major
+	Water			=> minor
+	Air				=> major
+	Fire			=> minor
+	Radiance		=> major
+	Shadow			=> minor
+	Spirit		    => major
  END
 END
 //___________________________________________________________________________________
@@ -2074,29 +2163,29 @@ DEFINE_ACTION_FUNCTION druid_hivekeeper_spheres
   RET_ARRAY druid_hivekeeper_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY druid_hivekeeper_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All			 		=> minor
-	Death		 		=> x
-	Law					=> x
-	Chaos			 	=> major
-	Protection 			=> x
-	War 				=> x
-	Perception 			=> minor
-	Thought 			=> x
-	Decay				=> minor
-	Vigor				=> major
-	Insects	 			=> focus
-	Animal				=> minor
-	Plant				=> major
-	Earth 				=> major
-	Water 				=> minor
-	Air 				=> major
-	Fire 				=> x
-	Radiance			=> major
-	Shadow 				=> minor
-	Spirit				=> x
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> minor
+	Death			=> x
+	Law				=> x
+	Chaos			=> major
+	Protection		=> x
+	War				=> x
+	Perception		=> minor
+	Deceit			=> x
+	Thought			=> x
+	Decay			=> minor
+	Vigor			=> major
+	Insects			=> focus
+	Animal			=> minor
+	Plant			=> major
+	Earth			=> major
+	Water			=> minor
+	Air				=> major
+	Fire			=> x
+	Radiance		=> major
+	Shadow			=> minor
+	Spirit			=> x
  END
 END
 //___________________________________________________________________________________
@@ -2107,29 +2196,29 @@ DEFINE_ACTION_FUNCTION druid_northern_spheres
   RET_ARRAY druid_northern_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY druid_northern_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All			 		=> minor
-	Death		 		=> x
-	Law					=> x
-	Chaos			 	=> x
-	Protection 			=> x
-	War 				=> x
-	Perception 			=> minor
-	Thought 			=> x
-	Decay				=> x
-	Vigor				=> major
-	Insects	 			=> x
-	Animal				=> major
-	Plant				=> minor
-	Earth 				=> major
-	Water 				=> major
-	Air 				=> major
-	Fire 				=> minor
-	Radiance			=> major
-	Shadow 				=> x
-	Spirit				=> minor
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> minor
+	Death			=> x
+	Law				=> x
+	Chaos			=> x
+	Protection		=> x
+	War				=> x
+	Perception		=> minor
+	Deceit			=> x
+	Thought			=> x
+	Decay			=> x
+	Vigor			=> major
+	Insects			=> x
+	Animal			=> major
+	Plant			=> minor
+	Earth			=> major
+	Water			=> major
+	Air				=> major
+	Fire			=> minor
+	Radiance		=> major
+	Shadow			=> x
+	Spirit			=> minor
  END
 END
 //___________________________________________________________________________________
@@ -2140,29 +2229,29 @@ DEFINE_ACTION_FUNCTION druid_shadow_spheres
   RET_ARRAY druid_shadow_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY druid_shadow_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All			 		=> minor
-	Death		 		=> x
-	Law					=> x
-	Chaos			 	=> x
-	Protection 			=> x
-	War 				=> x
-	Perception 			=> minor
-	Thought 			=> x
-	Decay				=> x
-	Vigor				=> major
-	Insects	 			=> major
-	Animal				=> minor
-	Plant				=> major
-	Earth 				=> major
-	Water 				=> major
-	Air 				=> major
-	Fire 				=> minor
-	Radiance			=> x
-	Shadow 				=> major
-	Spirit		 		=> x
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> minor
+	Death			=> x
+	Law				=> x
+	Chaos			=> x
+	Protection		=> x
+	War				=> x
+	Perception		=> minor
+	Deceit			=> x
+	Thought			=> x
+	Decay			=> x
+	Vigor			=> major
+	Insects			=> major
+	Animal			=> minor
+	Plant			=> major
+	Earth			=> major
+	Water			=> major
+	Air				=> major
+	Fire			=> minor
+	Radiance		=> x
+	Shadow			=> major
+	Spirit			=> x
  END
 END
 //___________________________________________________________________________________
@@ -2173,29 +2262,29 @@ DEFINE_ACTION_FUNCTION druid_gray_spheres
   RET_ARRAY druid_gray_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY druid_gray_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All			 		=> minor
-	Death		 		=> x
-	Law					=> x
-	Chaos			 	=> x
-	Protection 			=> x
-	War 				=> x
-	Perception 			=> major
-	Thought 			=> minor
-	Decay				=> minor
-	Vigor				=> major
-	Insects	 			=> major
-	Animal				=> minor
-	Plant				=> major
-	Earth 				=> focus
-	Water 				=> major
-	Air 				=> minor
-	Fire 				=> minor
-	Radiance			=> x
-	Shadow 				=> minor
-	Spirit		 		=> x
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> minor
+	Death			=> x
+	Law				=> x
+	Chaos			=> x
+	Protection		=> x
+	War				=> x
+	Perception		=> major
+	Deceit			=> x
+	Thought			=> minor
+	Decay			=> minor
+	Vigor			=> major
+	Insects			=> major
+	Animal			=> minor
+	Plant			=> major
+	Earth			=> focus
+	Water			=> major
+	Air				=> minor
+	Fire			=> minor
+	Radiance		=> x
+	Shadow			=> minor
+	Spirit			=> x
  END
 END
 //___________________________________________________________________________________
@@ -2206,29 +2295,29 @@ DEFINE_ACTION_FUNCTION druid_lost_spheres
   RET_ARRAY druid_lost_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY druid_lost_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All			 		=> minor
-	Death		 		=> major
-	Law					=> x
-	Chaos			 	=> x
-	Protection 			=> x
-	War 				=> x
-	Perception 			=> minor
-	Thought 			=> x
-	Decay				=> x
-	Vigor				=> major
-	Insects	 			=> x
-	Animal				=> minor
-	Plant				=> major
-	Earth 				=> major
-	Water 				=> x
-	Air 				=> major
-	Fire 				=> minor
-	Radiance			=> x
-	Shadow 				=> minor
-	Spirit		 		=> major
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> minor
+	Death			=> major
+	Law				=> x
+	Chaos			=> x
+	Protection		=> x
+	War				=> x
+	Perception		=> minor
+	Deceit			=> x
+	Thought			=> x
+	Decay			=> x
+	Vigor			=> major
+	Insects			=> x
+	Animal			=> minor
+	Plant			=> major
+	Earth			=> major
+	Water			=> x
+	Air				=> major
+	Fire			=> minor
+	Radiance		=> x
+	Shadow			=> minor
+	Spirit			=> major
  END
 END
 //___________________________________________________________________________________
@@ -2239,29 +2328,29 @@ DEFINE_ACTION_FUNCTION beast_lord_spheres
   RET_ARRAY beast_lord_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY beast_lord_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All			 		=> minor
-	Death		 		=> x
-	Law					=> x
-	Chaos			 	=> major
-	Protection 			=> x
-	War 				=> x
-	Perception 			=> minor
-	Thought 			=> major
-	Decay				=> minor
-	Vigor				=> major
-	Insects	 			=> major
-	Animal				=> focus
-	Plant				=> x
-	Earth 				=> x
-	Water 				=> minor
-	Air 				=> minor
-	Fire 				=> x
-	Radiance			=> x
-	Shadow 				=> minor
-	Spirit	  			=> major
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> minor
+	Death			=> x
+	Law				=> x
+	Chaos			=> major
+	Protection		=> x
+	War				=> x
+	Perception		=> minor
+	Deceit			=> x
+	Thought			=> major
+	Decay			=> minor
+	Vigor			=> major
+	Insects			=> major
+	Animal			=> focus
+	Plant			=> x
+	Earth			=> x
+	Water			=> minor
+	Air				=> minor
+	Fire			=> x
+	Radiance		=> x
+	Shadow			=> minor
+	Spirit		    => major
  END
 END
 //___________________________________________________________________________________
@@ -2272,29 +2361,29 @@ DEFINE_ACTION_FUNCTION elementalist_spheres
   RET_ARRAY elementalist_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY elementalist_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All			 		=> major
-	Death		 		=> x
-	Law					=> x
-	Chaos			 	=> x
-	Protection 			=> minor
-	War 				=> x
-	Perception 			=> minor
-	Thought 			=> x
-	Decay				=> minor
-	Vigor				=> minor
-	Insects	 			=> x
-	Animal				=> x
-	Plant				=> x
-	Earth 				=> focus
-	Water 				=> focus
-	Air 				=> focus
-	Fire 				=> focus
-	Radiance			=> major
-	Shadow 				=> minor
-	Spirit	  			=> x
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> major
+	Death			=> x
+	Law				=> x
+	Chaos			=> x
+	Protection		=> minor
+	War				=> x
+	Perception		=> minor
+	Deceit			=> x
+	Thought			=> x
+	Decay			=> minor
+	Vigor			=> minor
+	Insects			=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> focus
+	Water			=> focus
+	Air				=> focus
+	Fire			=> focus
+	Radiance		=> major
+	Shadow			=> minor
+	Spirit		    => x
  END
 END
 //___________________________________________________________________________________
@@ -2305,29 +2394,29 @@ DEFINE_ACTION_FUNCTION mystic_earth_spheres
   RET_ARRAY mystic_earth_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY mystic_earth_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All			 		=> minor
-	Death		 		=> x
-	Law					=> x
-	Chaos			 	=> x
-	Protection 			=> major
-	War 				=> x
-	Perception 			=> major
-	Thought 			=> x
-	Decay				=> x
-	Vigor				=> major
-	Insects			 	=> x
-	Animal				=> x
-	Plant				=> major
-	Earth 				=> focus
-	Water 				=> x
-	Air 				=> x
-	Fire 				=> x
-	Radiance			=> x
-	Shadow 				=> minor
-	Spirit				=> major
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> minor
+	Death			=> x
+	Law				=> x
+	Chaos			=> x
+	Protection		=> major
+	War				=> x
+	Perception		=> major
+	Deceit			=> x
+	Thought			=> x
+	Decay			=> x
+	Vigor			=> major
+	Insects			=> x
+	Animal			=> x
+	Plant			=> major
+	Earth			=> focus
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Radiance		=> x
+	Shadow			=> minor
+	Spirit			=> major
  END
 END
 //___________________________________________________________________________________
@@ -2338,29 +2427,29 @@ DEFINE_ACTION_FUNCTION mystic_water_spheres
   RET_ARRAY mystic_water_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY mystic_water_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All			 		=> minor
-	Death		 		=> x
-	Law					=> x
-	Chaos			 	=> x
-	Protection 			=> minor
-	War 				=> x
-	Perception 			=> major
-	Thought 			=> x
-	Decay				=> x
-	Vigor				=> major
-	Insects	 			=> x
-	Animal				=> minor
-	Plant				=> major
-	Earth 				=> x
-	Water 				=> focus
-	Air 				=> minor
-	Fire 				=> x
-	Radiance			=> x
-	Shadow 				=> x
-	Spirit				=> major
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> minor
+	Death			=> x
+	Law				=> x
+	Chaos			=> x
+	Protection		=> minor
+	War				=> x
+	Perception		=> major
+	Deceit			=> x
+	Thought			=> x
+	Decay			=> x
+	Vigor			=> major
+	Insects			=> x
+	Animal			=> minor
+	Plant			=> major
+	Earth			=> x
+	Water			=> focus
+	Air				=> minor
+	Fire			=> x
+	Radiance		=> x
+	Shadow			=> x
+	Spirit			=> major
  END
 END
 //___________________________________________________________________________________
@@ -2371,29 +2460,29 @@ DEFINE_ACTION_FUNCTION mystic_air_spheres
   RET_ARRAY mystic_air_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY mystic_air_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All			 		=> minor
-	Death		 		=> x
-	Law					=> x
-	Chaos			 	=> major
-	Protection 			=> minor
-	War 				=> x
-	Perception 			=> major
-	Thought 			=> minor
-	Decay				=> x
-	Vigor				=> major
-	Insects	 			=> x
-	Animal				=> x
-	Plant				=> x
-	Earth 				=> x
-	Water 				=> x
-	Air 				=> focus
-	Fire 				=> x
-	Radiance			=> minor
-	Shadow 				=> x
-	Spirit				=> major
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> minor
+	Death			=> x
+	Law				=> x
+	Chaos			=> major
+	Protection		=> minor
+	War				=> x
+	Perception		=> major
+	Deceit			=> x
+	Thought			=> minor
+	Decay			=> x
+	Vigor			=> major
+	Insects			=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> focus
+	Fire			=> x
+	Radiance		=> minor
+	Shadow			=> x
+	Spirit			=> major
  END
 END
 //___________________________________________________________________________________
@@ -2404,29 +2493,29 @@ DEFINE_ACTION_FUNCTION mystic_fire_spheres
   RET_ARRAY mystic_fire_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY mystic_fire_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All			 		=> minor
-	Death		 		=> x
-	Law					=> x
-	Chaos			 	=> minor
-	Protection 			=> minor
-	War 				=> x
-	Perception 			=> major
-	Thought 			=> x
-	Decay				=> x
-	Vigor				=> major
-	Insects	 			=> x
-	Animal				=> x
-	Plant				=> x
-	Earth 				=> x
-	Water 				=> x
-	Air 				=> x
-	Fire 				=> focus
-	Radiance			=> major
-	Shadow 				=> x
-	Spirit				=> major
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> minor
+	Death			=> x
+	Law				=> x
+	Chaos			=> minor
+	Protection		=> minor
+	War				=> x
+	Perception		=> major
+	Deceit			=> x
+	Thought			=> x
+	Decay			=> x
+	Vigor			=> major
+	Insects			=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> focus
+	Radiance		=> major
+	Shadow			=> x
+	Spirit			=> major
  END
 END
 //___________________________________________________________________________________
@@ -2437,29 +2526,29 @@ DEFINE_ACTION_FUNCTION mystic_light_spheres
   RET_ARRAY mystic_light_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY mystic_light_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All			 		=> minor
-	Death		 		=> x
-	Law					=> x
-	Chaos			 	=> x
-	Protection 			=> major
-	War 				=> x
-	Perception 			=> major
-	Thought 			=> x
-	Decay				=> x
-	Vigor				=> major
-	Insects	 			=> x
-	Animal				=> x
-	Plant				=> x
-	Earth 				=> x
-	Water 				=> x
-	Air 				=> minor
-	Fire 				=> minor
-	Radiance			=> focus
-	Shadow 				=> x
-	Spirit				=> major
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> minor
+	Death			=> x
+	Law				=> x
+	Chaos			=> x
+	Protection		=> major
+	War				=> x
+	Perception		=> major
+	Deceit			=> x
+	Thought			=> x
+	Decay			=> x
+	Vigor			=> major
+	Insects			=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> minor
+	Fire			=> minor
+	Radiance		=> focus
+	Shadow			=> x
+	Spirit			=> major
  END
 END
 //___________________________________________________________________________________
@@ -2470,29 +2559,29 @@ DEFINE_ACTION_FUNCTION mystic_shadow_spheres
   RET_ARRAY mystic_shadow_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY mystic_shadow_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All			 		=> minor
-	Death		 		=> x
-	Law					=> x
-	Chaos			 	=> x
-	Protection 			=> x
-	War 				=> x
-	Perception 			=> major
-	Thought 			=> minor
-	Decay				=> minor
-	Vigor				=> major
-	Insects	 			=> x
-	Animal				=> x
-	Plant				=> x
-	Earth 				=> x
-	Water 				=> x
-	Air 				=> major
-	Fire 				=> x
-	Radiance			=> x
-	Shadow 				=> focus
-	Spirit				=> major
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> minor
+	Death			=> x
+	Law				=> x
+	Chaos			=> x
+	Protection		=> x
+	War				=> x
+	Perception		=> major
+	Deceit			=> x
+	Thought			=> minor
+	Decay			=> minor
+	Vigor			=> major
+	Insects			=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> major
+	Fire			=> x
+	Radiance		=> x
+	Shadow			=> focus
+	Spirit			=> major
  END
 END
 //___________________________________________________________________________________
@@ -2503,29 +2592,29 @@ DEFINE_ACTION_FUNCTION ranger_forest_spheres
   RET_ARRAY ranger_forest_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY ranger_forest_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All			 		=> x
-	Death		 		=> x
-	Law					=> x
-	Chaos			 	=> x
-	Protection 			=> ranger
-	War 				=> x
-	Perception 			=> ranger
-	Thought 			=> x
-	Decay				=> x
-	Vigor				=> ranger
-	Insects	 			=> x
-	Animal				=> ranger
-	Plant				=> ranger
-	Earth 				=> x
-	Water 				=> x
-	Air 				=> x
-	Fire 				=> x
-	Radiance			=> ranger
-	Shadow 				=> x
-	Spirit	  			=> x
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> x
+	Death			=> x
+	Law				=> x
+	Chaos			=> x
+	Protection		=> ranger
+	War				=> x
+	Perception		=> ranger
+	Deceit			=> x
+	Thought			=> x
+	Decay			=> x
+	Vigor			=> ranger
+	Insects			=> x
+	Animal			=> ranger
+	Plant			=> ranger
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Radiance		=> ranger
+	Shadow			=> x
+	Spirit		    => x
  END
 END
 //___________________________________________________________________________________
@@ -2536,29 +2625,29 @@ DEFINE_ACTION_FUNCTION ranger_mountain_spheres
   RET_ARRAY ranger_mountain_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY ranger_mountain_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All			 		=> x
-	Death		 		=> x
-	Law					=> x
-	Chaos			 	=> x
-	Protection 			=> ranger
-	War 				=> x
-	Perception 			=> ranger
-	Thought 			=> x
-	Decay				=> x
-	Vigor				=> ranger
-	Insects	 			=> x
-	Animal				=> ranger
-	Plant				=> x
-	Earth 				=> ranger
-	Water 				=> x
-	Air 				=> x
-	Fire 				=> x
-	Radiance			=> x
-	Shadow 				=> ranger
-	Spirit	  			=> x
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> x
+	Death			=> x
+	Law				=> x
+	Chaos			=> x
+	Protection		=> ranger
+	War				=> x
+	Perception		=> ranger
+	Deceit			=> x
+	Thought			=> x
+	Decay			=> x
+	Vigor			=> ranger
+	Insects			=> x
+	Animal			=> ranger
+	Plant			=> x
+	Earth			=> ranger
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Radiance		=> x
+	Shadow			=> ranger
+	Spirit		    => x
  END
 END
 //___________________________________________________________________________________
@@ -2569,29 +2658,29 @@ DEFINE_ACTION_FUNCTION ranger_desert_spheres
   RET_ARRAY ranger_desert_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY ranger_desert_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All			 		=> x
-	Death		 		=> x
-	Law					=> x
-	Chaos			 	=> x
-	Protection 			=> ranger
-	War 				=> x
-	Perception 			=> ranger
-	Thought 			=> x
-	Decay				=> x
-	Vigor				=> ranger
-	Insects	 			=> x
-	Animal				=> ranger
-	Plant				=> x
-	Earth 				=> x
-	Water 				=> x
-	Air 				=> ranger
-	Fire 				=> x
-	Radiance			=> ranger
-	Shadow 				=> x
-	Spirit	  			=> x
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> x
+	Death			=> x
+	Law				=> x
+	Chaos			=> x
+	Protection		=> ranger
+	War				=> x
+	Perception		=> ranger
+	Deceit			=> x
+	Thought			=> x
+	Decay			=> x
+	Vigor			=> ranger
+	Insects			=> x
+	Animal			=> ranger
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> ranger
+	Fire			=> x
+	Radiance		=> ranger
+	Shadow			=> x
+	Spirit		    => x
  END
 END
 //___________________________________________________________________________________
@@ -2602,29 +2691,29 @@ DEFINE_ACTION_FUNCTION ranger_jungle_spheres
   RET_ARRAY ranger_jungle_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY ranger_jungle_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All			 		=> x
-	Death		 		=> x
-	Law					=> x
-	Chaos			 	=> x
-	Protection 			=> x
-	War 				=> x
-	Perception 			=> ranger
-	Thought 			=> x
-	Decay				=> x
-	Vigor				=> ranger
-	Insects	 			=> ranger
-	Animal				=> x
-	Plant				=> ranger
-	Earth 				=> x
-	Water 				=> ranger
-	Air 				=> x
-	Fire 				=> x
-	Radiance			=> x
-	Shadow 				=> ranger
-	Spirit	  			=> x
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> x
+	Death			=> x
+	Law				=> x
+	Chaos			=> x
+	Protection		=> x
+	War				=> x
+	Perception		=> ranger
+	Deceit			=> x
+	Thought			=> x
+	Decay			=> x
+	Vigor			=> ranger
+	Insects			=> ranger
+	Animal			=> x
+	Plant			=> ranger
+	Earth			=> x
+	Water			=> ranger
+	Air				=> x
+	Fire			=> x
+	Radiance		=> x
+	Shadow			=> ranger
+	Spirit		    => x
  END
 END
 //___________________________________________________________________________________
@@ -2635,29 +2724,29 @@ DEFINE_ACTION_FUNCTION ranger_arctic_spheres
   RET_ARRAY ranger_arctic_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY ranger_arctic_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All			 		=> x
-	Death		 		=> x
-	Law					=> x
-	Chaos			 	=> x
-	Protection 			=> ranger
-	War 				=> x
-	Perception 			=> ranger
-	Thought 			=> x
-	Decay				=> x
-	Vigor				=> ranger
-	Insects	 			=> x
-	Animal				=> ranger
-	Plant				=> x
-	Earth 				=> x
-	Water 				=> ranger
-	Air 				=> ranger
-	Fire 				=> x
-	Radiance			=> x
-	Shadow 				=> x
-	Spirit	  			=> x
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> x
+	Death			=> x
+	Law				=> x
+	Chaos			=> x
+	Protection		=> ranger
+	War				=> x
+	Perception		=> ranger
+	Deceit			=> x
+	Thought			=> x
+	Decay			=> x
+	Vigor			=> ranger
+	Insects			=> x
+	Animal			=> ranger
+	Plant			=> x
+	Earth			=> x
+	Water			=> ranger
+	Air				=> ranger
+	Fire			=> x
+	Radiance		=> x
+	Shadow			=> x
+	Spirit		    => x
  END
 END
 //___________________________________________________________________________________
@@ -2669,29 +2758,29 @@ DEFINE_ACTION_FUNCTION ranger_beastmaster_spheres
   RET_ARRAY ranger_beastmaster_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY ranger_beastmaster_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All			 		=> x
-	Death		 		=> x
-	Law					=> x
-	Chaos			 	=> x
-	Protection 			=> x
-	War 				=> x
-	Perception 			=> ranger
-	Thought 			=> x
-	Decay				=> x
-	Vigor				=> ranger
-	Insects	 			=> x
-	Animal				=> ranger
-	Plant				=> ranger
-	Earth 				=> x
-	Water 				=> x
-	Air 				=> x
-	Fire 				=> x
-	Radiance			=> x
-	Shadow 				=> x
-	Spirit	  			=> ranger
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> x
+	Death			=> x
+	Law				=> x
+	Chaos			=> x
+	Protection		=> x
+	War				=> x
+	Perception		=> ranger
+	Deceit			=> x
+	Thought			=> x
+	Decay			=> x
+	Vigor			=> ranger
+	Insects			=> x
+	Animal			=> ranger
+	Plant			=> ranger
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Radiance		=> x
+	Shadow			=> x
+	Spirit		    => ranger
  END
 END
 //___________________________________________________________________________________
@@ -2702,29 +2791,29 @@ DEFINE_ACTION_FUNCTION barbarian_ranger_spheres
   RET_ARRAY barbarian_ranger_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY barbarian_ranger_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All			 		=> x
-	Death		 		=> x
-	Law					=> x
-	Chaos			 	=> x
-	Protection 			=> x
-	War 				=> x
-	Perception 			=> ranger
-	Thought 			=> x
-	Decay				=> x
-	Vigor				=> ranger
-	Insects	 			=> x
-	Animal				=> ranger
-	Plant				=> x
-	Earth 				=> ranger
-	Water 				=> x
-	Air 				=> x
-	Fire 				=> x
-	Radiance			=> x
-	Shadow 				=> x
-	Spirit	  			=> ranger
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> x
+	Death			=> x
+	Law				=> x
+	Chaos			=> x
+	Protection		=> x
+	War				=> x
+	Perception		=> ranger
+	Deceit			=> x
+	Thought			=> x
+	Decay			=> x
+	Vigor			=> ranger
+	Insects			=> x
+	Animal			=> ranger
+	Plant			=> x
+	Earth			=> ranger
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Radiance		=> x
+	Shadow			=> x
+	Spirit		    => ranger
  END
 END
 //___________________________________________________________________________________
@@ -2735,29 +2824,29 @@ DEFINE_ACTION_FUNCTION mage_hunter_spheres
   RET_ARRAY mage_hunter_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY mage_hunter_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All			 		=> x
-	Death		 		=> x
-	Law					=> ranger
-	Chaos			 	=> x
-	Protection 			=> ranger
-	War 				=> x
-	Perception 			=> ranger
-	Thought 			=> x
-	Decay				=> x
-	Vigor				=> ranger
-	Insects	 			=> x
-	Animal				=> x
-	Plant				=> x
-	Earth 				=> x
-	Water 				=> x
-	Air 				=> x
-	Fire 				=> x
-	Radiance			=> x
-	Shadow 				=> ranger
-	Spirit	  			=> x
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> x
+	Death			=> x
+	Law				=> ranger
+	Chaos			=> x
+	Protection		=> ranger
+	War				=> x
+	Perception		=> ranger
+	Deceit			=> ranger
+	Thought			=> x
+	Decay			=> x
+	Vigor			=> ranger
+	Insects			=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Radiance		=> x
+	Shadow			=> ranger
+	Spirit		    => x
  END
 END
 //___________________________________________________________________________________
@@ -2768,29 +2857,29 @@ DEFINE_ACTION_FUNCTION elven_archer_spheres
   RET_ARRAY elven_archer_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY elven_archer_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All			 		=> x
-	Death		 		=> x
-	Law					=> x
-	Chaos			 	=> x
-	Protection 			=> ranger
-	War 				=> x
-	Perception 			=> ranger
-	Thought 			=> x
-	Decay				=> x
-	Vigor				=> ranger
-	Insects	 			=> x
-	Animal				=> x
-	Plant				=> ranger
-	Earth 				=> x
-	Water 				=> x
-	Air 				=> x
-	Fire 				=> x
-	Radiance			=> ranger
-	Shadow 				=> x
-	Spirit	  			=> x
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> x
+	Death			=> x
+	Law				=> x
+	Chaos			=> x
+	Protection		=> ranger
+	War				=> x
+	Perception		=> ranger
+	Deceit			=> ranger
+	Thought			=> x
+	Decay			=> x
+	Vigor			=> ranger
+	Insects			=> x
+	Animal			=> x
+	Plant			=> ranger
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Radiance		=> ranger
+	Shadow			=> x
+	Spirit		    => x
  END
 END
 //___________________________________________________________________________________
@@ -2804,29 +2893,29 @@ DEFINE_ACTION_FUNCTION vanilla_shaman_spheres
   RET_ARRAY vanilla_shaman_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY vanilla_shaman_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All			 		=> minor
-	Death		 		=> x
-	Law					=> minor
-	Chaos			 	=> x
-	Protection 			=> major
-	War 				=> x
-	Perception 			=> major
-	Thought 			=> x
-	Decay				=> x
-	Vigor				=> major
-	Insects	 			=> x
-	Animal				=> major
-	Plant				=> major
-	Earth 				=> x
-	Water 				=> x
-	Air 				=> x
-	Fire 				=> x
-	Radiance			=> x
-	Shadow 				=> x
-	Spirit				=> focus
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> minor
+	Death			=> x
+	Law				=> minor
+	Chaos			=> x
+	Protection		=> major
+	War				=> x
+	Perception		=> major
+	Deceit			=> x
+	Thought			=> x
+	Decay			=> x
+	Vigor			=> major
+	Insects			=> x
+	Animal			=> major
+	Plant			=> major
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Radiance		=> x
+	Shadow			=> x
+	Spirit			=> focus
  END
 END
 //___________________________________________________________________________________
@@ -2861,29 +2950,29 @@ DEFINE_ACTION_MACRO vanilla_cleric_spheres BEGIN
 	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5smvig#~ END
   IF_EXISTS BUT_ONLY
   ACTION_DEFINE_ASSOCIATIVE_ARRAY clabpr01_spheres BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All			 		=> x
-	Death		 		=> x
-	Law					=> x
-	Chaos			 	=> x
-	Protection 			=> x
-	War 				=> x
-	Perception 			=> x
-	Thought 			=> x
-	Decay				=> x
-	Vigor				=> x
-	Insects	 			=> x
-	Animal				=> x
-	Plant				=> x
-	Earth 				=> x
-	Water 				=> x
-	Air 				=> x
-	Fire 				=> x
-	Radiance			=> x
-	Shadow 				=> x
-	Spirit				=> x
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> x
+	Death			=> x
+	Law				=> x
+	Chaos			=> x
+	Protection		=> x
+	War				=> x
+	Perception		=> x
+	Deceit			=> x
+	Thought			=> x
+	Decay			=> x
+	Vigor			=> x
+	Insects			=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Radiance		=> x
+	Shadow			=> x
+	Spirit			=> x
   END
 END
 //___________________________________________________________________________________
@@ -2922,29 +3011,29 @@ DEFINE_ACTION_MACRO vanilla_druid_spheres BEGIN
 	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5smsha#~ END
   IF_EXISTS BUT_ONLY
   ACTION_DEFINE_ASSOCIATIVE_ARRAY clabdr01_spheres BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All			 		=> x
-	Death		 		=> x
-	Law					=> x
-	Chaos			 	=> x
-	Protection 			=> x
-	War 				=> x
-	Perception 			=> x
-	Thought 			=> x
-	Decay				=> x
-	Vigor				=> x
-	Insects	 			=> x
-	Animal				=> x
-	Plant				=> x
-	Earth 				=> x
-	Water 				=> x
-	Air 				=> x
-	Fire 				=> x
-	Radiance			=> x
-	Shadow 				=> x
-	Spirit				=> x
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> x
+	Death			=> x
+	Law				=> x
+	Chaos			=> x
+	Protection		=> x
+	War				=> x
+	Perception		=> x
+	Deceit			=> x
+	Thought			=> x
+	Decay			=> x
+	Vigor			=> x
+	Insects			=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Radiance		=> x
+	Shadow			=> x
+	Spirit			=> x
   END
 END
 //___________________________________________________________________________________
@@ -2969,29 +3058,29 @@ DEFINE_ACTION_MACRO vanilla_ranger_spheres BEGIN
 	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5smkno#~ END
   IF_EXISTS BUT_ONLY
   ACTION_DEFINE_ASSOCIATIVE_ARRAY clabrn01_spheres BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All			 		=> x
-	Death		 		=> x
-	Law					=> x
-	Chaos			 	=> x
-	Protection 			=> x
-	War 				=> x
-	Perception 			=> x
-	Thought 			=> x
-	Decay				=> x
-	Vigor				=> x
-	Insects	 			=> x
-	Animal				=> x
-	Plant				=> x
-	Earth 				=> x
-	Water 				=> x
-	Air 				=> x
-	Fire 				=> x
-	Radiance			=> x
-	Shadow 				=> x
-	Spirit				=> x
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> x
+	Death			=> x
+	Law				=> x
+	Chaos			=> x
+	Protection		=> x
+	War				=> x
+	Perception		=> x
+	Deceit			=> x
+	Thought			=> x
+	Decay			=> x
+	Vigor			=> x
+	Insects			=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Radiance		=> x
+	Shadow			=> x
+	Spirit			=> x
   END
 END
 //___________________________________________________________________________________
@@ -3002,29 +3091,29 @@ DEFINE_ACTION_FUNCTION vanilla_avenger_spheres
   RET_ARRAY vanilla_avenger_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY vanilla_avenger_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All			 		=> minor
-	Death		 		=> x
-	Law					=> major
-	Chaos			 	=> x
-	Protection 			=> x
-	War 				=> x
-	Perception 			=> minor
-	Thought 			=> x
-	Decay				=> x
-	Vigor				=> major
-	Insects	 			=> major
-	Animal				=> major
-	Plant				=> major
-	Earth 				=> major
-	Water 				=> minor
-	Air 				=> major
-	Fire 				=> minor
-	Radiance			=> major
-	Shadow 				=> minor
-	Spirit	  			=> x
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> minor
+	Death			=> x
+	Law				=> major
+	Chaos			=> x
+	Protection		=> x
+	War				=> x
+	Perception		=> minor
+	Deceit			=> x
+	Thought			=> x
+	Decay			=> x
+	Vigor			=> major
+	Insects			=> major
+	Animal			=> major
+	Plant			=> major
+	Earth			=> major
+	Water			=> minor
+	Air				=> major
+	Fire			=> minor
+	Radiance		=> major
+	Shadow			=> minor
+	Spirit		    => x
  END
 END
 //___________________________________________________________________________________
@@ -3035,29 +3124,29 @@ DEFINE_ACTION_FUNCTION vanilla_paladin_spheres
   RET_ARRAY vanilla_paladin_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY vanilla_paladin_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All			 		=> paladin
-	Death		 		=> x
-	Law					=> paladin
-	Chaos			 	=> x
-	Protection 			=> paladin
-	War 				=> paladin
-	Perception 			=> paladin
-	Thought 			=> x
-	Decay				=> x
-	Vigor				=> x
-	Insects	 			=> x
-	Animal				=> x
-	Plant				=> x
-	Earth 				=> x
-	Water 				=> x
-	Air 				=> x
-	Fire 				=> x
-	Radiance			=> paladin
-	Shadow 				=> x
-	Spirit	  			=> x
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> paladin
+	Death			=> x
+	Law				=> paladin
+	Chaos			=> x
+	Protection		=> paladin
+	War				=> paladin
+	Perception		=> paladin
+	Deceit			=> x
+	Thought			=> x
+	Decay			=> x
+	Vigor			=> x
+	Insects			=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Radiance		=> paladin
+	Shadow			=> x
+	Spirit		    => x
  END
 END
 //___________________________________________________________________________________
@@ -3068,29 +3157,29 @@ DEFINE_ACTION_FUNCTION vanilla_cavalier_spheres
   RET_ARRAY vanilla_cavalier_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY vanilla_cavalier_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All			 		=> paladin
-	Death		 		=> x
-	Law					=> paladin
-	Chaos			 	=> x
-	Protection 			=> paladin
-	War 				=> paladin
-	Perception 			=> paladin
-	Thought 			=> x
-	Decay				=> x
-	Vigor				=> x
-	Insects	 			=> x
-	Animal				=> x
-	Plant				=> x
-	Earth 				=> x
-	Water 				=> x
-	Air 				=> x
-	Fire 				=> x
-	Radiance			=> paladin
-	Shadow 				=> x
-	Spirit	  			=> x
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> paladin
+	Death			=> x
+	Law				=> paladin
+	Chaos			=> x
+	Protection		=> paladin
+	War				=> paladin
+	Perception		=> paladin
+	Deceit			=> x
+	Thought			=> x
+	Decay			=> x
+	Vigor			=> x
+	Insects			=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Radiance		=> paladin
+	Shadow			=> x
+	Spirit		    => x
  END
 END
 //___________________________________________________________________________________
@@ -3101,29 +3190,29 @@ DEFINE_ACTION_FUNCTION vanilla_inquisitor_spheres
   RET_ARRAY vanilla_inquisitor_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY vanilla_inquisitor_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All			 		=> paladin
-	Death		 		=> x
-	Law					=> paladin
-	Chaos			 	=> x
-	Protection 			=> paladin
-	War 				=> paladin
-	Perception 			=> paladin
-	Thought 			=> x
-	Decay				=> x
-	Vigor				=> x
-	Insects	 			=> x
-	Animal				=> x
-	Plant				=> x
-	Earth 				=> x
-	Water 				=> x
-	Air 				=> x
-	Fire 				=> x
-	Radiance			=> paladin
-	Shadow 				=> x
-	Spirit	  			=> x
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> paladin
+	Death			=> x
+	Law				=> paladin
+	Chaos			=> x
+	Protection		=> paladin
+	War				=> paladin
+	Perception		=> paladin
+	Deceit			=> x
+	Thought			=> x
+	Decay			=> x
+	Vigor			=> x
+	Insects			=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Radiance		=> paladin
+	Shadow			=> x
+	Spirit		    => x
  END
 END
 //___________________________________________________________________________________
@@ -3134,29 +3223,29 @@ DEFINE_ACTION_FUNCTION vanilla_undead_hunter_spheres
   RET_ARRAY vanilla_undead_hunter_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY vanilla_undead_hunter_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All			 		=> paladin
-	Death		 		=> paladin
-	Law					=> paladin
-	Chaos			 	=> x
-	Protection 			=> paladin
-	War 				=> paladin
-	Perception 			=> paladin
-	Thought 			=> x
-	Decay				=> x
-	Vigor				=> x
-	Insects	 			=> x
-	Animal				=> x
-	Plant				=> x
-	Earth 				=> x
-	Water 				=> x
-	Air 				=> x
-	Fire 				=> x
-	Radiance			=> paladin
-	Shadow 				=> x
-	Spirit	  			=> x
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> paladin
+	Death			=> paladin
+	Law				=> paladin
+	Chaos			=> x
+	Protection		=> paladin
+	War				=> paladin
+	Perception		=> paladin
+	Deceit			=> x
+	Thought			=> x
+	Decay			=> x
+	Vigor			=> x
+	Insects			=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Radiance		=> paladin
+	Shadow			=> x
+	Spirit		    => x
  END
 END
 //___________________________________________________________________________________
@@ -3167,29 +3256,29 @@ DEFINE_ACTION_FUNCTION vanilla_blackguard_spheres
   RET_ARRAY vanilla_blackguard_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY vanilla_blackguard_spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All			 		=> x
-	Death		 		=> paladin
-	Law					=> paladin
-	Chaos			 	=> x
-	Protection 			=> x
-	War 				=> paladin
-	Perception 			=> x
-	Thought 			=> x
-	Decay				=> paladin
-	Vigor				=> paladin
-	Insects	 			=> x
-	Animal				=> x
-	Plant				=> x
-	Earth 				=> x
-	Water 				=> x
-	Air 				=> x
-	Fire 				=> x
-	Radiance			=> x
-	Shadow 				=> paladin
-	Spirit				=> x
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> x
+	Death			=> paladin
+	Law				=> paladin
+	Chaos			=> x
+	Protection		=> x
+	War				=> paladin
+	Perception		=> x
+	Deceit			=> x
+	Thought			=> x
+	Decay			=> paladin
+	Vigor			=> paladin
+	Insects			=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Radiance		=> x
+	Shadow			=> paladin
+	Spirit			=> x
  END
 END
 //___________________________________________________________________________________
@@ -3201,29 +3290,29 @@ END
 //
 DEFINE_ACTION_MACRO DR_oozemaster_spheres BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY a#ooze_spheres BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All			 		=> major
-	Death		 		=> x
-	Law					=> x
-	Chaos			 	=> minor
-	Protection 			=> x
-	War 				=> x
-	Perception 			=> minor
-	Thought 			=> x
-	Decay				=> minor
-	Vigor				=> major
-	Insects	 			=> major
-	Animal				=> x
-	Plant				=> major
-	Earth 				=> major
-	Water 				=> major
-	Air 				=> x
-	Fire 				=> x
-	Radiance			=> x
-	Shadow 				=> minor
-	Spirit				=> x
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> major
+	Death			=> x
+	Law				=> x
+	Chaos			=> minor
+	Protection		=> x
+	War				=> x
+	Perception		=> minor
+	Deceit			=> x
+	Thought			=> x
+	Decay			=> minor
+	Vigor			=> major
+	Insects			=> major
+	Animal			=> x
+	Plant			=> major
+	Earth			=> major
+	Water			=> major
+	Air				=> x
+	Fire			=> x
+	Radiance		=> x
+	Shadow			=> minor
+	Spirit			=> x
  END
 END
 //___________________________________________________________________________________
@@ -3232,29 +3321,29 @@ END
 //
 DEFINE_ACTION_MACRO DR_justifier_spheres BEGIN
  ACTION_DEFINE_ASSOCIATIVE_ARRAY a#justif_spheres BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All			 		=> ranger
-	Death		 		=> x
-	Law					=> x
-	Chaos			 	=> x
-	Protection 			=> x
-	War 				=> x
-	Perception 			=> x
-	Thought 			=> x
-	Decay				=> x
-	Vigor				=> ranger
-	Insects	 			=> x
-	Animal				=> x
-	Plant				=> x
-	Earth 				=> x
-	Water 				=> x
-	Air 				=> x
-	Fire 				=> x
-	Radiance			=> ranger
-	Shadow 				=> x
-	Spirit				=> x
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> ranger
+	Death			=> x
+	Law				=> x
+	Chaos			=> x
+	Protection		=> x
+	War				=> x
+	Perception		=> x
+	Deceit			=> x
+	Thought			=> x
+	Decay			=> x
+	Vigor			=> ranger
+	Insects			=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Radiance		=> ranger
+	Shadow			=> x
+	Spirit			=> x
   END
 END
 //___________________________________________________________________________________
@@ -3269,29 +3358,29 @@ DEFINE_ACTION_FUNCTION _spheres
   RET_ARRAY _spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY _spheres_array BEGIN
-	no_sphere_1		  	=> x
-	no_sphere_2	 		=> x
-	no_sphere_3	 		=> x
-	All			 		=> x
-	Death		 		=> x
-	Law					=> x
-	Chaos		 		=> x
-	Protection		 	=> x
-	War		 			=> x
-	Perception		 	=> x
-	Thought		 		=> x
-	Decay		 		=> x
-	Vigor		 		=> x
-	Insects			 	=> x
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> x
-	Water		 		=> x
-	Air		 			=> x
-	Fire		 		=> x
-	Radiance 			=> x
-	Shadow		 		=> x
-	Spirit		    	=> x
+	no_sphere_1		=> x
+	no_sphere_2		=> x
+	All				=> x
+	Death			=> x
+	Law				=> x
+	Chaos			=> x
+	Protection		=> x
+	War				=> x
+	Perception		=> x
+	Deceit			=> x
+	Thought			=> x
+	Decay			=> x
+	Vigor			=> x
+	Insects			=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Radiance		=> x
+	Shadow			=> x
+	Spirit		    => x
  END
 END
 //___________________________________________________________________________________

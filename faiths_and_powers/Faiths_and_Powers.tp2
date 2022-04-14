@@ -2,7 +2,7 @@ BACKUP ~faiths_and_powers/backup~
 AUTHOR ~SubtleD and Grammarsalad~
 
 
-VERSION ~0.82.5~
+VERSION ~0.83~
 
 
 //README ~faiths_and_powers/readme-pnp.html~
@@ -278,10 +278,12 @@ ACTION_CLEAR_ARRAY aoe_spell
 INCLUDE ~faiths_and_powers/lib/spells_new_v75.tpa~      	//includes spells from the 0.75 series  
 INCLUDE ~faiths_and_powers/lib/spells_new_fnp.tpa~   		//new spells from the 0.77 series 
 
+/*
 ACTION_IF !(GAME_IS ~iwdee~) BEGIN
   LAM v75_add_iwd_arcane_spells
   LAM v75_add_iwd_divine_spells
 END
+*/
 
 // LAM v75_add_fnP_new_spells
 LAM v78_add_fnP_new_spells
@@ -389,10 +391,12 @@ ACTION_CLEAR_ARRAY aoe_spell
 INCLUDE ~faiths_and_powers/lib/spells_new_v75.tpa~      	//includes spells from the 0.75 series  
 INCLUDE ~faiths_and_powers/lib/spells_new_fnp.tpa~   		//new spells from the 0.77 series 
 
+/*
 ACTION_IF !(GAME_IS ~iwdee~) BEGIN
   LAM v75_add_iwd_arcane_spells
   LAM v75_add_iwd_divine_spells
 END
+*/
 
 // LAM v75_add_fnP_new_spells
 LAM v78_add_fnP_new_spells
@@ -479,7 +483,7 @@ SUBCOMPONENT @20
 REQUIRE_PREDICATE (GAME_IS ~bgee bg2ee eet iwdee~) @8
 
 COPY ~faiths_and_powers/lib/markers/d5_marker.d5~ ~override/d5__spheres.d5~
-COPY ~faiths_and_powers/lib/markers/d5_marker.d5~ ~override/d5__fnp_spheres.d5~
+COPY ~faiths_and_powers/lib/markers/d5_marker.d5~ ~override/d5__nu_fnp_spheres.d5~
 
 ACTION_IF (FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~) BEGIN
   MOVE ~override/fnp_sphere_list.tpa~ ~weidu_external/faiths_and_powers/fnp_sphere_list_old.tpa~
@@ -649,7 +653,7 @@ ACTION_IF (FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~) BEGIN
 END
 INCLUDE ~faiths_and_powers/lib/kits_new_clerics.tpa~
 
-ACTION_IF !(MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~21~) && !(MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~22~) &&! (MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~23~) && !(MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~24~) BEGIN
+ACTION_IF !(FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~) BEGIN
   COPY ~faiths_and_powers/lib/markers/d5_marker.d5~ ~override/d5__no_spheres.d5~
 END
 
@@ -807,7 +811,7 @@ ACTION_IF (FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~) BEGIN
 END
 INCLUDE ~faiths_and_powers/lib/kits_new_druids.tpa~
 
-ACTION_IF !(MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~21~) && !(MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~22~) &&! (MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~23~) && !(MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~24~) BEGIN
+ACTION_IF !(FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~) BEGIN
   COPY ~faiths_and_powers/lib/markers/d5_marker.d5~ ~override/d5__no_spheres.d5~
 END
 
@@ -907,7 +911,7 @@ END
 INCLUDE ~faiths_and_powers/lib/kits_new_pladins.tpa~
 INCLUDE ~faiths_and_powers/lib/kits_new_zealots.tpa~
 
-ACTION_IF !(MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~21~) && !(MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~22~) &&! (MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~23~) && !(MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~24~) BEGIN
+ACTION_IF !(FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~) BEGIN
   COPY ~faiths_and_powers/lib/markers/d5_marker.d5~ ~override/d5__no_spheres.d5~
 END
 
@@ -1058,7 +1062,7 @@ ACTION_IF (FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~) BEGIN
 END
 INCLUDE ~faiths_and_powers/lib/kits_new_rangers.tpa~
 
-ACTION_IF !(MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~21~) && !(MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~22~) &&! (MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~23~) && !(MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~24~) BEGIN
+ACTION_IF !(FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~) BEGIN
   COPY ~faiths_and_powers/lib/markers/d5_marker.d5~ ~override/d5__no_spheres.d5~
 END
 

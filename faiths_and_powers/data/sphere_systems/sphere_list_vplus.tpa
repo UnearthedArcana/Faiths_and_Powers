@@ -1,40 +1,115 @@
 // SPHERE NAMES___________________________________________________________________
 //
-// You can define the names of your spheres in the right-hand column
-// There can be 23 spheres at most; they must correspond to the FnP spheres
-// So DO NOT change anything in the left column.
 
 DEFINE_ACTION_MACRO d5_define_sphere_names BEGIN
 
-// system designation.....sphere name
+COPY ~faiths_and_powers/data/sphere_systems/d5altsph.2da~ ~override~
 
-<<<<<<<< d5/d5altsph.2da
-2DA
-Universal				Universal
-Life 					Cleric
-Death 					Death
-Benediction 			Vermin	
-Destruction 			Destruction
-Protection 				Protection
-War 					War
-Exploration     		Exploration
-Knowledge 				Knowledge
-Deception 				Deception
-Thought 				Thought
-Dread 					Dread
-Vigor 					Druid
-Affliction 				Affliction
-Animal 					Animal
-Plant 					Plant
-Earth 					Earth
-Air 					Air
-Water 					Water
-Fire 					Fire
-Light 					Light
-Shadow 					Shadow
-Magic 					Magic
-Astral	 				Astral
->>>>>>>> 
+OUTER_SPRINT new_Universal	 @12301	// Universal
+OUTER_SPRINT new_Life		 @12302	// Cleric
+OUTER_SPRINT new_Death		 @12303	// Death
+OUTER_SPRINT new_Benediction @12304	// Vermin
+OUTER_SPRINT new_Destruction @12305	// Destruction
+OUTER_SPRINT new_Protection  @12306	// Protection
+OUTER_SPRINT new_War		 @12307	// War
+OUTER_SPRINT new_Exploration @12308	// Exploration
+OUTER_SPRINT new_Knowledge 	 @12309	// Knowledge
+OUTER_SPRINT new_Deception 	 @12310	// Deception
+OUTER_SPRINT new_Thought 	 @12311	// Thought
+OUTER_SPRINT new_Dread		 @12312	// Dread
+OUTER_SPRINT new_Vigor		 @12313	// Druid
+OUTER_SPRINT new_Affliction  @12314	// Affliction
+OUTER_SPRINT new_Animal 	 @12315	// Animal
+OUTER_SPRINT new_Plant		 @12316	// Plant
+OUTER_SPRINT new_Earth		 @12317	// Earth
+OUTER_SPRINT new_Air		 @12318	// Air
+OUTER_SPRINT new_Water		 @12319	// Water
+OUTER_SPRINT new_Fire		 @12320	// Fire
+OUTER_SPRINT new_Light		 @12321	// Light
+OUTER_SPRINT new_Shadow 	 @12322	// Shadow
+OUTER_SPRINT new_Magic		 @12323	// Magic
+OUTER_SPRINT new_Astral		 @12324	// Spirit
+
+COPY_EXISTING ~d5altsph.2da~ ~override~
+  REPLACE_TEXTUALLY ~new_Universal~ ~%new_Universal%~
+  REPLACE_TEXTUALLY ~new_Life~ ~%new_Life%~
+  REPLACE_TEXTUALLY ~new_Death~ ~%new_Death%~
+  REPLACE_TEXTUALLY ~new_Benediction~ ~%new_Benediction%~
+  REPLACE_TEXTUALLY ~new_Destruction~ ~%new_Destruction%~
+  REPLACE_TEXTUALLY ~new_Protection~ ~%new_Protection%~
+  REPLACE_TEXTUALLY ~new_War~ ~%new_War%~
+  REPLACE_TEXTUALLY ~new_Exploration~ ~%new_Exploration%~
+  REPLACE_TEXTUALLY ~new_Knowledge~ ~%new_Knowledge%~
+  REPLACE_TEXTUALLY ~new_Deception~ ~%new_Deception%~
+  REPLACE_TEXTUALLY ~new_Thought~ ~%new_Thought%~
+  REPLACE_TEXTUALLY ~new_Dread~ ~%new_Dread%~
+  REPLACE_TEXTUALLY ~new_Vigor~ ~%new_Vigor%~
+  REPLACE_TEXTUALLY ~new_Affliction~ ~%new_Affliction%~
+  REPLACE_TEXTUALLY ~new_Animal~ ~%new_Animal%~
+  REPLACE_TEXTUALLY ~new_Plant~ ~%new_Plant%~
+  REPLACE_TEXTUALLY ~new_Earth~ ~%new_Earth%~
+  REPLACE_TEXTUALLY ~new_Air~ ~%new_Air%~
+  REPLACE_TEXTUALLY ~new_Water~ ~%new_Water%~
+  REPLACE_TEXTUALLY ~new_Fire~ ~%new_Fire%~
+  REPLACE_TEXTUALLY ~new_Light~ ~%new_Light%~
+  REPLACE_TEXTUALLY ~new_Shadow~ ~%new_Shadow%~
+  REPLACE_TEXTUALLY ~new_Magic~ ~%new_Magic%~
+  REPLACE_TEXTUALLY ~new_Astral~ ~%new_Astral%~
+
+WITH_TRA ~faiths_and_powers/language/english/setup.tra~ BEGIN
+
+OUTER_SPRINT eng_Universal	 @12301	// Universal
+OUTER_SPRINT eng_Life		 @12302	// Cleric
+OUTER_SPRINT eng_Death		 @12303	// Death
+OUTER_SPRINT eng_Benediction @12304	// Vermin
+OUTER_SPRINT eng_Destruction @12305	// Destruction
+OUTER_SPRINT eng_Protection  @12306	// Protection
+OUTER_SPRINT eng_War		 @12307	// War
+OUTER_SPRINT eng_Exploration @12308	// Exploration
+OUTER_SPRINT eng_Knowledge 	 @12309	// Knowledge
+OUTER_SPRINT eng_Deception 	 @12310	// Deception
+OUTER_SPRINT eng_Thought 	 @12311	// Thought
+OUTER_SPRINT eng_Dread		 @12312	// Dread
+OUTER_SPRINT eng_Vigor		 @12313	// Druid
+OUTER_SPRINT eng_Affliction  @12314	// Affliction
+OUTER_SPRINT eng_Animal 	 @12315	// Animal
+OUTER_SPRINT eng_Plant		 @12316	// Plant
+OUTER_SPRINT eng_Earth		 @12317	// Earth
+OUTER_SPRINT eng_Air		 @12318	// Air
+OUTER_SPRINT eng_Water		 @12319	// Water
+OUTER_SPRINT eng_Fire		 @12320	// Fire
+OUTER_SPRINT eng_Light		 @12321	// Light
+OUTER_SPRINT eng_Shadow 	 @12322	// Shadow
+OUTER_SPRINT eng_Magic		 @12323	// Magic
+OUTER_SPRINT eng_Astral		 @12324	// Astral
+
+COPY_EXISTING ~d5altsph.2da~ ~override~
+  REPLACE_TEXTUALLY ~eng_Universal~ ~%eng_Universal%~
+  REPLACE_TEXTUALLY ~eng_Life~ ~%eng_Life%~
+  REPLACE_TEXTUALLY ~eng_Death~ ~%eng_Death%~
+  REPLACE_TEXTUALLY ~eng_Benediction~ ~%eng_Benediction%~
+  REPLACE_TEXTUALLY ~eng_Destruction~ ~%eng_Destruction%~
+  REPLACE_TEXTUALLY ~eng_Protection~ ~%eng_Protection%~
+  REPLACE_TEXTUALLY ~eng_War~ ~%eng_War%~
+  REPLACE_TEXTUALLY ~eng_Exploration~ ~%eng_Exploration%~
+  REPLACE_TEXTUALLY ~eng_Knowledge~ ~%eng_Knowledge%~
+  REPLACE_TEXTUALLY ~eng_Deception~ ~%eng_Deception%~
+  REPLACE_TEXTUALLY ~eng_Thought~ ~%eng_Thought%~
+  REPLACE_TEXTUALLY ~eng_Dread~ ~%eng_Dread%~
+  REPLACE_TEXTUALLY ~eng_Vigor~ ~%eng_Vigor%~
+  REPLACE_TEXTUALLY ~eng_Affliction~ ~%eng_Affliction%~
+  REPLACE_TEXTUALLY ~eng_Animal~ ~%eng_Animal%~
+  REPLACE_TEXTUALLY ~eng_Plant~ ~%eng_Plant%~
+  REPLACE_TEXTUALLY ~eng_Earth~ ~%eng_Earth%~
+  REPLACE_TEXTUALLY ~eng_Air~ ~%eng_Air%~
+  REPLACE_TEXTUALLY ~eng_Water~ ~%eng_Water%~
+  REPLACE_TEXTUALLY ~eng_Fire~ ~%eng_Fire%~
+  REPLACE_TEXTUALLY ~eng_Light~ ~%eng_Light%~
+  REPLACE_TEXTUALLY ~eng_Shadow~ ~%eng_Shadow%~
+  REPLACE_TEXTUALLY ~eng_Magic~ ~%eng_Magic%~
+  REPLACE_TEXTUALLY ~eng_Astral~ ~%eng_Astral%~
+
+END // end with_tra
 
 END	//	end sphere names macro
 //____________________________________________________________________________________
@@ -167,7 +242,7 @@ WIZARD_SIMULACRUM                       7	=	Deception
 CLERIC_COMMAND                          0	=	Thought
 CLERIC_CHARM_PERSON                     0	=	Thought
 CLERIC_ENTHRALL                         0	=	Thought
-CLERIC_FORBID 						    0	=	Thought
+CLERIC_FORBID						    0	=	Thought
 CLERIC_RIGID_THINKING                   0	=	Thought
 CLERIC_MURDEROUS_COMMAND                0	=	Thought
 CLERIC_DICTATE                          0	=	Thought
@@ -300,6 +375,7 @@ CLERIC_FLAME_STRIKE                     0	=	Fire
 CLERIC_CONJURE_FIRE_ELEMENTAL           0	=	Fire
 CLERIC_FIRE_SEEDS                       0	=	Fire
 CLERIC_FIRE_STORM                       0	=	Fire
+d5fnp06                                 1	=	Light
 CLERIC_SUNSCORCH                        0	=	Light
 CLERIC_ALICORN_LANCE                    0	=	Light
 WIZARD_GLITTERDUST                      3	=	Light
@@ -382,28 +458,28 @@ DEFINE_ACTION_FUNCTION ur_priest_spheres
   RET_ARRAY ur_priest_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY ur_priest_spheres_array BEGIN
-	Cleric		 		=> major
-	Death		 		=> x
+	Cleric				=> major
+	Death				=> x
 	Vermin				=> x
-	Destruction		 	=> x
-	Protection		 	=> x
-	War		 			=> x
+	Destruction			=> x
+	Protection			=> x
+	War					=> x
 	Exploration		  	=> x
-	Knowledge		 	=> x
-	Deception	 		=> x
-	Thought		 		=> x
-	Dread		 		=> x
-	Druid		 		=> major
-	Affliction		 	=> x
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> x
-	Water		 		=> x
-	Air		 			=> x
-	Fire		 		=> x
-	Light	 			=> x
-	Shadow		 		=> x
-	Magic		 		=> x
+	Knowledge			=> x
+	Deception			=> x
+	Thought				=> x
+	Dread				=> x
+	Druid				=> major
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air					=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
 	Astral		    	=> x
  END
 END
@@ -418,28 +494,28 @@ DEFINE_ACTION_FUNCTION auril_spheres
   RET_ARRAY auril_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY auril_spheres_array BEGIN
-	Cleric 				=> major
-	Death 				=> x
-	Vermin	 			=> x
-	Destruction 		=> focus
-	Protection 			=> x
-	War 				=> x
-	Exploration 		=> x
-	Knowledge 			=> x
-	Deception 			=> x
-	Thought 			=> x
-	Dread 				=> x
-	Druid 				=> x
-	Affliction 			=> x
-	Animal 				=> x
-	Plant 				=> x
-	Earth 				=> x
-	Water 				=> focus
-	Air 				=> x
-	Fire 				=> x
-	Light 				=> x
-	Shadow 				=> x
-	Magic 				=> x
+	Cleric				=> major
+	Death				=> x
+	Vermin				=> x
+	Destruction		=> focus
+	Protection			=> x
+	War				=> x
+	Exploration		=> x
+	Knowledge			=> x
+	Deception			=> x
+	Thought			=> x
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> focus
+	Air				=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
 	Astral		    	=> x
  END
 END
@@ -451,29 +527,29 @@ DEFINE_ACTION_FUNCTION azuth_spheres
   RET_ARRAY azuth_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY azuth_spheres_array BEGIN
-	Cleric 				=> major
-	Death 				=> x
-	Vermin	 			=> x
-	Destruction 		=> x
-	Protection 			=> x
-	War 				=> x
-	Exploration  		=> x
-	Knowledge 			=> focus
-	Deception 			=> x
-	Thought 			=> x
-	Dread 				=> x
-	Druid 				=> x
-	Affliction 			=> x
-	Animal 				=> x
-	Plant 				=> x
-	Earth 				=> x
-	Water 				=> x
-	Air 				=> x
-	Fire 				=> x
-	Light 				=> x
-	Shadow 				=> x
-	Magic 				=> focus
-	Astral		 		=> x
+	Cleric				=> major
+	Death				=> x
+	Vermin				=> x
+	Destruction		=> x
+	Protection			=> x
+	War				=> x
+	Exploration 		=> x
+	Knowledge			=> focus
+	Deception			=> x
+	Thought			=> x
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air				=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> focus
+	Astral				=> x
  END
 END
 //___________________________________________________________________________________
@@ -485,27 +561,27 @@ DEFINE_ACTION_FUNCTION bane_spheres
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY bane_spheres_array BEGIN
 	Cleric				=> major
-	Death 				=> x
-	Vermin	 			=> x
-	Destruction 		=> focus
-	Protection 			=> x
-	War 				=> focus
+	Death				=> x
+	Vermin				=> x
+	Destruction		=> focus
+	Protection			=> x
+	War				=> focus
 	Exploration			=> x
 	Knowledge			=> x
 	Deception			=> x
-	Thought 			=> x
-	Dread 				=> x
-	Druid 				=> x
+	Thought			=> x
+	Dread				=> x
+	Druid				=> x
 	Affliction			=> x
-	Animal 				=> x
-	Plant 				=> x
-	Earth 				=> x
-	Water 				=> x
-	Air 				=> x
-	Fire 				=> x
-	Light 				=> x
-	Shadow 				=> x
-	Magic 				=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air				=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
 	Astral				=> x
  END
 END
@@ -517,28 +593,28 @@ DEFINE_ACTION_FUNCTION beshaba_spheres
   RET_ARRAY beshaba_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY beshaba_spheres_array BEGIN
-	Cleric		 		=> major
-	Death		 		=> x
+	Cleric				=> major
+	Death				=> x
 	Vermin				=> x
-	Destruction		 	=> x
-	Protection		 	=> x
-	War		 			=> x
+	Destruction			=> x
+	Protection			=> x
+	War					=> x
 	Exploration		  	=> x
-	Knowledge		 	=> x
-	Deception	 		=> focus
-	Thought		 		=> x
-	Dread		 		=> focus
-	Druid		 		=> x
-	Affliction		 	=> x
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> x
-	Water		 		=> x
-	Air		 			=> x
-	Fire		 		=> x
-	Light	 			=> x
-	Shadow		 		=> x
-	Magic		 		=> x
+	Knowledge			=> x
+	Deception			=> focus
+	Thought				=> x
+	Dread				=> focus
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air					=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
 	Astral		    	=> x
  END
 END
@@ -551,27 +627,27 @@ DEFINE_ACTION_FUNCTION bhaal_spheres
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY bhaal_spheres_array BEGIN
 	Cleric				=> major
-	Death 				=> x
-	Vermin	 			=> x
-	Destruction 		=> focus
-	Protection 			=> x
-	War 				=> focus
+	Death				=> x
+	Vermin				=> x
+	Destruction		=> focus
+	Protection			=> x
+	War				=> focus
 	Exploration			=> x
 	Knowledge			=> x
 	Deception			=> x
-	Thought 			=> x
-	Dread 				=> x
-	Druid 				=> x
+	Thought			=> x
+	Dread				=> x
+	Druid				=> x
 	Affliction			=> x
-	Animal 				=> x
-	Plant 				=> x
-	Earth 				=> x
-	Water 				=> x
-	Air 				=> x
-	Fire 				=> x
-	Light 				=> x
-	Shadow 				=> x
-	Magic 				=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air				=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
 	Astral				=> x
  END
 END
@@ -583,28 +659,28 @@ DEFINE_ACTION_FUNCTION cyric_spheres
   RET_ARRAY cyric_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY cyric_spheres_array BEGIN
-	Cleric		 		=> major
-	Death		 		=> focus
+	Cleric				=> major
+	Death				=> focus
 	Vermin				=> x
-	Destruction		 	=> focus
-	Protection		 	=> x
-	War		 			=> x
+	Destruction			=> focus
+	Protection			=> x
+	War					=> x
 	Exploration		  	=> x
-	Knowledge		 	=> x
-	Deception	 		=> x
-	Thought		 		=> x
-	Dread		 		=> x
-	Druid		 		=> x
-	Affliction		 	=> x
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> x
-	Water		 		=> x
-	Air		 			=> x
-	Fire		 		=> x
-	Light	 			=> x
-	Shadow		 		=> x
-	Magic		 		=> x
+	Knowledge			=> x
+	Deception			=> x
+	Thought				=> x
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air					=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
 	Astral			    => x
  END
 END
@@ -616,28 +692,28 @@ DEFINE_ACTION_FUNCTION deneir_spheres
   RET_ARRAY deneir_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY deneir_spheres_array BEGIN
-	Cleric		 		=> major
-	Death		 		=> x
+	Cleric				=> major
+	Death				=> x
 	Vermin				=> x
-	Destruction		 	=> x
-	Protection		 	=> x
-	War		 			=> x
+	Destruction			=> x
+	Protection			=> x
+	War					=> x
 	Exploration		  	=> x
-	Knowledge		 	=> focus
-	Deception	 		=> x
-	Thought		 		=> focus
-	Dread		 		=> x
-	Druid		 		=> x
-	Affliction		 	=> x
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> x
-	Water		 		=> x
-	Air		 			=> x
-	Fire		 		=> x
-	Light	 			=> x
-	Shadow		 		=> x
-	Magic		 		=> x
+	Knowledge			=> focus
+	Deception			=> x
+	Thought				=> focus
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air					=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
 	Astral		    	=> x
  END
 END
@@ -649,29 +725,29 @@ DEFINE_ACTION_FUNCTION garagos_spheres
   RET_ARRAY garagos_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY garagos_spheres_array BEGIN
-	Cleric 				=> major
-	Death 				=> x
-	Vermin	 			=> x
-	Destruction 		=> focus
-	Protection 			=> x
-	War 				=> focus
-	Exploration 		=> x
-	Knowledge 			=> x
-	Deception 			=> x
-	Thought 			=> x
-	Dread 				=> x
-	Druid 				=> x
-	Affliction 			=> x
-	Animal 				=> x
-	Plant 				=> x
-	Earth 				=> x
-	Water 				=> x
-	Air 				=> x
-	Fire 				=> x
-	Light 				=> x
-	Shadow 				=> x
-	Magic 				=> x
-	Astral    			=> x
+	Cleric				=> major
+	Death				=> x
+	Vermin				=> x
+	Destruction		=> focus
+	Protection			=> x
+	War				=> focus
+	Exploration		=> x
+	Knowledge			=> x
+	Deception			=> x
+	Thought			=> x
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air				=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
+	Astral   			=> x
  END
 END
 //___________________________________________________________________________________
@@ -681,28 +757,28 @@ DEFINE_ACTION_FUNCTION helm_spheres
   RET_ARRAY helm_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY helm_spheres_array BEGIN
-	Cleric		 		=> major
-	Death		 		=> x
+	Cleric				=> major
+	Death				=> x
 	Vermin				=> x
-	Destruction		 	=> x
-	Protection		 	=> x
-	War		 			=> focus
+	Destruction			=> x
+	Protection			=> x
+	War					=> focus
 	Exploration		  	=> x
-	Knowledge		 	=> focus
-	Deception	 		=> x
-	Thought		 		=> x
-	Dread		 		=> x
-	Druid		 		=> x
-	Affliction		 	=> x
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> x
-	Water		 		=> x
-	Air		 			=> x
-	Fire		 		=> x
-	Light	 			=> x
-	Shadow		 		=> x
-	Magic		 		=> x
+	Knowledge			=> focus
+	Deception			=> x
+	Thought				=> x
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air					=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
 	Astral		    	=> x
  END
 END
@@ -714,28 +790,28 @@ DEFINE_ACTION_FUNCTION ilmater_spheres
   RET_ARRAY ilmater_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY ilmater_spheres_array BEGIN
-	Cleric		 		=> major
-	Death		 		=> x
+	Cleric				=> major
+	Death				=> x
 	Vermin				=> x
-	Destruction		 	=> x
-	Protection		 	=> focus
-	War		 			=> x
+	Destruction			=> x
+	Protection			=> focus
+	War					=> x
 	Exploration		  	=> x
-	Knowledge		 	=> x
-	Deception	 		=> x
-	Thought		 		=> x
-	Dread		 		=> x
-	Druid		 		=> x
-	Affliction		 	=> focus
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> x
-	Water		 		=> x
-	Air		 			=> x
-	Fire		 		=> x
-	Light	 			=> x
-	Shadow		 		=> x
-	Magic		 		=> x
+	Knowledge			=> x
+	Deception			=> x
+	Thought				=> x
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> focus
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air					=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
 	Astral		    	=> x
  END
 END
@@ -747,28 +823,28 @@ DEFINE_ACTION_FUNCTION kelemvor_spheres
   RET_ARRAY kelemvor_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY kelemvor_spheres_array BEGIN
-	Cleric		 		=> major
-	Death		 		=> focus
+	Cleric				=> major
+	Death				=> focus
 	Vermin				=> x
-	Destruction		 	=> x
-	Protection		 	=> focus
-	War		 			=> x
+	Destruction			=> x
+	Protection			=> focus
+	War					=> x
 	Exploration		  	=> x
-	Knowledge		 	=> x
-	Deception	 		=> x
-	Thought		 		=> x
-	Dread		 		=> x
-	Druid		 		=> x
-	Affliction		 	=> x
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> x
-	Water		 		=> x
-	Air		 			=> x
-	Fire		 		=> x
-	Light	 			=> x
-	Shadow		 		=> x
-	Magic		 		=> x
+	Knowledge			=> x
+	Deception			=> x
+	Thought				=> x
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air					=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
 	Astral			    => x
  END
 END
@@ -780,28 +856,28 @@ DEFINE_ACTION_FUNCTION kossuth_spheres
   RET_ARRAY kossuth_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY kossuth_spheres_array BEGIN
-	Cleric 				=> major
-	Death 				=> x
-	Vermin	 			=> x
-	Destruction 		=> x
-	Protection 			=> x
-	War 				=> x
-	Exploration 		=> x
-	Knowledge 			=> x
-	Deception 			=> x
-	Thought 			=> x
-	Dread 				=> x
-	Druid 				=> x
-	Affliction 			=> x
-	Animal 				=> x
-	Plant 				=> x
-	Earth 				=> x
-	Water 				=> x
-	Air 				=> x
-	Fire 				=> focus
-	Light 				=> x
-	Shadow 				=> x
-	Magic 				=> x
+	Cleric				=> major
+	Death				=> x
+	Vermin				=> x
+	Destruction		=> x
+	Protection			=> x
+	War				=> x
+	Exploration		=> x
+	Knowledge			=> x
+	Deception			=> x
+	Thought			=> x
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air				=> x
+	Fire				=> focus
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
 	Astral		    	=> x
  END
 END
@@ -813,28 +889,28 @@ DEFINE_ACTION_FUNCTION lathander_spheres
   RET_ARRAY lathander_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY lathander_spheres_array BEGIN
-	Cleric		 		=> major
-	Death		 		=> x
+	Cleric				=> major
+	Death				=> x
 	Vermin				=> x
-	Destruction		 	=> x
-	Protection		 	=> focus
-	War		 			=> x
+	Destruction			=> x
+	Protection			=> focus
+	War					=> x
 	Exploration		  	=> x
-	Knowledge		 	=> x
-	Deception	 		=> x
-	Thought		 		=> x
-	Dread		 		=> x
-	Druid		 		=> x
-	Affliction		 	=> x
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> x
-	Water		 		=> x
-	Air		 			=> x
-	Fire		 		=> x
-	Light	 			=> focus
-	Shadow		 		=> x
-	Magic		 		=> x
+	Knowledge			=> x
+	Deception			=> x
+	Thought				=> x
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air					=> x
+	Fire				=> x
+	Light				=> focus
+	Shadow				=> x
+	Magic				=> x
 	Astral		    	=> x
   END
 END
@@ -846,28 +922,28 @@ DEFINE_ACTION_FUNCTION leira_spheres
   RET_ARRAY leira_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY leira_spheres_array BEGIN
-	Cleric		 		=> major
-	Death		 		=> x
+	Cleric				=> major
+	Death				=> x
 	Vermin				=> x
-	Destruction		 	=> x
-	Protection		 	=> x
-	War		 			=> x
+	Destruction			=> x
+	Protection			=> x
+	War					=> x
 	Exploration		  	=> focus
-	Knowledge		 	=> x
-	Deception	 		=> focus
-	Thought		 		=> x
-	Dread		 		=> x
-	Druid		 		=> x
-	Affliction		 	=> x
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> x
-	Water		 		=> x
-	Air		 			=> x
-	Fire		 		=> x
-	Light	 			=> x
-	Shadow		 		=> x
-	Magic		 		=> x
+	Knowledge			=> x
+	Deception			=> focus
+	Thought				=> x
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air					=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
 	Astral		    	=> x
  END
 END
@@ -879,28 +955,28 @@ DEFINE_ACTION_FUNCTION loviatar_spheres
   RET_ARRAY loviatar_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY loviatar_spheres_array BEGIN
-	Cleric		 		=> major
-	Death		 		=> x
+	Cleric				=> major
+	Death				=> x
 	Vermin				=> x
-	Destruction		 	=> x
-	Protection		 	=> x
-	War		 			=> x
+	Destruction			=> x
+	Protection			=> x
+	War					=> x
 	Exploration		  	=> x
-	Knowledge		 	=> x
-	Deception	 		=> x
-	Thought		 		=> x
-	Dread		 		=> focus
-	Druid		 		=> x
-	Affliction		 	=> focus
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> x
-	Water		 		=> x
-	Air		 			=> x
-	Fire		 		=> x
-	Light	 			=> x
-	Shadow		 		=> x
-	Magic		 		=> x
+	Knowledge			=> x
+	Deception			=> x
+	Thought				=> x
+	Dread				=> focus
+	Druid				=> x
+	Affliction			=> focus
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air					=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
 	Astral		    	=> x
  END
 END
@@ -912,29 +988,29 @@ DEFINE_ACTION_FUNCTION malar_spheres
   RET_ARRAY malar_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY malar_spheres_array BEGIN
-	Cleric 				=> major
-	Death 				=> x
-	Vermin	 			=> x
-	Destruction 		=> focus
-	Protection 			=> x
-	War 				=> x
-	Exploration 		=> x
-	Knowledge 			=> x
-	Deception 			=> x
-	Thought 			=> x
-	Dread 				=> x
-	Druid 				=> x
-	Affliction 			=> x
-	Animal 				=> focus
-	Plant 				=> x
-	Earth 				=> x
-	Water 				=> x
-	Air 				=> x
-	Fire 				=> x
-	Light 				=> x
-	Shadow 				=> x
-	Magic 				=> x
-	Astral    			=> x
+	Cleric				=> major
+	Death				=> x
+	Vermin				=> x
+	Destruction		=> focus
+	Protection			=> x
+	War				=> x
+	Exploration		=> x
+	Knowledge			=> x
+	Deception			=> x
+	Thought			=> x
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> focus
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air				=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
+	Astral   			=> x
  END
 END
 //___________________________________________________________________________________
@@ -945,28 +1021,28 @@ DEFINE_ACTION_FUNCTION mask_spheres
   RET_ARRAY mask_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY mask_spheres_array BEGIN
-	Cleric		 		=> major
-	Death		 		=> x
+	Cleric				=> major
+	Death				=> x
 	Vermin				=> x
-	Destruction		 	=> x
-	Protection		 	=> x
-	War		 			=> x
+	Destruction			=> x
+	Protection			=> x
+	War					=> x
 	Exploration		  	=> focus
-	Knowledge		 	=> x
-	Deception	 		=> focus
-	Thought		 		=> x
-	Dread		 		=> x
-	Druid		 		=> x
-	Affliction		 	=> x
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> x
-	Water		 		=> x
-	Air		 			=> x
-	Fire		 		=> x
-	Light	 			=> x
-	Shadow		 		=> x
-	Magic		 		=> x
+	Knowledge			=> x
+	Deception			=> focus
+	Thought				=> x
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air					=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
 	Astral		    	=> x
  END
 END
@@ -978,29 +1054,29 @@ DEFINE_ACTION_FUNCTION mielikki_spheres
   RET_ARRAY mielikki_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY mielikki_spheres_array BEGIN
-	Cleric 				=> major
-	Death 				=> x
-	Vermin	 			=> x
-	Destruction 		=> x
-	Protection 			=> x
-	War 				=> x
-	Exploration 		=> focus
-	Knowledge 			=> x
-	Deception 			=> x
-	Thought 			=> x
-	Dread 				=> x
-	Druid 				=> x
-	Affliction 			=> x
-	Animal 				=> focus
-	Plant 				=> x
-	Earth 				=> x
-	Water 				=> x
-	Air 				=> x
-	Fire 				=> x
-	Light 				=> x
-	Shadow 				=> x
-	Magic 				=> x
-	Astral   			=> x
+	Cleric				=> major
+	Death				=> x
+	Vermin				=> x
+	Destruction		=> x
+	Protection			=> x
+	War				=> x
+	Exploration		=> focus
+	Knowledge			=> x
+	Deception			=> x
+	Thought			=> x
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> focus
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air				=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
+	Astral  			=> x
  END
 END
 //___________________________________________________________________________________
@@ -1011,29 +1087,29 @@ DEFINE_ACTION_FUNCTION milil_spheres
   RET_ARRAY milil_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY milil_spheres_array BEGIN
-	Cleric 				=> major
-	Death 				=> x
-	Vermin	 			=> x
-	Destruction 		=> x
-	Protection 			=> x
-	War 				=> x
-	Exploration 		=> x
-	Knowledge 			=> x
-	Deception 			=> focus
-	Thought 			=> focus
-	Dread 				=> x
-	Druid 				=> x
-	Affliction 			=> x
-	Animal 				=> x
-	Plant 				=> x
-	Earth 				=> x
-	Water 				=> x
-	Air 				=> x
-	Fire 				=> x
-	Light 				=> x
-	Shadow 				=> x
-	Magic 				=> x
-	Astral   			=> x
+	Cleric				=> major
+	Death				=> x
+	Vermin				=> x
+	Destruction		=> x
+	Protection			=> x
+	War				=> x
+	Exploration		=> x
+	Knowledge			=> x
+	Deception			=> focus
+	Thought			=> focus
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air				=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
+	Astral  			=> x
  END
 END
 //___________________________________________________________________________________
@@ -1044,28 +1120,28 @@ DEFINE_ACTION_FUNCTION moander_spheres
   RET_ARRAY moander_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY moander_spheres_array BEGIN
-	Cleric		 		=> major
-	Death		 		=> x
+	Cleric				=> major
+	Death				=> x
 	Vermin				=> x
-	Destruction		 	=> x
-	Protection		 	=> x
-	War		 			=> x
+	Destruction			=> x
+	Protection			=> x
+	War					=> x
 	Exploration		  	=> x
-	Knowledge		 	=> x
-	Deception	 		=> x
-	Thought		 		=> x
-	Dread		 		=> focus
-	Druid		 		=> x
-	Affliction		 	=> focus
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> x
-	Water		 		=> x
-	Air		 			=> x
-	Fire		 		=> x
-	Light	 			=> x
-	Shadow		 		=> x
-	Magic		 		=> x
+	Knowledge			=> x
+	Deception			=> x
+	Thought				=> x
+	Dread				=> focus
+	Druid				=> x
+	Affliction			=> focus
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air					=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
 	Astral		    	=> x
  END
 END
@@ -1077,28 +1153,28 @@ DEFINE_ACTION_FUNCTION mystra_spheres
   RET_ARRAY mystra_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY mystra_spheres_array BEGIN
-	Cleric		 		=> major
-	Death		 		=> x
+	Cleric				=> major
+	Death				=> x
 	Vermin				=> x
-	Destruction		 	=> x
-	Protection		 	=> x
-	War		 			=> x
+	Destruction			=> x
+	Protection			=> x
+	War					=> x
 	Exploration		  	=> x
-	Knowledge		 	=> x
-	Deception	 		=> x
-	Thought		 		=> x
-	Dread		 		=> x
-	Druid		 		=> x
-	Affliction		 	=> x
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> x
-	Water		 		=> x
-	Air		 			=> x
-	Fire		 		=> x
-	Light	 			=> focus
-	Shadow		 		=> x
-	Magic		 		=> focus
+	Knowledge			=> x
+	Deception			=> x
+	Thought				=> x
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air					=> x
+	Fire				=> x
+	Light				=> focus
+	Shadow				=> x
+	Magic				=> focus
 	Astral		    	=> x
  END
 END
@@ -1110,28 +1186,28 @@ DEFINE_ACTION_FUNCTION oghma_spheres
   RET_ARRAY oghma_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY oghma_spheres_array BEGIN
-	Cleric 				=> major
-	Death 				=> x
-	Vermin	 			=> x
-	Destruction 		=> x
-	Protection 			=> x
-	War 				=> x
-	Exploration 		=> x
-	Knowledge 			=> focus
-	Deception 			=> x
-	Thought 			=> x
-	Dread 				=> x
-	Druid 				=> x
-	Affliction 			=> x
-	Animal 				=> x
-	Plant 				=> x
-	Earth 				=> x
-	Water 				=> x
-	Air 				=> x
-	Fire 				=> x
-	Light 				=> x
-	Shadow 				=> x
-	Magic 				=> focus
+	Cleric				=> major
+	Death				=> x
+	Vermin				=> x
+	Destruction		=> x
+	Protection			=> x
+	War				=> x
+	Exploration		=> x
+	Knowledge			=> focus
+	Deception			=> x
+	Thought			=> x
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air				=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> focus
 	Astral		    	=> x
  END
 END
@@ -1143,28 +1219,28 @@ DEFINE_ACTION_FUNCTION redknight_spheres
   RET_ARRAY redknight_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY redknight_spheres_array BEGIN
-	Cleric 				=> major
-	Death 				=> x
-	Vermin	 			=> x
-	Destruction 		=> x
-	Protection 			=> focus
-	War 				=> focus
-	Exploration 		=> x
-	Knowledge 			=> x
-	Deception 			=> x
-	Thought 			=> x
-	Dread 				=> x
-	Druid 				=> x
-	Affliction 			=> x
-	Animal 				=> x
-	Plant 				=> x
-	Earth 				=> x
-	Water 				=> x
-	Air 				=> x
-	Fire 				=> x
-	Light 				=> x
-	Shadow 				=> x
-	Magic 				=> x
+	Cleric				=> major
+	Death				=> x
+	Vermin				=> x
+	Destruction		=> x
+	Protection			=> focus
+	War				=> focus
+	Exploration		=> x
+	Knowledge			=> x
+	Deception			=> x
+	Thought			=> x
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air				=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
 	Astral		    	=> x
  END
 END
@@ -1176,28 +1252,28 @@ DEFINE_ACTION_FUNCTION selune_spheres
   RET_ARRAY selune_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY selune_spheres_array BEGIN
-	Cleric 				=> major
-	Death 				=> x
-	Vermin	 			=> x
-	Destruction 		=> x
-	Protection 			=> x
-	War 				=> x
-	Exploration 		=> x
-	Knowledge 			=> x
-	Deception 			=> x
-	Thought 			=> x
-	Dread 				=> x
-	Druid 				=> x
-	Affliction 			=> x
-	Animal 				=> x
-	Plant 				=> x
-	Earth 				=> x
-	Water 				=> x
-	Air 				=> x
-	Fire 				=> x
-	Light 				=> focus
-	Shadow 				=> focus
-	Magic 				=> x
+	Cleric				=> major
+	Death				=> x
+	Vermin				=> x
+	Destruction		=> x
+	Protection			=> x
+	War				=> x
+	Exploration		=> x
+	Knowledge			=> x
+	Deception			=> x
+	Thought			=> x
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air				=> x
+	Fire				=> x
+	Light				=> focus
+	Shadow				=> focus
+	Magic				=> x
 	Astral		    	=> x
  END
 END
@@ -1209,29 +1285,29 @@ DEFINE_ACTION_FUNCTION shar_spheres
   RET_ARRAY shar_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY shar_spheres_array BEGIN
-	Cleric		 		=> major
-	Death		 		=> x
+	Cleric				=> major
+	Death				=> x
 	Vermin				=> x
-	Destruction		 	=> x
-	Protection		 	=> x
-	War		 			=> x
+	Destruction			=> x
+	Protection			=> x
+	War					=> x
 	Exploration		  	=> x
-	Knowledge		 	=> x
-	Deception	 		=> x
-	Thought		 		=> x
-	Dread		 		=> x
-	Druid		 		=> x
-	Affliction		 	=> x
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> x
-	Water		 		=> x
-	Air		 			=> x
-	Fire		 		=> x
-	Light	 			=> x
-	Shadow		 		=> focus
-	Magic		 		=> focus
-	Astral		 	   => x
+	Knowledge			=> x
+	Deception			=> x
+	Thought				=> x
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air					=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> focus
+	Magic				=> focus
+	Astral			   => x
  END
 END
 //___________________________________________________________________________________
@@ -1242,29 +1318,29 @@ DEFINE_ACTION_FUNCTION shaundakul_spheres
   RET_ARRAY shaundakul_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY shaundakul_spheres_array BEGIN
-	Cleric 				=> major
-	Death 				=> x
-	Vermin	 			=> x
-	Destruction 		=> x
-	Protection 			=> x
-	War 				=> x
-	Exploration 		=> focus
-	Knowledge 			=> x
-	Deception 			=> x
-	Thought 			=> x
-	Dread 				=> x
-	Druid 				=> x
-	Affliction 			=> x
-	Animal 				=> x
-	Plant 				=> x
-	Earth 				=> x
-	Water 				=> x
-	Air 				=> focus
-	Fire 				=> x
-	Light 				=> x
-	Shadow 				=> x
-	Magic 				=> x
-	Astral   			=> x
+	Cleric				=> major
+	Death				=> x
+	Vermin				=> x
+	Destruction		=> x
+	Protection			=> x
+	War				=> x
+	Exploration		=> focus
+	Knowledge			=> x
+	Deception			=> x
+	Thought			=> x
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air				=> focus
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
+	Astral  			=> x
  END
 END
 //___________________________________________________________________________________
@@ -1275,28 +1351,28 @@ DEFINE_ACTION_FUNCTION sune_spheres
   RET_ARRAY sune_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY sune_spheres_array BEGIN
-	Cleric		 		=> major
-	Death		 		=> x
+	Cleric				=> major
+	Death				=> x
 	Vermin				=> x
-	Destruction		 	=> x
-	Protection		 	=> x
-	War		 			=> x
+	Destruction			=> x
+	Protection			=> x
+	War					=> x
 	Exploration		  	=> x
-	Knowledge		 	=> x
-	Deception	 		=> x
-	Thought		 		=> focus
-	Dread		 		=> x
-	Druid		 		=> x
-	Affliction		 	=> x
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> x
-	Water		 		=> x
-	Air		 			=> x
-	Fire		 		=> x
-	Light	 			=> focus
-	Shadow		 		=> x
-	Magic		 		=> x
+	Knowledge			=> x
+	Deception			=> x
+	Thought				=> focus
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air					=> x
+	Fire				=> x
+	Light				=> focus
+	Shadow				=> x
+	Magic				=> x
 	Astral		    	=> x
  END
 END
@@ -1308,28 +1384,28 @@ DEFINE_ACTION_FUNCTION talos_spheres
   RET_ARRAY talos_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY talos_spheres_array BEGIN
-	Cleric		 		=> major
-	Death		 		=> x
+	Cleric				=> major
+	Death				=> x
 	Vermin				=> x
-	Destruction		 	=> x
-	Protection		 	=> x
-	War		 			=> x
+	Destruction			=> x
+	Protection			=> x
+	War					=> x
 	Exploration		  	=> x
-	Knowledge		 	=> x
-	Deception	 		=> x
-	Thought		 		=> x
-	Dread		 		=> focus
-	Druid		 		=> x
-	Affliction		 	=> x
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> x
-	Water		 		=> x
-	Air		 			=> focus
-	Fire		 		=> x
-	Light	 			=> x
-	Shadow		 		=> x
-	Magic		 		=> x
+	Knowledge			=> x
+	Deception			=> x
+	Thought				=> x
+	Dread				=> focus
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air					=> focus
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
 	Astral		    	=> x
  END
 END
@@ -1341,28 +1417,28 @@ DEFINE_ACTION_FUNCTION tempus_spheres
   RET_ARRAY tempus_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY tempus_spheres_array BEGIN
-	Cleric		 		=> major
-	Death		 		=> x
+	Cleric				=> major
+	Death				=> x
 	Vermin				=> x
-	Destruction		 	=> focus
-	Protection		 	=> x
-	War		 			=> focus
+	Destruction			=> focus
+	Protection			=> x
+	War					=> focus
 	Exploration		  	=> x
-	Knowledge		 	=> x
-	Deception	 		=> x
-	Thought		 		=> x
-	Dread		 		=> x
-	Druid		 		=> x
-	Affliction		 	=> x
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> x
-	Water		 		=> x
-	Air		 			=> x
-	Fire		 		=> x
-	Light	 			=> x
-	Shadow		 		=> x
-	Magic		 		=> x
+	Knowledge			=> x
+	Deception			=> x
+	Thought				=> x
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air					=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
 	Astral		    	=> x
  END
 END
@@ -1374,28 +1450,28 @@ DEFINE_ACTION_FUNCTION torm_spheres
   RET_ARRAY torm_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY torm_spheres_array BEGIN
-	Cleric		 		=> major
-	Death		 		=> x
+	Cleric				=> major
+	Death				=> x
 	Vermin				=> x
-	Destruction		 	=> x
-	Protection		 	=> focus
-	War		 			=> focus
+	Destruction			=> x
+	Protection			=> focus
+	War					=> focus
 	Exploration		  	=> x
-	Knowledge		 	=> x
-	Deception	 		=> x
-	Thought		 		=> x
-	Dread		 		=> x
-	Druid		 		=> x
-	Affliction		 	=> x
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> x
-	Water		 		=> x
-	Air		 			=> x
-	Fire		 		=> x
-	Light	 			=> x
-	Shadow		 		=> x
-	Magic		 		=> x
+	Knowledge			=> x
+	Deception			=> x
+	Thought				=> x
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air					=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
 	Astral		    	=> x
  END
 END
@@ -1407,27 +1483,27 @@ DEFINE_ACTION_FUNCTION tymora_spheres
   RET_ARRAY tymora_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY tymora_spheres_array BEGIN
-	Cleric		 		=> major
-	Death		 		=> x
+	Cleric				=> major
+	Death				=> x
 	Vermin				=> x
-	Destruction		 	=> x
-	Protection		 	=> x
-	War		 			=> x
+	Destruction			=> x
+	Protection			=> x
+	War					=> x
 	Exploration		  	=> focus
-	Knowledge		 	=> x
-	Deception	 		=> x
-	Thought		 		=> focus
-	Dread		 		=> x
-	Druid		 		=> x
-	Affliction		 	=> x
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> x
-	Water		 		=> x
-	Air		 			=> x
-	Fire		 		=> x
-	Light	 			=> x
-	Shadow		 		=> x
+	Knowledge			=> x
+	Deception			=> x
+	Thought				=> focus
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air					=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
 	Magic				=> x
 	Astral		    	=> x
  END
@@ -1473,28 +1549,28 @@ DEFINE_ACTION_FUNCTION ulutiu_spheres
   RET_ARRAY ulutiu_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY ulutiu_spheres_array BEGIN
-	Cleric 				=> major
-	Death 				=> x
-	Vermin	 			=> x
-	Destruction 		=> x
-	Protection 			=> x
-	War 				=> x
-	Exploration 		=> x
-	Knowledge 			=> x
-	Deception 			=> x
-	Thought 			=> x
-	Dread 				=> x
-	Druid 				=> x
-	Affliction 			=> x
-	Animal 				=> x
-	Plant 				=> x
-	Earth 				=> x
-	Water 				=> focus
-	Air 				=> focus
-	Fire 				=> x
-	Light 				=> x
-	Shadow 				=> x
-	Magic 				=> x
+	Cleric				=> major
+	Death				=> x
+	Vermin				=> x
+	Destruction		=> x
+	Protection			=> x
+	War				=> x
+	Exploration		=> x
+	Knowledge			=> x
+	Deception			=> x
+	Thought			=> x
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> focus
+	Air				=> focus
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
 	Astral		    	=> focus
  END
 END
@@ -1506,28 +1582,28 @@ DEFINE_ACTION_FUNCTION umberlee_spheres
   RET_ARRAY umberlee_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY umberlee_spheres_array BEGIN
-	Cleric		 		=> major
-	Death		 		=> x
+	Cleric				=> major
+	Death				=> x
 	Vermin				=> x
-	Destruction		 	=> x
-	Protection		 	=> x
-	War		 			=> x
+	Destruction			=> x
+	Protection			=> x
+	War					=> x
 	Exploration		  	=> x
-	Knowledge		 	=> x
-	Deception	 		=> x
-	Thought		 		=> x
-	Dread		 		=> focus
-	Druid		 		=> x
-	Affliction		 	=> x
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> x
-	Water		 		=> focus
-	Air		 			=> x
-	Fire		 		=> x
-	Light	 			=> x
-	Shadow		 		=> x
-	Magic		 		=> x
+	Knowledge			=> x
+	Deception			=> x
+	Thought				=> x
+	Dread				=> focus
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> focus
+	Air					=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
 	Astral		    	=> x
  END
 END
@@ -1539,29 +1615,29 @@ DEFINE_ACTION_FUNCTION xvim_spheres
   RET_ARRAY xvim_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY xvim_spheres_array BEGIN
-	Cleric 				=> major
-	Death 				=> x
-	Vermin	 			=> x
-	Destruction 		=> focus
-	Protection 			=> x
-	War 				=> x
-	Exploration 		=> x
-	Knowledge 			=> x
-	Deception 			=> x
-	Thought 			=> x
-	Dread 				=> focus
-	Druid 				=> x
-	Affliction 			=> x
-	Animal 				=> x
-	Plant 				=> x
-	Earth 				=> x
-	Water 				=> x
-	Air 				=> x
-	Fire 				=> x
-	Light 				=> x
-	Shadow 				=> x
-	Magic 				=> x
-	Astral 				=> x
+	Cleric				=> major
+	Death				=> x
+	Vermin				=> x
+	Destruction		=> focus
+	Protection			=> x
+	War				=> x
+	Exploration		=> x
+	Knowledge			=> x
+	Deception			=> x
+	Thought			=> x
+	Dread				=> focus
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air				=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
+	Astral				=> x
  END
 END
 //___________________________________________________________________________________
@@ -1575,28 +1651,28 @@ DEFINE_ACTION_FUNCTION corellon_spheres
   RET_ARRAY corellon_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY corellon_spheres_array BEGIN
-	Cleric 				=> major
-	Death 				=> x
-	Vermin	 			=> x
-	Destruction 		=> x
-	Protection 			=> x
-	War 				=> x
-	Exploration 		=> x
-	Knowledge 			=> x
-	Deception 			=> x
-	Thought 			=> x
-	Dread 				=> x
-	Druid 				=> x
-	Affliction 			=> x
-	Animal 				=> x
-	Plant 				=> focus
-	Earth 				=> x
-	Water 				=> x
-	Air 				=> x
-	Fire 				=> x
-	Light 				=> x
-	Shadow 				=> x
-	Magic 				=> focus
+	Cleric				=> major
+	Death				=> x
+	Vermin				=> x
+	Destruction		=> x
+	Protection			=> x
+	War				=> x
+	Exploration		=> x
+	Knowledge			=> x
+	Deception			=> x
+	Thought			=> x
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> focus
+	Earth				=> x
+	Water				=> x
+	Air				=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> focus
 	Astral		    	=> x
  END
 END
@@ -1608,29 +1684,29 @@ DEFINE_ACTION_FUNCTION eilistraee_spheres
   RET_ARRAY eilistraee_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY eilistraee_spheres_array BEGIN
-	Cleric 				=> major
-	Death 				=> x
-	Vermin	 			=> x
-	Destruction 		=> x
-	Protection 			=> x
-	War 				=> x
-	Exploration  		=> focus
-	Knowledge 			=> x
-	Deception 			=> x
-	Thought 			=> x
-	Dread 				=> x
-	Druid 				=> x
-	Affliction 			=> x
-	Animal 				=> x
-	Plant 				=> x
-	Earth 				=> x
-	Water 				=> x
-	Air 				=> x
-	Fire 				=> x
-	Light 				=> x
-	Shadow 				=> focus
-	Magic 				=> x
-	Astral   			=> x
+	Cleric				=> major
+	Death				=> x
+	Vermin				=> x
+	Destruction		=> x
+	Protection			=> x
+	War				=> x
+	Exploration 		=> focus
+	Knowledge			=> x
+	Deception			=> x
+	Thought			=> x
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air				=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> focus
+	Magic				=> x
+	Astral  			=> x
  END
 END
 //___________________________________________________________________________________
@@ -1641,29 +1717,29 @@ DEFINE_ACTION_FUNCTION moradin_spheres
   RET_ARRAY moradin_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY moradin_spheres_array BEGIN
-	Cleric 				=> major
-	Death 				=> x
-	Vermin	 			=> x
-	Destruction 		=> x
-	Protection 			=> x
-	War 				=> x
-	Exploration 		=> x
-	Knowledge 			=> x
-	Deception 			=> x
-	Thought 			=> x
-	Dread 				=> x
-	Druid 				=> x
-	Affliction 			=> x
-	Animal 				=> x
-	Plant 				=> x
-	Earth 				=> focus
-	Water 				=> x
-	Air 				=> focus
-	Fire 				=> x
-	Light 				=> x
-	Shadow 				=> x
-	Magic 				=> x
-	Astral  			=> x
+	Cleric				=> major
+	Death				=> x
+	Vermin				=> x
+	Destruction		=> x
+	Protection			=> x
+	War				=> x
+	Exploration		=> x
+	Knowledge			=> x
+	Deception			=> x
+	Thought			=> x
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> focus
+	Water				=> x
+	Air				=> focus
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
+	Astral 			=> x
  END
 END
 //___________________________________________________________________________________
@@ -1674,29 +1750,29 @@ DEFINE_ACTION_FUNCTION clangeddin_spheres
   RET_ARRAY clangeddin_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY clangeddin_spheres_array BEGIN
-	Cleric 				=> major
-	Death 				=> x
-	Vermin	 			=> x
-	Destruction 		=> x
-	Protection 			=> x
-	War 				=> focus
-	Exploration 		=> x
-	Knowledge 			=> x
-	Deception 			=> x
-	Thought 			=> x
-	Dread 				=> x
-	Druid 				=> x
-	Affliction 			=> x
-	Animal 				=> x
-	Plant 				=> x
-	Earth 				=> focus
-	Water 				=> x
-	Air 				=> x
-	Fire 				=> x
-	Light 				=> x
-	Shadow 				=> x
-	Magic 				=> x
-	Astral   			=> x
+	Cleric				=> major
+	Death				=> x
+	Vermin				=> x
+	Destruction		=> x
+	Protection			=> x
+	War				=> focus
+	Exploration		=> x
+	Knowledge			=> x
+	Deception			=> x
+	Thought			=> x
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> focus
+	Water				=> x
+	Air				=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
+	Astral  			=> x
  END
 END
 //___________________________________________________________________________________
@@ -1707,29 +1783,29 @@ DEFINE_ACTION_FUNCTION marthammor_spheres
   RET_ARRAY marthammor_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY marthammor_spheres_array BEGIN
-	Cleric 				=> major
-	Death 				=> x
-	Vermin	 			=> x
-	Destruction 		=> x
-	Protection 			=> x
-	War 				=> x
-	Exploration 		=> focus
-	Knowledge 			=> x
-	Deception 			=> x
-	Thought 			=> x
-	Dread 				=> x
-	Druid 				=> x
-	Affliction 			=> x
-	Animal 				=> x
-	Plant 				=> x
-	Earth 				=> focus
-	Water 				=> x
-	Air 				=> x
-	Fire 				=> x
-	Light 				=> x
-	Shadow 				=> x
-	Magic 				=> x
-	Astral   			=> x
+	Cleric				=> major
+	Death				=> x
+	Vermin				=> x
+	Destruction		=> x
+	Protection			=> x
+	War				=> x
+	Exploration		=> focus
+	Knowledge			=> x
+	Deception			=> x
+	Thought			=> x
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> focus
+	Water				=> x
+	Air				=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
+	Astral  			=> x
  END
 END
 //___________________________________________________________________________________
@@ -1740,28 +1816,28 @@ DEFINE_ACTION_FUNCTION haela_spheres
   RET_ARRAY haela_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY haela_spheres_array BEGIN
-	Cleric		 		=> major
-	Death		 		=> x
+	Cleric				=> major
+	Death				=> x
 	Vermin				=> x
-	Destruction		 	=> x
-	Protection		 	=> x
-	War		 			=> x
+	Destruction			=> x
+	Protection			=> x
+	War					=> x
 	Exploration		  	=> focus
-	Knowledge		 	=> x
-	Deception	 		=> x
-	Thought		 		=> x
-	Dread		 		=> x
-	Druid		 		=> x
-	Affliction		 	=> x
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> focus
-	Water		 		=> x
-	Air		 			=> x
-	Fire		 		=> x
-	Light	 			=> x
-	Shadow		 		=> x
-	Magic		 		=> x
+	Knowledge			=> x
+	Deception			=> x
+	Thought				=> x
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> focus
+	Water				=> x
+	Air					=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
 	Astral		    	=> x
  END
 END
@@ -1773,28 +1849,28 @@ DEFINE_ACTION_FUNCTION baravar_spheres
   RET_ARRAY baravar_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY baravar_spheres_array BEGIN
-	Cleric		 		=> major
-	Death		 		=> x
+	Cleric				=> major
+	Death				=> x
 	Vermin				=> x
-	Destruction		 	=> x
-	Protection		 	=> x
-	War		 			=> x
+	Destruction			=> x
+	Protection			=> x
+	War					=> x
 	Exploration		  	=> x
-	Knowledge		 	=> x
-	Deception	 		=> focus
-	Thought		 		=> x
-	Dread		 		=> x
-	Druid		 		=> x
-	Affliction		 	=> x
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> x
-	Water		 		=> x
-	Air		 			=> x
-	Fire		 		=> x
-	Light	 			=> x
-	Shadow		 		=> focus
-	Magic		 		=> x
+	Knowledge			=> x
+	Deception			=> focus
+	Thought				=> x
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air					=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> focus
+	Magic				=> x
 	Astral		    	=> x
  END
 END
@@ -1806,28 +1882,28 @@ DEFINE_ACTION_FUNCTION baervan_spheres
   RET_ARRAY baervan_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY baervan_spheres_array BEGIN
-	Cleric		 		=> major
-	Death		 		=> x
+	Cleric				=> major
+	Death				=> x
 	Vermin				=> x
-	Destruction		 	=> x
-	Protection		 	=> x
-	War		 			=> x
+	Destruction			=> x
+	Protection			=> x
+	War					=> x
 	Exploration		  	=> x
-	Knowledge		 	=> x
-	Deception	 		=> x
-	Thought		 		=> x
-	Dread		 		=> x
-	Druid		 		=> x
-	Affliction		 	=> x
-	Animal		 		=> focus
-	Plant		 		=> focus
-	Earth		 		=> x
-	Water		 		=> x
-	Air		 			=> x
-	Fire		 		=> x
-	Light	 			=> x
-	Shadow		 		=> x
-	Magic		 		=> x
+	Knowledge			=> x
+	Deception			=> x
+	Thought				=> x
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> focus
+	Plant				=> focus
+	Earth				=> x
+	Water				=> x
+	Air					=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
 	Astral		    	=> x
  END
 END
@@ -1839,28 +1915,28 @@ DEFINE_ACTION_FUNCTION urdlen_spheres
   RET_ARRAY urdlen_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY urdlen_spheres_array BEGIN
-	Cleric		 		=> major
-	Death		 		=> x
+	Cleric				=> major
+	Death				=> x
 	Vermin				=> x
-	Destruction		 	=> x
-	Protection		 	=> x
-	War		 			=> x
+	Destruction			=> x
+	Protection			=> x
+	War					=> x
 	Exploration		  	=> x
-	Knowledge		 	=> x
-	Deception	 		=> x
-	Thought		 		=> x
-	Dread		 		=> focus
-	Druid		 		=> x
-	Affliction		 	=> focus
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> x
-	Water		 		=> x
-	Air		 			=> x
-	Fire		 		=> x
-	Light	 			=> x
-	Shadow		 		=> x
-	Magic		 		=> x
+	Knowledge			=> x
+	Deception			=> x
+	Thought				=> x
+	Dread				=> focus
+	Druid				=> x
+	Affliction			=> focus
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air					=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
 	Astral			    => x
  END
 END
@@ -1872,28 +1948,28 @@ DEFINE_ACTION_FUNCTION yondalla_spheres
   RET_ARRAY yondalla_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY yondalla_spheres_array BEGIN
-	Cleric		 		=> major
-	Death		 		=> x
+	Cleric				=> major
+	Death				=> x
 	Vermin				=> x
-	Destruction		 	=> x
-	Protection		 	=> focus
-	War		 			=> x
+	Destruction			=> x
+	Protection			=> focus
+	War					=> x
 	Exploration		  	=> x
-	Knowledge		 	=> x
-	Deception	 		=> x
-	Thought		 		=> x
-	Dread		 		=> x
-	Druid		 		=> x
-	Affliction		 	=> x
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> focus
-	Water		 		=> x
-	Air		 			=> x
-	Fire		 		=> x
-	Light	 			=> x
-	Shadow		 		=> x
-	Magic		 		=> x
+	Knowledge			=> x
+	Deception			=> x
+	Thought				=> x
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> focus
+	Water				=> x
+	Air					=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
 	Astral		    	=> x
  END
 END
@@ -1905,28 +1981,28 @@ DEFINE_ACTION_FUNCTION arvoreen_spheres
   RET_ARRAY arvoreen_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY arvoreen_spheres_array BEGIN
-	Cleric		 		=> major
-	Death		 		=> x
+	Cleric				=> major
+	Death				=> x
 	Vermin				=> x
-	Destruction		 	=> x
-	Protection		 	=> focus
-	War		 			=> focus
+	Destruction			=> x
+	Protection			=> focus
+	War					=> focus
 	Exploration		  	=> x
-	Knowledge		 	=> x
-	Deception	 		=> x
-	Thought		 		=> x
-	Dread		 		=> x
-	Druid		 		=> x
-	Affliction		 	=> x
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> x
-	Water		 		=> x
-	Air		 			=> x
-	Fire		 		=> x
-	Light	 			=> x
-	Shadow		 		=> x
-	Magic		 		=> x
+	Knowledge			=> x
+	Deception			=> x
+	Thought				=> x
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air					=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
 	Astral		    	=> x
  END
 END
@@ -1938,28 +2014,28 @@ DEFINE_ACTION_FUNCTION brandobaris_spheres
   RET_ARRAY brandobaris_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY brandobaris_spheres_array BEGIN
-	Cleric		 		=> major
-	Death		 		=> x
+	Cleric				=> major
+	Death				=> x
 	Vermin				=> x
-	Destruction		 	=> x
-	Protection		 	=> x
-	War		 			=> x
+	Destruction			=> x
+	Protection			=> x
+	War					=> x
 	Exploration		  	=> focus
-	Knowledge		 	=> x
-	Deception	 		=> focus
-	Thought		 		=> x
-	Dread		 		=> x
-	Druid		 		=> x
-	Affliction		 	=> x
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> x
-	Water		 		=> x
-	Air		 			=> x
-	Fire		 		=> x
-	Light	 			=> x
-	Shadow		 		=> x
-	Magic		 		=> x
+	Knowledge			=> x
+	Deception			=> focus
+	Thought				=> x
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air					=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
 	Astral		    	=> x
  END
 END
@@ -1971,29 +2047,29 @@ DEFINE_ACTION_FUNCTION gruumsh_spheres
   RET_ARRAY gruumsh_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY gruumsh_spheres_array BEGIN
-	Cleric 				=> major
-	Death 				=> x
-	Vermin	 			=> x
-	Destruction 		=> focus
-	Protection 			=> x
-	War 				=> focus
-	Exploration 		=> x
-	Knowledge 			=> x
-	Deception 			=> x
-	Thought 			=> x
-	Dread 				=> x
-	Druid 				=> x
-	Affliction 			=> x
-	Animal 				=> x
-	Plant 				=> x
-	Earth 				=> x
-	Water 				=> x
-	Air 				=> x
-	Fire 				=> x
-	Light 				=> x
-	Shadow 				=> x
-	Magic 				=> x
-	Astral 				=> x
+	Cleric				=> major
+	Death				=> x
+	Vermin				=> x
+	Destruction		=> focus
+	Protection			=> x
+	War				=> focus
+	Exploration		=> x
+	Knowledge			=> x
+	Deception			=> x
+	Thought			=> x
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air				=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
+	Astral				=> x
  END
 END
 //___________________________________________________________________________________
@@ -2004,28 +2080,28 @@ DEFINE_ACTION_FUNCTION luthic_spheres
   RET_ARRAY luthic_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY luthic_spheres_array BEGIN
-	Cleric 				=> focus
-	Death 				=> x
-	Vermin	 			=> x
-	Destruction 		=> x
-	Protection 			=> focus
-	War 				=> x
-	Exploration 		=> x
-	Knowledge 			=> x
-	Deception 			=> x
-	Thought 			=> x
-	Dread 				=> x
-	Druid 				=> x
-	Affliction 			=> x
-	Animal 				=> x
-	Plant 				=> x
-	Earth 				=> x
-	Water 				=> x
-	Air 				=> x
-	Fire 				=> x
-	Light 				=> x
-	Shadow 				=> x
-	Magic 				=> x
+	Cleric				=> focus
+	Death				=> x
+	Vermin				=> x
+	Destruction		=> x
+	Protection			=> focus
+	War				=> x
+	Exploration		=> x
+	Knowledge			=> x
+	Deception			=> x
+	Thought			=> x
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air				=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
 	Astral		    	=> x
  END
 END
@@ -2040,29 +2116,29 @@ DEFINE_ACTION_FUNCTION druid_forest_spheres
   RET_ARRAY druid_forest_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY druid_forest_spheres_array BEGIN
-	Cleric 			=> x
-	Death 			=> x
-	Vermin	 		=> x
+	Cleric			=> x
+	Death			=> x
+	Vermin			=> x
 	Destruction 	=> x
-	Protection 		=> x
-	War 			=> x
+	Protection		=> x
+	War			=> x
 	Exploration  	=> x
-	Knowledge 		=> x
-	Deception 		=> x
-	Thought 		=> x
-	Dread 			=> x
-	Druid 			=> major
-	Affliction 		=> x
-	Animal 			=> x
-	Plant 			=> focus
-	Earth 			=> focus
-	Water 			=> x
-	Air 			=> x
-	Fire 			=> x
-	Light 			=> x
-	Shadow 			=> x
-	Magic 			=> x
-	Astral    		=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought		=> x
+	Dread			=> x
+	Druid			=> major
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> focus
+	Earth			=> focus
+	Water			=> x
+	Air			=> x
+	Fire			=> x
+	Light			=> x
+	Shadow			=> x
+	Magic			=> x
+	Astral   		=> x
  END
 END
 //___________________________________________________________________________________
@@ -2073,29 +2149,29 @@ DEFINE_ACTION_FUNCTION druid_totemic_spheres
   RET_ARRAY druid_totemic_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY druid_totemic_spheres_array BEGIN
-	Cleric 			=> x
-	Death 			=> x
-	Vermin	 		=> x
+	Cleric			=> x
+	Death			=> x
+	Vermin			=> x
 	Destruction 	=> x
-	Protection 		=> x
-	War 			=> x
+	Protection		=> x
+	War			=> x
 	Exploration   	=> x
-	Knowledge 		=> x
-	Deception 		=> x
-	Thought 		=> x
-	Dread 			=> x
-	Druid 			=> major
-	Affliction 		=> x
-	Animal 			=> focus
-	Plant 			=> x
-	Earth 			=> x
-	Water 			=> x
-	Air 			=> x
-	Fire 			=> x
-	Light 			=> x
-	Shadow 			=> x
-	Magic 			=> x
-	Astral		 	=> focus
+	Knowledge		=> x
+	Deception		=> x
+	Thought		=> x
+	Dread			=> x
+	Druid			=> major
+	Affliction		=> x
+	Animal			=> focus
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air			=> x
+	Fire			=> x
+	Light			=> x
+	Shadow			=> x
+	Magic			=> x
+	Astral			=> focus
  END
 END
 //___________________________________________________________________________________
@@ -2106,28 +2182,28 @@ DEFINE_ACTION_FUNCTION druid_hivekeeper_spheres
   RET_ARRAY druid_hivekeeper_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY druid_hivekeeper_spheres_array BEGIN
-	Cleric 			=> x
-	Death 			=> x
-	Vermin	 		=> focus
+	Cleric			=> x
+	Death			=> x
+	Vermin			=> focus
 	Destruction 	=> x
-	Protection 		=> x
-	War 			=> x
+	Protection		=> x
+	War			=> x
 	Exploration   	=> x
-	Knowledge 		=> x
-	Deception 		=> x
-	Thought 		=> x
-	Dread 			=> x
-	Druid 			=> major
-	Affliction 		=> x
-	Animal 			=> x
-	Plant 			=> x
-	Earth 			=> x
-	Water 			=> x
-	Air 			=> focus
-	Fire 			=> x
-	Light 			=> x
-	Shadow 			=> x
-	Magic 			=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought		=> x
+	Dread			=> x
+	Druid			=> major
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air			=> focus
+	Fire			=> x
+	Light			=> x
+	Shadow			=> x
+	Magic			=> x
 	Astral			=> x
  END
 END
@@ -2139,28 +2215,28 @@ DEFINE_ACTION_FUNCTION druid_northern_spheres
   RET_ARRAY druid_northern_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY druid_northern_spheres_array BEGIN
-	Cleric 			=> x
-	Death 			=> x
-	Vermin	 		=> x
+	Cleric			=> x
+	Death			=> x
+	Vermin			=> x
 	Destruction 	=> x
-	Protection 		=> x
-	War 			=> x
+	Protection		=> x
+	War			=> x
 	Exploration   	=> x
-	Knowledge 		=> x
-	Deception 		=> x
-	Thought 		=> x
-	Dread 			=> x
-	Druid 			=> major
-	Affliction 		=> x
-	Animal 			=> x
-	Plant 			=> x
-	Earth 			=> focus
-	Water 			=> focus
-	Air 			=> x
-	Fire 			=> x
-	Light 			=> x
-	Shadow 			=> x
-	Magic 			=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought		=> x
+	Dread			=> x
+	Druid			=> major
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> focus
+	Water			=> focus
+	Air			=> x
+	Fire			=> x
+	Light			=> x
+	Shadow			=> x
+	Magic			=> x
 	Astral		  	=> x
  END
 END
@@ -2172,29 +2248,29 @@ DEFINE_ACTION_FUNCTION druid_shadow_spheres
   RET_ARRAY druid_shadow_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY druid_shadow_spheres_array BEGIN
-	Cleric 			=> x
-	Death 			=> x
-	Vermin	 		=> x
+	Cleric			=> x
+	Death			=> x
+	Vermin			=> x
 	Destruction 	=> x
-	Protection 		=> x
-	War 			=> x
+	Protection		=> x
+	War			=> x
 	Exploration   	=> x
-	Knowledge 		=> x
-	Deception 		=> x
-	Thought 		=> x
-	Dread 			=> x
-	Druid 			=> major
-	Affliction 		=> x
-	Animal 			=> x
-	Plant 			=> focus
-	Earth 			=> x
-	Water 			=> x
-	Air 			=> x
-	Fire 			=> x
-	Light 			=> x
-	Shadow 			=> focus
-	Magic 			=> x
-	Astral		 	=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought		=> x
+	Dread			=> x
+	Druid			=> major
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> focus
+	Earth			=> x
+	Water			=> x
+	Air			=> x
+	Fire			=> x
+	Light			=> x
+	Shadow			=> focus
+	Magic			=> x
+	Astral			=> x
  END
 END
 //___________________________________________________________________________________
@@ -2205,29 +2281,29 @@ DEFINE_ACTION_FUNCTION druid_gray_spheres
   RET_ARRAY druid_gray_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY druid_gray_spheres_array BEGIN
-	Cleric 			=> x
-	Death 			=> x
-	Vermin	 		=> focus
+	Cleric			=> x
+	Death			=> x
+	Vermin			=> focus
 	Destruction 	=> x
-	Protection 		=> x
-	War 			=> x
+	Protection		=> x
+	War			=> x
 	Exploration   	=> x
-	Knowledge 		=> x
-	Deception 		=> x
-	Thought 		=> x
-	Dread 			=> x
-	Druid 			=> major
-	Affliction 		=> x
-	Animal 			=> x
-	Plant 			=> x
-	Earth 			=> focus
-	Water 			=> x
-	Air 			=> x
-	Fire 			=> x
-	Light 			=> x
-	Shadow 			=> x
-	Magic 			=> x
-	Astral		 	=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought		=> x
+	Dread			=> x
+	Druid			=> major
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> focus
+	Water			=> x
+	Air			=> x
+	Fire			=> x
+	Light			=> x
+	Shadow			=> x
+	Magic			=> x
+	Astral			=> x
  END
 END
 //___________________________________________________________________________________
@@ -2238,29 +2314,29 @@ DEFINE_ACTION_FUNCTION druid_lost_spheres
   RET_ARRAY druid_lost_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY druid_lost_spheres_array BEGIN
-	Cleric 			=> x
-	Death 			=> focus
-	Vermin	 		=> x
+	Cleric			=> x
+	Death			=> focus
+	Vermin			=> x
 	Destruction 	=> x
-	Protection 		=> x
-	War 			=> x
+	Protection		=> x
+	War			=> x
 	Exploration   	=> x
-	Knowledge 		=> x
-	Deception 		=> x
-	Thought 		=> x
-	Dread 			=> x
-	Druid 			=> major
-	Affliction 		=> x
-	Animal 			=> x
-	Plant 			=> x
-	Earth 			=> focus
-	Water 			=> x
-	Air 			=> x
-	Fire 			=> x
-	Light 			=> x
-	Shadow 			=> x
-	Magic 			=> x
-	Astral		 	=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought		=> x
+	Dread			=> x
+	Druid			=> major
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> focus
+	Water			=> x
+	Air			=> x
+	Fire			=> x
+	Light			=> x
+	Shadow			=> x
+	Magic			=> x
+	Astral			=> x
  END
 END
 //___________________________________________________________________________________
@@ -2271,29 +2347,29 @@ DEFINE_ACTION_FUNCTION beast_lord_spheres
   RET_ARRAY beast_lord_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY beast_lord_spheres_array BEGIN
-	Cleric 			=> x
-	Death 			=> x
-	Vermin	 		=> x
+	Cleric			=> x
+	Death			=> x
+	Vermin			=> x
 	Destruction 	=> x
-	Protection 		=> x
-	War 			=> x
+	Protection		=> x
+	War			=> x
 	Exploration 	=> focus
-	Knowledge 		=> x
-	Deception 		=> x
-	Thought 		=> x
-	Dread 			=> x
-	Druid 			=> major
-	Affliction 		=> x
-	Animal 			=> focus
-	Plant 			=> x
-	Earth 			=> x
-	Water 			=> x
-	Air 			=> x
-	Fire 			=> x
-	Light 			=> x
-	Shadow 			=> x
-	Magic 			=> x
-	Astral    		=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought		=> x
+	Dread			=> x
+	Druid			=> major
+	Affliction		=> x
+	Animal			=> focus
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air			=> x
+	Fire			=> x
+	Light			=> x
+	Shadow			=> x
+	Magic			=> x
+	Astral   		=> x
  END
 END
 //___________________________________________________________________________________
@@ -2304,29 +2380,29 @@ DEFINE_ACTION_FUNCTION elementalist_spheres
   RET_ARRAY elementalist_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY elementalist_spheres_array BEGIN
-	Cleric 			=> x
-	Death 			=> x
-	Vermin	 		=> x
+	Cleric			=> x
+	Death			=> x
+	Vermin			=> x
 	Destruction 	=> x
-	Protection 		=> x
-	War 			=> x
+	Protection		=> x
+	War			=> x
 	Exploration 	=> x
-	Knowledge 		=> x
-	Deception 		=> x
-	Thought 		=> x
-	Dread 			=> x
-	Druid 			=> x
-	Affliction 		=> x
-	Animal 			=> x
-	Plant 			=> x
-	Earth 			=> focus
-	Water 			=> focus
-	Air 			=> focus
-	Fire 			=> focus
-	Light 			=> focus
-	Shadow 			=> focus
-	Magic 			=> x
-	Astral    		=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought		=> x
+	Dread			=> x
+	Druid			=> x
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> focus
+	Water			=> focus
+	Air			=> focus
+	Fire			=> focus
+	Light			=> focus
+	Shadow			=> focus
+	Magic			=> x
+	Astral   		=> x
  END
 END
 //___________________________________________________________________________________
@@ -2337,28 +2413,28 @@ DEFINE_ACTION_FUNCTION mystic_earth_spheres
   RET_ARRAY mystic_earth_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY mystic_earth_spheres_array BEGIN
-	Cleric 			=> x
-	Death 			=> x
-	Vermin	 		=> x
+	Cleric			=> x
+	Death			=> x
+	Vermin			=> x
 	Destruction 	=> x
-	Protection 		=> x
-	War 			=> x
+	Protection		=> x
+	War			=> x
 	Exploration 	=> x
-	Knowledge 		=> x
-	Deception 		=> x
-	Thought 		=> x
-	Dread 			=> x
-	Druid 			=> major
-	Affliction 		=> x
-	Animal 			=> x
-	Plant 			=> x
-	Earth 			=> focus
-	Water 			=> x
-	Air 			=> x
-	Fire 			=> x
-	Light 			=> x
-	Shadow 			=> x
-	Magic 			=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought		=> x
+	Dread			=> x
+	Druid			=> major
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> focus
+	Water			=> x
+	Air			=> x
+	Fire			=> x
+	Light			=> x
+	Shadow			=> x
+	Magic			=> x
 	Astral			=> focus
  END
 END
@@ -2370,28 +2446,28 @@ DEFINE_ACTION_FUNCTION mystic_water_spheres
   RET_ARRAY mystic_water_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY mystic_water_spheres_array BEGIN
-	Cleric 			=> x
-	Death 			=> x
-	Vermin	 		=> x
+	Cleric			=> x
+	Death			=> x
+	Vermin			=> x
 	Destruction 	=> x
-	Protection 		=> x
-	War 			=> x
+	Protection		=> x
+	War			=> x
 	Exploration 	=> x
-	Knowledge 		=> x
-	Deception 		=> x
-	Thought 		=> x
-	Dread 			=> x
-	Druid 			=> major
-	Affliction 		=> x
-	Animal 			=> x
-	Plant 			=> x
-	Earth 			=> x
-	Water 			=> focus
-	Air 			=> x
-	Fire 			=> x
-	Light 			=> x
-	Shadow 			=> x
-	Magic 			=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought		=> x
+	Dread			=> x
+	Druid			=> major
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> focus
+	Air			=> x
+	Fire			=> x
+	Light			=> x
+	Shadow			=> x
+	Magic			=> x
 	Astral			=> focus
  END
 END
@@ -2403,28 +2479,28 @@ DEFINE_ACTION_FUNCTION mystic_air_spheres
   RET_ARRAY mystic_air_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY mystic_air_spheres_array BEGIN
-	Cleric 			=> x
-	Death 			=> x
-	Vermin	 		=> x
+	Cleric			=> x
+	Death			=> x
+	Vermin			=> x
 	Destruction 	=> x
-	Protection 		=> x
-	War 			=> x
+	Protection		=> x
+	War			=> x
 	Exploration 	=> x
-	Knowledge 		=> x
-	Deception 		=> x
-	Thought 		=> x
-	Dread 			=> x
-	Druid 			=> major
-	Affliction 		=> x
-	Animal 			=> x
-	Plant 			=> x
-	Earth 			=> x
-	Water 			=> x
-	Air 			=> focus
-	Fire 			=> x
-	Light 			=> x
-	Shadow 			=> x
-	Magic 			=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought		=> x
+	Dread			=> x
+	Druid			=> major
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air			=> focus
+	Fire			=> x
+	Light			=> x
+	Shadow			=> x
+	Magic			=> x
 	Astral			=> focus
  END
 END
@@ -2436,28 +2512,28 @@ DEFINE_ACTION_FUNCTION mystic_fire_spheres
   RET_ARRAY mystic_fire_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY mystic_fire_spheres_array BEGIN
-	Cleric 			=> x
-	Death 			=> x
-	Vermin	 		=> x
+	Cleric			=> x
+	Death			=> x
+	Vermin			=> x
 	Destruction 	=> x
-	Protection 		=> x
-	War 			=> x
+	Protection		=> x
+	War			=> x
 	Exploration 	=> x
-	Knowledge 		=> x
-	Deception 		=> x
-	Thought 		=> x
-	Dread 			=> x
-	Druid 			=> major
-	Affliction 		=> x
-	Animal 			=> x
-	Plant 			=> x
-	Earth 			=> x
-	Water 			=> x
-	Air 			=> x
-	Fire 			=> focus
-	Light 			=> x
-	Shadow 			=> x
-	Magic 			=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought		=> x
+	Dread			=> x
+	Druid			=> major
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air			=> x
+	Fire			=> focus
+	Light			=> x
+	Shadow			=> x
+	Magic			=> x
 	Astral			=> focus
  END
 END
@@ -2469,28 +2545,28 @@ DEFINE_ACTION_FUNCTION mystic_light_spheres
   RET_ARRAY mystic_light_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY mystic_light_spheres_array BEGIN
-	Cleric 			=> x
-	Death 			=> x
-	Vermin	 		=> x
+	Cleric			=> x
+	Death			=> x
+	Vermin			=> x
 	Destruction 	=> x
-	Protection 		=> x
-	War 			=> x
+	Protection		=> x
+	War			=> x
 	Exploration 	=> x
-	Knowledge 		=> x
-	Deception 		=> x
-	Thought 		=> x
-	Dread 			=> x
-	Druid 			=> major
-	Affliction 		=> x
-	Animal 			=> x
-	Plant 			=> x
-	Earth 			=> x
-	Water 			=> x
-	Air 			=> x
-	Fire 			=> x
-	Light 			=> focus
-	Shadow 			=> x
-	Magic 			=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought		=> x
+	Dread			=> x
+	Druid			=> major
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air			=> x
+	Fire			=> x
+	Light			=> focus
+	Shadow			=> x
+	Magic			=> x
 	Astral			=> focus
  END
 END
@@ -2502,28 +2578,28 @@ DEFINE_ACTION_FUNCTION mystic_shadow_spheres
   RET_ARRAY mystic_shadow_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY mystic_shadow_spheres_array BEGIN
-	Cleric 			=> x
-	Death 			=> x
-	Vermin	 		=> x
+	Cleric			=> x
+	Death			=> x
+	Vermin			=> x
 	Destruction 	=> x
-	Protection 		=> x
-	War 			=> x
+	Protection		=> x
+	War			=> x
 	Exploration 	=> x
-	Knowledge 		=> x
-	Deception 		=> x
-	Thought 		=> x
-	Dread 			=> x
-	Druid 			=> major
-	Affliction 		=> x
-	Animal 			=> x
-	Plant 			=> x
-	Earth 			=> x
-	Water 			=> x
-	Air 			=> x
-	Fire 			=> x
-	Light 			=> x
-	Shadow 			=> focus
-	Magic 			=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought		=> x
+	Dread			=> x
+	Druid			=> major
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air			=> x
+	Fire			=> x
+	Light			=> x
+	Shadow			=> focus
+	Magic			=> x
 	Astral			=> focus
  END
 END
@@ -2535,29 +2611,29 @@ DEFINE_ACTION_FUNCTION ranger_forest_spheres
   RET_ARRAY ranger_forest_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY ranger_forest_spheres_array BEGIN
-	Cleric 			=> x
-	Death 			=> x
-	Vermin	 		=> x
+	Cleric			=> x
+	Death			=> x
+	Vermin			=> x
 	Destruction 	=> x
-	Protection 		=> x
-	War 			=> x
+	Protection		=> x
+	War			=> x
 	Exploration 	=> x
-	Knowledge 		=> x
-	Deception 		=> x
-	Thought 		=> x
-	Dread 			=> x
-	Druid 			=> major
-	Affliction 		=> x
-	Animal 			=> x
-	Plant 			=> x
-	Earth 			=> x
-	Water 			=> x
-	Air 			=> x
-	Fire 			=> x
-	Light 			=> x
-	Shadow 			=> x
-	Magic 			=> x
-	Astral    		=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought		=> x
+	Dread			=> x
+	Druid			=> major
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air			=> x
+	Fire			=> x
+	Light			=> x
+	Shadow			=> x
+	Magic			=> x
+	Astral   		=> x
  END
 END
 //___________________________________________________________________________________
@@ -2568,29 +2644,29 @@ DEFINE_ACTION_FUNCTION ranger_mountain_spheres
   RET_ARRAY ranger_mountain_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY ranger_mountain_spheres_array BEGIN
-	Cleric 			=> x
-	Death 			=> x
-	Vermin	 		=> x
+	Cleric			=> x
+	Death			=> x
+	Vermin			=> x
 	Destruction 	=> x
-	Protection 		=> x
-	War 			=> x
+	Protection		=> x
+	War			=> x
 	Exploration  	=> x
-	Knowledge 		=> x
-	Deception 		=> x
-	Thought 		=> x
-	Dread 			=> x
-	Druid 			=> major
-	Affliction 		=> x
-	Animal 			=> x
-	Plant 			=> x
-	Earth 			=> x
-	Water 			=> x
-	Air 			=> x
-	Fire 			=> x
-	Light 			=> x
-	Shadow 			=> x
-	Magic 			=> x
-	Astral    		=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought		=> x
+	Dread			=> x
+	Druid			=> major
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air			=> x
+	Fire			=> x
+	Light			=> x
+	Shadow			=> x
+	Magic			=> x
+	Astral   		=> x
  END
 END
 //___________________________________________________________________________________
@@ -2601,29 +2677,29 @@ DEFINE_ACTION_FUNCTION ranger_desert_spheres
   RET_ARRAY ranger_desert_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY ranger_desert_spheres_array BEGIN
-	Cleric 			=> x
-	Death 			=> x
-	Vermin	 		=> x
+	Cleric			=> x
+	Death			=> x
+	Vermin			=> x
 	Destruction 	=> x
-	Protection 		=> x
-	War 			=> x
+	Protection		=> x
+	War			=> x
 	Exploration  	=> x
-	Knowledge 		=> x
-	Deception 		=> x
-	Thought 		=> x
-	Dread 			=> x
-	Druid 			=> major
-	Affliction 		=> x
-	Animal 			=> x
-	Plant 			=> x
-	Earth 			=> x
-	Water 			=> x
-	Air 			=> x
-	Fire 			=> x
-	Light 			=> x
-	Shadow 			=> x
-	Magic 			=> x
-	Astral    		=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought		=> x
+	Dread			=> x
+	Druid			=> major
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air			=> x
+	Fire			=> x
+	Light			=> x
+	Shadow			=> x
+	Magic			=> x
+	Astral   		=> x
  END
 END
 //___________________________________________________________________________________
@@ -2634,29 +2710,29 @@ DEFINE_ACTION_FUNCTION ranger_jungle_spheres
   RET_ARRAY ranger_jungle_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY ranger_jungle_spheres_array BEGIN
-	Cleric 			=> x
-	Death 			=> x
-	Vermin	 		=> x
+	Cleric			=> x
+	Death			=> x
+	Vermin			=> x
 	Destruction 	=> x
-	Protection 		=> x
-	War 			=> x
+	Protection		=> x
+	War			=> x
 	Exploration  	=> x
-	Knowledge 		=> x
-	Deception 		=> x
-	Thought 		=> x
-	Dread 			=> x
-	Druid 			=> major
-	Affliction 		=> x
-	Animal 			=> x
-	Plant 			=> x
-	Earth 			=> x
-	Water 			=> x
-	Air 			=> x
-	Fire 			=> x
-	Light 			=> x
-	Shadow 			=> x
-	Magic 			=> x
-	Astral    		=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought		=> x
+	Dread			=> x
+	Druid			=> major
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air			=> x
+	Fire			=> x
+	Light			=> x
+	Shadow			=> x
+	Magic			=> x
+	Astral   		=> x
  END
 END
 //___________________________________________________________________________________
@@ -2667,29 +2743,29 @@ DEFINE_ACTION_FUNCTION ranger_arctic_spheres
   RET_ARRAY ranger_arctic_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY ranger_arctic_spheres_array BEGIN
-	Cleric 			=> x
-	Death 			=> x
-	Vermin	 		=> x
+	Cleric			=> x
+	Death			=> x
+	Vermin			=> x
 	Destruction 	=> x
-	Protection 		=> x
-	War 			=> x
+	Protection		=> x
+	War			=> x
 	Exploration  	=> x
-	Knowledge 		=> x
-	Deception 		=> x
-	Thought 		=> x
-	Dread 			=> x
-	Druid 			=> major
-	Affliction 		=> x
-	Animal 			=> x
-	Plant 			=> x
-	Earth 			=> x
-	Water 			=> x
-	Air 			=> x
-	Fire 			=> x
-	Light 			=> x
-	Shadow 			=> x
-	Magic 			=> x
-	Astral    		=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought		=> x
+	Dread			=> x
+	Druid			=> major
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air			=> x
+	Fire			=> x
+	Light			=> x
+	Shadow			=> x
+	Magic			=> x
+	Astral   		=> x
  END
 END
 //___________________________________________________________________________________
@@ -2701,29 +2777,29 @@ DEFINE_ACTION_FUNCTION ranger_beastmaster_spheres
   RET_ARRAY ranger_beastmaster_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY ranger_beastmaster_spheres_array BEGIN
-	Cleric 			=> x
-	Death 			=> x
-	Vermin	 		=> x
+	Cleric			=> x
+	Death			=> x
+	Vermin			=> x
 	Destruction 	=> x
-	Protection 		=> x
-	War 			=> x
+	Protection		=> x
+	War			=> x
 	Exploration  	=> x
-	Knowledge 		=> x
-	Deception 		=> x
-	Thought 		=> x
-	Dread 			=> x
-	Druid 			=> major
-	Affliction 		=> x
-	Animal 			=> x
-	Plant 			=> x
-	Earth 			=> x
-	Water 			=> x
-	Air 			=> x
-	Fire 			=> x
-	Light 			=> x
-	Shadow 			=> x
-	Magic 			=> x
-	Astral    		=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought		=> x
+	Dread			=> x
+	Druid			=> major
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air			=> x
+	Fire			=> x
+	Light			=> x
+	Shadow			=> x
+	Magic			=> x
+	Astral   		=> x
  END
 END
 //___________________________________________________________________________________
@@ -2734,29 +2810,29 @@ DEFINE_ACTION_FUNCTION barbarian_ranger_spheres
   RET_ARRAY barbarian_ranger_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY barbarian_ranger_spheres_array BEGIN
-	Cleric 			=> x
-	Death 			=> x
-	Vermin	 		=> x
+	Cleric			=> x
+	Death			=> x
+	Vermin			=> x
 	Destruction 	=> x
-	Protection 		=> x
-	War 			=> x
+	Protection		=> x
+	War			=> x
 	Exploration  	=> x
-	Knowledge 		=> x
-	Deception 		=> x
-	Thought 		=> x
-	Dread 			=> x
-	Druid 			=> major
-	Affliction 		=> x
-	Animal 			=> x
-	Plant 			=> x
-	Earth 			=> x
-	Water 			=> x
-	Air 			=> x
-	Fire 			=> x
-	Light 			=> x
-	Shadow 			=> x
-	Magic 			=> x
-	Astral    		=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought		=> x
+	Dread			=> x
+	Druid			=> major
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air			=> x
+	Fire			=> x
+	Light			=> x
+	Shadow			=> x
+	Magic			=> x
+	Astral   		=> x
  END
 END
 //___________________________________________________________________________________
@@ -2767,29 +2843,29 @@ DEFINE_ACTION_FUNCTION mage_hunter_spheres
   RET_ARRAY mage_hunter_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY mage_hunter_spheres_array BEGIN
-	Cleric 			=> x
-	Death 			=> x
-	Vermin	 		=> x
+	Cleric			=> x
+	Death			=> x
+	Vermin			=> x
 	Destruction 	=> x
-	Protection 		=> x
-	War 			=> x
+	Protection		=> x
+	War			=> x
 	Exploration  	=> x
-	Knowledge 		=> x
-	Deception 		=> x
-	Thought 		=> x
-	Dread 			=> x
-	Druid 			=> major
-	Affliction 		=> x
-	Animal 			=> x
-	Plant 			=> x
-	Earth 			=> x
-	Water 			=> x
-	Air 			=> x
-	Fire 			=> x
-	Light 			=> x
-	Shadow 			=> x
-	Magic 			=> x
-	Astral    		=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought		=> x
+	Dread			=> x
+	Druid			=> major
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air			=> x
+	Fire			=> x
+	Light			=> x
+	Shadow			=> x
+	Magic			=> x
+	Astral   		=> x
  END
 END
 //___________________________________________________________________________________
@@ -2800,29 +2876,29 @@ DEFINE_ACTION_FUNCTION elven_archer_spheres
   RET_ARRAY elven_archer_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY elven_archer_spheres_array BEGIN
-	Cleric 			=> x
-	Death 			=> x
-	Vermin	 		=> x
+	Cleric			=> x
+	Death			=> x
+	Vermin			=> x
 	Destruction 	=> x
-	Protection 		=> x
-	War 			=> x
+	Protection		=> x
+	War			=> x
 	Exploration  	=> x
-	Knowledge 		=> x
-	Deception 		=> x
-	Thought 		=> x
-	Dread 			=> x
-	Druid 			=> major
-	Affliction 		=> x
-	Animal 			=> x
-	Plant 			=> x
-	Earth 			=> x
-	Water 			=> x
-	Air 			=> x
-	Fire 			=> x
-	Light 			=> x
-	Shadow 			=> x
-	Magic 			=> x
-	Astral    		=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought		=> x
+	Dread			=> x
+	Druid			=> major
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air			=> x
+	Fire			=> x
+	Light			=> x
+	Shadow			=> x
+	Magic			=> x
+	Astral   		=> x
  END
 END
 //___________________________________________________________________________________
@@ -2836,28 +2912,28 @@ DEFINE_ACTION_FUNCTION vanilla_shaman_spheres
   RET_ARRAY vanilla_shaman_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY vanilla_shaman_spheres_array BEGIN
-	Cleric 			=> x
-	Death 			=> x
-	Vermin	 		=> x
+	Cleric			=> x
+	Death			=> x
+	Vermin			=> x
 	Destruction 	=> x
-	Protection 		=> x
-	War 			=> x
+	Protection		=> x
+	War			=> x
 	Exploration  	=> x
-	Knowledge 		=> x
-	Deception 		=> x
-	Thought 		=> x
-	Dread 			=> x
-	Druid 			=> major
-	Affliction 		=> x
-	Animal 			=> x
-	Plant 			=> x
-	Earth 			=> focus
-	Water 			=> x
-	Air 			=> x
-	Fire 			=> x
-	Light 			=> x
-	Shadow 			=> x
-	Magic 			=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought		=> x
+	Dread			=> x
+	Druid			=> major
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> focus
+	Water			=> x
+	Air			=> x
+	Fire			=> x
+	Light			=> x
+	Shadow			=> x
+	Magic			=> x
 	Astral			=> focus
  END
 END
@@ -2875,28 +2951,28 @@ DEFINE_ACTION_MACRO vanilla_cleric_spheres BEGIN
 	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0 parameter2 = 9 STR_VAR resource = ~d5splif#~ END
   IF_EXISTS BUT_ONLY
   ACTION_DEFINE_ASSOCIATIVE_ARRAY clabpr01_spheres BEGIN
-	Cleric 			=> major
-	Death 			=> x
-	Vermin	 		=> x
+	Cleric			=> major
+	Death			=> x
+	Vermin			=> x
 	Destruction 	=> x
-	Protection 		=> x
-	War 			=> x
+	Protection		=> x
+	War			=> x
 	Exploration 	=> x
-	Knowledge 		=> x
-	Deception 		=> x
-	Thought 		=> x
-	Dread 			=> x
-	Druid 			=> x
-	Affliction 		=> x
-	Animal 			=> x
-	Plant 			=> x
-	Earth 			=> x
-	Water 			=> x
-	Air 			=> x
-	Fire 			=> x
-	Light 			=> x
-	Shadow 			=> x
-	Magic 			=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought		=> x
+	Dread			=> x
+	Druid			=> x
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air			=> x
+	Fire			=> x
+	Light			=> x
+	Shadow			=> x
+	Magic			=> x
 	Astral			=> x
   END
 END
@@ -2922,28 +2998,28 @@ DEFINE_ACTION_MACRO vanilla_druid_spheres BEGIN
 	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0 parameter2 = 9 STR_VAR resource = ~d5sfpla#~ END
   IF_EXISTS BUT_ONLY
   ACTION_DEFINE_ASSOCIATIVE_ARRAY clabdr01_spheres BEGIN
-	Cleric 			=> x
-	Death 			=> x
-	Vermin	 		=> x
+	Cleric			=> x
+	Death			=> x
+	Vermin			=> x
 	Destruction 	=> x
-	Protection 		=> x
-	War 			=> x
+	Protection		=> x
+	War			=> x
 	Exploration 	=> x
-	Knowledge 		=> x
-	Deception 		=> x
-	Thought 		=> x
-	Dread 			=> x
-	Druid 			=> major
-	Affliction 		=> x
-	Animal 			=> x
-	Plant 			=> x
-	Earth 			=> x
-	Water 			=> x
-	Air 			=> x
-	Fire 			=> x
-	Light 			=> x
-	Shadow 			=> x
-	Magic 			=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought		=> x
+	Dread			=> x
+	Druid			=> major
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air			=> x
+	Fire			=> x
+	Light			=> x
+	Shadow			=> x
+	Magic			=> x
 	Astral			=> x
   END
 END
@@ -2953,28 +3029,28 @@ END
 //
 DEFINE_ACTION_MACRO vanilla_ranger_spheres BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY clabrn01_spheres BEGIN
-	Cleric 			=> x
-	Death 			=> x
-	Vermin	 		=> x
+	Cleric			=> x
+	Death			=> x
+	Vermin			=> x
 	Destruction 	=> x
-	Protection 		=> x
-	War 			=> x
+	Protection		=> x
+	War			=> x
 	Exploration 	=> x
-	Knowledge 		=> x
-	Deception 		=> x
-	Thought 		=> x
-	Dread 			=> x
-	Druid 			=> major
-	Affliction 		=> x
-	Animal 			=> x
-	Plant 			=> x
-	Earth 			=> x
-	Water 			=> x
-	Air 			=> x
-	Fire 			=> x
-	Light 			=> x
-	Shadow 			=> x
-	Magic 			=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought		=> x
+	Dread			=> x
+	Druid			=> major
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air			=> x
+	Fire			=> x
+	Light			=> x
+	Shadow			=> x
+	Magic			=> x
 	Astral			=> x
   END
 END
@@ -2986,29 +3062,29 @@ DEFINE_ACTION_FUNCTION vanilla_avenger_spheres
   RET_ARRAY vanilla_avenger_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY vanilla_avenger_spheres_array BEGIN
-	Cleric 			=> x
-	Death 			=> x
-	Vermin	 		=> x
+	Cleric			=> x
+	Death			=> x
+	Vermin			=> x
 	Destruction 	=> x
-	Protection 		=> x
-	War 			=> x
+	Protection		=> x
+	War			=> x
 	Exploration  	=> x
-	Knowledge 		=> x
-	Deception 		=> x
-	Thought 		=> x
-	Dread 			=> x
-	Druid 			=> major
-	Affliction 		=> x
-	Animal 			=> x
-	Plant 			=> x
-	Earth 			=> x
-	Water 			=> x
-	Air 			=> x
-	Fire 			=> x
-	Light 			=> x
-	Shadow 			=> x
-	Magic 			=> x
-	Astral    		=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought		=> x
+	Dread			=> x
+	Druid			=> major
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air			=> x
+	Fire			=> x
+	Light			=> x
+	Shadow			=> x
+	Magic			=> x
+	Astral   		=> x
  END
 END
 //___________________________________________________________________________________
@@ -3019,29 +3095,29 @@ DEFINE_ACTION_FUNCTION vanilla_paladin_spheres
   RET_ARRAY vanilla_paladin_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY vanilla_paladin_spheres_array BEGIN
-	Cleric 			=> major
-	Death 			=> x
-	Vermin	 		=> x
+	Cleric			=> major
+	Death			=> x
+	Vermin			=> x
 	Destruction 	=> x
-	Protection 		=> x
-	War 			=> x
+	Protection		=> x
+	War			=> x
 	Exploration 	=> x
-	Knowledge 		=> x
-	Deception 		=> x
-	Thought 		=> x
-	Dread 			=> x
-	Druid 			=> x
-	Affliction 		=> x
-	Animal 			=> x
-	Plant 			=> x
-	Earth 			=> x
-	Water 			=> x
-	Air 			=> x
-	Fire 			=> x
-	Light 			=> x
-	Shadow 			=> x
-	Magic 			=> x
-	Astral    		=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought		=> x
+	Dread			=> x
+	Druid			=> x
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air			=> x
+	Fire			=> x
+	Light			=> x
+	Shadow			=> x
+	Magic			=> x
+	Astral   		=> x
  END
 END
 //___________________________________________________________________________________
@@ -3052,29 +3128,29 @@ DEFINE_ACTION_FUNCTION vanilla_cavalier_spheres
   RET_ARRAY vanilla_cavalier_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY vanilla_cavalier_spheres_array BEGIN
-	Cleric 			=> major
-	Death 			=> x
-	Vermin	 		=> x
+	Cleric			=> major
+	Death			=> x
+	Vermin			=> x
 	Destruction 	=> x
-	Protection 		=> x
-	War 			=> x
+	Protection		=> x
+	War			=> x
 	Exploration  	=> x
-	Knowledge 		=> x
-	Deception 		=> x
-	Thought 		=> x
-	Dread 			=> x
-	Druid 			=> x
-	Affliction 		=> x
-	Animal 			=> x
-	Plant 			=> x
-	Earth 			=> x
-	Water 			=> x
-	Air 			=> x
-	Fire 			=> x
-	Light 			=> x
-	Shadow 			=> x
-	Magic 			=> x
-	Astral    		=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought		=> x
+	Dread			=> x
+	Druid			=> x
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air			=> x
+	Fire			=> x
+	Light			=> x
+	Shadow			=> x
+	Magic			=> x
+	Astral   		=> x
  END
 END
 //___________________________________________________________________________________
@@ -3085,29 +3161,29 @@ DEFINE_ACTION_FUNCTION vanilla_inquisitor_spheres
   RET_ARRAY vanilla_inquisitor_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY vanilla_inquisitor_spheres_array BEGIN
-	Cleric 			=> major
-	Death 			=> x
-	Vermin	 		=> x
+	Cleric			=> major
+	Death			=> x
+	Vermin			=> x
 	Destruction 	=> x
-	Protection 		=> x
-	War 			=> x
+	Protection		=> x
+	War			=> x
 	Exploration 	=> x
-	Knowledge 		=> x
-	Deception 		=> x
-	Thought 		=> x
-	Dread 			=> x
-	Druid 			=> x
-	Affliction 		=> x
-	Animal 			=> x
-	Plant 			=> x
-	Earth 			=> x
-	Water 			=> x
-	Air 			=> x
-	Fire 			=> x
-	Light 			=> x
-	Shadow 			=> x
-	Magic 			=> x
-	Astral    		=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought		=> x
+	Dread			=> x
+	Druid			=> x
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air			=> x
+	Fire			=> x
+	Light			=> x
+	Shadow			=> x
+	Magic			=> x
+	Astral   		=> x
  END
 END
 //___________________________________________________________________________________
@@ -3118,29 +3194,29 @@ DEFINE_ACTION_FUNCTION vanilla_undead_hunter_spheres
   RET_ARRAY vanilla_undead_hunter_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY vanilla_undead_hunter_spheres_array BEGIN
-	Cleric 			=> major
-	Death 			=> x
-	Vermin	 		=> x
+	Cleric			=> major
+	Death			=> x
+	Vermin			=> x
 	Destruction 	=> x
-	Protection 		=> x
-	War 			=> x
+	Protection		=> x
+	War			=> x
 	Exploration 	=> x
-	Knowledge 		=> x
-	Deception 		=> x
-	Thought 		=> x
-	Dread 			=> x
-	Druid 			=> x
-	Affliction 		=> x
-	Animal 			=> x
-	Plant 			=> x
-	Earth 			=> x
-	Water 			=> x
-	Air 			=> x
-	Fire 			=> x
-	Light 			=> x
-	Shadow 			=> x
-	Magic 			=> x
-	Astral    		=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought		=> x
+	Dread			=> x
+	Druid			=> x
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air			=> x
+	Fire			=> x
+	Light			=> x
+	Shadow			=> x
+	Magic			=> x
+	Astral   		=> x
  END
 END
 //___________________________________________________________________________________
@@ -3151,28 +3227,28 @@ DEFINE_ACTION_FUNCTION vanilla_blackguard_spheres
   RET_ARRAY vanilla_blackguard_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY vanilla_blackguard_spheres_array BEGIN
-	Cleric 			=> major
-	Death 			=> x
-	Vermin	 		=> x
+	Cleric			=> major
+	Death			=> x
+	Vermin			=> x
 	Destruction 	=> x
-	Protection 		=> x
-	War 			=> x
+	Protection		=> x
+	War			=> x
 	Exploration 	=> x
-	Knowledge 		=> x
-	Deception 		=> x
-	Thought 		=> x
-	Dread 			=> x
-	Druid 			=> x
-	Affliction 		=> x
-	Animal 			=> x
-	Plant 			=> x
-	Earth 			=> x
-	Water 			=> x
-	Air 			=> x
-	Fire 			=> x
-	Light 			=> x
-	Shadow 			=> x
-	Magic 			=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought		=> x
+	Dread			=> x
+	Druid			=> x
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air			=> x
+	Fire			=> x
+	Light			=> x
+	Shadow			=> x
+	Magic			=> x
 	Astral			=> x
  END
 END
@@ -3185,28 +3261,28 @@ END
 //
 DEFINE_ACTION_MACRO DR_oozemaster_spheres BEGIN
  ACTION_DEFINE_ASSOCIATIVE_ARRAY a#ooze_spheres BEGIN
-	Cleric 			=> x
-	Death 			=> x
-	Vermin	 		=> x
+	Cleric			=> x
+	Death			=> x
+	Vermin			=> x
 	Destruction 	=> x
-	Protection 		=> x
-	War 			=> x
+	Protection		=> x
+	War			=> x
 	Exploration 	=> x
-	Knowledge 		=> x
-	Deception 		=> x
-	Thought 		=> x
-	Dread 			=> x
-	Druid 			=> major
-	Affliction 		=> x
-	Animal 			=> x
-	Plant 			=> x
-	Earth 			=> x
-	Water 			=> x
-	Air 			=> x
-	Fire 			=> x
-	Light 			=> x
-	Shadow 			=> x
-	Magic 			=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought		=> x
+	Dread			=> x
+	Druid			=> major
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air			=> x
+	Fire			=> x
+	Light			=> x
+	Shadow			=> x
+	Magic			=> x
 	Astral			=> x
  END
 END
@@ -3216,28 +3292,28 @@ END
 //
 DEFINE_ACTION_MACRO DR_justifier_spheres BEGIN
  ACTION_DEFINE_ASSOCIATIVE_ARRAY a#justif_spheres BEGIN
-	Cleric 			=> major
-	Death 			=> x
-	Vermin	 		=> x
+	Cleric			=> major
+	Death			=> x
+	Vermin			=> x
 	Destruction 	=> x
-	Protection 		=> x
-	War 			=> x
+	Protection		=> x
+	War			=> x
 	Exploration 	=> x
-	Knowledge 		=> x
-	Deception 		=> x
-	Thought 		=> x
-	Dread 			=> x
-	Druid 			=> x
-	Affliction 		=> x
-	Animal 			=> x
-	Plant 			=> x
-	Earth 			=> x
-	Water 			=> x
-	Air 			=> x
-	Fire 			=> x
-	Light 			=> x
-	Shadow 			=> x
-	Magic 			=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought		=> x
+	Dread			=> x
+	Druid			=> x
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air			=> x
+	Fire			=> x
+	Light			=> x
+	Shadow			=> x
+	Magic			=> x
 	Astral			=> x
  END
 END
@@ -3253,28 +3329,28 @@ DEFINE_ACTION_FUNCTION _spheres
   RET_ARRAY _spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY _spheres_array BEGIN
-	Cleric		 		=> major
-	Death		 		=> x
+	Cleric				=> major
+	Death				=> x
 	Vermin				=> x
-	Destruction		 	=> x
-	Protection		 	=> x
-	War		 			=> x
+	Destruction			=> x
+	Protection			=> x
+	War					=> x
 	Exploration		  	=> x
-	Knowledge		 	=> x
-	Deception	 		=> x
-	Thought		 		=> x
-	Dread		 		=> x
-	Druid		 		=> x
-	Affliction		 	=> x
-	Animal		 		=> x
-	Plant		 		=> x
-	Earth		 		=> x
-	Water		 		=> x
-	Air		 			=> x
-	Fire		 		=> x
-	Light	 			=> x
-	Shadow		 		=> x
-	Magic		 		=> x
+	Knowledge			=> x
+	Deception			=> x
+	Thought				=> x
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air					=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
 	Astral		    	=> x
  END
 END
