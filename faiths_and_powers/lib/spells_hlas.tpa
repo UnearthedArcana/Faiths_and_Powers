@@ -481,8 +481,16 @@ COPY_EXISTING ~spwi903.spl~ ~override/d5hmag1.spl~ // spellstrike
 	LPF ALTER_SPELL_HEADER INT_VAR location = 2 END
 IF_EXISTS
 
-//astral______________________________________________________________________________
+//astral_____________________________________________________________________________
 COPY_EXISTING ~sppr751.spl~ ~override~ // ethereal retribution
+	WRITE_SHORT 0x1c 4
+    WRITE_LONG 0x34 1
+	WRITE_BYTE 0x21 (THIS & 0b00111111)
+	LPF ALTER_SPELL_HEADER INT_VAR location = 2 END
+IF_EXISTS
+
+//time_______________________________________________________________________________
+COPY_EXISTING ~spwi909.spl~ ~override/d5phla6.spl~ // timestop
 	WRITE_SHORT 0x1c 4
     WRITE_LONG 0x34 1
 	WRITE_BYTE 0x21 (THIS & 0b00111111)
