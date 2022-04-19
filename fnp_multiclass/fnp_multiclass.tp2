@@ -2,7 +2,7 @@ BACKUP ~faiths_and_powers/backup~
 AUTHOR ~SubtleD and Grammarsalad~
 
 
-VERSION ~0.83.2~
+VERSION ~0.83.3~
 
 
 ALWAYS
@@ -56,9 +56,10 @@ DESIGNATED 91
 REQUIRE_PREDICATE (GAME_IS ~bgee bg2ee eet iwdee~) @8
 
 INCLUDE ~faiths_and_powers/lib/system_compat.tpa~
+INCLUDE ~faiths_and_powers/lib/system_spheres.tpa~
 ACTION_IF (FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~) BEGIN
   INCLUDE ~override/fnp_sphere_list.tpa~
-  LAM d5_define_sphere_names
+  LAM define_sphere_names
   LAM d5_define_sphere_spells
   LAM d5_deity_kit_sphere_lists
 END
@@ -119,9 +120,10 @@ DESIGNATED 92
 REQUIRE_PREDICATE (GAME_IS ~bgee bg2ee eet iwdee~) @8
 
 INCLUDE ~faiths_and_powers/lib/system_compat.tpa~
+INCLUDE ~faiths_and_powers/lib/system_spheres.tpa~
 ACTION_IF (FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~) BEGIN
   INCLUDE ~override/fnp_sphere_list.tpa~
-  LAM d5_define_sphere_names
+  LAM define_sphere_names
   LAM d5_define_sphere_spells
   LAM d5_deity_kit_sphere_lists
 END
@@ -175,9 +177,10 @@ REQUIRE_PREDICATE (GAME_IS ~bgee bg2ee eet iwdee~) @8
 
 INCLUDE ~faiths_and_powers/lib/a7#add_kit_ex.tpa~
 INCLUDE ~faiths_and_powers/lib/system_compat.tpa~
+INCLUDE ~faiths_and_powers/lib/system_spheres.tpa~
 ACTION_IF (FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~) BEGIN
   INCLUDE ~override/fnp_sphere_list.tpa~
-   LAM d5_define_sphere_names
+   LAM define_sphere_names
    LAM d5_define_sphere_spells
    LAM d5_deity_kit_sphere_lists
 END

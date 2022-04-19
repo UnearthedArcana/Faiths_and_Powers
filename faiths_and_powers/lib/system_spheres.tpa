@@ -7,6 +7,396 @@
 //__________________________________________________________________________________
 
 
+DEFINE_ACTION_MACRO which_sphere_strings BEGIN
+
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spheres.d5~) BEGIN
+  OUTER_SPRINT life_string @12102
+END
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__2e_spheres.d5~) BEGIN
+  OUTER_SPRINT life_string @12202
+END
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__vanilla_spheres.d5~) OR (FILE_EXISTS_IN_GAME ~d5__v_plus_spheres.d5~) BEGIN
+  OUTER_SPRINT life_string @12302
+END
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__nu_fnp_spheres.d5~) BEGIN
+  OUTER_SPRINT life_string @12502
+END
+OUTER_SET dlg_life = RESOLVE_STR_REF (~%life_string%~)
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spheres.d5~) BEGIN
+  OUTER_SPRINT death_string @12103
+END
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__2e_spheres.d5~) BEGIN
+  OUTER_SPRINT death_string @12203
+END
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__vanilla_spheres.d5~) OR (FILE_EXISTS_IN_GAME ~d5__v_plus_spheres.d5~) BEGIN
+  OUTER_SPRINT death_string @12303
+END
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__nu_fnp_spheres.d5~) BEGIN
+  OUTER_SPRINT death_string @12503
+END
+OUTER_SET dlg_death = RESOLVE_STR_REF (~%death_string%~)
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spheres.d5~) BEGIN
+  OUTER_SPRINT benediction_string @12104
+END
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__2e_spheres.d5~) BEGIN
+  OUTER_SPRINT benediction_string @12204
+END
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__vanilla_spheres.d5~) OR (FILE_EXISTS_IN_GAME ~d5__v_plus_spheres.d5~) BEGIN
+  OUTER_SPRINT benediction_string @12304
+END
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__nu_fnp_spheres.d5~) BEGIN
+  OUTER_SPRINT benediction_string @12504
+END
+OUTER_SET dlg_benediction = RESOLVE_STR_REF (~%benediction_string%~)
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spheres.d5~) BEGIN
+  OUTER_SPRINT destruction_string @12105
+END
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__2e_spheres.d5~) BEGIN
+  OUTER_SPRINT destruction_string @12205
+END
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__vanilla_spheres.d5~) OR (FILE_EXISTS_IN_GAME ~d5__v_plus_spheres.d5~) BEGIN
+  OUTER_SPRINT destruction_string @12305
+END
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__nu_fnp_spheres.d5~) BEGIN
+  OUTER_SPRINT destruction_string @12505
+END
+OUTER_SET dlg_destruction = RESOLVE_STR_REF (~%destruction_string%~)
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spheres.d5~) BEGIN
+  OUTER_SPRINT protection_string @12106
+END
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__2e_spheres.d5~) BEGIN
+  OUTER_SPRINT protection_string @12206
+END
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__vanilla_spheres.d5~) OR (FILE_EXISTS_IN_GAME ~d5__v_plus_spheres.d5~) BEGIN
+  OUTER_SPRINT protection_string @12306
+END
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__nu_fnp_spheres.d5~) BEGIN
+  OUTER_SPRINT protection_string @12506
+END
+OUTER_SET dlg_protection = RESOLVE_STR_REF (~%protection_string%~)
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spheres.d5~) BEGIN
+  OUTER_SPRINT war_string @12207
+END
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__2e_spheres.d5~) BEGIN
+  OUTER_SPRINT war_string @12207
+END
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__vanilla_spheres.d5~) OR (FILE_EXISTS_IN_GAME ~d5__v_plus_spheres.d5~) BEGIN
+  OUTER_SPRINT war_string @12307
+END
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__nu_fnp_spheres.d5~) BEGIN
+  OUTER_SPRINT war_string @12507
+END
+OUTER_SET dlg_war = RESOLVE_STR_REF (~%war_string%~)
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spheres.d5~) BEGIN
+  OUTER_SPRINT exploration_string @12108
+END
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__2e_spheres.d5~) BEGIN
+  OUTER_SPRINT exploration_string @12208
+END
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__vanilla_spheres.d5~) OR (FILE_EXISTS_IN_GAME ~d5__v_plus_spheres.d5~) BEGIN
+  OUTER_SPRINT exploration_string @12308
+END
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__nu_fnp_spheres.d5~) BEGIN
+  OUTER_SPRINT exploration_string @12508
+END
+OUTER_SET dlg_exploration = RESOLVE_STR_REF (~%exploration_string%~)
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spheres.d5~) BEGIN
+  OUTER_SPRINT knowledge_string @12109
+END
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__2e_spheres.d5~) BEGIN
+  OUTER_SPRINT knowledge_string @12209
+END
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__vanilla_spheres.d5~) OR (FILE_EXISTS_IN_GAME ~d5__v_plus_spheres.d5~) BEGIN
+  OUTER_SPRINT knowledge_string @12309
+END
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__nu_fnp_spheres.d5~) BEGIN
+  OUTER_SPRINT knowledge_string @12509
+END
+OUTER_SET dlg_knowledge = RESOLVE_STR_REF (~%knowledge_string%~)
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spheres.d5~) BEGIN
+  OUTER_SPRINT deception_string @12110
+END
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__2e_spheres.d5~) BEGIN
+  OUTER_SPRINT deception_string @12210
+END
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__vanilla_spheres.d5~) OR (FILE_EXISTS_IN_GAME ~d5__v_plus_spheres.d5~) BEGIN
+  OUTER_SPRINT deception_string @12310
+END
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__nu_fnp_spheres.d5~) BEGIN
+  OUTER_SPRINT deception_string @12510
+END
+OUTER_SET dlg_deception = RESOLVE_STR_REF (~%deception_string%~)
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spheres.d5~) BEGIN
+  OUTER_SPRINT thought_string @12111
+END
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__2e_spheres.d5~) BEGIN
+  OUTER_SPRINT thought_string @12211
+END
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__vanilla_spheres.d5~) OR (FILE_EXISTS_IN_GAME ~d5__v_plus_spheres.d5~) BEGIN
+  OUTER_SPRINT thought_string @12311
+END
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__nu_fnp_spheres.d5~) BEGIN
+  OUTER_SPRINT thought_string @12511
+END
+OUTER_SET dlg_thought = RESOLVE_STR_REF (~%thought_string%~)
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spheres.d5~) BEGIN
+  OUTER_SPRINT dread_string @12112
+END
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__2e_spheres.d5~) BEGIN
+  OUTER_SPRINT dread_string @12212
+END
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__vanilla_spheres.d5~) OR (FILE_EXISTS_IN_GAME ~d5__v_plus_spheres.d5~) BEGIN
+  OUTER_SPRINT dread_string @12312
+END
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__nu_fnp_spheres.d5~) BEGIN
+  OUTER_SPRINT dread_string @12512
+END
+OUTER_SET dlg_dread = RESOLVE_STR_REF (~%dread_string%~)
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spheres.d5~) BEGIN
+  OUTER_SPRINT vigor_string @12113
+END
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__2e_spheres.d5~) BEGIN
+  OUTER_SPRINT vigor_string @12213
+END
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__vanilla_spheres.d5~) OR (FILE_EXISTS_IN_GAME ~d5__v_plus_spheres.d5~) BEGIN
+  OUTER_SPRINT vigor_string @12313
+END
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__nu_fnp_spheres.d5~) BEGIN
+  OUTER_SPRINT vigor_string @12513
+END
+OUTER_SET dlg_vigor = RESOLVE_STR_REF (~%vigor_string%~)
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spheres.d5~) BEGIN
+  OUTER_SPRINT affliction_string @12114
+END
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__2e_spheres.d5~) BEGIN
+  OUTER_SPRINT affliction_string @12214
+END
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__vanilla_spheres.d5~) OR (FILE_EXISTS_IN_GAME ~d5__v_plus_spheres.d5~) BEGIN
+  OUTER_SPRINT affliction_string @12314
+END
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__nu_fnp_spheres.d5~) BEGIN
+  OUTER_SPRINT affliction_string @12514
+END
+OUTER_SET dlg_affliction = RESOLVE_STR_REF (~%affliction_string%~)
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spheres.d5~) BEGIN
+  OUTER_SPRINT animal_string @12115
+END
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__2e_spheres.d5~) BEGIN
+  OUTER_SPRINT animal_string @12215
+END
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__vanilla_spheres.d5~) OR (FILE_EXISTS_IN_GAME ~d5__v_plus_spheres.d5~) BEGIN
+  OUTER_SPRINT animal_string @12315
+END
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__nu_fnp_spheres.d5~) BEGIN
+  OUTER_SPRINT animal_string @12515
+END
+OUTER_SET dlg_animal = RESOLVE_STR_REF (~%animal_string%~)
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spheres.d5~) BEGIN
+  OUTER_SPRINT plant_string @12116
+END
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__2e_spheres.d5~) BEGIN
+  OUTER_SPRINT plant_string @12216
+END
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__vanilla_spheres.d5~) OR (FILE_EXISTS_IN_GAME ~d5__v_plus_spheres.d5~) BEGIN
+  OUTER_SPRINT plant_string @12316
+END
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__nu_fnp_spheres.d5~) BEGIN
+  OUTER_SPRINT plant_string @12516
+END
+OUTER_SET dlg_plant = RESOLVE_STR_REF (~%plant_string%~)
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spheres.d5~) BEGIN
+  OUTER_SPRINT earth_string @12117
+END
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__2e_spheres.d5~) BEGIN
+  OUTER_SPRINT earth_string @12217
+END
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__vanilla_spheres.d5~) OR (FILE_EXISTS_IN_GAME ~d5__v_plus_spheres.d5~) BEGIN
+  OUTER_SPRINT earth_string @12317
+END
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__nu_fnp_spheres.d5~) BEGIN
+  OUTER_SPRINT earth_string @12517
+END
+OUTER_SET dlg_earth = RESOLVE_STR_REF (~%earth_string%~)
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spheres.d5~) BEGIN
+  OUTER_SPRINT air_string @12118
+END
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__2e_spheres.d5~) BEGIN
+  OUTER_SPRINT air_string @12218
+END
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__vanilla_spheres.d5~) OR (FILE_EXISTS_IN_GAME ~d5__v_plus_spheres.d5~) BEGIN
+  OUTER_SPRINT air_string @12318
+END
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__nu_fnp_spheres.d5~) BEGIN
+  OUTER_SPRINT air_string @12518
+END
+OUTER_SET dlg_air = RESOLVE_STR_REF (~%air_string%~)
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spheres.d5~) BEGIN
+  OUTER_SPRINT water_string @12119
+END
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__2e_spheres.d5~) BEGIN
+  OUTER_SPRINT water_string @12219
+END
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__vanilla_spheres.d5~) OR (FILE_EXISTS_IN_GAME ~d5__v_plus_spheres.d5~) BEGIN
+  OUTER_SPRINT water_string @12319
+END
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__nu_fnp_spheres.d5~) BEGIN
+  OUTER_SPRINT water_string @12519
+END
+OUTER_SET dlg_water = RESOLVE_STR_REF (~%water_string%~)
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spheres.d5~) BEGIN
+  OUTER_SPRINT fire_string @12120
+END
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__2e_spheres.d5~) BEGIN
+  OUTER_SPRINT fire_string @12220
+END
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__vanilla_spheres.d5~) OR (FILE_EXISTS_IN_GAME ~d5__v_plus_spheres.d5~) BEGIN
+  OUTER_SPRINT fire_string @12320
+END
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__nu_fnp_spheres.d5~) BEGIN
+  OUTER_SPRINT fire_string @12520
+END
+OUTER_SET dlg_fire = RESOLVE_STR_REF (~%fire_string%~)
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spheres.d5~) BEGIN
+  OUTER_SPRINT light_string @12121
+END
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__2e_spheres.d5~) BEGIN
+  OUTER_SPRINT light_string @12221
+END
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__vanilla_spheres.d5~) OR (FILE_EXISTS_IN_GAME ~d5__v_plus_spheres.d5~) BEGIN
+  OUTER_SPRINT light_string @12321
+END
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__nu_fnp_spheres.d5~) BEGIN
+  OUTER_SPRINT light_string @12521
+END
+OUTER_SET dlg_light = RESOLVE_STR_REF (~%light_string%~)
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spheres.d5~) BEGIN
+  OUTER_SPRINT shadow_string @12122
+END
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__2e_spheres.d5~) BEGIN
+  OUTER_SPRINT shadow_string @12222
+END
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__vanilla_spheres.d5~) OR (FILE_EXISTS_IN_GAME ~d5__v_plus_spheres.d5~) BEGIN
+  OUTER_SPRINT shadow_string @12322
+END
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__nu_fnp_spheres.d5~) BEGIN
+  OUTER_SPRINT shadow_string @12522
+END
+OUTER_SET dlg_shadow = RESOLVE_STR_REF (~%shadow_string%~)
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spheres.d5~) BEGIN
+  OUTER_SPRINT magic_string @12123
+END
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__2e_spheres.d5~) BEGIN
+  OUTER_SPRINT magic_string @12223
+END
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__vanilla_spheres.d5~) OR (FILE_EXISTS_IN_GAME ~d5__v_plus_spheres.d5~) BEGIN
+  OUTER_SPRINT magic_string @12323
+END
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__nu_fnp_spheres.d5~) BEGIN
+  OUTER_SPRINT magic_string @12523
+END
+OUTER_SET dlg_magic = RESOLVE_STR_REF (~%magic_string%~)
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spheres.d5~) BEGIN
+  OUTER_SPRINT astral_string @12124
+END
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__2e_spheres.d5~) BEGIN
+  OUTER_SPRINT astral_string @12224
+END
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__vanilla_spheres.d5~) OR (FILE_EXISTS_IN_GAME ~d5__v_plus_spheres.d5~) BEGIN
+  OUTER_SPRINT astral_string @12324
+END
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__nu_fnp_spheres.d5~) BEGIN
+  OUTER_SPRINT astral_string @12524
+END
+OUTER_SET dlg_astral = RESOLVE_STR_REF (~%astral_string%~)
+
+END // end macro
+//__________________________________________________________________________________
+
+
+//___________________________________________________________________________________
+//___________________________________________________________________________________
+
+
+DEFINE_ACTION_MACRO define_sphere_names BEGIN
+
+ACTION_IF !(FILE_EXISTS_IN_GAME ~d5altsph.2da~) BEGIN
+
+WITH_TRA ~faiths_and_powers/language/english/setup.tra~ BEGIN
+  OUTER_SPRINT universal_string @12101
+END
+
+COPY ~faiths_and_powers/data/sphere_systems/d5altsph.2da~ ~override~
+
+LAM which_sphere_strings
+
+COPY_EXISTING ~d5altsph.2da~ ~override~
+  REPLACE_TEXTUALLY ~new_Universal~ ~%universal_string%~
+  REPLACE_TEXTUALLY ~new_Life~ ~%life_string%~
+  REPLACE_TEXTUALLY ~new_Death~ ~%death_string%~
+  REPLACE_TEXTUALLY ~new_Benediction~ ~%benediction_string%~
+  REPLACE_TEXTUALLY ~new_Destruction~ ~%destruction_string%~
+  REPLACE_TEXTUALLY ~new_Protection~ ~%protection_string%~
+  REPLACE_TEXTUALLY ~new_War~ ~%war_string%~
+  REPLACE_TEXTUALLY ~new_Exploration~ ~%exploration_string%~
+  REPLACE_TEXTUALLY ~new_Knowledge~ ~%knowledge_string%~
+  REPLACE_TEXTUALLY ~new_Deception~ ~%deception_string%~
+  REPLACE_TEXTUALLY ~new_Thought~ ~%thought_string%~
+  REPLACE_TEXTUALLY ~new_Dread~ ~%dread_string%~
+  REPLACE_TEXTUALLY ~new_Vigor~ ~%vigor_string%~
+  REPLACE_TEXTUALLY ~new_Affliction~ ~%affliction_string%~
+  REPLACE_TEXTUALLY ~new_Animal~ ~%animal_string%~
+  REPLACE_TEXTUALLY ~new_Plant~ ~%plant_string%~
+  REPLACE_TEXTUALLY ~new_Earth~ ~%earth_string%~
+  REPLACE_TEXTUALLY ~new_Air~ ~%air_string%~
+  REPLACE_TEXTUALLY ~new_Water~ ~%water_string%~
+  REPLACE_TEXTUALLY ~new_Fire~ ~%fire_string%~
+  REPLACE_TEXTUALLY ~new_Light~ ~%light_string%~
+  REPLACE_TEXTUALLY ~new_Shadow~ ~%shadow_string%~
+  REPLACE_TEXTUALLY ~new_Magic~ ~%magic_string%~
+  REPLACE_TEXTUALLY ~new_Astral~ ~%astral_string%~
+
+WITH_TRA ~faiths_and_powers/language/english/setup.tra~ BEGIN
+
+LAM which_sphere_strings
+
+COPY_EXISTING ~d5altsph.2da~ ~override~
+  REPLACE_TEXTUALLY ~eng_Universal~ ~%universal_string%~
+  REPLACE_TEXTUALLY ~eng_Life~ ~%life_string%~
+  REPLACE_TEXTUALLY ~eng_Death~ ~%death_string%~
+  REPLACE_TEXTUALLY ~eng_Benediction~ ~%benediction_string%~
+  REPLACE_TEXTUALLY ~eng_Destruction~ ~%destruction_string%~
+  REPLACE_TEXTUALLY ~eng_Protection~ ~%protection_string%~
+  REPLACE_TEXTUALLY ~eng_War~ ~%war_string%~
+  REPLACE_TEXTUALLY ~eng_Exploration~ ~%exploration_string%~
+  REPLACE_TEXTUALLY ~eng_Knowledge~ ~%knowledge_string%~
+  REPLACE_TEXTUALLY ~eng_Deception~ ~%deception_string%~
+  REPLACE_TEXTUALLY ~eng_Thought~ ~%thought_string%~
+  REPLACE_TEXTUALLY ~eng_Dread~ ~%dread_string%~
+  REPLACE_TEXTUALLY ~eng_Vigor~ ~%vigor_string%~
+  REPLACE_TEXTUALLY ~eng_Affliction~ ~%affliction_string%~
+  REPLACE_TEXTUALLY ~eng_Animal~ ~%animal_string%~
+  REPLACE_TEXTUALLY ~eng_Plant~ ~%plant_string%~
+  REPLACE_TEXTUALLY ~eng_Earth~ ~%earth_string%~
+  REPLACE_TEXTUALLY ~eng_Air~ ~%air_string%~
+  REPLACE_TEXTUALLY ~eng_Water~ ~%water_string%~
+  REPLACE_TEXTUALLY ~eng_Fire~ ~%fire_string%~
+  REPLACE_TEXTUALLY ~eng_Light~ ~%light_string%~
+  REPLACE_TEXTUALLY ~eng_Shadow~ ~%shadow_string%~
+  REPLACE_TEXTUALLY ~eng_Magic~ ~%magic_string%~
+  REPLACE_TEXTUALLY ~eng_Astral~ ~%astral_string%~
+
+END // end with_tra
+
+END // end if not already exist
+
+END	//	end sphere names macro
+//__________________________________________________________________________________
+
+
+//___________________________________________________________________________________
+//___________________________________________________________________________________
+
+
 DEFINE_ACTION_FUNCTION create_spheres BEGIN
 
 //copy marker file___________________________________________________________________
@@ -1052,7 +1442,6 @@ END // end create spheres function
 //__________________________________________________________________________________
 
 
-
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 
@@ -1081,7 +1470,6 @@ BUT_ONLY
 
 END // end prep vanilla spells function
 //___________________________________________________________________________________
-
 
 
 //__________________________________________________________________________________
@@ -1420,7 +1808,6 @@ COPY_EXISTING ~QD_MCD01.spl~ ~override~
   LPF DELETE_EFFECT INT_VAR match_opcode = 146 STR_VAR match_resource = EVAL ~QD#MCD01~ END
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 9 STR_VAR resource = EVAL ~QD#MCD01~ END
 IF_EXISTS BUT_ONLY
-//___________________________________________________________________________________
 
 CLEAR_ARRAYS
 
@@ -1429,7 +1816,6 @@ CLEAR_ARRAYS
 ACTION_IF GAME_IS ~tob bg2ee eet~ BEGIN
 	INCLUDE ~faiths_and_powers/lib/spells_hlas.tpa~
 END
-//___________________________________________________________________________________
 
 //fix contingency spells_____________________________________________________________
 //
@@ -1448,10 +1834,9 @@ ACTION_IF FILE_EXISTS_IN_GAME ~d5hkno1.spl~ BEGIN
 	LPF ADD_SPELL_EFFECT INT_VAR silent = 1 opcode = 146 target = 1 power = 6 parameter1 = 0 parameter2 = 1 timing = 1 STR_VAR resource = ~spwi908~ END
   BUT_ONLY
 END
-//___________________________________________________________________________________
-
 
 END // end apply spheres function
+//__________________________________________________________________________________
 
 
 //___________________________________________________________________________________
@@ -1485,9 +1870,13 @@ COPY_EXISTING ~d5spsph.2da~ ~override~
 	END
   END
 BUT_ONLY
-//__________________________________________________________________________________
 
 END // end universal spells function
+//__________________________________________________________________________________
+
+
+//___________________________________________________________________________________
+//___________________________________________________________________________________
 
 
 DEFINE_ACTION_FUNCTION sphere_choice BEGIN
@@ -1511,309 +1900,11 @@ OUTER_FOR (ind = 2; ind < 10; ++ind) BEGIN
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 172 STR_VAR resource = EVAL ~d5sphc%ind%~ END  
 END
 
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spheres.d5~) BEGIN
-  OUTER_SPRINT life_string @12102
-END
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__2e_spheres.d5~) BEGIN
-  OUTER_SPRINT life_string @12202
-END
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__vanilla_spheres.d5~) OR (FILE_EXISTS_IN_GAME ~d5__v_plus_spheres.d5~) BEGIN
-  OUTER_SPRINT life_string @12302
-END
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__nu_fnp_spheres.d5~) BEGIN
-  OUTER_SPRINT life_string @12502
-END
-OUTER_SET dlg_life = RESOLVE_STR_REF (~%life_string%~)
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spheres.d5~) BEGIN
-  OUTER_SPRINT death_string @12103
-END
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__2e_spheres.d5~) BEGIN
-  OUTER_SPRINT death_string @12203
-END
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__vanilla_spheres.d5~) OR (FILE_EXISTS_IN_GAME ~d5__v_plus_spheres.d5~) BEGIN
-  OUTER_SPRINT death_string @12303
-END
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__nu_fnp_spheres.d5~) BEGIN
-  OUTER_SPRINT death_string @12503
-END
-OUTER_SET dlg_death = RESOLVE_STR_REF (~%death_string%~)
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spheres.d5~) BEGIN
-  OUTER_SPRINT benediction_string @12104
-END
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__2e_spheres.d5~) BEGIN
-  OUTER_SPRINT benediction_string @12204
-END
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__vanilla_spheres.d5~) OR (FILE_EXISTS_IN_GAME ~d5__v_plus_spheres.d5~) BEGIN
-  OUTER_SPRINT benediction_string @12304
-END
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__nu_fnp_spheres.d5~) BEGIN
-  OUTER_SPRINT benediction_string @12504
-END
-OUTER_SET dlg_benediction = RESOLVE_STR_REF (~%benediction_string%~)
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spheres.d5~) BEGIN
-  OUTER_SPRINT destruction_string @12105
-END
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__2e_spheres.d5~) BEGIN
-  OUTER_SPRINT destruction_string @12205
-END
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__vanilla_spheres.d5~) OR (FILE_EXISTS_IN_GAME ~d5__v_plus_spheres.d5~) BEGIN
-  OUTER_SPRINT destruction_string @12305
-END
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__nu_fnp_spheres.d5~) BEGIN
-  OUTER_SPRINT destruction_string @12505
-END
-OUTER_SET dlg_destruction = RESOLVE_STR_REF (~%destruction_string%~)
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spheres.d5~) BEGIN
-  OUTER_SPRINT protection_string @12106
-END
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__2e_spheres.d5~) BEGIN
-  OUTER_SPRINT protection_string @12206
-END
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__vanilla_spheres.d5~) OR (FILE_EXISTS_IN_GAME ~d5__v_plus_spheres.d5~) BEGIN
-  OUTER_SPRINT protection_string @12306
-END
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__nu_fnp_spheres.d5~) BEGIN
-  OUTER_SPRINT protection_string @12506
-END
-OUTER_SET dlg_protection = RESOLVE_STR_REF (~%protection_string%~)
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spheres.d5~) BEGIN
-  OUTER_SPRINT war_string @12207
-END
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__2e_spheres.d5~) BEGIN
-  OUTER_SPRINT war_string @12207
-END
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__vanilla_spheres.d5~) OR (FILE_EXISTS_IN_GAME ~d5__v_plus_spheres.d5~) BEGIN
-  OUTER_SPRINT war_string @12307
-END
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__nu_fnp_spheres.d5~) BEGIN
-  OUTER_SPRINT war_string @12507
-END
-OUTER_SET dlg_war = RESOLVE_STR_REF (~%war_string%~)
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spheres.d5~) BEGIN
-  OUTER_SPRINT exploration_string @12108
-END
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__2e_spheres.d5~) BEGIN
-  OUTER_SPRINT exploration_string @12208
-END
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__vanilla_spheres.d5~) OR (FILE_EXISTS_IN_GAME ~d5__v_plus_spheres.d5~) BEGIN
-  OUTER_SPRINT exploration_string @12308
-END
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__nu_fnp_spheres.d5~) BEGIN
-  OUTER_SPRINT exploration_string @12508
-END
-OUTER_SET dlg_exploration = RESOLVE_STR_REF (~%exploration_string%~)
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spheres.d5~) BEGIN
-  OUTER_SPRINT knowledge_string @12109
-END
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__2e_spheres.d5~) BEGIN
-  OUTER_SPRINT knowledge_string @12209
-END
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__vanilla_spheres.d5~) OR (FILE_EXISTS_IN_GAME ~d5__v_plus_spheres.d5~) BEGIN
-  OUTER_SPRINT knowledge_string @12309
-END
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__nu_fnp_spheres.d5~) BEGIN
-  OUTER_SPRINT knowledge_string @12509
-END
-OUTER_SET dlg_knowledge = RESOLVE_STR_REF (~%knowledge_string%~)
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spheres.d5~) BEGIN
-  OUTER_SPRINT deception_string @12110
-END
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__2e_spheres.d5~) BEGIN
-  OUTER_SPRINT deception_string @12210
-END
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__vanilla_spheres.d5~) OR (FILE_EXISTS_IN_GAME ~d5__v_plus_spheres.d5~) BEGIN
-  OUTER_SPRINT deception_string @12310
-END
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__nu_fnp_spheres.d5~) BEGIN
-  OUTER_SPRINT deception_string @12510
-END
-OUTER_SET dlg_deception = RESOLVE_STR_REF (~%deception_string%~)
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spheres.d5~) BEGIN
-  OUTER_SPRINT thought_string @12111
-END
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__2e_spheres.d5~) BEGIN
-  OUTER_SPRINT thought_string @12211
-END
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__vanilla_spheres.d5~) OR (FILE_EXISTS_IN_GAME ~d5__v_plus_spheres.d5~) BEGIN
-  OUTER_SPRINT thought_string @12311
-END
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__nu_fnp_spheres.d5~) BEGIN
-  OUTER_SPRINT thought_string @12511
-END
-OUTER_SET dlg_thought = RESOLVE_STR_REF (~%thought_string%~)
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spheres.d5~) BEGIN
-  OUTER_SPRINT dread_string @12112
-END
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__2e_spheres.d5~) BEGIN
-  OUTER_SPRINT dread_string @12212
-END
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__vanilla_spheres.d5~) OR (FILE_EXISTS_IN_GAME ~d5__v_plus_spheres.d5~) BEGIN
-  OUTER_SPRINT dread_string @12312
-END
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__nu_fnp_spheres.d5~) BEGIN
-  OUTER_SPRINT dread_string @12512
-END
-OUTER_SET dlg_dread = RESOLVE_STR_REF (~%dread_string%~)
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spheres.d5~) BEGIN
-  OUTER_SPRINT vigor_string @12113
-END
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__2e_spheres.d5~) BEGIN
-  OUTER_SPRINT vigor_string @12213
-END
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__vanilla_spheres.d5~) OR (FILE_EXISTS_IN_GAME ~d5__v_plus_spheres.d5~) BEGIN
-  OUTER_SPRINT vigor_string @12313
-END
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__nu_fnp_spheres.d5~) BEGIN
-  OUTER_SPRINT vigor_string @12513
-END
-OUTER_SET dlg_vigor = RESOLVE_STR_REF (~%vigor_string%~)
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spheres.d5~) BEGIN
-  OUTER_SPRINT affliction_string @12114
-END
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__2e_spheres.d5~) BEGIN
-  OUTER_SPRINT affliction_string @12214
-END
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__vanilla_spheres.d5~) OR (FILE_EXISTS_IN_GAME ~d5__v_plus_spheres.d5~) BEGIN
-  OUTER_SPRINT affliction_string @12314
-END
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__nu_fnp_spheres.d5~) BEGIN
-  OUTER_SPRINT affliction_string @12514
-END
-OUTER_SET dlg_affliction = RESOLVE_STR_REF (~%affliction_string%~)
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spheres.d5~) BEGIN
-  OUTER_SPRINT animal_string @12115
-END
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__2e_spheres.d5~) BEGIN
-  OUTER_SPRINT animal_string @12215
-END
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__vanilla_spheres.d5~) OR (FILE_EXISTS_IN_GAME ~d5__v_plus_spheres.d5~) BEGIN
-  OUTER_SPRINT animal_string @12315
-END
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__nu_fnp_spheres.d5~) BEGIN
-  OUTER_SPRINT animal_string @12515
-END
-OUTER_SET dlg_animal = RESOLVE_STR_REF (~%animal_string%~)
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spheres.d5~) BEGIN
-  OUTER_SPRINT plant_string @12116
-END
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__2e_spheres.d5~) BEGIN
-  OUTER_SPRINT plant_string @12216
-END
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__vanilla_spheres.d5~) OR (FILE_EXISTS_IN_GAME ~d5__v_plus_spheres.d5~) BEGIN
-  OUTER_SPRINT plant_string @12316
-END
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__nu_fnp_spheres.d5~) BEGIN
-  OUTER_SPRINT plant_string @12516
-END
-OUTER_SET dlg_plant = RESOLVE_STR_REF (~%plant_string%~)
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spheres.d5~) BEGIN
-  OUTER_SPRINT earth_string @12117
-END
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__2e_spheres.d5~) BEGIN
-  OUTER_SPRINT earth_string @12217
-END
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__vanilla_spheres.d5~) OR (FILE_EXISTS_IN_GAME ~d5__v_plus_spheres.d5~) BEGIN
-  OUTER_SPRINT earth_string @12317
-END
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__nu_fnp_spheres.d5~) BEGIN
-  OUTER_SPRINT earth_string @12517
-END
-OUTER_SET dlg_earth = RESOLVE_STR_REF (~%earth_string%~)
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spheres.d5~) BEGIN
-  OUTER_SPRINT air_string @12118
-END
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__2e_spheres.d5~) BEGIN
-  OUTER_SPRINT air_string @12218
-END
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__vanilla_spheres.d5~) OR (FILE_EXISTS_IN_GAME ~d5__v_plus_spheres.d5~) BEGIN
-  OUTER_SPRINT air_string @12318
-END
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__nu_fnp_spheres.d5~) BEGIN
-  OUTER_SPRINT air_string @12518
-END
-OUTER_SET dlg_air = RESOLVE_STR_REF (~%air_string%~)
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spheres.d5~) BEGIN
-  OUTER_SPRINT water_string @12119
-END
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__2e_spheres.d5~) BEGIN
-  OUTER_SPRINT water_string @12219
-END
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__vanilla_spheres.d5~) OR (FILE_EXISTS_IN_GAME ~d5__v_plus_spheres.d5~) BEGIN
-  OUTER_SPRINT water_string @12319
-END
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__nu_fnp_spheres.d5~) BEGIN
-  OUTER_SPRINT water_string @12519
-END
-OUTER_SET dlg_water = RESOLVE_STR_REF (~%water_string%~)
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spheres.d5~) BEGIN
-  OUTER_SPRINT fire_string @12120
-END
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__2e_spheres.d5~) BEGIN
-  OUTER_SPRINT fire_string @12220
-END
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__vanilla_spheres.d5~) OR (FILE_EXISTS_IN_GAME ~d5__v_plus_spheres.d5~) BEGIN
-  OUTER_SPRINT fire_string @12320
-END
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__nu_fnp_spheres.d5~) BEGIN
-  OUTER_SPRINT fire_string @12520
-END
-OUTER_SET dlg_fire = RESOLVE_STR_REF (~%fire_string%~)
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spheres.d5~) BEGIN
-  OUTER_SPRINT light_string @12121
-END
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__2e_spheres.d5~) BEGIN
-  OUTER_SPRINT light_string @12221
-END
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__vanilla_spheres.d5~) OR (FILE_EXISTS_IN_GAME ~d5__v_plus_spheres.d5~) BEGIN
-  OUTER_SPRINT light_string @12321
-END
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__nu_fnp_spheres.d5~) BEGIN
-  OUTER_SPRINT light_string @12521
-END
-OUTER_SET dlg_light = RESOLVE_STR_REF (~%light_string%~)
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spheres.d5~) BEGIN
-  OUTER_SPRINT shadow_string @12122
-END
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__2e_spheres.d5~) BEGIN
-  OUTER_SPRINT shadow_string @12222
-END
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__vanilla_spheres.d5~) OR (FILE_EXISTS_IN_GAME ~d5__v_plus_spheres.d5~) BEGIN
-  OUTER_SPRINT shadow_string @12322
-END
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__nu_fnp_spheres.d5~) BEGIN
-  OUTER_SPRINT shadow_string @12522
-END
-OUTER_SET dlg_shadow = RESOLVE_STR_REF (~%shadow_string%~)
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spheres.d5~) BEGIN
-  OUTER_SPRINT magic_string @12123
-END
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__2e_spheres.d5~) BEGIN
-  OUTER_SPRINT magic_string @12223
-END
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__vanilla_spheres.d5~) OR (FILE_EXISTS_IN_GAME ~d5__v_plus_spheres.d5~) BEGIN
-  OUTER_SPRINT magic_string @12323
-END
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__nu_fnp_spheres.d5~) BEGIN
-  OUTER_SPRINT magic_string @12523
-END
-OUTER_SET dlg_magic = RESOLVE_STR_REF (~%magic_string%~)
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spheres.d5~) BEGIN
-  OUTER_SPRINT astral_string @12124
-END
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__2e_spheres.d5~) BEGIN
-  OUTER_SPRINT astral_string @12224
-END
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__vanilla_spheres.d5~) OR (FILE_EXISTS_IN_GAME ~d5__v_plus_spheres.d5~) BEGIN
-  OUTER_SPRINT astral_string @12324
-END
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5__nu_fnp_spheres.d5~) BEGIN
-  OUTER_SPRINT astral_string @12524
-END
-OUTER_SET dlg_astral = RESOLVE_STR_REF (~%astral_string%~)
-
 COPY ~faiths_and_powers/data/misc/d5_featp.bam~ ~override~
 COPY ~faiths_and_powers/data/sphere_systems/dlg/d5sphch.eff~ ~override~
 COPY ~faiths_and_powers/data/sphere_systems/dlg/d5sphch.cre~ ~override~
+
+LAM which_sphere_strings 
 
 COPY ~faiths_and_powers/data/sphere_systems/dlg/d5sphch.d~ ~weidu_external/faiths_and_powers/compile/d5sphch.d~
 	REPLACE_TEXTUALLY CASE_INSENSITIVE ~dlg_life~ ~#%dlg_life%~
@@ -1849,6 +1940,8 @@ COPY ~faiths_and_powers/lib/markers/d5_marker.d5~ ~override/d5__sphere_choice.d5
 END // end if not file exists
 
 END // end function
+//__________________________________________________________________________________
+
 
 //__________________________________________________________________________________
 //__________________________________________________________________________________

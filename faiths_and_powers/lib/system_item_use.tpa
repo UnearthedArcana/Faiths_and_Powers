@@ -8,8 +8,6 @@
 
 DEFINE_ACTION_FUNCTION change_usability BEGIN
 
-//ACTION_IF NOT GAME_IS ~iwdee~ BEGIN 
-
 //copy marker file___________________________________________________________________
 //
 COPY ~faiths_and_powers/lib/markers/d5_marker.d5~ ~override/d5__fnp_usability.d5~ 
@@ -1182,7 +1180,41 @@ ACTION_IF FILE_EXISTS_IN_GAME ~enginest.2da~ BEGIN
 END
 //__________________________________________________________________________________
 
-//END  // 	end not iwdee
+
+/* foo, need to make sure this doesn't make things worse
+...like, maybe read each relevant proficiency first to make sure it isn't higher
+...maybe need to dust off that READ_EFFECT function! :P
+
+//change .CREs' oBG profs to new BG2 profs__________________________________________
+//
+LAM JOINABLE_NPC_ARRAYS
+
+ACTION_PHP_EACH NON_JOINABLE_NPC_ARRAY AS cre => dv BEGIN
+  COPY_EXISTING ~%cre%~ ~override~
+	PATCH_IF (SOURCE_SIZE > 0x2d3) BEGIN
+	  READ_BYTE 0x6e large_sword_bg1_prof
+	  READ_BYTE 0x6f small_sword_bg1_prof
+	  READ_BYTE 0x71 spear_bg1_prof
+	  READ_BYTE 0x72 blunt_bg1_prof
+	  READ_BYTE 0x73 spiked_bg1_prof
+	  PATCH_IF (large_sword_bg1_prof > 0 ) BEGIN
+	    ADD_BG2_PROFICIENCY ~PROFICIENCYBASTARDSWORD~ large_sword_bg1_prof
+	    ADD_BG2_PROFICIENCY ~PROFICIENCYTWOHANDEDSWORD~ large_sword_bg1_prof
+	    ADD_BG2_PROFICIENCY ~PROFICIENCYSCIMITAR~ large_sword_bg1_prof
+	    ADD_BG2_PROFICIENCY ~PROFICIENCYKATANA~ large_sword_bg1_prof
+	  END
+	  PATCH_IF (spear_bg1_prof > 0 ) BEGIN
+	    ADD_BG2_PROFICIENCY ~PROFICIENCYSPEAR~ spear_bg1_prof
+	    ADD_BG2_PROFICIENCY ~PROFICIENCYHALBERD~ spear_bg1_prof
+	  END
+	  PATCH_IF (spiked_bg1_prof > 0 ) BEGIN
+	    ADD_BG2_PROFICIENCY ~PROFICIENCYMACE~ spiked_bg1_prof
+	  END
+	END
+  BUT_ONLY
+END
+//__________________________________________________________________________________
+*/
 
 END // end function
 

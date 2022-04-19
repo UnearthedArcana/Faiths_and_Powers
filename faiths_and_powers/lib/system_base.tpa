@@ -201,7 +201,8 @@ ALL
 //	ACTION_IF !(~%sphere_list%~ STRING_EQUAL_CASE ~custom~) BEGIN
 	  ACTION_IF (FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~) && (FILE_CONTAINS_EVALUATED (~fnp_sphere_list.tpa~ ~%sphere_list%~)) BEGIN
 		INCLUDE ~override/fnp_sphere_list.tpa~
-		LAM d5_define_sphere_names
+//	    INCLUDE ~faiths_and_powers/lib/system_spheres.tpa~
+		LAM define_sphere_names
 		LAM d5_deity_kit_sphere_lists
 		ACTION_TO_LOWER %sphere_list%
 		LAF ~%sphere_list%~ RET_ARRAY ~%clab_name%_spheres_array~ = EVAL ~%sphere_list%_array~ END
@@ -211,7 +212,7 @@ ALL
 			  READ_2DA_ENTRIES_NOW rows 2
 			  FOR (row = 0; row < rows; ++row) BEGIN
 				READ_2DA_ENTRY_FORMER rows row 0 ~fnp_sphere~
-				READ_2DA_ENTRY_FORMER rows row 1 ~alt_sphere~
+				READ_2DA_ENTRY_FORMER rows row 2 ~alt_sphere~
 				PATCH_IF ~%this_variable%~ STRING_EQUAL_CASE ~%alt_sphere%~ BEGIN
 				  SPRINT new_variable ~%fnp_sphere%~
 				END
@@ -418,7 +419,8 @@ DEFINE_ACTION_MACRO ~BACKFILL_FNP_KIT_INFO~ BEGIN
                && FILE_EXISTS_IN_GAME ~d5_spher.2da~) BEGIN
 
 	INCLUDE ~override/fnp_sphere_list.tpa~
-	LAM d5_define_sphere_names
+//	INCLUDE ~faiths_and_powers/lib/system_spheres.tpa~
+	LAM define_sphere_names
 	LAM d5_deity_kit_sphere_lists
 
 	ACTION_IF !(FILE_EXISTS_IN_GAME ~d5altsph.2da~) BEGIN

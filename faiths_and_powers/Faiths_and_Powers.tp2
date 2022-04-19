@@ -2,7 +2,7 @@ BACKUP ~faiths_and_powers/backup~
 AUTHOR ~SubtleD and Grammarsalad~
 
 
-VERSION ~0.83.2~
+VERSION ~0.83.3~
 
 
 //README ~faiths_and_powers/readme-pnp.html~
@@ -176,7 +176,7 @@ INCLUDE ~faiths_and_powers/lib/system_spheres.tpa~
  LAF prep_vanilla_spells END
 
 INCLUDE ~override/fnp_sphere_list.tpa~
- LAM d5_define_sphere_names
+ LAM define_sphere_names
  LAM d5_define_sphere_spells
  LAM d5_deity_kit_sphere_lists
 
@@ -239,7 +239,7 @@ INCLUDE ~faiths_and_powers/lib/system_spheres.tpa~
  LAF prep_vanilla_spells END
 
 INCLUDE ~override/fnp_sphere_list.tpa~
- LAM d5_define_sphere_names
+ LAM define_sphere_names
  LAM d5_define_sphere_spells
  LAM d5_deity_kit_sphere_lists
 
@@ -303,7 +303,7 @@ COPY ~faiths_and_powers/data/hlas/system_vplus/~ ~weidu_external/faiths_and_powe
 INCLUDE ~faiths_and_powers/lib/system_spheres.tpa~
 
 INCLUDE ~override/fnp_sphere_list.tpa~
- LAM d5_define_sphere_names
+ LAM define_sphere_names
  LAM d5_define_sphere_spells
  LAM d5_deity_kit_sphere_lists
 
@@ -416,7 +416,7 @@ COPY ~faiths_and_powers/data/hlas/system_vplus/~ ~weidu_external/faiths_and_powe
 INCLUDE ~faiths_and_powers/lib/system_spheres.tpa~
 
 INCLUDE ~override/fnp_sphere_list.tpa~
- LAM d5_define_sphere_names
+ LAM define_sphere_names
  LAM d5_define_sphere_spells
  LAM d5_deity_kit_sphere_lists
 
@@ -527,7 +527,7 @@ INCLUDE ~faiths_and_powers/lib/system_spheres.tpa~
  LAF prep_vanilla_spells END
 
 INCLUDE ~override/fnp_sphere_list.tpa~
- LAM d5_define_sphere_names
+ LAM define_sphere_names
  LAM d5_define_sphere_spells
  LAM d5_deity_kit_sphere_lists
 
@@ -586,7 +586,7 @@ INCLUDE ~faiths_and_powers/lib/system_spheres.tpa~
  LAF prep_vanilla_spells END
 
 INCLUDE ~override/fnp_sphere_list.tpa~
- LAM d5_define_sphere_names
+ LAM define_sphere_names
  LAM d5_define_sphere_spells
  LAM d5_deity_kit_sphere_lists
 
@@ -1133,7 +1133,8 @@ INCLUDE ~faiths_and_powers/lib/qd_multiclass.tpa~
 //
 ACTION_IF (FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~) BEGIN
   INCLUDE ~override/fnp_sphere_list.tpa~
-  LAM d5_define_sphere_names
+  INCLUDE ~faiths_and_powers/lib/system_spheres.tpa~
+  LAM define_sphere_names
   LAM d5_define_sphere_spells
   LAM d5_deity_kit_sphere_lists
 END
@@ -1179,8 +1180,9 @@ FORBID_COMPONENT ~faiths_and_powers.tp2~ ~29~ @8
 //check sphere system_______________________________________________________________
 //
 ACTION_IF (FILE_EXISTS_IN_GAME ~clabpr01.2da~) && (FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~) BEGIN
+ INCLUDE ~faiths_and_powers/lib/system_spheres.tpa~
  INCLUDE ~override/fnp_sphere_list.tpa~
-  LAM d5_define_sphere_names
+  LAM define_sphere_names
   LAM d5_define_sphere_spells
   LAM d5_deity_kit_sphere_lists
 END
@@ -1201,7 +1203,6 @@ LAM ~READ_FNP_KIT_INFO~
 
 //Apply Sphere System_______________________________________________________________
 //
-INCLUDE ~faiths_and_powers/lib/system_spheres.tpa~
  LAF apply_spheres END
 //__________________________________________________________________________________
 
