@@ -28,6 +28,7 @@ CLERIC_CHANT                           	0	=	Universal // level 2
 CLERIC_PRAYER                          	0	=	Universal // level 3
 CLERIC_DISPEL_MAGIC                    	0	=	Universal // level 3
 CLERIC_REMOVE_CURSE                    	0	=	Universal // level 3
+CLERIC_BREAK_ENCHANTMENT                0	=	Universal
 CLERIC_LESSER_RESTORATION              	0	=	Universal // level 4
 CLERIC_RECITATION                      	0	=	Universal // level 4
 CLERIC_RIGHTEOUS_WRATH_OF_THE_FAITHFUL 	0	=	Universal // level 5
@@ -49,6 +50,8 @@ CLERIC_FREE_ACTION                      4	=	All
 CLERIC_CURE_SERIOUS_WOUNDS             	4	=	All
 CLERIC_CURE_CRITICAL_WOUNDS            	5	=	All
 CLERIC_MASS_CURE                       	5	=	All
+CLERIC_HALLOW                          	6	=	All
+CLERIC_UNHALLOW                        	6	=	All
 CLERIC_HEAL                            	6	=	All
 CLERIC_DESTRUCTION                      7	=	All
 CLERIC_RESURRECTION                    	7	=	All
@@ -101,10 +104,14 @@ CLERIC_PROTECTION_FROM_EVIL_10_FOOT     4	=	Protection
 CLERIC_REPULSION                        5	=	Protection // sr repulsion
 CLERIC_SHIELD_OF_LATHANDER              5	=	Protection
 CLERIC_ENTROPY_SHIELD                   6	=	Protection
+CLERIC_CELESTIAL_PROTECTION             6	=	Protection
 CLERIC_GREATER_SHIELD_OF_LATHANDER      7	=	Protection
+CLERIC_MASS_NEGATIVE_PLANE_PROTECTION   7	=	Protection
 CLERIC_ABUNDANT_AMMO                    1	=	War
 CLERIC_MAGIC_WEAPON                     1	=	War
+CLERIC_STRIKING                         1	=	War
 CLERIC_SPIRITUAL_HAMMER                 2	=	War
+CLERIC_SEEKING                          2	=	War
 CLERIC_STRENGTH_OF_ONE                  3	=	War
 CLERIC_HOLY_POWER                       3	=	War
 CLERIC_DEFENSIVE_HARMONY                4	=	War
@@ -112,6 +119,19 @@ CLERIC_STAR_METAL_CUDGEL                4	=	War
 CLERIC_RIGHTEOUS_MAGIC                  5	=	War
 CLERIC_BLADE_BARRIER                    6	=	War
 CLERIC_SYMBOL_FEAR                      7	=	War
+SR_WIZARD_EXPEDITIOUS_RETREAT           1	=	Time // SR exped. retreat
+NOSR_b_w101                             1	=	Time // FnP Expeditious Retreat
+CLERIC_SLOW_POISON                     	1	=	Time
+NOSR_WIZARD_PROTECTION_FROM_PETRIFICATION  2	=	Time
+CLERIC_REMOVE_PARALYSIS                 2	=	Time
+d5fnp02                                 2	=	Time // mazzy haste (self-only)
+CLERIC_FREE_ACTION                      3	=	Time
+WIZARD_HASTE                            3	=	Time
+WIZARD_SLOW                             4	=	Time
+WIZARD_STONE_TO_FLESH                   5	=	Time
+WIZARD_FLESH_TO_STONE                   6	=	Time
+WIZARD_IMPROVED_HASTE                   6	=	Time
+WIZARD_DISINTEGRATE                     7	=	Time
 d5fnp03                                 0	=	Perception // identify
 CLERIC_DETECT_EVIL                      1	=	Perception
 CLERIC_FIND_TRAPS                       1	=	Perception
@@ -151,16 +171,22 @@ CLERIC_CONFUSION                        6	=	Thought
 CLERIC_IMPERVIOUS_SANCTITY_OF_MIND      6	=	Thought
 CLERIC_NATURE_BEAUTY                    7	=	Thought
 CLERIC_UNFAILING_ENDURANCE              1	=	Vigor
+CELRIC_BULLS_STRENGTH                  	1	=	Vigor
+CELRIC_CATS_GRACE                      	1	=	Vigor
+CELRIC_BEARS_ENDURANCE                 	1	=	Vigor
 CLERIC_CURE_DISEASE                    	2	=	Vigor
 CLERIC_DRAW_UPON_HOLY_MIGHT             2	=	Vigor
 CLERIC_REGENERATE_MODERATE_WOUNDS       3	=	Vigor
 CLERIC_NEUTRALIZE_POISON                3	=	Vigor
 CLERIC_REGENERATE_SERIOUS_WOUNDS        4	=	Vigor
 CLERIC_ANIMAL_RAGE                      4	=	Vigor
+CLERIC_HEROISM                          5	=	Vigor
 CLERIC_REGENERATE_CRITICAL_WOUNDS       5	=	Vigor
 CLERIC_MASS_REGENERATE                  5	=	Vigor
 CLERIC_RAISE_DEAD                      	6	=	Vigor
+CLERIC_SUPERHEROISM                    	6	=	Vigor
 CLERIC_REGENERATE                       7	=	Vigor
+CLERIC_AURA_OF_VITALITY                 7	=	Vigor
 CLERIC_CAUSE_DISEASE                   	1	=	Decay  //SR accounted for
 CLERIC_SHATTER                          2	=	Decay
 CLERIC_MOLD_TOUCH                      	3	=	Decay
@@ -188,6 +214,7 @@ SR_CLERIC_ANIMAL_SUMMONING_LEVEL_7      7	=	Animal // SR Animal Summon 7
 NOSR_CLERIC_CONJURE_ANIMALS             7	=	Animal
 d5btswm                                 1	=	Insects // liddle beetle swarm
 d5spswm                                 2	=	Insects // liddle spider swarm
+CLERIC_REPEL_INSECTS                    2	=	Insects
 spdr201                                 3	=	Insects // druid version of web
 CLERIC_SUMMON_INSECTS                   3	=	Insects
 CLERIC_GIANT_INSECT                     4	=	Insects
@@ -204,10 +231,12 @@ CLERIC_BARKSKIN                         2	=	Plant
 CLERIC_THORN_SPRAY                      3	=	Plant
 CLERIC_SNARE                            3	=	Plant
 CLERIC_SPIKE_GROWTH                     4	=	Plant
+CLERIC_STICKS_TO_SNAKES                 4	=	Plant
 CLERIC_CALL_WOODLAND_BEINGS             5	=	Plant
 CLERIC_NATURES_WRATH                    6	=	Plant
 CLERIC_ASSASSIN_VINES                   6	=	Plant
 CLERIC_STALKER                          7	=	Plant
+CLERIC_HOLLY_DART                       7	=	Plant
 CLERIC_BINDING                         	1	=	Earth
 CLERIC_MAGIC_STONE                      1	=	Earth
 CLERIC_PROTECTION_FROM_LIGHTNING        2	=	Earth
@@ -233,6 +262,7 @@ CLERIC_STATIC_CHARGE                    4	=	Air
 CLERIC_WHIRLWIND                        5	=	Air
 CLERIC_PROTECTION_FROM_LIGHTNING        5	=	Air // SR pro. lightning
 WIZARD_CONJURE_LESSER_AIR_ELEMENTAL     5	=	Air
+CLERIC_LIGHTNING_STORM                  6	=	Air
 SR_CLERIC_CONJURE_AIR_ELEMENTAL         6	=	Air // SR air elemental
 WIZARD_DEATH_FOG                        7	=	Air
 CLERIC_AERIAL_SERVANT                   7	=	Air
@@ -243,6 +273,8 @@ CLERIC_BLESS_WATER                     	1	=	Water
 CLERIC_WATERY_FIST                      2	=	Water
 CLERIC_ICE_BLADE                        2	=	Water
 b_c203                                  2	=	Water // ice blade
+CLERIC_RESIST_ACID_CORROSION            2	=	Water
+CLERIC_PROTECTION_FROM_COLD             3	=	Water
 WIZARD_SNILLOCS_SNOWBALL_SWARM          3	=	Water
 b_w204                                  3	=	Water // Snowball Swarm
 WIZARD_ICELANCE                         3	=	Water
@@ -269,6 +301,7 @@ SR_CLERIC_PROTECTION_FROM_FIRE          4	=	Fire
 WIZARD_FIRE_SHIELD_RED                  5	=	Fire
 CLERIC_FLAME_STRIKE                     5	=	Fire
 WIZARD_CONJURE_LESSER_FIRE_ELEMENTAL    5	=	Fire
+CLERIC_INFERNO                          6	=	Fire
 CLERIC_CONJURE_FIRE_ELEMENTAL           6	=	Fire
 CLERIC_FIRE_SEEDS                       6	=	Fire
 CLERIC_FIRE_STORM                       7	=	Fire
@@ -295,19 +328,6 @@ WIZARD_SHADES                           6	=	Shadow
 B_W629                                  6	=	Shadow // Shades
 WIZARD_POWER_WORD_BLIND                 7	=	Shadow
 WIZARD_GHOSTFORM                        7	=	Shadow
-SR_WIZARD_EXPEDITIOUS_RETREAT           1	=	Time // SR exped. retreat
-NOSR_b_w101                             1	=	Time // FnP Expeditious Retreat
-CLERIC_SLOW_POISON                     	1	=	Time
-NOSR_WIZARD_PROTECTION_FROM_PETRIFICATION  2	=	Time
-CLERIC_REMOVE_PARALYSIS                 2	=	Time
-d5fnp02                                 2	=	Time // mazzy haste (self-only)
-CLERIC_FREE_ACTION                      3	=	Time
-WIZARD_HASTE                            3	=	Time
-WIZARD_SLOW                             4	=	Time
-WIZARD_STONE_TO_FLESH                   5	=	Time
-WIZARD_FLESH_TO_STONE                   6	=	Time
-WIZARD_IMPROVED_HASTE                   6	=	Time
-WIZARD_DISINTEGRATE                     7	=	Time
 CLERIC_FAERIE_FIRE                      1	=	Spirit
 CLERIC_SPIRIT_WARD                      1	=	Spirit // modify to work against all planar creatures
 CLERIC_WRITHING_FOG                     2	=	Spirit
@@ -338,13 +358,13 @@ DEFINE_ACTION_FUNCTION ur_priest_spheres
   RET_ARRAY ur_priest_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY ur_priest_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> x
 	Death			=> x
 	Law				=> major
 	Chaos			=> major
 	Protection		=> major
 	War				=> major
+	Time			=> x
 	Perception		=> major
 	Deceit			=> x
 	Thought			=> major
@@ -359,7 +379,7 @@ DEFINE_ACTION_FUNCTION ur_priest_spheres
 	Fire			=> x
 	Radiance		=> x
 	Shadow			=> x
-	Time			=> x
+	no_sphere_1		=> x
 	Spirit		    => x
  END
 END
@@ -374,13 +394,13 @@ DEFINE_ACTION_FUNCTION auril_spheres
   RET_ARRAY auril_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY auril_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> major
 	Death			=> major
 	Law				=> x
 	Chaos			=> major
 	Protection		=> major
 	War				=> minor
+	Time			=> x
 	Perception		=> major
 	Deceit			=> x
 	Thought			=> minor
@@ -395,7 +415,7 @@ DEFINE_ACTION_FUNCTION auril_spheres
 	Fire			=> x
 	Radiance		=> x
 	Shadow			=> minor
-	Time			=> x
+	no_sphere_1		=> x
 	Spirit		    => x
  END
 END
@@ -407,13 +427,13 @@ DEFINE_ACTION_FUNCTION azuth_spheres
   RET_ARRAY azuth_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY azuth_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> major
 	Death			=> x
 	Law				=> major
 	Chaos			=> x
 	Protection		=> major
 	War				=> x
+	Time			=> minor
 	Perception		=> major
 	Deceit			=> x
 	Thought			=> major
@@ -428,7 +448,7 @@ DEFINE_ACTION_FUNCTION azuth_spheres
 	Fire			=> minor
 	Radiance		=> major
 	Shadow			=> minor
-	Time			=> minor
+	no_sphere_1		=> x
 	Spirit		    => major
  END
 END
@@ -440,13 +460,13 @@ DEFINE_ACTION_FUNCTION bane_spheres
   RET_ARRAY bane_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY bane_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> minor
 	Death			=> major
 	Law				=> major
 	Chaos			=> x
 	Protection		=> minor
 	War				=> major
+	Time			=> x
 	Perception		=> major
 	Deceit			=> x
 	Thought			=> x
@@ -461,7 +481,7 @@ DEFINE_ACTION_FUNCTION bane_spheres
 	Fire			=> x
 	Radiance		=> x
 	Shadow			=> minor
-	Time			=> x
+	no_sphere_1		=> x
 	Spirit		    => x
  END
 END
@@ -473,13 +493,13 @@ DEFINE_ACTION_FUNCTION beshaba_spheres
   RET_ARRAY beshaba_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY beshaba_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> major
 	Death			=> minor
 	Law				=> x
 	Chaos			=> major
 	Protection		=> major
 	War				=> x
+	Time			=> minor
 	Perception		=> major
 	Deceit			=> minor
 	Thought			=> major
@@ -494,7 +514,7 @@ DEFINE_ACTION_FUNCTION beshaba_spheres
 	Fire			=> major
 	Radiance		=> x
 	Shadow			=> x
-	Time			=> minor
+	no_sphere_1		=> x
 	Spirit		    => x
  END
 END
@@ -506,13 +526,13 @@ DEFINE_ACTION_FUNCTION bhaal_spheres
   RET_ARRAY bhaal_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY bhaal_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> minor
 	Death			=> major
 	Law				=> major
 	Chaos			=> x
 	Protection		=> x
 	War				=> major
+	Time			=> x
 	Perception		=> major
 	Deceit			=> x
 	Thought			=> x
@@ -527,7 +547,7 @@ DEFINE_ACTION_FUNCTION bhaal_spheres
 	Fire			=> x
 	Radiance		=> x
 	Shadow			=> minor
-	Time			=> x
+	no_sphere_1		=> x
 	Spirit		    => major
  END
 END
@@ -539,13 +559,13 @@ DEFINE_ACTION_FUNCTION cyric_spheres
   RET_ARRAY cyric_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY cyric_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> minor
 	Death			=> major
 	Law				=> x
 	Chaos			=> major
 	Protection		=> x
 	War				=> major
+	Time			=> x
 	Perception		=> major
 	Deceit			=> major
 	Thought			=> minor
@@ -560,7 +580,7 @@ DEFINE_ACTION_FUNCTION cyric_spheres
 	Fire			=> x
 	Radiance		=> x
 	Shadow			=> major
-	Time			=> x
+	no_sphere_1		=> x
 	Spirit		    => minor
  END
 END
@@ -572,13 +592,13 @@ DEFINE_ACTION_FUNCTION deneir_spheres
   RET_ARRAY deneir_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY deneir_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> major
 	Death			=> x
 	Law				=> major
 	Chaos			=> major
 	Protection		=> major
 	War				=> x
+	Time			=> minor
 	Perception		=> major
 	Deceit			=> minor
 	Thought			=> major
@@ -593,7 +613,7 @@ DEFINE_ACTION_FUNCTION deneir_spheres
 	Fire			=> x
 	Radiance		=> major
 	Shadow			=> minor
-	Time			=> minor
+	no_sphere_1		=> x
 	Spirit		    => x
  END
 END
@@ -605,13 +625,13 @@ DEFINE_ACTION_FUNCTION garagos_spheres
   RET_ARRAY garagos_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY garagos_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> minor
 	Death			=> major
 	Law				=> x
 	Chaos			=> major
 	Protection		=> minor
 	War				=> major
+	Time			=> x
 	Perception		=> minor
 	Deceit			=> x
 	Thought			=> x
@@ -626,7 +646,7 @@ DEFINE_ACTION_FUNCTION garagos_spheres
 	Fire			=> major
 	Radiance		=> x
 	Shadow			=> x
-	Time			=> x
+	no_sphere_1		=> x
 	Spirit		    => x
  END
 END
@@ -637,13 +657,13 @@ DEFINE_ACTION_FUNCTION helm_spheres
   RET_ARRAY helm_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY helm_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> major
 	Death			=> x
 	Law				=> major
 	Chaos			=> x
 	Protection		=> major
 	War				=> major
+	Time			=> x
 	Perception		=> major
 	Deceit			=> x
 	Thought			=> minor
@@ -658,7 +678,7 @@ DEFINE_ACTION_FUNCTION helm_spheres
 	Fire			=> minor
 	Radiance		=> major
 	Shadow			=> x
-	Time			=> x
+	no_sphere_1		=> x
 	Spirit		    => minor
  END
 END
@@ -670,13 +690,13 @@ DEFINE_ACTION_FUNCTION ilmater_spheres
   RET_ARRAY ilmater_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY ilmater_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> major
 	Death			=> minor
 	Law				=> major
 	Chaos			=> x
 	Protection		=> major
 	War				=> x
+	Time			=> minor
 	Perception		=> major
 	Deceit			=> minor
 	Thought			=> major
@@ -691,7 +711,7 @@ DEFINE_ACTION_FUNCTION ilmater_spheres
 	Fire			=> x
 	Radiance		=> minor
 	Shadow			=> x
-	Time			=> minor
+	no_sphere_1		=> x
 	Spirit		    => major
  END
 END
@@ -703,13 +723,13 @@ DEFINE_ACTION_FUNCTION kelemvor_spheres
   RET_ARRAY kelemvor_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY kelemvor_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> major
 	Death			=> focus
 	Law				=> major
 	Chaos			=> x
 	Protection		=> major
 	War				=> major
+	Time			=> x
 	Perception		=> major
 	Deceit			=> x
 	Thought			=> minor
@@ -724,7 +744,7 @@ DEFINE_ACTION_FUNCTION kelemvor_spheres
 	Fire			=> x
 	Radiance		=> x
 	Shadow			=> x
-	Time			=> x
+	no_sphere_1		=> x
 	Spirit		    => major
  END
 END
@@ -736,13 +756,13 @@ DEFINE_ACTION_FUNCTION kossuth_spheres
   RET_ARRAY kossuth_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY kossuth_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> major
 	Death			=> x
 	Law				=> x
 	Chaos			=> major
 	Protection		=> major
 	War				=> minor
+	Time			=> x
 	Perception		=> major
 	Deceit			=> x
 	Thought			=> x
@@ -757,7 +777,7 @@ DEFINE_ACTION_FUNCTION kossuth_spheres
 	Fire			=> focus
 	Radiance		=> major
 	Shadow			=> x
-	Time			=> x
+	no_sphere_1		=> x
 	Spirit		    => minor
  END
 END
@@ -769,13 +789,13 @@ DEFINE_ACTION_FUNCTION lathander_spheres
   RET_ARRAY lathander_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY lathander_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> major
 	Death			=> x
 	Law				=> minor
 	Chaos			=> x
 	Protection		=> major
 	War				=> minor
+	Time			=> minor
 	Perception		=> major
 	Deceit			=> x
 	Thought			=> major
@@ -790,7 +810,7 @@ DEFINE_ACTION_FUNCTION lathander_spheres
 	Fire			=> major
 	Radiance		=> focus
 	Shadow			=> x
-	Time			=> minor
+	no_sphere_1		=> x
 	Spirit		    => x
   END
 END
@@ -802,13 +822,13 @@ DEFINE_ACTION_FUNCTION leira_spheres
   RET_ARRAY leira_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY leira_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> major
 	Death			=> x
 	Law				=> x
 	Chaos			=> major
 	Protection		=> minor
 	War				=> x
+	Time			=> x
 	Perception		=> major
 	Deceit			=> major
 	Thought			=> major
@@ -823,7 +843,7 @@ DEFINE_ACTION_FUNCTION leira_spheres
 	Fire			=> x
 	Radiance		=> major
 	Shadow			=> minor
-	Time			=> x
+	no_sphere_1		=> x
 	Spirit		    => x
  END
 END
@@ -835,13 +855,13 @@ DEFINE_ACTION_FUNCTION loviatar_spheres
   RET_ARRAY loviatar_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY loviatar_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> major
 	Death			=> major
 	Law				=> major
 	Chaos			=> x
 	Protection		=> x
 	War				=> minor
+	Time			=> minor
 	Perception		=> major
 	Deceit			=> minor
 	Thought			=> major
@@ -856,7 +876,7 @@ DEFINE_ACTION_FUNCTION loviatar_spheres
 	Fire			=> x
 	Radiance		=> x
 	Shadow			=> minor
-	Time			=> minor
+	no_sphere_1		=> x
 	Spirit		    => major
  END
 END
@@ -868,13 +888,13 @@ DEFINE_ACTION_FUNCTION malar_spheres
   RET_ARRAY malar_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY malar_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> minor
 	Death			=> major
 	Law				=> x
 	Chaos			=> major
 	Protection		=> x
 	War				=> x
+	Time			=> x
 	Perception		=> minor
 	Deceit			=> x
 	Thought			=> major
@@ -889,7 +909,7 @@ DEFINE_ACTION_FUNCTION malar_spheres
 	Fire			=> x
 	Radiance		=> x
 	Shadow			=> major
-	Time			=> x
+	no_sphere_1		=> x
 	Spirit		    => x
  END
 END
@@ -901,13 +921,13 @@ DEFINE_ACTION_FUNCTION mask_spheres
   RET_ARRAY mask_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY mask_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> major
 	Death			=> minor
 	Law				=> minor
 	Chaos			=> major
 	Protection		=> minor
 	War				=> x
+	Time			=> minor
 	Perception		=> major
 	Deceit			=> major
 	Thought			=> major
@@ -922,7 +942,7 @@ DEFINE_ACTION_FUNCTION mask_spheres
 	Fire			=> x
 	Radiance		=> x
 	Shadow			=> major
-	Time			=> minor
+	no_sphere_1		=> x
 	Spirit		    => x
  END
 END
@@ -934,13 +954,13 @@ DEFINE_ACTION_FUNCTION mielikki_spheres
   RET_ARRAY mielikki_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY mielikki_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> major
 	Death			=> x
 	Law				=> x
 	Chaos			=> x
 	Protection		=> major
 	War				=> x
+	Time			=> minor
 	Perception		=> major
 	Deceit			=> x
 	Thought			=> x
@@ -955,7 +975,7 @@ DEFINE_ACTION_FUNCTION mielikki_spheres
 	Fire			=> x
 	Radiance		=> major
 	Shadow			=> minor
-	Time			=> minor
+	no_sphere_1		=> x
 	Spirit		    => x
  END
 END
@@ -967,13 +987,13 @@ DEFINE_ACTION_FUNCTION milil_spheres
   RET_ARRAY milil_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY milil_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> major
 	Death			=> x
 	Law				=> major
 	Chaos			=> minor
 	Protection		=> major
 	War				=> x
+	Time			=> minor
 	Perception		=> major
 	Deceit			=> minor
 	Thought			=> major
@@ -988,7 +1008,7 @@ DEFINE_ACTION_FUNCTION milil_spheres
 	Fire			=> x
 	Radiance		=> major
 	Shadow			=> x
-	Time			=> minor
+	no_sphere_1		=> x
 	Spirit		    => minor
  END
 END
@@ -1000,13 +1020,13 @@ DEFINE_ACTION_FUNCTION moander_spheres
   RET_ARRAY moander_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY moander_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> x
 	Death			=> major
 	Law				=> x
 	Chaos			=> minor
 	Protection		=> x
 	War				=> x
+	Time			=> minor
 	Perception		=> x
 	Deceit			=> x
 	Thought			=> x
@@ -1021,7 +1041,7 @@ DEFINE_ACTION_FUNCTION moander_spheres
 	Fire			=> x
 	Radiance		=> x
 	Shadow			=> major
-	Time			=> minor
+	no_sphere_1		=> x
 	Spirit		    => x
  END
 END
@@ -1033,13 +1053,13 @@ DEFINE_ACTION_FUNCTION mystra_spheres
   RET_ARRAY mystra_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY mystra_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> major
 	Death			=> x
 	Law				=> major
 	Chaos			=> major
 	Protection		=> major
 	War				=> x
+	Time			=> major
 	Perception		=> major
 	Deceit			=> major
 	Thought			=> minor
@@ -1054,7 +1074,7 @@ DEFINE_ACTION_FUNCTION mystra_spheres
 	Fire			=> minor
 	Radiance		=> major
 	Shadow			=> minor
-	Time			=> major
+	no_sphere_1		=> x
 	Spirit		    => major
  END
 END
@@ -1066,13 +1086,13 @@ DEFINE_ACTION_FUNCTION oghma_spheres
   RET_ARRAY oghma_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY oghma_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> major
 	Death			=> minor
 	Law				=> major
 	Chaos			=> x
 	Protection		=> major
 	War				=> x
+	Time			=> major
 	Perception		=> focus
 	Deceit			=> minor
 	Thought			=> major
@@ -1087,7 +1107,7 @@ DEFINE_ACTION_FUNCTION oghma_spheres
 	Fire			=> x
 	Radiance		=> major
 	Shadow			=> minor
-	Time			=> major
+	no_sphere_1		=> x
 	Spirit		    => x
  END
 END
@@ -1099,13 +1119,13 @@ DEFINE_ACTION_FUNCTION redknight_spheres
   RET_ARRAY redknight_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY redknight_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> major
 	Death			=> minor
 	Law				=> x
 	Chaos			=> major
 	Protection		=> major
 	War				=> major
+	Time			=> x
 	Perception		=> minor
 	Deceit			=> x
 	Thought			=> minor
@@ -1120,7 +1140,7 @@ DEFINE_ACTION_FUNCTION redknight_spheres
 	Fire			=> major
 	Radiance		=> minor
 	Shadow			=> x
-	Time			=> x
+	no_sphere_1		=> x
 	Spirit		    => x
  END
 END
@@ -1132,13 +1152,13 @@ DEFINE_ACTION_FUNCTION selune_spheres
   RET_ARRAY selune_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY selune_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> major
 	Death			=> x
 	Law				=> x
 	Chaos			=> minor
 	Protection		=> major
 	War				=> minor
+	Time			=> minor
 	Perception		=> major
 	Deceit			=> x
 	Thought			=> major
@@ -1153,7 +1173,7 @@ DEFINE_ACTION_FUNCTION selune_spheres
 	Fire			=> x
 	Radiance		=> major
 	Shadow			=> minor
-	Time			=> minor
+	no_sphere_1		=> x
 	Spirit		    => major
  END
 END
@@ -1165,13 +1185,13 @@ DEFINE_ACTION_FUNCTION shar_spheres
   RET_ARRAY shar_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY shar_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> minor
 	Death			=> major
 	Law				=> minor
 	Chaos			=> major
 	Protection		=> minor
 	War				=> x
+	Time			=> x
 	Perception		=> major
 	Deceit			=> x
 	Thought			=> major
@@ -1186,7 +1206,7 @@ DEFINE_ACTION_FUNCTION shar_spheres
 	Fire			=> x
 	Radiance		=> x
 	Shadow			=> major
-	Time			=> x
+	no_sphere_1		=> x
 	Spirit		    => major
  END
 END
@@ -1198,13 +1218,13 @@ DEFINE_ACTION_FUNCTION shaundakul_spheres
   RET_ARRAY shaundakul_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY shaundakul_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> major
 	Death			=> x
 	Law				=> x
 	Chaos			=> x
 	Protection		=> major
 	War				=> x
+	Time			=> minor
 	Perception		=> major
 	Deceit			=> minor
 	Thought			=> x
@@ -1219,7 +1239,7 @@ DEFINE_ACTION_FUNCTION shaundakul_spheres
 	Fire			=> x
 	Radiance		=> major
 	Shadow			=> x
-	Time			=> minor
+	no_sphere_1		=> x
 	Spirit		    => x
  END
 END
@@ -1231,13 +1251,13 @@ DEFINE_ACTION_FUNCTION sune_spheres
   RET_ARRAY sune_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY sune_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> major
 	Death			=> x
 	Law				=> minor
 	Chaos			=> major
 	Protection		=> major
 	War				=> x
+	Time			=> major
 	Perception		=> major
 	Deceit			=> minor
 	Thought			=> focus
@@ -1252,7 +1272,7 @@ DEFINE_ACTION_FUNCTION sune_spheres
 	Fire			=> x
 	Radiance		=> major
 	Shadow			=> minor
-	Time			=> major
+	no_sphere_1		=> x
 	Spirit		    => x
  END
 END
@@ -1264,13 +1284,13 @@ DEFINE_ACTION_FUNCTION talos_spheres
   RET_ARRAY talos_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY talos_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> major
 	Death			=> x
 	Law				=> x
 	Chaos			=> major
 	Protection		=> major
 	War				=> minor
+	Time			=> x
 	Perception		=> minor
 	Deceit			=> x
 	Thought			=> x
@@ -1285,7 +1305,7 @@ DEFINE_ACTION_FUNCTION talos_spheres
 	Fire			=> major
 	Radiance		=> major
 	Shadow			=> x
-	Time			=> x
+	no_sphere_1		=> x
 	Spirit		    => x
  END
 END
@@ -1297,13 +1317,13 @@ DEFINE_ACTION_FUNCTION tempus_spheres
   RET_ARRAY tempus_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY tempus_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> major
 	Death			=> x
 	Law				=> x
 	Chaos			=> major
 	Protection		=> major
 	War				=> focus
+	Time			=> x
 	Perception		=> minor
 	Deceit			=> x
 	Thought			=> x
@@ -1318,7 +1338,7 @@ DEFINE_ACTION_FUNCTION tempus_spheres
 	Fire			=> x
 	Radiance		=> minor
 	Shadow			=> x
-	Time			=> x
+	no_sphere_1		=> x
 	Spirit		    => x
  END
 END
@@ -1330,13 +1350,13 @@ DEFINE_ACTION_FUNCTION torm_spheres
   RET_ARRAY torm_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY torm_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> major
 	Death			=> x
 	Law				=> major
 	Chaos			=> x
 	Protection		=> focus
 	War				=> major
+	Time			=> x
 	Perception		=> major
 	Deceit			=> x
 	Thought			=> minor
@@ -1351,7 +1371,7 @@ DEFINE_ACTION_FUNCTION torm_spheres
 	Fire			=> minor
 	Radiance		=> major
 	Shadow			=> x
-	Time			=> x
+	no_sphere_1		=> x
 	Spirit		    => x
  END
 END
@@ -1363,13 +1383,13 @@ DEFINE_ACTION_FUNCTION tymora_spheres
   RET_ARRAY tymora_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY tymora_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> major
 	Death			=> x
 	Law				=> x
 	Chaos			=> major
 	Protection		=> major
 	War				=> x
+	Time			=> minor
 	Perception		=> minor
 	Deceit			=> minor
 	Thought			=> major
@@ -1384,7 +1404,7 @@ DEFINE_ACTION_FUNCTION tymora_spheres
 	Fire			=> x
 	Radiance		=> major
 	Shadow			=> x
-	Time			=> minor
+	no_sphere_1		=> x
 	Spirit		    => x
  END
 END
@@ -1396,13 +1416,13 @@ DEFINE_ACTION_FUNCTION tyr_spheres
   RET_ARRAY tyr_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY tyr_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> major
 	Death			=> minor
 	Law				=> major
 	Chaos			=> x
 	Protection		=> major
 	War				=> major
+	Time			=> x
 	Perception		=> major
 	Deceit			=> x
 	Thought			=> minor
@@ -1417,7 +1437,7 @@ DEFINE_ACTION_FUNCTION tyr_spheres
 	Fire			=> minor
 	Radiance		=> major
 	Shadow			=> x
-	Time			=> x
+	no_sphere_1		=> x
 	Spirit		    => x
  END
 END
@@ -1429,13 +1449,13 @@ DEFINE_ACTION_FUNCTION ulutiu_spheres
   RET_ARRAY ulutiu_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY ulutiu_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> major
 	Death			=> x
 	Law				=> x
 	Chaos			=> x
 	Protection		=> major
 	War				=> minor
+	Time			=> x
 	Perception		=> minor
 	Deceit			=> x
 	Thought			=> x
@@ -1450,7 +1470,7 @@ DEFINE_ACTION_FUNCTION ulutiu_spheres
 	Fire			=> x
 	Radiance		=> major
 	Shadow			=> minor
-	Time			=> x
+	no_sphere_1		=> x
 	Spirit		    => x
  END
 END
@@ -1462,13 +1482,13 @@ DEFINE_ACTION_FUNCTION umberlee_spheres
   RET_ARRAY umberlee_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY umberlee_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> major
 	Death			=> x
 	Law				=> x
 	Chaos			=> major
 	Protection		=> major
 	War				=> major
+	Time			=> x
 	Perception		=> minor
 	Deceit			=> x
 	Thought			=> x
@@ -1483,7 +1503,7 @@ DEFINE_ACTION_FUNCTION umberlee_spheres
 	Fire			=> x
 	Radiance		=> x
 	Shadow			=> minor
-	Time			=> x
+	no_sphere_1		=> x
 	Spirit		    => x
  END
 END
@@ -1495,13 +1515,13 @@ DEFINE_ACTION_FUNCTION xvim_spheres
   RET_ARRAY xvim_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY xvim_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> minor
 	Death			=> major
 	Law				=> x
 	Chaos			=> major
 	Protection		=> x
 	War				=> major
+	Time			=> x
 	Perception		=> major
 	Deceit			=> minor
 	Thought			=> minor
@@ -1516,7 +1536,7 @@ DEFINE_ACTION_FUNCTION xvim_spheres
 	Fire			=> x
 	Radiance		=> x
 	Shadow			=> major
-	Time			=> x
+	no_sphere_1		=> x
 	Spirit		    => x
  END
 END
@@ -1531,13 +1551,13 @@ DEFINE_ACTION_FUNCTION corellon_spheres
   RET_ARRAY corellon_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY corellon_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> major
 	Death			=> x
 	Law				=> major
 	Chaos			=> minor
 	Protection		=> major
 	War				=> major
+	Time			=> minor
 	Perception		=> major
 	Deceit			=> x
 	Thought			=> minor
@@ -1552,7 +1572,7 @@ DEFINE_ACTION_FUNCTION corellon_spheres
 	Fire			=> x
 	Radiance		=> major
 	Shadow			=> x
-	Time			=> minor
+	no_sphere_1		=> x
 	Spirit		    => x
  END
 END
@@ -1564,13 +1584,13 @@ DEFINE_ACTION_FUNCTION eilistraee_spheres
   RET_ARRAY eilistraee_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY eilistraee_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> major
 	Death			=> x
 	Law				=> x
 	Chaos			=> x
 	Protection		=> major
 	War				=> x
+	Time			=> x
 	Perception		=> major
 	Deceit			=> minor
 	Thought			=> major
@@ -1585,7 +1605,7 @@ DEFINE_ACTION_FUNCTION eilistraee_spheres
 	Fire			=> x
 	Radiance		=> minor
 	Shadow			=> major
-	Time			=> x
+	no_sphere_1		=> x
 	Spirit		    => major
  END
 END
@@ -1597,13 +1617,13 @@ DEFINE_ACTION_FUNCTION moradin_spheres
   RET_ARRAY moradin_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY moradin_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> major
 	Death			=> x
 	Law				=> major
 	Chaos			=> x
 	Protection		=> major
 	War				=> minor
+	Time			=> major
 	Perception		=> major
 	Deceit			=> x
 	Thought			=> x
@@ -1618,7 +1638,7 @@ DEFINE_ACTION_FUNCTION moradin_spheres
 	Fire			=> x
 	Radiance		=> minor
 	Shadow			=> x
-	Time			=> major
+	no_sphere_1		=> x
 	Spirit		    => major
  END
 END
@@ -1630,13 +1650,13 @@ DEFINE_ACTION_FUNCTION clangeddin_spheres
   RET_ARRAY clangeddin_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY clangeddin_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> major
 	Death			=> minor
 	Law				=> major
 	Chaos			=> minor
 	Protection		=> major
 	War				=> major
+	Time			=> x
 	Perception		=> minor
 	Deceit			=> x
 	Thought			=> x
@@ -1651,7 +1671,7 @@ DEFINE_ACTION_FUNCTION clangeddin_spheres
 	Fire			=> x
 	Radiance		=> major
 	Shadow			=> x
-	Time			=> x
+	no_sphere_1		=> x
 	Spirit		    => x
  END
 END
@@ -1663,13 +1683,13 @@ DEFINE_ACTION_FUNCTION marthammor_spheres
   RET_ARRAY marthammor_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY marthammor_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> major
 	Death			=> x
 	Law				=> x
 	Chaos			=> major
 	Protection		=> major
 	War				=> minor
+	Time			=> x
 	Perception		=> major
 	Deceit			=> x
 	Thought			=> minor
@@ -1684,7 +1704,7 @@ DEFINE_ACTION_FUNCTION marthammor_spheres
 	Fire			=> x
 	Radiance		=> major
 	Shadow			=> x
-	Time			=> x
+	no_sphere_1		=> x
 	Spirit		    => x
  END
 END
@@ -1696,13 +1716,13 @@ DEFINE_ACTION_FUNCTION haela_spheres
   RET_ARRAY haela_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY haela_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> major
 	Death			=> x
 	Law				=> minor
 	Chaos			=> major
 	Protection		=> major
 	War				=> major
+	Time			=> x
 	Perception		=> minor
 	Deceit			=> x
 	Thought			=> minor
@@ -1717,7 +1737,7 @@ DEFINE_ACTION_FUNCTION haela_spheres
 	Fire			=> x
 	Radiance		=> major
 	Shadow			=> x
-	Time			=> x
+	no_sphere_1		=> x
 	Spirit		    => x
  END
 END
@@ -1729,13 +1749,13 @@ DEFINE_ACTION_FUNCTION baravar_spheres
   RET_ARRAY baravar_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY baravar_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> major
 	Death			=> x
 	Law				=> x
 	Chaos			=> major
 	Protection		=> major
 	War				=> x
+	Time			=> x
 	Perception		=> major
 	Deceit			=> minor
 	Thought			=> major
@@ -1750,7 +1770,7 @@ DEFINE_ACTION_FUNCTION baravar_spheres
 	Fire			=> x
 	Radiance		=> x
 	Shadow			=> major
-	Time			=> x
+	no_sphere_1		=> x
 	Spirit		    => x
  END
 END
@@ -1762,13 +1782,13 @@ DEFINE_ACTION_FUNCTION baervan_spheres
   RET_ARRAY baervan_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY baervan_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> major
 	Death			=> x
 	Law				=> x
 	Chaos			=> x
 	Protection		=> major
 	War				=> x
+	Time			=> x
 	Perception		=> minor
 	Deceit			=> x
 	Thought			=> minor
@@ -1783,7 +1803,7 @@ DEFINE_ACTION_FUNCTION baervan_spheres
 	Fire			=> x
 	Radiance		=> major
 	Shadow			=> x
-	Time			=> x
+	no_sphere_1		=> x
 	Spirit		    => x
  END
 END
@@ -1795,13 +1815,13 @@ DEFINE_ACTION_FUNCTION urdlen_spheres
   RET_ARRAY urdlen_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY urdlen_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> minor
 	Death			=> major
 	Law				=> minor
 	Chaos			=> major
 	Protection		=> x
 	War				=> major
+	Time			=> x
 	Perception		=> minor
 	Deceit			=> major
 	Thought			=> minor
@@ -1816,7 +1836,7 @@ DEFINE_ACTION_FUNCTION urdlen_spheres
 	Fire			=> x
 	Radiance		=> x
 	Shadow			=> major
-	Time			=> x
+	no_sphere_1		=> x
 	Spirit		    => x
  END
 END
@@ -1828,13 +1848,13 @@ DEFINE_ACTION_FUNCTION yondalla_spheres
   RET_ARRAY yondalla_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY yondalla_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> major
 	Death			=> x
 	Law				=> major
 	Chaos			=> x
 	Protection		=> major
 	War				=> x
+	Time			=> x
 	Perception		=> major
 	Deceit			=> minor
 	Thought			=> major
@@ -1849,7 +1869,7 @@ DEFINE_ACTION_FUNCTION yondalla_spheres
 	Fire			=> x
 	Radiance		=> major
 	Shadow			=> x
-	Time			=> x
+	no_sphere_1		=> x
 	Spirit		    => minor
  END
 END
@@ -1861,13 +1881,13 @@ DEFINE_ACTION_FUNCTION arvoreen_spheres
   RET_ARRAY arvoreen_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY arvoreen_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> major
 	Death			=> x
 	Law				=> major
 	Chaos			=> x
 	Protection		=> major
 	War				=> major
+	Time			=> x
 	Perception		=> major
 	Deceit			=> x
 	Thought			=> x
@@ -1882,7 +1902,7 @@ DEFINE_ACTION_FUNCTION arvoreen_spheres
 	Fire			=> x
 	Radiance		=> major
 	Shadow			=> x
-	Time			=> x
+	no_sphere_1		=> x
 	Spirit		    => x
  END
 END
@@ -1894,13 +1914,13 @@ DEFINE_ACTION_FUNCTION brandobaris_spheres
   RET_ARRAY brandobaris_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY brandobaris_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> major
 	Death			=> x
 	Law				=> x
 	Chaos			=> major
 	Protection		=> major
 	War				=> minor
+	Time			=> minor
 	Perception		=> major
 	Deceit			=> minor
 	Thought			=> minor
@@ -1915,7 +1935,7 @@ DEFINE_ACTION_FUNCTION brandobaris_spheres
 	Fire			=> x
 	Radiance		=> major
 	Shadow			=> x
-	Time			=> minor
+	no_sphere_1		=> x
 	Spirit		    => x
  END
 END
@@ -1927,13 +1947,13 @@ DEFINE_ACTION_FUNCTION gruumsh_spheres
   RET_ARRAY gruumsh_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY gruumsh_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> minor
 	Death			=> minor
 	Law				=> x
 	Chaos			=> major
 	Protection		=> minor
 	War				=> major
+	Time			=> x
 	Perception		=> x
 	Deceit			=> x
 	Thought			=> x
@@ -1948,7 +1968,7 @@ DEFINE_ACTION_FUNCTION gruumsh_spheres
 	Fire			=> major
 	Radiance		=> x
 	Shadow			=> x
-	Time			=> x
+	no_sphere_1		=> x
 	Spirit		    => x
  END
 END
@@ -1960,13 +1980,13 @@ DEFINE_ACTION_FUNCTION luthic_spheres
   RET_ARRAY luthic_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY luthic_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> major
 	Death			=> x
 	Law				=> minor
 	Chaos			=> x
 	Protection		=> major
 	War				=> minor
+	Time			=> minor
 	Perception		=> major
 	Deceit			=> minor
 	Thought			=> major
@@ -1981,7 +2001,7 @@ DEFINE_ACTION_FUNCTION luthic_spheres
 	Fire			=> x
 	Radiance		=> x
 	Shadow			=> x
-	Time			=> minor
+	no_sphere_1		=> x
 	Spirit		    => major
  END
 END
@@ -1996,13 +2016,13 @@ DEFINE_ACTION_FUNCTION druid_forest_spheres
   RET_ARRAY druid_forest_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY druid_forest_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> minor
 	Death			=> x
 	Law				=> x
 	Chaos			=> x
 	Protection		=> x
 	War				=> x
+	Time			=> x
 	Perception		=> minor
 	Deceit			=> x
 	Thought			=> x
@@ -2017,7 +2037,7 @@ DEFINE_ACTION_FUNCTION druid_forest_spheres
 	Fire			=> minor
 	Radiance		=> major
 	Shadow			=> minor
-	Time			=> x
+	no_sphere_1		=> x
 	Spirit		    => x
  END
 END
@@ -2029,13 +2049,13 @@ DEFINE_ACTION_FUNCTION druid_totemic_spheres
   RET_ARRAY druid_totemic_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY druid_totemic_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> minor
 	Death			=> x
 	Law				=> x
 	Chaos			=> x
 	Protection		=> x
 	War				=> x
+	Time			=> x
 	Perception		=> minor
 	Deceit			=> x
 	Thought			=> x
@@ -2050,7 +2070,7 @@ DEFINE_ACTION_FUNCTION druid_totemic_spheres
 	Fire			=> minor
 	Radiance		=> major
 	Shadow			=> minor
-	Time			=> x
+	no_sphere_1		=> x
 	Spirit		    => major
  END
 END
@@ -2062,13 +2082,13 @@ DEFINE_ACTION_FUNCTION druid_hivekeeper_spheres
   RET_ARRAY druid_hivekeeper_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY druid_hivekeeper_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> minor
 	Death			=> x
 	Law				=> x
 	Chaos			=> major
 	Protection		=> x
 	War				=> x
+	Time			=> x
 	Perception		=> minor
 	Deceit			=> x
 	Thought			=> x
@@ -2083,7 +2103,7 @@ DEFINE_ACTION_FUNCTION druid_hivekeeper_spheres
 	Fire			=> x
 	Radiance		=> major
 	Shadow			=> minor
-	Time			=> x
+	no_sphere_1		=> x
 	Spirit		    => x
  END
 END
@@ -2095,13 +2115,13 @@ DEFINE_ACTION_FUNCTION druid_northern_spheres
   RET_ARRAY druid_northern_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY druid_northern_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> minor
 	Death			=> x
 	Law				=> x
 	Chaos			=> x
 	Protection		=> x
 	War				=> x
+	Time			=> x
 	Perception		=> minor
 	Deceit			=> x
 	Thought			=> x
@@ -2116,7 +2136,7 @@ DEFINE_ACTION_FUNCTION druid_northern_spheres
 	Fire			=> minor
 	Radiance		=> major
 	Shadow			=> x
-	Time			=> x
+	no_sphere_1		=> x
 	Spirit		    => minor
  END
 END
@@ -2128,13 +2148,13 @@ DEFINE_ACTION_FUNCTION druid_shadow_spheres
   RET_ARRAY druid_shadow_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY druid_shadow_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> minor
 	Death			=> x
 	Law				=> x
 	Chaos			=> x
 	Protection		=> x
 	War				=> x
+	Time			=> x
 	Perception		=> minor
 	Deceit			=> x
 	Thought			=> x
@@ -2149,7 +2169,7 @@ DEFINE_ACTION_FUNCTION druid_shadow_spheres
 	Fire			=> minor
 	Radiance		=> x
 	Shadow			=> major
-	Time			=> x
+	no_sphere_1		=> x
 	Spirit		    => x
  END
 END
@@ -2161,13 +2181,13 @@ DEFINE_ACTION_FUNCTION druid_gray_spheres
   RET_ARRAY druid_gray_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY druid_gray_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> minor
 	Death			=> x
 	Law				=> x
 	Chaos			=> x
 	Protection		=> x
 	War				=> x
+	Time			=> x
 	Perception		=> major
 	Deceit			=> x
 	Thought			=> minor
@@ -2182,7 +2202,7 @@ DEFINE_ACTION_FUNCTION druid_gray_spheres
 	Fire			=> minor
 	Radiance		=> x
 	Shadow			=> minor
-	Time			=> x
+	no_sphere_1		=> x
 	Spirit		    => x
  END
 END
@@ -2194,13 +2214,13 @@ DEFINE_ACTION_FUNCTION druid_lost_spheres
   RET_ARRAY druid_lost_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY druid_lost_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> minor
 	Death			=> major
 	Law				=> x
 	Chaos			=> x
 	Protection		=> x
 	War				=> x
+	Time			=> x
 	Perception		=> minor
 	Deceit			=> x
 	Thought			=> x
@@ -2215,7 +2235,7 @@ DEFINE_ACTION_FUNCTION druid_lost_spheres
 	Fire			=> minor
 	Radiance		=> x
 	Shadow			=> minor
-	Time			=> x
+	no_sphere_1		=> x
 	Spirit		    => major
  END
 END
@@ -2227,13 +2247,13 @@ DEFINE_ACTION_FUNCTION beast_lord_spheres
   RET_ARRAY beast_lord_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY beast_lord_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> minor
 	Death			=> x
 	Law				=> x
 	Chaos			=> major
 	Protection		=> x
 	War				=> x
+	Time			=> x
 	Perception		=> minor
 	Deceit			=> x
 	Thought			=> major
@@ -2248,7 +2268,7 @@ DEFINE_ACTION_FUNCTION beast_lord_spheres
 	Fire			=> x
 	Radiance		=> x
 	Shadow			=> minor
-	Time			=> x
+	no_sphere_1		=> x
 	Spirit		    => major
  END
 END
@@ -2260,13 +2280,13 @@ DEFINE_ACTION_FUNCTION elementalist_spheres
   RET_ARRAY elementalist_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY elementalist_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> major
 	Death			=> x
 	Law				=> x
 	Chaos			=> x
 	Protection		=> minor
 	War				=> x
+	Time			=> x
 	Perception		=> minor
 	Deceit			=> x
 	Thought			=> x
@@ -2281,7 +2301,7 @@ DEFINE_ACTION_FUNCTION elementalist_spheres
 	Fire			=> focus
 	Radiance		=> major
 	Shadow			=> minor
-	Time			=> x
+	no_sphere_1		=> x
 	Spirit		    => x
  END
 END
@@ -2293,13 +2313,13 @@ DEFINE_ACTION_FUNCTION mystic_earth_spheres
   RET_ARRAY mystic_earth_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY mystic_earth_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> minor
 	Death			=> x
 	Law				=> x
 	Chaos			=> x
 	Protection		=> major
 	War				=> x
+	Time			=> minor
 	Perception		=> major
 	Deceit			=> x
 	Thought			=> x
@@ -2314,7 +2334,7 @@ DEFINE_ACTION_FUNCTION mystic_earth_spheres
 	Fire			=> x
 	Radiance		=> x
 	Shadow			=> x
-	Time			=> minor
+	no_sphere_1		=> x
 	Spirit		    => major
  END
 END
@@ -2326,13 +2346,13 @@ DEFINE_ACTION_FUNCTION mystic_water_spheres
   RET_ARRAY mystic_water_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY mystic_water_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> minor
 	Death			=> x
 	Law				=> x
 	Chaos			=> x
 	Protection		=> minor
 	War				=> x
+	Time			=> minor
 	Perception		=> major
 	Deceit			=> x
 	Thought			=> x
@@ -2347,7 +2367,7 @@ DEFINE_ACTION_FUNCTION mystic_water_spheres
 	Fire			=> x
 	Radiance		=> x
 	Shadow			=> x
-	Time			=> minor
+	no_sphere_1		=> x
 	Spirit		    => major
  END
 END
@@ -2359,13 +2379,13 @@ DEFINE_ACTION_FUNCTION mystic_air_spheres
   RET_ARRAY mystic_air_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY mystic_air_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> minor
 	Death			=> x
 	Law				=> x
 	Chaos			=> major
 	Protection		=> minor
 	War				=> x
+	Time			=> minor
 	Perception		=> major
 	Deceit			=> x
 	Thought			=> minor
@@ -2380,7 +2400,7 @@ DEFINE_ACTION_FUNCTION mystic_air_spheres
 	Fire			=> x
 	Radiance		=> minor
 	Shadow			=> x
-	Time			=> minor
+	no_sphere_1		=> x
 	Spirit		    => major
  END
 END
@@ -2392,13 +2412,13 @@ DEFINE_ACTION_FUNCTION mystic_fire_spheres
   RET_ARRAY mystic_fire_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY mystic_fire_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> minor
 	Death			=> x
 	Law				=> x
 	Chaos			=> minor
 	Protection		=> minor
 	War				=> x
+	Time			=> minor
 	Perception		=> major
 	Deceit			=> x
 	Thought			=> x
@@ -2413,7 +2433,7 @@ DEFINE_ACTION_FUNCTION mystic_fire_spheres
 	Fire			=> focus
 	Radiance		=> major
 	Shadow			=> x
-	Time			=> minor
+	no_sphere_1		=> x
 	Spirit		    => major
  END
 END
@@ -2425,13 +2445,13 @@ DEFINE_ACTION_FUNCTION mystic_light_spheres
   RET_ARRAY mystic_light_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY mystic_light_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> minor
 	Death			=> x
 	Law				=> x
 	Chaos			=> x
 	Protection		=> major
 	War				=> x
+	Time			=> minor
 	Perception		=> major
 	Deceit			=> x
 	Thought			=> x
@@ -2446,7 +2466,7 @@ DEFINE_ACTION_FUNCTION mystic_light_spheres
 	Fire			=> minor
 	Radiance		=> focus
 	Shadow			=> x
-	Time			=> minor
+	no_sphere_1		=> x
 	Spirit		    => major
  END
 END
@@ -2458,13 +2478,13 @@ DEFINE_ACTION_FUNCTION mystic_shadow_spheres
   RET_ARRAY mystic_shadow_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY mystic_shadow_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> minor
 	Death			=> x
 	Law				=> x
 	Chaos			=> x
 	Protection		=> x
 	War				=> x
+	Time			=> minor
 	Perception		=> major
 	Deceit			=> x
 	Thought			=> minor
@@ -2479,7 +2499,7 @@ DEFINE_ACTION_FUNCTION mystic_shadow_spheres
 	Fire			=> x
 	Radiance		=> x
 	Shadow			=> focus
-	Time			=> minor
+	no_sphere_1		=> x
 	Spirit		    => major
  END
 END
@@ -2491,13 +2511,13 @@ DEFINE_ACTION_FUNCTION ranger_forest_spheres
   RET_ARRAY ranger_forest_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY ranger_forest_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> x
 	Death			=> x
 	Law				=> x
 	Chaos			=> x
 	Protection		=> ranger
 	War				=> x
+	Time			=> x
 	Perception		=> ranger
 	Deceit			=> x
 	Thought			=> x
@@ -2512,7 +2532,7 @@ DEFINE_ACTION_FUNCTION ranger_forest_spheres
 	Fire			=> x
 	Radiance		=> ranger
 	Shadow			=> x
-	Time			=> x
+	no_sphere_1		=> x
 	Spirit		    => x
  END
 END
@@ -2524,13 +2544,13 @@ DEFINE_ACTION_FUNCTION ranger_mountain_spheres
   RET_ARRAY ranger_mountain_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY ranger_mountain_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> x
 	Death			=> x
 	Law				=> x
 	Chaos			=> x
 	Protection		=> ranger
 	War				=> x
+	Time			=> x
 	Perception		=> ranger
 	Deceit			=> x
 	Thought			=> x
@@ -2545,7 +2565,7 @@ DEFINE_ACTION_FUNCTION ranger_mountain_spheres
 	Fire			=> x
 	Radiance		=> x
 	Shadow			=> ranger
-	Time			=> x
+	no_sphere_1		=> x
 	Spirit		    => x
  END
 END
@@ -2557,13 +2577,13 @@ DEFINE_ACTION_FUNCTION ranger_desert_spheres
   RET_ARRAY ranger_desert_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY ranger_desert_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> x
 	Death			=> x
 	Law				=> x
 	Chaos			=> x
 	Protection		=> ranger
 	War				=> x
+	Time			=> x
 	Perception		=> ranger
 	Deceit			=> x
 	Thought			=> x
@@ -2578,7 +2598,7 @@ DEFINE_ACTION_FUNCTION ranger_desert_spheres
 	Fire			=> x
 	Radiance		=> ranger
 	Shadow			=> x
-	Time			=> x
+	no_sphere_1		=> x
 	Spirit		    => x
  END
 END
@@ -2590,13 +2610,13 @@ DEFINE_ACTION_FUNCTION ranger_jungle_spheres
   RET_ARRAY ranger_jungle_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY ranger_jungle_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> x
 	Death			=> x
 	Law				=> x
 	Chaos			=> x
 	Protection		=> x
 	War				=> x
+	Time			=> x
 	Perception		=> ranger
 	Deceit			=> x
 	Thought			=> x
@@ -2611,7 +2631,7 @@ DEFINE_ACTION_FUNCTION ranger_jungle_spheres
 	Fire			=> x
 	Radiance		=> x
 	Shadow			=> ranger
-	Time			=> x
+	no_sphere_1		=> x
 	Spirit		    => x
  END
 END
@@ -2623,13 +2643,13 @@ DEFINE_ACTION_FUNCTION ranger_arctic_spheres
   RET_ARRAY ranger_arctic_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY ranger_arctic_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> x
 	Death			=> x
 	Law				=> x
 	Chaos			=> x
 	Protection		=> ranger
 	War				=> x
+	Time			=> x
 	Perception		=> ranger
 	Deceit			=> x
 	Thought			=> x
@@ -2644,7 +2664,7 @@ DEFINE_ACTION_FUNCTION ranger_arctic_spheres
 	Fire			=> x
 	Radiance		=> x
 	Shadow			=> x
-	Time			=> x
+	no_sphere_1		=> x
 	Spirit		    => x
  END
 END
@@ -2657,13 +2677,13 @@ DEFINE_ACTION_FUNCTION ranger_beastmaster_spheres
   RET_ARRAY ranger_beastmaster_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY ranger_beastmaster_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> x
 	Death			=> x
 	Law				=> x
 	Chaos			=> x
 	Protection		=> x
 	War				=> x
+	Time			=> x
 	Perception		=> ranger
 	Deceit			=> x
 	Thought			=> x
@@ -2678,7 +2698,7 @@ DEFINE_ACTION_FUNCTION ranger_beastmaster_spheres
 	Fire			=> x
 	Radiance		=> x
 	Shadow			=> x
-	Time			=> x
+	no_sphere_1		=> x
 	Spirit		    => ranger
  END
 END
@@ -2690,13 +2710,13 @@ DEFINE_ACTION_FUNCTION barbarian_ranger_spheres
   RET_ARRAY barbarian_ranger_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY barbarian_ranger_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> x
 	Death			=> x
 	Law				=> x
 	Chaos			=> x
 	Protection		=> x
 	War				=> x
+	Time			=> x
 	Perception		=> ranger
 	Deceit			=> x
 	Thought			=> x
@@ -2711,7 +2731,7 @@ DEFINE_ACTION_FUNCTION barbarian_ranger_spheres
 	Fire			=> x
 	Radiance		=> x
 	Shadow			=> x
-	Time			=> x
+	no_sphere_1		=> x
 	Spirit		    => ranger
  END
 END
@@ -2723,13 +2743,13 @@ DEFINE_ACTION_FUNCTION mage_hunter_spheres
   RET_ARRAY mage_hunter_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY mage_hunter_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> x
 	Death			=> x
 	Law				=> ranger
 	Chaos			=> x
 	Protection		=> ranger
 	War				=> x
+	Time			=> ranger
 	Perception		=> ranger
 	Deceit			=> ranger
 	Thought			=> x
@@ -2744,7 +2764,7 @@ DEFINE_ACTION_FUNCTION mage_hunter_spheres
 	Fire			=> x
 	Radiance		=> x
 	Shadow			=> x
-	Time			=> ranger
+	no_sphere_1		=> x
 	Spirit		    => x
  END
 END
@@ -2756,13 +2776,13 @@ DEFINE_ACTION_FUNCTION elven_archer_spheres
   RET_ARRAY elven_archer_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY elven_archer_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> x
 	Death			=> x
 	Law				=> x
 	Chaos			=> x
 	Protection		=> ranger
 	War				=> x
+	Time			=> ranger
 	Perception		=> ranger
 	Deceit			=> ranger
 	Thought			=> x
@@ -2777,7 +2797,7 @@ DEFINE_ACTION_FUNCTION elven_archer_spheres
 	Fire			=> x
 	Radiance		=> ranger
 	Shadow			=> x
-	Time			=> ranger
+	no_sphere_1		=> x
 	Spirit		    => x
  END
 END
@@ -2792,13 +2812,13 @@ DEFINE_ACTION_FUNCTION vanilla_shaman_spheres
   RET_ARRAY vanilla_shaman_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY vanilla_shaman_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> minor
 	Death			=> x
 	Law				=> minor
 	Chaos			=> minor
 	Protection		=> x
 	War				=> x
+	Time			=> minor
 	Perception		=> major
 	Deceit			=> x
 	Thought			=> x
@@ -2813,7 +2833,7 @@ DEFINE_ACTION_FUNCTION vanilla_shaman_spheres
 	Fire			=> x
 	Radiance		=> x
 	Shadow			=> x
-	Time			=> minor
+	no_sphere_1		=> x
 	Spirit		    => focus
  END
 END
@@ -2849,13 +2869,13 @@ DEFINE_ACTION_MACRO vanilla_cleric_spheres BEGIN
 	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5smvig#~ END
   IF_EXISTS BUT_ONLY
   ACTION_DEFINE_ASSOCIATIVE_ARRAY clabpr01_spheres BEGIN
-	no_sphere_1		=> x
 	All				=> x
 	Death			=> x
 	Law				=> x
 	Chaos			=> x
 	Protection		=> x
 	War				=> x
+	Time			=> x
 	Perception		=> x
 	Deceit			=> x
 	Thought			=> x
@@ -2870,7 +2890,7 @@ DEFINE_ACTION_MACRO vanilla_cleric_spheres BEGIN
 	Fire			=> x
 	Radiance		=> x
 	Shadow			=> x
-	Time			=> x
+	no_sphere_1		=> x
 	Spirit		    => x
   END
 END
@@ -2910,13 +2930,13 @@ DEFINE_ACTION_MACRO vanilla_druid_spheres BEGIN
 	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5smsha#~ END
   IF_EXISTS BUT_ONLY
   ACTION_DEFINE_ASSOCIATIVE_ARRAY clabdr01_spheres BEGIN
-	no_sphere_1		=> x
 	All				=> x
 	Death			=> x
 	Law				=> x
 	Chaos			=> x
 	Protection		=> x
 	War				=> x
+	Time			=> x
 	Perception		=> x
 	Deceit			=> x
 	Thought			=> x
@@ -2931,7 +2951,7 @@ DEFINE_ACTION_MACRO vanilla_druid_spheres BEGIN
 	Fire			=> x
 	Radiance		=> x
 	Shadow			=> x
-	Time			=> x
+	no_sphere_1		=> x
 	Spirit		    => x
   END
 END
@@ -2957,13 +2977,13 @@ DEFINE_ACTION_MACRO vanilla_ranger_spheres BEGIN
 	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5smkno#~ END
   IF_EXISTS BUT_ONLY
   ACTION_DEFINE_ASSOCIATIVE_ARRAY clabrn01_spheres BEGIN
-	no_sphere_1		=> x
 	All				=> x
 	Death			=> x
 	Law				=> x
 	Chaos			=> x
 	Protection		=> x
 	War				=> x
+	Time			=> x
 	Perception		=> x
 	Deceit			=> x
 	Thought			=> x
@@ -2978,7 +2998,7 @@ DEFINE_ACTION_MACRO vanilla_ranger_spheres BEGIN
 	Fire			=> x
 	Radiance		=> x
 	Shadow			=> x
-	Time			=> x
+	no_sphere_1		=> x
 	Spirit		    => x
   END
 END
@@ -2990,13 +3010,13 @@ DEFINE_ACTION_FUNCTION vanilla_avenger_spheres
   RET_ARRAY vanilla_avenger_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY vanilla_avenger_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> minor
 	Death			=> x
 	Law				=> major
 	Chaos			=> x
 	Protection		=> x
 	War				=> x
+	Time			=> minor
 	Perception		=> minor
 	Deceit			=> x
 	Thought			=> x
@@ -3011,7 +3031,7 @@ DEFINE_ACTION_FUNCTION vanilla_avenger_spheres
 	Fire			=> x
 	Radiance		=> major
 	Shadow			=> minor
-	Time			=> minor
+	no_sphere_1		=> x
 	Spirit		    => x
  END
 END
@@ -3023,13 +3043,13 @@ DEFINE_ACTION_FUNCTION vanilla_paladin_spheres
   RET_ARRAY vanilla_paladin_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY vanilla_paladin_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> paladin
 	Death			=> x
 	Law				=> paladin
 	Chaos			=> x
 	Protection		=> paladin
 	War				=> paladin
+	Time			=> x
 	Perception		=> paladin
 	Deceit			=> x
 	Thought			=> x
@@ -3044,7 +3064,7 @@ DEFINE_ACTION_FUNCTION vanilla_paladin_spheres
 	Fire			=> x
 	Radiance		=> paladin
 	Shadow			=> x
-	Time			=> x
+	no_sphere_1		=> x
 	Spirit		    => x
  END
 END
@@ -3056,13 +3076,13 @@ DEFINE_ACTION_FUNCTION vanilla_cavalier_spheres
   RET_ARRAY vanilla_cavalier_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY vanilla_cavalier_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> paladin
 	Death			=> x
 	Law				=> paladin
 	Chaos			=> x
 	Protection		=> paladin
 	War				=> paladin
+	Time			=> x
 	Perception		=> paladin
 	Deceit			=> x
 	Thought			=> x
@@ -3077,7 +3097,7 @@ DEFINE_ACTION_FUNCTION vanilla_cavalier_spheres
 	Fire			=> x
 	Radiance		=> paladin
 	Shadow			=> x
-	Time			=> x
+	no_sphere_1		=> x
 	Spirit		    => x
  END
 END
@@ -3089,13 +3109,13 @@ DEFINE_ACTION_FUNCTION vanilla_inquisitor_spheres
   RET_ARRAY vanilla_inquisitor_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY vanilla_inquisitor_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> paladin
 	Death			=> x
 	Law				=> paladin
 	Chaos			=> x
 	Protection		=> paladin
 	War				=> paladin
+	Time			=> x
 	Perception		=> paladin
 	Deceit			=> x
 	Thought			=> x
@@ -3110,7 +3130,7 @@ DEFINE_ACTION_FUNCTION vanilla_inquisitor_spheres
 	Fire			=> x
 	Radiance		=> paladin
 	Shadow			=> x
-	Time			=> x
+	no_sphere_1		=> x
 	Spirit		    => x
  END
 END
@@ -3122,13 +3142,13 @@ DEFINE_ACTION_FUNCTION vanilla_undead_hunter_spheres
   RET_ARRAY vanilla_undead_hunter_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY vanilla_undead_hunter_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> paladin
 	Death			=> paladin
 	Law				=> paladin
 	Chaos			=> x
 	Protection		=> paladin
 	War				=> paladin
+	Time			=> x
 	Perception		=> paladin
 	Deceit			=> x
 	Thought			=> x
@@ -3143,7 +3163,7 @@ DEFINE_ACTION_FUNCTION vanilla_undead_hunter_spheres
 	Fire			=> x
 	Radiance		=> paladin
 	Shadow			=> x
-	Time			=> x
+	no_sphere_1		=> x
 	Spirit		    => x
  END
 END
@@ -3155,13 +3175,13 @@ DEFINE_ACTION_FUNCTION vanilla_blackguard_spheres
   RET_ARRAY vanilla_blackguard_spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY vanilla_blackguard_spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> x
 	Death			=> paladin
 	Law				=> paladin
 	Chaos			=> x
 	Protection		=> x
 	War				=> paladin
+	Time			=> x
 	Perception		=> x
 	Deceit			=> x
 	Thought			=> x
@@ -3176,7 +3196,7 @@ DEFINE_ACTION_FUNCTION vanilla_blackguard_spheres
 	Fire			=> x
 	Radiance		=> x
 	Shadow			=> paladin
-	Time			=> x
+	no_sphere_1		=> x
 	Spirit		    => x
  END
 END
@@ -3189,13 +3209,13 @@ END
 //
 DEFINE_ACTION_MACRO DR_oozemaster_spheres BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY a#ooze_spheres BEGIN
-	no_sphere_1		=> x
 	All				=> major
 	Death			=> x
 	Law				=> x
 	Chaos			=> minor
 	Protection		=> x
 	War				=> x
+	Time			=> x
 	Perception		=> minor
 	Deceit			=> x
 	Thought			=> x
@@ -3210,7 +3230,7 @@ DEFINE_ACTION_MACRO DR_oozemaster_spheres BEGIN
 	Fire			=> x
 	Radiance		=> x
 	Shadow			=> minor
-	Time			=> x
+	no_sphere_1		=> x
 	Spirit		    => x
  END
 END
@@ -3220,13 +3240,13 @@ END
 //
 DEFINE_ACTION_MACRO DR_justifier_spheres BEGIN
  ACTION_DEFINE_ASSOCIATIVE_ARRAY a#justif_spheres BEGIN
-	no_sphere_1		=> x
 	All				=> ranger
 	Death			=> x
 	Law				=> x
 	Chaos			=> x
 	Protection		=> x
 	War				=> x
+	Time			=> x
 	Perception		=> x
 	Deceit			=> x
 	Thought			=> x
@@ -3241,7 +3261,7 @@ DEFINE_ACTION_MACRO DR_justifier_spheres BEGIN
 	Fire			=> x
 	Radiance		=> ranger
 	Shadow			=> x
-	Time			=> x
+	no_sphere_1		=> x
 	Spirit		    => x
   END
 END
@@ -3257,13 +3277,13 @@ DEFINE_ACTION_FUNCTION _spheres
   RET_ARRAY _spheres_array
  BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY _spheres_array BEGIN
-	no_sphere_1		=> x
 	All				=> x
 	Death			=> x
 	Law				=> x
 	Chaos			=> x
 	Protection		=> x
 	War				=> x
+	Time			=> x
 	Perception		=> x
 	Deceit			=> x
 	Thought			=> x
@@ -3278,7 +3298,7 @@ DEFINE_ACTION_FUNCTION _spheres
 	Fire			=> x
 	Radiance		=> x
 	Shadow			=> x
-	Time			=> x
+	no_sphere_1		=> x
 	Spirit		    => x
  END
 END
