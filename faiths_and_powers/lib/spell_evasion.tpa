@@ -6,7 +6,7 @@
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 
-// Version: 3.4
+// Version: 3.6 - check_globals
 
 /*
 SAVES:
@@ -108,11 +108,11 @@ DEFINE_ACTION_FUNCTION add_evade_spell
 	ACTION_IF !(FILE_CONTAINS_EVALUATED (~evad%evade_suffix%%evade_list%.2da~ ~%evade_res%~)) BEGIN
 	  OUTER_SET evasion_ind = (evasion_ind + 1)
 	  COPY_EXISTING ~%evade_res%.%evade_ext%~ ~override~
-		LPF DELETE_EFFECT INT_VAR match_opcode = 324 match_parameter2 = 63 END
-		LPF DELETE_EFFECT INT_VAR match_opcode = 177 STR_VAR match_resource = EVAL ~%evade_prefix%B%evasion_ind%~ END
-		LPF DELETE_EFFECT INT_VAR match_opcode = 177 STR_VAR match_resource = EVAL ~%evade_prefix%A%evasion_ind%~ END
-		LPF DELETE_EFFECT INT_VAR match_opcode = 318 STR_VAR match_resource = EVAL ~%evade_prefix%B%evasion_ind%~ END
-		LPF DELETE_EFFECT INT_VAR match_opcode = 318 STR_VAR match_resource = EVAL ~%evade_prefix%A%evasion_ind%~ END
+		LPF DELETE_EFFECT INT_VAR check_globals = 0 match_opcode = 324 match_parameter2 = 63 END
+		LPF DELETE_EFFECT INT_VAR check_globals = 0 match_opcode = 177 STR_VAR match_resource = EVAL ~%evade_prefix%B%evasion_ind%~ END
+		LPF DELETE_EFFECT INT_VAR check_globals = 0 match_opcode = 177 STR_VAR match_resource = EVAL ~%evade_prefix%A%evasion_ind%~ END
+		LPF DELETE_EFFECT INT_VAR check_globals = 0 match_opcode = 318 STR_VAR match_resource = EVAL ~%evade_prefix%B%evasion_ind%~ END
+		LPF DELETE_EFFECT INT_VAR check_globals = 0 match_opcode = 318 STR_VAR match_resource = EVAL ~%evade_prefix%A%evasion_ind%~ END
 		PATCH_IF (~%evade_ext%~ STRING_EQUAL_CASE ~spl~) BEGIN
 		  LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 2 parameter1 = 0 parameter2 = 2 timing = 0 duration = 1 STR_VAR resource = EVAL ~%evade_prefix%B%evasion_ind%~ END
 		  LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 2 parameter1 = 0 parameter2 = 2 timing = 0 duration = 1 STR_VAR resource = EVAL ~%evade_prefix%A%evasion_ind%~ END
@@ -127,7 +127,7 @@ DEFINE_ACTION_FUNCTION add_evade_spell
 		END
 // 	if traditional evasion, do not evade when helpless
 		PATCH_IF %evade_cond% = 252 BEGIN	
-		  LPF DELETE_EFFECT INT_VAR match_opcode = 318 match_parameter2 = 136 END
+		  LPF DELETE_EFFECT INT_VAR check_globals = 0 match_opcode = 318 match_parameter2 = 136 END
 		  LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 318 target = 2 duration = 1 timing = 0 parameter1 = 0x8015602f parameter2 = %state_row% STR_VAR resource = EVAL ~%evade_prefix%A%evasion_ind%~ END
 		  LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 318 target = 2 duration = 1 timing = 0 parameter1 = 0x8015602f parameter2 = %state_row% STR_VAR resource = EVAL ~%evade_prefix%B%evasion_ind%~ END
 		END
@@ -300,6 +300,23 @@ ACTION_IF (optional_evade = 1) BEGIN
 	spwi925 		=> 1
 	cdstaf12		=> 1
 // add all beholder abilities???
+  END
+  COPY_EXISTING_REGEXP GLOB ~^.+\.spl$~ ~override~
+    PATCH_IF (%SOURCE_SIZE% > 0x71) BEGIN
+	  READ_SHORT 0x68 num_ab
+	  PATCH_IF (num_ab > 0) BEGIN
+	    GET_OFFSET_ARRAY ab_array SPL_V10_HEADERS
+	    PHP_EACH ab_array AS int => ab_off BEGIN
+		  READ_SHORT (ab_off + 0x26) spl_proj
+		  PATCH_IF (spl_proj = 209) BEGIN
+		    SPRINT $beholder_ray_spells(~%SOURCE_RES%~)~1~
+		  END
+	    END
+	  END
+    END
+  BUT_ONLY
+  ACTION_PHP_EACH beholder_ray_spells AS res => ind BEGIN
+    OUTER_SPRINT $evade_spells(~%res%~)~1~
   END
   ACTION_IF (MOD_IS_INSTALLED ~item_rev.tp2~ ~0~) BEGIN
 	ACTION_DEFINE_ASSOCIATIVE_ARRAY evade_spells BEGIN

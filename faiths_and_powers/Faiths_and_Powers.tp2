@@ -2,7 +2,7 @@ BACKUP ~faiths_and_powers/backup~
 AUTHOR ~SubtleD and Grammarsalad~
 
 
-VERSION ~0.83.5~
+VERSION ~0.83.6~
 
 
 //README ~faiths_and_powers/readme-pnp.html~
@@ -36,10 +36,12 @@ ALWAYS
 
 	INCLUDE ~faiths_and_powers/lib/system_misc_functions.tpa~
 
+	INCLUDE ~faiths_and_powers/lib/system_base.tpa~
+
+	INCLUDE ~faiths_and_powers/lib/system_spheres.tpa~
+	
 	INCLUDE ~faiths_and_powers/lib/system_fnp_spontaneous.tpa~
 
-	INCLUDE ~faiths_and_powers/lib/system_base.tpa~
-	
 	INCLUDE ~faiths_and_powers/lib/spell_evasion.tpa~
 	
 	INCLUDE ~faiths_and_powers/lib/bg2fp_effect_batches_fnp.tpa~
@@ -1133,7 +1135,7 @@ INCLUDE ~faiths_and_powers/lib/qd_multiclass.tpa~
 //
 ACTION_IF (FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~) BEGIN
   INCLUDE ~override/fnp_sphere_list.tpa~
-  INCLUDE ~faiths_and_powers/lib/system_spheres.tpa~
+//  INCLUDE ~faiths_and_powers/lib/system_spheres.tpa~
   LAM define_sphere_names
   LAM d5_define_sphere_spells
   LAM d5_deity_kit_sphere_lists
@@ -1180,7 +1182,7 @@ FORBID_COMPONENT ~faiths_and_powers.tp2~ ~29~ @8
 //check sphere system_______________________________________________________________
 //
 ACTION_IF (FILE_EXISTS_IN_GAME ~clabpr01.2da~) && (FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~) BEGIN
- INCLUDE ~faiths_and_powers/lib/system_spheres.tpa~
+// INCLUDE ~faiths_and_powers/lib/system_spheres.tpa~
  INCLUDE ~override/fnp_sphere_list.tpa~
   LAM define_sphere_names
   LAM d5_define_sphere_spells

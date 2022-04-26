@@ -1382,6 +1382,7 @@ OUTER_SET winter_wolf_animation = IDS_OF_SYMBOL (animate ~WOLF_WINTER~)				//
 OUTER_SET dread_wolf_animation = IDS_OF_SYMBOL (animate ~WOLF_DREAD~)				//
 OUTER_SET vampiric_wolf_animation = IDS_OF_SYMBOL (animate ~WOLF_VAMPIRIC~)			//
 OUTER_SET shadow_wolf_animation = IDS_OF_SYMBOL (animate ~WOLF_SHADOW~)				//
+OUTER_SET wild_boar_animation = IDS_OF_SYMBOL (animate ~BOAR_ARCTIC~)				//
 OUTER_SET black_bear_animation = IDS_OF_SYMBOL (animate ~BEAR_BLACK~)				//
 OUTER_SET grizzly_bear_animation = IDS_OF_SYMBOL (animate ~BEAR_CAVE~)				//
 OUTER_SET polar_bear_animation = IDS_OF_SYMBOL (animate ~BEAR_POLAR~)				//
@@ -1412,7 +1413,6 @@ OUTER_SET umber_hulk_animation = IDS_OF_SYMBOL (animate ~...~)
 */
 
 OUTER_SET basilisk_animation = IDS_OF_SYMBOL (animate ~BASILISK~)					
-OUTER_SET wild_boar_animation = IDS_OF_SYMBOL (animate ~BOAR_ARCTIC~)				
 
 OUTER_SET werewolf_animation = IDS_OF_SYMBOL (animate ~WEREWOLF~)					
 OUTER_SET greater_werewolf_animation = IDS_OF_SYMBOL (animate ~WEREWOLF_GREATER~)	
@@ -1475,7 +1475,7 @@ grizzly bear:	spcl101b, orange	d5drber2		ibear
 polar bear:		plybear1			d5drber3		ibear
 mountain lion:	custom from FnP		d5drcat1		iwolf
 panther:		custom, dark		d5drcat2		ibear
-wild boar:		???					???
+wild boar:		none				d5drbor1		iswospdr (tusk!)
 snake:			plyjelly			d5drsnak		ijelly
 baby wyvern:	plywyvnb, green		d5drwyv1		iswospdr
 large wyvern:	plywyvnb, green		d5drwyv2		iswospdr
@@ -1528,6 +1528,7 @@ COPY ~faiths_and_powers/kits/druids/shapechange/d5drwlf6.bam~ ~override~
 COPY ~faiths_and_powers/kits/druids/shapechange/d5drber1.bam~ ~override~
 COPY ~faiths_and_powers/kits/druids/shapechange/d5drber2.bam~ ~override~
 COPY ~faiths_and_powers/kits/druids/shapechange/d5drber3.bam~ ~override~
+COPY ~faiths_and_powers/kits/druids/shapechange/d5drbor1.bam~ ~override~
 COPY ~faiths_and_powers/kits/druids/shapechange/d5drcat1.bam~ ~override~
 COPY ~faiths_and_powers/kits/druids/shapechange/d5drcat2.bam~ ~override~
 COPY ~faiths_and_powers/kits/druids/shapechange/d5dryeti.bam~ ~override~
@@ -1560,6 +1561,7 @@ COPY ~faiths_and_powers/kits/druids/shapechange/d5drnf.spl~ ~override~
   							~d5drber1~ 
   							~d5drber2~ 
   							~d5drber3~ 
+  							~d5drbor1~ 
   							~d5drcat1~ 
   							~d5drcat2~ 
   							~d5dryeti~ 
@@ -1915,6 +1917,32 @@ COPY ~faiths_and_powers/kits/druids/shapechange/d5drscb.itm~ ~override/d5drber3.
   LPF ADD_ITEM_EFFECT INT_VAR header = 1 opcode = 12 parameter1 = 0 parameter2 = (0 + (0 << 16)) target = 2 timing = 1 dicenumber = 2 dicesize = 4 savingthrow = 2 savebonus = (0 - 2) END 
   LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 17 target = 1 parameter1 = 160 parameter2 = 2 timing = 2 END 
   LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 28 target = 1 parameter1 = 75 parameter2 = 1 timing = 2 END 
+
+// wild boar
+COPY ~faiths_and_powers/kits/druids/shapechange/d5drscb.spl~ ~override/d5drbor1.spl~
+  SAY NAME1 @73037
+  SAY UNIDENTIFIED_DESC @73038
+  LPF ALTER_SPELL_HEADER STR_VAR icon = ~d5drbor1~ END
+  LPF ALTER_EFFECT INT_VAR match_opcode = 111 STR_VAR resource = ~d5drbor1~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 parameter1 = 0 parameter2 = 1 timing = 9 STR_VAR resource = ~d5drsc1~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 parameter1 = 0 parameter2 = 1 timing = 9 STR_VAR resource = ~d5drsc4~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 parameter1 = 0 parameter2 = 1 timing = 9 STR_VAR resource = ~d5drsc5~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 parameter1 = 0 parameter2 = 1 timing = 9 STR_VAR resource = ~d5drsc8~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 parameter1 = 0 parameter2 = 1 timing = 9 STR_VAR resource = ~d5drsc9~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 parameter1 = 0 parameter2 = 1 timing = 9 STR_VAR resource = ~d5drnf~ END
+COPY ~faiths_and_powers/kits/druids/shapechange/d5drscb.itm~ ~override/d5drbor1.itm~
+  WRITE_LONG 0x60 2
+  LPF ALTER_EFFECT INT_VAR match_opcode = 53 parameter1 = %wild_boar_animation% END 
+  LPF ALTER_EFFECT INT_VAR match_opcode = 1 parameter1 = 7 END 	//	set base APR
+  LPF ALTER_EFFECT INT_VAR match_opcode = 0 parameter1 = 3 END 	//	set base AC
+  LPF ALTER_EFFECT INT_VAR match_opcode = 44 parameter1 = 18 END 	//	set STR
+  LPF ALTER_EFFECT INT_VAR match_opcode = 15 parameter1 = 16 END 	//	set DEX
+  LPF ALTER_EFFECT INT_VAR match_opcode = 10 parameter1 = 19 END 	//	set CON
+  LPF ALTER_ITEM_HEADER INT_VAR header_type = 1 header = 1 damage_type = 1 dicenumber = 2 dicesize = 6 thac0_bonus = 2 damage_bonus = 0 speed = 3 STR_VAR icon = ~iswospdr~  END 
+  LPF ADD_ITEM_EFFECT INT_VAR header = 1 opcode = 40 target = 2 timing = 0 duration = 6 savingthrow = 2 savebonus = (0 - 2) END 
+  LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 126 target = 1 parameter1 = 4 parameter2 = 0 timing = 2 END 
+  LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 17 target = 1 parameter1 = 130 parameter2 = 2 timing = 2 END 
+  LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 28 target = 1 parameter1 = 40 parameter2 = 1 timing = 2 END 
 
 // mountain lion
 COPY ~faiths_and_powers/kits/druids/shapechange/d5drscb.spl~ ~override/d5drcat1.spl~
