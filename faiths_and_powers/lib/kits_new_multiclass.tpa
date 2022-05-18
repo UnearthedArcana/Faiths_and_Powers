@@ -64,7 +64,7 @@ ADD_KIT ~D5_CM_MYSTRA~
 ~0x02000000 14~
 
 //HIGH LEVEL ABILITIES ABBREVIATION_________________________________________________
-~Ma0~
+~CM0~
 
 //TOB STARTING EQUIPMENT_____________________________________________________________
 ~LEAT14	* HELM07 BAG25 RING06 RING31 CLCK02 BOOT01 AMUL19 BRAC16 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 BOW18 SW1H39 STAF08~
@@ -251,7 +251,7 @@ ADD_KIT ~D5_CM_AZUTH~
 ~0x02000000 14~
 
 //HIGH LEVEL ABILITIES ABBREVIATION_________________________________________________
-~Ma0~
+~CM0~
 
 //TOB STARTING EQUIPMENT_____________________________________________________________
 ~LEAT14	* HELM07 BAG25 RING06 RING31 CLCK02 BOOT01 AMUL19 BRAC16 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 BOW18 SW1H39 STAF08~
@@ -2800,28 +2800,40 @@ ACTION_PHP_EACH d5_fnp_multiclass_kits AS ind => mc_kit BEGIN
 		LPF CLONE_EFFECT INT_VAR silent = 1 /*multi_match = 1*/ match_parameter1 = %sorc_cleric_code% match_parameter2 = 9 parameter1 = %this_kit_code% END
 	END
 */
-	COPY_EXISTING ~LUSO0.2da~ ~override~
-	  COUNT_2DA_ROWS 10 rows
+	PRINT ~%new_name% kit needs sorcerer HLAs~
+	LAF get_hla_table STR_VAR kit_name = ~SORCERER~ RET hla_table END
+	PRINT ~the sorcerer table to be used is %hla_table%~
+	COPY_EXISTING ~lu%hla_table%.2da~ ~override~
+	  COUNT_2DA_COLS cols
+	  COUNT_2DA_ROWS cols rows
 	  FOR (row = 0; row < rows; ++row) BEGIN
-		READ_2DA_ENTRY row 1 10 sorcerer_ability
+		READ_2DA_ENTRY row 1 cols sorcerer_ability
 		PATCH_IF !(~%sorcerer_ability%~ STRING_EQUAL_CASE ~*~) BEGIN
-		  SNPRINT 3 hla_type ~%sorcerer_ability%~
-		  PATCH_IF (~%hla_type%~ STRING_EQUAL_CASE ~GA_~) || (~%hla_type%~ STRING_EQUAL_CASE ~AP_~) BEGIN
-			READ_2DA_ENTRY row 2 10 sorcerer_icon
-			READ_2DA_ENTRY row 3 10 sorcerer_strref
-			READ_2DA_ENTRY row 4 10 sorcerer_min_lev
-			READ_2DA_ENTRY row 5 10 sorcerer_max_level
-			READ_2DA_ENTRY row 6 10 sorcerer_num_allowed
-			READ_2DA_ENTRY row 7 10 sorcerer_prerequisite
-			READ_2DA_ENTRY row 8 10 sorcerer_excluded_by
-			READ_2DA_ENTRY row 9 10 sorcerer_alignment_restrict
+			READ_2DA_ENTRY row 2 cols sorcerer_icon
+			READ_2DA_ENTRY row 3 cols sorcerer_strref
+			READ_2DA_ENTRY row 4 cols sorcerer_min_lev
+			READ_2DA_ENTRY row 5 cols sorcerer_max_level
+			READ_2DA_ENTRY row 6 cols sorcerer_num_allowed
+			READ_2DA_ENTRY row 7 cols sorcerer_prerequisite
+			READ_2DA_ENTRY row 8 cols sorcerer_excluded_by
+			READ_2DA_ENTRY row 9 cols sorcerer_alignment_restrict
 			INNER_ACTION BEGIN
 			  LAF action_add_hla STR_VAR kit_name = EVAL ~%new_name%~ ability = EVAL ~%sorcerer_ability%~ icon = EVAL ~%sorcerer_icon%~ strref = EVAL ~%sorcerer_strref%~ min_lev = EVAL ~%sorcerer_min_lev%~ max_level = EVAL ~%sorcerer_max_level%~ num_allowed = EVAL ~%sorcerer_num_allowed%~ prerequisite = EVAL ~%sorcerer_prerequisite%~ excluded_by = EVAL ~%sorcerer_excluded_by%~ alignment_restrict = EVAL ~%sorcerer_alignment_restrict%~ END
 			END
-		  END
 		END
 	  END
 	IF_EXISTS BUT_ONLY
+    ACTION_IF (MOD_IS_INSTALLED ~refinements.tp2~ ~101~) OR (MOD_IS_INSTALLED ~refinements.tp2~ ~108~) BEGIN
+	  LAF action_remove_hla STR_VAR kit_name = EVAL ~%new_name%~ remove_ability = ~GA_SPWI920~ END
+      LAF action_remove_hla STR_VAR kit_name = EVAL ~%new_name%~ remove_ability = ~GA_SPWI921~ END
+      LAF action_remove_hla STR_VAR kit_name = EVAL ~%new_name%~ remove_ability = ~GA_SPWI922~ END
+      LAF action_remove_hla STR_VAR kit_name = EVAL ~%new_name%~ remove_ability = ~GA_SPWI923~ END
+      LAF action_remove_hla STR_VAR kit_name = EVAL ~%new_name%~ remove_ability = ~GA_SPWI924~ END
+      LAF action_remove_hla STR_VAR kit_name = EVAL ~%new_name%~ remove_ability = ~GA_SPWI925~ END
+      LAF action_remove_hla STR_VAR kit_name = EVAL ~%new_name%~ remove_ability = ~AP_SPWI928~ END
+      LAF action_remove_hla STR_VAR kit_name = EVAL ~%new_name%~ remove_ability = ~AP_SPWI929~ END
+      LAF action_remove_hla STR_VAR kit_name = EVAL ~%new_name%~ remove_ability = ~AP_SPWI930~ END
+    END
 	ACTION_IF (FILE_EXISTS_IN_GAME ~d5__5E_casting_mages.d5~) BEGIN
       APPEND ~splprot.2da~ ~D5_KIT_IS%TAB%152%TAB%-1%TAB%1~ UNLESS ~D5_KIT_IS~
       COPY_EXISTING ~splprot.2da~ ~override~

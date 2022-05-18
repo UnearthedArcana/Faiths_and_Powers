@@ -2,7 +2,7 @@ BACKUP ~faiths_and_powers/backup~
 AUTHOR ~SubtleD and Grammarsalad~
 
 
-VERSION ~0.83.6~
+VERSION ~0.83.7~
 
 
 ALWAYS
@@ -223,8 +223,9 @@ ACTION_IF (%d5_multiclass_clerics% = 1) BEGIN
   LAF multiclass_kit_clones END
 END
 
-LAF remove_mc_menu_kits END
-
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+  LAF remove_mc_menu_kits END
+END
 //__________________________________________________________________________________
 
 
