@@ -374,6 +374,7 @@ ACTION_IF !(FILE_EXISTS_IN_GAME ~d5__more_multi.d5~) BEGIN
               ("%entry%" STRING_COMPARE_CASE "MAGE_THIEF"          = 0)) BEGIN // other human multiclasses
     	SET_2DA_ENTRY  row 1 8 1
       END
+/*
       PATCH_IF (("%entry%" STRING_COMPARE_CASE "DRUID"               = 0) OR
     		  ("%entry%" STRING_COMPARE_CASE "FIGHTER_DRUID"       = 0)) BEGIN // druids and mystics
     	SET_2DA_ENTRY  row 1 8 1
@@ -384,6 +385,7 @@ ACTION_IF !(FILE_EXISTS_IN_GAME ~d5__more_multi.d5~) BEGIN
     	SET_2DA_ENTRY  row 6 8 1
     	SET_2DA_ENTRY  row 7 8 1
       END
+*/
       PATCH_IF ("%entry%" STRING_COMPARE_CASE "FIGHTER_MAGE_CLERIC" = 0) BEGIN // fighter/mage/cleric
     	SET_2DA_ENTRY  row 1 8 0
     	SET_2DA_ENTRY  row 2 8 0

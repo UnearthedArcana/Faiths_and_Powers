@@ -2375,6 +2375,57 @@ END
 //__________________________________________________________________________________
 END
 
+/*
+// AURA - CLERIC/THIEF OF THE WAY
+
+COPY_EXISTING ~kitlist.2da~ ~override~
+  COUNT_2DA_COLS cols
+  READ_2DA_ENTRIES_NOW ~r2en_kitlist~ cols
+  FOR (row = 2; row < r2en_kitlist; row += 1) BEGIN
+	READ_2DA_ENTRY_FORMER ~r2en_kitlist~ row 1 kit_name
+    READ_2DA_ENTRY_FORMER ~r2en_kitlist~ row 8 class_num
+    PATCH_IF (~kit_clab~ STRING_EQUAL_CASE ~C0AURA~) BEGIN
+      PATCH_IF (class_num = 15) BEGIN
+        SET aura_ct = 1
+      END
+    END
+  END
+BUT_ONLY
+
+ACTION_IF (FILE_EXISTS_IN_GAME ~C0AURACL.2da~) AND (aura_ct = 1) BEGIN
+//DEFINE SPHERE ACCESS______________________________________________________________
+//
+LAF ~DEFINE_FNP_KIT_INFO~
+  INT_VAR
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_club_staff	 	= 1
+	u_hammers	 		= 1
+	u_maces 	 		= 0
+	u_flails 			= 0
+	u_axes 				= 1
+	u_daggers 			= 1
+	u_short_swords		= 1
+	u_long_swords		= 0
+	u_scimitars 		= 0
+	u_katanas 			= 0
+	u_bastard_swords 	= 0
+	u_2hand_swords 		= 0
+	u_halberds 			= 0
+	u_spears 	 		= 1
+	u_darts 			= 1
+	u_slings	 		= 1
+	u_bows 				= 0
+	u_crossbows 		= 1
+  STR_VAR
+    clab_name 		= ~C0AURACL~
+	class 			= ~cleric~
+	sphere_list		= ~the_way_spheres~
+END
+//__________________________________________________________________________________
+END
+*/
 
 END // end mod_kit_spheres function
 

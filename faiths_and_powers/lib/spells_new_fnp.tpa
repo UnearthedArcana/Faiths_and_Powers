@@ -2208,34 +2208,34 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
       parameter2 = 2
       STR_VAR resource = EVAL ~%spell_res%~
      END
-  LPF CLONE_EFFECT INT_VAR match_opcode = 40 opcode = 321 parameter1 = 0 patameter2 = 0 timing = 0 STR_VAR resource = EVAL ~%spell_res%~ END
-//  LPF CLONE_EFFECT INT_VAR match_opcode = 40 opcode = 321 parameter1 = 0 patameter2 = 0 timing = 0 STR_VAR resource = EVAL ~b_f201~ END
+  LPF CLONE_EFFECT INT_VAR match_opcode = 40 opcode = 321 parameter1 = 0 parameter2 = 0 timing = 1 STR_VAR resource = EVAL ~%spell_res%~ END
+//  LPF CLONE_EFFECT INT_VAR match_opcode = 40 opcode = 321 parameter1 = 0 parameter2 = 0 timing = 1 STR_VAR resource = EVAL ~b_f201~ END
 
 //
 ACTION_IF FILE_EXISTS_IN_GAME ~spwi312.spl~ BEGIN
  COPY_EXISTING ~spwi312.spl~ ~override~
-  LPF CLONE_EFFECT INT_VAR match_opcode = 40 opcode = 321 parameter1 = 0 patameter2 = 0 timing = 0 STR_VAR resource = EVAL ~%spell_res%~ END
-//  LPF CLONE_EFFECT INT_VAR match_opcode = 40 opcode = 321 parameter1 = 0 patameter2 = 0 timing = 0 STR_VAR resource = EVAL ~b_f201~ END
+  LPF CLONE_EFFECT INT_VAR match_opcode = 40 opcode = 321 parameter1 = 0 parameter2 = 0 timing = 1 STR_VAR resource = EVAL ~%spell_res%~ END
+//  LPF CLONE_EFFECT INT_VAR match_opcode = 40 opcode = 321 parameter1 = 0 parameter2 = 0 timing = 1 STR_VAR resource = EVAL ~b_f201~ END
 END
 ACTION_IF FILE_EXISTS_IN_GAME ~spwish25.spl~ BEGIN
  COPY_EXISTING ~spwish25.spl~ ~override~
-  LPF CLONE_EFFECT INT_VAR match_opcode = 40 opcode = 321 parameter1 = 0 patameter2 = 0 timing = 0 STR_VAR resource = EVAL ~%spell_res%~ END
-//  LPF CLONE_EFFECT INT_VAR match_opcode = 40 opcode = 321 parameter1 = 0 patameter2 = 0 timing = 0 STR_VAR resource = EVAL ~b_f201~ END
+  LPF CLONE_EFFECT INT_VAR match_opcode = 40 opcode = 321 parameter1 = 0 parameter2 = 0 timing = 1 STR_VAR resource = EVAL ~%spell_res%~ END
+//  LPF CLONE_EFFECT INT_VAR match_opcode = 40 opcode = 321 parameter1 = 0 parameter2 = 0 timing = 1 STR_VAR resource = EVAL ~b_f201~ END
 END
 ACTION_IF FILE_EXISTS_IN_GAME ~spin146.spl~ BEGIN
  COPY_EXISTING ~spin146.spl~ ~override~
-  LPF CLONE_EFFECT INT_VAR match_opcode = 40 opcode = 321 parameter1 = 0 patameter2 = 0 timing = 0 STR_VAR resource = EVAL ~%spell_res%~ END
-//  LPF CLONE_EFFECT INT_VAR match_opcode = 40 opcode = 321 parameter1 = 0 patameter2 = 0 timing = 0 STR_VAR resource = EVAL ~b_f201~ END
+  LPF CLONE_EFFECT INT_VAR match_opcode = 40 opcode = 321 parameter1 = 0 parameter2 = 0 timing = 1 STR_VAR resource = EVAL ~%spell_res%~ END
+//  LPF CLONE_EFFECT INT_VAR match_opcode = 40 opcode = 321 parameter1 = 0 parameter2 = 0 timing = 1 STR_VAR resource = EVAL ~b_f201~ END
 END
 ACTION_IF FILE_EXISTS_IN_GAME ~spin977.spl~ BEGIN
  COPY_EXISTING ~spin977.spl~ ~override~
-  LPF CLONE_EFFECT INT_VAR match_opcode = 40 opcode = 321 parameter1 = 0 patameter2 = 0 timing = 0 STR_VAR resource = EVAL ~%spell_res%~ END
-//  LPF CLONE_EFFECT INT_VAR match_opcode = 40 opcode = 321 parameter1 = 0 patameter2 = 0 timing = 0 STR_VAR resource = EVAL ~b_f201~ END
+  LPF CLONE_EFFECT INT_VAR match_opcode = 40 opcode = 321 parameter1 = 0 parameter2 = 0 timing = 1 STR_VAR resource = EVAL ~%spell_res%~ END
+//  LPF CLONE_EFFECT INT_VAR match_opcode = 40 opcode = 321 parameter1 = 0 parameter2 = 0 timing = 1 STR_VAR resource = EVAL ~b_f201~ END
 END
 ACTION_IF FILE_EXISTS_IN_GAME ~spwm164.spl~ BEGIN
  COPY_EXISTING ~spwm164.spl~ ~override~
-  LPF CLONE_EFFECT INT_VAR match_opcode = 40 opcode = 321 parameter1 = 0 patameter2 = 0 timing = 0 STR_VAR resource = EVAL ~%spell_res%~ END
-//  LPF CLONE_EFFECT INT_VAR match_opcode = 40 opcode = 321 parameter1 = 0 patameter2 = 0 timing = 0 STR_VAR resource = EVAL ~b_f201~ END
+  LPF CLONE_EFFECT INT_VAR match_opcode = 40 opcode = 321 parameter1 = 0 parameter2 = 0 timing = 1 STR_VAR resource = EVAL ~%spell_res%~ END
+//  LPF CLONE_EFFECT INT_VAR match_opcode = 40 opcode = 321 parameter1 = 0 parameter2 = 0 timing = 1 STR_VAR resource = EVAL ~b_f201~ END
 END
 //add icons and projectile
 COPY_EXISTING ~%spell_res%.spl~ ~override~
