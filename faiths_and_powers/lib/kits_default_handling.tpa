@@ -7,6 +7,13 @@
 
 DEFINE_ACTION_FUNCTION vanilla_kit_spheres BEGIN
 
+LAF QD_ENSURE_QDMC_SPL STR_VAR base_class = ~P~ END 
+LAF QD_ENSURE_BASE_CLAB STR_VAR base_class = ~P~ END 
+LAF QD_ENSURE_QDMC_SPL STR_VAR base_class = ~D~ END 
+LAF QD_ENSURE_BASE_CLAB STR_VAR base_class = ~D~ END 
+LAF QD_ENSURE_QDMC_SPL STR_VAR base_class = ~R~ END 
+LAF QD_ENSURE_BASE_CLAB STR_VAR base_class = ~R~ END 
+
 LAM d5_kit_choices 
 
 //DEFINE SPHERE ACCESS______________________________________________________________
@@ -95,7 +102,7 @@ END
 //
 // base trueclass cleric
 //
-ACTION_IF (FILE_EXISTS_IN_GAME ~clabpr01.2da~) && (FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~) BEGIN
+ACTION_IF (FILE_EXISTS_IN_GAME ~clabpr01.2da~) AND (FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~) BEGIN
  LAM vanilla_cleric_spheres
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
@@ -131,7 +138,7 @@ END
 //
 // base cleric of talos
 //
-ACTION_IF FILE_EXISTS_IN_GAME ~clabpr02.2da~ BEGIN
+ACTION_IF (FILE_EXISTS_IN_GAME ~clabpr02.2da~) BEGIN
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -167,7 +174,7 @@ END
 //
 // base cleric of helm
 //
-ACTION_IF FILE_EXISTS_IN_GAME ~clabpr03.2da~ BEGIN
+ACTION_IF (FILE_EXISTS_IN_GAME ~clabpr03.2da~) BEGIN
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -203,7 +210,7 @@ END
 //
 // base cleric of lathander
 //
-ACTION_IF FILE_EXISTS_IN_GAME ~clabpr04.2da~ BEGIN
+ACTION_IF (FILE_EXISTS_IN_GAME ~clabpr04.2da~) BEGIN
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -239,7 +246,7 @@ END
 //
 // base cleric of tyr
 //
-ACTION_IF FILE_EXISTS_IN_GAME ~ohtyr.2da~ BEGIN
+ACTION_IF (FILE_EXISTS_IN_GAME ~ohtyr.2da~) BEGIN
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -281,7 +288,7 @@ END
 //
 // base cleric of tempus
 //
-ACTION_IF FILE_EXISTS_IN_GAME ~ohtempus.2da~ BEGIN
+ACTION_IF (FILE_EXISTS_IN_GAME ~ohtempus.2da~) BEGIN
  COPY_EXISTING ~ohtempus.2da~ ~override/d5tmpus.2da~
  COPY_EXISTING ~kitlist.2da~ ~override~
    REPLACE_TEXTUALLY ~ohtempus~ ~d5tmpus~
@@ -325,7 +332,7 @@ END
 //
 // base trueclass druid
 //
-ACTION_IF (FILE_EXISTS_IN_GAME ~clabdr01.2da~) && (FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~) BEGIN
+ACTION_IF (FILE_EXISTS_IN_GAME ~clabdr01.2da~) AND (FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~) BEGIN
  LAM vanilla_druid_spheres
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
@@ -685,7 +692,7 @@ END
 //
 // base trueclass ranger
 //
-ACTION_IF FILE_EXISTS_IN_GAME ~clabrn01.2da~ && (FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~) BEGIN
+ACTION_IF (FILE_EXISTS_IN_GAME ~clabrn01.2da~) && (FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~) BEGIN
  LAM vanilla_ranger_spheres
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
@@ -721,7 +728,7 @@ END
 //
 // base archer
 //
-ACTION_IF FILE_EXISTS_IN_GAME ~clabrn02.2da~ BEGIN
+ACTION_IF (FILE_EXISTS_IN_GAME ~clabrn02.2da~) BEGIN
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -757,7 +764,7 @@ END
 //
 // base stalker
 //
-ACTION_IF FILE_EXISTS_IN_GAME ~clabrn03.2da~ BEGIN
+ACTION_IF (FILE_EXISTS_IN_GAME ~clabrn03.2da~) BEGIN
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -793,7 +800,7 @@ END
 //
 // base beastmaster
 //
-ACTION_IF FILE_EXISTS_IN_GAME ~clabrn04.2da~ BEGIN
+ACTION_IF (FILE_EXISTS_IN_GAME ~clabrn04.2da~) BEGIN
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -827,7 +834,7 @@ END
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
-ACTION_IF FILE_EXISTS_IN_GAME ~clabrn05.2da~ BEGIN
+ACTION_IF (FILE_EXISTS_IN_GAME ~clabrn05.2da~) BEGIN
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -877,7 +884,7 @@ DEFINE_ACTION_FUNCTION mod_kit_spheres BEGIN
 
 // DIVINE REMIX - CYRIC
 
-ACTION_IF FILE_EXISTS_IN_GAME ~a#cyric.2da~ BEGIN
+ACTION_IF (FILE_EXISTS_IN_GAME ~a#cyric.2da~) BEGIN
  COPY_EXISTING ~a#cyric.2da~ ~override~
   REPLACE_TEXTUALLY ~KITBIL1~ ~SPCL423~ // poison weapon as 1/5
   REPLACE_TEXTUALLY ~KITBIL2~ ~a#cyr07~ // dread blast as 1/10
@@ -919,7 +926,7 @@ END
 
 // DIVINE REMIX - CORELLON LARETHIAN
 
-ACTION_IF FILE_EXISTS_IN_GAME ~a#feyw.2da~ BEGIN
+ACTION_IF (FILE_EXISTS_IN_GAME ~a#feyw.2da~) BEGIN
  COPY_EXISTING ~a#feyw.2da~ ~override~
   REPLACE_TEXTUALLY ~KITBIL1~ ~a#fey09~ // emotion as 1/5
   REPLACE_TEXTUALLY ~GA_KITBIL2~ ~****   ~ // nothing as 1/10
@@ -960,7 +967,7 @@ END
 
 // DIVINE REMIX - KOSSUTH
 
-ACTION_IF FILE_EXISTS_IN_GAME ~a#koss.2da~ BEGIN
+ACTION_IF (FILE_EXISTS_IN_GAME ~a#koss.2da~) BEGIN
  COPY_EXISTING ~a#koss.2da~ ~override~
   REPLACE_TEXTUALLY ~KITBIL1~ ~a#kos09~
   REPLACE_TEXTUALLY ~GA_KITBIL2~ ~****   ~
@@ -1001,7 +1008,7 @@ END
 
 // DIVINE REMIX - OGHMA
 
-ACTION_IF FILE_EXISTS_IN_GAME ~a#ogma.2da~ BEGIN
+ACTION_IF (FILE_EXISTS_IN_GAME ~a#ogma.2da~) BEGIN
  COPY_EXISTING ~a#ogma.2da~ ~override~
   COUNT_2DA_COLS cols
   REPLACE_TEXTUALLY ~KITBIL2~ ~a#og07~
@@ -1042,8 +1049,8 @@ END
 
 // DIVINE REMIX - OOZEMASTER
 
-ACTION_IF FILE_EXISTS_IN_GAME ~a#ooze.2da~ BEGIN
-  ACTION_IF FILE_EXISTS_IN_GAME ~a#ooze4.spl~ BEGIN
+ACTION_IF (FILE_EXISTS_IN_GAME ~a#ooze.2da~) BEGIN
+  ACTION_IF (FILE_EXISTS_IN_GAME ~a#ooze4.spl~) BEGIN
 	COPY_EXISTING ~a#ooze4.spl~ ~override~
 	  LPF ALTER_EFFECT INT_VAR resist_dispel = 0 END
   END
@@ -1113,7 +1120,7 @@ END
 
 // DIVINE REMIX - RED KNIGHT
 
-ACTION_IF FILE_EXISTS_IN_GAME ~a#red.2da~ BEGIN
+ACTION_IF (FILE_EXISTS_IN_GAME ~a#red.2da~) BEGIN
  COPY_EXISTING ~a#red.2da~ ~override~
   REPLACE_TEXTUALLY ~KITBIL1~ ~a#re07 ~
   REPLACE_TEXTUALLY ~GA_KITBIL2~ ~****      ~
@@ -1154,7 +1161,7 @@ END
 
 // DIVINE REMIX - SHAR
 
-ACTION_IF FILE_EXISTS_IN_GAME ~a#shar.2da~ BEGIN
+ACTION_IF (FILE_EXISTS_IN_GAME ~a#shar.2da~) BEGIN
   COPY_EXISTING ~cdshar2.spl~ ~override~
 	LPF ALTER_EFFECT INT_VAR match_opcode = 215 timing = 0 duration = 4 END
   BUT_ONLY
@@ -1200,7 +1207,7 @@ END
 
 // DIVINE REMIX - TEMPUS
 
-ACTION_IF FILE_EXISTS_IN_GAME ~a#temp.2da~ BEGIN
+ACTION_IF (FILE_EXISTS_IN_GAME ~a#temp.2da~) BEGIN
  COPY_EXISTING ~a#temp.2da~ ~override~
 
 //DEFINE SPHERE ACCESS______________________________________________________________
@@ -1239,7 +1246,7 @@ END
 
 // DIVINE REMIX - ILMATER
 
-ACTION_IF FILE_EXISTS_IN_GAME ~cdilmatr.2da~ BEGIN
+ACTION_IF (FILE_EXISTS_IN_GAME ~cdilmatr.2da~) BEGIN
  COPY_EXISTING ~cdilmatr.2da~ ~override~
 
 //DEFINE SPHERE ACCESS______________________________________________________________
@@ -1277,7 +1284,7 @@ END
 
 // DIVINE REMIX - SELUNE
 
-ACTION_IF FILE_EXISTS_IN_GAME ~cdselune.2da~ BEGIN
+ACTION_IF (FILE_EXISTS_IN_GAME ~cdselune.2da~) BEGIN
  COPY_EXISTING ~cdselune.2da~ ~override~
 
 //DEFINE SPHERE ACCESS______________________________________________________________
@@ -1315,7 +1322,7 @@ END
 
 // DIVINE REMIX - IACHTU XVIM
 
-ACTION_IF FILE_EXISTS_IN_GAME ~cdxvim.2da~ BEGIN
+ACTION_IF (FILE_EXISTS_IN_GAME ~cdxvim.2da~) BEGIN
  COPY_EXISTING ~cdxvim.2da~ ~override~
 
 //DEFINE SPHERE ACCESS______________________________________________________________
@@ -1354,7 +1361,7 @@ END
 
 // DIVINE REMIX - SUNE
 
-ACTION_IF FILE_EXISTS_IN_GAME ~nmsune.2da~ BEGIN
+ACTION_IF (FILE_EXISTS_IN_GAME ~nmsune.2da~) BEGIN
  COPY_EXISTING ~nmsune.2da~ ~override~
 
 //DEFINE SPHERE ACCESS______________________________________________________________
@@ -1393,7 +1400,7 @@ END
 
 // DIVINE REMIX - WILDERNESS RUNNER
 
-ACTION_IF FILE_EXISTS_IN_GAME ~nmrnwlrn.2da~ BEGIN
+ACTION_IF (FILE_EXISTS_IN_GAME ~nmrnwlrn.2da~) BEGIN
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
@@ -1430,7 +1437,7 @@ END
 
 // DIVINE REMIX - BOWSLINGER
 
-ACTION_IF FILE_EXISTS_IN_GAME ~nmrnbsln.2da~ BEGIN
+ACTION_IF (FILE_EXISTS_IN_GAME ~nmrnbsln.2da~) BEGIN
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
@@ -1467,7 +1474,7 @@ END
 
 // DIVINE REMIX - FERALAN
 
-ACTION_IF FILE_EXISTS_IN_GAME ~a#feral.2da~ BEGIN
+ACTION_IF (FILE_EXISTS_IN_GAME ~a#feral.2da~) BEGIN
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
@@ -1504,7 +1511,7 @@ END
 
 // DIVINE REMIX - FOREST RUNNER
 
-ACTION_IF FILE_EXISTS_IN_GAME ~nmrnfrrn.2da~ BEGIN
+ACTION_IF (FILE_EXISTS_IN_GAME ~nmrnfrrn.2da~) BEGIN
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
@@ -1544,7 +1551,7 @@ END
 
 // DIVINE REMIX - JUSTIFIER
 
-ACTION_IF FILE_EXISTS_IN_GAME ~a#justif.2da~ BEGIN
+ACTION_IF (FILE_EXISTS_IN_GAME ~a#justif.2da~) BEGIN
 
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
@@ -1583,7 +1590,7 @@ END
 
 // FROSTY JOURNEY - AURIL
 
-ACTION_IF FILE_EXISTS_IN_GAME ~clabauri.2da~ BEGIN
+ACTION_IF (FILE_EXISTS_IN_GAME ~clabauri.2da~) BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
 LAF ~DEFINE_FNP_KIT_INFO~
@@ -1620,7 +1627,7 @@ END
 
 // FROSTY JOURNEY - ULUTIU
 
-ACTION_IF FILE_EXISTS_IN_GAME ~clabiceg.2da~ BEGIN
+ACTION_IF (FILE_EXISTS_IN_GAME ~clabiceg.2da~) BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
 LAF ~DEFINE_FNP_KIT_INFO~
@@ -1657,7 +1664,7 @@ END
 
 // FROSTY JOURNEY - EARTH GOD THING
 
-ACTION_IF FILE_EXISTS_IN_GAME ~clabeart.2da~ BEGIN
+ACTION_IF (FILE_EXISTS_IN_GAME ~clabeart.2da~) BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
 LAF ~DEFINE_FNP_KIT_INFO~
@@ -1694,7 +1701,7 @@ END
 
 // FROSTY JOURNEY - LEAFTENDER
 
-ACTION_IF FILE_EXISTS_IN_GAME ~clableaf.2da~ BEGIN
+ACTION_IF (FILE_EXISTS_IN_GAME ~clableaf.2da~) BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
 LAF ~DEFINE_FNP_KIT_INFO~
@@ -1731,7 +1738,7 @@ END
 
 // FROSTY JOURNEY - TREETENDER
 
-ACTION_IF FILE_EXISTS_IN_GAME ~clabtree.2da~ BEGIN
+ACTION_IF (FILE_EXISTS_IN_GAME ~clabtree.2da~) BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
 LAF ~DEFINE_FNP_KIT_INFO~
@@ -1768,7 +1775,7 @@ END
 
 // FROSTY JOURNEY - GRUUMSH
 
-ACTION_IF FILE_EXISTS_IN_GAME ~clabgruu.2da~ BEGIN
+ACTION_IF (FILE_EXISTS_IN_GAME ~clabgruu.2da~) BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
 LAF ~DEFINE_FNP_KIT_INFO~
@@ -1805,7 +1812,7 @@ END
 
 // FROSTY JOURNEY - LUTHIC
 
-ACTION_IF FILE_EXISTS_IN_GAME ~clabluth.2da~ BEGIN
+ACTION_IF (FILE_EXISTS_IN_GAME ~clabluth.2da~) BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
 LAF ~DEFINE_FNP_KIT_INFO~
@@ -1842,7 +1849,7 @@ END
 
 // FROSTY JOURNEY - HIVEMASTER
 
-ACTION_IF FILE_EXISTS_IN_GAME ~k9hive.2da~ BEGIN
+ACTION_IF (FILE_EXISTS_IN_GAME ~k9hive.2da~) BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
 LAF ~DEFINE_FNP_KIT_INFO~
@@ -1878,7 +1885,7 @@ END
 
 // FROSTY JOURNEY - PALADIN OF ILMATER
 
-ACTION_IF FILE_EXISTS_IN_GAME ~k9ilma.2da~ BEGIN
+ACTION_IF (FILE_EXISTS_IN_GAME ~k9ilma.2da~) BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
 LAF ~DEFINE_FNP_KIT_INFO~
@@ -1914,7 +1921,7 @@ END
 
 // FROSTY JOURNEY - PALADIN OF MIELIKKI
 
-ACTION_IF FILE_EXISTS_IN_GAME ~k9miel.2da~ BEGIN
+ACTION_IF (FILE_EXISTS_IN_GAME ~k9miel.2da~) BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
 LAF ~DEFINE_FNP_KIT_INFO~
@@ -1950,7 +1957,7 @@ END
 
 // FROSTY JOURNEY - PALADIN OF MYSTRA
 
-ACTION_IF FILE_EXISTS_IN_GAME ~k9myst.2da~ BEGIN
+ACTION_IF (FILE_EXISTS_IN_GAME ~k9myst.2da~) BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
 LAF ~DEFINE_FNP_KIT_INFO~
@@ -1986,7 +1993,7 @@ END
 
 // SIRENE - PALADIN OF ILMATER
 
-ACTION_IF FILE_EXISTS_IN_GAME ~c0ilmcl.2da~ BEGIN
+ACTION_IF (FILE_EXISTS_IN_GAME ~c0ilmcl.2da~) BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
 LAF ~DEFINE_FNP_KIT_INFO~
@@ -2022,7 +2029,7 @@ END
 
 // I HATE UNDEAD - UNDED PREDATOR (RANGER)
 
-ACTION_IF FILE_EXISTS_IN_GAME ~rahuup.2da~ BEGIN
+ACTION_IF (FILE_EXISTS_IN_GAME ~rahuup.2da~) BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
 LAF ~DEFINE_FNP_KIT_INFO~
@@ -2080,7 +2087,7 @@ END
 
 // I HATE UNDEAD - HOLY REDEEMER (CLERIC)
 
-ACTION_IF FILE_EXISTS_IN_GAME ~rahuhr.2da~ BEGIN
+ACTION_IF (FILE_EXISTS_IN_GAME ~rahuhr.2da~) BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
 LAF ~DEFINE_FNP_KIT_INFO~
@@ -2139,7 +2146,7 @@ END
 
 // I HATE UNDEAD - CIRCLE ENFORCER (DRUID)
 
-ACTION_IF FILE_EXISTS_IN_GAME ~rahuce.2da~ BEGIN
+ACTION_IF (FILE_EXISTS_IN_GAME ~rahuce.2da~) BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
 LAF ~DEFINE_FNP_KIT_INFO~
@@ -2197,7 +2204,7 @@ END
 
 // NEPHELE - CLERIC OF YONDALLA
 
-ACTION_IF FILE_EXISTS_IN_GAME ~lkneph.2da~ BEGIN
+ACTION_IF (FILE_EXISTS_IN_GAME ~lkneph.2da~) BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
 LAF ~DEFINE_FNP_KIT_INFO~
@@ -2233,7 +2240,7 @@ END
 
 // HELARINE - CLERIC OF KELEMVOR
 
-ACTION_IF FILE_EXISTS_IN_GAME ~clabhlke.2da~ BEGIN
+ACTION_IF (FILE_EXISTS_IN_GAME ~clabhlke.2da~) BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
 LAF ~DEFINE_FNP_KIT_INFO~
@@ -2269,7 +2276,7 @@ END
 
 // YVETTE - CLERIC OF SUNE
 
-ACTION_IF FILE_EXISTS_IN_GAME ~yxkit.2da~ BEGIN
+ACTION_IF (FILE_EXISTS_IN_GAME ~yxkit.2da~) BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
 LAF ~DEFINE_FNP_KIT_INFO~
@@ -2305,7 +2312,7 @@ END
 
 // HELGA - CLERIC OF HAELA
 
-ACTION_IF FILE_EXISTS_IN_GAME ~x3helcl.2da~ BEGIN
+ACTION_IF (FILE_EXISTS_IN_GAME ~x3helcl.2da~) BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
 LAF ~DEFINE_FNP_KIT_INFO~
@@ -2341,7 +2348,7 @@ END
 
 // FALDORN - SHADOW DRUID
 
-ACTION_IF FILE_EXISTS_IN_GAME ~L#FALDSD.2da~ BEGIN
+ACTION_IF (FILE_EXISTS_IN_GAME ~L#FALDSD.2da~) BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
 LAF ~DEFINE_FNP_KIT_INFO~
@@ -2450,12 +2457,13 @@ COPY_EXISTING ~kitlist.2da~ ~override~
 	FOR ( index = 31 ; index < rows ; index = index + 1 ) BEGIN
 		READ_2DA_ENTRY %index% 5 9 clab
 		READ_2DA_ENTRY %index% 1 9 name
+		READ_2DA_ENTRY %index% 0 9 ind
 		READ_2DA_ENTRY %index% 8 9 class
-		DEFINE_ASSOCIATIVE_ARRAY d5_sphere_kits BEGIN "%clab%" , "%name%" => "%class%" END
+		SPRINT $d5_sphere_kits ("%clab%" "%name%" "%ind%") "%class%"
 	END
 BUT_ONLY
 ACTION_PHP_EACH d5_sphere_kits AS green => eggs BEGIN
- ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~override/d5_class.2da~ ~%green%~)) BEGIN
+ ACTION_IF !(FILE_CONTAINS_EVALUATED (~override/d5_class.2da~ ~%green%~)) BEGIN
   ACTION_IF (%eggs% = 3) BEGIN //..................................................clerics
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
@@ -2586,30 +2594,16 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	u_crossbows 		= 0
   STR_VAR
     clab_name 		= EVAL ~%green%~
-    class			= ~shaman~
-	s_Life 			= ~minor~
-	s_Death 		= ~x~
-	s_Benediction 	= ~x~
-	s_Destruction 	= ~x~
-	s_Protection 	= ~x~
-	s_War 			= ~x~
-	s_Exploration   = ~minor~
-	s_Knowledge 	= ~major~
-	s_Deception 	= ~x~
-	s_Thought 		= ~x~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~x~
-	s_Affliction 	= ~x~
-	s_Animal 		= ~major~
-	s_Plant 		= ~major~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~x~
-	s_Light 		= ~minor~
-	s_Shadow 		= ~major~
-	s_Magic 		= ~x~
-	s_Astral	     = ~major~
+ 	sphere_list		= ~vanilla_shaman_spheres~
+   class			= ~mystic~
+   END
+   ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+//   ACTION_IF (d5_spell_spontaneous = 0) BEGIN
+       LAF fnp_spell_choice STR_VAR this_kit_clab = EVAL ~%green%~ learn_itm_res = EVAL ~d5fs%green_2%~ free_universal_spells = ~yes~ END
+//   END
+//   ACTION_IF (d5_spell_spontaneous > 0) BEGIN
+//     LAF fnp_spontaneous STR_VAR kit_clab = EVAL ~%green%~ learn_res = EVAL ~%green%z~ free_universal = ~no~ END
+//   END
    END
   END
   ACTION_IF (%eggs% = 6) BEGIN //.................................................paladins

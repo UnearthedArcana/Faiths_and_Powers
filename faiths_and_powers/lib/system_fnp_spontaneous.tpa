@@ -1614,7 +1614,7 @@ ACTION_IF (IS_AN_INT %burning_hands_strref%) BEGIN
 		END
 		PATCH_IF (burning_change = 1) BEGIN
 		  LPF ALTER_SPELL_HEADER INT_VAR target = 1 END
-		  LPF ALTER_EFFECT INT_VAR match_opcode = 148 opcode = 146 target = 2 STR_VAR match_resource = ~spwi103~ END
+		  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 148 opcode = 146 target = 2 STR_VAR match_resource = ~spwi103~ END
 		  WRITE_BYTE 0x1b (THIS BOR 1)
 		END
 	  END

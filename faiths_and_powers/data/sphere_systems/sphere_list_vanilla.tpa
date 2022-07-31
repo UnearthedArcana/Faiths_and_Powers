@@ -335,6 +335,125 @@ CLERIC_GATE                             7	=	Astral // ....??
 
 // FnP DEITY/KIT SPHERE ASSIGNMENTS___________________________________________________
 
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_MACRO vanilla_cleric_spheres BEGIN
+  LAF QD_ENSURE_QDMC_SPL STR_VAR base_class = ~P~ END 
+  LAF QD_ENSURE_BASE_CLAB STR_VAR base_class = ~P~ END 
+  COPY_EXISTING ~QD_MCP01.spl~ ~override~ // trueclass spheres via .eff
+    LPF DELETE_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 0x4000 match_parameter2 = 9 STR_VAR match_resource = ~d5splif#~ END
+	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5splif#~ END
+    LPF DELETE_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 0 match_parameter2 = 9 STR_VAR match_resource = ~d5splif#~ END
+	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0 parameter2 = 9 STR_VAR resource = ~d5splif#~ END
+  IF_EXISTS BUT_ONLY
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY clabpr01_spheres BEGIN
+	Cleric			=> major
+	Death			=> x
+	Vermin			=> x
+	Destruction 	=> x
+	Protection		=> x
+	War				=> x
+	Exploration 	=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought			=> x
+	Dread			=> x
+	Druid			=> x
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Light			=> x
+	Shadow			=> x
+	Magic			=> x
+	Astral			=> x
+  END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_MACRO vanilla_druid_spheres BEGIN
+  LAF QD_ENSURE_QDMC_SPL STR_VAR base_class = ~D~ END 
+  LAF QD_ENSURE_BASE_CLAB STR_VAR base_class = ~D~ END 
+  COPY_EXISTING ~QD_MCD01.spl~ ~override~ // trueclass spheres via .eff
+    LPF DELETE_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 0x4000 match_parameter2 = 9 STR_VAR match_resource = ~d5spvig#~ END
+	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5spvig#~ END
+    LPF DELETE_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 0x4000 match_parameter2 = 9 STR_VAR match_resource = ~d5sfani#~ END
+	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5sfani#~ END
+    LPF DELETE_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 0x4000 match_parameter2 = 9 STR_VAR match_resource = ~d5sfpla#~ END
+	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5sfpla#~ END
+    LPF DELETE_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 0 match_parameter2 = 9 STR_VAR match_resource = ~d5spvig#~ END
+	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0 parameter2 = 9 STR_VAR resource = ~d5sfani#~ END
+    LPF DELETE_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 0 match_parameter2 = 9 STR_VAR match_resource = ~d5sfani#~ END
+	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0 parameter2 = 9 STR_VAR resource = ~d5sfani#~ END
+    LPF DELETE_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 0 match_parameter2 = 9 STR_VAR match_resource = ~d5sfpla#~ END
+	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0 parameter2 = 9 STR_VAR resource = ~d5sfpla#~ END
+  IF_EXISTS BUT_ONLY
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY clabdr01_spheres BEGIN
+	Cleric			=> x
+	Death			=> x
+	Vermin			=> x
+	Destruction 	=> x
+	Protection		=> x
+	War				=> x
+	Exploration 	=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought			=> x
+	Dread			=> x
+	Druid			=> major
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Light			=> x
+	Shadow			=> x
+	Magic			=> x
+	Astral			=> x
+  END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_MACRO vanilla_ranger_spheres BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY clabrn01_spheres BEGIN
+	Cleric			=> x
+	Death			=> x
+	Vermin			=> x
+	Destruction 	=> x
+	Protection		=> x
+	War				=> x
+	Exploration 	=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought			=> x
+	Dread			=> x
+	Druid			=> major
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Light			=> x
+	Shadow			=> x
+	Magic			=> x
+	Astral			=> x
+  END
+END
+//___________________________________________________________________________________
+
+
+
 DEFINE_ACTION_MACRO d5_deity_kit_sphere_lists BEGIN
 
 // UR-PRIEST__________________________________________________________________________
@@ -2821,123 +2940,6 @@ DEFINE_ACTION_FUNCTION vanilla_shaman_spheres
 	Magic			=> x
 	Astral			=> major
  END
-END
-//___________________________________________________________________________________
-
-//___________________________________________________________________________________
-//
-DEFINE_ACTION_MACRO vanilla_cleric_spheres BEGIN
-  LAF QD_ENSURE_QDMC_SPL STR_VAR base_class = ~P~ END 
-  LAF QD_ENSURE_BASE_CLAB STR_VAR base_class = ~P~ END 
-  COPY_EXISTING ~QD_MCP01.spl~ ~override~ // trueclass spheres via .eff
-    LPF DELETE_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 0x4000 match_parameter2 = 9 STR_VAR match_resource = ~d5splif#~ END
-	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5splif#~ END
-    LPF DELETE_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 0 match_parameter2 = 9 STR_VAR match_resource = ~d5splif#~ END
-	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0 parameter2 = 9 STR_VAR resource = ~d5splif#~ END
-  IF_EXISTS BUT_ONLY
-  ACTION_DEFINE_ASSOCIATIVE_ARRAY clabpr01_spheres BEGIN
-	Cleric			=> major
-	Death			=> x
-	Vermin			=> x
-	Destruction 	=> x
-	Protection		=> x
-	War				=> x
-	Exploration 	=> x
-	Knowledge		=> x
-	Deception		=> x
-	Thought			=> x
-	Dread			=> x
-	Druid			=> x
-	Affliction		=> x
-	Animal			=> x
-	Plant			=> x
-	Earth			=> x
-	Water			=> x
-	Air				=> x
-	Fire			=> x
-	Light			=> x
-	Shadow			=> x
-	Magic			=> x
-	Astral			=> x
-  END
-END
-//___________________________________________________________________________________
-
-//___________________________________________________________________________________
-//
-DEFINE_ACTION_MACRO vanilla_druid_spheres BEGIN
-  LAF QD_ENSURE_QDMC_SPL STR_VAR base_class = ~D~ END 
-  LAF QD_ENSURE_BASE_CLAB STR_VAR base_class = ~D~ END 
-  COPY_EXISTING ~QD_MCD01.spl~ ~override~ // trueclass spheres via .eff
-    LPF DELETE_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 0x4000 match_parameter2 = 9 STR_VAR match_resource = ~d5spvig#~ END
-	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5spvig#~ END
-    LPF DELETE_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 0x4000 match_parameter2 = 9 STR_VAR match_resource = ~d5sfani#~ END
-	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5sfani#~ END
-    LPF DELETE_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 0x4000 match_parameter2 = 9 STR_VAR match_resource = ~d5sfpla#~ END
-	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5sfpla#~ END
-    LPF DELETE_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 0 match_parameter2 = 9 STR_VAR match_resource = ~d5spvig#~ END
-	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0 parameter2 = 9 STR_VAR resource = ~d5sfani#~ END
-    LPF DELETE_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 0 match_parameter2 = 9 STR_VAR match_resource = ~d5sfani#~ END
-	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0 parameter2 = 9 STR_VAR resource = ~d5sfani#~ END
-    LPF DELETE_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 0 match_parameter2 = 9 STR_VAR match_resource = ~d5sfpla#~ END
-	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0 parameter2 = 9 STR_VAR resource = ~d5sfpla#~ END
-  IF_EXISTS BUT_ONLY
-  ACTION_DEFINE_ASSOCIATIVE_ARRAY clabdr01_spheres BEGIN
-	Cleric			=> x
-	Death			=> x
-	Vermin			=> x
-	Destruction 	=> x
-	Protection		=> x
-	War				=> x
-	Exploration 	=> x
-	Knowledge		=> x
-	Deception		=> x
-	Thought			=> x
-	Dread			=> x
-	Druid			=> major
-	Affliction		=> x
-	Animal			=> x
-	Plant			=> x
-	Earth			=> x
-	Water			=> x
-	Air				=> x
-	Fire			=> x
-	Light			=> x
-	Shadow			=> x
-	Magic			=> x
-	Astral			=> x
-  END
-END
-//___________________________________________________________________________________
-
-//___________________________________________________________________________________
-//
-DEFINE_ACTION_MACRO vanilla_ranger_spheres BEGIN
-  ACTION_DEFINE_ASSOCIATIVE_ARRAY clabrn01_spheres BEGIN
-	Cleric			=> x
-	Death			=> x
-	Vermin			=> x
-	Destruction 	=> x
-	Protection		=> x
-	War				=> x
-	Exploration 	=> x
-	Knowledge		=> x
-	Deception		=> x
-	Thought			=> x
-	Dread			=> x
-	Druid			=> major
-	Affliction		=> x
-	Animal			=> x
-	Plant			=> x
-	Earth			=> x
-	Water			=> x
-	Air				=> x
-	Fire			=> x
-	Light			=> x
-	Shadow			=> x
-	Magic			=> x
-	Astral			=> x
-  END
 END
 //___________________________________________________________________________________
 

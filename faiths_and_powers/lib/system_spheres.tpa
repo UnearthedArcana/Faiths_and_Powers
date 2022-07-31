@@ -610,6 +610,7 @@ COPY ~faiths_and_powers/data/misc/d5sxyz.spl~ ~override/d5sflig.spl~
 //  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5sfligx~ END
 COPY ~faiths_and_powers/data/misc/d5sxyz.spl~ ~override/d5smlig.spl~
 //  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5smligx~ END
+
 //shadow
 COPY ~faiths_and_powers/data/misc/d5sxyz.spl~ ~override/d5spsha.spl~
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 309 target = 1 parameter1 = 1 parameter2 = 0 timing = 9 STR_VAR resource = ~d5spsha~ END
@@ -639,6 +640,162 @@ COPY ~faiths_and_powers/data/misc/d5sxyz.spl~ ~override/d5smast.spl~
 //  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5smastx~ END
 //__________________________________________________________________________________
 
+//create sphere effs if necessary____________________________________________________
+//
+<<<<<<<< .../inlined/d5_blank.file
+>>>>>>>>
+ACTION_IF !(FILE_EXISTS ~.../inlined/QD_MC_AP.EFF~) BEGIN
+  COPY - ~.../inlined/d5_blank.file~ ~.../inlined/QD_MC_AP.EFF~
+    INSERT_BYTES 0 0x110
+    WRITE_ASCII  0x00 "EFF V2.0EFF V2.0" (16)
+    PATCH_FOR_EACH ofs IN ~0x80~ ~0x84~ ~0x88~ ~0x8c~ BEGIN
+      WRITE_LONG ofs "-1"
+    END
+    WRITE_LONG   0x10 146 // cast spell
+    WRITE_LONG   0x14 2   // preset target
+    WRITE_LONG   0x20 1   // cast instantly (ignore level)
+    WRITE_SHORT  0x24 1   // permament until death
+    WRITE_SHORT  0x2c 100 // probability 100%
+END
+
+COPY ~.../inlined/QD_MC_AP.EFF~ ~override/d5splif#.eff~
+  WRITE_ASCII 0x30 ~d5splif~ (8)
+COPY ~.../inlined/QD_MC_AP.EFF~ ~override/d5sflif#.eff~
+  WRITE_ASCII 0x30 ~d5sflif~ (8)
+COPY ~.../inlined/QD_MC_AP.EFF~ ~override/d5smlif#.eff~
+  WRITE_ASCII 0x30 ~d5smlif~ (8)
+COPY ~.../inlined/QD_MC_AP.EFF~ ~override/d5spdea#.eff~
+  WRITE_ASCII 0x30 ~d5spdea~ (8)
+COPY ~.../inlined/QD_MC_AP.EFF~ ~override/d5sfdea#.eff~
+  WRITE_ASCII 0x30 ~d5sfdea~ (8)
+COPY ~.../inlined/QD_MC_AP.EFF~ ~override/d5smdea#.eff~
+  WRITE_ASCII 0x30 ~d5smdea~ (8)
+COPY ~.../inlined/QD_MC_AP.EFF~ ~override/d5spben#.eff~
+  WRITE_ASCII 0x30 ~d5spben~ (8)
+COPY ~.../inlined/QD_MC_AP.EFF~ ~override/d5sfben#.eff~
+  WRITE_ASCII 0x30 ~d5sfben~ (8)
+COPY ~.../inlined/QD_MC_AP.EFF~ ~override/d5smben#.eff~
+  WRITE_ASCII 0x30 ~d5smben~ (8)
+COPY ~.../inlined/QD_MC_AP.EFF~ ~override/d5spdes#.eff~
+  WRITE_ASCII 0x30 ~d5spdes~ (8)
+COPY ~.../inlined/QD_MC_AP.EFF~ ~override/d5sfdes#.eff~
+  WRITE_ASCII 0x30 ~d5sfdes~ (8)
+COPY ~.../inlined/QD_MC_AP.EFF~ ~override/d5smdes#.eff~
+  WRITE_ASCII 0x30 ~d5smdes~ (8)
+COPY ~.../inlined/QD_MC_AP.EFF~ ~override/d5sppro#.eff~
+  WRITE_ASCII 0x30 ~d5sppro~ (8)
+COPY ~.../inlined/QD_MC_AP.EFF~ ~override/d5sfpro#.eff~
+  WRITE_ASCII 0x30 ~d5sfpro~ (8)
+COPY ~.../inlined/QD_MC_AP.EFF~ ~override/d5smpro#.eff~
+  WRITE_ASCII 0x30 ~d5smpro~ (8)
+COPY ~.../inlined/QD_MC_AP.EFF~ ~override/d5spwar#.eff~
+  WRITE_ASCII 0x30 ~d5spwar~ (8)
+COPY ~.../inlined/QD_MC_AP.EFF~ ~override/d5sfwar#.eff~
+  WRITE_ASCII 0x30 ~d5sfwar~ (8)
+COPY ~.../inlined/QD_MC_AP.EFF~ ~override/d5smwar#.eff~
+  WRITE_ASCII 0x30 ~d5smwar~ (8)
+COPY ~.../inlined/QD_MC_AP.EFF~ ~override/d5spexp#.eff~
+  WRITE_ASCII 0x30 ~d5spexp~ (8)
+COPY ~.../inlined/QD_MC_AP.EFF~ ~override/d5sfexp#.eff~
+  WRITE_ASCII 0x30 ~d5sfexp~ (8)
+COPY ~.../inlined/QD_MC_AP.EFF~ ~override/d5smexp#.eff~
+  WRITE_ASCII 0x30 ~d5smexp~ (8)
+COPY ~.../inlined/QD_MC_AP.EFF~ ~override/d5spkno#.eff~
+  WRITE_ASCII 0x30 ~d5spkno~ (8)
+COPY ~.../inlined/QD_MC_AP.EFF~ ~override/d5sfkno#.eff~
+  WRITE_ASCII 0x30 ~d5sfkno~ (8)
+COPY ~.../inlined/QD_MC_AP.EFF~ ~override/d5smkno#.eff~
+  WRITE_ASCII 0x30 ~d5smkno~ (8)
+COPY ~.../inlined/QD_MC_AP.EFF~ ~override/d5spdec#.eff~
+  WRITE_ASCII 0x30 ~d5spdec~ (8)
+COPY ~.../inlined/QD_MC_AP.EFF~ ~override/d5sfdec#.eff~
+  WRITE_ASCII 0x30 ~d5sfdec~ (8)
+COPY ~.../inlined/QD_MC_AP.EFF~ ~override/d5smdec#.eff~
+  WRITE_ASCII 0x30 ~d5smdec~ (8)
+COPY ~.../inlined/QD_MC_AP.EFF~ ~override/d5sptho#.eff~
+  WRITE_ASCII 0x30 ~d5sptho~ (8)
+COPY ~.../inlined/QD_MC_AP.EFF~ ~override/d5sftho#.eff~
+  WRITE_ASCII 0x30 ~d5sftho~ (8)
+COPY ~.../inlined/QD_MC_AP.EFF~ ~override/d5smtho#.eff~
+  WRITE_ASCII 0x30 ~d5smtho~ (8)
+COPY ~.../inlined/QD_MC_AP.EFF~ ~override/d5spdre#.eff~
+  WRITE_ASCII 0x30 ~d5spdre~ (8)
+COPY ~.../inlined/QD_MC_AP.EFF~ ~override/d5sfdre#.eff~
+  WRITE_ASCII 0x30 ~d5sfdre~ (8)
+COPY ~.../inlined/QD_MC_AP.EFF~ ~override/d5smdre#.eff~
+  WRITE_ASCII 0x30 ~d5smdre~ (8)
+COPY ~.../inlined/QD_MC_AP.EFF~ ~override/d5spvig#.eff~
+  WRITE_ASCII 0x30 ~d5spvig~ (8)
+COPY ~.../inlined/QD_MC_AP.EFF~ ~override/d5sfvig#.eff~
+  WRITE_ASCII 0x30 ~d5sfvig~ (8)
+COPY ~.../inlined/QD_MC_AP.EFF~ ~override/d5smvig#.eff~
+  WRITE_ASCII 0x30 ~d5smvig~ (8)
+COPY ~.../inlined/QD_MC_AP.EFF~ ~override/d5spaff#.eff~
+  WRITE_ASCII 0x30 ~d5spaff~ (8)
+COPY ~.../inlined/QD_MC_AP.EFF~ ~override/d5sfaff#.eff~
+  WRITE_ASCII 0x30 ~d5sfaff~ (8)
+COPY ~.../inlined/QD_MC_AP.EFF~ ~override/d5smaff#.eff~
+  WRITE_ASCII 0x30 ~d5smaff~ (8)
+COPY ~.../inlined/QD_MC_AP.EFF~ ~override/d5spani#.eff~
+  WRITE_ASCII 0x30 ~d5spani~ (8)
+COPY ~.../inlined/QD_MC_AP.EFF~ ~override/d5sfani#.eff~
+  WRITE_ASCII 0x30 ~d5sfani~ (8)
+COPY ~.../inlined/QD_MC_AP.EFF~ ~override/d5smani#.eff~
+  WRITE_ASCII 0x30 ~d5smani~ (8)
+COPY ~.../inlined/QD_MC_AP.EFF~ ~override/d5sppla#.eff~
+  WRITE_ASCII 0x30 ~d5sppla~ (8)
+COPY ~.../inlined/QD_MC_AP.EFF~ ~override/d5sfpla#.eff~
+  WRITE_ASCII 0x30 ~d5sfpla~ (8)
+COPY ~.../inlined/QD_MC_AP.EFF~ ~override/d5smpla#.eff~
+  WRITE_ASCII 0x30 ~d5smpla~ (8)
+COPY ~.../inlined/QD_MC_AP.EFF~ ~override/d5spear#.eff~
+  WRITE_ASCII 0x30 ~d5spear~ (8)
+COPY ~.../inlined/QD_MC_AP.EFF~ ~override/d5sfear#.eff~
+  WRITE_ASCII 0x30 ~d5sfear~ (8)
+COPY ~.../inlined/QD_MC_AP.EFF~ ~override/d5smear#.eff~
+  WRITE_ASCII 0x30 ~d5smear~ (8)
+COPY ~.../inlined/QD_MC_AP.EFF~ ~override/d5spair#.eff~
+  WRITE_ASCII 0x30 ~d5spair~ (8)
+COPY ~.../inlined/QD_MC_AP.EFF~ ~override/d5sfair#.eff~
+  WRITE_ASCII 0x30 ~d5sfair~ (8)
+COPY ~.../inlined/QD_MC_AP.EFF~ ~override/d5smair#.eff~
+  WRITE_ASCII 0x30 ~d5smair~ (8)
+COPY ~.../inlined/QD_MC_AP.EFF~ ~override/d5spwat#.eff~
+  WRITE_ASCII 0x30 ~d5spwat~ (8)
+COPY ~.../inlined/QD_MC_AP.EFF~ ~override/d5sfwat#.eff~
+  WRITE_ASCII 0x30 ~d5sfwat~ (8)
+COPY ~.../inlined/QD_MC_AP.EFF~ ~override/d5smwat#.eff~
+  WRITE_ASCII 0x30 ~d5smwat~ (8)
+COPY ~.../inlined/QD_MC_AP.EFF~ ~override/d5spfir#.eff~
+  WRITE_ASCII 0x30 ~d5spfir~ (8)
+COPY ~.../inlined/QD_MC_AP.EFF~ ~override/d5sffir#.eff~
+  WRITE_ASCII 0x30 ~d5sffir~ (8)
+COPY ~.../inlined/QD_MC_AP.EFF~ ~override/d5smfir#.eff~
+  WRITE_ASCII 0x30 ~d5smfir~ (8)
+COPY ~.../inlined/QD_MC_AP.EFF~ ~override/d5splig#.eff~
+  WRITE_ASCII 0x30 ~d5splig~ (8)
+COPY ~.../inlined/QD_MC_AP.EFF~ ~override/d5sflig#.eff~
+  WRITE_ASCII 0x30 ~d5sflig~ (8)
+COPY ~.../inlined/QD_MC_AP.EFF~ ~override/d5smlig#.eff~
+  WRITE_ASCII 0x30 ~d5smlig~ (8)
+COPY ~.../inlined/QD_MC_AP.EFF~ ~override/d5spsha#.eff~
+  WRITE_ASCII 0x30 ~d5spsha~ (8)
+COPY ~.../inlined/QD_MC_AP.EFF~ ~override/d5sfsha#.eff~
+  WRITE_ASCII 0x30 ~d5sfsha~ (8)
+COPY ~.../inlined/QD_MC_AP.EFF~ ~override/d5smsha#.eff~
+  WRITE_ASCII 0x30 ~d5smsha~ (8)
+COPY ~.../inlined/QD_MC_AP.EFF~ ~override/d5spmag#.eff~
+  WRITE_ASCII 0x30 ~d5spmag~ (8)
+COPY ~.../inlined/QD_MC_AP.EFF~ ~override/d5sfmag#.eff~
+  WRITE_ASCII 0x30 ~d5sfmag~ (8)
+COPY ~.../inlined/QD_MC_AP.EFF~ ~override/d5smmag#.eff~
+  WRITE_ASCII 0x30 ~d5smmag~ (8)
+COPY ~.../inlined/QD_MC_AP.EFF~ ~override/d5spast#.eff~
+  WRITE_ASCII 0x30 ~d5spast~ (8)
+COPY ~.../inlined/QD_MC_AP.EFF~ ~override/d5sfast#.eff~
+  WRITE_ASCII 0x30 ~d5sfast~ (8)
+COPY ~.../inlined/QD_MC_AP.EFF~ ~override/d5smast#.eff~
+  WRITE_ASCII 0x30 ~d5smast~ (8)
 
 /*
 //add duplication prevention________________________________________________________
