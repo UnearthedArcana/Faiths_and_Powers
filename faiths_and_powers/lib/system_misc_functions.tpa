@@ -511,6 +511,42 @@ END // end function
 //__________________________________________________________________________________
 
 
+DEFINE_ACTION_FUNCTION rename_holy_symbols STR_VAR item_name = ~~ BEGIN
+  COPY_EXISTING ~belt12.itm~ ~override~
+    READ_ASCII 0x3a lath_icon
+    SAY NAME2 ~%item_name%~
+  BUT_ONLY
+  COPY_EXISTING ~belt13.itm~ ~override~
+    WRITE_ASCIIE 0x3a ~%lath_icon%~ #8
+    SAY NAME2 ~%item_name%~
+  BUT_ONLY
+  COPY_EXISTING ~belt14.itm~ ~override~
+    WRITE_ASCIIE 0x3a ~%lath_icon%~ #8
+    SAY NAME2 ~%item_name%~
+  BUT_ONLY
+  COPY_EXISTING ~ohtempus.itm~ ~override~
+    WRITE_ASCIIE 0x3a ~%lath_icon%~ #8
+    SAY NAME2 ~%item_name%~
+  BUT_ONLY
+  COPY_EXISTING ~beltty.itm~ ~override~
+    WRITE_ASCIIE 0x3a ~%lath_icon%~ #8
+    SAY NAME2 ~%item_name%~
+  BUT_ONLY
+  COPY_EXISTING ~beltbw.itm~ ~override~
+    WRITE_ASCIIE 0x3a ~%lath_icon%~ #8
+    SAY NAME2 ~%item_name%~
+  BUT_ONLY
+  COPY_EXISTING ~beltsh.itm~ ~override~
+//    WRITE_ASCIIE 0x3a ~%lath_icon%~ #8
+    SAY NAME2 ~%item_name%~
+  BUT_ONLY
+END
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+
 DEFINE_ACTION_FUNCTION shaman_spells BEGIN
 
 ACTION_IF !(FILE_EXISTS_IN_GAME ~d5_shmkn.2da~) BEGIN
