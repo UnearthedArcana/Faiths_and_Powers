@@ -1,30 +1,202 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////                                         //////////////////////////////////////
-/////////////////////////////////////                 Scrolls                 //////////////////////////////////////
+/////////////////////////////////////             Priest Scrolls              //////////////////////////////////////
 /////////////////////////////////////                                         //////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+COPY ~%folder%/lib/lists/pr_full.tpa~ ~override~  //spl source_ref --> create status
+COPY ~%folder%/lib/lists/pr_scrol.tpa~ ~override~ //source_ref --> scroll name (for adding to scroll list for placement )
 
-/////////////////////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-/////////////////////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-////////////////////////////////            							   \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-////////////////////////////////            							   \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-////////////////////////////////      Scroll Creation and Distribution     \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-////////////////////////////////            							   \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-////////////////////////////////            							   \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-/////////////////////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-/////////////////////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+//////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+////////// Create spell to scroll list
 
-//Univesal scrolls- Priest
-//This code creates a few scrolls that are not eligible for scrollhood.  That should be fine if they are not placed or added to scroll creation
-INCLUDE ~%mod_folder%/lib/universal_scrolls.tpa~      //
+COPY_EXISTING_REGEXP GLOB ~.*\.spl~ ~override~ //copies all spl files
+    PATCH_IF (SOURCE_SIZE > 0x71) BEGIN
+    READ_BYTE 0x001C type //Spell type
+     PATCH_IF type = 2 BEGIN   //priest spells only
+         READ_LONG  0x0008 name //spell name
+         PATCH_IF (%name% > 0) BEGIN
+         INNER_PATCH_SAVE sp_res ~%SOURCE_RES%~ BEGIN  END
+             READ_BYTE 0x0021 exclusive //general type
+                PATCH_IF ((exclusive BAND 0b11000000) = 0b00000000)   BEGIN //If General type (I think)
+                  INNER_ACTION BEGIN
+		    COPY_EXISTING ~pr_full.tpa~ ~override~
+		      REPLACE_TEXTUALLY "BEGIN" "BEGIN
+~%sp_res%~ => ~general~"
+                  END //end inner action
+                END//end general type
+                ELSE PATCH_IF ((exclusive BAND 0b11000000) = 0b10000000)   BEGIN //If Cleric exclusive (I think)
+                  INNER_ACTION BEGIN
+		    COPY_EXISTING ~pr_full.tpa~ ~override~
+		      REPLACE_TEXTUALLY "BEGIN" "BEGIN
+~%sp_res%~ => ~cleric~"
+                  END //end inner action
+                END//end cleric type
+                ELSE PATCH_IF ((exclusive BAND 0b11000000) = 0b01000000)   BEGIN //If Druid exclusive (I think)
+                  INNER_ACTION BEGIN
+		    COPY_EXISTING ~pr_full.tpa~ ~override~
+		      REPLACE_TEXTUALLY "BEGIN" "BEGIN
+~%sp_res%~ => ~druid~"
+                  END //end inner action
+                END//end druid type
+                //let's try to exclude subspells
+                   PATCH_IF !("%sp_res%" STRING_CONTAINS_REGEXP "[101-999][a-z]") BEGIN //contains a letter after sp numbers
+                        INNER_PATCH_SAVE remove ~%sp_res%~ BEGIN  END
+                        //PATCH_PRINT "filename is %remove%"
+                          INNER_ACTION BEGIN
+		             COPY_EXISTING ~pr_full.tpa~ ~override~
+                                 REPLACE_TEXTUALLY "~%remove%~ => ~druid~" "~%remove%~ => ~no~"
+		                 REPLACE_TEXTUALLY "~%remove%~ => ~general~" "~%remove%~ => ~no~"
+  		                 REPLACE_TEXTUALLY "~%remove%~ => ~cleric~" "~%remove%~ => ~no~"
+                          END //inner patch
+                   END
 
-//check for SR, for Gust of Wind (I think it's a dif level for druid compared to cleric...)
-//Usability 
-INCLUDE ~%mod_folder%/lib/druid_scroll_usability.tpa~      //  
+                   PATCH_IF !("%sp_res%" STRING_CONTAINS_REGEXP "WISH") BEGIN //let's exclude individual wishes
+                       // PATCH_PRINT "filename is %sp_res%"
+                        INNER_PATCH_SAVE remove ~%sp_res%~ BEGIN  END
+                        INNER_ACTION BEGIN
+		    COPY_EXISTING ~pr_full.tpa~ ~override~
+		      REPLACE_TEXTUALLY "~%remove%~ => ~druid~" "~%remove%~ => ~no~"
+		      REPLACE_TEXTUALLY "~%remove%~ => ~general~" "~%remove%~ => ~no~"
+		      REPLACE_TEXTUALLY "~%remove%~ => ~cleric~" "~%remove%~ => ~no~"
+		        END//inner action to remove wish
+                   END //end string contains wish
+                   PATCH_IF ("%sp_res%" STRING_MATCHES_REGEXP "SPPR[1-7][01-49]") AND ("%sp_res%" STRING_CONTAINS_REGEXP "WISH") BEGIN //name not contain wish or SPPR
+                       INNER_PATCH_SAVE variant ~%sp_res%~ BEGIN  END
+                       // PATCH_PRINT "filename is %sp_res%"
+                       //need to now look in all clabs for such files. If they exist, change listing to match class (kit?) 
+                            INNER_ACTION BEGIN
+                            //shaman exception (not in kitlist (why?)
+                                ACTION_IF (FILE_CONTAINS_EVALUATED(~CLABSH01.2da~ ~GA_%variant%~)) BEGIN
+                                   //   PRINT "filename is %variant%"
+                                      COPY_EXISTING ~pr_full.tpa~ ~override~
+                                          REPLACE_TEXTUALLY "~%variant%~ => ~druid~" "~%variant%~ => ~shaman~"
+                                          REPLACE_TEXTUALLY "~%variant%~ => ~general~" "~%variant%~ => ~shaman~"
+                                          REPLACE_TEXTUALLY "~%variant%~ => ~cleric~" "~%variant%~ => ~shaman~"
+                                END
+                            END  //inner action
+                            INNER_ACTION BEGIN
+	                         COPY_EXISTING kitlist.2da override
+		                 READ_2DA_ENTRIES_NOW kitlist 3
+		                 FOR (row = 3; row < kitlist; ++row) BEGIN // Skip past the vanilla kits
+			             READ_2DA_ENTRY_FORMER kitlist row 1 label
+			             READ_2DA_ENTRY_FORMER kitlist row 5 clab
+			             READ_2DA_ENTRY_FORMER kitlist row 8 class
+			             PATCH_IF class = 11 OR   // druid
+                                              class = 6  OR   //paladin   
+                                              class = 12 OR   //ranger
+                                              class = 3  OR   //cleric
+                                              class = 21 BEGIN //shaman
+			                  PATCH_IF (FILE_CONTAINS_EVALUATED(~%clab%.2da~ ~GA_%variant%~)) BEGIN
+                                           //   PATCH_PRINT "clab is %clab%.2da. What is %variant%? What is the %label%?"
+                                                INNER_PATCH_SAVE clab_n ~%clab%~ BEGIN  END
+                                                INNER_PATCH_SAVE kit_n ~%label%~ BEGIN  END
+                                                INNER_ACTION BEGIN
+                                                     COPY_EXISTING ~pr_full.tpa~ ~override~
+                                                         REPLACE_TEXTUALLY "~%variant%~ => ~druid~" "~%variant%~ => ~%label%~"
+                                                         REPLACE_TEXTUALLY "~%variant%~ => ~general~" "~%variant%~ => ~%label%~"
+                                                         REPLACE_TEXTUALLY "~%variant%~ => ~cleric~" "~%variant%~ => ~%label%~"
+                                                END//inner action
+                                          END
+			             END
+                                 END //for loop
+                            END//inner action end
+                   END //
+         END //non-empty name
+     END //priest type
+    END //valid file
+    BUT_ONLY
 
-//placement
+//////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+////////// exclude scrolls that already exist
 
-INCLUDE ~%mod_folder%/lib/scroll_placement.tpa~      //  
+
+COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~ //copies all itm files
+    PATCH_IF (SOURCE_SIZE > 0x71) BEGIN
+    READ_BYTE 0x001C type //Item type
+        PATCH_IF (type = 0x000b) BEGIN  //if scroll type
+        //check if casts spell from scroll list.  If so, place in 'no' category
+        //add these scrolls for placement
+		READ_LONG  0x64 "abil_off" ELSE 0
+  		READ_SHORT 0x68 "abil_num" ELSE 0
+		READ_LONG  0x6a "fx_off"   ELSE 0
+  		FOR (index = 0 ; index < abil_num ; index = index + 1) BEGIN
+    		READ_BYTE ("%abil_off%" + (0x38 * "%index%")) "type"
+			PATCH_IF ("%type%" = 3) BEGIN // magical
+      			READ_SHORT ("%abil_off%" + 0x1e + (0x38 * "%index%")) "abil_fx_num"
+      			READ_SHORT ("%abil_off%" + 0x20 + (0x38 * "%index%")) "abil_fx_idx"
+      			FOR (index2 = 0 ; index2 < abil_fx_num ; index2 = index2 + 1) BEGIN
+        			READ_SHORT ("%fx_off%" +        (0x30 * ("%abil_fx_idx%" + "%index2%"))) "opcode"
+        			PATCH_IF (("%opcode%" = 146) OR ("%opcode%" = 148)) BEGIN // cast spell
+        			     READ_ASCII ("%fx_off%" + 0x14 + (0x30 * ("%abil_fx_idx%" + "%index2%"))) "resource"
+        			     //PATCH_PRINT "%resource%"
+                                     INNER_PATCH_SAVE da_spl ~%resource%~ BEGIN  END
+                                     INNER_PATCH_SAVE da_scr ~%SOURCE_RES%~ BEGIN  END
+                                     INNER_ACTION BEGIN
+                                         ACTION_IF (FILE_CONTAINS_EVALUATED(~pr_full.tpa~ ~%da_spl%~))  BEGIN
+                                             // PRINT "%resource%"
+                                                   COPY_EXISTING ~pr_full.tpa~ ~override~
+                                                       REPLACE_TEXTUALLY "~%da_spl%~ => ~druid~" "~%da_spl%~ => ~no~"
+                                                       REPLACE_TEXTUALLY "~%da_spl%~ => ~general~" "~%da_spl%~ => ~no~"
+                                                       REPLACE_TEXTUALLY "~%da_spl%~ => ~cleric~" "~%da_spl%~ => ~no~"
+		                                   COPY_EXISTING ~pr_scrol.tpa~ ~override~
+		                                       REPLACE_TEXTUALLY "BEGIN" "BEGIN
+~%da_spl%~ => ~%da_scr%~"
+                                         END //action if file contains
+                                     END //inner action
+        			END //opcode check
+      			END //for loop 
+      			END //magical
+		END//for loop
+        END
+    END
+    BUT_ONLY
+
+//////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+////////// Actually create scrolls
+
+//base list
+INCLUDE ~override/pr_full.tpa~  //
+
+
+ACTION_PHP_EACH pr_full_list AS scr_spl => status BEGIN
+ ACTION_IF !("%status%" STRING_EQUAL "no") BEGIN
+ //PRINT ~%scr_spl% is spell file name; %status% is status.~
+   COPY_EXISTING ~%scr_spl%.SPL~ ~override~
+     PATCH_IF (SOURCE_SIZE > 0x71) BEGIN
+             READ_LONG  0x0034 level //spell level
+             READ_LONG  0x0008 name //spell name
+             READ_STRREF 0x0008 s_name
+	     READ_LONG  0x0050 desc //description
+	     READ_SHORT 0x007E target //Target-check
+	     READ_SHORT 0x0080 range //range-check
+             PATCH_IF ("%status%" STRING_EQUAL "general") BEGIN
+               INNER_PATCH_SAVE spellicon ~%SOURCE_RES%~ BEGIN  END
+               INNER_PATCH_SAVE da_status ~%status%~ BEGIN  END
+               INNER_PATCH_SAVE scroll_ref ~%SOURCE_RES%~ BEGIN
+                 REPLACE_TEXTUALLY CASE_INSENSITIVE EXACT_MATCH ~SP~ ~B_~
+                   // PATCH_PRINT "What does %scroll_ref% say?"
+                 END
+                    /*
+                    INNER_ACTION BEGIN
+                        COPY ~%folder%/data/scrolls/priest_1/b_dr102.itm~ ~override/%clock%.ITM~   //Level 1 druid only as generic.  usable by ranger/druid
+                        WRITE_LONG 0x0008 ~%name%~
+                        WRITE_LONG 0x000c ~%name%~
+                        WRITE_LONG 0x0054 ~%desc%~
+                        WRITE_SHORT 0x007E target //Target-check
+                        WRITE_SHORT 0x0080 range //range-check
+                        WRITE_ASCIIE 0x0076  ~%spellicon%A~   //use icon
+                        WRITE_ASCIIE 0x003a  ~%spellicon%A~   //inventory icon
+                        WRITE_LONG 0x0034 (level * 100)       //cost
+                        LPF ALTER_EFFECT INT_VAR match_opcode = 146 STR_VAR resource = EVAL ~%block%~ END
+                    END //end inner action
+                    */
+          END// general spell types
+     END
+ END //if
+END
