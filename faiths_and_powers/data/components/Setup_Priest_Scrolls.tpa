@@ -8,6 +8,7 @@
 
 COPY ~%folder%/lib/lists/pr_full.tpa~ ~override~  //spl source_ref --> create status
 COPY ~%folder%/lib/lists/pr_scrol.tpa~ ~override~ //source_ref --> scroll name (for adding to scroll list for placement )
+COPY ~%folder%/lib/lists/scrl_lv.tpa~ ~override~ //source_ref --> scroll name (for adding to scroll list for placement )
 
 //////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
@@ -53,7 +54,36 @@ COPY_EXISTING_REGEXP GLOB ~.*\.spl~ ~override~ //copies all spl files
   		                 REPLACE_TEXTUALLY "~%remove%~ => ~cleric~" "~%remove%~ => ~no~"
                           END //inner patch
                    END
-
+                   //now lets exclude a specific list os spells not actually meant to be cast in this way 
+                   //list: DW#FPPLO, DGFAITH, DGARCHON, DEVAHEAL, SPJA01
+                   //CONTINUE
+                   PATCH_IF !("%sp_res%" STRING_CONTAINS_REGEXP "SPPR[8-9][01-99]") OR
+                            !("%sp_res%" STRING_CONTAINS_REGEXP "SPPR[1-7][5-9][1-9]") OR
+                            !("%sp_res%" STRING_CONTAINS_REGEXP "SPWI") OR
+                            !("%sp_res%" STRING_CONTAINS_REGEXP "SPCL") OR
+                            !("%sp_res%" STRING_CONTAINS_REGEXP "SPIN") OR
+                            !("%sp_res%" STRING_CONTAINS_REGEXP "SPWM") OR
+                            ("%sp_res%" STRING_EQUAL "KELDORN") OR
+                            ("%sp_res%" STRING_EQUAL "OHBGLOV1") OR
+                            ("%sp_res%" STRING_EQUAL "DGRIGHT") OR
+                            ("%sp_res%" STRING_EQUAL "OHPRGD10") OR
+                            ("%sp_res%" STRING_EQUAL "OHDXDIS") OR
+                            ("%sp_res%" STRING_EQUAL "SENSPIHE") OR
+                            ("%sp_res%" STRING_EQUAL "SPYANCD") OR
+                            ("%sp_res%" STRING_EQUAL "CDPR417") OR
+                            ("%sp_res%" STRING_EQUAL "DGFAITH") OR
+                            ("%sp_res%" STRING_EQUAL "DGARCHON") OR
+                            ("%sp_res%" STRING_EQUAL "DEVAHEAL") OR
+                            ("%sp_res%" STRING_EQUAL "SPJA01") OR
+                            ("%sp_res%" STRING_EQUAL "DW#FPPLO") BEGIN
+                                  INNER_ACTION BEGIN
+                                //  PRINT "%sp_res% and %remove%"
+                                       COPY_EXISTING ~pr_full.tpa~ ~override~
+                                           REPLACE_TEXTUALLY "~%sp_res%~ => ~druid~" "~%sp_res%~ => ~no~"
+                                           REPLACE_TEXTUALLY "~%sp_res%~ => ~general~" "~%sp_res%~ => ~no~"
+                                           REPLACE_TEXTUALLY "~%sp_res%~ => ~cleric~" "~%sp_res%~ => ~no~"
+                                  END
+                   END //end specific exceptions
                    PATCH_IF !("%sp_res%" STRING_CONTAINS_REGEXP "WISH") BEGIN //let's exclude individual wishes
                        // PATCH_PRINT "filename is %sp_res%"
                         INNER_PATCH_SAVE remove ~%sp_res%~ BEGIN  END
@@ -67,7 +97,7 @@ COPY_EXISTING_REGEXP GLOB ~.*\.spl~ ~override~ //copies all spl files
                    PATCH_IF ("%sp_res%" STRING_MATCHES_REGEXP "SPPR[1-7][01-49]") AND ("%sp_res%" STRING_CONTAINS_REGEXP "WISH") BEGIN //name not contain wish or SPPR
                        INNER_PATCH_SAVE variant ~%sp_res%~ BEGIN  END
                        // PATCH_PRINT "filename is %sp_res%"
-                       //need to now look in all clabs for such files. If they exist, change listing to match class (kit?) 
+                       //need to now look in all clabs for such files. If they exist, change listing to match class (kit?)
                             INNER_ACTION BEGIN
                             //shaman exception (not in kitlist (why?)
                                 ACTION_IF (FILE_CONTAINS_EVALUATED(~CLABSH01.2da~ ~GA_%variant%~)) BEGIN
@@ -146,10 +176,24 @@ COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~ //copies all itm files
 		                                   COPY_EXISTING ~pr_scrol.tpa~ ~override~
 		                                       REPLACE_TEXTUALLY "BEGIN" "BEGIN
 ~%da_spl%~ => ~%da_scr%~"
+		                                   INNER_PATCH_SAVE d_scr ~%da_scr%~ BEGIN  END
+                                                   INNER_ACTION BEGIN  //now get level
+                                                   COPY_EXISTING ~%da_spl%.SPL~ ~override~
+                                                       PATCH_IF (SOURCE_SIZE > 0x71) BEGIN
+                                                       READ_LONG  0x0034 level //spell level
+                                                           INNER_PATCH_SAVE d_level ~%level%~ BEGIN  END
+                                                              INNER_ACTION BEGIN
+                                                                   COPY_EXISTING ~scrl_lv.tpa~ ~override~
+		                                                   REPLACE_TEXTUALLY "BEGIN" "BEGIN
+~%d_scr%~ => ~%d_level%~"
+                                                              END
+		                                      END  //patch if
+		                                      BUT_ONLY
+                                                   END
                                          END //action if file contains
                                      END //inner action
         			END //opcode check
-      			END //for loop 
+      			END //for loop
       			END //magical
 		END//for loop
         END
@@ -163,28 +207,38 @@ COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~ //copies all itm files
 //base list
 INCLUDE ~override/pr_full.tpa~  //
 
-
+//part 1
 ACTION_PHP_EACH pr_full_list AS scr_spl => status BEGIN
  ACTION_IF !("%status%" STRING_EQUAL "no") BEGIN
  //PRINT ~%scr_spl% is spell file name; %status% is status.~
    COPY_EXISTING ~%scr_spl%.SPL~ ~override~
      PATCH_IF (SOURCE_SIZE > 0x71) BEGIN
+      //       PATCH_IF ("%status%" STRING_EQUAL "general") BEGIN  //general scrolls (no checks for fnP needed--should be legit universal)
              READ_LONG  0x0034 level //spell level
              READ_LONG  0x0008 name //spell name
              READ_STRREF 0x0008 s_name
 	     READ_LONG  0x0050 desc //description
 	     READ_SHORT 0x007E target //Target-check
 	     READ_SHORT 0x0080 range //range-check
-             PATCH_IF ("%status%" STRING_EQUAL "general") BEGIN
+               INNER_PATCH_SAVE d_level ~%level%~ BEGIN  END
+               INNER_PATCH_SAVE da_spll ~%scr_spl%~ BEGIN  END
                INNER_PATCH_SAVE spellicon ~%SOURCE_RES%~ BEGIN  END
                INNER_PATCH_SAVE da_status ~%status%~ BEGIN  END
                INNER_PATCH_SAVE scroll_ref ~%SOURCE_RES%~ BEGIN
                  REPLACE_TEXTUALLY CASE_INSENSITIVE EXACT_MATCH ~SP~ ~B_~
                    // PATCH_PRINT "What does %scroll_ref% say?"
+                 END  //now, create spell to scroll list for later use, as well as scroll to level
+                 INNER_ACTION BEGIN
+		      COPY_EXISTING ~pr_scrol.tpa~ ~override~
+		          REPLACE_TEXTUALLY "BEGIN" "BEGIN
+~%da_spll%~ => ~%scroll_ref%~"
+                      COPY_EXISTING ~scrl_lv.tpa~ ~override~
+		          REPLACE_TEXTUALLY "BEGIN" "BEGIN
+~%scroll_ref%~ => ~%d_level%~"
                  END
-                    /*
+                 /*
                     INNER_ACTION BEGIN
-                        COPY ~%folder%/data/scrolls/priest_1/b_dr102.itm~ ~override/%clock%.ITM~   //Level 1 druid only as generic.  usable by ranger/druid
+                    COPY ~%folder%/data/scrolls/priest_1/b_ps101.itm~ ~override/%clock%.ITM~   //Level 1 universal as generic.  usable by all druid/clerics etc.
                         WRITE_LONG 0x0008 ~%name%~
                         WRITE_LONG 0x000c ~%name%~
                         WRITE_LONG 0x0054 ~%desc%~
@@ -193,10 +247,217 @@ ACTION_PHP_EACH pr_full_list AS scr_spl => status BEGIN
                         WRITE_ASCIIE 0x0076  ~%spellicon%A~   //use icon
                         WRITE_ASCIIE 0x003a  ~%spellicon%A~   //inventory icon
                         WRITE_LONG 0x0034 (level * 100)       //cost
-                        LPF ALTER_EFFECT INT_VAR match_opcode = 146 STR_VAR resource = EVAL ~%block%~ END
+                        LPF ALTER_EFFECT INT_VAR match_opcode = 146 STR_VAR resource = EVAL ~%da_spll%~ END
                     END //end inner action
-                    */
-          END// general spell types
+                    
+                 */
+      //    END// general spell types
      END
+     BUT_ONLY
  END //if
 END
+
+//part 2
+
+//spell to scroll list
+INCLUDE ~override/pr_scrol.tpa~  //   pr_scr
+
+ACTION_PHP_EACH pr_full_list AS scr_spl => status BEGIN
+  ACTION_PHP_EACH pr_scr AS spl => scr BEGIN
+   ACTION_IF !("%status%" STRING_EQUAL "no") BEGIN
+     ACTION_IF ("%scr_spl%" STRING_EQUAL "%spl%") BEGIN
+   COPY_EXISTING ~%scr_spl%.SPL~ ~override~
+     PATCH_IF (SOURCE_SIZE > 0x71) BEGIN
+             READ_LONG  0x0008 name //spell name
+             READ_STRREF 0x0008 s_name
+             READ_LONG  0x0034 level //spell level
+	     READ_LONG  0x0050 desc //description
+	     READ_SHORT 0x007E target //Target-check
+	     READ_SHORT 0x0080 range //range-check
+               INNER_PATCH_SAVE spellicon ~%SOURCE_RES%~ BEGIN  END
+                 PATCH_IF ("%status%" STRING_EQUAL "general") BEGIN
+                    INNER_ACTION BEGIN
+                    COPY ~%folder%/data/scrolls/priest_1/b_ps101.itm~ ~override/%scr%.ITM~   //Level 1 universal as generic.  usable by all druid/clerics etc.
+                        WRITE_LONG 0x0008 ~%name%~
+                        WRITE_LONG 0x000c ~%name%~
+                        WRITE_LONG 0x0054 ~%desc%~
+                        WRITE_SHORT 0x007E target //Target-check
+                        WRITE_SHORT 0x0080 range //range-check
+                        WRITE_ASCIIE 0x0076  ~%spellicon%A~   //use icon
+                        WRITE_ASCIIE 0x003a  ~%spellicon%A~   //inventory icon
+                        WRITE_LONG 0x0034 (level * 100)       //cost
+                        LPF ALTER_EFFECT INT_VAR match_opcode = 146 STR_VAR resource = EVAL ~%da_spll%~ END
+                    END //end inner action
+                 END//general
+                 ELSE PATCH_IF ("%status%" STRING_EQUAL "druid") BEGIN  //druid spells (prob need special checks for fnp...)
+                 //fnp check here probably
+                    INNER_ACTION BEGIN
+                    COPY ~%folder%/data/scrolls/priest_1/b_dr102.itm~ ~override/%scr%.ITM~   //Level 1 universal as generic.  usable by all druid
+                        WRITE_LONG 0x0008 ~%name%~
+                        WRITE_LONG 0x000c ~%name%~
+                        WRITE_LONG 0x0054 ~%desc%~
+                        WRITE_SHORT 0x007E target //Target-check
+                        WRITE_SHORT 0x0080 range //range-check
+                        WRITE_ASCIIE 0x0076  ~%spellicon%A~   //use icon
+                        WRITE_ASCIIE 0x003a  ~%spellicon%A~   //inventory icon
+                        WRITE_LONG 0x0034 (level * 100)       //cost
+                        LPF ALTER_EFFECT INT_VAR match_opcode = 146 STR_VAR resource = EVAL ~%da_spll%~ END
+                    END //end inner action
+                 END//druid
+                 ELSE PATCH_IF ("%status%" STRING_EQUAL "cleric") BEGIN  //cleric spells (prob need special checks for fnp...)
+                 //fnp check here probably
+                    INNER_ACTION BEGIN
+                    COPY ~%folder%/data/scrolls/priest_1/b_cl102.itm~ ~override/%scr%.ITM~   //Level 1 universal as generic.  usable by all cleric
+                        WRITE_LONG 0x0008 ~%name%~
+                        WRITE_LONG 0x000c ~%name%~
+                        WRITE_LONG 0x0054 ~%desc%~
+                        WRITE_SHORT 0x007E target //Target-check
+                        WRITE_SHORT 0x0080 range //range-check
+                        WRITE_ASCIIE 0x0076  ~%spellicon%A~   //use icon
+                        WRITE_ASCIIE 0x003a  ~%spellicon%A~   //inventory icon
+                        WRITE_LONG 0x0034 (level * 100)       //cost
+                        LPF ALTER_EFFECT INT_VAR match_opcode = 146 STR_VAR resource = EVAL ~%da_spll%~ END
+                    END //end inner action
+                 END//cleric
+                 ELSE PATCH_IF ("%status%" STRING_EQUAL "shaman") BEGIN  //druid spells (prob need special checks for fnp...)
+                 //fnp check here probably
+                    INNER_ACTION BEGIN
+                    COPY ~%folder%/data/scrolls/priest_1/b_dr102.itm~ ~override/%scr%.ITM~   //Level 1 universal as generic.  usable by all druid (but limit it to shaman)
+                        WRITE_LONG 0x0008 ~%name%~
+                        WRITE_LONG 0x000c ~%name%~
+                        WRITE_LONG 0x0054 ~%desc%~
+                        WRITE_SHORT 0x007E target //Target-check
+                        WRITE_SHORT 0x0080 range //range-check
+                        WRITE_ASCIIE 0x0076  ~%spellicon%A~   //use icon
+                        WRITE_ASCIIE 0x003a  ~%spellicon%A~   //inventory icon
+                        WRITE_LONG 0x0034 (level * 100)       //cost
+                        LPF ALTER_EFFECT INT_VAR match_opcode = 146 STR_VAR resource = EVAL ~%da_spll%~ END
+                    END //end inner action
+                 END//shaman
+                 ELSE BEGIN //for kit specific spells
+                   INNER_ACTION BEGIN
+                    COPY ~%folder%/data/scrolls/priest_1/b_ps101.itm~ ~override/%scr%.ITM~   //Level 1 universal as generic.  usable by all druid/clerics etc.
+                        WRITE_LONG 0x0008 ~%name%~
+                        WRITE_LONG 0x000c ~%name%~
+                        WRITE_LONG 0x0054 ~%desc%~
+                        WRITE_SHORT 0x007E target //Target-check
+                        WRITE_SHORT 0x0080 range //range-check
+                        WRITE_ASCIIE 0x0076  ~%spellicon%A~   //use icon
+                        WRITE_ASCIIE 0x003a  ~%spellicon%A~   //inventory icon
+                        WRITE_LONG 0x0034 (level * 100)       //cost
+                        LPF ALTER_EFFECT INT_VAR match_opcode = 146 STR_VAR resource = EVAL ~%da_spll%~ END   
+                        INNER_ACTION BEGIN
+	                         COPY_EXISTING kitlist.2da override
+		                 READ_2DA_ENTRIES_NOW kitlist 3
+		                 FOR (row = 3; row < kitlist; ++row) BEGIN // Skip past the vanilla kits
+			             READ_2DA_ENTRY_FORMER kitlist row 1 label
+			             READ_2DA_ENTRY_FORMER kitlist row 5 clab
+			             READ_2DA_ENTRY_FORMER kitlist row 8 class
+			                  PATCH_IF ("%label%" STRING_EQUAL "%status%") BEGIN
+                                          PATCH_PRINT "%label% and %clab% and %spl% and %scr%"
+                                              PATCH_IF class = 3 BEGIN  //cleric class
+                                                  // PATCH_PRINT "cleric"
+                                                        INNER_ACTION BEGIN
+                                                        COPY ~%folder%/data/scrolls/priest_1/B_CL001.itm.itm~ ~override/%scr%.ITM~   //Level 1 universal as generic.  usable by all druid (but limit it to shaman)
+                                                             WRITE_LONG 0x0008 ~%name%~
+                                                             WRITE_LONG 0x000c ~%name%~
+                                                             WRITE_LONG 0x0054 ~%desc%~
+                                                             WRITE_SHORT 0x007E target //Target-check
+                                                             WRITE_SHORT 0x0080 range //range-check
+                                                             WRITE_ASCIIE 0x0076  ~%spellicon%A~   //use icon
+                                                             WRITE_ASCIIE 0x003a  ~%spellicon%A~   //inventory icon
+                                                             WRITE_LONG 0x0034 (level * 100)       //cost
+                                                             LPF ALTER_EFFECT INT_VAR match_opcode = 146 STR_VAR resource = EVAL ~%da_spll%~ END
+                                                             //CONTINUE EXCLUSIVE TO KIT
+                                                        END //end inner action
+                                              END  //if cleric
+                                              PATCH_IF class = 6 BEGIN  //pally class
+                                                        INNER_ACTION BEGIN
+                                                        COPY ~%folder%/data/scrolls/priest_1/B_PA001.itm.itm~ ~override/%scr%.ITM~   //Level 1 universal as generic.  usable by all druid (but limit it to shaman)
+                                                             WRITE_LONG 0x0008 ~%name%~
+                                                             WRITE_LONG 0x000c ~%name%~
+                                                             WRITE_LONG 0x0054 ~%desc%~
+                                                             WRITE_SHORT 0x007E target //Target-check
+                                                             WRITE_SHORT 0x0080 range //range-check
+                                                             WRITE_ASCIIE 0x0076  ~%spellicon%A~   //use icon
+                                                             WRITE_ASCIIE 0x003a  ~%spellicon%A~   //inventory icon
+                                                             WRITE_LONG 0x0034 (level * 100)       //cost
+                                                             LPF ALTER_EFFECT INT_VAR match_opcode = 146 STR_VAR resource = EVAL ~%da_spll%~ END
+                                                             //CONTINUE EXCLUSIVE TO KIT
+                                                        END //end inner action
+                                              END  //if pally
+                                              PATCH_IF class = 11 BEGIN  //druid class
+                                                        INNER_ACTION BEGIN
+                                                        COPY ~%folder%/data/scrolls/priest_1/B_DR001.itm.itm~ ~override/%scr%.ITM~   //Level 1 universal as generic.  usable by all druid (but limit it to shaman)
+                                                             WRITE_LONG 0x0008 ~%name%~
+                                                             WRITE_LONG 0x000c ~%name%~
+                                                             WRITE_LONG 0x0054 ~%desc%~
+                                                             WRITE_SHORT 0x007E target //Target-check
+                                                             WRITE_SHORT 0x0080 range //range-check
+                                                             WRITE_ASCIIE 0x0076  ~%spellicon%A~   //use icon
+                                                             WRITE_ASCIIE 0x003a  ~%spellicon%A~   //inventory icon
+                                                             WRITE_LONG 0x0034 (level * 100)       //cost
+                                                             LPF ALTER_EFFECT INT_VAR match_opcode = 146 STR_VAR resource = EVAL ~%da_spll%~ END
+                                                             //CONTINUE EXCLUSIVE TO KIT
+                                                        END //end inner action
+                                              END  //if druid
+                                              PATCH_IF class = 12 BEGIN  //ranger class
+                                                        INNER_ACTION BEGIN
+                                                        COPY ~%folder%/data/scrolls/priest_1/B_RA001.itm.itm~ ~override/%scr%.ITM~   //Level 1 universal as generic.  usable by all druid (but limit it to shaman)
+                                                             WRITE_LONG 0x0008 ~%name%~
+                                                             WRITE_LONG 0x000c ~%name%~
+                                                             WRITE_LONG 0x0054 ~%desc%~
+                                                             WRITE_SHORT 0x007E target //Target-check
+                                                             WRITE_SHORT 0x0080 range //range-check
+                                                             WRITE_ASCIIE 0x0076  ~%spellicon%A~   //use icon
+                                                             WRITE_ASCIIE 0x003a  ~%spellicon%A~   //inventory icon
+                                                             WRITE_LONG 0x0034 (level * 100)       //cost
+                                                             LPF ALTER_EFFECT INT_VAR match_opcode = 146 STR_VAR resource = EVAL ~%da_spll%~ END
+                                                             //CONTINUE EXCLUSIVE TO KIT
+                                                        END //end inner action
+                                              END  //if ranger
+                                              PATCH_IF class = 21 BEGIN  //shaman class
+                                                        COPY ~%folder%/data/scrolls/priest_1/B_DR001.itm.itm~ ~override/%scr%.ITM~   //Level 1 universal as generic.  usable by all druid (but limit it to shaman)
+                                                             WRITE_LONG 0x0008 ~%name%~
+                                                             WRITE_LONG 0x000c ~%name%~
+                                                             WRITE_LONG 0x0054 ~%desc%~
+                                                             WRITE_SHORT 0x007E target //Target-check
+                                                             WRITE_SHORT 0x0080 range //range-check
+                                                             WRITE_ASCIIE 0x0076  ~%spellicon%A~   //use icon
+                                                             WRITE_ASCIIE 0x003a  ~%spellicon%A~   //inventory icon
+                                                             WRITE_LONG 0x0034 (level * 100)       //cost
+                                                             LPF ALTER_EFFECT INT_VAR match_opcode = 146 STR_VAR resource = EVAL ~%da_spll%~ END
+                                                             //CONTINUE EXCLUSIVE TO KIT
+                                                        END //end inner action
+                                              END  //if cleric
+                                          END
+                                 END //for loop
+                                 BUT_ONLY
+                        END
+                   END//inner action
+                 END//kit specific spells
+      //PATCH_PRINT "test %name% %s_name% %desc% %target% %range%"
+      END  //check
+      BUT_ONLY
+     END
+   END // Not no
+  END
+END    // spell to status
+
+//////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+////////// missing Scroll bams
+
+//check if certain engine specific bams are not in game.  Copy over if not
+//do php re spell to scroll
+//check if %spellname%a.bam exists in game
+//if not, copy over suitable substitue
+
+//////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+////////// Scroll placement
+
+//scroll to level list
+INCLUDE ~override/scrl_lv.tpa~  //
+
+
