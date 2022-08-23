@@ -2,7 +2,7 @@ BACKUP ~faiths_and_powers/backup~
 AUTHOR ~SubtleD and Grammarsalad~
 
 
-VERSION ~0.83.12~
+VERSION ~0.83.13~
 
 
 //README ~faiths_and_powers/readme-pnp.html~
@@ -153,17 +153,21 @@ COPY ~faiths_and_powers/data/sphere_systems/sphere_list_fnp.tpa~ ~override/fnp_s
 LAM d5_spell_options
 
 ACTION_CLEAR_ARRAY aoe_spell
-INCLUDE ~faiths_and_powers/lib/spells_new_v75.tpa~      	//includes spells from the 0.75 series  
-INCLUDE ~faiths_and_powers/lib/spells_new_fnp.tpa~   		//new spells from the 0.77 series 
-
-ACTION_IF !(GAME_IS ~iwdee~) AND (include_IWD_spells = 1) BEGIN
-  LAM v75_add_iwd_arcane_spells
-  LAM v75_add_iwd_divine_spells
-END
 
 ACTION_IF (include_new_FNP_spells = 1) BEGIN
+  INCLUDE ~faiths_and_powers/lib/spells_new_v75.tpa~      	//includes spells from the 0.75 series  
+  INCLUDE ~faiths_and_powers/lib/spells_new_fnp.tpa~   		//new spells from the 0.77 series 
 //  LAM v75_add_fnP_new_spells
   LAM v78_add_FnP_new_spells
+END
+
+ACTION_IF !(GAME_IS ~iwdee~) BEGIN
+  ACTION_IF (include_IWD_arcane_spells = 1) BEGIN
+    LAM v75_add_iwd_arcane_spells
+  END
+  ACTION_IF (include_IWD_divine_spells = 1) BEGIN
+    LAM v75_add_iwd_divine_spells
+  END
 END
 
 ACTION_IF (FILE_EXISTS_IN_GAME ~dvsrv4here.mrk~) BEGIN
@@ -171,7 +175,7 @@ ACTION_IF (FILE_EXISTS_IN_GAME ~dvsrv4here.mrk~) BEGIN
 END  
 
 LAF fix_spell_bams END
-// ***** ^^ make this fix summoning spells if IWD+SR installed
+// ***** ^^ make this fix summoning spells if IWD+SR installed?
 
 COPY ~faiths_and_powers/data/hlas/system_FnP/~ ~weidu_external/faiths_and_powers/hlas~
 
@@ -219,17 +223,21 @@ COPY ~faiths_and_powers/data/sphere_systems/sphere_list_2E.tpa~ ~override/fnp_sp
 LAM d5_spell_options
 
 ACTION_CLEAR_ARRAY aoe_spell
-INCLUDE ~faiths_and_powers/lib/spells_new_v75.tpa~      	//includes spells from the 0.75 series  
-INCLUDE ~faiths_and_powers/lib/spells_new_fnp.tpa~   		//new spells from the 0.77 series 
-
-ACTION_IF !(GAME_IS ~iwdee~) AND (include_IWD_spells = 1) BEGIN
-  LAM v75_add_iwd_arcane_spells
-  LAM v75_add_iwd_divine_spells
-END
 
 ACTION_IF (include_new_FNP_spells = 1) BEGIN
+  INCLUDE ~faiths_and_powers/lib/spells_new_v75.tpa~      	//includes spells from the 0.75 series  
+  INCLUDE ~faiths_and_powers/lib/spells_new_fnp.tpa~   		//new spells from the 0.77 series 
 //  LAM v75_add_fnP_new_spells
   v78_add_FnP_new_spells
+END
+
+ACTION_IF !(GAME_IS ~iwdee~) BEGIN
+  ACTION_IF (include_IWD_arcane_spells = 1) BEGIN
+    LAM v75_add_iwd_arcane_spells
+  END
+  ACTION_IF (include_IWD_divine_spells = 1) BEGIN
+    LAM v75_add_iwd_divine_spells
+  END
 END
 
 ACTION_IF (FILE_EXISTS_IN_GAME ~dvsrv4here.mrk~) BEGIN
@@ -287,20 +295,24 @@ COPY ~faiths_and_powers/data/sphere_systems/sphere_list_vanilla.tpa~ ~override/f
 LAM d5_spell_options
 
 ACTION_CLEAR_ARRAY aoe_spell
-INCLUDE ~faiths_and_powers/lib/spells_new_v75.tpa~      	//includes spells from the 0.75 series  
-INCLUDE ~faiths_and_powers/lib/spells_new_fnp.tpa~   		//new spells from the 0.77 series 
-
-/*
-ACTION_IF !(GAME_IS ~iwdee~) AND (include_IWD_spells = 1) BEGIN
-  LAM v75_add_iwd_arcane_spells
-  LAM v75_add_iwd_divine_spells
-END
-*/
 
 ACTION_IF (include_new_FNP_spells = 1) BEGIN
+  INCLUDE ~faiths_and_powers/lib/spells_new_v75.tpa~      	//includes spells from the 0.75 series  
+  INCLUDE ~faiths_and_powers/lib/spells_new_fnp.tpa~   		//new spells from the 0.77 series 
 //  LAM v75_add_fnP_new_spells
   LAM v78_add_FnP_new_spells
 END
+
+/*
+ACTION_IF !(GAME_IS ~iwdee~) BEGIN
+  ACTION_IF (include_IWD_arcane_spells = 1) BEGIN
+    LAM v75_add_iwd_arcane_spells
+  END
+  ACTION_IF (include_IWD_divine_spells = 1) BEGIN
+    LAM v75_add_iwd_divine_spells
+  END
+END
+*/
 
 ACTION_IF (FILE_EXISTS_IN_GAME ~dvsrv4here.mrk~) BEGIN
   LAM v75_apply_sr_aoe_deflection
@@ -404,20 +416,24 @@ COPY ~faiths_and_powers/data/sphere_systems/sphere_list_vplus.tpa~ ~override/fnp
 LAM d5_spell_options
 
 ACTION_CLEAR_ARRAY aoe_spell
-INCLUDE ~faiths_and_powers/lib/spells_new_v75.tpa~      	//includes spells from the 0.75 series  
-INCLUDE ~faiths_and_powers/lib/spells_new_fnp.tpa~   		//new spells from the 0.77 series 
-
-/*
-ACTION_IF !(GAME_IS ~iwdee~) AND (include_IWD_spells = 1) BEGIN
-  LAM v75_add_iwd_arcane_spells
-  LAM v75_add_iwd_divine_spells
-END
-*/
 
 ACTION_IF (include_new_FNP_spells = 1) BEGIN
+  INCLUDE ~faiths_and_powers/lib/spells_new_v75.tpa~      	//includes spells from the 0.75 series  
+  INCLUDE ~faiths_and_powers/lib/spells_new_fnp.tpa~   		//new spells from the 0.77 series 
 //  LAM v75_add_fnP_new_spells
   LAM v78_add_FnP_new_spells
 END
+
+/*
+ACTION_IF !(GAME_IS ~iwdee~) BEGIN
+  ACTION_IF (include_IWD_arcane_spells = 1) BEGIN
+    LAM v75_add_iwd_arcane_spells
+  END
+  ACTION_IF (include_IWD_divine_spells = 1) BEGIN
+    LAM v75_add_iwd_divine_spells
+  END
+END
+*/
 
 ACTION_IF (FILE_EXISTS_IN_GAME ~dvsrv4here.mrk~) BEGIN
   LAM v75_apply_sr_aoe_deflection
@@ -521,17 +537,21 @@ COPY ~faiths_and_powers/data/sphere_systems/sphere_list_new_fnp.tpa~ ~override/f
 LAM d5_spell_options
 
 ACTION_CLEAR_ARRAY aoe_spell
-INCLUDE ~faiths_and_powers/lib/spells_new_v75.tpa~      	//includes spells from the 0.75 series  
-INCLUDE ~faiths_and_powers/lib/spells_new_fnp.tpa~   		//new spells from the 0.77 series 
-
-ACTION_IF !(GAME_IS ~iwdee~) AND (include_IWD_spells = 1) BEGIN
-  LAM v75_add_iwd_arcane_spells
-  LAM v75_add_iwd_divine_spells
-END
 
 ACTION_IF (include_new_FNP_spells = 1) BEGIN
+  INCLUDE ~faiths_and_powers/lib/spells_new_v75.tpa~      	//includes spells from the 0.75 series  
+  INCLUDE ~faiths_and_powers/lib/spells_new_fnp.tpa~   		//new spells from the 0.77 series 
 //  LAM v75_add_fnP_new_spells
   LAM v78_add_FnP_new_spells
+END
+
+ACTION_IF !(GAME_IS ~iwdee~) BEGIN
+  ACTION_IF (include_IWD_arcane_spells = 1) BEGIN
+    LAM v75_add_iwd_arcane_spells
+  END
+  ACTION_IF (include_IWD_divine_spells = 1) BEGIN
+    LAM v75_add_iwd_divine_spells
+  END
 END
 
 ACTION_IF (FILE_EXISTS_IN_GAME ~dvsrv4here.mrk~) BEGIN
@@ -557,79 +577,6 @@ LAF create_spheres END
 //__________________________________________________________________________________
 
 
-/*
-
-//__________________________________________________________________________________
-//__________________________________________________________________________________
-//
-BEGIN @28 // player-supplied custom sphere system
-DESIGNATED 28
-SUBCOMPONENT @20 ((FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~) && !(FILE_EXISTS_IN_GAME ~d5__spheres.d5~))
-
-COPY ~faiths_and_powers/lib/markers/d5_marker.d5~ ~override/d5__spheres.d5~
-COPY ~faiths_and_powers/lib/markers/d5_marker.d5~ ~override/d5__custom_spheres.d5~
-
-ACTION_IF !(FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~) BEGIN
-  PRINT ~There is no sphere system defined! Please put a version of "fnp_sphere_list.tpa" into the override directory and try again.~
-END
-
-ACTION_IF (FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~) BEGIN
-
-//change shaman known spells________________________________________________________
-//
-//LAF shaman_spells END
-
-//Add IWD spells if not already in game_____________________________________________
-//
-ACTION_CLEAR_ARRAY aoe_spell
-INCLUDE ~faiths_and_powers/lib/spells_new_v75.tpa~      	//includes spells from the 0.75 series  
-INCLUDE ~faiths_and_powers/lib/spells_new_fnp.tpa~   		//new spells from the 0.77 series 
-
-ACTION_IF !(GAME_IS ~iwdee~) BEGIN
-  LAM v75_add_iwd_arcane_spells
-  LAM v75_add_iwd_divine_spells
-END
-
-// LAM v75_add_fnP_new_spells
- LAM v78_add_FnP_new_spells
-
-ACTION_IF (FILE_EXISTS_IN_GAME ~dvsrv4here.mrk~) BEGIN
-  LAM v75_apply_sr_aoe_deflection
-END  
-
-LAF fix_spell_bams END
-
-//INCLUDE ~%mod_folder%/lib/immunities.tpa~					//	DO AT THE VERY END OF ALL SPELL INSTALLS
-
-//create sphere system______________________________________________________________
-//
-INCLUDE ~faiths_and_powers/lib/system_spheres.tpa~
-
- LAF prep_vanilla_spells END
-
-INCLUDE ~override/fnp_sphere_list.tpa~
- LAM define_sphere_names
- LAM d5_define_sphere_spells
- LAM d5_deity_kit_sphere_lists
-
- LAF create_spheres END
-
-END
-//__________________________________________________________________________________
-
-
-
-//__________________________________________________________________________________
-//__________________________________________________________________________________
-//
-BEGIN @29 // no sphere system at all
-DESIGNATED 29
-SUBCOMPONENT @20
-
-COPY ~faiths_and_powers/lib/markers/d5_marker.d5~ ~override/d5__no_spheres.d5~
-//__________________________________________________________________________________
-
-*/
 
 
 ////////////////////////////////////////////////////////////////////////////////////////

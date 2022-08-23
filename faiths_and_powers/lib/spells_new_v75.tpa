@@ -3601,7 +3601,7 @@ END
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-ACTION_IF !(FILE_CONTAINS_EVALUATED(~spell.ids~ ~[ %TAB%]CLERIC_MASS_CAUSE_LIGHT_WOUNDS[ %TAB%%LNL%%MNL%%WNL%]~)) BEGIN 
+ACTION_IF !(FILE_CONTAINS_EVALUATED (~spell.ids~ ~[ %TAB%]CLERIC_MASS_CAUSE_LIGHT_WOUNDS[ %TAB%%LNL%%MNL%%WNL%]~)) BEGIN 
 
 //Projectile
 ADD_PROJECTILE ~faiths_and_powers/spheres/iwd_spells/priest_5/SPARRENP.pro~   //projectile
@@ -3716,20 +3716,25 @@ COPY ~faiths_and_powers/spheres/iwd_spells/priest_6/ABJURH.bam~ ~override~   //b
 
 //if SR not installed
 ACTION_IF NOT FILE_EXISTS_IN_GAME ~dvimhere.mrk~ BEGIN
-LAF RES_NUM_OF_SPELL_NAME
+
+ACTION_IF (FILE_CONTAINS_EVALUATED(~spell.ids~ ~[ %TAB%]CLERIC_SUNSCORCH[ %TAB%%LNL%%MNL%%WNL%]~)) BEGIN 
+ LAF RES_NUM_OF_SPELL_NAME
   STR_VAR spell_name = ~CLERIC_SUNSCORCH~
   RET spell_res
-END
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_6/b_p615.spl~ ~override~   //Immunity to sunscorch
+ END
+ COPY ~faiths_and_powers/spheres/iwd_spells/priest_6/b_p615.spl~ ~override~   //Immunity to sunscorch
   LPF CLONE_EFFECT INT_VAR match_opcode = 325 opcode = 318 parameter1 = 0 parameter2 = 0 STR_VAR resource = EVAL ~%spell_res%~ END
+END
 
 //immunity to Icelance
-LAF RES_NUM_OF_SPELL_NAME
+ACTION_IF (FILE_CONTAINS_EVALUATED(~spell.ids~ ~[ %TAB%]WIZARD_ICELANCE[ %TAB%%LNL%%MNL%%WNL%]~)) BEGIN 
+ LAF RES_NUM_OF_SPELL_NAME
   STR_VAR spell_name = ~WIZARD_ICELANCE~
   RET spell_res
-END
-COPY_EXISTING ~b_p615.spl~ ~override~
+ END
+ COPY_EXISTING ~b_p615.spl~ ~override~
   LPF CLONE_EFFECT INT_VAR match_opcode = 325 opcode = 318 parameter1 = 0 parameter2 = 0 STR_VAR resource = EVAL ~%spell_res%~ END
+END
 
 END//end if not SR installed
 
@@ -3737,13 +3742,24 @@ END//end if not SR installed
 ACTION_IF FILE_EXISTS_IN_GAME ~dvimhere.mrk~ BEGIN
 
 //immunity to Icelance
-LAF RES_NUM_OF_SPELL_NAME
+ACTION_IF (FILE_CONTAINS_EVALUATED(~spell.ids~ ~[ %TAB%]WIZARD_ICELANCE[ %TAB%%LNL%%MNL%%WNL%]~)) BEGIN 
+ LAF RES_NUM_OF_SPELL_NAME
   STR_VAR spell_name = ~WIZARD_ICELANCE~
   RET spell_res
-END
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_6/b_p615.spl~ ~override~   //
+ END
+ COPY ~faiths_and_powers/spheres/iwd_spells/priest_6/b_p615.spl~ ~override~   //
   LPF CLONE_EFFECT INT_VAR match_opcode = 325 opcode = 318 parameter1 = 0 parameter2 = 0 STR_VAR resource = EVAL ~%spell_res%~ END //icelance
-  LPF CLONE_EFFECT INT_VAR match_opcode = 325 opcode = 318 parameter1 = 0 parameter2 = 0 STR_VAR resource = EVAL ~sppr116~ END //sun scorch
+END
+
+ACTION_IF (FILE_CONTAINS_EVALUATED(~spell.ids~ ~[ %TAB%]CLERIC_SUNSCORCH[ %TAB%%LNL%%MNL%%WNL%]~)) BEGIN 
+ LAF RES_NUM_OF_SPELL_NAME
+  STR_VAR spell_name = ~CLERIC_SUNSCORCH~
+  RET spell_res
+ END
+ COPY ~faiths_and_powers/spheres/iwd_spells/priest_6/b_p615.spl~ ~override~   //
+  LPF CLONE_EFFECT INT_VAR match_opcode = 325 opcode = 318 parameter1 = 0 parameter2 = 0 STR_VAR resource = EVAL ~%spell_res%~ END
+END
+
 END  //end SR compatibility
 
 //Spell itself
