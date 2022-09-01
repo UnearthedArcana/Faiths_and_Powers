@@ -10,6 +10,26 @@ COPY ~%folder%/lib/lists/pr_full.tpa~ ~override~  //spl source_ref --> create st
 COPY ~%folder%/lib/lists/pr_scrol.tpa~ ~override~ //spl source_ref --> scroll source ref (for adding to scroll list for placement and bam check)
 COPY ~%folder%/lib/lists/scrl_lv.tpa~ ~override~ //scroll source ref --> spell level (for adding to scroll list for placement )
 COPY ~%folder%/lib/lists/store_list.tpa~ ~override~ //scroll source ref --> spell level (for adding to scroll list for placement )
+COPY ~%folder%/lib/lists/stor_dr.tpa~ ~override~ // higher lev druid stores
+COPY ~%folder%/lib/lists/stor_cl.tpa~ ~override~ //higher lev cleric stores
+COPY ~%folder%/lib/lists/scr_stus.tpa~ ~override~ //scroll source ref --> create status
+//rand items
+//cleric
+COPY ~%folder%/data/misc/RNDPS1.itm~ ~override~ //Cleric lev 1 scroll
+COPY ~%folder%/data/misc/RNDPS2.itm~ ~override~ //Cleric lev 2 scroll
+COPY ~%folder%/data/misc/RNDPS3.itm~ ~override~ //Cleric lev 3 scroll
+COPY ~%folder%/data/misc/RNDPS1.itm~ ~override/RNDPS4.itm~ //Cleric lev 4 scroll
+COPY ~%folder%/data/misc/RNDPS1.itm~ ~override/RNDPS5.itm~ //Cleric lev 5 scroll
+COPY ~%folder%/data/misc/RNDPS1.itm~ ~override/RNDPS6.itm~ //Cleric lev 6 scroll
+COPY ~%folder%/data/misc/RNDPS1.itm~ ~override/RNDPS7.itm~ //Cleric lev 7 scroll
+//druid
+COPY ~%folder%/data/misc/RNDPS1.itm~ ~override/RNDDS1.itm~ //Druid lev 1 scroll
+COPY ~%folder%/data/misc/RNDPS1.itm~ ~override/RNDDS2.itm~ //Druid lev 2 scroll
+COPY ~%folder%/data/misc/RNDPS1.itm~ ~override/RNDDS3.itm~ //Druid lev 3 scroll
+COPY ~%folder%/data/misc/RNDPS1.itm~ ~override/RNDDS4.itm~ //Druid lev 4 scroll
+COPY ~%folder%/data/misc/RNDPS1.itm~ ~override/RNDDS5.itm~ //Druid lev 5 scroll
+COPY ~%folder%/data/misc/RNDPS1.itm~ ~override/RNDDS6.itm~ //Druid lev 6 scroll
+COPY ~%folder%/data/misc/RNDPS1.itm~ ~override/RNDDS7.itm~ //Druid lev 7 scroll
 
 //////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
@@ -24,7 +44,7 @@ COPY_EXISTING_REGEXP GLOB ~.*\.spl~ ~override~ //copies all spl files
          INNER_PATCH_SAVE sp_res ~%SOURCE_RES%~ BEGIN  END
              READ_BYTE 0x0021 exclusive //general type
                 PATCH_IF ((exclusive BAND 0b11000000) = 0b00000000)   BEGIN //If General type (I think)
-                //PATCH_PRINT "filename is %sp_res%"
+               // PATCH_PRINT "filename is %sp_res% and SPPR101"
                   INNER_ACTION BEGIN
 		    COPY_EXISTING ~pr_full.tpa~ ~override~
 		      REPLACE_TEXTUALLY "BEGIN" "BEGIN
@@ -170,7 +190,7 @@ COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~ //copies all itm files
                                      INNER_PATCH_SAVE da_scr ~%SOURCE_RES%~ BEGIN  END
                                      INNER_ACTION BEGIN
                                          ACTION_IF (FILE_CONTAINS_EVALUATED(~pr_full.tpa~ ~%da_spl%~))  BEGIN
-                                              PRINT "filename is %da_spl%"
+                                          //    PRINT "file is %SOURCE_RES%. spell is %da_spl%"
                                               //LOCATION OF ISSUE 
                                                    COPY_EXISTING ~pr_full.tpa~ ~override~
                                                        REPLACE_TEXTUALLY "~%da_spl%~ => ~druid~" "~%da_spl%~ => ~no~"
@@ -229,9 +249,10 @@ ACTION_PHP_EACH pr_full_list AS scr_spl => status BEGIN
                INNER_PATCH_SAVE da_status ~%status%~ BEGIN  END
                INNER_PATCH_SAVE scroll_ref ~%SOURCE_RES%~ BEGIN
                  REPLACE_TEXTUALLY CASE_INSENSITIVE EXACT_MATCH ~SP~ ~B_~
-                   // PATCH_PRINT "What does %scroll_ref% say?"
+                  //  PATCH_PRINT "What does %scroll_ref% say for %da_spll%?"
                  END  //now, create spell to scroll list for later use, as well as scroll to level
                  INNER_ACTION BEGIN
+                // PRINT "%da_spll% and %scroll_ref%"
 		      COPY_EXISTING ~pr_scrol.tpa~ ~override~
 		          REPLACE_TEXTUALLY "BEGIN" "BEGIN
 ~%da_spll%~ => ~%scroll_ref%~"
@@ -289,7 +310,7 @@ ACTION_PHP_EACH pr_full_list AS scr_spl => status BEGIN
                               WRITE_ASCIIE 0x0076  ~%spellicon%A~   //use icon
                               WRITE_ASCIIE 0x003a  ~%spellicon%A~   //inventory icon
                               WRITE_LONG 0x0034 (level * 100)       //cost
-                              LPF ALTER_EFFECT INT_VAR match_opcode = 146 STR_VAR resource = EVAL ~%da_spll%~ END
+                              LPF ALTER_EFFECT INT_VAR match_opcode = 146 STR_VAR resource = EVAL ~%scr_spl%~ END
                            END //end inner action 
                       END          
                        ELSE PATCH_IF ("%status%" STRING_EQUAL "druid") BEGIN  //druid spells (prob need special checks for fnp...)
@@ -303,7 +324,7 @@ ACTION_PHP_EACH pr_full_list AS scr_spl => status BEGIN
                               WRITE_ASCIIE 0x0076  ~%spellicon%A~   //use icon
                               WRITE_ASCIIE 0x003a  ~%spellicon%A~   //inventory icon
                               WRITE_LONG 0x0034 (level * 100)       //cost
-                              LPF ALTER_EFFECT INT_VAR match_opcode = 146 STR_VAR resource = EVAL ~%da_spll%~ END
+                              LPF ALTER_EFFECT INT_VAR match_opcode = 146 STR_VAR resource = EVAL ~%scr_spl%~ END
                             END //end inner action
                          END//druid
                        ELSE PATCH_IF ("%status%" STRING_EQUAL "cleric") BEGIN  //cleric spells (prob need special checks for fnp...)
@@ -318,13 +339,13 @@ ACTION_PHP_EACH pr_full_list AS scr_spl => status BEGIN
                         WRITE_ASCIIE 0x0076  ~%spellicon%A~   //use icon
                         WRITE_ASCIIE 0x003a  ~%spellicon%A~   //inventory icon
                         WRITE_LONG 0x0034 (level * 100)       //cost
-                        LPF ALTER_EFFECT INT_VAR match_opcode = 146 STR_VAR resource = EVAL ~%da_spll%~ END
+                        LPF ALTER_EFFECT INT_VAR match_opcode = 146 STR_VAR resource = EVAL ~%scr_spl%~ END
                     END //end inner action
                  END//cleric
                  ELSE PATCH_IF ("%status%" STRING_EQUAL "shaman") BEGIN  //druid spells (prob need special checks for fnp...)
                  //fnp check here probably
                     INNER_ACTION BEGIN
-                    COPY ~%folder%/data/scrolls/priest_1/b_dr102.itm~ ~override/%scr%.ITM~   //Level 1 universal as generic.  usable by all druid (but limit it to shaman)
+                    COPY ~%folder%/data/scrolls/priest_1/b_sh102.itm~ ~override/%scr%.ITM~   //Level 1 universal as generic.  usable by all druid (but limit it to shaman)
                         WRITE_LONG 0x0008 ~%name%~
                         WRITE_LONG 0x000c ~%name%~
                         WRITE_LONG 0x0054 ~%desc%~
@@ -333,7 +354,7 @@ ACTION_PHP_EACH pr_full_list AS scr_spl => status BEGIN
                         WRITE_ASCIIE 0x0076  ~%spellicon%A~   //use icon
                         WRITE_ASCIIE 0x003a  ~%spellicon%A~   //inventory icon
                         WRITE_LONG 0x0034 (level * 100)       //cost
-                        LPF ALTER_EFFECT INT_VAR match_opcode = 146 STR_VAR resource = EVAL ~%da_spll%~ END
+                        LPF ALTER_EFFECT INT_VAR match_opcode = 146 STR_VAR resource = EVAL ~%scr_spl%~ END
                     END //end inner action
                  END//shaman
                  ELSE BEGIN //for kit specific spells
@@ -360,7 +381,7 @@ ACTION_PHP_EACH pr_full_list AS scr_spl => status BEGIN
                                                              WRITE_ASCIIE 0x0076  ~%spellicon%A~   //use icon
                                                              WRITE_ASCIIE 0x003a  ~%spellicon%A~   //inventory icon
                                                              WRITE_LONG 0x0034 (level * 100)       //cost
-                                                             LPF ALTER_EFFECT INT_VAR match_opcode = 146 STR_VAR resource = EVAL ~%da_spll%~ END
+                                                             LPF ALTER_EFFECT INT_VAR match_opcode = 146 STR_VAR resource = EVAL ~%scr_spl%~ END
                                                              LPF ALTER_EFFECT INT_VAR match_opcode = 319 parameter1 = EVAL ~%k_use%~ END
                                                         END //end inner action
                                               END  //if cleric
@@ -375,7 +396,7 @@ ACTION_PHP_EACH pr_full_list AS scr_spl => status BEGIN
                                                              WRITE_ASCIIE 0x0076  ~%spellicon%A~   //use icon
                                                              WRITE_ASCIIE 0x003a  ~%spellicon%A~   //inventory icon
                                                              WRITE_LONG 0x0034 (level * 100)       //cost
-                                                             LPF ALTER_EFFECT INT_VAR match_opcode = 146 STR_VAR resource = EVAL ~%da_spll%~ END
+                                                             LPF ALTER_EFFECT INT_VAR match_opcode = 146 STR_VAR resource = EVAL ~%scr_spl%~ END
                                                              LPF ALTER_EFFECT INT_VAR match_opcode = 319 parameter1 = EVAL ~%k_use%~ END
                                                         END //end inner action
                                               END  //if pally
@@ -390,7 +411,7 @@ ACTION_PHP_EACH pr_full_list AS scr_spl => status BEGIN
                                                              WRITE_ASCIIE 0x0076  ~%spellicon%A~   //use icon
                                                              WRITE_ASCIIE 0x003a  ~%spellicon%A~   //inventory icon
                                                              WRITE_LONG 0x0034 (level * 100)       //cost
-                                                             LPF ALTER_EFFECT INT_VAR match_opcode = 146 STR_VAR resource = EVAL ~%da_spll%~ END
+                                                             LPF ALTER_EFFECT INT_VAR match_opcode = 146 STR_VAR resource = EVAL ~%scr_spl%~ END
                                                              LPF ALTER_EFFECT INT_VAR match_opcode = 319 parameter1 = EVAL ~%k_use%~ END
                                                         END //end inner action
                                               END  //if druid
@@ -406,7 +427,7 @@ ACTION_PHP_EACH pr_full_list AS scr_spl => status BEGIN
                                                              WRITE_ASCIIE 0x0076  ~%spellicon%A~   //use icon
                                                              WRITE_ASCIIE 0x003a  ~%spellicon%A~   //inventory icon
                                                              WRITE_LONG 0x0034 (level * 100)       //cost
-                                                             LPF ALTER_EFFECT INT_VAR match_opcode = 146 STR_VAR resource = EVAL ~%da_spll%~ END
+                                                             LPF ALTER_EFFECT INT_VAR match_opcode = 146 STR_VAR resource = EVAL ~%scr_spl%~ END
                                                              LPF ALTER_EFFECT INT_VAR match_opcode = 319 parameter1 = EVAL ~%k_use%~ END
                                                         END //end inner action
                                               END  //if ranger
@@ -421,7 +442,7 @@ ACTION_PHP_EACH pr_full_list AS scr_spl => status BEGIN
                                                              WRITE_ASCIIE 0x0076  ~%spellicon%A~   //use icon
                                                              WRITE_ASCIIE 0x003a  ~%spellicon%A~   //inventory icon
                                                              WRITE_LONG 0x0034 (level * 100)       //cost
-                                                             LPF ALTER_EFFECT INT_VAR match_opcode = 146 STR_VAR resource = EVAL ~%da_spll%~ END
+                                                             LPF ALTER_EFFECT INT_VAR match_opcode = 146 STR_VAR resource = EVAL ~%scr_spl%~ END
                                                              LPF ALTER_EFFECT INT_VAR match_opcode = 319 parameter1 = EVAL ~%k_use%~ END
                                                         END //end inner action
                                               END  //if cleric
@@ -565,37 +586,204 @@ Evil:
 */
 
 //CONTINUE WITH THIS
+//need to do a scroll ref to status
+ACTION_PHP_EACH pr_scr AS sply_ref => scry_ref BEGIN
+  ACTION_PHP_EACH pr_full_list AS splie_ref => status_yo BEGIN
+       ACTION_IF ("%sply_ref%" STRING_EQUAL "%splie_ref%") BEGIN
+          // PRINT "%sply_ref% and %splie_ref% match! Horray!"
+	  COPY_EXISTING ~scr_stus.tpa~ ~override~
+		          REPLACE_TEXTUALLY "BEGIN" "BEGIN
+~%scry_ref%~ => ~%status_yo%~"
+       END
+  END
+END
 
-//BUG: B_CL001	B_RA001 are coming up as scrolls FIX BEFORE CONTINUING
-
+INCLUDE ~override/scr_stus.tpa~  //
 
 //Because it's easy, I'm going to give a few random lev 1 to 3 scrolls to all priest cres:
 //populate  rndtres.2da APPEND ~rndtres.2da~ ~%my_list%~
-//create a lev 1 array:
+//create a lev 1,2,3 array of gen and cleric spls:
 ACTION_PHP_EACH scr_lvl AS scroll_ref => scroll_level BEGIN
+ ACTION_PHP_EACH scroll_status AS scrz_ref => stat_us BEGIN
    ACTION_IF ("%scroll_level%" STRING_EQUAL "1") BEGIN
-   COPY_EXISTING ~rand_scr.tpa~ ~override~
-      REPLACE_TEXTUALLY "~Lev_1~ => ~RNDPS1" "~Lev_1~ => ~RNDPS1%TAB%%scroll_ref%"
-
+    ACTION_IF ("%scroll_ref%" STRING_EQUAL "%scrz_ref%") BEGIN
+      ACTION_IF ("%stat_us%" STRING_EQUAL "general") OR ("%stat_us%" STRING_EQUAL "cleric") BEGIN
+         COPY_EXISTING ~rand_scr.tpa~ ~override~
+           REPLACE_TEXTUALLY "~CL_Lev_1~ => ~RNDPS1" "~CL_Lev_1~ => ~RNDPS1%TAB%%scroll_ref%"
+      END
+      ACTION_IF ("%stat_us%" STRING_EQUAL "general") OR ("%stat_us%" STRING_EQUAL "druid") BEGIN
+         COPY_EXISTING ~rand_scr.tpa~ ~override~
+           REPLACE_TEXTUALLY "~DR_Lev_1~ => ~RNDDS1" "~DR_Lev_1~ => ~RNDDS1%TAB%%scroll_ref%"
+      END
+    END
    END
+   ACTION_IF ("%scroll_level%" STRING_EQUAL "2") BEGIN
+    ACTION_IF ("%scroll_ref%" STRING_EQUAL "%scrz_ref%") BEGIN
+      ACTION_IF ("%stat_us%" STRING_EQUAL "general") OR ("%stat_us%" STRING_EQUAL "cleric") BEGIN
+         COPY_EXISTING ~rand_scr.tpa~ ~override~
+           REPLACE_TEXTUALLY "~CL_Lev_2~ => ~RNDPS2" "~CL_Lev_2~ => ~RNDPS2%TAB%%scroll_ref%"
+      END
+      ACTION_IF ("%stat_us%" STRING_EQUAL "general") OR ("%stat_us%" STRING_EQUAL "druid") BEGIN
+         COPY_EXISTING ~rand_scr.tpa~ ~override~
+           REPLACE_TEXTUALLY "~DR_Lev_2~ => ~RNDDS2" "~DR_Lev_2~ => ~RNDDS2%TAB%%scroll_ref%"
+      END
+    END
+   END
+   ACTION_IF ("%scroll_level%" STRING_EQUAL "3") BEGIN
+    ACTION_IF ("%scroll_ref%" STRING_EQUAL "%scrz_ref%") BEGIN
+      ACTION_IF ("%stat_us%" STRING_EQUAL "general") OR ("%stat_us%" STRING_EQUAL "cleric") BEGIN
+         COPY_EXISTING ~rand_scr.tpa~ ~override~
+           REPLACE_TEXTUALLY "~CL_Lev_3~ => ~RNDPS3" "~CL_Lev_3~ => ~RNDPS3%TAB%%scroll_ref%"
+      END
+      ACTION_IF ("%stat_us%" STRING_EQUAL "general") OR ("%stat_us%" STRING_EQUAL "druid") BEGIN
+         COPY_EXISTING ~rand_scr.tpa~ ~override~
+           REPLACE_TEXTUALLY "~DR_Lev_3~ => ~RNDDS3" "~DR_Lev_3~ => ~RNDDS3%TAB%%scroll_ref%"
+      END
+    END
+   END
+   ACTION_IF ("%scroll_level%" STRING_EQUAL "4") BEGIN
+    ACTION_IF ("%scroll_ref%" STRING_EQUAL "%scrz_ref%") BEGIN
+      ACTION_IF ("%stat_us%" STRING_EQUAL "general") OR ("%stat_us%" STRING_EQUAL "cleric") BEGIN
+         COPY_EXISTING ~rand_scr.tpa~ ~override~
+           REPLACE_TEXTUALLY "~CL_Lev_4~ => ~RNDPS4" "~CL_Lev_4~ => ~RNDPS4%TAB%%scroll_ref%"
+      END
+      ACTION_IF ("%stat_us%" STRING_EQUAL "general") OR ("%stat_us%" STRING_EQUAL "druid") BEGIN
+         COPY_EXISTING ~rand_scr.tpa~ ~override~
+           REPLACE_TEXTUALLY "~DR_Lev_4~ => ~RNDDS4" "~DR_Lev_4~ => ~RNDDS4%TAB%%scroll_ref%"
+      END
+    END
+   END
+   ACTION_IF ("%scroll_level%" STRING_EQUAL "5") BEGIN
+    ACTION_IF ("%scroll_ref%" STRING_EQUAL "%scrz_ref%") BEGIN
+      ACTION_IF ("%stat_us%" STRING_EQUAL "general") OR ("%stat_us%" STRING_EQUAL "cleric") BEGIN
+         COPY_EXISTING ~rand_scr.tpa~ ~override~
+           REPLACE_TEXTUALLY "~CL_Lev_5~ => ~RNDPS5" "~CL_Lev_5~ => ~RNDPS5%TAB%%scroll_ref%"
+      END
+      ACTION_IF ("%stat_us%" STRING_EQUAL "general") OR ("%stat_us%" STRING_EQUAL "druid") BEGIN
+         COPY_EXISTING ~rand_scr.tpa~ ~override~
+           REPLACE_TEXTUALLY "~DR_Lev_5~ => ~RNDDS5" "~DR_Lev_5~ => ~RNDDS5%TAB%%scroll_ref%"
+      END
+    END
+   END
+   ACTION_IF ("%scroll_level%" STRING_EQUAL "6") BEGIN
+    ACTION_IF ("%scroll_ref%" STRING_EQUAL "%scrz_ref%") BEGIN
+      ACTION_IF ("%stat_us%" STRING_EQUAL "general") OR ("%stat_us%" STRING_EQUAL "cleric") BEGIN
+         COPY_EXISTING ~rand_scr.tpa~ ~override~
+           REPLACE_TEXTUALLY "~CL_Lev_6~ => ~RNDPS6" "~CL_Lev_6~ => ~RNDPS6%TAB%%scroll_ref%"
+      END
+      ACTION_IF ("%stat_us%" STRING_EQUAL "general") OR ("%stat_us%" STRING_EQUAL "druid") BEGIN
+         COPY_EXISTING ~rand_scr.tpa~ ~override~
+           REPLACE_TEXTUALLY "~DR_Lev_6~ => ~RNDDS6" "~DR_Lev_6~ => ~RNDDS6%TAB%%scroll_ref%"
+      END
+    END
+   END
+   ACTION_IF ("%scroll_level%" STRING_EQUAL "7") BEGIN
+    ACTION_IF ("%scroll_ref%" STRING_EQUAL "%scrz_ref%") BEGIN
+      ACTION_IF ("%stat_us%" STRING_EQUAL "general") OR ("%stat_us%" STRING_EQUAL "cleric") BEGIN
+         COPY_EXISTING ~rand_scr.tpa~ ~override~
+           REPLACE_TEXTUALLY "~CL_Lev_7~ => ~RNDPS7" "~CL_Lev_7~ => ~RNDPS7%TAB%%scroll_ref%"
+      END
+      ACTION_IF ("%stat_us%" STRING_EQUAL "general") OR ("%stat_us%" STRING_EQUAL "druid") BEGIN
+         COPY_EXISTING ~rand_scr.tpa~ ~override~
+           REPLACE_TEXTUALLY "~DR_Lev_7~ => ~RNDDS7" "~DR_Lev_7~ => ~RNDDS7%TAB%%scroll_ref%"
+      END
+    END
+   END
+ END
 END
 
-/*
+//random tables, are they in? 
+ACTION_IF !(FILE_EXISTS_IN_GAME ~rndtres.2da~) BEGIN
+    COPY ~%folder%/data/misc/rndtres.2da~ ~override~
+END
+
+//random scroll stuff
+INCLUDE ~override/rand_scr.tpa~  //
+
+ACTION_PHP_EACH rand_place AS lev => my_list BEGIN
+  APPEND ~rndtres.2da~ ~%my_list%~
+END
+
 COPY_EXISTING_REGEXP ~.*\.CRE~ ~override~
   READ_BYTE   0x273 class
   READ_ASCII  0x280 deathvar
-  PATCH_IF (((class = 3) OR (class = 8)) OR ((class = 14) OR (class = 15))) AND // All clericy classes
-           (NOT FILE_CONTAINS_EVALUATED(~pdialog.2da~ ~%deathvar%~))            //not joinable
-    THEN BEGIN
-      ADD_CRE_ITEM ~POTN08~ #10 #10 #10 ~IDENTIFIED~ ~INV15~
-    END
+  READ_STRREF 0x0008 s_name
+  READ_BYTE 0x0234 lev1
+  PATCH_IF  (NOT FILE_CONTAINS_EVALUATED(~pdialog.2da~ ~%deathvar%~)) BEGIN   //not joinable
+   PATCH_IF (class = 3) OR (class = 8) OR (class = 14) OR (class = 15) OR !("%s_name%" STRING_CONTAINS_REGEXP "Priest") BEGIN // All clericy classes
+      ADD_CRE_ITEM ~RNDPS1~ #1 #0 #0 ~IDENTIFIED~  ~INV~
+      PATCH_IF (lev1 > 3) BEGIN
+        ADD_CRE_ITEM ~RNDPS2~ #1 #0 #0 ~IDENTIFIED~  ~INV~
+      END // lev >7
+        PATCH_IF (lev1 > 5) BEGIN
+          ADD_CRE_ITEM ~RNDPS3~ #1 #0 #0 ~IDENTIFIED~  ~INV~
+        END // lev >5
+         PATCH_IF (lev1 > 7) BEGIN
+           ADD_CRE_ITEM ~RNDPS4~ #1 #0 #0 ~IDENTIFIED~  ~INV~
+           ADD_CRE_ITEM ~RNDPS1~ #1 #0 #0 ~IDENTIFIED~  ~INV~
+         END //lev >7
+          PATCH_IF (lev1 > 9) BEGIN
+           ADD_CRE_ITEM ~RNDPS5~ #1 #0 #0 ~IDENTIFIED~  ~INV~
+          END //lev >9
+           PATCH_IF (lev1 > 11) BEGIN
+             ADD_CRE_ITEM ~RNDPS6~ #1 #0 #0 ~IDENTIFIED~  ~INV~
+           END //lev >11
+            PATCH_IF (lev1 > 13) BEGIN
+             ADD_CRE_ITEM ~RNDPS7~ #1 #0 #0 ~IDENTIFIED~  ~INV~
+             ADD_CRE_ITEM ~RNDPS2~ #1 #0 #0 ~IDENTIFIED~  ~INV~
+            END //lev >11
+     END // cleric class
+   PATCH_IF (class = 16) OR (class = 11) OR !("%s_name%" STRING_CONTAINS_REGEXP "Druid") BEGIN // All clericy classes
+      ADD_CRE_ITEM ~RNDDS1~ #1 #0 #0 ~IDENTIFIED~  ~INV~
+      PATCH_IF (lev1 > 3) BEGIN
+        ADD_CRE_ITEM ~RNDDS2~ #1 #0 #0 ~IDENTIFIED~  ~INV~
+      END //lev >3
+         PATCH_IF (lev1 > 5) BEGIN
+           ADD_CRE_ITEM ~RNDDS3~ #1 #0 #0 ~IDENTIFIED~  ~INV~
+         END // lev >5
+          PATCH_IF (lev1 > 7) BEGIN
+           ADD_CRE_ITEM ~RNDDS4~ #1 #0 #0 ~IDENTIFIED~  ~INV~
+           ADD_CRE_ITEM ~RNDPS1~ #1 #0 #0 ~IDENTIFIED~  ~INV~
+          END // lev >7
+           PATCH_IF (lev1 > 9) BEGIN
+             ADD_CRE_ITEM ~RNDDS5~ #1 #0 #0 ~IDENTIFIED~  ~INV~
+           END // lev >9
+             PATCH_IF (lev1 > 11) BEGIN
+               ADD_CRE_ITEM ~RNDDS6~ #1 #0 #0 ~IDENTIFIED~  ~INV~
+             END // lev >11
+               PATCH_IF (lev1 > 13) BEGIN
+                 ADD_CRE_ITEM ~RNDDS7~ #1 #0 #0 ~IDENTIFIED~  ~INV~
+                 ADD_CRE_ITEM ~RNDPS2~ #1 #0 #0 ~IDENTIFIED~  ~INV~
+               END // lev >13
+    END // druid class
+  END//not joinable
   BUT_ONLY
 
 
-//let's create a list of relevant vendors:
-COPY ~%folder%/lib/lists/store_list.tpa~ ~override~
 
-COPY_EXISTING_REGEXP GLOB ~^.+\.sto$~ ~override~ // Load all stores BEG CAMCODE:
+/* Notes
+Universal:
+SCRLPET stone to flesh Level 1
+POTN20 antidote level 2
+RESTORE less restoration level 3
+SCRL59 (neut poison) lev 4
+SCRL63 (raise dead) level 5
+WAND11 (wand of heavens) level 6-7
+
+cleric: 
+POTN08 (pot of healing) (if sell, sells all cleric exclusive as universal)
+
+Druid: 
+
+RING03 (druid's ring) (if sell, sells all druid exclusive as universal) should sell all druid scrolls
+
+Evil: 
+
+
+*/
+//let's create a list of relevant vendors:
+
+COPY_EXISTING_REGEXP ~.*\.STO~ ~override~
   READ_BYTE 0x0008 type //Spell type
      PATCH_IF type = 3 OR 2 BEGIN   //temple or inn type
      	READ_BYTE 0x10 "flags" //ELSE 0
@@ -604,16 +792,163 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.sto$~ ~override~ // Load all stores BEG CAMCODE:
                      STR_VAR item="SCRLPET"   // sells stone to flesh (could sell 1st level scrolls)
                      RET value
                  END      //
-                 INNER_PATCH_SAVE scrol_1 ~%value%~ BEGIN  END
+                 INNER_PATCH_SAVE univ_1 ~%value%~ BEGIN  END
+                 LPF item_in_store
+                     STR_VAR item="RING03"   // sells druid ring (could sell all druid scrolls)
+                     RET value
+                 END      //
+                 INNER_PATCH_SAVE druid_all ~%value%~ BEGIN  END
+                 LPF item_in_store
+                     STR_VAR item="POTN08"   // sells druid ring (could sell all druid scrolls)
+                     RET value
+                 END      //
+                 INNER_PATCH_SAVE cleric_all ~%value%~ BEGIN  END
+                 LPF item_in_store
+                     STR_VAR item="POTN20"   // sells antidote (could sell all 2nd level scrolls)
+                     RET value
+                 END      //
+                 INNER_PATCH_SAVE univ_2 ~%value%~ BEGIN  END
+                 LPF item_in_store
+                     STR_VAR item="RESTORE"   // sells lesser restore (could sell all 3rd level scrolls)
+                     RET value
+                 END      //
+                 INNER_PATCH_SAVE univ_3 ~%value%~ BEGIN  END
+                 LPF item_in_store
+                     STR_VAR item="SCRL59"   // sells scroll n poison(could sell all priest scrolls)
+                     RET value
+                 END      //
+                 INNER_PATCH_SAVE univ_4 ~%value%~ BEGIN  END
+                 LPF item_in_store
+                     STR_VAR item="SCRL63"   // sells scroll raise dead(could sell all priest scrolls)
+                     RET value
+                 END      //
+                 INNER_PATCH_SAVE univ_5 ~%value%~ BEGIN  END
+                 LPF item_in_store
+                     STR_VAR item="WAND11"   // sells wand of heavens (could sell all priest scrolls)
+                     RET value
+                 END      //
+                 INNER_PATCH_SAVE univ_7 ~%value%~ BEGIN  END
                  INNER_PATCH_SAVE store_name ~%SOURCE_RES%~ BEGIN  END
                  INNER_ACTION BEGIN
-                        ACTION_IF  %scrol_1% = 1 BEGIN
-		           COPY_EXISTING ~store_list.tpa~ ~override~
+                        ACTION_IF  (%univ_1% = 1) AND !(%univ_2% = 1) AND !(%univ_3% = 1) BEGIN
+                        //PRINT "Does this work at all?"
+		           COPY_EXISTING ~store_list.tpa~ ~override~  //universal store list (not dru/cle specific)
 		              REPLACE_TEXTUALLY "BEGIN" "BEGIN
-%store_name% => ~level_1~"
+%store_name% => ~1~"
                         END//action_if
-                 END
+                        ACTION_IF  (%univ_2% = 1) AND (%univ_1% = 1) AND !(%univ_3% = 1) BEGIN
+                        //PRINT "Does this work at all?"
+		           COPY_EXISTING ~store_list.tpa~ ~override~  //universal store list (not dru/cle specific)
+		              REPLACE_TEXTUALLY "BEGIN" "BEGIN
+%store_name% => ~2~"
+                        END//action_if
+                        ACTION_IF  (%univ_3% = 1) AND (%univ_1% = 1) BEGIN
+                        //PRINT "Does this work at all?"
+		           COPY_EXISTING ~store_list.tpa~ ~override~   //universal store list (not dru/cle specific)
+		              REPLACE_TEXTUALLY "BEGIN" "BEGIN
+%store_name% => ~3~"
+                        END//action_if
+                        ACTION_IF  (%druid_all% = 1) AND (%univ_1% = 1) AND (%univ_4% = 1) AND !(%univ_5% = 1) AND !(%univ_7% = 1) BEGIN  //sells lev 4 druid scrolls
+                        //PRINT "Does this work at all?"
+		           COPY_EXISTING ~stor_dr.tpa~ ~override~   //universal store list (not dru/cle specific)
+		              REPLACE_TEXTUALLY "BEGIN" "BEGIN
+%store_name% => ~4~"
+                        END//action_if
+                        ACTION_IF  (%druid_all% = 1) AND (%univ_1% = 1) AND (%univ_5% = 1) AND !(%univ_7% = 1) BEGIN  //sells lev 5 druid scrolls
+                        //PRINT "Does this work at all?"
+		           COPY_EXISTING ~stor_dr.tpa~ ~override~   //universal store list (not dru/cle specific)
+		              REPLACE_TEXTUALLY "BEGIN" "BEGIN
+%store_name% => ~5~"
+                        END//action_if
+                        ACTION_IF  (%druid_all% = 1) AND (%univ_1% = 1) AND (%univ_7% = 1) BEGIN  //sells lev 7 druid scrolls
+                        //PRINT "Does this work at all?"
+		           COPY_EXISTING ~stor_dr.tpa~ ~override~   //universal store list (not dru/cle specific)
+		              REPLACE_TEXTUALLY "BEGIN" "BEGIN
+%store_name% => ~7~"
+                        END//action_if
+                        ACTION_IF  (%cleric_all% = 1) AND (%univ_1% = 1) AND (%univ_4% = 1) AND !(%univ_5% = 1) AND !(%univ_7% = 1) BEGIN  //sells lev 4 cleric scrolls
+                        //PRINT "Does this work at all?"
+		           COPY_EXISTING ~stor_cl.tpa~ ~override~   //universal store list (not dru/cle specific)
+		              REPLACE_TEXTUALLY "BEGIN" "BEGIN
+%store_name% => ~4~"
+                        END//action_if
+                        ACTION_IF  (%cleric_all% = 1) AND (%univ_1% = 1) AND (%univ_5% = 1) AND !(%univ_7% = 1) BEGIN  //sells lev 5 cleric scrolls
+                        //PRINT "Does this work at all?"
+		           COPY_EXISTING ~stor_cl.tpa~ ~override~   //universal store list (not dru/cle specific)
+		              REPLACE_TEXTUALLY "BEGIN" "BEGIN
+%store_name% => ~5~"
+                        END//action_if
+                        ACTION_IF  (%cleric_all% = 1) AND (%univ_1% = 1) AND (%univ_7% = 1) BEGIN  //sells lev 7 cleric scrolls
+                        //PRINT "Does this work at all?"
+		           COPY_EXISTING ~stor_cl.tpa~ ~override~   //universal store list (not dru/cle specific)
+		              REPLACE_TEXTUALLY "BEGIN" "BEGIN
+%store_name% => ~7~"
+                        END//action_if
+                 END //inner action
 
             END
      END
      BUT_ONLY
+
+///////////////////////////////////////////
+/////now, to actually add to a store
+
+
+INCLUDE ~override/store_list.tpa~  //
+
+//lev 1 to lev 3 of any standard scroll where SCRLPET/POTN20/RESTORE is sold
+
+ACTION_PHP_EACH main_store_list AS place => sto_lev BEGIN
+PRINT "%sto_lev% is whatnow?"
+ ACTION_PHP_EACH scr_lvl AS thing => sc_lev BEGIN
+  ACTION_PHP_EACH scroll_status AS da_scrol => da_status BEGIN
+    ACTION_IF (%sto_lev% = %sc_lev%) OR (%sto_lev% > %sc_lev%) BEGIN
+    ACTION_IF (%sc_lev% =1) OR (%sc_lev% =2) BEGIN
+   // PRINT "%sto_lev% is whatnow?"
+     ACTION_IF ("%thing%" STRING_EQUAL "%da_scrol%") BEGIN
+      ACTION_IF ("%da_status%" STRING_EQUAL "general") BEGIN
+        COPY_EXISTING ~%place%.sto~ ~override~
+             ADD_STORE_ITEM "%thing%" #1 #0 #0 ~IDENTIFIED~ #5
+      END//da_status and general
+      ACTION_IF ("%da_status%" STRING_EQUAL "cleric") BEGIN
+     // PRINT "%thing% goes in %place% if %da_scrol% is %thing% and %da_status% is general."
+        COPY_EXISTING ~%place%.sto~ ~override~
+             ADD_STORE_ITEM "%thing%" #1 #0 #0 ~IDENTIFIED~ #5
+      END//da_status and cleric
+      ACTION_IF ("%da_status%" STRING_EQUAL "druid") BEGIN
+     // PRINT "%thing% goes in %place% if %da_scrol% is %thing% and %da_status% is general."
+        COPY_EXISTING ~%place%.sto~ ~override~
+             ADD_STORE_ITEM "%thing%" #1 #0 #0 ~IDENTIFIED~ #5
+      END//da_status and druid
+     END //thing and da_scrol
+     END //scr lev 1 or 2
+    ACTION_IF (%sc_lev% =3) BEGIN
+   // PRINT "%sto_lev% is whatnow?"
+     ACTION_IF ("%thing%" STRING_EQUAL "%da_scrol%") BEGIN
+      ACTION_IF ("%da_status%" STRING_EQUAL "general") BEGIN
+        COPY_EXISTING ~%place%.sto~ ~override~
+             ADD_STORE_ITEM "%thing%" #1 #0 #0 ~IDENTIFIED~ #3
+      END//da_status and general
+      ACTION_IF ("%da_status%" STRING_EQUAL "cleric") BEGIN
+     // PRINT "%thing% goes in %place% if %da_scrol% is %thing% and %da_status% is general."
+        COPY_EXISTING ~%place%.sto~ ~override~
+             ADD_STORE_ITEM "%thing%" #1 #0 #0 ~IDENTIFIED~ #3
+      END//da_status and cleric
+      ACTION_IF ("%da_status%" STRING_EQUAL "druid") BEGIN
+     // PRINT "%thing% goes in %place% if %da_scrol% is %thing% and %da_status% is general."
+        COPY_EXISTING ~%place%.sto~ ~override~
+             ADD_STORE_ITEM "%thing%" #1 #0 #0 ~IDENTIFIED~ #3
+      END//da_status and druid
+     END //thing and da_scrol
+     END //scr lev 3
+    END //sto_lev = sc_lev
+  END //scroll_status
+ END //scr_lvl
+END //main_store_list
+
+//lev 4+ druid
+
+//lev 4+ cleric
+
+
+//CONTINUE
