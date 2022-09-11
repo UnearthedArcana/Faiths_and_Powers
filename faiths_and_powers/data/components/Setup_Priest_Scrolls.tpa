@@ -85,19 +85,19 @@ COPY_EXISTING_REGEXP GLOB ~.*\.spl~ ~override~ //copies all spl files
                             !("%sp_res%" STRING_CONTAINS_REGEXP "SPCL") OR
                             !("%sp_res%" STRING_CONTAINS_REGEXP "SPIN") OR
                             !("%sp_res%" STRING_CONTAINS_REGEXP "SPWM") OR
-                            ("%sp_res%" STRING_EQUAL "KELDORN") OR
-                            ("%sp_res%" STRING_EQUAL "OHBGLOV1") OR
-                            ("%sp_res%" STRING_EQUAL "DGRIGHT") OR
-                            ("%sp_res%" STRING_EQUAL "OHPRGD10") OR
-                            ("%sp_res%" STRING_EQUAL "OHDXDIS") OR
-                            ("%sp_res%" STRING_EQUAL "SENSPIHE") OR
-                            ("%sp_res%" STRING_EQUAL "SPYANCD") OR
-                            ("%sp_res%" STRING_EQUAL "CDPR417") OR
-                            ("%sp_res%" STRING_EQUAL "DGFAITH") OR
-                            ("%sp_res%" STRING_EQUAL "DGARCHON") OR
-                            ("%sp_res%" STRING_EQUAL "DEVAHEAL") OR
-                            ("%sp_res%" STRING_EQUAL "SPJA01") OR
-                            ("%sp_res%" STRING_EQUAL "DW#FPPLO") BEGIN
+                            ("%sp_res%" STRING_EQUAL_CASE "KELDORN") OR
+                            ("%sp_res%" STRING_EQUAL_CASE "OHBGLOV1") OR
+                            ("%sp_res%" STRING_EQUAL_CASE "DGRIGHT") OR
+                            ("%sp_res%" STRING_EQUAL_CASE "OHPRGD10") OR
+                            ("%sp_res%" STRING_EQUAL_CASE "OHDXDIS") OR
+                            ("%sp_res%" STRING_EQUAL_CASE "SENSPIHE") OR
+                            ("%sp_res%" STRING_EQUAL_CASE "SPYANCD") OR
+                            ("%sp_res%" STRING_EQUAL_CASE "CDPR417") OR
+                            ("%sp_res%" STRING_EQUAL_CASE "DGFAITH") OR
+                            ("%sp_res%" STRING_EQUAL_CASE "DGARCHON") OR
+                            ("%sp_res%" STRING_EQUAL_CASE "DEVAHEAL") OR
+                            ("%sp_res%" STRING_EQUAL_CASE "SPJA01") OR
+                            ("%sp_res%" STRING_EQUAL_CASE "DW#FPPLO") BEGIN
                                   INNER_ACTION BEGIN
                                 //  PRINT "%sp_res% and %remove%"
                                        COPY_EXISTING ~pr_full.tpa~ ~override~
@@ -232,11 +232,11 @@ INCLUDE ~override/pr_full.tpa~  //
 
 //part 1
 ACTION_PHP_EACH pr_full_list AS scr_spl => status BEGIN
- ACTION_IF !("%status%" STRING_EQUAL "no") BEGIN
+ ACTION_IF !("%status%" STRING_EQUAL_CASE "no") BEGIN
  //PRINT ~%scr_spl% is spell file name; %status% is status.~
    COPY_EXISTING ~%scr_spl%.SPL~ ~override~
      PATCH_IF (SOURCE_SIZE > 0x71) BEGIN
-      //       PATCH_IF ("%status%" STRING_EQUAL "general") BEGIN  //general scrolls (no checks for fnP needed--should be legit universal)
+      //       PATCH_IF ("%status%" STRING_EQUAL_CASE "general") BEGIN  //general scrolls (no checks for fnP needed--should be legit universal)
              READ_LONG  0x0034 level //spell level
              READ_LONG  0x0008 name //spell name
              READ_STRREF 0x0008 s_name
@@ -288,8 +288,8 @@ INCLUDE ~override/pr_scrol.tpa~  //   pr_scr
 
 ACTION_PHP_EACH pr_full_list AS scr_spl => status BEGIN
   ACTION_PHP_EACH pr_scr AS spl => scr BEGIN
-    ACTION_IF !("%status%" STRING_EQUAL "no") BEGIN
-      ACTION_IF ("%scr_spl%" STRING_EQUAL "%spl%") BEGIN
+    ACTION_IF !("%status%" STRING_EQUAL_CASE "no") BEGIN
+      ACTION_IF ("%scr_spl%" STRING_EQUAL_CASE "%spl%") BEGIN
             COPY_EXISTING ~%scr_spl%.SPL~ ~override~
                PATCH_IF (SOURCE_SIZE > 0x71) BEGIN
                   READ_LONG  0x0008 name //spell name
@@ -299,7 +299,7 @@ ACTION_PHP_EACH pr_full_list AS scr_spl => status BEGIN
 	                READ_SHORT 0x007E target //Target-check
 	                READ_SHORT 0x0080 range //range-check
                      INNER_PATCH_SAVE spellicon ~%SOURCE_RES%~ BEGIN  END
-                      PATCH_IF ("%status%" STRING_EQUAL "general") BEGIN
+                      PATCH_IF ("%status%" STRING_EQUAL_CASE "general") BEGIN
                           INNER_ACTION BEGIN
                             COPY ~%folder%/data/scrolls/priest_1/b_ps101.itm~ ~override/%scr%.ITM~   //Level 1 universal as generic.  usable by all druid/clerics etc.
                               WRITE_LONG 0x0008 ~%name%~
@@ -313,7 +313,7 @@ ACTION_PHP_EACH pr_full_list AS scr_spl => status BEGIN
                               LPF ALTER_EFFECT INT_VAR match_opcode = 146 STR_VAR resource = EVAL ~%scr_spl%~ END
                            END //end inner action 
                       END          
-                       ELSE PATCH_IF ("%status%" STRING_EQUAL "druid") BEGIN  //druid spells (prob need special checks for fnp...)
+                       ELSE PATCH_IF ("%status%" STRING_EQUAL_CASE "druid") BEGIN  //druid spells (prob need special checks for fnp...)
                            INNER_ACTION BEGIN
                               COPY ~%folder%/data/scrolls/priest_1/b_dr102.itm~ ~override/%scr%.ITM~   //Level 1 universal as generic.  usable by all druid
                               WRITE_LONG 0x0008 ~%name%~
@@ -327,7 +327,7 @@ ACTION_PHP_EACH pr_full_list AS scr_spl => status BEGIN
                               LPF ALTER_EFFECT INT_VAR match_opcode = 146 STR_VAR resource = EVAL ~%scr_spl%~ END
                             END //end inner action
                          END//druid
-                       ELSE PATCH_IF ("%status%" STRING_EQUAL "cleric") BEGIN  //cleric spells (prob need special checks for fnp...)
+                       ELSE PATCH_IF ("%status%" STRING_EQUAL_CASE "cleric") BEGIN  //cleric spells (prob need special checks for fnp...)
                  //fnp check here probably
                     INNER_ACTION BEGIN
                     COPY ~%folder%/data/scrolls/priest_1/b_cl102.itm~ ~override/%scr%.ITM~   //Level 1 universal as generic.  usable by all cleric
@@ -342,7 +342,7 @@ ACTION_PHP_EACH pr_full_list AS scr_spl => status BEGIN
                         LPF ALTER_EFFECT INT_VAR match_opcode = 146 STR_VAR resource = EVAL ~%scr_spl%~ END
                     END //end inner action
                  END//cleric
-                 ELSE PATCH_IF ("%status%" STRING_EQUAL "shaman") BEGIN  //druid spells (prob need special checks for fnp...)
+                 ELSE PATCH_IF ("%status%" STRING_EQUAL_CASE "shaman") BEGIN  //druid spells (prob need special checks for fnp...)
                  //fnp check here probably
                     INNER_ACTION BEGIN
                     COPY ~%folder%/data/scrolls/priest_1/b_sh102.itm~ ~override/%scr%.ITM~   //Level 1 universal as generic.  usable by all druid (but limit it to shaman)
@@ -366,7 +366,7 @@ ACTION_PHP_EACH pr_full_list AS scr_spl => status BEGIN
 			                          READ_2DA_ENTRY_FORMER kitlist row 5 clab
 			                          READ_2DA_ENTRY_FORMER kitlist row 8 class
 			                          READ_2DA_ENTRY_FORMER kitlist row 9 use
-			                             PATCH_IF ("%label%" STRING_EQUAL "%status%") BEGIN
+			                             PATCH_IF ("%label%" STRING_EQUAL_CASE "%status%") BEGIN
                                                     // PATCH_PRINT "%label% is %status% and class is %class% and use is %use%"
                                               INNER_PATCH_SAVE k_use ~%use%~ BEGIN END
                                               PATCH_IF class = 3 BEGIN  //cleric class
@@ -483,62 +483,62 @@ ACTION_PHP_EACH pr_scr AS spl_ref => scr_ref BEGIN     //just for scroll source 
              //   PATCH_PRINT "%SOURCE_RES% for item name"
                 //special cases
                 READ_STRREF 0x000c spl_name
-                PATCH_IF ("%spl_name%" STRING_EQUAL "Chromatic Orb")  BEGIN
+                PATCH_IF ("%spl_name%" STRING_EQUAL_CASE "Chromatic Orb")  BEGIN
                   INNER_ACTION BEGIN
                     COPY ~%folder%/data/scrolls/bam/special/SPWI118A.bam~ ~override/%new_icon%.bam~
                   END
                 END
-                ELSE PATCH_IF ("%spl_name%" STRING_EQUAL "Web")  BEGIN
+                ELSE PATCH_IF ("%spl_name%" STRING_EQUAL_CASE "Web")  BEGIN
                   INNER_ACTION BEGIN
                     COPY ~%folder%/data/scrolls/bam/special/SPWI215A.bam~ ~override/%new_icon%.bam~
                   END
                 END
-                ELSE PATCH_IF ("%spl_name%" STRING_EQUAL "Lightning Bolt")  BEGIN
+                ELSE PATCH_IF ("%spl_name%" STRING_EQUAL_CASE "Lightning Bolt")  BEGIN
                   INNER_ACTION BEGIN
                     COPY ~%folder%/data/scrolls/bam/special/SPWI308A.bam~ ~override/%new_icon%.bam~
                   END
                 END
-                ELSE PATCH_IF ("%spl_name%" STRING_EQUAL "Improved Invisibility")  BEGIN
+                ELSE PATCH_IF ("%spl_name%" STRING_EQUAL_CASE "Improved Invisibility")  BEGIN
                   INNER_ACTION BEGIN
                     COPY ~%folder%/data/scrolls/bam/special/SPWI405A.bam~ ~override/%new_icon%.bam~
                   END
                 END
-                ELSE PATCH_IF ("%spl_name%" STRING_EQUAL "Chaos")  BEGIN
+                ELSE PATCH_IF ("%spl_name%" STRING_EQUAL_CASE "Chaos")  BEGIN
                   INNER_ACTION BEGIN
                     COPY ~%folder%/data/scrolls/bam/special/SPWI508A.bam~ ~override/%new_icon%.bam~
                   END
                 END
-                ELSE PATCH_IF ("%spl_name%" STRING_EQUAL "Chain Lightning")  BEGIN
+                ELSE PATCH_IF ("%spl_name%" STRING_EQUAL_CASE "Chain Lightning")  BEGIN
                   INNER_ACTION BEGIN
                     COPY ~%folder%/data/scrolls/bam/special/SPWI615A.bam~ ~override/%new_icon%.bam~
                   END
                 END
-                ELSE PATCH_IF ("%spl_name%" STRING_EQUAL "Haste")  BEGIN
+                ELSE PATCH_IF ("%spl_name%" STRING_EQUAL_CASE "Haste")  BEGIN
                   INNER_ACTION BEGIN
                     COPY ~%folder%/data/scrolls/bam/special/SPWI305A.bam~ ~override/%new_icon%.bam~
                   END
                 END
-                ELSE PATCH_IF ("%spl_name%" STRING_EQUAL "Minor Spell Deflection")  BEGIN
+                ELSE PATCH_IF ("%spl_name%" STRING_EQUAL_CASE "Minor Spell Deflection")  BEGIN
                   INNER_ACTION BEGIN
                     COPY ~%folder%/data/scrolls/bam/special/SPWI318A.bam~ ~override/%new_icon%.bam~
                   END
                 END
-                ELSE PATCH_IF ("%spl_name%" STRING_EQUAL "Protection From Normal Missiles") OR ("%spl_name%" STRING_EQUAL "Protection from Missiles") BEGIN
+                ELSE PATCH_IF ("%spl_name%" STRING_EQUAL_CASE "Protection From Normal Missiles") OR ("%spl_name%" STRING_EQUAL_CASE "Protection from Missiles") BEGIN
                   INNER_ACTION BEGIN
                     COPY ~%folder%/data/scrolls/bam/special/SPWI311A.bam~ ~override/%new_icon%.bam~
                   END
                 END
-                ELSE PATCH_IF ("%spl_name%" STRING_EQUAL "Animal Summoning I")  BEGIN
+                ELSE PATCH_IF ("%spl_name%" STRING_EQUAL_CASE "Animal Summoning I")  BEGIN
                   INNER_ACTION BEGIN
                     COPY ~%folder%/data/scrolls/bam/special/SPPR402A.bam~ ~override/%new_icon%.bam~
                   END
                 END
-                ELSE PATCH_IF ("%spl_name%" STRING_EQUAL "Animal Summoning II")  BEGIN
+                ELSE PATCH_IF ("%spl_name%" STRING_EQUAL_CASE "Animal Summoning II")  BEGIN
                   INNER_ACTION BEGIN
                     COPY ~%folder%/data/scrolls/bam/special/SPPR501A.bam~ ~override/%new_icon%.bam~
                   END
                 END
-                ELSE PATCH_IF ("%spl_name%" STRING_EQUAL "Animal Summoning III")  BEGIN
+                ELSE PATCH_IF ("%spl_name%" STRING_EQUAL_CASE "Animal Summoning III")  BEGIN
                   INNER_ACTION BEGIN
                     COPY ~%folder%/data/scrolls/bam/special/SPPR602A.bam~ ~override/%new_icon%.bam~
                   END
@@ -589,7 +589,7 @@ Evil:
 //need to do a scroll ref to status
 ACTION_PHP_EACH pr_scr AS sply_ref => scry_ref BEGIN
   ACTION_PHP_EACH pr_full_list AS splie_ref => status_yo BEGIN
-       ACTION_IF ("%sply_ref%" STRING_EQUAL "%splie_ref%") BEGIN
+       ACTION_IF ("%sply_ref%" STRING_EQUAL_CASE "%splie_ref%") BEGIN
           // PRINT "%sply_ref% and %splie_ref% match! Horray!"
 	  COPY_EXISTING ~scr_stus.tpa~ ~override~
 		          REPLACE_TEXTUALLY "BEGIN" "BEGIN
@@ -605,85 +605,85 @@ INCLUDE ~override/scr_stus.tpa~  //
 //create a lev 1,2,3 array of gen and cleric spls:
 ACTION_PHP_EACH scr_lvl AS scroll_ref => scroll_level BEGIN
  ACTION_PHP_EACH scroll_status AS scrz_ref => stat_us BEGIN
-   ACTION_IF ("%scroll_level%" STRING_EQUAL "1") BEGIN
-    ACTION_IF ("%scroll_ref%" STRING_EQUAL "%scrz_ref%") BEGIN
-      ACTION_IF ("%stat_us%" STRING_EQUAL "general") OR ("%stat_us%" STRING_EQUAL "cleric") BEGIN
+   ACTION_IF ("%scroll_level%" STRING_EQUAL_CASE "1") BEGIN
+    ACTION_IF ("%scroll_ref%" STRING_EQUAL_CASE "%scrz_ref%") BEGIN
+      ACTION_IF ("%stat_us%" STRING_EQUAL_CASE "general") OR ("%stat_us%" STRING_EQUAL_CASE "cleric") BEGIN
          COPY_EXISTING ~rand_scr.tpa~ ~override~
            REPLACE_TEXTUALLY "~CL_Lev_1~ => ~RNDPS1" "~CL_Lev_1~ => ~RNDPS1%TAB%%scroll_ref%"
       END
-      ACTION_IF ("%stat_us%" STRING_EQUAL "general") OR ("%stat_us%" STRING_EQUAL "druid") BEGIN
+      ACTION_IF ("%stat_us%" STRING_EQUAL_CASE "general") OR ("%stat_us%" STRING_EQUAL_CASE "druid") BEGIN
          COPY_EXISTING ~rand_scr.tpa~ ~override~
            REPLACE_TEXTUALLY "~DR_Lev_1~ => ~RNDDS1" "~DR_Lev_1~ => ~RNDDS1%TAB%%scroll_ref%"
       END
     END
    END
-   ACTION_IF ("%scroll_level%" STRING_EQUAL "2") BEGIN
-    ACTION_IF ("%scroll_ref%" STRING_EQUAL "%scrz_ref%") BEGIN
-      ACTION_IF ("%stat_us%" STRING_EQUAL "general") OR ("%stat_us%" STRING_EQUAL "cleric") BEGIN
+   ACTION_IF ("%scroll_level%" STRING_EQUAL_CASE "2") BEGIN
+    ACTION_IF ("%scroll_ref%" STRING_EQUAL_CASE "%scrz_ref%") BEGIN
+      ACTION_IF ("%stat_us%" STRING_EQUAL_CASE "general") OR ("%stat_us%" STRING_EQUAL_CASE "cleric") BEGIN
          COPY_EXISTING ~rand_scr.tpa~ ~override~
            REPLACE_TEXTUALLY "~CL_Lev_2~ => ~RNDPS2" "~CL_Lev_2~ => ~RNDPS2%TAB%%scroll_ref%"
       END
-      ACTION_IF ("%stat_us%" STRING_EQUAL "general") OR ("%stat_us%" STRING_EQUAL "druid") BEGIN
+      ACTION_IF ("%stat_us%" STRING_EQUAL_CASE "general") OR ("%stat_us%" STRING_EQUAL_CASE "druid") BEGIN
          COPY_EXISTING ~rand_scr.tpa~ ~override~
            REPLACE_TEXTUALLY "~DR_Lev_2~ => ~RNDDS2" "~DR_Lev_2~ => ~RNDDS2%TAB%%scroll_ref%"
       END
     END
    END
-   ACTION_IF ("%scroll_level%" STRING_EQUAL "3") BEGIN
-    ACTION_IF ("%scroll_ref%" STRING_EQUAL "%scrz_ref%") BEGIN
-      ACTION_IF ("%stat_us%" STRING_EQUAL "general") OR ("%stat_us%" STRING_EQUAL "cleric") BEGIN
+   ACTION_IF ("%scroll_level%" STRING_EQUAL_CASE "3") BEGIN
+    ACTION_IF ("%scroll_ref%" STRING_EQUAL_CASE "%scrz_ref%") BEGIN
+      ACTION_IF ("%stat_us%" STRING_EQUAL_CASE "general") OR ("%stat_us%" STRING_EQUAL_CASE "cleric") BEGIN
          COPY_EXISTING ~rand_scr.tpa~ ~override~
            REPLACE_TEXTUALLY "~CL_Lev_3~ => ~RNDPS3" "~CL_Lev_3~ => ~RNDPS3%TAB%%scroll_ref%"
       END
-      ACTION_IF ("%stat_us%" STRING_EQUAL "general") OR ("%stat_us%" STRING_EQUAL "druid") BEGIN
+      ACTION_IF ("%stat_us%" STRING_EQUAL_CASE "general") OR ("%stat_us%" STRING_EQUAL_CASE "druid") BEGIN
          COPY_EXISTING ~rand_scr.tpa~ ~override~
            REPLACE_TEXTUALLY "~DR_Lev_3~ => ~RNDDS3" "~DR_Lev_3~ => ~RNDDS3%TAB%%scroll_ref%"
       END
     END
    END
-   ACTION_IF ("%scroll_level%" STRING_EQUAL "4") BEGIN
-    ACTION_IF ("%scroll_ref%" STRING_EQUAL "%scrz_ref%") BEGIN
-      ACTION_IF ("%stat_us%" STRING_EQUAL "general") OR ("%stat_us%" STRING_EQUAL "cleric") BEGIN
+   ACTION_IF ("%scroll_level%" STRING_EQUAL_CASE "4") BEGIN
+    ACTION_IF ("%scroll_ref%" STRING_EQUAL_CASE "%scrz_ref%") BEGIN
+      ACTION_IF ("%stat_us%" STRING_EQUAL_CASE "general") OR ("%stat_us%" STRING_EQUAL_CASE "cleric") BEGIN
          COPY_EXISTING ~rand_scr.tpa~ ~override~
            REPLACE_TEXTUALLY "~CL_Lev_4~ => ~RNDPS4" "~CL_Lev_4~ => ~RNDPS4%TAB%%scroll_ref%"
       END
-      ACTION_IF ("%stat_us%" STRING_EQUAL "general") OR ("%stat_us%" STRING_EQUAL "druid") BEGIN
+      ACTION_IF ("%stat_us%" STRING_EQUAL_CASE "general") OR ("%stat_us%" STRING_EQUAL_CASE "druid") BEGIN
          COPY_EXISTING ~rand_scr.tpa~ ~override~
            REPLACE_TEXTUALLY "~DR_Lev_4~ => ~RNDDS4" "~DR_Lev_4~ => ~RNDDS4%TAB%%scroll_ref%"
       END
     END
    END
-   ACTION_IF ("%scroll_level%" STRING_EQUAL "5") BEGIN
-    ACTION_IF ("%scroll_ref%" STRING_EQUAL "%scrz_ref%") BEGIN
-      ACTION_IF ("%stat_us%" STRING_EQUAL "general") OR ("%stat_us%" STRING_EQUAL "cleric") BEGIN
+   ACTION_IF ("%scroll_level%" STRING_EQUAL_CASE "5") BEGIN
+    ACTION_IF ("%scroll_ref%" STRING_EQUAL_CASE "%scrz_ref%") BEGIN
+      ACTION_IF ("%stat_us%" STRING_EQUAL_CASE "general") OR ("%stat_us%" STRING_EQUAL_CASE "cleric") BEGIN
          COPY_EXISTING ~rand_scr.tpa~ ~override~
            REPLACE_TEXTUALLY "~CL_Lev_5~ => ~RNDPS5" "~CL_Lev_5~ => ~RNDPS5%TAB%%scroll_ref%"
       END
-      ACTION_IF ("%stat_us%" STRING_EQUAL "general") OR ("%stat_us%" STRING_EQUAL "druid") BEGIN
+      ACTION_IF ("%stat_us%" STRING_EQUAL_CASE "general") OR ("%stat_us%" STRING_EQUAL_CASE "druid") BEGIN
          COPY_EXISTING ~rand_scr.tpa~ ~override~
            REPLACE_TEXTUALLY "~DR_Lev_5~ => ~RNDDS5" "~DR_Lev_5~ => ~RNDDS5%TAB%%scroll_ref%"
       END
     END
    END
-   ACTION_IF ("%scroll_level%" STRING_EQUAL "6") BEGIN
-    ACTION_IF ("%scroll_ref%" STRING_EQUAL "%scrz_ref%") BEGIN
-      ACTION_IF ("%stat_us%" STRING_EQUAL "general") OR ("%stat_us%" STRING_EQUAL "cleric") BEGIN
+   ACTION_IF ("%scroll_level%" STRING_EQUAL_CASE "6") BEGIN
+    ACTION_IF ("%scroll_ref%" STRING_EQUAL_CASE "%scrz_ref%") BEGIN
+      ACTION_IF ("%stat_us%" STRING_EQUAL_CASE "general") OR ("%stat_us%" STRING_EQUAL_CASE "cleric") BEGIN
          COPY_EXISTING ~rand_scr.tpa~ ~override~
            REPLACE_TEXTUALLY "~CL_Lev_6~ => ~RNDPS6" "~CL_Lev_6~ => ~RNDPS6%TAB%%scroll_ref%"
       END
-      ACTION_IF ("%stat_us%" STRING_EQUAL "general") OR ("%stat_us%" STRING_EQUAL "druid") BEGIN
+      ACTION_IF ("%stat_us%" STRING_EQUAL_CASE "general") OR ("%stat_us%" STRING_EQUAL_CASE "druid") BEGIN
          COPY_EXISTING ~rand_scr.tpa~ ~override~
            REPLACE_TEXTUALLY "~DR_Lev_6~ => ~RNDDS6" "~DR_Lev_6~ => ~RNDDS6%TAB%%scroll_ref%"
       END
     END
    END
-   ACTION_IF ("%scroll_level%" STRING_EQUAL "7") BEGIN
-    ACTION_IF ("%scroll_ref%" STRING_EQUAL "%scrz_ref%") BEGIN
-      ACTION_IF ("%stat_us%" STRING_EQUAL "general") OR ("%stat_us%" STRING_EQUAL "cleric") BEGIN
+   ACTION_IF ("%scroll_level%" STRING_EQUAL_CASE "7") BEGIN
+    ACTION_IF ("%scroll_ref%" STRING_EQUAL_CASE "%scrz_ref%") BEGIN
+      ACTION_IF ("%stat_us%" STRING_EQUAL_CASE "general") OR ("%stat_us%" STRING_EQUAL_CASE "cleric") BEGIN
          COPY_EXISTING ~rand_scr.tpa~ ~override~
            REPLACE_TEXTUALLY "~CL_Lev_7~ => ~RNDPS7" "~CL_Lev_7~ => ~RNDPS7%TAB%%scroll_ref%"
       END
-      ACTION_IF ("%stat_us%" STRING_EQUAL "general") OR ("%stat_us%" STRING_EQUAL "druid") BEGIN
+      ACTION_IF ("%stat_us%" STRING_EQUAL_CASE "general") OR ("%stat_us%" STRING_EQUAL_CASE "druid") BEGIN
          COPY_EXISTING ~rand_scr.tpa~ ~override~
            REPLACE_TEXTUALLY "~DR_Lev_7~ => ~RNDDS7" "~DR_Lev_7~ => ~RNDDS7%TAB%%scroll_ref%"
       END
@@ -890,6 +890,18 @@ COPY_EXISTING_REGEXP ~.*\.STO~ ~override~
      END
      BUT_ONLY
 
+ACTION_IF GAME_IS ~iwdee~ THEN BEGIN  //add specific stores in iwdee
+		           COPY_EXISTING ~stor_cl.tpa~ ~override~   //universal store list (not dru/cle specific)
+		              REPLACE_TEXTUALLY "BEGIN" "BEGIN
+
+~EDTEMPLE~ => ~7~"
+		           COPY_EXISTING ~stor_dr.tpa~ ~override~   //universal store list (not dru/cle specific)
+		              REPLACE_TEXTUALLY "BEGIN" "BEGIN
+
+~EDTEMPLE~ => ~7~"
+
+END //if iwdee
+
 ///////////////////////////////////////////
 /////now, to actually add to a store
 
@@ -899,23 +911,23 @@ INCLUDE ~override/store_list.tpa~  //
 //lev 1 to lev 3 of any standard scroll where SCRLPET/POTN20/RESTORE is sold
 
 ACTION_PHP_EACH main_store_list AS place => sto_lev BEGIN
-PRINT "%sto_lev% is whatnow?"
+//PRINT "%sto_lev% is whatnow?"
  ACTION_PHP_EACH scr_lvl AS thing => sc_lev BEGIN
   ACTION_PHP_EACH scroll_status AS da_scrol => da_status BEGIN
     ACTION_IF (%sto_lev% = %sc_lev%) OR (%sto_lev% > %sc_lev%) BEGIN
     ACTION_IF (%sc_lev% =1) OR (%sc_lev% =2) BEGIN
    // PRINT "%sto_lev% is whatnow?"
-     ACTION_IF ("%thing%" STRING_EQUAL "%da_scrol%") BEGIN
-      ACTION_IF ("%da_status%" STRING_EQUAL "general") BEGIN
+     ACTION_IF ("%thing%" STRING_EQUAL_CASE "%da_scrol%") BEGIN
+      ACTION_IF ("%da_status%" STRING_EQUAL_CASE "general") BEGIN
         COPY_EXISTING ~%place%.sto~ ~override~
              ADD_STORE_ITEM "%thing%" #1 #0 #0 ~IDENTIFIED~ #5
       END//da_status and general
-      ACTION_IF ("%da_status%" STRING_EQUAL "cleric") BEGIN
+      ACTION_IF ("%da_status%" STRING_EQUAL_CASE "cleric") BEGIN
      // PRINT "%thing% goes in %place% if %da_scrol% is %thing% and %da_status% is general."
         COPY_EXISTING ~%place%.sto~ ~override~
              ADD_STORE_ITEM "%thing%" #1 #0 #0 ~IDENTIFIED~ #5
       END//da_status and cleric
-      ACTION_IF ("%da_status%" STRING_EQUAL "druid") BEGIN
+      ACTION_IF ("%da_status%" STRING_EQUAL_CASE "druid") BEGIN
      // PRINT "%thing% goes in %place% if %da_scrol% is %thing% and %da_status% is general."
         COPY_EXISTING ~%place%.sto~ ~override~
              ADD_STORE_ITEM "%thing%" #1 #0 #0 ~IDENTIFIED~ #5
@@ -924,17 +936,17 @@ PRINT "%sto_lev% is whatnow?"
      END //scr lev 1 or 2
     ACTION_IF (%sc_lev% =3) BEGIN
    // PRINT "%sto_lev% is whatnow?"
-     ACTION_IF ("%thing%" STRING_EQUAL "%da_scrol%") BEGIN
-      ACTION_IF ("%da_status%" STRING_EQUAL "general") BEGIN
+     ACTION_IF ("%thing%" STRING_EQUAL_CASE "%da_scrol%") BEGIN
+      ACTION_IF ("%da_status%" STRING_EQUAL_CASE "general") BEGIN
         COPY_EXISTING ~%place%.sto~ ~override~
              ADD_STORE_ITEM "%thing%" #1 #0 #0 ~IDENTIFIED~ #3
       END//da_status and general
-      ACTION_IF ("%da_status%" STRING_EQUAL "cleric") BEGIN
+      ACTION_IF ("%da_status%" STRING_EQUAL_CASE "cleric") BEGIN
      // PRINT "%thing% goes in %place% if %da_scrol% is %thing% and %da_status% is general."
         COPY_EXISTING ~%place%.sto~ ~override~
              ADD_STORE_ITEM "%thing%" #1 #0 #0 ~IDENTIFIED~ #3
       END//da_status and cleric
-      ACTION_IF ("%da_status%" STRING_EQUAL "druid") BEGIN
+      ACTION_IF ("%da_status%" STRING_EQUAL_CASE "druid") BEGIN
      // PRINT "%thing% goes in %place% if %da_scrol% is %thing% and %da_status% is general."
         COPY_EXISTING ~%place%.sto~ ~override~
              ADD_STORE_ITEM "%thing%" #1 #0 #0 ~IDENTIFIED~ #3
@@ -947,8 +959,51 @@ PRINT "%sto_lev% is whatnow?"
 END //main_store_list
 
 //lev 4+ druid
+INCLUDE ~override/stor_dr.tpa~  //
+ACTION_PHP_EACH main_store_list_dr AS place => sto_lev BEGIN
+//PRINT "%sto_lev% is whatnow?"
+ ACTION_PHP_EACH scr_lvl AS thing => sc_lev BEGIN
+    ACTION_IF (%sc_lev% =4) BEGIN //level 4 scr
+        COPY_EXISTING ~%place%.sto~ ~override~
+             ADD_STORE_ITEM "%thing%" #1 #0 #0 ~IDENTIFIED~ #2
+    END //scr lev 4
+    ACTION_IF (%sc_lev% =5) AND (%sto_lev% > 4) BEGIN //level 5 scr
+        COPY_EXISTING ~%place%.sto~ ~override~
+             ADD_STORE_ITEM "%thing%" #1 #0 #0 ~IDENTIFIED~ #2
+    END //scr lev 5
+    ACTION_IF (%sc_lev% =6) AND (%sto_lev% > 5) BEGIN //level 6 scr
+        COPY_EXISTING ~%place%.sto~ ~override~
+             ADD_STORE_ITEM "%thing%" #1 #0 #0 ~IDENTIFIED~ #1
+    END //scr lev 6
+    ACTION_IF (%sc_lev% =7) AND (%sto_lev% > 6) BEGIN //level 7 scr
+        COPY_EXISTING ~%place%.sto~ ~override~
+             ADD_STORE_ITEM "%thing%" #1 #0 #0 ~IDENTIFIED~ #1
+    END //scr lev 7
+ END    //scr lev php
+END     //druid store php
 
 //lev 4+ cleric
-
+INCLUDE ~override/stor_cl.tpa~  //
+ACTION_PHP_EACH main_store_list_cl AS place => sto_lev BEGIN
+//PRINT "%sto_lev% is whatnow?"
+ ACTION_PHP_EACH scr_lvl AS thing => sc_lev BEGIN
+    ACTION_IF (%sc_lev% =4) BEGIN //level 4 scr
+        COPY_EXISTING ~%place%.sto~ ~override~
+             ADD_STORE_ITEM "%thing%" #1 #0 #0 ~IDENTIFIED~ #2
+    END //scr lev 4
+    ACTION_IF (%sc_lev% =5) AND (%sto_lev% > 4) BEGIN //level 5 scr
+        COPY_EXISTING ~%place%.sto~ ~override~
+             ADD_STORE_ITEM "%thing%" #1 #0 #0 ~IDENTIFIED~ #2
+    END //scr lev 5
+    ACTION_IF (%sc_lev% =6) AND (%sto_lev% > 5) BEGIN //level 6 scr
+        COPY_EXISTING ~%place%.sto~ ~override~
+             ADD_STORE_ITEM "%thing%" #1 #0 #0 ~IDENTIFIED~ #1
+    END //scr lev 6
+    ACTION_IF (%sc_lev% =7) AND (%sto_lev% > 6) BEGIN //level 7 scr
+        COPY_EXISTING ~%place%.sto~ ~override~
+             ADD_STORE_ITEM "%thing%" #1 #0 #0 ~IDENTIFIED~ #1
+    END //scr lev 7
+ END//scro lev
+END//cleric stor lev 4+
 
 //CONTINUE
