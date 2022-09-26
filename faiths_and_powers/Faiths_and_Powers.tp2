@@ -23,6 +23,7 @@ ALWAYS
 	END
 
   	OUTER_SPRINT ~mod_folder~ ~faiths_and_powers~
+        OUTER_SPRINT ~folder~ ~skills-and-abilities~
 
 	ACTION_IF !(FILE_EXISTS ~override/d5_fnp_settings.ini~) BEGIN
   	  COPY ~faiths_and_powers/d5_fnp_settings.ini~ ~override~
@@ -30,6 +31,8 @@ ALWAYS
  
   	INCLUDE ~override/d5_fnp_settings.ini~
   	
+	INCLUDE ~faiths_and_powers/lib/item_in_store.tpa~
+
 	INCLUDE ~faiths_and_powers/lib/nu_alter_effect.tpa~
 
 	INCLUDE ~faiths_and_powers/lib/qd_multiclass.tpa~
@@ -1090,7 +1093,9 @@ LAF more_ranger_alignments END
 //					              ADD SPELL SCROLLS FOR PRIESTS
 //__________________________________________________________________________________
 //__________________________________________________________________________________
+
 /*
+//testing
 
 BEGIN @70 // Add spell scrolls for priests
 DESIGNATED 70
@@ -1098,8 +1103,8 @@ DESIGNATED 70
 INCLUDE ~faiths_and_powers/data/components/Setup_Priest_Scrolls.tpa~
 
 //test on vanilla (no reason I can think of it wouldn't work)
-
 */
+
 
 //__________________________________________________________________________________
 //__________________________________________________________________________________

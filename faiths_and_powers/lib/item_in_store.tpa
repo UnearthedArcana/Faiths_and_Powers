@@ -1,0 +1,13 @@
+DEFINE_PATCH_FUNCTION item_in_store
+	STR_VAR item=""
+	RET value
+BEGIN
+	value=0
+	GET_OFFSET_ARRAY itm_arr STO_V10_ITEMS_SOLD
+	PHP_EACH itm_arr AS itm_ind=>itm_off BEGIN
+		PATCH_IF !value BEGIN
+		READ_ASCII itm_off resref
+			value = ("%resref%" STR_EQ "%item%")? 1: 0
+		END
+	END
+END
