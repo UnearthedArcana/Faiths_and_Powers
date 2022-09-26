@@ -13,6 +13,7 @@ COPY ~%folder%/lib/lists/store_list.tpa~ ~override~ //scroll source ref --> spel
 COPY ~%folder%/lib/lists/stor_dr.tpa~ ~override~ // higher lev druid stores
 COPY ~%folder%/lib/lists/stor_cl.tpa~ ~override~ //higher lev cleric stores
 COPY ~%folder%/lib/lists/scr_stus.tpa~ ~override~ //scroll source ref --> create status
+COPY ~%folder%/lib/lists/rand_scr.tpa~ ~override~  //spl source_ref --> create status
 //rand items
 //cleric
 COPY ~%folder%/data/misc/RNDPS1.itm~ ~override~ //Cleric lev 1 scroll
@@ -30,6 +31,19 @@ COPY ~%folder%/data/misc/RNDPS1.itm~ ~override/RNDDS4.itm~ //Druid lev 4 scroll
 COPY ~%folder%/data/misc/RNDPS1.itm~ ~override/RNDDS5.itm~ //Druid lev 5 scroll
 COPY ~%folder%/data/misc/RNDPS1.itm~ ~override/RNDDS6.itm~ //Druid lev 6 scroll
 COPY ~%folder%/data/misc/RNDPS1.itm~ ~override/RNDDS7.itm~ //Druid lev 7 scroll
+
+//some missing bams
+COPY ~%folder%/data/scrolls/bam/missing~ ~override~
+//special cases
+COPY ~%folder%/data/scrolls/bam/missing~ ~override~
+
+//random tables, are they in?
+ACTION_IF !(FILE_EXISTS_IN_GAME ~rndtres.2da~) BEGIN
+    COPY ~%folder%/data/misc/rndtres.2da~ ~override~
+END
+
+//random scroll stuff
+INCLUDE ~override/rand_scr.tpa~  //
 
 //////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
@@ -468,10 +482,6 @@ END    // spell to status
 //check if %spellname%a.bam exists in game
 //if not, copy over suitable substitue
 
-//some missing bams
-COPY ~%folder%/data/scrolls/bam/missing~ ~override~
-//special cases
-COPY ~%folder%/data/scrolls/bam/missing~ ~override~
 
 ACTION_PHP_EACH pr_scr AS spl_ref => scr_ref BEGIN     //just for scroll source ref
   COPY_EXISTING ~%scr_ref%.itm~ ~override~
@@ -562,7 +572,6 @@ END
 //scroll to level list
 INCLUDE ~override/scrl_lv.tpa~  //
 //blank txt files for
-COPY ~%folder%/lib/lists/rand_scr.tpa~ ~override~  //spl source_ref --> create status
 
 /* Notes
 Universal:
@@ -692,13 +701,6 @@ ACTION_PHP_EACH scr_lvl AS scroll_ref => scroll_level BEGIN
  END
 END
 
-//random tables, are they in? 
-ACTION_IF !(FILE_EXISTS_IN_GAME ~rndtres.2da~) BEGIN
-    COPY ~%folder%/data/misc/rndtres.2da~ ~override~
-END
-
-//random scroll stuff
-INCLUDE ~override/rand_scr.tpa~  //
 
 ACTION_PHP_EACH rand_place AS lev => my_list BEGIN
   APPEND ~rndtres.2da~ ~%my_list%~
