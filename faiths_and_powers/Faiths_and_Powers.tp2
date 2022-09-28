@@ -23,7 +23,7 @@ ALWAYS
 	END
 
   	OUTER_SPRINT ~mod_folder~ ~faiths_and_powers~
-        OUTER_SPRINT ~folder~ ~skills-and-abilities~
+        OUTER_SPRINT ~folder~ ~faiths_and_powers~
 
 	ACTION_IF !(FILE_EXISTS ~override/d5_fnp_settings.ini~) BEGIN
   	  COPY ~faiths_and_powers/d5_fnp_settings.ini~ ~override~
