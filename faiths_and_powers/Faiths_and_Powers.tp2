@@ -2,7 +2,7 @@ BACKUP ~faiths_and_powers/backup~
 AUTHOR ~SubtleD and Grammarsalad~
 
 
-VERSION ~0.83.15~
+VERSION ~0.84.00~
 
 
 //README ~faiths_and_powers/readme-pnp.html~
@@ -31,6 +31,8 @@ ALWAYS
  
   	INCLUDE ~override/d5_fnp_settings.ini~
   	
+	INCLUDE ~faiths_and_powers/lib/effect_return.tpa~
+
 	INCLUDE ~faiths_and_powers/lib/item_in_store.tpa~
 
 	INCLUDE ~faiths_and_powers/lib/nu_alter_effect.tpa~
@@ -1093,16 +1095,16 @@ LAF more_ranger_alignments END
 //					              ADD SPELL SCROLLS FOR PRIESTS
 //__________________________________________________________________________________
 //__________________________________________________________________________________
-/*
-//testing
 
+//testing
+/*
 BEGIN @70 // Add spell scrolls for priests
 DESIGNATED 70
 
 INCLUDE ~faiths_and_powers/data/components/Setup_Priest_Scrolls.tpa~
-
-//test on vanilla (no reason I can think of it wouldn't work)
 */
+//test on vanilla (no reason I can think of it wouldn't work)
+
 
 //__________________________________________________________________________________
 //__________________________________________________________________________________
