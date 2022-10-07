@@ -135,6 +135,7 @@ LANGUAGE
 BEGIN @21 // FnP original sphere system
 DESIGNATED 21
 SUBCOMPONENT @20 
+LABEL ~D5_FNP_SPHERE_SYSTEM~
 REQUIRE_PREDICATE (GAME_IS ~bgee bg2ee eet iwdee~) @8
 
 COPY ~faiths_and_powers/lib/markers/d5_marker.d5~ ~override/d5__spheres.d5~
@@ -206,6 +207,7 @@ LAF create_spheres END
 BEGIN @22 // 2E-style sphere system
 DESIGNATED 22
 SUBCOMPONENT @20
+LABEL ~D5_PNP_SPHERE_SYSTEM~
 
 COPY ~faiths_and_powers/lib/markers/d5_marker.d5~ ~override/d5__spheres.d5~
 COPY ~faiths_and_powers/lib/markers/d5_marker.d5~ ~override/d5__2e_spheres.d5~
@@ -271,6 +273,7 @@ LAF create_spheres END
 BEGIN @23 // mostly vanilla - same as unmodded game, but kits can cross the cleric/druid divide
 DESIGNATED 23
 SUBCOMPONENT @20 
+LABEL ~D5_VANILLA_SPHERE_SYSTEM~
 REQUIRE_PREDICATE (GAME_IS ~bgee bg2ee eet iwdee~) @8
 
 COPY ~faiths_and_powers/lib/markers/d5_marker.d5~ ~override/d5__spheres.d5~
@@ -387,6 +390,7 @@ COPY_EXISTING ~faiths_and_powers/data/hlas/system_vplus/lucmxyz.2da~ ~override~
 BEGIN @24 // vanilla plus - same as unmodded game, but kits gets focus access to two spheres
 DESIGNATED 24
 SUBCOMPONENT @20 
+LABEL ~D5_VPLUS_SPHERE_SYSTEM~
 REQUIRE_PREDICATE (GAME_IS ~bgee bg2ee eet iwdee~) @8
 
 COPY ~faiths_and_powers/lib/markers/d5_marker.d5~ ~override/d5__spheres.d5~
@@ -503,6 +507,7 @@ COPY_EXISTING ~faiths_and_powers/data/hlas/system_vplus/lucmxyz.2da~ ~override~
 BEGIN @25 // new FnP sphere system - fewer spheres, more broadly balanced
 DESIGNATED 25
 SUBCOMPONENT @20 
+LABEL ~D5_NU_FNP_SPHERE_SYSTEM~
 REQUIRE_PREDICATE (GAME_IS ~bgee bg2ee eet iwdee~) @8
 
 COPY ~faiths_and_powers/lib/markers/d5_marker.d5~ ~override/d5__spheres.d5~
@@ -577,6 +582,7 @@ LAF create_spheres END
 
 BEGIN @30 // install spont option
 DESIGNATED 30
+LABEL ~D5_FNP_SPONTANEOUS_CASTING_OPTION~
 REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) @8
 REQUIRE_PREDICATE !(FILE_EXISTS_IN_GAME ~d5__5E_casting_divine.d5~) @8
 
@@ -600,6 +606,7 @@ COPY ~faiths_and_powers/lib/markers/d5_marker.d5~ ~override/d5__fnp_spont_option
 
 BEGIN @31 // install cleric kits
 DESIGNATED 31
+LABEL ~D5_FNP_CLERIC_KITS~
 
 ACTION_IF (FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~) BEGIN
   INCLUDE ~override/fnp_sphere_list.tpa~
@@ -758,6 +765,7 @@ END
 //
 BEGIN @33 // install druid kits
 DESIGNATED 33
+LABEL ~D5_FNP_DRUID_KITS~
 REQUIRE_PREDICATE (GAME_IS ~bgee bg2ee eet iwdee~) @8
 
 ACTION_IF (FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~) BEGIN
@@ -849,6 +857,7 @@ LAF clear_druid_clab END
 //
 BEGIN @35 // install paladin kits
 DESIGNATED 35
+LABEL ~D5_FNP_PALADIN_KITS~
 REQUIRE_PREDICATE (GAME_IS ~bgee bg2ee eet iwdee~) @8
 
 ACTION_IF (FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~) BEGIN
@@ -1002,6 +1011,7 @@ LAF remove_sc_menu_kits STR_VAR class = ~P~ END
 //
 BEGIN @37 // install ranger kits
 DESIGNATED 37
+LABEL ~D5_FNP_RANGER_KITS~
 REQUIRE_PREDICATE (GAME_IS ~bgee bg2ee eet iwdee~) @8
 
 ACTION_IF (FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~) BEGIN
@@ -1074,6 +1084,7 @@ LAF more_ranger_alignments END
 
 BEGIN @70 // Add spell scrolls for priests
 DESIGNATED 70
+//LABEL ~B_PRIEST_SPELL_SCROLLS~
 
 //marker
 COPY_EXISTING ~SW1H04.itm~ ~override/B_fnp070.itm~
@@ -1094,6 +1105,7 @@ INCLUDE ~faiths_and_powers/data/components/Setup_Priest_Scrolls.tpa~
 
 BEGIN @75 // item usability
 DESIGNATED 75
+LABEL ~D5_FNP_WEAPON_USABILITY~
 REQUIRE_PREDICATE (GAME_IS ~bgee bg2ee eet iwdee~) @8
 
 COPY ~faiths_and_powers/lib/markers/d5_marker.d5~ ~override/d5__fnp_usability.d5~
@@ -1145,6 +1157,7 @@ INCLUDE ~faiths_and_powers/lib/system_item_use.tpa~
 
 BEGIN @80 // apply sphere systen
 DESIGNATED 80
+LABEL ~D5_APPLY_SPHERE_SYSTEM~
 //INSTALL_BY_DEFAULT
 REQUIRE_PREDICATE (GAME_IS ~bgee bg2ee eet iwdee~) @8
 REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) @8
@@ -1214,6 +1227,7 @@ END
 
 BEGIN @85 // apply kits to NPCS
 DESIGNATED 85
+LABEL ~D5_FNP_KITS_TO_NPCS~
 //INSTALL_BY_DEFAULT
 REQUIRE_PREDICATE (MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~31~) OR (MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~33~) OR (MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~35~) OR (MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~37~)  @8
 

@@ -55,6 +55,7 @@ LANGUAGE
 
 BEGIN @91 // install multiclass druids
 DESIGNATED 91
+LABEL ~D5_FNP_MULTI_DRUID_KITS~
 REQUIRE_PREDICATE (GAME_IS ~bgee bg2ee eet iwdee~) @8
 
 INCLUDE ~faiths_and_powers/lib/system_compat.tpa~
@@ -119,6 +120,7 @@ LAF remove_mc_menu_kits END
 
 BEGIN @92 // install multiclass shamans
 DESIGNATED 92
+LABEL ~D5_FNP_MULTI_SHAMAN_KITS~
 REQUIRE_PREDICATE (GAME_IS ~bgee bg2ee eet iwdee~) @8
 
 INCLUDE ~faiths_and_powers/lib/system_compat.tpa~
@@ -175,6 +177,7 @@ LAF remove_mc_menu_kits END
 
 BEGIN @95 // install multiclass kits
 DESIGNATED 95
+LABEL ~D5_FNP_MULTI_CLERIC_KITS~
 REQUIRE_PREDICATE (GAME_IS ~bgee bg2ee eet iwdee~) @8
 
 INCLUDE ~faiths_and_powers/lib/a7#add_kit_ex.tpa~
@@ -242,6 +245,7 @@ END
 
 BEGIN @99 // apply kits to multiclass NPCS
 DESIGNATED 99
+LABEL ~D5_FNP_MULTI_KITS_TO_NPCS~
 //INSTALL_BY_DEFAULT
 REQUIRE_PREDICATE (MOD_IS_INSTALLED ~fnp_multiclass.tp2~ ~91~) OR (MOD_IS_INSTALLED ~fnp_multiclass.tp2~ ~95~) @8
 
