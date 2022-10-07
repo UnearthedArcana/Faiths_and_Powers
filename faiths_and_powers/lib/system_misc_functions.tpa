@@ -248,7 +248,7 @@ END
 
 DEFINE_ACTION_FUNCTION enable_more_paladins BEGIN
 
-ACTION_IF (%d5_champion_tyr% + %d5_champion_azuth% + %d5_champion_moradin% + %d5_champion_kelemvor% + %d5_champion_tempus% + %d5_champion_bane% + %d5_champion_helm% + %d5_champion_talos% + %d5_champion_red% > 0) BEGIN
+ACTION_IF (%champion_tyr% + %champion_azuth% + %champion_moradin% + %champion_kelemvor% + %champion_tempus% + %champion_bane% + %champion_helm% + %champion_talos% + %champion_red% > 0) BEGIN
 //any race can have their pallys
   COPY_EXISTING ~clsrcreq.2da~ ~override~
 	COUNT_2DA_ROWS 8 rows

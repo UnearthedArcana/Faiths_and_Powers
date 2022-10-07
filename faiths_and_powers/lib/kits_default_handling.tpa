@@ -16,86 +16,6 @@ LAF QD_ENSURE_BASE_CLAB STR_VAR base_class = ~R~ END
 
 LAM d5_kit_choices 
 
-//DEFINE SPHERE ACCESS______________________________________________________________
-//
-ACTION_IF FILE_EXISTS_IN_GAME ~clabshgs.2da~ BEGIN
- LAF ~DEFINE_FNP_KIT_INFO~
-  INT_VAR
-	u_leather_armor 	= 1
-	u_chain_armor 		= 0
-	u_plate_armor 		= 0
-	u_club_staff	 	= 1
-	u_hammers	 		= 0
-	u_maces 	 		= 0
-	u_flails 			= 0
-	u_axes 				= 1
-	u_daggers 			= 1
-	u_short_swords		= 0
-	u_long_swords		= 0
-	u_scimitars 		= 0
-	u_katanas 			= 0
-	u_bastard_swords 	= 0
-	u_2hand_swords 		= 0
-	u_halberds 		 	= 0
-	u_spears 			= 1
-	u_darts 			= 1
-	u_slings 			= 1
-	u_bows 				= 1
-	u_crossbows 		= 0  
-  STR_VAR
-    clab_name 		= ~clabshgs~
-	sphere_list		= ~vanilla_shaman_spheres~
-	class 			= ~shaman~
- END
-// LAF fnp_spontaneous STR_VAR kit_clab = ~clabshgs~ learn_res = ~d5shgsz~ free_universal = ~no~ END
-END
-//__________________________________________________________________________________
-
-//DEFINE SPHERE ACCESS______________________________________________________________
-//
-// base shaman
-//
-ACTION_IF FILE_EXISTS_IN_GAME ~clabsh01.2da~ BEGIN
- LAF ~DEFINE_FNP_KIT_INFO~
-  INT_VAR
-	u_leather_armor 	= 1
-	u_chain_armor 		= 0
-	u_plate_armor 		= 0
-	u_club_staff	 	= 1
-	u_hammers	 		= 0
-	u_maces 	 		= 0
-	u_flails 			= 0
-	u_axes 				= 1
-	u_daggers 			= 1
-	u_short_swords		= 0
-	u_long_swords		= 0
-	u_scimitars 		= 0
-	u_katanas 			= 0
-	u_bastard_swords 	= 0
-	u_2hand_swords 		= 0
-	u_halberds 		 	= 0
-	u_spears 			= 1
-	u_darts 			= 1
-	u_slings 			= 1
-	u_bows 				= 1
-	u_crossbows 		= 0  
- STR_VAR
-    clab_name 		= ~clabsh01~
-	sphere_list		= ~vanilla_shaman_spheres~
-	class 			= ~shaman~
- END
-
- ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
-// ACTION_IF (d5_spell_spontaneous = 0) BEGIN
-    LAF fnp_spell_choice STR_VAR this_kit_clab = ~clabsh01~ learn_itm_res = ~d5sh01z~ free_universal_spells = ~yes~ END
-// END
-// ACTION_IF (d5_spell_spontaneous > 0) BEGIN
-//    LAF fnp_spontaneous STR_VAR kit_clab = ~clabsh01~ learn_res = ~d5sh01z~ free_universal = ~no~ END
-// END
- END
-END
-//__________________________________________________________________________________
-
 //ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5__deity.d5~ BEGIN
 
 //DEFINE SPHERE ACCESS______________________________________________________________
@@ -468,6 +388,86 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabdr04.2da~ BEGIN
     clab_name 		= ~clabdr04~
 	sphere_list		= ~vanilla_avenger_spheres~
 	class 			= ~druid~
+ END
+END
+//__________________________________________________________________________________
+
+//DEFINE SPHERE ACCESS______________________________________________________________
+//
+ACTION_IF FILE_EXISTS_IN_GAME ~clabshgs.2da~ BEGIN
+ LAF ~DEFINE_FNP_KIT_INFO~
+  INT_VAR
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_club_staff	 	= 1
+	u_hammers	 		= 0
+	u_maces 	 		= 0
+	u_flails 			= 0
+	u_axes 				= 1
+	u_daggers 			= 1
+	u_short_swords		= 0
+	u_long_swords		= 0
+	u_scimitars 		= 0
+	u_katanas 			= 0
+	u_bastard_swords 	= 0
+	u_2hand_swords 		= 0
+	u_halberds 		 	= 0
+	u_spears 			= 1
+	u_darts 			= 1
+	u_slings 			= 1
+	u_bows 				= 1
+	u_crossbows 		= 0  
+  STR_VAR
+    clab_name 		= ~clabshgs~
+	sphere_list		= ~vanilla_shaman_spheres~
+	class 			= ~shaman~
+ END
+// LAF fnp_spontaneous STR_VAR kit_clab = ~clabshgs~ learn_res = ~d5shgsz~ free_universal = ~no~ END
+END
+//__________________________________________________________________________________
+
+//DEFINE SPHERE ACCESS______________________________________________________________
+//
+// base shaman
+//
+ACTION_IF FILE_EXISTS_IN_GAME ~clabsh01.2da~ BEGIN
+ LAF ~DEFINE_FNP_KIT_INFO~
+  INT_VAR
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_club_staff	 	= 1
+	u_hammers	 		= 0
+	u_maces 	 		= 0
+	u_flails 			= 0
+	u_axes 				= 1
+	u_daggers 			= 1
+	u_short_swords		= 0
+	u_long_swords		= 0
+	u_scimitars 		= 0
+	u_katanas 			= 0
+	u_bastard_swords 	= 0
+	u_2hand_swords 		= 0
+	u_halberds 		 	= 0
+	u_spears 			= 1
+	u_darts 			= 1
+	u_slings 			= 1
+	u_bows 				= 1
+	u_crossbows 		= 0  
+ STR_VAR
+    clab_name 		= ~clabsh01~
+	sphere_list		= ~vanilla_shaman_spheres~
+	class 			= ~shaman~
+ END
+
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+// ACTION_IF (d5_spell_spontaneous = 0) BEGIN
+    LAF fnp_spell_choice STR_VAR this_kit_clab = ~clabsh01~ learn_itm_res = ~d5sh01z~ free_universal_spells = ~yes~ END
+// END
+// ACTION_IF (d5_spell_spontaneous > 0) BEGIN
+//    LAF fnp_spontaneous STR_VAR kit_clab = ~clabsh01~ learn_res = ~d5sh01z~ free_universal = ~no~ END
+// END
  END
 END
 //__________________________________________________________________________________

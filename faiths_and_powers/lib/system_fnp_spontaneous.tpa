@@ -379,7 +379,9 @@ ACTION_IF !(~%this_kit_clab%~ STRING_EQUAL_CASE ~x~) BEGIN
   ACTION_PHP_EACH kit_spont_list AS sph_spls => ind BEGIN
 	COPY_EXISTING ~%learn_itm_res%.2da~ ~override~
 	  LPM remove_blank_lines
-	  APPEND_FILE ~override/d5t%sph_spls%.2da~
+	  PATCH_IF (FILE_EXISTS_IN_GAME ~d5t%sph_spls%.2da~) BEGIN
+	    APPEND_FILE ~override/d5t%sph_spls%.2da~
+	  END
 	BUT_ONLY
   END
   ACTION_IF (%kit_class% = 21) && (~%free_universal_spells%~ STRING_EQUAL_CASE ~no~) BEGIN

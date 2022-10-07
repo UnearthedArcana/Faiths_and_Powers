@@ -2,7 +2,7 @@ BACKUP ~faiths_and_powers/backup~
 AUTHOR ~SubtleD and Grammarsalad~
 
 
-VERSION ~0.84.01~
+VERSION ~0.84.2~
 
 
 //README ~faiths_and_powers/readme-pnp.html~
@@ -162,7 +162,6 @@ ACTION_CLEAR_ARRAY aoe_spell
 ACTION_IF (include_new_FNP_spells = 1) BEGIN
   INCLUDE ~faiths_and_powers/lib/spells_new_v75.tpa~      	//includes spells from the 0.75 series  
   INCLUDE ~faiths_and_powers/lib/spells_new_fnp.tpa~   		//new spells from the 0.77 series 
-//  LAM v75_add_fnP_new_spells
   LAM v78_add_FnP_new_spells
 END
 
@@ -219,10 +218,6 @@ END
 //
 COPY ~faiths_and_powers/data/sphere_systems/sphere_list_2E.tpa~ ~override/fnp_sphere_list.tpa~
 
-//change shaman known spells________________________________________________________
-//
-//LAF shaman_spells END
-
 //Add IWD and new spells____________________________________________________________
 //
 LAM d5_spell_options
@@ -232,7 +227,6 @@ ACTION_CLEAR_ARRAY aoe_spell
 ACTION_IF (include_new_FNP_spells = 1) BEGIN
   INCLUDE ~faiths_and_powers/lib/spells_new_v75.tpa~      	//includes spells from the 0.75 series  
   INCLUDE ~faiths_and_powers/lib/spells_new_fnp.tpa~   		//new spells from the 0.77 series 
-//  LAM v75_add_fnP_new_spells
   LAM v78_add_FnP_new_spells
 END
 
@@ -290,11 +284,6 @@ END
 //
 COPY ~faiths_and_powers/data/sphere_systems/sphere_list_vanilla.tpa~ ~override/fnp_sphere_list.tpa~
 
-//change shaman known spells________________________________________________________
-//
-//LAF shaman_spells END
-//... nope, fold this into the d5_spontaneous function
-
 //Add IWD and new spells____________________________________________________________
 //
 LAM d5_spell_options
@@ -308,7 +297,7 @@ ACTION_IF (include_new_FNP_spells = 1) BEGIN
   LAM v78_add_FnP_new_spells
 END
 
-/*
+/* no need for this if using vanilla spell system
 ACTION_IF !(GAME_IS ~iwdee~) BEGIN
   ACTION_IF (include_IWD_arcane_spells = 1) BEGIN
     LAM v75_add_iwd_arcane_spells
@@ -410,11 +399,6 @@ END
 //prep sphere system________________________________________________________________
 //
 COPY ~faiths_and_powers/data/sphere_systems/sphere_list_vplus.tpa~ ~override/fnp_sphere_list.tpa~
-
-//change shaman known spells________________________________________________________
-//
-//LAF shaman_spells END
-//... nope, fold this into the d5_spontaneous function
 
 //Add IWD and new spells____________________________________________________________
 //
@@ -532,11 +516,6 @@ END
 //
 COPY ~faiths_and_powers/data/sphere_systems/sphere_list_new_fnp.tpa~ ~override/fnp_sphere_list.tpa~
 
-//change shaman known spells________________________________________________________
-//
-//LAF shaman_spells END
-//... nope, fold this into the d5_spontaneous function
-
 //Add IWD and new spells____________________________________________________________
 //
 LAM d5_spell_options
@@ -636,129 +615,127 @@ LAF rename_holy_symbols STR_VAR item_name = EVAL ~%symbols_name%~ END
 
 LAM d5_kit_choices
 
-//LAM d5_spont_option
-
-ACTION_IF (GAME_IS ~iwdee~) && (d5_cleric_kelemvor < 2) BEGIN
-  OUTER_SET d5_cleric_kelemvor = 0
+ACTION_IF (GAME_IS ~iwdee~) && (cleric_kelemvor < 2) BEGIN
+  OUTER_SET cleric_kelemvor = 0
 END
-ACTION_IF (GAME_IS ~iwdee~) && (d5_cleric_cyric < 2) BEGIN
-  OUTER_SET d5_cleric_cyric = 0
+ACTION_IF (GAME_IS ~iwdee~) && (cleric_cyric < 2) BEGIN
+  OUTER_SET cleric_cyric = 0
 END
 
 ACTION_IF (ENGINE_IS ~tob bgt~) BEGIN
-   OUTER_SET d5_cleric_azuth	=	0
-   OUTER_SET d5_cleric_mystra	=	0
-   OUTER_SET d5_cleric_oghma	=	0
-   OUTER_SET d5_cleric_baervan 	=	0
-   OUTER_SET d5_cleric_arvoreen	=	0
+   OUTER_SET cleric_azuth	=	0
+   OUTER_SET cleric_mystra	=	0
+   OUTER_SET cleric_oghma	=	0
+   OUTER_SET cleric_baervan 	=	0
+   OUTER_SET cleric_arvoreen	=	0
    OUTER_SET d5_ur_priest	 	=	0
 END
 
 OUTER_SET cleric_umd = 0
 
 // (clerics)
-ACTION_IF (%d5_cleric_moradin% = 1) BEGIN
- LAF cleric_moradin END
+ACTION_IF (%cleric_moradin% = 1) BEGIN
+  LAF cleric_moradin END
 END
-ACTION_IF (%d5_cleric_clangeddin% = 1) BEGIN
- LAF cleric_clangeddin END
+ACTION_IF (%cleric_clangeddin% = 1) BEGIN
+  LAF cleric_clangeddin END
 END
-ACTION_IF (%d5_cleric_marthammor% = 1) BEGIN
- LAF cleric_marthammor END
+ACTION_IF (%cleric_marthammor% = 1) BEGIN
+  LAF cleric_marthammor END
 END
-ACTION_IF (%d5_cleric_baravar% = 1) BEGIN
- LAF cleric_baravar END
+ACTION_IF (%cleric_baravar% = 1) BEGIN
+  LAF cleric_baravar END
 END
-ACTION_IF (%d5_cleric_baervan% = 1) BEGIN
- LAF cleric_baervan END
+ACTION_IF (%cleric_baervan% = 1) BEGIN
+  LAF cleric_baervan END
 END
-ACTION_IF (%d5_cleric_urdlen% = 1) BEGIN
- LAF cleric_urdlen END
+ACTION_IF (%cleric_urdlen% = 1) BEGIN
+  LAF cleric_urdlen END
 END
-ACTION_IF (%d5_cleric_yondalla% = 1) BEGIN
- LAF cleric_yondalla END
+ACTION_IF (%cleric_yondalla% = 1) BEGIN
+  LAF cleric_yondalla END
 END
-ACTION_IF (%d5_cleric_arvoreen% = 1) BEGIN
- LAF cleric_arvoreen END
+ACTION_IF (%cleric_arvoreen% = 1) BEGIN
+  LAF cleric_arvoreen END
 END
-ACTION_IF (%d5_scion_bhaal% = 1) BEGIN
- LAF scion_bhaal END
- OUTER_SET cleric_umd = 1
+ACTION_IF (%scion_bhaal% = 1) BEGIN
+  LAF scion_bhaal END
+  OUTER_SET cleric_umd = 1
 END
-ACTION_IF (%d5_cleric_azuth% = 1) BEGIN
- LAF cleric_azuth END
- OUTER_SET cleric_umd = 1
+ACTION_IF (%cleric_azuth% = 1) BEGIN
+  LAF cleric_azuth END
+  OUTER_SET cleric_umd = 1
 END
-ACTION_IF (%d5_cleric_beshaba% = 1) BEGIN
- LAF cleric_beshaba END
+ACTION_IF (%cleric_beshaba% = 1) BEGIN
+  LAF cleric_beshaba END
 END
-ACTION_IF (%d5_cleric_cyric% = 1) BEGIN
+ACTION_IF (%cleric_cyric% = 1) BEGIN
   LAF cleric_cyric END
 END
-ACTION_IF (%d5_cleric_deneir% = 1) BEGIN
- LAF cleric_deneir END
+ACTION_IF (%cleric_deneir% = 1) BEGIN
+  LAF cleric_deneir END
 END
-ACTION_IF (%d5_cleric_helm% = 1) BEGIN
- LAF cleric_helm END
+ACTION_IF (%cleric_helm% = 1) BEGIN
+  LAF cleric_helm END
 END
-ACTION_IF (%d5_cleric_ilmater% = 1) BEGIN
- LAF cleric_ilmater END
+ACTION_IF (%cleric_ilmater% = 1) BEGIN
+  LAF cleric_ilmater END
 END
-ACTION_IF (%d5_cleric_kelemvor% = 1) BEGIN
+ACTION_IF (%cleric_kelemvor% = 1) BEGIN
   LAF cleric_kelemvor END
 END
-ACTION_IF (%d5_cleric_lathander% = 1) BEGIN
- LAF cleric_lathander END
+ACTION_IF (%cleric_lathander% = 1) BEGIN
+  LAF cleric_lathander END
 END
-ACTION_IF (%d5_cleric_leira% = 1) BEGIN
- LAF cleric_leira END
+ACTION_IF (%cleric_leira% = 1) BEGIN
+  LAF cleric_leira END
 END
-ACTION_IF (%d5_cleric_loviatar% = 1) BEGIN
- LAF cleric_loviatar END
+ACTION_IF (%cleric_loviatar% = 1) BEGIN
+  LAF cleric_loviatar END
 END
-ACTION_IF (%d5_cleric_malar% = 1) BEGIN
- LAF cleric_malar END
+ACTION_IF (%cleric_malar% = 1) BEGIN
+  LAF cleric_malar END
 END
-ACTION_IF (%d5_cleric_moander% = 1) BEGIN
- LAF cleric_moander END
+ACTION_IF (%cleric_moander% = 1) BEGIN
+  LAF cleric_moander END
 END
-ACTION_IF (%d5_cleric_mystra% = 1) BEGIN
- LAF cleric_mystra END
- OUTER_SET cleric_umd = 1
+ACTION_IF (%cleric_mystra% = 1) BEGIN
+  LAF cleric_mystra END
+  OUTER_SET cleric_umd = 1
 END
-ACTION_IF (%d5_cleric_oghma% = 1) BEGIN
- LAF cleric_oghma END
- OUTER_SET cleric_umd = 1
+ACTION_IF (%cleric_oghma% = 1) BEGIN
+  LAF cleric_oghma END
+  OUTER_SET cleric_umd = 1
 END
-ACTION_IF (%d5_cleric_shar% = 1) BEGIN
- LAF cleric_shar END
+ACTION_IF (%cleric_shar% = 1) BEGIN
+  LAF cleric_shar END
 END
-ACTION_IF (%d5_cleric_sune% = 1) BEGIN
- LAF cleric_sune END
+ACTION_IF (%cleric_sune% = 1) BEGIN
+  LAF cleric_sune END
 END
-ACTION_IF (%d5_cleric_talos% = 1) BEGIN
- LAF cleric_talos END
+ACTION_IF (%cleric_talos% = 1) BEGIN
+  LAF cleric_talos END
 END
-ACTION_IF (%d5_cleric_tempus% = 1) BEGIN
- LAF cleric_tempus END
+ACTION_IF (%cleric_tempus% = 1) BEGIN
+  LAF cleric_tempus END
 END
-ACTION_IF (%d5_priest_tempus% = 1) BEGIN
- LAF priest_tempus END
+ACTION_IF (%priest_tempus% = 1) BEGIN
+  LAF priest_tempus END
 END
-ACTION_IF (%d5_cleric_torm% = 1) BEGIN
- LAF cleric_torm END
+ACTION_IF (%cleric_torm% = 1) BEGIN
+  LAF cleric_torm END
 END
-ACTION_IF (%d5_cleric_tymora% = 1) BEGIN
- LAF cleric_tymora END
+ACTION_IF (%cleric_tymora% = 1) BEGIN
+  LAF cleric_tymora END
 END
-ACTION_IF (%d5_cleric_umberlee% = 1) BEGIN
- LAF cleric_umberlee END
+ACTION_IF (%cleric_umberlee% = 1) BEGIN
+  LAF cleric_umberlee END
 END
 //
 
 // (ur-priest)
-ACTION_IF (%d5_ur_priest% = 1) BEGIN
- LAF cleric_ur_priest END
+ACTION_IF (%ur_priest% = 1) BEGIN
+  LAF cleric_ur_priest END
 END
 
 LAF remove_sc_menu_kits STR_VAR class = ~C~ END
@@ -799,75 +776,67 @@ LAF druid_class_text END
 
 //druids on cleric spell/xp tables__________________________________________________
 //
-LAF druid_xp END
-//__________________________________________________________________________________
-
-/*
-//change shaman known spells________________________________________________________
-//
-ACTION_IF !(FILE_EXISTS_IN_GAME ~d5__no_spheres.d5)~) BEGIN
-  LAF shaman_spells END
+LAM d5_druid_xp_table
+ACTION_IF (druids_use_cleric_table = 1) BEGIN
+  LAF druid_xp END
 END
 //__________________________________________________________________________________
-*/
 
 LAM d5_kit_choices
 
-//LAM d5_spont_option
-
 ACTION_IF (FILE_EXISTS_IN_GAME ~d5__no_spheres.d5~) BEGIN
-   OUTER_SET d5_earth_mystic 	=	0
-   OUTER_SET d5_water_mystic 	=	0
-   OUTER_SET d5_air_mystic 		=	0
-   OUTER_SET d5_fire_mystic 	=	0
-   OUTER_SET d5_light_mystic 	=	0
-   OUTER_SET d5_shadow_mystic 	=	0
-   OUTER_SET d5_elementalist 	=	0
-   OUTER_SET d5_hivekeeper_druid 	=	0
+   OUTER_SET earth_mystic 		=	0
+   OUTER_SET water_mystic 		=	0
+   OUTER_SET air_mystic 		=	0
+   OUTER_SET fire_mystic 		=	0
+   OUTER_SET light_mystic 		=	0
+   OUTER_SET shadow_mystic 		=	0
+   OUTER_SET elementalist 		=	0
+   OUTER_SET hivekeeper_druid 	=	0
 END
 
 // (druids)
-ACTION_IF (%d5_forest_druid% = 1) BEGIN
- LAF forest_druid END
+ACTION_IF (%forest_druid% = 1) BEGIN
+  LAF forest_druid END
 END
-ACTION_IF (%d5_totemic_druid% = 1) BEGIN
- LAF totemic_druid END
+ACTION_IF (%totemic_druid% = 1) BEGIN
+  LAF totemic_druid END
 END
-ACTION_IF (%d5_hivekeeper_druid% = 1) BEGIN
- LAF hivekeeper_druid END
+ACTION_IF (%hivekeeper_druid% = 1) BEGIN
+  LAF hivekeeper_druid END
 END
-ACTION_IF (%d5_northern_druid% = 1) BEGIN
- LAF northern_druid END
+ACTION_IF (%northern_druid% = 1) BEGIN
+  LAF northern_druid END
 END
-ACTION_IF (%d5_lost_druid% = 1) BEGIN
- LAF lost_druid END
+ACTION_IF (%lost_druid% = 1) BEGIN
+  LAF lost_druid END
 END
-ACTION_IF (%d5_forest_druid% + %d5_totemic_druid% + %d5_hivekeeper_druid% + %d5_northern_druid% + %d5_lost_druid% > 0) BEGIN
- LAF druid_shapeshifting END
+ACTION_IF (%forest_druid% + %totemic_druid% + %hivekeeper_druid% + %northern_druid% + %lost_druid% > 0) BEGIN
+  LAF druid_shapeshifting END
 END
-ACTION_IF (%d5_beast_lord% = 1) BEGIN
- LAF beast_lord END
+ACTION_IF (%beast_lord% = 1) BEGIN
+  LAF beast_lord END
 END
-ACTION_IF (%d5_elementalist% = 1) BEGIN
- LAF elementalist END
+ACTION_IF (%elementalist% = 1) BEGIN
+  LAF elementalist END
 END
-ACTION_IF (%d5_earth_mystic% = 1) BEGIN
- LAF earth_mystic END
+ACTION_IF (%earth_mystic% = 1) BEGIN
+  LAF earth_mystic END
 END
-ACTION_IF (%d5_water_mystic% = 1) BEGIN
- LAF water_mystic END
+ACTION_IF (%water_mystic% = 1) BEGIN
+  LAF water_mystic END
 END
-ACTION_IF (%d5_air_mystic% = 1) BEGIN
- LAF air_mystic END
+ACTION_IF (%air_mystic% = 1) BEGIN
+  LAF air_mystic END
 END
-ACTION_IF (%d5_fire_mystic% = 1) BEGIN
- LAF fire_mystic END
+ACTION_IF (%fire_mystic% = 1) BEGIN
+  LAF fire_mystic END
 END
-ACTION_IF (%d5_light_mystic% = 1) BEGIN
- LAF light_mystic END
+ACTION_IF (%light_mystic% = 1) BEGIN
+  LAF light_mystic END
 END
-ACTION_IF (%d5_shadow_mystic% = 1) BEGIN
- LAF shadow_mystic END
+ACTION_IF (%shadow_mystic% = 1) BEGIN
+  LAF shadow_mystic END
 END
 
 LAF remove_sc_menu_kits STR_VAR class = ~D~ END
@@ -894,37 +863,38 @@ END
 
 //ranger/paladin spell tables_______________________________________________________
 //
-LAF paladin_spell_tables END
+LAM d5_paladin_ranger_spell_tables
+ACTION_IF (fnp_paladin_spell_table = 1) BEGIN
+  LAF paladin_spell_tables END
+END
 //__________________________________________________________________________________
 
 LAM d5_kit_choices
 
-//LAM d5_spont_option
-
 ACTION_IF (FILE_EXISTS_IN_GAME ~d5__no_spheres.d5~) || (ENGINE_IS ~tob bgt~) BEGIN
-   OUTER_SET d5_zealot_ilmater 		=	0
-   OUTER_SET d5_zealot_corellon 	=	0
-   OUTER_SET d5_zealot_sune 		=	0
-   OUTER_SET d5_zealot_mystra 		=	0
-   OUTER_SET d5_zealot_eilistraee 	=	0
-   OUTER_SET d5_zealot_gruumsh 		=	0
-   OUTER_SET d5_zealot_talos 		=	0
-   OUTER_SET d5_zealot_kossuth 		=	0
-   OUTER_SET d5_zealot_garagos 		=	0
+   OUTER_SET zealot_ilmater 	=	0
+   OUTER_SET zealot_corellon 	=	0
+   OUTER_SET zealot_sune 		=	0
+   OUTER_SET zealot_mystra 		=	0
+   OUTER_SET zealot_eilistraee 	=	0
+   OUTER_SET zealot_gruumsh 	=	0
+   OUTER_SET zealot_talos 		=	0
+   OUTER_SET zealot_kossuth 	=	0
+   OUTER_SET zealot_garagos 	=	0
 END
 
 LAF enable_more_paladins END
 
-ACTION_IF (%d5_champion_moradin% = 1) BEGIN
+ACTION_IF (%champion_moradin% = 1) BEGIN
  LAF champion_moradin END
 END
-ACTION_IF (%d5_champion_arvoreen% = 1) BEGIN
+ACTION_IF (%champion_arvoreen% = 1) BEGIN
  LAF champion_arvoreen END
 END
-ACTION_IF (%d5_champion_azuth% = 1) BEGIN
- LAF champion_azuth	 END	//azuth essentially replaces Inquisitor
+ACTION_IF (%champion_azuth% = 1) BEGIN
+ LAF champion_azuth	 END
 END
-ACTION_IF (%d5_champion_bane% = 1) BEGIN
+ACTION_IF (%champion_bane% = 1) BEGIN
  ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No Evil nonfallable pallys in IWDEE as yet
   LAF champion_bane END
  END
@@ -932,7 +902,7 @@ ACTION_IF (%d5_champion_bane% = 1) BEGIN
   LAF iwdee_champion_bane END
  END
 END
-ACTION_IF (%d5_champion_helm% = 1) BEGIN
+ACTION_IF (%champion_helm% = 1) BEGIN
  ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No Evil nonfallable pallys in IWDEE as yet
   LAF champion_helm END
  END
@@ -940,22 +910,22 @@ ACTION_IF (%d5_champion_helm% = 1) BEGIN
   LAF iwdee_champion_helm END
  END
 END
-ACTION_IF (%d5_champion_kelemvor% = 1) BEGIN
+ACTION_IF (%champion_kelemvor% = 1) BEGIN
  //champ of Kele effectively replaces UHunter. In IWDEE, the champ of mykrul is merely added (they're different enough conceptually to be seperate)
- ACTION_IF GAME_IS ~iwdee~ THEN BEGIN   //
+ ACTION_IF GAME_IS ~iwdee~ THEN BEGIN  
   LAF iwdee_champion_kelemvor END
  END
  //kelevmor undead hunter for non-iwdee
- ACTION_IF GAME_IS ~bgee bg2ee eet~ THEN BEGIN   //
+ ACTION_IF GAME_IS ~bgee bg2ee eet~ THEN BEGIN 
   LAF champion_kelemvor END
  END
 END
-ACTION_IF (%d5_champion_red% = 1) BEGIN
+ACTION_IF (%champion_red% = 1) BEGIN
  ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No feasible way to make them not fall in IWDEE without fallen.2da
   LAF champion_red END
  END
 END
-ACTION_IF (%d5_champion_talos% = 1) BEGIN
+ACTION_IF (%champion_talos% = 1) BEGIN
  ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No Evil nonfallable pallys in IWDEE
   LAF champion_talos END
  END
@@ -963,19 +933,19 @@ ACTION_IF (%d5_champion_talos% = 1) BEGIN
   LAF iwdee_champion_talos END
  END
 END
-ACTION_IF (%d5_champion_tempus% = 1) BEGIN
+ACTION_IF (%champion_tempus% = 1) BEGIN
  ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No feasible way to make them not fall in IWDEE as yet
   LAF champion_tempus END
  END
 END
-ACTION_IF (%d5_champion_tyr% = 1) BEGIN
+ACTION_IF (%champion_tyr% = 1) BEGIN
  LAF champion_tyr END
 END
 //
 // (other paladins)
 //
 // (zealot)
-ACTION_IF (%d5_zealot_ilmater% + %d5_zealot_sune% + %d5_zealot_mystra% + %d5_zealot_eilistraee% + %d5_zealot_gruumsh% + %d5_zealot_talos% + %d5_zealot_kossuth% + %d5_zealot_garagos% > 0) BEGIN
+ACTION_IF (%zealot_ilmater% + %zealot_sune% + %zealot_mystra% + %zealot_eilistraee% + %zealot_gruumsh% + %zealot_talos% + %zealot_kossuth% + %zealot_garagos% > 0) BEGIN
  //sneaky sneaky
  COPY ~faiths_and_powers/kits/zealots/b_sneak.spl~ ~override~
  COPY ~faiths_and_powers/kits/zealots/b_snk02.spl~ ~override~
@@ -992,34 +962,34 @@ ACTION_IF (%d5_zealot_ilmater% + %d5_zealot_sune% + %d5_zealot_mystra% + %d5_zea
  COPY ~faiths_and_powers/kits/zealots/b_snk13.spl~ ~override~
 END
 
-ACTION_IF (%d5_zealot_corellon% = 1) BEGIN
+ACTION_IF (%zealot_corellon% = 1) BEGIN
  LAF zealot_corellon END
 END
-ACTION_IF (%d5_zealot_eilistraee% = 1) BEGIN
+ACTION_IF (%zealot_eilistraee% = 1) BEGIN
  LAF zealot_eilistraee END
 END
 ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No feasible way to make them not fall in IWDEE w/o fallen.2da
- ACTION_IF (%d5_zealot_gruumsh% = 1) BEGIN
+ ACTION_IF (%zealot_gruumsh% = 1) BEGIN
   LAF zealot_gruumsh END
  END
 END  //End grummsh
-ACTION_IF (%d5_zealot_ilmater% = 1) BEGIN
+ACTION_IF (%zealot_ilmater% = 1) BEGIN
  LAF zealot_ilmater END
 END
-ACTION_IF (%d5_zealot_mystra% = 1) BEGIN
+ACTION_IF (%zealot_mystra% = 1) BEGIN
  LAF zealot_mystra END
 END
-ACTION_IF (%d5_zealot_sune% = 1) BEGIN
+ACTION_IF (%zealot_sune% = 1) BEGIN
  LAF zealot_sune END
 END
 ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN  //No feasible way to make them not fall in IWDEE w/o fallen.2da
- ACTION_IF (%d5_zealot_garagos% = 1) BEGIN
+ ACTION_IF (%zealot_garagos% = 1) BEGIN
   LAF zealot_garagos END
  END
- ACTION_IF (%d5_zealot_kossuth% = 1) BEGIN
+ ACTION_IF (%zealot_kossuth% = 1) BEGIN
   LAF zealot_kossuth END
  END
- ACTION_IF (%d5_zealot_talos% = 1) BEGIN
+ ACTION_IF (%zealot_talos% = 1) BEGIN
   LAF zealot_talos END
  END
 END  //End talos/kossuth/garagos
@@ -1045,41 +1015,44 @@ END
 
 //ranger/paladin spell tables_______________________________________________________
 //
-LAF ranger_spell_tables END
+LAM d5_paladin_ranger_spell_tables
+ACTION_IF (fnp_ranger_spell_table = 1) BEGIN
+  LAF ranger_spell_tables END
+END
 //__________________________________________________________________________________
 
 LAM d5_kit_choices
 
 //LAM d5_spont_option
 
-ACTION_IF (%d5_forest_ranger% = 1) BEGIN
- LAF forest_ranger END
+ACTION_IF (%forest_ranger% = 1) BEGIN
+  LAF forest_ranger END
 END
-ACTION_IF (%d5_mountain_ranger% = 1) BEGIN
- LAF mountain_ranger END
+ACTION_IF (%mountain_ranger% = 1) BEGIN
+  LAF mountain_ranger END
 END
-ACTION_IF (%d5_jungle_ranger% = 1) BEGIN
- LAF jungle_ranger END
+ACTION_IF (%jungle_ranger% = 1) BEGIN
+  LAF jungle_ranger END
 END
-ACTION_IF (%d5_desert_ranger% = 1) BEGIN
- LAF desert_ranger END
+ACTION_IF (%desert_ranger% = 1) BEGIN
+  LAF desert_ranger END
 END
-ACTION_IF (%d5_arctic_ranger% = 1) BEGIN
- LAF arctic_ranger END
+ACTION_IF (%arctic_ranger% = 1) BEGIN
+  LAF arctic_ranger END
 END
-ACTION_IF (%d5_beast_master% = 1) BEGIN
- LAF beast_master END
+ACTION_IF (%beast_master% = 1) BEGIN
+  LAF beast_master END
 END
 //
 // (scouts)
-ACTION_IF (%d5_mage_hunter% = 1) BEGIN
- LAF mage_hunter END
+ACTION_IF (%mage_hunter% = 1) BEGIN
+  LAF mage_hunter END
 END
-ACTION_IF (%d5_barbarian_ranger% = 1) BEGIN
- LAF barbarian_ranger END
+ACTION_IF (%barbarian_ranger% = 1) BEGIN
+  LAF barbarian_ranger END
 END
-ACTION_IF (%d5_elven_archer% = 1) BEGIN
- LAF elven_archer END
+ACTION_IF (%elven_archer% = 1) BEGIN
+  LAF elven_archer END
 END
 
 LAF remove_sc_menu_kits STR_VAR class = ~R~ END
@@ -1096,6 +1069,7 @@ LAF more_ranger_alignments END
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 
+/*
 //testing
 
 BEGIN @70 // Add spell scrolls for priests
@@ -1109,6 +1083,7 @@ INCLUDE ~faiths_and_powers/data/components/Setup_Priest_Scrolls.tpa~
 
 //test on vanilla (no reason I can think of it wouldn't work)
 
+*/
 
 //__________________________________________________________________________________
 //__________________________________________________________________________________
@@ -1148,6 +1123,8 @@ LAM ~READ_FNP_KIT_INFO~
 
 //alter item usability______________________________________________________________
 //
+// LAM d5_item_options	//	not implemented yet
+
 INCLUDE ~faiths_and_powers/lib/system_item_use.tpa~
  LAF change_usability END
  LAF apply_usability END
