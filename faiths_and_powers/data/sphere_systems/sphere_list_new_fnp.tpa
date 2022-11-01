@@ -379,9 +379,10 @@ END	//	end sphere spells macro
 //___________________________________________________________________________________
 //
 DEFINE_ACTION_MACRO vanilla_cleric_spheres BEGIN
+  COPY ~%MOD_FOLDER%/lib/d5_base.spl~ ~override/d5fpclsp.spl~
 //  LAF QD_ENSURE_QDMC_SPL STR_VAR base_class = ~P~ END 
 //  LAF QD_ENSURE_BASE_CLAB STR_VAR base_class = ~P~ END 
-  COPY_EXISTING ~QD_MCP01.spl~ ~override~ // trueclass spheres via .eff
+//  COPY_EXISTING ~QD_MCP01.spl~ ~override~ // trueclass spheres via .eff
     LPF DELETE_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 0x4000 match_parameter2 = 9 STR_VAR match_resource = ~d5splif#~ END
 	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5splif#~ END
     LPF DELETE_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 0x4000 match_parameter2 = 9 STR_VAR match_resource = ~d5spben#~ END
@@ -436,9 +437,10 @@ END
 //___________________________________________________________________________________
 //
 DEFINE_ACTION_MACRO vanilla_druid_spheres BEGIN
+  COPY ~%MOD_FOLDER%/lib/d5_base.spl~ ~override/d5fpdrsp.spl~
 //  LAF QD_ENSURE_QDMC_SPL STR_VAR base_class = ~D~ END 
 //  LAF QD_ENSURE_BASE_CLAB STR_VAR base_class = ~D~ END 
-  COPY_EXISTING ~QD_MCD01.spl~ ~override~ // trueclass spheres via .eff
+//  COPY_EXISTING ~QD_MCD01.spl~ ~override~ // trueclass spheres via .eff
     LPF DELETE_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 0x4000 match_parameter2 = 9 STR_VAR match_resource = ~d5spani#~ END
 	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5spani#~ END
     LPF DELETE_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 0x4000 match_parameter2 = 9 STR_VAR match_resource = ~d5sppla#~ END
@@ -525,9 +527,10 @@ END
 //___________________________________________________________________________________
 //
 DEFINE_ACTION_MACRO vanilla_ranger_spheres BEGIN
+  COPY ~%MOD_FOLDER%/lib/d5_base.spl~ ~override/d5fprnsp.spl~
 //  LAF QD_ENSURE_QDMC_SPL STR_VAR base_class = ~R~ END 
 //  LAF QD_ENSURE_BASE_CLAB STR_VAR base_class = ~R~ END 
-  COPY_EXISTING ~QD_MCR01.spl~ ~override~ // trueclass spheres via .eff
+//  COPY_EXISTING ~QD_MCR01.spl~ ~override~ // trueclass spheres via .eff
     LPF DELETE_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 0x4000 match_parameter2 = 9 STR_VAR match_resource = ~d5spvig#~ END
 	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5spvig#~ END
     LPF DELETE_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 0x4000 match_parameter2 = 9 STR_VAR match_resource = ~d5spani#~ END
