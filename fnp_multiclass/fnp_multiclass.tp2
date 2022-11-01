@@ -2,7 +2,7 @@ BACKUP ~faiths_and_powers/backup~
 AUTHOR ~SubtleD and Grammarsalad~
 
 
-VERSION ~0.84.2~
+VERSION ~0.84.3~
 
 
 ALWAYS
@@ -15,6 +15,10 @@ ALWAYS
 	LAM d5_spont_option
 
   	LAM d5_spont_option
+
+  	ACTION_IF !(FILE_EXISTS ~TobEx_ini/TobExVer.txt~) BEGIN
+  	  COPY ~%MOD_FOLDER%/data/TobExVer.txt~ ~TobEx_ini/TobExVer.txt~
+  	END
 
 	INCLUDE ~faiths_and_powers/lib/fl#add_kit_ee.tpa~
 
@@ -104,6 +108,9 @@ INCLUDE ~faiths_and_powers/lib/kits_multi_druids_shamans.tpa~
 
 LAF remove_mc_menu_kits END
 
+ACTION_IF FILE_EXISTS ~TobEx_ini/TobExVer.txt~ BEGIN
+	DELETE ~TobEx_ini/TobExVer.txt~
+END
 //__________________________________________________________________________________
 
 
@@ -161,6 +168,9 @@ INCLUDE ~faiths_and_powers/lib/kits_multi_druids_shamans.tpa~
 
 LAF remove_mc_menu_kits END
 
+ACTION_IF FILE_EXISTS ~TobEx_ini/TobExVer.txt~ BEGIN
+	DELETE ~TobEx_ini/TobExVer.txt~
+END
 //__________________________________________________________________________________
 
 
@@ -229,6 +239,10 @@ END
 ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
   LAF remove_mc_menu_kits END
 END
+
+ACTION_IF FILE_EXISTS ~TobEx_ini/TobExVer.txt~ BEGIN
+	DELETE ~TobEx_ini/TobExVer.txt~
+END
 //__________________________________________________________________________________
 
 
@@ -255,5 +269,10 @@ REQUIRE_PREDICATE (MOD_IS_INSTALLED ~fnp_multiclass.tp2~ ~91~) OR (MOD_IS_INSTAL
 INCLUDE ~faiths_and_powers/lib/system_npc_kits.tpa~
 
 LAF npc_mc_kits END
+//__________________________________________________________________________________
+
+ACTION_IF FILE_EXISTS ~TobEx_ini/TobExVer.txt~ BEGIN
+	DELETE ~TobEx_ini/TobExVer.txt~
+END
 //__________________________________________________________________________________
 

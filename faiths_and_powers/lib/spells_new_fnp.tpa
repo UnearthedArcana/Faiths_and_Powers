@@ -402,9 +402,7 @@ COPY ~faiths_and_powers/data/new_spells/bams/d5spswmc.bam~ ~override~
 COPY ~faiths_and_powers/kits/druids/734_hivekeeper/d5smspid.cre~ ~override~
 	LPF make_summon END
 	WRITE_BYTE 0x270 5
-// and give it an appropriate weapon, like spidhu1.itm
-// ***** or make a new weapon for it!
-// ...not too much poison
+COPY ~faiths_and_powers/kits/druids/734_hivekeeper/d5smspid.itm~ ~override~
 COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5spswm.spl~
   SAY NAME1 @73423
   SAY UNIDENTIFIED_DESC @73424
