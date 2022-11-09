@@ -355,11 +355,11 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
   PATCH_IF (%SOURCE_SIZE% > 0x71) BEGIN
 	READ_SHORT 0x1c type
 	PATCH_IF (%type% = 22) BEGIN									// if type = morning star
-	  PATCH_IF MOD_IS_INSTALLED ~item_rev.tp2~ ~17~ BEGIN			// if IR weapon changes installed
-		WRITE_SHORT 0x1c 23											// change to type = flails
-	  END
-	  PATCH_IF NOT MOD_IS_INSTALLED ~item_rev.tp2~ ~17~ BEGIN		// if no IR weapon changes
+	  PATCH_IF (MOD_IS_INSTALLED ~item_rev.tp2~ ~17~) BEGIN			// if IR weapon changes installed
 		WRITE_SHORT 0x1c 17											// change to type = maces
+	  END
+	  PATCH_IF !(MOD_IS_INSTALLED ~item_rev.tp2~ ~17~) BEGIN		// if no IR weapon changes
+		WRITE_SHORT 0x1c 23											// change to type = flails
 	  END
 	END
   END
@@ -388,6 +388,34 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
 	END
 	PATCH_IF (%prof% = 94) BEGIN									// proficiency = katana
 	  WRITE_SHORT 0x1c 30											// change to type = halberds
+	END
+  END
+BUT_ONLY
+//__________________________________________________________________________________
+
+//sanity check for morning stars____________________________________________________
+//
+COPY_EXISTING ~blun04.itm~ ~override~
+  READ_SHORT 0x1c mace_type
+  READ_SHORT 0x31 mace_prof
+
+COPY_EXISTING ~blun02.itm~ ~override~
+  READ_SHORT 0x1c flail_type
+  READ_SHORT 0x31 flail_prof
+
+COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
+  PATCH_IF (%SOURCE_SIZE% > 0x71) BEGIN
+  READ_SHORT 0x1c type
+  READ_SHORT 0x31 prof
+    PATCH_IF (%prof% = %mace_prof%) BEGIN                       	// prof = maces
+      PATCH_IF (%type% = %flail_type%) BEGIN						// type = flails
+		WRITE_SHORT 0x1c %mace_type%								// change to type = maces
+	  END
+	END
+    PATCH_IF (%prof% = %flail_prof%) BEGIN                       	// prof = flails
+      PATCH_IF (%type% = %mace_type%) BEGIN							// type = maces
+		WRITE_SHORT 0x1c %flail_type%								// change to type = flails
+	  END
 	END
   END
 BUT_ONLY
