@@ -2392,6 +2392,7 @@ END
 /////                                                  \\\\\
 
 // batch effects
+
 DEFINE_PATCH_FUNCTION ~cd_apply_batch~ 
   INT_VAR debug          = 0 // 1 - spit out C_E list, 2 same w/ additional info, 3 lists effects as they're added
           force_cosmetic = "-1"

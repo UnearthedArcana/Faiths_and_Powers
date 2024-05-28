@@ -177,7 +177,7 @@ ACTION_IF (FILE_EXISTS_IN_GAME ~ohtyr.2da~) BEGIN
 	u_maces 	 		= 1
 	u_flails 			= 1
 	u_axes 				= 1
-	u_daggers 			= 0
+	u_daggers 			= 1
 	u_short_swords		= 1
 	u_long_swords		= 2
 	u_scimitars 		= 0
@@ -196,10 +196,10 @@ ACTION_IF (FILE_EXISTS_IN_GAME ~ohtyr.2da~) BEGIN
 	class 			= ~cleric~
 	multiclass 		= ~fc~
  END
- ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
-  LAF fnp_spontaneous STR_VAR kit_clab = ~ohtyr~ learn_res = ~ohtyrz~ END
- END
+  WITH_TRA ~faiths_and_powers/language/%LANGUAGE%/fnp_spontaneous.tra~ BEGIN
+    LAF fnp_spontaneous STR_VAR kit_clab = ~ohtyr~ learn_res = ~ohtyrz~ END
+  END
  END
 END
 //__________________________________________________________________________________
@@ -240,10 +240,10 @@ ACTION_IF (FILE_EXISTS_IN_GAME ~ohtempus.2da~) BEGIN
 	sphere_list		= ~tempus_spheres~
 	class 			= ~cleric~
  END
- ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
-  LAF fnp_spontaneous STR_VAR kit_clab = ~d5tmpus~ learn_res = ~d5tmpuz~ END
- END
+  WITH_TRA ~faiths_and_powers/language/%LANGUAGE%/fnp_spontaneous.tra~ BEGIN
+    LAF fnp_spontaneous STR_VAR kit_clab = ~d5tmpus~ learn_res = ~d5tmpuz~ END
+  END
  END
 END
 //__________________________________________________________________________________
@@ -463,7 +463,9 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabsh01.2da~ BEGIN
 
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
 // ACTION_IF (d5_spell_spontaneous = 0) BEGIN
+   WITH_TRA ~faiths_and_powers/language/%LANGUAGE%/fnp_spontaneous.tra~ BEGIN
     LAF fnp_spell_choice STR_VAR this_kit_clab = ~clabsh01~ learn_itm_res = ~d5sh01z~ free_universal_spells = ~yes~ END
+   END
 // END
 // ACTION_IF (d5_spell_spontaneous > 0) BEGIN
 //    LAF fnp_spontaneous STR_VAR kit_clab = ~clabsh01~ learn_res = ~d5sh01z~ free_universal = ~no~ END
@@ -1086,7 +1088,6 @@ ACTION_IF (FILE_EXISTS_IN_GAME ~a#ooze.2da~) BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
 ACTION_IF (FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~) BEGIN
- LAM DR_oozemaster_spheres
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -1112,7 +1113,8 @@ ACTION_IF (FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~) BEGIN
 	u_crossbows 		= 0
   STR_VAR
     clab_name 		= EVAL ~a#ooze~
-	class 			= ~occultist~
+	class 			= ~druid~
+	sphere_list		= ~dr_oozemaster_spheres~
  END
 END
 //__________________________________________________________________________________
@@ -1429,7 +1431,7 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	u_crossbows 		= 2
   STR_VAR
     clab_name 		= EVAL ~nmrnwlrn~
-	sphere_list		= ~ranger_forest_spheres~
+	sphere_list		= ~elven_archer_spheres~
 	class 			= ~scout~
 END
 //__________________________________________________________________________________
@@ -1466,7 +1468,7 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	u_crossbows 		= 1
   STR_VAR
     clab_name 		= EVAL ~nmrnbsln~
-	sphere_list		= ~ranger_forest_spheres~
+	sphere_list		= ~elven_archer_spheres~
 	class 			= ~scout~
 END
 //__________________________________________________________________________________
@@ -1516,7 +1518,6 @@ ACTION_IF (FILE_EXISTS_IN_GAME ~nmrnfrrn.2da~) BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
 ACTION_IF (FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~) BEGIN
- LAM DR_justifier_spheres
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -1542,8 +1543,8 @@ ACTION_IF (FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~) BEGIN
 	u_crossbows 		= 3
   STR_VAR
     clab_name 		= EVAL ~nmrnfrrn~
-//	sphere_list		= ~ranger_forest_spheres~
 	class 			= ~scout~
+	sphere_list		= ~dr_justifier_spheres~
  END
 END
 //__________________________________________________________________________________
@@ -1556,7 +1557,6 @@ ACTION_IF (FILE_EXISTS_IN_GAME ~a#justif.2da~) BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
 //
 ACTION_IF (FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~) BEGIN
- LAM DR_justifier_spheres
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
@@ -1583,6 +1583,7 @@ ACTION_IF (FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~) BEGIN
   STR_VAR
     clab_name 		= EVAL ~a#justif~
 	class 			= ~scout~
+	sphere_list		= ~dr_justifier_spheres~
  END
 END
 //__________________________________________________________________________________
@@ -1878,7 +1879,7 @@ LAF ~DEFINE_FNP_KIT_INFO~
   STR_VAR
     clab_name 		= EVAL ~k9hive~
 	sphere_list		= ~druid_hivekeeper_spheres~
-	class 			= ~occultist~
+	class 			= ~druid~
 END
 //__________________________________________________________________________________
 END
@@ -2027,7 +2028,7 @@ END
 //__________________________________________________________________________________
 END
 
-// I HATE UNDEAD - UNDED PREDATOR (RANGER)
+// I HATE UNDEAD - UNDEAD PREDATOR (RANGER)
 
 ACTION_IF (FILE_EXISTS_IN_GAME ~rahuup.2da~) BEGIN
 //DEFINE SPHERE ACCESS______________________________________________________________
@@ -2058,29 +2059,7 @@ LAF ~DEFINE_FNP_KIT_INFO~
   STR_VAR
     clab_name 		= ~rahuup~
 	class 			= ~ranger~
-	s_Life 			= ~minor~
-	s_Death 		= ~x~
-	s_Benediction 	= ~x~
-	s_Destruction 	= ~x~
-	s_Protection 	= ~x~
-	s_War 			= ~x~
-	s_Exploration   = ~minor~
-	s_Knowledge 	= ~x~
-	s_Deception 	= ~x~
-	s_Thought 		= ~x~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~major~
-	s_Affliction 	= ~x~
-	s_Animal 		= ~minor~
-	s_Plant 		= ~minor~
-	s_Earth 		= ~major~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~x~
-	s_Light 		= ~major~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~x~
-	s_Astral	     = ~x~
+	sphere_list		= ~vanilla_undead_hunter_spheres~
 END
 //__________________________________________________________________________________
 END
@@ -2117,29 +2096,7 @@ LAF ~DEFINE_FNP_KIT_INFO~
     clab_name 		= ~rahuhr~
 	class 			= ~cleric~
 	multiclass 		= ~fc~
-	s_Life 			= ~major~
-	s_Death 		= ~x~
-	s_Benediction 	= ~minor~
-	s_Destruction 	= ~major~
-	s_Protection 	= ~major~
-	s_War 			= ~major~
-	s_Exploration   = ~minor~
-	s_Knowledge 	= ~minor~
-	s_Deception 	= ~x~
-	s_Thought 		= ~x~
-	s_Dread 		= ~minor~
-	s_Vigor 		= ~major~
-	s_Affliction 	= ~x~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~minor~
-	s_Light 		= ~major~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~minor~
-	s_Astral	     = ~major~
+	sphere_list		= ~lathander_spheres~
 END
 //__________________________________________________________________________________
 END
@@ -2175,29 +2132,7 @@ LAF ~DEFINE_FNP_KIT_INFO~
   STR_VAR
     clab_name 		= ~rahuce~
 	class 			= ~druid~
-	s_Life 			= ~minor~
-	s_Death 		= ~x~
-	s_Benediction 	= ~x~
-	s_Destruction 	= ~major~
-	s_Protection 	= ~x~
-	s_War 			= ~x~
-	s_Exploration   = ~major~
-	s_Knowledge 	= ~minor~
-	s_Deception 	= ~x~
-	s_Thought 		= ~x~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~major~
-	s_Affliction 	= ~x~
-	s_Animal 		= ~x~
-	s_Plant 		= ~major~
-	s_Earth 		= ~major~
-	s_Water 		= ~minor~
-	s_Air 			= ~minor~
-	s_Fire 			= ~major~
-	s_Light 		= ~major~
-	s_Shadow 		= ~minor~
-	s_Magic 		= ~x~
-	s_Astral	     = ~x~
+	sphere_list		= ~vanilla_avenger_spheres~
 END
 //__________________________________________________________________________________
 END
@@ -2376,7 +2311,7 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	u_crossbows 		= 0
   STR_VAR
     clab_name 		= ~L#FALDSD~
-	class 			= ~occultist~
+	class 			= ~druid~
 	sphere_list		= ~druid_shadow_spheres~
 END
 //__________________________________________________________________________________
@@ -2459,7 +2394,9 @@ COPY_EXISTING ~kitlist.2da~ ~override~
 		READ_2DA_ENTRY %index% 1 9 name
 		READ_2DA_ENTRY %index% 0 9 ind
 		READ_2DA_ENTRY %index% 8 9 class
-		SPRINT $d5_sphere_kits ("%clab%" "%name%" "%ind%") "%class%"
+		PATCH_IF (~%clab%~ STRING_CONTAINS_REGEXP ~d5psi~ = 1) BEGIN		// not psionicists
+		  SPRINT $d5_sphere_kits ("%clab%" "%name%" "%ind%") "%class%"
+		END
 	END
 BUT_ONLY
 ACTION_PHP_EACH d5_sphere_kits AS green => eggs BEGIN
@@ -2491,29 +2428,7 @@ LAF ~DEFINE_FNP_KIT_INFO~
   STR_VAR
     clab_name 		= EVAL ~%green%~
 	class 			= ~cleric~
-	s_Life 			= ~major~
-	s_Death 		= ~minor~
-	s_Benediction 	= ~x~
-	s_Destruction 	= ~major~
-	s_Protection 	= ~major~
-	s_War 			= ~minor~
-	s_Exploration   = ~minor~
-	s_Knowledge 	= ~major~
-	s_Deception 	= ~x~
-	s_Thought 		= ~major~
-	s_Dread 		= ~major~
-	s_Vigor 		= ~minor~
-	s_Affliction 	= ~x~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~minor~
-	s_Light 		= ~major~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~minor~
-	s_Astral	     = ~x~
+	sphere_list		= ~default_cleric_spheres~
    END
   END
   ACTION_IF (%eggs% = 11) BEGIN //..................................................druids
@@ -2543,29 +2458,7 @@ LAF ~DEFINE_FNP_KIT_INFO~
   STR_VAR
     clab_name 		= EVAL ~%green%~
 	class 			= ~druid~
-	s_Life 			= ~major~
-	s_Death 		= ~x~
-	s_Benediction 	= ~minor~
-	s_Destruction 	= ~x~
-	s_Protection 	= ~x~
-	s_War 			= ~x~
-	s_Exploration   = ~minor~
-	s_Knowledge 	= ~x~
-	s_Deception 	= ~x~
-	s_Thought 		= ~minor~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~major~
-	s_Affliction 	= ~major~
-	s_Animal 		= ~major~
-	s_Plant 		= ~major~
-	s_Earth 		= ~major~
-	s_Water 		= ~minor~
-	s_Air 			= ~major~
-	s_Fire 			= ~minor~
-	s_Light 		= ~minor~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~x~
-	s_Astral	     = ~minor~
+	sphere_list		= ~default_druid_spheres~
    END
   END
   ACTION_IF (%eggs% = 21) BEGIN //..................................................shamans
@@ -2599,7 +2492,9 @@ LAF ~DEFINE_FNP_KIT_INFO~
    END
    ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
 //   ACTION_IF (d5_spell_spontaneous = 0) BEGIN
+     WITH_TRA ~faiths_and_powers/language/%LANGUAGE%/fnp_spontaneous.tra~ BEGIN
        LAF fnp_spell_choice STR_VAR this_kit_clab = EVAL ~%green%~ learn_itm_res = EVAL ~d5fs%green_2%~ free_universal_spells = ~yes~ END
+     END
 //   END
 //   ACTION_IF (d5_spell_spontaneous > 0) BEGIN
 //     LAF fnp_spontaneous STR_VAR kit_clab = EVAL ~%green%~ learn_res = EVAL ~%green%z~ free_universal = ~no~ END
@@ -2633,29 +2528,7 @@ LAF ~DEFINE_FNP_KIT_INFO~
   STR_VAR
     clab_name 		= EVAL ~%green%~
 	class 			= ~champion~
-	s_Life 			= ~paladin~
-	s_Death 		= ~x~
-	s_Benediction 	= ~x~
-	s_Destruction 	= ~paladin~
-	s_Protection 	= ~paladin~
-	s_War 			= ~paladin~
-	s_Exploration   = ~x~
-	s_Knowledge 	= ~paladin~
-	s_Deception 	= ~x~
-	s_Thought 		= ~x~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~x~
-	s_Affliction 	= ~x~
-	s_Animal 		= ~x~
-	s_Plant 		= ~x~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~x~
-	s_Fire 			= ~x~
-	s_Light 		= ~paladin~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~x~
-	s_Astral	     = ~x~
+	sphere_list		= ~default_paladin_spheres~
    END
   END
   ACTION_IF (%eggs% = 12) BEGIN //.................................................rangers
@@ -2685,29 +2558,7 @@ LAF ~DEFINE_FNP_KIT_INFO~
   STR_VAR
     clab_name 		= EVAL ~%green%~
 	class 			= ~ranger~
-	s_Life 			= ~ranger~
-	s_Death 		= ~x~
-	s_Benediction 	= ~x~
-	s_Destruction 	= ~x~
-	s_Protection 	= ~x~
-	s_War 			= ~x~
-	s_Exploration   = ~ranger~
-	s_Knowledge 	= ~x~
-	s_Deception 	= ~x~
-	s_Thought 		= ~x~
-	s_Dread 		= ~x~
-	s_Vigor 		= ~ranger~
-	s_Affliction 	= ~x~
-	s_Animal 		= ~ranger~
-	s_Plant 		= ~ranger~
-	s_Earth 		= ~x~
-	s_Water 		= ~x~
-	s_Air 			= ~ranger~
-	s_Fire 			= ~x~
-	s_Light 		= ~ranger~
-	s_Shadow 		= ~x~
-	s_Magic 		= ~x~
-	s_Astral	     = ~x~
+	sphere_list		= ~default_ranger_spheres~
    END
   END
  END

@@ -11,6 +11,18 @@
 //
 //
 //general____________________________________________________________________________
+COPY_EXISTING ~sppr726.spl~ ~override~ // summon deva
+	WRITE_SHORT 0x1c 4
+    WRITE_LONG 0x34 1
+	WRITE_BYTE 0x21 (THIS & 0b00111111)
+	LPF ALTER_SPELL_HEADER INT_VAR location = 2 END
+
+COPY_EXISTING ~spwi905.spl~ ~override/d5hben1.spl~ // gate
+	WRITE_SHORT 0x1c 4
+    WRITE_LONG 0x34 1
+	WRITE_BYTE 0x21 (THIS & 0b00111111)
+	LPF ALTER_SPELL_HEADER INT_VAR location = 2 END
+
 COPY ~faiths_and_powers/data/hlas/general/d5phla1.spl~ ~override~ // purity of body
     SAY NAME1 @60011
     SAY UNIDENTIFIED_DESC @60012 // ***
@@ -132,18 +144,6 @@ COPY ~faiths_and_powers/data/hlas/death/B_ph07.cre~ ~override~ // Spl
 COPY ~faiths_and_powers/data/hlas/death/B_ph07.2da~ ~override~ // Spl
 
 //benediction________________________________________________________________________
-COPY_EXISTING ~sppr726.spl~ ~override~ // summon deva
-	WRITE_SHORT 0x1c 4
-    WRITE_LONG 0x34 1
-	WRITE_BYTE 0x21 (THIS & 0b00111111)
-	LPF ALTER_SPELL_HEADER INT_VAR location = 2 END
-
-COPY_EXISTING ~spwi905.spl~ ~override/d5hben1.spl~ // gate
-	WRITE_SHORT 0x1c 4
-    WRITE_LONG 0x34 1
-	WRITE_BYTE 0x21 (THIS & 0b00111111)
-	LPF ALTER_SPELL_HEADER INT_VAR location = 2 END
-
 COPY_EXISTING ~sppr722.spl~ ~override~ // storm of vengeance
 	WRITE_SHORT 0x1c 4
     WRITE_LONG 0x34 1
@@ -343,6 +343,7 @@ COPY ~faiths_and_powers/data/hlas/earth/transformation~ ~override~
 ACTION_IF FILE_EXISTS_IN_GAME ~spinhum.spl~ BEGIN
 	COPY_EXISTING ~spinhum.spl~ ~override~
 	  LPF ADD_SPELL_EFFECT INT_VAR opcode = 112 target = 1 timing = 9 STR_VAR resource = ~li#druea~ END
+	  LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 1 STR_VAR resource = ~li#drear~ END
 END
 
 
@@ -366,6 +367,7 @@ COPY ~faiths_and_powers/data/hlas/water/transformation~ ~override~
 ACTION_IF FILE_EXISTS_IN_GAME ~spinhum.spl~ BEGIN
 	COPY_EXISTING ~spinhum.spl~ ~override~
 	  LPF ADD_SPELL_EFFECT INT_VAR opcode = 112 target = 1 timing = 9 STR_VAR resource = ~li#druwa~ END
+	  LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 1 STR_VAR resource = ~li#drwat~ END
 END
 
 COPY ~faiths_and_powers/data/hlas/water/d5elsuwa.spl~ ~override~ // Refinements summon water elemental
@@ -375,6 +377,9 @@ COPY ~faiths_and_powers/data/hlas/water/d5elsuwa.spl~ ~override~ // Refinements 
     WRITE_LONG 0x34 1
     WRITE_BYTE 0x21 (THIS & 0b00111111)
 COPY ~faiths_and_powers/data/hlas/water/summon~ ~override~
+COPY ~faiths_and_powers/data/hlas/water/summon/tg#benh.cre~ ~override~
+    SAY NAME1 @61614
+    SAY UNIDENTIFIED_DESC @61614 // ***    
 COMPILE ~faiths_and_powers/data/hlas/water/elembenh.baf~
 
 //air________________________________________________________________________________
@@ -388,6 +393,7 @@ COPY ~faiths_and_powers/data/hlas/air/transformation~ ~override~
 ACTION_IF FILE_EXISTS_IN_GAME ~spinhum.spl~ BEGIN
 	COPY_EXISTING ~spinhum.spl~ ~override~
 	  LPF ADD_SPELL_EFFECT INT_VAR opcode = 112 target = 1 timing = 9 STR_VAR resource = ~li#druai~ END
+	  LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 1 STR_VAR resource = ~li#drair~ END
 END
 
 COPY ~faiths_and_powers/data/hlas/air/d5elsuai.spl~ ~override~ // Refinements summon air elemental
@@ -425,6 +431,7 @@ COPY ~faiths_and_powers/data/hlas/fire/transformation~ ~override~
 ACTION_IF FILE_EXISTS_IN_GAME ~spinhum.spl~ BEGIN
 	COPY_EXISTING ~spinhum.spl~ ~override~
 	  LPF ADD_SPELL_EFFECT INT_VAR opcode = 112 target = 1 timing = 9 STR_VAR resource = ~li#drufi~ END
+	  LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 1 STR_VAR resource = ~li#drfir~ END
 END
 
 COPY ~faiths_and_powers/data/hlas/fire/d5elsufi.spl~ ~override~ // Refinements summon fire elemental

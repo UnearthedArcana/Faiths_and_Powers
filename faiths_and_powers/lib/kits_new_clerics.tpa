@@ -181,10 +181,10 @@ END
  END
 // END
 
- ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
-  LAF fnp_spontaneous STR_VAR kit_clab = ~b_clur~ learn_res = ~b_clurz~ END
- END
+  WITH_TRA ~faiths_and_powers/language/%LANGUAGE%/fnp_spontaneous.tra~ BEGIN
+    LAF fnp_spontaneous STR_VAR kit_clab = ~b_clur~ learn_res = ~b_clurz~ END
+  END
  END
  
 END
@@ -327,10 +327,10 @@ END
 	multiclass 		= ~fc_ct~
  END
 
- ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
-  LAF fnp_spontaneous STR_VAR kit_clab = ~d5clbha~ learn_res = ~d5cbhaz~ END
- END
+  WITH_TRA ~faiths_and_powers/language/%LANGUAGE%/fnp_spontaneous.tra~ BEGIN
+    LAF fnp_spontaneous STR_VAR kit_clab = ~d5clbha~ learn_res = ~d5cbhaz~ END
+  END
  END
 
 END
@@ -490,10 +490,10 @@ APPEND ~d5clazu.2da~ ~LLORE       ****        ****        ****        ****      
 	multiclass 		= ~ck~
  END
 
- ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
-  LAF fnp_spontaneous STR_VAR kit_clab = ~d5clazu~ learn_res = ~d5cazuz~ END
- END
+  WITH_TRA ~faiths_and_powers/language/%LANGUAGE%/fnp_spontaneous.tra~ BEGIN
+    LAF fnp_spontaneous STR_VAR kit_clab = ~d5clazu~ learn_res = ~d5cazuz~ END
+  END
  END
 
 END
@@ -718,10 +718,10 @@ COPY ~faiths_and_powers/spheres/spells/dread/b_c501.eff~ ~override/b_bes04.eff~ 
 	multiclass 		= ~ct_cm~
  END
 
- ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
-  LAF fnp_spontaneous STR_VAR kit_clab = ~b_abes~ learn_res = ~b_abesz~ END
- END
+  WITH_TRA ~faiths_and_powers/language/%LANGUAGE%/fnp_spontaneous.tra~ BEGIN
+    LAF fnp_spontaneous STR_VAR kit_clab = ~b_abes~ learn_res = ~b_abesz~ END
+  END
  END
 
 END
@@ -883,10 +883,10 @@ END
 	multiclass 		= ~fc_ct~
  END
 
- ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
-  LAF fnp_spontaneous STR_VAR kit_clab = ~b_ccyr~ learn_res = ~b_ccyrz~ END
- END
+  WITH_TRA ~faiths_and_powers/language/%LANGUAGE%/fnp_spontaneous.tra~ BEGIN
+    LAF fnp_spontaneous STR_VAR kit_clab = ~b_ccyr~ learn_res = ~b_ccyrz~ END
+  END
  END
 
 END
@@ -1038,10 +1038,10 @@ COPY_EXISTING ~SPPR303.spl~ ~override/b_den04.spl~ // dispel magic
 	multiclass 		= ~ct_cm_ck~
  END
 
- ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
-  LAF fnp_spontaneous STR_VAR kit_clab = ~b_aden~ learn_res = ~b_adenz~ END
- END
+  WITH_TRA ~faiths_and_powers/language/%LANGUAGE%/fnp_spontaneous.tra~ BEGIN
+    LAF fnp_spontaneous STR_VAR kit_clab = ~b_aden~ learn_res = ~b_adenz~ END
+  END
  END
 
 END
@@ -1212,10 +1212,10 @@ END
 	multiclass 		= ~fc_ck~
  END
 
- ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
-  LAF fnp_spontaneous STR_VAR kit_clab = ~b_chel~ learn_res = ~b_chelz~ END
- END
+  WITH_TRA ~faiths_and_powers/language/%LANGUAGE%/fnp_spontaneous.tra~ BEGIN
+    LAF fnp_spontaneous STR_VAR kit_clab = ~b_chel~ learn_res = ~b_chelz~ END
+  END
  END
 
 END
@@ -1364,10 +1364,10 @@ COPY ~faiths_and_powers/kits/clerics/314_ilmater/b_ilm03.spl~ ~override~  // End
 	multiclass 		= ~ct_ck~
  END
 
- ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
-  LAF fnp_spontaneous STR_VAR kit_clab = ~b_ailm~ learn_res = ~b_ailmz~ END
- END
+  WITH_TRA ~faiths_and_powers/language/%LANGUAGE%/fnp_spontaneous.tra~ BEGIN
+    LAF fnp_spontaneous STR_VAR kit_clab = ~b_ailm~ learn_res = ~b_ailmz~ END
+  END
  END
 
 END
@@ -1572,10 +1572,10 @@ COPY_EXISTING ~SPPR413.spl~ ~override/b_kel02.spl~ // Works?
 	multiclass 		= ~fc_cm_ck~
  END
 
- ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
-  LAF fnp_spontaneous STR_VAR kit_clab = ~b_ckel~ learn_res = ~b_ckelz~ END
- END
+  WITH_TRA ~faiths_and_powers/language/%LANGUAGE%/fnp_spontaneous.tra~ BEGIN
+    LAF fnp_spontaneous STR_VAR kit_clab = ~b_ckel~ learn_res = ~b_ckelz~ END
+  END
  END
 
 END
@@ -1748,10 +1748,10 @@ END
 	multiclass 		= ~fc_cm_ck~
   END
 
- ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
-  LAF fnp_spontaneous STR_VAR kit_clab = ~b_clat~ learn_res = ~b_clatz~ END
- END
+  WITH_TRA ~faiths_and_powers/language/%LANGUAGE%/fnp_spontaneous.tra~ BEGIN
+    LAF fnp_spontaneous STR_VAR kit_clab = ~b_clat~ learn_res = ~b_clatz~ END
+  END
  END
 
 END
@@ -1885,10 +1885,10 @@ COPY ~faiths_and_powers/kits/clerics/212_leira/d5_lei1.spl~ ~override~
 	multiclass 		= ~ct_cm~
  END
 
- ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
-  LAF fnp_spontaneous STR_VAR kit_clab = ~d5clei~ learn_res = ~d5cleiz~ END
- END
+  WITH_TRA ~faiths_and_powers/language/%LANGUAGE%/fnp_spontaneous.tra~ BEGIN
+    LAF fnp_spontaneous STR_VAR kit_clab = ~d5clei~ learn_res = ~d5cleiz~ END
+  END
  END
 
 END
@@ -2044,10 +2044,10 @@ COPY ~faiths_and_powers/kits/clerics/219_loviatar/b_lov04.spl~     ~override~  /
 	multiclass 		= ~fc_ct_cm_ck~
  END
 
- ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
-  LAF fnp_spontaneous STR_VAR kit_clab = ~b_clov~ learn_res = ~b_clovz~ END
- END
+  WITH_TRA ~faiths_and_powers/language/%LANGUAGE%/fnp_spontaneous.tra~ BEGIN
+    LAF fnp_spontaneous STR_VAR kit_clab = ~b_clov~ learn_res = ~b_clovz~ END
+  END
  END
 
 END
@@ -2332,10 +2332,10 @@ END
 	multiclass 		= ~fc_ct~
  END
 
- ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
-  LAF fnp_spontaneous STR_VAR kit_clab = ~d5clmal~ learn_res = ~d5cmalz~ END
- END
+  WITH_TRA ~faiths_and_powers/language/%LANGUAGE%/fnp_spontaneous.tra~ BEGIN
+    LAF fnp_spontaneous STR_VAR kit_clab = ~d5clmal~ learn_res = ~d5cmalz~ END
+  END
  END
 
 END
@@ -2483,10 +2483,10 @@ COPY ~faiths_and_powers/kits/clerics/331_moander/b_moa3.spl~ ~override~    //Imm
 	multiclass 		= ~fc_ct~
  END
 
- ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
-  LAF fnp_spontaneous STR_VAR kit_clab = ~b_cmoa~ learn_res = ~b_cmoaz~ END
- END
+  WITH_TRA ~faiths_and_powers/language/%LANGUAGE%/fnp_spontaneous.tra~ BEGIN
+    LAF fnp_spontaneous STR_VAR kit_clab = ~b_cmoa~ learn_res = ~b_cmoa~ END
+  END
  END
 
 END
@@ -2647,10 +2647,10 @@ COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5myscw.spl~
 	class 			= ~cleric~
  END
 
- ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
-  LAF fnp_spontaneous STR_VAR kit_clab = ~d5clmys~ learn_res = ~d5cmysz~ END
- END
+  WITH_TRA ~faiths_and_powers/language/%LANGUAGE%/fnp_spontaneous.tra~ BEGIN
+    LAF fnp_spontaneous STR_VAR kit_clab = ~d5clmys~ learn_res = ~d5cmysz~ END
+  END
  END
  
 END
@@ -2793,10 +2793,10 @@ COPY_EXISTING ~spwi509.spl~ ~override/d5oghm2.spl~
 	multiclass 		= ~cm_ck~
  END
 
- ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
-  LAF fnp_spontaneous STR_VAR kit_clab = ~d5clogh~ learn_res = ~d5coghz~ END
- END
+  WITH_TRA ~faiths_and_powers/language/%LANGUAGE%/fnp_spontaneous.tra~ BEGIN
+    LAF fnp_spontaneous STR_VAR kit_clab = ~d5clogh~ learn_res = ~d5coghz~ END
+  END
  END
  
 END
@@ -2936,10 +2936,10 @@ COPY_EXISTING ~spwi815.spl~ ~override/d5shabl.spl~
 	multiclass 		= ~ct_cm_ck~
  END
 
- ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
-  LAF fnp_spontaneous STR_VAR kit_clab = ~d5asha~ learn_res = ~d5ashaz~ END
- END
+  WITH_TRA ~faiths_and_powers/language/%LANGUAGE%/fnp_spontaneous.tra~ BEGIN
+    LAF fnp_spontaneous STR_VAR kit_clab = ~d5asha~ learn_res = ~d5ashaz~ END
+  END
  END
  
 END
@@ -3105,10 +3105,10 @@ COPY_EXISTING ~SPWI104.spl~ ~override/b_sun01.spl~ // Charm person
 	multiclass 		= ~ct_cm_ck~
  END
 
- ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
-  LAF fnp_spontaneous STR_VAR kit_clab = ~b_asun~ learn_res = ~b_asunz~ END
- END
+  WITH_TRA ~faiths_and_powers/language/%LANGUAGE%/fnp_spontaneous.tra~ BEGIN
+    LAF fnp_spontaneous STR_VAR kit_clab = ~b_asun~ learn_res = ~b_asunz~ END
+  END
  END
  
 END
@@ -3264,10 +3264,10 @@ END
 	multiclass 		= ~fc_cm~
  END
 
- ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
-  LAF fnp_spontaneous STR_VAR kit_clab = ~b_ctal~ learn_res = ~b_ctalz~ END
- END
+  WITH_TRA ~faiths_and_powers/language/%LANGUAGE%/fnp_spontaneous.tra~ BEGIN
+    LAF fnp_spontaneous STR_VAR kit_clab = ~b_ctal~ learn_res = ~b_ctalz~ END
+  END
  END
  
 END
@@ -3428,10 +3428,10 @@ END
 	multiclass 		= ~fc~
  END
 
- ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
-  LAF fnp_spontaneous STR_VAR kit_clab = ~b_ctem~ learn_res = ~b_ctemz~ END
- END
+  WITH_TRA ~faiths_and_powers/language/%LANGUAGE%/fnp_spontaneous.tra~ BEGIN
+    LAF fnp_spontaneous STR_VAR kit_clab = ~b_ctem~ learn_res = ~b_ctemz~ END
+  END
  END
  
 END
@@ -3570,10 +3570,10 @@ COPY ~faiths_and_powers/kits/clerics/322_tempus/b_tem02.spl~ ~override~  // WP A
 	class 			= ~cleric~
  END
 
- ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
-  LAF fnp_spontaneous STR_VAR kit_clab = ~b_atem~ learn_res = ~b_atemz~ END
- END
+  WITH_TRA ~faiths_and_powers/language/%LANGUAGE%/fnp_spontaneous.tra~ BEGIN
+    LAF fnp_spontaneous STR_VAR kit_clab = ~b_atem~ learn_res = ~b_atem~ END
+  END
  END
  
 END
@@ -3712,10 +3712,10 @@ COPY_EXISTING ~SPPR102.spl~ ~override/b_tor01.spl~ // dispel magic
 	multiclass 		= ~fc~
  END
 
- ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
-  LAF fnp_spontaneous STR_VAR kit_clab = ~b_ctor~ learn_res = ~b_ctorz~ END
- END
+  WITH_TRA ~faiths_and_powers/language/%LANGUAGE%/fnp_spontaneous.tra~ BEGIN
+    LAF fnp_spontaneous STR_VAR kit_clab = ~b_ctor~ learn_res = ~b_ctorz~ END
+  END
  END
  
 END
@@ -3856,10 +3856,10 @@ COPY ~faiths_and_powers/kits/clerics/205_tymora/d5_tym1b.spl~ ~override~
 	multiclass 		= ~ct_cm~
  END
 
- ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
-  LAF fnp_spontaneous STR_VAR kit_clab = ~d5ctym~ learn_res = ~d5ctymz~ END
- END
+  WITH_TRA ~faiths_and_powers/language/%LANGUAGE%/fnp_spontaneous.tra~ BEGIN
+    LAF fnp_spontaneous STR_VAR kit_clab = ~d5ctym~ learn_res = ~d5ctymz~ END
+  END
  END
  
 END
@@ -3997,10 +3997,10 @@ COPY ~faiths_and_powers/kits/clerics/226_umberlee/b_umb.2da~ ~override~
 	multiclass 		= ~fc_cm~
  END
 
- ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
-  LAF fnp_spontaneous STR_VAR kit_clab = ~b_umb~ learn_res = ~b_umbz~ END
- END
+  WITH_TRA ~faiths_and_powers/language/%LANGUAGE%/fnp_spontaneous.tra~ BEGIN
+    LAF fnp_spontaneous STR_VAR kit_clab = ~b_umb~ learn_res = ~b_umbz~ END
+  END
  END
  
 END
@@ -4181,10 +4181,10 @@ END
 	multiclass 		= ~fc~
  END
 
- ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
-  LAF fnp_spontaneous STR_VAR kit_clab = ~d5clmor~ learn_res = ~d5cmorz~ END
- END
+  WITH_TRA ~faiths_and_powers/language/%LANGUAGE%/fnp_spontaneous.tra~ BEGIN
+    LAF fnp_spontaneous STR_VAR kit_clab = ~d5clmor~ learn_res = ~d5cmorz~ END
+  END
  END
  
 END
@@ -4326,10 +4326,10 @@ COPY ~faiths_and_powers/kits/clerics/372_clangeddin/d5clan3b.bam~ ~override~
 	multiclass 		= ~fc~
  END
 
- ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
-  LAF fnp_spontaneous STR_VAR kit_clab = ~d5clcla~ learn_res = ~d5cclaz~ END
- END
+  WITH_TRA ~faiths_and_powers/language/%LANGUAGE%/fnp_spontaneous.tra~ BEGIN
+    LAF fnp_spontaneous STR_VAR kit_clab = ~d5clcla~ learn_res = ~d5cclaz~ END
+  END
  END
  
 END
@@ -4469,10 +4469,10 @@ COPY_EXISTING ~spwi305.spl~ ~override/d5mart4.spl~
 	multiclass 		= ~fc~
  END
 
- ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
-  LAF fnp_spontaneous STR_VAR kit_clab = ~d5clmar~ learn_res = ~d5cmarz~ END
- END
+  WITH_TRA ~faiths_and_powers/language/%LANGUAGE%/fnp_spontaneous.tra~ BEGIN
+    LAF fnp_spontaneous STR_VAR kit_clab = ~d5clmar~ learn_res = ~d5cmarz~ END
+  END
  END
  
 END
@@ -4614,10 +4614,10 @@ COPY ~faiths_and_powers/kits/clerics/210_tempus/b_tem05.spl~ ~override~    //+1 
 	multiclass 		= ~fc~
  END
 
- ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
-  LAF fnp_spontaneous STR_VAR kit_clab = ~b_chae~ learn_res = ~b_chaez~ END
- END
+  WITH_TRA ~faiths_and_powers/language/%LANGUAGE%/fnp_spontaneous.tra~ BEGIN
+    LAF fnp_spontaneous STR_VAR kit_clab = ~b_chae~ learn_res = ~b_chaez~ END
+  END
  END
  
 END
@@ -4758,10 +4758,10 @@ COPY_EXISTING ~spwi401.spl~ ~override/d5bara3.spl~
 	multiclass 		= ~ct_cm~
  END
 
- ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
-  LAF fnp_spontaneous STR_VAR kit_clab = ~b_bara~ learn_res = ~b_baraz~ END
- END
+  WITH_TRA ~faiths_and_powers/language/%LANGUAGE%/fnp_spontaneous.tra~ BEGIN
+    LAF fnp_spontaneous STR_VAR kit_clab = ~b_bara~ learn_res = ~b_baraz~ END
+  END
  END
  
 END
@@ -5069,10 +5069,10 @@ END
 	multiclass 		= ~ct_cm~
  END
 
- ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
-  LAF fnp_spontaneous STR_VAR kit_clab = ~d5clbae~ learn_res = ~d5cbaez~ END
- END
+  WITH_TRA ~faiths_and_powers/language/%LANGUAGE%/fnp_spontaneous.tra~ BEGIN
+    LAF fnp_spontaneous STR_VAR kit_clab = ~d5clbae~ learn_res = ~d5cbaez~ END
+  END
  END
  
 END
@@ -5210,10 +5210,10 @@ COPY_EXISTING ~spwi502.spl~ ~override/d5urdl4.spl~
 	multiclass 		= ~ct_cm~
  END
 
- ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
-  LAF fnp_spontaneous STR_VAR kit_clab = ~d5curdl~ learn_res = ~d5curdz~ END
- END
+  WITH_TRA ~faiths_and_powers/language/%LANGUAGE%/fnp_spontaneous.tra~ BEGIN
+    LAF fnp_spontaneous STR_VAR kit_clab = ~d5curdl~ learn_res = ~d5curdz~ END
+  END
  END
  
 END
@@ -5367,10 +5367,10 @@ COPY_EXISTING ~sppr413.spl~ ~override/d5yond4.spl~
 	multiclass 		= ~fc_ck~
  END
 
- ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
-  LAF fnp_spontaneous STR_VAR kit_clab = ~d5clyon~ learn_res = ~d5cyonz~ END
- END
+  WITH_TRA ~faiths_and_powers/language/%LANGUAGE%/fnp_spontaneous.tra~ BEGIN
+    LAF fnp_spontaneous STR_VAR kit_clab = ~d5clyon~ learn_res = ~d5cyonz~ END
+  END
  END
  
 END
@@ -5530,10 +5530,10 @@ COPY ~faiths_and_powers/kits/clerics/392_arvoreen/d5arvo2.spl~ ~override~	// has
 	multiclass 		= ~cr~
  END
 
- ACTION_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
  ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
-  LAF fnp_spontaneous STR_VAR kit_clab = ~d5clarv~ learn_res = ~d5carvz~ END
- END
+  WITH_TRA ~faiths_and_powers/language/%LANGUAGE%/fnp_spontaneous.tra~ BEGIN
+    LAF fnp_spontaneous STR_VAR kit_clab = ~d5clarv~ learn_res = ~d5carvz~ END
+  END
  END
  
 END

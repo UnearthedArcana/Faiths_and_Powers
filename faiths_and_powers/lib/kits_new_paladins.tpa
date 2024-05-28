@@ -1,0 +1,3755 @@
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+//								PALADIN ARCHETYPES
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+DEFINE_ACTION_FUNCTION paladin_archetypes BEGIN
+
+ACTION_IF !(FILE_EXISTS_IN_GAME ~d5padlg.spl~) BEGIN	//	only run once
+
+// use immunity spellstates if available_____________________________________________
+//
+OUTER_SET hold_immunity      = IDS_OF_SYMBOL (~splstate~ ~HOLD_IMMUNITY~)  
+OUTER_SET panic_immunity     = IDS_OF_SYMBOL (~splstate~ ~PANIC_IMMUNITY~)  
+  
+
+//prep splprot.2da___________________________________________________________________
+//
+APPEND ~splprot.2da~ ~D5_KIT_IS%TAB%152%TAB%-1%TAB%1~ UNLESS ~D5_KIT_IS~
+APPEND ~splprot.2da~ ~D5_115_FEATS%TAB%115%TAB%-1%TAB%8~ UNLESS ~D5_115_FEATS~
+
+COPY_EXISTING ~splprot.2da~ ~override~
+  COUNT_2DA_COLS cols
+  READ_2DA_ENTRIES_NOW rows cols
+  FOR (row = 1; row < rows; ++row) BEGIN
+    READ_2DA_ENTRY_FORMER rows row 0 ~stat~
+	PATCH_IF (~%stat%~ STRING_EQUAL_CASE ~D5_115_FEATS~) BEGIN
+	  SET 115_feats_row = %row%
+	END
+  END
+BUT_ONLY
+
+
+//portrait icons...?_________________________________________________________________
+//
+// *****
+
+//paladin class text_________________________________________________________________
+//
+ACTION_FOR_EACH text_file IN ~clastext~ ~sodcltxt~ ~bgclatxt~ BEGIN
+  COPY_EXISTING ~%text_file%.2da~ ~override~
+    COUNT_2DA_COLS cols
+    COUNT_2DA_ROWS cols rows
+    FOR (row = 1; row < rows; ++row) BEGIN
+      READ_2DA_ENTRY row 0 cols kit_name
+      PATCH_IF (~%kit_name%~ STRING_EQUAL_CASE ~PALADIN~) BEGIN
+        SET_2DA_ENTRY row 3 cols RESOLVE_STR_REF (@80001)
+        SET_2DA_ENTRY row 5 cols RESOLVE_STR_REF (@80002)
+        SET_2DA_ENTRY row 4 cols RESOLVE_STR_REF (@80003)
+      END
+    END
+  IF_EXISTS BUT_ONLY
+END
+
+
+//set up archetype abilities_________________________________________________________
+//
+// weapon mastery
+INCLUDE ~%MOD_FOLDER%/lib/dialprof.tpa~
+
+/*
+OUTER_SPRINT prof_script_name ~d5pazw~
+OUTER_SET script_level_one = 0
+OUTER_SET script_higher_levels = 0
+OUTER_SPRINT class_dlgs ~pa~
+*/
+
+  LAF PROF_DIALOGUE INT_VAR script_level_one = 0 script_higher_levels = 0 ignore_max = 1 STR_VAR prof_script_name = ~d5pazw~ class_dlgs = ~pa~ END
+
+COPY_EXISTING ~d5pazwp.dlg~ ~override~
+  DECOMPILE_AND_PATCH BEGIN
+    REPLACE_TEXTUALLY ~GlobalGT("D5_PROF_111","LOCALS",[012345]~ ~GlobalGT("D5_PROF_111","LOCALS",99~
+    REPLACE_TEXTUALLY ~GlobalGT("D5_PROF_112","LOCALS",[012345]~ ~GlobalGT("D5_PROF_112","LOCALS",99~
+    REPLACE_TEXTUALLY ~GlobalGT("D5_PROF_113","LOCALS",[012345]~ ~GlobalGT("D5_PROF_113","LOCALS",99~
+    REPLACE_TEXTUALLY ~GlobalGT("D5_PROF_114","LOCALS",[012345]~ ~GlobalGT("D5_PROF_114","LOCALS",99~
+/*
+    REPLACE_TEXTUALLY ~CheckStatGT(myself,9,LEVEL)~ ~CheckStatGT(myself,8,LEVEL)~
+    REPLACE_TEXTUALLY ~"LOCALS",2) Proficiency(Myself~ ~"LOCALS",1) Proficiency(Myself~
+    REPLACE_TEXTUALLY ~"LOCALS",3) Proficiency(Myself~ ~"LOCALS",2) Proficiency(Myself~
+    REPLACE_TEXTUALLY ~"LOCALS",4) Proficiency(Myself~ ~"LOCALS",3) Proficiency(Myself~
+    REPLACE_TEXTUALLY ~"LOCALS",5) Proficiency(Myself~ ~"LOCALS",4) Proficiency(Myself~
+*/
+  END
+IF_EXISTS BUT_ONLY
+
+COPY ~%MOD_FOLDER%/lib/d5_base.spl~ ~override/d5pazw1.spl~
+  LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode = 171 timing = 1 STR_VAR resource = EVAL ~d5pazw~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5pazw1~ END
+  
+// disease immunity
+COPY ~%MOD_FOLDER%/lib/d5_base.spl~ ~override/d5padim.spl~ 
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 101 target = 1 parameter2 = 78 timing = 9 END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5padim~ END
+
+// fear immunity
+COPY_EXISTING ~spcl221.spl~ ~override/d5pafim.spl~ 
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5pafim~ END
+/* needed? spcl221 should handle this...
+  PATCH_IF (panic_immunity > 0) BEGIN
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 328 target = 1 parameter2 = %hold_immunity% timing = 9 special = 1 END
+  END
+*/
+
+// hold immunity
+COPY ~%MOD_FOLDER%/lib/d5_base.spl~ ~override/d5pahim.spl~ 
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 101 target = 1 parameter2 = 175 timing = 9 END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 101 target = 1 parameter2 = 109 timing = 9 END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5pahim~ END
+
+COPY_EXISTING ~d5pahim.spl~ ~override~
+  LPF cd_apply_batch STR_VAR array_name = cd_immunity_hold_special_arrays END
+  LPF cd_apply_batch STR_VAR array_name = cd_immunity_hold_arrays END
+  PATCH_IF (hold_immunity > 0) BEGIN
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 328 target = 1 parameter2 = %hold_immunity% timing = 9 special = 1 END
+  END
+
+// charm immunity
+COPY ~%MOD_FOLDER%/lib/d5_base.spl~ ~override/d5pacim.spl~ 
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 101 target = 1 parameter2 = 5 timing = 9 END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5pacim~ END
+
+COPY_EXISTING ~d5pacim.spl~ ~override~
+  LPF cd_apply_batch STR_VAR array_name = cd_immunity_charm_arrays END
+
+// aura of protection
+COPY ~%MOD_FOLDER%/lib/d5_base.spl~ ~override/d5paaop.spl~ 
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 1 parameter1 = 0 parameter2 = 2 timing = 0 duration = 126144000 STR_VAR resource = ~d5paaopb~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5paaop~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5paaopb~ END
+
+CREATE EFF ~d5paaopb~
+	WRITE_LONG 0x10 232
+	WRITE_LONG 0x14 1
+	WRITE_LONG 0x1c 0
+	WRITE_LONG 0x20 20
+	WRITE_LONG 0x24 9
+	WRITE_SHORT 0x2c 100
+	WRITE_ASCII 0x30 ~d5paaopb~ #8
+	WRITE_LONG 0x48 102
+
+COPY ~%MOD_FOLDER%/lib/d5_base.spl~ ~override/d5paaopb.spl~					//		aura of protection external effects
+  LPF ALTER_SPELL_HEADER INT_VAR target = 1 PROJECTILE = 158 END
+  LPF ADD_SPELL_EFFECT INT_VAR target = 2 opcode = 321 timing = 1 STR_VAR resource = ~d5paaopb~ END
+  LPF ADD_SPELL_EFFECT INT_VAR target = 2 opcode = 0 parameter1 = 1 parameter2 = 0 timing = 0 duration = 7 END
+  LPF ADD_SPELL_EFFECT INT_VAR target = 2 opcode = 33 parameter1 = 1 parameter2 = 0 timing = 0 duration = 7 END
+  LPF ADD_SPELL_EFFECT INT_VAR target = 2 opcode = 34 parameter1 = 1 parameter2 = 0 timing = 0 duration = 7 END
+  LPF ADD_SPELL_EFFECT INT_VAR target = 2 opcode = 35 parameter1 = 1 parameter2 = 0 timing = 0 duration = 7 END
+  LPF ADD_SPELL_EFFECT INT_VAR target = 2 opcode = 36 parameter1 = 1 parameter2 = 0 timing = 0 duration = 7 END
+  LPF ADD_SPELL_EFFECT INT_VAR target = 2 opcode = 37 parameter1 = 1 parameter2 = 0 timing = 0 duration = 7 END
+
+// smite enemy
+COPY ~%MOD_FOLDER%/kits/champions/d5pasmt.bam~ ~override~
+
+COPY ~%MOD_FOLDER%/lib/d5_base.spl~ ~override/d5pasmt.spl~ 
+  SAY NAME1 @80004
+  SAY UNIDENTIFIED_DESC @80005
+  LPF ALTER_SPELL_HEADER INT_VAR target = 5 STR_VAR icon = ~d5pasmt~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 248 target = 1 timing = 0 duration = 12 STR_VAR resource = ~d5pasmt~ END
+
+CREATE EFF ~d5pasmt~
+	WRITE_LONG 0x10 12
+	WRITE_LONG 0x14 2
+	WRITE_LONG 0x1c 0
+	WRITE_SHORT 0x20 0
+	WRITE_SHORT 0x22 64
+	WRITE_LONG 0x24 1
+	WRITE_LONG 0x28 0
+	WRITE_SHORT 0x2c 100
+	WRITE_LONG 0x38 2
+	WRITE_LONG 0x3c 6
+
+COPY ~%MOD_FOLDER%/lib/d5_base.spl~ ~override/d5pasmt1.spl~ 
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 1 STR_VAR resource = ~d5pasmt~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5pasmt1~ END
+
+// cure disease
+COPY_EXISTING ~sppr317.spl~ ~override/d5pacur.spl~ 
+  LPM spell_to_innate
+
+COPY ~%MOD_FOLDER%/lib/d5_base.spl~ ~override/d5pacur1.spl~ 
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 1 STR_VAR resource = ~d5pacur~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5pacur1~ END
+
+// remove fear
+COPY_EXISTING ~sppr108.spl~ ~override/d5parem.spl~ 
+  LPM spell_to_innate
+
+COPY ~%MOD_FOLDER%/lib/d5_base.spl~ ~override/d5parem1.spl~ 
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 1 STR_VAR resource = ~d5parem~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5parem1~ END
+
+
+ACTION_FOR_EACH five_spl IN ~2~ ~3~ ~4~ ~5~ BEGIN
+  COPY_EXISTING ~d5pasmt1.spl~ ~override/d5pasmt%five_spl%.spl~
+    LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 206 STR_VAR match_resource = ~d5pasmt1~ resource = EVAL ~d5pasmt%five_spl%~ END
+  BUT_ONLY
+  COPY_EXISTING ~d5pacur1.spl~ ~override/d5pacur%five_spl%.spl~
+    LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 206 STR_VAR match_resource = ~d5pacur1~ resource = EVAL ~d5pacur%five_spl%~ END
+  BUT_ONLY
+  COPY_EXISTING ~d5parem1.spl~ ~override/d5parem%five_spl%.spl~
+    LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 206 STR_VAR match_resource = ~d5parem1~ resource = EVAL ~d5parem%five_spl%~ END
+  BUT_ONLY
+END
+
+
+// lay on hands
+COPY ~%MOD_FOLDER%/lib/d5_base.spl~ ~override/d5paloh1.spl~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 1 STR_VAR resource = ~spcl211~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5paloh~ END
+
+// true seeing - no, Oracle!
+COPY_EXISTING ~spwi515.spl~ ~override/d5paora.spl~ 
+  LPM spell_to_innate
+
+COPY ~%MOD_FOLDER%/lib/d5_base.spl~ ~override/d5patru1.spl~ 
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 1 STR_VAR resource = ~d5paora~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5patru1~ END
+
+// dispel
+COPY ~%MOD_FOLDER%/lib/d5_base.spl~ ~override/d5padsp1.spl~ 
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 1 STR_VAR resource = ~spcl231~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5padsp1~ END
+
+// frenzy
+COPY ~%MOD_FOLDER%/kits/champions/d5pafrz.bam~ ~override~
+
+COPY ~%MOD_FOLDER%/lib/d5_base.spl~ ~override/d5pafrz.spl~ 
+  SAY NAME1 @80012
+  SAY UNIDENTIFIED_DESC @80013
+  LPF ALTER_SPELL_HEADER INT_VAR target = 5 STR_VAR icon = ~d5pafrz~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 1 target = 1 parameter1 = 1 parameter2 = 0 timing = 0 duration = 30 END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 250 target = 1 parameter1 = 2 parameter2 = 0 timing = 0 duration = 30 END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 101 target = 1 parameter2 = 39 timing = 0 duration = 30 END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 101 target = 1 parameter2 = 40 timing = 0 duration = 30 END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 101 target = 1 parameter2 = 128 timing = 0 duration = 30 END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 101 target = 1 parameter2 = 213 timing = 0 duration = 30 END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 101 target = 1 parameter2 = 216 timing = 0 duration = 30 END
+
+COPY_EXISTING ~d5pafrz.spl~ ~override~
+  LPF cd_apply_batch STR_VAR array_name = cd_immunity_sleep_arrays END
+  LPF cd_apply_batch STR_VAR array_name = cd_immunity_slow_arrays END
+  LPF cd_apply_batch STR_VAR array_name = cd_immunity_confusion_arrays END
+  LPF cd_apply_batch STR_VAR array_name = cd_immunity_level_drain_arrays END
+
+COPY ~%MOD_FOLDER%/lib/d5_base.spl~ ~override/d5pafrz1.spl~ 
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 1 STR_VAR resource = ~d5pafrz~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5pafrz1~ END
+
+
+ACTION_FOR_EACH three_spl IN ~2~ ~3~ BEGIN
+  COPY_EXISTING ~d5paloh1.spl~ ~override/d5paloh%three_spl%.spl~
+    LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 206 STR_VAR match_resource = ~d5paloh1~ resource = EVAL ~d5paloh%three_spl%~ END
+  BUT_ONLY
+  COPY_EXISTING ~d5pafrz1.spl~ ~override/d5pafrz%three_spl%.spl~
+    LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 206 STR_VAR match_resource = ~d5pafrz1~ resource = EVAL ~d5pafrz%three_spl%~ END
+  BUT_ONLY
+  COPY_EXISTING ~d5patru1.spl~ ~override/d5patru%three_spl%.spl~
+    LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 206 STR_VAR match_resource = ~d5patru1~ resource = EVAL ~d5patru%three_spl%~ END
+  BUT_ONLY
+  COPY_EXISTING ~d5padsp1.spl~ ~override/d5padsp%three_spl%.spl~
+    LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 206 STR_VAR match_resource = ~d5padsp1~ resource = EVAL ~d5padsp%three_spl%~ END
+  BUT_ONLY
+END
+
+
+//set up conditional application_____________________________________________________
+//
+COPY ~%MOD_FOLDER%/kits/champions/d5pa000.spl~ ~override~
+  LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5padlg1~ END
+  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 326 parameter1 = (4 << 24) parameter2 = %115_feats_row% END	//	old fighting firty stat, 115x4<<24
+/* don't use different stats for each; just use one stat and use 206 effects to block inappropriate spells
+  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 326 match_parameter1 = 1 parameter1 = %% END
+  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 326 match_parameter1 = 2 parameter1 = %% END
+  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 326 match_parameter1 = 3 parameter1 = %% END
+*/
+
+// ***** make plate mail unusable by zealots?
+// ...how?
+
+//set up archetype dialogue__________________________________________________________
+//
+COPY ~%MOD_FOLDER%/kits/champions/d5padlg.bam~ ~override~
+
+COPY ~%MOD_FOLDER%/lib/d5_base.spl~ ~override/d5padlg1.spl~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 1 STR_VAR resource = ~d5padlg~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5padlg1~ END
+
+COPY ~%MOD_FOLDER%/lib/d5_base.spl~ ~override/d5padlg.spl~
+  SAY NAME1 @80021
+  SAY UNIDENTIFIED_DESC @80021
+  WRITE_ASCII 0x3a ~d5padlg~ #8
+  LPF ALTER_SPELL_HEADER INT_VAR target = 5 STR_VAR icon = ~d5padlg~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 233 target = 1 parameter1 = (4 << 24) parameter2 = (115 + (0x10000 * 1)) timing = 9 END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 1 parameter1 = 0 parameter2 = 2 timing = 0 duration = 12 STR_VAR resource = ~d5padlg~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 timing = 1 STR_VAR resource = ~d5padlg~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5padlg~ END
+
+CREATE EFF ~d5padlg~
+	WRITE_LONG 0x10 67
+	WRITE_LONG 0x14 1
+	WRITE_LONG 0x28 12
+	WRITE_SHORT 0x2c 100
+	WRITE_ASCII 0x30 ~d5padlg~ #8
+	WRITE_ASCII 0x70 ~shskull~ #8
+
+COPY ~%MOD_FOLDER%/kits/champions/d5padlg.cre~ ~override~
+  WRITE_ASCII 0x248 ~d5padlg~ #8
+
+
+<<<<<<<< d5/d5padlg.baf
+
+>>>>>>>>
+COPY ~d5/d5padlg.baf~ ~weidu_external/%MOD_FOLDER%/compile/d5padlg.baf~
+
+<<<<<<<< d5/d5_temp.baf
+IF
+    NumberOfTimesTalkedTo(0)
+    Kit(LastSummonerOf(Myself),the_koot)
+THEN
+    RESPONSE #100
+    SetGlobal("D5PADEF","GLOBAL",doof)
+    SetGlobal("D5PAINQ","GLOBAL",oonq)
+    SetGlobal("D5PAZEA","GLOBAL",zool)
+    Continue()
+END
+>>>>>>>>
+COPY ~d5/d5_temp.baf~ ~weidu_external/%MOD_FOLDER%/temp/d5_temp.baf~
+
+<<<<<<<< d5/d5padlg.d
+BEGIN ~D5PADLG~
+
+IF ~Global("D5PADLG","GLOBAL",1)~ THEN BEGIN d5padlg
+ SAY @80021
+ IF ~GlobalGT("D5PADLG","GLOBAL",0) GlobalGT("D5PADEF","GLOBAL",0)~ THEN REPLY @80024 GOTO d5padlg_1	//	defender
+ IF ~GlobalGT("D5PADLG","GLOBAL",0) GlobalGT("D5PAINQ","GLOBAL",0)~ THEN REPLY @80025 GOTO d5padlg_2	//	inquisitor
+ IF ~GlobalGT("D5PADLG","GLOBAL",0) GlobalGT("D5PAZEA","GLOBAL",0)~ THEN REPLY @80026 GOTO d5padlg_3	//	zealot
+END
+
+IF ~~ THEN BEGIN d5padlg_1 											// defender
+ SAY @80009
+ IF ~~ THEN REPLY @80022 DO ~ApplySpellRES("D5PA001",Myself)~ EXIT 
+ IF ~~ THEN REPLY @80023 GOTO d5padlg 
+END
+IF ~~ THEN BEGIN d5padlg_2											// inquisitor
+ SAY @80010
+ IF ~~ THEN REPLY @80022 DO ~ApplySpellRES("D5PA002",Myself)~ EXIT 
+ IF ~~ THEN REPLY @80023 GOTO d5padlg 
+END
+IF ~~ THEN BEGIN d5padlg_3 											// zealot
+ SAY @80011
+ IF ~~ THEN REPLY @80022 DO ~ApplySpellRES("D5PA003",Myself)~ EXIT 
+ IF ~~ THEN REPLY @80023 GOTO d5padlg 
+END
+>>>>>>>>
+COPY ~d5/d5padlg.d~ ~weidu_external/%MOD_FOLDER%/compile/d5padlg.d~
+
+COPY ~%MOD_FOLDER%/lib/d5_base.spl~ ~override/d5pa001.spl~	//	defender
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5pafrz1~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5pafrz2~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5pafrz3~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5paze1~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5pafim~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5pacim~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5parem1~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5parem2~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5parem3~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5parem4~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5parem5~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5patru1~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5patru2~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5patru3~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5padsp1~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5padsp2~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5padsp3~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5pahim~ END
+  LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5pa000~ END
+
+COPY ~%MOD_FOLDER%/lib/d5_base.spl~ ~override/d5pa002.spl~	//	inquisitor
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5paloh1~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5paloh2~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5paloh3~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5padim~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5pacur1~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5pacur2~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5pacur3~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5pacur4~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5pacur5~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5paaop~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5pasmt1~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5pasmt2~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5pasmt3~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5pasmt4~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5pasmt5~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5pafrz1~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5pafrz2~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5pafrz3~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5paze1~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5pafim~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5pacim~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5parem1~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5parem2~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5parem3~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5parem4~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5parem5~ END
+  LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5pa000~ END
+
+COPY ~%MOD_FOLDER%/lib/d5_base.spl~ ~override/d5pa003.spl~	//	zealot
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5paloh1~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5paloh2~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5paloh3~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5pacur2~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5pacur3~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5pacur4~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5pacur5~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5paaop~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5pasmt1~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5pasmt2~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5pasmt3~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5pasmt4~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5pasmt5~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5patru1~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5patru2~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5patru3~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5padsp1~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5padsp2~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5padsp3~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5pahim~ END
+  LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5pa000~ END
+
+
+//apply to all paladins______________________________________________________________
+//
+APPEND ~clabpa01.2da~ ~PALADINS    AP_D5PA000  ****        ****        ****        AP_D5PA000  ****        ****        ****        ****        AP_D5PA000  ****        ****        ****        ****        AP_D5PA000  ****        ****        ****        ****        AP_D5PA000  ****      ****      ****      ****      ****      ****      ****      ****      ****      ****      ****      ****      ****      ****      ****      ****      ****      ****      ****      **** ~ UNLESS ~AP_D5PA000~
+
+COPY_EXISTING ~kitlist.2da~ ~override~
+  COUNT_2DA_ROWS 10 rows
+  FOR (row = 35; row < rows; ++row ) BEGIN
+    READ_2DA_ENTRY row 1 10 kitname
+    READ_2DA_ENTRY row 5 10 kitclab
+    READ_2DA_ENTRY row 8 10 kitclass
+    READ_2DA_ENTRY row 9 10 kitids
+    PATCH_IF (kitclass = 6) BEGIN
+      INNER_ACTION BEGIN
+        ACTION_IF (FILE_EXISTS_IN_GAME ~%kitclab%.2da~) BEGIN
+          APPEND ~%kitclab%.2da~ ~PALADINS    AP_D5PA000  ****        ****        ****        AP_D5PA000  ****        ****        ****        ****        AP_D5PA000  ****        ****        ****        ****        AP_D5PA000  ****        ****        ****        ****        AP_D5PA000  ****      ****      ****      ****      ****      ****      ****      ****      ****      ****      ****      ****      ****      ****      ****      ****      ****      ****      ****      **** ~ UNLESS ~AP_D5PA000~
+          OUTER_SPRINT $paladin_kits(~%kitname%~)~1~
+        END
+      END
+    END
+  END
+BUT_ONLY
+
+// for every kit, append a block setting archetype variables to 1
+
+ACTION_PHP_EACH paladin_kits AS this_kit => ind BEGIN
+  APPEND_OUTER ~weidu_external/%MOD_FOLDER%/compile/d5padlg.baf~ 
+~
+IF
+    NumberOfTimesTalkedTo(0)
+    Kit(LastSummonerOf(Myself),%this_kit%)
+THEN
+    RESPONSE #100
+    SetGlobal("D5PADEF","GLOBAL",1)
+    SetGlobal("D5PAINQ","GLOBAL",1)
+    SetGlobal("D5PAZEA","GLOBAL",1)
+    Continue()
+END
+~
+END	//	end php_each
+
+APPEND_OUTER ~weidu_external/%MOD_FOLDER%/compile/d5padlg.baf~ 
+~
+IF
+	NumberOfTimesTalkedTo(0)
+THEN
+	RESPONSE #100
+	SetGlobal("D5PADLG","GLOBAL",1)
+	SetNumTimesTalkedTo(1)
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("D5PADLG",Myself))
+END
+
+IF
+	True()
+THEN
+	RESPONSE #100
+	SetGlobal("D5PADLG","GLOBAL",0)
+	SetGlobal("D5PADEF","GLOBAL",0)
+	SetGlobal("D5PAINQ","GLOBAL",0)
+	SetGlobal("D5PAZEA","GLOBAL",0)
+	SetNumTimesTalkedTo(0)
+	DestroySelf() 
+END
+~
+
+COMPILE ~weidu_external/%MOD_FOLDER%/compile/d5padlg.baf~
+COMPILE ~weidu_external/%MOD_FOLDER%/compile/d5padlg.d~
+
+END		//	end stuff that only needs to be done once
+
+END		//	end function
+
+
+//__________________________________________________________________________________
+
+
+DEFINE_ACTION_FUNCTION apply_archetype_options STR_VAR this_kit = ~~ BEGIN
+
+ OUTER_SET this_row = 999 
+ 
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5patype.2da~) AND (FILE_EXISTS_IN_GAME ~d5padlg.bcs~) BEGIN
+  COPY_EXISTING ~d5patype.2da~ ~override~
+    COUNT_2DA_COLS cols
+    COUNT_2DA_ROWS cols rows
+    FOR (row = 0; row < rows; ++row) BEGIN
+      FOR (col = 1; col < cols; ++col) BEGIN
+        READ_2DA_ENTRY row 0 cols kit
+        PATCH_IF (~%kit%~ STRING_EQUAL_CASE ~%this_kit%~) BEGIN
+          SET this_row = row
+        END
+      END
+    END
+    PATCH_IF (this_row < 999) BEGIN
+      READ_2DA_ENTRY this_row 1 cols def
+      READ_2DA_ENTRY this_row 2 cols inq
+      READ_2DA_ENTRY this_row 3 cols zea
+      INNER_ACTION BEGIN
+        EXTEND_TOP ~d5padlg.bcs~ ~weidu_external/%MOD_FOLDER%/temp/d5_temp.baf~
+          REPLACE_TEXTUALLY ~the_koot~ ~%this_kit%~
+          REPLACE_TEXTUALLY ~doof~ ~%def%~
+          REPLACE_TEXTUALLY ~oonq~ ~%inq%~
+          REPLACE_TEXTUALLY ~zool~ ~%zea%~
+      END
+    END
+  BUT_ONLY
+ END
+ 
+ COPY_EXISTING ~kitlist.2da~ ~override~
+  COUNT_2DA_ROWS 10 rows
+  FOR (row = 35; row < rows; ++row ) BEGIN
+    READ_2DA_ENTRY row 1 10 kitname
+    READ_2DA_ENTRY row 5 10 kitclab
+    PATCH_IF (~%kitname%~ STRING_EQUAL_CASE ~%this_kit%~) BEGIN
+      INNER_ACTION BEGIN
+        ACTION_IF (FILE_EXISTS_IN_GAME ~%kitclab%.2da~) BEGIN
+          APPEND ~%kitclab%.2da~ ~PALADINS    AP_D5PA000  ****        ****        ****        AP_D5PA000  ****        ****        ****        ****        AP_D5PA000  ****        ****        ****        ****        AP_D5PA000  ****        ****        ****        ****        AP_D5PA000  ****      ****      ****      ****      ****      ****      ****      ****      ****      ****      ****      ****      ****      ****      ****      ****      ****      ****      ****      **** ~ UNLESS ~AP_D5PA000~
+        END
+      END
+    END
+  END
+ BUT_ONLY
+
+END		//	end function
+//__________________________________________________________________________________
+
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+//								CHAMPION OF TYR
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+DEFINE_ACTION_FUNCTION champion_tyr BEGIN
+
+LAF check_kit_conflict END
+
+ADD_KIT ~B_CHAMP_TYR~
+
+//WEAPON PROFICIENCIES________________________________________________________________
+//11                	                   		T   S           F   Q             S S
+//10           			L S                     W   C           L   U             W I
+//9            			A M             B L S   O   I   W       A   A             O N
+//8            			R A             A O H   H   M   A       I   R C   S       R G
+//7            			G L           M S N O   A   I   R     H L   T R L H     2 D L 2                 E E E E E E E E E E E
+//6            			E L       S   I T G R   N K T D H     A M   E O O O     H A E W E E E E E E E E X X X X X X X X X X X
+//5            			S S   S B P   S A S T   D A A A A   S L O   R S N R   S A N W E X X X X X X X X T T T T T T T T T T T
+//4            			W W   P L I   S R W S   E T R G M C P B R M S S G T D L N D E A T T T T T T T T R R R R R R R R R R R
+//3            			O O B E U K A I D O W A D A W G M L E E N A T B B B A I D S A P R R R R R R R R A A A A A A A A A A A
+//2            			R R O A N E X L S R O X S N A E E U A R I C A O O O R N E H P O A A A A A A A A 1 1 1 1 1 1 1 1 1 1 2
+//1            			D D W R T D E E W D R E W A K R R B R D N E F W W W T G D I O N 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0
+~B_CHAMP_TYR            0 0 0 0 0 0 0 0~
+~B_CHAMP_TYR            0 0 0 0 0 0 0 0 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 2 2 2 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
+
+//MINIMUM KIT STATS_________________________________________________________________
+//                  STR DEX CON INT WIS CHR
+~B_CHAMP_TYR  		12   0   0   0   12  15~
+
+//KIT STAT MODIFIERS________________________________________________________________
+//                  STR DEX CON INT WIS CHR
+~B_CHAMP_TYR  		0   0   0   0   0   0~
+
+//REQUIREMENTS TO DUAL TO THIS KIT_________________________________________________
+//                  STR DEX CON INT WIS CHR
+~B_CHAMP_TYR  		0   0   0   0   15  0~
+
+//REQUIREMENTS TO DUAL FROM THIS KIT________________________________________________
+//                  STR DEX CON INT WIS CHR
+~B_CHAMP_TYR  		0   0   0   0   15  0~
+
+//ALIGNMENT RESTRICTIONS____________________________________________________________
+//                  LG LN LE NG TN NE CG CN CE
+~B_CHAMP_TYR        1  0  0  0  0  0  0  0  0~
+
+//DUAL CLASS OPTIONS________________________________________________________________
+//                  FT CL MA TH DR RA
+~B_CHAMP_TYR        0  0  0  0  0  0~
+
+//KIT ABILITIES 2DA FILE______________________________________________________________
+~faiths_and_powers/kits/champions/801_tyr/b_chtyr.2da~
+
+//RACIAL KIT AVAILABILITY_____________________________________________________________
+~K_P_E K_P_H K_P_HE K_P_G K_P_D K_P_HL K_P_HO~
+
+//UNUSABLE FLAGS AND KIT BASE CLASS_________________________________________________
+//CLASSES: Mage = 1, Fighter = 2, Cleric=3, Thief = 4, Bard = 5
+//         Paladin 6, Druid = 11, Ranger = 12, Sorcerer = 19
+//         Monk = 20
+~0x00004000 6~
+
+//HIGH LEVEL ABILITIES ABBREVIATION_________________________________________________
+~Pa0~
+
+//TOB STARTING EQUIPMENT_____________________________________________________________
+~CHAN09	* HELM07 BAG26 RING06 RING31 * BOOT01 AMUL20 BRAC10 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 HAMM07 SW1H27 STAF08~
+
+//CHARACTER CREATION KIT DESCRIPTION________________________________________________
+SAY @80101 //lower
+SAY @80102 //Mixed
+SAY @80103 //Help
+
+//EE KIT EXTRAS_____________________________________________________________________
+// 
+ACTION_IF GAME_IS ~bgee bg2ee eet iwdee~ THEN BEGIN
+	LAF fl#add_kit_ee
+		INT_VAR
+			briefdesc = RESOLVE_STR_REF (@80103)
+		STR_VAR
+			kit_name = B_CHAMP_TYR
+			clsrcreq = ~1 1 1 1 1 1 1~
+	END
+END
+
+//ABILITY FILES______________________________________________________________
+//
+COPY ~faiths_and_powers/kits/champions/801_tyr/b_chtyr.2da~ ~override~
+
+//protection from evil
+COPY ~faiths_and_powers/kits/champions/801_tyr/b_tyr01.spl~ ~override~
+
+//alternate smite 
+COPY_EXISTING ~d5pasmt.spl~ ~override/d5pastyr.spl~
+//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 248 target = 1 timing = 0 duration = 12 STR_VAR resource = ~d5patyr1~ END
+  LPF CLONE_EFFECT INT_VAR silent = 1 match_opcode = 248 STR_VAR match_resource = ~d5pasmt~ resource = ~d5patyr1~ END
+
+CREATE EFF ~d5patyr1~
+	WRITE_LONG 0x10 177
+	WRITE_LONG 0x14 2
+	WRITE_LONG 0x1c 3	//	mask_evil
+	WRITE_LONG 0x20 8	//	alignment
+	WRITE_LONG 0x24 1
+	WRITE_LONG 0x28 0
+	WRITE_SHORT 0x2c 100
+	WRITE_ASCII 0x30 ~d5patyr2~ #8
+
+CREATE EFF ~d5patyr2~
+	WRITE_LONG 0x10 12
+	WRITE_LONG 0x14 2
+	WRITE_LONG 0x1c 0
+	WRITE_SHORT 0x20 0
+	WRITE_SHORT 0x22 64
+	WRITE_LONG 0x24 1
+	WRITE_LONG 0x28 0
+	WRITE_SHORT 0x2c 100
+	WRITE_LONG 0x38 1
+	WRITE_LONG 0x3c 6
+
+//REPLACE VANILLA KIT WITH THIS KIT__________________________________________________
+//
+ACTION_IF FILE_EXISTS_IN_GAME ~d5__paladins.d5~ BEGIN
+  ACTION_FOR_EACH race IN ~D~ ~E~ ~G~ ~H~ ~HE~ ~HL~ ~HO~ BEGIN
+	ACTION_IF FILE_EXISTS_IN_GAME ~K_P_%race%.2da~ BEGIN
+	  COPY_EXISTING ~K_P_%race%.2da~ ~override~
+		COUNT_2DA_COLS cols
+		READ_2DA_ENTRIES_NOW rows cols
+		SET rows_removed = 0
+		FOR (row = 1; row < rows; ++row) BEGIN
+		  READ_2DA_ENTRY_FORMER rows row 1 kit
+		  PATCH_IF (%kit% = 0) BEGIN
+			REMOVE_2DA_ROW (row - rows_removed) cols
+			SET rows_removed += 1
+		  END
+		END
+	  BUT_ONLY
+	END
+  END
+END
+
+//DEFINE SPHERE ACCESS______________________________________________________________
+//
+ LAF ~DEFINE_FNP_KIT_INFO~
+  STR_VAR
+    clab_name 		= ~b_chtyr~
+	sphere_list		= ~tyr_spheres~
+	class 			= ~champion~
+ END
+
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
+  WITH_TRA ~faiths_and_powers/language/%LANGUAGE%/fnp_spontaneous.tra~ BEGIN
+    LAF fnp_spontaneous STR_VAR kit_clab = ~b_chtyr~ learn_res = ~b_chtyz~ END
+  END
+ END
+
+//apply alternate smite
+ CREATE EFF ~d5pastyr~
+	WRITE_LONG 0x10 171
+	WRITE_LONG 0x14 1
+	WRITE_LONG 0x1c 0
+	WRITE_LONG 0x20 0
+	WRITE_LONG 0x24 1
+	WRITE_LONG 0x28 0
+	WRITE_SHORT 0x2c 100
+	WRITE_ASCII 0x30 ~d5pastyr~ #8
+
+ COPY_EXISTING ~splprot.2da~ ~override~
+  COUNT_2DA_COLS cols
+  READ_2DA_ENTRIES_NOW rows cols
+  FOR (row = 1; row < rows; ++row) BEGIN
+    READ_2DA_ENTRY_FORMER rows row 0 ~stat~
+	PATCH_IF (~%stat%~ STRING_EQUAL_CASE ~D5_KIT_IS~) BEGIN
+	  SET kit_is_row = %row%
+	END
+  END
+ BUT_ONLY
+
+// *****
+ OUTER_SET champion_tyr_code = (0x4000 + %B_CHAMP_TYR%)
+
+ COPY_EXISTING ~d5pasmt1.spl~ ~override~
+  LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 318 target = 1 parameter1 = %champion_tyr_code% parameter2 = %kit_is_row% timing = 0 duration = 6 STR_VAR resource = ~d5pasmt1~ END
+  LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = %champion_tyr_code% parameter2 = 9 timing = 2 STR_VAR resource = ~d5pastyr~ END
+
+ LAF apply_archetype_options STR_VAR this_kit = ~B_CHAMP_TYR~ END
+
+END
+//__________________________________________________________________________________
+
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+//								CHAMPION OF TORM
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+DEFINE_ACTION_FUNCTION champion_torm BEGIN
+
+LAF check_kit_conflict END
+
+ADD_KIT ~D5_CHAMP_TORM~
+
+//WEAPON PROFICIENCIES________________________________________________________________
+//11                	                   		T   S           F   Q             S S
+//10           			L S                     W   C           L   U             W I
+//9            			A M             B L S   O   I   W       A   A             O N
+//8            			R A             A O H   H   M   A       I   R C   S       R G
+//7            			G L           M S N O   A   I   R     H L   T R L H     2 D L 2                 E E E E E E E E E E E
+//6            			E L       S   I T G R   N K T D H     A M   E O O O     H A E W E E E E E E E E X X X X X X X X X X X
+//5            			S S   S B P   S A S T   D A A A A   S L O   R S N R   S A N W E X X X X X X X X T T T T T T T T T T T
+//4            			W W   P L I   S R W S   E T R G M C P B R M S S G T D L N D E A T T T T T T T T R R R R R R R R R R R
+//3            			O O B E U K A I D O W A D A W G M L E E N A T B B B A I D S A P R R R R R R R R A A A A A A A A A A A
+//2            			R R O A N E X L S R O X S N A E E U A R I C A O O O R N E H P O A A A A A A A A 1 1 1 1 1 1 1 1 1 1 2
+//1            			D D W R T D E E W D R E W A K R R B R D N E F W W W T G D I O N 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0
+~D5_CHAMP_TORM          0 0 0 0 0 0 0 0~
+~D5_CHAMP_TORM          0 0 0 0 0 0 0 0 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
+
+//MINIMUM KIT STATS_________________________________________________________________
+//                  STR DEX CON INT WIS CHR
+~D5_CHAMP_TORM  	12   0   0   0   12  15~
+
+//KIT STAT MODIFIERS________________________________________________________________
+//                  STR DEX CON INT WIS CHR
+~D5_CHAMP_TORM  	0   0   0   0   0   0~
+
+//REQUIREMENTS TO DUAL TO THIS KIT_________________________________________________
+//                  STR DEX CON INT WIS CHR
+~D5_CHAMP_TORM  	0   0   0   0   15  0~
+
+//REQUIREMENTS TO DUAL FROM THIS KIT________________________________________________
+//                  STR DEX CON INT WIS CHR
+~D5_CHAMP_TORM  	0   0   0   0   15  0~
+
+//ALIGNMENT RESTRICTIONS____________________________________________________________
+//                  LG LN LE NG TN NE CG CN CE
+~D5_CHAMP_TORM      1  0  0  0  0  0  0  0  0~
+
+//DUAL CLASS OPTIONS________________________________________________________________
+//                  FT CL MA TH DR RA
+~D5_CHAMP_TORM      0  0  0  0  0  0~
+
+//KIT ABILITIES 2DA FILE______________________________________________________________
+~faiths_and_powers/kits/champions/810_torm/d5chtor.2da~
+
+//RACIAL KIT AVAILABILITY_____________________________________________________________
+~K_P_E K_P_H K_P_HE K_P_G K_P_D K_P_HL K_P_HO~
+
+//UNUSABLE FLAGS AND KIT BASE CLASS_________________________________________________
+//CLASSES: Mage = 1, Fighter = 2, Cleric=3, Thief = 4, Bard = 5
+//         Paladin 6, Druid = 11, Ranger = 12, Sorcerer = 19
+//         Monk = 20
+~0x00004000 6~
+
+//HIGH LEVEL ABILITIES ABBREVIATION_________________________________________________
+~Pa0~
+
+//TOB STARTING EQUIPMENT_____________________________________________________________
+~CHAN09	* HELM07 BAG26 RING06 RING31 * BOOT01 AMUL20 BRAC10 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 HAMM07 SW1H27 STAF08~
+
+//CHARACTER CREATION KIT DESCRIPTION________________________________________________
+SAY @81001 //lower
+SAY @81002 //Mixed
+SAY @81003 //Help
+
+//EE KIT EXTRAS_____________________________________________________________________
+// 
+ACTION_IF GAME_IS ~bgee bg2ee eet iwdee~ THEN BEGIN
+	LAF fl#add_kit_ee
+		INT_VAR
+			briefdesc = RESOLVE_STR_REF (@81003)
+		STR_VAR
+			kit_name = D5_CHAMP_TORM
+			clsrcreq = ~1 1 1 1 1 1 1~
+	END
+END
+
+//ABILITY FILES______________________________________________________________
+//
+COPY ~faiths_and_powers/kits/champions/810_torm/d5chtor.2da~ ~override~
+
+//protection from evil
+COPY ~faiths_and_powers/kits/champions/801_tyr/b_tyr01.spl~ ~override~
+
+//proevil 10'
+COPY_EXISTING ~sppr408.spl~ ~override/d5pator1.spl~
+  LPM spell_to_innate
+
+//DEFINE SPHERE ACCESS______________________________________________________________
+//
+ LAF ~DEFINE_FNP_KIT_INFO~
+  STR_VAR
+    clab_name 		= ~d5chtor~
+	sphere_list		= ~torm_spheres~
+	class 			= ~champion~
+ END
+
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
+  WITH_TRA ~faiths_and_powers/language/%LANGUAGE%/fnp_spontaneous.tra~ BEGIN
+    LAF fnp_spontaneous STR_VAR kit_clab = ~d5chtor~ learn_res = ~d5chtoz~ END
+  END
+ END
+
+ LAF apply_archetype_options STR_VAR this_kit = ~D5_CHAMP_TORM~ END
+
+END
+//__________________________________________________________________________________
+
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+//								CHAMPION OF HELM
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+DEFINE_ACTION_FUNCTION champion_helm BEGIN
+
+LAF check_kit_conflict END
+
+ADD_KIT ~B_CHAMP_HELM~
+
+//WEAPON PROFICIENCIES________________________________________________________________
+//11                	                   		T   S           F   Q             S S
+//10           			L S                     W   C           L   U             W I
+//9            			A M             B L S   O   I   W       A   A             O N
+//8            			R A             A O H   H   M   A       I   R C   S       R G
+//7            			G L           M S N O   A   I   R     H L   T R L H     2 D L 2                 E E E E E E E E E E E
+//6            			E L       S   I T G R   N K T D H     A M   E O O O     H A E W E E E E E E E E X X X X X X X X X X X
+//5            			S S   S B P   S A S T   D A A A A   S L O   R S N R   S A N W E X X X X X X X X T T T T T T T T T T T
+//4            			W W   P L I   S R W S   E T R G M C P B R M S S G T D L N D E A T T T T T T T T R R R R R R R R R R R
+//3            			O O B E U K A I D O W A D A W G M L E E N A T B B B A I D S A P R R R R R R R R A A A A A A A A A A A
+//2            			R R O A N E X L S R O X S N A E E U A R I C A O O O R N E H P O A A A A A A A A 1 1 1 1 1 1 1 1 1 1 2
+//1            			D D W R T D E E W D R E W A K R R B R D N E F W W W T G D I O N 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0
+~B_CHAMP_HELM           0 0 0 0 0 0 0 0~
+~B_CHAMP_HELM           0 0 0 0 0 0 0 0 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
+
+//MINIMUM KIT STATS_________________________________________________________________
+//                  STR DEX CON INT WIS CHR
+~B_CHAMP_HELM  		12   0   0   0   12  15~
+
+//KIT STAT MODIFIERS________________________________________________________________
+//                  STR DEX CON INT WIS CHR
+~B_CHAMP_HELM  		0   0   0   0   0   0~
+
+//REQUIREMENTS TO DUAL TO THIS KIT_________________________________________________
+//                  STR DEX CON INT WIS CHR
+~B_CHAMP_HELM  		0   0   0   0   15  0~
+
+//REQUIREMENTS TO DUAL FROM THIS KIT________________________________________________
+//                  STR DEX CON INT WIS CHR
+~B_CHAMP_HELM  		0   0   0   0   15  0~
+
+//ALIGNMENT RESTRICTIONS____________________________________________________________
+//                  LG LN LE NG TN NE CG CN CE
+~B_CHAMP_HELM        1  1  0  1  1  0  0  0  0~
+
+//DUAL CLASS OPTIONS________________________________________________________________
+//                  FT CL MA TH DR RA
+~B_CHAMP_HELM        0  0  0  0  0  0~
+
+//KIT ABILITIES 2DA FILE______________________________________________________________
+~faiths_and_powers/kits/champions/805_helm/b_chhel.2da~
+
+//RACIAL KIT AVAILABILITY_____________________________________________________________
+~K_P_E K_P_H K_P_HE K_P_G K_P_D K_P_HL K_P_HO~
+
+//UNUSABLE FLAGS AND KIT BASE CLASS_________________________________________________
+//CLASSES: Mage = 1, Fighter = 2, Cleric=3, Thief = 4, Bard = 5
+//         Paladin 6, Druid = 11, Ranger = 12, Sorcerer = 19
+//         Monk = 20
+~0x00004000 6~
+
+//HIGH LEVEL ABILITIES ABBREVIATION_________________________________________________
+~Pa0~
+
+//TOB STARTING EQUIPMENT_____________________________________________________________
+~CHAN09	* HELM07 BAG26 RING06 RING31 * BOOT01 AMUL20 BRAC10 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 HAMM07 SW1H27 STAF08~
+
+//CHARACTER CREATION KIT DESCRIPTION________________________________________________
+SAY @80501 //lower
+SAY @80502 //Mixed
+SAY @80503 //Help
+
+//EE KIT EXTRAS_____________________________________________________________________
+// 
+ACTION_IF GAME_IS ~bgee bg2ee eet iwdee~ THEN BEGIN
+	LAF fl#add_kit_ee
+		INT_VAR
+			briefdesc = RESOLVE_STR_REF (@80503)
+		STR_VAR
+			kit_name = B_CHAMP_HELM
+			clsrcreq = ~1 1 1 1 1 1 1~
+	END
+END
+
+//ABILITY FILES______________________________________________________________
+//
+COPY ~faiths_and_powers/kits/champions/805_helm/b_chhel.2da~ ~override~
+
+//improved visibility
+COPY ~%MOD_FOLDER%/lib/d5_base.spl~ ~override/d5pavis.spl~
+  LPF ALTER_SPELL_HEADER INT_VAR target = 5 END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 262 target = 1 parameter1 = 2 parameter2 = 0 timing = 9 END
+  LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 321 target = 1 timing = 1 STR_VAR resource = ~d5pavis~ END
+
+//Everwatch Sword
+COPY_EXISTING ~spcl731.spl~ ~override/B_hel01.spl~ // sword spl
+   SAY NAME1 @80504
+   SAY NAME2 @80504
+   SAY UNIDENTIFIED_DESC @80505
+   SAY DESC @80505
+   LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 111 STR_VAR resource = EVAL ~B_hel01~ END
+COPY ~faiths_and_powers/kits/champions/805_helm/B_hel01.itm~ ~override~
+   SAY NAME1 @80504
+   SAY NAME2 @80504
+   SAY UNIDENTIFIED_DESC @80505
+   SAY DESC @80505
+
+//nO FALL
+ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN
+  COPY_EXISTING ~fallen.2da~ ~override~ //Remove possibility to fall
+	              INSERT_2DA_ROW 3 0 ~B_CHAMP_HELM 0~
+  BUT_ONLY_IF_IT_CHANGES
+END
+
+//DEFINE SPHERE ACCESS______________________________________________________________
+//
+ LAF ~DEFINE_FNP_KIT_INFO~
+  STR_VAR
+    clab_name 		= ~b_chhel~
+	sphere_list		= ~helm_spheres~
+	class 			= ~champion~
+ END
+
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
+  WITH_TRA ~faiths_and_powers/language/%LANGUAGE%/fnp_spontaneous.tra~ BEGIN
+    LAF fnp_spontaneous STR_VAR kit_clab = ~b_chhel~ learn_res = ~b_chhez~ END
+  END
+ END
+
+ LAF apply_archetype_options STR_VAR this_kit = ~B_CHAMP_HELM~ END
+
+END
+//__________________________________________________________________________________
+
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+//								CHAMPION OF ILMATER
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+DEFINE_ACTION_FUNCTION champion_ilmater BEGIN
+
+LAF check_kit_conflict END
+
+ADD_KIT ~B_CHAMPION_ILMATER~
+
+//WEAPON PROFICIENCIES________________________________________________________________
+//11                	                   		T   S           F   Q             S S
+//10           			L S                     W   C           L   U             W I
+//9            			A M             B L S   O   I   W       A   A             O N
+//8            			R A             A O H   H   M   A       I   R C   S       R G
+//7            			G L           M S N O   A   I   R     H L   T R L H     2 D L 2                 E E E E E E E E E E E
+//6            			E L       S   I T G R   N K T D H     A M   E O O O     H A E W E E E E E E E E X X X X X X X X X X X
+//5            			S S   S B P   S A S T   D A A A A   S L O   R S N R   S A N W E X X X X X X X X T T T T T T T T T T T
+//4            			W W   P L I   S R W S   E T R G M C P B R M S S G T D L N D E A T T T T T T T T R R R R R R R R R R R
+//3            			O O B E U K A I D O W A D A W G M L E E N A T B B B A I D S A P R R R R R R R R A A A A A A A A A A A
+//2            			R R O A N E X L S R O X S N A E E U A R I C A O O O R N E H P O A A A A A A A A 1 1 1 1 1 1 1 1 1 1 2
+//1            			D D W R T D E E W D R E W A K R R B R D N E F W W W T G D I O N 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0
+~B_CHAMPION_ILMATER       0 0 0 0 0 0 0 0~
+~B_CHAMPION_ILMATER       0 0 0 0 0 0 0 0 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
+
+//MINIMUM KIT STATS_________________________________________________________________
+//                  STR DEX CON INT WIS CHR
+~B_CHAMPION_ILMATER   12   0   0   0   12  15~
+
+//KIT STAT MODIFIERS________________________________________________________________
+//                  STR DEX CON INT WIS CHR
+~B_CHAMPION_ILMATER   0   0   0   0   0   0~
+
+//REQUIREMENTS TO DUAL TO THIS KIT_________________________________________________
+//                  STR DEX CON INT WIS CHR
+~B_CHAMPION_ILMATER   0   0   0   0   15  0~
+
+//REQUIREMENTS TO DUAL FROM THIS KIT________________________________________________
+//                  STR DEX CON INT WIS CHR
+~B_CHAMPION_ILMATER   0   0   0   0   15  0~
+
+//ALIGNMENT RESTRICTIONS____________________________________________________________
+//                  LG LN LE NG TN NE CG CN CE
+~B_CHAMPION_ILMATER   1  1  0  1  0  0  1  0 0~
+
+//DUAL CLASS OPTIONS________________________________________________________________
+//                   FT CL MA TH DR RA
+~B_CHAMPION_ILMATER   0  0  0  0  0  0~
+
+//KIT ABILITIES 2DA FILE______________________________________________________________
+~faiths_and_powers/kits/champions/865_ilmater/b_chilm.2da~
+
+//RACIAL KIT AVAILABILITY_____________________________________________________________
+~K_P_E K_P_H K_P_HE K_P_G K_P_D K_P_HL K_P_HO~
+
+//UNUSABLE FLAGS AND KIT BASE CLASS_________________________________________________
+//CLASSES: Mage = 1, Fighter = 2, Cleric=3, Thief = 4, Bard = 5
+//         Paladin 6, Druid = 11, Ranger = 12, Sorcerer = 19
+//         Monk = 20
+~0x00004000 6~
+
+//HIGH LEVEL ABILITIES ABBREVIATION_________________________________________________
+~Pa0~
+
+//TOB STARTING EQUIPMENT_____________________________________________________________
+~CHAN09	* HELM07 BAG26 RING06 RING31 * BOOT01 AMUL20 BRAC10 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 HAMM07 SW1H27 STAF08~
+
+//CHARACTER CREATION KIT DESCRIPTION________________________________________________
+SAY @86501 //lower
+SAY @86502 //Mixed
+SAY @86503 //Help
+
+//EE KIT EXTRAS_____________________________________________________________________
+// 
+ACTION_IF GAME_IS ~bgee bg2ee eet iwdee~ THEN BEGIN
+	LAF fl#add_kit_ee
+		INT_VAR
+			briefdesc = RESOLVE_STR_REF (@86503)
+		STR_VAR
+			kit_name = B_CHAMPION_ILMATER
+	END
+END
+
+//ABILITY FILES______________________________________________________________
+//
+COPY ~faiths_and_powers/kits/champions/865_ilmater/b_chilm.2da~ ~override~
+
+//damage resistance spells 
+COPY ~%MOD_FOLDER%/lib/d5_base.spl~ ~override/d5pailm1.spl~
+  LPF ALTER_SPELL_HEADER INT_VAR target = 5 END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 86 target = 1 parameter1 = 20 parameter2 = 0 timing = 9 END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 87 target = 1 parameter1 = 20 parameter2 = 0 timing = 9 END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 88 target = 1 parameter1 = 20 parameter2 = 0 timing = 9 END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 88 target = 1 parameter1 = 20 parameter2 = 0 timing = 9 END
+
+COPY ~%MOD_FOLDER%/lib/d5_base.spl~ ~override/d5pailm2.spl~
+  LPF ALTER_SPELL_HEADER INT_VAR target = 5 END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 27 target = 1 parameter1 = 20 parameter2 = 0 timing = 9 END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 28 target = 1 parameter1 = 20 parameter2 = 0 timing = 9 END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 29 target = 1 parameter1 = 20 parameter2 = 0 timing = 9 END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 30 target = 1 parameter1 = 20 parameter2 = 0 timing = 9 END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 31 target = 1 parameter1 = 20 parameter2 = 0 timing = 9 END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 84 target = 1 parameter1 = 20 parameter2 = 0 timing = 9 END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 85 target = 1 parameter1 = 20 parameter2 = 0 timing = 9 END
+
+COPY ~%MOD_FOLDER%/lib/d5_base.spl~ ~override/d5pailm3.spl~
+  LPF ALTER_SPELL_HEADER INT_VAR target = 5 END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 1 STR_VAR resource = ~d5pailm1~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 1 STR_VAR resource = ~d5pailm2~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 86 target = 1 parameter1 = 30 parameter2 = 0 timing = 9 END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 87 target = 1 parameter1 = 30 parameter2 = 0 timing = 9 END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 88 target = 1 parameter1 = 30 parameter2 = 0 timing = 9 END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 88 target = 1 parameter1 = 30 parameter2 = 0 timing = 9 END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 27 target = 1 parameter1 = 30 parameter2 = 0 timing = 9 END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 28 target = 1 parameter1 = 30 parameter2 = 0 timing = 9 END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 29 target = 1 parameter1 = 30 parameter2 = 0 timing = 9 END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 30 target = 1 parameter1 = 30 parameter2 = 0 timing = 9 END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 31 target = 1 parameter1 = 30 parameter2 = 0 timing = 9 END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 84 target = 1 parameter1 = 30 parameter2 = 0 timing = 9 END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 85 target = 1 parameter1 = 30 parameter2 = 0 timing = 9 END
+
+//need to make special frenzy effect: -2hp/round for champion, +2hp/round for allies
+COPY_EXISTING ~d5pafrz.spl~ ~override/d5pafilm.spl~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 12 target = 1 parameter1 = 2 parameter2 = 0x08000000 timing = 4 duration = 6 END 
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 12 target = 1 parameter1 = 2 parameter2 = 0x08000000 timing = 4 duration = 12 END 
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 12 target = 1 parameter1 = 2 parameter2 = 0x08000000 timing = 4 duration = 18 END 
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 12 target = 1 parameter1 = 2 parameter2 = 0x08000000 timing = 4 duration = 24 END 
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 12 target = 1 parameter1 = 2 parameter2 = 0x08000000 timing = 4 duration = 30 END 
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 4 duration = 6 STR_VAR resource = ~d5pailm9~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 4 duration = 12 STR_VAR resource = ~d5pailm9~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 4 duration = 18 STR_VAR resource = ~d5pailm9~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 4 duration = 24 STR_VAR resource = ~d5pailm9~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 4 duration = 30 STR_VAR resource = ~d5pailm9~ END
+
+COPY ~%MOD_FOLDER%/lib/d5_base.spl~ ~override/d5pailm9.spl~
+  LPF ALTER_SPELL_HEADER INT_VAR target = 5 projectile = 158 END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 17 target = 2 parameter1 = 2 parameter2 = 0 timing = 1 END 
+
+
+//no FALL
+//COPY_EXISTING ~fallen.2da~ ~override~ //Remove possibility to fall
+//	              INSERT_2DA_ROW 3 0 ~B_CHAMPION_ILMATER 0~
+//BUT_ONLY_IF_IT_CHANGES
+
+//DEFINE SPHERE ACCESS______________________________________________________________
+//
+ LAF ~DEFINE_FNP_KIT_INFO~
+  STR_VAR
+    clab_name 		= ~b_chilm~
+	sphere_list		= ~ilmater_spheres~
+	class 			= ~champion~
+ END
+
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
+  WITH_TRA ~faiths_and_powers/language/%LANGUAGE%/fnp_spontaneous.tra~ BEGIN
+    LAF fnp_spontaneous STR_VAR kit_clab = ~b_chilm~ learn_res = ~b_chilz~ END
+  END
+ END
+
+// apply special frenzy to pafrz1
+ CREATE EFF ~d5pafilm~
+	WRITE_LONG 0x10 171
+	WRITE_LONG 0x14 1
+	WRITE_LONG 0x1c 0
+	WRITE_LONG 0x20 0
+	WRITE_LONG 0x24 1
+	WRITE_LONG 0x28 0
+	WRITE_SHORT 0x2c 100
+	WRITE_ASCII 0x30 ~d5pafilm~ #8
+
+ COPY_EXISTING ~splprot.2da~ ~override~
+  COUNT_2DA_COLS cols
+  READ_2DA_ENTRIES_NOW rows cols
+  FOR (row = 1; row < rows; ++row) BEGIN
+    READ_2DA_ENTRY_FORMER rows row 0 ~stat~
+	PATCH_IF (~%stat%~ STRING_EQUAL_CASE ~D5_KIT_IS~) BEGIN
+	  SET kit_is_row = %row%
+	END
+  END
+ BUT_ONLY
+
+ COPY_EXISTING ~d5pafrz1.spl~ ~override~
+  LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 318 target = 1 parameter1 = %B_CHAMPION_ILMATER% parameter2 = %kit_is_row% timing = 0 duration = 6 STR_VAR resource = ~d5pafrz1~ END
+  LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = %B_CHAMPION_ILMATER% parameter2 = 9 timing = 2 STR_VAR resource = ~d5pafilm~ END
+
+ LAF apply_archetype_options STR_VAR this_kit = ~B_CHAMPION_ILMATER~ END
+
+END
+//___________________________________________________________________________________
+
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+//								CHAMPION OF KELEMVOR
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+DEFINE_ACTION_FUNCTION champion_kelemvor BEGIN
+
+LAF check_kit_conflict END
+
+ADD_KIT ~B_CHAMP_KELE~
+
+//WEAPON PROFICIENCIES________________________________________________________________
+//11                	                   		T   S           F   Q             S S
+//10           			L S                     W   C           L   U             W I
+//9            			A M             B L S   O   I   W       A   A             O N
+//8            			R A             A O H   H   M   A       I   R C   S       R G
+//7            			G L           M S N O   A   I   R     H L   T R L H     2 D L 2                 E E E E E E E E E E E
+//6            			E L       S   I T G R   N K T D H     A M   E O O O     H A E W E E E E E E E E X X X X X X X X X X X
+//5            			S S   S B P   S A S T   D A A A A   S L O   R S N R   S A N W E X X X X X X X X T T T T T T T T T T T
+//4            			W W   P L I   S R W S   E T R G M C P B R M S S G T D L N D E A T T T T T T T T R R R R R R R R R R R
+//3            			O O B E U K A I D O W A D A W G M L E E N A T B B B A I D S A P R R R R R R R R A A A A A A A A A A A
+//2            			R R O A N E X L S R O X S N A E E U A R I C A O O O R N E H P O A A A A A A A A 1 1 1 1 1 1 1 1 1 1 2
+//1            			D D W R T D E E W D R E W A K R R B R D N E F W W W T G D I O N 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0
+~B_CHAMP_KELE           0 0 0 0 0 0 0 0~
+~B_CHAMP_KELE           0 0 0 0 0 0 0 0 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
+
+//MINIMUM KIT STATS_________________________________________________________________
+//                  STR DEX CON INT WIS CHR
+~B_CHAMP_KELE  		12   0   0   0   12  15~
+
+//KIT STAT MODIFIERS________________________________________________________________
+//                  STR DEX CON INT WIS CHR
+~B_CHAMP_KELE  		0   0   0   0   0   0~
+
+//REQUIREMENTS TO DUAL TO THIS KIT_________________________________________________
+//                  STR DEX CON INT WIS CHR
+~B_CHAMP_KELE  		0   0   0   0   15  0~
+
+//REQUIREMENTS TO DUAL FROM THIS KIT________________________________________________
+//                  STR DEX CON INT WIS CHR
+~B_CHAMP_KELE  		0   0   0   0   15  0~
+
+//ALIGNMENT RESTRICTIONS____________________________________________________________
+//                  LG LN LE NG TN NE CG CN CE
+~B_CHAMP_KELE        1  1  1  1  1  0  1  1  0~
+
+//DUAL CLASS OPTIONS________________________________________________________________
+//                  FT CL MA TH DR RA
+~B_CHAMP_KELE        0  0  0  0  0  0~
+
+//KIT ABILITIES 2DA FILE______________________________________________________________
+~faiths_and_powers/kits/champions/802_Kelemvor/b_chkel.2da~
+
+//RACIAL KIT AVAILABILITY_____________________________________________________________
+~K_P_E K_P_H K_P_HE K_P_G K_P_D K_P_HL K_P_HO~
+
+//UNUSABLE FLAGS AND KIT BASE CLASS_________________________________________________
+//CLASSES: Mage = 1, Fighter = 2, Cleric=3, Thief = 4, Bard = 5
+//         Paladin 6, Druid = 11, Ranger = 12, Sorcerer = 19
+//         Monk = 20
+~0x00004000 6~
+
+//HIGH LEVEL ABILITIES ABBREVIATION_________________________________________________
+~Pa0~
+
+//TOB STARTING EQUIPMENT_____________________________________________________________
+~CHAN09	* HELM07 BAG26 RING06 RING31 * BOOT01 AMUL20 BRAC10 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 HAMM07 SW1H27 STAF08~
+
+//CHARACTER CREATION KIT DESCRIPTION________________________________________________
+SAY @80201 //lower
+SAY @80202 //Mixed
+SAY @80203 //Help
+
+//EE KIT EXTRAS_____________________________________________________________________
+// 
+ACTION_IF GAME_IS ~bgee bg2ee eet iwdee~ THEN BEGIN
+	LAF fl#add_kit_ee
+		INT_VAR
+			briefdesc = RESOLVE_STR_REF (@80203)
+		STR_VAR
+			kit_name = B_CHAMP_KELE
+			clsrcreq = ~1 1 1 1 1 1 1~
+	END
+END
+
+//ABILITY FILES______________________________________________________________
+//
+COPY ~faiths_and_powers/kits/champions/802_Kelemvor/b_chkel.2da~ ~override~
+
+//Turn
+COPY ~faiths_and_powers/kits/champions/802_Kelemvor/b_kel01.spl~ ~override~
+
+//special smite
+COPY_EXISTING ~d5pasmt.spl~ ~override/d5paskel.spl~
+//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 248 target = 1 timing = 0 duration = 12 STR_VAR resource = ~d5pakel1~ END
+  LPF CLONE_EFFECT INT_VAR silent = 1 match_opcode = 248 STR_VAR match_resource = ~d5pasmt~ resource = ~d5pakel1~ END
+
+CREATE EFF ~d5pakel1~
+	WRITE_LONG 0x10 177
+	WRITE_LONG 0x14 2
+	WRITE_LONG 0x1c 4	//	undead
+	WRITE_LONG 0x20 3	//	general
+	WRITE_LONG 0x24 1
+	WRITE_LONG 0x28 0
+	WRITE_SHORT 0x2c 100
+	WRITE_ASCII 0x30 ~d5pasmt~ #8
+
+//nO FALL
+ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN
+  COPY_EXISTING ~fallen.2da~ ~override~ //Remove possibility to fall
+	              INSERT_2DA_ROW 3 0 ~B_CHAMP_KELE 0~
+  BUT_ONLY_IF_IT_CHANGES
+END
+
+//REPLACE VANILLA KIT WITH THIS KIT__________________________________________________
+//
+ACTION_IF FILE_EXISTS_IN_GAME ~d5__paladins.d5~ BEGIN
+  ACTION_FOR_EACH race IN ~D~ ~E~ ~G~ ~H~ ~HE~ ~HL~ ~HO~ BEGIN
+	ACTION_IF FILE_EXISTS_IN_GAME ~K_P_%race%.2da~ BEGIN
+	  COPY_EXISTING ~K_P_%race%.2da~ ~override~
+		COUNT_2DA_COLS cols
+		READ_2DA_ENTRIES_NOW rows cols
+		SET rows_removed = 0
+		FOR (row = 1; row < rows; ++row) BEGIN
+		  READ_2DA_ENTRY_FORMER rows row 1 kit
+		  PATCH_IF (%kit% = 6) BEGIN
+			REMOVE_2DA_ROW (row - rows_removed) cols
+			SET rows_removed += 1
+		  END
+		END
+	  BUT_ONLY
+	END
+  END
+END
+
+//DEFINE SPHERE ACCESS______________________________________________________________
+//
+ LAF ~DEFINE_FNP_KIT_INFO~
+  STR_VAR
+    clab_name 		= ~b_chkel~
+	sphere_list		= ~kelemvor_spheres~
+	class 			= ~champion~
+ END
+
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
+  WITH_TRA ~faiths_and_powers/language/%LANGUAGE%/fnp_spontaneous.tra~ BEGIN
+    LAF fnp_spontaneous STR_VAR kit_clab = ~b_chkel~ learn_res = ~b_chkez~ END
+  END
+ END
+
+//apply alternate smite
+ CREATE EFF ~d5paskel~
+	WRITE_LONG 0x10 171
+	WRITE_LONG 0x14 1
+	WRITE_LONG 0x1c 0
+	WRITE_LONG 0x20 0
+	WRITE_LONG 0x24 1
+	WRITE_LONG 0x28 0
+	WRITE_SHORT 0x2c 100
+	WRITE_ASCII 0x30 ~d5paskel~ #8
+
+ COPY_EXISTING ~splprot.2da~ ~override~
+  COUNT_2DA_COLS cols
+  READ_2DA_ENTRIES_NOW rows cols
+  FOR (row = 1; row < rows; ++row) BEGIN
+    READ_2DA_ENTRY_FORMER rows row 0 ~stat~
+	PATCH_IF (~%stat%~ STRING_EQUAL_CASE ~D5_KIT_IS~) BEGIN
+	  SET kit_is_row = %row%
+	END
+  END
+ BUT_ONLY
+
+ COPY_EXISTING ~d5pasmt1.spl~ ~override~
+  LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 318 target = 1 parameter1 = %B_CHAMP_KELE% parameter2 = %kit_is_row% timing = 0 duration = 6 STR_VAR resource = ~d5pasmt1~ END
+  LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = %B_CHAMP_KELE% parameter2 = 9 timing = 2 STR_VAR resource = ~d5paskel~ END
+
+ LAF apply_archetype_options STR_VAR this_kit = ~B_CHAMP_KELE~ END
+
+END
+//__________________________________________________________________________________
+
+
+DEFINE_ACTION_FUNCTION iwdee_champion_myrkul_archetypes BEGIN
+
+  ACTION_IF (FILE_EXISTS_IN_GAME ~d5parche.2da~) BEGIN
+    COPY_EXISTING ~d5parche.2da~ ~override~
+      COUNT_2DA_COLS cols
+      COUNT_2DA_ROWS cols rows
+      FOR (row = 1; row < rows; ++row) BEGIN
+        READ_2DA_ENTRY row 0 cols kelemvor
+        PATCH_IF (~%kelemvor%~ STRING_EQUAL_CASE ~B_CHAMP_KELE~) BEGIN
+          SET_2DA_ENTRY row 1 cols 0
+          SET_2DA_ENTRY row 3 cols 1
+        END
+      END
+    BUT_ONLY
+  END
+
+END	//	end function
+        
+
+//__________________________________________________________________________________
+
+DEFINE_ACTION_FUNCTION iwdee_champion_kelemvor BEGIN
+
+LAF check_kit_conflict END
+
+ADD_KIT ~B_CHAMP_KELE~
+
+//WEAPON PROFICIENCIES________________________________________________________________
+//11                	                   		T   S           F   Q             S S
+//10           			L S                     W   C           L   U             W I
+//9            			A M             B L S   O   I   W       A   A             O N
+//8            			R A             A O H   H   M   A       I   R C   S       R G
+//7            			G L           M S N O   A   I   R     H L   T R L H     2 D L 2                 E E E E E E E E E E E
+//6            			E L       S   I T G R   N K T D H     A M   E O O O     H A E W E E E E E E E E X X X X X X X X X X X
+//5            			S S   S B P   S A S T   D A A A A   S L O   R S N R   S A N W E X X X X X X X X T T T T T T T T T T T
+//4            			W W   P L I   S R W S   E T R G M C P B R M S S G T D L N D E A T T T T T T T T R R R R R R R R R R R
+//3            			O O B E U K A I D O W A D A W G M L E E N A T B B B A I D S A P R R R R R R R R A A A A A A A A A A A
+//2            			R R O A N E X L S R O X S N A E E U A R I C A O O O R N E H P O A A A A A A A A 1 1 1 1 1 1 1 1 1 1 2
+//1            			D D W R T D E E W D R E W A K R R B R D N E F W W W T G D I O N 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0
+~B_CHAMP_KELE           0 0 0 0 0 0 0 0~
+~B_CHAMP_KELE           0 0 0 0 0 0 0 0 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
+
+//MINIMUM KIT STATS_________________________________________________________________
+//                  STR DEX CON INT WIS CHR
+~B_CHAMP_KELE  		12   0   0   0   12  15~
+
+//KIT STAT MODIFIERS________________________________________________________________
+//                  STR DEX CON INT WIS CHR
+~B_CHAMP_KELE  		0   0   0   0   0   0~
+
+//REQUIREMENTS TO DUAL TO THIS KIT_________________________________________________
+//                  STR DEX CON INT WIS CHR
+~B_CHAMP_KELE  		0   0   0   0   15  0~
+
+//REQUIREMENTS TO DUAL FROM THIS KIT________________________________________________
+//                  STR DEX CON INT WIS CHR
+~B_CHAMP_KELE  		0   0   0   0   15  0~
+
+//ALIGNMENT RESTRICTIONS____________________________________________________________
+//                  LG LN LE NG TN NE CG CN CE
+~B_CHAMP_KELE        0  0  1  0  0  1  0  0  1~
+
+//DUAL CLASS OPTIONS________________________________________________________________
+//                  FT CL MA TH DR RA
+~B_CHAMP_KELE        0  0  0  0  0  0~
+
+//KIT ABILITIES 2DA FILE______________________________________________________________
+~faiths_and_powers/kits/champions/802_Kelemvor/b_chkel.2da~
+
+//RACIAL KIT AVAILABILITY_____________________________________________________________
+~K_P_E K_P_H K_P_HE K_P_G K_P_D K_P_HL K_P_HO~
+
+//UNUSABLE FLAGS AND KIT BASE CLASS_________________________________________________
+//CLASSES: Mage = 1, Fighter = 2, Cleric=3, Thief = 4, Bard = 5
+//         Paladin 6, Druid = 11, Ranger = 12, Sorcerer = 19
+//         Monk = 20
+~0x00000021 6~  //blackguard usability
+
+//HIGH LEVEL ABILITIES ABBREVIATION_________________________________________________
+~Fi0~
+
+//TOB STARTING EQUIPMENT_____________________________________________________________
+~CHAN09	* HELM07 BAG26 RING06 RING31 * BOOT01 AMUL20 BRAC10 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 HAMM07 SW1H27 STAF08~
+
+//CHARACTER CREATION KIT DESCRIPTION________________________________________________
+SAY @80206 //lower
+SAY @80207 //Mixed
+SAY @80208 //Help
+
+//EE KIT EXTRAS_____________________________________________________________________
+// 
+ACTION_IF GAME_IS ~bgee bg2ee eet iwdee~ THEN BEGIN
+	LAF fl#add_kit_ee
+		INT_VAR
+			briefdesc = RESOLVE_STR_REF (@80208)
+		STR_VAR
+			kit_name = B_CHAMP_KELE
+			clsrcreq = ~1 1 1 1 1 1 1~
+	END
+END
+
+//ABILITY FILES______________________________________________________________
+//
+COPY ~faiths_and_powers/kits/champions/802_Kelemvor/b_chkel.2da~ ~override~
+
+//Turn
+COPY ~faiths_and_powers/kits/champions/802_Kelemvor/b_kel01.spl~ ~override~
+
+//special frenzy
+COPY_EXISTING ~d5pafrz.spl~ ~override/d5pafkel.spl~
+//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 248 target = 1 timing = 0 duration = 30 STR_VAR resource = ~d5pamyr1~ END
+  LPF CLONE_EFFECT INT_VAR silent = 1 match_opcode = 250 opcode = 248 STR_VAR resource = ~d5pamyr1~ END
+
+CREATE EFF ~d5pamyr1~
+	WRITE_LONG 0x10 177
+	WRITE_LONG 0x14 2
+	WRITE_LONG 0x1c 4	//	undead
+	WRITE_LONG 0x20 3	//	general
+	WRITE_LONG 0x24 1
+	WRITE_LONG 0x28 0
+	WRITE_SHORT 0x2c 100
+	WRITE_ASCII 0x30 ~d5pamyr2~ #8
+
+CREATE EFF ~d5pamyr2~
+	WRITE_LONG 0x10 12
+	WRITE_LONG 0x14 2
+	WRITE_LONG 0x1c 0
+	WRITE_SHORT 0x20 0
+	WRITE_SHORT 0x22 64
+	WRITE_LONG 0x24 1
+	WRITE_LONG 0x28 0
+	WRITE_SHORT 0x2c 100
+	WRITE_LONG 0x38 1
+	WRITE_LONG 0x3c 6
+
+//nO FALL
+ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN
+  COPY_EXISTING ~fallen.2da~ ~override~ //Remove possibility to fall
+	              INSERT_2DA_ROW 3 0 ~B_CHAMP_KELE 0~
+  BUT_ONLY_IF_IT_CHANGES
+END
+
+//DEFINE SPHERE ACCESS______________________________________________________________
+//
+ LAF ~DEFINE_FNP_KIT_INFO~
+  INT_VAR
+  STR_VAR
+    clab_name 		= ~b_chkel~
+	sphere_list		= ~kelemvor_spheres~
+	class 			= ~champion~
+ END
+
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
+  WITH_TRA ~faiths_and_powers/language/%LANGUAGE%/fnp_spontaneous.tra~ BEGIN
+    LAF fnp_spontaneous STR_VAR kit_clab = ~b_chkel~ learn_res = ~b_chkez~ END
+  END
+ END
+
+// apply special frenzy to pafrz1
+ CREATE EFF ~d5pafkel~
+	WRITE_LONG 0x10 171
+	WRITE_LONG 0x14 1
+	WRITE_LONG 0x1c 0
+	WRITE_LONG 0x20 0
+	WRITE_LONG 0x24 1
+	WRITE_LONG 0x28 0
+	WRITE_SHORT 0x2c 100
+	WRITE_ASCII 0x30 ~d5pafkel~ #8
+
+ COPY_EXISTING ~splprot.2da~ ~override~
+  COUNT_2DA_COLS cols
+  READ_2DA_ENTRIES_NOW rows cols
+  FOR (row = 1; row < rows; ++row) BEGIN
+    READ_2DA_ENTRY_FORMER rows row 0 ~stat~
+	PATCH_IF (~%stat%~ STRING_EQUAL_CASE ~D5_KIT_IS~) BEGIN
+	  SET kit_is_row = %row%
+	END
+  END
+ BUT_ONLY
+
+ COPY_EXISTING ~d5pafrz1.spl~ ~override~
+  LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 318 target = 1 parameter1 = %B_CHAMP_KELE% parameter2 = %kit_is_row% timing = 0 duration = 6 STR_VAR resource = ~d5pafrz1~ END
+  LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = %B_CHAMP_KELE% parameter2 = 9 timing = 2 STR_VAR resource = ~d5pafkel~ END
+
+ LAF apply_archetype_options STR_VAR this_kit = ~B_CHAMP_KELE~ END
+
+END
+//__________________________________________________________________________________
+
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+//									CHAMPION OF SUNE
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+DEFINE_ACTION_FUNCTION champion_sune BEGIN
+
+LAF check_kit_conflict END
+
+ADD_KIT ~B_CHAMPION_SUNE~
+
+//WEAPON PROFICIENCIES________________________________________________________________
+//11                	                   		T   S           F   Q             S S
+//10           			L S                     W   C           L   U             W I
+//9            			A M             B L S   O   I   W       A   A             O N
+//8            			R A             A O H   H   M   A       I   R C   S       R G
+//7            			G L           M S N O   A   I   R     H L   T R L H     2 D L 2                 E E E E E E E E E E E
+//6            			E L       S   I T G R   N K T D H     A M   E O O O     H A E W E E E E E E E E X X X X X X X X X X X
+//5            			S S   S B P   S A S T   D A A A A   S L O   R S N R   S A N W E X X X X X X X X T T T T T T T T T T T
+//4            			W W   P L I   S R W S   E T R G M C P B R M S S G T D L N D E A T T T T T T T T R R R R R R R R R R R
+//3            			O O B E U K A I D O W A D A W G M L E E N A T B B B A I D S A P R R R R R R R R A A A A A A A A A A A
+//2            			R R O A N E X L S R O X S N A E E U A R I C A O O O R N E H P O A A A A A A A A 1 1 1 1 1 1 1 1 1 1 2
+//1            			D D W R T D E E W D R E W A K R R B R D N E F W W W T G D I O N 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0
+~B_CHAMPION_SUNE          0 0 0 0 0 0 0 0~
+~B_CHAMPION_SUNE          0 0 0 0 0 0 0 0 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
+
+//MINIMUM KIT STATS_________________________________________________________________
+//                  STR DEX CON INT WIS CHR
+~B_CHAMPION_SUNE     12   0   0   0   12  17~
+
+//KIT STAT MODIFIERS________________________________________________________________
+//                  STR DEX CON INT WIS CHR
+~B_CHAMPION_SUNE      0   0   0   0   0   0~
+
+//REQUIREMENTS TO DUAL TO THIS KIT_________________________________________________
+//                  STR DEX CON INT WIS CHR
+~B_CHAMPION_SUNE      0   0   0   0   15  0~
+
+//REQUIREMENTS TO DUAL FROM THIS KIT________________________________________________
+//                  STR DEX CON INT WIS CHR
+~B_CHAMPION_SUNE      0   0   0   0   15  0~
+
+//ALIGNMENT RESTRICTIONS____________________________________________________________
+//                  LG LN LE NG TN NE CG CN CE
+~B_CHAMPION_SUNE     1  1  0  1  1  0  1  1 0~
+
+//DUAL CLASS OPTIONS________________________________________________________________
+//                  FT CL MA TH DR RA
+~B_CHAMPION_SUNE     0  0  0  0  0  0~
+
+//KIT ABILITIES 2DA FILE______________________________________________________________
+~faiths_and_powers/kits/champions/868_sune/b_chsun.2da~
+
+//RACIAL KIT AVAILABILITY_____________________________________________________________
+~K_P_E K_P_H K_P_HE K_P_G K_P_D K_P_HL K_P_HO~
+
+//UNUSABLE FLAGS AND KIT BASE CLASS_________________________________________________
+//CLASSES: Mage = 1, Fighter = 2, Cleric=3, Thief = 4, Bard = 5
+//         Paladin 6, Druid = 11, Ranger = 12, Sorcerer = 19
+//         Monk = 20
+~0x00004000 6~
+
+//HIGH LEVEL ABILITIES ABBREVIATION_________________________________________________
+~Pa0~
+
+//TOB STARTING EQUIPMENT_____________________________________________________________
+~CHAN09	* HELM07 BAG26 RING06 RING31 * BOOT01 AMUL20 BRAC10 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 HAMM07 SW1H27 STAF08~
+
+//CHARACTER CREATION KIT DESCRIPTION________________________________________________
+SAY @86801 //lower
+SAY @86802 //Mixed
+SAY @86803 //Help
+
+//EE KIT EXTRAS_____________________________________________________________________
+// 
+ACTION_IF GAME_IS ~bgee bg2ee eet iwdee~ THEN BEGIN
+	LAF fl#add_kit_ee
+		INT_VAR
+			briefdesc = RESOLVE_STR_REF (@86803)
+		STR_VAR
+			kit_name = B_CHAMPION_SUNE
+	END
+END
+
+//ABILITY FILES______________________________________________________________
+//
+COPY ~faiths_and_powers/kits/champions/868_sune/b_chsun.2da~ ~override~
+//modified frenzy
+
+//special spell
+COPY ~%MOD_FOLDER%/kits/champions/868_sune/b_sun01.bam~ ~override~
+COPY ~faiths_and_powers/kits/champions/868_sune/b_sun01.spl~ ~override~
+  SAY NAME1 @86804
+  SAY UNIDENTIFIED_DESC @86805
+  LPF ALTER_SPELL_HEADER STR_VAR icon = ~b_sun01~ END
+
+//nO FALL
+//COPY_EXISTING ~fallen.2da~ ~override~ //Remove possibility to fall
+//	              INSERT_2DA_ROW 3 0 ~B_CHAMPION_SUNE 0~
+//BUT_ONLY_IF_IT_CHANGES
+
+//DEFINE SPHERE ACCESS______________________________________________________________
+//
+ LAF ~DEFINE_FNP_KIT_INFO~
+  STR_VAR
+    clab_name 		= ~b_chsun~
+	sphere_list		= ~sune_spheres~
+	class 			= ~champion~
+ END
+
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
+  WITH_TRA ~faiths_and_powers/language/%LANGUAGE%/fnp_spontaneous.tra~ BEGIN
+    LAF fnp_spontaneous STR_VAR kit_clab = ~b_chsun~ learn_res = ~b_chsuz~ END
+  END
+ END
+
+ LAF apply_archetype_options STR_VAR this_kit = ~B_CHAMPION_SUNE~ END
+
+END
+//___________________________________________________________________________________
+
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+//							CHAMPION OF MYSTRA
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+DEFINE_ACTION_FUNCTION champion_mystra BEGIN
+
+LAF check_kit_conflict END
+
+ADD_KIT ~B_CHAMPION_MYSTRA~
+
+//WEAPON PROFICIENCIES________________________________________________________________
+//11                	                   		T   S           F   Q             S S
+//10           			L S                     W   C           L   U             W I
+//9            			A M             B L S   O   I   W       A   A             O N
+//8            			R A             A O H   H   M   A       I   R C   S       R G
+//7            			G L           M S N O   A   I   R     H L   T R L H     2 D L 2                 E E E E E E E E E E E
+//6            			E L       S   I T G R   N K T D H     A M   E O O O     H A E W E E E E E E E E X X X X X X X X X X X
+//5            			S S   S B P   S A S T   D A A A A   S L O   R S N R   S A N W E X X X X X X X X T T T T T T T T T T T
+//4            			W W   P L I   S R W S   E T R G M C P B R M S S G T D L N D E A T T T T T T T T R R R R R R R R R R R
+//3            			O O B E U K A I D O W A D A W G M L E E N A T B B B A I D S A P R R R R R R R R A A A A A A A A A A A
+//2            			R R O A N E X L S R O X S N A E E U A R I C A O O O R N E H P O A A A A A A A A 1 1 1 1 1 1 1 1 1 1 2
+//1            			D D W R T D E E W D R E W A K R R B R D N E F W W W T G D I O N 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0
+~B_CHAMPION_MYSTRA        0 0 0 0 0 0 0 0~
+~B_CHAMPION_MYSTRA        0 0 0 0 0 0 0 0 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
+
+//MINIMUM KIT STATS_________________________________________________________________
+//                  STR DEX CON INT WIS CHR
+~B_CHAMPION_MYSTRA   12   0   0   0   12  15~
+
+//KIT STAT MODIFIERS________________________________________________________________
+//                  STR DEX CON INT WIS CHR
+~B_CHAMPION_MYSTRA   0   0   0   0   0   0~
+
+//REQUIREMENTS TO DUAL TO THIS KIT_________________________________________________
+//                  STR DEX CON INT WIS CHR
+~B_CHAMPION_MYSTRA   0   0   0   0   15  0~
+
+//REQUIREMENTS TO DUAL FROM THIS KIT________________________________________________
+//                  STR DEX CON INT WIS CHR
+~B_CHAMPION_MYSTRA   0   0   0   0   15  0~
+
+//ALIGNMENT RESTRICTIONS____________________________________________________________
+//                  LG LN LE NG TN NE CG CN CE
+~B_CHAMPION_MYSTRA   1  1  0  1  1  0  1  1 0~
+
+//DUAL CLASS OPTIONS________________________________________________________________
+//                  FT CL MA TH DR RA
+~B_CHAMPION_MYSTRA   0  0  0  0  0  0~
+
+//KIT ABILITIES 2DA FILE______________________________________________________________
+~faiths_and_powers/kits/champions/869_mystra/b_chmys.2da~
+
+//RACIAL KIT AVAILABILITY_____________________________________________________________
+~K_P_E K_P_H K_P_HE K_P_G K_P_D K_P_HL K_P_HO~
+
+//UNUSABLE FLAGS AND KIT BASE CLASS_________________________________________________
+//CLASSES: Mage = 1, Fighter = 2, Cleric=3, Thief = 4, Bard = 5
+//         Paladin 6, Druid = 11, Ranger = 12, Sorcerer = 19
+//         Monk = 20
+~0x00004000 6~
+
+//HIGH LEVEL ABILITIES ABBREVIATION_________________________________________________
+~Pa0~
+
+//TOB STARTING EQUIPMENT_____________________________________________________________
+~CHAN09	* HELM07 BAG26 RING06 RING31 * BOOT01 AMUL20 BRAC10 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 HAMM07 SW1H27 STAF08~
+
+//CHARACTER CREATION KIT DESCRIPTION________________________________________________
+SAY @86901 //lower
+SAY @86902 //Mixed
+SAY @86903 //Help
+
+//EE KIT EXTRAS_____________________________________________________________________
+// 
+ACTION_IF GAME_IS ~bgee bg2ee eet iwdee~ THEN BEGIN
+	LAF fl#add_kit_ee
+		INT_VAR
+			briefdesc = RESOLVE_STR_REF (@86903)
+		STR_VAR
+			kit_name = B_CHAMPION_MYSTRA
+	END
+END
+
+//ABILITY FILES______________________________________________________________
+//
+COPY ~faiths_and_powers/kits/champions/869_mystra/b_chmys.2da~ ~override~
+//modified frenzy
+
+COPY_EXISTING ~spwi321.spl~ ~override/d5pamys1.spl~
+  LPM spell_to_innate
+
+COPY_EXISTING ~spwi608.spl~ ~override/d5pamys2.spl~
+  LPM spell_to_innate
+
+//special smite
+COPY_EXISTING ~d5pasmt.spl~ ~override/d5pasmys.spl~
+//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 248 target = 1 timing = 0 duration = 12 STR_VAR resource = ~d5pamys3~ END
+  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 248 STR_VAR match_resource = ~d5pasmt~ resource = ~d5pamys3~ END
+
+CREATE EFF ~d5pamys3~
+	WRITE_LONG 0x10 146
+	WRITE_LONG 0x14 2
+	WRITE_LONG 0x1c 0
+	WRITE_LONG 0x20 1
+	WRITE_LONG 0x24 1
+	WRITE_LONG 0x28 0
+	WRITE_SHORT 0x2c 100
+	WRITE_ASCII 0x30 ~spwi513~ #8
+
+//special frenzy
+COPY_EXISTING ~d5pafrz.spl~ ~override/d5pafmys.spl~
+//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 248 target = 1 timing = 0 duration = 30 STR_VAR resource = ~d5pamyr1~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter1 = 0 parameter2 = 1 timing = 1 STR_VAR resource = ~d5pamys4~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter1 = 0 parameter2 = 1 timing = 4 duration = 6 STR_VAR resource = ~d5pamys4~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter1 = 0 parameter2 = 1 timing = 4 duration = 12 STR_VAR resource = ~d5pamys4~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter1 = 0 parameter2 = 1 timing = 4 duration = 18 STR_VAR resource = ~d5pamys4~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter1 = 0 parameter2 = 1 timing = 4 duration = 24 STR_VAR resource = ~d5pamys4~ END
+
+COPY ~%MOD_FOLDER%/lib/d5_base.spl~ ~override/d5pamys4.spl~
+  LPF ALTER_SPELL_HEADER INT_VAR target = 5 projectile = 159 END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 60 target = 2 parameter1 = 25 parameter2 = 0 timing = 0 duration = 7 END 
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 60 target = 2 parameter1 = 25 parameter2 = 1 timing = 0 duration = 7 END 
+  LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 321 target = 2 timing = 1 STR_VAR resource = ~d5pamys4~ END 
+
+//nO FALL
+//COPY_EXISTING ~fallen.2da~ ~override~ //Remove possibility to fall
+//	              INSERT_2DA_ROW 3 0 ~B_CHAMPION_MYSTRA 0~
+//BUT_ONLY_IF_IT_CHANGES
+
+//DEFINE SPHERE ACCESS______________________________________________________________
+//
+ LAF ~DEFINE_FNP_KIT_INFO~
+  STR_VAR
+    clab_name 		= ~b_chmys~
+	sphere_list		= ~mystra_spheres~
+	class 			= ~champion~
+ END
+ 
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
+  WITH_TRA ~faiths_and_powers/language/%LANGUAGE%/fnp_spontaneous.tra~ BEGIN
+    LAF fnp_spontaneous STR_VAR kit_clab = ~b_chmys~ learn_res = ~b_chmyz~ END
+  END
+ END
+
+//apply alternate smite
+ CREATE EFF ~d5pasmys~
+	WRITE_LONG 0x10 171
+	WRITE_LONG 0x14 1
+	WRITE_LONG 0x1c 0
+	WRITE_LONG 0x20 0
+	WRITE_LONG 0x24 1
+	WRITE_LONG 0x28 0
+	WRITE_SHORT 0x2c 100
+	WRITE_ASCII 0x30 ~d5pasmys~ #8
+
+ COPY_EXISTING ~splprot.2da~ ~override~
+  COUNT_2DA_COLS cols
+  READ_2DA_ENTRIES_NOW rows cols
+  FOR (row = 1; row < rows; ++row) BEGIN
+    READ_2DA_ENTRY_FORMER rows row 0 ~stat~
+	PATCH_IF (~%stat%~ STRING_EQUAL_CASE ~D5_KIT_IS~) BEGIN
+	  SET kit_is_row = %row%
+	END
+  END
+ BUT_ONLY
+
+ COPY_EXISTING ~d5pasmt1.spl~ ~override~
+  LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 318 target = 1 parameter1 = %B_CHAMPION_MYSTRA% parameter2 = %kit_is_row% timing = 0 duration = 6 STR_VAR resource = ~d5pasmt1~ END
+  LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = %B_CHAMPION_MYSTRA% parameter2 = 9 timing = 2 STR_VAR resource = ~d5pasmys~ END
+
+// apply special frenzy to pafrz1
+ CREATE EFF ~d5pafmys~
+	WRITE_LONG 0x10 171
+	WRITE_LONG 0x14 1
+	WRITE_LONG 0x1c 0
+	WRITE_LONG 0x20 0
+	WRITE_LONG 0x24 1
+	WRITE_LONG 0x28 0
+	WRITE_SHORT 0x2c 100
+	WRITE_ASCII 0x30 ~d5pafmys~ #8
+
+ COPY_EXISTING ~splprot.2da~ ~override~
+  COUNT_2DA_COLS cols
+  READ_2DA_ENTRIES_NOW rows cols
+  FOR (row = 1; row < rows; ++row) BEGIN
+    READ_2DA_ENTRY_FORMER rows row 0 ~stat~
+	PATCH_IF (~%stat%~ STRING_EQUAL_CASE ~D5_KIT_IS~) BEGIN
+	  SET kit_is_row = %row%
+	END
+  END
+ BUT_ONLY
+
+ COPY_EXISTING ~d5pafrz1.spl~ ~override~
+  LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 318 target = 1 parameter1 = %B_CHAMPION_MYSTRA% parameter2 = %kit_is_row% timing = 0 duration = 6 STR_VAR resource = ~d5pafrz1~ END
+  LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = %B_CHAMPION_MYSTRA% parameter2 = 9 timing = 2 STR_VAR resource = ~d5pafmys~ END
+
+ LAF apply_archetype_options STR_VAR this_kit = ~B_CHAMPION_MYSTRA~ END
+
+END
+//___________________________________________________________________________________
+
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+//								CHAMPION OF AZUTH
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+DEFINE_ACTION_FUNCTION champion_azuth BEGIN
+
+LAF check_kit_conflict END
+
+ADD_KIT ~B_CHAMP_AZUTH~
+
+//WEAPON PROFICIENCIES________________________________________________________________
+//11               	                    		T   S           F   Q             S S
+//10           			L S                     W   C           L   U             W I
+//9            			A M             B L S   O   I   W       A   A             O N
+//8            			R A             A O H   H   M   A       I   R C   S       R G
+//7            			G L           M S N O   A   I   R     H L   T R L H     2 D L 2                 E E E E E E E E E E E
+//6            			E L       S   I T G R   N K T D H     A M   E O O O     H A E W E E E E E E E E X X X X X X X X X X X
+//5            			S S   S B P   S A S T   D A A A A   S L O   R S N R   S A N W E X X X X X X X X T T T T T T T T T T T
+//4            			W W   P L I   S R W S   E T R G M C P B R M S S G T D L N D E A T T T T T T T T R R R R R R R R R R R
+//3            			O O B E U K A I D O W A D A W G M L E E N A T B B B A I D S A P R R R R R R R R A A A A A A A A A A A
+//2            			R R O A N E X L S R O X S N A E E U A R I C A O O O R N E H P O A A A A A A A A 1 1 1 1 1 1 1 1 1 1 2
+//1            			D D W R T D E E W D R E W A K R R B R D N E F W W W T G D I O N 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0
+~B_CHAMP_AZUTH          0 0 0 0 0 0 0 0~
+~B_CHAMP_AZUTH          0 0 0 0 0 0 0 0 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
+
+//MINIMUM KIT STATS_________________________________________________________________
+//                  STR DEX CON INT WIS CHR
+~B_CHAMP_AZUTH        12   0   0   0   12  15~
+
+//KIT STAT MODIFIERS________________________________________________________________
+//                  STR DEX CON INT WIS CHR
+~B_CHAMP_AZUTH        0   0   0   0   0   0~
+
+//REQUIREMENTS TO DUAL TO THIS KIT_________________________________________________
+//                  STR DEX CON INT WIS CHR
+~B_CHAMP_AZUTH        0   0   0   0   15  0~
+
+//REQUIREMENTS TO DUAL FROM THIS KIT________________________________________________
+//                  STR DEX CON INT WIS CHR
+~B_CHAMP_AZUTH        0   0   0   0   15  0~
+
+//ALIGNMENT RESTRICTIONS____________________________________________________________
+//                  LG LN LE NG TN NE CG CN CE
+~B_CHAMP_AZUTH       1  1  0  1  1  0  0  0  0~
+
+//DUAL CLASS OPTIONS________________________________________________________________
+//                  FT CL MA TH DR RA
+~B_CHAMP_AZUTH        0  0  0  0  0  0~
+
+//KIT ABILITIES 2DA FILE______________________________________________________________
+~faiths_and_powers/kits/champions/808_Azuth/b_chazu.2da~
+
+//RACIAL KIT AVAILABILITY_____________________________________________________________
+~K_P_E K_P_H K_P_HE K_P_G K_P_D K_P_HL K_P_HO~
+
+//UNUSABLE FLAGS AND KIT BASE CLASS_________________________________________________
+//CLASSES: Mage = 1, Fighter = 2, Cleric=3, Thief = 4, Bard = 5
+//         Paladin 6, Druid = 11, Ranger = 12, Sorcerer = 19
+//         Monk = 20
+~0x00004000 6~
+
+//HIGH LEVEL ABILITIES ABBREVIATION_________________________________________________
+~Pa0~
+
+//TOB STARTING EQUIPMENT_____________________________________________________________
+~CHAN09	* HELM07 BAG26 RING06 RING31 * BOOT01 AMUL20 BRAC10 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 HAMM07 SW1H27 STAF08~
+
+//CHARACTER CREATION KIT DESCRIPTION________________________________________________
+SAY @80801 //lower
+SAY @80802 //Mixed
+SAY @80803 //Help
+
+//EE KIT EXTRAS_____________________________________________________________________
+// 
+ACTION_IF GAME_IS ~bgee bg2ee eet iwdee~ THEN BEGIN
+	LAF fl#add_kit_ee
+		INT_VAR
+			briefdesc = RESOLVE_STR_REF (@80803)
+		STR_VAR
+			kit_name = B_CHAMP_AZUTH
+			clsrcreq = ~1 1 1 1 1 1 1~
+	END
+END
+
+//ABILITY FILES______________________________________________________________
+//
+COPY ~faiths_and_powers/kits/champions/808_Azuth/b_chazu.2da~ ~override~
+
+ACTION_IF !(FILE_EXISTS_IN_GAME ~d5pamys1.spl~) BEGIN
+ COPY_EXISTING ~spwi321.spl~ ~override/d5pamys1.spl~
+  LPM spell_to_innate
+END
+ACTION_IF !(FILE_EXISTS_IN_GAME ~d5pamys2.spl~) BEGIN
+ COPY_EXISTING ~spwi608.spl~ ~override/d5pamys2.spl~
+  LPM spell_to_innate
+END
+
+ACTION_IF !(FILE_EXISTS_IN_GAME ~d5pamys2.spl~) BEGIN
+ COPY ~%MOD_FOLDER%/lib/d5_base.spl~ ~override/d5pacim.spl~ 
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 101 target = 1 parameter2 = 5 timing = 9 END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 duration = 0 STR_VAR resource = ~d5pacim~ END
+ COPY_EXISTING ~d5pacim.spl~ ~override~
+  LPF cd_apply_batch STR_VAR array_name = cd_immunity_charm_arrays END
+END
+
+//DEFINE SPHERE ACCESS______________________________________________________________
+//
+ LAF ~DEFINE_FNP_KIT_INFO~
+  STR_VAR
+    clab_name 		= ~b_chazu~
+	sphere_list		= ~azuth_spheres~
+	class 			= ~champion~
+ END
+
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
+  WITH_TRA ~faiths_and_powers/language/%LANGUAGE%/fnp_spontaneous.tra~ BEGIN
+    LAF fnp_spontaneous STR_VAR kit_clab = ~b_chazu~ learn_res = ~b_chazz~ END
+  END
+ END
+
+ LAF apply_archetype_options STR_VAR this_kit = ~B_CHAMP_AZUTH~ END
+
+END
+//__________________________________________________________________________________
+
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+//							CHAMPION OF TEMPUS
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+DEFINE_ACTION_FUNCTION champion_tempus BEGIN
+
+LAF check_kit_conflict END
+
+ADD_KIT ~B_CHAMP_TEMP~
+
+//WEAPON PROFICIENCIES________________________________________________________________
+//11                	                   		T   S           F   Q             S S
+//10           			L S                     W   C           L   U             W I
+//9            			A M             B L S   O   I   W       A   A             O N
+//8            			R A             A O H   H   M   A       I   R C   S       R G
+//7            			G L           M S N O   A   I   R     H L   T R L H     2 D L 2                 E E E E E E E E E E E
+//6            			E L       S   I T G R   N K T D H     A M   E O O O     H A E W E E E E E E E E X X X X X X X X X X X
+//5            			S S   S B P   S A S T   D A A A A   S L O   R S N R   S A N W E X X X X X X X X T T T T T T T T T T T
+//4            			W W   P L I   S R W S   E T R G M C P B R M S S G T D L N D E A T T T T T T T T R R R R R R R R R R R
+//3            			O O B E U K A I D O W A D A W G M L E E N A T B B B A I D S A P R R R R R R R R A A A A A A A A A A A
+//2            			R R O A N E X L S R O X S N A E E U A R I C A O O O R N E H P O A A A A A A A A 1 1 1 1 1 1 1 1 1 1 2
+//1            			D D W R T D E E W D R E W A K R R B R D N E F W W W T G D I O N 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0
+~B_CHAMP_TEMP           0 0 0 0 0 0 0 0~
+~B_CHAMP_TEMP           0 0 0 0 0 0 0 0 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 2 2 2 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
+
+//MINIMUM KIT STATS_________________________________________________________________
+//                  STR DEX CON INT WIS CHR
+~B_CHAMP_TEMP  		12   0   0   0   12  15~
+
+//KIT STAT MODIFIERS________________________________________________________________
+//                  STR DEX CON INT WIS CHR
+~B_CHAMP_TEMP  		0   0   0   0   0   0~
+
+//REQUIREMENTS TO DUAL TO THIS KIT_________________________________________________
+//                  STR DEX CON INT WIS CHR
+~B_CHAMP_TEMP  		0   0   0   0   15  0~
+
+//REQUIREMENTS TO DUAL FROM THIS KIT________________________________________________
+//                  STR DEX CON INT WIS CHR
+~B_CHAMP_TEMP  		0   0   0   0   15  0~
+
+//ALIGNMENT RESTRICTIONS____________________________________________________________
+//                  LG LN LE NG TN NE CG CN CE
+~B_CHAMP_TEMP        1  1  1  1  1  1  1  1  1~
+
+//DUAL CLASS OPTIONS________________________________________________________________
+//                  FT CL MA TH DR RA
+~B_CHAMP_TEMP        0  0  0  0  0  0~
+
+//KIT ABILITIES 2DA FILE______________________________________________________________
+~faiths_and_powers/kits/champions/803_tempus/b_chtem.2da~
+
+//RACIAL KIT AVAILABILITY_____________________________________________________________
+~K_P_E K_P_H K_P_HE K_P_G K_P_D K_P_HL K_P_HO~
+
+//UNUSABLE FLAGS AND KIT BASE CLASS_________________________________________________
+//CLASSES: Mage = 1, Fighter = 2, Cleric=3, Thief = 4, Bard = 5
+//         Paladin 6, Druid = 11, Ranger = 12, Sorcerer = 19
+//         Monk = 20
+~0x00004000 6~
+
+//HIGH LEVEL ABILITIES ABBREVIATION_________________________________________________
+~Fi0~
+
+//TOB STARTING EQUIPMENT_____________________________________________________________
+~CHAN09	* HELM07 BAG26 RING06 RING31 * BOOT01 AMUL20 BRAC10 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 HAMM07 SW1H27 STAF08~
+
+//CHARACTER CREATION KIT DESCRIPTION________________________________________________
+SAY @80301 //lower
+SAY @80302 //Mixed
+SAY @80303 //Help
+
+//EE KIT EXTRAS_____________________________________________________________________
+// 
+ACTION_IF GAME_IS ~bgee bg2ee eet iwdee~ THEN BEGIN
+	LAF fl#add_kit_ee
+		INT_VAR
+			briefdesc = RESOLVE_STR_REF (@80303)
+		STR_VAR
+			kit_name = B_CHAMP_TEMP
+			clsrcreq = ~1 1 1 1 1 1 1~
+	END
+END
+
+//ABILITY FILES______________________________________________________________
+//
+COPY ~faiths_and_powers/kits/champions/803_tempus/b_chtem.2da~ ~override~
+
+ACTION_IF !(FILE_EXISTS_IN_GAME ~d5_notu.spl~) BEGIN
+  COPY ~faiths_and_powers/data/misc/d5_notu.spl~ ~override~
+END
+
+COPY_EXISTING ~d5pafrz.spl~ ~override/d5paftem.spl~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 4 duration = 6 STR_VAR resource = ~d5patem9~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 4 duration = 12 STR_VAR resource = ~d5patem9~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 4 duration = 18 STR_VAR resource = ~d5patem9~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 4 duration = 24 STR_VAR resource = ~d5patem9~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 4 duration = 30 STR_VAR resource = ~d5patem9~ END
+
+COPY ~%MOD_FOLDER%/lib/d5_base.spl~ ~override/d5patem9.spl~
+  LPF ALTER_SPELL_HEADER INT_VAR target = 5 projectile = 158 END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 37 target = 2 parameter1 = 2 parameter2 = 0 timing = 0 duration = 7 END 
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 250 target = 1 parameter1 = 2 parameter2 = 0 timing = 0 duration = 7 END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 278 target = 1 parameter1 = 2 parameter2 = 0 timing = 0 duration = 7 END
+  LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 321 target = 2 timing = 1 STR_VAR resource = ~d5patem9~ END 
+
+//nO FALL
+ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN
+  COPY_EXISTING ~fallen.2da~ ~override~ //Remove possibility to fall
+	              INSERT_2DA_ROW 3 0 ~B_CHAMP_TEMP 0~
+  BUT_ONLY_IF_IT_CHANGES
+END
+
+//DEFINE SPHERE ACCESS______________________________________________________________
+//
+ LAF ~DEFINE_FNP_KIT_INFO~
+  STR_VAR
+    clab_name 		= ~b_chtem~
+	sphere_list		= ~tempus_spheres~
+	class 			= ~champion~
+ END
+
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
+  WITH_TRA ~faiths_and_powers/language/%LANGUAGE%/fnp_spontaneous.tra~ BEGIN
+    LAF fnp_spontaneous STR_VAR kit_clab = ~b_chtem~ learn_res = ~b_chtez~ END
+  END
+ END
+
+// apply special frenzy to pafrz1
+ CREATE EFF ~d5paftem~
+	WRITE_LONG 0x10 171
+	WRITE_LONG 0x14 1
+	WRITE_LONG 0x1c 0
+	WRITE_LONG 0x20 0
+	WRITE_LONG 0x24 1
+	WRITE_LONG 0x28 0
+	WRITE_SHORT 0x2c 100
+	WRITE_ASCII 0x30 ~d5paftem~ #8
+
+ COPY_EXISTING ~splprot.2da~ ~override~
+  COUNT_2DA_COLS cols
+  READ_2DA_ENTRIES_NOW rows cols
+  FOR (row = 1; row < rows; ++row) BEGIN
+    READ_2DA_ENTRY_FORMER rows row 0 ~stat~
+	PATCH_IF (~%stat%~ STRING_EQUAL_CASE ~D5_KIT_IS~) BEGIN
+	  SET kit_is_row = %row%
+	END
+  END
+ BUT_ONLY
+
+ COPY_EXISTING ~d5pafrz1.spl~ ~override~
+  LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 318 target = 1 parameter1 = %B_CHAMP_TEMP% parameter2 = %kit_is_row% timing = 0 duration = 6 STR_VAR resource = ~d5pafrz1~ END
+  LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = %B_CHAMP_TEMP% parameter2 = 9 timing = 2 STR_VAR resource = ~d5paftem~ END
+
+ LAF apply_archetype_options STR_VAR this_kit = ~B_CHAMP_TEMP~ END
+
+END
+//__________________________________________________________________________________
+
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+//							CHAMPION OF THE RED KNIGHT
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+DEFINE_ACTION_FUNCTION champion_red BEGIN
+
+LAF check_kit_conflict END
+
+ADD_KIT ~B_CHAMP_RED~
+
+//WEAPON PROFICIENCIES________________________________________________________________
+//11                	                   		T   S           F   Q             S S
+//10           			L S                     W   C           L   U             W I
+//9            			A M             B L S   O   I   W       A   A             O N
+//8            			R A             A O H   H   M   A       I   R C   S       R G
+//7            			G L           M S N O   A   I   R     H L   T R L H     2 D L 2                 E E E E E E E E E E E
+//6            			E L       S   I T G R   N K T D H     A M   E O O O     H A E W E E E E E E E E X X X X X X X X X X X
+//5            			S S   S B P   S A S T   D A A A A   S L O   R S N R   S A N W E X X X X X X X X T T T T T T T T T T T
+//4            			W W   P L I   S R W S   E T R G M C P B R M S S G T D L N D E A T T T T T T T T R R R R R R R R R R R
+//3            			O O B E U K A I D O W A D A W G M L E E N A T B B B A I D S A P R R R R R R R R A A A A A A A A A A A
+//2            			R R O A N E X L S R O X S N A E E U A R I C A O O O R N E H P O A A A A A A A A 1 1 1 1 1 1 1 1 1 1 2
+//1            			D D W R T D E E W D R E W A K R R B R D N E F W W W T G D I O N 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0
+~B_CHAMP_RED            0 0 0 0 0 0 0 0~
+~B_CHAMP_RED            0 0 0 0 0 0 0 0 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 2 2 2 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
+
+//MINIMUM KIT STATS_________________________________________________________________
+//                  STR DEX CON INT WIS CHR
+~B_CHAMP_RED  		12   0   0   0   12  15~
+
+//KIT STAT MODIFIERS________________________________________________________________
+//                  STR DEX CON INT WIS CHR
+~B_CHAMP_RED  		0   0   0   0   0   0~
+
+//REQUIREMENTS TO DUAL TO THIS KIT_________________________________________________
+//                  STR DEX CON INT WIS CHR
+~B_CHAMP_RED  		0   0   0   0   15  0~
+
+//REQUIREMENTS TO DUAL FROM THIS KIT________________________________________________
+//                  STR DEX CON INT WIS CHR
+~B_CHAMP_RED  		0   0   0   0   15  0~
+
+//ALIGNMENT RESTRICTIONS____________________________________________________________
+//                  LG LN LE NG TN NE CG CN CE
+~B_CHAMP_RED        1  1  1  1  1  1  0  0  0~
+
+//DUAL CLASS OPTIONS________________________________________________________________
+//                  FT CL MA TH DR RA
+~B_CHAMP_RED        0  0  0  0  0  0~
+
+//KIT ABILITIES 2DA FILE______________________________________________________________
+~faiths_and_powers/kits/champions/809_red/b_chred.2da~
+
+//RACIAL KIT AVAILABILITY_____________________________________________________________
+~K_P_E K_P_H K_P_HE K_P_G K_P_D K_P_HL K_P_HO~
+
+//UNUSABLE FLAGS AND KIT BASE CLASS_________________________________________________
+//CLASSES: Mage = 1, Fighter = 2, Cleric=3, Thief = 4, Bard = 5
+//         Paladin 6, Druid = 11, Ranger = 12, Sorcerer = 19
+//         Monk = 20
+~0x00004000 6~
+
+//HIGH LEVEL ABILITIES ABBREVIATION_________________________________________________
+~Fi0~
+
+//TOB STARTING EQUIPMENT_____________________________________________________________
+~CHAN09	* HELM07 BAG26 RING06 RING31 * BOOT01 AMUL20 BRAC10 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 HAMM07 SW1H27 STAF08~
+
+//CHARACTER CREATION KIT DESCRIPTION________________________________________________
+SAY @80901 //lower
+SAY @80902 //Mixed
+SAY @80903 //Help
+
+//EE KIT EXTRAS_____________________________________________________________________
+// 
+ACTION_IF GAME_IS ~bgee bg2ee eet iwdee~ THEN BEGIN
+	LAF fl#add_kit_ee
+		INT_VAR
+			briefdesc = RESOLVE_STR_REF (@80903)
+		STR_VAR
+			kit_name = B_CHAMP_RED
+			clsrcreq = ~1 1 1 1 1 1 1~
+	END
+END
+
+//ABILITY FILES______________________________________________________________
+//
+COPY ~faiths_and_powers/kits/champions/809_red/b_chred.2da~ ~override~
+
+//Knight's Move    b_ch109
+COPY_EXISTING ~spwi401.spl~ ~override/b_ch109.spl~
+  LPM spell_to_innate
+
+//nO FALL
+ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN
+  COPY_EXISTING ~fallen.2da~ ~override~ //Remove possibility to fall
+	              INSERT_2DA_ROW 3 0 ~B_CHAMP_RED 0~
+  BUT_ONLY_IF_IT_CHANGES
+END
+
+//DEFINE SPHERE ACCESS______________________________________________________________
+//
+ LAF ~DEFINE_FNP_KIT_INFO~
+  STR_VAR
+    clab_name 		= ~b_chred~
+	sphere_list		= ~redknight_spheres~
+	class 			= ~champion~
+ END
+
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
+  WITH_TRA ~faiths_and_powers/language/%LANGUAGE%/fnp_spontaneous.tra~ BEGIN
+    LAF fnp_spontaneous STR_VAR kit_clab = ~b_chred~ learn_res = ~b_chrez~ END
+  END
+ END
+
+ LAF apply_archetype_options STR_VAR this_kit = ~B_CHAMP_RED~ END
+
+END
+//__________________________________________________________________________________
+
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+//								CHAMPION OF TALOS
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+DEFINE_ACTION_FUNCTION champion_talos BEGIN
+
+LAF check_kit_conflict END
+
+ADD_KIT ~B_CHAMP_TALOS~
+
+//WEAPON PROFICIENCIES________________________________________________________________
+//11                	                   		T   S           F   Q             S S
+//10           			L S                     W   C           L   U             W I
+//9            			A M             B L S   O   I   W       A   A             O N
+//8            			R A             A O H   H   M   A       I   R C   S       R G
+//7            			G L           M S N O   A   I   R     H L   T R L H     2 D L 2                 E E E E E E E E E E E
+//6            			E L       S   I T G R   N K T D H     A M   E O O O     H A E W E E E E E E E E X X X X X X X X X X X
+//5            			S S   S B P   S A S T   D A A A A   S L O   R S N R   S A N W E X X X X X X X X T T T T T T T T T T T
+//4            			W W   P L I   S R W S   E T R G M C P B R M S S G T D L N D E A T T T T T T T T R R R R R R R R R R R
+//3            			O O B E U K A I D O W A D A W G M L E E N A T B B B A I D S A P R R R R R R R R A A A A A A A A A A A
+//2            			R R O A N E X L S R O X S N A E E U A R I C A O O O R N E H P O A A A A A A A A 1 1 1 1 1 1 1 1 1 1 2
+//1            			D D W R T D E E W D R E W A K R R B R D N E F W W W T G D I O N 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0
+~B_CHAMP_TALOS          0 0 0 0 0 0 0 0~
+~B_CHAMP_TALOS          0 0 0 0 0 0 0 0 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
+
+//MINIMUM KIT STATS_________________________________________________________________
+//                  STR DEX CON INT WIS CHR
+~B_CHAMP_TALOS       12   0   0   0   12  15~
+
+//KIT STAT MODIFIERS________________________________________________________________
+//                  STR DEX CON INT WIS CHR
+~B_CHAMP_TALOS       0   0   0   0   0   0~
+
+//REQUIREMENTS TO DUAL TO THIS KIT_________________________________________________
+//                  STR DEX CON INT WIS CHR
+~B_CHAMP_TALOS       0   0   0   0   15  0~
+
+//REQUIREMENTS TO DUAL FROM THIS KIT________________________________________________
+//                  STR DEX CON INT WIS CHR
+~B_CHAMP_TALOS       0   0   0   0   15  0~
+
+//ALIGNMENT RESTRICTIONS____________________________________________________________
+//                  LG LN LE NG TN NE CG CN CE
+~B_CHAMP_TALOS       0  0  1  0  0  1  0  1  1~
+
+//DUAL CLASS OPTIONS________________________________________________________________
+//                  FT CL MA TH DR RA
+~B_CHAMP_TALOS        0  0  0  0  0  0~
+
+//KIT ABILITIES 2DA FILE______________________________________________________________
+~faiths_and_powers/kits/champions/806_talos/b_chtal.2da~
+
+//RACIAL KIT AVAILABILITY_____________________________________________________________
+~K_P_E K_P_H K_P_HE K_P_G K_P_D K_P_HL K_P_HO~
+
+//UNUSABLE FLAGS AND KIT BASE CLASS_________________________________________________
+//CLASSES: Mage = 1, Fighter = 2, Cleric=3, Thief = 4, Bard = 5
+//         Paladin 6, Druid = 11, Ranger = 12, Sorcerer = 19
+//         Monk = 20
+~0x00004000 6~
+
+//HIGH LEVEL ABILITIES ABBREVIATION_________________________________________________
+~Fi0~
+
+//TOB STARTING EQUIPMENT_____________________________________________________________
+~CHAN09	* HELM07 BAG26 RING06 RING31 * BOOT01 AMUL20 BRAC10 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 HAMM07 SW1H27 STAF08~
+
+//CHARACTER CREATION KIT DESCRIPTION________________________________________________
+SAY @80601 //lower
+SAY @80602 //Mixed
+SAY @80603 //Help
+
+//EE KIT EXTRAS_____________________________________________________________________
+// 
+ACTION_IF GAME_IS ~bgee bg2ee eet iwdee~ THEN BEGIN
+	LAF fl#add_kit_ee
+		INT_VAR
+			briefdesc = RESOLVE_STR_REF (@80603)
+		STR_VAR
+			kit_name = B_CHAMP_TALOS
+			clsrcreq = ~1 1 1 1 1 1 1~
+	END
+END
+
+//ABILITY FILES______________________________________________________________
+//
+COPY ~faiths_and_powers/kits/champions/806_talos/b_chtal.2da~ ~override~
+
+COPY ~faiths_and_powers/kits/clerics/224_talos/b_tal01.spl~   ~override~  //  Electricity resist
+
+//special smite
+COPY_EXISTING ~d5pasmt.spl~ ~override/d5pastal.spl~
+//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 248 target = 1 timing = 0 duration = 12 STR_VAR resource = ~d5patal2~ END
+  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 248 STR_VAR match_resource = ~d5pasmt~ resource = ~d5patal2~ END
+  LPF CLONE_EFFECT INT_VAR silent = 1 match_opcode = 248 STR_VAR resource = ~d5patal3~ END
+
+CREATE EFF ~d5patal2~
+	WRITE_LONG 0x10 12
+	WRITE_LONG 0x14 2
+	WRITE_LONG 0x1c 0
+	WRITE_SHORT 0x20 0
+	WRITE_SHORT 0x22 4	//	lightning dammage type
+	WRITE_LONG 0x24 1
+	WRITE_LONG 0x28 0
+	WRITE_SHORT 0x2c 100
+	WRITE_LONG 0x38 2
+	WRITE_LONG 0x3c 6
+
+CREATE EFF ~d5patal3~
+	WRITE_LONG 0x10 45
+	WRITE_LONG 0x14 2
+	WRITE_LONG 0x1c 0
+	WRITE_LONG 0x20 0
+	WRITE_LONG 0x24 0
+	WRITE_LONG 0x28 2
+	WRITE_SHORT 0x2c 50
+	WRITE_LONG 0x40 16
+
+//special frenzy
+COPY_EXISTING ~d5pafrz.spl~ ~override/d5paftal.spl~
+//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 248 target = 1 timing = 0 duration = 30 STR_VAR resource = ~d5patal4~ END
+  LPF CLONE_EFFECT INT_VAR silent = 1 match_opcode = 250 opcode = 248 STR_VAR resource = ~d5patal4~ END
+
+CREATE EFF ~d5patal4~
+	WRITE_LONG 0x10 12
+	WRITE_LONG 0x14 2
+	WRITE_LONG 0x1c 0
+	WRITE_SHORT 0x20 0
+	WRITE_SHORT 0x22 4	//	lightning damage type
+	WRITE_LONG 0x24 1
+	WRITE_LONG 0x28 0
+	WRITE_SHORT 0x2c 100
+	WRITE_LONG 0x38 1
+	WRITE_LONG 0x3c 6
+
+//nO FALL
+ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN
+  COPY_EXISTING ~fallen.2da~ ~override~ //Remove possibility to fall
+	              INSERT_2DA_ROW 3 0 ~B_CHAMP_TALOS 0~
+  BUT_ONLY_IF_IT_CHANGES
+END
+
+//DEFINE SPHERE ACCESS______________________________________________________________
+//
+ LAF ~DEFINE_FNP_KIT_INFO~
+  INT_VAR
+	u_leather_armor 	= 1
+  STR_VAR
+    clab_name 		= ~b_chtal~
+	sphere_list		= ~talos_spheres~
+	class 			= ~champion~
+ END
+
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
+  WITH_TRA ~faiths_and_powers/language/%LANGUAGE%/fnp_spontaneous.tra~ BEGIN
+    LAF fnp_spontaneous STR_VAR kit_clab = ~b_chtal~ learn_res = ~b_chtaz~ END
+  END
+ END
+
+// apply special frenzy to pafrz1
+ CREATE EFF ~d5paftal~
+	WRITE_LONG 0x10 171
+	WRITE_LONG 0x14 1
+	WRITE_LONG 0x1c 0
+	WRITE_LONG 0x20 0
+	WRITE_LONG 0x24 1
+	WRITE_LONG 0x28 0
+	WRITE_SHORT 0x2c 100
+	WRITE_ASCII 0x30 ~d5paftal~ #8
+
+ COPY_EXISTING ~splprot.2da~ ~override~
+  COUNT_2DA_COLS cols
+  READ_2DA_ENTRIES_NOW rows cols
+  FOR (row = 1; row < rows; ++row) BEGIN
+    READ_2DA_ENTRY_FORMER rows row 0 ~stat~
+	PATCH_IF (~%stat%~ STRING_EQUAL_CASE ~D5_KIT_IS~) BEGIN
+	  SET kit_is_row = %row%
+	END
+  END
+ BUT_ONLY
+
+ COPY_EXISTING ~d5pafrz1.spl~ ~override~
+  LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 318 target = 1 parameter1 = %B_CHAMP_TALOS% parameter2 = %kit_is_row% timing = 0 duration = 6 STR_VAR resource = ~d5pafrz1~ END
+  LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = %B_CHAMP_TALOS% parameter2 = 9 timing = 2 STR_VAR resource = ~d5paftal~ END
+
+ LAF apply_archetype_options STR_VAR this_kit = ~B_CHAMP_TALOS~ END
+
+END
+//__________________________________________________________________________________
+
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+//								CHAMPION OF KOSSUTH
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+DEFINE_ACTION_FUNCTION champion_kossuth BEGIN
+
+LAF check_kit_conflict END
+
+ADD_KIT ~B_CHAMPION_KOSS~
+
+//WEAPON PROFICIENCIES________________________________________________________________
+//11                	                   		T   S           F   Q             S S
+//10           			L S                     W   C           L   U             W I
+//9            			A M             B L S   O   I   W       A   A             O N
+//8            			R A             A O H   H   M   A       I   R C   S       R G
+//7            			G L           M S N O   A   I   R     H L   T R L H     2 D L 2                 E E E E E E E E E E E
+//6            			E L       S   I T G R   N K T D H     A M   E O O O     H A E W E E E E E E E E X X X X X X X X X X X
+//5            			S S   S B P   S A S T   D A A A A   S L O   R S N R   S A N W E X X X X X X X X T T T T T T T T T T T
+//4            			W W   P L I   S R W S   E T R G M C P B R M S S G T D L N D E A T T T T T T T T R R R R R R R R R R R
+//3            			O O B E U K A I D O W A D A W G M L E E N A T B B B A I D S A P R R R R R R R R A A A A A A A A A A A
+//2            			R R O A N E X L S R O X S N A E E U A R I C A O O O R N E H P O A A A A A A A A 1 1 1 1 1 1 1 1 1 1 2
+//1            			D D W R T D E E W D R E W A K R R B R D N E F W W W T G D I O N 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0
+~B_CHAMPION_KOSS          0 0 0 0 0 0 0 0~
+~B_CHAMPION_KOSS          0 0 0 0 0 0 0 0 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
+
+//MINIMUM KIT STATS_________________________________________________________________
+//                  STR DEX CON INT WIS CHR
+~B_CHAMPION_KOSS       12   0   0   0   12  15~
+
+//KIT STAT MODIFIERS________________________________________________________________
+//                  STR DEX CON INT WIS CHR
+~B_CHAMPION_KOSS       0   0   0   0   0   0~
+
+//REQUIREMENTS TO DUAL TO THIS KIT_________________________________________________
+//                  STR DEX CON INT WIS CHR
+~B_CHAMPION_KOSS       0   0   0   0   15  0~
+
+//REQUIREMENTS TO DUAL FROM THIS KIT________________________________________________
+//                  STR DEX CON INT WIS CHR
+~B_CHAMPION_KOSS       0   0   0   0   15  0~
+
+//ALIGNMENT RESTRICTIONS____________________________________________________________
+//                  LG LN LE NG TN NE CG CN CE
+~B_CHAMPION_KOSS       1  1  1  1  1  1  1  1  1~
+
+//DUAL CLASS OPTIONS________________________________________________________________
+//                  FT CL MA TH DR RA
+~B_CHAMPION_KOSS      0  0  0  0  0  0~
+
+//KIT ABILITIES 2DA FILE______________________________________________________________
+~faiths_and_powers/kits/champions/864_kossuth/b_chkos.2da~
+
+//RACIAL KIT AVAILABILITY_____________________________________________________________
+~K_P_E K_P_H K_P_HE K_P_G K_P_D K_P_HL K_P_HO~
+
+//UNUSABLE FLAGS AND KIT BASE CLASS_________________________________________________
+//CLASSES: Mage = 1, Fighter = 2, Cleric=3, Thief = 4, Bard = 5
+//         Paladin 6, Druid = 11, Ranger = 12, Sorcerer = 19
+//         Monk = 20
+~0x00004000 6~
+
+//HIGH LEVEL ABILITIES ABBREVIATION_________________________________________________
+~Fi0~
+
+//TOB STARTING EQUIPMENT_____________________________________________________________
+~CHAN09	* HELM07 BAG26 RING06 RING31 * BOOT01 AMUL20 BRAC10 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 HAMM07 SW1H27 STAF08~
+
+//CHARACTER CREATION KIT DESCRIPTION________________________________________________
+SAY @86401 //lower
+SAY @86402 //Mixed
+SAY @86403 //Help
+
+//EE KIT EXTRAS_____________________________________________________________________
+// 
+ACTION_IF GAME_IS ~bgee bg2ee eet iwdee~ THEN BEGIN
+	LAF fl#add_kit_ee
+		INT_VAR
+			briefdesc = RESOLVE_STR_REF (@86403)
+		STR_VAR
+			kit_name = B_CHAMPION_KOSS
+	END
+END
+
+//ABILITY FILES______________________________________________________________
+//
+COPY ~faiths_and_powers/kits/champions/864_kossuth/b_chkos.2da~ ~override~
+
+COPY ~%MOD_FOLDER%/lib/d5_base.spl~ ~override/d5pakos1.spl~
+  LPF ALTER_SPELL_HEADER INT_VAR target = 5 END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 1 STR_VAR resource = ~d5pakos1~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 30 target = 1 parameter1 = 50 parameter2 = 0 timing = 9 END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 84 target = 1 parameter1 = 50 parameter2 = 0 timing = 9 END
+
+//special frenzy
+COPY_EXISTING ~d5pafrz.spl~ ~override/d5pafkos.spl~
+//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 248 target = 1 timing = 0 duration = 30 STR_VAR resource = ~d5pakos2~ END
+  LPF CLONE_EFFECT INT_VAR silent = 1 match_opcode = 250 opcode = 146 parameter1 = 0 parameter2 = 1 timing = 1 STR_VAR resource = ~d5pakos2~ END
+
+//Fireshield red 5 round duration:
+COPY_EXISTING ~SPWI418.spl~ ~override/b_kos02.spl~
+  LPF ALTER_EFFECT INT_VAR match_opcode = 30 duration = 30 END
+  LPF ALTER_EFFECT INT_VAR match_opcode = 84 duration = 30 END
+  LPF ALTER_EFFECT INT_VAR match_opcode = 142 duration = 30 END
+  LPF ALTER_EFFECT INT_VAR match_opcode = 328 duration = 30 END
+  LPF ALTER_EFFECT INT_VAR match_opcode = 233 duration = 30 END
+BUT_ONLY
+
+//nO FALL
+ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN
+  COPY_EXISTING ~fallen.2da~ ~override~ //Remove possibility to fall
+	              INSERT_2DA_ROW 3 0 ~B_CHAMPION_KOSS 0~
+  BUT_ONLY_IF_IT_CHANGES
+END
+
+//DEFINE SPHERE ACCESS______________________________________________________________
+//
+ LAF ~DEFINE_FNP_KIT_INFO~
+  STR_VAR
+    clab_name 		= ~b_chkos~
+	sphere_list		= ~kossuth_spheres~
+	class 			= ~champion~
+ END
+
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
+  WITH_TRA ~faiths_and_powers/language/%LANGUAGE%/fnp_spontaneous.tra~ BEGIN
+    LAF fnp_spontaneous STR_VAR kit_clab = ~b_chkos~ learn_res = ~b_chkoz~ END
+  END
+ END
+
+// apply special frenzy to pafrz1
+ CREATE EFF ~d5pafkos~
+	WRITE_LONG 0x10 171
+	WRITE_LONG 0x14 1
+	WRITE_LONG 0x1c 0
+	WRITE_LONG 0x20 0
+	WRITE_LONG 0x24 1
+	WRITE_LONG 0x28 0
+	WRITE_SHORT 0x2c 100
+	WRITE_ASCII 0x30 ~d5pafkos~ #8
+
+ COPY_EXISTING ~splprot.2da~ ~override~
+  COUNT_2DA_COLS cols
+  READ_2DA_ENTRIES_NOW rows cols
+  FOR (row = 1; row < rows; ++row) BEGIN
+    READ_2DA_ENTRY_FORMER rows row 0 ~stat~
+	PATCH_IF (~%stat%~ STRING_EQUAL_CASE ~D5_KIT_IS~) BEGIN
+	  SET kit_is_row = %row%
+	END
+  END
+ BUT_ONLY
+
+ COPY_EXISTING ~d5pafrz1.spl~ ~override~
+  LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 318 target = 1 parameter1 = %B_CHAMPION_KOSS% parameter2 = %kit_is_row% timing = 0 duration = 6 STR_VAR resource = ~d5pafrz1~ END
+  LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = %B_CHAMPION_KOSS% parameter2 = 9 timing = 2 STR_VAR resource = ~d5pafkos~ END
+
+ LAF apply_archetype_options STR_VAR this_kit = ~B_CHAMPION_KOSS~ END
+
+END
+//___________________________________________________________________________________
+
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+//								CHAMPION OF GARAGOS
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+DEFINE_ACTION_FUNCTION champion_garagos BEGIN
+
+LAF check_kit_conflict END
+
+ADD_KIT ~B_CHAMPION_GARAGOS~
+
+//WEAPON PROFICIENCIES________________________________________________________________
+//11                	                   		T   S           F   Q             S S
+//10           			L S                     W   C           L   U             W I
+//9            			A M             B L S   O   I   W       A   A             O N
+//8            			R A             A O H   H   M   A       I   R C   S       R G
+//7            			G L           M S N O   A   I   R     H L   T R L H     2 D L 2                 E E E E E E E E E E E
+//6            			E L       S   I T G R   N K T D H     A M   E O O O     H A E W E E E E E E E E X X X X X X X X X X X
+//5            			S S   S B P   S A S T   D A A A A   S L O   R S N R   S A N W E X X X X X X X X T T T T T T T T T T T
+//4            			W W   P L I   S R W S   E T R G M C P B R M S S G T D L N D E A T T T T T T T T R R R R R R R R R R R
+//3            			O O B E U K A I D O W A D A W G M L E E N A T B B B A I D S A P R R R R R R R R A A A A A A A A A A A
+//2            			R R O A N E X L S R O X S N A E E U A R I C A O O O R N E H P O A A A A A A A A 1 1 1 1 1 1 1 1 1 1 2
+//1            			D D W R T D E E W D R E W A K R R B R D N E F W W W T G D I O N 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0
+~B_CHAMPION_GARAGOS       0 0 0 0 0 0 0 0~
+~B_CHAMPION_GARAGOS       0 0 0 0 0 0 0 0 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
+
+//MINIMUM KIT STATS_________________________________________________________________
+//                  STR DEX CON INT WIS CHR
+~B_CHAMPION_GARAGOS    12   0   0   0   12  15~
+
+//KIT STAT MODIFIERS________________________________________________________________
+//                  STR DEX CON INT WIS CHR
+~B_CHAMPION_GARAGOS    0   0   0   0   0   0~
+
+//REQUIREMENTS TO DUAL TO THIS KIT_________________________________________________
+//                  STR DEX CON INT WIS CHR
+~B_CHAMPION_GARAGOS    0   0   0   0   15  0~
+
+//REQUIREMENTS TO DUAL FROM THIS KIT________________________________________________
+//                  STR DEX CON INT WIS CHR
+~B_CHAMPION_GARAGOS    0   0   0   0   15  0~
+
+//ALIGNMENT RESTRICTIONS____________________________________________________________
+//                  LG LN LE NG TN NE CG CN CE
+~B_CHAMPION_GARAGOS    0  0  0  0  1  1  1  1  1~
+
+//DUAL CLASS OPTIONS________________________________________________________________
+//                  FT CL MA TH DR RA
+~B_CHAMPION_GARAGOS      0  0  0  0  0  0~
+
+//KIT ABILITIES 2DA FILE______________________________________________________________
+~faiths_and_powers/kits/champions/866_garagos/b_chgar.2da~
+
+//RACIAL KIT AVAILABILITY_____________________________________________________________
+~K_P_E K_P_H K_P_HE K_P_G K_P_D K_P_HL K_P_HO~
+
+//UNUSABLE FLAGS AND KIT BASE CLASS_________________________________________________
+//CLASSES: Mage = 1, Fighter = 2, Cleric=3, Thief = 4, Bard = 5
+//         Paladin 6, Druid = 11, Ranger = 12, Sorcerer = 19
+//         Monk = 20
+~0x00004000 6~
+
+//HIGH LEVEL ABILITIES ABBREVIATION_________________________________________________
+~Fi0~
+
+//TOB STARTING EQUIPMENT_____________________________________________________________
+~CHAN09	* HELM07 BAG26 RING06 RING31 * BOOT01 AMUL20 BRAC10 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 HAMM07 SW1H27 STAF08~
+
+//CHARACTER CREATION KIT DESCRIPTION________________________________________________
+SAY @86601 //lower
+SAY @86602 //Mixed
+SAY @86603 //Help
+
+//EE KIT EXTRAS_____________________________________________________________________
+// 
+ACTION_IF GAME_IS ~bgee bg2ee eet iwdee~ THEN BEGIN
+	LAF fl#add_kit_ee
+		INT_VAR
+			briefdesc = RESOLVE_STR_REF (@86603)
+		STR_VAR
+			kit_name = B_CHAMPION_GARAGOS
+	END
+END
+
+//ABILITY FILES______________________________________________________________
+//
+COPY ~faiths_and_powers/kits/champions/866_garagos/b_chgar.2da~ ~override~
+
+//special frenzy
+COPY_EXISTING ~d5pafrz.spl~ ~override/d5pafgar.spl~
+  LPF CLONE_EFFECT INT_VAR silent = 1 match_opcode = 250 opcode = 44 parameter1 = 3 parameter2 = 0 END
+
+//DEFINE SPHERE ACCESS______________________________________________________________
+//
+ LAF ~DEFINE_FNP_KIT_INFO~
+  STR_VAR
+    clab_name 		= ~b_chgar~
+	sphere_list		= ~garagos_spheres~
+	class 			= ~champion~
+ END
+
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
+  WITH_TRA ~faiths_and_powers/language/%LANGUAGE%/fnp_spontaneous.tra~ BEGIN
+    LAF fnp_spontaneous STR_VAR kit_clab = ~b_chgar~ learn_res = ~b_chgaz~ END
+  END
+ END
+
+// apply special frenzy to pafrz1
+ CREATE EFF ~d5pafgar~
+	WRITE_LONG 0x10 171
+	WRITE_LONG 0x14 1
+	WRITE_LONG 0x1c 0
+	WRITE_LONG 0x20 0
+	WRITE_LONG 0x24 1
+	WRITE_LONG 0x28 0
+	WRITE_SHORT 0x2c 100
+	WRITE_ASCII 0x30 ~d5pafgar~ #8
+
+ COPY_EXISTING ~splprot.2da~ ~override~
+  COUNT_2DA_COLS cols
+  READ_2DA_ENTRIES_NOW rows cols
+  FOR (row = 1; row < rows; ++row) BEGIN
+    READ_2DA_ENTRY_FORMER rows row 0 ~stat~
+	PATCH_IF (~%stat%~ STRING_EQUAL_CASE ~D5_KIT_IS~) BEGIN
+	  SET kit_is_row = %row%
+	END
+  END
+ BUT_ONLY
+
+ COPY_EXISTING ~d5pafrz1.spl~ ~override~
+  LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 318 target = 1 parameter1 = %B_CHAMPION_GARAGOS% parameter2 = %kit_is_row% timing = 0 duration = 6 STR_VAR resource = ~d5pafrz1~ END
+  LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = %B_CHAMPION_GARAGOS% parameter2 = 9 timing = 2 STR_VAR resource = ~d5pafgar~ END
+
+ LAF apply_archetype_options STR_VAR this_kit = ~B_CHAMPION_GARAGOS~ END
+
+END
+//___________________________________________________________________________________
+
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+//								CHAMPION OF BANE
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+DEFINE_ACTION_FUNCTION champion_bane BEGIN
+
+LAF check_kit_conflict END
+
+ADD_KIT ~B_CHAMP_BANE~
+
+//WEAPON PROFICIENCIES________________________________________________________________
+//11              	                     		T   S           F   Q             S S
+//10           			L S                     W   C           L   U             W I
+//9            			A M             B L S   O   I   W       A   A             O N
+//8            			R A             A O H   H   M   A       I   R C   S       R G
+//7            			G L           M S N O   A   I   R     H L   T R L H     2 D L 2                 E E E E E E E E E E E
+//6            			E L       S   I T G R   N K T D H     A M   E O O O     H A E W E E E E E E E E X X X X X X X X X X X
+//5            			S S   S B P   S A S T   D A A A A   S L O   R S N R   S A N W E X X X X X X X X T T T T T T T T T T T
+//4            			W W   P L I   S R W S   E T R G M C P B R M S S G T D L N D E A T T T T T T T T R R R R R R R R R R R
+//3            			O O B E U K A I D O W A D A W G M L E E N A T B B B A I D S A P R R R R R R R R A A A A A A A A A A A
+//2            			R R O A N E X L S R O X S N A E E U A R I C A O O O R N E H P O A A A A A A A A 1 1 1 1 1 1 1 1 1 1 2
+//1            			D D W R T D E E W D R E W A K R R B R D N E F W W W T G D I O N 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0
+~B_CHAMP_BANE           0 0 0 0 0 0 0 0~
+~B_CHAMP_BANE           0 0 0 0 0 0 0 0 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
+
+//MINIMUM KIT STATS_________________________________________________________________
+//                  STR DEX CON INT WIS CHR
+~B_CHAMP_BANE       12   0   0   0   12  15~
+
+//KIT STAT MODIFIERS________________________________________________________________
+//                  STR DEX CON INT WIS CHR
+~B_CHAMP_BANE       0   0   0   0   0   0~
+
+//REQUIREMENTS TO DUAL TO THIS KIT_________________________________________________
+//                  STR DEX CON INT WIS CHR
+~B_CHAMP_BANE       0   0   0   0   15  0~
+
+//REQUIREMENTS TO DUAL FROM THIS KIT________________________________________________
+//                  STR DEX CON INT WIS CHR
+~B_CHAMP_BANE       0   0   0   0   15  0~
+
+//ALIGNMENT RESTRICTIONS____________________________________________________________
+//                  LG LN LE NG TN NE CG CN CE
+~B_CHAMP_BANE       0  1  1  0  0  1  0  0  1~
+
+//DUAL CLASS OPTIONS________________________________________________________________
+//                  FT CL MA TH DR RA
+~B_CHAMP_BANE        0  0  0  0  0  0~
+
+//KIT ABILITIES 2DA FILE______________________________________________________________
+~faiths_and_powers/kits/champions/804_bane/b_chban.2da~
+
+//RACIAL KIT AVAILABILITY_____________________________________________________________
+~K_P_E K_P_H K_P_HE K_P_G K_P_D K_P_HL K_P_HO~
+
+//UNUSABLE FLAGS AND KIT BASE CLASS_________________________________________________
+//CLASSES: Mage = 1, Fighter = 2, Cleric=3, Thief = 4, Bard = 5
+//         Paladin 6, Druid = 11, Ranger = 12, Sorcerer = 19
+//         Monk = 20
+~0x00004000 6~
+
+//HIGH LEVEL ABILITIES ABBREVIATION_________________________________________________
+~Fi0~
+
+//TOB STARTING EQUIPMENT_____________________________________________________________
+~CHAN09	* HELM07 BAG26 RING06 RING31 * BOOT01 AMUL20 BRAC10 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 HAMM07 SW1H27 STAF08~
+
+//CHARACTER CREATION KIT DESCRIPTION________________________________________________
+SAY @80401 //lower
+SAY @80402 //Mixed
+SAY @80403 //Help
+
+//EE KIT EXTRAS_____________________________________________________________________
+// 
+ACTION_IF GAME_IS ~bgee bg2ee eet iwdee~ THEN BEGIN
+	LAF fl#add_kit_ee
+		INT_VAR
+			briefdesc = RESOLVE_STR_REF (@80403)
+		STR_VAR
+			kit_name = B_CHAMP_BANE
+			clsrcreq = ~1 1 1 1 1 1 1~
+	END
+END
+
+//ABILITY FILES______________________________________________________________
+//
+COPY ~faiths_and_powers/kits/champions/804_bane/b_chban.2da~ ~override~
+
+COPY_EXISTING ~spwi205.spl~ ~override/d5paban1.spl~
+  LPM spell_to_innate
+
+//special frenzy
+COPY_EXISTING ~d5pafrz.spl~ ~override/d5pafban.spl~
+//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 248 target = 1 timing = 0 duration = 30 STR_VAR resource = ~d5patal4~ END
+  LPF CLONE_EFFECT INT_VAR silent = 1 match_opcode = 250 opcode = 248 STR_VAR resource = ~d5paban2~ END
+
+CREATE EFF ~d5paban2~
+	WRITE_LONG 0x10 24
+	WRITE_LONG 0x14 2
+	WRITE_LONG 0x1c 0
+	WRITE_LONG 0x20 0
+	WRITE_LONG 0x24 0
+	WRITE_LONG 0x28 12
+	WRITE_SHORT 0x2c 100
+
+//nO FALL
+ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN
+	COPY_EXISTING ~fallen.2da~ ~override~ //Remove possibility to fall
+		INSERT_2DA_ROW 3 0 ~B_CHAMP_BANE 0~
+	BUT_ONLY_IF_IT_CHANGES
+END
+
+//DEFINE SPHERE ACCESS______________________________________________________________
+//
+ LAF ~DEFINE_FNP_KIT_INFO~
+  STR_VAR
+    clab_name 		= ~b_chban~
+	sphere_list		= ~bane_spheres~
+	class 			= ~champion~
+ END
+
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
+  WITH_TRA ~faiths_and_powers/language/%LANGUAGE%/fnp_spontaneous.tra~ BEGIN
+    LAF fnp_spontaneous STR_VAR kit_clab = ~b_chban~ learn_res = ~b_chbaz~ END
+  END
+ END
+
+// apply special frenzy to pafrz1
+ CREATE EFF ~d5pafban~
+	WRITE_LONG 0x10 171
+	WRITE_LONG 0x14 1
+	WRITE_LONG 0x1c 0
+	WRITE_LONG 0x20 0
+	WRITE_LONG 0x24 1
+	WRITE_LONG 0x28 0
+	WRITE_SHORT 0x2c 100
+	WRITE_ASCII 0x30 ~d5pafban~ #8
+
+ COPY_EXISTING ~splprot.2da~ ~override~
+  COUNT_2DA_COLS cols
+  READ_2DA_ENTRIES_NOW rows cols
+  FOR (row = 1; row < rows; ++row) BEGIN
+    READ_2DA_ENTRY_FORMER rows row 0 ~stat~
+	PATCH_IF (~%stat%~ STRING_EQUAL_CASE ~D5_KIT_IS~) BEGIN
+	  SET kit_is_row = %row%
+	END
+  END
+ BUT_ONLY
+
+ COPY_EXISTING ~d5pafrz1.spl~ ~override~
+  LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 318 target = 1 parameter1 = %B_CHAMP_BANE% parameter2 = %kit_is_row% timing = 0 duration = 6 STR_VAR resource = ~d5pafrz1~ END
+  LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = %B_CHAMP_BANE% parameter2 = 9 timing = 2 STR_VAR resource = ~d5pafban~ END
+
+ LAF apply_archetype_options STR_VAR this_kit = ~B_CHAMP_BANE~ END
+
+END
+//__________________________________________________________________________________
+
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+//							CHAMPION OF EILISTRAEE
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+DEFINE_ACTION_FUNCTION champion_eilistraee BEGIN
+
+LAF check_kit_conflict END
+
+ADD_KIT ~B_CHAMPION_EILISTRAEE~
+
+//WEAPON PROFICIENCIES________________________________________________________________
+//11                	                   		T   S           F   Q             S S
+//10           			L S                     W   C           L   U             W I
+//9            			A M             B L S   O   I   W       A   A             O N
+//8            			R A             A O H   H   M   A       I   R C   S       R G
+//7            			G L           M S N O   A   I   R     H L   T R L H     2 D L 2                 E E E E E E E E E E E
+//6            			E L       S   I T G R   N K T D H     A M   E O O O     H A E W E E E E E E E E X X X X X X X X X X X
+//5            			S S   S B P   S A S T   D A A A A   S L O   R S N R   S A N W E X X X X X X X X T T T T T T T T T T T
+//4            			W W   P L I   S R W S   E T R G M C P B R M S S G T D L N D E A T T T T T T T T R R R R R R R R R R R
+//3            			O O B E U K A I D O W A D A W G M L E E N A T B B B A I D S A P R R R R R R R R A A A A A A A A A A A
+//2            			R R O A N E X L S R O X S N A E E U A R I C A O O O R N E H P O A A A A A A A A 1 1 1 1 1 1 1 1 1 1 2
+//1            			D D W R T D E E W D R E W A K R R B R D N E F W W W T G D I O N 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0
+~B_CHAMPION_EILISTRAEE    0 0 0 0 0 0 0 0~
+~B_CHAMPION_EILISTRAEE    0 0 0 0 0 0 0 0 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
+
+//MINIMUM KIT STATS_________________________________________________________________
+//                      STR DEX CON INT WIS CHR
+~B_CHAMPION_EILISTRAEE   12   0   0   0   12  15~
+
+//KIT STAT MODIFIERS________________________________________________________________
+//                      STR DEX CON INT WIS CHR
+~B_CHAMPION_EILISTRAEE   0   0   0   0   0   0~
+
+//REQUIREMENTS TO DUAL TO THIS KIT_________________________________________________
+//                      STR DEX CON INT WIS CHR
+~B_CHAMPION_EILISTRAEE   0   0   0   0   15  0~
+
+//REQUIREMENTS TO DUAL FROM THIS KIT________________________________________________
+//                      STR DEX CON INT WIS CHR
+~B_CHAMPION_EILISTRAEE   0   0   0   0   15  0~
+
+//ALIGNMENT RESTRICTIONS____________________________________________________________
+//                       LG LN LE NG TN NE CG CN CE
+~B_CHAMPION_EILISTRAEE      1  1  0  1  1  0  1  1 0~
+
+//DUAL CLASS OPTIONS________________________________________________________________
+//                  FT CL MA TH DR RA
+~B_CHAMPION_EILISTRAEE      0  0  0  0  0  0~
+
+//KIT ABILITIES 2DA FILE______________________________________________________________
+~faiths_and_powers/kits/champions/870_eilistraee/b_cheil.2da~
+
+//RACIAL KIT AVAILABILITY_____________________________________________________________
+~K_P_E K_P_H K_P_HE K_P_G K_P_D K_P_HL K_P_HO~
+
+//UNUSABLE FLAGS AND KIT BASE CLASS_________________________________________________
+//CLASSES: Mage = 1, Fighter = 2, Cleric=3, Thief = 4, Bard = 5
+//         Paladin 6, Druid = 11, Ranger = 12, Sorcerer = 19
+//         Monk = 20
+~0x00004000 6~
+
+//HIGH LEVEL ABILITIES ABBREVIATION_________________________________________________
+~Pa0~
+
+//TOB STARTING EQUIPMENT_____________________________________________________________
+~CHAN09	* HELM07 BAG26 RING06 RING31 * BOOT01 AMUL20 BRAC10 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 HAMM07 SW1H27 STAF08~
+
+//CHARACTER CREATION KIT DESCRIPTION________________________________________________
+SAY @87001 //lower
+SAY @87002 //Mixed
+SAY @87003 //Help
+
+//EE KIT EXTRAS_____________________________________________________________________
+// 
+ACTION_IF GAME_IS ~bgee bg2ee eet iwdee~ THEN BEGIN
+	LAF fl#add_kit_ee
+		INT_VAR
+			briefdesc = RESOLVE_STR_REF (@87003)
+		STR_VAR
+			kit_name = B_CHAMPION_EILISTRAEE
+	END
+END
+
+//ABILITY FILES______________________________________________________________
+//
+COPY ~faiths_and_powers/kits/champions/870_eilistraee/b_cheil.2da~ ~override~
+
+COPY ~%MOD_FOLDER%/lib/d5_base.spl~ ~override/d5paeil1.spl~
+  LPF ALTER_SPELL_HEADER INT_VAR target = 5 END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 1 parameter1 = 0 parameter2 = 2 timing = 9  STR_VAR resource = ~demhit3~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 1 parameter1 = 0 parameter2 = 2 timing = 9  STR_VAR resource = ~demdam3~ END
+
+//innate bolt of glory
+COPY_EXISTING ~sppr612.spl~ ~override/d5paeil2.spl~
+  LPM spell_to_innate
+
+//nO FALL
+//COPY_EXISTING ~fallen.2da~ ~override~ //Remove possibility to fall
+//	              INSERT_2DA_ROW 3 0 ~B_CHAMPION_EILISTRAEE 0~
+//BUT_ONLY_IF_IT_CHANGES
+
+//DEFINE SPHERE ACCESS______________________________________________________________
+//
+ LAF ~DEFINE_FNP_KIT_INFO~
+  STR_VAR
+    clab_name 		= ~b_cheil~
+	sphere_list		= ~eilistraee_spheres~
+	class 			= ~champion~
+ END
+
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
+  WITH_TRA ~faiths_and_powers/language/%LANGUAGE%/fnp_spontaneous.tra~ BEGIN
+    LAF fnp_spontaneous STR_VAR kit_clab = ~b_cheil~ learn_res = ~b_cheiz~ END
+  END
+ END
+
+ LAF apply_archetype_options STR_VAR this_kit = ~B_CHAMPION_EILISTRAEE~ END
+
+END
+//___________________________________________________________________________________
+
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+//								CHAMPION OF CORELLON
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+DEFINE_ACTION_FUNCTION champion_corellon BEGIN
+
+LAF check_kit_conflict END
+
+ADD_KIT ~B_CHAMPION_CORELLON~
+
+//WEAPON PROFICIENCIES________________________________________________________________
+//11                	                   		T   S           F   Q             S S
+//10           			L S                     W   C           L   U             W I
+//9            			A M             B L S   O   I   W       A   A             O N
+//8            			R A             A O H   H   M   A       I   R C   S       R G
+//7            			G L           M S N O   A   I   R     H L   T R L H     2 D L 2                 E E E E E E E E E E E
+//6            			E L       S   I T G R   N K T D H     A M   E O O O     H A E W E E E E E E E E X X X X X X X X X X X
+//5            			S S   S B P   S A S T   D A A A A   S L O   R S N R   S A N W E X X X X X X X X T T T T T T T T T T T
+//4            			W W   P L I   S R W S   E T R G M C P B R M S S G T D L N D E A T T T T T T T T R R R R R R R R R R R
+//3            			O O B E U K A I D O W A D A W G M L E E N A T B B B A I D S A P R R R R R R R R A A A A A A A A A A A
+//2            			R R O A N E X L S R O X S N A E E U A R I C A O O O R N E H P O A A A A A A A A 1 1 1 1 1 1 1 1 1 1 2
+//1            			D D W R T D E E W D R E W A K R R B R D N E F W W W T G D I O N 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0
+~B_CHAMPION_CORELLON    0 0 0 0 0 0 0 0~
+~B_CHAMPION_CORELLON    0 0 0 0 0 0 0 0 2 3 3 2 2 2 2 2 2 2 2 2 2 2 2 2 3 3 2 2 2 2 2 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
+
+//MINIMUM KIT STATS_________________________________________________________________
+//                  STR DEX CON INT WIS CHR
+~B_CHAMPION_CORELLON  13   0   0   0   9  0~
+
+//KIT STAT MODIFIERS________________________________________________________________
+//                  STR DEX CON INT WIS CHR
+~B_CHAMPION_CORELLON   0   0   0   0   0   0~
+
+//REQUIREMENTS TO DUAL TO THIS KIT_________________________________________________
+//                  STR DEX CON INT WIS CHR
+~B_CHAMPION_CORELLON   0   0   0   0   15  0~
+
+//REQUIREMENTS TO DUAL FROM THIS KIT________________________________________________
+//                  STR DEX CON INT WIS CHR
+~B_CHAMPION_CORELLON   0   0   0   0   15  0~
+
+//ALIGNMENT RESTRICTIONS____________________________________________________________
+//                  LG LN LE NG TN NE CG CN CE
+~B_CHAMPION_CORELLON   1  1  0  1  1  0  1  1 0~
+
+//DUAL CLASS OPTIONS________________________________________________________________
+//                  FT CL MA TH DR RA
+~B_CHAMPION_CORELLON  0  0  0  0  0  0~
+
+//KIT ABILITIES 2DA FILE______________________________________________________________
+~faiths_and_powers/kits/champions/867_corellon/b_chcor.2da~
+
+//RACIAL KIT AVAILABILITY_____________________________________________________________
+~K_P_E K_P_HE~
+
+//UNUSABLE FLAGS AND KIT BASE CLASS_________________________________________________
+//CLASSES: Mage = 1, Fighter = 2, Cleric=3, Thief = 4, Bard = 5
+//         Paladin 6, Druid = 11, Ranger = 12, Sorcerer = 19
+//         Monk = 20
+~0x00004000 6~
+
+//HIGH LEVEL ABILITIES ABBREVIATION_________________________________________________
+~Pa0~
+
+//TOB STARTING EQUIPMENT_____________________________________________________________
+~CHAN09	* HELM07 BAG26 RING06 RING31 * BOOT01 AMUL20 BRAC10 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 HAMM07 SW1H27 STAF08~
+
+//CHARACTER CREATION KIT DESCRIPTION________________________________________________
+SAY @86701 //lower
+SAY @86702 //Mixed
+SAY @86703 //Help
+
+//EE KIT EXTRAS_____________________________________________________________________
+// 
+ACTION_IF GAME_IS ~bgee bg2ee eet iwdee~ THEN BEGIN
+	LAF fl#add_kit_ee
+		INT_VAR
+			briefdesc = RESOLVE_STR_REF (@86503)
+		STR_VAR
+			kit_name = B_CHAMPION_CORELLON
+	END
+END
+
+//ABILITY FILES______________________________________________________________
+//
+COPY ~faiths_and_powers/kits/champions/867_corellon/b_chcor.2da~ ~override~
+
+//weapon bonuses
+COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
+  READ_SHORT 0x1c type
+  READ_BYTE 0x31 prof
+  PATCH_IF (type = 15) BEGIN // bows
+    LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 177 target = 1 parameter1 = %B_CHAMPION_CORELLON% parameter2 = 9 timing = 2 STR_VAR resource = ~d5pacorr~ END
+  END
+  PATCH_IF (prof = 90) OR (prof = 91) BEGIN   // swords
+    LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 177 target = 1 parameter1 = %B_CHAMPION_CORELLON% parameter2 = 9 timing = 2 STR_VAR resource = ~d5pacorm~ END
+  END
+
+CREATE EFF ~d5pacorr~	//	ranged thac0 bonus
+	WRITE_LONG 0x10 167
+	WRITE_LONG 0x14 1
+	WRITE_LONG 0x1c 1
+	WRITE_LONG 0x20 0
+	WRITE_LONG 0x24 2
+	WRITE_LONG 0x28 0
+	WRITE_SHORT 0x2c 100
+
+CREATE EFF ~d5pacorm~	//	melee thac0 bonus
+	WRITE_LONG 0x10 284
+	WRITE_LONG 0x14 1
+	WRITE_LONG 0x1c 1
+	WRITE_LONG 0x20 0
+	WRITE_LONG 0x24 2
+	WRITE_LONG 0x28 0
+	WRITE_SHORT 0x2c 100
+
+//special frenzy
+COPY_EXISTING ~d5pafrz.spl~ ~override/d5pafcor.spl~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5pacor1~ END
+
+//extra blade
+COPY ~faiths_and_powers/kits/champions/867_corellon/d5pacor1.spl~ ~override~
+COPY ~faiths_and_powers/kits/champions/867_corellon/d5pacor1.eff~ ~override~
+COPY ~faiths_and_powers/kits/champions/867_corellon/d5pacor2.eff~ ~override~
+COPY ~faiths_and_powers/kits/champions/867_corellon/d5pacor3.eff~ ~override~
+COPY ~faiths_and_powers/kits/champions/867_corellon/d5pacor4.eff~ ~override~
+COPY ~faiths_and_powers/kits/champions/867_corellon/d5pacor5.eff~ ~override~
+COPY ~faiths_and_powers/kits/champions/867_corellon/d5pacor1.cre~ ~override~
+COPY ~faiths_and_powers/kits/champions/867_corellon/d5pacor2.cre~ ~override~
+COPY ~faiths_and_powers/kits/champions/867_corellon/d5pacor3.cre~ ~override~
+COPY ~faiths_and_powers/kits/champions/867_corellon/d5pacor4.cre~ ~override~
+COPY ~faiths_and_powers/kits/champions/867_corellon/d5pacor5.cre~ ~override~
+COPY ~faiths_and_powers/kits/champions/867_corellon/d5pacor1.itm~ ~override~
+COPY ~faiths_and_powers/kits/champions/867_corellon/d5pacor2.itm~ ~override~
+COPY ~faiths_and_powers/kits/champions/867_corellon/d5pacor3.itm~ ~override~
+
+//nO FALL
+//COPY_EXISTING ~fallen.2da~ ~override~ //Remove possibility to fall
+//	              INSERT_2DA_ROW 3 0 ~B_CHAMPION_CORELLON 0~
+//BUT_ONLY_IF_IT_CHANGES
+
+//DEFINE SPHERE ACCESS______________________________________________________________
+//
+ LAF ~DEFINE_FNP_KIT_INFO~
+  STR_VAR
+    clab_name 		=  ~b_chcor~
+	sphere_list		= ~corellon_spheres~
+	class 			= ~champion~
+ END
+
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
+  WITH_TRA ~faiths_and_powers/language/%LANGUAGE%/fnp_spontaneous.tra~ BEGIN
+    LAF fnp_spontaneous STR_VAR kit_clab = ~b_chcor~ learn_res = ~b_chcoz~ END
+  END
+ END
+
+// apply special frenzy to pafrz1
+ CREATE EFF ~d5pafcor~
+	WRITE_LONG 0x10 171
+	WRITE_LONG 0x14 1
+	WRITE_LONG 0x1c 0
+	WRITE_LONG 0x20 0
+	WRITE_LONG 0x24 1
+	WRITE_LONG 0x28 0
+	WRITE_SHORT 0x2c 100
+	WRITE_ASCII 0x30 ~d5pafcor~ #8
+
+ COPY_EXISTING ~splprot.2da~ ~override~
+  COUNT_2DA_COLS cols
+  READ_2DA_ENTRIES_NOW rows cols
+  FOR (row = 1; row < rows; ++row) BEGIN
+    READ_2DA_ENTRY_FORMER rows row 0 ~stat~
+	PATCH_IF (~%stat%~ STRING_EQUAL_CASE ~D5_KIT_IS~) BEGIN
+	  SET kit_is_row = %row%
+	END
+  END
+ BUT_ONLY
+
+ COPY_EXISTING ~d5pafrz1.spl~ ~override~
+  LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 318 target = 1 parameter1 = %B_CHAMPION_CORELLON% parameter2 = %kit_is_row% timing = 0 duration = 6 STR_VAR resource = ~d5pafrz1~ END
+  LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = %B_CHAMPION_CORELLON% parameter2 = 9 timing = 2 STR_VAR resource = ~d5pafcor~ END
+
+ LAF apply_archetype_options STR_VAR this_kit = ~B_CHAMPION_CORELLON~ END
+
+END
+//___________________________________________________________________________________
+
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+//								CHAMPION OF MORADIN
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+DEFINE_ACTION_FUNCTION champion_moradin BEGIN
+
+LAF check_kit_conflict END
+
+ADD_KIT ~B_CHAMP_MOR~
+
+//WEAPON PROFICIENCIES________________________________________________________________
+//11                	                   		T   S           F   Q             S S
+//10           			L S                     W   C           L   U             W I
+//9            			A M             B L S   O   I   W       A   A             O N
+//8            			R A             A O H   H   M   A       I   R C   S       R G
+//7            			G L           M S N O   A   I   R     H L   T R L H     2 D L 2                 E E E E E E E E E E E
+//6            			E L       S   I T G R   N K T D H     A M   E O O O     H A E W E E E E E E E E X X X X X X X X X X X
+//5            			S S   S B P   S A S T   D A A A A   S L O   R S N R   S A N W E X X X X X X X X T T T T T T T T T T T
+//4            			W W   P L I   S R W S   E T R G M C P B R M S S G T D L N D E A T T T T T T T T R R R R R R R R R R R
+//3            			O O B E U K A I D O W A D A W G M L E E N A T B B B A I D S A P R R R R R R R R A A A A A A A A A A A
+//2            			R R O A N E X L S R O X S N A E E U A R I C A O O O R N E H P O A A A A A A A A 1 1 1 1 1 1 1 1 1 1 2
+//1            			D D W R T D E E W D R E W A K R R B R D N E F W W W T G D I O N 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0
+~B_CHAMP_MOR            0 0 0 0 0 0 0 0~
+~B_CHAMP_MOR            0 0 0 0 0 0 0 0 2 2 2 2 2 2 2 2 3 2 2 2 2 2 2 2 2 2 2 2 2 2 2 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
+
+//MINIMUM KIT STATS_________________________________________________________________
+//                  STR DEX CON INT WIS CHR
+~B_CHAMP_MOR        13   0   0   0   9  0~
+
+//KIT STAT MODIFIERS________________________________________________________________
+//                  STR DEX CON INT WIS CHR
+~B_CHAMP_MOR        0   0   0   0   0   0~
+
+//REQUIREMENTS TO DUAL TO THIS KIT_________________________________________________
+//                  STR DEX CON INT WIS CHR
+~B_CHAMP_MOR        0   0   0   0   15  0~
+
+//REQUIREMENTS TO DUAL FROM THIS KIT________________________________________________
+//                  STR DEX CON INT WIS CHR
+~B_CHAMP_MOR        0   0   0   0   15  0~
+
+//ALIGNMENT RESTRICTIONS____________________________________________________________
+//                  LG LN LE NG TN NE CG CN CE
+~B_CHAMP_MOR        1  1  0  0  0  0  0  0  0~
+
+//DUAL CLASS OPTIONS________________________________________________________________
+//                  FT CL MA TH DR RA
+~B_CHAMP_MOR        0  0  0  0  0  0~
+
+//KIT ABILITIES 2DA FILE______________________________________________________________
+~faiths_and_powers/kits/champions/807_Moradin/b_chmor.2da~
+
+//RACIAL KIT AVAILABILITY_____________________________________________________________
+~K_P_D~
+
+//UNUSABLE FLAGS AND KIT BASE CLASS_________________________________________________
+//CLASSES: Mage = 1, Fighter = 2, Cleric=3, Thief = 4, Bard = 5
+//         Paladin 6, Druid = 11, Ranger = 12, Sorcerer = 19
+//         Monk = 20
+~0x00004000 6~
+
+//HIGH LEVEL ABILITIES ABBREVIATION_________________________________________________
+~Pa0~
+
+//TOB STARTING EQUIPMENT_____________________________________________________________
+~CHAN09	* HELM07 BAG26 RING06 RING31 * BOOT01 AMUL20 BRAC10 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 HAMM07 SW1H27 STAF08~
+
+//CHARACTER CREATION KIT DESCRIPTION________________________________________________
+SAY @80701 //lower
+SAY @80702 //Mixed
+SAY @80703 //Help
+
+//EE KIT EXTRAS_____________________________________________________________________
+// 
+ACTION_IF GAME_IS ~bgee bg2ee eet iwdee~ THEN BEGIN
+	LAF fl#add_kit_ee
+		INT_VAR
+			briefdesc = RESOLVE_STR_REF (@80703)
+		STR_VAR
+			kit_name = B_CHAMP_MOR
+			clsrcreq = ~0 0 0 1 0 0 0~
+	END
+END
+
+//ABILITY FILES______________________________________________________________
+//
+COPY ~faiths_and_powers/kits/champions/807_Moradin/b_chmor.2da~ ~override~
+
+//stoneskin
+COPY_EXISTING ~spwi408.spl~ ~override/d5pamor1.spl~
+  LPM spell_to_innate
+
+//hammer
+COPY ~faiths_and_powers/kits/champions/807_Moradin/b_mor02.spl~ ~override~
+        SAY NAME1 @80704
+        SAY NAME2 @80704
+        SAY UNIDENTIFIED_DESC @80705
+	SAY DESC @80705
+   LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 111 STR_VAR resource = EVAL ~B_mor02~ END
+//actual hammer
+COPY ~faiths_and_powers/kits/champions/807_Moradin/b_mor02.itm~ ~override~
+        SAY NAME1 @80704
+        SAY NAME2 @80704
+        SAY UNIDENTIFIED_DESC @80705
+	SAY DESC @80705
+//COPY ~faiths_and_powers/kits/champions/807_Moradin/b_ch101a.spl~ ~override~
+//3rd spell
+//COPY ~faiths_and_powers/kits/champions/807_Moradin/b_ch101b.spl~ ~override~
+
+//DEFINE SPHERE ACCESS______________________________________________________________
+//
+ LAF ~DEFINE_FNP_KIT_INFO~
+  STR_VAR
+    clab_name 		= ~b_chmor~
+	sphere_list		= ~moradin_spheres~
+	class 			= ~champion~
+ END
+
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
+  WITH_TRA ~faiths_and_powers/language/%LANGUAGE%/fnp_spontaneous.tra~ BEGIN
+    LAF fnp_spontaneous STR_VAR kit_clab = ~b_chmor~ learn_res = ~b_chmoz~ END
+  END
+ END
+
+ LAF apply_archetype_options STR_VAR this_kit = ~B_CHAMP_MOR~ END
+
+END
+//__________________________________________________________________________________
+
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+//								CHAMPION OF ARVOREEN
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+DEFINE_ACTION_FUNCTION champion_arvoreen BEGIN
+
+LAF check_kit_conflict END
+
+ADD_KIT ~D5_CHAMP_ARVOREEN~
+//___________________________________________________________________________________
+
+//WEAPON PROFICIENCIES_______________________________________________________________
+//11            	 	                        T   S           F   Q             S S
+//10            	 	L S                     W   C           L   U             W I
+//9             	 	A M             B L S   O   I   W       A   A             O N
+//8             	 	R A             A O H   H   M   A       I   R C   S       R G
+//7             	 	G L           M S N O   A   I   R     H L   T R L H     2 D L 2                 E E E E E E E E E E E
+//6             	 	E L       S   I T G R   N K T D H     A M   E O O O     H A E W E E E E E E E E X X X X X X X X X X X
+//5             	 	S S   S B P   S A S T   D A A A A   S L O   R S N R   S A N W E X X X X X X X X T T T T T T T T T T T
+//4             	 	W W   P L I   S R W S   E T R G M C P B R M S S G T D L N D E A T T T T T T T T R R R R R R R R R R R
+//3             	 	O O B E U K A I D O W A D A W G M L E E N A T B B B A I D S A P R R R R R R R R A A A A A A A A A A A
+//2             	 	R R O A N E X L S R O X S N A E E U A R I C A O O O R N E H P O A A A A A A A A 1 1 1 1 1 1 1 1 1 1 2
+//1             	 	D D W R T D E E W D R E W A K R R B R D N E F W W W T G D I O N 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0
+~D5_CHAMP_ARVOREEN  	0 0 0 0 0 0 0 0~
+~D5_CHAMP_ARVOREEN  	0 0 0 0 0 0 0 0 0 2 3 2 0 0 2 2 2 2 2 2 2 2 2 0 0 3 2 3 2 2 2 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
+
+//MINIMUM KIT STATS_________________________________________________________________
+//                 		STR DEX CON INT WIS CHR
+~D5_CHAMP_ARVOREEN      0   12  12  0   12  0~
+
+//KIT STAT MODIFIERS________________________________________________________________
+//                 		STR DEX CON INT WIS CHR
+~D5_CHAMP_ARVOREEN      0   0   0   0   0   0~
+
+//REQUIREMENTS TO DUAL TO THIS KIT__________________________________________________
+//                 		STR DEX CON INT WIS CHR
+~D5_CHAMP_ARVOREEN      0   17  17  0   17  0~
+
+//REQUIREMENTS TO DUAL FROM THIS KIT________________________________________________
+//                 		STR DEX CON INT WIS CHR
+~D5_CHAMP_ARVOREEN      0   0   15  0   15  0~
+
+//ALIGNMENT RESTRICTIONS____________________________________________________________
+//                 		LG LN LE NG TN NE CG CN CE
+~D5_CHAMP_ARVOREEN      1  1  0  1  1  0  1  0  0~
+
+//DUAL CLASS OPTIONS________________________________________________________________
+//                 		FT CL MA TH DR RA
+~D5_CHAMP_ARVOREEN      0  1  0  0  0  0~
+
+//KIT ABILITIES 2DA FILE____________________________________________________________
+~faiths_and_powers/kits/champions/877_arvoreen/d5charv.2da~
+
+//RACIAL KIT AVAILABILITY_____________________________________________________________
+~K_P_HL~
+
+//UNUSABLE FLAGS AND KIT BASE CLASS_________________________________________________
+//CLASSES: Mage = 1, Fighter = 2, Cleric=3, Thief = 4, Bard = 5
+//         Paladin 6, Druid = 11, Ranger = 12, Sorcerer = 19
+//         Monk = 20
+~0x00004000 6~
+
+//HIGH LEVEL ABILITIES ABBREVIATION_________________________________________________
+~Pa0~
+
+//TOB STARTING EQUIPMENT_____________________________________________________________
+~CHAN09	* HELM07 BAG26 RING06 RING31 * BOOT01 AMUL20 BRAC10 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 HAMM07 SW1H27 STAF08~
+
+//CHARACTER CREATION KIT DESCRIPTION________________________________________________
+SAY @87701
+SAY @87702
+SAY @87703
+
+//EE KIT EXTRAS______________________________________________________________________
+// 
+ACTION_IF GAME_IS ~bgee bg2ee eet iwdee~ THEN BEGIN
+	LAF fl#add_kit_ee
+		INT_VAR
+			briefdesc = RESOLVE_STR_REF (@38304)
+		STR_VAR
+			kit_name = D5_CHAMP_ARVOREEN
+			clswpbon = ~1 0 3~
+	END
+END
+
+
+//ARVOREEN ABILITY FILES_____________________________________________________________
+//
+COPY_EXISTING ~faiths_and_powers/kits/champions/877_arvoreen/d5charv.2da~ ~override~
+
+COPY_EXISTING ~faiths_and_powers/kits/clerics/392_arvoreen/d5arvo1.spl~ ~override/d5paarv1.spl~	// strength
+	SAY NAME1 @39211
+	SAY UNIDENTIFIED_DESC @39212
+CREATE EFF ~D5ARVO1A~
+	WRITE_LONG 0x10 44
+	WRITE_LONG 0x14 1
+	WRITE_LONG 0x14 18
+	WRITE_LONG 0x20 1
+	WRITE_LONG 0x24 0
+	WRITE_LONG 0x28 180
+	WRITE_SHORT 0x2c 100
+	WRITE_LONG 0x5c 3
+	WRITE_LONG 0x90 1
+	WRITE_ASCII 0x94 ~D5ARVO1A~ #8
+CREATE EFF ~D5ARVO1B~
+	WRITE_LONG 0x10 44
+	WRITE_LONG 0x14 1
+	WRITE_LONG 0x14 1
+	WRITE_LONG 0x20 0
+	WRITE_LONG 0x24 0
+	WRITE_LONG 0x28 180
+	WRITE_SHORT 0x2c 100
+	WRITE_LONG 0x5c 3
+	WRITE_LONG 0x90 1
+	WRITE_ASCII 0x94 ~D5ARVO1B~ #8
+COPY_EXISTING ~faiths_and_powers/kits/clerics/392_arvoreen/d5arvo2.spl~ ~override/d5paarv2.spl~	// haste
+	SAY NAME1 @39213
+	SAY UNIDENTIFIED_DESC @39214
+
+
+//DEFINE SPHERE ACCESS________________________________________________________________
+//
+ LAF ~DEFINE_FNP_KIT_INFO~
+  STR_VAR
+    clab_name 		= ~d5charv~
+	sphere_list		= ~arvoreen_spheres~
+	class 			= ~champion~
+ END
+
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
+  WITH_TRA ~faiths_and_powers/language/%LANGUAGE%/fnp_spontaneous.tra~ BEGIN
+    LAF fnp_spontaneous STR_VAR kit_clab = ~d5charv~ learn_res = ~d5charz~ END
+  END
+ END
+
+ LAF apply_archetype_options STR_VAR this_kit = ~D5_CHAMP_ARVOREEN~ END
+
+END
+//__________________________________________________________________________________
+
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+//								CHAMPION OF GRUUMSH
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+DEFINE_ACTION_FUNCTION champion_gruumsh BEGIN
+
+LAF check_kit_conflict END
+
+ADD_KIT ~B_CHAMPION_GRUU~
+
+//WEAPON PROFICIENCIES________________________________________________________________
+//11                	                   		T   S           F   Q             S S
+//10           			L S                     W   C           L   U             W I
+//9            			A M             B L S   O   I   W       A   A             O N
+//8            			R A             A O H   H   M   A       I   R C   S       R G
+//7            			G L           M S N O   A   I   R     H L   T R L H     2 D L 2                 E E E E E E E E E E E
+//6            			E L       S   I T G R   N K T D H     A M   E O O O     H A E W E E E E E E E E X X X X X X X X X X X
+//5            			S S   S B P   S A S T   D A A A A   S L O   R S N R   S A N W E X X X X X X X X T T T T T T T T T T T
+//4            			W W   P L I   S R W S   E T R G M C P B R M S S G T D L N D E A T T T T T T T T R R R R R R R R R R R
+//3            			O O B E U K A I D O W A D A W G M L E E N A T B B B A I D S A P R R R R R R R R A A A A A A A A A A A
+//2            			R R O A N E X L S R O X S N A E E U A R I C A O O O R N E H P O A A A A A A A A 1 1 1 1 1 1 1 1 1 1 2
+//1            			D D W R T D E E W D R E W A K R R B R D N E F W W W T G D I O N 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0
+~B_CHAMPION_GRUU          0 0 0 0 0 0 0 0~
+~B_CHAMPION_GRUU          0 0 0 0 0 0 0 0 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
+
+//MINIMUM KIT STATS_________________________________________________________________
+//                  STR DEX CON INT WIS CHR
+~B_CHAMPION_GRUU       13   0   0   0   9  0~
+
+//KIT STAT MODIFIERS________________________________________________________________
+//                  STR DEX CON INT WIS CHR
+~B_CHAMPION_GRUU       0   0   0   0   0   0~
+
+//REQUIREMENTS TO DUAL TO THIS KIT_________________________________________________
+//                  STR DEX CON INT WIS CHR
+~B_CHAMPION_GRUU       0   0   0   0   15  0~
+
+//REQUIREMENTS TO DUAL FROM THIS KIT________________________________________________
+//                  STR DEX CON INT WIS CHR
+~B_CHAMPION_GRUU       0   0   0   0   15  0~
+
+//ALIGNMENT RESTRICTIONS____________________________________________________________
+//                  LG LN LE NG TN NE CG CN CE
+~B_CHAMPION_GRUU       0  0  0  0  0  1  0  1  1~
+
+//DUAL CLASS OPTIONS________________________________________________________________
+//                  FT CL MA TH DR RA
+~B_CHAMPION_GRUU       0  0  0  0  0  0~
+
+//KIT ABILITIES 2DA FILE______________________________________________________________
+~faiths_and_powers/kits/champions/862_Gruumsh/b_chgru.2da~
+
+//RACIAL KIT AVAILABILITY_____________________________________________________________
+~K_P_HO~
+
+//UNUSABLE FLAGS AND KIT BASE CLASS_________________________________________________
+//CLASSES: Mage = 1, Fighter = 2, Cleric=3, Thief = 4, Bard = 5
+//         Paladin 6, Druid = 11, Ranger = 12, Sorcerer = 19
+//         Monk = 20
+~0x00004000 6~
+
+//HIGH LEVEL ABILITIES ABBREVIATION_________________________________________________
+~Fi0~
+
+//TOB STARTING EQUIPMENT_____________________________________________________________
+~CHAN09	* HELM07 BAG26 RING06 RING31 * BOOT01 AMUL20 BRAC10 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 HAMM07 SW1H27 STAF08~
+
+//CHARACTER CREATION KIT DESCRIPTION________________________________________________
+SAY @86201 //lower
+SAY @86202 //Mixed
+SAY @86203 //Help
+
+//EE KIT EXTRAS_____________________________________________________________________
+// 
+ACTION_IF GAME_IS ~bgee bg2ee eet iwdee~ THEN BEGIN
+	LAF fl#add_kit_ee
+		INT_VAR
+			briefdesc = RESOLVE_STR_REF (@86203)
+		STR_VAR
+			kit_name = B_CHAMPION_GRUU
+	END
+END
+
+//ABILITY FILES______________________________________________________________
+//
+COPY ~faiths_and_powers/kits/champions/862_Gruumsh/b_chgru.2da~ ~override~
+
+//innate Slow
+COPY_EXISTING ~spwi312.spl~ ~override/d5pagru1.spl~
+  LPM spell_to_innate
+
+//special frenzy
+COPY_EXISTING ~d5pafrz.spl~ ~override/d5pafgru.spl~
+  PATCH_IF !(FILE_EXISTS_IN_GAME ~sppr309d.spl~) BEGIN
+   LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter1 = 0 parameter2 = 1 timing = 1 STR_VAR resource = ~sppr309~ END
+   LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter1 = 0 parameter2 = 1 timing = 4 duration = 6 STR_VAR resource = ~sppr309~ END
+   LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter1 = 0 parameter2 = 1 timing = 4 duration = 12 STR_VAR resource = ~sppr309~ END
+   LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter1 = 0 parameter2 = 1 timing = 4 duration = 18 STR_VAR resource = ~sppr309~ END
+   LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter1 = 0 parameter2 = 1 timing = 4 duration = 24 STR_VAR resource = ~sppr309~ END
+  END
+  PATCH_IF (FILE_EXISTS_IN_GAME ~sppr309d.spl~) BEGIN
+   LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter1 = 0 parameter2 = 1 timing = 1 STR_VAR resource = ~sppr309d~ END
+   LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter1 = 0 parameter2 = 1 timing = 4 duration = 6 STR_VAR resource = ~sppr309d~ END
+   LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter1 = 0 parameter2 = 1 timing = 4 duration = 12 STR_VAR resource = ~sppr309d~ END
+   LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter1 = 0 parameter2 = 1 timing = 4 duration = 18 STR_VAR resource = ~sppr309d~ END
+   LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter1 = 0 parameter2 = 1 timing = 4 duration = 24 STR_VAR resource = ~sppr309d~ END
+  END
+
+//nO FALL
+ACTION_IF FILE_EXISTS_IN_GAME ~fallen.2da~ BEGIN
+  COPY_EXISTING ~fallen.2da~ ~override~ //Remove possibility to fall
+	              INSERT_2DA_ROW 3 0 ~B_CHAMPION_GRUU 0~
+  BUT_ONLY_IF_IT_CHANGES
+END
+
+//DEFINE SPHERE ACCESS______________________________________________________________
+//
+ LAF ~DEFINE_FNP_KIT_INFO~
+  STR_VAR
+    clab_name 		= ~b_chgru~
+	sphere_list		= ~gruumsh_spheres~
+	class 			= ~champion~
+ END
+
+ ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
+  WITH_TRA ~faiths_and_powers/language/%LANGUAGE%/fnp_spontaneous.tra~ BEGIN
+    LAF fnp_spontaneous STR_VAR kit_clab = ~b_chgru~ learn_res = ~b_chgrz~ END
+  END
+ END
+
+// apply special frenzy to pafrz1
+ CREATE EFF ~d5pafgru~
+	WRITE_LONG 0x10 171
+	WRITE_LONG 0x14 1
+	WRITE_LONG 0x1c 0
+	WRITE_LONG 0x20 0
+	WRITE_LONG 0x24 1
+	WRITE_LONG 0x28 0
+	WRITE_SHORT 0x2c 100
+	WRITE_ASCII 0x30 ~d5pafgru~ #8
+
+ COPY_EXISTING ~splprot.2da~ ~override~
+  COUNT_2DA_COLS cols
+  READ_2DA_ENTRIES_NOW rows cols
+  FOR (row = 1; row < rows; ++row) BEGIN
+    READ_2DA_ENTRY_FORMER rows row 0 ~stat~
+	PATCH_IF (~%stat%~ STRING_EQUAL_CASE ~D5_KIT_IS~) BEGIN
+	  SET kit_is_row = %row%
+	END
+  END
+ BUT_ONLY
+
+ COPY_EXISTING ~d5pafrz1.spl~ ~override~
+  LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 318 target = 1 parameter1 = %B_CHAMPION_GRUU% parameter2 = %kit_is_row% timing = 0 duration = 6 STR_VAR resource = ~d5pafrz1~ END
+  LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = %B_CHAMPION_GRUU% parameter2 = 9 timing = 2 STR_VAR resource = ~d5pafgru~ END
+
+ LAF apply_archetype_options STR_VAR this_kit = ~B_CHAMPION_GRUU~ END
+
+END
+//___________________________________________________________________________________
+

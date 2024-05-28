@@ -19,10 +19,10 @@ ACTION_IF (FILE_EXISTS_IN_GAME ~fnp_sphere_list.tpa~) BEGIN
       sphere_list 	= ~[deity]_spheres~
   END
   LAM ~READ_FNP_KIT_INFO~
-  ACTION_IF FILE_EXISTS_IN_GAME ~d5_spheres.d5~ BEGIN
+  ACTION_IF FILE_EXISTS_IN_GAME ~d5__spheres.d5~ BEGIN
     LAF apply_fnp_spheres STR_VAR clab_name = ~[clab file]~ END
   END
-  ACTION_IF FILE_EXISTS_IN_GAME ~d5_fnp_usability.d5~ BEGIN
+  ACTION_IF FILE_EXISTS_IN_GAME ~d5__fnp_usability.d5~ BEGIN
     LAF apply_fnp_usability STR_VAR clab_name = ~[clab file]~ END
   END
 END
@@ -80,16 +80,16 @@ LAF ~DEFINE_FNP_KIT_INFO~
 //
   STR_VAR
 //
-// The "class" variable tells the mod what class or archetype your kit is
+// The "class" variable tells the mod what class or archetype your kit is.
 // Enter 'cleric' 'druid' 'shaman' 'paladin' 'zealot' or 'ranger'
 // If multiclass, enter 'fighter_cleric' 'cleric_mage' 'cleric_thief' 'ranger_cleric' or 'fighter_mystic'
 //
-// The "multiclass" variable tells the mod that this (single-class) kit can be cloned as a multiclass kit
+// The "multiclass" variable tells the mod that this (single-class) kit can be cloned as a multiclass kit.
 // If a cleric, you can enter some combination of "fc_cr_ct_cm" (can be just "fc" or "cr_cm" or whatever).
 // If a druid, you can enter "fd" to create a fighter/druid version.
 //
 // The "sphere_list" variable lets you link your kit to a particular deity or other kit already in the sphere system.
-// See /faiths_and_powers/lib/sphere_list_fnp.tpa for a list.
+// See /faiths_and_powers/data/sphere_systems/sphere_list_fnp.tpa for a list.
 // If you enter a deity here, e.g. "helm_spheres", then you can omit the rest of the sphere variables.
 // You can still include *some* sphere variables; they will override that sphere in the deity's sphere list.
 // 
@@ -127,7 +127,7 @@ END
 LAM ~READ_FNP_KIT_INFO~
 
 ACTION_IF FILE_EXISTS_IN_GAME ~d5_spheres.d5~ BEGIN
-	LAF apply_fnp_spheres STR_VAR clab_name = ~[your kit's clab.2da]~ END
+	LAF apply_fnp_spheres STR_VAR clab_name = ~[your kit's clab.2da name]~ END
 //
 // 	if this is an NPC mod, put your divine-class .cre file(s) here and uncomment the following 5 lines
 /*
@@ -140,7 +140,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~d5_spheres.d5~ BEGIN
 END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~d5_fnp_usability.d5~ BEGIN
-	LAF apply_fnp_usability STR_VAR clab_name = ~[your kit's clab.2da]~ END
+	LAF apply_fnp_usability STR_VAR clab_name = ~[your kit's clab.2da name]~ END
 END
 
 ACTION_IF (FILE_EXISTS ~override/d5_fnp_settings.ini~) BEGIN
@@ -150,6 +150,24 @@ ACTION_IF (FILE_EXISTS ~override/d5_fnp_settings.ini~) BEGIN
 	APPEND ~[your kit's clab.2da]~ ~SPNT_SPLS    GA_D5FPSP2  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** ~
   END
 END
+
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) AND (FILE_EXISTS ~faiths_and_powers/lib/system_fnp_spontaneous.tpa~) BEGIN
+  ACTION_IF (FILE_EXISTS ~faiths_and_powers/language/%LANGUAGE%/fnp_spontaneous.tra~) BEGIN
+    OUTER_SPRINT spont_lang ~%LANGUAGE%~
+  END ELSE BEGIN
+    OUTER_SPRINT spont_lang ~english~
+  END
+  ACTION_IF (FILE_EXISTS ~faiths_and_powers/language/%spont_lang%/fnp_spontaneous.tra~) BEGIN
+    WITH_TRA ~faiths_and_powers/language/%spont_lang%/fnp_spontaneous.tra~ BEGIN
+      INCLUDE ~faiths_and_powers/lib/system_fnp_spontaneous.tpa~
+      LAF fnp_spontaneous STR_VAR kit_clab = ~[your kit's clab.2da name]~ learn_res = ~[a variation on your kit's clab.2da name]~ END
+    END
+  END
+END
+// NOTE, the 'learn_res' variable above can only be seven characters long. 
+//     For six-character clab files, like "b_ctyr.2da," FnP adds a z, to become "b_ctyrz"
+//     For seven-character clab files, like "d5clmys.2da," FnP might replace a letter with a z, to become "d5clmyz"
+//     For eight-character clab files, you'll have to figure something out. But, you don't put eight-character files into the game, do you??
 
 ACTION_IF (FILE_EXISTS_IN_GAME ~d5_cleric_umd.d5~) BEGIN
   APPEND ~[your kit's clab.2da]~ ~NO_UMD      AP_D5_NUMD  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** ~

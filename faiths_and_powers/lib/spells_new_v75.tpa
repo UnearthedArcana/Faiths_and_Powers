@@ -3959,7 +3959,7 @@ END
 
 //Portrait icon: Nauseated. Update portrait icons and change to pain
 
-ACTION_IF !(FILE_CONTAINS_EVALUATED(~spell.ids~ ~[ %TAB%]CLERIC_SYMBOL_OF_PAIN[ %TAB%%LNL%%MNL%%WNL%]~)) BEGIN 
+ACTION_IF !(FILE_CONTAINS_EVALUATED(~spell.ids~ ~[ %TAB%]CLERIC_SYMBOL_PAIN[ %TAB%%LNL%%MNL%%WNL%]~)) BEGIN 
 
 //Projectile
 ADD_PROJECTILE ~faiths_and_powers/spheres/iwd_spells/priest_7/ICEGLYP.pro~   //projectile
@@ -3984,14 +3984,14 @@ COPY ~faiths_and_powers/spheres/iwd_spells/priest_7/EFF_P22A.WAV~ ~override~   /
 COPY ~faiths_and_powers/spheres/iwd_spells/priest_7/B_P714a.eff~ ~override~   //
 //secondary spell
 //Spell itself
-ADD_SPELL ~faiths_and_powers/spheres/iwd_spells/priest_7/b_p714.spl~ 1 7 ~CLERIC_SYMBOL_OF_PAIN~ // Spell
+ADD_SPELL ~faiths_and_powers/spheres/iwd_spells/priest_7/b_p714.spl~ 1 7 ~CLERIC_SYMBOL_PAIN~ // Spell
         SAY NAME1 @71400000
         SAY NAME2 @71400000
         SAY UNIDENTIFIED_DESC @71400001
 	SAY DESC @71400001
 	WRITE_SHORT 0x098 ~%ICEGLYP%~  //Projectile
 LAF RES_NUM_OF_SPELL_NAME
-  STR_VAR spell_name = ~CLERIC_SYMBOL_OF_PAIN~
+  STR_VAR spell_name = ~CLERIC_SYMBOL_PAIN~
   RET spell_res
 END
 COPY_EXISTING ~%spell_res%.spl~ ~override~
@@ -4023,7 +4023,7 @@ END
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-ACTION_IF !(FILE_CONTAINS_EVALUATED(~spell.ids~ ~[ %TAB%]CLERIC_SYMBOL_OF_HOPELESSNESS[ %TAB%%LNL%%MNL%%WNL%]~)) BEGIN 
+ACTION_IF !(FILE_CONTAINS_EVALUATED(~spell.ids~ ~[ %TAB%]CLERIC_SYMBOL_HOPELESSNESS[ %TAB%%LNL%%MNL%%WNL%]~)) BEGIN 
 
 //Projectile
 ADD_PROJECTILE ~faiths_and_powers/spheres/iwd_spells/priest_7/b_hpless.pro~   //projectile
@@ -4046,14 +4046,14 @@ COPY ~faiths_and_powers/spheres/iwd_spells/priest_7/#EFF_E04.WAV~ ~override~   /
 //effs
 //secondary spell
 //Spell itself
-ADD_SPELL ~faiths_and_powers/spheres/iwd_spells/priest_7/b_p716.spl~ 1 7 ~CLERIC_SYMBOL_OF_HOPELESSNESS~ // Spell
+ADD_SPELL ~faiths_and_powers/spheres/iwd_spells/priest_7/b_p716.spl~ 1 7 ~CLERIC_SYMBOL_HOPELESSNESS~ // Spell
         SAY NAME1 @71600000
         SAY NAME2 @71600000
         SAY UNIDENTIFIED_DESC @71600001
 	SAY DESC @71600001
 	WRITE_SHORT 0x098 ~%b_hpless%~  //Projectile
 LAF RES_NUM_OF_SPELL_NAME
-  STR_VAR spell_name = ~CLERIC_SYMBOL_OF_HOPELESSNESS~
+  STR_VAR spell_name = ~CLERIC_SYMBOL_HOPELESSNESS~
   RET spell_res
 END
 
@@ -4102,7 +4102,7 @@ COPY ~faiths_and_powers/spheres/iwd_spells/priest_7/#EFF_P01.WAV~ ~override~   /
 //Spell itself
 //First, we must copy the spell to protect from symbol of hopelessness
 LAF RES_NUM_OF_SPELL_NAME
-  STR_VAR spell_name = ~CLERIC_SYMBOL_OF_HOPELESSNESS~
+  STR_VAR spell_name = ~CLERIC_SYMBOL_HOPELESSNESS~
   RET spell_res
 END
 COPY ~faiths_and_powers/spheres/iwd_spells/priest_7/b_p733.spl~ ~override~
@@ -4600,21 +4600,25 @@ DEFINE_ACTION_MACRO v75_apply_sr_aoe_deflection BEGIN
 //SR NWN-style Deflection
 
 
-ACTION_IF MOD_IS_INSTALLED ~spell_rev.tp2~ ~55~ BEGIN
+ ACTION_IF MOD_IS_INSTALLED ~spell_rev.tp2~ ~55~ BEGIN
 
 //ACTION_IF (VARIABLE_IS_SET $aoe_spell(~%%~)) BEGIN
 
- ACTION_PHP_EACH aoe_spell AS spell_name => r2 BEGIN
+  ACTION_PHP_EACH aoe_spell AS spell_name => r2 BEGIN
   
-  OUTER_SET spell_num = (IDS_OF_SYMBOL (~spell~ ~%spell_name%~))
-  ACTION_IF spell_num > 0 BEGIN
-	OUTER_SNPRINT 1 spell_type ~%spell_num%~
-	OUTER_SNPRINT (0 - 3) type_num ~%spell_num%~
-	ACTION_IF spell_type = 2 BEGIN
-      OUTER_SPRINT i2 ~spwi%type_num%~
+    OUTER_SET spell_num = (IDS_OF_SYMBOL (~spell~ ~%spell_name%~))
+    ACTION_IF spell_num > 0 BEGIN
+	  OUTER_SNPRINT 1 spell_type ~%spell_num%~
+	  OUTER_SNPRINT (0 - 3) type_num ~%spell_num%~
+	  ACTION_IF spell_type = 2 BEGIN
+        OUTER_SPRINT i2 ~spwi%type_num%~
+      END
+	  ACTION_IF spell_type = 1 BEGIN
+        OUTER_SPRINT i2 ~sppr%type_num%~
+      END
     END
-	ACTION_IF spell_type = 1 BEGIN
-      OUTER_SPRINT i2 ~sppr%type_num%~
+    ACTION_IF spell_num < 1 BEGIN
+      OUTER_SPRINT i2 ~%spell_name%~
     END
 
 	  OUTER_SET found=0
@@ -4680,10 +4684,9 @@ ACTION_IF MOD_IS_INSTALLED ~spell_rev.tp2~ ~55~ BEGIN
 	    BUT_ONLY
     
 	  END
-  END
- END // ACTION_PHP_EACH
+  END // ACTION_PHP_EACH
 
-END
+ END
 
 END	//	end sr aoe deflection macro
 

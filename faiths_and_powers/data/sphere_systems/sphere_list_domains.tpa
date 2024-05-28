@@ -1,0 +1,3337 @@
+
+// spell spheres
+
+/* the spheres in this system are (copied from setup.tra):
+@12601 = ~Universal~
+@12602  =  ~Cleric~ 		// all cleric-valid spells, not a particular sphere
+@12603 = ~Death~
+@12604 = ~Law~
+@12605 = ~Chaos~
+@12606 = ~Protection~
+@12607 = ~Battle~
+@12608 = ~Time~
+@12609 = ~Knowledge~
+@12610 = ~Deceit~
+@12611 = ~Thought~
+@12612 = ~Fate~			//	??? ir keep as insects?
+@12613  =  ~Druid~ 			// all druid-valid spells, not a particular sphere
+@12614 = ~Decay~
+@12615 = ~Animal~
+@12616 = ~Plant~
+@12617 = ~Earth~
+@12618 = ~Air~
+@12619 = ~Water~
+@12620 = ~Fire~
+@12621 = ~Radiance~
+@12622 = ~Shadow~
+@12623 = ~Magic~
+@12624 = ~Astral~
+*/
+
+// First item: spell IDS name *or* RES filename
+// numeric value in the middle: desired spell level, can be 0 (no change) or 1-7
+// Item after equals sign: sphere
+
+// To change which sphere a spell belongs to, 
+// simply change the entry in the right-most column to the new sphere.
+// You don't have to actually move the spell, though you can if you want to.
+
+//  UNIVERSAL
+// 	universal spells will be available to every kit, regardless of their defined sphere assignments
+//	this is basically the "All" sphere
+// 	this sphere MUST MUST MUST have at least one spell of each spell level
+// 	and their spell level MUST NOT be changed from the vanilla game (use value '0')
+// 	those are the rules you MUST abide by if you want to change which spells are universal
+
+DEFINE_ACTION_MACRO d5_define_sphere_spells BEGIN
+
+<<<<<<<< d5/d5spsph.2da
+2DA V1.0 
+SPELL
+						LEVEL		FnP_SPHERE		DESC_SPHERE
+CLERIC_CURE_LIGHT_WOUNDS               	0	=	Universal // level 1
+CLERIC_BLESS                           	0	=	Universal // level 1
+CLERIC_CURSE                           	0	=	Universal // level 1
+CLERIC_AID                              0	=	Universal // level 2
+CLERIC_DISPEL_MAGIC                    	0	=	Universal // level 3
+CLERIC_REMOVE_CURSE                    	0	=	Universal // level 3
+CLERIC_BREAK_ENCHANTMENT                0	=	Universal
+CLERIC_FREE_ACTION                      4	=	Universal // level 4
+CLERIC_LESSER_RESTORATION              	0	=	Universal // level 4
+CLERIC_CURE_SERIOUS_WOUNDS             	0	=	Universal // level 4
+CLERIC_CURE_CRITICAL_WOUNDS            	0	=	Universal // level 5
+CLERIC_BOLT_OF_GLORY                    0	=	Universal // level 6
+CLERIC_RESTORATION                     	0	=	Universal // level 7
+
+CLERIC_SANCTUARY                        2	=	Universal
+CLERIC_CURE_MODERATE_WOUNDS            	2	=	Universal  //SR accounted for
+
+CLERIC_REMOVE_PARALYSIS                 2	=	Cleric
+CLERIC_DISRUPT_UNDEAD                  	2	=	Cleric
+b_c105                                  2	=	Cleric
+CLERIC_CURE_MEDIUM_WOUNDS              	3	=	Universal
+CLERIC_HOLY_SMITE                       3	=	Cleric
+CLERIC_UNHOLY_BLIGHT                    3	=	Cleric
+CLERIC_CHANT                           	0	=	Cleric // level 2
+CLERIC_PRAYER                          	0	=	Cleric // level 3
+CLERIC_RECITATION                      	0	=	Cleric // level 4
+CLERIC_RIGHTEOUS_WRATH_OF_THE_FAITHFUL 	0	=	Cleric // level 5
+CLERIC_MASS_CURE                       	5	=	Cleric
+CLERIC_HALLOW                          	6	=	Cleric
+CLERIC_UNHALLOW                        	6	=	Cleric
+CLERIC_HEAL                            	6	=	Universal
+CLERIC_HOLY_WORD                       	0	=	Cleric // level 7
+CLERIC_UNHOLY_WORD                     	0	=	Cleric // level 7
+CLERIC_DESTRUCTION                      7	=	Cleric
+CLERIC_RESURRECTION                    	7	=	Cleric
+
+CLERIC_ENTANGLE                         0	=	Druid // level 1
+
+
+CLERIC_CAUSE_LIGHT_WOUNDS              	1	= 	Death
+CLERIC_EYES_OF_THE_DEAD                	1	=	Death
+b_c104                                  1	=	Death
+CLERIC_CAUSE_MODERATE_WOUNDS           	2	=	Death  //SR accounted for
+CLERIC_PACIFY_DEAD                     	2	=	Death
+b_c202                                  2	=	Death
+CLERIC_CIRCLE_OF_BONES                 	3	=	Death  //Sr accounted for
+CLERIC_CAUSE_MEDIUM_WOUNDS              3	=	Death
+CLERIC_ANIMATE_DEAD                    	4	=	Death
+CLERIC_CAUSE_SERIOUS_WOUNDS             4	=	Death
+CLERIC_MASS_CAUSE_LIGHT_WOUNDS          5	=	Death
+CLERIC_SLAY_LIVING                     	5	=	Death
+CLERIC_HARM                             6	=	Death
+B_W631                                 	6	=	Death  //soul eater (needed???)
+CLERIC_FINGER_OF_DEATH                 	7	=	Death
+CLERIC_COMMAND                          1	=	Law
+CLERIC_SILENCE_15_FOOT                  1	=	Law
+CLERIC_DOOM                             1	=	Chaos
+CLERIC_FORBID                           2	=	Law
+b_c201                                  2	=	Law
+CLERIC_HOLD_PERSON                      2	=	Law
+CLERIC_DICTATE                          3	=	Law
+b_p3xx                                  3	=	Law
+CLERIC_HOLD_ANIMAL                      3	=	Law
+CLERIC_EXALTATION                       4	=	Law
+WIZARD_SECRET_WORD                      4	=	Law
+WIZARD_GREATER_MALISON                  4	=	Dread
+WIZARD_DISPELLING_SCREEN                5	=	Law  // ???
+WIZARD_POWER_WORD_SILENCE               6	=	Law  // ???
+CLERIC_SHIELD_OF_THE_ARCHONS            7	=	Law
+CLERIC_SYMBOL_STUN                      7	=	Law
+CLERIC_RIGID_THINKING                   2	=	Chaos
+CLERIC_MISCAST_MAGIC                    1	=	Chaos
+CLERIC_MURDEROUS_COMMAND                3	=	Chaos
+b_c301                                  3	=	Choas
+CLERIC_CLOAK_OF_FEAR                    3	=	Chaos
+CLERIC_BLOOD_RAGE                       4	=	Chaos
+WIZARD_GREATER_MALISON                  4	=	Chaos
+CLERIC_MISFIRE                          5	=	Chaos
+CLERIC_CONFUSION                     	5	=	Chaos
+CLERIC_CHAOTIC_COMMANDS                 5	=	Chaos
+CLERIC_PHYSICAL_MIRROR                  6	=	Chaos
+CLERIC_MAGIC_RESISTANCE                 6	=	Chaos
+CLERIC_SPIRITUAL_WRATH                  7	=	Chaos
+CLERIC_PROTECT_FROM_EVIL                1	=	Protection
+CLERIC_ARMOR_OF_FAITH                   1	=	Protection
+WIZARD_PROTECTION_FROM_PETRIFICATION    2	=	Protection
+WIZARD_SHIELD                           2	=	Protection
+CLERIC_GLYPH_OF_WARDING                 3	=	Protection
+CLERIC_NEGATIVE_PLANE_PROTECTION       	3	=	Protection
+CLERIC_DEATH_WARD                      	4	=	Protection
+CLERIC_PROTECTION_FROM_EVIL_10_FOOT     4	=	Protection
+CLERIC_REPULSION                        5	=	Protection // sr repulsion
+CLERIC_SHIELD_OF_LATHANDER              5	=	Protection
+CLERIC_ENTROPY_SHIELD                   6	=	Protection
+CLERIC_CELESTIAL_PROTECTION             6	=	Protection
+CLERIC_GREATER_SHIELD_OF_LATHANDER      7	=	Protection
+CLERIC_MASS_NEGATIVE_PLANE_PROTECTION   7	=	Protection
+CLERIC_ABUNDANT_AMMO                    1	=	War
+b_r101                                  1   =   War
+CLERIC_MAGIC_WEAPON                     1	=	War
+b_c107                                  1	=	War
+CLERIC_STRIKING                         1	=	War
+CLERIC_SPIRITUAL_HAMMER                 2	=	War
+CLERIC_SEEKING                          2	=	War
+CLERIC_STRENGTH_OF_ONE                  3	=	War
+CLERIC_HOLY_POWER                       3	=	War
+CLERIC_DEFENSIVE_HARMONY                4	=	War
+CLERIC_STAR_METAL_CUDGEL                4	=	War
+CLERIC_RIGHTEOUS_MAGIC                  5	=	War
+CLERIC_BLADE_BARRIER                    6	=	War
+CLERIC_SYMBOL_FEAR                      7	=	War
+SR_WIZARD_EXPEDITIOUS_RETREAT           1	=	Time // SR exped. retreat
+NOSR_b_w101                             1	=	Time // FnP Expeditious Retreat
+CLERIC_SLOW_POISON                     	1	=	Time
+NOSR_WIZARD_PROTECTION_FROM_PETRIFICATION  2	=	Time
+CLERIC_REMOVE_PARALYSIS                 2	=	Time
+d5fnp02                                 2	=	Time // mazzy haste (self-only)
+WIZARD_HASTE                            3	=	Time
+WIZARD_SLOW                             4	=	Time
+CLERIC_WONDROUS_RECALL                 	4	=	Time
+WIZARD_STONE_TO_FLESH                   5	=	Time
+WIZARD_FLESH_TO_STONE                   6	=	Time
+WIZARD_IMPROVED_HASTE                   6	=	Time
+WIZARD_DISINTEGRATE                     7	=	Time
+d5fnp03                                 0	=	Perception // identify
+CLERIC_DETECT_EVIL                      1	=	Perception
+CLERIC_FIND_TRAPS                       1	=	Perception
+WIZARD_DETECT_INVISIBILITY              2	=	Perception
+WIZARD_TRUE_STRIKE                      2	=	Perception // sr true strike
+WIZARD_CLAIRVOYANCE                     3	=	Perception
+WIZARD_DETECT_ILLUSION                  3	=	Perception
+CLERIC_FAR_SIGHT                        4	=	Perception
+CLERIC_INVISIBILITY_PURGE               4	=	Perception
+WIZARD_ORACLE                           5	=	Perception
+CLERIC_TRUE_SIGHT                       6	=	Perception
+WIZARD_MOMENT_OF_PRESCIENCE             7	=	Perception
+CLERIC_CAMOUFLAGE                       1	=	Deceit
+NOSR_WIZARD_REFLECTED_IMAGE             1	=	Deceit
+SR_WIZARD_REFLECTED_IMAGE               2	=	Deceit
+WIZARD_BLUR                             2	=	Deceit
+WIZARD_INVISIBILITY                     3	=	Deceit
+WIZARD_NON_DETECTION                    3	=	Deceit
+WIZARD_MIRROR_IMAGE                     4	=	Deceit
+WIZARD_SHADOW_DOOR                      5	=	Deceit
+WIZARD_MISLEAD                          6	=	Deceit
+CLERIC_PIXIE_DUST                       6	=	Deceit
+WIZARD_SIMULACRUM                       7	=	Deceit
+CLERIC_CHARM_PERSON                     1	=	Thought
+CLERIC_REMOVE_FEAR                      2	=	Thought
+CLERIC_ENTHRALL                         2	=	Thought
+b_p201                                  2	=	Thought
+WIZARD_EMOTION_COURAGE                  3	=	Thought
+b_w427                                  3	=	Thought // Emotion: Courage
+WIZARD_EMOTION_FEAR                     3	=	Thought
+b_w428                                  3	=	Thought // Emotion: Fear
+WIZARD_EMOTION_HOPE                     4	=	Thought
+b_w429                                  4	=	Thought // Emotion: Hope
+WIZARD_EMOTION_HOPELESSNESS             4	=	Thought
+CLERIC_MENTAL_DOMINATION                5	=	Thought
+CLERIC_GREATER_COMMAND                  5	=	Thought
+CLERIC_IMPERVIOUS_SANCTITY_OF_MIND      6	=	Thought
+CLERIC_NATURE_BEAUTY                    7	=	Thought
+CLERIC_SLOW_POISON                     	1	=	Vigor
+CLERIC_UNFAILING_ENDURANCE              1	=	Vigor
+CLERIC_BULLS_STRENGTH                  	1	=	Vigor
+CLERIC_CATS_GRACE                      	1	=	Vigor
+CLERIC_BEARS_ENDURANCE                 	1	=	Vigor
+CLERIC_CURE_DISEASE                    	2	=	Vigor
+CLERIC_DRAW_UPON_HOLY_MIGHT             2	=	Vigor
+CLERIC_REGENERATE_MODERATE_WOUNDS       3	=	Vigor
+CLERIC_NEUTRALIZE_POISON                3	=	Vigor
+CLERIC_REGENERATE_SERIOUS_WOUNDS        4	=	Vigor
+CLERIC_ANIMAL_RAGE                      4	=	Vigor
+CLERIC_HEROISM                          5	=	Vigor
+CLERIC_REGENERATE_CRITICAL_WOUNDS       5	=	Vigor
+CLERIC_MASS_REGENERATE                  5	=	Vigor
+CLERIC_RAISE_DEAD                      	6	=	Vigor
+CLERIC_SUPERHEROISM                    	6	=	Vigor
+CLERIC_REGENERATE                       7	=	Vigor
+CLERIC_AURA_OF_VITALITY                 7	=	Vigor
+CLERIC_CAUSE_DISEASE                   	1	=	Decay  //SR accounted for
+b_pr101                                 1	=	Decay
+CLERIC_SHATTER                          2	=	Decay
+b_pr201                                 2	=	Decay
+CLERIC_MOLD_TOUCH                      	3	=	Decay
+WIZARD_WAVES_OF_FATIGUE                 4	=	Decay
+CLERIC_POISON                          	4	=	Decay
+CLERIC_WAVES_OF_AGONY                   5	=	Decay
+CLERIC_CLOUD_OF_PESTILENCE              5	=	Decay
+CLERIC_DOLOROUS_DECAY                  	6	=	Decay
+CLERIC_WITHER                           7	=	Decay
+CLERIC_ANIMAL_EYES                      1	=	Animal
+b_c102                                  1 	=	Animal
+CLERIC_ANIMAL_SUMMONING_LEVEL_1         1	=	Animal // SR Animal Summon 1
+CLERIC_BEAST_CLAW                       2	=	Animal
+CLERIC_ANIMAL_SUMMONING_LEVEL_2         2	=	Animal // SR Animal Summon 2
+CLERIC_FERAL_INSTINCT                   3	=	Animal
+b_p302                                  3	=	Animal
+CLERIC_ANIMAL_SUMMONING_LEVEL_3         3	=	Animal // SR Animal Summon 3
+d5fnp04                                 3	=	Animal // Magic Fang
+SR_CLERIC_ANIMAL_SUMMONING_LEVEL_4      4	=	Animal // SR Animal Summon 4
+NOSR_CLERIC_ANIMAL_SUMMONING_1          4	=	Animal
+SR_CLERIC_ANIMAL_SUMMONING_LEVEL_5      5	=	Animal // SR Animal Summon 5
+NOSR_CLERIC_ANIMAL_SUMMONING_2          5	=	Animal
+d5fnp05                                 5	=	Animal // Animal Growth
+SR_CLERIC_ANIMAL_SUMMONING_LEVEL_6      6	=	Animal // SR Animal Summon 6
+NOSR_CLERIC_ANIMAL_SUMMONING_3          6	=	Animal
+SR_CLERIC_ANIMAL_SUMMONING_LEVEL_7      7	=	Animal // SR Animal Summon 7
+NOSR_CLERIC_CONJURE_ANIMALS             7	=	Animal
+d5btswm                                 1	=	Insects // liddle beetle swarm
+d5spswm                                 2	=	Insects // liddle spider swarm
+CLERIC_REPEL_INSECTS                    2	=	Insects
+spdr201                                 3	=	Insects // druid version of web
+CLERIC_SUMMON_INSECTS                   3	=	Insects
+CLERIC_GIANT_INSECT                     4	=	Insects
+d5spspn                                 4	=	Insects // wizard spider summon
+CLERIC_INSECT_PLAGUE                    5	=	Insects
+d5carsm                                 6	=	Insects // wizard carrion crawler summon
+CLERIC_CREEPING_DOOM                    7	=	Insects
+d5rhbtl                                 7	=	Insects // summon rhino beetle
+CLERIC_GOOD_BERRIES                     1	=	Plant
+CLERIC_GOODBERRY                        1	=	Plant
+CLERIC_SHILLELAGH                       1	=	Plant
+CLERIC_BARKSKIN                         2	=	Plant
+CLERIC_THORN_SPRAY                      3	=	Plant
+CLERIC_SNARE                            3	=	Plant
+b_dr301                                 3	=	Plant
+CLERIC_SPIKE_GROWTH                     4	=	Plant
+CLERIC_STICKS_TO_SNAKES                 4	=	Plant
+CLERIC_CALL_WOODLAND_BEINGS             5	=	Plant
+CLERIC_NATURES_WRATH                    6	=	Plant
+CLERIC_ASSASSIN_VINES                   6	=	Plant
+CLERIC_STALKER                          7	=	Plant
+CLERIC_HOLLY_DART                       7	=	Plant
+CLERIC_BINDING                         	1	=	Earth
+b_pc01                                  1	=	Earth
+CLERIC_MAGIC_STONE                      1	=	Earth
+CLERIC_PROTECTION_FROM_LIGHTNING        2	=	Earth
+CLERIC_STONE_FIST                       2	=	Earth
+b_pr301                                 3	=	Earth
+CLERIC_SPIKE_STONES                     3	=	Earth
+CLERIC_IRONSKIN                         4	=	Earth
+WIZARD_STONE_TO_FLESH                   5	=	Earth
+WIZARD_CONJURE_LESSER_EARTH_ELEMENTAL   5	=	Earth
+CLERIC_CONJURE_EARTH_ELEMENTAL          6	=	Earth
+WIZARD_FLESH_TO_STONE                   6	=	Earth
+CLERIC_EARTHQUAKE                       7	=	Earth
+WIZARD_IRON_BODY                        7	=	Earth // need to add for non-IWD
+CLERIC_ZONE_OF_SWEET_AIR                1	=	Air
+CLERIC_OBSCURING_MIST                   1	=	Air // SR obscuring mist
+WIZARD_STINKING_CLOUD                   2	=	Air
+NOSR_CLERIC_STORM_SHELL                 3	=	Air
+SR_CLERIC_STORM_SHIELD                  3	=	Air // SR storm shield
+CLERIC_CLOUDBURST                       3	=	Air
+CLERIC_CALL_LIGHTNING                   3	=	Air
+CLERIC_STORMWALL                        4	=	Air
+b_c401                                  4	=	Air // stormwall
+CLERIC_STATIC_CHARGE                    4	=	Air
+CLERIC_WHIRLWIND                        5	=	Air
+CLERIC_PROTECTION_FROM_LIGHTNING        5	=	Air // SR pro. lightning
+WIZARD_CONJURE_LESSER_AIR_ELEMENTAL     5	=	Air
+CLERIC_LIGHTNING_STORM                  6	=	Air
+SR_CLERIC_CONJURE_AIR_ELEMENTAL         6	=	Air // SR air elemental
+WIZARD_DEATH_FOG                        7	=	Air
+CLERIC_AERIAL_SERVANT                   7	=	Air
+CLERIC_FROST_FINGERS                    1	=	Water
+b_c103                                  1	=	Water // frost fingers
+CLERIC_BLESS_WATER                     	1	=	Water
+b_p101                                  1	=	Water
+CLERIC_RESIST_COLD                      2	=	Water
+CLERIC_WATERY_FIST                      2	=	Water
+b_PR221                                 2	=	Water
+CLERIC_ICE_BLADE                        2	=	Water
+b_c203                                  2	=	Water // ice blade
+CLERIC_RESIST_ACID_CORROSION            2	=	Water
+WIZARD_SNILLOCS_SNOWBALL_SWARM          3	=	Water
+b_w204                                  3	=	Water // Snowball Swarm
+WIZARD_ICELANCE                         3	=	Water
+b_w327                                  3	=	Water // icelance
+CLERIC_SMASHING_WAVE                    4	=	Water
+CLERIC_PROTECTION_FROM_COLD             4	=	Water // SR pro. cold
+SR_CLERIC_ICE_STORM                     5	=	Water
+NOSR_WIZARD_ICE_STORM                   5	=	Water
+CLERIC_PROTECTION_FROM_ACID             5	=	Water // SR pro. acid
+CLERIC_MIST_OF_ELDATH                   6	=	Water
+NO_CLERIC_CONJURE_WATER_ELEMENTAL          6	=	Water
+b_pr602                                 6	=	Water // water elemental
+WIZARD_ACID_STORM                       7	=	Water
+b_w724                                  7	=	Water // acid storm
+WIZARD_BURNING_HANDS                    1	=	Fire
+CLERIC_RESIST_FIRE                      1	=	Fire
+CLERIC_FLAME_BLADE                      2	=	Fire
+CLERIC_PRODUCE_FIRE                     2	=	Fire
+CLERIC_FIRE_TRAP                        3	=	Fire
+NOSR_CLERIC_PROTECTION_FROM_FIRE        3	=	Fire
+WIZARD_FLAME_ARROW                      4	=	Fire
+SR_CLERIC_PROTECTION_FROM_FIRE          4	=	Fire
+WIZARD_FIRE_SHIELD_RED                  5	=	Fire
+CLERIC_FLAME_STRIKE                     5	=	Fire
+WIZARD_CONJURE_LESSER_FIRE_ELEMENTAL    5	=	Fire
+CLERIC_INFERNO                          6	=	Fire
+CLERIC_CONJURE_FIRE_ELEMENTAL           6	=	Fire
+CLERIC_FIRE_SEEDS                       6	=	Fire
+CLERIC_FIRE_STORM                       7	=	Fire
+d5fnp06                                 1	=	Radiance
+CLERIC_SUNSCORCH                        1	=	Radiance
+CLERIC_ALICORN_LANCE                    2	=	Radiance
+WIZARD_GLITTERDUST                      2	=	Radiance
+NOSR_CLERIC_REPULSE_UNDEAD              3	=	Radiance
+CLERIC_MOONBLADE                        3	=	Radiance
+CLERIC_WALL_OF_MOONLIGHT                4	=	Radiance
+CLERIC_FALSE_DAWN                       5	=	Radiance
+CLERIC_PIXIE_DUST                       6	=	Radiance
+CLERIC_SOL_SEARING_ORB                  6	=	Radiance
+CLERIC_SUNRAY                           7	=	Radiance
+CLERIC_CAMOUFLAGE                       1	=	Shadow
+b_r102                                  1	=	Shadow
+B_SSTEP                                 2	=	Shadow // shadowstep
+CLERIC_CLOAK_DARKNESS                   3	=	Shadow
+b_c302                                  3	=	Shadow
+WIZARD_SHADOW_MONSTERS                  3	=	Shadow
+WIZARD_WRAITH_FORM                      4	=	Shadow
+WIZARD_DEMI_SHADOW_MONSTERS             4	=	Shadow
+WIZARD_SHADOW_DOOR                      5	=	Shadow
+WIZARD_SHADES                           5	=	Shadow
+B_W629                                  5	=	Shadow // Shades
+d5fnp01                                 6	=	Shadow // summon shadow
+WIZARD_POWER_WORD_BLIND                 7	=	Shadow
+WIZARD_GHOSTFORM                        7	=	Shadow
+CLERIC_FAERIE_FIRE                      1	=	Astral
+CLERIC_SPIRIT_WARD                      1	=	Astral // modify to work against all planar creatures
+CLERIC_WRITHING_FOG                     2	=	Astral
+CLERIC_SPIRITUAL_CLARITY                3	=	Astral
+CLERIC_SPIRIT_FIRE                      4	=	Astral // modify to work against all planar creatures
+CLERIC_SPIRITUAL_LOCK                   5	=	Astral // modify to work against all planar creatures
+CLERIC_BANISHMENT                       5	=	Astral // sr banishment
+CLERIC_RECALL_SPIRIT                    6	=	Astral
+CLERIC_ETHER_GATE                       7	=	Astral
+WIZARD_FREEDOM                          7	=	Astral
+
+>>>>>>>>
+
+END	//	end sphere spells macro
+
+/*
+
+NOTES:
+
+need to add non-b_spells versions of the IWD stuff
+ -- i.e. add regular IDS names
+ -- why b_spells not ADD_SPELL anyway?
+
+//d5pr601 /*nature's wrath*/   6	Plant  //commented out
+// add enhanced Chameleon here          2	Shadow
+
+
+ADD:
+
+//WIZARD_MORDENKAINENS_SWORD              7 // or 6
+//WIZARD_IDENTIFY                         1	Knowledge // make cleric version
+CLERIC_GATE                             7	=	Astral // ....??
+
+*/
+//___________________________________________________________________________________
+
+
+
+
+// FnP DEITY/KIT SPHERE ASSIGNMENTS___________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_MACRO vanilla_cleric_spheres BEGIN
+  COPY ~%MOD_FOLDER%/lib/d5_base.spl~ ~override/d5fpclsp.spl~
+//  LAF QD_ENSURE_QDMC_SPL STR_VAR base_class = ~P~ END 
+//  LAF QD_ENSURE_BASE_CLAB STR_VAR base_class = ~P~ END 
+//  COPY_EXISTING ~QD_MCP01.spl~ ~override~ // trueclass spheres via .eff
+    LPF DELETE_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 0x4000 match_parameter2 = 9 STR_VAR match_resource = ~d5splif#~ END
+	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5splif#~ END
+    LPF DELETE_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 0 match_parameter2 = 9 STR_VAR match_resource = ~d5splif#~ END
+	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0 parameter2 = 9 STR_VAR resource = ~d5splif#~ END
+  IF_EXISTS BUT_ONLY
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY clabpr01_spheres BEGIN
+	Cleric			=> major
+	Death			=> x
+	Vermin			=> x
+	Destruction 	=> x
+	Protection		=> x
+	War			=> x
+	Exploration 	=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought		=> x
+	Dread			=> x
+	Druid			=> x
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air			=> x
+	Fire			=> x
+	Light			=> x
+	Shadow			=> x
+	Magic			=> x
+	Astral			=> x
+  END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_MACRO vanilla_druid_spheres BEGIN
+  COPY ~%MOD_FOLDER%/lib/d5_base.spl~ ~override/d5fpdrsp.spl~
+//  LAF QD_ENSURE_QDMC_SPL STR_VAR base_class = ~D~ END 
+//  LAF QD_ENSURE_BASE_CLAB STR_VAR base_class = ~D~ END 
+//  COPY_EXISTING ~QD_MCD01.spl~ ~override~ // trueclass spheres via .eff
+    LPF DELETE_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 0x4000 match_parameter2 = 9 STR_VAR match_resource = ~d5spvig#~ END
+	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5spvig#~ END
+    LPF DELETE_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 0x4000 match_parameter2 = 9 STR_VAR match_resource = ~d5sfani#~ END
+	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5sfani#~ END
+    LPF DELETE_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 0x4000 match_parameter2 = 9 STR_VAR match_resource = ~d5sfpla#~ END
+	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0x4000 parameter2 = 9 STR_VAR resource = ~d5sfpla#~ END
+    LPF DELETE_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 0 match_parameter2 = 9 STR_VAR match_resource = ~d5spvig#~ END
+	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0 parameter2 = 9 STR_VAR resource = ~d5sfani#~ END
+    LPF DELETE_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 0 match_parameter2 = 9 STR_VAR match_resource = ~d5sfani#~ END
+	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0 parameter2 = 9 STR_VAR resource = ~d5sfani#~ END
+    LPF DELETE_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 0 match_parameter2 = 9 STR_VAR match_resource = ~d5sfpla#~ END
+	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = 0 parameter2 = 9 STR_VAR resource = ~d5sfpla#~ END
+  IF_EXISTS BUT_ONLY
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY clabdr01_spheres BEGIN
+	Cleric			=> x
+	Death			=> x
+	Vermin			=> x
+	Destruction 	=> x
+	Protection		=> x
+	War			=> x
+	Exploration 	=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought		=> x
+	Dread			=> x
+	Druid			=> major
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air			=> x
+	Fire			=> x
+	Light			=> x
+	Shadow			=> x
+	Magic			=> x
+	Astral			=> x
+  END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_MACRO vanilla_ranger_spheres BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY clabrn01_spheres BEGIN
+	Cleric			=> x
+	Death			=> x
+	Vermin			=> x
+	Destruction 	=> x
+	Protection		=> x
+	War			=> x
+	Exploration 	=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought		=> x
+	Dread			=> x
+	Druid			=> major
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air			=> x
+	Fire			=> x
+	Light			=> x
+	Shadow			=> x
+	Magic			=> x
+	Astral			=> x
+  END
+END
+//___________________________________________________________________________________
+
+
+
+DEFINE_ACTION_MACRO d5_deity_kit_sphere_lists BEGIN
+
+// UR-PRIEST__________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION ur_priest_spheres 
+  RET_ARRAY ur_priest_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY ur_priest_spheres_array BEGIN
+	Cleric				=> major
+	Death				=> x
+	Vermin				=> x
+	Destruction			=> x
+	Protection			=> x
+	War					=> x
+	Exploration			=> x
+	Knowledge			=> x
+	Deception			=> x
+	Thought				=> x
+	Dread				=> x
+	Druid				=> major
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air					=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
+	Astral		    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+
+// MAIN PANTHEON_____________________________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION auril_spheres 
+  RET_ARRAY auril_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY auril_spheres_array BEGIN
+	Cleric				=> major
+	Death				=> x
+	Vermin				=> x
+	Destruction		=> focus
+	Protection			=> x
+	War				=> x
+	Exploration		=> x
+	Knowledge			=> x
+	Deception			=> x
+	Thought			=> x
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> focus
+	Air				=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
+	Astral		    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION azuth_spheres 
+  RET_ARRAY azuth_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY azuth_spheres_array BEGIN
+	Cleric				=> major
+	Death				=> x
+	Vermin				=> x
+	Destruction		=> x
+	Protection			=> x
+	War				=> x
+	Exploration 		=> x
+	Knowledge			=> focus
+	Deception			=> x
+	Thought			=> x
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air				=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> focus
+	Astral				=> x
+ END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION bane_spheres 
+  RET_ARRAY bane_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY bane_spheres_array BEGIN
+	Cleric				=> major
+	Death				=> x
+	Vermin				=> x
+	Destruction		=> focus
+	Protection			=> x
+	War				=> focus
+	Exploration			=> x
+	Knowledge			=> x
+	Deception			=> x
+	Thought			=> x
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air				=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
+	Astral				=> x
+ END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION beshaba_spheres 
+  RET_ARRAY beshaba_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY beshaba_spheres_array BEGIN
+	Cleric				=> major
+	Death				=> x
+	Vermin				=> x
+	Destruction			=> x
+	Protection			=> x
+	War					=> x
+	Exploration			=> x
+	Knowledge			=> x
+	Deception			=> focus
+	Thought				=> x
+	Dread				=> focus
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air					=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
+	Astral		    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION bhaal_spheres 
+  RET_ARRAY bhaal_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY bhaal_spheres_array BEGIN
+	Cleric				=> major
+	Death				=> x
+	Vermin				=> x
+	Destruction		=> focus
+	Protection			=> x
+	War				=> focus
+	Exploration			=> x
+	Knowledge			=> x
+	Deception			=> x
+	Thought			=> x
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air				=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
+	Astral				=> x
+ END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION cyric_spheres 
+  RET_ARRAY cyric_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY cyric_spheres_array BEGIN
+	Cleric				=> major
+	Death				=> focus
+	Vermin				=> x
+	Destruction			=> focus
+	Protection			=> x
+	War					=> x
+	Exploration			=> x
+	Knowledge			=> x
+	Deception			=> x
+	Thought				=> x
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air					=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
+	Astral			    => x
+ END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION deneir_spheres 
+  RET_ARRAY deneir_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY deneir_spheres_array BEGIN
+	Cleric				=> major
+	Death				=> x
+	Vermin				=> x
+	Destruction			=> x
+	Protection			=> x
+	War					=> x
+	Exploration			=> x
+	Knowledge			=> focus
+	Deception			=> x
+	Thought				=> focus
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air					=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
+	Astral		    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+// __________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION garagos_spheres 
+  RET_ARRAY garagos_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY garagos_spheres_array BEGIN
+	Cleric				=> major
+	Death				=> x
+	Vermin				=> x
+	Destruction		=> focus
+	Protection			=> x
+	War				=> focus
+	Exploration		=> x
+	Knowledge			=> x
+	Deception			=> x
+	Thought			=> x
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air				=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
+	Astral   			=> x
+ END
+END
+//___________________________________________________________________________________
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION helm_spheres 
+  RET_ARRAY helm_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY helm_spheres_array BEGIN
+	Cleric				=> major
+	Death				=> x
+	Vermin				=> x
+	Destruction			=> x
+	Protection			=> x
+	War					=> focus
+	Exploration			=> x
+	Knowledge			=> focus
+	Deception			=> x
+	Thought				=> x
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air					=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
+	Astral		    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION ilmater_spheres 
+  RET_ARRAY ilmater_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY ilmater_spheres_array BEGIN
+	Cleric				=> major
+	Death				=> x
+	Vermin				=> x
+	Destruction			=> x
+	Protection			=> focus
+	War					=> x
+	Exploration			=> x
+	Knowledge			=> x
+	Deception			=> x
+	Thought				=> x
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> focus
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air					=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
+	Astral		    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION kelemvor_spheres 
+  RET_ARRAY kelemvor_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY kelemvor_spheres_array BEGIN
+	Cleric				=> major
+	Death				=> focus
+	Vermin				=> x
+	Destruction			=> x
+	Protection			=> focus
+	War					=> x
+	Exploration			=> x
+	Knowledge			=> x
+	Deception			=> x
+	Thought				=> x
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air					=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
+	Astral			    => x
+ END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION kossuth_spheres 
+  RET_ARRAY kossuth_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY kossuth_spheres_array BEGIN
+	Cleric				=> major
+	Death				=> x
+	Vermin				=> x
+	Destruction		=> x
+	Protection			=> x
+	War				=> x
+	Exploration		=> x
+	Knowledge			=> x
+	Deception			=> x
+	Thought			=> x
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air				=> x
+	Fire				=> focus
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
+	Astral		    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+// _______________________________________________________________
+//
+DEFINE_ACTION_FUNCTION lathander_spheres 
+  RET_ARRAY lathander_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY lathander_spheres_array BEGIN
+	Cleric				=> major
+	Death				=> x
+	Vermin				=> x
+	Destruction			=> x
+	Protection			=> focus
+	War					=> x
+	Exploration			=> x
+	Knowledge			=> x
+	Deception			=> x
+	Thought				=> x
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air					=> x
+	Fire				=> x
+	Light				=> focus
+	Shadow				=> x
+	Magic				=> x
+	Astral		    	=> x
+  END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION leira_spheres 
+  RET_ARRAY leira_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY leira_spheres_array BEGIN
+	Cleric				=> major
+	Death				=> x
+	Vermin				=> x
+	Destruction			=> x
+	Protection			=> x
+	War					=> x
+	Exploration			=> focus
+	Knowledge			=> x
+	Deception			=> focus
+	Thought				=> x
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air					=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
+	Astral		    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION loviatar_spheres 
+  RET_ARRAY loviatar_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY loviatar_spheres_array BEGIN
+	Cleric				=> major
+	Death				=> x
+	Vermin				=> x
+	Destruction			=> x
+	Protection			=> x
+	War					=> x
+	Exploration			=> x
+	Knowledge			=> x
+	Deception			=> x
+	Thought				=> x
+	Dread				=> focus
+	Druid				=> x
+	Affliction			=> focus
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air					=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
+	Astral		    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION malar_spheres 
+  RET_ARRAY malar_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY malar_spheres_array BEGIN
+	Cleric				=> major
+	Death				=> x
+	Vermin				=> x
+	Destruction		=> focus
+	Protection			=> x
+	War				=> x
+	Exploration		=> x
+	Knowledge			=> x
+	Deception			=> x
+	Thought			=> x
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> focus
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air				=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
+	Astral   			=> x
+ END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION mask_spheres 
+  RET_ARRAY mask_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY mask_spheres_array BEGIN
+	Cleric				=> major
+	Death				=> x
+	Vermin				=> x
+	Destruction			=> x
+	Protection			=> x
+	War					=> x
+	Exploration			=> focus
+	Knowledge			=> x
+	Deception			=> focus
+	Thought				=> x
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air					=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
+	Astral		    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION mielikki_spheres 
+  RET_ARRAY mielikki_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY mielikki_spheres_array BEGIN
+	Cleric				=> major
+	Death				=> x
+	Vermin				=> x
+	Destruction		=> x
+	Protection			=> x
+	War				=> x
+	Exploration		=> focus
+	Knowledge			=> x
+	Deception			=> x
+	Thought			=> x
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> focus
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air				=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
+	Astral  			=> x
+ END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION milil_spheres 
+  RET_ARRAY milil_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY milil_spheres_array BEGIN
+	Cleric				=> major
+	Death				=> x
+	Vermin				=> x
+	Destruction		=> x
+	Protection			=> x
+	War				=> x
+	Exploration		=> x
+	Knowledge			=> x
+	Deception			=> focus
+	Thought			=> focus
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air				=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
+	Astral  			=> x
+ END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION moander_spheres 
+  RET_ARRAY moander_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY moander_spheres_array BEGIN
+	Cleric				=> major
+	Death				=> x
+	Vermin				=> x
+	Destruction			=> x
+	Protection			=> x
+	War					=> x
+	Exploration			=> x
+	Knowledge			=> x
+	Deception			=> x
+	Thought				=> x
+	Dread				=> focus
+	Druid				=> x
+	Affliction			=> focus
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air					=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
+	Astral		    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION mystra_spheres 
+  RET_ARRAY mystra_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY mystra_spheres_array BEGIN
+	Cleric				=> major
+	Death				=> x
+	Vermin				=> x
+	Destruction			=> x
+	Protection			=> x
+	War					=> x
+	Exploration			=> x
+	Knowledge			=> x
+	Deception			=> x
+	Thought				=> x
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air					=> x
+	Fire				=> x
+	Light				=> focus
+	Shadow				=> x
+	Magic				=> focus
+	Astral		    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION oghma_spheres 
+  RET_ARRAY oghma_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY oghma_spheres_array BEGIN
+	Cleric				=> major
+	Death				=> x
+	Vermin				=> x
+	Destruction		=> x
+	Protection			=> x
+	War				=> x
+	Exploration		=> x
+	Knowledge			=> focus
+	Deception			=> x
+	Thought			=> x
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air				=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> focus
+	Astral		    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION redknight_spheres 
+  RET_ARRAY redknight_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY redknight_spheres_array BEGIN
+	Cleric				=> major
+	Death				=> x
+	Vermin				=> x
+	Destruction		=> x
+	Protection			=> focus
+	War				=> focus
+	Exploration		=> x
+	Knowledge			=> x
+	Deception			=> x
+	Thought			=> x
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air				=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
+	Astral		    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION selune_spheres 
+  RET_ARRAY selune_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY selune_spheres_array BEGIN
+	Cleric				=> major
+	Death				=> x
+	Vermin				=> x
+	Destruction		=> x
+	Protection			=> x
+	War				=> x
+	Exploration		=> x
+	Knowledge			=> x
+	Deception			=> x
+	Thought			=> x
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air				=> x
+	Fire				=> x
+	Light				=> focus
+	Shadow				=> focus
+	Magic				=> x
+	Astral		    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION shar_spheres 
+  RET_ARRAY shar_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY shar_spheres_array BEGIN
+	Cleric				=> major
+	Death				=> x
+	Vermin				=> x
+	Destruction			=> x
+	Protection			=> x
+	War					=> x
+	Exploration			=> x
+	Knowledge			=> x
+	Deception			=> x
+	Thought				=> x
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air					=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> focus
+	Magic				=> focus
+	Astral			   => x
+ END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION shaundakul_spheres 
+  RET_ARRAY shaundakul_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY shaundakul_spheres_array BEGIN
+	Cleric				=> major
+	Death				=> x
+	Vermin				=> x
+	Destruction		=> x
+	Protection			=> x
+	War				=> x
+	Exploration		=> focus
+	Knowledge			=> x
+	Deception			=> x
+	Thought			=> x
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air				=> focus
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
+	Astral  			=> x
+ END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION sune_spheres 
+  RET_ARRAY sune_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY sune_spheres_array BEGIN
+	Cleric				=> major
+	Death				=> x
+	Vermin				=> x
+	Destruction			=> x
+	Protection			=> x
+	War					=> x
+	Exploration			=> x
+	Knowledge			=> x
+	Deception			=> x
+	Thought				=> focus
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air					=> x
+	Fire				=> x
+	Light				=> focus
+	Shadow				=> x
+	Magic				=> x
+	Astral		    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION talos_spheres 
+  RET_ARRAY talos_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY talos_spheres_array BEGIN
+	Cleric				=> major
+	Death				=> x
+	Vermin				=> x
+	Destruction			=> x
+	Protection			=> x
+	War					=> x
+	Exploration			=> x
+	Knowledge			=> x
+	Deception			=> x
+	Thought				=> x
+	Dread				=> focus
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air					=> focus
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
+	Astral		    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION tempus_spheres 
+  RET_ARRAY tempus_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY tempus_spheres_array BEGIN
+	Cleric				=> major
+	Death				=> x
+	Vermin				=> x
+	Destruction			=> focus
+	Protection			=> x
+	War					=> focus
+	Exploration			=> x
+	Knowledge			=> x
+	Deception			=> x
+	Thought				=> x
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air					=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
+	Astral		    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+// __________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION torm_spheres 
+  RET_ARRAY torm_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY torm_spheres_array BEGIN
+	Cleric				=> major
+	Death				=> x
+	Vermin				=> x
+	Destruction			=> x
+	Protection			=> focus
+	War					=> focus
+	Exploration			=> x
+	Knowledge			=> x
+	Deception			=> x
+	Thought				=> x
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air					=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
+	Astral		    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION tymora_spheres 
+  RET_ARRAY tymora_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY tymora_spheres_array BEGIN
+	Cleric				=> major
+	Death				=> x
+	Vermin				=> x
+	Destruction			=> x
+	Protection			=> x
+	War					=> x
+	Exploration			=> focus
+	Knowledge			=> x
+	Deception			=> x
+	Thought				=> focus
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air					=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
+	Astral		    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION tyr_spheres 
+  RET_ARRAY tyr_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY tyr_spheres_array BEGIN
+	Cleric				=> major
+	Death				=> x
+	Vermin				=> x
+	Destruction			=> x
+	Protection			=> focus
+	War					=> focus
+	Exploration			=> x
+	Knowledge			=> x
+	Deception			=> x
+	Thought				=> x
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air					=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
+	Astral				=> x
+ END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION ulutiu_spheres 
+  RET_ARRAY ulutiu_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY ulutiu_spheres_array BEGIN
+	Cleric				=> major
+	Death				=> x
+	Vermin				=> x
+	Destruction		=> x
+	Protection			=> x
+	War				=> x
+	Exploration		=> x
+	Knowledge			=> x
+	Deception			=> x
+	Thought			=> x
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> focus
+	Air				=> focus
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
+	Astral		    	=> focus
+ END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION umberlee_spheres 
+  RET_ARRAY umberlee_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY umberlee_spheres_array BEGIN
+	Cleric				=> major
+	Death				=> x
+	Vermin				=> x
+	Destruction			=> x
+	Protection			=> x
+	War					=> x
+	Exploration			=> x
+	Knowledge			=> x
+	Deception			=> x
+	Thought				=> x
+	Dread				=> focus
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> focus
+	Air					=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
+	Astral		    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION xvim_spheres 
+  RET_ARRAY xvim_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY xvim_spheres_array BEGIN
+	Cleric				=> major
+	Death				=> x
+	Vermin				=> x
+	Destruction		=> focus
+	Protection			=> x
+	War				=> x
+	Exploration		=> x
+	Knowledge			=> x
+	Deception			=> x
+	Thought			=> x
+	Dread				=> focus
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air				=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
+	Astral				=> x
+ END
+END
+//___________________________________________________________________________________
+
+
+// DEMIHUMAN PANTHEONS_______________________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION corellon_spheres 
+  RET_ARRAY corellon_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY corellon_spheres_array BEGIN
+	Cleric				=> major
+	Death				=> x
+	Vermin				=> x
+	Destruction		=> x
+	Protection			=> x
+	War				=> x
+	Exploration		=> x
+	Knowledge			=> x
+	Deception			=> x
+	Thought			=> x
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> focus
+	Earth				=> x
+	Water				=> x
+	Air				=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> focus
+	Astral		    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION eilistraee_spheres 
+  RET_ARRAY eilistraee_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY eilistraee_spheres_array BEGIN
+	Cleric				=> major
+	Death				=> x
+	Vermin				=> x
+	Destruction		=> x
+	Protection			=> x
+	War				=> x
+	Exploration 		=> focus
+	Knowledge			=> x
+	Deception			=> x
+	Thought			=> x
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air				=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> focus
+	Magic				=> x
+	Astral  			=> x
+ END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION moradin_spheres 
+  RET_ARRAY moradin_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY moradin_spheres_array BEGIN
+	Cleric				=> major
+	Death				=> x
+	Vermin				=> x
+	Destruction		=> x
+	Protection			=> x
+	War				=> x
+	Exploration		=> x
+	Knowledge			=> x
+	Deception			=> x
+	Thought			=> x
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> focus
+	Water				=> x
+	Air				=> focus
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
+	Astral 			=> x
+ END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION clangeddin_spheres 
+  RET_ARRAY clangeddin_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY clangeddin_spheres_array BEGIN
+	Cleric				=> major
+	Death				=> x
+	Vermin				=> x
+	Destruction		=> x
+	Protection			=> x
+	War				=> focus
+	Exploration		=> x
+	Knowledge			=> x
+	Deception			=> x
+	Thought			=> x
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> focus
+	Water				=> x
+	Air				=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
+	Astral  			=> x
+ END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION marthammor_spheres 
+  RET_ARRAY marthammor_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY marthammor_spheres_array BEGIN
+	Cleric				=> major
+	Death				=> x
+	Vermin				=> x
+	Destruction		=> x
+	Protection			=> x
+	War				=> x
+	Exploration		=> focus
+	Knowledge			=> x
+	Deception			=> x
+	Thought			=> x
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> focus
+	Water				=> x
+	Air				=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
+	Astral  			=> x
+ END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION haela_spheres 
+  RET_ARRAY haela_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY haela_spheres_array BEGIN
+	Cleric				=> major
+	Death				=> x
+	Vermin				=> x
+	Destruction			=> x
+	Protection			=> x
+	War					=> x
+	Exploration			=> focus
+	Knowledge			=> x
+	Deception			=> x
+	Thought				=> x
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> focus
+	Water				=> x
+	Air					=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
+	Astral		    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION baravar_spheres 
+  RET_ARRAY baravar_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY baravar_spheres_array BEGIN
+	Cleric				=> major
+	Death				=> x
+	Vermin				=> x
+	Destruction			=> x
+	Protection			=> x
+	War					=> x
+	Exploration			=> x
+	Knowledge			=> x
+	Deception			=> focus
+	Thought				=> x
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air					=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> focus
+	Magic				=> x
+	Astral		    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION baervan_spheres 
+  RET_ARRAY baervan_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY baervan_spheres_array BEGIN
+	Cleric				=> major
+	Death				=> x
+	Vermin				=> x
+	Destruction			=> x
+	Protection			=> x
+	War					=> x
+	Exploration			=> x
+	Knowledge			=> x
+	Deception			=> x
+	Thought				=> x
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> focus
+	Plant				=> focus
+	Earth				=> x
+	Water				=> x
+	Air					=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
+	Astral		    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION urdlen_spheres 
+  RET_ARRAY urdlen_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY urdlen_spheres_array BEGIN
+	Cleric				=> major
+	Death				=> x
+	Vermin				=> x
+	Destruction			=> x
+	Protection			=> x
+	War					=> x
+	Exploration			=> x
+	Knowledge			=> x
+	Deception			=> x
+	Thought				=> x
+	Dread				=> focus
+	Druid				=> x
+	Affliction			=> focus
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air					=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
+	Astral			    => x
+ END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION yondalla_spheres 
+  RET_ARRAY yondalla_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY yondalla_spheres_array BEGIN
+	Cleric				=> major
+	Death				=> x
+	Vermin				=> x
+	Destruction			=> x
+	Protection			=> focus
+	War					=> x
+	Exploration			=> x
+	Knowledge			=> x
+	Deception			=> x
+	Thought				=> x
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> focus
+	Water				=> x
+	Air					=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
+	Astral		    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION arvoreen_spheres 
+  RET_ARRAY arvoreen_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY arvoreen_spheres_array BEGIN
+	Cleric				=> major
+	Death				=> x
+	Vermin				=> x
+	Destruction			=> x
+	Protection			=> focus
+	War					=> focus
+	Exploration			=> x
+	Knowledge			=> x
+	Deception			=> x
+	Thought				=> x
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air					=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
+	Astral		    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION brandobaris_spheres 
+  RET_ARRAY brandobaris_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY brandobaris_spheres_array BEGIN
+	Cleric				=> major
+	Death				=> x
+	Vermin				=> x
+	Destruction			=> x
+	Protection			=> x
+	War					=> x
+	Exploration			=> focus
+	Knowledge			=> x
+	Deception			=> focus
+	Thought				=> x
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air					=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
+	Astral		    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION gruumsh_spheres 
+  RET_ARRAY gruumsh_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY gruumsh_spheres_array BEGIN
+	Cleric				=> major
+	Death				=> x
+	Vermin				=> x
+	Destruction		=> focus
+	Protection			=> x
+	War				=> focus
+	Exploration		=> x
+	Knowledge			=> x
+	Deception			=> x
+	Thought			=> x
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air				=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
+	Astral				=> x
+ END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION luthic_spheres 
+  RET_ARRAY luthic_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY luthic_spheres_array BEGIN
+	Cleric				=> focus
+	Death				=> x
+	Vermin				=> x
+	Destruction		=> x
+	Protection			=> focus
+	War				=> x
+	Exploration		=> x
+	Knowledge			=> x
+	Deception			=> x
+	Thought			=> x
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air				=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
+	Astral		    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+
+// DRUIDS / MYSTICS / OCCULTISTS / RANGERS___________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION druid_forest_spheres 
+  RET_ARRAY druid_forest_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY druid_forest_spheres_array BEGIN
+	Cleric			=> x
+	Death			=> x
+	Vermin			=> x
+	Destruction 	=> x
+	Protection		=> x
+	War			=> x
+	Exploration  	=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought		=> x
+	Dread			=> x
+	Druid			=> major
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> focus
+	Earth			=> focus
+	Water			=> x
+	Air			=> x
+	Fire			=> x
+	Light			=> x
+	Shadow			=> x
+	Magic			=> x
+	Astral   		=> x
+ END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION druid_totemic_spheres
+  RET_ARRAY druid_totemic_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY druid_totemic_spheres_array BEGIN
+	Cleric			=> x
+	Death			=> x
+	Vermin			=> x
+	Destruction 	=> x
+	Protection		=> x
+	War			=> x
+	Exploration   	=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought		=> x
+	Dread			=> x
+	Druid			=> major
+	Affliction		=> x
+	Animal			=> focus
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air			=> x
+	Fire			=> x
+	Light			=> x
+	Shadow			=> x
+	Magic			=> x
+	Astral			=> focus
+ END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION druid_hivekeeper_spheres 
+  RET_ARRAY druid_hivekeeper_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY druid_hivekeeper_spheres_array BEGIN
+	Cleric			=> x
+	Death			=> x
+	Vermin			=> focus
+	Destruction 	=> x
+	Protection		=> x
+	War			=> x
+	Exploration   	=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought		=> x
+	Dread			=> x
+	Druid			=> major
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air			=> focus
+	Fire			=> x
+	Light			=> x
+	Shadow			=> x
+	Magic			=> x
+	Astral			=> x
+ END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION druid_northern_spheres 
+  RET_ARRAY druid_northern_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY druid_northern_spheres_array BEGIN
+	Cleric			=> x
+	Death			=> x
+	Vermin			=> x
+	Destruction 	=> x
+	Protection		=> x
+	War			=> x
+	Exploration   	=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought		=> x
+	Dread			=> x
+	Druid			=> major
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> focus
+	Water			=> focus
+	Air			=> x
+	Fire			=> x
+	Light			=> x
+	Shadow			=> x
+	Magic			=> x
+	Astral			=> x
+ END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION druid_shadow_spheres 
+  RET_ARRAY druid_shadow_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY druid_shadow_spheres_array BEGIN
+	Cleric			=> x
+	Death			=> x
+	Vermin			=> x
+	Destruction 	=> x
+	Protection		=> x
+	War			=> x
+	Exploration   	=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought		=> x
+	Dread			=> x
+	Druid			=> major
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> focus
+	Earth			=> x
+	Water			=> x
+	Air			=> x
+	Fire			=> x
+	Light			=> x
+	Shadow			=> focus
+	Magic			=> x
+	Astral			=> x
+ END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION druid_gray_spheres 
+  RET_ARRAY druid_gray_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY druid_gray_spheres_array BEGIN
+	Cleric			=> x
+	Death			=> x
+	Vermin			=> focus
+	Destruction 	=> x
+	Protection		=> x
+	War			=> x
+	Exploration   	=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought		=> x
+	Dread			=> x
+	Druid			=> major
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> focus
+	Water			=> x
+	Air			=> x
+	Fire			=> x
+	Light			=> x
+	Shadow			=> x
+	Magic			=> x
+	Astral			=> x
+ END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION druid_lost_spheres 
+  RET_ARRAY druid_lost_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY druid_lost_spheres_array BEGIN
+	Cleric			=> x
+	Death			=> focus
+	Vermin			=> x
+	Destruction 	=> x
+	Protection		=> x
+	War			=> x
+	Exploration   	=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought		=> x
+	Dread			=> x
+	Druid			=> major
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> focus
+	Water			=> x
+	Air			=> x
+	Fire			=> x
+	Light			=> x
+	Shadow			=> x
+	Magic			=> x
+	Astral			=> x
+ END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION beast_lord_spheres 
+  RET_ARRAY beast_lord_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY beast_lord_spheres_array BEGIN
+	Cleric			=> x
+	Death			=> x
+	Vermin			=> x
+	Destruction 	=> x
+	Protection		=> x
+	War			=> x
+	Exploration 	=> focus
+	Knowledge		=> x
+	Deception		=> x
+	Thought		=> x
+	Dread			=> x
+	Druid			=> major
+	Affliction		=> x
+	Animal			=> focus
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air			=> x
+	Fire			=> x
+	Light			=> x
+	Shadow			=> x
+	Magic			=> x
+	Astral   		=> x
+ END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION elementalist_spheres 
+  RET_ARRAY elementalist_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY elementalist_spheres_array BEGIN
+	Cleric			=> x
+	Death			=> x
+	Vermin			=> x
+	Destruction 	=> x
+	Protection		=> x
+	War			=> x
+	Exploration 	=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought		=> x
+	Dread			=> x
+	Druid			=> x
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> focus
+	Water			=> focus
+	Air			=> focus
+	Fire			=> focus
+	Light			=> focus
+	Shadow			=> focus
+	Magic			=> x
+	Astral   		=> x
+ END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION mystic_earth_spheres 
+  RET_ARRAY mystic_earth_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY mystic_earth_spheres_array BEGIN
+	Cleric			=> x
+	Death			=> x
+	Vermin			=> x
+	Destruction 	=> x
+	Protection		=> x
+	War			=> x
+	Exploration 	=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought		=> x
+	Dread			=> x
+	Druid			=> major
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> focus
+	Water			=> x
+	Air			=> x
+	Fire			=> x
+	Light			=> x
+	Shadow			=> x
+	Magic			=> x
+	Astral			=> focus
+ END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION mystic_water_spheres 
+  RET_ARRAY mystic_water_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY mystic_water_spheres_array BEGIN
+	Cleric			=> x
+	Death			=> x
+	Vermin			=> x
+	Destruction 	=> x
+	Protection		=> x
+	War			=> x
+	Exploration 	=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought		=> x
+	Dread			=> x
+	Druid			=> major
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> focus
+	Air			=> x
+	Fire			=> x
+	Light			=> x
+	Shadow			=> x
+	Magic			=> x
+	Astral			=> focus
+ END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION mystic_air_spheres 
+  RET_ARRAY mystic_air_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY mystic_air_spheres_array BEGIN
+	Cleric			=> x
+	Death			=> x
+	Vermin			=> x
+	Destruction 	=> x
+	Protection		=> x
+	War			=> x
+	Exploration 	=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought		=> x
+	Dread			=> x
+	Druid			=> major
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air			=> focus
+	Fire			=> x
+	Light			=> x
+	Shadow			=> x
+	Magic			=> x
+	Astral			=> focus
+ END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION mystic_fire_spheres 
+  RET_ARRAY mystic_fire_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY mystic_fire_spheres_array BEGIN
+	Cleric			=> x
+	Death			=> x
+	Vermin			=> x
+	Destruction 	=> x
+	Protection		=> x
+	War			=> x
+	Exploration 	=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought		=> x
+	Dread			=> x
+	Druid			=> major
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air			=> x
+	Fire			=> focus
+	Light			=> x
+	Shadow			=> x
+	Magic			=> x
+	Astral			=> focus
+ END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION mystic_light_spheres 
+  RET_ARRAY mystic_light_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY mystic_light_spheres_array BEGIN
+	Cleric			=> x
+	Death			=> x
+	Vermin			=> x
+	Destruction 	=> x
+	Protection		=> x
+	War			=> x
+	Exploration 	=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought		=> x
+	Dread			=> x
+	Druid			=> major
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air			=> x
+	Fire			=> x
+	Light			=> focus
+	Shadow			=> x
+	Magic			=> x
+	Astral			=> focus
+ END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION mystic_shadow_spheres 
+  RET_ARRAY mystic_shadow_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY mystic_shadow_spheres_array BEGIN
+	Cleric			=> x
+	Death			=> x
+	Vermin			=> x
+	Destruction 	=> x
+	Protection		=> x
+	War			=> x
+	Exploration 	=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought		=> x
+	Dread			=> x
+	Druid			=> major
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air			=> x
+	Fire			=> x
+	Light			=> x
+	Shadow			=> focus
+	Magic			=> x
+	Astral			=> focus
+ END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION ranger_forest_spheres 
+  RET_ARRAY ranger_forest_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY ranger_forest_spheres_array BEGIN
+	Cleric			=> x
+	Death			=> x
+	Vermin			=> x
+	Destruction 	=> x
+	Protection		=> x
+	War			=> x
+	Exploration 	=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought		=> x
+	Dread			=> x
+	Druid			=> major
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air			=> x
+	Fire			=> x
+	Light			=> x
+	Shadow			=> x
+	Magic			=> x
+	Astral   		=> x
+ END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION ranger_mountain_spheres 
+  RET_ARRAY ranger_mountain_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY ranger_mountain_spheres_array BEGIN
+	Cleric			=> x
+	Death			=> x
+	Vermin			=> x
+	Destruction 	=> x
+	Protection		=> x
+	War			=> x
+	Exploration  	=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought		=> x
+	Dread			=> x
+	Druid			=> major
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air			=> x
+	Fire			=> x
+	Light			=> x
+	Shadow			=> x
+	Magic			=> x
+	Astral   		=> x
+ END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION ranger_desert_spheres 
+  RET_ARRAY ranger_desert_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY ranger_desert_spheres_array BEGIN
+	Cleric			=> x
+	Death			=> x
+	Vermin			=> x
+	Destruction 	=> x
+	Protection		=> x
+	War			=> x
+	Exploration  	=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought		=> x
+	Dread			=> x
+	Druid			=> major
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air			=> x
+	Fire			=> x
+	Light			=> x
+	Shadow			=> x
+	Magic			=> x
+	Astral   		=> x
+ END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION ranger_jungle_spheres 
+  RET_ARRAY ranger_jungle_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY ranger_jungle_spheres_array BEGIN
+	Cleric			=> x
+	Death			=> x
+	Vermin			=> x
+	Destruction 	=> x
+	Protection		=> x
+	War			=> x
+	Exploration  	=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought		=> x
+	Dread			=> x
+	Druid			=> major
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air			=> x
+	Fire			=> x
+	Light			=> x
+	Shadow			=> x
+	Magic			=> x
+	Astral   		=> x
+ END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION ranger_arctic_spheres 
+  RET_ARRAY ranger_arctic_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY ranger_arctic_spheres_array BEGIN
+	Cleric			=> x
+	Death			=> x
+	Vermin			=> x
+	Destruction 	=> x
+	Protection		=> x
+	War			=> x
+	Exploration  	=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought		=> x
+	Dread			=> x
+	Druid			=> major
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air			=> x
+	Fire			=> x
+	Light			=> x
+	Shadow			=> x
+	Magic			=> x
+	Astral   		=> x
+ END
+END
+//___________________________________________________________________________________
+
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION ranger_beastmaster_spheres 
+  RET_ARRAY ranger_beastmaster_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY ranger_beastmaster_spheres_array BEGIN
+	Cleric			=> x
+	Death			=> x
+	Vermin			=> x
+	Destruction 	=> x
+	Protection		=> x
+	War			=> x
+	Exploration  	=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought		=> x
+	Dread			=> x
+	Druid			=> major
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air			=> x
+	Fire			=> x
+	Light			=> x
+	Shadow			=> x
+	Magic			=> x
+	Astral   		=> x
+ END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION barbarian_ranger_spheres 
+  RET_ARRAY barbarian_ranger_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY barbarian_ranger_spheres_array BEGIN
+	Cleric			=> x
+	Death			=> x
+	Vermin			=> x
+	Destruction 	=> x
+	Protection		=> x
+	War			=> x
+	Exploration  	=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought		=> x
+	Dread			=> x
+	Druid			=> major
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air			=> x
+	Fire			=> x
+	Light			=> x
+	Shadow			=> x
+	Magic			=> x
+	Astral   		=> x
+ END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION mage_hunter_spheres 
+  RET_ARRAY mage_hunter_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY mage_hunter_spheres_array BEGIN
+	Cleric			=> x
+	Death			=> x
+	Vermin			=> x
+	Destruction 	=> x
+	Protection		=> x
+	War			=> x
+	Exploration  	=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought		=> x
+	Dread			=> x
+	Druid			=> major
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air			=> x
+	Fire			=> x
+	Light			=> x
+	Shadow			=> x
+	Magic			=> x
+	Astral   		=> x
+ END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION elven_archer_spheres 
+  RET_ARRAY elven_archer_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY elven_archer_spheres_array BEGIN
+	Cleric			=> x
+	Death			=> x
+	Vermin			=> x
+	Destruction 	=> x
+	Protection		=> x
+	War			=> x
+	Exploration  	=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought		=> x
+	Dread			=> x
+	Druid			=> major
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air			=> x
+	Fire			=> x
+	Light			=> x
+	Shadow			=> x
+	Magic			=> x
+	Astral   		=> x
+ END
+END
+//___________________________________________________________________________________
+
+
+// DEFAULT KIT SPHERE ASSIGNMENTS____________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION vanilla_shaman_spheres 
+  RET_ARRAY vanilla_shaman_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY vanilla_shaman_spheres_array BEGIN
+	Cleric			=> x
+	Death			=> x
+	Vermin			=> x
+	Destruction 	=> x
+	Protection		=> x
+	War			=> x
+	Exploration  	=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought		=> x
+	Dread			=> x
+	Druid			=> major
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> focus
+	Water			=> x
+	Air			=> x
+	Fire			=> x
+	Light			=> x
+	Shadow			=> x
+	Magic			=> x
+	Astral			=> focus
+ END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION vanilla_avenger_spheres 
+  RET_ARRAY vanilla_avenger_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY vanilla_avenger_spheres_array BEGIN
+	Cleric			=> x
+	Death			=> x
+	Vermin			=> x
+	Destruction 	=> x
+	Protection		=> x
+	War			=> x
+	Exploration  	=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought		=> x
+	Dread			=> x
+	Druid			=> major
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air			=> x
+	Fire			=> x
+	Light			=> x
+	Shadow			=> x
+	Magic			=> x
+	Astral   		=> x
+ END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION vanilla_paladin_spheres 
+  RET_ARRAY vanilla_paladin_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY vanilla_paladin_spheres_array BEGIN
+	Cleric			=> major
+	Death			=> x
+	Vermin			=> x
+	Destruction 	=> x
+	Protection		=> x
+	War			=> x
+	Exploration 	=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought		=> x
+	Dread			=> x
+	Druid			=> x
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air			=> x
+	Fire			=> x
+	Light			=> x
+	Shadow			=> x
+	Magic			=> x
+	Astral   		=> x
+ END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION vanilla_cavalier_spheres 
+  RET_ARRAY vanilla_cavalier_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY vanilla_cavalier_spheres_array BEGIN
+	Cleric			=> major
+	Death			=> x
+	Vermin			=> x
+	Destruction 	=> x
+	Protection		=> x
+	War			=> x
+	Exploration  	=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought		=> x
+	Dread			=> x
+	Druid			=> x
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air			=> x
+	Fire			=> x
+	Light			=> x
+	Shadow			=> x
+	Magic			=> x
+	Astral   		=> x
+ END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION vanilla_inquisitor_spheres 
+  RET_ARRAY vanilla_inquisitor_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY vanilla_inquisitor_spheres_array BEGIN
+	Cleric			=> major
+	Death			=> x
+	Vermin			=> x
+	Destruction 	=> x
+	Protection		=> x
+	War			=> x
+	Exploration 	=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought		=> x
+	Dread			=> x
+	Druid			=> x
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air			=> x
+	Fire			=> x
+	Light			=> x
+	Shadow			=> x
+	Magic			=> x
+	Astral   		=> x
+ END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION vanilla_undead_hunter_spheres 
+  RET_ARRAY vanilla_undead_hunter_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY vanilla_undead_hunter_spheres_array BEGIN
+	Cleric			=> major
+	Death			=> x
+	Vermin			=> x
+	Destruction 	=> x
+	Protection		=> x
+	War			=> x
+	Exploration 	=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought		=> x
+	Dread			=> x
+	Druid			=> x
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air			=> x
+	Fire			=> x
+	Light			=> x
+	Shadow			=> x
+	Magic			=> x
+	Astral   		=> x
+ END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION vanilla_blackguard_spheres 
+  RET_ARRAY vanilla_blackguard_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY vanilla_blackguard_spheres_array BEGIN
+	Cleric			=> major
+	Death			=> x
+	Vermin			=> x
+	Destruction 	=> x
+	Protection		=> x
+	War			=> x
+	Exploration 	=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought		=> x
+	Dread			=> x
+	Druid			=> x
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air			=> x
+	Fire			=> x
+	Light			=> x
+	Shadow			=> x
+	Magic			=> x
+	Astral			=> x
+ END
+END
+//___________________________________________________________________________________
+
+
+// OTHER MOD KIT SPHERE ASSIGNMENTS__________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION dr_oozemaster_spheres
+  RET_ARRAY dr_oozemaster_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY dr_oozemaster_spheres_array BEGIN
+	Cleric			=> x
+	Death			=> x
+	Vermin			=> x
+	Destruction 	=> x
+	Protection		=> x
+	War			=> x
+	Exploration 	=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought		=> x
+	Dread			=> x
+	Druid			=> major
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air			=> x
+	Fire			=> x
+	Light			=> x
+	Shadow			=> x
+	Magic			=> x
+	Astral			=> x
+ END
+END
+//___________________________________________________________________________________
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION dr_justifier_spheres
+  RET_ARRAY dr_justifier_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY dr_justifier_spheres_array BEGIN
+	Cleric			=> major
+	Death			=> x
+	Vermin			=> x
+	Destruction 	=> x
+	Protection		=> x
+	War			=> x
+	Exploration 	=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought		=> x
+	Dread			=> x
+	Druid			=> x
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air			=> x
+	Fire			=> x
+	Light			=> x
+	Shadow			=> x
+	Magic			=> x
+	Astral			=> x
+ END
+END
+//___________________________________________________________________________________
+
+END	// end define sphere lists macro
+
+/* extra
+
+//___________________________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION _spheres 
+  RET_ARRAY _spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY _spheres_array BEGIN
+	Cleric				=> major
+	Death				=> x
+	Vermin				=> x
+	Destruction			=> x
+	Protection			=> x
+	War					=> x
+	Exploration			=> x
+	Knowledge			=> x
+	Deception			=> x
+	Thought				=> x
+	Dread				=> x
+	Druid				=> x
+	Affliction			=> x
+	Animal				=> x
+	Plant				=> x
+	Earth				=> x
+	Water				=> x
+	Air					=> x
+	Fire				=> x
+	Light				=> x
+	Shadow				=> x
+	Magic				=> x
+	Astral		    	=> x
+ END
+END
+//___________________________________________________________________________________
+
+*/
+ 

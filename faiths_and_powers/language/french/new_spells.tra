@@ -1,0 +1,852 @@
+//DIVINE SPELLS
+//@50000
+
+@50000 = ~Bénédiction de l'eau~
+@50001 = ~Bénédiction de l'eau
+(Altération)
+
+Niveau : 1
+Sphère : Création
+Portée : 0
+Durée : 8 heures
+Temps d'incantation : 9
+Zone d'effet : le lanceur
+
+Quand il lance ce sort, le lanceur exécute un bref rituel sacré et crée de l'eau bénite qu'il peut utiliser lui-même ou offrir à ses compagnons. L'eau bénite est nocive pour les extérieurs mauvais et les morts-vivants et légèrement bénéfique pour les créatures vivantes. Les flasques peuvent être lancées ou bues et soignent 1d4 points de vie pour les créatures vivantes ou causent 2d4+2 points de dégâts magiques pour les créatures mortes-vivantes et les extérieurs démoniaques.
+Une flasque lancée ne provoque pas de dégâts par elle-même, mais se brise et affecte la créature ciblée (à moins de 6 mètres) de la manière décrite ci-dessous.
+
+Au niveau 1, une fiole est créée. Une fiole supplémentaire est créée tous les 2 niveaux par la suite.
+
+L'eau bénite se dissipe au bout de 8 heures si elle n'est pas utilisée.
+
+Flasque d'eau bénite
+
+STATISTIQUES :
+
+Dégâts : 2d4+2 points aux morts-vivants et aux extérieurs mauvais.
+Spécial : Rend 1d4 points de vie aux créatures vivantes.~
+
+@50002 = ~Flasque d'eau bénite~
+@50003 = ~Flasque d'eau bénite
+Ceci est une flasque d'eau bénite créée par un clerc.
+
+Quand cette flasque est lancée sur une cible, elle se brise et éclabousse la cible avec de l'eau bénite. L'eau bénite agit comme un acide sur les morts-vivants et les entités démoniaques, mais est apaisante pour les créatures vivantes et les soigne légèrement.
+
+STATISTIQUES :
+
+Dégâts : 2d4+2 points aux morts-vivants et aux extérieurs mauvais.
+Spécial : Rend 1d4 points de vie aux créatures vivantes.
+
+Poids : 0~
+
+//@50300
+@50301 = ~Apaisement des morts~
+@50302 = ~Apaisement des morts
+(Altération)
+
+Niveau : 2
+Sphère : Nécromancie
+Portée : champ visuel du lanceur
+Durée : 1 tour
+Temps d'incantation : 3
+Zone d'effet : 1 créature morte-vivante
+Jet de Sauvegarde : aucun
+
+En lançant ce sort, le prêtre ralentit un mort-vivant à portée du sort. Cet effet annule la Hâte mais n'a pas d'effet sur les créatures accélérées ou ralenties par un autre effet magique. Les créatures ralenties souffrent de pénalités de 4 points à l'attaque et à la classe d'armure.
+~
+
+@50304 = ~Yeux du mort~
+@50305 = ~Yeux du mort
+(Nécromancie)
+
+Niveau : 1
+Sphère : Nécromancie
+Portée : toucher
+Durée : 1 tour
+Temps d'incantation : 6
+Zone d'effet : le lanceur
+
+Quand le lanceur termine ce sort et touche une créature morte-vivante alliée, il devient capable de voir au travers des yeux de cette créature. De plus, il obtient une plus grande influence sur la créature et la rend capable d'attaquer de façon plus efficace, ce qui lui accorde un bonus de 4 points aux jets d'attaque.
+
+Tant que dure ce sort, le corps du lanceur est sans défense. Il est aussi aveugle parce que sa conscience est à l'intérieur de la cible morte-vivante.~
+
+@50307 = ~Destruction de mort-vivant~
+@50308 = ~Destruction de mort-vivant
+(Nécromancie)
+
+Niveau : 1
+Sphère : Nécromancie
+Portée : champ visuel du lanceur
+Temps d'incantation : 3
+Zone d'effet : 1 créature morte-vivante
+Jet de Sauvegarde : aucun
+
+Ce sort perturbe l'énergie négative qui maintient la créature morte-vivante prise pour cible. Un mort-vivant ciblé par ce sort subit 2d6+2 points de dégâts magiques, +1d6+1 tous les deux niveaux (avec un maximum de +d6+7 au niveau 11).~
+
+@50309 = ~Sphère : Nécromancie~
+@50310 = ~Sphère : Vie~
+
+
+//@50400
+
+@50401  = ~Châtiment destructif~
+@50402  = ~Châtiment destructif
+(Conjuration)
+
+Niveau : 1
+Sphère : Combat
+Portée : personnelle
+Durée : 1 round / niveau (max. 5)
+Temps d'incantation : 0
+Jet de Sauvegarde : aucun
+
+Ce sort imprègne le lanceur de force pure qu'il peut utiliser contre ses ennemis. Ses attaques de mêlée infligent 2d6 point de dégâts magiques additionnels pendant 1 round par niveau (au maximum 5 rounds).~
+
+
+@50408  = ~Fracassement~
+@50409  = ~Fracassement
+(Transmutation)
+
+Niveau : 2
+Sphère : Combat
+Portée : 7,5 mètres
+Durée : instantanée
+Temps d'incantation : 9
+Zone d'effet : 1 créature
+Jet de Sauvegarde : métamorphose 1/2 dégâts
+
+Quand le prêtre lance ce sort, il crée une vibration pulsée qui augmente en intensité sur une créature ou un objet proche. Cette vibration est particulièrement destructrice pour les constructions inorganiques solides, comme les portes ou les golems. Lors du premier round, une créature vivant ou morte-vivante subit 2d6 points de dégâts contondants à moins de réussir un jet de sauvegarde contre la métamorphose (auquel cas elles ne subissent que la moitié des dégâts et le sort se termine). À chaque round où elle échoue au jet de sauvegarde, elle subit le nombre de points de dégâts subis au round précédent plus 2d6 points additionnels, pour un maximum de 4 rounds. À chaque round où elle réussit le jet de sauvegarde, elle subit la moitié des dégâts et le sort prend fin.
+
+Quand le sort est lancé sur une porte ou un contenant verrouillé, il met à mal l'intégrité de l'objet et détruit tous les verrous sauf les plus résistants ou ceux qui sont protégés par magie. Contre les constructions comme les golems et contre les élémentaires, les dégâts sont doublés et aucun jet de sauvegarde pour éviter les effets n'est autorisé.~
+
+//@50800
+
+@50800 = ~Interdiction~
+@50801 = ~Interdiction
+(Enchantement/Charme)
+
+Niveau : 2
+Sphère : Charme
+Portée : champ visuel du lanceur
+Durée : 2 rounds
+Temps d'incantation : 1
+Zone d'effet : 1 créature
+Jet de Sauvegarde : spécial
+
+Ce sort permet au prêtre d'interdire à une autre créature de bouger en leur donnant l'ordre de s'arrêter. Une créature ayant reçu cet ordre va arrêter de faire ce qu'elle faisait et sera incapable de bouger si elle ne réussit pas un jet de sauvegarde contre les sorts. Même si elle réussit son jet de sauvegarde, la cible découvre qu'elle ne peut se déplacer qu'à la moitié de sa vitesse habituelle, ses membres s'opposant à sa propre volonté. À la fin du second round, la créature retrouve l'usage de ses membres et peut se déplacer normalement.~
+
+@50803 = ~Ordre assassin~
+@50804 = ~Ordre assassin
+(Enchantement/Charme)
+
+Niveau : 3
+Sphère : Charme
+Portée : champ visuel du lanceur
+Durée : 1 round par niveau (maximum 10 rounds)
+Temps d'incantation : 1
+Zone d'effet : 1 créature
+Jet de Sauvegarde : sorts, annule
+
+Par ce sort, le prêtre ordonne à la cible d'attaquer la créature la plus proche. Si la cible ne réussit pas un jet de sauvegarde contre les sorts, elle attaquera la créature la plus proche (allié ou ennemi) qu'elle peut atteindre au corps à corps.~
+
+
+@50806 = ~Discours captivant~ // name from DD 3.5 enthrall spell
+@50807 = ~Discours captivant
+(Enchantement/Charme)
+
+Niveau : 2
+Sphère : Charme
+Portée : portée visuelle du lanceur
+Durée : 1 round, plus 1 round tous les 2 niveaux (max 5 rounds au niveau 9)
+Temps d'incantation : 2
+Zone d'effet : spécial
+Jet de Sauvegarde : sorts, annule
+
+Ce sort captive jusqu'à 1d4 créatures, les obligeant à rester désorientés pendant 1 round par niveau du prêtre si elles échouent à un jet de sauvegarde contre les sorts (avec un maximum de 10 rounds). Plus précisément, le sort affecte l'ennemi ciblé et jusqu'à 3 créatures hostiles à moins de 6 mètres de la cible. Les créatures captivées restent là où elles sont et ignorent les créatures qui l'entourent.
+
+Les créatures affectées se libèrent de l'effet si elles sont attaquées.~
+
+@50808 = ~Captivé(e)~
+@50809 = ~N'est plus captivé(e)~
+
+// Dictate spell, a modified version of Command that lasts 5 rounds
+@50810 = ~Décret~
+@50811 = ~Durée : 1 round~ // must be extracted from spell description for Command/Injonction, to be replaced by @50812
+@50812 = ~Durée : 5 rounds~
+@50813 = ~un round~ // must be extracted from spell description for Command/Injonction, to be replaced by @50814
+@50814 = ~cinq rounds~
+@50815 = ~À la fin du round~ // must be extracted from spell description for Command/Injonction, to be replaced by @50816
+@50816 = ~Au bout de 5 rounds~
+
+// this is for Feral Instinct
+@50817 = ~Fuite~
+@50818 = ~Combat~
+@50819 = ~Instinct sauvage~
+@50820 = ~Instinct sauvage
+(Enchantement/Charme)
+
+Niveau : 3
+Sphère : Faune
+Portée : portée visuelle du lanceur
+Durée : 1 round par niveau (maximum 10 rounds)
+Temps d'incantation : 1
+Zone d'effet : 1 créature
+Jet de Sauvegarde : sorts, annule
+
+En lançant ce sort, le druide oblige la créature ciblée à revenir à un état primitif si elle ne réussit pas un jet de sauvegarde contre les sorts.
+
+Si la cible échoue à son jet de sauvegarde, elle entre dans un mode « fuite ou combat », soit attaquant la créature la plus proche au corps à corps, qu'elle soit un ami ou un ennemi, soit fuyant le champ de bataille.~
+
+
+//@50900
+
+@50901 = ~Échec au tir~
+@50902 = ~Échec au tir
+(Altération)
+
+Niveau : 5
+Sphère : Combat
+Portée : Longue
+Durée : 1 round par niveau
+Temps d'incantation : 1
+Jet de Sauvegarde : aucun
+
+Quand le lanceur lance ce sort et désigne un adversaire à portée de vue, la cible découvre qu'il lui est impossible de toucher avec une arme à distance. Elle souffre d'une pénalité au TAC0 de 20 points pour la durée du sort.~
+
+//@51100
+
+
+//Animal 511... affliction took 512... so...
+
+@51101 = ~Sens animal~
+@51102 = ~Sens animal
+(Divination)
+
+Niveau : 1
+Sphère : Faune
+Portée : Contact
+Durée : 1 tour
+Temps d'incantation : 6
+Zone d'effet : le lanceur
+
+Quand le lanceur lance ce sort puis touche un animal allié, il devient capable de voir au travers des yeux de cette créature. De plus, il obtient une plus grande influence sur la créature, la pressant pour qu'elle soit plus agressive dans ses attaques, ce qui lui accorde un bonus de 1 point aux jets de critique.
+
+Tant que dure ce sort, le corps du lanceur est sans défense. Il est aussi aveugle.~
+
+//@51200
+
+
+@51201 = ~Vagues d'agonie~
+@51202 = ~Vagues d'agonie
+(Nécromancie)
+
+Niveau : 5
+Sphère : Affliction
+Portée : 7,5 m
+Durée : spécial, au maximum 3 rounds
+Temps d'incantation : 5
+Zone d'effet : 1 créature
+Jet de Sauvegarde : poison/mort à -5, voir ci-dessous
+
+Quand le prêtre lance ce sort, il désigne une créature à moins de 10,5 m. Cette créature est tourmentée par la douleur et doit réussir un jet de sauvegarde contre la mort avec une pénalité de 5 points sous peine d'être incapable de se déplacer ou d'agir pendant un round et subit 2 points de dégâts non-létaux par niveau du prêtre (au maximum 30 points au niveau 15). Si la cible réussit le jet, elle subit la moitié des dégâts et se libère du sort.
+Lors du deuxième round, toute créature qui a échoué au jet de sauvegarde doit réussir un nouveau jet ou être paralysée pendant encore un round et subir les mêmes dégâts qu'au premier round. Si le jet est réussi, la cible subit la moitié des dégâts et se libère du sort.
+Lors du troisième round, toute créature qui a échoué aux deux jets précédents doit réussir un nouveau jet ou rester paralysée encore un round et subir les mêmes dégâts encore une fois. Une créature qui réussit ce jet de sauvegarde subit la moitié des dégâts et est libérée de la paralysie.
+Le sort prend fin après 3 rounds et n'a aucun effet sur les créatures insensibles à la douleur, comme les golems ou les morts-vivants.~
+
+@51203 = ~Tourmenté(e) par la douleur~
+
+//@51400
+@51401 = ~Courroux de la nature~
+@51402 = ~Courroux de la nature
+(Altération)
+
+Niveau : 6
+Sphère : Flore
+Portée : Personnelle
+Durée : 1 tour
+Temps d'incantation : 6
+Zone d'effet : le lanceur
+
+Par ce sort, le prêtre puise dans la puissance de la nature pour se transformer en une formidable créature végétale connue sous le nom de Tertre errant.
+
+Son corps devient incroyablement résistant aux dégâts. Sa classe d'armure est fixée à 0 et il a une résistance de 50 % aux dégâts physiques. Il est totalement immunisé contre les dégâts de feu et d'électricité et ne subit que la moitié des dégâts de froid. Il régénère 6 points de vie par round.
+
+Empli du pouvoir brut de la nature, sa force est à 20 et il peut faire deux attaques à mains nues par round qui infligent 2d8 points de dégâts (+8 de force). Ceux qui sont frappés doivent réussir un jet de sauvegarde contre les souffles pour ne pas être enchevêtrés pendant 2 rounds.
+
+Ces attaques à mains nues sont considérées comme des armes +3.
+
+Le courroux de la nature est impossible à contenir. Le prêtre est protégé par un effet de liberté de mouvement tant qu'il est transformé.
+
+Il lui est impossible de lancer des sorts tant qu'il est transformé.~
+
+@51404 = ~Lianes assassines~
+@51405 = ~Lianes assassines
+(Altération)
+
+Niveau : 6
+Sphère : Flore
+Portée : portée visuelle du lanceur
+Durée : 1 tour
+Temps d'incantation : 4
+Zone d'effet : rayon de 7,5 m
+Jet de sauvegarde : spécial
+
+Quand ce sort est lancé, des herbes, des buissons et mêmes des arbres s'enroulent, s'entortillent et s'entrelacent autour de toute créature dans la zone d'effet, les maintenant solidement pour toute la durée du sort. De plus, cette végétation s'efforce d'étouffer les créatures capturées, infligeant 4d6 points de dégâts contondants par round. Un jet de sauvegarde contre les souffles évite l'enchevêtrement et diminue les dégâts de moitié, mais les créatures dans la zone sont tout de même entravées et leur mouvement est ralenti de moitié. Les créatures enchevêtrées peuvent attaquer mais ne peuvent se déplacer.
+
+Note : le sort Liberté de mouvement protège contre les dégâts et les pénalités de mouvement de ce sort.~
+
+@51420 = ~Collet~
+@51421 = ~Collet
+(Altération)
+
+Niveau : 3
+Sphère : Flore
+Portée : 6 m
+Durée : permanent jusqu'à déclenchement
+Temps d'incantation : 6
+Zone d'effet : rayon de 3 m
+Jet de sauvegarde : aucun
+
+Quand le druide lance ce sort, il choisit une zone à portée du sort. La vie végétale dans la zone se réorganise pour construire un piège mortel qui inflige 1d8 points de dégâts perforants par niveau du lanceur (au maximum 10d8).
+
+Comme les pièges du voleur, ce sort échoue s'il est lancé en présence d'ennemis.~
+
+//@51500
+
+@51501 = ~Poing de pierre~
+
+@51503 = ~Poing de pierre
+(Altération)
+
+Niveau : 2
+Sphère : Élémentaire (terre)
+Portée : le lanceur
+Durée : 1 tour
+Temps d'incantation : 3
+Zone d'effet : le lanceur
+
+Quand le lanceur jette ce sort, ses mains se transforment en blocs de pierre. Il peut attaquer au corps à corps et ses mains infligent 2d8 points de dégâts auxquels s'ajoute les dégâts dus à la force. De plus il est imprégné du pouvoir de la terre et sa force est augmentée de 4 points pour la durée du sort.~
+
+@51504 = ~Poing de pierre
+
+STATISTIQUES :
+
+Dégâts : 2d8 (contondant)
+Facteur de vitesse : 0
+
+Spécial :
+- Force +4~
+
+//@51600
+
+@51601 = ~Mur de tempête~
+
+@51602 = ~Mur de tempête
+(Invocation)
+
+Niveau : 4
+Sphère : Air élémentaire
+Portée : portée visuelle du lanceur
+Durée : 1 tour
+Temps d'incantation : 7
+Zone d'effet : mur de 6 m de long, 1,5 m large
+Jet de sauvegarde : aucun
+
+Ce sort invoque un mur d'énergie électrique. Ce mur est intangible, ne nécessite pas de point d'ancrage physique et peut facilement être traversé. Par contre, toutes les créatures qui le traversent subissent 4d6 points de dégâts électriques, auxquels s'ajoutent 4d6 points de dégâts pour chaque round où elles restent dans la zone.~
+
+//@51700
+
+@51701 = ~Convocation d'élémentaire d'eau~
+@51702 = ~Convocation d'élémentaire d'eau
+
+Niveau : 6
+Sphère : Élémentaire (eau)
+Portée : portée visuelle du lanceur
+Durée : 1 tour par niveau
+Temps d'incantation : 9
+Zone d'effet : spécial
+Jet de sauvegarde : aucun
+
+En lançant ce sort, le lanceur ouvre un portail vers le plan élémentaire de l'eau et un élémentaire d'eau est convoqué à proximité du lanceur. Il y a 60 % de chances qu'un élémentaire de 12 dés de vie apparaisse, 35 % de chance pour qu'un élémentaire de 16 dés de vie se présente et 5 % de chances pour que ce soit un élémentaire de 24 dés de vie. L'élémentaire se pliera aux ordres du lanceur jusqu'à ce qu'il soit tué ou que le sort prenne fin. Tous les ordres sont transmis télépathiquement, donc la communication ne prend aucun temps et il n'y a pas besoin de connaître la langue de la créature convoquée. Contrairement aux mages, les prêtres n'ont pas besoin d'affronter l'élémentaire dans une bataille d'esprit pour le contrôler.~
+
+
+@51704 = ~Lame de glace~
+@51705 = ~Lame de glace
+(Évocation)
+
+Niveau : 2
+Sphère : Eau élémentaire
+Portée : 0
+Durée : 2 tours
+Temps d'incantation : 4
+Zone d'effet : le lanceur
+Jet de sauvegarde : aucun
+
+Avec ce sort, le lanceur crée une formation de cristaux de glace en forme d'épée ornementée dans sa main. Cette lame est maniée comme si lanceur était compétent. Si le lanceur touche avec cette lame de glace au corps à corps, la créature touchée subit 1d8 points de dégâts de froid +1 point par niveau (jusqu'à un maximum de 1d8+10). La lame est considérée comme une arme +1 pour déterminer ce qu'elle peut toucher.~
+
+
+@51707 = ~Doigts de givre~
+@51708 = ~Doigts de givre
+(Invocation)
+
+Niveau : 1
+Sphère : Eau élémentaire
+Portée : 0
+Durée : instantanée
+Temps d'incantation : 1
+Zone d'effet : le lanceur
+Jet de sauvegarde : aucun
+
+Quand le prêtre lance ce sort, un jet de givre glaçant est projeté de l'extrémité de ses doigts. Les mains du prêtre doivent être tenues de façon à projeter devant lui un voile de givre en forme d'éventail. Ses pouces doivent se toucher et ses doigts doivent êtres écartés. Le sort envoie des jets de givre de 1,5 m de long sur un arc horizontal de 120 degrés devant le lanceur. Toute créature dans la zone subit 1d6 points de dégâts de froid, plus 1d6 par niveau jusqu'à un maximum de 5d6 point de dégâts.~
+
+@51710 = ~Lame de glace
+
+STATISTIQUES :
+
+Dégâts : 1d8+1 (froid)
+Facteur de vitesse : 2~
+
+@51711 = ~Lame de glace
+
+STATISTIQUES :
+
+Dégâts : 1d8+2 (froid)
+Facteur de vitesse : 2~
+
+@51712 = ~Lame de glace
+
+STATISTIQUES :
+
+Dégâts : 1d8+3 (froid)
+Facteur de vitesse : 2~
+
+@51713 = ~Lame de glace
+
+STATISTIQUES :
+
+Dégâts : 1d8+4 (froid)
+Facteur de vitesse : 2~
+
+@51714 = ~Lame de glace
+
+STATISTIQUES :
+
+Dégâts : 1d8+5 (froid)
+Facteur de vitesse : 2~
+
+@51715 = ~Lame de glace
+
+STATISTIQUES :
+
+Dégâts : 1d8+6 (froid)
+Facteur de vitesse : 2~
+
+@51716 = ~Lame de glace
+
+STATISTIQUES :
+
+Dégâts : 1d8+7 (froid)
+Facteur de vitesse : 2~
+
+@51717 = ~Lame de glace
+
+STATISTIQUES :
+
+Dégâts : 1d8+8 (froid)
+Facteur de vitesse : 2~
+
+@51718 = ~Lame de glace
+
+STATISTIQUES :
+
+Dégâts : 1d8+9 (froid)
+Facteur de vitesse : 2~
+
+@51719 = ~Lame de glace
+
+STATISTIQUES :
+
+Dégâts : 1d8+10 (froid)
+Facteur de vitesse : 2~
+
+@51720 = ~Élémentaire d'eau~
+@51721 = ~Élémentaire d'eau majeur~
+
+@51722 = ~Poing aqueux~
+@51723 = ~Poing aqueux
+(Conjuration)
+
+Niveau : 2
+Sphère : Élémentaire (Eau)
+Portée : 55 mètres
+Durée : 1 round / 2 niveaux
+Temps d'incantation : 5
+Zone d'effet : 1 créature
+Jet de sauvegarde : Aucun
+
+Quand le lanceur jette ce sort, il fait apparaître un énorme poing isolé constitué entièrement d'eau. Ce poing restera présent pendant 1 round par tranche de 2 niveaux de lanceur, jusqu'à un maximum de 5 rounds au niveau 9. Le poing attaquera la cible choisie par le lanceur une fois par round et infligera des dégâts de froid comme précisé ci-dessous :
+
+Niveau de lanceur 3-4 : 1d6 points de dégâts par round
+Niveau de lanceur 5-8 : 1d10 points de dégâts par round
+Niveau de lanceur 9-12 : 1d12 points de dégâts par round
+Niveau de lanceur 13+ : 2d8 points de dégâts par round~
+
+//@52000
+
+@52001  = ~Pas de l'ombre~
+@52002  = ~Pas de l'ombre
+
+Le lanceur marche dans le plan de l'ombre et peut s'y déplacer pendant 7 secondes pendant que les autres voient leur temps figé. Le lanceur ne peut attaquer ou lancer de sorts tant qu'il est dans le plan de l'ombre.~
+
+@52003 = ~Manteau de Ténèbres~
+@52004 = ~Manteau de Ténèbres
+
+Niveau : 3
+Sphère : Soleil
+Portée : Contact
+Durée : 1 tour
+Temps d'incantation : 6
+Zone d'effet : 1 créature
+Jet de sauvegarde : Aucun
+
+Ce sort entoure la cible d'ombres, ce qui la protège aussi bien des attaques que des sorts mais aussi des yeux indiscrets. La cible gagne un bonus de 1 point à la classe d'armure tous les 4 niveaux (maximum de +5), de 2 points aux jets de sauvegarde contre les sorts et obtient Infravision pour la durée du sort.
+
+Le bénéficiaire peut se cacher dans les ombres à 99 % et se fond automatiquement dans les ombres chaque round s'il ne fait rien d'autre.~
+
+@52007  = ~Convocation d'ombres~
+@52008  = ~Convocation d'ombres
+
+Niveau : 5
+Portée : Longue
+Durée : 3 tours
+Temps d'incantation : 1 round
+Zone d'effet : spécial
+Jet de sauvegarde : aucun
+
+Ce sort fait apparaître un certain nombre d'ombres qui servent le lanceur quelle que soit la situation. Le type et le nombre de créatures qui apparaissent dépend du niveau du lanceur de sorts.
+
+9ème : 3 ombres
+12ème et plus : 2 âmes en peine
+
+Ces créatures obéissent aux ordres de leur maître et combattent pour lui jusqu'au terme du sort (ou jusqu'à ce qu'elles soient détruites).
+
+Ombre (3 dés de vie) :
+FOR -, DEX 14, CON -, INT 6, SAG 12, CHA 11; AL chaotique mauvais
+PV 36, CA 5, TAC0 13, Jets de sauvegarde 11/13/11/13/13
+1 attaque par round, 1d6+1 dégâts de froid (Toucher +1)
+
+Capacités de combat :
+Absorption de force : les créatures touchées doivent réussir un jet de sauvegarde contre la mort ou perdre 1 point de force pendant 1 heure.
+
+Caractéristiques spéciales :
+Immunisée contre les armes normales.
+Immunisée à l'attaque sournoise, au charme, à la confusion, à l'immobilisation, au poison, au sommeil, à l'étourdissement et aux effets de mort.
+Résistance au froid 100 %, résistance aux dégâts physiques 50 %
+
+
+Âme en peine(5 dés de vie) :
+FOR -, DEX 15, CON -, INT 11, SAG 13, CHA 12; AL loyal mauvais
+PV 60, CA 4, TAC0 12, Jets de sauvegarde 10/13/10/13/13
+1 attaque par round, 1d8+1 dégâts de froid (Toucher +1)
+
+Capacités de combat :
+Absorption d'énergie : chaque coup successif réussi augmente le nombre de points vie de l'âme en peine de 5 points pendant 1 tour et la cible doit réussir un jet de sauvegarde contre la mort ou perdre un niveau.
+
+Caractéristiques spéciales :
+Immunisée contre les armes normales.
+Immunisée à l'attaque sournoise, à la cécité, au charme, à la confusion, à l'immobilisation, au poison, au sommeil, à l'étourdissement et aux effets de mort.
+Résistance au froid 100 %, résistance aux dégâts physiques 50 %~
+
+@52009  = ~Lueurs dansantes~
+@52010  = ~Lueurs dansantes
+
+Niveau : 1
+Portée : champ visuel du lanceur
+Durée : 2 rounds par niveau
+Temps d'incantation : 1
+Zone d'effet : spécial
+Jet de sauvegarde : aucun
+
+Ce sort crée jusqu'à quatre sphères lumineuses (feu follet) ou une forme vaguement humanoïde et faiblement luisante ressemblant à un élémentaire de feu. Les lueurs dansantes se déplacent de façon aléatoire sans que le lanceur ait besoin de se concentrer. Même si les lueurs n'infligent aucun dégât physique, elles peuvent distraire les ennemis jusqu'à ce que le sort expire ou qu'elles soient dispersées par les armes ou la magie.
+~
+
+@59999  = ~Protection de l'esprit
+(Abjuration)
+
+Niveau : 1
+Sphère : Perdition
+Portée : contact
+Durée : 3 rounds par niveau
+Temps d'incantation : 1
+Zone d'effet : 1 créature
+Jet de sauvegarde : aucun
+
+Ce sort entoure le bénéficiaire d'une barrière magique à une distance de 30 cm. Les esprits, les fées, les élémentaires, les créatures des plans inférieurs et les morts-vivants spectraux subissent un malus de 2 points au toucher lorsqu'ils attaquent une créature protégée. En outre, le bénéficiaire gagne un bonus de 3 points aux jets de sauvegarde contre tous les sorts qui appartiennent à l'école d'Enchantement.
+~
+//Misc. @53000
+
+@53000 = ~Abondance de munitions~
+@53001 = ~Abondance de munitions
+(Convocation)
+
+Niveau : 1
+Sphère : Création
+Portée : Personnelle
+Durée : 8 heures
+Temps d'incantation : 9
+Jet de sauvegarde : Aucun
+
+Ce sort crée des munitions spéciales dans l'inventaire du lanceur. Il peut créer un jeu de 20 carreaux, flèches ou billes. Ces projectiles sont un peu meilleurs que les munitions ordinaires. Le rôdeur peut créer les munitions suivantes avec ce sort :
+
+Tous les types de munitions touchent comme des armes +1 (même si elles ne bénéficient pas toutes du bonus de +1 à l'attaque ou aux dégâts).
+
+- Flèches ou carreaux de chasse : les cibles touchées se voient infliger une condition de « saignement » jusqu'à 6 rounds si elles ne réussissent pas un jet de sauvegarde contre les baguettes. Les cibles qui saignent subissent 1 point de dégât tranchant chaque round où elles sont affectées par le saignement. Si elles reçoivent un effet de soin, quel qu'il soit, la condition de saignement prend fin.
+
+- Billes lestées : Les billes lestées infligent 4 points de dégâts contondants supplémentaires à l'impact, ont 1 point de malus au jet d'attaque et 30 % de chance de renverser la cible (jet contre les baguettes pour éviter).
+
+- Flèches ou carreaux acérés : bonus de 1 point à l'attaque, 15 % de chances d'infliger un dé supplémentaire de dégâts à la cible.
+
+- Billes équilibrées : bonus de 3 points au jet d'attaque.
+
+- Flèches ou carreaux perforants : 3 points supplémentaires de dégâts perforants.
+
+- Bille coquille d'œuf : malus de 2 points à l'attaque, jet contre les poisons pour la cible sinon 6 points de dégâts de poison et -1 à la CA pendant 1 round.~
+
+@53002 = ~Sphère : Création~
+@53003 = ~Sphère : Guerre~
+@53004 = ~Flèches de chasse~
+@53005 = ~Cette flèche est tranchante et dentelée, capable d'infliger des blessures sévères et persistantes aux cibles. Quand cette flèche touche une cible, celle-ci doit réussir un jet de sauvegarde contre les baguettes ou subir 1 point de dégât tranchant par round pendant 6 rounds. Cet effet disparaît si la victime reçoit un soin quel qu'il soit.
+
+Cette flèche est considérée comme une arme +1.
+
+STATISTIQUES :
+
+Dégâts : 1d6 (projectile)
+Spécial : la cible subit 1 point de dégât tranchant par round (jet de sauvegarde contre les baguettes annule)
+Durée : 6 rounds
+Type de dégâts : projectile
+Arme à distance : arc
+
+Poids : 0~
+
+@53006 = ~Saignement~
+@53007 = ~Carreaux de chasse~
+
+@53008 = ~Ce carreau est tranchant et dentelé, capable d'infliger des blessures sévères et persistantes aux cibles. Quand ce carreau touche une cible, celle-ci doit réussir un jet de sauvegarde contre les baguettes ou subir 1 point de dégât tranchant par round pendant 6 rounds. Cet effet disparaît si la victime reçoit un soin quel qu'il soit.
+
+Ce carreau est considéré comme une arme +1.
+
+STATISTIQUES :
+
+Dégâts : 1d8 (projectile)
+Spécial : la cible subit 1 point de dégât tranchant par round (jet de sauvegarde contre les baguettes annule)
+Durée : 6 rounds
+Type de dégâts : projectile
+Arme à distance : arbalète
+
+Poids : 0~
+
+
+@53009 = ~Billes lestées~
+
+@53010 = ~Cette bille paraît normale, si ce n'est qu'elle est particulièrement grosse et lourde, trop lourde pour être lancée de façon précise (ce qui impose une pénalité de 1 point au jet d'attaque). Par contre, elle a une chance de renverser la cible. Quand elle touche une cible, elle inflige 4 points de dégâts contondants à la cible et a 30 % de chance de renverser la cible pour 3 secondes si elle ne réussit pas un jet de sauvegarde contre les baguettes.
+
+Cette bille est considérée comme une arme +1.
+
+STATISTIQUES :
+
+TAC0 : -1
+Dégâts : 1d4, +4 dégâts contondants
+Spécial : 30 % de chance de renverser la cible (jet de sauvegarde contre les baguettes annule)
+Durée : 3 secondes
+Type de dégâts : projectile
+Arme à distance : fronde
+
+Poids : 0~
+
+@53011 = ~Flèches acérées~
+@53012 = ~Cette flèche est soigneusement fabriquée, précise et a une pointe affûtée. Les flèches acérées ont un bonus de 1 point au jet d'attaque et ont 15 % de chance d'infliger 1d6 points additionnels de dégâts.
+
+Cette flèche est considérée comme une arme +1.
+
+STATISTIQUES :
+
+TAC0 : +1
+Dégâts : 1d6
+Spécial : 15 % de chances d'infliger 1d6 points de dégâts de projectile supplémentaires
+Type de dégâts : projectile
+Arme à distance : arc
+
+Poids : 0~
+
+@53013 = ~Carreaux acérés~
+
+@53014 = ~Ce carreau est soigneusement fabriqué, précis et a une pointe affûtée. Les carreaux acérés ont un bonus de 1 point au jet d'attaque et ont 15 % de chance d'infliger 1d8 points additionnels de dégâts.
+
+Ce carreau est considéré comme une arme +1.
+
+STATISTIQUES :
+
+TAC0 : +1
+Dégâts : 1d8
+Spécial : 15 % de chances d'infliger 1d8 points de dégâts de projectile supplémentaires
+Type de dégâts : projectile
+Arme à distance : arbalète
+
+Poids : 0~
+
+@53015 = ~Billes équilibrées~
+
+@53016 = ~Cette bille est parfaitement équilibrée et aérodynamique, ce qui la rend particulièrement précise et lui offre un bonus de +3 aux jets d'attaque.
+
+Cette bille est considérée comme une arme +1.
+
+STATISTIQUES :
+
+TAC0 : +3
+Dégâts : 1d4
+Type de dégâts : projectile
+Arme à distance : fronde
+
+Poids : 0~
+
+@53017 = ~Flèches perforantes~
+@53018 = ~Cette flèche semble parfaitement normale, juste particulièrement pointue. Cependant, quand elle touche une cible, elle perce la chair avec facilité, infligeant des dégâts substantiels.
+
+Cette flèche est considérée comme une arme +1.
+
+STATISTIQUES :
+
+Dégâts : 1d6, +3 dégâts perforants
+Type de dégâts : perforant
+Arme à distance : arc
+
+Poids : 0~
+
+@53019 = ~Carreaux perforants~
+@53020 = ~Ce carreau semble parfaitement normal, juste particulièrement pointu. Cependant, quand il touche une cible, il perce la chair avec facilité, infligeant des dégâts substantiels.
+
+Ce carreau est considéré comme une arme +1.
+
+STATISTIQUES :
+
+Dégâts : 1d8, +3 dégâts perforants
+Type de dégâts : perforant
+Arme à distance : arbalète
+
+Poids : 0~
+
+@53021 = ~Bille coquille d'œuf~
+
+@53024 = ~Cette bille ressemble plus à un œuf qu'à une vraie bille de fronde et semble contenir une poudre. Elle est effectivement prévue pour éclater au moindre impact et recouvrir la cible avec cette poudre. La bille elle-même n'inflige que peu de dégâts (la cible subit 1 point de dégâts), mais la cible doit réussir un jet de sauvegarde contre les poisons pour ne pas s'étouffer et souffrir un point de dégâts de poison par seconde et subir une pénalité de 1 point à la CA pendant 6 secondes.
+
+Cette bille n'est pas bien équilibrée et rend le lancer de précision difficile. Elle impose une pénalité de 2 points au jet d'attaque.
+
+Cette bille est considérée comme une arme +1.
+
+STATISTIQUES :
+
+TAC0 : -2
+Dégâts : 1 point
+Type de dégâts : projectile
+Arme à distance : fronde
+
+Poids : 0~
+
+
+@53022 = ~Camouflage~
+@53023 = ~Camouflage
+(Illusion)
+
+Niveau : 1
+Sphère : Élémentaire (terre)
+Portée : Personnelle
+Durée : 2 tours
+Temps d'incantation : 0
+Jet de sauvegarde : aucun
+
+Ce sort change les couleurs du lanceur pour s'accorder avec l'environnement, le rendant difficile à voir.
+
+Quand ce sort est lancé, le lanceur gagne un bonus de +50 % à Se cacher dans les ombres et à Déplacement silencieux. Il se fond naturellement dans l'environnement, ce qui lui permet de se cacher comme un voleur ou un rôdeur pour la durée du sort.
+Ce bonus augmente de +5 % au niveau 2, puis de +5 % tous les deux niveaux suivants, jusqu'à un maximum de +75 % au niveau 10.~
+
+
+@53025 = ~Arme magique ~
+@53026 = ~Arme magique
+(Enchantement/Charme)
+
+Niveau : 1
+Sphère : Combat
+Portée : Personnelle
+Durée : 1 tour
+Temps d'incantation : 1
+Zone d'effet : le lanceur
+Jet de sauvegarde : aucun
+
+Arme magique ajoute à l'arme du lanceur un bonus d'enchantement de 1 point à l'attaque et aux dégâts.~
+
+@53027 = ~Cécité~
+@53028 = ~Cécité
+(Illusion/Fantasme)
+
+Niveau : 2
+Sphère : Ombre
+Portée : 12 m
+Durée : 2 heures
+Temps d'incantation : 2
+Zone d'effet : 1 créature
+Jet de sauvegarde : annule
+
+Ce sort aveugle temporairement la cible. Un jet de sauvegarde est permis. S'il réussit, aucun effet nuisible ne se produit. Une victime aveuglée reçoit un malus de 4 points à ses jets d'attaque et à sa classe d'armure.~
+
+@53029 = ~Liens~
+@53030 = ~Liens
+(Conjuration/Convocation)
+
+Niveau : 1
+Sphère : Création
+Portée : 10,5 m
+Durée : 1 round/3 niveaux
+Temps d'incantation : 5
+Zone d'effet : 1 créature
+Jet de sauvegarde : annule
+
+Ce sort invoque une corde qui s'enroule autour de la créature ciblée si elle ne réussit pas un jet de sauvegarde contre les souffles. Une créature affectée est immobilisée. La cible est immobilisée pendant 1 round pour chaque tranche de 3 niveaux du lanceur (au maximum 7 rounds au niveau 19).
+
+Les créatures de taille Très grande ou plus ne sont pas affectées par ce sort.~
+
+@53031 = ~Fustigation~
+@53032 = ~Fustigation
+(Enchantement/Charme)
+
+Niveau : 1
+Sphère : Loi
+Portée : 12 m
+Durée : 1 round
+Temps d'incantation : 1
+Zone d'effet : 1 créature
+Jet de sauvegarde : annule
+
+Avec ce sort, le lanceur pointe une créature et la réprimande. Elle est sujette à la terreur pour 1 round si elle échoue à un jet de sauvegarde contre les sorts.~
+
+// 53033-53034 unused - commented out inspells_new_fnp.tpa (minor creation)
+
+// 53035 unused (expeditious retreat)
+// 65001-65001 unused (protective shell)
+// 65101-65201 unused (anticipation)
+// 65201-65102 unused (alarm)
+// 65203-65206 unused (hypnotism)
+// 66001-66002 unused (Detect Traps and Portals)
+// 66011-66012 unused (reprive)
+// 66013-66015 unused (accelerate  metabolism)
+// 66016-66017 unused (vanish)
+// 66101-66103 unused (enervating ray)
+// 66110-66112 unused (farsight)
+// 67000-67002 unused (bolt of paralysis)
+// 67301- 67302 unused Solvent of Corrosion
+// 67303-67304 unused (iron mind)
+// 67401-67402 unused (charm monster)
+// 67410-67411 unused (Mindsight)
+// 67501-67502 unused (Snilloc's Major Missile)
+// 67503-67505 unused (Usurp Shell)
+// 68000-68002 unused (Siphon Vitality)

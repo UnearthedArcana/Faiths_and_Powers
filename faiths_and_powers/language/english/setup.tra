@@ -4,7 +4,7 @@
 @13 = ~*Please be patient. This will take some time...*~
 @18 = ~Component has been depreciated~
 //
-@20  = ~Create a sphere system~
+@20  = ~Choose a Sphere System~
 @21  = ~oFnP: the original Faiths & Powers sphere system~
 @22  = ~AD&D/DR: inspired by PnP and Divine Remix~
 @23  = ~Vanilla: traditional spell lists, kits can cross the cleric/druid divide~
@@ -14,17 +14,18 @@
 @30  = ~Give Option to Cast Like Sorcerers (do not install if planning to use 5E casting)~
 @31  = ~Install Cleric kits~
 @33  = ~Install Druid kits~
-@35  = ~Install Paladin kits~
-@37  = ~Install Ranger kits~
-@37  = ~Install Ranger kits~
-@70  = ~Add spell scrolls for priests~
-@75  = ~Alter priests' weapon/armor usability~
-@80  = ~Apply sphere system (REQUIRED for the sphere system to work)~
+@35  = ~...for Tyr, Torm, Helm, Ilmater, Kelemvor, Sune~
+@36  = ~...for all those, PLUS Neutral/Evil/demihuman deities~
+@40  = ~Install Paladin kits~
+@45  = ~Revised Paladin Spell Table~
+@70  = ~Add Spell Scrolls for Priests~
+@75  = ~Alter Priests' Weapon/Armor Usability~
+@80  = ~Apply Sphere System (REQUIRED for the sphere system to work)~
 @85  = ~Apply FnP kits to NPCs~
 @91  = ~Multiclass Druids~
 @92  = ~Multiclass Shamans~
 @95  = ~Multiclass Cleric kits (install AFTER all other kit mods!!)~
-@99  = ~Apply FnP multiclass kits to NPCs~
+@99  = ~Apply FnP Multiclass Kits to NPCs~
 //
 //
 @100  = ~Select an installation method below:~
@@ -155,25 +156,18 @@
 @804  = ~Add Champion of Bane~
 @805  = ~Add Champion of Helm~
 @806  = ~Add Champion of Talos~
+@863  = ~Add Zealot of Talos~
 @807  = ~Add Champion of Moradin~
 @808  = ~Add Champion of Azuth~
 @809  = ~Add Champion of the Red Knight~
-//
-// ... Inquisitor kits = 831-860
-//
-@831  = ~Add Inquisitor of ~
-//
-// ... Zealot kits = 861-880
-//
-@862  = ~Add Zealot of Gruumsh~
-@863  = ~Add Zealot of Talos~
-@864  = ~Add Zealot of Kossuth~
-@865  = ~Add Zealot of Ilmater~
-@866  = ~Add Zealot of Garagos~
-@867  = ~Add Zealot of Corellon Larethian~
-@868  = ~Add Zealot of Sune~
-@869  = ~Add Zealot of Mystra~
-@870  = ~Add Zealot of Eilistraee~
+@862  = ~Add Champion of Gruumsh~
+@864  = ~Add Champion of Kossuth~
+@865  = ~Add Champion of Ilmater~
+@866  = ~Add Champion of Garagos~
+@867  = ~Add Champion of Corellon Larethian~
+@868  = ~Add Champion of Sune~
+@869  = ~Add Champion of Mystra~
+@870  = ~Add Champion of Eilistraee~
 //
 //
 @900  = ~new and revised ranger kits~
@@ -229,6 +223,12 @@
 //
 @1100  = ~Memorize spells~
 @1101  = ~After choosing a deity to follow, you will gain access to spells within the spheres of magic - the domains - available to that deity. Once you choose which spells to memorize, using this scroll will allow you to memorize them instantly, without needing to rest. This may only be done once. Beware, if you wait too long, the scroll may disappear.~
+@1110  = ~
+
+Weapons Usable by this kit:
+ - Quarterstaff
+ - Club
+~
 //
 // ... strings for new kits
 //
@@ -431,7 +431,7 @@ Restrictions:
 @12521 = ~Radiance~
 @12522 = ~Shadow~
 @12523 = ~no_sphere_1~
-@12524 = ~Spirit~
+@12524 = ~Astral~
 //
 //
 @20001 = ~ur-priest~
@@ -754,10 +754,10 @@ Restrictions:
 @31003  = ~SEEKER OF OGHMA:  Oghma is a greater god of knowledge, sagecraft, learning, and wisdom. He is venerated by those seeking information - particularly lost or hidden information. When a Seeker demonstrates solid service or true loyalty in Oghma's cause, <PRO_HESHE> is bestowed with the title of Loremaster. This is a great honor; while outsiders may perceive the god of sages as belonging in dusty libraries, the fact is that many Oghmanite priests are of an adventuresome bent.
 
 Advantages:
+- Bloodstalkers can cast spells from scrolls normally restricted to wizards.
 - Once per day, a Seeker can concentrate and briefly increase <PRO_HISHER> ability to understand and identify the workings of magical items.
 - From 3rd level, a Seeker can innately cast Know Opponent, making it easier for <PRO_HIMHER>self and <PRO_HISHER> allies to strike the target creature.
 - From 9th level, a Seeker can innately cast Feeblemind.
-- Seekers can understand and use scrolls and wands normally restricted to wizards.
 
 Restrictions:
 - Alignment: May not be Evil
@@ -802,11 +802,11 @@ When the priest casts this spell, <PRO_HESHE> doubles the hit points of any crea
 @31503  = ~GLYPHSCRIBE OF DENEIR:  Deneir is the patron of artists, scribes and cartographers.  He values the written word, and the information that that word carries, and so do his priests.
 
 Advantages:
+- Glyphscribes can cast spells from scrolls normally restricted to wizards.
 - Glyphscribes are immune to all symbol spells, and the glyph of warding spell.
-- Glyphscribes can cast find trap once per day as a special ability.  They can use this ability an additional time at levels 3, 6, 9, 12, 15 and 18.  This ability functions as the cleric spell of the same name.
-- At 5th level, Glyphscribes can cast glyph of warding as a special ability once per day.  They can use this ability an additional time per day at levels 10, 15, and 20.  This ability functions as the cleric spell of the same name.  
-- At 11th level, Glyphscribes can cast dispel magic as a special ability once per day.  They can use this ability an additional time per day at levels 16, and 20.  This ability functions as the spell of the same name.
-- Glyphscribes can cast all symbol spells at their normal level, regardless of sphere.
+- Glyphscribes can cast find trap once per day as a special ability. They can use this ability an additional time at levels 3, 6, 9, 12, 15 and 18. This ability functions as the cleric spell of the same name.
+- At 5th level, Glyphscribes can cast glyph of warding as a special ability once per day.  They can use this ability an additional time per day at levels 10, 15, and 20. This ability functions as the cleric spell of the same name.  
+- At 11th level, Glyphscribes can cast dispel magic as a special ability once per day.  They can use this ability an additional time per day at levels 16, and 20. This ability functions as the spell of the same name.
 
 Restrictions:
 - Alignment: May not be Evil
@@ -819,9 +819,9 @@ Restrictions:
 @31603  = ~HEARTWARDER OF SUNE:  Sune teaches that external beauty ultimately reflects ones internal worth.  Thus, her followers strive to preserve beauty, both in themselves and in others, whether those othere be individuals or objects, such as works of art.
 
 Advantages:
-- Heartwarders are especially resistant to the influence of mind altering magic.  They recieve a +2 bonus to their save vs. spell.
-- Heartwarders may charm person as a special ability once per day.  This ability is especially potent, and opponents suffer a -2 to their save.  Otherwise, this ability functions as the wizard spell of the same name.  The Heartwarder can use this ability an additional time per day at levels 3, 6, 9, 12, 15, 18 and 20.  
-- Heartwarders may cast emotion: Hope as a special ability once per day at level 5.  The heartwarder can use this ability an additional time at levels 10, 15 and 20.  This spell functions as the wizard spell of the same name.  
+- Heartwarders are especially resistant to the influence of mind altering magic. They recieve a +2 bonus to their save vs. spell.
+- Heartwarders may charm person as a special ability once per day. This ability is especially potent, and opponents suffer a -2 to their save. Otherwise, this ability functions as the wizard spell of the same name. The Heartwarder can use this ability an additional time per day at levels 3, 6, 9, 12, 15, 18 and 20.  
+- Heartwarders may cast emotion: Hope as a special ability once per day at level 5. The heartwarder can use this ability an additional time at levels 10, 15 and 20. This spell functions as the wizard spell of the same name.  
 - At 11th level, the Heartwarder gains a permenant +1 bonus to charisma.
 
 Restrictions:
@@ -995,7 +995,7 @@ Restrictions:
 
 With an intimate knowledge of <PRO_HISHER> surroundings and the creatures that live within them, a Talon of Malar can use the Tracking ability to give <PRO_HIMHER>self a general idea of what creatures are in an area and which direction they are. Red arrows at the edge of the screen will point in the general direction of the creatures in the area.~
 //
-// ... hammer of moradin 
+// ... cleric of moradin 
 //
 @37101  = ~sonnlinor of moradin~
 @37102  = ~Sonnlinor of Moradin~
@@ -1150,6 +1150,7 @@ This spell grants one person protection from ground and nature based movement im
 @38503  = ~BLOODSTALKER OF URDLEN: Urdlen's priests wage an unending war on communities of the Forgotten Folk, particularly the clergies of the other gnome gods. When not hunting other creatures, members of the priesthood work to steal, deface, or destroy objects of value, particularly gems and works of art. They share their lord's love for evil pranks, especially those directed against other gnomes. Priests must satisfy Urdlen first, so that he does not come for them, but then they may do what they want. Bloodstalkers believe that existence is a cosmic joke before death comes via Urdlen's claws. Sharing the cruel ironies and harsh humor of existence with others is only kind, for it helps to toughen them for what is coming in the end.
 
 Advantages:
+- Bloodstalkers can cast spells from scrolls normally restricted to wizards.
 - From 1st level, Bloodstalkers may cast Stinking Cloud as an innate ability once per day.
 - From 3rd level, Bloodstalkers may cast Blindness as an innate ability once per day.
 - From 6th level, Bloodstalkers may cast Skull Trap as an innate ability once per day.
@@ -1861,55 +1862,117 @@ Upon using this ability, the Mystic is allowed to choose a spell from his repert
 //
 // ... druid shapeshifting:
 //
+@73000  = ~Choose a new shapeshift form~
 @73001  = ~Shapeshift: natural form~
+@73002  = ~Choose this form~
 @73003  = ~Shapeshift: ferret~
-@73004  = ~Shift into the form of a ferret.~
+@73004  = ~Shift into the form of a ferret
+
+FERRET: in ferret form the druid is hidden from view for up to two rounds. <PRO_HESHE> can use this to escape enemies or move undetected, and can attack once per round for 1d2 piercing damage.~
 @73009  = ~Shapeshift: wolf~
-@73010  = ~Shift into the form of a wolf~
+@73010  = ~Shift into the form of a wolf
+
+WOLF: in wolf form the druid can detect hidden enemies. He can attack 1.5 times per round for 2d4 piercing damage. Successful attacks have a chance to grapple the target, briefly Slowing them; they must make a saving throw to avoid this.~
 @73011  = ~Shapeshift: dire wolf~
-@73012  = ~Shift into the form of a dire wolf~
+@73012  = ~Shift into the form of a dire wolf
+
+DIRE WOLF: in dire wolf form the druid has 19 STR. He can attack 1.5 times per round for 2d6 piercing damage. Successful attacks have a chance to grapple the target, briefly Slowing them; they must make a saving throw to avoid this.~
 @73013  = ~Shapeshift: winter wolf~
-@73014  = ~Shift into the form of a winter wolf~
+@73014  = ~Shift into the form of a winter wolf
+
+WINTER WOLF: in this form the druid can attack 1.5 times per round for 2d4 piercing damage. Successful attacks have a chance to grapple the target, briefly Slowing them; they must make a saving throw to avoid this. Additionally, the druid gains the ability to use a ranged Ice Breath attack doing 6d4 cold damage (save for half).~
 @73015  = ~Shapeshift: dread wolf~
-@73016  = ~Shift into the form of a dread wolf~
+@73016  = ~Shift into the form of a dread wolf
+
+DREAD WOLF: in this form the druid can can attack 1.5 times per round for 2d4 piercing damage. Successful attacks can cause Disease in the target, sapping their Strength by 1 point if they fail a saving throw.  Additionally, the druid is 100% resistant to cold damage and 50% resistant to fire and electric damage.~
 @73017  = ~Shapeshift: vampire wolf~
-@73018  = ~Shift into the form of a vampire wolf~
+@73018  = ~Shift into the form of a vampire wolf
+
+VAMPIRIC WOLF: in this form the druid can can attack 1.5 times per round for 2d6 piercing damage. Successful attacks drain the target of 2 points of Constitution if they fail a saving throw.  Additionally, the druid is 100% resistant to cold damage and 50% resistant to fire and electric damage.~
 @73019  = ~Shapeshift: shadow wolf~
-@73020  = ~Shift into the form of a shadow wolf~
+@73020  = ~Shift into the form of a shadow wolf
+
+~
 @73023  = ~Shapeshift: black bear~
-@73024  = ~Shift into the form of a black bear~
+@73024  = ~Shift into the form of a black bear
+
+BLACK BEAR: in black bear form, the druid has 19 strength. <PRO_HESHE> can attack twice per round with claws that cause 2d6 slashing damage.~
 @73025  = ~Shapeshift: grizzly bear~
-@73026  = ~Shift into the form of a grizzly bear~
+@73026  = ~Shift into the form of a grizzly bear
+
+GRIZZLY BEAR: in grizzly bear form, the druid has 20 strength. <PRO_HESHE> can attack twice per round with claws that cause 2d6 slashing damage and, if the target fails a saving throw, and additional 2d4 crushing damage.~
 @73027  = ~Shapeshift: polar bear~
-@73028  = ~Shift into the form of a polar bear~
+@73028  = ~Shift into the form of a polar bear
+
+POLAR BEAR: in this form, the druid has 21 strength. <PRO_HESHE> can attack twice per round with claws that cause 2d8 slashing damage and, if the target fails a saving throw, and additional 2d4 crushing damage.~
 @73031  = ~Shapeshift: mountain lion~
-@73032  = ~Shift into the form of a mountain lion~
+@73032  = ~Shift into the form of a mountain lion
+
+MOUNTAIN LION: in this form, the druid can attack twice per round for 2d4 slashing damage. Successful attacks can knock the target to the ground if they fail a saving throw.~
 @73033  = ~Shapeshift: panther~
-@73034  = ~Shift into the form of a panther~
+@73034  = ~Shift into the form of a panther
+
+PANTHER: in this form, the druid can attack twice per round for 2d4 slashing damage. Successful attacks can knock the target to the ground if they fail a saving throw.~
 @73037  = ~Shapeshift: wild boar~
-@73038  = ~Shift into the form of a wild boar~
+@73038  = ~Shift into the form of a wild boar
+
+WILD BOAR: in this form, the druid can make 1.5 slashing attacks per round with strong tusks, and can bull-rush through any Entangle or Web effects.~
 @73039  = ~Shapeshift: yeti~
-@73040  = ~Shift into the form of a yeti~
+@73040  = ~Shift into the form of a yeti
+
+YETI: in this form the druid has 19 strength. <PRO_HESHE> can attack twice per round with fists that cause 2d6 crushing damage.  Additionally, successful attacks can knock the target away from the druid on a failed saving throw.~
 @73041  = ~Shapeshift: python~
-@73042  = ~Shift into the form of a python~
-@73045  = ~Shapeshift: wyvern~
-@73046  = ~Shift into the form of a large wyvern~
+@73042  = ~Shift into the form of a python
+
+PYTHON: in snake form, the druid can attack with a bite that causes 1d3 damage and poisons the target with similar effects to the Assassin's "Poison Weapon" ability. Additionally, the druid can attempt to constrict around an opponent, briefly paralyzing them if they fail a saving throw.~
+@73045  = ~Shapeshift: small wyvern~
+@73046  = ~Shift into the form of a small wyvern
+
+SMALL WYVERN: in wyvern form the druid can fly over ground-based obstacles like Entangle and Web spells. <PRO_HISHER> claws can rake victims twice per round for 1d6 damage and can can poison the target with similar effects to the Assassin's "Poison Weapon" ability.~
+@73047  = ~Shapeshift: large wyvern~
+@73048  = ~Shift into the form of a large wyvern
+
+LARGE WYVERN: in wyvern form the druid can fly over ground-based obstacles like Entangle and Web spells. <PRO_HISHER> powerful claws can rake victims for 2d6 damage and <PRO_HISHER> attacks can poison the target with similar effects to the Assassin's "Poison Weapon" ability. Additionally, the druid can create a powerful gust of wind that acts like a smaller version of a dragon's "Wing Buffet" ability.~
 @73051  = ~Shapeshift: giant spider~
-@73052  = ~Shift into the form of a giant spider~
+@73052  = ~Shift into the form of a giant spider
+
+GIANT SPIDER: in this form the druid can make 1.5 attacks per round for 1d8 piercing damage; when successful, these attacks deliver a poison with similar effects to the Assassin's "Poison Weapon" ability. The druid is immune to magical and nonmagical webs while in this form, and can deliver a lesser version of the "Web" spell at foes once per three rounds.~
 @73053  = ~Shapeshift: sword spider~
-@73054  = ~Shift into the form of a sword spider~
+@73054  = ~Shift into the form of a sword spider
+
+SWORD SPIDER: in this form, the druid can move extremely fast and attack 4 times per round for 1d6 slashing damage. The druid is immune to magical and nonmagical webs while in this form.~
 @73061  = ~Shapeshift: boring beetle~
-@73062  = ~Shift into the form of a boring beetle~
+@73062  = ~Shift into the form of a boring beetle
+
+BORING BEETLE: in this form the druid can make a powerful piercing attack once per round for 2d6+2 piercing damage. The beetle's hard shell gives the druid a 3-point armor class bonus against missile weapons, and 50% resistance to physical damage generally.~
 @73063  = ~Shapeshift: fire beetle~
-@73064  = ~Shift into the form of a fire beetle~
+@73064  = ~Shift into the form of a fire beetle
+
+FIRE BEETLE: in this form, the druid can make one pincer attack per round, for 2d4 piercing damage and and extra 2d4 fire damage. The druid has a 3-point armor class bonus against missile attacks, and 75% resistance to fire damage.~
 @73065  = ~Shapeshift: bombardier beetle~
-@73066  = ~Shift into the form of bombardier beetle~
+@73066  = ~Shift into the form of bombardier beetle
+
+BOMBARDIER BEETLE: in this form, the druid can make one pincer attack per round, for 2d4 piercing damage and and extra 2d4 acid damage. The druid has a 3-point armor class bonus against missile attacks, and 75% resistance to acid damage.~
 @73067  = ~Shapeshift: rhinocerous beetle~
-@73068  = ~Shift into the form of a rhinocerous beetle~
+@73068  = ~Shift into the form of a rhinocerous beetle
+
+RHINOCEROUS BEETLE: in this massive form, the druid has 22 strength. <PRO_HESHE> can attack twice per round with incredibly powerful pincers, for 3d6 piercing damage. <PRO_HISHER> hard armor gives a 4-point armor class bonus against slashing, crushing, and missile attacks, and 50% resistance to physical damage generally.~
 @73071  = ~Shapeshift: carrion crawler~
-@73072  = ~Shift into the form of a carrion crawler~
+@73072  = ~Shift into the form of a carrion crawler
+
+CARRION CRAWLER: in this form the druid can attack twice per round for 2d4 piercing damage. Successful attacks have a 50% chance to paralyze the victim for several rounds if they fail a saving throw vs. poison.~
 @73073  = ~Shapeshift: remorhaz~
-@73074  = ~Shift into the form of a remorhaz~
+@73074  = ~Shift into the form of a remorhaz
+
+REMORHAZ: in this powerful form, the druid has 21 strength and 100% resistance to cold damage. <PRO_HESHE> can attack 3 times per round with powerful pincers, for 2d6 piercing damage. <PRO_HISHER> hard armor gives a 4-point armor class bonus against slashing, crushing, and missile attacks, and 50% resistance to physical damage generally.~
+@73081  = ~Shapeshift: werewolf~
+@73082  = ~Shift into the form of a werewolf
+
+WEREWOLF: in this form, the druid has 18 strength and dexterity, and 20 constitution, and can regenerate 1 hit point per round. <PRO_HESHE> can make two claw attacks per round for 1d10 slashing damage, which can hit as magical +1 weapons. Additionally, this form has a natural 15% Magic Resistance and elemental damage resistance.~
+@73083  = ~Shapeshift: greater werewolf~
+@73084  = ~Shift into the form of a greater werewolf
+
+GREATER WEREWOLF: in this form, the druid has 19 strength and dexterity, and 22 constitution, and can regenerate 3 hit points per round. <PRO_HESHE> can make two claw attacks per round for 2d6 slashing damage, which can hit as magical +3 weapons. Additionally, this form is immune to attacks from nonmagical weapons, has a natural 30% Magic Resistance and elemental damage resistance.~
 //
 // ... druids:
 //
@@ -1919,30 +1982,13 @@ Upon using this ability, the Mystic is allowed to choose a spell from his repert
 
 Advantages:
 - At 1st level, may summon a Spirit Bear. The HD of the spirit animal increases to match the druid's level at 3rd, 5th, 7th and 10th level.
-- At 3rd level, may shapeshift into the form of a wolf or a ferret at will.
-- At 5th level, may shapeshift into the form of a black bear.
-- At 7th level, may shapeshift into the form of a python or a mountain lion.
-- At 9th level, may shapeshift into a larger dire wolf instead of a wolf.
-- At 9th level, the druid become immune to poison.
-- At 11th level, may shapeshift into a larger grizzly bear instead of a black bear.
-- At 13th level, may shapeshift into a large wyvern.
+- At 1st level, may shapeshift into the form of a black bear once per day. The Druid can change shape an additional time per day for every two levels gains, up to 11 uses per day at level 20.
+- At 4th level, the Druid may choose an additional animal form for shapeshifting.
+- At 8th level, the Druid may choose an additional animal form for shapeshifting.
+- At 12th level, the Druid may choose an additional animal form for shapeshifting.
+- At 15th level, the Druid may shapeshift into a large wyvern.
 - At 15th level, gains 10% resistance to damage from cold, fire, electricity, and acid.  These resistances increase by another 10% at levels 18 and 21.
 
-WOLF: in wolf form the druid can detect hidden enemies. He can attack 1.5 times per round for 2d4 piercing damage. Successful attacks have a chance to grapple the target, briefly Slowing them; they must make a saving throw to avoid this.
-
-FERRET: in ferret form the druid is hidden from view for up to two rounds. <PRO_HESHE> can use this to escape enemies or move undetected, and can attack once per round for 1d2 piercing damage.
-
-BLACK BEAR: in black bear form, the druid has 19 strength. <PRO_HESHE> can attack twice per round with claws that cause 2d6 slashing damage.
-
-PYTHON: in snake form, the druid can attack with a bite that causes 1d3 damage and poisons the target with similar effects to the Assassin's "Poison Weapon" ability. Additionally, the druid can attempt to constrict around an opponent, briefly paralyzing them if they fail a saving throw.
-
-MOUNTAIN LION: in mountain lion form, the druid can attack twice per round for 2d4 slashing damage. Successful attacks can knock the target to the ground if they fail a saving throw. 
-
-DIRE WOLF: in dire wolf form the druid has 19 STR. He can attack 1.5 times per round for 2d6 piercing damage. Successful attacks have a chance to grapple the target, briefly Slowing them; they must make a saving throw to avoid this.
-
-GRIZZLY BEAR: in grizzly bear form, the druid has 20 strength. <PRO_HESHE> can attack twice per round with claws that cause 2d6 slashing damage and, if the target fails a saving throw, and additional 2d4 crushing damage.
-
-WYVERN: in wyvern form the druid can fly over ground-based obstacles like Entangle and Web spells. <PRO_HISHER> powerful claws can rake victims for 2d6 damage and <PRO_HISHER> attacks can poison the target with similar effects to the Assassin's "Poison Weapon" ability. Additionally, the druid can create a powerful gust of wind that acts like a smaller version of a dragon's "Wing Buffet" ability.
 ~
 @73104  = ~FOREST DRUID: Most druids reside in the regions where soil is nutritious, plant life is abundant and animals thrive.  These regions are in many ways the epitome of harmonious ecosystems, and druids often charge themselves with nurturing and defending them.  Tall forests are a paradise in many ways: they provide shade from the sun, food and homes for animals and people, and wood for tools.  Forests are incessantly under threat of being torn down and subjugated by careless humans and demihumans. Forest druids therefore often live with a constant low-grade paranoia, which informs the stereotype of druids being hostile to civilization.~
 @73105  = ~~
@@ -1984,28 +2030,33 @@ Disadvantages:
 
 Advantages:
 - At 1st level, may summon a Spirit Spider. The HD of the spirit animal increases to match the druid's level at 3rd, 5th, 7th and 10th level.
-- At 3rd level, may shapeshift into the form of a giant beetle at will.
-- At 5th level, may shapeshift into the form of a giant spider.
-- At 7th level, may shapeshift into the form of a giant fire beetle or an acidic bombardier beetle.
-- At 9th level, may shapeshift into a sword spider.
-- At 9th level, the druid becomes immune to poison.
-- At 11th level, may shapeshift into a carrion crawler.
-- At 13th level, may shapeshift into a rhinocerous beetle.
+- At 1st level, may shapeshift into the form of a giant beetle once per day. The Druid can change shape an additional time per day for every two levels gains, up to 11 uses per day at level 20.
+- At 4th level, the Druid may choose an additional animal form for shapeshifting.
+- At 8th level, the Druid may choose an additional animal form for shapeshifting.
+- At 12th level, the Druid may choose an additional animal form for shapeshifting.
+- At 15th level, the Druid may shapeshift into a rhinocerous beetle.
 - At 15th level, gains 10% resistance to damage from cold, fire, electricity, and acid.  These resistances increase by another 10% at levels 18 and 21.
 
-BORING BEETLE: in this form the druid can make a powerful piercing attack once per round for 2d6+2 piercing damage. The beetle's hard shell gives the druid a 3-point armor class bonus against missile weapons, and 50% resistance to physical damage generally.
+~
+@73404  = ~AVENGER: A member of a special sect within the druidic order, a Druid of this type is dedicated to fighting those who would defile nature. Avengers have powers the average Druid does not—additional abilities that have been earned through extensive rituals, a process that is very physically draining.
 
-GIANT SPIDER: in this form the druid can make 1.5 attacks per round for 1d8 piercing damage; when successful, these attacks deliver a poison with similar effects to the Assassin's "Poison Weapon" ability. The druid is immune to magical and nonmagical webs while in this form, and can deliver a lesser version of the "Web" spell at foes once per three rounds.
+Advantages:
+– Six arcane spells are added to <PRO_HISHER> repertoire, all the way up to the 6th level. These are listed below:
+  1st level: Chromatic Orb.
+  2nd level: Web.
+  3rd level: Lightning Bolt.
+  4th level: Improved Invisibility.
+  5th level: Chaos.
+  6th level: Chain Lightning.
+- At 1st level, may shapeshift into the form of a giant beetle once per day. The Avenger can change shape an additional time per day for every two levels gains, up to 11 uses per day at level 20.
+- At 4th level, the Avenger may choose an additional animal form for shapeshifting.
+- At 8th level, the Avenger may choose an additional animal form for shapeshifting.
+- At 12th level, the Avenger may choose an additional animal form for shapeshifting.
+- At 15th level, the Avenger may shapeshift into a rhinocerous beetle.
 
-FIRE BEETLE: in this form, the druid can make one pincer attack per round, for 2d4 piercing damage and and extra 2d4 fire damage. The druid has a 3-point armor class bonus against missile attacks, and 75% resistance to fire damage.
-
-BOMBARDIER BEETLE: in this form, the druid can make one pincer attack per round, for 2d4 piercing damage and and extra 2d4 acid damage. The druid has a 3-point armor class bonus against missile attacks, and 75% resistance to acid damage.
-
-SWORD SPIDER: in this form, the druid can move extremely fast and attack 4 times per round for 2d4 slashing damage. The druid is immune to magical and nonmagical webs while in this form.
-
-CARRION CRAWLER: in this form the druid can attack twice per round for 2d4 piercing damage. Successful attacks have a 50% chance to paralyze the victim for several rounds if they fail a saving throw vs. poison.
-
-RHINOCEROUS BEETLE: in this massive form, the druid has 22 strength. <PRO_HESHE> can attack twice per round with incredibly powerful pincers, for 3d6 piercing damage. <PRO_HISHER> hard armor gives a 4-point armor class bonus against slashing, crushing, and missile attacks, and 50% resistance to physical damage generally.
+Disadvantages:
+– May not wear heavier armor than leather.
+– Incurs a -2 penalty to Strength and Constitution.
 ~
 @73411  = ~Sumon Spirit Spider~
 @73412  = ~~
@@ -2054,6 +2105,9 @@ Saving Throw: None
 
 With this spell, the caster can summon a massive rhino beetle to aid <PRO_HIMHER> in combat. The creature is large, incredibly strong, and has tough chitinous armored exterior. It is wholly loyal to the caster; it will use its girth to block enemies and its powerful bite attack to threaten them.
 ~
+@73429  = ~Rhinocerous Beetle~
+@73430  = ~Beetle~
+@73430  = ~Spider~
 //
 // ... arctic druid:
 //
@@ -2063,30 +2117,13 @@ With this spell, the caster can summon a massive rhino beetle to aid <PRO_HIMHER
 
 Advantages:
 - At 1st level, may summon a Spirit Wolf. The HD of the spirit animal increases to match the druid's level at 3rd, 5th, 7th and 10th level.
-- At 3rd level, may shapeshift into the form of a wolf at will.
-- At 5th level, may shapeshift into the form of a black bear or a giant beetle.
-- At 7th level, may shapeshift into the form of a yeti.
-- At 9th level, may shapeshift into a winter wolf instead of a wolf.
-- At 9th level, the druid become immune to poison.
-- At 11th level, may shapeshift into a polar bear instead of a black bear.
-- At 13th level, may shapeshift into a remorhaz.
+- At 1st level, may shapeshift into the form of a wolf once per day. The Druid can change shape an additional time per day for every two levels gains, up to 11 uses per day at level 20.
+- At 4th level, the Druid may choose an additional animal form for shapeshifting.
+- At 8th level, the Druid may choose an additional animal form for shapeshifting.
+- At 12th level, the Druid may choose an additional animal form for shapeshifting.
+- At 15th level, the Druid may shapeshift into a remorhaz.
 - At 15th level, gains 10% resistance to damage from cold, fire, electricity, and acid.  These resistances increase by another 10% at levels 18 and 21.
 
-WOLF: in this form the druid can detect hidden enemies. <PRO_HESHE> can attack 1.5 times per round for 2d4 piercing damage. Successful attacks have a chance to grapple the target, briefly Slowing them; they must make a saving throw to avoid this.
-
-BLACK BEAR: in this form, the druid has 19 strength. <PRO_HESHE> can attack twice per round with claws that cause 2d6 slashing damage.
-
-BORING BEETLE: in this form the druid can make a powerful piercing attack once per round for 2d6+2 piercing damage. The beetle's hard shell gives the druid a 3-point armor class bonus against missile weapons, and 50% resistance to physical damage generally.
-
-YETI: in this form the druid has 19 strength. <PRO_HESHE> can attack twice per round with fists that cause 2d6 crushing damage.  Additionally, successful attacks can knock the target away from the druid on a failed saving throw.
-
-FIRE BEETLE: in this form, the druid can make one pincer attack per round, for 2d4 piercing damage and and extra 2d4 fire damage. The druid has a 3-point armor class bonus against missile attacks, and 75% resistance to fire damage.
-
-WINTER WOLF: in this form the druid can attack 1.5 times per round for 2d4 piercing damage. Successful attacks have a chance to grapple the target, briefly Slowing them; they must make a saving throw to avoid this. Additionally, the druid gains the ability to use a ranged Ice Breath attack doing 6d4 cold damage (save for half).
-
-POLAR BEAR: in this form, the druid has 21 strength. <PRO_HESHE> can attack twice per round with claws that cause 2d8 slashing damage and, if the target fails a saving throw, and additional 2d4 crushing damage.
-
-REMORHAZ: in this powerful form, the druid has 21 strength and 100% resistance to cold damage. <PRO_HESHE> can attack 3 times per round with powerful pincers, for 2d6 piercing damage. <PRO_HISHER> hard armor gives a 4-point armor class bonus against slashing, crushing, and missile attacks, and 50% resistance to physical damage generally.
 ~
 //
 // ... shadow druid:
@@ -2121,7 +2158,7 @@ Disadvantages:
 
 Advantages:
 - At 1st level, may summon a Dread Wolf. This ability summons two dread wolves at 7th level, and three at 10th level.
-- At 5th level, may shapeshift into the form of a dread wolf.
+- At 1st level, may shapeshift into the form of a dread wolf.
 - At 9th level, may shapeshift into a vampiric wolf.
 - At 9th level, the druid becomes immune to level drain.
 - At 15th level, gains 10% resistance to damage from cold, fire, electricity, and acid.  These resistances increase by another 10% at levels 18 and 21.
@@ -2144,8 +2181,9 @@ Disadvantages:
 Advantages:
 - May cast "Beast Claw" as an innate ability, at will.
 - 20% of all Beast Claw attacks cause infection upon a failed save vs. Death, weakening the target and causing a 10% chance of spell failure.
-- At 6th level, may shapeshift into a hybrid werewolf form once per day. This form increases in power to that of a greater werewolf at 12th level, and a werewolf lord at 18th level.
-- May allocate 2 points (++) to Single-Weapon Style.
+- At 4th level, may shapeshift into the form of a dire wolf once per day. The Beast Lord can change shape an additional time per day for every two levels gains, up to 11 uses per day at level 20.
+- At 6th level, the Beast Lord may shapeshift into the form of a werewolf instead of a dire wolf.
+- At 12th level, the Beast Lord may shapeshift into the form of a greater werewolf instead of a werewolf.
 
 Restrictions:
 - May not be Lawful
@@ -2153,7 +2191,7 @@ Restrictions:
 @76204  = ~BEAST LORD: these individuals have come to understand that within even the most rational and civilized man or woman lies an animal driven by primal needs and desires. (Often, this understanding is developed from horrifying experiments performed on subjects who are very rarely willing.) Through the application of a serum derived from a strain of lycanthropy, the Beast Lord can all forth <PRO_HISHER> own bestial nature, causing <PRO_HISHER> very body to take on lupine qualities. This also gives the Beast Lord a deep insight into magic relating to summoning and controlling animals.
 ~
 @76205  = ~~
-@76211  = ~Claws of Malar~
+@76211  = ~Beast Claw~
 @76212  = ~Dispel Claws~
 @76213  = ~Shapeshift: werewolf~
 @76214  = ~Shapeshift: natural form~
@@ -2161,6 +2199,18 @@ Restrictions:
 @76216  = ~werewolf~
 @76217  = ~greater werewolf~
 @76218  = ~werewolf lord~
+@76219  = ~Shapeshifter: This Druid is not called Shapeshifter because <PRO_HESHE> has access to a great variety of forms, but rather because of <PRO_HISHER> complete dedication to a single alternate form. This Druid has willingly allowed <PRO_HIMHER>self to become infected with lycanthropy, but due to intense study, training, and control over natural magic, <PRO_HESHE> has the ability to control the affliction. The creature <PRO_HESHE> becomes is that of the werewolf, the most famous of the lycanthropic shape changers.
+
+Advantages:
+- May cast "Beast Claw" as an innate ability, at will.
+- 20% of all Beast Claw attacks cause infection upon a failed save vs. Death, weakening the target and causing a 10% chance of spell failure.
+- At 4th level, may shapeshift into the form of a dire wolf once per day. The Beast Lord can change shape an additional time per day for every two levels gains, up to 11 uses per day at level 20.
+- At 6th level, the Beast Lord may shapeshift into the form of a werewolf instead of a dire wolf.
+- At 13th level, the Beast Lord may shapeshift into the form of a greater werewolf instead of a werewolf.
+
+Restrictions:
+- May not be Lawful
+~
 //
 // ... elementalist:
 //
@@ -2204,7 +2254,7 @@ Advantages:
 Restrictions:
 - Must be Chaotic
 ~
-@76504  = ~CHAOS PRIEST: These seekers of enlightenment take a turn toward what many view as nihilistic: pure chaos.  Chaos Priests claim that all existence - even order itself - can spring from a minute vibration in a simple particle, blossoming into the unexpected: a universe. They indulge and encourage chaos wherever they go, and there must be something to their actions, because by some unknown mechanism, they are granted access to powerful magic. The magic is fickle though, suffering the same uncertainty that plagues Wild Mages.~
+@76504  = ~CHAOS PRIEST: These seekers of enlightenment take a turn toward what many view as nihilistic: pure chaos. Chaos Priests claim that all existence - even order itself - can spring from a minute vibration in a simple particle, blossoming into the unexpected: a universe. They indulge and encourage chaos wherever they go, and there must be something to their actions, because by some unknown mechanism, they are granted access to powerful magic. The magic is fickle though, suffering the same uncertainty that plagues Wild Mages.~
 
 
 //
@@ -2212,7 +2262,7 @@ Restrictions:
 //
 @80001  = ~champion~
 @80002  = ~Champion~
-@80003  = ~CHAMPION: Like the Fighter, the Champion is a person of action and combat. However, the Champion lives for the ideals of their patron deity, and strives to be a living example of the tenants of the faith.
+@80003  = ~CHAMPION: Like the Fighter, the Champion is a person of action and combat. However, the Champion lives for the ideals of their a deity, combining martial prowess with divine favor to defend and promote the tenets of their faith. Champions sometimes serve as temple guards, and sometimes sally forth on missions directed by the clergy. Sometimes champions of like-minded churches join forces in fraternal organizations, in order to cooperate to advance shared ideals.
 
 CLASS FEATURES:
 
@@ -2221,22 +2271,35 @@ CLASS FEATURES:
 - May not exceed Specialization (two slots) in any weapon class.
 - May achieve Specialization (two slots) in any fighting style and allocate three slots in Two-Weapon Style.
 - May Turn Undead as a Cleric two levels lower, starting at level 3.
-- May cast priest spells beginning at level 6.
-- May use SMITE once per day at level 1.  The Champion can use this abiltiy an additional time per day every 4 levels.
-
-SMITE:  When the Champion uses this ability, <PRO_HISHER> melee attacks inflict an additional 1d6 points of magic damage, (+1d6 points of damage at levels 4, 10 and 18) levels over the next 2 rounds.  This ability lasts an additional round at level 2, 8 and 14.
-Typically, smite inflicts additional damage or effects on certain kinds of creatures depending on the Champion's patron deity
-
+- May cast priest spells, though fewer than a cleric.
 - Other abilities based on patron deity.
-- Hit Die: d10~
+- Hit Die: d10
 
-@80004  = ~Smite~
-@80005  = ~Smite
-When the Champion uses this ability, <PRO_HISHER> melee attacks inflict an additional 1d6 points of magic damage, (+1d6 points of damage at levels 4, 10 and 18) levels over the next 2 rounds.  This ability lasts an additional round at level 2, 8 and 14.
-Typically, smite inflicts additional damage or effects on certain kinds of creatures depending on the Champion's patron deity
+Champions play several roles and therefore train different skills. Every champion picks an archetype to represent their chosen path as they advance from novice to experienced warrior. Not every archetype is embraced by every faith; some churches only train champions in a single way, while other have multiple orders with different skills. The archetypes available to choose from are:
 
-An opponent can only be affected by smite once per round.~
+DEFENDER: these champions focus on learning combat tactics and using their access to divine magic to protect the faithful, acting as a bastion against the enemies of their church.
+- Defenders are naturally immune to Disease, and can cure disease in others.
+- Once per day plus once per ten levels of experience, Defenders can Lay On Hands to heal themselves or another for 2 hit points per level.
+- Once per day plus once per five levels of experience, Defenders can activate a Smite ability which, for two rounds, channels their divine magic to inflict an extra 2d6 point of damage with every hit.
+- Defenders have a passive Aura of protection that provides a 1-point bonus to  Armor Class to all nearby allies.
 
+INQUISITOR: these champions assist their church to confront insidious heresies and magical threats, with special training to overcome arcane attacks.
+- Inquisitors are innately immune to Hold Person and similar magic.
+- Once per day plus once per five levels of experience, Inquisitors can innately cast the  Oracle spell to dispel any nearby illusions or magical invisibility.
+- Once per day plus once per ten levels of experience, Inquisitors can innately cast Dispel Magic to remove enemies protections and magical enhancements.
+
+ZEALOT: these champions aggressively confront enemies of their church, sometimes  venturing far afield to neutralize those with the potential to harm their flock.
+- Zealots are innately immune to fear and persuasion, and to magical effects that induce panic or charm/domination.
+- Once per day plus once per five levels of experience, Zealots can dispel fear and panic in others affected by it.
+- Once per day plus once per ten levels of experience, Zealots can enter a state of divine frenzy in battle. Lasting five rounds, this provides one extra attack each round, a +2 bonus to damage rolls, and immunity to sleep, confusion, feeblemind, maze, and level drain effects.
+- Zealots can a choose to advance their proficiency with one weapon one step beyond champions' ordinary limit.
+~
+@80004  = ~Champion's Smite~
+@80005  = ~Champion's Smite
+When a Champion uses this ability, <PRO_HISHER> melee attacks inflict an additional 2d6 points of magic damage for the next 2 rounds. 
+
+Occasionally, smite inflicts additional damage or effects on certain kinds of creatures depending on the Champion's patron deity.
+~
 @80006  = ~Greater Power Attack~
 @80007  = ~Greater Power Attack
 With the Greater Power Attack ability, the warrior gains the ability to strike a mighty blow, knocking an opponent back for a considerable distance and stunning the opponent for 1 round. All attacks made in the first round are critical hits. The ability lasts for 2 rounds.
@@ -2244,47 +2307,30 @@ With the Greater Power Attack ability, the warrior gains the ability to strike a
 Large creatures such as a dragons or giants will not be knocked back or stunned.
 
 Requires: Power Attack, Critical Strike~
+@80009  = ~DEFENDER: these champions focus on learning combat tactics and using their access to divine magic to protect the faithful, acting as a bastion against the enemies of their church.
+- Defenders are naturally immune to Disease, and can cure disease in others.
+- Once per day plus once per ten levels of experience, Defenders can Lay On Hands to heal themselves or another for 2 hit points per level.
+- Once per day plus once per five levels of experience, Defenders can activate a Smite ability which, for two rounds, channels their divine magic to inflict an extra 2d6 point of damage with every hit.
+- Defenders have a passive Aura of protection that provides a 1-point bonus to  Armor Class to all nearby allies.
+~
+@80010  = ~INQUISITOR: these champions assist their church to confront insidious heresies and magical threats, with special training to overcome arcane attacks.
+- Inquisitors are innately immune to Hold Person and similar magic.
+- Once per day plus once per five levels of experience, Inquisitors can innately cast the  Oracle spell to dispel any nearby illusions or magical invisibility.
+- Once per day plus once per ten levels of experience, Inquisitors can innately cast Dispel Magic to remove enemies protections and magical enhancements.
+~
+@80011  = ~ZEALOT: these champions aggressively confront enemies of their church, sometimes  venturing far afield to neutralize those with the potential to harm their flock.
+- Zealots are innately immune to fear and persuasion, and to magical effects that induce panic or charm/domination.
+- Once per day plus once per five levels of experience, Zealots can dispel fear and panic in others affected by it.
+- Once per day plus once per ten levels of experience, Zealots can enter a state of divine frenzy in battle. Lasting five rounds, this provides one extra attack each round, a +2 bonus to damage rolls, and immunity to sleep, confusion, feeblemind, maze, and level drain effects.
+- Zealots can a choose to advance their proficiency with one weapon one step beyond champions' ordinary limit.
+~
+@80012  = ~Zealot's Frenzy~
+@80013  = ~Zealot's Frenzy
 
-@80008  = ~zealot~
-@80009  = ~Zealot~
+The Champion becomes frenzied for 5 rounds. While in this state, the character gains one extra attack each round and a +2 bonus to minimum damage rolls, and becomes immune to sleep, slow, confusion, maze, and level drain.
 
-@80010  = ~ZEALOT: Zealots are such devotees to a particular god, without actually being an official part of the church heirarchy.  They consider this an advantage, however, as they hold themselves accountable only to their god, and so are less likely to lose sight of the grander scheme.
-Zealots often strike out on their own, infiltrating a rival church, and then unleashing the power of their god where their enemies expect it least.
-
-Advantages:
-- Moves 2 points faster than other characters
-- Zealots Hide in Shadows as Rangers of the same level
-- May use the frenzy ability once per day.  The zealot gains an additional use of this ability at levels 10, 15 and 20.
-
-FRENZY: The character becomes frenzied for 1 turn. While in this state, the character gains a +2 bonus to <PRO_HISHER> melee attack rolls and saves, as well as to <PRO_HISHER> Armor Class, and becomes immune to charm, confusion, fear, feeblemind, hold, imprisonment, level drain, maze, stun, and sleep. The character also gains an additional attack per round.
-Frenzy is further modified depending upon the patron deity of the zealot.
-
-Frenzy does not stack with haste or similar effects.
-
-After the effects end, the character becomes winded, suffering a -2 penalty to Armor Class, to-hit rolls, and damage rolls.
-
-Disadvantages:
-- May only wear leather or studded leather armor.~
-
-@80011 = ~INQUISITOR: The Inquisitor has dedicated <PRO_HISHER> life to finding and eliminating infiltrators of <PRO_HISHER> faith; <PRO_HISHER> god has provided <PRO_HIMHER> with special abilities toward that end.
-
-Advantages:
-- May cast Dispel Magic once per day. Gains one use at level 1 and an additional use every 4 levels thereafter. The spell is cast at Speed Factor 1 and acts at twice the Inquisitor's character level. 
-- May cast True Sight once per day. Gains one use at level 1 and an additional use every 4 levels thereafter.
-
-Disadvantages:
-- May not turn undead.
-- May not use the Lay On Hands ability. 
-- May not cast priest spells.~
-
-@80012  = ~Frenzy~
-@80013  = ~Frenzy
-
-The character is frenzied for 1 turn.  While in this state, the character gains a +2 bonus to <PRO_HISHER> melee attack rolls and saves vs. spell, as well as to <PRO_HISHER> Armor Class, and becomes immune to charm, confusion, fear, feeblemind, hold, imprisonment, level drain, maze, stun, and sleep. The character also gains an additional attack per round.
-Frenzy is further modified depending upon the patron deity of the zealot.
-
-After the effects end, the character becomes winded, suffering a -2 penalty to Armor Class, to-hit rolls, and damage rolls.~
-
+Occasionally, a Zealot's Frenzy carries extra effects depending upon the patron deity of the zealot.
+~
 @80014  = ~ZEALOT: Zealots are such devotees to a particular god, without actually being an official part of the church heirarchy.  They consider this an advantage, however, as they considering themselves beholden only to their god, and so do not lose sight of the grander scheme.
 Zealots often strike out on their own, infiltrating a rival church, and then unleashing the power of their god where their enemies expect it least.
 
@@ -2304,16 +2350,29 @@ Restrictions:
 - May only wear leather or studded leather armor.
 - Alignment: Cannot be evil
 ~
+@80021  = ~Choose an archetype~
+@80022  = ~Select this archetype~
+@80023  = ~Choose a different archetype~
+@80024  = ~Defender~
+@80025  = ~Inquisitor~
+@80026  = ~Zealot~
+@80027  = ~~
+@80028  = ~~
+@80029  = ~~
+@80030  = ~~
+//
 //CHAMPION KITS
 //Paladin of Tyr
 @80101  = ~paladin of tyr~
 @80102  = ~Paladin of Tyr~
 @80103  = ~PALADIN OF TYR: Paladins of Tyr are the quintessential champions of light.  They must hold themselves to a high standard, but in exchange for their dedication, they are empowered to destroy the enemies of light.  
 
+Paladins of Tyr may adopt either the Defender or Inquisitor archetype.
+
 Advantages:
-- Smite Evil: As smite, but evil creatures must save vs. death or be stunned for 1 round
-- Protection from Evil.  At 2nd level, the Paladin of Tyr is always protected as per the protection from evil spell.
-- Protection from Evil 10': At 3rd level, and every three levels after that, the Paladin of Tyr can cast protection from Evil 10' as a cleric equal to <PRO_HISHER> paladin level. (up to a maximum of six times at level 18)
+- Protection from Evil. A champion of Torm is always protected by the effects of a 'Protection from Evil' spell.
+- Smite Evil: when using a Defender's Smite ability, attacks deal an extra 1d6 damage if the target is evil.
+- Weapon Mastery: Paladins of Tyr can advance one step further than most champions in weapon proficiency.
 
 Restrictions:
 - Alignment: must be Lawful Good. 
@@ -2327,42 +2386,17 @@ When the Champion uses this ability, <PRO_HISHER> melee attacks inflict an addit
 Additionally, evil creatures are stunned for 1 round if they do not save vs. death.  This save recieves a -1 penalty at levels 4, 10 and 18
 
 An opponent can only be affected by smite evil once per round.~
-@80106  = ~cavalier of tyr~
-@80107  = ~Cavalier of Tyr~
-
-@80108  = ~CAVALIER OF TYR: This class represents the most common picture of the knight: the chivalrous warrior who epitomizes honor, courage, and loyalty. The cavalier is specialized in battling "classical" evil monsters such as demons and dragons.
-
-Abilities: 
-- +3 bonus to hit and damage rolls against demons, devils, dragons and wyverns.
-- May cast Remove Fear 1 time per day per level.
-- Immune to charm, fear, poison, and morale failure.
-- 20% resistance to fire and acid.
-
-Restrictions:
-- May not use ranged weapons (both missile and thrown).
-~
-@80109  = ~undead hunter of tyr~
-@80110  = ~Undead Hunter of Tyr~
-@80111  = ~UNDEAD HUNTER OF TYR: This holy avenger has honed <PRO_HISHER> abilities toward the destruction of the undead and other unnatural creatures and is immune to many of their most devastating abilities.
-
-Abilities: 
-- +3 bonus to hit and damage rolls against undead creatures.
-- Immune to hold and level drain.
-
-Restrictions:
-- May not use Lay On Hands ability.
-- May not use Cure Disease ability.
-~
 @80201  = ~knight of eternal order~
 @80202  = ~Knight of Eternal Order~
-@80203  = ~KNIGHT OF ETERNAL ORDER: Undead creatures are anathema to Kelemvor.  Death is a natural part of life, and undead creatures try to escape that cycle.  They are abominations, and must be put to rest.
+@80203  = ~KNIGHT OF ETERNAL ORDER: Undead creatures are anathema to Kelemvor. Death is a natural part of life, and undead creatures try to escape that cycle. They are abominations, and must be put to rest. Thus, Kelemvor created the Knights of Eternal Order.
 
-Thus, Kelemvor created the Knights of Eternal Order.
+Champions of Kelemvor may adopt either the Defender or Inquisitor archetype.
 
 Advantages:
-- Disrupting Smite: As smite, but does double damage to undead.  In addition, weaker undead can be destroyed outright if they fail a save vs. death, much like a mace of disruption.
+- Knights of Eternal Order have a natural +3 bonus to attack and damage rolls against undead targets.
 - Knights of Eternal Order are immune to hold and level drain effects.
-- Knights of Eternal Order turn undead as a priest of their champion level once they reach level 3.
+- Knights of Eternal Order can turn undead as a priest of their champion level once they reach level 3.
+- Disrupting Smite: when using a Defender's Smite ability, attacks deal an extra 2d6 damage if the target is undead.
 
 Restrictions:
 - Alignment: Cannot be Neutral Evil or Chaotic Evil.
@@ -2380,23 +2414,25 @@ An opponent can only be affected by Disrupting Smite once per round.~
 @80207  = ~Harvester of Myrkul~
 @80208  = ~HARVESTER OF MYRKUL: While his priests are fond of creating undead minions, Myrkul still finds it necessary to sponsor a contingent of undead slayers.  After all, it shouldn't be thought that undeath can be an escape from Myrkul's icy grasp. Enter the Harvester: Unholy warriors empowered to destroy undead creatures that dare subvert Mykrul's will.  
 
+Champions of Myrkul may adopt either the Inquisitor or Zealot archetype.
+
 Advantages:
-- Disrupting Smite: As smite, but does double damage to undead.  In addition, weaker undead can be destroyed outright if they fail a save vs. death, much like a mace of disruption.
 - Harvesters of Myrkul are immune to hold and level drain effects.
-- Harvesters of Myrkul control undead as a priest of their champion level once they reach level 3.
+- Harvesters of Myrkul can turn undead as a priest of their champion level once they reach level 3.
+- Disrupting  Frenzy: when using a Zealot's Frenzy ability, attacks deal an extra 1d6 damage if the target is undead.
 
 Restrictions:
-- Alignment: Any Evil
+- Alignment: Any Neutral or Evil
 ~
 @80301  = ~gloryblood of tempus~
 @80302  = ~Gloryblood of Tempus~
-@80303  = ~GLORYBLOOD OF TEMPUS: The lord of battles has a special fondness for his champions, who are sponsored no matter what cause they fight for.
+@80303  = ~GLORYBLOOD OF TEMPUS: The lord of battles has a special fondness for his champions, who are sponsored no matter which side of a conflict they fight for.
+
+Champions of Tempus may only adopt the Zealot archetype.
 
 Advantages:
-- Mastery: Glorybloods can attain mastery in any melee weapon.
-- Smite Foe: The smite of the gloryblood hurts all enemies equally, inflicting double normal damage to any foe struck by it.
-- Glorybloods are completely fearless.  They are not affected either by magical fear nor moral failure.
-- Glorybloods can enter a berserker rage, as per the fighter kit, once per day beginning at 3rd level.  They gain an additional use of this ability at levels 10, 15, and 20.
+- Weapon Mastery: Glorybloods can advance one step further than most champions in weapon proficiency.
+- When Glorybloods enter a frenzy, it spurs their companions to near-superhuman levels of aggression. All nearby allies are affected by a lesser version of a Berserker's Rage, gaining a +2 bonus to melee attack and damage rolls and saves vs. spells, as well as immunity to confusion and fear effects.
 
 Disadvantages:
 - Glorybloods cannot turn undead.
@@ -2415,9 +2451,11 @@ An opponent can only be affected by Smite Foe once per round.~
 @80402  = ~Knight of the Black Gauntlet~
 @80403  = ~KNIGHT OF THE BLACK GAUNTLET: Bane's knights are quintessential black knights, a twisted mockery of the shining example of what a knight should be.  They spread fear in the name of their god, and silence anybody that suggests that Bane is dead.
 
+Champions of Bane may only adopt the Zealot archetype.
+
 Advantages:
-- Smite of Dread: The smite of a Black Gauntlet instills fear in any opponent for one round if they do not save vs. death.
-- Knights of the Black Gauntlet are completely fearless.  Or rather, they fear only Bane's wrath.  As such, they are not affected either by magical fear nor moral failure.
+- May innate cast the Horror spell once per day, plus once per day for each five experience levels.
+- Dreadful Frenzy: when using the Zealot's Frenzy ability, every hit by a Knight of the Black Gauntlet instills fear in the target for one round if they fail a saving throw vs. death.
 
 Restrictions:
 - Alignment: can be any Evil or Lawful Neutral
@@ -2429,31 +2467,21 @@ When the Champion uses this ability, <PRO_HISHER> melee attacks inflict an addit
 
 Additionally, creatures are struck with fear for 1 round if they do not save vs. death.  This save recieves a -1 penalty at levels 4, 10 and 18
 
-An opponent can only be affected by smite of dread once per round.~
-
-@80406  = ~KNIGHT OF THE BLACK GAUNTLET: Bane's knights are quintessential black knights, a twisted mockery of the shining example of what a knight should be.  They spread fear in the name of their god, and silence anybody that dares to oppose the Dread Lord.
-
-Advantages:
-- Smite of Dread: The smite of a Black Gauntlet instills fear in any opponent for one round if they do not save vs. death.
-- Knights of the Black Gauntlet are completely fearless.  Or rather, they fear only Bane's wrath.  As such, they are not affected either by magical fear nor moral failure.
-
-Restrictions:
-- Alignment: can be any Evil
+An opponent can only be affected by smite of dread once per round.
 ~
 @80501 = ~everwatch knight~
 @80502 = ~Everwatch Knight~
-@80503 = ~EVERWATCH KNIGHT: Everwatch knights act as the elite shock troops for the church of Helm.  Also, they are often sent on the most difficult missions for the church.  
+@80503 = ~EVERWATCH KNIGHT: Everwatch knights act as the elite shock troops for the church of Helm.  As such, they are often sent on the most difficult or dangerous missions for the church.
+
+Champions of Helm may adopt either the Defender or Inquisitor archetype.
 
 Advantages:
-- Mastery: Everwatch Knights can attain mastery in any melee weapon.
-- Heightened Awareness: +1 bonus to AC and +2 bonus to save vs. breath
-- Can cast Everwatch Sword as a special ability once per day.  The Everwatch Knight gains an additional use at levels 4, 8, 12, 16 and 20.
+- True Sight: Everwatch Knights may innately cast the True Seeing spell once per day.
+- Heightened Awareness: +1 bonus to AC and slightly extended visibility range.
+- May summon an Everwatch Sword as a special ability once per day. The Everwatch Knight gains an additional use at levels 5, 10, 15, and 20.
 
-EVERWATCH SWORD: This spell creates a sword in the Champion's hand that cannot be dropped or unequipped. The sword is enchanted as a +4 weapon and provides a +4 THAC0 bonus. It deals 2d4 damage to any target it hits. The spell lasts for 1 round per level.
+EVERWATCH SWORD: This spell creates a sword in the champion's hand that cannot be dropped or unequipped. The sword is enchanted as a +4 weapon and provides a +4 THAC0 bonus. It deals 2d4 damage to any target it hits. The spell lasts for 1 round per level.
 The Everwatch Sword is wielded as a longsword.
-
-Disadvantages:
-- Everwatch Knights do not have a special smite ability.
 
 Restrictions:
 - Alignment: May be Lawful Good, Lawful Neutral, or True Neutral.
@@ -2461,32 +2489,18 @@ Restrictions:
 @80504 = ~Everwatch Sword~
 @80505 = ~Everwatch Sword
 This spell creates a sword in the Champion's hand that cannot be dropped or unequipped. The sword is enchanted as a +4 weapon and provides a +4 THAC0 bonus, and does an additional 4 points of magic damage. It deals 2d4 damage to any target it hits. This ability lasts for 1 round per level. While it is equipped, the wielder cannot cast further spells.
-The Everwatch Sword is weilded as a longsword.~
-
-@80506 = ~EVERWATCH KNIGHT: Everwatch knights act as the elite shock troops for the church of Helm.  Also, they are often sent on the most difficult missions for the church.
-
-Advantages:
-- Mastery: Everwatch Knights can attain mastery in any melee weapon.
-- Heightened Awareness: +1 bonus to AC and +2 bonus to save vs breath
-- Can cast Everwatch Sword as a special ability once per day.  The Everwatch Knight gains an additional use at levels 4, 8, 12, 16 and 20.
-
-EVERWATCH SWORD: This spell creates a sword in the Champion's hand that cannot be dropped or unequipped. The sword is enchanted as a +4 weapon and provides a +4 THAC0 bonus. It deals 2d4 damage to any target it hits. The spell lasts for 1 round per level.
 The Everwatch Sword is weilded as a longsword.
-
-Disadvantages:
-- Everwatch Knights do not have a special smite ability.
-
-Restrictions:
-- Alignment: May be Lawful Good, Lawful Neutral, or True Neutral.
-- The Everwatch Knight of Helm must maintain a reputation of 8 or fall.
 ~
 @80601  = ~stormward of talos~
 @80602  = ~Stormward of Talos~
-@80603  = ~STORMWARD OF TALOS: Stormwards are the elite guard of Talos.  They exist to spread destruction through the world, and thus, the fear of Talos.
+@80603  = ~STORMWARD OF TALOS: Stormwards are the elite guard of Talos. They exist to spread chaos and destruction through the world, and with them, the fear of Talos.
+
+Champions of Helm may adopt either the Defender or Inquisitor archetype.
 
 Advantages:
-- Storm Smite: The smite of a Stormward inflicts double electrical damage rather than magic damage.
 - Talos' Favor: Stormwards are 50% resistant to electricity damage.
+- Storm Smite: when using a Defender's Smite ability, Stormwards inflict an extra 2d6 electrical damage.
+- Storm Dance: when using a Zealot's Frenzy ability, Stormwards inflict an extra 1d6 electrical damage with each hit.
 
 Restrictions:
 - Alignment: Can only be Evil or Chaotic Neutral alignment
@@ -2511,16 +2525,15 @@ Restrictions:
 @80702  = ~Hammer of Moradin~
 @80703  = ~HAMMER OF MORADIN: Moradin is the chief deity or the dwarven pantheon; a harsh but fair judge, he is strength and force of will embodied. The Hammers of Moradin are a military order dedicated to the defense dwarven holdings and the carving out of new dwarven territories. 
 
+Champions of Moradin may only adopt the Defender archetype.
+
 Advantages:
-- Forged Flesh: The Hammer of Moradin is tough in body and mind.  <PRO_HESHE> recieves a +2 bonus to AC and saves against magic.
-- Can cast Moradin's Hammer as a special ability once per day.  The Hammer gains an additional use at levels 4, 8, 12, 16 and 20.
+- Forged Flesh: a Hammer of Moradin is tough in body and mind, and can call upon the power of stone for protection. At 5th level, they can innately cast Stoneskin once per day.
+- Hammer of Moradin: can cast Moradin's Hammer as a special ability once per day. The Hammer gains an additional use of this ability at levels 6, 12, and 18.
 
 MORADIN'S HAMMER: This spell creates a hammer in the Champion's hand that cannot be dropped or unequipped. The hammer is enchanted as a +4 weapon and deals 1d6 points of blunt damage as well as 1d6 magic damage. 
 
 The Moradin's Hammer is wielded as a warhammer.
-
-Disadvantages:
-- Hammers of Moradin do not have a special smite ability.
 
 Restrictions:
 - Alignment: Lawful Good or Lawful Neutral only
@@ -2532,14 +2545,17 @@ The hammer is enchanted as a +4 weapon and deals 1d6 points of blunt damage as w
 
 @80801  = ~inquisitor of azuth~
 @80802  = ~Inquisitor of Azuth~
-@80803  = ~INQUISITOR OF AZUTH: Inquisitors of Azuth feel that reason is the best way to approach magic, and that it may be examined and reduced to its component parts through study and meditation.  Unfortunately, not all practitioners of the art take such care or approach magical power with responsibility and that is where Inquistors of Azuth fit in.  This holy order of the Lord of Spells strive to curb the use of overly destructive magic that harms the Weave and provide martial might where it is needed to destroy threats to wizardry. 
+@80803  = ~INQUISITOR OF AZUTH: Inquisitors of Azuth feel that reason is the best way to approach magic, and that it may be examined and reduced to its component parts through study and meditation.  Unfortunately, not all practitioners of the art take such care or approach magical power with responsibility and that is where Inquistors of Azuth fit in.  This holy order of the Lord of Spells strives to curb the use of overly destructive magic that harms the Weave and provide martial might where it is needed to destroy threats to wizardry. 
+
+Champions of Azuth may only adopt either the Inquisitor archetype.
 
 Advantages:
-- Immune to Hold and Charm spells
-- Wizard's Bane: The Inquisitor's smite does double damage to wizards, and any wizards hit by the Inquisitor's smite are affected by an dispel magic effect of a caster level equal to twice the Inquisitor's class level.
+- May cast Spell Thrust as an innate ability once per day. 
+- May cast Pierce Magic once per day at 6th level, and one additional time per day at 12th and 18th levels.
+- Immune to Charm spells
 
 Disadvantages:
-- Inquisitors do not turn undead
+- Inquisitors of Azuth do not turn undead
 
 Restrictions:
 - Alignment: May not be evil, nor chaotic
@@ -2558,13 +2574,12 @@ An opponent can only be affected by Wizard's Bane once per round.~
 @80902 = ~Knight of the Red Falcon~
 @80903 = ~KNIGHT OF THE RED FALCON: The Red Knight, or the Lady of Strategy, is the deity of strategy and tactics. Sponsored into godhood by Tempus, Her dogma dictates the use of careful tactics in battle to achieve the most favourable victories. During the Time of Troubles, Lady Kaitlin Tindall Bloodhawk became the avatar of the Red Knight and defended Tethyr from a horde of monsters. Bloodhawk is now head of the Order of the Red Falcon, a martial order that trains officers and others in tactics and military history. 
 
-Advantages:
-- Mastery: Knights of the Red Falcon can attain mastery in any melee weapon.
-- Clear Eyes: Knights gain a +2 bonus vs. Illusion spells.
-- Knight's Move: The smite of a Knight of the Red Falcon instills confusion in any opponent for one round if they do not save vs. spell.
+Champions of the Red Knight may adopt either the Defender or Inquisitor archetype.
 
-Disadvantages:
-- Knights of the Red Falcon do not have a special smite ability.
+Advantages:
+- Weapon Mastery: Knights of the Red Falcon can advance one step further than most champions in weapon proficiency.
+- Clear Eyes: Knights gain a +2 bonus vs. Illusion spells.
+- Knight's Move: a Knight of the Red Falcon may innately cast Confusion once per day.
 
 Restrictions:
 - Alignment: Any non-chaotic.
@@ -2578,21 +2593,31 @@ Additionally, creatures are affected by confusion for 1 round if they do not sav
 
 An opponent can only be affected by smite of dread once per round.~
 
+@81001  = ~knight of the golden lion~
+@81002  = ~Knight of the Golden Lion~
+@81003  = ~KNIGHT OF THE GOLDEN LION: Champions of Torm are quintessential paladins,  striving tirelessly to uphold justice and protect the weak. They must hold themselves to a high standard, but in exchange for their dedication, they are empowered to destroy the enemies of light.  
+
+Champions of Torm may adopt either the Defender or Inquisitor archetype.
+
+Advantages:
+- Protection from Evil. A champion of Torm is always protected by the effects of a 'Protection from Evil' spell.
+- Protection from Evil 10': At 5th level, and again each five levels after that, a champion of Torm can cast Protection from Evil 10' to grant protection to those nearby with whom <PRO_HESHE> is allied. 
+
+Restrictions:
+- Alignment: must be Lawful Good. 
+- A champion of Torm must maintain a reputation of 8 or fall.~
+
 //ZEALOT KITS
 
 @86201  = ~eye of gruumsh~
 @86202  = ~Eye of Gruumsh~
 @86203  = ~EYE OF GRUUMSH: The eye of Gruumsh's devotion is such that they pluck out their eye in honor of their deity.  
 
+Champions of Kossuth may only adopt the Zealot archetype.
+
 Advantages:
-- May use the frenzy ability once per day.  The zealot gains an additional use of this ability at levels 10, 15 and 20.
-
-FRENZY: The character becomes frenzied for 1 turn. While in this state, the character gains a +2 bonus to <PRO_HISHER> melee attack rolls and saves, as well as to <PRO_HISHER> Armor Class, and becomes immune to charm, confusion, fear, feeblemind, hold, imprisonment, level drain, maze, stun, and sleep. The character also gains an additional attack per round.
-
-Frenzy does not stack with haste or similar effects
-
-Sight of Gruumsh: The Eye of Gruumsh can pierce through illusions with their missing eye while in frenzy.
-At first level, when entering a frenzy, the Eye detects any invisible creature as though they cast detect invisibility.  At 4th level, the eye is infused with the strength and fury of the Orchish race, gaining a +2 to strength while frenzied.  At 8th level, they gain the effects of truesight.
+- May innately cast Slow at enemies, once per day.
+- Vision Frenzy: while using a Zealot's Frenzy ability, hidden and invisible enemies of the Eye of Gruumsh are exposed as if by the Invisibility Purge spell.
 
 Restrictions:
 - Alignment: Neutral Evil, Chaotic Evil, and Chaotic Neutral
@@ -2640,131 +2665,64 @@ After the effect ends, the character becomes winded, suffering a -2 penalty to A
 @86402  = ~Disciple of the Flame~
 @86403  = ~DISCIPLE OF THE FLAME: Disciples are dedicated to Kossuth, the Firelord.  
 
+Champions of Kossuth may only adopt the Zealot archetype.
+
 Advantages:
-- May use the frenzy ability once per day.  The zealot gains an additional use of this ability at levels 10, 15 and 20.
-
-FRENZY: The character becomes frenzied for 1 turn. While in this state, the character gains a +2 bonus to <PRO_HISHER> melee attack rolls and saves, as well as to <PRO_HISHER> Armor Class, and becomes immune to charm, confusion, fear, feeblemind, hold, imprisonment, level drain, maze, stun, and sleep. The character also gains an additional attack per round.
-Frenzy is further modified depending upon the patron deity of the zealot.
-
-Frenzy does not stack with haste or similar effects
-
-Burning Frenzy: Disciples channel the Elemental Plane of Fire when they frenzy.
-In addition to the normal effects of frenzy, the Disciple channels the raw power of fire while in frenzy.  At 1st level, they become immune to fire damage.  At 4th level, <PRO_HESHE> can cast Agannazar's Scorcher as an innate ability once per frenzy.  At 8th level, <PRO_HESHE> is under the effects of Fireshield (red) for the duration.
+- Flameproof: Champions of Kossuth are 50% resistant to fire damage.
+- Burning Frenzy: when using the Zealot's Frenzy ability, champions of Kossuth are surrounded by a circle of flames that acts like the Fireshield (Red) spell.
 
 Restrictions:
 - Alignment: Any
 ~
-@86404  = ~Burning Frenzy~
-@86405  = ~Burning Frenzy
-
-The character is frenzied for 1 turn.  While in this state, the character gains a +2 bonus to <PRO_HISHER> melee attack rolls and saves vs. spell, as well as to <PRO_HISHER> Armor Class, and becomes immune to charm, confusion, fear, feeblemind, hold, imprisonment, level drain, maze, stun, and sleep. The character also gains an additional attack per round.
-In addition to the normal effects of frenzy, the Disciple channels the raw power of fire while in frenzy.  At 1st level, they become immune to fire damage.  At 4th level, <PRO_HESHE> can cast Agannazar's Scorcher as an innate ability once per frenzy.  At 8th level, <PRO_HESHE> is under the effects of Fireshield (red) for the duration.
-
-Burning Frenzy does not stack with haste or similar effects
-
-After the effect ends, the character becomes winded, suffering a -2 penalty to Armor Class, to-hit rolls, and damage rolls.~
-
 @86501  = ~companion of the noble heart~
 @86502  = ~Companion of the Noble Heart~
-@86503  = ~COMPANION OF THE NOBLE HEART: Zealots of Ilmater are steadfast defenders of the weak and vulnerable.  Drawn to Ilmater almost by instinct, they seek to eliminate suffering in the world, even at the expense of their own lives.
+@86503  = ~COMPANION OF THE NOBLE HEART: champions of Ilmater are steadfast defenders of the weak and vulnerable. Drawn to by instinct to the god of noble suffering, they seek to help others shoulder the burden of pain and cruelty, even at the expense of their own lives.
+
+Champions of Ilmater may adopt either the Defender or Zealot archetype.
 
 Advantages:
-- May use the frenzy ability once per day.  The zealot gains an additional use of this ability at levels 10, 15 and 20.
-
-FRENZY: The character becomes frenzied for 1 turn. While in this state, the character gains a +2 bonus to <PRO_HISHER> melee attack rolls and saves, as well as to <PRO_HISHER> Armor Class, and becomes immune to charm, confusion, fear, feeblemind, hold, imprisonment, level drain, maze, stun, and sleep. The character also gains an additional attack per round.
-Frenzy is further modified depending upon the patron deity of the zealot.
-
-Frenzy does not stack with haste or similar effects
-
-Martyr's Acceptance:  The Companions takes on the spirit of Ilmater, and is able to accept tremendous punishment.
-At 1st level, <PRO_HESHE> gains 20% damage reduction against all forms of physical damage.  At 4th level, they gain this same resistance against all forms of damage.  At 8th level, this resistance increases to 50%.
+- Martyr's Acceptance: a Companion of the Noble Heart takes on the spirit of Ilmater, and is able to accept tremendous punishment. At 1st level, <PRO_HESHE> gains 20% damage reduction against all forms of physical damage. At 5th level, they gain this same resistance against all forms of damage. At 10th level, this resistance increases to 30%.
+- Martyr's Frenzy: the trance a champion of Ilmater enters when frenzying radiates positive energy. This saps the champion of 2 hit points each round, but in turn all nearby allies are healed for 2 hit points each round.
 
 Restrictions:
 - Alignment: Any good or Lawful Neutral
 - The Companion of the Noble Heart must maintain a reputation of 8 or fall.
 ~
-@86504  = ~Martyr's Acceptance~
-@86505  = ~Martyr's Acceptance
-
-The character is frenzied for 1 turn.  While in this state, the character gains a +2 bonus to <PRO_HISHER> melee attack rolls and saves vs. spell, as well as to <PRO_HISHER> Armor Class, and becomes immune to charm, confusion, fear, feeblemind, hold, imprisonment, level drain, maze, stun, and sleep. The character also gains an additional attack per round.
-In addition to the normal effects of frenzy, the Companion channels the spirit of Ilmater, and is able to accept tremendous punishment.  At 1st level, <PRO_HESHE> gains 20% damage reduction against all forms of physical damage.  At 4th level, they gain this same resistance against all forms of damage.  At 8th level, this resistance increases to 50%.
-
-Martyr's Acceptance does not stack with haste or similar effects
-
-After the effect ends, the character becomes winded, suffering a -2 penalty to Armor Class, to-hit rolls, and damage rolls.~
-
 @86601  = ~child of blood~
 @86602  = ~Child of Blood~
-@86603  = ~CHILD OF BLOOD: Zealots of Garagos are fierce warriors, drawn to the frenzy of battle.  Too undiciplined even to serve under Tempus, they are prone to rush into battle against any opponent without a second thought or even much of a plan.  Needless to say, they often die young.
+@86603  = ~CHILD OF BLOOD: Zealots of Garagos are fierce warriors, drawn to the frenzy of battle. Too undiciplined even to serve under Tempus, they are prone to rush into battle against any opponent without a second thought or even much of a plan. Needless to say, they often die young.
+
+Champions of Garagos may only adopt the Zealot archetype.
 
 Advantages:
-- May use the Fury ability twice per day at first level.  The Children of Blood are unique in that they can enter their frenzy much more often than normal.
-At first level, they can use the ability twice per day.  They gain an additional use of this ability at levels 4, 10, 15 and 20.
-
-FURY: The character becomes frenzied for 1 turn. While in this state, the character gains a +2 bonus to <PRO_HISHER> melee attack rolls and saves, as well as to <PRO_HISHER> Armor Class, and becomes immune to charm, confusion, fear, feeblemind, hold, imprisonment, level drain, maze, stun, and sleep. The character also gains an additional attack per round.
-Frenzy is further modified depending upon the patron deity of the zealot.
-
-Frenzy does not stack with haste or similar effects
-
-Fury:  At 1st level, <PRO_HESHE> gains a +2 bonus to Strength and Constitution while under the effects of Frenzy.  This ability does not increase in potency at level 4, but they gain an additional use at level 4.  The bonus increases to +4 at 8th level.
+- Furious Frenzy: while using the Zealot's frenzy ability, champions of Garagos gain a +3 bonus to strength.
 
 Restrictions:
 - Alignment: Any chaotic, True Neutral or Neutral Evil
 ~
-@86604  = ~Fury~
-@86605  = ~Fury
-
-The character is frenzied for 1 turn.  While in this state, the character gains a +2 bonus to <PRO_HISHER> melee attack rolls and saves vs. spell, as well as to <PRO_HISHER> Armor Class, and becomes immune to charm, confusion, fear, feeblemind, hold, imprisonment, level drain, maze, stun, and sleep. The character also gains an additional attack per round.
-In addition to the normal effects of frenzy, the Companion channels the spirit of Ilmater, and is able to accept tremendous punishment.  At 1st level, <PRO_HESHE> gains a +2 bonus to Strength and Constitution.  At 8th level, this bonus increases to +4.
-
-Fury does not stack with haste or similar effects
-
-After the effect ends, the character becomes winded, suffering a -2 penalty to Armor Class, to-hit rolls, and damage rolls.~
-
 @86701  = ~vassal of the reverend one~
 @86702  = ~Vassal of the Reverend One~
 @86703  = ~VASSAL OF THE REVEREND ONE: Zealots of Corelion Larethian are steadfast defenders of elven values.  Often orphaned elves or half-elves, non-evil elves still feel the call to Corellon, often serving him in their own way as zealots.
 
+Champions of Corellon may only adopt the Zealot archetype.
+
 Advantages:
-- May use the frenzy ability once per day.  The zealot gains an additional use of this ability at levels 10, 15 and 20.
-
-FRENZY: The character becomes frenzied for 1 turn. While in this state, the character gains a +2 bonus to <PRO_HISHER> melee attack rolls and saves, as well as to <PRO_HISHER> Armor Class, and becomes immune to charm, confusion, fear, feeblemind, hold, imprisonment, level drain, maze, stun, and sleep. The character also gains an additional attack per round.
-Frenzy is further modified depending upon the patron deity of the zealot.
-
-Frenzy does not stack with haste or similar effects
-
-Corellon's Arrow:  Vassals are paragons of elven skill with blade and bow.
-At 1st level, <PRO_HESHE> gains the same bonuses with ranged weapons as with melee weapons (+2 to ranged THAC0).  Additionally, they gain a +2 to damage on both melee and ranged attacks.  At 4th level, They gain a +4 bonus to melee and ranged attacks and damage.  At 8th level, this bonus increase to +6.
+- Bow and Blade: Vassals have a +1 bonus on attack rolls with long swords, short swords, and bows. This is in addition to any natural elven bonus with these weapons.
+- Blade Dance: while using a Zealot's Frenzy ability, a magical twin of the Vassal's blade springs forth and attacks alongside <PRO_HIMHER>.
 
 Restrictions:
 - Alignment: Any good or Lawful Neutral
 - The Vassal of the Reverend One must maintain a reputation of 8 or fall.
 - Race: Elf or Half-Elf only
 ~
-@86704  = ~Corellon's Arrow~
-@86705  = ~Corellon's Arrow
-
-The character is frenzied for 1 turn.  While in this state, the character gains a +2 bonus to <PRO_HISHER> melee attack rolls and saves vs. spell, as well as to <PRO_HISHER> Armor Class, and becomes immune to charm, confusion, fear, feeblemind, hold, imprisonment, level drain, maze, stun, and sleep. The character also gains an additional attack per round.
-Vassals are paragons of elven skill with blade and bow.  At 1st level, <PRO_HESHE> gains the same bonuses with ranged weapons as with melee weapons (+2 to ranged THAC0).  Additionally, they gain a +2 to damage on both melee and ranged attacks.  At 4th level, They gain a +4 bonus to melee and ranged attacks and damage.  At 8th level, this bonus increase to +6.
-
-Corellon's Arrow does not stack with haste or similar effects
-
-After the effect ends, the character becomes winded, suffering a -2 penalty to Armor Class, to-hit rolls, and damage rolls.~
-
 @86801  = ~cherub of the ruby rose~
 @86802  = ~Cherub of the Ruby Rose~
-@86803  = ~CHERUB OF THE RUBY ROSE: Zealots dedicated to the service of Sune, cherubs of the ruby rose exude passion and fury.  
+@86803  = ~CHERUB OF THE RUBY ROSE: Champions dedicated to the service of Sune, cherubs of the ruby rose exude passionate generosity of spirit and, when necessary, passionate fury.  
+
+Champions of Sune may adopt either the Defender or Zealot archetype.
 
 Advantages:
-- May use the frenzy ability once per day.  The zealot gains an additional use of this ability at levels 10, 15 and 20.
-
-FRENZY: The character becomes frenzied for 1 turn. While in this state, the character gains a +2 bonus to <PRO_HISHER> melee attack rolls and saves, as well as to <PRO_HISHER> Armor Class, and becomes immune to charm, confusion, fear, feeblemind, hold, imprisonment, level drain, maze, stun, and sleep. The character also gains an additional attack per round.
-Frenzy is further modified depending upon the patron deity of the zealot.
-
-Frenzy does not stack with haste or similar effects
-
-Passionate Resonance:  When the Cherub enters frenzy, <PRO_HESHE> radiates the power of Sune, possibly overcomming the will of all enemies within 30'.
-At 1st level, all enemies are affected by Charm Person if they fail a save vs. spell +2.  At 4th level, opponents are instead affected by Dire Charm.  At 8th level, they are Dominated if they fail their save.
+- Passionate Resonance: once per day, a Cherub may radiate the power of Sune, possibly overcomming the will of all enemies within 30'. At 1st level, all enemies are affected by Charm Person if they fail a save vs. spell +2. At 4th level, opponents are instead affected by Dire Charm. At 8th level, they are Dominated if they fail their save.
 
 Restrictions:
 - Alignment: Any Non-Evil
@@ -2773,70 +2731,43 @@ Restrictions:
 @86804  = ~Passionate Resonance~
 @86805  = ~Passionate Resonance
 
-The character is frenzied for 1 turn.  While in this state, the character gains a +2 bonus to <PRO_HISHER> melee attack rolls and saves vs. spell, as well as to <PRO_HISHER> Armor Class, and becomes immune to charm, confusion, fear, feeblemind, hold, imprisonment, level drain, maze, stun, and sleep. The character also gains an additional attack per round.
-When the Cherub enters frenzy, <PRO_HESHE> radiates the power of Sune, possibly overcomming the will of all enemies within 30'.  At 1st level, all enemies are affected by Charm Person if they fail a save vs. spell +2.  At 4th level, opponents are instead affected by Dire Charm.  At 8th level, they are Dominated if they fail their save.
+The character radiates the power of Sune, possibly overcoming the will of all enemies within 30'. At 1st level, all enemies are affected by Charm Person if they fail a save vs. spell +2. At 4th level, opponents are instead affected by Dire Charm. At 8th level, they are Dominated if they fail their save.
 
 Passionate Resonance does not stack with haste or similar effects
 
 After the effect ends, the character becomes winded, suffering a -2 penalty to Armor Class, to-hit rolls, and damage rolls.~
 
-@86901  = ~weaverager of mystra~
-@86902  = ~Weaverager of Mystra~
-@86903  = ~WEAVERAGER OF MYSTRA: Zealots dedicated to the service of Mystra, weaveragers seek out evil magic users and seek to bring about their downfall. 
+@86901  = ~knight of the mystic fire~
+@86902  = ~Knight of the Mystic Fire~
+@86903  = ~KNIGHT OF THE MYSTIC FIRE: Champions dedicated to the service of Mystra, Knights of the Mystic Fire seek to protect any who respect and responsibly use the Weave. 
+
+Champions of Mystra may adopt either the Defender or Zealot archetype.
 
 Advantages:
-- May use the frenzy ability once per day.  The zealot gains an additional use of this ability at levels 10, 15 and 20.
-
-FRENZY: The character becomes frenzied for 1 turn. While in this state, the character gains a +2 bonus to <PRO_HISHER> melee attack rolls and saves, as well as to <PRO_HISHER> Armor Class, and becomes immune to charm, confusion, fear, feeblemind, hold, imprisonment, level drain, maze, stun, and sleep. The character also gains an additional attack per round.
-Frenzy is further modified depending upon the patron deity of the zealot.
-
-Frenzy does not stack with haste or similar effects
-
-Weaverage:  Weaveragers are protected from magic while in frenzy.
-At 1st level, <PRO_HESHE> gains 20% magic resistance while in frenzy.  At 4th level, they gain 30% magic resistance.  At 8th level, they gain 40% magic resistance.
+- May cast Spell Thrust as an innate ability once per day. 
+- May cast Pierce Magic once per day at 6th level, and one additional time per day at 12th and 18th levels.
+- Weavebreaker Smite: when using a Defender's Smite ability, successful attacks do not do extra damage, but can dispel the target's magical combat defenses as if the Breach spell were cast on the target.
+- Weavebreaker Frenzy: when using a Zealot's Frenzy ability, nearby enemy spellcasters suffer a 20% chance to miscast any spell.
 
 Restrictions:
 - Alignment: Any non-evil
 - The Zealot of Mystra must maintain a reputation of 8 or fall.
 ~
-@86904  = ~Weaverage~
-@86905  = ~Weaverage
-
-The character is frenzied for 1 turn.  While in this state, the character gains a +2 bonus to <PRO_HISHER> melee attack rolls and saves vs. spell, as well as to <PRO_HISHER> Armor Class, and becomes immune to charm, confusion, fear, feeblemind, hold, imprisonment, level drain, maze, stun, and sleep. The character also gains an additional attack per round.
-Zealots of Mystra are protected from magic while in frenzy.  At 1st level, <PRO_HESHE> gains 20% magic resistance while in frenzy.  At 4th level, they gain 30% magic resistance.  At 8th level, they gain 40% magic resistance.
-
-Weaverage does not stack with haste or similar effects
-
-After the effect ends, the character becomes winded, suffering a -2 penalty to Armor Class, to-hit rolls, and damage rolls.~
-
 @87001  = ~darksong knight~
 @87002  = ~Darksong Knight~
 @87003  = ~DARKSONG KNIGHT: Eilistraee is the Drow goddess of beauty, song, dance, freedom, moonlight, swordwork, and hunting. Notably she is patroness and protector of those few dark elves who long to return to the surface and live at peace with other races.
 Darksong Knights are dedicated to spreading the ethos of Eilistraee, advancing her causes, and especially to slaying the yochlol, the demons who served as the handmaidens of Lolth. Almost universally female, they utilise a wild and complex dancing fighting style. 
 
+Champions of Eilistraee may adopt either the Defender or Zealot archetype.
+
 Advantages:
-- May use the frenzy ability once per day.  The zealot gains an additional use of this ability at levels 10, 15 and 20.
-
-FRENZY: The character becomes frenzied for 1 turn. While in this state, the character gains a +2 bonus to <PRO_HISHER> melee attack rolls and saves, as well as to <PRO_HISHER> Armor Class, and becomes immune to charm, confusion, fear, feeblemind, hold, imprisonment, level drain, maze, stun, and sleep. The character also gains an additional attack per round.
-Frenzy is further modified depending upon the patron deity of the zealot.
-
-Frenzy does not stack with haste or similar effects
-
-Bladedance:  Darksong Knights are a flurry of blades while in frenzy.
-The Darksong Knight gains an additional attack per melee while in frenzy.
+- Bane of Lolth: Darksong Knights have a 3-point bonus on attack and damage rolls against fiends and other natives of the lower planes.
+- At 7th level, may innately cast the Bolt of Glory spell once per day.
 
 Restrictions:
 - Alignment: Any non-evil
 - The Darksong Knight must maintain a reputation of 8 or fall.
 ~
-@87004  = ~Bladesong~
-@87005  = ~Bladesong
-
-The character is frenzied for 1 turn.  While in this state, the character gains a +2 bonus to <PRO_HISHER> melee attack rolls and saves vs. spell, as well as to <PRO_HISHER> Armor Class, and becomes immune to charm, confusion, fear, feeblemind, hold, imprisonment, level drain, maze, stun, and sleep. The character also gains two additional attacks per round.
-
-Bladesong does not stack with haste or similar effects
-
-After the effect ends, the character becomes winded, suffering a -2 penalty to Armor Class, to-hit rolls, and damage rolls.~
 //
 // ... champion of arvoreen:
 //
@@ -2846,14 +2777,13 @@ After the effect ends, the character becomes winded, suffering a -2 penalty to A
 
 Trueswords of Arvoreen are the protectors and defenders of halfling communities. They spend their days constructing defensive barriers, signaling systems, beacons, and traps, and reviewing defenses already in place.  While many Trueswords stay close to their communities, some will adventure to gain allies they can call on as well as magical weapons and defensive items of all kinds.
 
+Champions of Arvoreen may only adopt the Defender archetype.
+
 Advantages:
-- Trueswords can use the Move Silently and Hide In Shadows abilities, as a ranger of the same level.
-- From 1st level, a Truesword can increase <PRO_HISHER> Strength to 18/00 (or higher, if it is 18 already) once per day.
-- From 5th level, a Truesword can heal with a touch, similar to the Lay On Hands Power of paladins.
-- From 9th level, a Truesword can use a personal version of the Haste spell, increasing movement and physical attacks per round for one round/level.
+- A Truesword can temporarily increase <PRO_HISHER> Strength to 18/00 (or higher, if it is 18 already) once per day.
+- A Truesword can use a personal version of the Haste spell, increasing movement and physical attacks per round, for one round/level.
 
 Restrictions:
-- Cannot Turn undead.
 - Alignment: Good and/or Neutral.
 ~
 @87711  = ~Change Class~
@@ -2965,7 +2895,7 @@ Restrictions:
 //
 // ... dervishes:
 //
-@93200  = ~BEAST MASTER: This ranger is a wanderer and is not comfortable in civilized lands. Therefore, Beast Masters maintain a natural affinity for animals. In addition to being able to call normal animals for assistance, Beast Masters may summon a Spirit Wolf and even transform into a wolf-like form of a wolf.
+@93200  = ~BEAST MASTER: This ranger is a wanderer and is not comfortable in civilized lands. Therefore, Beast Masters maintain a natural affinity for animals. In addition to being able to call normal animals for assistance, Beast Masters may summon a Spirit Wolf and even transform into a bestial wolf-like form.
 
 Advantages:
 - +15% to Move Silently and Hide In Shadows.
@@ -2987,85 +2917,6 @@ Disadvantages:
 @93207  = ~Werewolf~
 @93208  = ~Wolfwere~
 @93209  = ~Greater Wolfwere~
-//
-@93301  = ~earth dervish~
-@93302  = ~Earth Dervish~
-@93303  = ~EARTH DERVISH: Earth Dervishes are the earth element imbued ranger counterpart to the druidic earth mystic.  They are capable of calling on their chosen element to bolster their defenses and empower their attacks. 
-
-Advantages:
-- 2% crushing damage resistance per level, up to a maximum of 40% at 20th level.
-- 20% of all melee hits Stun the target for 1-2 seconds upon a failed save vs. Death.
-
-Restrictions:
-- May not be Chaotic
-~
-@93304  = ~EARTH DERVISH: Earth Dervishes are the earth element imbued ranger counterpart to the druidic earth mystic.  They are capable of calling on their chosen element to bolster their defenses and empower their attacks. ~
-//
-@93401  = ~water dervish~
-@93402  = ~Water Dervish~
-@93403  = ~WATER DERVISH: Water Dervishes are the water element imbued ranger counterpart to the druidic water mystic.  They are capable of calling on their chosen element to bolster their defenses and empower their attacks. 
-
-Advantages:
-- 2% acid and cold damage resistance per level, up to a maximum of 40% at 20th level.
-- 20% of all melee hits cause 1d3 points of acid damage if the target fails a save vs. Breath.
-
-Restrictions:
-- May not be Lawful
-~
-@93404  = ~WATER DERVISH: Water Dervishes are the water element imbued ranger counterpart to the druidic water mystic.  They are capable of calling on their chosen element to bolster their defenses and empower their attacks.~
-//
-@93501  = ~air dervish~
-@93502  = ~Air Dervish~
-@93503  = ~AIR DERVISH: Air Dervishes are the air element imbued ranger counterpart to the druidic air mystic.  They are capable of calling on their chosen element to bolster their defenses and empower their attacks. 
-
-Advantages:
-- 2% electric damage resistance per level, up to a maximum of 40% at 20th level.
-- Immunity to harmful cloud-based spells.
-- 20% of all melee hits cause 1d3 points of electricity damage if the target fails a save vs. Breath.
-
-Restrictions:
-- May not be Lawful
-~
-@93504  = ~AIR DERVISH: Air Dervishes are the air element imbued ranger counterpart to the druidic air mystic.  They are capable of calling on their chosen element to bolster their defenses and empower their attacks.~
-//
-@93601  = ~fire dervish~
-@93602  = ~Fire Dervish~
-@93603  = ~FIRE DERVISH: Fire Dervishes are the fire element imbued ranger counterpart to the druidic fire mystic.  They are capable of calling on their chosen element to bolster their defenses and empower their attacks. 
-
-Advantages:
-- 2% fire damage resistance per level, up to a maximum of 40% at 20th level.
-- 20% of all melee hits cause 1d4 points of fire damage if the target fails a save vs. Breath.
-
-Restrictions:
-- May not be Lawful
-~
-@93604  = ~FIRE DERVISH: Fire Dervishes are the fire element imbued ranger counterpart to the druidic fire mystic.  They are capable of calling on their chosen element to bolster their defenses and empower their attacks.~
-//
-@93701  = ~light dervish~
-@93702  = ~Light Dervish~
-@93703  = ~LIGHT DERVISH: Light Dervishes are the light empowered ranger counterpart to the druidic light mystic.  They are capable of calling on their chosen specialty to bolster their defenses and empower their attacks.
-
-Advantages:
-- Immune to blindness, and may dispel low-level illusions (up to 3rd level) 3 times per day.
-- 40% of all melee hits cause the target to be bathed in Faerie Fire for 3 rounds, resulting in a -2 penalty to AC.
-
-Restrictions:
-- May not be Evil
-~
-@93704  = ~LIGHT DERVISH: Light Dervishes are the light empowered ranger counterpart to the druidic light mystic.  They are capable of calling on their chosen specialty to bolster their defenses and empower their attacks.~
-//
-@93801  = ~shadow dervish~
-@93802  = ~Shadow Dervish~
-@93803  = ~SHADOW DERVISH: Shadow Dervishes are the shadow empowered ranger counterpart to the druidic shadow mystic.  They are capable of calling on their chosen specialty to bolster their defenses and empower their attacks. 
-
-Advantages:
-- Immune to blindness.
-- 20% of all melee hits Blind the target for 5 seconds upon a failed save vs. Breath.
-
-Restrictions:
-- Must be Neutral
-~
-@93804  = ~SHADOW DERVISH: Shadow Dervishes are the shadow empowered ranger counterpart to the druidic shadow mystic.  They are capable of calling on their chosen specialty to bolster their defenses and empower their attacks.~
 //
 // ... scouts:
 //

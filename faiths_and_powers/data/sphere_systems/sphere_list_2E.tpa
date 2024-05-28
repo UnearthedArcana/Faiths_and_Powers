@@ -11,11 +11,11 @@
 @12207  =  ~Combat~
 @12208  =  ~Travelers~
 @12209  =  ~Divination~
-@12210  =  ~Wards~
+@12210  =  ~Wards~			//
 @12211  =  ~Thought~
-@12212  =  ~Charm~
-@12213  =  ~Creation~
-@12214  =  ~Summoning~
+@12212  =  ~Summoning~			//
+@12213  =  ~Creation~		//
+@12214  =  ~Charm~		//
 @12215  =  ~Animal~
 @12216  =  ~Plant~
 @12217  =  ~Earth~
@@ -408,7 +408,7 @@ END
 //___________________________________________________________________________________
 //
 DEFINE_ACTION_MACRO vanilla_ranger_spheres BEGIN
-  COPY ~%MOD_FOLDER%/lib/d5_base.spl~ ~override/d5fprnsp.spl~
+  COPY ~%MOD_FOLDER%/lib/d5_base.spl~ ~override/d5fpclsp.spl~
 //  LAF QD_ENSURE_QDMC_SPL STR_VAR base_class = ~R~ END 
 //  LAF QD_ENSURE_BASE_CLAB STR_VAR base_class = ~R~ END 
 //  COPY_EXISTING ~QD_MCR01.spl~ ~override~ // trueclass spheres via .eff
@@ -460,6 +460,138 @@ END
 
 
 DEFINE_ACTION_MACRO d5_deity_kit_sphere_lists BEGIN
+
+// default cleric list_______________________________________________________________
+//
+DEFINE_ACTION_FUNCTION default_cleric_spheres 
+  RET_ARRAY default_cleric_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY default_cleric_spheres_array BEGIN
+	Healing			=> major
+	Necromantic		=> major
+	Law				=> minor
+	Chaos			=> minor
+	Protection		=> major
+	Combat			=> major
+	Travelers		=> x
+	Divination		=> minor
+	Wards			=> major
+	Thought			=> major
+	Charm			=> x
+	Creation		=> major
+	Summoning		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> minor
+	Sun				=> minor
+	Weather			=> x
+	Numbers			=> x
+	Astral			=> major
+ END
+END
+//___________________________________________________________________________________
+
+// default paladin list______________________________________________________________
+//
+DEFINE_ACTION_FUNCTION default_paladin_spheres 
+  RET_ARRAY default_paladin_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY default_paladin_spheres_array BEGIN
+	Healing			=> paladin
+	Necromantic		=> x
+	Law				=> paladin
+	Chaos			=> x
+	Protection		=> paladin
+	Combat			=> paladin
+	Travelers		=> x
+	Divination		=> x
+	Wards			=> x
+	Thought			=> paladin
+	Charm			=> x
+	Creation		=> x
+	Summoning		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Sun				=> paladin
+	Weather			=> x
+	Numbers			=> x
+	Astral			=> x
+ END
+END
+//___________________________________________________________________________________
+
+// default druid list________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION default_druid_spheres 
+  RET_ARRAY default_druid_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY default_druid_spheres_array BEGIN
+	Healing			=> minor
+	Necromantic		=> x
+	Law				=> x
+	Chaos			=> minor
+	Protection		=> x
+	Combat			=> x
+	Travelers		=> major
+	Divination		=> major
+	Wards			=> major
+	Thought			=> x
+	Charm			=> minor
+	Creation		=> minor
+	Summoning		=> x
+	Animal			=> major
+	Plant			=> major
+	Earth			=> major
+	Water			=> minor
+	Air				=> major
+	Fire			=> x
+	Sun				=> major
+	Weather			=> major
+	Numbers			=> x
+	Astral			=> x
+ END
+END
+//___________________________________________________________________________________
+
+// default ranger list_______________________________________________________________
+//
+DEFINE_ACTION_FUNCTION default_ranger_spheres 
+  RET_ARRAY default_ranger_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY default_ranger_spheres_array BEGIN
+	Healing			=> ranger
+	Necromantic		=> x
+	Law				=> x
+	Chaos			=> x
+	Protection		=> x
+	Combat			=> x
+	Travelers		=> ranger
+	Divination		=> x
+	Wards			=> x
+	Thought			=> x
+	Charm			=> x
+	Creation		=> x
+	Summoning		=> x
+	Animal			=> ranger
+	Plant			=> ranger
+	Earth			=> ranger
+	Water			=> x
+	Air				=> ranger
+	Fire			=> x
+	Sun				=> ranger
+	Weather			=> ranger
+	Numbers			=> x
+	Astral			=> x
+ END
+END
+//___________________________________________________________________________________
 
 // UR-PRIEST__________________________________________________________________________
 //
@@ -3218,8 +3350,10 @@ END
 
 //___________________________________________________________________________________
 //
-DEFINE_ACTION_MACRO DR_oozemaster_spheres BEGIN
- ACTION_DEFINE_ASSOCIATIVE_ARRAY a#ooze_spheres BEGIN
+DEFINE_ACTION_FUNCTION dr_oozemaster_spheres
+  RET_ARRAY dr_oozemaster_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY dr_oozemaster_spheres_array BEGIN
 	Healing			=> major
 	Necromantic		=> minor
 	Law				=> x
@@ -3249,13 +3383,15 @@ END
 
 //___________________________________________________________________________________
 //
-DEFINE_ACTION_MACRO DR_justifier_spheres BEGIN
- ACTION_DEFINE_ASSOCIATIVE_ARRAY a#justif_spheres BEGIN
+DEFINE_ACTION_FUNCTION dr_justifier_spheres
+  RET_ARRAY dr_justifier_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY dr_justifier_spheres_array BEGIN
 	Healing			=> ranger
 	Necromantic		=> x
 	Law				=> x
 	Chaos			=> x
-	Protection		=> x
+	Protection		=> ranger
 	Combat			=> ranger
 	Travelers		=> x
 	Divination		=> x

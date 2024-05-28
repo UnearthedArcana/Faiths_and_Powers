@@ -131,7 +131,7 @@ ACTION_IF !(~%this_kit_clab%~ STRING_EQUAL_CASE ~x~) BEGIN
 	  READ_2DA_ENTRY row 0 cols sph_kit
 	  PATCH_IF (~%sph_kit%~ STRING_EQUAL_CASE ~%this_kit_clab%~) BEGIN
         READ_2DA_ENTRY row 1 cols lif
-        PATCH_IF (~%lif%~ STRING_EQUAL_CASE ~major~) BEGIN
+        PATCH_IF (~%lif%~ STRING_EQUAL_CASE ~major~) OR (~%lif%~ STRING_EQUAL_CASE ~paladin~) OR (~%lif%~ STRING_EQUAL_CASE ~ranger~) BEGIN
     	  SPRINT $kit_spont_list(~plif~) ~1~
         END
         PATCH_IF (~%lif%~ STRING_EQUAL_CASE ~minor~) BEGIN
@@ -141,7 +141,7 @@ ACTION_IF !(~%this_kit_clab%~ STRING_EQUAL_CASE ~x~) BEGIN
     	  SPRINT $kit_focus_list(~lif~) ~focus~
         END
         READ_2DA_ENTRY row 2 cols dea
-        PATCH_IF (~%dea%~ STRING_EQUAL_CASE ~major~) BEGIN
+        PATCH_IF (~%dea%~ STRING_EQUAL_CASE ~major~) OR (~%dea%~ STRING_EQUAL_CASE ~paladin~) OR (~%dea%~ STRING_EQUAL_CASE ~ranger~) BEGIN
     	  SPRINT $kit_spont_list(~pdea~) ~1~
         END
         PATCH_IF (~%dea%~ STRING_EQUAL_CASE ~minor~) BEGIN
@@ -150,18 +150,18 @@ ACTION_IF !(~%this_kit_clab%~ STRING_EQUAL_CASE ~x~) BEGIN
         PATCH_IF (~%dea%~ STRING_EQUAL_CASE ~focus~) BEGIN
     	  SPRINT $kit_focus_list(~dea~) ~focus~
         END
-        READ_2DA_ENTRY row 3 cols cre
-        PATCH_IF (~%cre%~ STRING_EQUAL_CASE ~major~) BEGIN
+        READ_2DA_ENTRY row 3 cols ben
+        PATCH_IF (~%ben%~ STRING_EQUAL_CASE ~major~) OR (~%ben%~ STRING_EQUAL_CASE ~paladin~) OR (~%ben%~ STRING_EQUAL_CASE ~ranger~) BEGIN
     	  SPRINT $kit_spont_list(~pben~) ~1~
         END
-        PATCH_IF (~%cre%~ STRING_EQUAL_CASE ~minor~) BEGIN
+        PATCH_IF (~%ben%~ STRING_EQUAL_CASE ~minor~) BEGIN
     	  SPRINT $kit_spont_list(~mben~) ~1~
         END
-        PATCH_IF (~%cre%~ STRING_EQUAL_CASE ~focus~) BEGIN
-    	  SPRINT $kit_focus_list(~cre~) ~focus~
+        PATCH_IF (~%ben%~ STRING_EQUAL_CASE ~focus~) BEGIN
+    	  SPRINT $kit_focus_list(~ben~) ~focus~
         END
         READ_2DA_ENTRY row 4 cols des
-        PATCH_IF (~%des%~ STRING_EQUAL_CASE ~major~) BEGIN
+        PATCH_IF (~%des%~ STRING_EQUAL_CASE ~major~) OR (~%des%~ STRING_EQUAL_CASE ~paladin~) OR (~%des%~ STRING_EQUAL_CASE ~ranger~) BEGIN
     	  SPRINT $kit_spont_list(~pdes~) ~1~
         END
         PATCH_IF (~%des%~ STRING_EQUAL_CASE ~minor~) BEGIN
@@ -171,7 +171,7 @@ ACTION_IF !(~%this_kit_clab%~ STRING_EQUAL_CASE ~x~) BEGIN
     	  SPRINT $kit_focus_list(~des~) ~focus~
         END
         READ_2DA_ENTRY row 5 cols pro
-        PATCH_IF (~%pro%~ STRING_EQUAL_CASE ~major~) BEGIN
+        PATCH_IF (~%pro%~ STRING_EQUAL_CASE ~major~) OR (~%pro%~ STRING_EQUAL_CASE ~paladin~) OR (~%pro%~ STRING_EQUAL_CASE ~ranger~) BEGIN
     	  SPRINT $kit_spont_list(~ppro~) ~1~
         END
         PATCH_IF (~%pro%~ STRING_EQUAL_CASE ~minor~) BEGIN
@@ -181,7 +181,7 @@ ACTION_IF !(~%this_kit_clab%~ STRING_EQUAL_CASE ~x~) BEGIN
     	  SPRINT $kit_focus_list(~pro~) ~focus~
         END
         READ_2DA_ENTRY row 6 cols war
-        PATCH_IF (~%war%~ STRING_EQUAL_CASE ~major~) BEGIN
+        PATCH_IF (~%war%~ STRING_EQUAL_CASE ~major~) OR (~%war%~ STRING_EQUAL_CASE ~paladin~) OR (~%war%~ STRING_EQUAL_CASE ~ranger~) BEGIN
     	  SPRINT $kit_spont_list(~pwar~) ~1~
         END
         PATCH_IF (~%war%~ STRING_EQUAL_CASE ~minor~) BEGIN
@@ -191,7 +191,7 @@ ACTION_IF !(~%this_kit_clab%~ STRING_EQUAL_CASE ~x~) BEGIN
     	  SPRINT $kit_focus_list(~war~) ~focus~
         END
         READ_2DA_ENTRY row 7 cols exp
-        PATCH_IF (~%exp%~ STRING_EQUAL_CASE ~major~) BEGIN
+        PATCH_IF (~%exp%~ STRING_EQUAL_CASE ~major~) OR (~%exp%~ STRING_EQUAL_CASE ~paladin~) OR (~%exp%~ STRING_EQUAL_CASE ~ranger~) BEGIN
     	  SPRINT $kit_spont_list(~pexp~) ~1~
         END
         PATCH_IF (~%exp%~ STRING_EQUAL_CASE ~minor~) BEGIN
@@ -201,7 +201,7 @@ ACTION_IF !(~%this_kit_clab%~ STRING_EQUAL_CASE ~x~) BEGIN
     	  SPRINT $kit_focus_list(~exp~) ~focus~
         END
         READ_2DA_ENTRY row 8 cols kno
-        PATCH_IF (~%kno%~ STRING_EQUAL_CASE ~major~) BEGIN
+        PATCH_IF (~%kno%~ STRING_EQUAL_CASE ~major~) OR (~%kno%~ STRING_EQUAL_CASE ~paladin~) OR (~%kno%~ STRING_EQUAL_CASE ~ranger~) BEGIN
     	  SPRINT $kit_spont_list(~pkno~) ~1~
         END
         PATCH_IF (~%kno%~ STRING_EQUAL_CASE ~minor~) BEGIN
@@ -211,7 +211,7 @@ ACTION_IF !(~%this_kit_clab%~ STRING_EQUAL_CASE ~x~) BEGIN
     	  SPRINT $kit_focus_list(~kno~) ~focus~
         END
         READ_2DA_ENTRY row 9 cols dec
-        PATCH_IF (~%dec%~ STRING_EQUAL_CASE ~major~) BEGIN
+        PATCH_IF (~%dec%~ STRING_EQUAL_CASE ~major~) OR (~%dec%~ STRING_EQUAL_CASE ~paladin~) OR (~%dec%~ STRING_EQUAL_CASE ~ranger~) BEGIN
     	  SPRINT $kit_spont_list(~pdec~) ~1~
         END
         PATCH_IF (~%dec%~ STRING_EQUAL_CASE ~minor~) BEGIN
@@ -221,7 +221,7 @@ ACTION_IF !(~%this_kit_clab%~ STRING_EQUAL_CASE ~x~) BEGIN
     	  SPRINT $kit_focus_list(~dec~) ~focus~
         END
         READ_2DA_ENTRY row 10 cols tho
-        PATCH_IF (~%tho%~ STRING_EQUAL_CASE ~major~) BEGIN
+        PATCH_IF (~%tho%~ STRING_EQUAL_CASE ~major~) OR (~%tho%~ STRING_EQUAL_CASE ~paladin~) OR (~%tho%~ STRING_EQUAL_CASE ~ranger~) BEGIN
     	  SPRINT $kit_spont_list(~ptho~) ~1~
         END
         PATCH_IF (~%tho%~ STRING_EQUAL_CASE ~minor~) BEGIN
@@ -231,7 +231,7 @@ ACTION_IF !(~%this_kit_clab%~ STRING_EQUAL_CASE ~x~) BEGIN
     	  SPRINT $kit_focus_list(~tho~) ~focus~
         END
         READ_2DA_ENTRY row 11 cols dre
-        PATCH_IF (~%dre%~ STRING_EQUAL_CASE ~major~) BEGIN
+        PATCH_IF (~%dre%~ STRING_EQUAL_CASE ~major~) OR (~%dre%~ STRING_EQUAL_CASE ~paladin~) OR (~%dre%~ STRING_EQUAL_CASE ~ranger~) BEGIN
     	  SPRINT $kit_spont_list(~pdre~) ~1~
         END
         PATCH_IF (~%dre%~ STRING_EQUAL_CASE ~minor~) BEGIN
@@ -241,7 +241,7 @@ ACTION_IF !(~%this_kit_clab%~ STRING_EQUAL_CASE ~x~) BEGIN
     	  SPRINT $kit_focus_list(~dre~) ~focus~
         END
         READ_2DA_ENTRY row 12 cols vig
-        PATCH_IF (~%vig%~ STRING_EQUAL_CASE ~major~) BEGIN
+        PATCH_IF (~%vig%~ STRING_EQUAL_CASE ~major~) OR (~%vig%~ STRING_EQUAL_CASE ~paladin~) OR (~%vig%~ STRING_EQUAL_CASE ~ranger~) BEGIN
     	  SPRINT $kit_spont_list(~pvig~) ~1~
         END
         PATCH_IF (~%vig%~ STRING_EQUAL_CASE ~minor~) BEGIN
@@ -251,7 +251,7 @@ ACTION_IF !(~%this_kit_clab%~ STRING_EQUAL_CASE ~x~) BEGIN
     	  SPRINT $kit_focus_list(~vig~) ~focus~
         END
         READ_2DA_ENTRY row 13 cols aff
-        PATCH_IF (~%aff%~ STRING_EQUAL_CASE ~major~) BEGIN
+        PATCH_IF (~%aff%~ STRING_EQUAL_CASE ~major~) OR (~%aff%~ STRING_EQUAL_CASE ~paladin~) OR (~%aff%~ STRING_EQUAL_CASE ~ranger~) BEGIN
     	  SPRINT $kit_spont_list(~paff~) ~1~
         END
         PATCH_IF (~%aff%~ STRING_EQUAL_CASE ~minor~) BEGIN
@@ -261,7 +261,7 @@ ACTION_IF !(~%this_kit_clab%~ STRING_EQUAL_CASE ~x~) BEGIN
     	  SPRINT $kit_focus_list(~aff~) ~focus~
         END
         READ_2DA_ENTRY row 14 cols ani
-        PATCH_IF (~%ani%~ STRING_EQUAL_CASE ~major~) BEGIN
+        PATCH_IF (~%ani%~ STRING_EQUAL_CASE ~major~) OR (~%ani%~ STRING_EQUAL_CASE ~paladin~) OR (~%ani%~ STRING_EQUAL_CASE ~ranger~) BEGIN
     	  SPRINT $kit_spont_list(~pani~) ~1~
         END
         PATCH_IF (~%ani%~ STRING_EQUAL_CASE ~minor~) BEGIN
@@ -271,7 +271,7 @@ ACTION_IF !(~%this_kit_clab%~ STRING_EQUAL_CASE ~x~) BEGIN
     	  SPRINT $kit_focus_list(~ani~) ~focus~
         END
         READ_2DA_ENTRY row 15 cols pla
-        PATCH_IF (~%pla%~ STRING_EQUAL_CASE ~major~) BEGIN
+        PATCH_IF (~%pla%~ STRING_EQUAL_CASE ~major~) OR (~%pla%~ STRING_EQUAL_CASE ~paladin~) OR (~%pla%~ STRING_EQUAL_CASE ~ranger~) BEGIN
     	  SPRINT $kit_spont_list(~ppla~) ~1~
         END
         PATCH_IF (~%pla%~ STRING_EQUAL_CASE ~minor~) BEGIN
@@ -281,7 +281,7 @@ ACTION_IF !(~%this_kit_clab%~ STRING_EQUAL_CASE ~x~) BEGIN
     	  SPRINT $kit_focus_list(~pla~) ~focus~
         END
         READ_2DA_ENTRY row 16 cols ear
-        PATCH_IF (~%ear%~ STRING_EQUAL_CASE ~major~) BEGIN
+        PATCH_IF (~%ear%~ STRING_EQUAL_CASE ~major~) OR (~%ear%~ STRING_EQUAL_CASE ~paladin~) OR (~%ear%~ STRING_EQUAL_CASE ~ranger~) BEGIN
     	  SPRINT $kit_spont_list(~pear~) ~1~
         END
         PATCH_IF (~%ear%~ STRING_EQUAL_CASE ~minor~) BEGIN
@@ -291,7 +291,7 @@ ACTION_IF !(~%this_kit_clab%~ STRING_EQUAL_CASE ~x~) BEGIN
     	  SPRINT $kit_focus_list(~ear~) ~focus~
         END
         READ_2DA_ENTRY row 17 cols wat
-        PATCH_IF (~%wat%~ STRING_EQUAL_CASE ~major~) BEGIN
+        PATCH_IF (~%wat%~ STRING_EQUAL_CASE ~major~) OR (~%wat%~ STRING_EQUAL_CASE ~paladin~) OR (~%wat%~ STRING_EQUAL_CASE ~ranger~) BEGIN
     	  SPRINT $kit_spont_list(~pwat~) ~1~
         END
         PATCH_IF (~%wat%~ STRING_EQUAL_CASE ~minor~) BEGIN
@@ -301,7 +301,7 @@ ACTION_IF !(~%this_kit_clab%~ STRING_EQUAL_CASE ~x~) BEGIN
     	  SPRINT $kit_focus_list(~wat~) ~focus~
         END
         READ_2DA_ENTRY row 18 cols air
-        PATCH_IF (~%air%~ STRING_EQUAL_CASE ~major~) BEGIN
+        PATCH_IF (~%air%~ STRING_EQUAL_CASE ~major~) OR (~%air%~ STRING_EQUAL_CASE ~paladin~) OR (~%air%~ STRING_EQUAL_CASE ~ranger~) BEGIN
     	  SPRINT $kit_spont_list(~pair~) ~1~
         END
         PATCH_IF (~%air%~ STRING_EQUAL_CASE ~minor~) BEGIN
@@ -311,7 +311,7 @@ ACTION_IF !(~%this_kit_clab%~ STRING_EQUAL_CASE ~x~) BEGIN
     	  SPRINT $kit_focus_list(~air~) ~focus~
         END
         READ_2DA_ENTRY row 19 cols fir
-        PATCH_IF (~%fir%~ STRING_EQUAL_CASE ~major~) BEGIN
+        PATCH_IF (~%fir%~ STRING_EQUAL_CASE ~major~) OR (~%fir%~ STRING_EQUAL_CASE ~paladin~) OR (~%fir%~ STRING_EQUAL_CASE ~ranger~) BEGIN
     	  SPRINT $kit_spont_list(~pfir~) ~1~
         END
         PATCH_IF (~%fir%~ STRING_EQUAL_CASE ~minor~) BEGIN
@@ -321,7 +321,7 @@ ACTION_IF !(~%this_kit_clab%~ STRING_EQUAL_CASE ~x~) BEGIN
     	  SPRINT $kit_focus_list(~fir~) ~focus~
         END
         READ_2DA_ENTRY row 20 cols lig
-        PATCH_IF (~%lig%~ STRING_EQUAL_CASE ~major~) BEGIN
+        PATCH_IF (~%lig%~ STRING_EQUAL_CASE ~major~) OR (~%lig%~ STRING_EQUAL_CASE ~paladin~) OR (~%lig%~ STRING_EQUAL_CASE ~ranger~) BEGIN
     	  SPRINT $kit_spont_list(~plig~) ~1~
         END
         PATCH_IF (~%lig%~ STRING_EQUAL_CASE ~minor~) BEGIN
@@ -331,7 +331,7 @@ ACTION_IF !(~%this_kit_clab%~ STRING_EQUAL_CASE ~x~) BEGIN
     	  SPRINT $kit_focus_list(~lig~) ~focus~
         END
         READ_2DA_ENTRY row 21 cols sha
-        PATCH_IF (~%sha%~ STRING_EQUAL_CASE ~major~) BEGIN
+        PATCH_IF (~%sha%~ STRING_EQUAL_CASE ~major~) OR (~%sha%~ STRING_EQUAL_CASE ~paladin~) OR (~%sha%~ STRING_EQUAL_CASE ~ranger~) BEGIN
     	  SPRINT $kit_spont_list(~psha~) ~1~
         END
         PATCH_IF (~%sha%~ STRING_EQUAL_CASE ~minor~) BEGIN
@@ -341,7 +341,7 @@ ACTION_IF !(~%this_kit_clab%~ STRING_EQUAL_CASE ~x~) BEGIN
     	  SPRINT $kit_focus_list(~sha~) ~focus~
         END
         READ_2DA_ENTRY row 22 cols mag
-        PATCH_IF (~%mag%~ STRING_EQUAL_CASE ~major~) BEGIN
+        PATCH_IF (~%mag%~ STRING_EQUAL_CASE ~major~) OR (~%mag%~ STRING_EQUAL_CASE ~paladin~) OR (~%mag%~ STRING_EQUAL_CASE ~ranger~) BEGIN
     	  SPRINT $kit_spont_list(~pmag~) ~1~
         END
         PATCH_IF (~%mag%~ STRING_EQUAL_CASE ~minor~) BEGIN
@@ -351,7 +351,7 @@ ACTION_IF !(~%this_kit_clab%~ STRING_EQUAL_CASE ~x~) BEGIN
     	  SPRINT $kit_focus_list(~mag~) ~focus~
         END
         READ_2DA_ENTRY row 23 cols ast
-        PATCH_IF (~%ast%~ STRING_EQUAL_CASE ~major~) BEGIN
+        PATCH_IF (~%ast%~ STRING_EQUAL_CASE ~major~) OR (~%ast%~ STRING_EQUAL_CASE ~paladin~) OR (~%ast%~ STRING_EQUAL_CASE ~ranger~) BEGIN
     	  SPRINT $kit_spont_list(~past~) ~1~
         END
         PATCH_IF (~%ast%~ STRING_EQUAL_CASE ~minor~) BEGIN
@@ -542,8 +542,8 @@ COPY ~faiths_and_powers/data/misc/d5lernwi.bam~ ~override~
 
 ACTION_IF !(FILE_EXISTS_IN_GAME ~d5fpspt.spl~) BEGIN
   COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5fpspt.spl~
-	SAY NAME1 @49917
-	SAY UNIDENTIFIED_DESC @49918
+	SAY NAME1 @1017
+	SAY UNIDENTIFIED_DESC @1018
 	WRITE_SHORT 0x1c 4
 //	LPF ALTER_SPELL_HEADER INT_VAR target = 5 END
 	LPF ADD_SPELL_EFFECT INT_VAR opcode = 112 target = 1 timing = 9 STR_VAR resource = ~d5xsorc~ END
@@ -561,8 +561,8 @@ ACTION_IF !(FILE_EXISTS_IN_GAME ~d5fpspt.spl~) BEGIN
 	LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (2 << 24) parameter2 = %115_bit_row% timing = 9 STR_VAR resource = ~d5shmsw~ END
 
   COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5fpsp3.spl~
-	SAY NAME1 @49917
-	SAY UNIDENTIFIED_DESC @49918
+	SAY NAME1 @1017
+	SAY UNIDENTIFIED_DESC @1018
 	LPF ALTER_SPELL_HEADER INT_VAR target = 5 STR_VAR icon = ~d5lernpr~ END
 	LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 4 duration = 1 STR_VAR resource = ~d5fpspt~ END
 END
@@ -586,8 +586,8 @@ ACTION_IF !(FILE_EXISTS_IN_GAME ~d5fpsp2.spl~) BEGIN
   COPY ~faiths_and_powers/data/misc/d5lernpr.bam~ ~override~
   COPY ~faiths_and_powers/data/misc/d5lernwi.bam~ ~override~
   COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5fpsp2.spl~
-	SAY NAME1 @49917
-	SAY UNIDENTIFIED_DESC @49918
+	SAY NAME1 @1017
+	SAY UNIDENTIFIED_DESC @1018
 	LPF ALTER_SPELL_HEADER INT_VAR target = 5 STR_VAR icon = ~d5msplbk~ END
 	LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 1 parameter1 = 0 parameter2 = 2 timing = 0 duration = 7 STR_VAR resource = ~d5fpsp2~ END
 	LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 timing = 1 STR_VAR resource = ~d5fpsp2~ END
@@ -601,10 +601,10 @@ END
 
 ACTION_IF !(FILE_EXISTS_IN_GAME ~d5shmsp.itm~) BEGIN
  COPY ~faiths_and_powers/kits/multiclass/499_shambarb/d5shmsp.itm~ ~override~
-  SAY NAME1 @49911
-  SAY NAME2 @49911
-  SAY UNIDENTIFIED_DESC @49912
-  SAY IDENTIFIED_DESC @49912
+  SAY NAME1 @1011
+  SAY NAME2 @1011
+  SAY UNIDENTIFIED_DESC @1012
+  SAY IDENTIFIED_DESC @1012
   LPF ALTER_ITEM_HEADER INT_VAR header = 1 target = 7 speed = 0 STR_VAR icon = ~d5lernpr~ END
 END
 
@@ -631,14 +631,14 @@ OUTER_INNER_PATCH ~1~ BEGIN
   WRITE_BYTE 0 0x0d
   READ_ASCII 0 mnl (1)  // 0x0d, Mac
 END
-LAF ~ADD_ITEM_TOOLTIPS~ STR_VAR item = ~d5shmsw~ tooltips = ~@49911~ END
+LAF ~ADD_ITEM_TOOLTIPS~ STR_VAR item = ~d5shmsw~ tooltips = ~@1011~ END
 
 ACTION_IF !(FILE_EXISTS_IN_GAME ~d5shmsw.itm~) BEGIN
  COPY ~faiths_and_powers/kits/multiclass/499_shambarb/d5shmsw.itm~ ~override~
-  SAY NAME1 @49915
-  SAY NAME2 @49915
-  SAY UNIDENTIFIED_DESC @49916
-  SAY IDENTIFIED_DESC @49916
+  SAY NAME1 @1015
+  SAY NAME2 @1015
+  SAY UNIDENTIFIED_DESC @1016
+  SAY IDENTIFIED_DESC @1016
   LPF ALTER_ITEM_HEADER INT_VAR header = 1 target = 7 speed = 0 STR_VAR icon = ~d5lernwi~ END
   LPF ALTER_ITEM_HEADER INT_VAR header = 2 target = 7 speed = 0 STR_VAR icon = ~d5lernpr~ END
   LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 146 opcode = 326 parameter1 = %kit_ids% parameter2 = %kit_is_row% STR_VAR match_resource = ~d5msham~ resource = EVAL ~%learn_itm_res%~ END
@@ -647,7 +647,7 @@ END
 COPY_EXISTING ~d5shmsw.itm~ ~override~
   PATCH_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) AND (FILE_EXISTS_IN_GAME ~%learn_itm_res%.spl~) BEGIN
     LPF DELETE_EFFECT INT_VAR match_opcode = 326 match_parameter1 = %kit_ids% STR_VAR match_resource = EVAL ~%learn_itm_res%~ END 
-    LPF CLONE_EFFECT INT_VAR multi_match = 1 match_opcode = 326 parameter1 = %kit_ids% parameter2 = %kit_is_row% STR_VAR resource = EVAL ~%learn_itm_res%~ END
+    LPF CLONE_EFFECT INT_VAR silent = 1 multi_match = 1 match_opcode = 326 parameter1 = %kit_ids% parameter2 = %kit_is_row% STR_VAR resource = EVAL ~%learn_itm_res%~ END
   END
 BUT_ONLY
 
@@ -657,12 +657,12 @@ OUTER_INNER_PATCH ~1~ BEGIN
   WRITE_BYTE 0 0x0d
   READ_ASCII 0 mnl (1)  // 0x0d, Mac
 END
-LAF ~ADD_ITEM_TOOLTIPS~ STR_VAR item = ~d5shmsw~ tooltips = ~@49913 @49911~ END
+LAF ~ADD_ITEM_TOOLTIPS~ STR_VAR item = ~d5shmsw~ tooltips = ~@1013 @1011~ END
 
 ACTION_IF !(FILE_EXISTS_IN_GAME ~d5yinit.spl~) BEGIN
   COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5yinit.spl~				//	initialize shaman casting
-	SAY NAME1 @49950
-	SAY UNIDENTIFIED_DESC @49950
+	SAY NAME1 @1050
+	SAY UNIDENTIFIED_DESC @1050
 	WRITE_SHORT 0x1c 4
 	LPF ALTER_SPELL_HEADER INT_VAR location = 4 target = 5 STR_VAR icon = ~d5lernpr~ END
 	LPF ADD_SPELL_EFFECT INT_VAR opcode = 112 target = 1 timing = 9 STR_VAR resource = ~d5xsorc~ END
@@ -712,8 +712,8 @@ ACTION_IF !(FILE_EXISTS_IN_GAME ~d5shamb.spl~) BEGIN
 END
 
 COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5yini2.spl~
-  SAY NAME1 @49950
-  SAY UNIDENTIFIED_DESC @49950
+  SAY NAME1 @1050
+  SAY UNIDENTIFIED_DESC @1050
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 4 duration = 1 STR_VAR resource = ~d5yinit~ END
 
 ACTION_IF !(FILE_EXISTS_IN_GAME ~d5__fnp_spont_option.d5~) BEGIN
@@ -731,7 +731,7 @@ END	//	end spell-choice function
 
 DEFINE_ACTION_FUNCTION fnp_spontaneous STR_VAR kit_clab = ~x~ learn_res = ~d5msham~ free_universal = ~yes~ BEGIN
 
-INCLUDE ~%MOD_FOLDER%/lib/semi_spontaneous.tpa~
+INCLUDE ~faiths_and_powers/lib/semi_spontaneous.tpa~
 
 LAF fnp_spell_choice STR_VAR this_kit_clab = EVAL ~%kit_clab%~ learn_itm_res = EVAL ~%learn_res%~ free_universal_spells = EVAL ~%free_universal%~ END
 
@@ -767,8 +767,10 @@ END
 
 //add spell slot stat checks to SPLPROT_______________________________________________
 //
-APPEND ~splprot.2da~ ~D5_DIV_1_7%TAB%134%TAB%-1%TAB%7~ UNLESS ~D5_DIV_1_7~
-APPEND ~splprot.2da~ ~D5_DIV=1_7%TAB%134%TAB%-1%TAB%8~ UNLESS ~D5_DIV=1_7~
+APPEND ~splprot.2da~ ~D5_DIV_1_6%TAB%134%TAB%-1%TAB%7~ UNLESS ~D5_DIV_1_6~
+APPEND ~splprot.2da~ ~D5_DIV=1_6%TAB%134%TAB%-1%TAB%8~ UNLESS ~D5_DIV=1_6~
+APPEND ~splprot.2da~ ~D5_SPL_7_9%TAB%109%TAB%-1%TAB%7~ UNLESS ~D5_SPL_7_9~
+APPEND ~splprot.2da~ ~D5_SPL=7_9%TAB%109%TAB%-1%TAB%8~ UNLESS ~D5_SPL=7_9~
 //APPEND ~splprot.2da~ ~D5_FATIGUE_IS%TAB%30%TAB%-1%TAB%1~ UNLESS ~D5_FATIGUE_IS~
 APPEND ~splprot.2da~ ~D5_FATIGUE_0%TAB%30%TAB%0%TAB%1~ UNLESS ~D5_FATIGUE_0~
 APPEND ~splprot.2da~ ~D5_115_FEATS%TAB%115%TAB%-1%TAB%8~ UNLESS ~D5_115_FEATS~
@@ -779,11 +781,17 @@ COPY_EXISTING ~splprot.2da~ ~override~
   READ_2DA_ENTRIES_NOW rows cols
   FOR (row = 1; row < rows; ++row) BEGIN
 	READ_2DA_ENTRY_FORMER rows row 0 ~stat~
-	PATCH_IF ~%stat%~ STRING_EQUAL_CASE ~D5_DIV_1_7~ BEGIN
-	  SET fake_sham_slots_1_7 = %row%
+	PATCH_IF ~%stat%~ STRING_EQUAL_CASE ~D5_DIV_1_6~ BEGIN
+	  SET fake_sham_slots_1_6 = %row%
 	END
-	PATCH_IF (~%stat%~ STRING_EQUAL_CASE ~D5_DIV=1_7~) BEGIN
-	  SET fake_sham_equal_1_7 = %row%
+	PATCH_IF (~%stat%~ STRING_EQUAL_CASE ~D5_DIV=1_6~) BEGIN
+	  SET fake_sham_equal_1_6 = %row%
+	END
+	PATCH_IF ~%stat%~ STRING_EQUAL_CASE ~D5_SPL_7_9~ BEGIN
+	  SET fake_sham_slots_7 = %row%
+	END
+	PATCH_IF (~%stat%~ STRING_EQUAL_CASE ~D5_SPL=7_9~) BEGIN
+	  SET fake_sham_equal_7 = %row%
 	END
 	PATCH_IF (~%stat%~ STRING_EQUAL_CASE ~D5_FATIGUE_0~) BEGIN
 	  SET fatigue_zero = %row%
@@ -809,198 +817,221 @@ ABILITY     ****        ****        ****        ****        ****        ****    
 //create advance copies of some spells________________________________________________
 //
 COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5sh206.spl~
-COPY ~%MOD_FOLDER%/lib/semi_spont/d5_base.spl~ ~override/d5yy206.spl~
+COPY ~faiths_and_powers/lib/semi_spont/d5_base.spl~ ~override/d5yy206.spl~
 
-COPY ~%MOD_FOLDER%/lib/semi_spont/d5_base.spl~ ~override/d5yy172.spl~
+COPY ~faiths_and_powers/lib/semi_spont/d5_base.spl~ ~override/d5yy172.spl~
 
-COPY ~%MOD_FOLDER%/lib/semi_spont/d5_base.spl~ ~override/d5y0spl.spl~
+COPY ~faiths_and_powers/lib/semi_spont/d5_base.spl~ ~override/d5y0spl.spl~
 
-COPY ~%MOD_FOLDER%/lib/semi_spont/d5_base.spl~ ~override/d5ydot1a.spl~
-COPY ~%MOD_FOLDER%/lib/semi_spont/d5_base.spl~ ~override/d5ydot1b.spl~
-COPY ~%MOD_FOLDER%/lib/semi_spont/d5_base.spl~ ~override/d5ydot1c.spl~
-COPY ~%MOD_FOLDER%/lib/semi_spont/d5_base.spl~ ~override/d5ydot1d.spl~
-COPY ~%MOD_FOLDER%/lib/semi_spont/d5_base.spl~ ~override/d5ydot2a.spl~
-COPY ~%MOD_FOLDER%/lib/semi_spont/d5_base.spl~ ~override/d5ydot2b.spl~
-COPY ~%MOD_FOLDER%/lib/semi_spont/d5_base.spl~ ~override/d5ydot2c.spl~
-COPY ~%MOD_FOLDER%/lib/semi_spont/d5_base.spl~ ~override/d5ydot2d.spl~
-COPY ~%MOD_FOLDER%/lib/semi_spont/d5_base.spl~ ~override/d5ydot3a.spl~
-COPY ~%MOD_FOLDER%/lib/semi_spont/d5_base.spl~ ~override/d5ydot3b.spl~
-COPY ~%MOD_FOLDER%/lib/semi_spont/d5_base.spl~ ~override/d5ydot3c.spl~
-COPY ~%MOD_FOLDER%/lib/semi_spont/d5_base.spl~ ~override/d5ydot3d.spl~
-COPY ~%MOD_FOLDER%/lib/semi_spont/d5_base.spl~ ~override/d5ydot4a.spl~
-COPY ~%MOD_FOLDER%/lib/semi_spont/d5_base.spl~ ~override/d5ydot4b.spl~
-COPY ~%MOD_FOLDER%/lib/semi_spont/d5_base.spl~ ~override/d5ydot4c.spl~
-COPY ~%MOD_FOLDER%/lib/semi_spont/d5_base.spl~ ~override/d5ydot4d.spl~
-COPY ~%MOD_FOLDER%/lib/semi_spont/d5_base.spl~ ~override/d5ydot5a.spl~
-COPY ~%MOD_FOLDER%/lib/semi_spont/d5_base.spl~ ~override/d5ydot5b.spl~
-COPY ~%MOD_FOLDER%/lib/semi_spont/d5_base.spl~ ~override/d5ydot5c.spl~
-COPY ~%MOD_FOLDER%/lib/semi_spont/d5_base.spl~ ~override/d5ydot5d.spl~
-COPY ~%MOD_FOLDER%/lib/semi_spont/d5_base.spl~ ~override/d5ydot6a.spl~
-COPY ~%MOD_FOLDER%/lib/semi_spont/d5_base.spl~ ~override/d5ydot6b.spl~
-COPY ~%MOD_FOLDER%/lib/semi_spont/d5_base.spl~ ~override/d5ydot6c.spl~
-COPY ~%MOD_FOLDER%/lib/semi_spont/d5_base.spl~ ~override/d5ydot6d.spl~
-COPY ~%MOD_FOLDER%/lib/semi_spont/d5_base.spl~ ~override/d5ydot7a.spl~
-COPY ~%MOD_FOLDER%/lib/semi_spont/d5_base.spl~ ~override/d5ydot7b.spl~
-COPY ~%MOD_FOLDER%/lib/semi_spont/d5_base.spl~ ~override/d5ydot7c.spl~
-COPY ~%MOD_FOLDER%/lib/semi_spont/d5_base.spl~ ~override/d5ydot7d.spl~
-COPY ~%MOD_FOLDER%/lib/semi_spont/d5_base.spl~ ~override/d5ydot8a.spl~
-COPY ~%MOD_FOLDER%/lib/semi_spont/d5_base.spl~ ~override/d5ydot8b.spl~
-COPY ~%MOD_FOLDER%/lib/semi_spont/d5_base.spl~ ~override/d5ydot8c.spl~
-COPY ~%MOD_FOLDER%/lib/semi_spont/d5_base.spl~ ~override/d5ydot8d.spl~
-COPY ~%MOD_FOLDER%/lib/semi_spont/d5_base.spl~ ~override/d5ydot9a.spl~
-COPY ~%MOD_FOLDER%/lib/semi_spont/d5_base.spl~ ~override/d5ydot9b.spl~
-COPY ~%MOD_FOLDER%/lib/semi_spont/d5_base.spl~ ~override/d5ydot9c.spl~
-COPY ~%MOD_FOLDER%/lib/semi_spont/d5_base.spl~ ~override/d5ydot9d.spl~
+COPY ~faiths_and_powers/lib/semi_spont/d5_base.spl~ ~override/d5ydot1a.spl~
+COPY ~faiths_and_powers/lib/semi_spont/d5_base.spl~ ~override/d5ydot1b.spl~
+COPY ~faiths_and_powers/lib/semi_spont/d5_base.spl~ ~override/d5ydot1c.spl~
+COPY ~faiths_and_powers/lib/semi_spont/d5_base.spl~ ~override/d5ydot1d.spl~
+COPY ~faiths_and_powers/lib/semi_spont/d5_base.spl~ ~override/d5ydot2a.spl~
+COPY ~faiths_and_powers/lib/semi_spont/d5_base.spl~ ~override/d5ydot2b.spl~
+COPY ~faiths_and_powers/lib/semi_spont/d5_base.spl~ ~override/d5ydot2c.spl~
+COPY ~faiths_and_powers/lib/semi_spont/d5_base.spl~ ~override/d5ydot2d.spl~
+COPY ~faiths_and_powers/lib/semi_spont/d5_base.spl~ ~override/d5ydot3a.spl~
+COPY ~faiths_and_powers/lib/semi_spont/d5_base.spl~ ~override/d5ydot3b.spl~
+COPY ~faiths_and_powers/lib/semi_spont/d5_base.spl~ ~override/d5ydot3c.spl~
+COPY ~faiths_and_powers/lib/semi_spont/d5_base.spl~ ~override/d5ydot3d.spl~
+COPY ~faiths_and_powers/lib/semi_spont/d5_base.spl~ ~override/d5ydot4a.spl~
+COPY ~faiths_and_powers/lib/semi_spont/d5_base.spl~ ~override/d5ydot4b.spl~
+COPY ~faiths_and_powers/lib/semi_spont/d5_base.spl~ ~override/d5ydot4c.spl~
+COPY ~faiths_and_powers/lib/semi_spont/d5_base.spl~ ~override/d5ydot4d.spl~
+COPY ~faiths_and_powers/lib/semi_spont/d5_base.spl~ ~override/d5ydot5a.spl~
+COPY ~faiths_and_powers/lib/semi_spont/d5_base.spl~ ~override/d5ydot5b.spl~
+COPY ~faiths_and_powers/lib/semi_spont/d5_base.spl~ ~override/d5ydot5c.spl~
+COPY ~faiths_and_powers/lib/semi_spont/d5_base.spl~ ~override/d5ydot5d.spl~
+COPY ~faiths_and_powers/lib/semi_spont/d5_base.spl~ ~override/d5ydot6a.spl~
+COPY ~faiths_and_powers/lib/semi_spont/d5_base.spl~ ~override/d5ydot6b.spl~
+COPY ~faiths_and_powers/lib/semi_spont/d5_base.spl~ ~override/d5ydot6c.spl~
+COPY ~faiths_and_powers/lib/semi_spont/d5_base.spl~ ~override/d5ydot6d.spl~
+COPY ~faiths_and_powers/lib/semi_spont/d5_base.spl~ ~override/d5ydot7a.spl~
+COPY ~faiths_and_powers/lib/semi_spont/d5_base.spl~ ~override/d5ydot7b.spl~
+COPY ~faiths_and_powers/lib/semi_spont/d5_base.spl~ ~override/d5ydot7c.spl~
+COPY ~faiths_and_powers/lib/semi_spont/d5_base.spl~ ~override/d5ydot7d.spl~
+COPY ~faiths_and_powers/lib/semi_spont/d5_base.spl~ ~override/d5ydot8a.spl~
+COPY ~faiths_and_powers/lib/semi_spont/d5_base.spl~ ~override/d5ydot8b.spl~
+COPY ~faiths_and_powers/lib/semi_spont/d5_base.spl~ ~override/d5ydot8c.spl~
+COPY ~faiths_and_powers/lib/semi_spont/d5_base.spl~ ~override/d5ydot8d.spl~
+COPY ~faiths_and_powers/lib/semi_spont/d5_base.spl~ ~override/d5ydot9a.spl~
+COPY ~faiths_and_powers/lib/semi_spont/d5_base.spl~ ~override/d5ydot9b.spl~
+COPY ~faiths_and_powers/lib/semi_spont/d5_base.spl~ ~override/d5ydot9c.spl~
+COPY ~faiths_and_powers/lib/semi_spont/d5_base.spl~ ~override/d5ydot9d.spl~
 
-COPY ~%MOD_FOLDER%/lib/semi_spont/d5_base.spl~ ~override/d5yspld.spl~
-  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (1 << 4) parameter2 = %fake_sham_slots_1_7% timing = 1 STR_VAR resource = ~d5ydot1a~ END
-  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (2 << 4) parameter2 = %fake_sham_slots_1_7% timing = 1 STR_VAR resource = ~d5ydot1b~ END
-  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (4 << 4) parameter2 = %fake_sham_slots_1_7% timing = 1 STR_VAR resource = ~d5ydot1c~ END
-  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (8 << 4) parameter2 = %fake_sham_slots_1_7% timing = 1 STR_VAR resource = ~d5ydot1d~ END
-  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (1 << 8) parameter2 = %fake_sham_slots_1_7% timing = 1 STR_VAR resource = ~d5ydot2a~ END
-  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (2 << 8) parameter2 = %fake_sham_slots_1_7% timing = 1 STR_VAR resource = ~d5ydot2b~ END
-  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (4 << 8) parameter2 = %fake_sham_slots_1_7% timing = 1 STR_VAR resource = ~d5ydot2c~ END
-  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (8 << 8) parameter2 = %fake_sham_slots_1_7% timing = 1 STR_VAR resource = ~d5ydot2d~ END
-  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (1 << 12) parameter2 = %fake_sham_slots_1_7% timing = 1 STR_VAR resource = ~d5ydot3a~ END
-  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (2 << 12) parameter2 = %fake_sham_slots_1_7% timing = 1 STR_VAR resource = ~d5ydot3b~ END
-  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (4 << 12) parameter2 = %fake_sham_slots_1_7% timing = 1 STR_VAR resource = ~d5ydot3c~ END
-  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (8 << 12) parameter2 = %fake_sham_slots_1_7% timing = 1 STR_VAR resource = ~d5ydot3d~ END
-  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (1 << 16) parameter2 = %fake_sham_slots_1_7% timing = 1 STR_VAR resource = ~d5ydot4a~ END
-  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (2 << 16) parameter2 = %fake_sham_slots_1_7% timing = 1 STR_VAR resource = ~d5ydot4b~ END
-  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (4 << 16) parameter2 = %fake_sham_slots_1_7% timing = 1 STR_VAR resource = ~d5ydot4c~ END
-  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (8 << 16) parameter2 = %fake_sham_slots_1_7% timing = 1 STR_VAR resource = ~d5ydot4d~ END
-  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (1 << 20) parameter2 = %fake_sham_slots_1_7% timing = 1 STR_VAR resource = ~d5ydot5a~ END
-  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (2 << 20) parameter2 = %fake_sham_slots_1_7% timing = 1 STR_VAR resource = ~d5ydot5b~ END
-  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (4 << 20) parameter2 = %fake_sham_slots_1_7% timing = 1 STR_VAR resource = ~d5ydot5c~ END
-  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (8 << 20) parameter2 = %fake_sham_slots_1_7% timing = 1 STR_VAR resource = ~d5ydot5d~ END
-  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (1 << 24) parameter2 = %fake_sham_slots_1_7% timing = 1 STR_VAR resource = ~d5ydot6a~ END
-  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (2 << 24) parameter2 = %fake_sham_slots_1_7% timing = 1 STR_VAR resource = ~d5ydot6b~ END
-  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (4 << 24) parameter2 = %fake_sham_slots_1_7% timing = 1 STR_VAR resource = ~d5ydot6c~ END
-  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (8 << 24) parameter2 = %fake_sham_slots_1_7% timing = 1 STR_VAR resource = ~d5ydot6d~ END
-  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (1 << 28) parameter2 = %fake_sham_slots_1_7% timing = 1 STR_VAR resource = ~d5ydot7a~ END
-  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (2 << 28) parameter2 = %fake_sham_slots_1_7% timing = 1 STR_VAR resource = ~d5ydot7b~ END
-  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (4 << 28) parameter2 = %fake_sham_slots_1_7% timing = 1 STR_VAR resource = ~d5ydot7c~ END
-  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (8 << 28) parameter2 = %fake_sham_slots_1_7% timing = 1 STR_VAR resource = ~d5ydot7d~ END
+COPY ~faiths_and_powers/lib/semi_spont/d5_base.spl~ ~override/d5yspld.spl~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (1 << 8) parameter2 = %fake_sham_slots_1_6% timing = 1 STR_VAR resource = ~d5ydot1a~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (2 << 8) parameter2 = %fake_sham_slots_1_6% timing = 1 STR_VAR resource = ~d5ydot1b~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (4 << 8) parameter2 = %fake_sham_slots_1_6% timing = 1 STR_VAR resource = ~d5ydot1c~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (8 << 8) parameter2 = %fake_sham_slots_1_6% timing = 1 STR_VAR resource = ~d5ydot1d~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (1 << 12) parameter2 = %fake_sham_slots_1_6% timing = 1 STR_VAR resource = ~d5ydot2a~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (2 << 12) parameter2 = %fake_sham_slots_1_6% timing = 1 STR_VAR resource = ~d5ydot2b~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (4 << 12) parameter2 = %fake_sham_slots_1_6% timing = 1 STR_VAR resource = ~d5ydot2c~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (8 << 12) parameter2 = %fake_sham_slots_1_6% timing = 1 STR_VAR resource = ~d5ydot2d~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (1 << 16) parameter2 = %fake_sham_slots_1_6% timing = 1 STR_VAR resource = ~d5ydot3a~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (2 << 16) parameter2 = %fake_sham_slots_1_6% timing = 1 STR_VAR resource = ~d5ydot3b~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (4 << 16) parameter2 = %fake_sham_slots_1_6% timing = 1 STR_VAR resource = ~d5ydot3c~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (8 << 16) parameter2 = %fake_sham_slots_1_6% timing = 1 STR_VAR resource = ~d5ydot3d~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (1 << 20) parameter2 = %fake_sham_slots_1_6% timing = 1 STR_VAR resource = ~d5ydot4a~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (2 << 20) parameter2 = %fake_sham_slots_1_6% timing = 1 STR_VAR resource = ~d5ydot4b~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (4 << 20) parameter2 = %fake_sham_slots_1_6% timing = 1 STR_VAR resource = ~d5ydot4c~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (8 << 20) parameter2 = %fake_sham_slots_1_6% timing = 1 STR_VAR resource = ~d5ydot4d~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (1 << 24) parameter2 = %fake_sham_slots_1_6% timing = 1 STR_VAR resource = ~d5ydot5a~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (2 << 24) parameter2 = %fake_sham_slots_1_6% timing = 1 STR_VAR resource = ~d5ydot5b~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (4 << 24) parameter2 = %fake_sham_slots_1_6% timing = 1 STR_VAR resource = ~d5ydot5c~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (8 << 24) parameter2 = %fake_sham_slots_1_6% timing = 1 STR_VAR resource = ~d5ydot5d~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (1 << 28) parameter2 = %fake_sham_slots_1_6% timing = 1 STR_VAR resource = ~d5ydot6a~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (2 << 28) parameter2 = %fake_sham_slots_1_6% timing = 1 STR_VAR resource = ~d5ydot6b~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (4 << 28) parameter2 = %fake_sham_slots_1_6% timing = 1 STR_VAR resource = ~d5ydot6c~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (8 << 28) parameter2 = %fake_sham_slots_1_6% timing = 1 STR_VAR resource = ~d5ydot6d~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (1 << 16) parameter2 = %fake_sham_slots_7% timing = 1 STR_VAR resource = ~d5ydot7a~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (2 << 16) parameter2 = %fake_sham_slots_7% timing = 1 STR_VAR resource = ~d5ydot7b~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (4 << 16) parameter2 = %fake_sham_slots_7% timing = 1 STR_VAR resource = ~d5ydot7c~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = (8 << 16) parameter2 = %fake_sham_slots_7% timing = 1 STR_VAR resource = ~d5ydot7d~ END
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 0 duration = 1 STR_VAR resource = ~d5yspld~ END
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 318 insert_point = 0 target = 1 parameter1 = %semi_sham_state% parameter2 = 111 timing = 0 duration = 1 STR_VAR resource = ~d5yspld~ END
 
 //assign stats for spell slots to each spell level____________________________________
 //
-// divine level 1 = 	134 << 4
-// divine level 2 = 	134 << 8
-// divine level 3 = 	134 << 12
-// divine level 4 = 	134 << 16
-// divine level 5 = 	134 << 20
-// divine level 6 = 	134 << 24
-// divine level 7 = 	134 << 28
+// divine level 1 = 	134 << 8
+// divine level 2 = 	134 << 12
+// divine level 3 = 	134 << 16
+// divine level 4 = 	134 << 20
+// divine level 5 = 	134 << 24
+// divine level 6 = 	134 << 28
+// divine level 7 = 	109 << 16
 //
 
 ACTION_IF !(FILE_EXISTS_IN_GAME ~d5shm1a.spl~) BEGIN
   ACTION_FOR_EACH let IN ~a~ BEGIN
-	COPY ~%MOD_FOLDER%/lib/semi_spont/d5_base.spl~ ~override/d5shm1%let%.spl~
+	COPY ~faiths_and_powers/lib/semi_spont/d5_base.spl~ ~override/d5shm1%let%.spl~
 	  SAY NAME1 ~Extra first level spell slot~
 	  SAY UNIDENTIFIED_DESC ~Extra first level spell slot~
 	  LPF ALTER_SPELL_HEADER INT_VAR target = 5 STR_VAR icon = ~spcl919b~ END
-	  LPF ADD_SPELL_EFFECT INT_VAR opcode = 233 target = 1 parameter1 = (1 << 4) parameter2 = (134 + (0x10000 * 1)) timing = 9 END
+	  LPF ADD_SPELL_EFFECT INT_VAR opcode = 233 target = 1 parameter1 = (1 << 8) parameter2 = (134 + (0x10000 * 1)) timing = 9 END
 	  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 STR_VAR resource = EVAL ~d5shm1%let%~ END
   END
 END
 ACTION_IF !(FILE_EXISTS_IN_GAME ~d5shm2a.spl~) BEGIN
   ACTION_FOR_EACH let IN ~a~ BEGIN
-	COPY ~%MOD_FOLDER%/lib/semi_spont/d5_base.spl~ ~override/d5shm2%let%.spl~
+	COPY ~faiths_and_powers/lib/semi_spont/d5_base.spl~ ~override/d5shm2%let%.spl~
 	  SAY NAME1 ~Extra second level spell slot~
 	  SAY UNIDENTIFIED_DESC ~Extra second level spell slot~
 	  LPF ALTER_SPELL_HEADER INT_VAR target = 5 STR_VAR icon = ~spcl919b~ END
-	  LPF ADD_SPELL_EFFECT INT_VAR opcode = 233 target = 1 parameter1 = (1 << 8) parameter2 = (134 + (0x10000 * 1)) timing = 9 END
+	  LPF ADD_SPELL_EFFECT INT_VAR opcode = 233 target = 1 parameter1 = (1 << 12) parameter2 = (134 + (0x10000 * 1)) timing = 9 END
 	  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 STR_VAR resource = EVAL ~d5shm2%let%~ END
   END
 END
 ACTION_IF !(FILE_EXISTS_IN_GAME ~d5shm3a.spl~) BEGIN
   ACTION_FOR_EACH let IN ~a~ BEGIN
-	COPY ~%MOD_FOLDER%/lib/semi_spont/d5_base.spl~ ~override/d5shm3%let%.spl~
+	COPY ~faiths_and_powers/lib/semi_spont/d5_base.spl~ ~override/d5shm3%let%.spl~
 	  SAY NAME1 ~Extra third level spell slot~
 	  SAY UNIDENTIFIED_DESC ~Extra third level spell slot~
 	  LPF ALTER_SPELL_HEADER INT_VAR target = 5 STR_VAR icon = ~spcl919b~ END
-	  LPF ADD_SPELL_EFFECT INT_VAR opcode = 233 target = 1 parameter1 = (1 << 12) parameter2 = (134 + (0x10000 * 1)) timing = 9 END
+	  LPF ADD_SPELL_EFFECT INT_VAR opcode = 233 target = 1 parameter1 = (1 << 16) parameter2 = (134 + (0x10000 * 1)) timing = 9 END
 	  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 STR_VAR resource = EVAL ~d5shm3%let%~ END
   END
 END
 ACTION_IF !(FILE_EXISTS_IN_GAME ~d5shm4a.spl~) BEGIN
   ACTION_FOR_EACH let IN ~a~ BEGIN
-	COPY ~%MOD_FOLDER%/lib/semi_spont/d5_base.spl~ ~override/d5shm4%let%.spl~
+	COPY ~faiths_and_powers/lib/semi_spont/d5_base.spl~ ~override/d5shm4%let%.spl~
 	  SAY NAME1 ~Extra fourth level spell slot~
 	  SAY UNIDENTIFIED_DESC~Extra fourth level spell slot~
 	  LPF ALTER_SPELL_HEADER INT_VAR target = 5 STR_VAR icon = ~spcl919b~ END
-	  LPF ADD_SPELL_EFFECT INT_VAR opcode = 233 target = 1 parameter1 = (1 << 16) parameter2 = (134 + (0x10000 * 1)) timing = 9 END
+	  LPF ADD_SPELL_EFFECT INT_VAR opcode = 233 target = 1 parameter1 = (1 << 20) parameter2 = (134 + (0x10000 * 1)) timing = 9 END
 	  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 STR_VAR resource = EVAL ~d5shm4%let%~ END
   END
 END
 ACTION_IF !(FILE_EXISTS_IN_GAME ~d5shm5a.spl~) BEGIN
   ACTION_FOR_EACH let IN ~a~ BEGIN
-	COPY ~%MOD_FOLDER%/lib/semi_spont/d5_base.spl~ ~override/d5shm5%let%.spl~
+	COPY ~faiths_and_powers/lib/semi_spont/d5_base.spl~ ~override/d5shm5%let%.spl~
 	  SAY NAME1 ~Extra fifth level spell slot~
 	  SAY UNIDENTIFIED_DESC ~Extra fifth level spell slot~
 	  LPF ALTER_SPELL_HEADER INT_VAR target = 5 STR_VAR icon = ~spcl919b~ END
-	  LPF ADD_SPELL_EFFECT INT_VAR opcode = 233 target = 1 parameter1 = (1 << 20) parameter2 = (134 + (0x10000 * 1)) timing = 9 END
+	  LPF ADD_SPELL_EFFECT INT_VAR opcode = 233 target = 1 parameter1 = (1 << 24) parameter2 = (134 + (0x10000 * 1)) timing = 9 END
 	  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 STR_VAR resource = EVAL ~d5shm5%let%~ END
   END
 END
 ACTION_IF !(FILE_EXISTS_IN_GAME ~d5shm6a.spl~) BEGIN
   ACTION_FOR_EACH let IN ~a~ BEGIN
-	COPY ~%MOD_FOLDER%/lib/semi_spont/d5_base.spl~ ~override/d5shm6%let%.spl~
+	COPY ~faiths_and_powers/lib/semi_spont/d5_base.spl~ ~override/d5shm6%let%.spl~
 	  SAY NAME1 ~Extra sixth level spell slot~
 	  SAY UNIDENTIFIED_DESC ~Extra sixth level spell slot~
 	  LPF ALTER_SPELL_HEADER INT_VAR target = 5 STR_VAR icon = ~spcl919b~ END
-	  LPF ADD_SPELL_EFFECT INT_VAR opcode = 233 target = 1 parameter1 = (1 << 24) parameter2 = (134 + (0x10000 * 1)) timing = 9 END
+	  LPF ADD_SPELL_EFFECT INT_VAR opcode = 233 target = 1 parameter1 = (1 << 28) parameter2 = (134 + (0x10000 * 1)) timing = 9 END
 	  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 STR_VAR resource = EVAL ~d5shm6%let%~ END
   END
 END
 ACTION_IF !(FILE_EXISTS_IN_GAME ~d5shm7a.spl~) BEGIN
   ACTION_FOR_EACH let IN ~a~ BEGIN
-	COPY ~%MOD_FOLDER%/lib/semi_spont/d5_base.spl~ ~override/d5shm7%let%.spl~
+	COPY ~faiths_and_powers/lib/semi_spont/d5_base.spl~ ~override/d5shm7%let%.spl~
 	  SAY NAME1 ~Extra seventh level spell slot~
 	  SAY UNIDENTIFIED_DESC ~Extra seventh level spell slot~
 	  LPF ALTER_SPELL_HEADER INT_VAR target = 5 STR_VAR icon = ~spcl919b~ END
-	  LPF ADD_SPELL_EFFECT INT_VAR opcode = 233 target = 1 parameter1 = (1 << 28) parameter2 = (134 + (0x10000 * 1)) timing = 9 END
+	  LPF ADD_SPELL_EFFECT INT_VAR opcode = 233 target = 1 parameter1 = (1 << 16) parameter2 = (109 + (0x10000 * 1)) timing = 9 END
 	  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 STR_VAR resource = EVAL ~d5shm7%let%~ END
   END
 END
 
 ACTION_IF !(FILE_EXISTS_IN_GAME ~d5shm-1.spl~) BEGIN
- COPY ~%MOD_FOLDER%/lib/semi_spont/d5_base.spl~ ~override/d5shm-1.spl~
-   LPF ADD_SPELL_EFFECT INT_VAR opcode = 233 target = 1 parameter1 = ((0 - 1) << 4) parameter2 = (134 + (0x10000 * 1)) timing = 1 END
-END
-ACTION_IF !(FILE_EXISTS_IN_GAME ~d5shm-2.spl~) BEGIN
- COPY ~%MOD_FOLDER%/lib/semi_spont/d5_base.spl~ ~override/d5shm-2.spl~
+ COPY ~faiths_and_powers/lib/semi_spont/d5_base.spl~ ~override/d5shm-1.spl~
    LPF ADD_SPELL_EFFECT INT_VAR opcode = 233 target = 1 parameter1 = ((0 - 1) << 8) parameter2 = (134 + (0x10000 * 1)) timing = 1 END
 END
-ACTION_IF !(FILE_EXISTS_IN_GAME ~d5shm-3.spl~) BEGIN
- COPY ~%MOD_FOLDER%/lib/semi_spont/d5_base.spl~ ~override/d5shm-3.spl~
+ACTION_IF !(FILE_EXISTS_IN_GAME ~d5shm-2.spl~) BEGIN
+ COPY ~faiths_and_powers/lib/semi_spont/d5_base.spl~ ~override/d5shm-2.spl~
    LPF ADD_SPELL_EFFECT INT_VAR opcode = 233 target = 1 parameter1 = ((0 - 1) << 12) parameter2 = (134 + (0x10000 * 1)) timing = 1 END
 END
-ACTION_IF !(FILE_EXISTS_IN_GAME ~d5shm-4.spl~) BEGIN
- COPY ~%MOD_FOLDER%/lib/semi_spont/d5_base.spl~ ~override/d5shm-4.spl~
+ACTION_IF !(FILE_EXISTS_IN_GAME ~d5shm-3.spl~) BEGIN
+ COPY ~faiths_and_powers/lib/semi_spont/d5_base.spl~ ~override/d5shm-3.spl~
    LPF ADD_SPELL_EFFECT INT_VAR opcode = 233 target = 1 parameter1 = ((0 - 1) << 16) parameter2 = (134 + (0x10000 * 1)) timing = 1 END
 END
-ACTION_IF !(FILE_EXISTS_IN_GAME ~d5shm-5.spl~) BEGIN
- COPY ~%MOD_FOLDER%/lib/semi_spont/d5_base.spl~ ~override/d5shm-5.spl~
+ACTION_IF !(FILE_EXISTS_IN_GAME ~d5shm-4.spl~) BEGIN
+ COPY ~faiths_and_powers/lib/semi_spont/d5_base.spl~ ~override/d5shm-4.spl~
    LPF ADD_SPELL_EFFECT INT_VAR opcode = 233 target = 1 parameter1 = ((0 - 1) << 20) parameter2 = (134 + (0x10000 * 1)) timing = 1 END
 END
-ACTION_IF !(FILE_EXISTS_IN_GAME ~d5shm-6.spl~) BEGIN
- COPY ~%MOD_FOLDER%/lib/semi_spont/d5_base.spl~ ~override/d5shm-6.spl~
+ACTION_IF !(FILE_EXISTS_IN_GAME ~d5shm-5.spl~) BEGIN
+ COPY ~faiths_and_powers/lib/semi_spont/d5_base.spl~ ~override/d5shm-5.spl~
    LPF ADD_SPELL_EFFECT INT_VAR opcode = 233 target = 1 parameter1 = ((0 - 1) << 24) parameter2 = (134 + (0x10000 * 1)) timing = 1 END
 END
-ACTION_IF !(FILE_EXISTS_IN_GAME ~d5shm-7.spl~) BEGIN
- COPY ~%MOD_FOLDER%/lib/semi_spont/d5_base.spl~ ~override/d5shm-7.spl~
+ACTION_IF !(FILE_EXISTS_IN_GAME ~d5shm-6.spl~) BEGIN
+ COPY ~faiths_and_powers/lib/semi_spont/d5_base.spl~ ~override/d5shm-6.spl~
    LPF ADD_SPELL_EFFECT INT_VAR opcode = 233 target = 1 parameter1 = ((0 - 1) << 28) parameter2 = (134 + (0x10000 * 1)) timing = 1 END
+END
+ACTION_IF !(FILE_EXISTS_IN_GAME ~d5shm-7.spl~) BEGIN
+ COPY ~faiths_and_powers/lib/semi_spont/d5_base.spl~ ~override/d5shm-7.spl~
+   LPF ADD_SPELL_EFFECT INT_VAR opcode = 233 target = 1 parameter1 = ((0 - 1) << 16) parameter2 = (109 + (0x10000 * 1)) timing = 1 END
+END
+
+
+//quickly address wondrous recall_____________________________________________________
+//
+ACTION_IF (MOD_IS_INSTALLED ~d5_random_tweaks.tp2~ ~1611~) BEGIN
+  COPY_EXISTING ~sppr611.spl~ ~override~
+    LPF DELETE_EFFECT INT_VAR match_opcode = 321 STR_VAR match_resource = ~d5shm-1~ END
+    LPF DELETE_EFFECT INT_VAR match_opcode = 321 STR_VAR match_resource = ~d5shm-2~ END
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 9 STR_VAR resource = ~d5shm-1~ END
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 9 STR_VAR resource = ~d5shm-2~ END
+  BUT_ONLY
+  ACTION_IF (FILE_EXISTS_IN_GAME ~dvsrv4here.mrk~) BEGIN
+    ACTION_IF (FILE_EXISTS_IN_GAME ~potn43.spl~) BEGIN
+//	  COPY_EXISTING ~sppr611.spl~ ~override/potn43.spl~
+	  COPY_EXISTING ~potn43.spl~ ~override~
+        LPF DELETE_EFFECT INT_VAR match_opcode = 321 STR_VAR match_resource = ~d5shm-1~ END
+        LPF DELETE_EFFECT INT_VAR match_opcode = 321 STR_VAR match_resource = ~d5shm-2~ END
+		LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 9 STR_VAR resource = ~d5shm-1~ END
+		LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 9 STR_VAR resource = ~d5shm-2~ END
+	  IF_EXISTS BUT_ONLY
+    END
+  END
 END
 
 
 //daily spell slot refresh____________________________________________________________
 //
-COPY ~%MOD_FOLDER%/lib/semi_spont/d5zcast.bam~ ~override~
+COPY ~faiths_and_powers/lib/semi_spont/d5zcast.bam~ ~override~
 
-COPY ~%MOD_FOLDER%/lib/semi_spont/d5_base.spl~ ~override/d5ylotz.spl~
+COPY ~faiths_and_powers/lib/semi_spont/d5_base.spl~ ~override/d5ylotz.spl~
   SAY NAME1 ~initialize 5E spellcasting~
   SAY UNIDENTIFIED_DESC ~initialize 5E spellcasting~
   LPF ALTER_SPELL_HEADER INT_VAR target = 7 STR_VAR icon = ~d5zcast~ END
@@ -1019,7 +1050,7 @@ ACTION_IF !(FILE_EXISTS_IN_GAME ~d5ylots.eff~) BEGIN
 END
 
 ACTION_IF !(FILE_EXISTS_IN_GAME ~d5ylots.spl~) BEGIN
-  COPY ~%MOD_FOLDER%/lib/semi_spont/d5_base.spl~ ~override/d5ylots.spl~
+  COPY ~faiths_and_powers/lib/semi_spont/d5_base.spl~ ~override/d5ylots.spl~
     LPF ALTER_SPELL_HEADER INT_VAR target = 5 END
 //	LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = %semi_sham_state% parameter2 = 111 timing = 1 STR_VAR resource = ~d5ysttd~ END
 //	LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = %semi_sham_state% parameter2 = 111 timing = 1 STR_VAR resource = ~d5yyini~ END
@@ -1028,28 +1059,28 @@ END
 
 /*
 ACTION_IF !(FILE_EXISTS_IN_GAME ~d5yy001.spl~) BEGIN
-  COPY ~%MOD_FOLDER%/lib/semi_spont/d5_base.spl~ ~override/d5yy001.spl~
+  COPY ~faiths_and_powers/lib/semi_spont/d5_base.spl~ ~override/d5yy001.spl~
     LPF ALTER_SPELL_HEADER INT_VAR target = 5 END
 	LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = %semi_sham_state% parameter2 = 111 timing = 1 STR_VAR resource = ~d5yyini~ END
 	LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = %semi_sham_state% parameter2 = 111 timing = 1 STR_VAR resource = ~d5ysttd~ END
 END
 
 ACTION_IF !(FILE_EXISTS_IN_GAME ~d5ysttd.spl~) BEGIN
-  COPY ~%MOD_FOLDER%/lib/semi_spont/d5_base.spl~ ~override/d5ysttd.spl~
+  COPY ~faiths_and_powers/lib/semi_spont/d5_base.spl~ ~override/d5ysttd.spl~
     LPF ADD_SPELL_EFFECT INT_VAR opcode = 328 target = 1 special = 1 parameter2 = %semi_sham_state% timing = 9 END
     LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 318 target = 1 parameter1 = %semi_sham_state% parameter2 = 110 timing = 0 duration = 1 STR_VAR resource = ~d5ysttd~ END
 END
 */
 
 ACTION_IF !(FILE_EXISTS_IN_GAME ~d5ylotf.spl~) BEGIN
-  COPY ~%MOD_FOLDER%/lib/semi_spont/d5_base.spl~ ~override/d5ylotf.spl~
+  COPY ~faiths_and_powers/lib/semi_spont/d5_base.spl~ ~override/d5ylotf.spl~
     LPF ALTER_SPELL_HEADER INT_VAR target = 5 END
 //  	LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 9 STR_VAR resource = ~d5ynfsh~ END
 	LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = %semi_sham_state% parameter2 = 110 timing = 1 STR_VAR resource = ~d5yrfsh~ END
 END
 
 ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5yrfsh.spl~ BEGIN
- COPY ~%MOD_FOLDER%/lib/semi_spont/d5_base.spl~ ~override/d5yrfsh.spl~
+ COPY ~faiths_and_powers/lib/semi_spont/d5_base.spl~ ~override/d5yrfsh.spl~
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 93 target = 1 parameter1 = 1 parameter2 = 1 timing = 1 END
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 9 STR_VAR resource = ~d5shm-1~ END
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 9 STR_VAR resource = ~d5shm-2~ END
@@ -1066,7 +1097,7 @@ END
 
 /*
 ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5ynfsh.spl~ BEGIN
- COPY ~%MOD_FOLDER%/lib/semi_spont/d5_base.spl~ ~override/d5ynfsh.spl~
+ COPY ~faiths_and_powers/lib/semi_spont/d5_base.spl~ ~override/d5ynfsh.spl~
     LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 0 duration = 18 STR_VAR resource = ~d5yrfsh~ END
 END
 */
@@ -1100,7 +1131,7 @@ COPY_EXISTING ~d5fpspt.spl~ ~override~
     LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 318 target = 1 parameter1 = %semi_sham_state% parameter2 = 110 timing = 0 duration = 1 STR_VAR resource = ~d5ysttd~ END
 
 ACTION_IF !(FILE_EXISTS_IN_GAME ~d5yyini.spl~) BEGIN
-  COPY ~%MOD_FOLDER%/lib/semi_spont/d5_base.spl~ ~override/d5yyini.spl~
+  COPY ~faiths_and_powers/lib/semi_spont/d5_base.spl~ ~override/d5yyini.spl~
     LPF ALTER_SPELL_HEADER INT_VAR target = 5 END
     LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5y0slt~ END
     LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = ~d5y0slt~ END
@@ -1125,7 +1156,7 @@ ACTION_IF !(FILE_EXISTS_IN_GAME ~d5yspt0.spl~) BEGIN
 END
 
 ACTION_IF !(FILE_EXISTS_IN_GAME ~d5y0slt.spl~) BEGIN
- COPY ~%MOD_FOLDER%/lib/semi_spont/d5_base.spl~ ~override/d5y0slt.spl~
+ COPY ~faiths_and_powers/lib/semi_spont/d5_base.spl~ ~override/d5y0slt.spl~
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 62 target = 1 parameter1 = (0 - 1) parameter2 = 127 timing = 9 END
  BUT_ONLY
 END
@@ -1139,20 +1170,20 @@ ACTION_IF (MOD_IS_INSTALLED ~tomeandblood.tp2~ ~71~) OR (MOD_IS_INSTALLED ~tomea
 BEGIN ~D5_CWTCH~
 
 IF ~Global("D5_CWTCH","GLOBAL",1)~ THEN BEGIN d5_cwtch
-SAY @141 
+SAY @1041 
 >>>>>>>> 
 
   COPY ~d5/d5cwtch1.txt~ ~weidu_external/faiths_and_powers/d5cwtch1.txt~
 
 <<<<<<<< d5/d5cwtch2.txt
-IF ~~ THEN REPLY @142 EXIT
+IF ~~ THEN REPLY @1042 EXIT
 END
 
 >>>>>>>> 
 
   COPY ~d5/d5cwtch2.txt~ ~weidu_external/faiths_and_powers/d5cwtch2.txt~
 
-  OUTER_SPRINT switch_prefix @141
+  OUTER_SPRINT switch_prefix @1041
 
 END
 
@@ -1232,10 +1263,10 @@ COPY_EXISTING ~d5fnplst.2da~ ~override~
 			LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = %semi_sham_state% parameter2 = 110 timing = 4 duration = 1 STR_VAR resource = ~d5yspld~ END
 		  IF_EXISTS
 // make spells adding the innate spell
-		COPY ~%MOD_FOLDER%/lib/semi_spont/d5_base.spl~ ~override/%giv_spl%.spl~
+		COPY ~faiths_and_powers/lib/semi_spont/d5_base.spl~ ~override/%giv_spl%.spl~
           LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = EVAL ~%spt_spl%~ END
 // make 206 spells preventing the .EFF
-		  COPY ~%MOD_FOLDER%/lib/semi_spont/d5_base.spl~ ~override/%206_spl%.spl~
+		  COPY ~faiths_and_powers/lib/semi_spont/d5_base.spl~ ~override/%206_spl%.spl~
 			WRITE_SHORT 0x1c 4
 		  	LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 STR_VAR resource = EVAL ~%giv_spl%~ END
 // add 206 spells to CLAB spell
@@ -1245,7 +1276,7 @@ COPY_EXISTING ~d5fnplst.2da~ ~override~
 		    LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = EVAL ~%206_spl%~ END
 	  	    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 321 target = 1 timing = 9 STR_VAR resource = EVAL ~%206_spl%~ END
 // make learn spells canceling the 206
-		  COPY ~%MOD_FOLDER%/lib/semi_spont/d5_base.spl~ ~override/%lrn_spl%.spl~
+		  COPY ~faiths_and_powers/lib/semi_spont/d5_base.spl~ ~override/%lrn_spl%.spl~
 	  	    LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 9 STR_VAR resource = EVAL ~%206_spl%~ END
 		    LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = %semi_sham_state% parameter2 = 110 timing = 1 duration = 0 STR_VAR resource = ~d5yy172~ END
 			LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = %semi_sham_state% parameter2 = 110 timing = 4 duration = 1 STR_VAR resource = ~d5yspld~ END
@@ -1276,14 +1307,14 @@ COPY_EXISTING ~d5fnplst.2da~ ~override~
 				  LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 timing = 1 STR_VAR resource = EVAL ~%fnp_spl%~ END
 			      LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = %semi_sham_state% parameter2 = 110 timing = 1 STR_VAR resource = EVAL ~%swch_subspl%~ END
 			    BUT_ONLY
-			    COPY ~%MOD_FOLDER%/lib/semi_spont/d5_base.spl~ ~override/%swch_subspl%.spl~
+			    COPY ~faiths_and_powers/lib/semi_spont/d5_base.spl~ ~override/%swch_subspl%.spl~
 			      LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 1 STR_VAR resource = EVAL ~%lrn_spl%~ END 
 			      LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = EVAL ~%206_spl%~ END
 				  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = %semi_sham_state% parameter2 = 110 timing = 1 duration = 0 STR_VAR resource = ~d5yy172~ END
 				  LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = %semi_sham_state% parameter2 = 110 timing = 4 duration = 1 STR_VAR resource = ~d5yspld~ END
 		        OUTER_SPRINT switch_spell_text ~%switch_prefix%: %spell_name%~
 			    APPEND_OUTER ~weidu_external/faiths_and_powers/d5cwtch1.txt~ ~~~~~IF ~HaveKnownSpellRES("%fnp_spl%")~ THEN REPLY ~%spell_name%~ GOTO d5_cwtch_%spt_ind%~~~~~ KEEP_CRLF
-			    APPEND_OUTER ~weidu_external/faiths_and_powers/d5cwtch2.txt~ ~~~~~IF ~~ THEN BEGIN d5_cwtch_%spt_ind% %WNL% SAY ~%switch_spell_text%~ %WNL% IF ~~ THEN REPLY @143 DO ~ApplySpellRES("%swch_spl%",myself)~ EXIT %WNL% IF ~~ THEN REPLY @144 GOTO d5_cwtch %WNL% IF ~~ THEN REPLY @142 EXIT %WNL% END %WNL%~~~~~ KEEP_CRLF
+			    APPEND_OUTER ~weidu_external/faiths_and_powers/d5cwtch2.txt~ ~~~~~IF ~~ THEN BEGIN d5_cwtch_%spt_ind% %WNL% SAY ~%switch_spell_text%~ %WNL% IF ~~ THEN REPLY @1043 DO ~ApplySpellRES("%swch_spl%",myself)~ EXIT %WNL% IF ~~ THEN REPLY @1044 GOTO d5_cwtch %WNL% IF ~~ THEN REPLY @1042 EXIT %WNL% END %WNL%~~~~~ KEEP_CRLF
 			  END
 			END
 	      END
@@ -1356,12 +1387,12 @@ COPY ~d5/d5cwtch.baf~ ~weidu_external/faiths_and_powers/d5cwtch.baf~
 
 COMPILE ~weidu_external/faiths_and_powers/d5cwtch.baf~
 
-COPY ~%MOD_FOLDER%/lib/semi_spont/d5swtch.bam~ ~override~
-COPY ~%MOD_FOLDER%/lib/semi_spont/d5zpurp.bam~ ~override~
+COPY ~faiths_and_powers/lib/semi_spont/d5swtch.bam~ ~override~
+COPY ~faiths_and_powers/lib/semi_spont/d5zpurp.bam~ ~override~
 
-COPY ~%MOD_FOLDER%/lib/d5_base.spl~ ~override/d5cwtch.spl~
-  SAY NAME1 @141
-  SAY UNIDENTIFIED_DESC @141
+COPY ~faiths_and_powers/lib/d5_base.spl~ ~override/d5cwtch.spl~
+  SAY NAME1 @1041
+  SAY UNIDENTIFIED_DESC @1041
   WRITE_SHORT 0x1c 4
   WRITE_ASCII 0x3a ~d5zpurp~ #8
   LPF ALTER_SPELL_HEADER INT_VAR location = 4 target = 5 STR_VAR icon = ~d5zpurp~ END
@@ -1380,11 +1411,11 @@ CREATE EFF ~d5cwtch~
 
 COPY ~faiths_and_powers/data/misc/d5cwtch.cre~ ~override~
 
-COPY ~%MOD_FOLDER%/lib/d5_base.spl~ ~override/d5cwch2.spl~
+COPY ~faiths_and_powers/lib/d5_base.spl~ ~override/d5cwch2.spl~
   LPF ALTER_SPELL_HEADER INT_VAR target = 5 END
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 2 parameter1 = (1 << 24) parameter2 = %115_bit_row% timing = 1 STR_VAR resource = ~d5cwch1~ END
 
-COPY ~%MOD_FOLDER%/lib/d5_base.spl~ ~override/d5cwch1.spl~
+COPY ~faiths_and_powers/lib/d5_base.spl~ ~override/d5cwch1.spl~
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 318 target = 1 parameter1 = (1 << 24) parameter2 = %115_bit_row% timing = 0 duration = 1 STR_VAR resource = ~d5cwch1~ END
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = ~d5cwtch~ END
 
@@ -1625,7 +1656,7 @@ ACTION_IF (IS_AN_INT %burning_hands_strref%) BEGIN
 END
 
 
-COPY ~%MOD_FOLDER%/lib/semi_spont/d5_marker.d5~ ~override/d5__fnp_spont_casting.d5~
+COPY ~faiths_and_powers/lib/semi_spont/d5_marker.d5~ ~override/d5__fnp_spont_casting.d5~
 
 END	//	end if d5__fnp_spont_casting.d5 doesn't exist -- above code only needs to be run once
 

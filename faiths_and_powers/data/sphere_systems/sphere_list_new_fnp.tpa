@@ -25,7 +25,7 @@
 @12521  =  ~Radiance~
 @12522  =  ~Shadow~
 @12523  =  ~no_sphere_1~
-@12524  =  ~Spirit~
+@12524  =  ~Astral~
 */
 
 // First item: spell IDS name *or* RES filename
@@ -59,17 +59,18 @@ CLERIC_BREAK_ENCHANTMENT                0	=	Universal
 CLERIC_LESSER_RESTORATION              	0	=	Universal // level 4
 CLERIC_RECITATION                      	0	=	Universal // level 4
 CLERIC_RIGHTEOUS_WRATH_OF_THE_FAITHFUL 	0	=	Universal // level 5
-CLERIC_WONDROUS_RECALL                 	0	=	Universal // level 6
+CLERIC_BOLT_OF_GLORY                    0	=	Universal // level 6
 CLERIC_RESTORATION                     	0	=	Universal // level 7
 CLERIC_HOLY_WORD                       	0	=	Universal // level 7
 CLERIC_UNHOLY_WORD                     	0	=	Universal // level 7
 CLERIC_CURE_LIGHT_WOUNDS               	1	=	All 
 CLERIC_AID                              1	=	All
+CLERIC_SLOW_POISON                     	1	=	All  //B_Spells protection from - 2nd level protection
 CLERIC_SANCTUARY                        2	=	All
-CLERIC_SLOW_POISON                     	2	=	All  //B_Spells protection from  - 2nd level protection
 CLERIC_CURE_MODERATE_WOUNDS            	2	=	All  //SR accounted for
 CLERIC_REMOVE_PARALYSIS                 2	=	All
-CLERIC_DISRUPT_UNDEAD                  	3	=	All
+CLERIC_DISRUPT_UNDEAD                  	2	=	All
+b_c105                                  2	=	All
 CLERIC_CURE_MEDIUM_WOUNDS              	3	=	All
 CLERIC_HOLY_SMITE                       3	=	All
 CLERIC_UNHOLY_BLIGHT                    3	=	All
@@ -84,8 +85,10 @@ CLERIC_DESTRUCTION                      7	=	All
 CLERIC_RESURRECTION                    	7	=	All
 CLERIC_CAUSE_LIGHT_WOUNDS              	1	= 	Death
 CLERIC_EYES_OF_THE_DEAD                	1	=	Death
+b_c104                                  1	=	Death
 CLERIC_CAUSE_MODERATE_WOUNDS           	2	=	Death  //SR accounted for
 CLERIC_PACIFY_DEAD                     	2	=	Death
+b_c202                                  2	=	Death
 CLERIC_CIRCLE_OF_BONES                 	3	=	Death  //Sr accounted for
 CLERIC_CAUSE_MEDIUM_WOUNDS              3	=	Death
 CLERIC_ANIMATE_DEAD                    	4	=	Death
@@ -96,10 +99,12 @@ CLERIC_HARM                             6	=	Death
 B_W631                                 	6	=	Death  //soul eater (needed???)
 CLERIC_FINGER_OF_DEATH                 	7	=	Death
 CLERIC_COMMAND                          1	=	Law
+CLERIC_SILENCE_15_FOOT                  1	=	Law
 CLERIC_FORBID                           2	=	Law
-CLERIC_SILENCE_15_FOOT                  2	=	Law
+b_c201                                  2	=	Law
 CLERIC_HOLD_PERSON                      2	=	Law
 CLERIC_DICTATE                          3	=	Law
+b_p3xx                                  3	=	Law
 CLERIC_HOLD_ANIMAL                      3	=	Law
 CLERIC_EXALTATION                       4	=	Law
 WIZARD_SECRET_WORD                      4	=	Law
@@ -111,13 +116,14 @@ CLERIC_DOOM                             1	=	Chaos
 CLERIC_RIGID_THINKING                   2	=	Chaos
 CLERIC_MISCAST_MAGIC                    2	=	Chaos
 CLERIC_MURDEROUS_COMMAND                3	=	Chaos
+b_c301                                  3	=	Choas
 CLERIC_CLOAK_OF_FEAR                    3	=	Chaos
 CLERIC_BLOOD_RAGE                       4	=	Chaos
 WIZARD_GREATER_MALISON                  4	=	Chaos
 CLERIC_MISFIRE                          5	=	Chaos
 CLERIC_CONFUSION                     	5	=	Chaos
-CLERIC_PHYSICAL_MIRROR                  5	=	Chaos
-CLERIC_CHAOTIC_COMMANDS                 6	=	Chaos
+CLERIC_CHAOTIC_COMMANDS                 5	=	Chaos
+CLERIC_PHYSICAL_MIRROR                  6	=	Chaos
 CLERIC_MAGIC_RESISTANCE                 6	=	Chaos
 CLERIC_SPIRITUAL_WRATH                  7	=	Chaos
 CLERIC_PROTECT_FROM_EVIL                1	=	Protection
@@ -135,7 +141,9 @@ CLERIC_CELESTIAL_PROTECTION             6	=	Protection
 CLERIC_GREATER_SHIELD_OF_LATHANDER      7	=	Protection
 CLERIC_MASS_NEGATIVE_PLANE_PROTECTION   7	=	Protection
 CLERIC_ABUNDANT_AMMO                    1	=	War
+b_r101                                  1   =   War
 CLERIC_MAGIC_WEAPON                     1	=	War
+b_c107                                  1	=	War
 CLERIC_STRIKING                         1	=	War
 CLERIC_SPIRITUAL_HAMMER                 2	=	War
 CLERIC_SEEKING                          2	=	War
@@ -155,6 +163,7 @@ d5fnp02                                 2	=	Time // mazzy haste (self-only)
 CLERIC_FREE_ACTION                      3	=	Time
 WIZARD_HASTE                            3	=	Time
 WIZARD_SLOW                             4	=	Time
+CLERIC_WONDROUS_RECALL                 	4	=	Time
 WIZARD_STONE_TO_FLESH                   5	=	Time
 WIZARD_FLESH_TO_STONE                   6	=	Time
 WIZARD_IMPROVED_HASTE                   6	=	Time
@@ -185,6 +194,7 @@ WIZARD_SIMULACRUM                       7	=	Deceit
 CLERIC_CHARM_PERSON                     1	=	Thought
 CLERIC_REMOVE_FEAR                      2	=	Thought
 CLERIC_ENTHRALL                         2	=	Thought
+b_p201                                  2	=	Thought
 WIZARD_EMOTION_COURAGE                  3	=	Thought
 b_w427                                  3	=	Thought // Emotion: Courage
 WIZARD_EMOTION_FEAR                     3	=	Thought
@@ -194,7 +204,6 @@ b_w429                                  4	=	Thought // Emotion: Hope
 WIZARD_EMOTION_HOPELESSNESS             4	=	Thought
 CLERIC_MENTAL_DOMINATION                5	=	Thought
 CLERIC_GREATER_COMMAND                  5	=	Thought
-CLERIC_CONFUSION                        6	=	Thought
 CLERIC_IMPERVIOUS_SANCTITY_OF_MIND      6	=	Thought
 CLERIC_NATURE_BEAUTY                    7	=	Thought
 CLERIC_UNFAILING_ENDURANCE              1	=	Vigor
@@ -215,7 +224,9 @@ CLERIC_SUPERHEROISM                    	6	=	Vigor
 CLERIC_REGENERATE                       7	=	Vigor
 CLERIC_AURA_OF_VITALITY                 7	=	Vigor
 CLERIC_CAUSE_DISEASE                   	1	=	Decay  //SR accounted for
+b_pr101                                 1	=	Decay
 CLERIC_SHATTER                          2	=	Decay
+b_pr201                                 2	=	Decay
 CLERIC_MOLD_TOUCH                      	3	=	Decay
 WIZARD_WAVES_OF_FATIGUE                 4	=	Decay
 CLERIC_POISON                          	4	=	Decay
@@ -224,10 +235,12 @@ CLERIC_CLOUD_OF_PESTILENCE              5	=	Decay
 CLERIC_DOLOROUS_DECAY                  	6	=	Decay
 CLERIC_WITHER                           7	=	Decay
 CLERIC_ANIMAL_EYES                      1	=	Animal
+b_c102                                  1 	=	Animal
 CLERIC_ANIMAL_SUMMONING_LEVEL_1         1	=	Animal // SR Animal Summon 1
 CLERIC_BEAST_CLAW                       2	=	Animal
 CLERIC_ANIMAL_SUMMONING_LEVEL_2         2	=	Animal // SR Animal Summon 2
 CLERIC_FERAL_INSTINCT                   3	=	Animal
+b_p302                                  3	=	Animal
 CLERIC_ANIMAL_SUMMONING_LEVEL_3         3	=	Animal // SR Animal Summon 3
 d5fnp04                                 3	=	Animal // Magic Fang
 SR_CLERIC_ANIMAL_SUMMONING_LEVEL_4      4	=	Animal // SR Animal Summon 4
@@ -257,6 +270,7 @@ CLERIC_SHILLELAGH                       1	=	Plant
 CLERIC_BARKSKIN                         2	=	Plant
 CLERIC_THORN_SPRAY                      3	=	Plant
 CLERIC_SNARE                            3	=	Plant
+b_dr301                                 3	=	Plant
 CLERIC_SPIKE_GROWTH                     4	=	Plant
 CLERIC_STICKS_TO_SNAKES                 4	=	Plant
 CLERIC_CALL_WOODLAND_BEINGS             5	=	Plant
@@ -265,9 +279,11 @@ CLERIC_ASSASSIN_VINES                   6	=	Plant
 CLERIC_STALKER                          7	=	Plant
 CLERIC_HOLLY_DART                       7	=	Plant
 CLERIC_BINDING                         	1	=	Earth
+b_pc01                                  1	=	Earth
 CLERIC_MAGIC_STONE                      1	=	Earth
 CLERIC_PROTECTION_FROM_LIGHTNING        2	=	Earth
 CLERIC_STONE_FIST                       2	=	Earth
+b_pr301                                 3	=	Earth
 CLERIC_SPIKE_STONES                     3	=	Earth
 CLERIC_IRONSKIN                         4	=	Earth
 WIZARD_STONE_TO_FLESH                   5	=	Earth
@@ -296,8 +312,10 @@ CLERIC_AERIAL_SERVANT                   7	=	Air
 CLERIC_FROST_FINGERS                    1	=	Water
 b_c103                                  1	=	Water // frost fingers
 CLERIC_BLESS_WATER                     	1	=	Water
+b_p101                                  1	=	Water
 CLERIC_RESIST_COLD                      2	=	Water
 CLERIC_WATERY_FIST                      2	=	Water
+b_PR221                                 2	=	Water
 CLERIC_ICE_BLADE                        2	=	Water
 b_c203                                  2	=	Water // ice blade
 CLERIC_RESIST_ACID_CORROSION            2	=	Water
@@ -311,16 +329,16 @@ SR_CLERIC_ICE_STORM                     5	=	Water
 NOSR_WIZARD_ICE_STORM                   5	=	Water
 CLERIC_PROTECTION_FROM_ACID             5	=	Water // SR pro. acid
 CLERIC_MIST_OF_ELDATH                   6	=	Water
-CLERIC_CONJURE_WATER_ELEMENTAL          6	=	Water
+NO_CLERIC_CONJURE_WATER_ELEMENTAL          6	=	Water
 b_pr602                                 6	=	Water // water elemental
 WIZARD_ACID_STORM                       7	=	Water
 b_w724                                  7	=	Water // acid storm
 WIZARD_BURNING_HANDS                    1	=	Fire
 CLERIC_RESIST_FIRE                      1	=	Fire
 CLERIC_FLAME_BLADE                      2	=	Fire
-CLERIC_FIRE_TRAP                        2	=	Fire
+CLERIC_PRODUCE_FIRE                     2	=	Fire
+CLERIC_FIRE_TRAP                        3	=	Fire
 NOSR_CLERIC_PROTECTION_FROM_FIRE        3	=	Fire
-CLERIC_PRODUCE_FIRE                     3	=	Fire
 WIZARD_FLAME_ARROW                      4	=	Fire
 SR_CLERIC_PROTECTION_FROM_FIRE          4	=	Fire
 WIZARD_FIRE_SHIELD_RED                  5	=	Fire
@@ -342,28 +360,29 @@ CLERIC_PIXIE_DUST                       6	=	Radiance
 CLERIC_SOL_SEARING_ORB                  6	=	Radiance
 CLERIC_SUNRAY                           7	=	Radiance
 CLERIC_CAMOUFLAGE                       1	=	Shadow
+b_r102                                  1	=	Shadow
 B_SSTEP                                 2	=	Shadow // shadowstep
 CLERIC_CLOAK_DARKNESS                   3	=	Shadow
+b_c302                                  3	=	Shadow
 WIZARD_SHADOW_MONSTERS                  3	=	Shadow
 WIZARD_WRAITH_FORM                      4	=	Shadow
 WIZARD_DEMI_SHADOW_MONSTERS             4	=	Shadow
 WIZARD_SHADOW_DOOR                      5	=	Shadow
-d5fnp01                                 5	=	Shadow // summon shadow
-WIZARD_SHADES                           6	=	Shadow
-B_W629                                  6	=	Shadow // Shades
+WIZARD_SHADES                           5	=	Shadow
+B_W629                                  5	=	Shadow // Shades
+d5fnp01                                 6	=	Shadow // summon shadow
 WIZARD_POWER_WORD_BLIND                 7	=	Shadow
 WIZARD_GHOSTFORM                        7	=	Shadow
-CLERIC_FAERIE_FIRE                      1	=	Spirit
-CLERIC_SPIRIT_WARD                      1	=	Spirit // modify to work against all planar creatures
-CLERIC_WRITHING_FOG                     2	=	Spirit
-CLERIC_SPIRITUAL_CLARITY                3	=	Spirit
-CLERIC_SPIRIT_FIRE                      4	=	Spirit // modify to work against all planar creatures
-CLERIC_SPIRITUAL_LOCK                   5	=	Spirit // modify to work against all planar creatures
-CLERIC_BANISHMENT                       5	=	Spirit // sr banishment
-CLERIC_RECALL_SPIRIT                    6	=	Spirit
-CLERIC_BOLT_OF_GLORY                    6	=	Spirit
-CLERIC_ETHER_GATE                       7	=	Spirit
-WIZARD_FREEDOM                          7	=	Spirit
+CLERIC_FAERIE_FIRE                      1	=	Astral
+CLERIC_SPIRIT_WARD                      1	=	Astral // modify to work against all planar creatures
+CLERIC_WRITHING_FOG                     2	=	Astral
+CLERIC_SPIRITUAL_CLARITY                3	=	Astral
+CLERIC_SPIRIT_FIRE                      4	=	Astral // modify to work against all planar creatures
+CLERIC_SPIRITUAL_LOCK                   5	=	Astral // modify to work against all planar creatures
+CLERIC_BANISHMENT                       5	=	Astral // sr banishment
+CLERIC_RECALL_SPIRIT                    6	=	Astral
+CLERIC_ETHER_GATE                       7	=	Astral
+WIZARD_FREEDOM                          7	=	Astral
 >>>>>>>>
 
 END	//	end sphere spells macro
@@ -429,7 +448,7 @@ DEFINE_ACTION_MACRO vanilla_cleric_spheres BEGIN
 	Radiance		=> x
 	Shadow			=> x
 	no_sphere_1		=> x
-	Spirit		    => x
+	Astral		    => x
   END
 END
 //___________________________________________________________________________________
@@ -519,7 +538,7 @@ DEFINE_ACTION_MACRO vanilla_druid_spheres BEGIN
 	Radiance		=> x
 	Shadow			=> x
 	no_sphere_1		=> x
-	Spirit		    => x
+	Astral		    => x
   END
 END
 //___________________________________________________________________________________
@@ -567,13 +586,145 @@ DEFINE_ACTION_MACRO vanilla_ranger_spheres BEGIN
 	Radiance		=> x
 	Shadow			=> x
 	no_sphere_1		=> x
-	Spirit		    => x
+	Astral		    => x
   END
 END
 //___________________________________________________________________________________
 
 
 DEFINE_ACTION_MACRO d5_deity_kit_sphere_lists BEGIN
+
+// default cleric list_______________________________________________________________
+//
+DEFINE_ACTION_FUNCTION default_cleric_spheres 
+  RET_ARRAY default_cleric_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY default_cleric_spheres_array BEGIN
+	All				=> major
+	Death			=> major
+	Law				=> minor
+	Chaos			=> minor
+	Protection		=> major
+	War				=> major
+	Time			=> x
+	Perception		=> major
+	Deceit			=> x
+	Thought			=> minor
+	Decay			=> x
+	Vigor			=> minor
+	Insects			=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> minor
+	Radiance		=> major
+	Shadow			=> x
+	no_sphere_1		=> x
+	Astral		    => major
+ END
+END
+//___________________________________________________________________________________
+
+// default paladin list______________________________________________________________
+//
+DEFINE_ACTION_FUNCTION default_paladin_spheres 
+  RET_ARRAY default_paladin_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY default_paladin_spheres_array BEGIN
+	All				=> paladin
+	Death			=> x
+	Law				=> paladin
+	Chaos			=> x
+	Protection		=> paladin
+	War				=> paladin
+	Time			=> x
+	Perception		=> paladin
+	Deceit			=> x
+	Thought			=> x
+	Decay			=> x
+	Vigor			=> paladin
+	Insects			=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Radiance		=> paladin
+	Shadow			=> x
+	no_sphere_1		=> x
+	Astral		    => x
+ END
+END
+//___________________________________________________________________________________
+
+// default druid list________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION default_druid_spheres 
+  RET_ARRAY default_druid_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY default_druid_spheres_array BEGIN
+	All				=> major
+	Death			=> minor
+	Law				=> x
+	Chaos			=> x
+	Protection		=> x
+	War				=> x
+	Time			=> minor
+	Perception		=> major
+	Deceit			=> x
+	Thought			=> x
+	Decay			=> major
+	Vigor			=> major
+	Insects			=> minor
+	Animal			=> major
+	Plant			=> major
+	Earth			=> major
+	Water			=> minor
+	Air				=> minor
+	Fire			=> minor
+	Radiance		=> major
+	Shadow			=> x
+	no_sphere_1		=> x
+	Astral		    => x
+ END
+END
+//___________________________________________________________________________________
+
+// default ranger list_______________________________________________________________
+//
+DEFINE_ACTION_FUNCTION default_ranger_spheres 
+  RET_ARRAY default_ranger_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY default_ranger_spheres_array BEGIN
+	All				=> ranger
+	Death			=> x
+	Law				=> x
+	Chaos			=> x
+	Protection		=> x
+	War				=> x
+	Time			=> x
+	Perception		=> x
+	Deceit			=> x
+	Thought			=> x
+	Decay			=> x
+	Vigor			=> ranger
+	Insects			=> x
+	Animal			=> ranger
+	Plant			=> ranger
+	Earth			=> x
+	Water			=> x
+	Air				=> ranger
+	Fire			=> x
+	Radiance		=> ranger
+	Shadow			=> x
+	no_sphere_1		=> x
+	Astral		    => x
+ END
+END
+//___________________________________________________________________________________
 
 // UR-PRIEST__________________________________________________________________________
 //
@@ -603,7 +754,7 @@ DEFINE_ACTION_FUNCTION ur_priest_spheres
 	Radiance		=> x
 	Shadow			=> x
 	no_sphere_1		=> x
-	Spirit		    => x
+	Astral		    => x
  END
 END
 //___________________________________________________________________________________
@@ -639,7 +790,7 @@ DEFINE_ACTION_FUNCTION auril_spheres
 	Radiance		=> x
 	Shadow			=> minor
 	no_sphere_1		=> x
-	Spirit		    => x
+	Astral		    => x
  END
 END
 //___________________________________________________________________________________
@@ -672,7 +823,7 @@ DEFINE_ACTION_FUNCTION azuth_spheres
 	Radiance		=> major
 	Shadow			=> minor
 	no_sphere_1		=> x
-	Spirit		    => major
+	Astral		    => major
  END
 END
 //___________________________________________________________________________________
@@ -705,7 +856,7 @@ DEFINE_ACTION_FUNCTION bane_spheres
 	Radiance		=> x
 	Shadow			=> minor
 	no_sphere_1		=> x
-	Spirit		    => x
+	Astral		    => x
  END
 END
 //___________________________________________________________________________________
@@ -738,7 +889,7 @@ DEFINE_ACTION_FUNCTION beshaba_spheres
 	Radiance		=> x
 	Shadow			=> x
 	no_sphere_1		=> x
-	Spirit		    => x
+	Astral		    => x
  END
 END
 //___________________________________________________________________________________
@@ -771,7 +922,7 @@ DEFINE_ACTION_FUNCTION bhaal_spheres
 	Radiance		=> x
 	Shadow			=> minor
 	no_sphere_1		=> x
-	Spirit		    => major
+	Astral		    => major
  END
 END
 //___________________________________________________________________________________
@@ -804,7 +955,7 @@ DEFINE_ACTION_FUNCTION cyric_spheres
 	Radiance		=> x
 	Shadow			=> major
 	no_sphere_1		=> x
-	Spirit		    => minor
+	Astral		    => minor
  END
 END
 //___________________________________________________________________________________
@@ -837,7 +988,7 @@ DEFINE_ACTION_FUNCTION deneir_spheres
 	Radiance		=> major
 	Shadow			=> minor
 	no_sphere_1		=> x
-	Spirit		    => x
+	Astral		    => x
  END
 END
 //___________________________________________________________________________________
@@ -870,7 +1021,7 @@ DEFINE_ACTION_FUNCTION garagos_spheres
 	Radiance		=> x
 	Shadow			=> x
 	no_sphere_1		=> x
-	Spirit		    => x
+	Astral		    => x
  END
 END
 //___________________________________________________________________________________
@@ -902,7 +1053,7 @@ DEFINE_ACTION_FUNCTION helm_spheres
 	Radiance		=> major
 	Shadow			=> x
 	no_sphere_1		=> x
-	Spirit		    => minor
+	Astral		    => minor
  END
 END
 //___________________________________________________________________________________
@@ -935,7 +1086,7 @@ DEFINE_ACTION_FUNCTION ilmater_spheres
 	Radiance		=> minor
 	Shadow			=> x
 	no_sphere_1		=> x
-	Spirit		    => major
+	Astral		    => major
  END
 END
 //___________________________________________________________________________________
@@ -968,7 +1119,7 @@ DEFINE_ACTION_FUNCTION kelemvor_spheres
 	Radiance		=> x
 	Shadow			=> x
 	no_sphere_1		=> x
-	Spirit		    => major
+	Astral		    => major
  END
 END
 //___________________________________________________________________________________
@@ -1001,7 +1152,7 @@ DEFINE_ACTION_FUNCTION kossuth_spheres
 	Radiance		=> major
 	Shadow			=> x
 	no_sphere_1		=> x
-	Spirit		    => minor
+	Astral		    => minor
  END
 END
 //___________________________________________________________________________________
@@ -1034,7 +1185,7 @@ DEFINE_ACTION_FUNCTION lathander_spheres
 	Radiance		=> focus
 	Shadow			=> x
 	no_sphere_1		=> x
-	Spirit		    => x
+	Astral		    => x
   END
 END
 //___________________________________________________________________________________
@@ -1067,7 +1218,7 @@ DEFINE_ACTION_FUNCTION leira_spheres
 	Radiance		=> major
 	Shadow			=> minor
 	no_sphere_1		=> x
-	Spirit		    => x
+	Astral		    => x
  END
 END
 //___________________________________________________________________________________
@@ -1100,7 +1251,7 @@ DEFINE_ACTION_FUNCTION loviatar_spheres
 	Radiance		=> x
 	Shadow			=> minor
 	no_sphere_1		=> x
-	Spirit		    => major
+	Astral		    => major
  END
 END
 //___________________________________________________________________________________
@@ -1133,7 +1284,7 @@ DEFINE_ACTION_FUNCTION malar_spheres
 	Radiance		=> x
 	Shadow			=> major
 	no_sphere_1		=> x
-	Spirit		    => x
+	Astral		    => x
  END
 END
 //___________________________________________________________________________________
@@ -1166,7 +1317,7 @@ DEFINE_ACTION_FUNCTION mask_spheres
 	Radiance		=> x
 	Shadow			=> major
 	no_sphere_1		=> x
-	Spirit		    => x
+	Astral		    => x
  END
 END
 //___________________________________________________________________________________
@@ -1199,7 +1350,7 @@ DEFINE_ACTION_FUNCTION mielikki_spheres
 	Radiance		=> major
 	Shadow			=> minor
 	no_sphere_1		=> x
-	Spirit		    => x
+	Astral		    => x
  END
 END
 //___________________________________________________________________________________
@@ -1232,7 +1383,7 @@ DEFINE_ACTION_FUNCTION milil_spheres
 	Radiance		=> major
 	Shadow			=> x
 	no_sphere_1		=> x
-	Spirit		    => minor
+	Astral		    => minor
  END
 END
 //___________________________________________________________________________________
@@ -1265,7 +1416,7 @@ DEFINE_ACTION_FUNCTION moander_spheres
 	Radiance		=> x
 	Shadow			=> major
 	no_sphere_1		=> x
-	Spirit		    => x
+	Astral		    => x
  END
 END
 //___________________________________________________________________________________
@@ -1298,7 +1449,7 @@ DEFINE_ACTION_FUNCTION mystra_spheres
 	Radiance		=> major
 	Shadow			=> minor
 	no_sphere_1		=> x
-	Spirit		    => major
+	Astral		    => major
  END
 END
 //___________________________________________________________________________________
@@ -1331,7 +1482,7 @@ DEFINE_ACTION_FUNCTION oghma_spheres
 	Radiance		=> major
 	Shadow			=> minor
 	no_sphere_1		=> x
-	Spirit		    => x
+	Astral		    => x
  END
 END
 //___________________________________________________________________________________
@@ -1364,7 +1515,7 @@ DEFINE_ACTION_FUNCTION redknight_spheres
 	Radiance		=> minor
 	Shadow			=> x
 	no_sphere_1		=> x
-	Spirit		    => x
+	Astral		    => x
  END
 END
 //___________________________________________________________________________________
@@ -1397,7 +1548,7 @@ DEFINE_ACTION_FUNCTION selune_spheres
 	Radiance		=> major
 	Shadow			=> minor
 	no_sphere_1		=> x
-	Spirit		    => major
+	Astral		    => major
  END
 END
 //___________________________________________________________________________________
@@ -1430,7 +1581,7 @@ DEFINE_ACTION_FUNCTION shar_spheres
 	Radiance		=> x
 	Shadow			=> major
 	no_sphere_1		=> x
-	Spirit		    => major
+	Astral		    => major
  END
 END
 //___________________________________________________________________________________
@@ -1463,7 +1614,7 @@ DEFINE_ACTION_FUNCTION shaundakul_spheres
 	Radiance		=> major
 	Shadow			=> x
 	no_sphere_1		=> x
-	Spirit		    => x
+	Astral		    => x
  END
 END
 //___________________________________________________________________________________
@@ -1496,7 +1647,7 @@ DEFINE_ACTION_FUNCTION sune_spheres
 	Radiance		=> major
 	Shadow			=> minor
 	no_sphere_1		=> x
-	Spirit		    => x
+	Astral		    => x
  END
 END
 //___________________________________________________________________________________
@@ -1529,7 +1680,7 @@ DEFINE_ACTION_FUNCTION talos_spheres
 	Radiance		=> major
 	Shadow			=> x
 	no_sphere_1		=> x
-	Spirit		    => x
+	Astral		    => x
  END
 END
 //___________________________________________________________________________________
@@ -1562,7 +1713,7 @@ DEFINE_ACTION_FUNCTION tempus_spheres
 	Radiance		=> minor
 	Shadow			=> x
 	no_sphere_1		=> x
-	Spirit		    => x
+	Astral		    => x
  END
 END
 //___________________________________________________________________________________
@@ -1595,7 +1746,7 @@ DEFINE_ACTION_FUNCTION torm_spheres
 	Radiance		=> major
 	Shadow			=> x
 	no_sphere_1		=> x
-	Spirit		    => x
+	Astral		    => x
  END
 END
 //___________________________________________________________________________________
@@ -1628,7 +1779,7 @@ DEFINE_ACTION_FUNCTION tymora_spheres
 	Radiance		=> major
 	Shadow			=> x
 	no_sphere_1		=> x
-	Spirit		    => x
+	Astral		    => x
  END
 END
 //___________________________________________________________________________________
@@ -1661,7 +1812,7 @@ DEFINE_ACTION_FUNCTION tyr_spheres
 	Radiance		=> major
 	Shadow			=> x
 	no_sphere_1		=> x
-	Spirit		    => x
+	Astral		    => x
  END
 END
 //___________________________________________________________________________________
@@ -1694,7 +1845,7 @@ DEFINE_ACTION_FUNCTION ulutiu_spheres
 	Radiance		=> major
 	Shadow			=> minor
 	no_sphere_1		=> x
-	Spirit		    => x
+	Astral		    => x
  END
 END
 //___________________________________________________________________________________
@@ -1727,7 +1878,7 @@ DEFINE_ACTION_FUNCTION umberlee_spheres
 	Radiance		=> x
 	Shadow			=> minor
 	no_sphere_1		=> x
-	Spirit		    => x
+	Astral		    => x
  END
 END
 //___________________________________________________________________________________
@@ -1760,7 +1911,7 @@ DEFINE_ACTION_FUNCTION xvim_spheres
 	Radiance		=> x
 	Shadow			=> major
 	no_sphere_1		=> x
-	Spirit		    => x
+	Astral		    => x
  END
 END
 //___________________________________________________________________________________
@@ -1796,7 +1947,7 @@ DEFINE_ACTION_FUNCTION corellon_spheres
 	Radiance		=> major
 	Shadow			=> x
 	no_sphere_1		=> x
-	Spirit		    => x
+	Astral		    => x
  END
 END
 //___________________________________________________________________________________
@@ -1829,7 +1980,7 @@ DEFINE_ACTION_FUNCTION eilistraee_spheres
 	Radiance		=> minor
 	Shadow			=> major
 	no_sphere_1		=> x
-	Spirit		    => major
+	Astral		    => major
  END
 END
 //___________________________________________________________________________________
@@ -1862,7 +2013,7 @@ DEFINE_ACTION_FUNCTION moradin_spheres
 	Radiance		=> minor
 	Shadow			=> x
 	no_sphere_1		=> x
-	Spirit		    => major
+	Astral		    => major
  END
 END
 //___________________________________________________________________________________
@@ -1895,7 +2046,7 @@ DEFINE_ACTION_FUNCTION clangeddin_spheres
 	Radiance		=> major
 	Shadow			=> x
 	no_sphere_1		=> x
-	Spirit		    => x
+	Astral		    => x
  END
 END
 //___________________________________________________________________________________
@@ -1912,7 +2063,7 @@ DEFINE_ACTION_FUNCTION marthammor_spheres
 	Chaos			=> major
 	Protection		=> major
 	War				=> minor
-	Time			=> x
+	Time			=> major
 	Perception		=> major
 	Deceit			=> x
 	Thought			=> minor
@@ -1928,7 +2079,7 @@ DEFINE_ACTION_FUNCTION marthammor_spheres
 	Radiance		=> major
 	Shadow			=> x
 	no_sphere_1		=> x
-	Spirit		    => x
+	Astral		    => x
  END
 END
 //___________________________________________________________________________________
@@ -1961,7 +2112,7 @@ DEFINE_ACTION_FUNCTION haela_spheres
 	Radiance		=> major
 	Shadow			=> x
 	no_sphere_1		=> x
-	Spirit		    => x
+	Astral		    => x
  END
 END
 //___________________________________________________________________________________
@@ -1994,7 +2145,7 @@ DEFINE_ACTION_FUNCTION baravar_spheres
 	Radiance		=> x
 	Shadow			=> major
 	no_sphere_1		=> x
-	Spirit		    => x
+	Astral		    => x
  END
 END
 //___________________________________________________________________________________
@@ -2027,7 +2178,7 @@ DEFINE_ACTION_FUNCTION baervan_spheres
 	Radiance		=> major
 	Shadow			=> x
 	no_sphere_1		=> x
-	Spirit		    => x
+	Astral		    => x
  END
 END
 //___________________________________________________________________________________
@@ -2060,7 +2211,7 @@ DEFINE_ACTION_FUNCTION urdlen_spheres
 	Radiance		=> x
 	Shadow			=> major
 	no_sphere_1		=> x
-	Spirit		    => x
+	Astral		    => x
  END
 END
 //___________________________________________________________________________________
@@ -2093,7 +2244,7 @@ DEFINE_ACTION_FUNCTION yondalla_spheres
 	Radiance		=> major
 	Shadow			=> x
 	no_sphere_1		=> x
-	Spirit		    => minor
+	Astral		    => minor
  END
 END
 //___________________________________________________________________________________
@@ -2126,7 +2277,7 @@ DEFINE_ACTION_FUNCTION arvoreen_spheres
 	Radiance		=> major
 	Shadow			=> x
 	no_sphere_1		=> x
-	Spirit		    => x
+	Astral		    => x
  END
 END
 //___________________________________________________________________________________
@@ -2159,7 +2310,7 @@ DEFINE_ACTION_FUNCTION brandobaris_spheres
 	Radiance		=> major
 	Shadow			=> x
 	no_sphere_1		=> x
-	Spirit		    => x
+	Astral		    => x
  END
 END
 //___________________________________________________________________________________
@@ -2192,7 +2343,7 @@ DEFINE_ACTION_FUNCTION gruumsh_spheres
 	Radiance		=> x
 	Shadow			=> x
 	no_sphere_1		=> x
-	Spirit		    => x
+	Astral		    => x
  END
 END
 //___________________________________________________________________________________
@@ -2225,7 +2376,7 @@ DEFINE_ACTION_FUNCTION luthic_spheres
 	Radiance		=> x
 	Shadow			=> x
 	no_sphere_1		=> x
-	Spirit		    => major
+	Astral		    => major
  END
 END
 //___________________________________________________________________________________
@@ -2261,7 +2412,7 @@ DEFINE_ACTION_FUNCTION druid_forest_spheres
 	Radiance		=> major
 	Shadow			=> minor
 	no_sphere_1		=> x
-	Spirit		    => x
+	Astral		    => x
  END
 END
 //___________________________________________________________________________________
@@ -2294,7 +2445,7 @@ DEFINE_ACTION_FUNCTION druid_totemic_spheres
 	Radiance		=> major
 	Shadow			=> minor
 	no_sphere_1		=> x
-	Spirit		    => major
+	Astral		    => major
  END
 END
 //___________________________________________________________________________________
@@ -2327,7 +2478,7 @@ DEFINE_ACTION_FUNCTION druid_hivekeeper_spheres
 	Radiance		=> major
 	Shadow			=> minor
 	no_sphere_1		=> x
-	Spirit		    => x
+	Astral		    => x
  END
 END
 //___________________________________________________________________________________
@@ -2360,7 +2511,7 @@ DEFINE_ACTION_FUNCTION druid_northern_spheres
 	Radiance		=> major
 	Shadow			=> x
 	no_sphere_1		=> x
-	Spirit		    => minor
+	Astral		    => minor
  END
 END
 //___________________________________________________________________________________
@@ -2393,7 +2544,7 @@ DEFINE_ACTION_FUNCTION druid_shadow_spheres
 	Radiance		=> x
 	Shadow			=> major
 	no_sphere_1		=> x
-	Spirit		    => x
+	Astral		    => x
  END
 END
 //___________________________________________________________________________________
@@ -2426,7 +2577,7 @@ DEFINE_ACTION_FUNCTION druid_gray_spheres
 	Radiance		=> x
 	Shadow			=> minor
 	no_sphere_1		=> x
-	Spirit		    => x
+	Astral		    => x
  END
 END
 //___________________________________________________________________________________
@@ -2459,7 +2610,7 @@ DEFINE_ACTION_FUNCTION druid_lost_spheres
 	Radiance		=> x
 	Shadow			=> minor
 	no_sphere_1		=> x
-	Spirit		    => major
+	Astral		    => major
  END
 END
 //___________________________________________________________________________________
@@ -2492,7 +2643,7 @@ DEFINE_ACTION_FUNCTION beast_lord_spheres
 	Radiance		=> x
 	Shadow			=> minor
 	no_sphere_1		=> x
-	Spirit		    => major
+	Astral		    => major
  END
 END
 //___________________________________________________________________________________
@@ -2525,7 +2676,7 @@ DEFINE_ACTION_FUNCTION elementalist_spheres
 	Radiance		=> major
 	Shadow			=> minor
 	no_sphere_1		=> x
-	Spirit		    => x
+	Astral		    => x
  END
 END
 //___________________________________________________________________________________
@@ -2558,7 +2709,7 @@ DEFINE_ACTION_FUNCTION mystic_earth_spheres
 	Radiance		=> x
 	Shadow			=> x
 	no_sphere_1		=> x
-	Spirit		    => major
+	Astral		    => major
  END
 END
 //___________________________________________________________________________________
@@ -2591,7 +2742,7 @@ DEFINE_ACTION_FUNCTION mystic_water_spheres
 	Radiance		=> x
 	Shadow			=> x
 	no_sphere_1		=> x
-	Spirit		    => major
+	Astral		    => major
  END
 END
 //___________________________________________________________________________________
@@ -2624,7 +2775,7 @@ DEFINE_ACTION_FUNCTION mystic_air_spheres
 	Radiance		=> minor
 	Shadow			=> x
 	no_sphere_1		=> x
-	Spirit		    => major
+	Astral		    => major
  END
 END
 //___________________________________________________________________________________
@@ -2657,7 +2808,7 @@ DEFINE_ACTION_FUNCTION mystic_fire_spheres
 	Radiance		=> major
 	Shadow			=> x
 	no_sphere_1		=> x
-	Spirit		    => major
+	Astral		    => major
  END
 END
 //___________________________________________________________________________________
@@ -2690,7 +2841,7 @@ DEFINE_ACTION_FUNCTION mystic_light_spheres
 	Radiance		=> focus
 	Shadow			=> x
 	no_sphere_1		=> x
-	Spirit		    => major
+	Astral		    => major
  END
 END
 //___________________________________________________________________________________
@@ -2723,7 +2874,7 @@ DEFINE_ACTION_FUNCTION mystic_shadow_spheres
 	Radiance		=> x
 	Shadow			=> focus
 	no_sphere_1		=> x
-	Spirit		    => major
+	Astral		    => major
  END
 END
 //___________________________________________________________________________________
@@ -2756,7 +2907,7 @@ DEFINE_ACTION_FUNCTION ranger_forest_spheres
 	Radiance		=> ranger
 	Shadow			=> x
 	no_sphere_1		=> x
-	Spirit		    => x
+	Astral		    => x
  END
 END
 //___________________________________________________________________________________
@@ -2789,7 +2940,7 @@ DEFINE_ACTION_FUNCTION ranger_mountain_spheres
 	Radiance		=> x
 	Shadow			=> ranger
 	no_sphere_1		=> x
-	Spirit		    => x
+	Astral		    => x
  END
 END
 //___________________________________________________________________________________
@@ -2822,7 +2973,7 @@ DEFINE_ACTION_FUNCTION ranger_desert_spheres
 	Radiance		=> ranger
 	Shadow			=> x
 	no_sphere_1		=> x
-	Spirit		    => x
+	Astral		    => x
  END
 END
 //___________________________________________________________________________________
@@ -2855,7 +3006,7 @@ DEFINE_ACTION_FUNCTION ranger_jungle_spheres
 	Radiance		=> x
 	Shadow			=> ranger
 	no_sphere_1		=> x
-	Spirit		    => x
+	Astral		    => x
  END
 END
 //___________________________________________________________________________________
@@ -2888,7 +3039,7 @@ DEFINE_ACTION_FUNCTION ranger_arctic_spheres
 	Radiance		=> x
 	Shadow			=> x
 	no_sphere_1		=> x
-	Spirit		    => x
+	Astral		    => x
  END
 END
 //___________________________________________________________________________________
@@ -2922,7 +3073,7 @@ DEFINE_ACTION_FUNCTION ranger_beastmaster_spheres
 	Radiance		=> x
 	Shadow			=> x
 	no_sphere_1		=> x
-	Spirit		    => ranger
+	Astral		    => ranger
  END
 END
 //___________________________________________________________________________________
@@ -2955,7 +3106,7 @@ DEFINE_ACTION_FUNCTION barbarian_ranger_spheres
 	Radiance		=> x
 	Shadow			=> x
 	no_sphere_1		=> x
-	Spirit		    => ranger
+	Astral		    => ranger
  END
 END
 //___________________________________________________________________________________
@@ -2988,7 +3139,7 @@ DEFINE_ACTION_FUNCTION mage_hunter_spheres
 	Radiance		=> x
 	Shadow			=> x
 	no_sphere_1		=> x
-	Spirit		    => x
+	Astral		    => x
  END
 END
 //___________________________________________________________________________________
@@ -3021,7 +3172,7 @@ DEFINE_ACTION_FUNCTION elven_archer_spheres
 	Radiance		=> ranger
 	Shadow			=> x
 	no_sphere_1		=> x
-	Spirit		    => x
+	Astral		    => x
  END
 END
 //___________________________________________________________________________________
@@ -3057,7 +3208,7 @@ DEFINE_ACTION_FUNCTION vanilla_shaman_spheres
 	Radiance		=> x
 	Shadow			=> x
 	no_sphere_1		=> x
-	Spirit		    => focus
+	Astral		    => focus
  END
 END
 //___________________________________________________________________________________
@@ -3090,7 +3241,7 @@ DEFINE_ACTION_FUNCTION vanilla_avenger_spheres
 	Radiance		=> major
 	Shadow			=> minor
 	no_sphere_1		=> x
-	Spirit		    => x
+	Astral		    => x
  END
 END
 //___________________________________________________________________________________
@@ -3123,7 +3274,7 @@ DEFINE_ACTION_FUNCTION vanilla_paladin_spheres
 	Radiance		=> paladin
 	Shadow			=> x
 	no_sphere_1		=> x
-	Spirit		    => x
+	Astral		    => x
  END
 END
 //___________________________________________________________________________________
@@ -3156,7 +3307,7 @@ DEFINE_ACTION_FUNCTION vanilla_cavalier_spheres
 	Radiance		=> paladin
 	Shadow			=> x
 	no_sphere_1		=> x
-	Spirit		    => x
+	Astral		    => x
  END
 END
 //___________________________________________________________________________________
@@ -3189,7 +3340,7 @@ DEFINE_ACTION_FUNCTION vanilla_inquisitor_spheres
 	Radiance		=> paladin
 	Shadow			=> x
 	no_sphere_1		=> x
-	Spirit		    => x
+	Astral		    => x
  END
 END
 //___________________________________________________________________________________
@@ -3222,7 +3373,7 @@ DEFINE_ACTION_FUNCTION vanilla_undead_hunter_spheres
 	Radiance		=> paladin
 	Shadow			=> x
 	no_sphere_1		=> x
-	Spirit		    => x
+	Astral		    => x
  END
 END
 //___________________________________________________________________________________
@@ -3255,7 +3406,7 @@ DEFINE_ACTION_FUNCTION vanilla_blackguard_spheres
 	Radiance		=> x
 	Shadow			=> paladin
 	no_sphere_1		=> x
-	Spirit		    => x
+	Astral		    => x
  END
 END
 //___________________________________________________________________________________
@@ -3265,8 +3416,10 @@ END
 
 //___________________________________________________________________________________
 //
-DEFINE_ACTION_MACRO DR_oozemaster_spheres BEGIN
-  ACTION_DEFINE_ASSOCIATIVE_ARRAY a#ooze_spheres BEGIN
+DEFINE_ACTION_FUNCTION dr_oozemaster_spheres
+  RET_ARRAY dr_oozemaster_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY dr_oozemaster_spheres_array BEGIN
 	All				=> major
 	Death			=> x
 	Law				=> x
@@ -3289,20 +3442,22 @@ DEFINE_ACTION_MACRO DR_oozemaster_spheres BEGIN
 	Radiance		=> x
 	Shadow			=> minor
 	no_sphere_1		=> x
-	Spirit		    => x
+	Astral		    => x
  END
 END
 //___________________________________________________________________________________
 
 //___________________________________________________________________________________
 //
-DEFINE_ACTION_MACRO DR_justifier_spheres BEGIN
- ACTION_DEFINE_ASSOCIATIVE_ARRAY a#justif_spheres BEGIN
-	All				=> ranger
+DEFINE_ACTION_FUNCTION dr_justifier_spheres
+  RET_ARRAY dr_justifier_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY dr_justifier_spheres_array BEGIN
+	All				=> x
 	Death			=> x
 	Law				=> x
 	Chaos			=> x
-	Protection		=> x
+	Protection		=> ranger
 	War				=> x
 	Time			=> x
 	Perception		=> x
@@ -3320,7 +3475,7 @@ DEFINE_ACTION_MACRO DR_justifier_spheres BEGIN
 	Radiance		=> ranger
 	Shadow			=> x
 	no_sphere_1		=> x
-	Spirit		    => x
+	Astral		    => x
   END
 END
 //___________________________________________________________________________________
@@ -3357,7 +3512,7 @@ DEFINE_ACTION_FUNCTION _spheres
 	Radiance		=> x
 	Shadow			=> x
 	no_sphere_1		=> x
-	Spirit		    => x
+	Astral		    => x
  END
 END
 //___________________________________________________________________________________

@@ -1,0 +1,2603 @@
+// For strings that may appear in weidu.log or in the console, don't use characters above ASCII
+@6   = ~...~
+@8   = ~composant saute~
+@10 = ~Parchemin~
+@13 = ~*Veuillez patienter. Ceci va prendre un certain temps...*~
+@18 = ~Ce composant a ete deprecie~
+//
+@20  = ~Choisir un systeme de spheres~
+@21  = ~oFnP : le systeme de spheres original de Faiths & Powers~
+@22  = ~AD&D/DR : inspire par le PnP et Divine Remix~
+@23  = ~Vanilla : listes de sorts traditionnelles, les kits peuvent traverser la division clerc/druide~
+@24  = ~VPlus : tout le monde a les sorts de base et les kits ont un acces focus sur deux spheres~
+@25  = ~nuFnp (Nouveau FnP) : un nouveau système de spheres (moins de spheres, plus equilibre globalement, plus proche du PnP)~
+//
+@30  = ~Donner l'option de lancer les sorts comme les Ensorceleurs (ne pas installer si l'utilisation du lancer 5E est prevue)~
+@31  = ~Installer les kits de clerc~
+@33  = ~Installer les kits de druide~
+@35  = ~...pour Tyr, Torm, Helm, Ilmater, Kelemvor, Sune~
+@36  = ~...pour ceux ci-dessus, PLUS les divinites Neutres/Mauvaises/demi-humaines~
+@40  = ~Installer les kits de paladin~
+@45  = ~Revision de la table de sorts des paladins~
+@70  = ~Ajouter des parchemins de sorts pour les pretres~
+@75  = ~Modifier l'utilisabilite des armes et armures pour les pretres~
+@80  = ~Appliquer le systeme de spheres (REQUIS pour que le systeme de spheres fonctionne)~
+@85  = ~Appliquer les kits de FnP aux PNJ~
+@91  = ~Druides multiclasses~
+@92  = ~Chamans multiclasses~
+@95  = ~Kits de clerc multiclasses (installer apres les autres mods de kits !!)~
+@99  = ~Appliquer les kits multiclasses de FnP aux PNJ~
+//
+//
+@100  = ~Choisir une des methodes d'installation ci-dessous :~
+@101  = ~TOUS les nouveaux kits, le dialogue de selection de kits et le systeme de spheres ("version radicale")~
+@102  = ~tout installer (comme specifie dans le fichier settings.ini)~
+@103  = ~choisir les composants individuellement~
+@105  = ~pas de nouveaux kits - installer JUSTE le systeme de spheres~
+// Those appear in dialogs, abilities of items so we can use
+// whole charset
+// but well they are probably unused anyway
+@110  = ~Modifier l'utilisabilité des objets pour les prêtres~
+@121  = ~Choisir comment apprendre et lancer des sorts~
+@122  = ~Lancer les sorts de prêtre de façon spontanée~
+@123  = ~Pas de changement, les prêtres lancent les sorts normalement~
+@124  = ~Lancer les sorts de prêtre spontanément ?~
+@125  = ~Confirmé, lancer spontané.~
+@126  = ~Lancer les sorts de prêtre normalement ?~
+@127  = ~Confirmé, pas de changement, lancer de sorts normal.~
+@128  = ~Changer d'avis~
+@141  = ~Changer les sorts connus~
+@142  = ~Ne changer aucun sort~
+@143  = ~Changer ce sort~
+@144  = ~Changer un autre sort~
+@151  = ~Choisir une sphère~
+@152  = ~Apprendre des sorts de cette sphère~
+@153  = ~Choisir une autre sphère~
+@154  = ~Symbole sacré~
+//
+// back to component names
+@200  = ~kits de clerc nouveaux et revises~
+
+//
+// ... sphere stuff
+//
+@997  = ~Flèche acide~
+@998  = ~Convocation de Limons~
+@999  = ~Enveloppe acide~
+@1000  = ~Sélection de sorts~
+@1001  = ~Cette capacité vous permet d'apprendre de nouveaux sorts~
+@1002  = ~- Accès aux sphères de :~
+@1003  = ~- Accès focus aux sphères de :~
+@1004  = ~- Accès majeur aux sphères de :~
+@1005  = ~- Accès mineur aux sphères de :~
+// will be replaced
+@1006  = ~Avantages[^:]*:~
+// replacement
+@1007  = ~CAPACITÉS :~
+// will be replaced
+@1008  = ~Inconvénient[^:]*:~
+// replacement
+@1009  = ~Restrictions :~
+
+//
+@1100  = ~Mémoriser des sorts~
+@1101  = ~Après avoir choisi une divinité à servir, vous obtiendrez l'accès à des sorts dans les sphères de magie (les domaines) accessibles à ces divinités. Quand vous aurez choisi les sorts à mémoriser, ce parchemin vous permettra de les mémoriser instantanément, sans avoir besoin de vous reposer. Ceci ne peut être fait qu'une seule fois. Attention, si vous attendez trop longtemps, le parchemin peut disparaître.~
+@1110  = ~
+
+Armes utilisables par ce kit :
+ - Bâton
+ - Gourdin
+~
+//
+// ... strings for new kits
+//
+// ... clerics:
+//
+@10001 = ~prêtre~
+@10002 = ~Clerc~
+@10005 = ~CLERC : Le clerc est un prêtre générique (de toutes les mythologies) qui guide les besoins spirituels d'une communauté. Il est à la fois un protecteur et un guérisseur. Cependant, il n'est pas purement défensif. Lorsqu'une créature maléfique se fait menaçante, le clerc est parfaitement armé pour la rechercher sur son propre terrain et la détruire. Il en va de même pour un clerc maléfique.
+
+CAPACITÉS :
+
+- Peut porter des casques.
+- Peut porter des armures jusqu'à la cotte de mailles.
+- Sélection de divinité : tous les clercs doivent choisir une divinité. La divinité détermine l'accès aux sphères, les pouvoirs accordés et d'autres bonus.
+- Peut devenir initié (1 étoile) avec l'épée courte, la dague, le marteau de guerre, le gourdin, la lance, le fléau d'armes, la masse, le bâton, les arbalètes, les fléchettes, la fronde ou dans tous les styles de combats.
+- Peut repousser les morts-vivants.
+- Peut lancer des sorts divins, mais est limité aux sorts universels jusqu'à ce qu'une divinité soit choisie.
+- Dés de vie : d8~
+@10011 = ~guerrier / prêtre~
+@10012 = ~Guerrier / Prêtre~
+@10015 = ~GUERRIER/PRÊTRE : Ce personnage peut utiliser les capacités d'un guerrier et d'un prêtre, mais l'usage des armes est limité à celles autorisées par l'éthique du prêtre. Il peut atteindre la spécialisation, mais pas la maîtrise dans le maniement des armes.~
+@10021 = ~mage / prêtre~
+@10022 = ~Mage / Prêtre~
+@10025 = ~MAGE/PRÊTRE : Ce personnage peut utiliser les capacités d'un mage et d'un prêtre. Il ne peut cependant pas jeter de sorts de mage s'il porte une armure.
+
+Les gnomes peuvent choisir cette multi-classe, mais deviennent clercs/illusionnistes par défaut. Les gnomes sont la seule race à pouvoir associer une classe de mage spécialisé à une multi-classe.~
+@10031 = ~voleur / prêtre~
+@10032 = ~Voleur / Prêtre~
+@10035 = ~VOLEUR/PRÊTRE : Ce personnage peut utiliser les capacités d'un voleur et d'un prêtre, mais son armement est limité à ce que permet l'éthique du prêtre. Il ne peut cependant pas utiliser ses compétences de voleur s'il porte une armure supérieure à la besantine.~
+@10041 = ~rôdeur / prêtre~
+@10042 = ~Rôdeur / Prêtre~
+@10045 = ~RÔDEUR/PRÊTRE : Ce personnage peut utiliser les capacités d'un rôdeur et d'un clerc, mais l'usage des armes est limité à celles autorisées par l'éthique du prêtre. Il peut atteindre la spécialisation, mais pas la maîtrise dans le maniement des armes.~
+@10051 = ~guerrier mystique~
+@10052 = ~Guerrier mystique~
+@10055 = ~GUERRIER MYSTIQUE : Ce personnage peut utiliser les capacités d'un guerrier et d'un mystique, mais l'usage des armes est limité à celles autorisées par l'éthique du prêtre. Il peut atteindre la spécialisation, mais pas la maîtrise dans le maniement des armes.~
+
+// 10100-10105 unused
+// 10106 only used in acolyte.tpa, which doesn't seem used
+// 10107-10119 unused
+// 12101-12124 unused
+
+//
+// first FnP sphere system
+//
+@12101 = ~Générale~
+@12102 = ~Vie~
+@12103 = ~Mort~
+@12104 = ~Vermine~
+@12105 = ~Destruction~
+@12106 = ~Protection~
+@12107 = ~Guerre~
+@12108 = ~Exploration~
+@12109 = ~Connaissance~
+@12110 = ~Duperie~
+@12111 = ~Pensée~
+@12112 = ~Effroi~
+@12113 = ~Vigueur~
+@12114 = ~Affliction~
+@12115 = ~Faune~
+@12116 = ~Flore~
+@12117 = ~Terre~
+@12118 = ~Air~
+@12119 = ~Eau~
+@12120 = ~Feu~
+@12121 = ~Lumière~
+@12122 = ~Ombre~
+@12123 = ~Magie~
+@12124 = ~Astrale~
+//
+// 2E PnP sphere system
+//
+@12201 = ~Générale~
+@12202 = ~Guérison~
+@12203 = ~Nécromancie~
+@12204 = ~Loi~
+@12205 = ~Chaos~
+@12206 = ~Protection~
+@12207 = ~Combat~
+@12208 = ~Voyage~
+@12209 = ~Divination~
+@12210 = ~Garde~
+@12211 = ~Pensée~
+@12212 = ~Charme~
+@12213 = ~Création~
+@12214 = ~Convocation~
+@12215 = ~Faune~
+@12216 = ~Flore~
+@12217 = ~Terre~
+@12218 = ~Air~
+@12219 = ~Eau~
+@12220 = ~Feu~
+@12221 = ~Soleil~
+@12222 = ~Climat~
+@12223 = ~Nombres~
+@12224 = ~Astrale~
+//
+// vanilla non-sphere system
+//
+@12301 = ~Générale~
+@12302 = ~Clerc~
+@12303 = ~Mort~
+@12304 = ~Vermine~
+@12305 = ~Destruction~
+@12306 = ~Protection~
+@12307 = ~Guerre~
+@12308 = ~Exploration~
+@12309 = ~Connaissance~
+@12310 = ~Duperie~
+@12311 = ~Pensée~
+@12312 = ~Effroi~
+@12313 = ~Druide~
+@12314 = ~Affliction~
+@12315 = ~Faune~
+@12316 = ~Flore~
+@12317 = ~Terre~
+@12318 = ~Air~
+@12319 = ~Eau~
+@12320 = ~Feu~
+@12321 = ~Lumière~
+@12322 = ~Ombre~
+@12323 = ~Magie~
+@12324 = ~Astrale~
+//
+// new better balanced FnP system
+//
+@12501 = ~Générale~
+@12502 = ~Tout~
+@12503 = ~Mort~
+@12504 = ~Loi~
+@12505 = ~Chaos~
+@12506 = ~Protection~
+@12507 = ~Guerre~
+@12508 = ~Temps~
+@12509 = ~Perception~
+@12510 = ~Duperie~
+@12511 = ~Pensée~
+@12512 = ~Insectes~
+@12513 = ~Vigueur~
+@12514 = ~Décomposition~
+@12515 = ~Faune~
+@12516 = ~Flore~
+@12517 = ~Terre~
+@12518 = ~Air~
+@12519 = ~Eau~
+@12520 = ~Feu~
+@12521 = ~Rayonnement~
+@12522 = ~Ombre~
+@12523 = ~no_sphere_1~
+@12524 = ~Astrale~
+//
+//
+
+@20001 = ~prêtre-ur~
+@20002 = ~Prêtre-ur~
+@20003 = ~PRÊTRE-UR : Les prêtres-ur sont des pratiquants hérétiques qui ont découvert un moyen d'arracher aux dieux des pouvoirs divins en utilisant des rituels anciens et interdits. Comme on pourrait s'y attendre, ce genre de comportement est vu d'un mauvais œil par les dieux, et les prêtres-ur doivent garder leur profession secrète pour éviter la persécution, ou même pire encore.
+
+Avantages :
+- Accès aux sphères : haut niveau d'accès. Le prêtre-ur a un accès majeur à toutes les sphères sauf les sphères de vie, bénédiction, plantes, animaux et lumière.
+- Miner l'esprit : les prêtres-ur peuvent utiliser les mêmes techniques pour vider les êtres vivants de leur essence divine comme ils le feraient aux dieux. Comme les mortels ont peu d'essence divine, les bénéfices sont limités. Cette capacité peut être utilisée une fois par jour au niveau 5. Le prêtre-ur gagne une utilisation supplémentaire aux niveaux 10, 15 et 20.
+
+MINER L'ESPRIT : cette aptitude inflige 1d4 points de dégâts magiques à une cible vivante tous les 4 niveaux de prêtre-ur (2d4 au niveau 5, maximum 6d4 au niveau 20).
+À partir du niveau 5, si le prêtre-ur tue une cible avec ce pouvoir, il lance les sorts à un niveau +1 pendant 5 rounds.
+À partir du niveau 10, si le prêtre-ur tue une cible avec ce pouvoir, il obtient aussi les effets du sort Souvenir merveilleux.
+
+Restrictions :
+- Ne peut repousser les morts-vivants.
+- Les rituels éprouvent le prêtre-ur, ce qui les rend plus vulnérables à la maladie et à la magie. Ils ont une pénalité de 2 points aux jets de sauvegarde contre la mort et contre les sorts.
+
+Accès aux divinités : aucun, méprise les dieux.
+
+Restrictions : Ne peut être d'alignement bon ou loyal~
+
+@20004 = ~Miner l'esprit~
+@20005 = ~Miner l'esprit
+Cette aptitude inflige 1d4 points de dégâts magiques à une cible vivante tous les 4 niveaux de prêtre-ur (2d4 au niveau 5, maximum 6d4 au niveau 20).
+À partir du niveau 5, si le prêtre-ur tue une cible avec ce pouvoir, il lance les sorts à un niveau +1 pendant 5 rounds.
+À partir du niveau 10, si le prêtre-ur tue une cible avec ce pouvoir, il obtient aussi les effets du sort Souvenir merveilleux.~
+
+@20006 = ~niveau de lanceur +1~
+
+@20101 = ~semeur d'aube de Lathandre~
+@20102 = ~Semeur d'aube de Lathandre~
+@20103 = ~SEMEUR D'AUBE DE LATHANDRE : Les semeurs d'aube sont les représentants de Lathandre, une divinité de la naissance, du renouveau, de la santé et de l'aube vénérée presque partout. Les semeurs d'aube sont des ennemis particulièrement vigilants des morts-vivants, qu'ils voient comme un fléau pour les vivants qui corrompt la vie, cadeau de Lathandre. Ils œuvrent à nettoyer le monde avec la lumière de Lathandre, à éradiquer tous les morts-vivants avec ses rayons purificateurs.
+
+Avantages :
+- Repousse les morts-vivants comme un clerc ayant quatre niveaux de plus que leur niveau actuel.
+- Peut lancer Bienfait de Lathandre comme capacité spéciale une fois par jour. Le semeur d'aube obtient une utilisation supplémentaire aux niveaux 4, 8, 12, 16 et 20.
+
+BIENFAIT DE LATHANDRE : Ce sort dure un round par niveau du lanceur. Il accorde au lanceur un bonus de 1 point aux jets d'attaque et de dégâts, un bonus de 1 point à tous les jets de sauvegarde et une attaque supplémentaire par round. Il protège aussi le lanceur contre l'absorption de niveaux.
+
+- Peut lancer Aube illusoire comme capacité spéciale une fois par jour à partir du niveau 9. Le semeur d'aube obtient une utilisation supplémentaire aux niveaux 20 et 30. Le pouvoir fonctionne comme le sort de clerc du même nom.
+
+Restrictions :
+- Doit être d'alignement bon ou loyal neutre.
+~
+// 20104 unused
+@20105 = ~Aube illusoire
+Portée : 0
+Durée : 5 rounds
+Temps d'incantation : 9
+Zone d'effet : rayon de 9 m
+Jet de sauvegarde : aucun
+
+Ce sort génère une lumière rouge et brillante dans la Zone d'effet, comme si le soleil se levait. Tous les morts-vivants touchés subissent 6d6 points de dégâts de feu et sont aveuglés dans le round qui suit cette Aube illusoire. Aucun jet de sauvegarde n'est possible.
+~
+// 20107 unused
+@20108  = ~Aube illusoire~
+//
+//    CLERIC OF TORM
+//
+@20201 = ~main de Torm~
+@20202 = ~Main de Torm~
+@20203 = ~MAIN DE TORM : les mains cherchent à imiter leur divinité, Torm, qui est réputé pour sa loyauté inébranlable et son dévouement au bien. Même si beaucoup de ses fidèles sont des champions (paladins ou champions sacrés de Torm) parce que Torm est le patron des paladins, les mains n'en sont pas moins féroces et loyaux à la cause de leur dieu (même s'ils sont un peu moins martiaux).
+
+Avantages :
+- Les mains sont particulières parmi les clercs parce qu'ils obtiennent la focalisation dans la sphère de protection.
+- Peut lancer Injonction comme un pouvoir magique une fois par jour. Obtiennent une utilisation supplémentaire aux niveaux 5, 10,15 et 20.
+- Peut être initié (1 étoile) dans toutes les armes et tous les styles de combat et spécialisé (2 étoiles) dans le style de combat épée et bouclier.
+- Au niveau 3, peut lancer Détection du mal comme un pouvoir magique une fois par jour. Obtient une utilisation supplémentaire aux niveaux 7, 10, 13, 16 et 19.
+- Au niveau 4, peut lancer Protection contre le mal comme un pouvoir magique une fois par jour. Obtient une utilisation supplémentaire aux niveaux 8, 12, 16 et 20.
+
+Restrictions :
+- Alignement : doit être loyal bon, loyal neutre ou neutre bon.
+~
+
+@20501  = ~chevaucheur de fortune de Tymora~
+@20502  = ~Chevaucheur de fortune de Tymora~
+@20503  = ~CHEVAUCHEUR DE FORTUNE DE TYMORA : Connue sous le nom de Dame Fortune, Tymora est la déesse de la Chance. Les membres de sa secte de clerc connus sous l'appellation de chevaucheurs de fortune mangent, boivent et dorment en s'en remettant à la chance. Confiants au point d'en paraître impertinents, ils partent à la bataille de façon téméraire, abandonnant toute prudence et s'en remettent au destin. Étant donné le nombre d'aventuriers qui ont péri malgré leurs stratégies et leurs plans préparés soigneusement, ce n'est pas un point de vue ridicule.
+
+Avantages :
+- Les chevaucheurs de fortune sont intrinsèquement chanceux et sont de façon permanente sous l'effet du sort Chance.
+- Peut lancer un sort de zone « Fortune de Tymora » de façon innée une fois par jour, et une fois de plus tous les 5 niveaux d'expérience.
+
+FORTUNE DE TYMORA : les alliés du lanceur de sort obtiennent une chance extraordinaire pendant le tour suivant, avec un bonus de 1 point à leurs jets de sauvegarde, jets d'attaque et au minimum de leurs jets de dégâts et de soins, ainsi qu'un bonus de 5 % aux compétences de voleurs. De plus, le dé de dégâts pour tous les effets à part le dégât de base d'une arme est réduit de 1. Enfin, les sorts qui accordent un jet de sauvegarde aux ennemis ont plus de chances d'être efficaces : un sort qui normalement accorde un jet de sauvegarde sans pénalité accordera à la place un jet avec une pénalité de 2 pointq.
+
+Restrictions :
+- Alignement : ne peut être ni loyal ni mauvais.
+~
+@20504  = ~CHEVAUCHEUR DE FORTUNE DE TYMORA : Connue sous le nom de Dame Fortune, Tymora est la déesse de la Chance. Les membres de sa secte de clerc connus sous l'appellation de chevaucheurs de fortune mangent, boivent et dorment en s'en remettant à la chance. Confiants au point d'en paraître impertinents, ils partent à la bataille de façon téméraire, abandonnant toute prudence et s'en remettent au destin. Étant donné le nombre d'aventuriers qui ont péri malgré leurs stratégies et leurs plans préparés soigneusement, ce n'est pas un point de vue ridicule.
+~
+@20511  = ~Chance~
+@20513  = ~Fortune de Tymora~
+@20514  = ~Fortune de Tymora
+
+Les alliés du lanceur de sort obtiennent une chance extraordinaire pendant le tour suivant, avec un bonus de 1 point à leurs jets de sauvegarde, jets d'attaque et au minimum de leurs jets de dégâts et de soins, ainsi qu'un bonus de 5 % aux compétences de voleurs. De plus, le dé de dégâts pour tous les effets à part le dégât de base d'une arme est réduit de 1. Enfin, les sorts qui accordent un jet de sauvegarde aux ennemis ont plus de chances d'être efficaces : un sort qui normalement accorde un jet de sauvegarde sans pénalité accordera à la place un jet avec une pénalité de 2 points.
+~
+//
+// ... cleric of helm:
+//
+@20801 = ~sentinelle de Helm~
+@20802 = ~Sentinelle de Helm~
+@20803 = ~SENTINELLE DE HELM : Comme leur divinité, les sentinelles sont austères, dévouées et loyales, peut-être à l'excès. Helm professe que la voie à suivre n'est pas toujours évidente, mais que la façon la plus sûre de suivre la bonne voie, c'est d'accomplir son devoir. C'est ainsi que les sentinelles se consacrent à leur mission quelles qu'en soient les conséquences pour eux ou pour les autres. Quand d'autres insinuent que ce prétendu dévouement n'est rien d'autre qu'une obsession, les sentinelles s'en moquent. Ils n'ont pas le loisir de douter. Il est de leur devoir de toujours être vigilants pour répondre à des menaces à l'ordre cosmique.
+
+Avantages :
+- Gagne automatiquement un point de compétence en épée bâtarde, l'arme favorite de Helm. Les guerriers clercs n'obtiennent pas ce bonus, mais ils peuvent atteindre la maîtrise avec l'épée bâtarde.
+- Conscience augmentée : bonus de 1 point à la classe d'armure et de 2 points aux jets de sauvegarde contre les souffles.
+- Peut lancer Œil de Helm en tant que pouvoir spécial une fois par jour à partir du niveau 9. La sentinelle gagne une utilisation supplémentaire aux niveaux 11,13,15, 17 et 19. Œil de Helm est équivalent au sort profane Œil de magicien.
+- Peut lancer Épée animée comme pouvoir spécial une fois par jour. La sentinelle gagne une utilisation supplémentaire aux niveaux 4, 8, 12, 16 et 20.
+
+ÉPÉE ANIMÉE : Ce sort fait apparaître une épée dans la main du prêtre (ne peut être lâchée ni rangée). Cette arme est enchantée comme une arme +4 et fournit un bonus au TAC0 de 4 points, mais pas de dégâts bonus. Elle attaque 3 fois par round, inflige 2d4 points de dégâts et dure 1 round par niveau du prêtre. Tant que le prêtre l'a en main, il ne peut pas lancer le moindre sort.
+
+Restrictions :
+- Doit être d'alignement loyal bon, loyal neutre ou neutre strict.
+~
+@20806 = ~Œil de Helm~
+@20807 = ~Œil de Helm
+
+Portée : champ visuel du lanceur
+Durée : 1 round par niveau
+Temps d'incantation : 9
+Zone d'effet : spéciale
+Jet de sauvegarde : aucun
+
+Lorsque ce sort est employé, le prêtre crée un organe sensitif invisible qui lui renvoie des informations visuelles. L'œil de Helm permet une vue normale dans un rayon de 18 m dans les zones bien éclairées. L'œil peut se déplacer dans n'importe quelle direction pendant la durée du sort. Sa substance et sa forme peuvent être détectées (par un sort de détection de l'invisibilité, par exemple). Les obstacles solides bloquent le passage d'un œil de Helm. Les pouvoirs de l'œil ne peuvent pas être améliorés par un autre sort ou un objet. Le laceur est vulnérable à toute attaque du regard subie par l'œil. Pour mettre fin à ce sort, il faut réussir un sort de Dissipation de la magie sur le lanceur ou sur l'œil.
+~
+//
+// ... cleric of KELEMVOR:
+//
+@20901 = ~garde mortuaire de Kelemvor~
+@20902 = ~Garde mortuaire Kelemvor~
+@20903 = ~GARDE MORTUAIRE DE KELEMVOR : Kelemvor est le plus récent dieu de la mort. Il s'est montré bien différent de Mykrul, le dieu de la mort qui l'a précédé. Plus précisément, alors que son prédécesseur encourageait la création de monstruosités mortes-vivantes, Kelemvor charge son clergé de leur recherche et leur destruction, leur existence étant vu comme une perversion contre nature de la vie et de la mort. Pour cette raison, son clergé produit de destructeurs de morts-vivants particulièrement talentueux.
+
+Avantages :
+- Les gardes mortuaires repoussent les morts-vivants comme s'ils avaient 4 niveaux de clerc de plus.
+- Bonus de 4 points aux jets de sauvegarde contre la mort.
+- Au niveau 7, le garde mortuaire obtient une protection identique au sort Protection contre la mort.
+- AU niveau 11, le garde mortuaire obtient une protection identique au sort Protection contre le Plan Négatif.
+
+Restrictions :
+- Ne peut être d'alignement mauvais ou chaotique.
+~
+//
+// ... cleric of tempus:
+//
+@21001 = ~guerroyeur de Tempus~
+@21002 = ~Guerroyeur of Tempus~
+@21003 = ~GUERROYEUR DE TEMPUS : Tempus, aussi nommé Seigneur des batailles ou Marteleur d'ennemis, est arbitraire dans ses faveurs, et pourtant sa nature chaotique offre la même faveur aux adversaires. Une armée peut avoir sa préférence un jour et sa défaveur le lendemain. La guerre est ainsi faite. Les membres du clergé de Tempus peuvent être présents des deux côtés d'une bataille, car personne ne peut vraiment prévoir qui le Seigneur des batailles va favoriser.
+
+Avantages :
+- Peut être initié (1 étoile) dans toutes les armes.
+- Bonus aux dégâts de 1 point avec toute arme de corps à corps.
+- Incitation à la rage : les guerroyeurs peuvent provoquer une rage de berserker au niveau 5, avec un usage supplémentaire aux niveaux 10, 15 et 20. Ce pouvoir est identique à la rage du berserker, si ce n'est que le guerroyeur peut provoquer la rage sur lui-même ou sur les autres.
+
+Restrictions :
+- pas de restriction d'alignement.
+~
+@21004 = ~Incitation à la rage~
+@21005 = ~~
+@21006 = ~Incitation à la rage
+
+Le personnage peut provoquer un état de rage sur lui-même ou une autre personne. Sous cet état, le personnage gagne un bonus de 2 points aux jets d'attaque et de dégâts, ainsi qu'à la classe d'armure, et devient immunisé contre les charmes, la confusion, la peur, la débilité mentale, l'immobilisation, l'emprisonnement, le drain de niveau, le labyrinthe, l'étourdissement et le sommeil. Il gagne également 15 points de vie temporaires, qui sont retirés à la fin de la furie, pouvant rendre le personnage inconscient.
+
+À la fin de l'effet, le personnage est essoufflé et subit un malus de 2 points à la classe d'armure et aux jets de toucher et de dégâts.~
+//
+// ... cleric of Leïra:
+//
+@21201  = ~marcheur des brumes de Leïra~ // invented translation
+@21202  = ~Marcheur des brumes de Leïra~
+@21203  = ~MARCHEUR DES BRUMES DE LEÏRA : Leïra est la déesse de la duperie et de l'illusion. Il semblerait qu'elle ait péri dans des circonstances mystérieuses pendant la Crise des Avatars, mais au moins une secte de ses suivants, les marcheurs des brumes, continue à recevoir des pouvoirs divins. Les mensonges sont leur monnaie et l'illusion est leur outil.
+ 
+Avantages :
+- Peut utiliser « Double de Leïra » une fois tous les 5 rounds. Souvent utilisé dans les situations d'urgence, ce pouvoir crée un double illusoire du clerc. Si le clerc est attaqué, le double va absorber le premier coup réussi et disparaître. Au niveau 6, deux doubles sont créés et au niveau 12, l'un des deux clones peut même s'éloigner du clerc pour distraire les ennemis Les marcheurs des brumes peuvent utiliser ce pouvoir une fois par tour.
+
+Restrictions :
+- Ne peut jumeler vers la classe de guerrier.
+- Ne peut être d'alignement loyal.
+~
+@21204  = ~MARCHEUR DES BRUMES DE LEÏRA : Leïra est la déesse de la duperie et de l'illusion. Il semblerait qu'elle ait péri dans des circonstances mystérieuses pendant la Crise des Avatars, mais au moins une secte de ses suivants, les marcheurs des brumes, continue à recevoir des pouvoirs divins. Les mensonges sont leur monnaie et l'illusion est leur outil.~
+@21205  = ~~
+@21211  = ~Double de Leïra~
+@21212  = ~Double de Leïra~
+//
+// ... cleric of loviatar:
+//
+@21901  = ~souffrecœur de Loviatar~
+@21902  = ~Souffrecœur de Loviatar~
+@21903  = ~SOUFFRECŒUR DE LOVIATAR : Connue sous les noms de Vierge des Douleurs ou de Grande Flagellatrice, Loviatar est la déesse maléfique de l'agonie. Elle est souvent décrite comme une persécutrice sans cœur, calculatrice et despotique. Elle se complaît à infliger des souffrances physiques et morales. Ses prêtres, simplement nommés « souffrecœur », trouvent liberté et puissance dans la douleur et œuvrent à transmettre ce point de vue aux autres... que leurs victimes recherchent ou non ce genre d'exaltation.
+
+Avantages :
+- Peut utiliser le pouvoir Toucher douloureux à volonté.
+
+TOUCHER DOULOUREUX : Quand le prêtre de Loviatar active cette aptitude, son seul toucher inflige des vagues de douleur chez toute créature dotée d'un système nerveux. Quand il touche une créature, elle doit réussir un jet de sauvegarde contre la mort ou souffrir d'une pénalité de 2 points à sa dextérité et de 4 points au TAC0 pendant qu'elle se tord d'agonie, et se verra infliger 1 point de dégât non-létal toutes les 12 secondes.
+Les pénalités et les dégâts continuent pendant la durée atrocement longue de 10 rounds.
+Le toucher douloureux reste activé sans limite de durée, mais le tortionnaire peut la réprimer si nécessaire.
+
+- Au niveau 3, peut utiliser Caresse de Loviatar une fois par jour et gagne une utilisation supplémentaire aux niveaux 6, 9, 12,15 et 18.
+
+CARESSE DE LOVIATAR : Quand le clerc utilise ce pouvoir, ses mains deviennent les instruments de Loviatar pendant quatre rounds. Il peut frapper avec une précision extraordinaire avec ses mains (+10 aux jets d'attaque) et inflige 2 points de dégâts supplémentaires par niveau jusqu'à un maximum de +20 au niveau 10. Ce sort se cumule avec les autres attaques à mains nues, comme le Toucher douloureux du prêtre.
+
+Restrictions :
+- Ne peut être d'alignement bon.
+~
+@21911  = ~Toucher douloureux~
+@21912  = ~Toucher douloureux
+Durée : Spéciale
+Jet de sauvegarde : Poison/Mort
+
+Quand le prêtre de Loviatar active cette aptitude, son seul toucher inflige des vagues de douleur chez toute créature dotée d'un système nerveux. Quand il touche une créature, elle doit réussir un jet de sauvegarde contre la mort ou souffrir d'une pénalité de 2 points à sa dextérité et de 4 points au TAC0 pendant qu'elle se tord d'agonie, et se verra infliger 1 point de dégât non-létal toutes les 12 secondes.
+Les pénalités et les dégâts continuent pendant la durée atrocement longue de 10 rounds.
+
+Le toucher douloureux reste activé sans limite de durée, mais le souffrecœur peut la réprimer si nécessaire.
+~
+// 21913 unused
+@21914  = ~Caresse de Loviatar~
+@21915  = ~Caresse de Loviatar
+
+Quand le clerc utilise ce pouvoir, ses mains deviennent les instruments de Loviatar pendant quatre rounds. Il peut frapper avec une précision extraordinaire avec ses mains (+10 aux jets d'attaque) et inflige 2 points de dégâts supplémentaires par niveau jusqu'à un maximum de +20 au niveau 10. Ce sort se cumule avec les autres attaques à mains nues, comme le Toucher douloureux du prêtre.~
+@21916  = ~Réprimer Toucher douloureux~
+//
+// ... cleric of Talos:
+//
+@22401 = ~héraut des tempêtes de Talos~
+@22402 = ~Héraut des tempêtes de Talos~
+@22403 = ~HÉRAUT DES TEMPÊTES DE TALOS : Les hérauts des tempêtes sont des clercs de Talos, le Destructeur, l'Enragé, l'Étoile des Tempêtes, Seigneur des Tempêtes. Talos représente le côté sombre de la nature, le force destructrice et insensible qui se fait oublier et frappe à tout instant. Les hérauts des tempêtes font en sorte que tous craignent Talos en faisant preuve de la destruction que lui et ses serviteurs peuvent apporter. En guise d'exemple pour tous, les hérauts des tempêtes ont tendance à se livrer, dans leurs voyages, à des exercices de destruction malveillante et arbitraire et à faire des exemples de ceux qui osent s'opposer à eux.
+
+Avantages :
+- Faveur de Talos : les hérauts des tempêtes ont une résistance de 50 % à l'électricité.
+- Peut lancer Bouclier des tempêtes comme pouvoir spécial une fois par jour et gagne une utilisation supplémentaire aux niveaux 4, 8, 12, 16 et 20.
+
+BOUCLIER DES TEMPÊTES : Ce sort dure 1 round par niveau du lanceur. Il le protège contre l'électricité, le feu, le froid et les projectiles normaux.
+
+- Peut lancer Éclair comme pouvoir spécial une fois par jour à partir du niveau 9 et gagne une utilisation supplémentaire aux niveaux 20 et 30. Le pouvoir fonctionne comme le sort profane du même nom.
+
+Restrictions :
+- Alignement : tout mauvais ou chaotique neutre.
+~
+@22406 = ~Éclair
+(Évocation)
+
+Niveau : 3
+Portée : portée visuelle du lanceur
+Durée : instantanée
+Temps d'incantation : 3
+Zone d'effet : spéciale
+Jet de sauvegarde : divise par deux
+En lançant ce sort, le magicien libère une décharge électrique puissante qui inflige 1d6 points de dégâts par niveau du lanceur de sorts (dégâts maximum de 10d6) à chaque créature située dans la Zone d'effet. Une réussite à un jet de sauvegarde contre les sorts permet de n'encaisser que la moitié des dégâts (arrondis à la fraction inférieure). Si l'éclair rencontre un mur, il rebondit jusqu'à ce qu'il atteigne sa longueur complète, touchant le même ennemi plusieurs fois, ou parfois les membres du groupe du lanceur.
+~
+//
+// ... scion of Bhaal:
+//
+@22001 = ~rejeton de Bhaal~
+@22002 = ~Rejeton de Bhaal~
+@22003 = ~REJETON DE BHAAL : Il est dit qu'avant que Bhaal soit tué par Cyric pendant le temps des troubles, il avait prédit sa propre fin et s'était préparé pour la contourner. Après tout, le pouvoir d'un dieu, surtout celui du dieu de la mort, ne s'estompe pas si rapidement. Même si beaucoup de prêtres de Bhaal ont perdu leur accès à la magie, il semble que quelques-uns ont réussi à converser une partie de son pouvoir. Nul ne sait si c'est grâce à leur adoration, comme d'autres prêtres de divinités portées disparues comme Leïra qui ont continué de recevoir des bénédictions, ou si c'est par d'autres mécanismes. Quant à savoir quoi faire de ce pouvoir et où il peut mener, c'est encore à déterminer.
+
+Avantages :
+- Au niveau 3, peut lancer Horreur de façon innée une fois par jour.
+- Au niveau 7, peut lancer Mise à mort de façon innée une fois par jour.
+- Au niveau 12, peut convoquer un Serviteur aérien une fois par jour.
+
+Restrictions :
+- Aucun
+~
+
+//
+// ... cleric of Cyric:
+//
+@22501 = ~partisan de Cyric~
+@22502 = ~Partisan de Cyric~
+@22503 = ~PARTISAN DE CYRIC : Les partisans de Cyric font de leur mieux pour apaiser leur dieu fou et capricieux. Ce faisant, ils en profitent pour prendre tout ce qu'ils peuvent, à chaque fois qu'ils peuvent, avant d'être châtiés soit par leur dieu, soit par l'une de leurs nombreuses victimes.
+
+Avantages :
+- Bonus de 1 point aux jets de sauvegarde contre les sorts d'illusion.
+- Les partisans sont dénués de peur. Ils ne sont affectés ni par les terreurs magiques ni par les échecs de moral.
+- Au niveau 5, peut lancer Confusion, comme le sort profane de 4ème niveau, une fois par jour. Ils obtiennent une utilisation supplémentaire aux niveaux 10, 15 et 20.
+- Au niveau 10, peut lancer Débilité mentale, comme le sort profane, une fois par jour. Ils obtiennent une utilisation supplémentaire aux niveaux 20 et 30.
+
+Restrictions :
+- Alignement : tout alignement mauvais ou chaotique neutre.
+~
+//
+// ... cleric of Umberlee:
+//
+@22601 = ~serviteur de la vague d'Umberlie~
+@22602 = ~serviteur de la vague d'Umberlie~
+@22603 = ~serviteur de la vague D'UMBERLIE : Umberlie est une déesse capricieuse qui prétend détenir la mer comme son domaine, à elle et à elle seule. Comme beaucoup de divinités maléfiques, elle est plus crainte qu'adorée, même si on peut trouver des exceptions éminentes. Umberlie a comme une affection pour les âmes perdues et est réputée pour les prendre sous son aile de temps à autre.
+
+Avantages :
+- Maîtresse des vagues : à la différence de beaucoup de clercs, les serviteurs des vagues ont un accès focus à la sphère élémentaire de l'eau.
+- Peut lancer Vague destructrice, le sort de clerc, comme pouvoir spécial une fois par jour. Le serviteur de la vague obtient une utilisation supplémentaire aux niveaux 4, 8, 12, 16 et 20.
+
+Restrictions :
+- Ne peut repousser les morts-vivants.
+Restriction :
+- Alignement mauvais ou chaotique neutre.
+~
+//
+// ... priest of oghma:
+//
+
+@31001  = ~chercheur d'oghma~
+@31002  = ~Chercheur d'Oghma~
+@31003  = ~CHERCHEUR D'OGHMA : Oghma est une divinité majeure de la connaissance, de la sagesse et de l'apprentissage. Il est adoré par ceux à la recherche d'information, plus particulièrement perdue ou cachée. Quand un chercheur se montre utile ou loyal à la cause d'Oghma, on lui accorde le titre le maître du savoir. C'est un grand honneur. Même si le dieu des sages semble se cantonner aux bibliothèques poussiéreuses pour ceux qui ne font pas partie de leur groupe, beaucoup de prêtre d'Oghma ont une attirance pour l'aventure.
+
+Avantages :
+- Peut lancer des sorts à partir de parchemins normalement réservés aux mages.
+- Une fois par jour, peut se concentrer et augmenter brièvement sa capacité à comprendre et identifier le fonctionnement des objets magiques.
+- À partir du niveau 3, peut lancer Connaissance de l'adversaire de façon innée, ce qui rend le fait de frapper la cible plus facile pour lui-même et ses alliés.
+- À partir du niveau 9, peut lancer Débilité mentale de façon innée.
+
+Restrictions :
+- ne peut être d'alignement mauvais.
+~
+@31011  = ~Connaissance de l'adversaire~
+// copied from SR
+@31012  = ~Connaissance de l'adversaire
+
+Lorsque ce sort est lancé, les yeux du jeteur de sorts rayonnent d'énergie magique, lui permettant de lire l'aura d'une créature, et ainsi découvrir ses forces et ses faiblesses. Pendant toute la durée du sort, la résistance physique de la cible est réduite de 10 % et tous les jets d'attaques contre cette cible reçoivent un bonus de 2 points. Certains dispositifs magiques annulent les effets d'une Connaissance de l'Adversaire. De plus, ce sort n'a aucun effet contre les créatures ne dégageant pas d'aura, comme les créatures artificielles. La résistance magique de la cible est ignorée.
+~
+//
+// ... priest of ilmater:
+//
+@31401  = ~noble martyr d'Ilmater~
+@31402  = ~Noble martyr d'Ilmater~
+@31403  = ~NOBLE MARTYR D'ILMATER : Ilmater accorde assistance et mots de réconfort à ceux qui souffrent, aux opprimés ou dans le besoin. Il est celui qui souffre de son plein gré, celui qui prend la place des autres et supporte leur fardeau et leurs douleurs. Les nobles martyrs sont souvent itinérants, parcourant les territoires pour soulager la souffrance partout où ils la trouvent. Ils s'accrochent à leur cause quand ils la savent juste, ignorant l'épreuve et le danger, et s'opposent à toutes les tyrannies.
+
+Avantages :
+- Peut lancer Apaisement à volonté.
+- Bonus de 4 points aux jets de sauvegarde contre la mort.
+- Résistance de 20 % aux dégâts de froid et de feu.
+- Au niveau 3, peut lancer Endurance d'Ilmater une fois par jour comme pouvoir spécial. Il obtient une utilisation supplémentaire aux niveaux 7, 10, 13, 16 et 19.
+
+ENDURANCE D'ILMATER : Quand le prêtre lance ce sort, il double le nombre de points de vie de la créature qu'il touche (lui inclus). De plus, la cible du sort obtient un bonus de 2 points à tous les jets de sauvegarde. Ce pouvoir dure un tour.
+
+Restrictions :
+- Ne peut être d'alignement mauvais
+~
+@31411  = ~Apaisement~
+@31412  = ~Apaisement
+Le prêtre insuffle du courage au bénéficiaire du sort et élève son moral à son plus haut niveau. Au fur et à mesure que la durée du sort s'écoule, le moral de la cible revient à son niveau normal. Si la cible est affectée par une terreur magique, cette peur s'annule.~
+@31413  = ~Endurance d'Ilmater~
+@31414  = ~Endurance d'Ilmater
+Quand le prêtre lance ce sort, il double le nombre de points de vie de la créature qu'il touche (lui inclus). De plus, la cible du sort obtient un bonus de 2 points à tous les jets de sauvegarde. Ce pouvoir dure un tour.
+~
+//
+// ... priest of Deneir:
+//
+
+@31501  = ~maître des glyphes de Déneïr~
+@31502  = ~Maître des glyphes Déneïr~
+@31503  = ~MAÎTRE DES GLYPHES DE DÉNÉÏR : Déneïr est le dieu patron des artistes, des scribes et des cartographes. Il attache de l'importance à l'écrit et à l'information portée par les mots. Ses prêtres font de même.
+
+Avantages :
+- Peut lancer des sorts à partir de parchemins normalement réservés aux mages
+- Immunisé contre les sorts de symbole et contre le sort Glyphe de garde.
+- Peut lancer Détection des pièges une fois par jour comme pouvoir spécial et obtient une utilisation supplémentaire aux niveaux 3, 6, 9, 12, 15 et 18. Ce pouvoir fonctionne comme le sort de clerc du même nom.
+- À partir du niveau 5, peut lancer Glyphe de garde comme pouvoir spécial, une fois par jour, et obtient une utilisation supplémentaire aux niveaux 10, 15 et 20. Ce pouvoir fonctionne comme le sort de clerc du même nom.
+- À partir du niveau 11, peut lancer Dissipation de la magie comme pouvoir spécial, une fois par jour, et obtient une utilisation supplémentaire aux niveaux 16 et 20. Ce pouvoir fonctionne comme le sort du même nom.
+
+Restrictions :
+- ne peut être d'alignement mauvais.
+~
+//
+// ... priest of sune:
+//
+// using same translation as divine remix
+@31601  = ~garde du cœur de Sunie~
+@31602  = ~Garde du cœur de Sunie~
+@31603  = ~GARDE DU CŒUR DE SUNIE : Sunie enseigne que la beauté extérieure reflète en fin de compte la valeur propre de la personne. Par conséquent, ses adeptes s'efforcent de préserver la beauté, la leur, celle des autres et celles des objets comme les œuvres d'art.
+
+Avantages :
+- Les gardes du cœur sont particulièrement résistants à la magie affectant l'esprit. Ils reçoivent un bonus de 2 points aux jets de sauvegarde contre ces sorts.
+- Peut utiliser Charme personne comme pouvoir spécial une fois par jour. Ce pouvoir est particulièrement puissant, les adversaires se voient imposer un malus de 2 points à leur jet de sauvegarde. C'est la seule différence avec le sort profane du même nom. Le garde du cœur gagne une utilisation supplémentaire aux niveaux 3, 6, 9, 12, 15, 18 et 20.
+- À partir du niveau 5, peut lancer Émotion : espoir comme pouvoir spécial une fois par jour et obtient une utilisation supplémentaire aux niveaux 10, 15 et 20. Ce pouvoir fonctionne comme le sort profane du même nom.
+- À partir du niveau 11, le garde du cœur obtient un bonus permanent de 1 point au charisme.
+
+Restrictions :
+- ne peut être d'alignement ni loyal ni mauvais.
+~
+@31606 = ~Charme personne
+
+Ce sort affecte tout individu auquel il est lancé. Il peut s'agir de tout humain, demi-homme ou humanoïde bipède de taille inférieure ou égale à celle d'un homme (lutin, dryade, nain, elfe, gnoll, gnome, gobelin, demi-elfe, petite-personne, demi-orque, hobgobelin, humain, kobold, homme-lézard, nixe, orque, pixie, esprit-follet, troglodyte, etc.) Ainsi, un guerrier du 10e niveau pourra être charmé, mais pas un ogre.
+
+La personne ciblée peut annuler l'effet en réussissant un jet de sauvegarde contre les sorts avec un malus de 2 points. Si elle échoue, elle considère le lanceur comme un véritable ami qu'elle doit protéger. Le lanceur peut lui donner des ordres auxquels elle obéira le plus vite possible.
+
+Si le lanceur nuit ou essaie de nuire à la personne sous le charme par une action non déguisée, ou si un sort de Dissipation de la magie est lancé avec succès sur la personne sous le charme, le charme est rompu. Si plusieurs effets de charmes affectent simultanément une créature, le charme le plus récent prend le dessus. Notez que le sujet se souvient parfaitement des événements qui ont eu lieu lorsqu'il était sous le charme. Notez aussi que la créature ne peut pas quitter la zone dans laquelle elle a été charmée.~
+//
+// ... Broken Blades of Tempus
+//
+@32201 = ~lame brisée de Tempus~
+@32202 = ~Lame brisée de Tempus~
+@32203 = ~LAME BRISÉE DE TEMPUS : Les lames brisées honorent Tempus en soignant les blessés pendant les batailles. À la différence des guerroyeurs et des sangs de gloire, qui sont le plus fréquemment sur la ligne de front, on voit plutôt les lames brisées à l'arrière, soignant et protégeant les blessés. Les lames brisées sont particulièrement martiales pour des prêtres, souvent armées de haches, et promptes à défendre les sites consacrés à Tempus.
+
+Avantages :
+- Les lames brisées sont automatiquement initiées (1 étoile) avec les haches.
+- Peut lancer Cantique comme pouvoir spécial une fois par jour, mais avec un Temps d'incantation de 1, dès le premier niveau et obtient une utilisation supplémentaire tous les 5 niveaux.
+
+Restrictions :
+- pas de restriction d'alignement.
+~
+@32205  = ~~
+@32206 = ~Cantique
+(Conjuration/Convocation)
+
+Niveau : 2
+Sphère : combat
+Portée : 0
+Durée : 1 tour
+Temps d'incantation : 1
+Zone d'effet : rayon de 9 m
+Jet de sauvegarde : aucun
+
+Avec le sort de cantique, le prêtre attire une faveur spéciale sur lui-même et sur son groupe, et inflige des dégâts à ses ennemis. Lorsque l'incantation est achevée, tous les jets d'attaque, les valeurs minimales des jets de dégâts et de soins, ainsi que les jets de sauvegarde effectués par les amis du prêtre situés dans la Zone d'effet reçoivent un bonus de 1 point. Par ailleurs, les dés de dégâts pour tous les effets autres que les dégâts de base des armes sont réduits de 1. Par exemple, une boule de feu 6d6 infligera 6d5, et une flèche de feu infligeant 1d6+2 dégâts perçants et 1d6 dégâts de feu infligera 1d6+2 dégâts perçants plus 1d5 dégât de feu à la place. Les ennemis du prêtre souffrent des effets inverses.
+
+Les cantiques multiples ne sont pas cumulatifs.
+~
+//
+// ... priest of mystra:
+//
+@32401  = ~gardien de la Toile de Mystra~
+@32402  = ~Gardien de la Toile de Mystra~
+@32403  = ~GARDIEN DE LA TOILE DE MYSTRA : Mystra est surnommée Mère de la Magie ou Notre Dame des Sorts. Elle est chargée de générer et d'entretenir la Toile, ce conduit qui permet aux jeteurs de sorts d'accéder à l'énergie magique du multivers. Tous ceux qui manipulent la magie et ceux qui recherchent la connaissance profane sont les bienvenus au service de Mystra. Une secte de clercs de Mystra, les gardiens de la Toile, se dévouent à enquêter et contrôler les sources de magies puissantes qui, placées entre les mauvaises mains, pourrait ternir la réputation et la perception de ceux qui usent de la magie.
+
+Avantages :
+- Les gardiens de la Toile ont toujours une petite quantité de magie qui les parcourt, qu'ils aient ou non des sorts mémorisés. Ils peuvent lancer des petites tours de magie de toutes les écoles à tout instant, sans limitations.
+- À partir du niveau 3, peut lancer des sorts un peu plus vite que les autres prêtres et gagnent une réduction de 1 point de Temps d'incantation.
+- À partir du niveau 5, une fois par jour, peut lancer une forme innée de Dissipation de la magie qui est aussi efficace que celle d'un inquisiteur.
+- Peut utiliser les parchemins et baguettes normalement réservés aux magiciens.
+- Les gardiens de la Toile ne sont pas affectés par les zones de magie sauvage ou les zones de magie morte.
+
+Restrictions :
+- Ne peut effectuer de jumelage de classe.
+~
+@32411  = ~~
+@32413  = ~Baguette magique~
+@32414  = ~Une baguette magique peut être utilisée comme arme à distance pour lancer un Carreau magique sur un ennemi une fois par round et lui infliger 1d4+1 point de dégâts (Remarque : quand il l'utilise ainsi, le magicien a un désavantage tactique contre les ennemis proches avec des armes de mêlée). Le magicien peut aussi utiliser la baguette pour lancer l'un des tours de magie suivants :
+- Coquille de déflexion : bloque un sort de niveau 1 à 3 qui cible le magicien. La coquille dure 3 rounds.
+- Convocation de lapin : convoque un petit lapin à côté du magicien, qui reste pendant 3 rounds.
+- Coup d'œil : permet brièvement (pendant 2 secondes) au magicien de voir une autre partie de la carte.
+- Somnolence : la cible s'endort pendant 1 round si elle échoue à un jet de sauvegarde contre les sorts.
+- Illumination : la cible subit un malus de 1 point au TAC0 et à la classe d'armure pendant 1 round. Si elle échoue à un jet de sauvegarde contre les souffles, les pénalités sont doublées, durent 2 rounds et la cible est aveuglée le premier round.
+- Raidissement des os : la cible souffre de raideurs douloureuses. Elle subit une pénalité de 1 point au TAC0 et aux dégâts pendant un round. Si elle échoue à un jet de sauvegarde contre la mort, les pénalités sont doublées, durent 2 rounds et la cible est ralentie pendant le premier round.
+- Poigne terreuse : la cible est enchevêtrée, incapable de se déplacer pendant 2 rounds si elle échoue à un jet de sauvegarde contre la pétrification.~
+@32415  = ~Lapin~
+//
+// ... priest of azuth:
+//
+@32501  = ~magistrat d'Azouth~
+@32502  = ~Magistrat d'Azouth~
+@32503  = ~MAGISTRAT D'AZOUTH : Azouth est une divinité mineure qui aide Mystra, la Mère de la magie, à entretenir la Toile qui permet à toute la magie de Féérune d'exister. Le clergé d'Azouth a tendance à aimer la magie en elle-même. Ils sont familiers avec les sorts de magie profane et y ont accès. Les prêtres dédiés à Azouth sont nommés magistrats.
+
+Avantages :
+- À partir du niveau 5, une fois par jour, peut se concentrer et améliorer brièvement sa capacité à comprendre et identifier le fonctionnement des objets magiques.
+- Peut utiliser les parchemins et baguettes normalement réservés aux magiciens.
+
+Restrictions :
+- Ne peut être d'alignement mauvais.
+- Ne peut effectuer de jumelage de classe.
+~
+@32505  = ~Connaissance des légendes~
+@32506  = ~Connaissance des légendes
+
+École : Divination
+Durée : 3 rounds
+Temps d'incantation : 2
+
+Le lanceur obtient une vision temporaire de l'histoire et de la nature d'un ou plusieurs objets magiques dans son inventaire.~
+//
+// ... priest of shar:
+//
+// using same translation as divine remix
+@33001  = ~manteau sombre de Shar~ // not same wording as DR: darkcloack vs nightcloak
+@33002  = ~Manteau sombre de Shar~
+@33003  = ~MANTEAU SOMBRE DE SHAR : Shar est surnommée Maîtresse de la nuit. Elle est la déesse de l'obscurité et préside sur les cavernes, les donjons, l'oubli, le malheur, la nuit et les secrets. Les manteaux de la nuit forment une secte peu conventionnelle. Ils usent de l'influence de Shar pour offrir soins et réconfort à ceux qui sont perdus ou souffrent psychologiquement. Même quand d'autres serviteurs de Shar les méprisent pour leur manque de militantisme, les manteaux de la nuit sont tout de même suffisamment puissants pour s'opposer à leurs ennemis.
+
+Avantages :
+- Peut lancer Mot de pouvoir : sommeil une fois par jour au niveau 1. Le manteau sombre peut utiliser ce pouvoir une fois de plus chaque jour aux niveaux 3, 6, 9, 12, 15 et 18. Ce pouvoir fonctionne comme le sort du même nom.
+- Peut lancer Flou une fois par jour au niveau 5. Le manteau sombre peut utiliser ce pouvoir une fois de plus chaque jour aux niveaux 10, 15 et 20. Ce pouvoir fonctionne comme le sort du même nom.
+- Peut lancer Lame fantôme une fois par jour au niveau 9. Le manteau sombre peut utiliser ce pouvoir une fois de plus chaque jour aux niveaux 20 et 30. Ce pouvoir fonctionne comme le sort du même nom.
+- Peut lancer Mot de pouvoir : cécité une fois par jour au niveau 13. Le manteau sombre peut utiliser ce pouvoir une fois de plus chaque jour au niveau 20. Ce pouvoir fonctionne comme le sort du même nom.
+
+Restrictions :
+- Ne peut effectuer de jumelage vers la classe de guerrier.
+- ne peut être d'alignement chaotique ou bon.
+~
+@33004  = ~MANTEAU SOMBRE DE SHAR : Shar est surnommée Maîtresse de la nuit. Elle est la déesse de l'obscurité et préside sur les cavernes, les donjons, l'oubli, le malheur, la nuit et les secrets. Les manteaux de la nuit forment une secte peu conventionnelle. Ils usent de l'influence de Shar pour offrir soins et réconfort à ceux qui sont perdus ou souffrent psychologiquement. Même quand d'autres serviteurs de Shar les méprisent pour leur manque de militantisme, les manteaux de la nuit sont tout de même suffisamment puissants pour s'opposer à leurs ennemis.~
+@33005  = ~~
+//
+// ... priest of moander:
+//
+@33101 = ~sbire de moander~
+@33102 = ~Sbire de Moander~
+@33103 = ~SBIRE DE MOANDER : On pense que Moander est mort. Malgré tout, les cultes dédiés au dieu de la putréfaction existent toujours. Les sbires du Semeur de ténèbres cherchent à répandre la pourriture et la décomposition partout où ils vont.
+
+Avantages :
+- Les sbires sont immunisés contre les sorts Lianes assassines et Enchevêtrement.
+- Peut lancer Enchevêtrement une fois par jour et gagne une utilisation supplémentaire aux niveaux 4, 8, 12, 16 et 20.
+- Au niveau 11, peut lancer Lianes assassines une fois par jour et gagne une utilisation supplémentaire aux niveaux 20 et 30.
+
+Restrictions :
+- doit être d'alignement mauvais ou chaotique neutre.
+~
+//
+// ... priest of beshaba:
+//
+@33201 = ~fatalisateur de Beshaba~
+@33202 = ~Fatalisateur de Beshaba~
+@33203 = ~FATALISATEUR DE BESHABA :  Beshaba, la vierge de l'infortune, est la jalouse déesse de la malchance. Moins adorée que crainte, elle exige qu'on lui rende hommage, au moins en façade, et serait prompte à condamner ceux qui l'offenseraient à une vie d'échecs. Ses prêtres font en sorte que son égo soit satisfait.
+
+Avantages :
+- Peut lancer une version spéciale du sort Fatalité à volonté. Il ne peut l'utiliser une seule fois sur chaque adversaire.
+- Bonus de 1 point à tous les jets de sauvegarde.
+- À partir du niveau 7, peut lancer Échec au tir comme pouvoir spécial une fois par jour. Ce pouvoir fonctionne comme le sort du même nom. Le fatalisateur obtient une utilisation supplémentaire chaque jour aux niveaux 10, 13, 16 et 19.
+- À partir du niveau 10, peut lancer Malchance et gagne une utilisation supplémentaire chaque jour aux niveaux 15 et 20.
+
+MALCHANCE : Ce pouvoir maudit la cible, qui subit une pénalité de 10 points au TAC0, aux jets de sauvegarde et à la classe d'armure pour un round par niveau si elle échoue à un jet de sauvegarde contre les sorts.
+
+Restrictions :
+- alignement : tout alignement mauvais ou chaotique neutre.
+~
+@33206 = ~Malchance~
+@33207 = ~Malchance
+Ce pouvoir maudit la cible, qui subit une pénalité de 10 points au TAC0, aux jets de sauvegarde et à la classe d'armure pour un round par niveau si elle échoue à un jet de sauvegarde contre les sorts.
+~
+//
+// ... talon of malar 
+//
+@33401 = ~griffe de Malar~
+@33402 = ~Griffe de Malar~
+@33403 = ~GRIFFE DE MALAR : Malar, le dieu du monde sauvage, n'est pas une divinité populaire possédant beaucoup d'adorateurs. Comme pour Umberlie, on l'invoque principalement pour éviter son intervention (en général accompagné de bêtes sauvages) plutôt que pour le supplier. Les membres du clergé malarite prêchent la joie et les fruits abondants de la chasse, et œuvrent pour empêcher l'expansion des fermes et la colonisation pour préserver le plus de nature sauvage possible.
+
+Avantages :
+- Peut lancer Griffes de Malar comme pouvoir inné à volonté. 20 % des attaques avec Griffes de Malar provoquent une infection sur un échec de jet de sauvegarde contre la mort, affaiblissant ainsi la cible et provoquant un risque d'échec des sorts de 10 %.
+- Peut utiliser la compétence Pistage à volonté.
+- Quand une griffe de Malar lance un sort de convocation d'animaux, les créatures invoquées bénéficient automatiquement des effets du sort Croissance animale (bonus de 2 points aux jets d'attaque, de dégâts, à la classe d'armure et aux jets de sauvegarde, ainsi qu'un gain de 50 % des points de vie).
+- À partir du niveau 7, peut lancer le sort Rage sanguinaire une fois par jour comme pouvoir inné.
+- À partir du niveau 11, peut lancer le sort Rage sanguinaire deux fois par jour comme pouvoir inné.
+
+Restrictions :
+- Ne peut être d'alignement ni loyal ni bon.
+~
+@33411  = ~Griffes de Malar~
+@33412  = ~Dissipation des griffes~
+@33413  = ~Pistage~
+@33414  = ~Pistage
+
+Grâce à son intime connaissance des milieux naturels et des créatures qui y vivent, la griffe de Malar peut utiliser cette faculté pour avoir une idée générale des créatures présentes dans une zone donnée, ainsi que de leur direction. Des flèches rouges indiquent à l'écran la direction générale des créatures de la zone.~
+//
+// ... hammer of moradin 
+//
+@37101  = ~sonnlinor de Moradin~
+@37102  = ~Sonnlinor de Moradin~
+@37103  = ~SONNLINOR DE MORADIN : Les sonnlinor sont les prêtres spécifiques à Moradin, le Forgeur d'âmes, le dieu suprême du panthéon nain. Sévère mais juste, il incarne la force et la volonté. Ses prêtres s'efforcent à faire revenir les races naines à une population nombreuse et une plus grande influence dans les affaires de Féérune. Ils pensent que la sagesse se trouve dans une vie forgée par l'expérience et qu'ils ont un rôle important à jouer en menant le peuple robuste vers les coutumes traditionnelles dictées par le Forgeur d'âmes.
+
+Avantages :
+- Les Sonnlinor sont sans égaux pour l'utilisation et l'entretien des marteaux de guerre. Ils bénéficient d'un bonus de 2 points aux jets d'attaque quand ils utilisent un marteau de guerre et tout marteau de guerre qu'ils manient sont considérés comme disposant d'un enchantement de +3 pour décider de quels ennemis ils peuvent blesser.
+- À partir du niveau 1, peut lancer une forme innée du sort Injonction une fois par jour.
+- À partir du niveau 2, peut lancer une forme innée du sort Cantique une fois par jour.
+- À partir du niveau 5, peut créer un Marteau spirituel de Moradin une fois tous les cinq tours. Cette arme constituée de force magique inflige 1d4+1 points de dégâts contondants et 1d4 points de dégâts magiques et a une chance d'immobiliser brièvement tout mort-vivant qu'il touche. Les dégâts et le degré d'expertise avec lequel le marteau est manié augmente quand le Sonnlinor gagne de l'expérience. Le marteau existe pendant dix rounds.
+- À partir du niveau 7, peut lancer Injonction deux fois par jour.
+
+Restrictions :
+- Doit être un nain
+- Ne peut être d'alignement mauvais ou chaotique.
+~
+@37113  = ~Marteau de Moradin~
+@37114  = ~Cette arme constituée de force magique inflige 1d4+1 points de dégâts contondants et 1d4 points de dégâts magiques et a une chance d'immobiliser brièvement tout mort-vivant qu'il touche. Les dégâts et le degré d'expertise avec lequel le marteau est manié augmente quand le lanceur gagne de l'expérience.~
+//
+// ... alaghor of clangeddin 
+//
+@37201  = ~alaghor de Clangeddin~
+@37202  = ~Alaghor de Clangeddin~
+@37203  = ~ALAGHOR DE CLANGEDDIN : Les alaghors forment un ordre de guerriers/clercs d'élite dévoués au dieu nain de la guerre, Clangeddin. Ce sont des guerriers valeureux et aussi de sages prêtres qui protègent des communautés naines des dangers, qu'ils soient physiques ou spirituels.
+
+Avantages :
+- Peut utiliser Robuste résistance une fois par jour, qui leur confère 35 % de résistance aux attaques physiques. La protection dure un round tous les deux niveaux.
+- À partir du niveau 5, peut lancer une forme innée de Puiser dans la puissance divine une fois par jour.
+- À partir du niveau 9, peut utiliser Coup critique une fois par jour. Quand il utilise cette compétence, toutes les attaques du round suivant seront des 20 naturels, déclenchant un coup critique.
+
+Restrictions :
+- Doit être un nain.
+- Ne peut être d'alignements mauvais ou chaotique.
+~
+@37211  = ~Robuste résistance~
+@37212  = ~En faisant appel à des réserves cachées de force dans les moments de péril, un alaghor de Clangeddin peut utiliser ce pouvoir pour gagner 35 % de résistance à toutes les formes de dégât physique. Cet effet dure 5 rounds.~
+@37213  = ~~
+@37214  = ~~
+@37215  = ~Coup critique~
+@37216  = ~Coup critique
+
+Les connaissances étendues en anatomie d'un combattant de haut niveau lui permettent, une fois par jour, de concentrer toutes ses attaques d'un round sur un point vital de l'adversaire. Ainsi, toute attaque portée dans ce round est considérée comme un 20 naturel et donc un coup critique.~
+//
+// ... priest of marthammor:
+//
+@37301  = ~volamtar de Marthammor~
+@37302  = ~Volamtar de Marthammor Duin~
+@37303  = ~VOLAMTAR DE MARTHAMMOR DUIN : Connu sous le surnom de Trouveur de pistes, Marthammor est le dieu nain de l'exploration, de l'aventure et des nains expatriés loin des territoires nains.
+
+Avantages :
+- À partir du niveau 1, peut utiliser Pistage, comme la compétence de rôdeur du même nom. Ils peuvent aussi scruter les chemins et terres alentour, avec un effet similaire au sort Clairvoyance.
+- À partir du niveau 3, peut utiliser Action libre de façon innée une fois par jour.
+- À partir du niveau 5, peut utiliser Hâte de façon innée une fois par jour.
+
+Restrictions :
+- ne peut être d'alignement mauvais.
+~
+// 37323-37324 unused
+//
+// ... priest of haela:
+//
+// seems used but not installable
+@37401  = ~kaxanar de Haela Hachebrillante~
+@37402  = ~Kaxanar de Haela Hachebrillante~
+@37403  = ~KAXANAR DE HAELA HACHEBRILLANTE: 
+[fluff...]
+
+Avantages :
+- Peut être initié avec toutes les armes.
+- Bonus de 1 point aux dégâts avec toute arme de corps à corps.
+- Incitation à la rage : les kaxanar peuvent provoquer une rage de berserker au niveau  , avec un usage supplémentaire aux niveaux 10, 15 et 20. Ce pouvoir est identique à la rage du berserker, si ce n'est que le guerroyeur peut provoquer la rage sur lui-même ou sur les autres.
+
+Restrictions :
+- ne peut pas être d'alignement loyal.
+~
+//
+// ... priest of baravar:
+//
+@38201  = ~écornifleur de baravar~
+@38202  = ~Écornifleur de Baravar Sombretoge~
+@38203  = ~ÉCORNIFLEUR DE BARAVAR SOMBRETOGE : Baravar Sombretoge, le Rusé, est la divinité gnome de la tromperie et des illusions. Les clercs de Baravar sont nommés écornifleurs et tendent à être les plus parmi gnomes les plus futés, et servent leurs communautés en les instruisant, grimés et camouflés.
+
+Avantages :
+- Peut lancer Image miroir une fois par jour de façon innée.
+_ À partir du niveau 4, peut lancer Invisibilité majeure une fois par jour de façon innée.
+- À partir du niveau 6, peut utiliser Pas de l'ombre une fois par jour et gagne une utilisation supplémentaire aux niveaux 12 et 18.
+
+PAS DE L'OMBRE : Permet d'entrer dans le Plan des ombres et de s'y déplacer pendant 7 secondes, tandis que le temps est figé pour tout le reste du monde. Dans cet état, le lanceur ne peut ni attaquer, ni lancer de sorts.
+
+- À partir du niveau 9, peut invoquer des images folles et déroutantes dans l'esprit de ses ennemis, mimant les effets du sort Confusion.
+
+Restrictions :
+- ne peut être d'alignement loyal.
+~
+// 38204 unused
+// 38211-38212 unused
+//
+// ... priest of baervan:
+//
+@38301 = ~pattes rapides de Baervan~
+@38302 = ~Pattes Rapides de Baervan~
+@38303 = ~PATTES RAPIDES DE BAERVAN ERMITERRANT : Trouvés le plus souvent loin des zones urbaines, les serviteurs de Baervan Ermiterrant cherchent à protéger la nature des créatures maléfiques. Ils ont une affinité particulière pour les plantes et créatures des forêts... surtout les ratons-laveurs !
+
+Avantages :
+- Peut convoquer un animal spirituel comme allié pour sa protection une fois par jour. Cet esprit est semblable à un ours et sa puissance augmente aux niveaux 3, 5, 7 et 10.
+- Chaque fois qu'un pattes rapides lance un sort de convocation d'animaux, les animaux convoqués sont sous l'effet du sort Croc magique, ce qui permet à leurs attaques naturelles de blesser les ennemis qui ne peuvent l'être que par des armes magiques.
+- À partir du niveau 3, peut lancer Sanctuaire de façon innée une fois par jour.
+- À partir du niveau 5, est immunisé contre les effets de Graisse, Enchevêtrement et Toile d'araignée.
+- À partir du niveau 7, peut lancer Sanctuaire deux fois par jour.
+
+Restrictions :
+- doit être de race gnome.
+- doit être d'alignement bon.
+~
+@38304 = ~PATTES RAPIDES DE BAERVAN ERMITERRANT : Trouvés le plus souvent loin des zones urbaines, les serviteurs de Baervan Ermiterrant cherchent à protéger la nature des créatures maléfiques. Ils ont une affinité particulière pour les plantes et créatures des forêts... surtout les ratons-laveurs.
+~
+// 22301- 22305 unused
+// 22311- 22312 unused
+//
+// ... priest of urdlen:
+//
+@38501  = ~chasseur de sang d'Urdlen~
+@38502  = ~Chasseur de sang d'Urdlen~
+@38503  = ~CHASSEUR DE SANG D'URDLEN : Les prêtres d'Urdlen mènent une guerre sans fin contre le peuple oublié, et tout spécialement contre les clergés des autres dieux gnomes. Quand ils ne chassent pas d'autres créatures, les prêtres s'acharnent à voler, vandaliser ou détruire des objets de valeur comme les pierres précieuses ou les œuvres d'art. Ils partagent la passion de leur dieu pour les mauvais tours, surtout ceux qui ciblent les autres gnomes. Les prêtres doivent avant tout satisfaire Urdlen pour qu'il ne s'en prenne pas à eux, mais une fois cette formalité accomplie, ils peuvent faire ce que bon leur chante. Les chasseurs de sang pensent que leur existence est une plaisanterie cosmique qui dure jusqu'à ce que la griffe d'Urdlen vienne leur donner la mort. Faire partager aux autres l'ironie cruelle et l'humour rude de l'existence est une forme de compassion, en ce sens que cela aide à les endurcir contre ce qui vient tout à la fin.
+
+Avantages :
+- À partir du niveau 1, peut lancer Nuage puant une fois par jour de façon innée.
+- À partir du niveau 3, peut lancer Cécité une fois par jour de façon innée.
+- À partir du niveau 6, peut lancer Piège à crânes une fois par jour de façon innée.
+- À partir du niveau 10, peut lancer Nuage mortel une fois par jour de façon innée.
+
+Restrictions :
+- ne peut être d'alignement bon.
+~
+//
+// ... priest of yondalla:
+//
+@39101  = ~Garde de la corne de Yondalla~
+@39102  = ~Garde de la corne de Yondalla~
+@39103  = ~GARDE DE LA CORNE DE YONDALLA : Yondalla est le chef du panthéon des petites-gens, protectrice.et pourvoyeuse aussi bien des divinités que du peuple petites-gens en général. Elle la vie, la créativité, la fertilité, la communauté. Ses prêtres jouent en général des rôles importants dans les affaires des petites-gens : ils officient aux mariages, naissances, funérailles et autres cérémonies civiles et sont des conseillers fiables pour les dirigeants des communautés. En temps de crise et pendant les attaques, ils restent en général en retrait et supportent les défenseurs en première ligne devant eux, établissant ainsi la dernière ligne de défense pour les faibles et les sans défense.
+
+Avantages :
+- À partir du niveau 1, peut lancer une version innée du sort Bouclier : à la différence de la version habituelle, ce pouvoir peut être lancé sur les autres et pas seulement sur soi.
+- À partir du niveau 5, devient immunisé de façon permanente contre la terreur et les échecs de moral.
+- À partir du niveau 7, peut lancer Harmonie défensive de façon innée une fois par jour.
+- À partir du niveau 9, devient immunisé de façon permanente contre les effets et les sorts qui infligent des absorptions de niveau.
+
+Restrictions :
+- doit être d'alignement neutre et/ou bon
+~
+//
+// ... priest of arvoreen:
+//
+@39201  = ~défenseur d'Arvoreen~
+@39202  = ~Défenseur d'Arvoreen~
+@39203  = ~DÉFENSEUR D'ARVOREEN : Arvoreen représente la force militaire de la race petite-gens. Ses adeptes se concentrent en général sur la réaction et la défense. Ils cultivent les compétences tactiques, appuyant le talent guerrier avec la discrétion, les manœuvres de guérilla, des systèmes sophistiqués de communication et l'usage des pièges et des protections magiques pour contrôler les mouvements des ennemis.
+
+Avantages :
+- À partir du niveau 1, peut augmenter sa force jusqu'à 18/00 (ou plus, si elle est déjà à 18) une fois par jour.
+- À partir du niveau 5, peut guérir par contact, de façon similaire à l'Imposition des mains des paladins.
+- À partir du niveau 9, peut utiliser une version personnelle du sort Hâte pour augmenter sa mobilité et le nombre d'attaques physiques par round pendant un round par niveau.
+
+Restrictions :
+- Alignment
+~
+@39211  = ~Force du défenseur~
+@39212  = ~Force du défenseur
+
+En cas de besoin, un défenseur peut puiser dans une profonde source de force pendant une courte durée. Cette aptitude fixe sa force à 18/00, en y ajoutant un bonus de 2 points au TAC0 de toutes les attaques. Si la force du défenseur est déjà à 18 ou plus, elle est augmentée de 1 point, jusqu'à un maximum de 25. Tant de puissance ne peut hélas être maintenue bien longtemps. L'effet dure 3 tours.~
+@39213  = ~Rapidité d'action~
+@39214  = ~Rapidité d'action
+
+En cas de besoin, un défenseur, un défenseur peut se déplacer à des vitesses incroyables pendant une courte durée. Sous l'effet de ce pouvoir, il semble sous l'effet du sort de Hâte ; il peut se déplacer deux fois plus loin que la distance normale sur la même durée et reçoit une attaque supplémentaire chaque round de combat. Une telle rapidité ne peut hélas être maintenue bien longtemps. L'effet dure 3 rounds + 1 round/niveau.~
+//
+// ... incarnate of mystra 
+//
+@40501  = ~âme profane~
+@40502  = ~Âme profane~
+@40503  = ~INCARNATION DE MYSTRA: yadda yadda.
+
+Avantages :
+- lance les sorts comme un ensorceleur, etc.
+
+Restrictions :
+- Ses points de vie et son TAC0 progressent comme ceux d'un ensorceleur.
+- Ne peut utiliser de magie divine.
+~
+//
+// ... multiclass druids
+//
+@45101  = ~guerrier/druide~
+@45102  = ~Guerrier/Druide~
+@45103  = ~DRUIDE : Le druide sert la cause de la nature et de la neutralité ; La nature sauvage est sa communauté. Il utilise ses pouvoirs spéciaux pour la protéger et préserver l'équilibre du monde.
+
+CAPACITÉS :
+- Peut lancer des sorts divins.
+- Au niveau 7, il peut changer de forme en loup, en ours noir ou en ours brun une fois par jour.
+- Au niveau 15, il devient immunisé contre le poison.
+- Au niveau 18, il gagne 10 % de résistance au feu, au froid, à l'électricité et à l'acide ; ces résistances sont majorées de 10 % supplémentaires aux niveaux 21 et 24.
+
+RESTRICTIONS :
+- Ne peut porter que des armures non-métalliques.
+- Ne peut équiper que des targes et des boucliers non-métalliques.
+- Ne peut utiliser que les armes suivantes : cimeterre, dague, gourdin, lance, bâton, fléchette et fronde.
+- Ne peut être que compétent (une étoile) dans le maniement des armes.
+- Ne peut être que compétent (une étoile) dans les styles de combat.
+- Doit être d'alignement neutre strict.
+~
+@45201  = ~druide/rôdeur~
+@45202  = ~Druide/Rôdeur~
+@45301  = ~druide/voleur~
+@45302  = ~Druide/Voleur~
+@45401  = ~druide/mage~
+@45402  = ~Druide/Mage~
+@45501  = ~ensorceleur/druide~
+@45502  = ~Ensorceleur/Druide~
+@45601  = ~druide/moine~
+@45602  = ~Druide/Moine~
+// 74100, 74300, 74500, 74700, 74101, 74102, 74103 unused
+//
+// ... abjurist of mystra 
+//
+@46401  = ~abjuriste de Mystra~//neologisme pour différencier avec abjurateur ?
+@46402  = ~Abjuriste de Mystra~
+@46403  = ~ABJURISTE DE MYSTRA : Mystra est surnommée Mère de la Magie ou Notre Dame des Sorts. Elle est chargée de générer et d'entretenir la Toile, ce conduit qui permet aux jeteurs de sorts d'accéder à l'énergie magique du multivers. Les clercs d'une secte de Mystra, les abjuristes, peut canaliser la Toile sous forme de boucliers protecteurs, ce qui fait d'eux d'excellents duellistes magiques.
+
+Avantages :
+- Quand un abjuriste lance un sort de Déviation de sorts, de Renvoi de sorts ou de Piège à sorts, il bénéficie automatiquement d'un bouclier de sorts en supplément. Tout abjuriste dispose automatiquement de ces sorts dans son livre de sorts de mage.
+- Faire un avec la Toile : les abjuristes peuvent lancer les sorts avec un peu plus de facilité que la plupart des prêtres, ce qui se traduit par un bonus de 1 point au Temps d'incantation.
+
+Restrictions :
+- ne peut être d'alignement mauvais.
+~
+//
+// ... monitor of azuth 
+//
+@46501  = ~surveillant d'Azouth~
+@46502  = ~Surveillant d'Azouth~
+@46503  = ~SURVEILLANT D'AZOUTH : Azouth est une divinité mineure qui aide Mystra, la Mère de la magie, à entretenir la Toile qui permet à toute la magie de Féérune d'exister. Les surveillants, adeptes d'Azouth, sont les agents de police magique qui contrôlent le mauvais usage de la magie par des pratiquants maléfiques, et sont habilités à défier même les lanceurs de sorts les plus accomplis.
+
+Avantages :
+- Les surveillants bénéficient d'un bonus à leur niveau effectif de lanceur de sorts, ce qui les rend aussi efficaces que des lanceurs de sorts monoclassés avec une expérience équivalente (+1 niveau de lanceur tous les 5 niveaux).
+- Faire un avec la Toile : les surveillants peuvent lancer les sorts avec un peu plus de facilité que la plupart des prêtres, ce qui se traduit par un bonus de 1 point au Temps d'incantation.
+
+Restrictions :
+- ne peut être d'alignement mauvais.
+~
+@46504  = ~SURVEILLANT D'AZOUTH : Azouth est une divinité mineure qui aide Mystra, la Mère de la magie, à entretenir la Toile qui permet à toute la magie de Féérune d'exister. Les surveillants, adeptes d'Azouth, sont les agents de police magique qui contrôlent le mauvais usage de la magie par des pratiquants maléfiques, et sont habilités à défier même les lanceurs de sorts les plus accomplis.~
+//
+// ... spellbender 
+//
+// 46601-46603 unused
+// below is also unused
+@46605  = ~Tissage profane I~
+@46606  = ~Tissage profane
+
+Cette faculté magique permettra au courbesort de lancer l'un des sorts suivants :
+- Hantise
+- Bouclier
+- Image réfléchie
+- Graisse
+- Sommeil
+- Orbe Chromatique
+- Mains ardentes
+- Projectile magique~
+@46607  = ~Tissage profane II~
+@46608  = ~Tissage profane
+
+Cette faculté magique permettra au courbesort de lancer l'un des sorts suivants :
+- Vocaliser
+- Flou
+- Invisibilité
+- Horreur
+- Toile d'araignée
+- Poussière scintillante
+- Flèche acide de Melf
+- Déblocage~
+@46609  = ~Tissage profane III~
+@46610  = ~Tissage profane
+
+Cette faculté magique permettra au courbesort de lancer l'un des sorts suivants :
+- Dissipation de la magie
+- Détection des illusions
+- Armure fantomatique
+- Protection contre les projectiles normaux
+- Hâte
+- Charme néfaste
+- Éclair
+- Boule de feu~
+@46611  = ~Tissage profane IV~
+@46612  = ~Tissage profane
+
+Cette faculté magique permettra au courbesort de lancer l'un des sorts suivants :
+- Globe mineur d'invulnérabilité
+- Peau de pierre
+- Métamorphose
+- Invisibilité majeure
+- Mot secret
+- Grande malédiction
+- Confusion
+- Tempête glaciale~
+@46613  = ~Tissage profane V~
+@46614  = ~Tissage profane
+
+Cette faculté magique permettra au courbesort de lancer l'un des sorts suivants :
+- Oracle
+- Porte d'ombre
+- Renvoi de sorts mineur
+- Lame fantôme
+- Domination
+- Brèche
+- Immobilisation des monstres
+- Nuage mortel~
+@46615  = ~Tissage profane VI~
+@46616  = ~Tissage profane
+
+Cette faculté magique permettra au courbesort de lancer l'un des sorts suivants :
+- Globe d'invulnérabilité
+- Déviation de sorts
+- Protection contre l'énergie magique
+- Double Illusoire
+- Transformation de Tenser
+- Perce-magie
+- Hâte améliorée
+- Chaîne d'éclairs~
+//
+// ... cleric/thief of mask:
+//
+@46901  = ~coureur de la nuit de Mask~
+@46902  = ~coureur de la nuit de Mask~
+@46903  = ~COUREUR DE LA NUIT DE MASK : Mask est le dieu des ombres et de l'intrigue. Ses buts sont toujours cachés et ses actes sont toujours motivés par de multiples couches de complots et de plans. Sa secte de coureurs de la nuit accueille à la fois des prêtres et des clercs/voleurs, qui parcourent le monde en faisant avancer les plans de Mask.
+
+Avantages :
+- Peut créer un Œil d'ombre, un œil flottant invisible, au travers duquel le coureur de la nuit peut explorer des endroits distants. Le coureur de la nuit obtient une utilisation supplémentaire aux niveaux 6, 12 et 18.
+- À partir du niveau 4, peut disparaître soudainement de la vue de tous grâce à une Porte d'ombre magique. Le coureur de la nuit obtient une utilisation supplémentaire aux niveaux 10 et 16.
+- À partir du niveau 8, le coureur de la nuit obtient la faculté d'invoquer une créature d'ombre pour combattre pour lui. Il gagne une utilisation supplémentaire aux niveaux 14 et 20.
+
+Restrictions :
+- ne peut être d'alignement loyal ou bon.
+~
+@46911  = ~Œil d'ombre~
+@46912  = ~Le coureur de la nuit crée un organe sensoriel constitué d'ombre qui peut s'éloigner et envoyer des informations visuelles vers l'esprit du lanceur. L'Œil d'ombre voit en vision normale jusqu'à 18 mètres dans les zones éclairées et peut se déplacer dans toutes les directions tant que dure le sort.~
+@46913  = ~Porte d'ombre~
+@46914  = ~Grâce à ce sort, le coureur de la nuit créé l'illusion d'une porte. Il donne également l'impression de franchir cette « porte » et de disparaître, devenant totalement invisible pour la durée du sort. Les adversaires à moins de 1,5 m du lanceur doivent réussir un jet de sauvegarde avec un malus de -4 sous peine d'être dupés et amenés à suivre le lanceur au travers de la porte, se retrouvant piégé dans une pièce extra-dimensionnelle pendant au plus 4 rounds.~
+@46915  = ~Convocation d'ombre~
+@46916  = ~Ce sort convoque une ombre, un monstre mort-vivant qui obéira au coureur de la nuit dans n'importe quelles circonstances.~
+@46917  = ~Ombre~
+//
+// ... cleric/thief of brandobaris:
+//
+@47701  = ~mésaventurier de brandobaris~
+@47702  = ~Mésaventurier de Brandobaris~
+@47703  = ~MÉSAVENTURIER DE BRANDOBARIS : Généralement décrit comme une canaille amicale, Brandobaris est la personnification de l'aventure et la fripouillerie pour les petites-personnes. Adorant les risques et défis inédits, il associe une tendance à se mettre dans le pétrin avec un talent troublant pour s'en sortir.de façon audacieuse et dramatique. Ses prêtres consacrent une partie substantielle de leur temps à cultiver leurs compétences roublardes.
+
+Avantages :
+- Bénédiction de Tymora : grâce à l'amitié entre Brandobaris et Tymora, les mésaventuriers bénéficient d'un bonus de 1 point à la chance.
+- À partir du niveau 3n peut lancer Silence sur 5 mètres de façon innée une fois par jour
+- À partir du niveau 5, peut lancer Invisibilité une fois par jour.
+- Les mésaventuriers ont talent troublant pour éviter la capture et l'entrave. À partir du niveau 7, ils ont 60 % de chances d'éviter tout sort ou effet d'immobilisation, d'étourdissement, de toile, d'enchevêtrement ou de lenteur.
+
+Restrictions :
+- Alignement: 
+~
+//
+// ... woodscout of mielikki 
+//
+@49101  = ~éclaireur des bois de Maïlikki~
+@49102  = ~Éclaireur des bois de Maïlikki~
+@49103  = ~ÉCLAIREUR DES BOIS DE MAÏLIKKI : La Dame de la forêt, Maïlikki, aide les humanoïdes à communier avec les esprits de la nature et leur apprend à survivre sous des cieux rigoureux. Tandis que son allié Silvanus apprend aux druides à façonner la nature, les éclaireurs des bois de Maïlikki se forment comme rôdeur à vivre en simplicité, en harmonie avec la nature. Les éclaireurs des bois apprécient la compagnie des êtres civilisés. On les trouve souvent explorant avec des groupes d'aventuriers, affrontant des menaces contre nature tout en enseignant à leurs compagnons comment respecter la nature.
+
+Avantages :
+- les éclaireurs des bois combinent les facultés d'un rôdeur et d'un druide.
+- les éclaireurs des bois peuvent atteindre la maîtrise (3 étoiles) avec les arcs longs et les arcs courts.
+
+Restrictions :
+- doit être d'alignement bon.
+~
+@49104  = ~ÉCLAIREUR DES BOIS DE MAÏLIKKI : La Dame de la forêt, Maïlikki, aide les humanoïdes à communier avec les esprits de la nature et leur apprend à survivre sous des cieux rigoureux. Tandis que son allié Silvanus apprend aux druides à façonner la nature, les éclaireurs des bois de Maïlikki se forment comme rôdeur à vivre en simplicité, en harmonie avec la nature. Les éclaireurs des bois apprécient la compagnie des êtres civilisés. On les trouve souvent explorant avec des groupes d'aventuriers, affrontant des menaces contre nature tout en enseignant à leurs compagnons comment respecter la nature.~
+//
+// ... windrider of shaundakul 
+//
+@49201  = ~chevaucheur de vent de Shaundakul~
+@49202  = ~Chevaucheur de vent de Shaundakul~
+@49203  = ~CHEVAUCHEUR DE VENT DE SHAUNDAKUL : Divinité mineure des voyages et de l'exploration, Shaundakul était populaire pendant les jours de gloire de Myth Drannor. La plupart de ses adorateurs sont désormais basés dans les forêts de Cormanthor, près de l'ancienne Cour elfique, mais ils sont particulièrement sensibles à l'appel du voyage. Les chevaucheurs de vent peuvent alors se rencontrer, séparément, presque partout dans les Royaumes. Tous les membres de son clergé sont aussi des rôdeurs, faisant appel à leurs compétences de survie en milieu naturel pour eux-mêmes et pour les autres.
+
+Advantages :
+-Quand ils se trouvent dans la forêt de Cormanthor, les chevaucheurs de vent en difficulté peuvent envoyer un signal de détresse silencieux. Tous les rôdeurs à moins de 80 kilomètres auront instantanément connaissance de la situation du chevaucheur de vent et de sa localisation précise.
+- Une fois par jour tous les cinq niveaux d'expérience, peut utiliser Marcher sur le vent, clignotant d'un endroit à un autre presque instantanément.
+
+Restrictions :
+- doit être d'alignement bon.
+~
+@49204  = ~CHEVAUCHEUR DE VENT DE SHAUNDAKUL : Divinité mineure des voyages et de l'exploration, Shaundakul était populaire pendant les jours de gloire de Myth Drannor. La plupart de ses adorateurs sont désormais basés dans les forêts de Cormanthor, près de l'ancienne Cour elfique, mais ils sont particulièrement sensibles à l'appel du voyage. Les chevaucheurs de vent peuvent alors se rencontrer, séparément, presque partout dans les Royaumes. Tous les membres de son clergé sont aussi des rôdeurs, faisant appel à leurs compétences de survie en milieu naturel pour eux-mêmes et pour les autres.
+~
+@49211  = ~Marcher sur le vent~
+@49212  = ~Marcher sur le vent
+
+Le chevaucheur de vent modifie la substance de leur corps, qui prend la consistance d'un nuage de vapeur puis invoque un vent magique qui emporte rapidement leur forme intangible à l'endroit qu'ils choisissent.~
+
+// 49301-49303 unused
+
+//
+// multi shamans
+//
+@49501  = ~chaman/moine~ // if monastic orders is installed - not sure if it's different from sham/thief
+@49502  = ~Chaman/Moine~
+@49503  = ~CHAMAN/MOiNE : Les Chamans forgent une connexion divine avec le monde naturel, semblable à la voie empruntée par les druides avec la nature, mais les chamans sont plus spirituels que primitifs. Ils puisent directement dans les énergies qui circulent à travers la terre et l'air, à travers les plantes et les animaux, et même à travers les morts, et ils façonnent ces énergies afin qu'elles obéissent à leur volonté. Leur capacité à convoquer des esprits puissants comme gardiens et défenseurs en est un parfait exemple. Partagés entre les deux mondes, les Chamans privilégient l'équilibre à la domination. Rare sont les chamans qui consacreront du temps pour développer d'autres compétences, dans ce cas précis, celles d'un moine.
+
+Avantages :
+- ...
+
+Restrictions:
+- ...
+~
+@49601  = ~rôdeur/chaman~
+@49602  = ~Rôdeur/Chaman~
+@49603  = ~RÔDEUR/CHAMAN : Les Chamans forgent une connexion divine avec le monde naturel, semblable à la voie empruntée par les druides avec la nature, mais les chamans sont plus spirituels que primitifs. Ils puisent directement dans les énergies qui circulent à travers la terre et l'air, à travers les plantes et les animaux, et même à travers les morts, et ils façonnent ces énergies afin qu'elles obéissent à leur volonté. Leur capacité à convoquer des esprits puissants comme gardiens et défenseurs en est un parfait exemple. Partagés entre les deux mondes, les Chamans privilégient l'équilibre à la domination. Rare sont les chamans qui consacreront du temps pour développer d'autres compétences, dans ce cas précis, celles d'un rôdeur.
+
+Advantages :
+- ...
+
+Restrictions :
+- doit être d'alignement neutre bon.
+~
+@49701  = ~chaman/voleur~
+@49702  = ~Chaman/voleur~
+@49703  = ~CHAMAN/VOLEUR : Les Chamans forgent une connexion divine avec le monde naturel, semblable à la voie empruntée par les druides avec la nature, mais les chamans sont plus spirituels que primitifs. Ils puisent directement dans les énergies qui circulent à travers la terre et l'air, à travers les plantes et les animaux, et même à travers les morts, et ils façonnent ces énergies afin qu'elles obéissent à leur volonté. Leur capacité à convoquer des esprits puissants comme gardiens et défenseurs en est un parfait exemple. Partagés entre les deux mondes, les Chamans privilégient l'équilibre à la domination. Rare sont les chamans qui consacreront du temps pour développer d'autres compétences, dans ce cas précis, celles d'un voleur.
+
+Avantages :
+-...
+
+Restrictions: 
+- doit être d'alignement neutre
+~
+@49801  = ~chaman/mage~
+@49802  = ~Chaman/Mage~
+@49803  = ~CHAMAN/MAGE : Les Chamans forgent une connexion divine avec le monde naturel, semblable à la voie empruntée par les druides avec la nature, mais les chamans sont plus spirituels que primitifs. Ils puisent directement dans les énergies qui circulent à travers la terre et l'air, à travers les plantes et les animaux, et même à travers les morts, et ils façonnent ces énergies afin qu'elles obéissent à leur volonté. Leur capacité à convoquer des esprits puissants comme gardiens et défenseurs en est un parfait exemple. Partagés entre les deux mondes, les Chamans privilégient l'équilibre à la domination. Rare sont les chamans qui consacreront du temps pour développer d'autres compétences, dans ce cas précis, celles d'un mage.
+
+Avantages :
+- ..
+
+Restrictions :
+- doit être d'alignement neutre.
+~
+@49901  = ~chaman barbare~
+@49902  = ~Chaman barbare~
+@49903  = ~CHAMAN BARBARE : Les Chamans forgent une connexion divine avec le monde naturel, semblable à la voie empruntée par les druides avec la nature, mais les chamans sont plus spirituels que primitifs. Ils puisent directement dans les énergies qui circulent à travers la terre et l'air, à travers les plantes et les animaux, et même à travers les morts, et ils façonnent ces énergies afin qu'elles obéissent à leur volonté. Leur capacité à convoquer des esprits puissants comme gardiens et défenseurs en est un parfait exemple. Partagés entre les deux mondes, les Chamans privilégient l'équilibre à la domination. Rare sont les chamans qui consacreront du temps pour développer d'autres compétences, dans ce cas précis, celles d'un guerrier.
+
+Avantages :
+- ...
+
+Restrictions :
+- doit être d'alignement neutre.
+~
+@49911  = ~Connaissance des sorts divins~
+@49912  = ~Connaissance des sorts divins
+
+Cette aptitude vous permet de choisir vos sorts de prêtre connus pour chaque niveau de sort.~
+@49913  = ~Connaissance des sorts profanes~
+@49914  = ~Connaissance des sorts profanes
+
+Cette aptitude vous permet de choisir vos sorts de mage connus pour chaque niveau de sort.~
+@49915  = ~Connaissance de sorts~
+@49916  = ~Connaissance de sorts
+
+Cette aptitude vous permet de choisir vos sorts connus pour chaque niveau de sort..~
+@49917  = ~Choisir le style de lancer de sorts divins~
+@49918  = ~Choisir le style de lancer de sorts divins
+
+Cette aptitude vous permet de choisir d'apprendre et de lancer les sorts intuitivement, comme un ensorceleur/chaman, ou par le mécanisme normal.~
+@49921  = ~Danse chamanique~
+@49923  = ~Arrêter la danse chamanique~
+@49924  = ~Détection des illusions~
+// 49925 unused
+@49926  = ~Arrêter la détection des illusions~
+@49950  = ~Initialisation de l'apprentissage des sorts chamanique~
+
+//
+// ... mystics:
+//
+@70001  = ~druide~
+@70002  = ~Druide~
+@70003  = ~DRUIDES : Les druides forment une connexion spirituelle avec un aspect du monde naturel et canalisent de l'énergie au travers de cette connexion pour créer des effets magiques. Cet art a été pratiqué sous une forme ou une autre depuis l'aube des temps et, selon certains, depuis avant l'apparition des religions et des divinités. La plupart des druides sont organisés en hiérarchies dans lesquelles on enseigne leurs savoir-faire et on s'y entraîne.
+
+Les MYSTIQUES sont des druides sauvages et indépendants. Ils tendent à se retirer d'eux-mêmes en des lieux éloignés, dans lesquels ils se concentrent sur la méditation et la connexion avec un des éléments fondamentaux des plans intérieurs : la terre, l'air, l'eau, le feu, la lumière ou les ténèbres. La magie qui circule au travers d'eux est brute et puissante, mais leur capacité à la modeler est limitée aux effets liés à leur centre d'intérêt. Il se raconte que les mystiques sont bénis de Mystra en tant que pratiquants de la forme la plus pure de magie. La déesse elle-même n'a pas offert de commentaires à ce sujet.
+
+Les OCCULTISTES apprennent à puiser le pouvoir magique de l'univers de façon exotique et non conventionnelle. Grâce à leurs études et (souvent) d'expériences contre natures, ils peuvent apprendre à exploiter les énergies ardentes des plans intérieurs, ou les pouvoirs infernaux des plans extérieurs, ou la nature sauvage et animal qui bouillonne à l'intérieur de chaque homme ou femme. Certains ont même appris à voler l'énergie magique des divinités elles-mêmes, ce qui interroge sur la réalité de l'omnipotence de ces dernières.
+
+CAPACITÉS :
+- Ne peut porter que des armures non-métalliques.
+- Ne peut équiper que des targes et des boucliers non-métalliques.
+- Ne peut être que compétent (une étoile) dans le maniement des armes.
+- Ne peut être que compétent (une étoile) dans les styles de combat.
+- Dés de vie : d8
+
+Caractéristiques requises pour le jumelage : Sagesse, Charisme.
+~
+// 70004 unused
+@70021  = ~druide~
+@70022  = ~Druide~
+@70023  = ~DRUIDE : blabla sur l'archetype/la classe et choisir un kit~
+// 70031-70033 unused
+
+// 70101-70112 probably unused
+//
+// ... beast mystic:
+// also probably unused
+// 70201-70212 unused
+// below used in spells_hla
+@70213  = ~Changement de forme en loup-garou~
+@70214  = ~Changement de forme en forme naturelle~
+@70215  = ~griffe de loup-garou~
+@70216  = ~loup-garou~
+@70217  = ~loup-garou majeur~
+@70218  = ~seigneur loup-garou~
+//
+// ... earth mystic:
+//
+@70301  = ~mystique de la terre~
+@70302  = ~Mystique de la terre~
+@70303  = ~MYSTIQUE DE LA TERRE : Ces gens forment un lien étroit avec la terre sous nos pieds et ne font qu'un avec le roc puissant et le sol nourricier. Avec le temps, leur corps adopte certains des caractéristiques rustiques de la pierre, ce qui les aide à absorber les impacts et à porter des coups avec une force renversante.
+
+Avantages :
+- Peut lancer un sort de plus par niveau.
+- Lance les sorts comme s'il avait un niveau d'expérience de plus.
+- 2 % de résistance aux dégâts contondants par niveau, jusqu'à un maximum de 40 % au niveau 20.
+- 25 % des coups réussis en mêlée étourdissent la cible pour 1 à 2 secondes sur un échec à un jet de sauvegarde contre la pétrification.
+- Peut attribuer 2 points (2 étoiles) aux styles de combat à une arme et à deux mains, et 3 points (3 étoiles) au style de combat à deux armes.
+
+Restrictions :
+- Ne peut être d'alignement chaotique.
+~
+@70304  = ~MYSTIQUE DE LA TERRE : Ces gens forment un lien étroit avec la terre sous nos pieds et ne font qu'un avec le roc puissant et le sol nourricier. Avec le temps, leur corps adopte certains des caractéristiques rustiques de la pierre, ce qui les aide à absorber les impacts et à porter des coups avec une force renversante.~
+@70305  = ~~
+@70311  = ~résistance aux dégâts contondants~
+//
+// ... water mystic:
+//
+@70401  = ~mystique de l'eau~
+@70402  = ~Mystique de l'eau~
+@70403  = ~MYSTIQUE DE L'EAU : L'eau est implacable. Elle s'écoule partout dans le monde, elle déplace des montagnes sous les calottes glaciaires, s'infiltre dans les crevasses les plus profondes et imprègne les plantes et les animaux. C'est vraiment la fondation de la vie et les mystiques de l'eau apprennent à en diriger le flux et reflux. Ils ont compris que l'eau ne peut être contenue ou contrôlée, mais seulement influencée. Cette sagesse leur permet de résister aux pires ravages causés par l'eau et à utiliser des attaques dévastatrices basées sur les liquides et la glace contre leurs ennemis.
+
+Avantages :
+- Peut lancer un sort de plus par niveau.
+- Lance les sorts comme s'il avait un niveau d'expérience de plus.
+- 2 % de résistance aux dégâts d'acide et de froid par niveau, jusqu'à un maximum de 40 % au niveau 20.
+- 25 % des coups réussis en mêlée infligent 1d3 points de dégât d'acide.
+- Peut attribuer 2 points (2 étoiles) aux styles de combat à une arme et à deux mains, et 3 points (3 étoiles) au style de combat à deux armes.
+
+Restrictions :
+- Ne peut être d'alignement loyal.
+~
+@70404  = ~MYSTIQUE DE L'EAU : L'eau est implacable. Elle s'écoule partout dans le monde, elle déplace des montagnes sous les calottes glaciaires, s'infiltre dans les crevasses les plus profondes et imprègne les plantes et les animaux. C'est vraiment la fondation de la vie et les mystiques de l'eau apprennent à en diriger le flux et reflux. Ils ont compris que l'eau ne peut être contenue ou contrôlée, mais seulement influencée. Cette sagesse leur permet de résister aux pires ravages causés par l'eau et à utiliser des attaques dévastatrices basées sur les liquides et la glace contre leurs ennemis.~
+@70405  = ~~
+@70411  = ~résistance au froid~
+@70412  = ~résistance à l'acide~
+//
+// ... air mystic:
+//
+@70501  = ~mystique de l'air~
+@70502  = ~Mystique de l'air~
+@70503  = ~MYSTIQUE DE l'AIR : le vent imprègne le souffle de chaque créature. Il peut se déchaîner en tempêtes sauvages ou être doux et chaud. Il transporte l'eau dans les nuages et la pluie pour rendre la terre fertile. Certains prétendent aussi qu'il transporte des secrets oubliés depuis longtemps, même par les sages. Les mystiques de l'air s'adaptent à la nature capricieuse du vent et imitent sa capacité à passer des bourrasques aux brises réconfortantes. Ils apprennent aussi à contrôler l'accumulation de charges statiques et électriques par les courants d'air.
+
+Avantages :
+- Peut lancer un sort de plus par niveau.
+- Lance les sorts comme s'il avait un niveau d'expérience de plus.
+- 2 % de résistance aux dégâts d'électricité par niveau, jusqu'à un maximum de 40 % au niveau 20.
+- Immunisé contre les sorts nuisibles basés sur les nuages.
+- 25 % des coups réussis en mêlée infligent 1d3 points de dégât d'électricité .
+- Peut attribuer 2 points (2 étoiles) aux styles de combat à une arme et à deux mains, et 3 points (3 étoiles) au style de combat à deux armes.
+
+Restrictions :
+- Ne peut être d'alignement loyal.
+~
+@70504  = ~MYSTIQUE DE l'AIR : le vent imprègne le souffle de chaque créature. Il peut se déchaîner en tempêtes sauvages ou être doux et chaud. Il transporte l'eau dans les nuages et la pluie pour rendre la terre fertile. Certains prétendent aussi qu'il transporte des secrets oubliés depuis longtemps, même par les sages. Les mystiques de l'air s'adaptent à la nature capricieuse du vent et imitent sa capacité à passer des bourrasques aux brises réconfortantes. Ils apprennent aussi à contrôler l'accumulation de charges statiques et électriques par les courants d'air.~
+@70505  = ~~
+@70511  = ~résistance à l'électricité~
+@70512  = ~immunité aux effets de nuage~
+//
+// ... fire mystic:
+//
+@70601  = ~mystique du feu~
+@70602  = ~Mystique du feu~
+@70603  = ~MYSTIQUE DU FEU : Le feu est la force destructrice qui menace tous les autres éléments, consumant l'air, faisant bouillir l'eau et brûlant la terre.L Mais le sage sait que le feu rajeunit aussi et libérant l'énergie emprisonnée depuis une éternité pour aider la vie nouvelle à s'épanouir. Les mystiques du feu s'approprient cette dualité, l'importance aussi bien de la destruction que de la création... mais beaucoup y voient une menace et la plupart se méfient des mystiques du feu.
+
+Avantages :
+- Peut lancer un sort de plus par niveau.
+- Lance les sorts comme s'il avait un niveau d'expérience de plus.
+- 2 % de résistance aux dégâts de feu par niveau, jusqu'à un maximum de 40 % au niveau 20.
+- 25 % des coups réussis en mêlée infligent 1d4 points de dégât d'électricité .
+- Peut attribuer 2 points (2 étoiles) aux styles de combat à une arme et à deux mains, et 3 points (3 étoiles) au style de combat à deux armes.
+
+Restrictions :
+- Ne peut être d'alignement loyal.
+~
+@70604  = ~MYSTIQUE DU FEU : Le feu est la force destructrice qui menace tous les autres éléments, consumant l'air, faisant bouillir l'eau et brûlant la terre. Mais le sage sait que le feu rajeunit aussi et libérant l'énergie emprisonnée depuis une éternité pour aider la vie nouvelle à s'épanouir. Les mystiques du feu s'approprient cette dualité, l'importance aussi bien de la destruction que de la création... mais beaucoup y voient une menace et la plupart se méfient des mystiques du feu.~
+@70605  = ~~
+@70611  = ~résistance au feu~
+//
+// ... light mystic:
+//
+@70701  = ~mystique de la lumière~
+@70702  = ~Mystique de la lumière~
+@70703  = ~MYSTIQUE DE LA LUMIÈRE : la lumière est un ingrédient essentiel à la vie et aussi à la survie de la plupart des animaux, qui agissent en grande partie grâce au sens de la vue. La lumière nourrit les plante et éclaire les vérités, mais elle peut aussi dessécher les gorges ou créer des mirages et des illusions. Les mystiques de la lumière passent l'essentiel de leur temps à méditer sous le soleil brûlant des déserts, des plages ou autres environnements similaires. Ils sont souvent de puissants alliés des druides du désert. Cependant, ils sont régulièrement pris de soif de voyage et apportent leur aide, ailleurs, à ceux qui souffrent dans les ténèbres.
+
+Avantages :
+- Peut lancer un sort de plus par niveau.
+- Lance les sorts comme s'il avait un niveau d'expérience de plus.
+- Immunisé contre la cécité et peut dissiper les illusions de niveau inférieur ou égal à trois, 3 fois par jour.
+- 40 % des coups réussis en mêlée entourent la cible de Lueur Féerique pendant 3 rounds, qui inflige une pénalité de 2 points à la classe d'armure.
+- Peut attribuer 2 points (2 étoiles) aux styles de combat à une arme et à deux mains, et 3 points (3 étoiles) au style de combat à deux armes.
+
+Restrictions :
+- ne peut être d'alignement mauvais
+~
+@70704  = ~MYSTIQUE DE LA LUMIÈRE : la lumière est un ingrédient essentiel à la vie et aussi à la survie de la plupart des animaux, qui agissent en grande partie grâce au sens de la vue. La lumière nourrit les plante et éclaire les vérités, mais elle peut aussi dessécher les gorges ou créer des mirages et des illusions. Les mystiques de la lumière passent l'essentiel de leur temps à méditer sous le soleil brûlant des déserts, des plages ou autres environnements similaires. Ils sont souvent de puissants alliés des druides du désert. Cependant, ils sont régulièrement pris de soif de voyage et apportent leur aide, ailleurs, à ceux qui souffrent dans les ténèbres.~
+@70711  = ~immunité à la cécité~
+//
+// ... shadow mystic:
+//
+@70801  = ~mystique de l'ombre~
+@70802  = ~Mystique de l'ombre~
+@70803  = ~MYSTIQUE DE L'OMBRE : Derrière toute chose éclairée, une ombre se tapit. Et plus forte est la lumière, plus profonde est l'ombre. Les mystiques de l'ombre ont compris qu'il s'agit simplement de la nature de l'univers. Les ombres ne sont pas nécessairement malveillantes... mais elles touchent à une zone de peur primaire chez tous les animaux. La manière dont cette force est exploitée dépend de celui qui l'utilise. Certains utilisent les ombres pour rafraîchir et apaiser, tandis que d'autres aveuglent et terrifient leurs ennemis.
+
+Avantages :
+- Peut lancer un sort de plus par niveau.
+- Lance les sorts comme s'il avait un niveau d'expérience de plus.
+- Immunisé contre la cécité.
+- 25 % des coups réussis en mêlée aveuglent la cible pour 5 secondes sur un échec à un jet de sauvegarde contre les souffles.
+- Peut attribuer 2 points (2 étoiles) aux styles de combat à une arme et à deux mains, et 3 points (3 étoiles) au style de combat à deux armes.
+
+Restrictions :
+- Doit être d'alignement neutre.
+~
+@70804  = ~MYSTIQUE DE L'OMBRE : Derrière toute chose éclairée, une ombre se tapit. Et plus forte est la lumière, plus profonde est l'ombre. Les mystiques de l'ombre ont compris qu'il s'agit simplement de la nature de l'univers. Les ombres ne sont pas nécessairement malveillantes... mais elles touchent à une zone de peur primaire chez tous les animaux. La manière dont cette force est exploitée dépend de celui qui l'utilise. Certains utilisent les ombres pour rafraîchir et apaiser, tandis que d'autres aveuglent et terrifient leurs ennemis.~
+
+// 71101-71114 unused (fate mystic)
+//
+// ... druid shapeshifting:
+//
+@73000  = ~Choisir une nouvelle métamorphose~
+@73001  = ~Métamorphose en forme naturelle~
+@73002  = ~Choisir cette forme~
+@73003  = ~Métamorphose en furet~
+@73004  = ~Se transformer en furet.
+
+FURET : sous forme de furet, le druide est caché pour deux rounds au plus. Il peut en profiter pour s'enfuir ou se déplacer furtivement, et peut attaquer une fois par round, infligeant 1d2 points de dégâts perforants.~
+@73009  = ~Métamorphose en loup~
+@73010  = ~Se transformer en loup
+
+LOUP : sous forme de loup, le druide peut détecter les ennemis dissimulés. Il peut attaquer 1,5 fois par round en infligeant 2d4 points de dégâts perforants. Les attaques réussies ont une chance d'agripper la cible, ce qui la ralentit pour une courte durée. La cible peut faire un jet de sauvegarde pour éviter cet effet.~
+@73011  = ~Métamorphose en loup noir~
+@73012  = ~Se transformer en loup noir
+
+LOUP NOIR : sous forme de loup noir, le druide  a une force de 19. Il peut attaquer 1,5 fois par round en infligeant 2d6 points de dégâts perforants. Les attaques réussies ont une chance d'agripper la cible, ce qui la ralentit pour une courte durée. La cible peut faire un jet de sauvegarde pour éviter cet effet.~
+@73013  = ~Métamorphose en loup ds glaces~
+@73014  = ~Se transformer en loup des glaces
+
+LOUP DES GLACES : sous cette forme, le druide peut attaquer 1,5 fois par round en infligeant 2d4 points de dégâts perforants. Les attaques réussies ont une chance d'agripper la cible, ce qui la ralentit pour une courte durée. La cible peut faire un jet de sauvegarde pour éviter cet effet. De plus, le druide obtient la faculté d'utiliser une attaque à distance, Souffle glacé, qui inflige 6d4 points de dégâts de froid (avec un jet de sauvegarde pour demi-dégâts).~
+@73015  = ~Métamorphose en loup effrayant~
+@73016  = ~Se transformer en loup effrayant
+
+LOUP EFFRAYANT : sous cette forme, le druide attaque 1,5 fois par round pour 2d4 points de dégâts perforants. Les attaques réussies peuvent provoquer une maladie qui réduit la force de la victime de 1 point si elle échoue à un jet de sauvegarde. De plus, le druide a une résistance de 100 % contre les dégâts de froid et de 50 % contre le feu et l'électricité.~
+@73017  = ~Métamorphose en loup vampirique~
+@73018  = ~Se transformer en loup vampirique
+
+LOUP VAMPIRIQUE : sous cette forme, le druide attaque 1,5 fois par round pour 2d6 points de dégâts perforants. Les attaques réussies diminuent la constitution de la cible de 2 points si elle échoue à un jet de sauvegarde. De plus, le druide a une résistance de 100 % contre les dégâts de froid et de 50 % contre le feu et l'électricité.~
+@73019  = ~Métamorphose en loup de l'ombre~
+@73020  = ~Se transformer en loup de l'ombre
+
+~
+@73023  = ~Métamorphose en ours noir~
+@73024  = ~Se transformer en ours noir
+
+OURS NOIR : sous forme d'ours brun, le druide a une force de 19 et attaque deux fois par round avec des griffes qui infligent 2d6 points de dégâts tranchants.~
+@73025  = ~Métamorphose en grizzly~
+@73026  = ~Se transformer en grizzly
+
+GRIZZLY : sous forme de grizzly, le druide a une force de 20 et attaque deux fois par round avec des griffes qui infligent 2d6 points de dégâts tranchants et,si la cible échoue à un jet de sauvegarde, 2d4 points de dégâts contondants supplémentaires.~
+@73027  = ~Métamorphose en ours polaire~
+@73028  = ~Se transformer en ours polaire
+
+OURS POLAIRE : sous cette forme, la force du druide est portée à 21. Il peut attaquer deux fois par round avec ses griffes, qui infligent 2d8 points de dégâts tranchants et, si la cible échoue à un jet de sauvegarde, 2d4 points supplémentaires de dégâts contondants.~
+@73031  = ~Métamorphose en lion des montagnes~
+@73032  = ~Se transformer en lion des montagnes
+
+LION DES MONTAGNES : sous cette forme, le druide attaque deux fois par round avec 2d4 points de dégâts tranchants. Les attaques réussies peuvent projeter la cible au sol si elle échoue à un jet de sauvegarde.~
+@73033  = ~Métamorphose en panthère~
+@73034  = ~Se transformer en panthère
+
+PANTHÈRE : sous cette forme, le druide attaque deux fois par round avec 2d4 points de dégâts tranchants. Les attaques réussies peuvent projeter la cible au sol si elle échoue à un jet de sauvegarde.~
+@73037  = ~Métamorphose en sanglier~
+@73038  = ~Se transformer en sanglier
+
+SANGLIER : sous cette forme, le druide attaque 1,5 fois par round avec ses robustes défenses et infligé des dégâts tranchants. Il peut forcer son passage sous les effets d'enchevêtrement ou de toile d'araignée.~
+@73039  = ~Métamorphose en yéti~
+@73040  = ~Se transformer en yéti
+
+YÉTI : sous cette forme, la force du druide est portée à 19. Il peut attaquer deux fois par round avec ses poings, qui infligent 2d6 points de dégâts contondants. De plus, les attaques réussies peuvent projeter la cible au loin si elle échoue à un jet de sauvegarde.~
+@73041  = ~Métamorphose en python~
+@73042  = ~Se transformer en python
+
+PYTHON : sous forme de serpent, le druide peut utiliser une morsure qui inflige 1d3 points de dégâts et empoisonne la cible, avec un effet semblable à l'Arme empoisonnée de l'assassin. De plus, le druide peut essayer d'enserrer un adversaire,ce qui les paralyse un court instant s'il échoue à un jet de sauvegarde.~
+@73045  = ~Métamorphose en petite wiverne~
+@73046  = ~Se transformer en petite wiverne
+
+PETITE WIVERNE : sous forme de petite wiverne, le druide peut survoler les obstacles au sol comme les sorts d'Enchevêtrement et de Toile d'araignée. Ses griffes puissantes peuvent déchirer leurs victimes et infliger 1d6 points de dégâts et ses attaques peuvent empoisonner la cible, avec des effets semblables à l'Arme empoisonnée des assassins.~
+@73047  = ~Métamorphose en wiverne~
+@73048  = ~Se transformer en petite wiverne
+
+WIVERNE : sous forme de wiverne, le druide peut survoler les obstacles au sol comme les sorts d'Enchevêtrement et de Toile d'araignée. Ses griffes puissantes peuvent déchirer leurs victimes et infliger 2d6 points de dégâts et ses attaques peuvent empoisonner la cible, avec des effets semblables à l'Arme empoisonnée des assassins. De plus, le druide peut générer une puissante bourrasque qui se comporte comme une version diminuée du Coup d'ailes des dragons.
+~
+@73051  = ~Métamorphose en araignée géante~
+@73052  = ~Se transformer en araignée géante
+
+ARAIGNÉE GÉANTE : sous cette forme, le druide dispose de 1,5 attaque par round et inflige 1d8 points de dégâts perforants. Une attaque réussie dépose un poison qui a un effet similaire à celui de la compétence Arme empoisonnée de l'assassin. Le druide est immunisé aux effets de toile, magiques ou non, et peut utiliser une version amoindrie du sort Toile d'araignée une fois tous les 3 rounds.~
+@73053  = ~Métamorphose en araignée-sabre~
+@73054  = ~Se transformer en araignée-sabre
+
+ARAIGNÉE-SABRE : sous cette forme, le druide peut se déplacer très rapidement et attaquer 4 fois par round en infligeant 1d6 points de dégâts tranchants. Le druide est immunisé aux effets de toile, magiques ou non.~
+@73061  = ~Métamorphose en scarabée scolyte~
+@73062  = ~Se transformer en scarabée scolyte
+
+SCARABÉE SCOLYTE ; sous cette forme, le druide peut exécuter une puissante attaque perforante une fois par round pour 2d6+2 points de dégâts perforants. La dure carapace du scarabée offre au druide un bonus à la classe d'armure de 3 points contre les attaques à projectiles et une résistance de 50 % aux dégâts physiques en général.~
+@73063  = ~Métamorphose en scarabée de feu~
+@73064  = ~Se transformer en scarabée de feu
+
+SCARABÉE DE FEU : sous cette forme, le druide peut exécuter une attaque par round avec sa pince, qui inflige 2d4 points de dégâts perforants avec 2d4 points de dégâts de feu supplémentaires. Il gagne un bonus de 3 points à la classe d'armure contre les attaques à projectiles, ainsi que de 75 % de résistance aux dégâts de feu.~
+@73065  = ~Métamorphose en scarabée bombardier~
+@73066  = ~Se transformer en scarabée bombardier
+
+SCARABÉE BOMBARDIER : sous cette forme, le druide peut exécuter une attaque par round avec sa pince, qui inflige 2d4 points de dégâts perforants avec 2d4 points de dégâts d'acide supplémentaires. Il gagne un bonus de 3 points à la classe d'armure contre les attaques à projectiles, ainsi que de 75 % de résistance aux dégâts d'acide.~
+@73067  = ~Métamorphose en scarabée rhinocéros~
+@73068  = ~Se transformer en scarabée rhinocéros
+
+SCARABÉE RHINOCÉROS : sous cette forme, le druide voit sa force portée à 22. Il peut attaquer deux fois par round avec des pinces incroyablement puissantes, pour 3d6 points de dégâts perforants. Sa dure carapace accorde un bonus de 4 points à la classe d'armure contre les attaques tranchantes, contondantes et les attaques à projectiles, ainsi que 50 % de résistance aux dégâts physiques en général.~
+@73071  = ~Métamorphose en ver charognard~
+@73072  = ~Se transformer en ver charognard
+
+VER CHAROGNARD : sous cette forme, le druide peut exécuter deux attaques par round, qui infligent 2d4 points de dégâts perforants. Les attaques réussies ont 50 % de chances de paralyser la victime pour plusieurs rounds si elle échoue à un jet de sauvegarde contre le poison.~
+@73073  = ~Métamorphose en remorhaz~
+@73074  = ~Se transformer en remorhaz
+
+REMORHAZ : sous cette forme, la force du druide est portée à 21 et sa résistance aux dégâts de froid à 100 %. Il peut attaquer 3 fois par round avec des puissantes pinces, qui infligent 2d6 points de dégâts perforants. Sa dure carapace lui offre un bonus de 4 points à la classe d'armure contre les dégâts tranchants, contondants et les attaques à projectiles, ainsi que 50 % de résistance aux dégâts physiques en général.~
+@73081  = ~Changement de forme en loup-garou~
+@73082  = ~Se transformer en loup-garou
+
+LOUP-GAROU : sous cette forme, la force et la dextérité du druide sont portées à 18, sa constitution à 20 et il peut régénérer 1 point de vie par round. Il peut porter deux attaques de griffes par round pour 1d10 points de dégâts tranchants par round, ses griffes sont considérées comme des armes magiques +1. Enfin, cette forme offre une résistance à la magie naturelle et une résistance aux dégâts élémentaires de 15 %.~
+@73083  = ~Changement de forme en loup-garou majeur~
+@73084  = ~Se transformer en loup-garou majeur
+
+LOUP-GAROU MAJEUR : sous cette forme, la force et la dextérité du druide sont portées à 19, sa constitution à 22 et il peut régénérer 3 points de vie par round. <Il peut porter deux attaques de griffes par round pour 2d6 points de dégâts tranchants par round, ses griffes sont considérées comme des armes magiques +3. Enfin, cette forme est immunisée contre les armes non-magiques et ffre une résistance à la magie naturelle et une résistance aux dégâts élémentaires de 30 %~
+//
+// ... druids:
+//
+@73101  = ~druide des forêts~
+@73102  = ~Druide des forêts~
+@73103  = ~DRUIDE DES FORÊTS: La plupart des druides résident en des lieux où le sol est riche, la végétation abondante et les animaux s'épanouissent. Ces régions sont l'incarnation même de ce qu'est un écosystème harmonieux et les druides se vouent souvent à les cultiver et les protéger. Pour bien des raisons, les hautes forêts sont un paradis. Elles offrent ombrage, nourriture et habitat aux animaux et aux personnes, ainsi que le bois pour les outils. Les forêts sont perpétuellement menacées de destruction ou d'appropriation par des humains ou demi-humains négligents. Les druides des forêts sont donc souvent touchés par une forme atténuée de paranoïa qui nourrit le stéréotype du druide hostile à la civilisation.
+
+Avantages :
+- Au niveau 1, peut convoquer un ours spirituel. Le nombre de dés de vie de l'animal spirituel augmente pour égaler le niveau du druide aux niveaux 3, 5, 7 et 10.
+- Au niveau 1, il peut changer de forme en ours noir une fois par jour. Il gagne une utilisation supplémentaire du changement de forme à chaque fois qu'il gagne deux niveaux, jusqu'à un maximum de 11 changements de forme par jour au niveau 20.
+- Au niveau 4, le druide peut choisir un animal ou une forme supplémentaire pour son changement de forme.
+- Au niveau 8, le druide peut choisir un animal ou une forme supplémentaire pour son changement de forme.
+- Au niveau 12, le druide peut choisir un animal ou une forme supplémentaire pour son changement de forme.
+- Au niveau 15, il peut changer de forme en grande wiverne.
+- Au niveau 15, il gagne 10 % de résistance au feu, au froid, à l'électricité et à l'acide ; ces résistances sont majorées de 10 % supplémentaires aux niveaux 18 et 21.
+~
+@73104  = ~DRUIDE DES FORÊTS : La plupart des druides résident en des lieux où le sol est riche, la végétation abondante et les animaux s'épanouissent. Ces régions sont l'incarnation même de ce qu'est un écosystème harmonieux et les druides se vouent souvent à les cultiver et les protéger. Pour bien des raisons, les hautes forêts sont un paradis. Elles offrent ombrage, nourriture et habitat aux animaux et aux personnes, ainsi que le bois pour les outils. Les forêts sont perpétuellement menacées de destruction ou d'appropriation par des humains ou demi-humains négligents. Les druides des forêts sont donc souvent touchés par une forme atténuée de paranoïa qui nourrit le stéréotype du druide hostile à la civilisation.~
+@73105  = ~~
+@73111  = ~Changement de forme de druide~
+@73112  = ~Change de forme vers plusieurs formes animales~
+
+// 73113-73122 unused
+
+//
+// ... totemic druid:
+//
+@73201  = ~druide totémique~
+@73202  = ~Druide totémique~
+@73203  = ~DRUIDE TOTÉMIQUE : Ce druide est semblable de bien des façons à un druide traditionnel. Cependant, un druide totémique n'apprend pas à changer de forme pour celle d'un animal. Au lieu de cela, ils manifestent leur connexion avec le monde animal comme une force externe, capable d'appeler plus d'esprits animaux et de le faire plus souvent.
+
+Avantages :
+- Peut utiliser « Convocation d'esprit animal » une fois par jour, puis une fois supplémentaire tous les 3 niveaux.
+- Au niveau 9, il devient immunisé contre le poison.
+- Au niveau 15, il gagne 10 % de résistance au feu, au froid, à l'électricité et à l'acide ; ces résistances sont majorées de 10 % supplémentaires aux niveaux 18 et 21.
+
+CONVOCATION D'ESPRIT ANIMAL : Le druide totémique peut invoquer un esprit animal (ours, loup, lion ou serpent) pour l'aider pendant 6 tours. L'esprit animal a 1 DV au niveau 1, 3 DV au niveau 3, 5 DV au niveau 5, 7 DV au niveau 7 et 10 DV au niveau 10.
+
+Restrictions :
+- Ne peut pas se transformer.
+~
+//
+// ... avenger => hivekeeper:
+//
+@73401  = ~gardien de la ruche~
+@73402  = ~Gardien de la ruche~
+@73403  = ~GARDIEN DE LA RUCHE : Ces druides entretiennent un intérêt et une affection pour les créatures insectoïdes, arachnides et autres animaux similaires. Cette faune joue un rôle fondamental dans les écosystèmes qui les druides protègent et vénèrent, mais ils sont souvent négligés ou même méprisés par les humanoïdes. Les gardiens de la ruche reconnaissent et encouragent les capacités productives de ces animaux. Ils ont aussi appris à mettre à profit les armes naturelles puissantes apportées par leur évolution. Les gardiens de la ruche sont souvent provoquent souvent de la gêne chez les autres, aussi sont-ils souvent des solitaires. Mais aucun druide ne nie leur efficacité quand on fait appel à eux pour faire face aux ennemis de la nature.
+
+Avantages :
+- À partir du niveau 1, peut convoquer une Araignée spirituelle. Le nombre de dés de vie de l'animal spirituel augmente aux niveaux 3, 5, 7 et 10 pour égaler le niveau du druide.
+- Au niveau 1, il peut changer de forme en scarabée scolyte une fois par jour. Il gagne une utilisation supplémentaire du changement de forme à chaque fois qu'il gagne deux niveaux, jusqu'à un maximum de 11 changements de forme par jour au niveau 20.
+- Au niveau 4, le druide peut choisir un animal ou une forme supplémentaire pour son changement de forme.
+- Au niveau 8, le druide peut choisir un animal ou une forme supplémentaire pour son changement de forme.
+- Au niveau 12, le druide peut choisir un animal ou une forme supplémentaire pour son changement de forme.
+- À partir du niveau 15, peut changer de forme en scarabée rhinocéros.
+- Au niveau 15, il gagne 10 % de résistance au feu, au froid, à l'électricité et à l'acide ; ces résistances sont majorées de 10 % supplémentaires aux niveaux 18 et 21.
+~
+@73404  = ~JUSTICIER : Membre d'une secte spéciale, ce druide s'est dévoué au combat contre ceux qui profanent la nature. Ils possèdent des pouvoirs qui dépassent ceux des druides normaux, qu'ils ont gagnés par des rituels intensifs, très épuisants sur le plan physique.
+
+Avantages :
+- Six sorts profanes sont ajoutés à son répertoire, sur tout le spectre jusqu'au 6ème niveau :
+Niveau 1 : Orbe chromatique
+Niveau 2 : Toile d'araignée
+Niveau 3 : Éclair
+Niveau 4 : Invisibilité majeure
+Niveau 5 : Chaos
+Niveau 6 : Chaîne d'éclairs
+- Au niveau 1, il peut changer de forme en scarabée scolyte une fois par jour. Il gagne une utilisation supplémentaire du changement de forme à chaque fois qu'il gagne deux niveaux, jusqu'à un maximum de 11 changements de forme par jour au niveau 20.
+- Au niveau 4, le justicier peut choisir un animal ou une forme supplémentaire pour son changement de forme.
+- Au niveau 8, le justicier peut choisir un animal ou une forme supplémentaire pour son changement de forme.
+- Au niveau 12, le justicier peut choisir un animal ou une forme supplémentaire pour son changement de forme.
+- À partir du niveau 15, peut changer de forme en scarabée rhinocéros.
+
+Inconvénients :
+- Ne peut porter d'armure plus lourde que celle de cuir.
+- -2 en Force et Constitution à la création du personnage.
+~
+@73411  = ~Convocation d'araignée spirituelle~
+@73412  = ~~
+@73413  = ~Araignée spirituelle~
+@73421  = ~Nuée de scarabées~
+@73422  = ~Nuée de scarabées
+(Conjuration)
+
+Niveau : 2
+Sphère : Faune
+Portée : 0
+Durée : 1 tour
+Temps d'incantation : 6
+Zone d'effet : le lanceur
+Jet de sauvegarde : aucun
+
+Le lanceur de sort peut convoquer 3d2 petits scarabées qui viennent creuser le sol et attaquer ses ennemis. Les scarabées sont des créatures ordinaires et naturelles, mais grandes pour leur espèce. Ils ne représentent pas une vraie menace à part pour les plus faibles adversaires. Mais comme ils viennent en nuée, elles peuvent avoir tendance à distraire et harceler.
+~
+@73423  = ~Nuée d'araignées~
+@73424  = ~Nuée d'araignées
+(Conjuration)
+
+Niveau : 3
+Sphère : Faune
+Portée : 0.
+Durée : 1 tour
+Temps d'incantation : 6
+Zone d'effet : le lanceur
+Jet de sauvegarde : aucun
+
+Le lanceur de sort peut convoquer 3d2 petites araignées pour attaquer ses ennemis. Les araignées sont des créatures ordinaires et naturelles, mais grandes pour leur espèce. Individuellement, elles ne représenteraient une menace que pour les adversaires les plus faibles, mais leur morsure porte un poison douloureux et néfaste et, en grand nombre, elles peuvent être dangereuses pour un ennemi non préparé.
+~
+@73425  = ~Convocation d'araignées géantes~
+@73426  = ~Convocation d'araignées géantes~
+@73427  = ~Convocation de scarabée rhinocéros~
+@73428  = ~Convocation de scarabée rhinocéros
+(Conjuration)
+
+Niveau : 7
+Sphère : Faune
+Portée : 0
+Dure : 1 tour
+Temps d'incantation : 6
+Zone d'effet : le lanceur
+Jet de sauvegarde : aucun
+
+Le lanceur de sort peut convoquer un scarabée rhinocéros massif pour l'aider au combat. Cette créature est imposante, extrêmement forte et a une carapace chitineuse robuste. Elle est totalement loyale au lanceur du sort et utilisera sa corpulence pour empêcher l'ennemi de manœuvrer et sa puissante morsure pour les menacer.
+~
+@73429  = ~Scarabée rhinocéros~
+@73430  = ~Scarabée~
+@73430  = ~Araignée~
+//
+// ... arctic druid:
+//
+@73501  = ~druide nordique~
+@73502  = ~Druide nordique~
+@73503  = ~DRUIDE NORDIQUE : La vie s'accroche même à la toundra glacée où sur les montagnes balayées par le vent. Les druides arctiques se délectent dans la nature rude mais équilibrée où le froid est le plus grand prédateur de chaque créature. Ils se complaisent dans les tempêtes polaires et apprennent à manipuler les forces de l'eau et de l'air. Par l'isolement et l'entraînement, ils apprennent l'importance de la persévérance et de la détermination quand ils sont confrontés à la privation et la sensation de désespoir. Ils maîtrisent ainsi les forces des animaux qui ont développé cette persévérance de façon naturelle. Cela fait des druides nordiques des ennemis redoutables pour quiconque offenserait la nature dans le nord glacé.
+
+Avantages :
+- À partir du niveau 1, peut convoquer un Loup spirituel. Le nombre de dés de vie de l'animal spirituel augmente aux niveaux 3, 5, 7 et 10 pour égaler le niveau du druide.
+- Au niveau 1, il peut changer de forme en loup une fois par jour. Il gagne une utilisation supplémentaire du changement de forme à chaque fois qu'il gagne deux niveaux, jusqu'à un maximum de 11 changements de forme par jour au niveau 20.
+- Au niveau 4, le druide peut choisir un animal ou une forme supplémentaire pour son changement de forme.
+- Au niveau 8, le druide peut choisir un animal ou une forme supplémentaire pour son changement de forme.
+- Au niveau 12, le druide peut choisir un animal ou une forme supplémentaire pour son changement de forme.
+- Au niveau 15, il peut changer de forme en remorhaz.
+- Au niveau 15, il gagne 10 % de résistance au feu, au froid, à l'électricité et à l'acide ; ces résistances sont majorées de 10 % supplémentaires aux niveaux 18 et 21.
+~
+// 73801-73803 used in commented-out code
+// 73811-73813 used in commented-out code
+//
+// ... lost druid:
+//
+@73901  = ~druide égaré~
+@73902  = ~Druide égaré~
+@73903  = ~DRUIDE ÉGARÉ : Les druides égarés découvrent que beaucoup d'autres druides ne les considèrent plus comme leurs pairs. Touchés par une mort qui les a traumatisés ces gens sombres sont obsédés par la place de la mort dans le cycle de la vie. Ils vont jusqu'à ranimer des cadavres d'animaux et à adopter la magie nécromantique pour assouvir leur vengeance. C'est ce qui les rend particulièrement dangereux et les isole de presque tout le monde.
+
+Avantages :
+- À partir du niveau 1, peut convoquer un Loup effrayant. Cette aptitude convoque deux loups effrayants au niveau 7 et trois au niveau 10.
+- À partir du niveau 1, peut changer de forme en loup effrayant.
+- À partir du niveau 9, peut changer de forme en loup vampirique.
+- Au niveau 9, il devient immunisé contre l'absorption de niveau.
+- Au niveau 15, il gagne 10 % de résistance au feu, au froid, à l'électricité et à l'acide ; ces résistances sont majorées de 10 % supplémentaires aux niveaux 18 et 21.
+
+LOUP EFFRAYANT : sous cette forme, le druide attaque 1,5 fois par round pour 2d4 points de dégâts perforants. Les attaques réussies peuvent provoquer une maladie qui réduit la force de la victime de 1 point si elle échoue à un jet de sauvegarde. De plus, le druide a une résistance de 100 % contre les dégâts de froid et de 50 % contre le feu et l'électricité.
+
+LOUP VAMPIRIQUE : sous cette forme, le druide attaque 1,5 fois par round pour 2d6 points de dégâts perforants. Les attaques réussies diminuent la constitution de la cible de 2 points si elle échoue à un jet de sauvegarde. De plus, le druide a une résistance de 100 % contre les dégâts de froid et de 50 % contre le feu et l'électricité.
+
+Restrictions :
+- Pas d'accès aux sorts de la sphère de la Vie.
+~
+@73911  = ~Convocation de loup effrayant~
+//
+// ... lycanthropic occultist:
+//
+@76201  = ~seigneur des bêtes~
+@76202  = ~Seigneur des bêtes~
+@76203  = ~SEIGNEUR DES BÊTES : Ces gens ont pris conscience qu'au plus profond de chaque homme ou femme, aussi rationnels ou civilisés soient-ils, se tapit un animal guidé par ses besoins et désirs primaires (cette prise de conscience découle souvent d'expériences horrifiantes conduites sur des sujets rarement volontaires). Grâce à l'application d'un sérum dérivé d'une souche de lycanthropie, le seigneur des bêtes peut invoquer sa propre nature bestiale, amenant son propre corps à prendre des caractéristiques lupines. Le seigneur des bêtes y trouve aussi une compréhension profonde de la magie de convocation et de contrôle des animaux.
+
+Avantages :
+- Peut lancer Griffe de la bête comme pouvoir inné à volonté.
+- 20 % des attaques Griffe de la bête provoque une infection sur un échec à un jet de sauvegarde contre la mort, affaiblissant la cible et infligeant un risque d'échec des sorts de 10 %.
+- Au niveau 4, il peut changer de forme en loup noir une fois par jour. Il gagne une utilisation supplémentaire du changement de forme à chaque fois qu'il gagne deux niveaux, jusqu'à un maximum de 11 changements de forme par jour au niveau 20.
+- À partir du niveau 6, peut se transformer en forme de loup-garou au lieu du loup noir.
+- À partir du niveau 12, peut se transformer en forme de loup-garou majeur au lieu du loup-garou.
+
+Restrictions :
+- Ne peut être d'alignement loyal
+~
+@76204  = ~SEIGNEUR DES BÊTES : Ces gens ont pris conscience qu'au plus profond de chaque homme ou femme, aussi rationnels ou civilisés soient-ils, se tapit un animal guidé par ses besoins et désirs primaires (cette prise de conscience découle souvent d'expériences horrifiantes conduites sur des sujets rarement volontaires). Grâce à l'application d'un sérum dérivé d'une souche de lycanthropie, le seigneur des bêtes peut invoquer sa propre nature bestiale, amenant son propre corps à prendre des caractéristiques lupines. Le seigneur des bêtes y trouve aussi une compréhension profonde de la magie de convocation et de contrôle des animaux.
+~
+@76211  = ~Griffe de la bête~
+@76212  = ~Dissiper les griffes~
+@76213  = ~Changement de forme en loup-garou~
+@76214  = ~Changement de forme en forme naturelle~
+@76215  = ~griffe de loup-garou~
+@76216  = ~loup-garou~
+@76217  = ~loup-garou majeur~
+@76218  = ~seigneur loup-garou~
+@76219  = ~MÉTAMORPHE : Ce druide n'est pas un métamorphe parce qu'il a accès à une grande variété de formes mais plutôt parce qu'il ne se consacre qu'à une seule transformation. Il a accepté d'être infecté par la lycanthropie mais, grâce à son intense entraînement et à son étude approfondie de cette capacité, il est capable de la contrôler. Il devient un loup-garou, l'espèce la plus célèbre de lycanthropes.
+
+Avantages :
+- Peut lancer Griffe de la bête comme pouvoir inné à volonté.
+- 20 % des attaques Griffe de la bête provoque une infection sur un échec à un jet de sauvegarde contre la mort, affaiblissant la cible et infligeant un risque d'échec des sorts de 10 %.
+- Au niveau 4, il peut changer de forme en loup noir une fois par jour. Il gagne une utilisation supplémentaire du changement de forme à chaque fois qu'il gagne deux niveaux, jusqu'à un maximum de 11 changements de forme par jour au niveau 20.
+- À partir du niveau 6, peut se transformer en forme de loup-garou au lieu du loup noir.
+- À partir du niveau 12, peut se transformer en forme de loup-garou majeur au lieu du loup-garou.
+
+Restrictions :
+- Ne peut être d'alignement loyal~
+//
+// ... elementalist:
+//
+@76301  = ~élémentaliste~
+@76302  = ~Élémentaliste~
+@76303  = ~ÉLÉMENTALISTE : les élémentalistes étudient les énergies primaires des plans intérieurs et y tirent leur pouvoir. Ils comprennent mieux que la plupart des gens comment les éléments de base se combinent et interagissent pour former les matériaux et énergies complexes du plan matériel primaire. Cela leur permet de les séparer et de concentrer leur magie sur un seul élément à chaque fois, avec pour résultat des effets plus purs et plus puissants pour cet élément.
+
+Avantages :
+- Peut lancer un sort de plus par niveau.
+- Peut contrôler toute créature élémentaire à volonté (le contrôle dure 1 tour).
+- Une fois par jour, peut choisir un focus élémentaire. L'élémentaliste obtient 15 % de résistance aux dégâts de cet élément et ses sorts qui utilisent ce type de dégât infligent 15 % de dégâts supplémentaires. Ce bonus augmente à 25 % au niveau 15 et à 35 % au niveau 20.
+
+Les types de dégâts liés à un élément sont les suivants :
+- Air = dégâts d'électricité
+- Terre = dégâts contondants
+- Feu = dégâts de feu
+- Eau = dégâts d'acide
+~
+@76304  = ~ÉLÉMENTALISTE : les élémentalistes étudient les énergies primaires des plans intérieurs et y tirent leur pouvoir. Ils comprennent mieux que la plupart des gens comment les éléments de base se combinent et interagissent pour former les matériaux et énergies complexes du plan matériel primaire. Cela leur permet de les séparer et de concentrer leur magie sur un seul élément à chaque fois, avec pour résultat des effets plus purs et plus puissants pour cet élément.~
+@76305  = ~~
+@76311  = ~Focus élémentaire~
+@76312  = ~Élément : Air~
+@76313  = ~Élément : Terre~
+@76314  = ~Élément : Feu~
+@76315  = ~Élément : Eau~
+@76316  = ~Contrôler un élémentaire~
+@76317  = ~Contrôler un élémentaire
+La créature élémentaire prise pour cible se retrouve sous le contrôle de l'élémentaliste pour 3 tours. Aucun jet de sauvegarde n'est permis.~
+
+// 76501-76504 unused
+
+//
+// ... Pally--> Champion:
+//
+@80001  = ~champion~
+@80002  = ~Champion~
+@80003  = ~CHAMPION : Tout comme le guerrier, le paladin est un homme d'action et de combat. Cependant, il vit pour des idéaux de leur divinité en combinant l'aptitude martiale avec la faveur divine pour défendre et promouvoir la doctrine de leur foi. Les champions servent parfois comme gardes de temples, ou partent en mission sur ordre de leur clergé. Il arrive que les champions d'églises partageant des valeurs similaires se rassemblent dans des organisations fraternelles et coopèrent à l'accomplissement de leurs idéaux.
+
+CAPACITÉS :
+
+- Peut porter des casques.
+- Peut porter n'importe quelle armure et utiliser toutes les armes.
+- Peut se spécialiser (2 étoiles) dans le maniement de n'importe quelle arme.
+- Peut se spécialiser (2 étoiles) dans n'importe quel style de combat, et allouer trois étoiles dans le style de combat à deux armes.
+- Peut repousser les morts-vivants comme un clerc possédant deux niveaux de moins, à partir du niveau 3.
+- Peut lancer quelques sorts divins comme les prêtres, mais en moins grand nombre.
+- Accèsà d'autres capacités en fonction de leur divinité.
+- Dés de vie : d10
+
+Les champions remplissent des rôles divers et donc acquièrent des jeux de compétences variables. Tout champion choisit un archétype qui représente leur progression de novice jusqu'à combattant accompli. Tous les archétypes ne sont pas reconnus par toutes les fois. Certaines églises n'entraînent les champions que d'une unique façon tandis que d'autres disposent de plusieurs ordres avec des compétences différentes. Les archétypes qui peuvent être choisis sont :
+
+DÉFENSEUR : ces champions se concentrent sur l'apprentissage des tactiques de combat et font appel à leur magie pour protéger les croyants. Ils sont le bastion de leur église contre ses ennemis.
+- Les défenseurs sont immunisés contre la maladie et peuvent soigner les autres quand ils sont malades.
+- Une fois par jour, plus une fois tous les dix niveaux, les défenseurs peuvent appliquer une Imposition des mains, pour se soigner ou soigner un autre de 2 points de vie par niveau.
+- Une fois par jour, plus une fois tous les cinq niveaux, les défenseurs peuvent activer une capacité de Châtiment qui, pendant 2 rounds, canalise leur magie divine pour infliger 2d6 points de dégâts supplémentaires sur chaque attaque réussie.
+- Les défenseurs émettent une aura passive de protection qui octroie à chaque allié proche un bonus de 1 point à la classe d'armure.
+
+INQUISITEUR : ces champions aident leur église dans leur confrontation avec les hérésies insidieuses et les menaces magiques. Leur formation les aide à s'opposer aux attaques de magie profanes.
+- Les inquisiteurs sont immunisés contre Immobilisation des personnes et autres magies similaires.
+- Une fois par jour, plus une fois tous les cinq niveaux, les inquisiteurs peuvent lancer le sort Oracle de façon innée pour dissiper les illusions et l'invisibilité magique.
+- Une fois par jour, plus une fois tous les dix niveaux, les inquisiteurs peuvent lancer Dissipation de la magie de façon innée pour supprimer les protections et améliorations magiques des ennemis.
+
+ZÉLOTE : ces champions s'attaquent de façon agressive aux ennemis de leur église, s'aventurant parfois loin pour neutraliser ceux qui veulent du mal à leur troupeau.
+- Les zélotes sont immunisés contre la terreur et la persuasion, ainsi qu'aux effets magiques qui provoquent la panique, les charmes ou la domination.
+- Une fois par jour, plus une fois tous les cinq niveaux, les zélotes peuvent dissiper la terreur et la panique sur les autres personnes qui sont affectées.
+- Une fois par jour, plus une fois tous les dix niveaux, les zélotes peuvent, en combat, entrer dans un état de frénésie sacrée. Pendant 5 rounds, cet état accorde une attaque supplémentaire chaque round, un bonus de 2 points aux jets de dégâts, ainsi qu'une immunité aux effets de sommeil, de confusion, de débilité mentale, de labyrinthe et d'absorption de niveau.
+- Les zélotes peuvent choisir de faire progresser leur niveau de compétence avec une arme d'un point de plus que la limite ordinaire des champions.
+~
+@80004  = ~Châtiment du champion~
+@80005  = ~Châtiment du champion
+
+Quand un champion utilise ce pouvoir, ses attaques de corps à corps infligent 2d6 points de dégâts magiques supplémentaires pendant les deux rounds suivants.
+
+Le châtiment inflige parfois des dégâts ou des effets supplémentaires sur certaines créatures en fonction de la divinité suivie par le champion.
+~
+// 80006-80007 used only in champion.tpa, probably unused
+
+@80009  = ~DÉFENSEUR : ces champions se concentrent sur l'apprentissage des tactiques de combat et font appel à leur magie pour protéger les croyants. Ils sont le bastion de leur église contre ses ennemis.
+- Les défenseurs sont immunisés contre la maladie et peuvent soigner les autres quand ils sont malades.
+- Une fois par jour, plus une fois tous les dix niveaux, les défenseurs peuvent appliquer une Imposition des mains, pour se soigner ou soigner un autre de 2 points de vie par niveau.
+- Une fois par jour, plus une fois tous les cinq niveaux, les défenseurs peuvent activer une capacité de Châtiment qui, pendant 2 rounds, canalise leur magie divine pour infliger 2d6 points de dégâts supplémentaires sur chaque attaque réussie.
+- Les défenseurs émettent une aura passive de protection qui octroie à chaque allié proche un bonus de 1 point à la classe d'armure.
+~
+@80010  = ~INQUISITEUR : ces champions aident leur église dans leur confrontation avec les hérésies insidieuses et les menaces magiques. Leur formation les aide à s'opposer aux attaques de magie profanes.
+- Les inquisiteurs sont immunisés contre Immobilisation des personnes et autres magies similaires.
+- Une fois par jour, plus une fois tous les cinq niveaux, les inquisiteurs peuvent lancer le sort Oracle de façon innée pour dissiper les illusions et l'invisibilité magique.
+- Une fois par jour, plus une fois tous les dix niveaux, les inquisiteurs peuvent lancer Dissipation de la magie de façon innée pour supprimer les protections et améliorations magiques des ennemis.
+~
+@80011  = ~ZÉLOTE : ces champions s'attaquent de façon agressive aux ennemis de leur église, s'aventurant parfois loin pour neutraliser ceux qui veulent du mal à leur troupeau.
+- Les zélotes sont immunisés contre la terreur et la persuasion, ainsi qu'aux effets magiques qui provoquent la panique, les charmes ou la domination.
+- Une fois par jour, plus une fois tous les cinq niveaux, les zélotes peuvent dissiper la terreur et la panique sur les autres personnes qui sont affectées.
+- Une fois par jour, plus une fois tous les dix niveaux, les zélotes peuvent, en combat, entrer dans un état de frénésie sacrée. Pendant 5 rounds, cet état accorde une attaque supplémentaire chaque round, un bonus de 2 points aux jets de dégâts, ainsi qu'une immunité aux effets de sommeil, de confusion, de débilité mentale, de labyrinthe et le drain de niveau.
+- Les zélotes peuvent choisir de faire progresser leur niveau de compétence avec une arme d'un point de plus que la limite ordinaire des champions.
+~
+@80012  = ~Frénésie du zélote~
+@80013  = ~Frénésie du zélote
+
+Le champion devient frénétique pendant 5 rounds. Lorsqu'il est dans cet état, le personnage obtient une attaque supplémentaire par round et un bonus de 2 points aux jets de dégâts. Il devient aussi immunisé contre les effets de sommeil, de lenteur, de confusion, de labyrinthe, et d'absorption de niveau.
+~
+// 80014 unused
+
+@80021  = ~Choisir un archétype~
+@80022  = ~Choisir cet archétype~
+@80023  = ~Choisir un autre archétype~
+@80024  = ~Défenseur~
+@80025  = ~Inquisiteur~
+@80026  = ~Zélote~
+@80027  = ~~
+@80028  = ~~
+@80029  = ~~
+@80030  = ~~
+
+//CHAMPION KITS
+//Paladin of Tyr
+@80101  = ~paladin de Tyr~
+@80102  = ~Paladin de Tyr~
+@80103  = ~PALADIN DE TYR : Les paladins de Tyr sont la quintessence des champions de la lumière. Ils doivent se tenir à une éthique des plus rigoureuses mais, en échange de leur dévouement, ils ont le pouvoir de détruire les ennemis de la lumière.
+
+Les paladins de Tyr doivent choisir entre les archétypes de défenseur ou d'inquisiteur.
+
+Avantages :
+- Protection contre le mal : le paladin de Tyr est toujours sous la protection du sort Protection contre le mal.
+- Châtiment du mal : quand il utilise le châtiment du défenseur, les créatures d'alignement mauvais subissent 1d6 points de dégâts supplémentaires.
+- Maîtrise de l'arme : les paladins de Tyr peuvent faire progresser leur compétence d'arme d'un point de plus que la plupart des champions.
+
+Restrictions :
+- Doit être d'alignement loyal bon.
+- Le paladin de Tyr doit maintenir une réputation de 8. Dans le cas contraire, il devient déchu.~
+
+@80104  = ~Châtiment du mal~
+// unused
+@80105  = ~Châtiment du mal
+
+Quand le champion utilise cette faculté, ses attaques de mêlée infligent 1d6 points de dégâts de magie supplémentaires (+1d6 points de dégâts aux niveaux 4, 10 et 18) pendant les deux rounds suivants. Cette faculté dure un round supplémentaire aux niveaux 2, 8 et 14.
+
+De plus, les créatures d'alignement mauvais doivent réussir un jet de sauvegarde contre la mort sous peine d'être étourdies pour 1 round. Ce jet de sauvegarde reçoit un malus de -1 point aux niveaux 4, 10 et 18.
+
+Un adversaire ne peut subir les effets de Châtiment du mal qu'une fois par round.~
+@80201  = ~chevalier de l'Ordre éternel~
+@80202  = ~Chevalier de l'Ordre éternel~
+@80203  = ~CHEVALIER DE L'ORDRE ÉTERNEL : Les morts-vivants sont un anathème pour Kelemvor. La mort est un élément naturel de la vie et les morts-vivant essaient d'échapper à ce cycle. Ce sont des abominations auxquelles il doit être mis fin. Pour cela, Kelemvor créa les chevaliers de l'Ordre éternel.
+
+Les champions de Kelemvor doivent choisir entre les archétypes de défenseur ou d'inquisiteur.
+
+Avantages :
+- Bénéficie d'un bonus naturel de 3 points aux jets d'attaque et de dégâts contre les morts-vivants.
+- Immunisé contre l'immobilisation et les effets d'absorption de niveau.
+- Repousse les morts-vivants comme un prêtre de son niveau de champion à partir du niveau 3.
+- Châtiment destructeur : le châtiment d'un défenseur inflige 2d6 points de dégâts supplémentaires contre les morts-vivants.
+
+Restrictions :
+- Ne peut être d'alignement neutre mauvais ni chaotique mauvais.
+~
+//80204- 80205 unused
+@80204  = ~Châtiment destructeur~
+@80205  = ~Châtiment destructeur
+
+Quand le champion utilise cette faculté, ses attaques de mêlée infligent 1d6 points de dégâts de magie supplémentaires (+1d6 points de dégâts aux niveaux 4, 10 et 18) pendant les deux rounds suivants. Cette faculté dure un round supplémentaire aux niveaux 2, 8 et 14.
+
+De plus, les morts-vivants subissent le double de dégâts et les morts-vivant de moins de 15 dés de vie doivent réussir un jet de sauvegarde contre la mort sous peine d'être instantanément détruits. Ce jet de sauvegarde reçoit un malus de -1 point aux niveaux 4, 10 et 18.
+
+Un adversaire ne peut subir les effets de Châtiment destructeur qu'une fois par round.~
+
+@80206  = ~moissonneur de Myrkul~
+@80207  = ~Moissonneur de Myrkul~
+@80208  = ~MOISSONNEUR DE MYRKUL : Même si ses prêtres apprécient de créer des laquais morts-vivants, Myrkul ressent la nécessité de commanditer un contingent de destructeurs de morts-vivants. Après tout, il ne peut laisser penser que la non-vie est un moyen d'échapper à sa poigne glaciale. Et voici le moissonneur : des guerriers impies dotés des capacités propres à détruire les morts-vivants qui osent s'opposer à la volonté de Mykrul.
+
+Les champions de Myrkul doivent choisir entre les archétypes d'inquisiteur ou de zélote.
+
+Avantages :
+- Immunisé contre l'immobilisation et les effets d'absorption de niveau.
+- Repousse les morts-vivants comme un prêtre de son niveau de champion à partir du niveau 3.
+- Frénésie destructrice :quand il entre en frénésie, le zélote inflige 2d6 points de dégâts supplémentaires aux morts-vivants.
+
+Restrictions :
+- Doit être d'alignement neutre ou mauvais.
+~
+@80301  = ~sang de gloire de Tempus~
+@80302  = ~Sang de gloire de Tempus~
+@80303  = ~SANG DE GLOIRE DE TEMPUS : Le seigneur des batailles a une affection particulière pour ses champions, qui sont toujours soutenus, quelle que soit la cause pour laquelle ils combattent.
+
+Les champions de Tempus ne peuvent choisir que l'archétype de zélote.
+
+Avantages :
+- Maîtrise de l'arme : les sangs de gloire peuvent faire progresser leur compétence d'arme d'un point de plus que la plupart des champions.
+- Quand un sang de gloire entre en frénésie, il induit chez ses compagnons une agressivité à un degré surhumain. Tous les alliés proches sont affectés par une variante de la rage du berserker et obtiennent un bonus de 2 points aux jets d'attaque, de dégâts et aux jets de sauvegarde contre les sorts, ainsi qu'une immunité contre les effets de confusion et de terreur.
+
+Restrictions :
+- Ne peut repousser les morts-vivants.
+
+Restrictions :
+- pas de restriction d'alignement.
+~
+// 80304-80305 unused
+@80304  = ~Châtiment de l'ennemi~
+@80305  = ~Châtiment de l'ennemi
+
+Quand le champion utilise cette faculté, ses attaques de mêlée infligent 1d6 points de dégâts de magie supplémentaires (+1d6 points de dégâts aux niveaux 4, 10 et 18) pendant les deux rounds suivants. Cette faculté dure un round supplémentaire aux niveaux 2, 8 et 14.
+
+Un adversaire ne peut subir les effets de Châtiment de l'ennemi qu'une fois par round.~
+
+@80401  = ~chevalier du gantelet noir~
+@80402  = ~Chevalier du gantelet noir~
+@80403  = ~CHEVALIER DU GANTELET NOIR : les chevaliers de Baine sont la quintessence du chevalier noir, une parodie grotesque de l'exemple éblouissant de ce qu'un chevalier devrait être. Ils répandent la terreur au nom de leur dieu et réduisent au silence tous ceux qui insinuent que Baine serait mort.
+
+Les champions de Baine ne peuvent choisir que l'archétype de zélote.
+
+Avantages :
+- Peut lancer de façon innée le sort Horreur, une fois par jour plus une fois par tranche de cinq niveaux.
+- Frénésie effroyable : quand un chevalier du gantelet noir entre en frénésie, chacun de ses coups inflige à sa cible un effet de peur pour 1 round si elle échoue à un jet de sauvegarde contre la mort.
+
+Restrictions :
+- Doit être d'alignement mauvais ou loyal neutre.
+~
+// probably unused
+@80404  = ~Châtiment d'effroi~
+@80405  = ~Châtiment d'effroi
+
+Quand le champion utilise cette faculté, ses attaques de mêlée infligent 1d6 points de dégâts de magie supplémentaires (+1d6 points de dégâts aux niveaux 4, 10 et 18) pendant les deux rounds suivants. Cette faculté dure un round supplémentaire aux niveaux 2, 8 et 14.
+
+De plus la cible est frappée de terreur pour un round si elle ne réussit pas un jet de sauvegarde contre la mort. Ce jet de sauvegarde reçoit un malus de 1 point aux niveaux 4, 10 et 18.
+
+Un adversaire ne peut subir les effets de Châtiment d'effroi qu'une fois par round.~
+
+@80501 = ~chevalier vigilant~
+@80502 = ~Chevalier vigilant~
+@80503 = ~CHEVALIER VIGILANT : Les chevaliers vigilants sont les soldats d'élite de l'église de Helm. Ils sont souvent envoyés sur les missions les plus difficiles pour leur église.
+
+Les champions de Helm doivent choisir entre les archétypes de défenseur ou d'inquisiteur.
+
+Avantages :
+- peut lancer de façon native Vision véritable une fois par jour.
+- Peut lancer Épée du vigile comme pouvoir spécial une fois par jour et gagne une utilisation supplémentaire aux niveaux 5, 10, 15 et 20.
+
+ÉPÉE DU VIGILE : Ce sort fait apparaître une épée dans la main du champion (ne peut être lâchée ni rangée) Cette arme est enchantée comme une arme +4 et fournit un bonus de 4 points au TAC0. Elle inflige 2d4 points de dégâts et dure 1 round par niveau.
+L'épée du vigile est maniée comme une épée longue.
+
+Restrictions :
+- Doit être loyal bon, loyal neutre ou neutre strict.
+~
+@80504 = ~Épée du vigile~
+@80505 = ~Épée du vigile
+Ce sort fait apparaître une épée dans la main du champion (ne peut être lâchée ni rangée) Cette arme est enchantée comme une arme +4 et fournit un bonus TAC0 +4 et +4 points de dégâts magiques. Elle inflige 2d4 points de dégâts et dure 1 round par niveau. Tant que cette arme est équipée, il n'est pas possible de lancer des sorts.
+L'épée du vigile est maniée comme une épée longue.~
+
+@80601  = ~gardien des tempêtes de Talos~
+@80602  = ~Gardien des tempêtes de Talos~
+@80603  = ~GARDIEN DES TEMPÊTES DE TALOS : Les gardiens des tempêtes forment la garde d'élite de Talos. Ils n'existent que pour répandre la destruction partout dans le monde et, avec elle, la crainte de Talos.
+
+Les champions de Talos doivent choisir entre les archétypes de défenseur ou d'inquisiteur.
+
+Avantages :
+- Faveur de Talos : résistance de 50 % aux dégâts électriques.
+- Châtiment de la tempête : le châtiment du défenseur inflige 2d6 points de dégâts de type électrique supplémentaires.
+- Danse de la tempête : quand le zélote entre en frénésie, chaque coup inflige 1d6 points de dégâts électriques supplémentaires.
+
+Restrictions :
+- Doit être d'alignement mauvais ou chaotique neutre.
+~
+// probably unused
+@80604  = ~Châtiment de la tempête~
+@80605  = ~Châtiment de la tempête
+
+Quand le champion utilise cette faculté, ses attaques de mêlée infligent 2d6 points de dégâts d'électricité supplémentaires (+2d6 points de dégâts aux niveaux 4, 10 et 18) pendant les deux rounds suivants. Cette faculté dure un round supplémentaire aux niveaux 2, 8 et 14.
+
+De plus la cible est frappée de terreur pour un round si elle ne réussit pas un jet de sauvegarde contre la mort. Ce jet de sauvegarde reçoit un malus de -1 point aux niveaux 4, 10 et 18.
+
+Un adversaire ne peut subir les effets de Châtiment d'effroi qu'une fois par round.~
+
+// probably unused
+@80606  = ~GARDIEN DES TEMPÊTES DE TALOS : Les gardiens des tempêtes forment la garde d'élite de Talos. Ils n'existent que pour répandre la destruction partout dans le monde et, avec elle, la crainte de Talos.
+
+Avantages :
+- Châtiment de la tempête : inflige des dégâts double de type électrique plutôt que magique.
+- Faveur de Talos : résistance de 50 % aux dégâts électriques.
+
+Restrictions :
+- Doit être d'alignement mauvais
+~
+@80701  = ~marteau de Moradin~
+@80702  = ~Marteau de Moradin~
+@80703  = ~MARTEAU DE MORADIN : Moradin est le dieu gouvernant le panthéon nain, un juge sévère mais juste. Il incarne la force physique et la volonté. Les marteaux de Moradin sont un ordre militaire dédié à la défense des possessions naines et l'acquisition de nouveaux territoires.
+
+Les champions de Moradin ne peuvent choisir que l'archétype de défenseur.
+
+Avantages :
+- Chair forgée : le marteau de Moradin est robuste de corps et d'esprit et peut appeler à son aide le pouvoir de la pierre. À partir du niveau 5, il peut lancer nativement Peau de pierre une fois par jour.
+- Peut lancer Marteau de Moradin comme pouvoir spécial une fois par jour et gagne une utilisation supplémentaire aux niveaux 6, 12 et 18.
+
+MARTEAU DE MORADIN : Ce sort fait apparaître un marteau dans la main du champion (ne peut être lâché ni rangé) Cette arme est enchantée comme une arme +4 et fournit un bonus de 4 points au TAC0. Elle inflige 1d6 points de dégâts contondants et 1d6 points de dégâts magiques.
+
+Le marteau de Moradin est manié comme un marteau de guerre.
+
+Restrictions :
+- Doit être d'alignement loyal bon ou loyal neutre.
+- Le marteau de Moradin doit maintenir une réputation de 8. Dans le cas contraire, il devient déchu.
+~
+@80704  = ~Marteau de Moradin~
+@80705  = ~Marteau de Moradin
+Cette arme est enchantée comme une arme +4 et inflige 1d6 points de dégâts contondants et 1d6 points de dégâts magiques.
+~
+
+@80801  = ~inquisiteur d'Azouth~
+@80802  = ~Inquisiteur d'Azouth~
+@80803  = ~INQUISITEUR D'AZOUTH : Les inquisiteurs d'Azouth pensent que la meilleure façon d'approcher la magie, c'est par la raison et qu'on peut la réduire à ses composantes de base par son étude et la méditation. Malheureusement, tous ceux qui pratiquent cet art ne sont pas si précautionneux ni responsables, et c'est là que les inquisiteurs d'Azouth interviennent. Cet ordre sacré du Seigneur des sorts s'efforcent de limiter l'utilisation de magie excessivement destructrice qui endommage la Toile. Ils sont aussi la force militaire qui détruit les menaces qui pèsent sur la pratique de la magie profane.
+
+Les champions d'Azouth ne peuvent choisir que l'archétype d'inquisiteur.
+
+Avantages :
+- Peut lancer de façon innée Annulation des protections une fois par jour.
+- Peut lancer Perce-magie une fois par jour au niveau 6 et gagne une utilisation supplémentaire aux niveaux 12 et 18.
+- Immunisé contre les sorts de charme.
+
+Restrictions :
+- Les inquisiteurs d'Azouth ne peuvent repousser les morts-vivants.
+
+Restrictions :
+- Ne peut être d'alignement mauvais ni chaotique.
+- L'inquisiteur d'Azouth doit maintenir une réputation de 8. Dans le cas contraire, il devient déchu.
+~
+// unused
+@80804  = ~Fléau du mage~
+@80805  = ~Fléau du mage
+
+Quand le champion utilise cette faculté, ses attaques de mêlée infligent 2d6 points de dégâts d'électricité supplémentaires (+2d6 points de dégâts aux niveaux 4, 10 et 18) pendant les deux rounds suivants. Cette faculté dure un round supplémentaire aux niveaux 2, 8 et 14.
+
+De plus les lanceurs de sorts profanes frappés subissent des dégâts doubles et sont affectés par une dissipation de la magie de puissance doublée.
+
+Un adversaire ne peut subir les effets de Châtiment d'effroi qu'une fois par round.~
+
+@80901 = ~chevalier du faucon rouge~
+@80902 = ~Chevalier du faucon rouge~
+// could not find any french material with translated names so made up some and kept others as is
+@80903 = ~CHEVALIER DU FAUCON ROUGE : La cavalière rouge, ou Dame de la stratégie, est la divinité des stratégies et des tactiques. Élevée à la divinité par Tempus, son dogme ordonne l'utilisation de tactiques réfléchies pour obtenir les victoires les plus favorables. Pendant le Temps des troubles, Dame Kaitlin Tindall Bloodhawk est devenue l'avatar de la Cavalière rouge et a défendu le Téthyr contre une horde de monstres. Bloodhawk dirige maintenant l'Ordre du faucon rouge, un ordre militaire qui forme les officiers, mais aussi d'autres personnes, à la tactique et à l'histoire militaire.
+
+Les champions de la cavalière rouge doivent choisir entre les archétypes de défenseur ou d'inquisiteur.
+
+Avantages :
+- Maîtrise de l'arme : les chevaliers du faucon rouge peuvent faire progresser leur compétence d'arme d'un point de plus que la plupart des champions.
+- Vision claire : bonus de 2 point contre les sorts d'illusions.
+- Déplacement du cavalier : peut lancer de façon innée le sort Confusion une fois par jour.
+
+Restrictions :
+- Ne peut être d'alignement chaotique.
+~
+// 80904-80905 unused
+@80904  = ~Déplacement du cavalier~
+@80905  = ~Déplacement du cavalier
+
+Quand le champion utilise cette faculté, ses attaques de mêlée infligent 2d6 points de dégâts d'électricité supplémentaires (+2d6 points de dégâts aux niveaux 4, 10 et 18) pendant les deux rounds suivants. Cette faculté dure un round supplémentaire aux niveaux 2, 8 et 14.
+
+De plus, les créatures sont affectées par la confusion pendant 1 round si elles échouent à un jet de sauvegarde contre les sorts. Ce jet de sauvegarde reçoit un malus de 1 point aux niveaux 4, 10 et 18.
+
+Un adversaire ne peut subir les effets de Châtiment d'effroi qu'une fois par round.~
+
+@81001  = ~chevalier du lion d'or~
+@81002  = ~Chevalier du lion d'or~
+@81003  = ~CHEVALIER DU LION D'OR : les champions de Torm sont la quintessence du paladin, s'efforçant sans relâche à faire respecter la justice et à protéger les faibles. Ils doivent se montrer exigeants envers eux-mêmes mais, en contrepartie, se voient offrir la capacité de détruire les ennemis de la lumière.
+
+Les champions de Torm doivent choisir entre les archétypes de défenseur ou d'inquisiteur.
+
+Avantages :
+- Le champion de Torm est toujours sous l'effet d'un sort de Protection contre le mal.
+- À partir du niveau 5, peut lancer Protection contre le mal sur 3 m une fois par jour plus une fois tous les 5 niveaux, pour protéger ses alliés proches.
+
+Restrictions :
+- Doit être d'alignement loyal bon
+- Le champion de Torm doit maintenir une réputation de 8. Dans le cas contraire, il devient déchu.~
+
+//ZEALOT KITS
+
+@86201  = ~œil de Gruumsh~
+@86202  = ~Œil de Gruumsh~
+@86203  = ~ŒIL DE GRUUMSH : La dévotion des yeux de Gruumsh est telle qu'ils s'arrachent un œil en honneur de leur divinité.
+
+Les champions de Gruumsh ne peuvent choisir que l'archétype de zélote.
+
+Avantages :
+- Peut lancer Lenteur de façon innée une fois par jour.
+- frénésie visuelle : quand le zélote entre en frénésie, les ennemis cachés et invisibles sont dévoilés, comme par l'effet du sort Élimination des invisibilités.
+
+Restrictions :
+- Doit être d'alignement neutre mauvais, chaotique mauvais ou chaotique neutre.
+- Race : le personnage doit être un demi-orque.
+~
+// 86204-86205 unused
+@86204  = ~Vision de Gruumsh~
+@86205  = ~Vision de Gruumsh
+
+Le personnage devient frénétique pendant 1 tour. Dans cet état, il gagne un bonus de 2 points aux jets d'attaque en mêlée, aux jets de sauvegarde et à la classe d'armure et est immunisé au charme, à la confusion, la peur, à Débilité mentale, à l'immobilisation, l'emprisonnement, à l'absorption de niveau, aux effets de labyrinthe, à l'étourdissement et à Sommeil. Il obtient aussi une attaque par round supplémentaire.
+L'œil de Gruumsh peut dévoiler les illusions avec son œil manquant quand il entre en frénésie. Au premier niveau, en entrant en Frénésie, l'œil de Gruumsh détecte les créatures invisibles comme s'il pouvait lancer Détection de l'invisibilité. AU niveau 4, l'œil de Gruumsh est imprégné de la force et de la furie de la race orque et gagne 2 points en force quand il est en Frénésie. Au niveau 8, ils obtiennent les effets de Vision véritable.
+
+Vision de Gruumsh n'est pas cumulable avec Hâte et autres effets similaires.
+
+À la fin de l'effet, le personnage est essoufflé et subit un malus de 2 points à la classe d'armure et aux jets de toucher et de dégâts.~
+
+// 86301-86305 unused
+@86301  = ~initié de la rouille et du ver~
+@86302  = ~Initié de la rouille et du ver~
+@86303  = ~INITIÉ DE LA ROUILLE ET DU VER : Dévoués à la destruction, ces initiés sont attirés instinctivement vers Talos, le Seigneur de la destruction.
+
+Avantages :
+- Peut utiliser la capacité de Frénésie une fois par jour et gagne une utilisation supplémentaire aux niveaux 10, 15 et 20.
+
+FRÉNÉSIE : Le personnage devient frénétique pendant 1 tour. Dans cet état, il gagne un bonus de 2 points aux jets d'attaque en mêlée, aux jets de sauvegarde et à la classe d'armure et est immunisé au charme, à la confusion, la peur, à Débilité mentale, à l'immobilisation, l'emprisonnement, à l'absorption de niveau, aux effets de labyrinthe, à l'étourdissement et aux effets de Sommeil. Il obtient aussi une attaque par round supplémentaire.
+
+Frénésie n'est pas cumulable avec Hâte et autres effets similaires.
+
+Œil du cyclone : L'initié canalise de l'énergie électrique quand il est en Frénésie.
+En plus des effets normaux de la Frénésie, l'initié canalise la puissance destructrice brute de la tempête. Au premier niveau, il peut lancer Éclair comme pouvoir inné. Au niveau 4, il est immunisé contre les dégâts électriques et obtient une résistance de 50 % aux dégâts de feu. Au niveau 8, son corps crépite d'énergie électrique et tout adversaire qui le touche en mêlée subit 1d8+2 points de dégâts électriques.
+
+Restrictions :
+- Doit être d'alignement mauvais ou chaotique neutre.
+~
+@86304  = ~Œil du cyclone~
+@86305  = ~Œil du cyclone
+
+Le personnage devient frénétique pendant 1 tour. Dans cet état, il gagne un bonus de 2 points aux jets d'attaque en mêlée, aux jets de sauvegarde et à la classe d'armure et est immunisé au charme, à la confusion, la peur, à Débilité mentale, à l'immobilisation, l'emprisonnement, à l'absorption de niveau, aux effets de labyrinthe, à l'étourdissement et à Sommeil. Il obtient aussi une attaque par round supplémentaire.
+L'initié canalise de l'énergie électrique quand il est en Frénésie.
+En plus des effets normaux de la Frénésie, l'initié canalise la puissance destructrice brute de la tempête. Au premier niveau, il peut lancer Éclair comme pouvoir inné. Au niveau 4, il est immunisé contre les dégâts électriques et obtient une résistance de 50 % aux dégâts de feu. Au niveau 8, son corps crépite d'énergie électrique et tout adversaire qui le touche en mêlée subit 1d8+2 points de dégâts électriques.
+
+Œil du cyclone n'est pas cumulable avec Hâte et autres effets similaires.
+
+À la fin de l'effet, le personnage est essoufflé et subit un malus de 2 points à la classe d'armure et aux jets de toucher et de dégâts.~
+
+@86401  = ~disciple de la flamme~
+@86402  = ~Disciple de la flamme~
+@86403  = ~DISCIPLE DE LA FLAMME : Les disciples sont dévoués à Kossuth, le Seigneur des flammes.
+
+Les champions de Kossuth ne peuvent choisir que l'archétype de zélote.
+
+Avantages :
+- À l'épreuve du feu : le champion de Kossuth a une résistance au feu de 50 %.
+- Frénésie ardente : quand le zélote entre en frénésie, il est entouré par un cercle de flammes, comme sous l'effet de Bouclier de feu (rouge) .
+
+Restrictions :
+- Pas de restriction d'alignement.
+~
+@86501  = ~compagnon au cœur noble~
+@86502  = ~Compagnon au cœur noble~
+@86503  = ~COMPAGNON AU CŒUR NOBLE : Les champions d'Ilmater sont d'inébranlables défenseurs des faibles et des vulnérables. Attirés vers Ilmater comme par instinct, ils s'efforcent de faire disparaître du monde la souffrance, même au prix de leurs propres vies.
+
+Les champions d'Ilmater doivent choisir entre les archétypes de défenseur ou de zélote.
+
+Avantages :
+- Endurance du martyr : le champion fait sien l'esprit d'Ilmater et est capable d'endurer des souffrances impressionnantes. Au niveau 1, il obtient une résistance de 20 % contre tous les dégâts physiques. AU niveau 5, ils obtiennent la même résistance contre tous les types de dégâts. Au niveau 10, cette résistance augmente et passe à 30 %.
+- Frénésie du martyr : quand le champion est frénétique, il entre dans une transe qui irradie de l'énergie positive. Le champion se voit privé de 2 points de vie par round mais en contrepartie ses alliés proches sont soignés de 2 points de vie par round.
+
+Restrictions :
+- Doit d'être d'alignement bon ou loyal neutre.
+- Le compagnon au cœur noble doit maintenir une réputation de 8. Dans le cas contraire, il devient déchu.
+~
+
+@86601  = ~enfant du sang~
+@86602  = ~Enfant du sang~
+@86603  = ~ENFANT DU SANG : Les zélotes de Garagos sont de féroces guerriers attirés par la frénésie de la bataille. Trop indisciplinés pour servir même Tempus, ils sont enclins à se ruer vers la bataille, peu importe l'adversaire, sans hésitation, sans même préparer un plan. Inutile de préciser qu'ils meurent souvent jeunes.
+
+Les champions de Garagos ne peuvent choisir que l'archétype de zélote.
+
+Avantages :
+- Frénésie furieuse : quand le zélote entre en frénésie, il obtient un bonus de 3 points à la force.
+
+Restrictions :
+- Doit être d'alignement chaotique, neutre strict ou neutre mauvais.
+~
+
+@86701  = ~vassal du révérend~ // no better idea for this...
+@86702  = ~Vassal du révérend~
+@86703  = ~VASSAL DU RÉVÉREND : Les zélotes de Corellon Larethian sont d'inébranlables défenseurs des valeurs elfes. Les elfes non mauvais, pour l'essentiel des orphelins elfes ou demi-elfes, sentent l'appel vers Corellon et le servent de leur manière propre comme zélotes.
+
+Les champions de Corellon ne peuvent choisir que l'archétype de zélote.
+
+Avantages :
+- Arc et lame : bonus de 1 point aux jets d'attaque avec les épées longues, les épées courtes et les arcs, qui se cumule avec les bonus naturels des elfes avec ces armes.
+- Dance de lame : quand le zélote entre en frénésie, un jumeau magique du vassal apparaît et combat avec lui.
+
+Restrictions :
+- Doit être d'alignement bon ou loyal neutre.
+- Le vassal du révérend doit maintenir une réputation de 8. Dans le cas contraire, il devient déchu.
+- Race : le personnage doit être de race elfe ou demi-elfe.
+~
+
+@86801  = ~chérubin de la rose écarlate~
+@86802  = ~Chérubin de la rose écarlate~
+@86803  = ~CHÉRUBIN DE LA ROSE ÉCARLATE : Zélotes dévoués au service de Sunie, les chérubins de la rose écarlate transpirent la passion et la furie.
+
+Les champions de Sunie doivent choisir entre les archétypes de défenseur ou de zélote.
+
+Avantages :
+-Résonance passionnée : une fois par jour, le chérubin peut irradier le pouvoir de Sunie et peut parfois surmonter la volonté de tous les ennemis à moins de 10 mètres. Au niveau 1, tous les ennemis sont affectés par Charme personne s'ils échouent à un jet de sauvegarde contre les sorts +2. Au niveau 4, les adversaires sont affectés par Charme néfaste à la place. Au niveau 8, ils sont dominés s'ils échouent au jet de sauvegarde.
+
+Restrictions :
+- Ne peut être d'alignement mauvais.
+- Le chérubin de la rose écarlate doit maintenir une réputation de 8. Dans le cas contraire, il devient déchu.
+~
+@86804  = ~Résonance passionnée~
+// strange mention of haste stacking and being winded?
+@86805  = ~Résonance passionnée
+
+Le personnage irradie le pouvoir de Sunie et peut parfois surmonter la volonté de tous les ennemis à moins de 10 mètres. Au niveau 1, tous les ennemis sont affectés par Charme personne s'ils échouent à un jet de sauvegarde contre les sorts +2. Au niveau 4, les adversaires sont affectés par Charme néfaste à la place. Au niveau 8, ils sont dominés s'ils échouent au jet de sauvegarde.
+
+Résonance passionnée n'est pas cumulable avec Hâte et autres effets similaires.
+
+À la fin de l'effet, le personnage est essoufflé et subit un malus de 2 points à la classe d'armure et aux jets de toucher et de dégâts.
+~
+
+@86901  = ~chevalier du feu mystique~
+@86902  = ~Chevalier du feu mystique~
+@86903  = ~CHEVALIER DU FEU MYSTIQUE : champions dévoués au service de Mystra, les chevaliers du feu mystique protègent ceux qui respectent et utilisent la Toile de façon responsable.
+
+Les champions de Mystra doivent choisir entre les archétypes de défenseur ou de zélote.
+
+Avantages :
+- Peut lancer de façon innée Annulation des protections une fois par jour.
+- Peut lancer Perce-magie une fois par jour au niveau 6 et gagne une utilisation supplémentaire aux niveaux 12 et 18.
+- Châtiment brise-toile : le châtiment du défenseur n'inflige pas de dégâts supplémentaires, mais peut dissiper les défenses magiques de la cible comme si un sort de brèche avait été lancé.
+- Frénésie Brise-toile : quand le zélote entre en frénésie, les lanceurs de sorts ennemis à proximité souffrent d'un risque d'échec des sorts de 20 %.
+
+Restrictions :
+- Ne peut être d'alignement mauvais.
+- Le champion de Mystra doit maintenir une réputation de 8. Dans le cas contraire, il devient déchu.
+~
+
+@87001  = ~chevalier sombrechant~
+@87002  = ~Chevalier sombrechant~
+@87003  = ~CHEVALIER SOMBRECHANT : Eilistraee est la déesse drow de la beauté, du chant et de la danse, de la liberté, du clair de lune, de la maîtrise de l'épée et de la chasse. En particulier, elle est la déesse patronne et protectrice des quelques elfes noirs qui souhaitent retourner à la surface et vivre en paix avec les autres races.
+Les chevaliers sombrechant se vouent à répandre l'éthique d'Eilistraee, faisant progresser sa cause, et surtout à éradiquer les yochlols, les démons qui servent comme servantes de Lolth. Ce sont presque toujours des femmes et utilisent un style de combat dansé sauvage et complexe.
+
+Les champions d‘Eilistraee doivent choisir entre les archétypes de défenseur ou de zélote.
+
+Avantages :
+- Fléau de Lloth : bonus de 3 points aux jets d'attaque et de dégâts contre les fiélons et les natifs des plans inférieurs.
+- À partir du niveau 7, peut lancer de façon innée Rayon divin une fois par jour.
+
+Restrictions :
+- Ne peut être d'alignement mauvais.
+- Le chevalier sombrechant doit maintenir une réputation de 8. Dans le cas contraire, il devient déchu.
+~
+//
+// ... champion of arvoreen:
+//
+@87701  = ~véritable épée d'Arvoreen~
+@87702  = ~Véritable épée d'Arvoreen~
+@87703  = ~VÉRITABLE ÉPÉE D'ARVOREEN : Arvoreen le défenseur, gardien féroce de du foyer, est ce qu'il y a de plus proche d'un dieu de la guerre pour les petites-personnes. C'est un dieu de défense austère et de vigilance agressive qui est toujours prêt pour les invasions des terres de la petite-gens et pour repousser les créatures hostiles au moindre signe de danger.
+
+Les véritables épées d'Arvoreen sont les protecteurs et les défenseurs des communautés petites-personnes. Ils passent leur temps à construire des barrières défensives, des systèmes de communication, des signaux et des pièges, et à inspecter les défenses déjà en place. Bien que beaucoup de véritables épées restent à proximité de leurs communautés, quelques-uns vont partir à l'aventure pour chercher des alliés qu'ils peuvent appeler au secours ou des armes magiques et des objets défensifs de toutes sortes.
+
+Les champions d'Arvoreen ne peuvent choisir que l'archétype de défenseur.
+
+Avantages :
+- Peut augmenter sa force jusqu'à 18/00 (ou au-delà si elle est déjà à 18 ou plus) une fois par jour.
+- Peut utiliser une version personnelle du sort Hâte, qui augmente la vitesse de déplacement et d'attaque pour un round par niveau.
+
+Restrictions :
+- Doit être d'alignement bon ou neutre.
+~
+// 87711-87712 unused
+@87711  = ~Changement de classe~
+@87712  = ~Changement de classe
+
+Utilisez ce parchemin pour changer la classe de Mazzy et qu'elle soit une véritable épée, un champion d'Arvoreen.
+
+VÉRITABLE ÉPÉE D'ARVOREEN : Arvoreen le défenseur, gardien féroce de du foyer, est ce qu'il y a de plus proche d'un dieu de la guerre pour les petites-personnes. C'est un dieu de défense austère et de vigilance agressive qui est toujours prêt pour les invasions des terres de la petite-gens et pour repousser les créatures hostiles au moindre signe de danger.
+
+Les véritables épées d'Arvoreen sont les protecteurs et les défenseurs des communautés petites-personnes. Ils passent leur temps à construire des barrières défensives, des systèmes de communication, des signaux et des pièges, et à inspecter les défenses déjà en place. Bien que beaucoup de véritables épées restent à proximité de leurs communautés, quelques-uns vont partir à l'aventure pour chercher des alliés qu'ils peuvent appeler au secours ou des armes magiques et des objets défensifs de toutes sortes.
+
+
+Avantages :
+- Peut utiliser Déplacement silencieux et Se cacher dans l'ombre comme un rôdeur du même niveau.
+- À partir du niveau 1, peut augmenter sa force jusqu'à 18/00 (ou au-delà si elle est déjà à 18 ou plus) une fois par jour.
+- À partir du niveau 5, peut soigner par contact, comme le pouvoir d'Imposition des mains des paladins.
+- À partir du niveau 9, peut utiliser une version personnelle du sort Hâte, qui augmente la vitesse de déplacement et d'attaque pour un round par niveau.
+
+Restrictions :
+- Ne peut repousser les morts-vivants.
+- Doit être d'alignement bon ou neutre.
+~
+
+// 90001-95603 unused
+
+//
+
+
+//DIVINE SPELLS
+
+// 1000000-1000046 unused
+
+//ARCANE SPELLS
+
+// 2040000-2040001 unused here but present in IWD_spells.tra
+// Snilloc's Snowball Swarm
+
+// 3270000-3270001 idem Icelance
+
+//etc.
+
+//DIVINE SPELLS
+
+// 50101 unused
+
+@50102 = ~Soin des blessures modérées
+(Nécromancie)
+
+Niveau : 2
+Sphère : Vie
+Portée : contact
+Durée : instantanée
+Temps d'incantation : 5
+Zone d'effet : 1 créature
+Jet de sauvegarde : aucun
+
+Cette version plus puissante de Soin des blessures légères permet à la créature touchée de récupérer 6 points de vie, plus 30 % du total de points de vie de la créature, et de soigner l'ébriété. Ce sort reste sans effet sur les morts-vivants, les créatures artificielles ou extra-planaires.~
+
+// 50103-50107 unused
+
+@50201 = ~Animation de construction d'argile~
+@50202 = ~Animation de construction d'argile
+(Altération)
+
+Niveau : 6
+Sphère : Création
+Portée : portée visuelle du lanceur
+Durée : 1 tour
+Temps d'incantation : 5
+Zone d'effet : n/a
+Jet de sauvegarde : aucun
+
+
+Quand ce sort est lancé, une quantité de matière est tirée de l'environnement, façonnée grossièrement sous une forme humanoïde et dotée d'une conscience minimale. La construction obtenue est similaire à un golem d'argile : capable de suivre des instructions rudimentaires et d'attaquer les ennemis du lanceur, mais incapable de pensée complexe ou d'analyse. Au bout de 10 rounds, la magie qui maintient la construction s'épuise et la construction s'estompe, laissant un tas de terre.~
+@50203 = ~Construction d'argile~
+@50204 = ~Animation de construction de pierre~
+@50205 = ~Animation de construction de pierre
+(Altération)
+
+Niveau : 7
+Sphère : Création
+Portée : portée visuelle du lanceur
+Durée : 1 tour
+Temps d'incantation : 5
+Zone d'effet : n/a
+Jet de sauvegarde : aucun
+
+Quand ce sort est lancé, une quantité de matière est tirée de l'environnement, façonnée grossièrement sous une forme humanoïde et dotée d'une conscience minimale. La construction obtenue est similaire à un golem de pierre : capable de suivre des instructions rudimentaires et d'attaquer les ennemis du lanceur, mais incapable de pensée complexe et d'analyse. Au bout de 10 rounds, la magie qui maintient la construction s'épuise et la construction s'estompe, laissant des pierres et du gravier.~
+@50206 = ~Construction de pierre~
+@50207 = ~Animation de Construction Juggernaut~
+@50208 = ~Animation de Construction Juggernaut
+(Altération)
+
+Niveau : Quête
+Sphère : Création
+Portée : portée visuelle du lanceur
+Durée : 1 tour
+Temps d'incantation : 5
+Zone d'effet : n/a
+Jet de sauvegarde : aucun
+
+Quand ce sort est lancé, une quantité de matières rocheuses et métalliques est tirée de l'environnement, façonnée grossièrement sous une forme humanoïde et dotée d'une conscience minimale. La construction obtenue est similaire à un golem de fer : capable de suivre des instructions rudimentaires et d'attaquer les ennemis du lanceur, mais incapable de pensée complexe et d'analyse. Au bout de 10 rounds, la magie qui maintient la construction s'épuise et la construction s'estompe, laissant des pierres et du métal.~
+@50209 = ~Construction Juggernaut~
+@50211 = ~Rapidité imprudente~
+@50212 = ~Rapidité imprudente
+(Altération)
+
+Niveau : 2
+Sphère : Exploration
+Portée : lanceur
+Durée : 1 round / niveau
+Temps d'incantation : 3
+Zone d'effet : une créature
+Jet de sauvegarde : aucun
+
+Quand ce sort est lancé, le lanceur devient capable de se déplacer et d'agir à une vitesse bien supérieure. Sa vitesse de déplacement est doublée et il peut effectuer une attaque supplémentaire avec une arme chaque round. La vitesse de lancer de sorts, elle, ne change pas, ce sort ne réduit pas la charge mentale pour cela. Par contre, le sort ne rend pas le lanceur apte à se déplacer aussi rapidement et il subit une pénalité de 2 points aux jets d'attaque tant que dure le sort.
+~
+// From SR
+@50221 = ~Croc magique~
+@50222 = ~Croc magique
+(Altération)
+
+Niveau : 3
+Sphère : Faune
+Portée : personnelle
+Durée : spéciale
+Temps d'incantation : 4
+Zone d'effet : rayon de 9 mètres
+Jets de sauvegarde : aucun
+
+Ce sortilège transforme les armes naturelles (telles que les dents, les griffes, etc.) des animaux alliés présents dans la Zone d'effet en armes magiques, leur offrant de fait un bonus de +1 sur les jets d'attaque et de dégâts. Pour chaque tranche de 6 niveaux d'expérience du lanceur de sorts, ce bonus augmente de 1 jusqu'à un total d'un niveau d'enchantement de +2, de +2 aux jets d'attaque et +2 aux dégâts pour un lanceur de niveau 7 et +3 pour un lanceur de niveau 13. Ce sort n'est pas cumulable avec lui-même.
+~
+@50223 = ~Croissance Animale~ // from SR
+@50224 = ~Croissance Animale
+(Altération)
+
+
+Niveau : 5
+Sphère : Faune
+Portée : personnelle
+Durée : spéciale
+Temps d'incantation : 5
+Zone d'effet : rayon de 9 mètres
+Jets de sauvegarde : aucun
+
+Lorsque ce sortilège est jeté, le lanceur permet aux animaux alliés présents dans la Zone d'effet de devenir plus costauds, plus forts et plus tenaces. L'altération leur offre un bonus de +2 aux jets d'attaque et de dégâts, à la classe d'armure et aux jets de sauvegarde. Elle augmente également les points de vie des bénéficiaires de 50 %, et ces points de vie supplémentaires sont perdus en priorité lorsqu'ils subissent des dégâts. Ce sort n'est pas cumulable avec lui-même.
+~
+
+// 50301-50303 in new_spell.tra (pacify the dead)
+// 50304-50306 in new_spell.tra (eyes of the dead)
+// 50307-50309 in new_spell.tra (disrupt undead)
+// 50401-50402 in new_spell.tra (holy smite)
+// 50405-50407 in new_spell.tra (shout)
+// 50408-50409 in new_spell.tra (shatter)
+// 50410 unused
+// 50800-50801 in new_spell.tra (forbiddance)
+// 50802 unused
+// 50803-50804 in new_spell.tra (murderous command)
+// 50805 unused
+// 50901-50902 in new_spell.tra (misfire)
+// 50903 unused
+// 51101-51102 in new_spell.tra (animal eyes)
+// 51103 unused
+// 51104-51105 in new_spell.tra (hold beast)
+// 51201-51203 in new_spell.tra (Waves of Agony)
+// 51204 unused
+// 51401-51402 in new_spell.tra (nature's wrath)
+// 51403 unused
+// 51404-51405 in new_spell.tra (assassin vines)
+// 51406 unused
+// 51407- 51408 unused (goodberry)
+// 51501 unused
+// 51502-51504 in new_spell.tra (stone fist)
+// 51601-51602 in new_spell.tra (stormwall)
+// 51603 unused
+// 51701-51702 in new_spell.tra (conjure water elem)
+// 51703 unused
+// 51704-51705 in new_spell.tra (ice blade)
+// 51706 unused
+// 51707-51708 in new_spell.tra (frost fingers)
+// 51709 unused
+// 51710-51719 in new_spell.tra (ice blades)
+// 52001-52002 in new_spell.tra (shadow step)
+// 52003-52004 in new_spell.tra (cloak of darkness)
+// 52005 unused
+
+@52501  = ~Connaissance des légendes~
+@52502  = ~Connaissance des légendes
+(Divination)
+
+Niveau : 2
+Sphère : Connaissance
+Portée : 0
+Durée : instantanée
+Temps d'incantation : 2
+Zone d'effet : le lanceur
+Jets de sauvegarde : aucun
+
+Quand ce sort est jeté, le nom et les enchantements (malédictions incluses) d'un objet ou d'une arme touchée par le lanceur lui sont révélés sans condition. Le lanceur a alors un aperçu de l'histoire, de la nature, des enchantements et de l'usage de l'objet.
+
+Aux niveaux 5, 9 et 13, le nombre d'objets qui peuvent être identifiés par ce sort augmente de 1 (avec un maximum de 4 objets au niveau 13).
+~
+// 10100000-10100001 unused (remove fatigue)
+// 10100002-10100003 unused (Unfailing Endurance)
+
+// 11200000-11200001 in IWD_spells.tra (Caurse)
+// 11400000-11400001 in IWD_spells.tra (Cause Light Wounds)
+// 11400002-11400005 in IWD_spells.tra (inflict Light Wounds)
+// 11500000-11500001 in IWD_spells.tra (Sunscorch)
+// 21600000-21600001 in IWD_spells.tra (Resist Fire/Cold)
+// 21700000-21700001 in IWD_spells.tra (Cure Moderate Wounds)
+// 21800000-21800001 in IWD_spells.tra (Alicorn Lance)
+// 21800003  in IWD_spells.tra
+
+@102000005 = ~Hymne
+(Conjuration/Convocation)
+
+Niveau : Oraison
+Sphère : Protection
+Portée : personnelle
+Durée : spéciale
+Temps d'incantation : 9
+Jet de sauvegarde : aucun
+
+Quand il lance ce sort, le prêtre fredonne doucement. Tant qu'il continue de chanter, il reçoit un bonus de 1 point à la classe d'armure. Il peut combattre normalement, mais il ne peut cependant pas lancer de sorts ou repousser les morts-vivants.
+
+Hymne n'a aucun effet si le prêtre est sous l'effet de Bénédiction, Aide, Cantique ou Prière. S'il est affecté par l'un de ces sorts quand il est sous l'effet de cette oraison, Hymne est aussitôt dissipé.~
+
+// 103000000-103000001 unused (Malediction)
+
+// the malediction namespace is a bit overriden in french :/
+@103000002 = ~Calamité
+(Altération)
+
+Niveau : Oraison
+Sphère : Charme
+Portée : 7,5 mètres.
+Durée : 3 rounds
+Temps d'incantation : 9
+Zone d'effet : 1 créature
+Jet de sauvegarde : aucun
+
+Ce sort provoque un sentiment tragique chez la cible. Pendant la durée du sort, la cible subit une pénalité de 1 point au TAC0. Elle n'a pas droit à un jet de sauvegarde.
+
+Calamité n'est pas cumulable avec Imprécation ou Malédiction. Une créature sous l'effet de Bénédiction, Aide, Prière ou Cantique est immunisé à cette oraison.
+
+Une créature ne peut être affectée pat Calamité qu'une seule fois toutes les 8 heures.~
+
+// 103000003 unused (Malediction)
+
+@103000004 = ~Calamité
+(Altération)
+
+Niveau : Oraison
+Sphère : Effroi
+Portée : 7,5 mètres.
+Durée : 3 rounds
+Temps d'incantation : 9
+Zone d'effet : 1 créature
+Jet de sauvegarde : aucun
+
+Ce sort provoque un sentiment tragique chez la cible. Pendant la durée du sort, la cible subit une pénalité de 1 point au TAC0. Elle n'a pas droit à un jet de sauvegarde.
+
+Calamité n'est pas cumulable avec Imprécation ou Malédiction. Une créature sous l'effet de Bénédiction, Aide, Prière ou Cantique est immunisé à cette oraison.
+
+Une créature ne peut être affectée pat Calamité qu'une seule fois toutes les 8 heures.~
+
+// 104000000-104000002 unused (Cause Minor Wounds)
+
+@104000003 = ~Méditation
+(Conjuration/Convocation)
+
+Niveau : Oraison
+Sphère : Charme
+Portée : personnelle
+Durée : spéciale
+Temps d'incantation : 9
+Jet de sauvegarde : aucun
+
+Quand il lance ce sort, le prêtre entre dans une transe méditative. Tant qu'il continue à méditer, il reçoit un bonus de 1 point à tous ses jets de sauvegarde. Il peut combattre normalement, mais il ne peut cependant pas lancer de sorts ou repousser les morts-vivants.
+
+Méditation n'a aucun effet si le prêtre est sous l'effet de Bénédiction, Aide, Cantique ou Prière. S'il est affecté par l'un de ces sorts quand il est sous l'effet de cette oraison, Méditation est aussitôt dissipé.~
+
+// 104000004 unused (Inflict Minor Wounds)
+
+@104000005 = ~Méditation
+(Conjuration/Convocation)
+
+Niveau : Oraison
+Sphère : Pensée
+Portée : personnelle
+Durée : spéciale
+Temps d'incantation : 9
+Jet de sauvegarde : aucun
+
+Quand il lance ce sort, le prêtre entre dans une transe méditative. Tant qu'il continue à méditer, il reçoit un bonus de 1 point à tous ses jets de sauvegarde. Il peut combattre normalement, mais il ne peut cependant pas lancer de sorts ou repousser les morts-vivants.
+
+Méditation n'a aucun effet si le prêtre est sous l'effet de Bénédiction, Aide, Cantique ou Prière. S'il est affecté par l'un de ces sorts quand il est sous l'effet de cette oraison, Méditation est aussitôt dissipé.~
+
+// 105000000-105000005 unused (XXX Minor Wounds)
+// 106000000-106000001 unused (Infravision)
+// 107000000-107000001 unused (Hold Animal)
+
+@108000000 = ~Identifications restantes : ~

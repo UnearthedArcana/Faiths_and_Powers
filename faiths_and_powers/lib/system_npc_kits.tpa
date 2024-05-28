@@ -181,6 +181,7 @@ ACTION_IF (FILE_CONTAINS_EVALUATED (~kit.ids~ ~[ %TAB%]D5_AC_SHAR[ %TAB%%LNL%%MN
   END
 END
 
+/*
 ACTION_IF (FILE_EXISTS_IN_GAME ~d5zarvo.itm~) BEGIN
   ACTION_FOR_EACH char IN ~mazzy8~ ~mazzy9~ ~mazzy11~ ~mazzy12~ ~mazzy15~ BEGIN
 	ACTION_IF FILE_EXISTS_IN_GAME ~%char%.cre~ BEGIN
@@ -190,6 +191,7 @@ ACTION_IF (FILE_EXISTS_IN_GAME ~d5zarvo.itm~) BEGIN
 	END
   END
 END
+*/
 
 ACTION_FOR_EACH char IN ~b!gavin~ ~b!gav08~ ~b!gav13~ BEGIN
   COPY_EXISTING ~%char%.cre~ ~override~

@@ -5,7 +5,7 @@
 @12101  =  ~Universal~
 @12102  =  ~Life~
 @12103  =  ~Death~
-@12104  =  ~Vermin~
+@12104  =  ~Dread~			//
 @12105  =  ~Destruction~
 @12106  =  ~Protection~
 @12107  =  ~War~
@@ -13,7 +13,7 @@
 @12109  =  ~Knowledge~
 @12110  =  ~Deception~
 @12111  =  ~Thought~
-@12112  =  ~Dread~
+@12112  =  ~Vermin~
 @12113  =  ~Vigor~
 @12114  =  ~Affliction~
 @12115  =  ~Animal~
@@ -64,6 +64,8 @@ CLERIC_WONDROUS_RECALL                  0	=	Universal // level 6
 CLERIC_HOLY_WORD                        0	=	Universal // level 7
 NOSR_CLERIC_UNHOLY_WORD                 0	=	Universal // level 7
 CLERIC_SLOW_POISON                      1	=	Life
+CLERIC_DISRUPT_UNDEAD                   1	=	Life
+b_c105                                  1	=	Life
 CLERIC_CURE_MODERATE_WOUNDS             2	=	Life
 CLERIC_CURE_MEDIUM_WOUNDS               3	=	Life
 CLERIC_CURE_SERIOUS_WOUNDS              4	=	Life
@@ -72,9 +74,10 @@ CLERIC_MASS_CURE                        5	=	Life
 CLERIC_HEAL                             6	=	Life
 CLERIC_RESURRECTION                     7	=	Life
 CLERIC_EYES_OF_THE_DEAD                 1	=	Death
-CLERIC_DISRUPT_UNDEAD                   1	=	Death
+b_c104                                  1	=	Death
 WIZARD_LARLOCH_MINOR_DRAIN              1	=	Death
 CLERIC_PACIFY_DEAD                      2	=	Death
+b_c202                                  2	=	Death
 WIZARD_HOLD_UNDEAD                      2	=	Death
 CLERIC_CIRCLE_OF_BONES                  3	=	Death
 CLERIC_ANIMATE_DEAD                     4	=	Death
@@ -84,7 +87,7 @@ CLERIC_RAISE_DEAD                       6	=	Death
 B_W631                                  6	=	Death // Soul Eater
 CLERIC_SYMBOL_DEATH                     7	=	Death
 CLERIC_FINGER_OF_DEATH                  7	=	Death
-NO_WIZARD_GREASE                           1	=	Vermin 
+NO_WIZARD_GREASE                        1	=	Vermin 
 d5btswm                                 1	=	Vermin // liddle beetle swarm
 d5spswm                                 2	=	Vermin // liddle spider swarm
 spdr201                                 3	=	Vermin // druid version of web
@@ -97,9 +100,11 @@ d5carsm                                 6	=	Vermin // wizard carrion crawler sum
 CLERIC_CREEPING_DOOM                    7	=	Vermin
 d5rhbtl                                 7	=	Vermin // summon rhino beetle
 CLERIC_HAND_OF_CARNAGE                  1	=	Destruction
+b_pr101                                 1	=	Destruction
 CLERIC_CAUSE_LIGHT_WOUNDS               1	=	Destruction
 WIZARD_BATTERING_RAM                    1	=	Destruction // sr battering ram... make level 2?
 CLERIC_SHATTER                          2	=	Destruction
+b_pr201                                 2	=	Destruction
 CLERIC_CAUSE_MODERATE_WOUNDS            2	=	Destruction
 CLERIC_CAUSE_MEDIUM_WOUNDS              3	=	Destruction
 CLERIC_HOLY_SMITE                       3	=	Destruction
@@ -129,6 +134,7 @@ CLERIC_GREATER_SHIELD_OF_LATHANDER      7	=	Protection
 CLERIC_STRIKING                         0	=	War
 CLERIC_ABUNDANT_AMMO                    1	=	War
 CLERIC_MAGIC_WEAPON                     1	=	War
+b_c107                                  1	=	War
 CLERIC_SEEKING                          0	=	War
 CLERIC_REMOVE_FEAR                      2	=	War
 CLERIC_SPIRITUAL_HAMMER                 2	=	War
@@ -167,6 +173,7 @@ WIZARD_ORACLE                           4	=	Knowledge
 CLERIC_TRUE_SIGHT                       5	=	Knowledge
 WIZARD_CONTINGENCY                      7	=	Knowledge
 CLERIC_CAMOUFLAGE                       1	=	Deception
+b_r101                                  1	=	Deception
 NOSR_WIZARD_REFLECTED_IMAGE             1	=	Deception
 SR_WIZARD_REFLECTED_IMAGE               2	=	Deception
 WIZARD_BLUR                             2	=	Deception
@@ -180,10 +187,14 @@ WIZARD_SIMULACRUM                       7	=	Deception
 CLERIC_COMMAND                          1	=	Thought
 CLERIC_CHARM_PERSON                     1	=	Thought
 CLERIC_ENTHRALL                         2	=	Thought
+b_p201                                  2	=	Thought
 CLERIC_FORBID						    2	=	Thought
+b_c201                                  2	=	Thought
 CLERIC_RIGID_THINKING                   2	=	Thought
 CLERIC_MURDEROUS_COMMAND                3	=	Thought
+b_c301                                  3	=	Thought
 CLERIC_DICTATE                          3	=	Thought
+b_p3xx                                  3	=	Thought
 CLERIC_EXALTATION                       3	=	Thought
 CLERIC_MENTAL_DOMINATION                4	=	Thought
 CLERIC_BLOOD_RAGE                       4	=	Thought
@@ -247,6 +258,7 @@ CLERIC_ANIMAL_SUMMONING_LEVEL_1         1	=	Animal // SR Animal Summon 1
 CLERIC_BEAST_CLAW                       2	=	Animal
 CLERIC_ANIMAL_SUMMONING_LEVEL_2         2	=	Animal // SR Animal Summon 2
 CLERIC_FERAL_INSTINCT                   3	=	Animal
+b_p302                                  3	=	Animal
 CLERIC_ANIMAL_SUMMONING_LEVEL_3         3	=	Animal // SR Animal Summon 3
 d5fnp04                                 3	=	Animal // Magic Fang
 SR_CLERIC_ANIMAL_SUMMONING_LEVEL_4      4	=	Animal // SR Animal Summon 4
@@ -265,6 +277,7 @@ CLERIC_SHILLELAGH                       1	=	Plant
 CLERIC_BARKSKIN                         2	=	Plant
 CLERIC_THORN_SPRAY                      3	=	Plant
 CLERIC_SNARE                            3	=	Plant
+b_dr301                                 3	=	Plant
 CLERIC_SPIKE_GROWTH                     4	=	Plant
 CLERIC_STICKS_TO_SNAKES                 0	=	Plant
 CLERIC_CALL_WOODLAND_BEINGS             5	=	Plant
@@ -272,8 +285,11 @@ CLERIC_NATURES_WRATH                    6	=	Plant
 CLERIC_ASSASSIN_VINES                   6	=	Plant
 CLERIC_STALKER                          7	=	Plant
 CLERIC_HOLLY_DART                       7	=	Plant
+CLERIC_BINDING                          1	=	Earth
+b_pc01                                  1	=	Earth
 CLERIC_MAGIC_STONE                      1	=	Earth
 CLERIC_STONE_FIST                       2	=	Earth
+b_pr301                                 2	=	Earth
 WIZARD_STONE_TO_FLESH                   3	=	Earth
 CLERIC_SPIKE_STONES                     4	=	Earth
 CLERIC_IRONSKIN                         5	=	Earth
@@ -303,6 +319,7 @@ CLERIC_FROST_FINGERS                    1	=	Water
 b_c103                                  1	=	Water // frost fingers
 CLERIC_RESIST_COLD                      1	=	Water
 CLERIC_WATERY_FIST                      2	=	Water
+b_pr221                                 2	=	Water
 CLERIC_ICE_BLADE                        2	=	Water
 b_c203                                  2	=	Water // ice blade
 WIZARD_SNILLOCS_SNOWBALL_SWARM          2	=	Water
@@ -319,7 +336,7 @@ WIZARD_ICE_STORM                        5	=	Water
 CLERIC_PROTECTION_FROM_ACID             5	=	Water // SR pro. acid
 CLERIC_PROTECTION_FROM_COLD             5	=	Water // SR pro. cold
 CLERIC_MIST_OF_ELDATH                   6	=	Water
-CLERIC_CONJURE_WATER_ELEMENTAL          6	=	Water
+NO_CLERIC_CONJURE_WATER_ELEMENTAL          6	=	Water
 b_pr602                                 6	=	Water // water elemental
 WIZARD_ACID_STORM                       7	=	Water
 b_w724                                  7	=	Water // acid storm
@@ -351,6 +368,7 @@ CLERIC_SANCTUARY                        1	=	Shadow
 NOSR_WIZARD_BLINDNESS                   2	=	Shadow
 SR_b_w206                               2	=	Shadow // Blindness (and no conflicts with SR)
 CLERIC_CLOAK_DARKNESS                   3	=	Shadow
+b_c302                                  3	=	Shadow
 WIZARD_SHADOW_MONSTERS                  3	=	Shadow
 b_w426                                  3	=	Shadow // Shadow Monsters
 WIZARD_PHANTOM_BLADE                    4	=	Shadow
@@ -600,7 +618,139 @@ END
 
 DEFINE_ACTION_MACRO d5_deity_kit_sphere_lists BEGIN
 
-// UR-PRIEST__________________________________________________________________________
+// default cleric list_______________________________________________________________
+//
+DEFINE_ACTION_FUNCTION default_cleric_spheres 
+  RET_ARRAY default_cleric_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY default_cleric_spheres_array BEGIN
+	Life			=> major
+	Death			=> major
+	Vermin			=> x
+	Destruction		=> major
+	Protection		=> major
+	War				=> major
+	Exploration		=> x
+	Knowledge		=> minor
+	Deception		=> x
+	Thought			=> minor
+	Dread			=> major
+	Vigor			=> major
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> minor
+	Light			=> major
+	Shadow			=> x
+	Magic			=> minor
+	Astral		    => x
+ END
+END
+//___________________________________________________________________________________
+
+// default paladin list______________________________________________________________
+//
+DEFINE_ACTION_FUNCTION default_paladin_spheres 
+  RET_ARRAY default_paladin_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY default_paladin_spheres_array BEGIN
+	Life			=> paladin
+	Death			=> x
+	Vermin			=> x
+	Destruction		=> x
+	Protection		=> paladin
+	War				=> paladin
+	Exploration		=> x
+	Knowledge		=> x
+	Deception		=> x
+	Thought			=> x
+	Dread			=> x
+	Vigor			=> paladin
+	Affliction		=> x
+	Animal			=> x
+	Plant			=> x
+	Earth			=> x
+	Water			=> x
+	Air				=> x
+	Fire			=> x
+	Light			=> paladin
+	Shadow			=> x
+	Magic			=> x
+	Astral		    => x
+ END
+END
+//___________________________________________________________________________________
+
+// default druid list________________________________________________________________
+//
+DEFINE_ACTION_FUNCTION default_druid_spheres 
+  RET_ARRAY default_druid_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY default_druid_spheres_array BEGIN
+	Life			=> minor
+	Death			=> minor
+	Vermin			=> minor
+	Destruction		=> x
+	Protection		=> x
+	War				=> x
+	Exploration		=> major
+	Knowledge		=> major
+	Deception		=> x
+	Thought			=> x
+	Dread			=> x
+	Vigor			=> major
+	Affliction		=> major
+	Animal			=> major
+	Plant			=> major
+	Earth			=> major
+	Water			=> minor
+	Air				=> minor
+	Fire			=> x
+	Light			=> major
+	Shadow			=> x
+	Magic			=> x
+	Astral		    => x
+ END
+END
+//___________________________________________________________________________________
+
+// default ranger list_______________________________________________________________
+//
+DEFINE_ACTION_FUNCTION default_ranger_spheres 
+  RET_ARRAY default_ranger_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY default_ranger_spheres_array BEGIN
+	Life			=> ranger
+	Death			=> x
+	Vermin			=> x
+	Destruction		=> x
+	Protection		=> x
+	War				=> x
+	Exploration		=> ranger
+	Knowledge		=> x
+	Deception		=> x
+	Thought			=> x
+	Dread			=> x
+	Vigor			=> ranger
+	Affliction		=> x
+	Animal			=> ranger
+	Plant			=> ranger
+	Earth			=> ranger
+	Water			=> x
+	Air				=> ranger
+	Fire			=> x
+	Light			=> x
+	Shadow			=> x
+	Magic			=> x
+	Astral		    => x
+ END
+END
+//___________________________________________________________________________________
+
+// UR-PRIEST_________________________________________________________________________
 //
 DEFINE_ACTION_FUNCTION ur_priest_spheres 
   RET_ARRAY ur_priest_spheres_array
@@ -1549,7 +1699,7 @@ DEFINE_ACTION_FUNCTION talos_spheres
 	Plant			=> x
 	Earth			=> x
 	Water			=> x
-	Air				=> major
+	Air				=> focus
 	Fire			=> major
 	Light			=> minor
 	Shadow			=> x
@@ -1838,7 +1988,7 @@ DEFINE_ACTION_FUNCTION eilistraee_spheres
 	Destruction		=> x
 	Protection		=> major
 	War				=> x
-	Exploration 		=> minor
+	Exploration 	=> minor
 	Knowledge		=> minor
 	Deception		=> major
 	Thought			=> minor
@@ -3290,8 +3440,10 @@ END
 
 //___________________________________________________________________________________
 //
-DEFINE_ACTION_MACRO DR_oozemaster_spheres BEGIN
- ACTION_DEFINE_ASSOCIATIVE_ARRAY a#ooze_spheres BEGIN
+DEFINE_ACTION_FUNCTION dr_oozemaster_spheres 
+  RET_ARRAY dr_oozemaster_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY dr_oozemaster_spheres_array BEGIN
 	Life			=> major
 	Death			=> minor
 	Vermin			=> minor
@@ -3321,13 +3473,15 @@ END
 
 //___________________________________________________________________________________
 //
-DEFINE_ACTION_MACRO DR_justifier_spheres BEGIN
-  ACTION_DEFINE_ASSOCIATIVE_ARRAY a#justif_spheres BEGIN
-	Life			=> ranger
+DEFINE_ACTION_FUNCTION dr_justifier_spheres 
+  RET_ARRAY dr_justifier_spheres_array
+ BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY dr_justifier_spheres_array BEGIN
+	Life			=> x
 	Death			=> x
 	Vermin			=> x
 	Destruction 	=> x
-	Protection		=> x
+	Protection		=> ranger
 	War				=> x
 	Exploration 	=> x
 	Knowledge		=> x
