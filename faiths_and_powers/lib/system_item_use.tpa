@@ -596,7 +596,7 @@ END
 COPY_EXISTING ~weapprof.2da~ ~override~
   COUNT_2DA_COLS cols
   COUNT_2DA_ROWS cols rows
-  FOR (row = 7; row < rows; ++row) BEGIN
+  FOR (row = 6; row < rows; ++row) BEGIN
     READ_2DA_ENTRY row 1 cols stat
     PATCH_IF (~%stat%~ STRING_EQUAL_CASE ~89~) BEGIN
       READ_2DA_ENTRY row 2 cols bswo_strref
