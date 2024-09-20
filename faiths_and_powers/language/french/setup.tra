@@ -1,14 +1,13 @@
 // For strings that may appear in weidu.log or in the console, don't use characters above ASCII
-@6   = ~...~
-@8   = ~composant saute~
+@6  = ~...~
+@8  = ~composant saute~
 @10 = ~Parchemin~
-@13 = ~*Veuillez patienter. Ceci va prendre un certain temps...*~
 @18 = ~Ce composant a ete deprecie~
 //
-@11  = ~Revised Cleric Spell Table~
-@12  = ~Faiths & Powers Table~
-@13  = ~'Un-nerfed' Table~
-@15  = ~Druids Use Cleric Spell Table and XP Table~
+@11  = ~Table revisee des sorts de Clerc~
+@12  = ~Table des sorts de Faiths & powers~
+@13  = ~Table debridee~
+@15  = ~Les Druides utilisent la table des sorts et la progression d'XP des Clercs~
 @20  = ~Choisir un systeme de spheres~
 @21  = ~oFnP : le systeme de spheres original de Faiths & Powers~
 @22  = ~AD&D/DR : inspire par le PnP et Divine Remix~
@@ -789,7 +788,7 @@ Restrictions :
 
 Grâce à son intime connaissance des milieux naturels et des créatures qui y vivent, la griffe de Malar peut utiliser cette faculté pour avoir une idée générale des créatures présentes dans une zone donnée, ainsi que de leur direction. Des flèches rouges indiquent à l'écran la direction générale des créatures de la zone.~
 //
-// ... hammer of moradin 
+// ... cleric of moradin 
 //
 @37101  = ~sonnlinor de Moradin~
 @37102  = ~Sonnlinor de Moradin~
@@ -916,6 +915,7 @@ Restrictions :
 @38503  = ~CHASSEUR DE SANG D'URDLEN : Les prêtres d'Urdlen mènent une guerre sans fin contre le peuple oublié, et tout spécialement contre les clergés des autres dieux gnomes. Quand ils ne chassent pas d'autres créatures, les prêtres s'acharnent à voler, vandaliser ou détruire des objets de valeur comme les pierres précieuses ou les œuvres d'art. Ils partagent la passion de leur dieu pour les mauvais tours, surtout ceux qui ciblent les autres gnomes. Les prêtres doivent avant tout satisfaire Urdlen pour qu'il ne s'en prenne pas à eux, mais une fois cette formalité accomplie, ils peuvent faire ce que bon leur chante. Les chasseurs de sang pensent que leur existence est une plaisanterie cosmique qui dure jusqu'à ce que la griffe d'Urdlen vienne leur donner la mort. Faire partager aux autres l'ironie cruelle et l'humour rude de l'existence est une forme de compassion, en ce sens que cela aide à les endurcir contre ce qui vient tout à la fin.
 
 Avantages :
+- Peut lancer des sorts à partir de parchemins normalement réservés aux mages.
 - À partir du niveau 1, peut lancer Nuage puant une fois par jour de façon innée.
 - À partir du niveau 3, peut lancer Cécité une fois par jour de façon innée.
 - À partir du niveau 6, peut lancer Piège à crânes une fois par jour de façon innée.
@@ -1498,7 +1498,7 @@ PYTHON : sous forme de serpent, le druide peut utiliser une morsure qui inflige
 
 PETITE WIVERNE : sous forme de petite wiverne, le druide peut survoler les obstacles au sol comme les sorts d'Enchevêtrement et de Toile d'araignée. Ses griffes puissantes peuvent déchirer leurs victimes et infliger 1d6 points de dégâts et ses attaques peuvent empoisonner la cible, avec des effets semblables à l'Arme empoisonnée des assassins.~
 @73047  = ~Métamorphose en wiverne~
-@73048  = ~Se transformer en petite wiverne
+@73048  = ~Se transformer en wiverne
 
 WIVERNE : sous forme de wiverne, le druide peut survoler les obstacles au sol comme les sorts d'Enchevêtrement et de Toile d'araignée. Ses griffes puissantes peuvent déchirer leurs victimes et infliger 2d6 points de dégâts et ses attaques peuvent empoisonner la cible, avec des effets semblables à l'Arme empoisonnée des assassins. De plus, le druide peut générer une puissante bourrasque qui se comporte comme une version diminuée du Coup d'ailes des dragons.
 ~
@@ -1666,8 +1666,6 @@ Jet de sauvegarde : aucun
 Le lanceur de sort peut convoquer un scarabée rhinocéros massif pour l'aider au combat. Cette créature est imposante, extrêmement forte et a une carapace chitineuse robuste. Elle est totalement loyale au lanceur du sort et utilisera sa corpulence pour empêcher l'ennemi de manœuvrer et sa puissante morsure pour les menacer.
 ~
 @73429  = ~Scarabée rhinocéros~
-@73430  = ~Scarabée~
-@73430  = ~Araignée~
 //
 // ... arctic druid:
 //
@@ -1844,6 +1842,8 @@ Le châtiment inflige parfois des dégâts ou des effets supplémentaires sur ce
 @80013  = ~Frénésie du zélote
 
 Le champion devient frénétique pendant 5 rounds. Lorsqu'il est dans cet état, le personnage obtient une attaque supplémentaire par round et un bonus de 2 points aux jets de dégâts. Il devient aussi immunisé contre les effets de sommeil, de lenteur, de confusion, de labyrinthe, et d'absorption de niveau.
+
+Parfois, la Frénésie du Zélote apporte des effets supplémentaires dépendant de la divinté choisie.
 ~
 // 80014 unused
 
@@ -1912,7 +1912,7 @@ Un adversaire ne peut subir les effets de Châtiment destructeur qu'une fois par
 Avantages :
 - Immunisé contre l'immobilisation et les effets d'absorption de niveau.
 - Repousse les morts-vivants comme un prêtre de son niveau de champion à partir du niveau 3.
-- Frénésie destructrice :quand il entre en frénésie, le zélote inflige 2d6 points de dégâts supplémentaires aux morts-vivants.
+- Frénésie destructrice : quand il entre en frénésie, le zélote inflige 1d6 points de dégâts supplémentaires aux morts-vivants.
 
 Restrictions :
 - Doit être d'alignement neutre ou mauvais.
@@ -1966,6 +1966,7 @@ Un adversaire ne peut subir les effets de Châtiment d'effroi qu'une fois par ro
 
 Avantages :
 - peut lancer de façon native Vision véritable une fois par jour.
+- Conscience augmentée : bonus de 1 point à la classe d'armure et petite extension du champ visuel.
 - Peut lancer Épée du vigile comme pouvoir spécial une fois par jour et gagne une utilisation supplémentaire aux niveaux 5, 10, 15 et 20.
 
 ÉPÉE DU VIGILE : Ce sort fait apparaître une épée dans la main du champion (ne peut être lâchée ni rangée) Cette arme est enchantée comme une arme +4 et fournit un bonus de 4 points au TAC0. Elle inflige 2d4 points de dégâts et dure 1 round par niveau.
@@ -2225,7 +2226,7 @@ Résonance passionnée n'est pas cumulable avec Hâte et autres effets similaire
 Avantages :
 - Peut lancer de façon innée Annulation des protections une fois par jour.
 - Peut lancer Perce-magie une fois par jour au niveau 6 et gagne une utilisation supplémentaire aux niveaux 12 et 18.
-- Châtiment brise-toile : le châtiment du défenseur n'inflige pas de dégâts supplémentaires, mais peut dissiper les défenses magiques de la cible comme si un sort de brèche avait été lancé.
+- Châtiment brise-toile : le châtiment du défenseur n'inflige pas de dégâts supplémentaires, mais peut dissiper les défenses magiques de la cible comme si un sort de Brèche avait été lancé.
 - Frénésie Brise-toile : quand le zélote entre en frénésie, les lanceurs de sorts ennemis à proximité souffrent d'un risque d'échec des sorts de 20 %.
 
 Restrictions :
@@ -2563,5 +2564,3 @@ Méditation n'a aucun effet si le prêtre est sous l'effet de Bénédiction, Aid
 // 105000000-105000005 unused (XXX Minor Wounds)
 // 106000000-106000001 unused (Infravision)
 // 107000000-107000001 unused (Hold Animal)
-
-@108000000 = ~Identifications restantes : ~
