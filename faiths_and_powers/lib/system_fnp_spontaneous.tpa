@@ -1591,9 +1591,11 @@ APPEND ~d5sham.2da~ ~NO_SPELL    AP_D5YOSPL  ****        ****        ****       
 
 // bonus WIS casting slots____________________________________________________________
 //
+/* no this is no longer valid
 ACTION_IF (MOD_IS_INSTALLED ~tomeandblood.tp2~ ~95~) BEGIN
   LAM semi_wis_slots
 END
+*/
 
 
 // general casting slots______________________________________________________________
@@ -1654,6 +1656,25 @@ ACTION_IF (IS_AN_INT %burning_hands_strref%) BEGIN
 	END
   BUT_ONLY
 END
+
+
+// prevent crash on rest____________________________________________________________
+//
+LAF no_crash_on_rest END
+
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5xcrsh.spl~) BEGIN
+  COPY_EXISTING ~d5xcrsh.spl~ ~override~
+	LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = %semi_sham_state% parameter2 = 110 timing = 1 STR_VAR resource = ~d5yy172~ END
+END
+
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5yrfsh.spl~) BEGIN
+  COPY_EXISTING ~d5yrfsh.spl~ ~override~
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter2 = 2 timing = 1 STR_VAR resource = ~d5xcrs1~ END
+  BUT_ONLY
+END
+
+// ... then add AP_D5XCRS1 to a kit's CLAB table
+APPEND ~d5sham.2da~ ~NO_CRASH    AP_D5XCRS1  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** ~
 
 
 COPY ~faiths_and_powers/lib/semi_spont/d5_marker.d5~ ~override/d5__fnp_spont_casting.d5~
