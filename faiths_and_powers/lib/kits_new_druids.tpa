@@ -1492,7 +1492,7 @@ OUTER_SET ferret_animation = IDS_OF_SYMBOL (animate ~GROUNDHOG~)					//
 //OUTER_SET bat_animation = IDS_OF_SYMBOL (animate ~****~)					//
 //OUTER_SET swarm_animation = IDS_OF_SYMBOL (animate ~****~)					//
 OUTER_SET wolf_animation = IDS_OF_SYMBOL (animate ~WOLF~)							//
-OUTER_SET dire_wolf_animation = IDS_OF_SYMBOL (animate ~WOLF_DIRE~)					//
+OUTER_SET dire_wolf_animation = IDS_OF_SYMBOL (animate ~WORG~)					//
 OUTER_SET winter_wolf_animation = IDS_OF_SYMBOL (animate ~WOLF_WINTER~)				//
 OUTER_SET dread_wolf_animation = IDS_OF_SYMBOL (animate ~WOLF_DREAD~)				//
 OUTER_SET vampiric_wolf_animation = IDS_OF_SYMBOL (animate ~WOLF_VAMPIRIC~)			//
@@ -1546,6 +1546,8 @@ OUTER_SET squirrel_animation = IDS_OF_SYMBOL (animate ~SQUIRREL~)
 ACTION_IF !(GAME_IS ~iwdee~) BEGIN
 // yeti
   COPY ~faiths_and_powers/spheres/spells/animations/e25d_yeti~ ~override~
+// worg -> dire wolf
+  COPY ~faiths_and_powers/spheres/spells/animations/e280_worg~ ~override~
 // copper beetle
   COPY ~faiths_and_powers/spheres/spells/animations/e200_copper_beetle~ ~override~
 // fire beetle
