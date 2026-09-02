@@ -394,7 +394,7 @@ APPEND ~clabdr04.2da~ ~HIVEKEEPER   ****        GA_%spell_res%  ****        ****
 // make beetle swarm spell
 ACTION_IF !(GAME_IS ~iwdee~) BEGIN
 // animations
-  COPY ~faiths_and_powers/spheres/spells/animations/e210_beetle~ ~override~
+  COPY ~faiths_and_powers/spells/spheres/animations/e210_beetle~ ~override~
   COPY ~faiths_and_powers/kits/druids/734_hivekeeper/d5smbtl.cre~ ~override~
 	LPF make_summon END
 END
@@ -1545,19 +1545,19 @@ OUTER_SET squirrel_animation = IDS_OF_SYMBOL (animate ~SQUIRREL~)
 // add missing animations
 ACTION_IF !(GAME_IS ~iwdee~) BEGIN
 // yeti
-  COPY ~faiths_and_powers/spheres/spells/animations/e25d_yeti~ ~override~
+  COPY ~faiths_and_powers/spells/spheres/animations/e25d_yeti~ ~override~
 // worg -> dire wolf
-  COPY ~faiths_and_powers/spheres/spells/animations/e280_worg~ ~override~
+  COPY ~faiths_and_powers/spells/spheres/animations/e280_worg~ ~override~
 // copper beetle
-  COPY ~faiths_and_powers/spheres/spells/animations/e200_copper_beetle~ ~override~
+  COPY ~faiths_and_powers/spells/spheres/animations/e200_copper_beetle~ ~override~
 // fire beetle
-  COPY ~faiths_and_powers/spheres/spells/animations/e210_fire_beetle~ ~override~
+  COPY ~faiths_and_powers/spells/spheres/animations/e210_fire_beetle~ ~override~
 // black beetle
-  COPY ~faiths_and_powers/spheres/spells/animations/e220_black_beetle~ ~override~
+  COPY ~faiths_and_powers/spells/spheres/animations/e220_black_beetle~ ~override~
 // rhino beetle
-  COPY ~faiths_and_powers/spheres/spells/animations/e230_rhino_beetle~ ~override~
+  COPY ~faiths_and_powers/spells/spheres/animations/e230_rhino_beetle~ ~override~
 // remorhaz
-  COPY ~faiths_and_powers/spheres/spells/animations/e253_remorhaz~ ~override~
+  COPY ~faiths_and_powers/spells/spheres/animations/e253_remorhaz~ ~override~
 END
 
 // fix boar selection circle
@@ -2955,7 +2955,7 @@ COPY ~faiths_and_powers/kits/druids/shapechange/d5drnf.spl~ ~override~
 ACTION_IF (FILE_EXISTS_IN_GAME ~d5__no_spheres.d5~) BEGIN
   ACTION_FOR_EACH text_file IN ~clastext~ ~sodcltxt~ ~bgclatxt~ BEGIN
     ACTION_IF (FILE_EXISTS_IN_GAME ~%text_file%.2da~) BEGIN
-      COPY_EXISTING ~sodcltxt.2da~ ~override~
+      COPY_EXISTING ~%text_file%.2da~ ~override~
         COUNT_2DA_COLS cols
         READ_2DA_ENTRIES_NOW rows cols
         FOR (row = 1; row < rows; ++row) BEGIN
@@ -3258,7 +3258,7 @@ END
   STR_VAR
     clab_name 		= ~d5obst~
 	sphere_list		= ~beast_lord_spheres~
-	class 			= ~occultist~
+	class 			= ~druid~
 	multiclass		= ~fd~
  END
 
@@ -3464,7 +3464,7 @@ COPY ~faiths_and_powers/kits/druids/763_elementalist/b_ele20.2da~ ~override~
   STR_VAR
     clab_name 		= ~d5oelm~
 	sphere_list		= ~elementalist_spheres~
-	class 			= ~occultist~
+	class 			= ~druid~
  END
 
 END

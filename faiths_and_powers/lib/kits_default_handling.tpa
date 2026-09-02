@@ -63,7 +63,7 @@ ACTION_IF (FILE_EXISTS_IN_GAME ~clabpr02.2da~) BEGIN
   INT_VAR
 	u_leather_armor 	= 1
 	u_chain_armor 		= 1
-	u_plate_armor 		= 0
+	u_plate_armor 		= 1
 	u_club_staff	 	= 1
 	u_hammers	 		= 1
 	u_maces 	 		= 1
@@ -135,7 +135,7 @@ ACTION_IF (FILE_EXISTS_IN_GAME ~clabpr04.2da~) BEGIN
   INT_VAR
 	u_leather_armor 	= 1
 	u_chain_armor 		= 1
-	u_plate_armor 		= 0
+	u_plate_armor 		= 1
 	u_club_staff	 	= 1
 	u_hammers	 		= 1
 	u_maces 	 		= 1
@@ -700,7 +700,7 @@ ACTION_IF (FILE_EXISTS_IN_GAME ~clabrn01.2da~) && (FILE_EXISTS_IN_GAME ~fnp_sphe
   INT_VAR
 	u_leather_armor 	= 1
 	u_chain_armor 		= 1
-	u_plate_armor 		= 0
+	u_plate_armor 		= 1
 	u_club_staff	 	= 2
 	u_hammers	 		= 2
 	u_maces 	 		= 2
@@ -734,7 +734,7 @@ ACTION_IF (FILE_EXISTS_IN_GAME ~clabrn02.2da~) BEGIN
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
-	u_chain_armor 		= 0
+	u_chain_armor 		= 1
 	u_plate_armor 		= 0
 	u_club_staff	 	= 1
 	u_hammers	 		= 1
@@ -841,7 +841,7 @@ ACTION_IF (FILE_EXISTS_IN_GAME ~clabrn05.2da~) BEGIN
   INT_VAR
 	u_leather_armor 	= 1
 	u_chain_armor 		= 1
-	u_plate_armor 		= 0
+	u_plate_armor 		= 1
 	u_club_staff	 	= 2
 	u_hammers	 		= 2
 	u_maces 	 		= 2
@@ -897,7 +897,7 @@ LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
 	u_chain_armor 		= 1
-	u_plate_armor 		= 0
+	u_plate_armor 		= 1
 	u_club_staff	 	= 1
 	u_hammers	 		= 1
 	u_maces 	 		= 1
@@ -939,7 +939,7 @@ LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
 	u_chain_armor 		= 1
-	u_plate_armor 		= 0
+	u_plate_armor 		= 1
 	u_club_staff	 	= 1
 	u_hammers	 		= 1
 	u_maces 	 		= 1
@@ -979,8 +979,8 @@ ACTION_IF (FILE_EXISTS_IN_GAME ~a#koss.2da~) BEGIN
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
-	u_chain_armor 		= 0
-	u_plate_armor 		= 0
+	u_chain_armor 		= 1
+	u_plate_armor 		= 1
 	u_club_staff	 	= 1
 	u_hammers	 		= 1
 	u_maces 	 		= 1
@@ -1020,8 +1020,8 @@ ACTION_IF (FILE_EXISTS_IN_GAME ~a#ogma.2da~) BEGIN
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
-	u_chain_armor 		= 0
-	u_plate_armor 		= 0
+	u_chain_armor 		= 1
+	u_plate_armor 		= 1
 	u_club_staff	 	= 1
 	u_hammers	 		= 1
 	u_maces 	 		= 1
@@ -1179,7 +1179,7 @@ LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
 	u_chain_armor 		= 1
-	u_plate_armor 		= 0
+	u_plate_armor 		= 1
 	u_club_staff	 	= 1
 	u_hammers	 		= 1
 	u_maces 	 		= 1
@@ -1218,7 +1218,7 @@ LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
 	u_chain_armor 		= 1
-	u_plate_armor 		= 0
+	u_plate_armor 		= 1
 	u_club_staff	 	= 2
 	u_hammers	 		= 2
 	u_maces 	 		= 2
@@ -1257,7 +1257,7 @@ LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
 	u_chain_armor 		= 1
-	u_plate_armor 		= 0
+	u_plate_armor 		= 1
 	u_club_staff	 	= 1
 	u_hammers	 		= 1
 	u_maces 	 		= 1
@@ -1294,8 +1294,8 @@ ACTION_IF (FILE_EXISTS_IN_GAME ~cdselune.2da~) BEGIN
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
-	u_chain_armor 		= 0
-	u_plate_armor 		= 0
+	u_chain_armor 		= 1
+	u_plate_armor 		= 1
 	u_club_staff	 	= 1
 	u_hammers	 		= 1
 	u_maces 	 		= 1
@@ -1333,7 +1333,7 @@ LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
 	u_chain_armor 		= 1
-	u_plate_armor 		= 0
+	u_plate_armor 		= 1
 	u_club_staff	 	= 1
 	u_hammers	 		= 1
 	u_maces 	 		= 1
@@ -1371,8 +1371,8 @@ ACTION_IF (FILE_EXISTS_IN_GAME ~nmsune.2da~) BEGIN
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
-	u_chain_armor 		= 0
-	u_plate_armor 		= 0
+	u_chain_armor 		= 1
+	u_plate_armor 		= 1
 	u_club_staff	 	= 1
 	u_hammers	 		= 1
 	u_maces 	 		= 0
@@ -1598,7 +1598,7 @@ LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
 	u_chain_armor 		= 1
-	u_plate_armor 		= 0
+	u_plate_armor 		= 1
 	u_club_staff	 	= 1
 	u_hammers	 		= 1
 	u_maces 	 		= 1
@@ -1634,7 +1634,7 @@ ACTION_IF (FILE_EXISTS_IN_GAME ~clabiceg.2da~) BEGIN
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
-	u_chain_armor 		= 0
+	u_chain_armor 		= 1
 	u_plate_armor 		= 0
 	u_club_staff	 	= 1
 	u_hammers	 		= 1
@@ -1672,7 +1672,7 @@ LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
 	u_chain_armor 		= 1
-	u_plate_armor 		= 0
+	u_plate_armor 		= 1
 	u_club_staff	 	= 1
 	u_hammers	 		= 1
 	u_maces 	 		= 1
@@ -1708,7 +1708,7 @@ ACTION_IF (FILE_EXISTS_IN_GAME ~clableaf.2da~) BEGIN
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
-	u_chain_armor 		= 0
+	u_chain_armor 		= 1
 	u_plate_armor 		= 0
 	u_club_staff	 	= 1
 	u_hammers	 		= 1
@@ -1745,7 +1745,7 @@ ACTION_IF (FILE_EXISTS_IN_GAME ~clabtree.2da~) BEGIN
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
-	u_chain_armor 		= 0
+	u_chain_armor 		= 1
 	u_plate_armor 		= 0
 	u_club_staff	 	= 1
 	u_hammers	 		= 1
@@ -1820,7 +1820,7 @@ LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
 	u_chain_armor 		= 1
-	u_plate_armor 		= 0
+	u_plate_armor 		= 1
 	u_club_staff	 	= 1
 	u_hammers	 		= 1
 	u_maces 	 		= 1
@@ -1928,7 +1928,7 @@ ACTION_IF (FILE_EXISTS_IN_GAME ~k9miel.2da~) BEGIN
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
-	u_chain_armor 		= 0
+	u_chain_armor 		= 1
 	u_plate_armor 		= 0
 	u_club_staff	 	= 2
 	u_hammers	 		= 2
@@ -1965,7 +1965,7 @@ LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
 	u_chain_armor 		= 1
-	u_plate_armor 		= 0
+	u_plate_armor 		= 1
 	u_club_staff	 	= 2
 	u_hammers	 		= 2
 	u_maces 	 		= 2
@@ -1987,42 +1987,6 @@ LAF ~DEFINE_FNP_KIT_INFO~
   STR_VAR
     clab_name 		= EVAL ~k9myst~
 	sphere_list		= ~mystra_spheres~
-	class 			= ~champion~
-END
-//__________________________________________________________________________________
-END
-
-// SIRENE - PALADIN OF ILMATER
-
-ACTION_IF (FILE_EXISTS_IN_GAME ~c0ilmcl.2da~) BEGIN
-//DEFINE SPHERE ACCESS______________________________________________________________
-//
-LAF ~DEFINE_FNP_KIT_INFO~
-  INT_VAR
-	u_leather_armor 	= 1
-	u_chain_armor 		= 1
-	u_plate_armor 		= 1
-	u_club_staff	 	= 2
-	u_hammers	 		= 2
-	u_maces 	 		= 2
-	u_flails 			= 2
-	u_axes 				= 2
-	u_daggers 			= 2
-	u_short_swords		= 2
-	u_long_swords		= 2
-	u_scimitars 		= 2
-	u_katanas 			= 2
-	u_bastard_swords 	= 2
-	u_2hand_swords 		= 2
-	u_halberds 			= 2
-	u_spears 	 		= 2
-	u_darts 			= 0
-	u_slings	 		= 2
-	u_bows 				= 2
-	u_crossbows 		= 2
-  STR_VAR
-    clab_name 		= ~c0ilmcl~
-	sphere_list		= ~ilmater_spheres~
 	class 			= ~champion~
 END
 //__________________________________________________________________________________
@@ -2137,6 +2101,150 @@ END
 //__________________________________________________________________________________
 END
 
+// ARTISANKITS - ELEMENTALIST (DRUID)
+
+ACTION_IF (FILE_EXISTS_IN_GAME ~c0elem.2da~) BEGIN
+//DEFINE SPHERE ACCESS______________________________________________________________
+//
+LAF ~DEFINE_FNP_KIT_INFO~
+  INT_VAR
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_club_staff	 	= 1
+	u_hammers	 		= 0
+	u_maces 	 		= 0
+	u_flails 			= 1
+	u_axes 				= 0
+	u_daggers 			= 1
+	u_short_swords		= 0
+	u_long_swords		= 0
+	u_scimitars 		= 1
+	u_katanas 			= 0
+	u_bastard_swords 	= 0
+	u_2hand_swords 		= 0
+	u_halberds 			= 0
+	u_spears 	 		= 1
+	u_darts 			= 1
+	u_slings	 		= 1
+	u_bows 				= 1
+	u_crossbows 		= 0
+  STR_VAR
+    clab_name 		= ~c0elem~
+	class 			= ~druid~
+	sphere_list		= ~elementalist_spheres~
+END
+//__________________________________________________________________________________
+END
+
+// ARTISANKITS - HIVEMASTER (DRUID)
+
+ACTION_IF (FILE_EXISTS_IN_GAME ~c0hivecl.2da~) BEGIN
+//DEFINE SPHERE ACCESS______________________________________________________________
+//
+LAF ~DEFINE_FNP_KIT_INFO~
+  INT_VAR
+	u_leather_armor 	= 1
+	u_chain_armor 		= 0
+	u_plate_armor 		= 0
+	u_club_staff	 	= 1
+	u_hammers	 		= 0
+	u_maces 	 		= 0
+	u_flails 			= 1
+	u_axes 				= 0
+	u_daggers 			= 1
+	u_short_swords		= 0
+	u_long_swords		= 0
+	u_scimitars 		= 1
+	u_katanas 			= 0
+	u_bastard_swords 	= 0
+	u_2hand_swords 		= 0
+	u_halberds 			= 0
+	u_spears 	 		= 1
+	u_darts 			= 1
+	u_slings	 		= 1
+	u_bows 				= 1
+	u_crossbows 		= 0
+  STR_VAR
+    clab_name 		= ~c0hivecl~
+	class 			= ~druid~
+	sphere_list		= ~druid_hivekeeper_spheres~
+END
+//__________________________________________________________________________________
+END
+
+// ARTISANKITS - MARTYR (PALADIN)
+
+ACTION_IF (FILE_EXISTS_IN_GAME ~c0ilmcl.2da~) BEGIN
+//DEFINE SPHERE ACCESS______________________________________________________________
+//
+LAF ~DEFINE_FNP_KIT_INFO~
+  INT_VAR
+	u_leather_armor 	= 1
+	u_chain_armor 		= 1
+	u_plate_armor 		= 1
+	u_club_staff	 	= 2
+	u_hammers	 		= 2
+	u_maces 	 		= 2
+	u_flails 			= 2
+	u_axes 				= 2
+	u_daggers 			= 2
+	u_short_swords		= 2
+	u_long_swords		= 2
+	u_scimitars 		= 2
+	u_katanas 			= 2
+	u_bastard_swords 	= 2
+	u_2hand_swords 		= 2
+	u_halberds 			= 2
+	u_spears 	 		= 2
+	u_darts 			= 2
+	u_slings	 		= 2
+	u_bows 				= 2
+	u_crossbows 		= 2
+  STR_VAR
+    clab_name 		= ~c0ilmcl~
+	sphere_list		= ~ilmater_spheres~
+	class 			= ~champion~
+END
+//__________________________________________________________________________________
+END
+
+// ARTISANKITS - MYSTIC FIRE (PALADIN)
+
+ACTION_IF (FILE_EXISTS_IN_GAME ~c0mf.2da~) BEGIN
+//DEFINE SPHERE ACCESS______________________________________________________________
+//
+LAF ~DEFINE_FNP_KIT_INFO~
+  INT_VAR
+	u_leather_armor 	= 1
+	u_chain_armor 		= 1
+	u_plate_armor 		= 1
+	u_club_staff	 	= 2
+	u_hammers	 		= 2
+	u_maces 	 		= 2
+	u_flails 			= 2
+	u_axes 				= 2
+	u_daggers 			= 2
+	u_short_swords		= 2
+	u_long_swords		= 2
+	u_scimitars 		= 2
+	u_katanas 			= 2
+	u_bastard_swords 	= 2
+	u_2hand_swords 		= 2
+	u_halberds 			= 2
+	u_spears 	 		= 2
+	u_darts 			= 2
+	u_slings	 		= 2
+	u_bows 				= 2
+	u_crossbows 		= 2
+  STR_VAR
+    clab_name 		= ~c0mf~
+	sphere_list		= ~mystra_spheres~
+	class 			= ~champion~
+END
+//__________________________________________________________________________________
+END
+
 // NEPHELE - CLERIC OF YONDALLA
 
 ACTION_IF (FILE_EXISTS_IN_GAME ~lkneph.2da~) BEGIN
@@ -2146,7 +2254,7 @@ LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
 	u_chain_armor 		= 1
-	u_plate_armor 		= 0
+	u_plate_armor 		= 1
 	u_club_staff	 	= 1
 	u_hammers	 		= 1
 	u_maces 	 		= 1
@@ -2218,7 +2326,7 @@ LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
 	u_chain_armor 		= 1
-	u_plate_armor 		= 0
+	u_plate_armor 		= 1
 	u_club_staff	 	= 1
 	u_hammers	 		= 1
 	u_maces 	 		= 1
@@ -2317,7 +2425,6 @@ END
 //__________________________________________________________________________________
 END
 
-/*
 // AURA - CLERIC/THIEF OF THE WAY
 
 COPY_EXISTING ~kitlist.2da~ ~override~
@@ -2340,13 +2447,13 @@ ACTION_IF (FILE_EXISTS_IN_GAME ~C0AURACL.2da~) AND (aura_ct = 1) BEGIN
 LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
-	u_chain_armor 		= 0
+	u_chain_armor 		= 1
 	u_plate_armor 		= 0
 	u_club_staff	 	= 1
-	u_hammers	 		= 1
+	u_hammers	 		= 0
 	u_maces 	 		= 0
 	u_flails 			= 0
-	u_axes 				= 1
+	u_axes 				= 0
 	u_daggers 			= 1
 	u_short_swords		= 1
 	u_long_swords		= 0
@@ -2355,19 +2462,18 @@ LAF ~DEFINE_FNP_KIT_INFO~
 	u_bastard_swords 	= 0
 	u_2hand_swords 		= 0
 	u_halberds 			= 0
-	u_spears 	 		= 1
+	u_spears 	 		= 0
 	u_darts 			= 1
 	u_slings	 		= 1
-	u_bows 				= 0
+	u_bows 				= 1
 	u_crossbows 		= 1
   STR_VAR
     clab_name 		= ~C0AURACL~
 	class 			= ~cleric~
-	sphere_list		= ~the_way_spheres~
+	sphere_list		= ~tymora_spheres~
 END
 //__________________________________________________________________________________
 END
-*/
 
 END // end mod_kit_spheres function
 
@@ -2406,7 +2512,7 @@ LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
 	u_chain_armor 		= 1
-	u_plate_armor 		= 0
+	u_plate_armor 		= 1
 	u_club_staff	 	= 1
 	u_hammers	 		= 1
 	u_maces 	 		= 1
@@ -2536,7 +2642,7 @@ LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
 	u_chain_armor 		= 1
-	u_plate_armor 		= 0
+	u_plate_armor 		= 1
 	u_club_staff	 	= 2
 	u_hammers	 		= 1
 	u_maces 	 		= 2

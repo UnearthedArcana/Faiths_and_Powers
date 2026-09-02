@@ -154,7 +154,7 @@ END
   INT_VAR
 	u_leather_armor 	= 1
 	u_chain_armor 		= 1
-	u_plate_armor 		= 0
+	u_plate_armor 		= 1
 	u_club_staff	 	= 1
 	u_hammers	 		= 1
 	u_maces 	 		= 1
@@ -464,7 +464,7 @@ APPEND ~d5clazu.2da~ ~LLORE       ****        ****        ****        ****      
   INT_VAR
 	u_leather_armor 	= 1
 	u_chain_armor 		= 1
-	u_plate_armor 		= 0
+	u_plate_armor 		= 1
 	u_club_staff	 	= 1
 	u_hammers	 		= 1
 	u_maces 	 		= 1
@@ -647,13 +647,13 @@ END
 
 COPY ~faiths_and_powers/kits/clerics/332_beshaba/b_bes02.spl~ ~override~
 //bes03
-COPY ~faiths_and_powers/spheres/spells/dread/b_c501b.bam~ ~override~ // Misfire
-COPY ~faiths_and_powers/spheres/spells/dread/b_c501c.bam~ ~override~ // Misfire
+COPY ~faiths_and_powers/spells/spheres/dread/b_c501b.bam~ ~override~ // Misfire
+COPY ~faiths_and_powers/spells/spheres/dread/b_c501c.bam~ ~override~ // Misfire
 //spl etc
-COPY ~faiths_and_powers/spheres/spells/dread/b_c501.eff~ ~override~ // Misfire
+COPY ~faiths_and_powers/spells/spheres/dread/b_c501.eff~ ~override~ // Misfire
   SAY 0x1c @50901     //Misfire
 
-COPY ~faiths_and_powers/spheres/spells/dread/b_c501.spl~ ~override/b_bes03.spl~ // Misfire
+COPY ~faiths_and_powers/spells/spheres/dread/b_c501.spl~ ~override/b_bes03.spl~ // Misfire
         SAY NAME1 @50901
         SAY NAME2 @50901
         SAY UNIDENTIFIED_DESC @50902
@@ -683,7 +683,7 @@ COPY ~faiths_and_powers/kits/clerics/332_beshaba/b_bes04.spl~ ~override~
         SAY UNIDENTIFIED_DESC @33207
 	SAY DESC @33207
 
-COPY ~faiths_and_powers/spheres/spells/dread/b_c501.eff~ ~override/b_bes04.eff~ // Misfire
+COPY ~faiths_and_powers/spells/spheres/dread/b_c501.eff~ ~override/b_bes04.eff~ // Misfire
   SAY 0x1c @33206     //Misfortune
 
 //DEFINE SPHERE ACCESS______________________________________________________________
@@ -692,7 +692,7 @@ COPY ~faiths_and_powers/spheres/spells/dread/b_c501.eff~ ~override/b_bes04.eff~ 
   INT_VAR
 	u_leather_armor 	= 1
 	u_chain_armor 		= 1
-	u_plate_armor 		= 0
+	u_plate_armor 		= 1
 	u_club_staff	 	= 1
 	u_hammers	 		= 1
 	u_maces 	 		= 1
@@ -857,7 +857,7 @@ END
   INT_VAR
 	u_leather_armor 	= 1
 	u_chain_armor 		= 1
-	u_plate_armor 		= 0
+	u_plate_armor 		= 1
 	u_club_staff	 	= 1
 	u_hammers	 		= 1
 	u_maces 	 		= 1
@@ -1012,7 +1012,7 @@ COPY_EXISTING ~SPPR303.spl~ ~override/b_den04.spl~ // dispel magic
   INT_VAR
 	u_leather_armor 	= 1
 	u_chain_armor 		= 1
-	u_plate_armor 		= 0
+	u_plate_armor 		= 1
 	u_club_staff	 	= 1
 	u_hammers	 		= 1
 	u_maces 	 		= 1
@@ -1859,7 +1859,7 @@ COPY ~faiths_and_powers/kits/clerics/212_leira/d5_lei1.spl~ ~override~
   INT_VAR
 	u_leather_armor 	= 1
 	u_chain_armor 		= 1
-	u_plate_armor 		= 0
+	u_plate_armor 		= 1
 	u_club_staff	 	= 1
 	u_hammers	 		= 1
 	u_maces 	 		= 1
@@ -2176,9 +2176,9 @@ COPY_EXISTING ~splprot.2da~ ~override~
 	END
 BUT_ONLY
 ACTION_IF !(FILE_EXISTS_IN_GAME ~d5fnp05.spl~) BEGIN
- COPY ~faiths_and_powers/spheres/spells/animal/d5fnp05b.bam~ ~override~ 
- COPY ~faiths_and_powers/spheres/spells/animal/d5fnp05c.bam~ ~override~ 
- COPY ~faiths_and_powers/spheres/spells/animal/d5angro.spl~ ~override/d5fnp05.spl~ 
+ COPY ~faiths_and_powers/spells/spheres/animal/d5fnp05b.bam~ ~override~ 
+ COPY ~faiths_and_powers/spells/spheres/animal/d5fnp05c.bam~ ~override~ 
+ COPY ~faiths_and_powers/spells/spheres/animal/d5angro.spl~ ~override/d5fnp05.spl~ 
   SAY NAME1 @50223
   SAY UNIDENTIFIED_DESC @50224
   WRITE_SHORT 0x1c 2
@@ -2306,7 +2306,7 @@ END
   INT_VAR
 	u_leather_armor 	= 1
 	u_chain_armor 		= 1
-	u_plate_armor 		= 0
+	u_plate_armor 		= 1
 	u_club_staff	 	= 1
 	u_hammers	 		= 1
 	u_maces 	 		= 0
@@ -2457,7 +2457,7 @@ COPY ~faiths_and_powers/kits/clerics/331_moander/b_moa3.spl~ ~override~    //Imm
   INT_VAR
 	u_leather_armor 	= 1
 	u_chain_armor 		= 1
-	u_plate_armor 		= 0
+	u_plate_armor 		= 1
 	u_club_staff	 	= 1
 	u_hammers	 		= 1
 	u_maces 	 		= 1
@@ -2621,7 +2621,7 @@ COPY ~faiths_and_powers/data/misc/d5_base.spl~ ~override/d5myscw.spl~
  LAF ~DEFINE_FNP_KIT_INFO~
   INT_VAR
 	u_leather_armor 	= 1
-	u_chain_armor 		= 0
+	u_chain_armor 		= 1
 	u_plate_armor 		= 0
 	u_club_staff	 	= 1
 	u_hammers	 		= 1
@@ -2767,7 +2767,7 @@ COPY_EXISTING ~spwi509.spl~ ~override/d5oghm2.spl~
   INT_VAR
 	u_leather_armor 	= 1
 	u_chain_armor 		= 1
-	u_plate_armor 		= 0
+	u_plate_armor 		= 1
 	u_club_staff	 	= 1
 	u_hammers	 		= 1
 	u_maces 	 		= 1
@@ -2910,7 +2910,7 @@ COPY_EXISTING ~spwi815.spl~ ~override/d5shabl.spl~
   INT_VAR
 	u_leather_armor 	= 1
 	u_chain_armor 		= 1
-	u_plate_armor 		= 0
+	u_plate_armor 		= 1
 	u_club_staff	 	= 1
 	u_hammers	 		= 1
 	u_maces 	 		= 1
@@ -3079,7 +3079,7 @@ COPY_EXISTING ~SPWI104.spl~ ~override/b_sun01.spl~ // Charm person
   INT_VAR
 	u_leather_armor 	= 1
 	u_chain_armor 		= 1	
-	u_plate_armor 		= 0
+	u_plate_armor 		= 1
 	u_club_staff	 	= 1
 	u_hammers	 		= 1
 	u_maces 	 		= 1
@@ -3830,7 +3830,7 @@ COPY ~faiths_and_powers/kits/clerics/205_tymora/d5_tym1b.spl~ ~override~
   INT_VAR
 	u_leather_armor 	= 1
 	u_chain_armor 		= 1
-	u_plate_armor 		= 0
+	u_plate_armor 		= 1
 	u_club_staff	 	= 1
 	u_hammers	 		= 1
 	u_maces 	 		= 1
@@ -4915,9 +4915,9 @@ COPY_EXISTING ~splprot.2da~ ~override~
 	END
 BUT_ONLY
 ACTION_IF !(FILE_EXISTS_IN_GAME ~d5fnp04.spl~) BEGIN
- COPY ~faiths_and_powers/spheres/spells/animal/d5fnp04b.bam~ ~override~ 
- COPY ~faiths_and_powers/spheres/spells/animal/d5fnp04c.bam~ ~override~ 
- COPY ~faiths_and_powers/spheres/spells/animal/d5mfang.spl~ ~override/d5fnp04.spl~ 
+ COPY ~faiths_and_powers/spells/spheres/animal/d5fnp04b.bam~ ~override~ 
+ COPY ~faiths_and_powers/spells/spheres/animal/d5fnp04c.bam~ ~override~ 
+ COPY ~faiths_and_powers/spells/spheres/animal/d5mfang.spl~ ~override/d5fnp04.spl~ 
   SAY NAME1 @50221
   SAY UNIDENTIFIED_DESC @50222
   WRITE_SHORT 0x1c 2
@@ -5184,7 +5184,7 @@ COPY_EXISTING ~spwi502.spl~ ~override/d5urdl4.spl~
   INT_VAR
 	u_leather_armor 	= 1
 	u_chain_armor 		= 1
-	u_plate_armor 		= 0
+	u_plate_armor 		= 1
 	u_club_staff	 	= 1
 	u_hammers	 		= 1
 	u_maces 	 		= 1
@@ -5271,7 +5271,7 @@ ADD_KIT ~D5_CLERIC_YONDALLA~
 
 //DUAL CLASS OPTIONS________________________________________________________________
 //                 		FT CL MA TH DR RA
-~D5_CLERIC_YONDALLA      1  0  1  1  0  1~
+~D5_CLERIC_YONDALLA      1  0  0  1  0  1~
 
 //KIT ABILITIES 2DA FILE____________________________________________________________
 ~faiths_and_powers/kits/clerics/391_yondalla/d5clyon.2da~
@@ -5341,7 +5341,7 @@ COPY_EXISTING ~sppr413.spl~ ~override/d5yond4.spl~
   INT_VAR
 	u_leather_armor 	= 1
 	u_chain_armor 		= 1
-	u_plate_armor 		= 0
+	u_plate_armor 		= 1
 	u_club_staff	 	= 1
 	u_hammers	 		= 1
 	u_maces 	 		= 1
@@ -5428,7 +5428,7 @@ ADD_KIT ~D5_CLERIC_ARVOREEN~
 
 //DUAL CLASS OPTIONS________________________________________________________________
 //                 		FT CL MA TH DR RA
-~D5_CLERIC_ARVOREEN      1  0  1  1  0  1~
+~D5_CLERIC_ARVOREEN      1  0  0  1  0  1~
 
 //KIT ABILITIES 2DA FILE____________________________________________________________
 ~faiths_and_powers/kits/clerics/392_arvoreen/d5clarv.2da~

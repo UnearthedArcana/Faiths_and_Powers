@@ -465,11 +465,20 @@ ACTION_IF FILE_EXISTS_IN_GAME ~ENGINEST.2DA~ BEGIN
 	LPF ALTER_SPELL_HEADER INT_VAR location = 2 END
  COPY ~faiths_and_powers/data/hlas/shadow/B_ph08.2da~ ~override~ // 2da
  COPY ~faiths_and_powers/data/hlas/shadow/B_ph08b.cre~ ~override~ // cre
+	SAY NAME1 ~Mind Flayer~
+	SAY 0x0c ~Mind Flayer~
  COPY ~faiths_and_powers/data/hlas/shadow/B_ph08c.cre~ ~override~ // cre
+	SAY NAME1 ~Blizzard Troll~
+	SAY 0x0c ~Blizzard Troll~
  COPY ~faiths_and_powers/data/hlas/shadow/B_ph08d.cre~ ~override~ // cre
+	SAY NAME1 ~Iron Golem~
+	SAY 0x0c ~Iron Golem~
  COPY ~faiths_and_powers/data/hlas/shadow/B_ph08.itm~ ~override~ // itm
- COPY ~faiths_and_powers/data/hlas/shadow/B_ph08d.itm~ ~override~ // itm
+    SAY NAME1 ~Wand of Magic Missiles~
+    SAY NAME2 ~Wand of Magic Missiles~
+    SAY NAME1 ~Monster Transparency Item~
  COPY ~faiths_and_powers/data/hlas/shadow/B_ph08c.itm~ ~override~ // itm
+ COPY ~faiths_and_powers/data/hlas/shadow/B_ph08d.itm~ ~override~ // itm
  COPY ~faiths_and_powers/data/hlas/shadow/B_ph08.eff~ ~override~ // eff
 END //End 2.0 only
 

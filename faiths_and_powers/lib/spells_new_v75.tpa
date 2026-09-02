@@ -10,29 +10,29 @@ DEFINE_ACTION_MACRO v75_add_fnP_new_spells BEGIN
 
 //DESTRUCTION
 //spell etc
-COPY ~faiths_and_powers/spheres/spells/Destruction/b_pr101.spl~ ~override~  // Hand of Carnage
+COPY ~faiths_and_powers/spells/spheres/Destruction/b_pr101.spl~ ~override~  // Hand of Carnage
 	SAY NAME1 @50401
 	SAY NAME2 @50401
 	SAY UNIDENTIFIED_DESC @50402
 	SAY DESC @50402
-COPY ~faiths_and_powers/spheres/spells/Destruction/b_pr101.eff~ ~override~
+COPY ~faiths_and_powers/spells/spheres/Destruction/b_pr101.eff~ ~override~
 
 //Shatter__________________________________________________________________________________
 //icons
-COPY ~faiths_and_powers/spheres/spells/Destruction/b_c204b.bam~ ~override~  // Shatter
-COPY ~faiths_and_powers/spheres/spells/Destruction/b_c204c.bam~ ~override~  // Shatter
+COPY ~faiths_and_powers/spells/spheres/Destruction/b_c204b.bam~ ~override~  // Shatter
+COPY ~faiths_and_powers/spells/spheres/Destruction/b_c204c.bam~ ~override~  // Shatter
 //spell etc
-COPY ~faiths_and_powers/spheres/spells/Destruction/b_pr201.spl~ ~override~ // Shatter
+COPY ~faiths_and_powers/spells/spheres/Destruction/b_pr201.spl~ ~override~ // Shatter
         SAY NAME1 @50408
         SAY NAME2 @50408
         SAY UNIDENTIFIED_DESC @50409
 	SAY DESC @50409
-COPY ~faiths_and_powers/spheres/spells/Destruction/b_pr201A.spl~ ~override~ // Shatter 2nd
-COPY ~faiths_and_powers/spheres/spells/Destruction/b_pr201B.spl~ ~override~ // Shatter   3rd
-COPY ~faiths_and_powers/spheres/spells/Destruction/b_pr201A.eff~ ~override~ // Shatter  x dam golem
-COPY ~faiths_and_powers/spheres/spells/Destruction/b_pr201B.eff~ ~override~ // Shatter  cast 2
-COPY ~faiths_and_powers/spheres/spells/Destruction/b_pr201C.eff~ ~override~ // Shatter  x dam
-COPY ~faiths_and_powers/spheres/spells/Destruction/b_pr201D.eff~ ~override~ // Shatter  cast 3
+COPY ~faiths_and_powers/spells/spheres/Destruction/b_pr201A.spl~ ~override~ // Shatter 2nd
+COPY ~faiths_and_powers/spells/spheres/Destruction/b_pr201B.spl~ ~override~ // Shatter   3rd
+COPY ~faiths_and_powers/spells/spheres/Destruction/b_pr201A.eff~ ~override~ // Shatter  x dam golem
+COPY ~faiths_and_powers/spells/spheres/Destruction/b_pr201B.eff~ ~override~ // Shatter  cast 2
+COPY ~faiths_and_powers/spells/spheres/Destruction/b_pr201C.eff~ ~override~ // Shatter  x dam
+COPY ~faiths_and_powers/spells/spheres/Destruction/b_pr201D.eff~ ~override~ // Shatter  cast 3
 
 //Need to copy all elementals, and change their type to monster
 COPY_EXISTING_REGEXP GLOB ~.*\.cre~ ~override~ //copies all cre files
@@ -46,7 +46,7 @@ COPY_EXISTING_REGEXP GLOB ~.*\.cre~ ~override~ //copies all cre files
 BUT_ONLY_IF_IT_CHANGES
 
 //Shout__________________________________________________________________________________
-COPY ~faiths_and_powers/spheres/spells/Destruction/b_pr402.spl~ ~override~ // Shout
+COPY ~faiths_and_powers/spells/spheres/Destruction/b_pr402.spl~ ~override~ // Shout
         SAY NAME1 @50405
         SAY NAME2 @50405
         SAY UNIDENTIFIED_DESC @50406
@@ -57,14 +57,14 @@ OUTER_SET $aoe_spell(~b_pr402~)=1
 //AFFLICTION
 
 //Wave of Agony__________________________________________________________________________________
-COPY ~faiths_and_powers/spheres/spells/affliction/b_Pr501.spl~ ~override~ // Wave of Agony
+COPY ~faiths_and_powers/spells/spheres/affliction/b_Pr501.spl~ ~override~ // Wave of Agony
         SAY NAME1 @51201
         SAY NAME2 @51201
         SAY UNIDENTIFIED_DESC @51202
 	SAY DESC @51202
-COPY ~faiths_and_powers/spheres/spells/affliction/b_ILM04a.spl~ ~override~ // Wave of Agony spla
-COPY ~faiths_and_powers/spheres/spells/affliction/b_ILM04b.spl~ ~override~ // etc.
-COPY ~faiths_and_powers/spheres/spells/affliction/b_ILM04.eff~ ~override~ //
+COPY ~faiths_and_powers/spells/spheres/affliction/b_ILM04a.spl~ ~override~ // Wave of Agony spla
+COPY ~faiths_and_powers/spells/spheres/affliction/b_ILM04b.spl~ ~override~ // etc.
+COPY ~faiths_and_powers/spells/spheres/affliction/b_ILM04.eff~ ~override~ //
   SAY 0x1c @51203 //Wracked in Agony
 
 OUTER_SET $aoe_spell(~b_Pr501~)=1
@@ -74,23 +74,23 @@ OUTER_SET $aoe_spell(~b_Pr501~)=1
 
 /*		no - make this the HLA instead
 ACTION_IF GAME_IS ~iwdee bgee bg2ee eet~ THEN BEGIN    //EE only opcodes
- COPY ~faiths_and_powers/spheres/spells/plant/b_Pr601.spl~ ~override~ // Nature's Wrath
+ COPY ~faiths_and_powers/spells/spheres/plant/b_Pr601.spl~ ~override~ // Nature's Wrath
         SAY NAME1 @51401
         SAY NAME2 @51401
         SAY UNIDENTIFIED_DESC @51402
 	SAY DESC @51402
 END
 
- COPY ~faiths_and_powers/spheres/spells/plant/d5Pr601.spl~ ~override~ // Nature's Wrath
+ COPY ~faiths_and_powers/spells/spheres/plant/d5Pr601.spl~ ~override~ // Nature's Wrath
         SAY NAME1 @51401
         SAY UNIDENTIFIED_DESC @51402
- COPY ~faiths_and_powers/spheres/spells/plant/d5_clsha.itm~ ~override~
- COPY ~faiths_and_powers/spheres/spells/plant/d5_sham.cre~ ~override~
- COPY ~faiths_and_powers/spheres/spells/plant/d5_nfsha.spl~ ~override~
+ COPY ~faiths_and_powers/spells/spheres/plant/d5_clsha.itm~ ~override~
+ COPY ~faiths_and_powers/spells/spheres/plant/d5_sham.cre~ ~override~
+ COPY ~faiths_and_powers/spells/spheres/plant/d5_nfsha.spl~ ~override~
 END
 
 ACTION_IF GAME_IS ~bgt tob~ BEGIN
- COPY ~faiths_and_powers/spheres/spells/plant/NonIWDEE/b_Pr601.spl~ ~override~ // Nature's Wrath
+ COPY ~faiths_and_powers/spells/spheres/plant/NonIWDEE/b_Pr601.spl~ ~override~ // Nature's Wrath
         SAY NAME1 @51401
         SAY NAME2 @51401
         SAY UNIDENTIFIED_DESC @51402
@@ -100,7 +100,7 @@ END
 
 //Assassin Vines_______________________________________________________________________
 ACTION_IF GAME_IS ~bgee bg2ee eet iwdee~ THEN BEGIN    //Not sure why, but I originally limited this to IWDEE TEST!
- COPY ~faiths_and_powers/spheres/spells/plant/b_c601.spl~ ~override~ //Assassin Vines
+ COPY ~faiths_and_powers/spells/spheres/plant/b_c601.spl~ ~override~ //Assassin Vines
         SAY NAME1 @51404
         SAY NAME2 @51404
         SAY UNIDENTIFIED_DESC @51405
@@ -112,15 +112,15 @@ END
 //Stone Fist__________________________________________________________________________
 //EARTH
 //icons
-COPY ~faiths_and_powers/spheres/spells/earth/b_c303b.bam~ ~override~ // Stone Fist
-COPY ~faiths_and_powers/spheres/spells/earth/b_c303c.bam~ ~override~ // Stone Fist
+COPY ~faiths_and_powers/spells/spheres/earth/b_c303b.bam~ ~override~ // Stone Fist
+COPY ~faiths_and_powers/spells/spheres/earth/b_c303c.bam~ ~override~ // Stone Fist
 //spell etc
-COPY ~faiths_and_powers/spheres/spells/earth/b_pr301.spl~ ~override~ // Stone Fist
+COPY ~faiths_and_powers/spells/spheres/earth/b_pr301.spl~ ~override~ // Stone Fist
         SAY NAME1 @51501
         SAY NAME2 @51501
         SAY UNIDENTIFIED_DESC @51503
 	SAY DESC @51503
-COPY ~faiths_and_powers/spheres/spells/earth/b_pr301.itm~ ~override~ // Actual Fist
+COPY ~faiths_and_powers/spells/spheres/earth/b_pr301.itm~ ~override~ // Actual Fist
         SAY NAME1 @51501
         SAY NAME2 @51501
         SAY UNIDENTIFIED_DESC @51504
@@ -136,28 +136,28 @@ COPY ~faiths_and_powers/spheres/spells/earth/b_pr301.itm~ ~override~ // Actual F
 //Projectile
 //VVC
 //cre
- COPY ~faiths_and_powers/spheres/spells/water/b_wele1.cre~ ~override~ // 12 HD elemental
+ COPY ~faiths_and_powers/spells/spheres/water/b_wele1.cre~ ~override~ // 12 HD elemental
         SAY NAME1 @51720
         SAY NAME2 @51720
- COPY ~faiths_and_powers/spheres/spells/water/b_wele2.cre~ ~override~ // 16 HD elemental
+ COPY ~faiths_and_powers/spells/spheres/water/b_wele2.cre~ ~override~ // 16 HD elemental
         SAY NAME1 @51720
         SAY NAME2 @51720
- COPY ~faiths_and_powers/spheres/spells/water/b_wele3.cre~ ~override~ // 24 HD (greater) elemental
+ COPY ~faiths_and_powers/spells/spheres/water/b_wele3.cre~ ~override~ // 24 HD (greater) elemental
         SAY NAME1 @51721
         SAY NAME2 @51721
 //itm
- COPY ~faiths_and_powers/spheres/spells/water/b_wele1.itm~ ~override~ // Water Elemental fist
+ COPY ~faiths_and_powers/spells/spheres/water/b_wele1.itm~ ~override~ // Water Elemental fist
 //bam
-// COPY ~faiths_and_powers/spheres/spells/water/iwatere.bam~ ~override~ // fist bam
+// COPY ~faiths_and_powers/spells/spheres/water/iwatere.bam~ ~override~ // fist bam
 //animations -check SoD for cre animations...
- COPY ~faiths_and_powers/spheres/spells/water/anim~ ~override~ // water anims
+ COPY ~faiths_and_powers/spells/spheres/water/anim~ ~override~ // water anims
 //3d animation
 //sounds   Copy sound #EFF_M08
 //COPY ~Spells/data/iwd_spells/wizard_2/TRA_18.WAV~ ~override~   //
 //effs
- COPY ~faiths_and_powers/spheres/spells/water/B_PRWA1.eff~ ~override~ // Summon Water Elemental
- COPY ~faiths_and_powers/spheres/spells/water/B_PRWA2.eff~ ~override~ // Summon Water Elemental
- COPY ~faiths_and_powers/spheres/spells/water/B_PRWA3.eff~ ~override~ // Summon Water Elemental
+ COPY ~faiths_and_powers/spells/spheres/water/B_PRWA1.eff~ ~override~ // Summon Water Elemental
+ COPY ~faiths_and_powers/spells/spheres/water/B_PRWA2.eff~ ~override~ // Summon Water Elemental
+ COPY ~faiths_and_powers/spells/spheres/water/B_PRWA3.eff~ ~override~ // Summon Water Elemental
 //Spell itself
 COPY_EXISTING ~SPPR605.spl~ ~override/b_pr602.spl~  // Start with C Fire Elemental
         SAY NAME1 @51701
@@ -184,9 +184,9 @@ END
 // NEED TO CREATE UNIQUE SPELL ICON
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   LPF ALTER_SPELL_HEADER INT_VAR STR_VAR icon = EVAL  ~%spell_res%B~ END
-COPY ~faiths_and_powers/spheres/spells/charm/b_c201a.bam~ ~override/%spell_res%a.bam~
-COPY ~faiths_and_powers/spheres/spells/charm/b_c201b.bam~ ~override/%spell_res%b.bam~
-COPY ~faiths_and_powers/spheres/spells/charm/b_c201c.bam~ ~override/%spell_res%c.bam~
+COPY ~faiths_and_powers/spells/spheres/charm/b_c201a.bam~ ~override/%spell_res%a.bam~
+COPY ~faiths_and_powers/spells/spheres/charm/b_c201b.bam~ ~override/%spell_res%b.bam~
+COPY ~faiths_and_powers/spells/spheres/charm/b_c201c.bam~ ~override/%spell_res%c.bam~
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
@@ -197,61 +197,61 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
 //Ice Blade_________________________________________________________
 ACTION_IF GAME_IS ~bgee bg2ee eet iwdee~ THEN BEGIN    //Not sure why, but I originally limited these spells to IWDEE TEST!
 //Icons
-COPY ~faiths_and_powers/spheres/spells/water/b_c203b.bam~ ~override~   //bam
-COPY ~faiths_and_powers/spheres/spells/water/b_c203c.bam~ ~override~   //bam
+COPY ~faiths_and_powers/spells/spheres/water/b_c203b.bam~ ~override~   //bam
+COPY ~faiths_and_powers/spells/spheres/water/b_c203c.bam~ ~override~   //bam
 //blades
-COPY ~faiths_and_powers/spheres/spells/water/moonbla.bam~ ~override~   //bam
-COPY ~faiths_and_powers/spheres/spells/water/b_iceb1.itm~ ~override~   //blade
+COPY ~faiths_and_powers/spells/spheres/water/moonbla.bam~ ~override~   //bam
+COPY ~faiths_and_powers/spells/spheres/water/b_iceb1.itm~ ~override~   //blade
         SAY NAME1 @51704
         SAY NAME2 @51704
         SAY UNIDENTIFIED_DESC @51710
 	SAY DESC @51710
-COPY ~faiths_and_powers/spheres/spells/water/b_iceb2.itm~ ~override~   //blade
+COPY ~faiths_and_powers/spells/spheres/water/b_iceb2.itm~ ~override~   //blade
         SAY NAME1 @51704
         SAY NAME2 @51704
         SAY UNIDENTIFIED_DESC @51711
 	SAY DESC @51711
-COPY ~faiths_and_powers/spheres/spells/water/b_iceb3.itm~ ~override~   //blade
+COPY ~faiths_and_powers/spells/spheres/water/b_iceb3.itm~ ~override~   //blade
         SAY NAME1 @51704
         SAY NAME2 @51704
         SAY UNIDENTIFIED_DESC @51712
 	SAY DESC @51712
-COPY ~faiths_and_powers/spheres/spells/water/b_iceb4.itm~ ~override~   //blade
+COPY ~faiths_and_powers/spells/spheres/water/b_iceb4.itm~ ~override~   //blade
         SAY NAME1 @51704
         SAY NAME2 @51704
         SAY UNIDENTIFIED_DESC @51713
 	SAY DESC @51713
-COPY ~faiths_and_powers/spheres/spells/water/b_iceb5.itm~ ~override~   //blade
+COPY ~faiths_and_powers/spells/spheres/water/b_iceb5.itm~ ~override~   //blade
         SAY NAME1 @51704
         SAY NAME2 @51704
         SAY UNIDENTIFIED_DESC @51714
 	SAY DESC @51714
-COPY ~faiths_and_powers/spheres/spells/water/b_iceb6.itm~ ~override~   //blade
+COPY ~faiths_and_powers/spells/spheres/water/b_iceb6.itm~ ~override~   //blade
         SAY NAME1 @51704
         SAY NAME2 @51704
         SAY UNIDENTIFIED_DESC @51715
 	SAY DESC @51715
-COPY ~faiths_and_powers/spheres/spells/water/b_iceb7.itm~ ~override~   //blade
+COPY ~faiths_and_powers/spells/spheres/water/b_iceb7.itm~ ~override~   //blade
         SAY NAME1 @51704
         SAY NAME2 @51704
         SAY UNIDENTIFIED_DESC @51716
 	SAY DESC @51716
-COPY ~faiths_and_powers/spheres/spells/water/b_iceb8.itm~ ~override~   //blade
+COPY ~faiths_and_powers/spells/spheres/water/b_iceb8.itm~ ~override~   //blade
         SAY NAME1 @51704
         SAY NAME2 @51704
         SAY UNIDENTIFIED_DESC @51717
 	SAY DESC @51717
-COPY ~faiths_and_powers/spheres/spells/water/b_iceb9.itm~ ~override~   //blade
+COPY ~faiths_and_powers/spells/spheres/water/b_iceb9.itm~ ~override~   //blade
         SAY NAME1 @51704
         SAY NAME2 @51704
         SAY UNIDENTIFIED_DESC @51718
 	SAY DESC @51718
-COPY ~faiths_and_powers/spheres/spells/water/b_iceb10.itm~ ~override~   //blade
+COPY ~faiths_and_powers/spells/spheres/water/b_iceb10.itm~ ~override~   //blade
         SAY NAME1 @51704
         SAY NAME2 @51704
         SAY UNIDENTIFIED_DESC @51719
 	SAY DESC @51719
-COPY ~faiths_and_powers/spheres/spells/water/b_c203.spl~ ~override~ // Ice Blade
+COPY ~faiths_and_powers/spells/spheres/water/b_c203.spl~ ~override~ // Ice Blade
         SAY NAME1 @51704
         SAY NAME2 @51704
         SAY UNIDENTIFIED_DESC @51705
@@ -259,11 +259,11 @@ COPY ~faiths_and_powers/spheres/spells/water/b_c203.spl~ ~override~ // Ice Blade
 
 //Frost Fingers____________________________________________________________
 //icons
-COPY ~faiths_and_powers/spheres/spells/water/b_c103b.bam~ ~override~ // Frost Fingers
-COPY ~faiths_and_powers/spheres/spells/water/b_c103c.bam~ ~override~ // Frost Fingers
+COPY ~faiths_and_powers/spells/spheres/water/b_c103b.bam~ ~override~ // Frost Fingers
+COPY ~faiths_and_powers/spells/spheres/water/b_c103c.bam~ ~override~ // Frost Fingers
 //spell etc
-ADD_PROJECTILE ~faiths_and_powers/spheres/spells/water/b_c103.pro~
-COPY ~faiths_and_powers/spheres/spells/water/b_c103.spl~ ~override~ // Frost Fingers
+ADD_PROJECTILE ~faiths_and_powers/spells/spheres/water/b_c103.pro~
+COPY ~faiths_and_powers/spells/spheres/water/b_c103.spl~ ~override~ // Frost Fingers
         SAY NAME1 @51707
         SAY NAME2 @51707
         SAY UNIDENTIFIED_DESC @51708
@@ -278,10 +278,10 @@ END // End redundant engine check...
 
 //Cloak of Darkness_________________________________________________________
 //icons
-COPY ~faiths_and_powers/spheres/spells/shadow/b_c302b.bam~ ~override~ // Cloak of Darkness
-COPY ~faiths_and_powers/spheres/spells/shadow/b_c302c.bam~ ~override~ // Cloak of Darkness
+COPY ~faiths_and_powers/spells/spheres/shadow/b_c302b.bam~ ~override~ // Cloak of Darkness
+COPY ~faiths_and_powers/spells/spheres/shadow/b_c302c.bam~ ~override~ // Cloak of Darkness
 //spell etc
-COPY ~faiths_and_powers/spheres/spells/shadow/b_c302.spl~ ~override~ // Cloak of Darkness
+COPY ~faiths_and_powers/spells/spheres/shadow/b_c302.spl~ ~override~ // Cloak of Darkness
         SAY NAME1 @52003
         SAY NAME2 @52003
         SAY UNIDENTIFIED_DESC @52004
@@ -290,7 +290,7 @@ COPY ~faiths_and_powers/spheres/spells/shadow/b_c302.spl~ ~override~ // Cloak of
 //special case: shadowstep__________________________________________________________
 // Is this a spell?
 ACTION_IF NOT FILE_EXISTS_IN_GAME ~spsd02.spl~ BEGIN
-	COPY ~faiths_and_powers/spheres/spells/shadow/spsd02.spl~ ~override~ // Shadowstep
+	COPY ~faiths_and_powers/spells/spheres/shadow/spsd02.spl~ ~override~ // Shadowstep
         SAY NAME1 @52001
         SAY NAME2 @52001
         SAY UNIDENTIFIED_DESC @52002
@@ -299,16 +299,16 @@ END
 
 //Summon Shadows_____________________________________________________________________
 //
-COPY ~faiths_and_powers/spheres/spells/shadow/d5fnp01.spl~     ~override~ 
+COPY ~faiths_and_powers/spells/spheres/shadow/d5fnp01.spl~     ~override~ 
         SAY NAME1 @52007
         SAY NAME2 @52007
         SAY UNIDENTIFIED_DESC @52008
-COPY ~faiths_and_powers/spheres/spells/shadow/shadowsu.cre~     ~override~
-COPY ~faiths_and_powers/spheres/spells/shadow/shadowsu.eff~     ~override~
-COPY ~faiths_and_powers/spheres/spells/shadow/shadowsu.itm~     ~override~
-COPY ~faiths_and_powers/spheres/spells/shadow/dvwraith.cre~     ~override~
-COPY ~faiths_and_powers/spheres/spells/shadow/dvwraith.eff~     ~override~
-COPY ~faiths_and_powers/spheres/spells/shadow/dvwraith.itm~     ~override~
+COPY ~faiths_and_powers/spells/spheres/shadow/shadowsu.cre~     ~override~
+COPY ~faiths_and_powers/spells/spheres/shadow/shadowsu.eff~     ~override~
+COPY ~faiths_and_powers/spells/spheres/shadow/shadowsu.itm~     ~override~
+COPY ~faiths_and_powers/spells/spheres/shadow/dvwraith.cre~     ~override~
+COPY ~faiths_and_powers/spells/spheres/shadow/dvwraith.eff~     ~override~
+COPY ~faiths_and_powers/spells/spheres/shadow/dvwraith.itm~     ~override~
 
 //__________________________________________________________________________________
 
@@ -322,10 +322,10 @@ COPY ~faiths_and_powers/spheres/spells/shadow/dvwraith.itm~     ~override~
 
 //Pacify the Dead______________________________________________________________
 //icons
-COPY ~faiths_and_powers/spheres/spells/death/b_c202b.bam~ ~override~ // Pacify the Dead
-COPY ~faiths_and_powers/spheres/spells/death/b_c202c.bam~ ~override~ // Pacify the Dead
+COPY ~faiths_and_powers/spells/spheres/death/b_c202b.bam~ ~override~ // Pacify the Dead
+COPY ~faiths_and_powers/spells/spheres/death/b_c202c.bam~ ~override~ // Pacify the Dead
 //spells etc
-COPY ~faiths_and_powers/spheres/spells/death/b_c202.spl~ ~override~ // Pacify the Dead
+COPY ~faiths_and_powers/spells/spheres/death/b_c202.spl~ ~override~ // Pacify the Dead
         SAY NAME1 @50301
         SAY NAME2 @50301
         SAY UNIDENTIFIED_DESC @50302
@@ -336,41 +336,41 @@ COPY ~faiths_and_powers/spheres/spells/death/b_c202.spl~ ~override~ // Pacify th
       parameter2 = 2
       STR_VAR resource = EVAL ~b_c202~
      END
-  LPF CLONE_EFFECT INT_VAR match_opcode = 40 opcode = 321 parameter1 = 0 patameter2 = 0 timing = 0 STR_VAR resource = EVAL ~b_c202~ END
-  LPF CLONE_EFFECT INT_VAR match_opcode = 40 opcode = 321 parameter1 = 0 patameter2 = 0 timing = 0 STR_VAR resource = EVAL ~b_f201~ END
+  LPF CLONE_EFFECT INT_VAR match_opcode = 40 opcode = 321 parameter1 = 0 parameter2 = 0 timing = 0 STR_VAR resource = EVAL ~b_c202~ END
+  LPF CLONE_EFFECT INT_VAR match_opcode = 40 opcode = 321 parameter1 = 0 parameter2 = 0 timing = 0 STR_VAR resource = EVAL ~b_f201~ END
 //add removal
 ACTION_IF FILE_EXISTS_IN_GAME ~spwi312.spl~ BEGIN
  COPY_EXISTING ~spwi312.spl~ ~override~
-  LPF CLONE_EFFECT INT_VAR match_opcode = 40 opcode = 321 parameter1 = 0 patameter2 = 0 timing = 0 STR_VAR resource = EVAL ~b_c202~ END
-  LPF CLONE_EFFECT INT_VAR match_opcode = 40 opcode = 321 parameter1 = 0 patameter2 = 0 timing = 0 STR_VAR resource = EVAL ~b_f201~ END
+  LPF CLONE_EFFECT INT_VAR match_opcode = 40 opcode = 321 parameter1 = 0 parameter2 = 0 timing = 0 STR_VAR resource = EVAL ~b_c202~ END
+  LPF CLONE_EFFECT INT_VAR match_opcode = 40 opcode = 321 parameter1 = 0 parameter2 = 0 timing = 0 STR_VAR resource = EVAL ~b_f201~ END
 END
 ACTION_IF FILE_EXISTS_IN_GAME ~spwish25.spl~ BEGIN
  COPY_EXISTING ~spwish25.spl~ ~override~
-  LPF CLONE_EFFECT INT_VAR match_opcode = 40 opcode = 321 parameter1 = 0 patameter2 = 0 timing = 0 STR_VAR resource = EVAL ~b_c202~ END
-  LPF CLONE_EFFECT INT_VAR match_opcode = 40 opcode = 321 parameter1 = 0 patameter2 = 0 timing = 0 STR_VAR resource = EVAL ~b_f201~ END
+  LPF CLONE_EFFECT INT_VAR match_opcode = 40 opcode = 321 parameter1 = 0 parameter2 = 0 timing = 0 STR_VAR resource = EVAL ~b_c202~ END
+  LPF CLONE_EFFECT INT_VAR match_opcode = 40 opcode = 321 parameter1 = 0 parameter2 = 0 timing = 0 STR_VAR resource = EVAL ~b_f201~ END
 END
 ACTION_IF FILE_EXISTS_IN_GAME ~spin146.spl~ BEGIN
  COPY_EXISTING ~spin146.spl~ ~override~
-  LPF CLONE_EFFECT INT_VAR match_opcode = 40 opcode = 321 parameter1 = 0 patameter2 = 0 timing = 0 STR_VAR resource = EVAL ~b_c202~ END
-  LPF CLONE_EFFECT INT_VAR match_opcode = 40 opcode = 321 parameter1 = 0 patameter2 = 0 timing = 0 STR_VAR resource = EVAL ~b_f201~ END
+  LPF CLONE_EFFECT INT_VAR match_opcode = 40 opcode = 321 parameter1 = 0 parameter2 = 0 timing = 0 STR_VAR resource = EVAL ~b_c202~ END
+  LPF CLONE_EFFECT INT_VAR match_opcode = 40 opcode = 321 parameter1 = 0 parameter2 = 0 timing = 0 STR_VAR resource = EVAL ~b_f201~ END
 END
 ACTION_IF FILE_EXISTS_IN_GAME ~spin977.spl~ BEGIN
  COPY_EXISTING ~spin977.spl~ ~override~
-  LPF CLONE_EFFECT INT_VAR match_opcode = 40 opcode = 321 parameter1 = 0 patameter2 = 0 timing = 0 STR_VAR resource = EVAL ~b_c202~ END
-  LPF CLONE_EFFECT INT_VAR match_opcode = 40 opcode = 321 parameter1 = 0 patameter2 = 0 timing = 0 STR_VAR resource = EVAL ~b_f201~ END
+  LPF CLONE_EFFECT INT_VAR match_opcode = 40 opcode = 321 parameter1 = 0 parameter2 = 0 timing = 0 STR_VAR resource = EVAL ~b_c202~ END
+  LPF CLONE_EFFECT INT_VAR match_opcode = 40 opcode = 321 parameter1 = 0 parameter2 = 0 timing = 0 STR_VAR resource = EVAL ~b_f201~ END
 END
 ACTION_IF FILE_EXISTS_IN_GAME ~spwm164.spl~ BEGIN
  COPY_EXISTING ~spwm164.spl~ ~override~
-  LPF CLONE_EFFECT INT_VAR match_opcode = 40 opcode = 321 parameter1 = 0 patameter2 = 0 timing = 0 STR_VAR resource = EVAL ~b_c202~ END
-  LPF CLONE_EFFECT INT_VAR match_opcode = 40 opcode = 321 parameter1 = 0 patameter2 = 0 timing = 0 STR_VAR resource = EVAL ~b_f201~ END
+  LPF CLONE_EFFECT INT_VAR match_opcode = 40 opcode = 321 parameter1 = 0 parameter2 = 0 timing = 0 STR_VAR resource = EVAL ~b_c202~ END
+  LPF CLONE_EFFECT INT_VAR match_opcode = 40 opcode = 321 parameter1 = 0 parameter2 = 0 timing = 0 STR_VAR resource = EVAL ~b_f201~ END
 END
 
   //Eyes of the Dead_________________________________________________________
 //Icons
-COPY ~faiths_and_powers/spheres/spells/death/b_c104b.bam~ ~override~ //
-COPY ~faiths_and_powers/spheres/spells/death/b_c104c.bam~ ~override~ //
+COPY ~faiths_and_powers/spells/spheres/death/b_c104b.bam~ ~override~ //
+COPY ~faiths_and_powers/spells/spheres/death/b_c104c.bam~ ~override~ //
 //spell etc
-COPY ~faiths_and_powers/spheres/spells/death/b_c104.spl~ ~override~ //
+COPY ~faiths_and_powers/spells/spheres/death/b_c104.spl~ ~override~ //
         SAY NAME1 @50304
         SAY NAME2 @50304
         SAY UNIDENTIFIED_DESC @50305
@@ -380,10 +380,10 @@ COPY ~faiths_and_powers/spheres/spells/death/b_c104.spl~ ~override~ //
 
 //Disrupt Undead_________________________________________________________
 //Icons
-COPY ~faiths_and_powers/spheres/spells/death/b_c105b.bam~ ~override~ //
-COPY ~faiths_and_powers/spheres/spells/death/b_c105c.bam~ ~override~ //
+COPY ~faiths_and_powers/spells/spheres/death/b_c105b.bam~ ~override~ //
+COPY ~faiths_and_powers/spells/spheres/death/b_c105c.bam~ ~override~ //
 //spell etc
-COPY ~faiths_and_powers/spheres/spells/death/b_c105.spl~ ~override~ //
+COPY ~faiths_and_powers/spells/spheres/death/b_c105.spl~ ~override~ //
         SAY NAME1 @50307
         SAY NAME2 @50307
         SAY UNIDENTIFIED_DESC @50308
@@ -393,11 +393,11 @@ COPY ~faiths_and_powers/spheres/spells/death/b_c105.spl~ ~override~ //
 //ANIMAL
 
 //Hold Animal ---> Hold Beast
-COPY ~faiths_and_powers/spheres/spells/animal/#GENENCH.vvc~ ~override~ // vvc
-COPY ~faiths_and_powers/spheres/spells/animal/ENCHANX.bam~ ~override~ // vvc bam
-COPY ~faiths_and_powers/spheres/spells/animal/#ARE_P21.WAV~ ~override~ // vvc sound
-ADD_PROJECTILE ~faiths_and_powers/spheres/spells/animal/b_beast.pro~   //pro
-COPY ~faiths_and_powers/spheres/spells/animal/sppr305.spl~ ~override~ // Hold Beast
+COPY ~faiths_and_powers/spells/spheres/animal/#GENENCH.vvc~ ~override~ // vvc
+COPY ~faiths_and_powers/spells/spheres/animal/ENCHANX.bam~ ~override~ // vvc bam
+COPY ~faiths_and_powers/spells/spheres/animal/#ARE_P21.WAV~ ~override~ // vvc sound
+ADD_PROJECTILE ~faiths_and_powers/spells/spheres/animal/b_beast.pro~   //pro
+COPY ~faiths_and_powers/spells/spheres/animal/sppr305.spl~ ~override~ // Hold Beast
         SAY NAME1 @51104
         SAY NAME2 @51104
         SAY UNIDENTIFIED_DESC @51105
@@ -406,10 +406,10 @@ COPY ~faiths_and_powers/spheres/spells/animal/sppr305.spl~ ~override~ // Hold Be
 
 //Animal Eyes____________________________________________________________
 //icons
-COPY ~faiths_and_powers/spheres/spells/animal/b_c102b.bam~ ~override~ // Animal eyes
-COPY ~faiths_and_powers/spheres/spells/animal/b_c102c.bam~ ~override~ // Animal eyes
+COPY ~faiths_and_powers/spells/spheres/animal/b_c102b.bam~ ~override~ // Animal eyes
+COPY ~faiths_and_powers/spells/spheres/animal/b_c102c.bam~ ~override~ // Animal eyes
 //spell etc
-COPY ~faiths_and_powers/spheres/spells/animal/b_c102.spl~ ~override~ // Animal eyes
+COPY ~faiths_and_powers/spells/spheres/animal/b_c102.spl~ ~override~ // Animal eyes
         SAY NAME1 @51101
         SAY NAME2 @51101
         SAY UNIDENTIFIED_DESC @51102
@@ -420,10 +420,10 @@ COPY ~faiths_and_powers/spheres/spells/animal/b_c102.spl~ ~override~ // Animal e
 //DREAD
 //Forbiddance___________________________________________________________________  (changed to dread)
 //icons
-COPY ~faiths_and_powers/spheres/spells/charm/b_c201b.bam~ ~override~ // Forbiddance
-COPY ~faiths_and_powers/spheres/spells/charm/b_c201c.bam~ ~override~ // Forbiddance
+COPY ~faiths_and_powers/spells/spheres/charm/b_c201b.bam~ ~override~ // Forbiddance
+COPY ~faiths_and_powers/spells/spheres/charm/b_c201c.bam~ ~override~ // Forbiddance
 //spell etc
-COPY ~faiths_and_powers/spheres/spells/charm/b_c201.spl~ ~override~ // Forbiddance
+COPY ~faiths_and_powers/spells/spheres/charm/b_c201.spl~ ~override~ // Forbiddance
         SAY NAME1 @50800
         SAY NAME2 @50800
         SAY UNIDENTIFIED_DESC @50801
@@ -431,10 +431,10 @@ COPY ~faiths_and_powers/spheres/spells/charm/b_c201.spl~ ~override~ // Forbiddan
 
 //Feral Instinct_____________________________________________________________
 //icons
-COPY ~faiths_and_powers/spheres/spells/charm/b_c301b.bam~ ~override~ // Murderous Command
-COPY ~faiths_and_powers/spheres/spells/charm/b_c301c.bam~ ~override~ // Murderous Command
+COPY ~faiths_and_powers/spells/spheres/charm/b_c301b.bam~ ~override~ // Murderous Command
+COPY ~faiths_and_powers/spells/spheres/charm/b_c301c.bam~ ~override~ // Murderous Command
 //spell etc
-COPY ~faiths_and_powers/spheres/spells/charm/b_c301.spl~ ~override~ // Murderous Command
+COPY ~faiths_and_powers/spells/spheres/charm/b_c301.spl~ ~override~ // Murderous Command
         SAY NAME1 @50803
         SAY NAME2 @50803
         SAY UNIDENTIFIED_DESC @50804
@@ -442,13 +442,13 @@ COPY ~faiths_and_powers/spheres/spells/charm/b_c301.spl~ ~override~ // Murderous
 
 //Misfire____________________________________________________________________
 //icons
-COPY ~faiths_and_powers/spheres/spells/dread/b_c501b.bam~ ~override~ // Misfire
-COPY ~faiths_and_powers/spheres/spells/dread/b_c501c.bam~ ~override~ // Misfire
+COPY ~faiths_and_powers/spells/spheres/dread/b_c501b.bam~ ~override~ // Misfire
+COPY ~faiths_and_powers/spells/spheres/dread/b_c501c.bam~ ~override~ // Misfire
 //spl etc
-COPY ~faiths_and_powers/spheres/spells/dread/b_c501.eff~ ~override~ // Misfire
+COPY ~faiths_and_powers/spells/spheres/dread/b_c501.eff~ ~override~ // Misfire
   SAY 0x1c @50901     //Misfire
 
-COPY ~faiths_and_powers/spheres/spells/dread/b_c501.spl~ ~override~ // Misfire
+COPY ~faiths_and_powers/spells/spheres/dread/b_c501.spl~ ~override~ // Misfire
         SAY NAME1 @50901
         SAY NAME2 @50901
         SAY UNIDENTIFIED_DESC @50902
@@ -457,11 +457,11 @@ COPY ~faiths_and_powers/spheres/spells/dread/b_c501.spl~ ~override~ // Misfire
 //AIR
 
 //Storm Wall_________________________________________________________________
-COPY ~faiths_and_powers/spheres/spells/air/b_elect1.bam~ ~override~ // 
-COPY ~faiths_and_powers/spheres/spells/air/b_storm1.vvc~ ~override~ //
-COPY ~faiths_and_powers/spheres/spells/air/b_c401a.spl~ ~override~ //sub-spell
-ADD_PROJECTILE ~faiths_and_powers/spheres/spells/air/b_storm1.pro~   //pro
-COPY ~faiths_and_powers/spheres/spells/air/b_c401.spl~ ~override~ //spell
+COPY ~faiths_and_powers/spells/spheres/air/b_elect1.bam~ ~override~ // 
+COPY ~faiths_and_powers/spells/spheres/air/b_storm1.vvc~ ~override~ //
+COPY ~faiths_and_powers/spells/spheres/air/b_c401a.spl~ ~override~ //sub-spell
+ADD_PROJECTILE ~faiths_and_powers/spells/spheres/air/b_storm1.pro~   //pro
+COPY ~faiths_and_powers/spells/spheres/air/b_c401.spl~ ~override~ //spell
         SAY NAME1 @51601
         SAY NAME2 @51601
         SAY UNIDENTIFIED_DESC @51602
@@ -475,63 +475,63 @@ COPY ~faiths_and_powers/spheres/spells/air/b_c401.spl~ ~override~ //spell
 
 //animate clay construct
 // copy/make the actual spell
-COPY ~faiths_and_powers/spheres/spells/creation/d5clgol.spl~ ~override/d5fnp11.spl~ 
+COPY ~faiths_and_powers/spells/spheres/creation/d5clgol.spl~ ~override/d5fnp11.spl~ 
 	SAY NAME1 @50201
 	SAY UNIDENTIFIED_DESC @50202
 	WRITE_ASCII 0x3a ~d5clgolc~ #8
 	LPF ALTER_SPELL_HEADER STR_VAR icon = ~d5clgolb~ END
-COPY ~faiths_and_powers/spheres/spells/creation/d5clgolc.bam~ ~override~ 
-COPY ~faiths_and_powers/spheres/spells/creation/d5clgolb.bam~ ~override~ 
-COPY ~faiths_and_powers/spheres/spells/creation/d5clgol.eff~ ~override~ 
-COPY ~faiths_and_powers/spheres/spells/creation/d5clgol.cre~ ~override~ 
+COPY ~faiths_and_powers/spells/spheres/creation/d5clgolc.bam~ ~override~ 
+COPY ~faiths_and_powers/spells/spheres/creation/d5clgolb.bam~ ~override~ 
+COPY ~faiths_and_powers/spells/spheres/creation/d5clgol.eff~ ~override~ 
+COPY ~faiths_and_powers/spells/spheres/creation/d5clgol.cre~ ~override~ 
   SAY NAME1 50203
   SAY NAME2 50203
-COPY ~faiths_and_powers/spheres/spells/creation/d5clgol.itm~ ~override~ 
+COPY ~faiths_and_powers/spells/spheres/creation/d5clgol.itm~ ~override~ 
 ACTION_IF !(FILE_EXISTS_IN_GAME ~golcly01.bcs~) BEGIN
-  COPY ~faiths_and_powers/spheres/spells/creation/golcly01.bcs~ ~override~ 
+  COPY ~faiths_and_powers/spells/spheres/creation/golcly01.bcs~ ~override~ 
 END
 
 //animate stone construct
-COPY ~faiths_and_powers/spheres/spells/creation/d5stgol.spl~ ~override/d5fnp12.spl~ 
+COPY ~faiths_and_powers/spells/spheres/creation/d5stgol.spl~ ~override/d5fnp12.spl~ 
 	SAY NAME1 @50204
 	SAY UNIDENTIFIED_DESC @50205
 	WRITE_ASCII 0x3a ~d5clgolc~ #8
 	LPF ALTER_SPELL_HEADER STR_VAR icon = ~d5clgolb~ END
 ACTION_IF !(FILE_EXISTS_IN_GAME ~golstone.itm~) BEGIN
-  COPY ~faiths_and_powers/spheres/spells/creation/golstone.itm~ ~override~ 
+  COPY ~faiths_and_powers/spells/spheres/creation/golstone.itm~ ~override~ 
 END
-COPY ~faiths_and_powers/spheres/spells/creation/d5stgol.eff~ ~override~ 
-COPY ~faiths_and_powers/spheres/spells/creation/d5stgol.cre~ ~override~ 
+COPY ~faiths_and_powers/spells/spheres/creation/d5stgol.eff~ ~override~ 
+COPY ~faiths_and_powers/spells/spheres/creation/d5stgol.cre~ ~override~ 
   SAY NAME1 50206
   SAY NAME2 50206
-COPY ~faiths_and_powers/spheres/spells/creation/d5stgol.itm~ ~override~ 
+COPY ~faiths_and_powers/spells/spheres/creation/d5stgol.itm~ ~override~ 
 ACTION_IF !(FILE_EXISTS_IN_GAME ~golsto01.bcs~) BEGIN
-  COPY ~faiths_and_powers/spheres/spells/creation/golsto01.bcs~ ~override~ 
+  COPY ~faiths_and_powers/spells/spheres/creation/golsto01.bcs~ ~override~ 
 END
 
 //animate iron construct
-COPY ~faiths_and_powers/spheres/spells/creation/d5jugol.spl~ ~override/d5fnp13.spl~ 
+COPY ~faiths_and_powers/spells/spheres/creation/d5jugol.spl~ ~override/d5fnp13.spl~ 
 	SAY NAME1 @50207
 	SAY UNIDENTIFIED_DESC @50208
 	WRITE_ASCII 0x3a ~d5clgolc~ #8
 	LPF ALTER_SPELL_HEADER STR_VAR icon = ~d5clgolb~ END
 ACTION_IF !(FILE_EXISTS_IN_GAME ~irongol.itm~) BEGIN
-  COPY ~faiths_and_powers/spheres/spells/creation/irongol.itm~ ~override~ 
+  COPY ~faiths_and_powers/spells/spheres/creation/irongol.itm~ ~override~ 
 END
-COPY ~faiths_and_powers/spheres/spells/creation/d5jugol.eff~ ~override~ 
-COPY ~faiths_and_powers/spheres/spells/creation/d5jugol.cre~ ~override~ 
+COPY ~faiths_and_powers/spells/spheres/creation/d5jugol.eff~ ~override~ 
+COPY ~faiths_and_powers/spells/spheres/creation/d5jugol.cre~ ~override~ 
   SAY NAME1 50209
   SAY NAME2 50209
-COPY ~faiths_and_powers/spheres/spells/creation/d5jugol.itm~ ~override~ 
+COPY ~faiths_and_powers/spells/spheres/creation/d5jugol.itm~ ~override~ 
 ACTION_IF !(FILE_EXISTS_IN_GAME ~goliro01.bcs~) BEGIN
-  COPY ~faiths_and_powers/spheres/spells/creation/goliro01.bcs~ ~override~ 
+  COPY ~faiths_and_powers/spells/spheres/creation/goliro01.bcs~ ~override~ 
 END
 
 
 // EXPLORATION
 
 //mazzy haste
-COPY ~faiths_and_powers/spheres/spells/exploration/d5mhast.spl~ ~override/d5fnp02.spl~ 
+COPY ~faiths_and_powers/spells/spheres/exploration/d5mhast.spl~ ~override/d5fnp02.spl~ 
   SAY NAME1 @50211
   SAY UNIDENTIFIED_DESC @50212
   LPF CLONE_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 38 opcode = 278 parameter1 = (0 - 1) parameter2 = 0 END
@@ -574,21 +574,21 @@ ACTION_IF !(FILE_CONTAINS_EVALUATED(~spell.ids~ ~[ %TAB%]WIZARD_SNILLOCS_SNOWBAL
 //Item revisions: Spell protections ?
 //Regular Items ?
 //Projectile
-ADD_PROJECTILE ~faiths_and_powers/spheres/iwd_spells/wizard_2/IDPRO217.pro~   //projectile
+ADD_PROJECTILE ~faiths_and_powers/spells/iwd_spells/wizard_2/IDPRO217.pro~   //projectile
 //VVC
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_2/#SSSWARM.vvc~ ~override~   //animation
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_2/#SSSWARM.vvc~ ~override~   //animation
 //bam
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_2/SSSWART.BAM~ ~override~   //animation
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_2/SSSWARR.BAM~ ~override~   //animation
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_2/SSSWARX.BAM~ ~override~   //animation
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_2/SSSWART.BAM~ ~override~   //animation
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_2/SSSWARR.BAM~ ~override~   //animation
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_2/SSSWARX.BAM~ ~override~   //animation
 //animations
 //3d animation
 //sounds
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_2/TRA_18.WAV~ ~override~   //
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_2/RNG_M02.WAV~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_2/TRA_18.WAV~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_2/RNG_M02.WAV~ ~override~   //
 //effs
 //Spell itself
-ADD_SPELL ~faiths_and_powers/spheres/iwd_spells/wizard_2/b_w204.spl~ 2 2 ~WIZARD_SNILLOCS_SNOWBALL_SWARM~ //
+ADD_SPELL ~faiths_and_powers/spells/iwd_spells/wizard_2/b_w204.spl~ 2 2 ~WIZARD_SNILLOCS_SNOWBALL_SWARM~ //
         SAY NAME1 @2040000
         SAY NAME2 @2040000
         SAY UNIDENTIFIED_DESC @2040001
@@ -615,9 +615,9 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
       STR_VAR resource = EVAL ~%spell_res%~
   END      //
 //icons
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_2/SPWI204a.bam~ ~override/%spell_res%a.bam~
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_2/SPWI204b.bam~ ~override/%spell_res%b.bam~
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_2/SPWI204c.bam~ ~override/%spell_res%c.bam~
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_2/SPWI204a.bam~ ~override/%spell_res%a.bam~
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_2/SPWI204b.bam~ ~override/%spell_res%b.bam~
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_2/SPWI204c.bam~ ~override/%spell_res%c.bam~
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
@@ -651,18 +651,18 @@ ACTION_IF !(FILE_CONTAINS_EVALUATED(~spell.ids~ ~[ %TAB%]WIZARD_ICELANCE[ %TAB%%
 //Item revisions: Spell protections ?
 //Regular Items ?
 //Projectile
-ADD_PROJECTILE ~faiths_and_powers/spheres/iwd_spells/wizard_3/IDPRO251.pro~   //projectile
+ADD_PROJECTILE ~faiths_and_powers/spells/iwd_spells/wizard_3/IDPRO251.pro~   //projectile
 //VVC
 //bam
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_3/ICELANT.BAM~ ~override~   //animation
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_3/ICELANT.BAM~ ~override~   //animation
 //animations
 //3d animation
 //sounds
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_3/#TRA_19.wav~ ~override~   //animation
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_3/#TRA_19.wav~ ~override~   //animation
 //effs
 //%b_pfire%
 //Spell itself
-ADD_SPELL ~faiths_and_powers/spheres/iwd_spells/wizard_3/b_w327.spl~ 2 3 ~WIZARD_ICELANCE~ //
+ADD_SPELL ~faiths_and_powers/spells/iwd_spells/wizard_3/b_w327.spl~ 2 3 ~WIZARD_ICELANCE~ //
         SAY NAME1 @3270000
         SAY NAME2 @3270000
         SAY UNIDENTIFIED_DESC @3270001
@@ -687,9 +687,9 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
   END
 END
 //icons
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_3/SPWI327a.bam~ ~override/%spell_res%a.bam~
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_3/SPWI327b.bam~ ~override/%spell_res%b.bam~
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_3/SPWI327c.bam~ ~override/%spell_res%c.bam~
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_3/SPWI327a.bam~ ~override/%spell_res%a.bam~
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_3/SPWI327b.bam~ ~override/%spell_res%b.bam~
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_3/SPWI327c.bam~ ~override/%spell_res%c.bam~
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
@@ -716,22 +716,22 @@ ACTION_IF !(FILE_CONTAINS_EVALUATED(~spell.ids~ ~[ %TAB%]WIZARD_VITRIOLIC_SPHERE
 //Item revisions: Spell protections ?
 //Regular Items ?
 //Projectile
-ADD_PROJECTILE ~faiths_and_powers/spheres/iwd_spells/wizard_4/idpro316.pro~   //projectile
-ADD_PROJECTILE ~faiths_and_powers/spheres/iwd_spells/wizard_4/SMLLARNC.pro~   //projectile
+ADD_PROJECTILE ~faiths_and_powers/spells/iwd_spells/wizard_4/idpro316.pro~   //projectile
+ADD_PROJECTILE ~faiths_and_powers/spells/iwd_spells/wizard_4/SMLLARNC.pro~   //projectile
 //VVC
 //bam
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_4/VSPHERT.BAM~ ~override~   //animation
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_4/VSPHERX.BAM~ ~override~   //animation
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_4/ACIDH.BAM~ ~override~   //animation
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_4/VSPHERT.BAM~ ~override~   //animation
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_4/VSPHERX.BAM~ ~override~   //animation
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_4/ACIDH.BAM~ ~override~   //animation
 //animations
 //3d animation
 //sounds
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_4/#TRA_60.WAV~ ~override~   //
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_4/TRA_06.WAV~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_4/#TRA_60.WAV~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_4/TRA_06.WAV~ ~override~   //
 //effs
 //%b_pfire%
 //Spell itself
-ADD_SPELL ~faiths_and_powers/spheres/iwd_spells/wizard_4/b_w432.spl~ 2 4 ~WIZARD_VITRIOLIC_SPHERE~ //
+ADD_SPELL ~faiths_and_powers/spells/iwd_spells/wizard_4/b_w432.spl~ 2 4 ~WIZARD_VITRIOLIC_SPHERE~ //
         SAY NAME1 @4320000
         SAY NAME2 @4320000
         SAY UNIDENTIFIED_DESC @4320001
@@ -747,14 +747,14 @@ LAF RES_NUM_OF_SPELL_NAME
   STR_VAR spell_name = ~WIZARD_VITRIOLIC_SPHERE~
   RET spell_res
 END
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_4/b_w432y.spl~ ~override/%spell_res%y.spl~   //sec spell
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_4/b_w432y.spl~ ~override/%spell_res%y.spl~   //sec spell
 	WRITE_SHORT 0x098 ~%SMLLARNC%~  //Projectile
 	WRITE_SHORT 0x0c0 ~%SMLLARNC%~  //Projectile     (+28)
 	WRITE_SHORT 0x0e8 ~%SMLLARNC%~  //Projectile     (+28)
 	WRITE_SHORT 0x110 ~%SMLLARNC%~  //Projectile     (+28)
 	WRITE_SHORT 0x138 ~%SMLLARNC%~  //Projectile     (+28)
 	WRITE_SHORT 0x160 ~%SMLLARNC%~  //Projectile     (+28)
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_4/b_w432z.spl~ ~override/%spell_res%z.spl~   //sec spell
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_4/b_w432z.spl~ ~override/%spell_res%z.spl~   //sec spell
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   LPF ALTER_EFFECT
       INT_VAR match_opcode = 146            //
@@ -762,9 +762,9 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
   END      //
   LPF CLONE_EFFECT INT_VAR match_opcode = 146 STR_VAR resource = EVAL ~%spell_res%z~ END     //
 //icons
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_4/SPWI432a.bam~ ~override/%spell_res%a.bam~
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_4/SPWI432b.bam~ ~override/%spell_res%b.bam~
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_4/SPWI432c.bam~ ~override/%spell_res%c.bam~
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_4/SPWI432a.bam~ ~override/%spell_res%a.bam~
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_4/SPWI432b.bam~ ~override/%spell_res%b.bam~
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_4/SPWI432c.bam~ ~override/%spell_res%c.bam~
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
@@ -790,48 +790,48 @@ ACTION_IF !(FILE_CONTAINS_EVALUATED(~spell.ids~ ~[ %TAB%]WIZARD_SHADOW_MONSTERS[
 //Projectile
 //VVC
 //2da
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_4/b_sh01.2da~ ~override~   //animation
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_4/b_sh02.2da~ ~override~   //animation
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_4/b_sh01.2da~ ~override~   //animation
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_4/b_sh02.2da~ ~override~   //animation
 //bam
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_4/MSumm1X.bam~ ~override~   //animation
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_4/MSumm1H.bam~ ~override~   //animation
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_4/MSumm1X.bam~ ~override~   //animation
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_4/MSumm1H.bam~ ~override~   //animation
 //animations
 //3d animation
 //itm
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_4/TRANS20.itm~ ~override~   //
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_4/SUMRING.itm~ ~override~   //
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_4/P1-6.itm~ ~override~   //
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_4/S1-12.itm~ ~override~   //
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_4/M1D7SLSH.itm~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_4/TRANS20.itm~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_4/SUMRING.itm~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_4/P1-6.itm~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_4/S1-12.itm~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_4/M1D7SLSH.itm~ ~override~   //
 //sounds
 //effs
 //cre
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_4/SS1gob1.cre~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_4/SS1gob1.cre~ ~override~   //
         SAY NAME1 ~goblin~
         SAY NAME2 ~goblin~
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_4/SS1GOB2.cre~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_4/SS1GOB2.cre~ ~override~   //
         SAY NAME1 ~goblin~
         SAY NAME2 ~goblin~
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_4/SS1GOB3.cre~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_4/SS1GOB3.cre~ ~override~   //
         SAY NAME1 ~goblin~
         SAY NAME2 ~goblin~
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_4/SS1liz3.cre~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_4/SS1liz3.cre~ ~override~   //
         SAY NAME1 ~Lizard Man~
         SAY NAME2 ~Lizard Man~
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_4/SS1liz4.cre~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_4/SS1liz4.cre~ ~override~   //
         SAY NAME1 ~Lizard Man~
         SAY NAME2 ~Lizard Man~
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_4/SS1TRL6.cre~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_4/SS1TRL6.cre~ ~override~   //
         SAY NAME1 ~Troll~
         SAY NAME2 ~Troll~
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_4/SS1TRL7.cre~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_4/SS1TRL7.cre~ ~override~   //
         SAY NAME1 ~Troll~
         SAY NAME2 ~Troll~
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_4/SS1TRL8.cre~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_4/SS1TRL8.cre~ ~override~   //
         SAY NAME1 ~Troll~
         SAY NAME2 ~Troll~
 //Spell itself
-ADD_SPELL ~faiths_and_powers/spheres/iwd_spells/wizard_4/b_w426.spl~ 2 4 ~WIZARD_SHADOW_MONSTERS~ //
+ADD_SPELL ~faiths_and_powers/spells/iwd_spells/wizard_4/b_w426.spl~ 2 4 ~WIZARD_SHADOW_MONSTERS~ //
         SAY NAME1 @4260000
         SAY NAME2 @4260000
         SAY UNIDENTIFIED_DESC @4260001
@@ -842,9 +842,9 @@ LAF RES_NUM_OF_SPELL_NAME
   RET spell_res
 END
 //icons
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_4/SPWI426a.bam~ ~override/%spell_res%a.bam~
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_4/SPWI426b.bam~ ~override/%spell_res%b.bam~
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_4/SPWI426c.bam~ ~override/%spell_res%c.bam~
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_4/SPWI426a.bam~ ~override/%spell_res%a.bam~
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_4/SPWI426b.bam~ ~override/%spell_res%b.bam~
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_4/SPWI426c.bam~ ~override/%spell_res%c.bam~
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
@@ -888,17 +888,17 @@ END
 ACTION_IF !(FILE_CONTAINS_EVALUATED(~spell.ids~ ~[ %TAB%]WIZARD_EMOTION_COURAGE[ %TAB%%LNL%%MNL%%WNL%]~)) BEGIN 
 
 //Projectile
-ADD_PROJECTILE ~faiths_and_powers/spheres/iwd_spells/wizard_4/idpro407.pro~   //projectile
+ADD_PROJECTILE ~faiths_and_powers/spells/iwd_spells/wizard_4/idpro407.pro~   //projectile
 //VVC
 //bam
 //bam
 //animations
 //3d animation
 //sounds
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_4/#EFF_M05.WAV~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_4/#EFF_M05.WAV~ ~override~   //
 //effs
 //Spell itself
-ADD_SPELL ~faiths_and_powers/spheres/iwd_spells/wizard_4/b_w427.spl~ 2 4 ~WIZARD_EMOTION_COURAGE~ //
+ADD_SPELL ~faiths_and_powers/spells/iwd_spells/wizard_4/b_w427.spl~ 2 4 ~WIZARD_EMOTION_COURAGE~ //
         SAY NAME1 @4270000
         SAY NAME2 @4270000
         SAY UNIDENTIFIED_DESC @4270001
@@ -915,9 +915,9 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
       STR_VAR resource = EVAL ~%spell_res%~
   END      //
 //icons
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_4/SPWI427a.bam~ ~override/%spell_res%a.bam~
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_4/SPWI427b.bam~ ~override/%spell_res%b.bam~
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_4/SPWI427c.bam~ ~override/%spell_res%c.bam~
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_4/SPWI427a.bam~ ~override/%spell_res%a.bam~
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_4/SPWI427b.bam~ ~override/%spell_res%b.bam~
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_4/SPWI427c.bam~ ~override/%spell_res%c.bam~
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
@@ -934,21 +934,21 @@ END
 ACTION_IF !(FILE_CONTAINS_EVALUATED(~spell.ids~ ~[ %TAB%]WIZARD_EMOTION_FEAR[ %TAB%%LNL%%MNL%%WNL%]~)) BEGIN 
 
 //Projectile
-ADD_PROJECTILE ~faiths_and_powers/spheres/iwd_spells/wizard_4/IDPRO255.pro~   //projectile
+ADD_PROJECTILE ~faiths_and_powers/spells/iwd_spells/wizard_4/IDPRO255.pro~   //projectile
 //VVC
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_4/#GENENCH.VVC~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_4/#GENENCH.VVC~ ~override~   //
 //bam
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_4/ENCHANX.BAM~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_4/ENCHANX.BAM~ ~override~   //
 //bam
 //animations
 //3d animation
 //sounds
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_4/ARE_M21.WAV~ ~override~   //#EFF_E05.WAV
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_4/#EFF_E05.WAV~ ~override~   //
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_4/#EFF_M05.WAV~ ~override~   //#EFF_E05.WAV
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_4/ARE_M21.WAV~ ~override~   //#EFF_E05.WAV
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_4/#EFF_E05.WAV~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_4/#EFF_M05.WAV~ ~override~   //#EFF_E05.WAV
 //effs
 //Spell itself
-ADD_SPELL ~faiths_and_powers/spheres/iwd_spells/wizard_4/b_w428.spl~ 2 4 ~WIZARD_EMOTION_FEAR~ //
+ADD_SPELL ~faiths_and_powers/spells/iwd_spells/wizard_4/b_w428.spl~ 2 4 ~WIZARD_EMOTION_FEAR~ //
         SAY NAME1 @4280000
         SAY NAME2 @4280000
         SAY UNIDENTIFIED_DESC @4280001
@@ -971,9 +971,9 @@ ACTION_IF GAME_IS ~bg2ee eet~ BEGIN
 END     //
 
 //icons
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_4/SPWI428a.bam~ ~override/%spell_res%a.bam~
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_4/SPWI428b.bam~ ~override/%spell_res%b.bam~
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_4/SPWI428c.bam~ ~override/%spell_res%c.bam~
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_4/SPWI428a.bam~ ~override/%spell_res%a.bam~
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_4/SPWI428b.bam~ ~override/%spell_res%b.bam~
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_4/SPWI428c.bam~ ~override/%spell_res%c.bam~
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
@@ -992,18 +992,18 @@ END
 ACTION_IF !(FILE_CONTAINS_EVALUATED(~spell.ids~ ~[ %TAB%]WIZARD_EMOTION_HOPE[ %TAB%%LNL%%MNL%%WNL%]~)) BEGIN 
 
 //Projectile
-ADD_PROJECTILE ~faiths_and_powers/spheres/iwd_spells/wizard_4/idpro407.pro~   //projectile
+ADD_PROJECTILE ~faiths_and_powers/spells/iwd_spells/wizard_4/idpro407.pro~   //projectile
 //VVC
 //bam
 //bam
 //animations
 //3d animation
 //sounds
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_4/#EFF_M05.WAV~ ~override~   //
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_4/#EFF_E03.WAV~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_4/#EFF_M05.WAV~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_4/#EFF_E03.WAV~ ~override~   //
 //effs
 //Spell itself
-ADD_SPELL ~faiths_and_powers/spheres/iwd_spells/wizard_4/b_w429.spl~ 2 4 ~WIZARD_EMOTION_HOPE~ //
+ADD_SPELL ~faiths_and_powers/spells/iwd_spells/wizard_4/b_w429.spl~ 2 4 ~WIZARD_EMOTION_HOPE~ //
         SAY NAME1 @4290000
         SAY NAME2 @4290000
         SAY UNIDENTIFIED_DESC @4290001
@@ -1020,9 +1020,9 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
       STR_VAR resource = EVAL ~%spell_res%~
   END      //
 //icons
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_4/SPWI429a.bam~ ~override/%spell_res%a.bam~
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_4/SPWI429b.bam~ ~override/%spell_res%b.bam~
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_4/SPWI429c.bam~ ~override/%spell_res%c.bam~
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_4/SPWI429a.bam~ ~override/%spell_res%a.bam~
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_4/SPWI429b.bam~ ~override/%spell_res%b.bam~
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_4/SPWI429c.bam~ ~override/%spell_res%c.bam~
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
@@ -1100,50 +1100,50 @@ ACTION_IF !(FILE_CONTAINS_EVALUATED(~spell.ids~ ~[ %TAB%]WIZARD_SHADES[ %TAB%%LN
 //Projectile
 //VVC
 //2da
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_6/b_sh03.2da~ ~override~   //animation
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_6/b_sh03.2da~ ~override~   //animation
 //bam
 //animations
 //3d animation
 //itm
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_6/TRANS40.itm~ ~override~   //
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_6/S1-8.itm~ ~override~   //
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_6/B1-12.itm~ ~override~   //
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_6/REG1HP2.itm~ ~override~   //
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_6/TRANS60.itm~ ~override~   //
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_6/SUMAMU.itm~ ~override~   //
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_6/UMBERHLK.itm~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_6/TRANS40.itm~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_6/S1-8.itm~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_6/B1-12.itm~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_6/REG1HP2.itm~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_6/TRANS60.itm~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_6/SUMAMU.itm~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_6/UMBERHLK.itm~ ~override~   //
 //sounds
 //effs
 //cre
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_6/SS2gob2.cre~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_6/SS2gob2.cre~ ~override~   //
         SAY NAME1 ~Goblin Elite~
         SAY NAME2 ~Goblin Elite~
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_6/SS2gob3.cre~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_6/SS2gob3.cre~ ~override~   //
         SAY NAME1 ~Goblin Elite~
         SAY NAME2 ~Goblin Elite~
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_6/SS2liz5.cre~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_6/SS2liz5.cre~ ~override~   //
         SAY NAME1 ~Tough Lizard Man~
         SAY NAME2 ~Tough Lizard Man~
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_6/SS2liz6.cre~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_6/SS2liz6.cre~ ~override~   //
         SAY NAME1 ~Tough Lizard Man~
         SAY NAME2 ~Tough Lizard Man~
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_6/SS2liz7.cre~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_6/SS2liz7.cre~ ~override~   //
         SAY NAME1 ~Tough Lizard Man~
         SAY NAME2 ~Tough Lizard Man~
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_6/SS3trl7.cre~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_6/SS3trl7.cre~ ~override~   //
         SAY NAME1 ~Troll~
         SAY NAME2 ~Troll~
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_6/SS3trl8.cre~ ~override~   // Check animations...actually check all animations
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_6/SS3trl8.cre~ ~override~   // Check animations...actually check all animations
         SAY NAME1 ~Troll~
         SAY NAME2 ~Troll~
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_6/SS3umb8.cre~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_6/SS3umb8.cre~ ~override~   //
         SAY NAME1 ~Umber Hulk~
         SAY NAME2 ~Umber Hulk~
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_6/SS3umb9.cre~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_6/SS3umb9.cre~ ~override~   //
         SAY NAME1 ~Umber Hulk~
         SAY NAME2 ~Umber Hulk~
 //Spell itself
-ADD_SPELL ~faiths_and_powers/spheres/iwd_spells/wizard_6/B_W629.spl~ 2 6 ~WIZARD_SHADES~ //
+ADD_SPELL ~faiths_and_powers/spells/iwd_spells/wizard_6/B_W629.spl~ 2 6 ~WIZARD_SHADES~ //
         SAY NAME1 @6290000
         SAY NAME2 @6290000
         SAY UNIDENTIFIED_DESC @6290001
@@ -1154,9 +1154,9 @@ LAF RES_NUM_OF_SPELL_NAME
   RET spell_res
 END
 //icons
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_6/SPWI629a.bam~ ~override/%spell_res%a.bam~
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_6/SPWI629b.bam~ ~override/%spell_res%b.bam~
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_6/SPWI629c.bam~ ~override/%spell_res%c.bam~
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_6/SPWI629a.bam~ ~override/%spell_res%a.bam~
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_6/SPWI629b.bam~ ~override/%spell_res%b.bam~
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_6/SPWI629c.bam~ ~override/%spell_res%c.bam~
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
@@ -1197,11 +1197,11 @@ ACTION_IF !(FILE_CONTAINS_EVALUATED(~spell.ids~ ~[ %TAB%]WIZARD_SOUL_EATER[ %TAB
 //Item revisions: Spell protections ?
 //Regular Items ?
 //Projectile
-ADD_PROJECTILE ~faiths_and_powers/spheres/iwd_spells/wizard_6/idpro299.pro~   //projectile
+ADD_PROJECTILE ~faiths_and_powers/spells/iwd_spells/wizard_6/idpro299.pro~   //projectile
 //probam
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_6/SEATERA.bam~ ~override~   //animation
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_6/SEATERA.bam~ ~override~   //animation
 //Spell itself
-ADD_SPELL ~faiths_and_powers/spheres/iwd_spells/wizard_6/B_W631.spl~ 2 6 ~WIZARD_SOUL_EATER~ //
+ADD_SPELL ~faiths_and_powers/spells/iwd_spells/wizard_6/B_W631.spl~ 2 6 ~WIZARD_SOUL_EATER~ //
         SAY NAME1 @6310000
         SAY NAME2 @6310000
         SAY UNIDENTIFIED_DESC @6310001
@@ -1221,20 +1221,20 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
       STR_VAR resource = EVAL ~%spell_res%b~
   END      //
 //secondary spells
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_6/B_W631b.spl~ ~override/%spell_res%b.spl~   //sec spell
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_6/B_W631b.spl~ ~override/%spell_res%b.spl~   //sec spell
 //creature for secspell
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_6/AD3SKLM.cre~ ~override~   //sec spell cre
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_6/AD3SKLM.cre~ ~override~   //sec spell cre
         SAY NAME1 ~Skeleton~
         SAY NAME2 ~Skeleton~
 //cre items
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_6/RNDTRE40.itm~ ~override~   //sec spell cre itm
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_6/RING95.itm~ ~override~   //sec spell cre itm
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_6/RNDTRE40.itm~ ~override~   //sec spell cre itm
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_6/RING95.itm~ ~override~   //sec spell cre itm
 //cre script
-  COMPILE ~faiths_and_powers/spheres/iwd_spells/wizard_6/GNSUMMM.baf~ 
+  COMPILE ~faiths_and_powers/spells/iwd_spells/wizard_6/GNSUMMM.baf~ 
 //icons
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_6/SPWI631a.bam~ ~override/%spell_res%a.bam~
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_6/SPWI631b.bam~ ~override/%spell_res%b.bam~
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_6/SPWI631c.bam~ ~override/%spell_res%c.bam~
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_6/SPWI631a.bam~ ~override/%spell_res%a.bam~
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_6/SPWI631b.bam~ ~override/%spell_res%b.bam~
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_6/SPWI631c.bam~ ~override/%spell_res%c.bam~
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
@@ -1263,18 +1263,18 @@ ACTION_IF !(FILE_CONTAINS_EVALUATED(~spell.ids~ ~[ %TAB%]WIZARD_ACID_STORM[ %TAB
 //Item revisions: Spell protections ?
 //Regular Items ?
 //Projectile
-ADD_PROJECTILE ~faiths_and_powers/spheres/iwd_spells/wizard_7/idpro211.pro~   //projectile
+ADD_PROJECTILE ~faiths_and_powers/spells/iwd_spells/wizard_7/idpro211.pro~   //projectile
 //VVC
 //bam
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_7/ASTORMA.bam~ ~override~   //animation
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_7/ASTORMA.bam~ ~override~   //animation
 //animations
 //3d animation
 //sounds
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_7/ARE_M04.WAV~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_7/ARE_M04.WAV~ ~override~   //
 //effs
 //%b_pfire%
 //Spell itself
-ADD_SPELL ~faiths_and_powers/spheres/iwd_spells/wizard_7/b_w724.spl~ 2 7 ~WIZARD_ACID_STORM~ //
+ADD_SPELL ~faiths_and_powers/spells/iwd_spells/wizard_7/b_w724.spl~ 2 7 ~WIZARD_ACID_STORM~ //
         SAY NAME1 @7240000
         SAY NAME2 @7240000
         SAY UNIDENTIFIED_DESC @7240001
@@ -1308,9 +1308,9 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
       STR_VAR resource = EVAL ~%spell_res%~
   END      //
 //icons
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_7/SPWI724a.bam~ ~override/%spell_res%a.bam~
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_7/SPWI724b.bam~ ~override/%spell_res%b.bam~
-COPY ~faiths_and_powers/spheres/iwd_spells/wizard_7/SPWI724c.bam~ ~override/%spell_res%c.bam~
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_7/SPWI724a.bam~ ~override/%spell_res%a.bam~
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_7/SPWI724b.bam~ ~override/%spell_res%b.bam~
+COPY ~faiths_and_powers/spells/iwd_spells/wizard_7/SPWI724c.bam~ ~override/%spell_res%c.bam~
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
@@ -1371,22 +1371,22 @@ DEFINE_ACTION_MACRO v75_add_iwd_divine_spells BEGIN
 ACTION_IF !(FILE_CONTAINS_EVALUATED(~spell.ids~ ~[ %TAB%]CLERIC_CURSE[ %TAB%%LNL%%MNL%%WNL%]~)) BEGIN 
 
 //Projectile
-ADD_PROJECTILE ~faiths_and_powers/spheres/iwd_spells/priest_1/b_p112.pro~   //projectile
+ADD_PROJECTILE ~faiths_and_powers/spells/iwd_spells/priest_1/b_p112.pro~   //projectile
 //VVC
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_1/#BLESS.vvc~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_1/#BLESS.vvc~ ~override~   //
 //bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_1/AREA1X.bam~ ~override~   //animation
+COPY ~faiths_and_powers/spells/iwd_spells/priest_1/AREA1X.bam~ ~override~   //animation
 //animations
 //3d animation
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_1/CURSEH.bam~ ~override~   //animation
+COPY ~faiths_and_powers/spells/iwd_spells/priest_1/CURSEH.bam~ ~override~   //animation
 //sounds
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_1/#EFF_P99.WAV~ ~override~   //sound
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_1/#EFF_P32.wav~ ~override~   //sound
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_1/#EFF_E04.WAV~ ~override~   //sound
+COPY ~faiths_and_powers/spells/iwd_spells/priest_1/#EFF_P99.WAV~ ~override~   //sound
+COPY ~faiths_and_powers/spells/iwd_spells/priest_1/#EFF_P32.wav~ ~override~   //sound
+COPY ~faiths_and_powers/spells/iwd_spells/priest_1/#EFF_E04.WAV~ ~override~   //sound
 //effs
 //%b_pfire%
 //Spell itself
-ADD_SPELL ~faiths_and_powers/spheres/iwd_spells/priest_1/b_p112.spl~ 1 1 ~CLERIC_CURSE~ //Curse Spell
+ADD_SPELL ~faiths_and_powers/spells/iwd_spells/priest_1/b_p112.spl~ 1 1 ~CLERIC_CURSE~ //Curse Spell
         SAY NAME1 @11200000
         SAY NAME2 @11200000
         SAY UNIDENTIFIED_DESC @11200001
@@ -1433,9 +1433,9 @@ COPY_EXISTING ~SPWM126.spl~ ~override~
   LPF CLONE_EFFECT INT_VAR match_opcode = 155 opcode = 206 STR_VAR resource = EVAL ~%spell_res%~ END
 END
 //icons
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_1/sppr112a.bam~ ~override/%spell_res%a.bam~
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_1/sppr112b.bam~ ~override/%spell_res%b.bam~
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_1/sppr112c.bam~ ~override/%spell_res%c.bam~
+COPY ~faiths_and_powers/spells/iwd_spells/priest_1/sppr112a.bam~ ~override/%spell_res%a.bam~
+COPY ~faiths_and_powers/spells/iwd_spells/priest_1/sppr112b.bam~ ~override/%spell_res%b.bam~
+COPY ~faiths_and_powers/spells/iwd_spells/priest_1/sppr112c.bam~ ~override/%spell_res%c.bam~
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
@@ -1460,12 +1460,12 @@ ACTION_IF !(FILE_CONTAINS_EVALUATED(~spell.ids~ ~[ %TAB%]CLERIC_CAUSE_LIGHT_WOUN
 //Projectile
 //animations
 //3d animation
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_1/cldamah.bam~ ~override~   //animation
+COPY ~faiths_and_powers/spells/iwd_spells/priest_1/cldamah.bam~ ~override~   //animation
 //sounds
 //effs
 //%b_pfire%
 //Spell itself
-ADD_SPELL ~faiths_and_powers/spheres/iwd_spells/priest_1/b_p114.spl~ 1 1 ~CLERIC_CAUSE_LIGHT_WOUNDS~ //CLW Spell
+ADD_SPELL ~faiths_and_powers/spells/iwd_spells/priest_1/b_p114.spl~ 1 1 ~CLERIC_CAUSE_LIGHT_WOUNDS~ //CLW Spell
         SAY NAME1 @11400000
         SAY NAME2 @11400000
         SAY UNIDENTIFIED_DESC @11400001
@@ -1507,9 +1507,9 @@ IF_EXISTS
 END
 END
 //icons
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_1/sppr114a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_1/sppr114b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_1/sppr114c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_1/sppr114a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_1/sppr114b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_1/sppr114c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
@@ -1531,18 +1531,18 @@ ACTION_IF NOT FILE_EXISTS_IN_GAME ~dvimhere.mrk~ BEGIN
 
 ACTION_IF !(FILE_CONTAINS_EVALUATED(~spell.ids~ ~[ %TAB%]CLERIC_SUNSCORCH[ %TAB%%LNL%%MNL%%WNL%]~)) BEGIN 
 
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_1/SUNSCOH.bam~ ~override~   //pro bam
-ADD_PROJECTILE ~faiths_and_powers/spheres/iwd_spells/priest_1/SUNSCOH.pro~   //projectile
+COPY ~faiths_and_powers/spells/iwd_spells/priest_1/SUNSCOH.bam~ ~override~   //pro bam
+ADD_PROJECTILE ~faiths_and_powers/spells/iwd_spells/priest_1/SUNSCOH.pro~   //projectile
 //animations
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_1/sppr115a.bam~ ~override~   //scroll bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_1/sppr115b.bam~ ~override~   //bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_1/sppr115c.bam~ ~override~   //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_1/sppr115a.bam~ ~override~   //scroll bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_1/sppr115b.bam~ ~override~   //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_1/sppr115c.bam~ ~override~   //bam
 //3d animation
 //sounds
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_1/#EFF_P39.wav~ ~override~   //sound
+COPY ~faiths_and_powers/spells/iwd_spells/priest_1/#EFF_P39.wav~ ~override~   //sound
 //effs
 //Spell itself
-ADD_SPELL ~faiths_and_powers/spheres/iwd_spells/priest_1/b_p115.spl~ 1 1 ~CLERIC_SUNSCORCH~ //CLW Spell
+ADD_SPELL ~faiths_and_powers/spells/iwd_spells/priest_1/b_p115.spl~ 1 1 ~CLERIC_SUNSCORCH~ //CLW Spell
         SAY NAME1 @11500000
         SAY NAME2 @11500000
         SAY UNIDENTIFIED_DESC @11500001
@@ -1595,11 +1595,11 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
   END      //
 
 //secondary spells
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_1/sppr115D.spl~ ~override/%spell_res%D.spl~   //sec spell
+COPY ~faiths_and_powers/spells/iwd_spells/priest_1/sppr115D.spl~ ~override/%spell_res%D.spl~   //sec spell
 //icons
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_1/sppr115a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_1/sppr115b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_1/sppr115c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_1/sppr115a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_1/sppr115b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_1/sppr115c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
@@ -1659,14 +1659,14 @@ ACTION_IF !(FILE_CONTAINS_EVALUATED(~spell.ids~ ~[ %TAB%]CLERIC_RESIST_FIRE_AND_
 //Projectile
 //animations
 //3d animation
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_2/ALTERH.bam~ ~override~   //animation
+COPY ~faiths_and_powers/spells/iwd_spells/priest_2/ALTERH.bam~ ~override~   //animation
 //sounds
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_2/#EFF_P07.WAV~ ~override~   //sound
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_2/#EFF_E03.WAV~ ~override~   //sound
+COPY ~faiths_and_powers/spells/iwd_spells/priest_2/#EFF_P07.WAV~ ~override~   //sound
+COPY ~faiths_and_powers/spells/iwd_spells/priest_2/#EFF_E03.WAV~ ~override~   //sound
 //effs
 //secondary spells
 //Spell itself
-ADD_SPELL ~faiths_and_powers/spheres/iwd_spells/priest_2/b_p216.spl~ 1 2 ~CLERIC_RESIST_FIRE_AND_COLD~ //CMW Spell
+ADD_SPELL ~faiths_and_powers/spells/iwd_spells/priest_2/b_p216.spl~ 1 2 ~CLERIC_RESIST_FIRE_AND_COLD~ //CMW Spell
         SAY NAME1 @21600000
         SAY NAME2 @21600000
         SAY UNIDENTIFIED_DESC @21600001
@@ -1681,9 +1681,9 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
       STR_VAR resource = EVAL ~%spell_res%~
   END      //
 //icons
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_2/sppr210a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_2/sppr210b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_2/sppr210c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_2/sppr210a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_2/sppr210b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_2/sppr210c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
@@ -1734,13 +1734,13 @@ ACTION_IF !(FILE_CONTAINS_EVALUATED(~spell.ids~ ~[ %TAB%]CLERIC_CURE_MODERATE_WO
 //Projectile
 //animations
 //3d animation
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_2/cmwounh.bam~ ~override~   //animation
+COPY ~faiths_and_powers/spells/iwd_spells/priest_2/cmwounh.bam~ ~override~   //animation
 //sounds
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_2/#EFF_P26.WAV~ ~override~   //sound
+COPY ~faiths_and_powers/spells/iwd_spells/priest_2/#EFF_P26.WAV~ ~override~   //sound
 //effs
 //secondary spells
 //Spell itself
-ADD_SPELL ~faiths_and_powers/spheres/iwd_spells/priest_2/b_p217.spl~ 1 2 ~CLERIC_CURE_MODERATE_WOUNDS~ //CMW Spell
+ADD_SPELL ~faiths_and_powers/spells/iwd_spells/priest_2/b_p217.spl~ 1 2 ~CLERIC_CURE_MODERATE_WOUNDS~ //CMW Spell
         SAY NAME1 @21700000
         SAY NAME2 @21700000
         SAY UNIDENTIFIED_DESC @21700001
@@ -1767,9 +1767,9 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
   LPF CLONE_EFFECT INT_VAR match_opcode = 17 parameter1 = 30 parameter2 = 2 END
 END
 //icons
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_2/sppr217a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_2/sppr217b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_2/sppr217c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_2/sppr217a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_2/sppr217b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_2/sppr217c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
@@ -1789,20 +1789,20 @@ END
 ACTION_IF !(FILE_CONTAINS_EVALUATED(~spell.ids~ ~[ %TAB%]CLERIC_ALICORN_LANCE[ %TAB%%LNL%%MNL%%WNL%]~)) BEGIN 
 
 //Projectile
-ADD_PROJECTILE ~faiths_and_powers/spheres/iwd_spells/priest_2/b_lance.pro~   //projectile
+ADD_PROJECTILE ~faiths_and_powers/spells/iwd_spells/priest_2/b_lance.pro~   //projectile
 //animations
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_2/ALANCET.BAM~ ~override~   //Pro bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_2/ALANCET.BAM~ ~override~   //Pro bam
 
 //3d animation
 //sounds
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_2/#EFF_E08.WAV~ ~override~   //sound
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_2/#TRA_57.WAV~ ~override~   //Pro sound
+COPY ~faiths_and_powers/spells/iwd_spells/priest_2/#EFF_E08.WAV~ ~override~   //sound
+COPY ~faiths_and_powers/spells/iwd_spells/priest_2/#TRA_57.WAV~ ~override~   //Pro sound
 //effs
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_2/b_p218.eff~ ~override~   //for notification
+COPY ~faiths_and_powers/spells/iwd_spells/priest_2/b_p218.eff~ ~override~   //for notification
   SAY 0x1c @21800003    //Notification
 //secondary spells
 //Spell itself
-ADD_SPELL ~faiths_and_powers/spheres/iwd_spells/priest_2/b_p218.spl~ 1 2 ~CLERIC_ALICORN_LANCE~ // Spell
+ADD_SPELL ~faiths_and_powers/spells/iwd_spells/priest_2/b_p218.spl~ 1 2 ~CLERIC_ALICORN_LANCE~ // Spell
         SAY NAME1 @21800000
         SAY NAME2 @21800000
         SAY UNIDENTIFIED_DESC @21800001
@@ -1819,9 +1819,9 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
   END      //
 
 //icons
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_2/sppr218a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_2/sppr218b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_2/sppr218c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_2/sppr218a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_2/sppr218b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_2/sppr218c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
@@ -1840,19 +1840,19 @@ ACTION_IF !(FILE_CONTAINS_EVALUATED(~spell.ids~ ~[ %TAB%]CLERIC_BEAST_CLAW[ %TAB
 //Projectile
 //probam
 //3d animation
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_2/ALTERH.BAM~ ~override~   //sound
+COPY ~faiths_and_powers/spells/iwd_spells/priest_2/ALTERH.BAM~ ~override~   //sound
 //sounds
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_2/#EFF_P07.WAV~ ~override~   //sound
+COPY ~faiths_and_powers/spells/iwd_spells/priest_2/#EFF_P07.WAV~ ~override~   //sound
 //itm
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_2/BCLAW.itm~ ~override~   //item
+COPY ~faiths_and_powers/spells/iwd_spells/priest_2/BCLAW.itm~ ~override~   //item
         SAY NAME1 @21900000
         SAY NAME2 @21900000
 //itm icons
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_2/IBCLAW.BAM~ ~override~   //item
+COPY ~faiths_and_powers/spells/iwd_spells/priest_2/IBCLAW.BAM~ ~override~   //item
 //effs
 //secondary spells
 //Spell itself
-ADD_SPELL ~faiths_and_powers/spheres/iwd_spells/priest_2/b_p219.spl~ 1 2 ~CLERIC_BEAST_CLAW~ // Spell
+ADD_SPELL ~faiths_and_powers/spells/iwd_spells/priest_2/b_p219.spl~ 1 2 ~CLERIC_BEAST_CLAW~ // Spell
         SAY NAME1 @21900000
         SAY NAME2 @21900000
         SAY UNIDENTIFIED_DESC @21900001
@@ -1863,9 +1863,9 @@ LAF RES_NUM_OF_SPELL_NAME
 END
 
 //icons
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_2/sppr219a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_2/sppr219b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_2/sppr219c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_2/sppr219a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_2/sppr219b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_2/sppr219c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
 WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
@@ -1887,13 +1887,13 @@ ACTION_IF !(FILE_CONTAINS_EVALUATED(~spell.ids~ ~[ %TAB%]CLERIC_CAUSE_MODERATE_W
 //Projectile
 //animations
 //3d animation
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_2/CMDAMAH.BAM~ ~override~   //animation
+COPY ~faiths_and_powers/spells/iwd_spells/priest_2/CMDAMAH.BAM~ ~override~   //animation
 //sounds
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_2/#FF_P103.WAV~ ~override~   //sound
+COPY ~faiths_and_powers/spells/iwd_spells/priest_2/#FF_P103.WAV~ ~override~   //sound
 //effs
 //secondary spells
 //Spell itself
-ADD_SPELL ~faiths_and_powers/spheres/iwd_spells/priest_2/b_p220.spl~ 1 2 ~CLERIC_CAUSE_MODERATE_WOUNDS~ //CMW Spell
+ADD_SPELL ~faiths_and_powers/spells/iwd_spells/priest_2/b_p220.spl~ 1 2 ~CLERIC_CAUSE_MODERATE_WOUNDS~ //CMW Spell
         SAY NAME1 @22000000
         SAY NAME2 @22000000
         SAY UNIDENTIFIED_DESC @22000001
@@ -1930,9 +1930,9 @@ END
 END
 
 //icons
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_2/sppr220a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_2/sppr220b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_2/sppr220c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_2/sppr220a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_2/sppr220b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_2/sppr220c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
 WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
@@ -1962,16 +1962,16 @@ ACTION_IF !(FILE_CONTAINS_EVALUATED(~spell.ids~ ~[ %TAB%]CLERIC_PRAYER[ %TAB%%LN
 //Projectile
 //probam
 //3d animation
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_3/PRAYERH.BAM~ ~override~   //
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_3/PRAYERG.BAM~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_3/PRAYERH.BAM~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_3/PRAYERG.BAM~ ~override~   //
 //sounds
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_3/#EFF_P31.WAV~ ~override~   //
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_3/EFF_E03.WAV~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_3/#EFF_P31.WAV~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_3/EFF_E03.WAV~ ~override~   //
 //itm
 //itm icons
 //effs
 //secondary spells
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_3/#PRAYERB.SPL~ ~override~   //spl
+COPY ~faiths_and_powers/spells/iwd_spells/priest_3/#PRAYERB.SPL~ ~override~   //spl
   LPF ALTER_EFFECT
       INT_VAR match_opcode = 139            //
       parameter1 = 7160            //combat penalties
@@ -1980,7 +1980,7 @@ STRING_SET 7160 @31600002
 COPY_EXISTING ~book09.itm~ ~override~
 	SAY NAME2 @31600003
 IF_EXISTS
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_3/#PRAYERG.SPL~ ~override~   //spl
+COPY ~faiths_and_powers/spells/iwd_spells/priest_3/#PRAYERG.SPL~ ~override~   //spl
   LPF ALTER_EFFECT
       INT_VAR match_opcode = 139            //
       parameter1 = 13086      //combat bonuses
@@ -1990,7 +1990,7 @@ COPY_EXISTING ~book10.itm~ ~override~
 	SAY NAME2 @31600005
 IF_EXISTS
 //Spell itself
-ADD_SPELL ~faiths_and_powers/spheres/iwd_spells/priest_3/b_p316.spl~ 1 3 ~CLERIC_PRAYER~ // Spell
+ADD_SPELL ~faiths_and_powers/spells/iwd_spells/priest_3/b_p316.spl~ 1 3 ~CLERIC_PRAYER~ // Spell
         SAY NAME1 @31600000
         SAY NAME2 @31600000
         SAY UNIDENTIFIED_DESC @31600001
@@ -2034,9 +2034,9 @@ END
 END
 
 //icons
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_3/sppr316a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_3/sppr316b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_3/sppr316c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_3/sppr316a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_3/sppr316b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_3/sppr316c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
 WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
@@ -2057,16 +2057,16 @@ ACTION_IF !(FILE_CONTAINS_EVALUATED(~spell.ids~ ~[ %TAB%]CLERIC_CAUSE_DISEASE[ %
 //probam
 //icons
 //3d animation
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_3/CDISEAH.BAM~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_3/CDISEAH.BAM~ ~override~   //
 //sounds
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_3/#FF_P108.WAV~ ~override~   //
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_3/EFF_E03.WAV~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_3/#FF_P108.WAV~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_3/EFF_E03.WAV~ ~override~   //
 //itm
 //itm icons
 //effs
 //secondary spells
 //Spell itself
-ADD_SPELL ~faiths_and_powers/spheres/iwd_spells/priest_3/b_p320.spl~ 1 3 ~CLERIC_CAUSE_DISEASE~ // Spell
+ADD_SPELL ~faiths_and_powers/spells/iwd_spells/priest_3/b_p320.spl~ 1 3 ~CLERIC_CAUSE_DISEASE~ // Spell
         SAY NAME1 @32000000
         SAY NAME2 @32000000
         SAY UNIDENTIFIED_DESC @32000001
@@ -2092,9 +2092,9 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
   END      //
 
 //icons
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_3/sppr320a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_3/sppr320b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_3/sppr320c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_3/sppr320a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_3/sppr320b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_3/sppr320c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
 WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
@@ -2114,9 +2114,9 @@ ACTION_IF !(FILE_CONTAINS_EVALUATED(~spell.ids~ ~[ %TAB%]CLERIC_EXALTATION[ %TAB
 //Projectile
 //probam
 //3d animation
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_3/EXALTAH.BAM~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_3/EXALTAH.BAM~ ~override~   //
 //sounds
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_3/#FF_P106.WAV~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_3/#FF_P106.WAV~ ~override~   //
 //itm
 //itm icons
 //effs
@@ -2125,10 +2125,10 @@ COPY ~faiths_and_powers/spheres/iwd_spells/priest_3/#FF_P106.WAV~ ~override~   /
 //Need to remove blood rage (prob animal rage, too?)
 //Copied over for protections
 ACTION_IF GAME_IS ~bgee~ THEN BEGIN   // ACTION_IF GAME_IS ~bgee~ THEN BEGIN 
-  COPY ~faiths_and_powers/spheres/iwd_spells/priest_3/bgee/b_p321.spl~ ~override~   //
+  COPY ~faiths_and_powers/spells/iwd_spells/priest_3/bgee/b_p321.spl~ ~override~   //
 END
 ACTION_IF GAME_IS ~bg2ee eet~ THEN BEGIN   //
-  COPY ~faiths_and_powers/spheres/iwd_spells/priest_3/bg2ee/b_p321.spl~ ~override~   //
+  COPY ~faiths_and_powers/spells/iwd_spells/priest_3/bg2ee/b_p321.spl~ ~override~   //
 END
 //not added yet.  Add after Blood rage has been added
 
@@ -2147,19 +2147,19 @@ ACTION_IF !(FILE_CONTAINS_EVALUATED(~spell.ids~ ~[ %TAB%]CLERIC_MOONBLADE[ %TAB%
 //probam
 //3d animation
 //sounds
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_3/#EFF_M06.WAV~ ~override~   //itm sound
+COPY ~faiths_and_powers/spells/iwd_spells/priest_3/#EFF_M06.WAV~ ~override~   //itm sound
 //itm
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_3/MOONBLA.itm~ ~override~   //itm
+COPY ~faiths_and_powers/spells/iwd_spells/priest_3/MOONBLA.itm~ ~override~   //itm
         SAY NAME1 @32200000
         SAY NAME2 @32200000
 //itm icons
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_3/MOONBLA.BAM~ ~override~   //
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_3/GSW1H01.BAM~ ~override~   //
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_3/INVOCH.BAM~ ~override~   //itm 3d
+COPY ~faiths_and_powers/spells/iwd_spells/priest_3/MOONBLA.BAM~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_3/GSW1H01.BAM~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_3/INVOCH.BAM~ ~override~   //itm 3d
 //effs
 //secondary spells
 //Spell itself
-ADD_SPELL ~faiths_and_powers/spheres/iwd_spells/priest_3/b_p322.spl~ 1 3 ~CLERIC_MOONBLADE~ // Spell
+ADD_SPELL ~faiths_and_powers/spells/iwd_spells/priest_3/b_p322.spl~ 1 3 ~CLERIC_MOONBLADE~ // Spell
         SAY NAME1 @32200000
         SAY NAME2 @32200000
         SAY UNIDENTIFIED_DESC @32200001
@@ -2170,9 +2170,9 @@ LAF RES_NUM_OF_SPELL_NAME
 END
 
 //icons
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_3/sppr322a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_3/sppr322b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_3/sppr322c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_3/sppr322a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_3/sppr322b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_3/sppr322c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
 WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
@@ -2192,18 +2192,18 @@ ACTION_IF !(FILE_CONTAINS_EVALUATED(~spell.ids~ ~[ %TAB%]CLERIC_CIRCLE_OF_BONES[
 //Projectile
 //probam
 //3d animation
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_3/COBONH1.BAM~ ~override~   //
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_3/COBONH2.BAM~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_3/COBONH1.BAM~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_3/COBONH2.BAM~ ~override~   //
 //sounds
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_3/#ARE_P21.WAV~ ~override~   //
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_3/#AFT_P22.WAV~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_3/#ARE_P21.WAV~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_3/#AFT_P22.WAV~ ~override~   //
 //itm
 //itm icons
 //effs
 //secondary spells
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_3/SPPR323D.spl~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_3/SPPR323D.spl~ ~override~   //
 //Spell itself
-ADD_SPELL ~faiths_and_powers/spheres/iwd_spells/priest_3/b_p323.spl~ 1 3 ~CLERIC_CIRCLE_OF_BONES~ // Spell
+ADD_SPELL ~faiths_and_powers/spells/iwd_spells/priest_3/b_p323.spl~ 1 3 ~CLERIC_CIRCLE_OF_BONES~ // Spell
         SAY NAME1 @32300000
         SAY NAME2 @32300000
         SAY UNIDENTIFIED_DESC @32300001
@@ -2214,9 +2214,9 @@ LAF RES_NUM_OF_SPELL_NAME
 END
 
 //icons
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_3/sppr323a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_3/sppr323b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_3/sppr323c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_3/sppr323a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_3/sppr323b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_3/sppr323c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
 WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
@@ -2236,9 +2236,9 @@ ACTION_IF NOT FILE_EXISTS_IN_GAME ~dvsrv4here.mrk~ BEGIN
 ACTION_IF !(FILE_CONTAINS_EVALUATED(~spell.ids~ ~[ %TAB%]CLERIC_SPIKE_GROWTH[ %TAB%%LNL%%MNL%%WNL%]~)) BEGIN 
 
 //Projectile
-ADD_PROJECTILE ~faiths_and_powers/spheres/iwd_spells/priest_3/b_spikeg.pro~   //projectile
+ADD_PROJECTILE ~faiths_and_powers/spells/iwd_spells/priest_3/b_spikeg.pro~   //projectile
 //probam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_3/sgrowta.BAM~ ~override~   //pro bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_3/sgrowta.BAM~ ~override~   //pro bam
 //3d animation
 //sounds
 //itm
@@ -2246,7 +2246,7 @@ COPY ~faiths_and_powers/spheres/iwd_spells/priest_3/sgrowta.BAM~ ~override~   //
 //effs
 //secondary spells
 //Spell itself
-ADD_SPELL ~faiths_and_powers/spheres/iwd_spells/priest_3/b_p324.spl~ 1 3 ~CLERIC_SPIKE_GROWTH~ // Spell
+ADD_SPELL ~faiths_and_powers/spells/iwd_spells/priest_3/b_p324.spl~ 1 3 ~CLERIC_SPIKE_GROWTH~ // Spell
         SAY NAME1 @32400000
         SAY NAME2 @32400000
         SAY UNIDENTIFIED_DESC @32400001
@@ -2262,9 +2262,9 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
       STR_VAR resource = EVAL ~%spell_res%~
   END      //
 //icons
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_3/sppr324a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_3/sppr324b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_3/sppr324c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_3/sppr324a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_3/sppr324b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_3/sppr324c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
 WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
@@ -2288,20 +2288,20 @@ ACTION_IF !(FILE_CONTAINS_EVALUATED(~spell.ids~ ~[ %TAB%]CLERIC_CLOUDBURST[ %TAB
 
 //REMOVE Shroud of Flame (wizard spell) once added
 //Projectile
-ADD_PROJECTILE ~faiths_and_powers/spheres/iwd_spells/priest_3/b_clobu.pro~   //projectile
+ADD_PROJECTILE ~faiths_and_powers/spells/iwd_spells/priest_3/b_clobu.pro~   //projectile
 //probam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_3/sgrowta.BAM~ ~override~   //pro bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_3/sgrowta.BAM~ ~override~   //pro bam
 //3d animation
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_3/CLOUDBA.bam~ ~override~   // bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_3/CLOUDBH.BAM~ ~override~   // bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_3/CLOUDBA.bam~ ~override~   // bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_3/CLOUDBH.BAM~ ~override~   // bam
 //sounds
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_3/ARE_P24.WAV~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_3/ARE_P24.WAV~ ~override~   //
 //itm
 //itm icons
 //effs
 //secondary spells
 //Spell itself
-ADD_SPELL ~faiths_and_powers/spheres/iwd_spells/priest_3/b_p325.spl~ 1 3 ~CLERIC_CLOUDBURST~ // Spell
+ADD_SPELL ~faiths_and_powers/spells/iwd_spells/priest_3/b_p325.spl~ 1 3 ~CLERIC_CLOUDBURST~ // Spell
         SAY NAME1 @32500000
         SAY NAME2 @32500000
         SAY UNIDENTIFIED_DESC @32500001
@@ -2321,9 +2321,9 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
       STR_VAR resource = EVAL ~%spell_res%~
   END      //
 //icons
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_3/sppr325a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_3/sppr325b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_3/sppr325c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_3/sppr325a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_3/sppr325b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_3/sppr325c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
 WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
@@ -2341,17 +2341,17 @@ END
 ACTION_IF !(FILE_CONTAINS_EVALUATED(~spell.ids~ ~[ %TAB%]CLERIC_MOLD_TOUCH[ %TAB%%LNL%%MNL%%WNL%]~)) BEGIN 
 
 //Projectile
-ADD_PROJECTILE ~faiths_and_powers/spheres/iwd_spells/priest_3/B_MOLD.pro~   //projectile
+ADD_PROJECTILE ~faiths_and_powers/spells/iwd_spells/priest_3/B_MOLD.pro~   //projectile
 //probam
 //3d animation
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_3/MTOUCHH.BAM~ ~override~   // bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_3/MTOUCHH.BAM~ ~override~   // bam
 //sounds
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_3/#FF_P107.WAV~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_3/#FF_P107.WAV~ ~override~   //
 //itm
 //itm icons
 //effs
 //Spell itself
-ADD_SPELL ~faiths_and_powers/spheres/iwd_spells/priest_3/b_p326.spl~ 1 3 ~CLERIC_MOLD_TOUCH~ // Spell
+ADD_SPELL ~faiths_and_powers/spells/iwd_spells/priest_3/b_p326.spl~ 1 3 ~CLERIC_MOLD_TOUCH~ // Spell
         SAY NAME1 @32600000
         SAY NAME2 @32600000
         SAY UNIDENTIFIED_DESC @32600001
@@ -2371,12 +2371,12 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
       STR_VAR resource = EVAL ~%spell_res%~
   END      //
 //secondary spells
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_3/SPPR326B.spl~ ~override/%spell_res%B.spl~   // bam  NEEDED?
+COPY ~faiths_and_powers/spells/iwd_spells/priest_3/SPPR326B.spl~ ~override/%spell_res%B.spl~   // bam  NEEDED?
 	WRITE_SHORT 0x098 ~%B_MOLD%~  //Projectile
 //icons
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_3/sppr326a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_3/sppr326b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_3/sppr326c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_3/sppr326a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_3/sppr326b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_3/sppr326c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
 WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
@@ -2396,18 +2396,18 @@ ACTION_IF !(FILE_CONTAINS_EVALUATED(~spell.ids~ ~[ %TAB%]CLERIC_STORM_SHELL[ %TA
 //Projectile
 //probam
 //icons
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_3/sppr327a.bam~ ~override~   //scroll bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_3/sppr327b.bam~ ~override~   //bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_3/sppr327c.bam~ ~override~   //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_3/sppr327a.bam~ ~override~   //scroll bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_3/sppr327b.bam~ ~override~   //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_3/sppr327c.bam~ ~override~   //bam
 //3d animation
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_3/ISTORMA.BAM~ ~override~   // bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_3/ISTORMA.BAM~ ~override~   // bam
 //sounds
 //itm
 //itm icons
 //effs
 //secondary spells
 //Spell itself
-ADD_SPELL ~faiths_and_powers/spheres/iwd_spells/priest_3/b_p327.spl~ 1 3 ~CLERIC_STORM_SHELL~ // Spell
+ADD_SPELL ~faiths_and_powers/spells/iwd_spells/priest_3/b_p327.spl~ 1 3 ~CLERIC_STORM_SHELL~ // Spell
         SAY NAME1 @32700000
         SAY NAME2 @32700000
         SAY UNIDENTIFIED_DESC @32700001
@@ -2418,9 +2418,9 @@ LAF RES_NUM_OF_SPELL_NAME
 END
 
 //icons
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_3/sppr327a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_3/sppr327b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_3/sppr327c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_3/sppr327a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_3/sppr327b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_3/sppr327c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
 WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
@@ -2442,15 +2442,15 @@ ACTION_IF !(FILE_CONTAINS_EVALUATED(~spell.ids~ ~[ %TAB%]CLERIC_CAUSE_MEDIUM_WOU
 //Projectile
 //probam
 //3d animation
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_3/CMDAMAH.BAM~ ~override~   // bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_3/CMDAMAH.BAM~ ~override~   // bam
 //sounds
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_3/#FF_P103.WAV~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_3/#FF_P103.WAV~ ~override~   //
 //itm
 //itm icons
 //effs
 //secondary spells
 //Spell itself
-ADD_SPELL ~faiths_and_powers/spheres/iwd_spells/priest_3/b_p330.spl~ 1 3 ~CLERIC_CAUSE_MEDIUM_WOUNDS~ // Spell
+ADD_SPELL ~faiths_and_powers/spells/iwd_spells/priest_3/b_p330.spl~ 1 3 ~CLERIC_CAUSE_MEDIUM_WOUNDS~ // Spell
         SAY NAME1 @33000000
         SAY NAME2 @33000000
         SAY UNIDENTIFIED_DESC @33000001
@@ -2466,9 +2466,9 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
   END      //
 
 //icons
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_3/sppr330a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_3/sppr330b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_3/sppr330c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_3/sppr330a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_3/sppr330b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_3/sppr330c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
 WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
@@ -2489,22 +2489,22 @@ END
 ACTION_IF !(FILE_CONTAINS_EVALUATED(~spell.ids~ ~[ %TAB%]CLERIC_FAVOR_OF_ILMATER[ %TAB%%LNL%%MNL%%WNL%]~)) BEGIN 
 
 //Projectile
-ADD_PROJECTILE ~faiths_and_powers/spheres/iwd_spells/priest_3/SPARKLPU.pro~   //projectile
+ADD_PROJECTILE ~faiths_and_powers/spells/iwd_spells/priest_3/SPARKLPU.pro~   //projectile
 //probam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_3/TRAVEL.bam~ ~override~   //pro bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_3/STTRAVL5.BMP~ ~override~   //bmp
+COPY ~faiths_and_powers/spells/iwd_spells/priest_3/TRAVEL.bam~ ~override~   //pro bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_3/STTRAVL5.BMP~ ~override~   //bmp
 //3d animation
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_3/CMWOUNH.BAM~ ~override~   // bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_3/CMDAMAH.BAM~ ~override~   // bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_3/CMWOUNH.BAM~ ~override~   // bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_3/CMDAMAH.BAM~ ~override~   // bam
 //sounds
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_3/#EFF_P26.WAV~ ~override~   //
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_3/#FF_P103.WAV~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_3/#EFF_P26.WAV~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_3/#FF_P103.WAV~ ~override~   //
 //itm
 //itm icons
 //effs
 //secondary spells
 //Spell itself
-ADD_SPELL ~faiths_and_powers/spheres/iwd_spells/priest_3/b_p327.spl~ 1 3 ~CLERIC_FAVOR_OF_ILMATER~ // Spell
+ADD_SPELL ~faiths_and_powers/spells/iwd_spells/priest_3/b_p327.spl~ 1 3 ~CLERIC_FAVOR_OF_ILMATER~ // Spell
         SAY NAME1 @33100000
         SAY NAME2 @33100000
         SAY UNIDENTIFIED_DESC @33100001
@@ -2519,9 +2519,9 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
       STR_VAR resource = EVAL ~%spell_res%~
   END      //
 //icons
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_3/sppr331a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_3/sppr331b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_3/sppr331c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_3/sppr331a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_3/sppr331b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_3/sppr331c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
 WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
@@ -2549,90 +2549,90 @@ ACTION_IF !(FILE_CONTAINS_EVALUATED(~spell.ids~ ~[ %TAB%]CLERIC_GIANT_INSECT[ %T
 //Projectile
 //probam
 //3d animation
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/cldamah.BAM~ ~override~   // bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/CURSEH.BAM~ ~override~   // bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/mbbma1.BAM~ ~override~   // bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/mbbma1e.BAM~ ~override~   // bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/mbbma4.BAM~ ~override~   // bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/mbbma4e.BAM~ ~override~   // bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/mbbmca.BAM~ ~override~   // bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/mbbmcae.BAM~ ~override~   // bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/mbbmde.BAM~ ~override~   // bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/mbbmdee.BAM~ ~override~   // bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/mbbmgh.BAM~ ~override~   // bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/mbbmghe.BAM~ ~override~   // bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/mbbmgu.BAM~ ~override~   // bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/mbbmgue.BAM~ ~override~   // bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/mbbmsc.BAM~ ~override~   // bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/mbbmsce.BAM~ ~override~   // bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/mbbmsd.BAM~ ~override~   // bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/mbbmsde.BAM~ ~override~   // bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/mbbmsl.BAM~ ~override~   // bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/mbbmsle.BAM~ ~override~   // bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/mbbmsp.BAM~ ~override~   // bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/mbbmspe.BAM~ ~override~   // bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/mbbmtw.BAM~ ~override~   // bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/mbbmtwe.BAM~ ~override~   // bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/mbbmwk.BAM~ ~override~   // bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/mbbmwke.BAM~ ~override~   // bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/mbeta1.BAM~ ~override~   // bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/mbeta1e.BAM~ ~override~   // bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/mbetca.BAM~ ~override~   // bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/mbetcae.BAM~ ~override~   // bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/mbetde.BAM~ ~override~   // bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/mbetdee.BAM~ ~override~   // bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/mbetgh.BAM~ ~override~   // bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/mbetghe.BAM~ ~override~   // bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/mbetgu.BAM~ ~override~   // bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/mbetgue.BAM~ ~override~   // bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/mbetsc.BAM~ ~override~   // bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/mbetsce.BAM~ ~override~   // bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/mbetsd.BAM~ ~override~   // bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/mbetsde.BAM~ ~override~   // bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/mbetsl.BAM~ ~override~   // bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/mbetsle.BAM~ ~override~   // bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/mbetsp.BAM~ ~override~   // bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/mbetspe.BAM~ ~override~   // bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/mbettw.BAM~ ~override~   // bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/mbettwe.BAM~ ~override~   // bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/mbetwk.BAM~ ~override~   // bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/mbetwke.BAM~ ~override~   // bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/cldamah.BAM~ ~override~   // bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/CURSEH.BAM~ ~override~   // bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/mbbma1.BAM~ ~override~   // bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/mbbma1e.BAM~ ~override~   // bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/mbbma4.BAM~ ~override~   // bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/mbbma4e.BAM~ ~override~   // bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/mbbmca.BAM~ ~override~   // bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/mbbmcae.BAM~ ~override~   // bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/mbbmde.BAM~ ~override~   // bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/mbbmdee.BAM~ ~override~   // bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/mbbmgh.BAM~ ~override~   // bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/mbbmghe.BAM~ ~override~   // bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/mbbmgu.BAM~ ~override~   // bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/mbbmgue.BAM~ ~override~   // bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/mbbmsc.BAM~ ~override~   // bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/mbbmsce.BAM~ ~override~   // bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/mbbmsd.BAM~ ~override~   // bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/mbbmsde.BAM~ ~override~   // bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/mbbmsl.BAM~ ~override~   // bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/mbbmsle.BAM~ ~override~   // bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/mbbmsp.BAM~ ~override~   // bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/mbbmspe.BAM~ ~override~   // bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/mbbmtw.BAM~ ~override~   // bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/mbbmtwe.BAM~ ~override~   // bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/mbbmwk.BAM~ ~override~   // bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/mbbmwke.BAM~ ~override~   // bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/mbeta1.BAM~ ~override~   // bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/mbeta1e.BAM~ ~override~   // bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/mbetca.BAM~ ~override~   // bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/mbetcae.BAM~ ~override~   // bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/mbetde.BAM~ ~override~   // bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/mbetdee.BAM~ ~override~   // bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/mbetgh.BAM~ ~override~   // bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/mbetghe.BAM~ ~override~   // bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/mbetgu.BAM~ ~override~   // bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/mbetgue.BAM~ ~override~   // bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/mbetsc.BAM~ ~override~   // bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/mbetsce.BAM~ ~override~   // bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/mbetsd.BAM~ ~override~   // bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/mbetsde.BAM~ ~override~   // bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/mbetsl.BAM~ ~override~   // bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/mbetsle.BAM~ ~override~   // bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/mbetsp.BAM~ ~override~   // bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/mbetspe.BAM~ ~override~   // bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/mbettw.BAM~ ~override~   // bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/mbettwe.BAM~ ~override~   // bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/mbetwk.BAM~ ~override~   // bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/mbetwke.BAM~ ~override~   // bam
 //sounds
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/#EFF_E04.WAV~ ~override~   //
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/#EFF_P32.WAV~ ~override~   //
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/#EFF_P39.WAV~ ~override~   //
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/bomba01.WAV~ ~override~   //
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/bomba02.WAV~ ~override~   //
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/bomba03a.WAV~ ~override~   //
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/bomba03b.WAV~ ~override~   //
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/bomba03c.WAV~ ~override~   //
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/bomba07.WAV~ ~override~   //
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/bomba08.WAV~ ~override~   //
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/bomba09a.WAV~ ~override~   //
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/bomba09b.WAV~ ~override~   //
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/bomba11.WAV~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/#EFF_E04.WAV~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/#EFF_P32.WAV~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/#EFF_P39.WAV~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/bomba01.WAV~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/bomba02.WAV~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/bomba03a.WAV~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/bomba03b.WAV~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/bomba03c.WAV~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/bomba07.WAV~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/bomba08.WAV~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/bomba09a.WAV~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/bomba09b.WAV~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/bomba11.WAV~ ~override~   //
 //cre
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/b_bebom.cre~ ~override~   //  bomba beetle
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/b_bebom.cre~ ~override~   //  bomba beetle
         SAY NAME1 @41800003
         SAY NAME2 @41800003
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/b_bebor.cre~ ~override~   // boring beetle
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/b_bebor.cre~ ~override~   // boring beetle
         SAY NAME1 @41800004
         SAY NAME2 @41800004
 //2da
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/b_ginsc.2da~ ~override~   //
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/mbbm.2da~ ~override~   //
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/mbet.2da~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/b_ginsc.2da~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/mbbm.2da~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/mbet.2da~ ~override~   //
 //itm
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/fartrng.itm~ ~override~   //
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/s1-12.itm~ ~override~   //
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/s5-20.itm~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/fartrng.itm~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/s1-12.itm~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/s5-20.itm~ ~override~   //
 //itm icons
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/pincers.BAM~ ~override~   // bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/pincers.BAM~ ~override~   // bam
 //effs
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/b_ginsc.eff~ ~override~   // actual summon eff
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/b_ginsc.eff~ ~override~   // actual summon eff
 //secondary spells
 //Spell itself
-ADD_SPELL ~faiths_and_powers/spheres/iwd_spells/priest_4/b_p418.spl~ 1 4 ~CLERIC_GIANT_INSECT~ // Spell
+ADD_SPELL ~faiths_and_powers/spells/iwd_spells/priest_4/b_p418.spl~ 1 4 ~CLERIC_GIANT_INSECT~ // Spell
         SAY NAME1 @41800000
         SAY NAME2 @41800000
         SAY UNIDENTIFIED_DESC @41800001
@@ -2643,9 +2643,9 @@ LAF RES_NUM_OF_SPELL_NAME
   RET spell_res
 END
 //icons
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/sppr418a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/sppr418b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/sppr418c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/sppr418a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/sppr418b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/sppr418c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
 WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
@@ -2664,16 +2664,16 @@ END
 ACTION_IF !(FILE_CONTAINS_EVALUATED(~spell.ids~ ~[ %TAB%]CLERIC_PRODUCE_FIRE[ %TAB%%LNL%%MNL%%WNL%]~)) BEGIN 
 
 //Projectile
-ADD_PROJECTILE ~faiths_and_powers/spheres/iwd_spells/priest_4/b_pfire.pro~   //projectile
+ADD_PROJECTILE ~faiths_and_powers/spells/iwd_spells/priest_4/b_pfire.pro~   //projectile
 //probam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/PFIREA.bam~ ~override~   // bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/PFIREX.bam~ ~override~   // bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/PFIREA.bam~ ~override~   // bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/PFIREX.bam~ ~override~   // bam
 //vvc
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/#PRFIRE.vvc~ ~override~   // bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/#PRFIRE.vvc~ ~override~   // bam
 //3d animation
 //sounds
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/#EFF_P45.WAV~ ~override~   //
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/#ARE_P03.WAV~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/#EFF_P45.WAV~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/#ARE_P03.WAV~ ~override~   //
 //cre
 //2da
 //itm
@@ -2681,7 +2681,7 @@ COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/#ARE_P03.WAV~ ~override~   /
 //effs
 //secondary spells
 //Spell itself
-ADD_SPELL ~faiths_and_powers/spheres/iwd_spells/priest_4/b_p419.spl~ 1 4 ~CLERIC_PRODUCE_FIRE~ // Spell
+ADD_SPELL ~faiths_and_powers/spells/iwd_spells/priest_4/b_p419.spl~ 1 4 ~CLERIC_PRODUCE_FIRE~ // Spell
         SAY NAME1 @41900000
         SAY NAME2 @41900000
         SAY UNIDENTIFIED_DESC @41900001
@@ -2724,9 +2724,9 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
       STR_VAR resource = EVAL ~%spell_res%~
   END      //
 //icons
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/sppr419a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/sppr419b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/sppr419c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/sppr419a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/sppr419b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/sppr419c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
@@ -2770,14 +2770,14 @@ ACTION_IF !(FILE_CONTAINS_EVALUATED(~spell.ids~ ~[ %TAB%]CLERIC_STATIC_CHARGE[ %
 
 //Projectile
 //secondary projectile
-ADD_PROJECTILE ~faiths_and_powers/spheres/iwd_spells/priest_4/IDSTATIC.pro~   //projectile
+ADD_PROJECTILE ~faiths_and_powers/spells/iwd_spells/priest_4/IDSTATIC.pro~   //projectile
 //probam
 //vvc
 //icons
 //3d animation
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/SCHARGH.BAM~ ~override~   //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/SCHARGH.BAM~ ~override~   //bam
 //sounds
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/EFF_P42.WAV~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/EFF_P42.WAV~ ~override~   //
 //cre
 //2da
 //itm
@@ -2785,7 +2785,7 @@ COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/EFF_P42.WAV~ ~override~   //
 //effs
 
 //Spell itself
-ADD_SPELL ~faiths_and_powers/spheres/iwd_spells/priest_4/b_p420.spl~ 1 4 ~CLERIC_STATIC_CHARGE~ // Spell
+ADD_SPELL ~faiths_and_powers/spells/iwd_spells/priest_4/b_p420.spl~ 1 4 ~CLERIC_STATIC_CHARGE~ // Spell
         SAY NAME1 @42000000
         SAY NAME2 @42000000
         SAY UNIDENTIFIED_DESC @42000001
@@ -2809,7 +2809,7 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
   END      //
 
 //secondary spell
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/sppr420b.spl~ ~override/%spell_res%B.spl~   //sec spell
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/sppr420b.spl~ ~override/%spell_res%B.spl~   //sec spell
   LPF ALTER_EFFECT
       INT_VAR match_opcode = 139            //
       parameter1 = 13107
@@ -2818,7 +2818,7 @@ COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/sppr420b.spl~ ~override/%spe
       INT_VAR match_opcode = 324            //
       STR_VAR resource = EVAL ~%spell_res%b~
   END      //
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/b_p420a.eff~ ~override~   //text notification
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/b_p420a.eff~ ~override~   //text notification
   SAY 0x1c @42000004    //Notification
 
 /* this was insane!
@@ -2831,9 +2831,9 @@ COPY_EXISTING ~%spell_res%B.spl~ ~override~
 	WRITE_SHORT 0x098 ~%IDSTATIC%~  //Projectile
 
 //icons
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/sppr420a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/sppr420b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/sppr420c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/sppr420a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/sppr420b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/sppr420c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
@@ -2875,29 +2875,29 @@ END
 ACTION_IF !(FILE_CONTAINS_EVALUATED(~spell.ids~ ~[ %TAB%]CLERIC_RECITATION[ %TAB%%LNL%%MNL%%WNL%]~)) BEGIN 
 
 //Projectile
-ADD_PROJECTILE ~faiths_and_powers/spheres/iwd_spells/priest_4/b_p421a.pro~   //projectile
-ADD_PROJECTILE ~faiths_and_powers/spheres/iwd_spells/priest_4/b_p421b.pro~   //projectile
+ADD_PROJECTILE ~faiths_and_powers/spells/iwd_spells/priest_4/b_p421a.pro~   //projectile
+ADD_PROJECTILE ~faiths_and_powers/spells/iwd_spells/priest_4/b_p421b.pro~   //projectile
 //probam
 //vvc
 //3d animation
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/RECITAH.BAM~ ~override~   //bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/B_RECR.bam~ ~override~   //bam (missing, so created)
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/RECITAH.BAM~ ~override~   //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/B_RECR.bam~ ~override~   //bam (missing, so created)
 //sounds
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/#EFF_P44.WAV~ ~override~   //Wav
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/EFF_E03.WAV~ ~override~   //Wav
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/#EFF_P44.WAV~ ~override~   //Wav
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/EFF_E03.WAV~ ~override~   //Wav
 //cre
 //2da
 //itm
 //itm icons
 //effs
 //secondary spell
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/#RECITEG.spl~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/#RECITEG.spl~ ~override~   //
 	WRITE_SHORT 0x098 ~%b_p421a%~  //Projectile
   LPF ALTER_EFFECT
       INT_VAR match_opcode = 139            //
       parameter1 = 13086      //combat bonuses
   END      //
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/#RECITEB.spl~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/#RECITEB.spl~ ~override~   //
 	WRITE_SHORT 0x098 ~%b_p421b%~  //Projectile
   LPF ALTER_EFFECT
       INT_VAR match_opcode = 139            //
@@ -2909,7 +2909,7 @@ COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/#RECITEB.spl~ ~override~   /
   END      //
 
 //Spell itself
-ADD_SPELL ~faiths_and_powers/spheres/iwd_spells/priest_4/b_p421.spl~ 1 4 ~CLERIC_RECITATION~ // Spell
+ADD_SPELL ~faiths_and_powers/spells/iwd_spells/priest_4/b_p421.spl~ 1 4 ~CLERIC_RECITATION~ // Spell
         SAY NAME1 @42100000
         SAY NAME2 @42100000
         SAY UNIDENTIFIED_DESC @42100001
@@ -2919,9 +2919,9 @@ LAF RES_NUM_OF_SPELL_NAME
   RET spell_res
 END
 //icons
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/sppr421a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/sppr421b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/sppr421c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/sppr421a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/sppr421b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/sppr421c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
@@ -2952,11 +2952,11 @@ ACTION_IF !(FILE_CONTAINS_EVALUATED(~spell.ids~ ~[ %TAB%]CLERIC_BLOOD_RAGE[ %TAB
 //secondary spell
 //Spell itself
 ACTION_IF GAME_IS ~bgee~ THEN BEGIN   //ACTION_IF GAME_IS ~bgee~ THEN BEGIN 
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/bgee/b_p422.spl~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/bgee/b_p422.spl~ ~override~   //
 END
 //
 ACTION_IF GAME_IS ~bg2ee eet~ THEN BEGIN   //BGEE VERSION
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/bg2ee/b_p422.spl~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/bg2ee/b_p422.spl~ ~override~   //
 END
 //RIGHT NOW DOES NOT DISPLAY THE BLOOD RAGE SPECIAL EFFECT.  USED BESERK INSTEAD
 //NOT SURE ABOUT "STATE 35"...Not sure if AI CAN OR CANNOT HANDLE THIS SPELL.  DLTCEP SAYS THAT IT SHOULD BE 4 SO, COnfused
@@ -2976,13 +2976,13 @@ END
 ACTION_IF !(FILE_CONTAINS_EVALUATED(~spell.ids~ ~[ %TAB%]CLERIC_CLOUD_OF_PESTILENCE[ %TAB%%LNL%%MNL%%WNL%]~)) BEGIN 
 
 //Projectile
-ADD_PROJECTILE ~faiths_and_powers/spheres/iwd_spells/priest_4/b_pest.pro~   //projectile
+ADD_PROJECTILE ~faiths_and_powers/spells/iwd_spells/priest_4/b_pest.pro~   //projectile
 //probam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/copesta.BAM~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/copesta.BAM~ ~override~   //
 //vvc
 //3d animation
 //sounds
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/ARE_P25.WAV~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/ARE_P25.WAV~ ~override~   //
 //cre
 //2da
 //itm
@@ -2991,7 +2991,7 @@ COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/ARE_P25.WAV~ ~override~   //
 //secondary spell
 //Spell itself
 ACTION_IF GAME_IS ~bgee~ THEN BEGIN   //  ACTION_IF GAME_IS ~bgee~ THEN BEGIN 
-ADD_SPELL ~faiths_and_powers/spheres/iwd_spells/priest_4/bgee/b_p423.spl~ 1 4 ~CLERIC_CLOUD_OF_PESTILENCE~ // Spell
+ADD_SPELL ~faiths_and_powers/spells/iwd_spells/priest_4/bgee/b_p423.spl~ 1 4 ~CLERIC_CLOUD_OF_PESTILENCE~ // Spell
         SAY NAME1 @42300000
         SAY NAME2 @42300000
         SAY UNIDENTIFIED_DESC @42300001
@@ -2999,7 +2999,7 @@ ADD_SPELL ~faiths_and_powers/spheres/iwd_spells/priest_4/bgee/b_p423.spl~ 1 4 ~C
 	WRITE_SHORT 0x098 ~%b_pest%~  //Projectile
 END
 ACTION_IF GAME_IS ~bg2ee eet~ THEN BEGIN   //
-ADD_SPELL ~faiths_and_powers/spheres/iwd_spells/priest_4/bg2ee/b_p423.spl~ 1 4 ~CLERIC_CLOUD_OF_PESTILENCE~ // Spell
+ADD_SPELL ~faiths_and_powers/spells/iwd_spells/priest_4/bg2ee/b_p423.spl~ 1 4 ~CLERIC_CLOUD_OF_PESTILENCE~ // Spell
         SAY NAME1 @42300000
         SAY NAME2 @42300000
         SAY UNIDENTIFIED_DESC @42300001
@@ -3021,9 +3021,9 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
       STR_VAR resource = EVAL ~%spell_res%~
   END      //
 //icons
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/sppr423a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/sppr423b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/sppr423c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/sppr423a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/sppr423b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/sppr423c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
@@ -3046,9 +3046,9 @@ ACTION_IF !(FILE_CONTAINS_EVALUATED(~spell.ids~ ~[ %TAB%]CLERIC_UNFAILING_ENDURA
 //probam
 //vvc
 //3d animation
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/NECROH.BAM~ ~override~   //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/NECROH.BAM~ ~override~   //bam
 //sounds
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/#FF_P112.WAV~ ~override~   //Wav
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/#FF_P112.WAV~ ~override~   //Wav
 //cre
 //2da
 //itm
@@ -3056,7 +3056,7 @@ COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/#FF_P112.WAV~ ~override~   /
 //effs
 //secondary spell
 //Spell itself
-ADD_SPELL ~faiths_and_powers/spheres/iwd_spells/priest_4/b_p424.spl~ 1 4 ~CLERIC_UNFAILING_ENDURANCE~ // Spell
+ADD_SPELL ~faiths_and_powers/spells/iwd_spells/priest_4/b_p424.spl~ 1 4 ~CLERIC_UNFAILING_ENDURANCE~ // Spell
         SAY NAME1 @42400000
         SAY NAME2 @42400000
         SAY UNIDENTIFIED_DESC @42400001
@@ -3066,9 +3066,9 @@ LAF RES_NUM_OF_SPELL_NAME
   RET spell_res
 END
 //icons
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/sppr424a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/sppr424b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/sppr424c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/sppr424a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/sppr424b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/sppr424c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
@@ -3089,22 +3089,22 @@ ACTION_IF !(FILE_CONTAINS_EVALUATED(~spell.ids~ ~[ %TAB%]CLERIC_STAR_METAL_CUDGE
 //probam
 //vvc
 //3d animation
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/ISMCUDGE.bam~ ~override~   //bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/CONJUH.bam~ ~override~   //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/ISMCUDGE.bam~ ~override~   //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/CONJUH.bam~ ~override~   //bam
 //sounds
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/#EFF_P02.WAV~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/#EFF_P02.WAV~ ~override~   //
 //cre
 //2da
 //itm
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/SMCUDGE.itm~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/SMCUDGE.itm~ ~override~   //
         SAY NAME1 @42500000
         SAY NAME2 @42500000
 //itm icons
 //effs
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/SMCUDGE.eff~ ~override~   //eff
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/SMCUDGE.eff~ ~override~   //eff
 //secondary spell
 //Spell itself
-ADD_SPELL ~faiths_and_powers/spheres/iwd_spells/priest_4/b_p425.spl~ 1 4 ~CLERIC_STAR_METAL_CUDGEL~ // Spell
+ADD_SPELL ~faiths_and_powers/spells/iwd_spells/priest_4/b_p425.spl~ 1 4 ~CLERIC_STAR_METAL_CUDGEL~ // Spell
         SAY NAME1 @42500000
         SAY NAME2 @42500000
         SAY UNIDENTIFIED_DESC @42500001
@@ -3114,9 +3114,9 @@ LAF RES_NUM_OF_SPELL_NAME
   RET spell_res
 END
 //icons
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/sppr425a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/sppr425b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/sppr425c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/sppr425a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/sppr425b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/sppr425c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
@@ -3134,15 +3134,15 @@ END
 ACTION_IF !(FILE_CONTAINS_EVALUATED(~spell.ids~ ~[ %TAB%]CLERIC_SMASHING_WAVE[ %TAB%%LNL%%MNL%%WNL%]~)) BEGIN 
 
 //Projectile
-ADD_PROJECTILE ~faiths_and_powers/spheres/iwd_spells/priest_4/B_SWAVE.pro~   //projectile
+ADD_PROJECTILE ~faiths_and_powers/spells/iwd_spells/priest_4/B_SWAVE.pro~   //projectile
 //probam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/SWAVEX.bam~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/SWAVEX.bam~ ~override~   //
 //vvc
 //3d animation
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/SWAVEX.bam~ ~override~   //
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/SWAVEH.BAM~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/SWAVEX.bam~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/SWAVEH.BAM~ ~override~   //
 //sounds
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/#FF_P110.WAV~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/#FF_P110.WAV~ ~override~   //
 //cre
 //2da
 //itm
@@ -3150,7 +3150,7 @@ COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/#FF_P110.WAV~ ~override~   /
 //effs  missing stun display (check for immunities...)
 //secondary spell
 //Spell itself
-ADD_SPELL ~faiths_and_powers/spheres/iwd_spells/priest_4/b_p426.spl~ 1 4 ~CLERIC_SMASHING_WAVE~ // Spell
+ADD_SPELL ~faiths_and_powers/spells/iwd_spells/priest_4/b_p426.spl~ 1 4 ~CLERIC_SMASHING_WAVE~ // Spell
         SAY NAME1 @42600000
         SAY NAME2 @42600000
         SAY UNIDENTIFIED_DESC @42600001
@@ -3187,9 +3187,9 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
   END      //
 END      //
 //icons
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/sppr426a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/sppr426b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/sppr426c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/sppr426a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/sppr426b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/sppr426c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
@@ -3209,13 +3209,13 @@ END
 ACTION_IF !(FILE_CONTAINS_EVALUATED(~spell.ids~ ~[ %TAB%]CLERIC_THORN_SPRAY[ %TAB%%LNL%%MNL%%WNL%]~)) BEGIN 
 
 //Projectile
-ADD_PROJECTILE ~faiths_and_powers/spheres/iwd_spells/priest_4/b_thorn.pro~   //projectile
+ADD_PROJECTILE ~faiths_and_powers/spells/iwd_spells/priest_4/b_thorn.pro~   //projectile
 //probam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/TSPRAYT.bam~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/TSPRAYT.bam~ ~override~   //
 //vvc
 //3d animation
 //sounds
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/#TRA_61.WAV~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/#TRA_61.WAV~ ~override~   //
 //cre
 //2da
 //itm
@@ -3223,7 +3223,7 @@ COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/#TRA_61.WAV~ ~override~   //
 //effs
 //secondary spell
 //Spell itself
-ADD_SPELL ~faiths_and_powers/spheres/iwd_spells/priest_4/b_p427.spl~ 1 4 ~CLERIC_THORN_SPRAY~ // Spell
+ADD_SPELL ~faiths_and_powers/spells/iwd_spells/priest_4/b_p427.spl~ 1 4 ~CLERIC_THORN_SPRAY~ // Spell
         SAY NAME1 @42700000
         SAY NAME2 @42700000
         SAY UNIDENTIFIED_DESC @42700001
@@ -3239,9 +3239,9 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
       STR_VAR resource = EVAL ~%spell_res%~
   END      //
 //icons
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/sppr427a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/sppr427b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/sppr427c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/sppr427a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/sppr427b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/sppr427c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
@@ -3261,22 +3261,22 @@ END
 ACTION_IF !(FILE_CONTAINS_EVALUATED(~spell.ids~ ~[ %TAB%]CLERIC_WALL_OF_MOONLIGHT[ %TAB%%LNL%%MNL%%WNL%]~)) BEGIN 
 
 //Projectile
-ADD_PROJECTILE ~faiths_and_powers/spheres/iwd_spells/priest_4/WOMOON.pro~   //projectile
+ADD_PROJECTILE ~faiths_and_powers/spells/iwd_spells/priest_4/WOMOON.pro~   //projectile
 //probam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/WOMOONX.bam~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/WOMOONX.bam~ ~override~   //
 //vvc
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/WOMOONX.vvc~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/WOMOONX.vvc~ ~override~   //
 //3d animation
 //sounds
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/ARE_P22.WAV~ ~override~   //
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/AFT_P21.WAV~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/ARE_P22.WAV~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/AFT_P21.WAV~ ~override~   //
 //cre
 //2da
 //itm
 //itm icons
 //effs
 //Spell itself
-ADD_SPELL ~faiths_and_powers/spheres/iwd_spells/priest_4/B_P428.spl~ 1 4 ~CLERIC_WALL_OF_MOONLIGHT~ // Spell
+ADD_SPELL ~faiths_and_powers/spells/iwd_spells/priest_4/B_P428.spl~ 1 4 ~CLERIC_WALL_OF_MOONLIGHT~ // Spell
         SAY NAME1 @42800000
         SAY NAME2 @42800000
         SAY UNIDENTIFIED_DESC @42800001
@@ -3297,12 +3297,12 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
   END      //
   LPF CLONE_EFFECT INT_VAR match_opcode = 326 parameter2 = 1 STR_VAR resource = EVAL ~%spell_res%B~ END
 //Secondary Spells
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/SPPR428A.spl~ ~override/%spell_res%A.spl~   //
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/SPPR428B.spl~ ~override/%spell_res%B.spl~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/SPPR428A.spl~ ~override/%spell_res%A.spl~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/SPPR428B.spl~ ~override/%spell_res%B.spl~   //
 //icons
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/sppr428a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/sppr428b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/sppr428c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/sppr428a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/sppr428b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/sppr428c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
@@ -3329,27 +3329,27 @@ END
 ACTION_IF !(FILE_CONTAINS_EVALUATED(~spell.ids~ ~[ %TAB%]CLERIC_RIGHTEOUS_WRATH_OF_THE_FAITHFUL[ %TAB%%LNL%%MNL%%WNL%]~)) BEGIN 
 
 //Projectile
-ADD_PROJECTILE ~faiths_and_powers/spheres/iwd_spells/priest_5/b_wrath.pro~   //projectile
+ADD_PROJECTILE ~faiths_and_powers/spells/iwd_spells/priest_5/b_wrath.pro~   //projectile
 //probam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_5/ABJURAX.bam~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_5/ABJURAX.bam~ ~override~   //
 //vvc
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_5/#GENABJU.vvc~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_5/#GENABJU.vvc~ ~override~   //
 //icons
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_5/sppr518a.bam~ ~override~   //scroll bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_5/sppr518b.bam~ ~override~   //bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_5/sppr518c.bam~ ~override~   //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_5/sppr518a.bam~ ~override~   //scroll bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_5/sppr518b.bam~ ~override~   //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_5/sppr518c.bam~ ~override~   //bam
 //3d animation
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_5/RWOTFAH.BAM~ ~override~   //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_5/RWOTFAH.BAM~ ~override~   //bam
 //sounds
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_5/#EFF_P36.WAV~ ~override~   //
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_5/#EFF_E01.WAV~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_5/#EFF_P36.WAV~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_5/#EFF_E01.WAV~ ~override~   //
 //cre
 //2da
 //itm
 //itm icons
 //effs
 //Spell itself
-ADD_SPELL ~faiths_and_powers/spheres/iwd_spells/priest_5/B_P518.spl~ 1 5 ~CLERIC_RIGHTEOUS_WRATH_OF_THE_FAITHFUL~ // Spell
+ADD_SPELL ~faiths_and_powers/spells/iwd_spells/priest_5/B_P518.spl~ 1 5 ~CLERIC_RIGHTEOUS_WRATH_OF_THE_FAITHFUL~ // Spell
         SAY NAME1 @51800000
         SAY NAME2 @51800000
         SAY UNIDENTIFIED_DESC @51800001
@@ -3370,20 +3370,20 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
   END      //
 //secondary spells
 ACTION_IF GAME_IS ~bgee~ THEN BEGIN   // ACTION_IF GAME_IS ~bgee~ THEN BEGIN 
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_5/bgee/SPPR518A.spl~ ~override/%spell_res%A.spl~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_5/bgee/SPPR518A.spl~ ~override/%spell_res%A.spl~   //
 END
 ACTION_IF GAME_IS ~bg2ee eet~ THEN BEGIN   //
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_5/bg2ee/SPPR518A.spl~ ~override/%spell_res%A.spl~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_5/bg2ee/SPPR518A.spl~ ~override/%spell_res%A.spl~   //
 END
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_5/SPPR518B.spl~ ~override/%spell_res%B.spl~   // CHECK STRINGS, SOUND EFFECTS AND ANIMATIONS
+COPY ~faiths_and_powers/spells/iwd_spells/priest_5/SPPR518B.spl~ ~override/%spell_res%B.spl~   // CHECK STRINGS, SOUND EFFECTS AND ANIMATIONS
   LPF ALTER_EFFECT
       INT_VAR match_opcode = 321            //
       STR_VAR resource = EVAL ~%spell_res%B~
   END      //
 //icons
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_5/sppr518a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_5/sppr518b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_5/sppr518c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_5/sppr518a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_5/sppr518b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_5/sppr518c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
@@ -3401,15 +3401,15 @@ END
 ACTION_IF !(FILE_CONTAINS_EVALUATED(~spell.ids~ ~[ %TAB%]CLERIC_SPIKE_STONES[ %TAB%%LNL%%MNL%%WNL%]~)) BEGIN 
 
 //Projectile
-ADD_PROJECTILE ~faiths_and_powers/spheres/iwd_spells/priest_5/b_spkst.pro~   //projectile
+ADD_PROJECTILE ~faiths_and_powers/spells/iwd_spells/priest_5/b_spkst.pro~   //projectile
 //probam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_5/SSTONEA.BAM~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_5/SSTONEA.BAM~ ~override~   //
 //vvc
 //3d animation
 //sounds
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_5/ARE_P04.WAV~ ~override~   //
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_5/EFF_P48.WAV~ ~override~   //
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_5/#CRE_P03.WAV~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_5/ARE_P04.WAV~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_5/EFF_P48.WAV~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_5/#CRE_P03.WAV~ ~override~   //
 //cre
 //2da
 //itm
@@ -3417,7 +3417,7 @@ COPY ~faiths_and_powers/spheres/iwd_spells/priest_5/#CRE_P03.WAV~ ~override~   /
 //effs
 //secondary spell
 //Spell itself
-ADD_SPELL ~faiths_and_powers/spheres/iwd_spells/priest_5/B_P519.spl~ 1 5 ~CLERIC_SPIKE_STONES~ // Spell
+ADD_SPELL ~faiths_and_powers/spells/iwd_spells/priest_5/B_P519.spl~ 1 5 ~CLERIC_SPIKE_STONES~ // Spell
         SAY NAME1 @51900000
         SAY NAME2 @51900000
         SAY UNIDENTIFIED_DESC @51900001
@@ -3433,9 +3433,9 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
       STR_VAR resource = EVAL ~%spell_res%~
   END      //
 //icons
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_5/sppr519a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_5/sppr519b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_5/sppr519c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_5/sppr519a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_5/sppr519b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_5/sppr519c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
@@ -3458,7 +3458,7 @@ ACTION_IF !(FILE_CONTAINS_EVALUATED(~spell.ids~ ~[ %TAB%]CLERIC_SHIELD_OF_LATHAN
 //probam
 //vvc
 //3d animation
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_5/SPSTRENH.bam~ ~override~   //bams  missing! using 'boon of lath' instead (already included)
+COPY ~faiths_and_powers/spells/iwd_spells/priest_5/SPSTRENH.bam~ ~override~   //bams  missing! using 'boon of lath' instead (already included)
 //sounds
 //cre
 //2da
@@ -3467,7 +3467,7 @@ COPY ~faiths_and_powers/spheres/iwd_spells/priest_5/SPSTRENH.bam~ ~override~   /
 //effs
 //secondary spell
 //Spell itself
-ADD_SPELL ~faiths_and_powers/spheres/iwd_spells/priest_5/B_P520.spl~ 1 5 ~CLERIC_SHIELD_OF_LATHANDER~ // Spell
+ADD_SPELL ~faiths_and_powers/spells/iwd_spells/priest_5/B_P520.spl~ 1 5 ~CLERIC_SHIELD_OF_LATHANDER~ // Spell
         SAY NAME1 @52000000
         SAY NAME2 @52000000
         SAY UNIDENTIFIED_DESC @52000001
@@ -3482,9 +3482,9 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
       STR_VAR resource = EVAL ~%spell_res%~
   END      //
 //icons
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_5/sppr520a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_5/sppr520b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_5/sppr520c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_5/sppr520a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_5/sppr520b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_5/sppr520c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
@@ -3502,15 +3502,15 @@ END
 ACTION_IF !(FILE_CONTAINS_EVALUATED(~spell.ids~ ~[ %TAB%]CLERIC_UNDEAD_WARD[ %TAB%%LNL%%MNL%%WNL%]~)) BEGIN 
 
 //Projectile
-ADD_PROJECTILE ~faiths_and_powers/spheres/iwd_spells/priest_5/UWARD.pro~   //projectile
+ADD_PROJECTILE ~faiths_and_powers/spells/iwd_spells/priest_5/UWARD.pro~   //projectile
 //probam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_5/UWARDX.BAM~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_5/UWARDX.BAM~ ~override~   //
 //vvc
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_5/UWARDX.vvc~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_5/UWARDX.vvc~ ~override~   //
 //3d animation
 //sounds
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_5/#ARE_P28.WAV~ ~override~   //
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_5/#AFT_P27.WAV~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_5/#ARE_P28.WAV~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_5/#AFT_P27.WAV~ ~override~   //
 //cre
 //2da
 //itm
@@ -3518,7 +3518,7 @@ COPY ~faiths_and_powers/spheres/iwd_spells/priest_5/#AFT_P27.WAV~ ~override~   /
 //effs
 //secondary spell
 //Spell itself
-ADD_SPELL ~faiths_and_powers/spheres/iwd_spells/priest_5/B_P521.spl~ 1 5 ~CLERIC_UNDEAD_WARD~ // Spell
+ADD_SPELL ~faiths_and_powers/spells/iwd_spells/priest_5/B_P521.spl~ 1 5 ~CLERIC_UNDEAD_WARD~ // Spell
         SAY NAME1 @52100000
         SAY NAME2 @52100000
         SAY UNIDENTIFIED_DESC @52100001
@@ -3534,9 +3534,9 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
       STR_VAR resource = EVAL ~%spell_res%~
   END      //
 //icons
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_5/sppr521a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_5/sppr521b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_5/sppr521c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_5/sppr521a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_5/sppr521b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_5/sppr521c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
@@ -3558,15 +3558,15 @@ ACTION_IF !(FILE_CONTAINS_EVALUATED(~spell.ids~ ~[ %TAB%]CLERIC_ANIMAL_RAGE[ %TA
 //vvc
 //3d animation
 //sounds
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_5/#ARE_P28.WAV~ ~override~   //
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_5/#AFT_P27.WAV~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_5/#ARE_P28.WAV~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_5/#AFT_P27.WAV~ ~override~   //
 //cre
 //2da
 //itm
 //itm icons
 //effs
 //Spell itself
-ADD_SPELL ~faiths_and_powers/spheres/iwd_spells/priest_5/b_p522.spl~ 1 5 ~CLERIC_ANIMAL_RAGE~ // Spell
+ADD_SPELL ~faiths_and_powers/spells/iwd_spells/priest_5/b_p522.spl~ 1 5 ~CLERIC_ANIMAL_RAGE~ // Spell
         SAY NAME1 @52200000
         SAY NAME2 @52200000
         SAY UNIDENTIFIED_DESC @52200001
@@ -3581,12 +3581,12 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
       STR_VAR resource = EVAL ~%spell_res%~
   END      //
 //secondary spell
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_5/SPPR522B.spl~ ~override/%spell_res%b.spl~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_5/SPPR522B.spl~ ~override/%spell_res%b.spl~   //
 
 //icons
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_5/sppr522a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_5/sppr522b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_5/sppr522c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_5/sppr522a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_5/sppr522b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_5/sppr522c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
@@ -3604,20 +3604,20 @@ END
 ACTION_IF !(FILE_CONTAINS_EVALUATED (~spell.ids~ ~[ %TAB%]CLERIC_MASS_CAUSE_LIGHT_WOUNDS[ %TAB%%LNL%%MNL%%WNL%]~)) BEGIN 
 
 //Projectile
-ADD_PROJECTILE ~faiths_and_powers/spheres/iwd_spells/priest_5/SPARRENP.pro~   //projectile
+ADD_PROJECTILE ~faiths_and_powers/spells/iwd_spells/priest_5/SPARRENP.pro~   //projectile
 //probam
 //vvc
 //bmp
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_5/STTRAVL6.BMP~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_5/STTRAVL6.BMP~ ~override~   //
 //icons
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_5/sppr523a.bam~ ~override~   //scroll bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_5/sppr523b.bam~ ~override~   //bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_5/sppr523c.bam~ ~override~   //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_5/sppr523a.bam~ ~override~   //scroll bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_5/sppr523b.bam~ ~override~   //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_5/sppr523c.bam~ ~override~   //bam
 //3d animation
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_5/TRAVEL.bam~ ~override~   //bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_5/CLDAMAH.bam~ ~override~   //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_5/TRAVEL.bam~ ~override~   //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_5/CLDAMAH.bam~ ~override~   //bam
 //sounds
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_5/#FF_P103.WAV~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_5/#FF_P103.WAV~ ~override~   //
 //cre
 //2da
 //itm
@@ -3625,7 +3625,7 @@ COPY ~faiths_and_powers/spheres/iwd_spells/priest_5/#FF_P103.WAV~ ~override~   /
 //effs
 //secondary spell
 //Spell itself
-ADD_SPELL ~faiths_and_powers/spheres/iwd_spells/priest_5/b_p523.spl~ 1 5 ~CLERIC_MASS_CAUSE_LIGHT_WOUNDS~ // Spell
+ADD_SPELL ~faiths_and_powers/spells/iwd_spells/priest_5/b_p523.spl~ 1 5 ~CLERIC_MASS_CAUSE_LIGHT_WOUNDS~ // Spell
         SAY NAME1 @52300000
         SAY NAME2 @52300000
         SAY UNIDENTIFIED_DESC @52300001
@@ -3641,9 +3641,9 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
       STR_VAR resource = EVAL ~%spell_res%~
   END      //
 //icons
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_5/sppr523a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_5/sppr523b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_5/sppr523c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_5/sppr523a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_5/sppr523b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_5/sppr523c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
@@ -3704,8 +3704,8 @@ ACTION_IF !(FILE_CONTAINS_EVALUATED(~spell.ids~ ~[ %TAB%]CLERIC_ENTROPY_SHIELD[ 
 //vvc
 //bmp
 //3d animation
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_6/ABJURH.bam~ ~override~   //bam
-//COPY ~faiths_and_powers/spheres/iwd_spells/priest_6/#ENTROPY.bam~ ~override~   //bam  Missing #ENTROPY.bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_6/ABJURH.bam~ ~override~   //bam
+//COPY ~faiths_and_powers/spells/iwd_spells/priest_6/#ENTROPY.bam~ ~override~   //bam  Missing #ENTROPY.bam
 //sounds
 //cre
 //2da
@@ -3722,7 +3722,7 @@ ACTION_IF (FILE_CONTAINS_EVALUATED(~spell.ids~ ~[ %TAB%]CLERIC_SUNSCORCH[ %TAB%%
   STR_VAR spell_name = ~CLERIC_SUNSCORCH~
   RET spell_res
  END
- COPY ~faiths_and_powers/spheres/iwd_spells/priest_6/b_p615.spl~ ~override~   //Immunity to sunscorch
+ COPY ~faiths_and_powers/spells/iwd_spells/priest_6/b_p615.spl~ ~override~   //Immunity to sunscorch
   LPF CLONE_EFFECT INT_VAR match_opcode = 325 opcode = 318 parameter1 = 0 parameter2 = 0 STR_VAR resource = EVAL ~%spell_res%~ END
 END
 
@@ -3747,7 +3747,7 @@ ACTION_IF (FILE_CONTAINS_EVALUATED(~spell.ids~ ~[ %TAB%]WIZARD_ICELANCE[ %TAB%%L
   STR_VAR spell_name = ~WIZARD_ICELANCE~
   RET spell_res
  END
- COPY ~faiths_and_powers/spheres/iwd_spells/priest_6/b_p615.spl~ ~override~   //
+ COPY ~faiths_and_powers/spells/iwd_spells/priest_6/b_p615.spl~ ~override~   //
   LPF CLONE_EFFECT INT_VAR match_opcode = 325 opcode = 318 parameter1 = 0 parameter2 = 0 STR_VAR resource = EVAL ~%spell_res%~ END //icelance
 END
 
@@ -3756,7 +3756,7 @@ ACTION_IF (FILE_CONTAINS_EVALUATED(~spell.ids~ ~[ %TAB%]CLERIC_SUNSCORCH[ %TAB%%
   STR_VAR spell_name = ~CLERIC_SUNSCORCH~
   RET spell_res
  END
- COPY ~faiths_and_powers/spheres/iwd_spells/priest_6/b_p615.spl~ ~override~   //
+ COPY ~faiths_and_powers/spells/iwd_spells/priest_6/b_p615.spl~ ~override~   //
   LPF CLONE_EFFECT INT_VAR match_opcode = 325 opcode = 318 parameter1 = 0 parameter2 = 0 STR_VAR resource = EVAL ~%spell_res%~ END
 END
 
@@ -3780,9 +3780,9 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
 // now sol's searing orb projectile immunity
   LPF CLONE_EFFECT INT_VAR match_opcode = 0 opcode = 83 parameter1 = 0 parameter2 = 257 END
 //icons
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_6/sppr615a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_6/sppr615b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_6/sppr615c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_6/sppr615a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_6/sppr615b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_6/sppr615c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
@@ -3819,14 +3819,14 @@ END
 ACTION_IF !(FILE_CONTAINS_EVALUATED(~spell.ids~ ~[ %TAB%]CLERIC_WHIRLWIND[ %TAB%%LNL%%MNL%%WNL%]~)) BEGIN 
 
 //Projectile
-ADD_PROJECTILE ~faiths_and_powers/spheres/iwd_spells/priest_6/WHIRLW.pro~   //projectile
+ADD_PROJECTILE ~faiths_and_powers/spells/iwd_spells/priest_6/WHIRLW.pro~   //projectile
 //probam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_6/WHIRLWX.bam~ ~override~   //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_6/WHIRLWX.bam~ ~override~   //bam
 //vvc
 //bmp
 //3d animation
 //sounds
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_6/EFF_P105.WAV~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_6/EFF_P105.WAV~ ~override~   //
 //cre
 //2da
 //itm
@@ -3834,7 +3834,7 @@ COPY ~faiths_and_powers/spheres/iwd_spells/priest_6/EFF_P105.WAV~ ~override~   /
 //effs
 //secondary spell
 //Spell itself
-ADD_SPELL ~faiths_and_powers/spheres/iwd_spells/priest_6/b_p617.spl~ 1 6 ~CLERIC_WHIRLWIND~ // Spell
+ADD_SPELL ~faiths_and_powers/spells/iwd_spells/priest_6/b_p617.spl~ 1 6 ~CLERIC_WHIRLWIND~ // Spell
         SAY NAME1 @61700000
         SAY NAME2 @61700000
         SAY UNIDENTIFIED_DESC @61700001
@@ -3872,9 +3872,9 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
   END      //
 END
 //icons
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_6/sppr617a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_6/sppr617b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_6/sppr617c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_6/sppr617a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_6/sppr617b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_6/sppr617c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
@@ -3894,19 +3894,19 @@ END
 ACTION_IF !(FILE_CONTAINS_EVALUATED(~spell.ids~ ~[ %TAB%]CLERIC_SPIRITUAL_WRATH[ %TAB%%LNL%%MNL%%WNL%]~)) BEGIN 
 
 //Projectile
-ADD_PROJECTILE ~faiths_and_powers/spheres/iwd_spells/priest_6/IDPRO312.pro~   //projectile
+ADD_PROJECTILE ~faiths_and_powers/spells/iwd_spells/priest_6/IDPRO312.pro~   //projectile
 //sec pro
-//ADD_PROJECTILE ~faiths_and_powers/spheres/iwd_spells/priest_6/IDPRO207.pro~   //projectile
+//ADD_PROJECTILE ~faiths_and_powers/spells/iwd_spells/priest_6/IDPRO207.pro~   //projectile
 //don't know how to add this...use an existing one that is similar enough (a non-bouncing lightning bolt...) seems to automatically use the bg2ee equiv
 //probam
 //vvc
 //bmp
 //3d animation
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_6/INVOCH.bam~ ~override~   //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_6/INVOCH.bam~ ~override~   //bam
 //sounds
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_6/TRA_08.WAV~ ~override~   //
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_6/TRA_09.WAV~ ~override~   //
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_6/#EFF_P05.WAV~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_6/TRA_08.WAV~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_6/TRA_09.WAV~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_6/#EFF_P05.WAV~ ~override~   //
 //cre
 //2da
 //itm
@@ -3914,7 +3914,7 @@ COPY ~faiths_and_powers/spheres/iwd_spells/priest_6/#EFF_P05.WAV~ ~override~   /
 //effs
 //secondary spell
 //Spell itself
-ADD_SPELL ~faiths_and_powers/spheres/iwd_spells/priest_6/b_p618.spl~ 1 6 ~CLERIC_SPIRITUAL_WRATH~ // Spell
+ADD_SPELL ~faiths_and_powers/spells/iwd_spells/priest_6/b_p618.spl~ 1 6 ~CLERIC_SPIRITUAL_WRATH~ // Spell
         SAY NAME1 @61800000
         SAY NAME2 @61800000
         SAY UNIDENTIFIED_DESC @61800001
@@ -3930,9 +3930,9 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
       STR_VAR resource = EVAL ~%spell_res%~
   END      //
 //icons
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_6/sppr616a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_6/sppr616b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_6/sppr616c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_6/sppr616a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_6/sppr616b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_6/sppr616c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
@@ -3962,29 +3962,29 @@ END
 ACTION_IF !(FILE_CONTAINS_EVALUATED(~spell.ids~ ~[ %TAB%]CLERIC_SYMBOL_PAIN[ %TAB%%LNL%%MNL%%WNL%]~)) BEGIN 
 
 //Projectile
-ADD_PROJECTILE ~faiths_and_powers/spheres/iwd_spells/priest_7/ICEGLYP.pro~   //projectile
+ADD_PROJECTILE ~faiths_and_powers/spells/iwd_spells/priest_7/ICEGLYP.pro~   //projectile
 //probam
 //vvc
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_7/ICSPAIN.vvc~ ~override~   //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_7/ICSPAIN.vvc~ ~override~   //bam
 //bmp
 //3d animation
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_7/SPGLYPTI.bam~ ~override~   //bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_7/SHGLYPH.bam~ ~override~   //bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_7/SPSPAINI.bam~ ~override~   //bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_7/CONJUH.bam~ ~override~   //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_7/SPGLYPTI.bam~ ~override~   //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_7/SHGLYPH.bam~ ~override~   //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_7/SPSPAINI.bam~ ~override~   //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_7/CONJUH.bam~ ~override~   //bam
 //sounds
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_7/#EFF_P02.WAV~ ~override~   //
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_7/#EFF_E04.WAV~ ~override~   //
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_7/EFF_P22A.WAV~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_7/#EFF_P02.WAV~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_7/#EFF_E04.WAV~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_7/EFF_P22A.WAV~ ~override~   //
 //cre
 //2da
 //itm
 //itm icons
 //effs
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_7/B_P714a.eff~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_7/B_P714a.eff~ ~override~   //
 //secondary spell
 //Spell itself
-ADD_SPELL ~faiths_and_powers/spheres/iwd_spells/priest_7/b_p714.spl~ 1 7 ~CLERIC_SYMBOL_PAIN~ // Spell
+ADD_SPELL ~faiths_and_powers/spells/iwd_spells/priest_7/b_p714.spl~ 1 7 ~CLERIC_SYMBOL_PAIN~ // Spell
         SAY NAME1 @71400000
         SAY NAME2 @71400000
         SAY UNIDENTIFIED_DESC @71400001
@@ -4001,9 +4001,9 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
   END      //
 
 //icons
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_7/sppr714a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_7/sppr714b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_7/sppr714c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_7/sppr714a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_7/sppr714b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_7/sppr714c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
@@ -4026,19 +4026,19 @@ END
 ACTION_IF !(FILE_CONTAINS_EVALUATED(~spell.ids~ ~[ %TAB%]CLERIC_SYMBOL_HOPELESSNESS[ %TAB%%LNL%%MNL%%WNL%]~)) BEGIN 
 
 //Projectile
-ADD_PROJECTILE ~faiths_and_powers/spheres/iwd_spells/priest_7/b_hpless.pro~   //projectile
+ADD_PROJECTILE ~faiths_and_powers/spells/iwd_spells/priest_7/b_hpless.pro~   //projectile
 //probam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_7/SOHOPEX.bam~ ~override~   //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_7/SOHOPEX.bam~ ~override~   //bam
 //vvc
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_7/SOHOPEX.vvc~ ~override~   //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_7/SOHOPEX.vvc~ ~override~   //bam
 //bmp
 //3d animation
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_7/PARALH.bam~ ~override~   //bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_7/SPGLYPTI.bam~ ~override~   //bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_7/SHGLYPH.bam~ ~override~   //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_7/PARALH.bam~ ~override~   //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_7/SPGLYPTI.bam~ ~override~   //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_7/SHGLYPH.bam~ ~override~   //bam
 //sounds
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_7/#EFF_P02.WAV~ ~override~   //
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_7/#EFF_E04.WAV~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_7/#EFF_P02.WAV~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_7/#EFF_E04.WAV~ ~override~   //
 //cre
 //2da
 //itm
@@ -4046,7 +4046,7 @@ COPY ~faiths_and_powers/spheres/iwd_spells/priest_7/#EFF_E04.WAV~ ~override~   /
 //effs
 //secondary spell
 //Spell itself
-ADD_SPELL ~faiths_and_powers/spheres/iwd_spells/priest_7/b_p716.spl~ 1 7 ~CLERIC_SYMBOL_HOPELESSNESS~ // Spell
+ADD_SPELL ~faiths_and_powers/spells/iwd_spells/priest_7/b_p716.spl~ 1 7 ~CLERIC_SYMBOL_HOPELESSNESS~ // Spell
         SAY NAME1 @71600000
         SAY NAME2 @71600000
         SAY UNIDENTIFIED_DESC @71600001
@@ -4058,9 +4058,9 @@ LAF RES_NUM_OF_SPELL_NAME
 END
 
 //icons
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_7/sppr716a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_7/sppr716b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_7/sppr716c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_7/sppr716a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_7/sppr716b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_7/sppr716c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
@@ -4089,10 +4089,10 @@ ACTION_IF !(FILE_CONTAINS_EVALUATED(~spell.ids~ ~[ %TAB%]CLERIC_IMPERVIOUS_SANCT
 //vvc
 //bmp
 //3d animation
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_7/ABJURH.BAM~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_7/ABJURH.BAM~ ~override~   //
 //sounds
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_7/#EFF_E03.WAV~ ~override~   //
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_7/#EFF_P01.WAV~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_7/#EFF_E03.WAV~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_7/#EFF_P01.WAV~ ~override~   //
 //cre
 //2da
 //itm
@@ -4105,7 +4105,7 @@ LAF RES_NUM_OF_SPELL_NAME
   STR_VAR spell_name = ~CLERIC_SYMBOL_HOPELESSNESS~
   RET spell_res
 END
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_7/b_p733.spl~ ~override~
+COPY ~faiths_and_powers/spells/iwd_spells/priest_7/b_p733.spl~ ~override~
 LPF ALTER_EFFECT
       INT_VAR match_opcode = 0
       opcode = 318
@@ -4128,9 +4128,9 @@ ACTION_IF !(FILE_CONTAINS_EVALUATED(~spell.ids~ ~[ %TAB%]CLERIC_DESTRUCTION[ %TA
 //vvc
 //bmp
 //3d animation
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_7/DESTRUH.BAM~ ~override~   //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_7/DESTRUH.BAM~ ~override~   //bam
 //sounds
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_7/#FF_P113.WAV~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_7/#FF_P113.WAV~ ~override~   //
 //cre
 //2da
 //itm
@@ -4138,7 +4138,7 @@ COPY ~faiths_and_powers/spheres/iwd_spells/priest_7/#FF_P113.WAV~ ~override~   /
 //effs
 //secondary spell
 //Spell itself
-ADD_SPELL ~faiths_and_powers/spheres/iwd_spells/priest_7/b_p734.spl~ 1 7 ~CLERIC_DESTRUCTION~ // Spell
+ADD_SPELL ~faiths_and_powers/spells/iwd_spells/priest_7/b_p734.spl~ 1 7 ~CLERIC_DESTRUCTION~ // Spell
         SAY NAME1 @73400000
         SAY NAME2 @73400000
         SAY UNIDENTIFIED_DESC @73400001
@@ -4149,9 +4149,9 @@ LAF RES_NUM_OF_SPELL_NAME
 END
 
 //icons
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_7/sppr734a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_7/sppr734b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_7/sppr734c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_7/sppr734a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_7/sppr734b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_7/sppr734c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
@@ -4183,7 +4183,7 @@ ACTION_IF !(FILE_CONTAINS_EVALUATED(~spell.ids~ ~[ %TAB%]CLERIC_GREATER_SHIELD_O
 //effs
 //secondary spell
 //Spell itself
-ADD_SPELL ~faiths_and_powers/spheres/iwd_spells/priest_7/b_p735.spl~ 1 7 ~CLERIC_GREATER_SHIELD_OF_LATHANDER~ // Spell
+ADD_SPELL ~faiths_and_powers/spells/iwd_spells/priest_7/b_p735.spl~ 1 7 ~CLERIC_GREATER_SHIELD_OF_LATHANDER~ // Spell
         SAY NAME1 @73500000
         SAY NAME2 @73500000
         SAY UNIDENTIFIED_DESC @73500001
@@ -4199,9 +4199,9 @@ LPF ALTER_EFFECT
   END      //
 
 //icons
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_7/sppr735a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_7/sppr735b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_7/sppr735c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_7/sppr735a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_7/sppr735b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_7/sppr735c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
@@ -4219,14 +4219,14 @@ END
 ACTION_IF !(FILE_CONTAINS_EVALUATED(~spell.ids~ ~[ %TAB%]CLERIC_MIST_OF_ELDATH[ %TAB%%LNL%%MNL%%WNL%]~)) BEGIN 
 
 //Projectile
-ADD_PROJECTILE ~faiths_and_powers/spheres/iwd_spells/priest_7/IDPRO307.pro~   //projectile
+ADD_PROJECTILE ~faiths_and_powers/spells/iwd_spells/priest_7/IDPRO307.pro~   //projectile
 //probam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_7/MOELDAA.BAM~ ~override~   //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_7/MOELDAA.BAM~ ~override~   //bam
 //vvc
 //bmp
 //3d animation
 //sounds
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_7/EFF_P104.WAV~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_7/EFF_P104.WAV~ ~override~   //
 //cre
 //2da
 //itm
@@ -4234,7 +4234,7 @@ COPY ~faiths_and_powers/spheres/iwd_spells/priest_7/EFF_P104.WAV~ ~override~   /
 //effs
 //secondary spell
 //Spell itself
-ADD_SPELL ~faiths_and_powers/spheres/iwd_spells/priest_7/b_p736.spl~ 1 7 ~CLERIC_MIST_OF_ELDATH~ // Spell
+ADD_SPELL ~faiths_and_powers/spells/iwd_spells/priest_7/b_p736.spl~ 1 7 ~CLERIC_MIST_OF_ELDATH~ // Spell
         SAY NAME1 @73600000
         SAY NAME2 @73600000
         SAY UNIDENTIFIED_DESC @73600001
@@ -4246,9 +4246,9 @@ LAF RES_NUM_OF_SPELL_NAME
 END
 
 //icons
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_7/sppr736a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_7/sppr736b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_7/sppr736c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_7/sppr736a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_7/sppr736b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_7/sppr736c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
@@ -4267,13 +4267,13 @@ ACTION_IF !(FILE_CONTAINS_EVALUATED(~spell.ids~ ~[ %TAB%]CLERIC_STALKER[ %TAB%%L
 
 //Projectile
 //probam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_7/MOELDAA.BAM~ ~override~   //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_7/MOELDAA.BAM~ ~override~   //bam
 //vvc
 //bmp
 //3d animation
 //sounds
 //cre
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_7/SSHAMB.cre~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_7/SSHAMB.cre~ ~override~   //
 //script
 //COMPILE if Needed
 //2da
@@ -4282,7 +4282,7 @@ COPY ~faiths_and_powers/spheres/iwd_spells/priest_7/SSHAMB.cre~ ~override~   //
 //effs
 //secondary spell
 //Spell itself
-ADD_SPELL ~faiths_and_powers/spheres/iwd_spells/priest_7/b_p737.spl~ 1 7 ~CLERIC_STALKER~ // Spell
+ADD_SPELL ~faiths_and_powers/spells/iwd_spells/priest_7/b_p737.spl~ 1 7 ~CLERIC_STALKER~ // Spell
         SAY NAME1 @73700000
         SAY NAME2 @73700000
         SAY UNIDENTIFIED_DESC @73700001
@@ -4293,9 +4293,9 @@ LAF RES_NUM_OF_SPELL_NAME
 END
 
 //icons
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_7/sppr737a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_7/sppr737b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_7/sppr737c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_7/sppr737a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_7/sppr737b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_7/sppr737c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
@@ -4318,7 +4318,7 @@ ACTION_IF !(FILE_CONTAINS_EVALUATED(~spell.ids~ ~[ %TAB%]CLERIC_ENERGY_DRAIN[ %T
 //bmp
 //3d animation
 //sounds
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_7/EFF_M07.WAV~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_7/EFF_M07.WAV~ ~override~   //
 //cre
 //script
 //2da
@@ -4327,7 +4327,7 @@ COPY ~faiths_and_powers/spheres/iwd_spells/priest_7/EFF_M07.WAV~ ~override~   //
 //effs
 //secondary spell
 //Spell itself
-ADD_SPELL ~faiths_and_powers/spheres/iwd_spells/priest_7/b_p739.spl~ 1 7 ~CLERIC_ENERGY_DRAIN~ // Spell
+ADD_SPELL ~faiths_and_powers/spells/iwd_spells/priest_7/b_p739.spl~ 1 7 ~CLERIC_ENERGY_DRAIN~ // Spell
         SAY NAME1 @73900000
         SAY NAME2 @73900000
         SAY UNIDENTIFIED_DESC @73900001
@@ -4349,9 +4349,9 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
   END      //
 END
 //icons
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_7/SPWI914a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_7/SPWI914b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_7/SPWI914c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_7/SPWI914a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_7/SPWI914b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_7/SPWI914c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
@@ -4374,7 +4374,7 @@ ACTION_IF !(FILE_CONTAINS_EVALUATED(~spell.ids~ ~[ %TAB%]CLERIC_WITHER[ %TAB%%LN
 //bmp
 //3d animation
 //missing! Using Dust?  Why not
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_7/DUST.BAM~ ~override~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_7/DUST.BAM~ ~override~   //
 //sounds
 //cre
 //2da
@@ -4382,7 +4382,7 @@ COPY ~faiths_and_powers/spheres/iwd_spells/priest_7/DUST.BAM~ ~override~   //
 //itm icons
 //secondary spell
 //Spell itself
-ADD_SPELL ~faiths_and_powers/spheres/iwd_spells/priest_7/b_p740.spl~ 1 7 ~CLERIC_WITHER~ // Spell
+ADD_SPELL ~faiths_and_powers/spells/iwd_spells/priest_7/b_p740.spl~ 1 7 ~CLERIC_WITHER~ // Spell
         SAY NAME1 @74000000
         SAY NAME2 @74000000
         SAY UNIDENTIFIED_DESC @74000001
@@ -4417,12 +4417,12 @@ LPF ALTER_EFFECT
   END      //
 
 //eff
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_7/SPPR740.eff~ ~override/%spell_res%.eff~   //
+COPY ~faiths_and_powers/spells/iwd_spells/priest_7/SPPR740.eff~ ~override/%spell_res%.eff~   //
 
 //icons
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_7/sppr740a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_7/sppr740b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_7/sppr740c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_7/sppr740a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_7/sppr740b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_7/sppr740c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
@@ -4480,9 +4480,9 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
   LPF ALTER_EFFECT INT_VAR match_opcode = 1 opcode = 318 STR_VAR resource = EVAL ~%spell_res%~ END
 
 //icons
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/sppr422a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/sppr422b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_4/sppr422c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/sppr422a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/sppr422b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_4/sppr422c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
 WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
@@ -4519,9 +4519,9 @@ LAF RES_NUM_OF_SPELL_NAME
 END
 
 //icons
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_7/sppr733a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_7/sppr733b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_7/sppr733c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_7/sppr733a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_7/sppr733b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_7/sppr733c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
   WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~
@@ -4577,9 +4577,9 @@ COPY_EXISTING ~%spell_res%.spl~ ~override~
   END      //
 
 //icons
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_3/sppr321a.bam~ ~override/%spell_res%a.bam~   //scroll bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_3/sppr321b.bam~ ~override/%spell_res%b.bam~    //bam
-COPY ~faiths_and_powers/spheres/iwd_spells/priest_3/sppr321c.bam~ ~override/%spell_res%c.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_3/sppr321a.bam~ ~override/%spell_res%a.bam~   //scroll bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_3/sppr321b.bam~ ~override/%spell_res%b.bam~    //bam
+COPY ~faiths_and_powers/spells/iwd_spells/priest_3/sppr321c.bam~ ~override/%spell_res%c.bam~    //bam
 //add bams to spl
 COPY_EXISTING ~%spell_res%.spl~ ~override~
 WRITE_EVALUATED_ASCII 0x003a ~%spell_res%C~

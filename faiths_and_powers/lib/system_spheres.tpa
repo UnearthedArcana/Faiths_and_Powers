@@ -329,7 +329,7 @@ WITH_TRA ~faiths_and_powers/language/english/setup.tra~ BEGIN
   OUTER_SPRINT universal_string @12101
 END
 
-COPY ~faiths_and_powers/data/sphere_systems/d5altsph.2da~ ~override~
+COPY ~faiths_and_powers/sphere_systems/d5altsph.2da~ ~override~
 
 LAM which_sphere_strings
 
@@ -2068,12 +2068,12 @@ OUTER_FOR (ind = 2; ind < 10; ++ind) BEGIN
 END
 
 COPY ~faiths_and_powers/data/misc/d5_featp.bam~ ~override~
-COPY ~faiths_and_powers/data/sphere_systems/dlg/d5sphch.eff~ ~override~
-COPY ~faiths_and_powers/data/sphere_systems/dlg/d5sphch.cre~ ~override~
+COPY ~faiths_and_powers/sphere_systems/dlg/d5sphch.eff~ ~override~
+COPY ~faiths_and_powers/sphere_systems/dlg/d5sphch.cre~ ~override~
 
 LAM which_sphere_strings 
 
-COPY ~faiths_and_powers/data/sphere_systems/dlg/d5sphch.d~ ~weidu_external/faiths_and_powers/compile/d5sphch.d~
+COPY ~faiths_and_powers/sphere_systems/dlg/d5sphch.d~ ~weidu_external/faiths_and_powers/compile/d5sphch.d~
 	REPLACE_TEXTUALLY CASE_INSENSITIVE ~dlg_life~ ~#%dlg_life%~
 	REPLACE_TEXTUALLY CASE_INSENSITIVE ~dlg_death~ ~#%dlg_death%~
 	REPLACE_TEXTUALLY CASE_INSENSITIVE ~dlg_benediction~ ~#%dlg_benediction%~
@@ -2097,7 +2097,7 @@ COPY ~faiths_and_powers/data/sphere_systems/dlg/d5sphch.d~ ~weidu_external/faith
 	REPLACE_TEXTUALLY CASE_INSENSITIVE ~dlg_shadow~ ~#%dlg_shadow%~
 	REPLACE_TEXTUALLY CASE_INSENSITIVE ~dlg_magic~ ~#%dlg_magic%~
 	REPLACE_TEXTUALLY CASE_INSENSITIVE ~dlg_astral~ ~#%dlg_astral%~
-COPY ~faiths_and_powers/data/sphere_systems/dlg/d5sphch.baf~ ~weidu_external/faiths_and_powers/compile/d5sphch.baf~
+COPY ~faiths_and_powers/sphere_systems/dlg/d5sphch.baf~ ~weidu_external/faiths_and_powers/compile/d5sphch.baf~
 
 COMPILE ~weidu_external/faiths_and_powers/compile/d5sphch.d~ 
 COMPILE ~weidu_external/faiths_and_powers/compile/d5sphch.baf~ 

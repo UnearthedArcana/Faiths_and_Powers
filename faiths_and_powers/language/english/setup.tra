@@ -522,7 +522,6 @@ Advantages:
 Restrictions:
 - Alignment: Lawful good, lawful neutral, or neutral good only.
 ~
-
 @20501  = ~luckrider of tymora~
 @20502  = ~Luckrider of Tymora~
 @20503  = ~LUCKRIDER OF TYMORA: Also known as Lady Luck, Tymora is the goddess of good fortune. The sect of her clerics known as Luckriders eat, drink, and sleep luck. Confident to the point of cockiness, they enter battle recklessly, throwing caution to the wind and trusting in fate. Considering how many adventurers perish despite crafting meticulous strategies and plans, this is not a ridiculous position.
@@ -744,9 +743,9 @@ Advantages:
 - Mistress of the Waves: Unlike most clerics, waveservants have focus access in the elemental water sphere.
 - Can cast Smashing Wave as the cleric spell as a special ability once per day.  The Waveservant can use this ability an additional time per day at levels 4, 8, 12, 16 and 20.
 
-Disadvantages: 
-- The Waveservant cannot turn undead.
 Restrictions:
+- The Waveservant cannot turn undead.
+- May not wear plate armors.
 - Alignment: any evil or chaotic neutral
 ~
 //
@@ -873,7 +872,7 @@ Multiple chants are not cumulative.
 //
 @32401  = ~weavekeeper of mystra~
 @32402  = ~Weavekeeper of Mystra~
-@32403  = ~WEAVEKEEPR OF MYSTRA: Mystra is known as the Lady of Spells and the Mother of Magic. She tends to the Weave, which enables mortals to cast spells. All wielders of magic and seekers after arcane lore are welcome in the service of Mystra. One sect of Mystra's clerics, known as Weavekeepers, is focused on investigating and controlling sources of powerful magic which, in the wrong hands, might harm the reputation and perception of magic use.
+@32403  = ~WEAVEKEEPER OF MYSTRA: Mystra is known as the Lady of Spells and the Mother of Magic. She tends to the Weave, which enables mortals to cast spells. All wielders of magic and seekers after arcane lore are welcome in the service of Mystra. One sect of Mystra's clerics, known as Weavekeepers, is focused on investigating and controlling sources of powerful magic which, in the wrong hands, might harm the reputation and perception of magic use.
 
 Advantages:
 - Weavekeepers have a small amount of magic flowing through them constantly, regardless whether they have spells memorized. They may cast small cantrips from the various schools of magic at any time, without limit.
@@ -883,7 +882,7 @@ Advantages:
 - Weavekeepers are unaffected by wild magic and dead magic fields.
 
 Restrictions:
-- May not dual-class.
+- May not wear plate armors.
 ~
 @32411  = ~~
 @32413  = ~Magic Wand~
@@ -1058,6 +1057,9 @@ Restrictions:
 - Alignment: may not be Evil.
 ~
 @37323  = ~Tracking~
+@37324  = ~Tracking
+
+With an intimate knowledge of <PRO_HISHER> surroundings and the creatures that live within them, a Volamtar of Marthammor Duin can use the Tracking ability to give <PRO_HIMHER>self a general idea of what creatures are in an area and which direction they are. Red arrows at the edge of the screen will point in the general direction of the creatures in the area.~
 @37334  = ~Tracking
 
 With an intimate knowledge of <PRO_HISHER> surroundings and the creatures that live within them, a Volamtar of Marthammor Duin can use the Tracking ability to give <PRO_HIMHER>self a general idea of what creatures are in an area and which direction they are. Red arrows at the edge of the screen will point in the general direction of the creatures in the area.~
@@ -1066,7 +1068,7 @@ With an intimate knowledge of <PRO_HISHER> surroundings and the creatures that l
 //
 @37401  = ~kaxanar of haela brightaxe~
 @37402  = ~Kaxanar of Haela Brightaxe~
-@37403  = ~KAXANAR OF HAELA BRIGHTAXE: fluff
+@37403  = ~KAXANAR OF HAELA BRIGHTAXE: Known as the Luckmaiden and the Lady of the Fray, Haela Brighaxe is particularly worhipped by battle-loving dwarves who wander the surface realms and have to face monsters and unknown dangers, particularly in the North. Her followers often exhibit berserker tendencies in the heat of battle.
 
 Advantages:
 - Kaxanar can be proficient with any weapon.
@@ -1076,10 +1078,6 @@ Advantages:
 Restrictions:
 - Alignment: may not be Lawful.
 ~
-@37323  = ~Tracking~
-@37334  = ~Tracking
-
-With an intimate knowledge of <PRO_HISHER> surroundings and the creatures that live within them, a Volamtar of Marthammor Duin can use the Tracking ability to give <PRO_HIMHER>self a general idea of what creatures are in an area and which direction they are. Red arrows at the edge of the screen will point in the general direction of the creatures in the area.~
 //
 // ... priest of baravar:
 //
@@ -1088,18 +1086,20 @@ With an intimate knowledge of <PRO_HISHER> surroundings and the creatures that l
 @38203  = ~HOODWINKER OF BARAVAR CLOAKSHADOW: Baravar Cloakshadow, the Sly One, is the gnomish deity of deception and illusions. Clerics of Baravar are known as Hoodwinkers and tend to be the sneakiest of gnomes, who serve their communities by instructing them in disguise and camoflage.
 
 Advantages:
-- Hoodwinkers can innately cast Mirror Image once per day.
-- From 4th level, Hoodwinkers can innately cast Improved Invisibility once per day.
-- May use the Shadowstep ability at 6th level. The Hoodwinker gains an additional use at levels 12 and 18.
+- Hoodwinkers can innately cast Mirror Image once per day per four levels of experience.
+- From 5th level, Hoodwinkers can innately cast Improved Invisibility once per day per five levels of experience.
+- From 6th level, Hoodwinkers can use the Shadowstep ability once per day per six levels of experience.
 
 SHADOWSTEP: The character steps into the Shadow Plane and may move for 7 seconds while others are frozen in time. The caster cannot attack or cast spells while in the Shadow Plane.
 
-- From 9th level, Hoodwinkers can invoke wild and confusing images in the minds of <PRO_HISHER> enemies, mimicking the effect of the Confusion spell.
+- From 9th level, once per day, Hoodwinkers can invoke wild and confusing images in the minds of <PRO_HISHER> enemies, mimicking the effect of the Confusion spell.
 
 Restrictions:
+- Race restricted to gnome.
+- May not wear plate armors.
 - Alignment: may not be Lawful.
 ~
-@38204  = ~CLOAKED ONE OF BARAVAR: ~
+@38204  = ~HOODWINKER OF BARAVAR: ~
 
 @38211  = ~Baravar's Double~
 @38212  = ~Baravar's Double: Often used in emergencies, this causes an illusionary double of the cleric to spring into existence. If the cleric is being attacked, the double will absorb the first blow that lands, and disappear. At 6th level two doubles are created, and at 12th level one of the two doubles can actually wander away from the cleric to distract enemies. Hoodwinkers may use this ability once per turn.~
@@ -1119,6 +1119,7 @@ Advantages:
 
 Restrictions:
 - Race restricted to gnome.
+- May not wear plate armors.
 - Alignment restricted to good.
 ~
 @38304 = ~FASTPAWS OF BAERVAN WILDWANDERER: Usually found far abreast from heavily urban areas, followers of Baervan Wildwanderer seek to protect nature from evil creatures. They have a particular affinity for forest plants and creatures, especially raccoons.
@@ -1126,6 +1127,7 @@ Restrictions:
 //
 // ... cleric of baervan:
 //
+/*
 @22301 = ~fastpaws of baervan~ //Lower Case Kit Name: No Divine Remix
 @22302 = ~Fastpaws of Baervan~ //Mixed Case Kit Name: No Divine Remix
 @22303 = ~PRIEST OF BAERVAN: Usually found far abreast from heavily urban areas, followers of Baervan Wildwanderer seek to protect nature from evil creatures. They have a particular affinity for forest plants and creatures, especially raccoons.
@@ -1146,6 +1148,7 @@ Restrictions:
 @22311 = ~Naturewalk~
 @22312 = ~Naturewalk
 This spell grants one person protection from ground and nature based movement impairing effects such as webs, entangling, and grease. This spell lasts 1 round per level of the caster.~
+*/
 //
 // ... priest of urdlen:
 //
@@ -1992,7 +1995,6 @@ Advantages:
 - At 12th level, the Druid may choose an additional animal form for shapeshifting.
 - At 15th level, the Druid may shapeshift into a large wyvern.
 - At 15th level, gains 10% resistance to damage from cold, fire, electricity, and acid.  These resistances increase by another 10% at levels 18 and 21.
-
 ~
 @73104  = ~FOREST DRUID: Most druids reside in the regions where soil is nutritious, plant life is abundant and animals thrive.  These regions are in many ways the epitome of harmonious ecosystems, and druids often charge themselves with nurturing and defending them.  Tall forests are a paradise in many ways: they provide shade from the sun, food and homes for animals and people, and wood for tools.  Forests are incessantly under threat of being torn down and subjugated by careless humans and demihumans. Forest druids therefore often live with a constant low-grade paranoia, which informs the stereotype of druids being hostile to civilization.~
 @73105  = ~~
@@ -2034,13 +2036,17 @@ Disadvantages:
 
 Advantages:
 - At 1st level, may summon a Spirit Spider. The HD of the spirit animal increases to match the druid's level at 3rd, 5th, 7th and 10th level.
+- At 1st level, may cast the 'Beetle Swarm' spell.
 - At 1st level, may shapeshift into the form of a giant beetle once per day. The Druid can change shape an additional time per day for every two levels gains, up to 11 uses per day at level 20.
+- At 3rd level, may cast the 'Spider Swarm' spell.
 - At 4th level, the Druid may choose an additional animal form for shapeshifting.
 - At 8th level, the Druid may choose an additional animal form for shapeshifting.
 - At 12th level, the Druid may choose an additional animal form for shapeshifting.
 - At 15th level, the Druid may shapeshift into a rhinocerous beetle.
 - At 15th level, gains 10% resistance to damage from cold, fire, electricity, and acid.  These resistances increase by another 10% at levels 18 and 21.
 
+Disadvantages:
+- None
 ~
 @73404  = ~AVENGER: A member of a special sect within the druidic order, a Druid of this type is dedicated to fighting those who would defile nature. Avengers have powers the average Druid does not—additional abilities that have been earned through extensive rituals, a process that is very physically draining.
 
@@ -2128,6 +2134,8 @@ Advantages:
 - At 15th level, the Druid may shapeshift into a remorhaz.
 - At 15th level, gains 10% resistance to damage from cold, fire, electricity, and acid.  These resistances increase by another 10% at levels 18 and 21.
 
+Disadvantages:
+- None
 ~
 //
 // ... shadow druid:
@@ -2378,8 +2386,8 @@ Advantages:
 
 Restrictions:
 - Alignment: must be Lawful Good. 
-- The Paladin of Tyr must maintain a reputation of 8 or fall.~
-
+- The Paladin of Tyr must maintain a reputation of 8 or fall.
+~
 @80104  = ~Smite Evil~
 @80105  = ~Smite Evil
 
@@ -2587,8 +2595,8 @@ Advantages:
 
 Restrictions:
 - Alignment: must be Lawful Good. 
-- A champion of Torm must maintain a reputation of 8 or fall.~
-
+- A champion of Torm must maintain a reputation of 8 or fall.
+~
 //ZEALOT KITS
 
 @86201  = ~eye of gruumsh~
@@ -2676,7 +2684,7 @@ Restrictions:
 ~
 @86701  = ~vassal of the reverend one~
 @86702  = ~Vassal of the Reverend One~
-@86703  = ~VASSAL OF THE REVEREND ONE: Zealots of Corelion Larethian are steadfast defenders of elven values.  Often orphaned elves or half-elves, non-evil elves still feel the call to Corellon, often serving him in their own way as zealots.
+@86703  = ~VASSAL OF THE REVEREND ONE: Champions of Corelion Larethian are steadfast defenders of elven values.  Often orphaned elves or half-elves, non-evil elves still feel the call to Corellon, often serving him in their own way as zealots.
 
 Advantages:
 - Bow and Blade: Vassals have a +1 bonus on attack rolls with long swords, short swords, and bows. This is in addition to any natural elven bonus with these weapons.
